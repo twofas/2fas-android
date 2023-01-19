@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="windowBackground">#15161B</color>
+    <color name="toolbar">#15161B</color>
+    <color name="statusbar">#14151A</color>
+    <color name="toolbarIcon">#FFF</color>
+    <color name="drawerBackground">#15161B</color>
+    <color name="drawerIcon">#ECECEC</color>
+    <color name="drawerText">#ECECEC</color>
+    <color name="serviceCodeNormal">@color/textPrimary</color>
+    <color name="serviceCodeExpiring">#ec1c23</color>
+    <color name="textPrimary">#ffffff</color>
+    <color name="textSecondary">#8AFFFFFF</color>
+    <color name="textPrimaryInverse">#000</color>
+    <color name="textSecondaryInverse">#000</color>
+    <color name="colorDivider">#0FFFFFFF</color>
+    <color name="tintIcon">#FFF</color>
+    <color name="groupBackground">#1F2025</color>
+    <color name="groupDivider">#34353A</color>
+    <color name="groupTitle">#A1A2A7</color>
+
+    <color name="fingerprintDefault">#607D8B</color>
+    <color name="fingerprintInvalid">#F4511E</color>
+    <color name="fingerprintValid">#009688</color>
+
+    <color name="textInputPrimaryBoxStroke">#66FFFFFF</color>
+    <color name="textInputPrimaryHint">#80FFFFFF</color>
+
+    <color name="simpleEntrySubtitle">#61FFFFFF</color>
+
+    <color name="fabNeutral">#FF3F3F3F</color>
+    <color name="fabNeutralIcon">#FFF</color>
+
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="contact_subjects">
+        <item>@string/settings__problem</item>
+        <item>@string/settings__suggestion</item>
+        <item>@string/settings__general</item>
+    </array>
+
+    <array name="services_sort_type">
+        <item>A - Z</item>
+        <item>Manual</item>
+    </array>
+</resources>

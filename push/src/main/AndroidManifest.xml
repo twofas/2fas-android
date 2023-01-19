@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.twofasapp.push">
+
+    <application>
+        <receiver
+            android:name=".notification.NotificationCancelReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="NotificationCancelReceiver" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

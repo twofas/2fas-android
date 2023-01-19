@@ -1,0 +1,48 @@
+.gradle
+/local.properties
+.DS_Store
+/build
+/captures
+
+# Built application files
+/*/build/
+
+# Crashlytics configuations
+com_crashlytics_export_strings.xml
+
+# Local configuration file (sdk api, etc)
+local.properties
+
+# Gradle generated files
+.gradle/
+
+# Signing files
+.signing/
+
+# User-specific configurations
+.idea/*
+*.iml
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+scripts/json-to-kotlin/.idea/
+
+# Secrets
+scripts/secrets.sh
+config/config.properties
+config/debug_signing.jks
+config/release_signing.jks
+config/release_upload.jks
+config/release_upload_cert.pem
+app/src/debug/google-services.json
+app/src/main/google-services.json
+app/src/release/google-services.json
+app/src/releaseLocal/google-services.json
+scripts/

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="isPortraitOnly">true</bool>
+    <bool name="isPhone">true</bool>
+    <bool name="isTablet">false</bool>
+    <bool name="isTabletLandscape">false</bool>
+    <bool name="isLightStatusBar">true</bool>
+    <bool name="isNight">false</bool>
+</resources>

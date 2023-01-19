@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_padding_vertical">56dp</dimen>
+    <dimen name="screen_padding_horizontal">112dp</dimen>
+    <dimen name="screen_padding_horizontal_large">130dp</dimen>
+
+    <dimen name="pin_keyboard_padding_vertical">16dp</dimen>
+    <dimen name="pin_keyboard_padding_horizontal">112dp</dimen>
+
+    <dimen name="service_list_notice_padding_horizontal">200dp</dimen>
+    <dimen name="bottom_sheet_width">600dp</dimen>
+
+</resources>

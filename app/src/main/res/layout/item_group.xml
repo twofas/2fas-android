@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/groupDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/groupBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Text.Description.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            tools:text="Group Name" />
+
+        <ImageButton
+            android:id="@+id/moveUp"
+            style="@style/ImageButtonIcon.Condensed"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="6dp"
+            android:alpha="0.9"
+            android:padding="5dp"
+            android:tint="#9B9B9B"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_group_move_up"
+            tools:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/moveDown"
+            style="@style/ImageButtonIcon.Condensed"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="6dp"
+            android:alpha="0.9"
+            android:padding="5dp"
+            android:tint="#9B9B9B"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_group_move_down"
+            tools:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/toggle"
+            style="@style/ImageButtonIcon.Condensed"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="6dp"
+            android:background="@null"
+            android:clickable="false"
+            android:focusable="false"
+            android:tint="#9B9B9B"
+            app:srcCompat="@drawable/ic_expanded" />
+
+        <ImageButton
+            android:id="@+id/edit"
+            style="@style/ImageButtonIcon.Condensed"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="6dp"
+            android:alpha="0.9"
+            android:padding="5dp"
+            android:tint="#9B9B9B"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_group_more"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/groupDivider" />
+</LinearLayout>

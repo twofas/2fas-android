@@ -1,0 +1,251 @@
+package com.twofasapp.services.ui.changebrand
+
+import android.app.Activity
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Alignment.Companion.CenterVertically
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import com.twofasapp.core.analytics.AnalyticsEvent
+import com.twofasapp.core.analytics.AnalyticsService
+import com.twofasapp.design.compose.ToolbarWithSearch
+import com.twofasapp.design.compose.dialogs.ListDialog
+import com.twofasapp.design.compose.serviceIconBitmap
+import com.twofasapp.design.theme.divider
+import com.twofasapp.design.theme.textFieldHint
+import com.twofasapp.design.theme.textPrimary
+import com.twofasapp.extensions.openBrowserApp
+import com.twofasapp.navigation.ServiceDirections
+import com.twofasapp.navigation.ServiceRouter
+import com.twofasapp.resources.R
+import com.twofasapp.services.ui.ServiceViewModel
+import kotlinx.coroutines.launch
+import org.koin.androidx.compose.get
+import org.koin.androidx.compose.getViewModel
+import timber.log.Timber
+
+@Composable
+internal fun ChangeBrandScreen(
+    viewModel: ServiceViewModel = getViewModel(),
+    brandViewModel: ChangeBrandViewModel = get(),
+    router: ServiceRouter = get(),
+    analyticsService: AnalyticsService = get(),
+) {
+    val service = viewModel.uiState.collectAsState().value.service
+    val state = brandViewModel.uiState.collectAsState().value
+    val listState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
+    val activity = LocalContext.current as? Activity
+    var showBrandingDialog = remember { mutableStateOf(false) }
+
+    Scaffold(
+        topBar = {
+            ToolbarWithSearch(
+                title = stringResource(id = R.string.customization_change_brand),
+                searchHint = "Search",
+                onSearchValueChanged = { brandViewModel.applySearchFilter(it) }
+            ) { router.navigateBack() }
+        }
+    ) { padding ->
+        if (state.sections.isEmpty()) {
+            Text(
+                text = stringResource(id = R.string.brand_empty_msg),
+                style = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.textFieldHint),
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 24.dp)
+            )
+            return@Scaffold
+        }
+
+        LazyColumn(state = listState) {
+            // Icon order
+            item(key = "icon_order") { SectionHeader(header = "Request a brand icon") }
+
+            item(key = "icon_order_details") {
+
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(24.dp)
+                ) {
+                    Image(painter = painterResource(id = R.drawable.order_icon_image), contentDescription = null, Modifier.height(80.dp))
+
+                    Column(modifier = Modifier.padding(start = 24.dp)) {
+                        Text(
+                            text = "Can’t find your brand icon in 2FAS app?",
+                            style = MaterialTheme.typography.body1,
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Row(modifier = Modifier.clickable {
+                            analyticsService.captureEvent(AnalyticsEvent.REQUEST_ICON_CLICK)
+                            showBrandingDialog.value = true
+                        }) {
+                            Text(
+                                text = "Request a brand icon",
+                                style = MaterialTheme.typography.body1.copy(fontWeight = FontWeight.SemiBold),
+                                color = MaterialTheme.colors.primary,
+                                modifier = Modifier.align(CenterVertically)
+                            )
+                        }
+                    }
+                }
+            }
+
+            state.sections.forEach { (header, brands) ->
+
+                // Header
+                item(key = header) { SectionHeader(header = header) }
+
+                // Icons
+                items(brands.windowed(4, 4, partialWindows = true)) { brandsRow ->
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
+                    ) {
+                        brandsRow.forEach {
+                            Column(
+                                modifier = Modifier
+                                    .width(72.dp)
+                                    .height(104.dp)
+                                    .align(CenterVertically)
+                            ) {
+                                Image(
+                                    bitmap = serviceIconBitmap(iconCollectionId = it.iconCollectionId),
+                                    contentDescription = null,
+                                    contentScale = ContentScale.Inside,
+                                    modifier = Modifier
+                                        .size(72.dp)
+                                        .align(CenterHorizontally)
+                                        .border(
+                                            width = 2.dp,
+                                            color = if (it.iconCollectionId == service.iconCollectionId) MaterialTheme.colors.primary else MaterialTheme.colors.background,
+                                            shape = CircleShape
+                                        )
+                                        .clip(CircleShape)
+                                        .clickable {
+                                            viewModel.updateBrand(it)
+                                            router.navigateBack()
+                                        }
+                                        .padding(16.dp)
+                                )
+
+                                Text(
+                                    text = it.name,
+                                    style = MaterialTheme.typography.caption.copy(color = MaterialTheme.colors.textPrimary),
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    modifier = Modifier
+                                        .align(CenterHorizontally)
+                                        .padding(top = 4.dp)
+                                )
+                            }
+
+                        }
+
+                        repeat(4 - brandsRow.size) {
+                            Spacer(modifier = Modifier.size(72.dp))
+                        }
+                    }
+                }
+            }
+        }
+
+        if (showBrandingDialog.value) {
+            ListDialog(
+                title = "Select the request method",
+                items = listOf("Request icon as a user", "Submit icon as a company"),
+                onDismiss = { showBrandingDialog.value = false },
+                onSelected = { index, _ ->
+                    when (index) {
+                        0 -> {
+                            analyticsService.captureEvent(AnalyticsEvent.REQUEST_ICON_AS_USER_CLICK)
+                            router.navigate(ServiceDirections.RequestIcon)
+                        }
+
+                        1 -> {
+                            analyticsService.captureEvent(AnalyticsEvent.REQUEST_ICON_AS_COMPANY_CLICK)
+                            activity?.openBrowserApp(url = "https://2fas.com/your-branding/")
+                        }
+                    }
+                }
+            )
+        }
+
+        LaunchedEffect(Unit) {
+            if (state.scrollTo.not()) return@LaunchedEffect
+
+            coroutineScope.launch {
+
+                var selectedIndex = -1
+                var i = 0
+
+                state.sections.forEach loop@{ entry ->
+                    entry.value.windowed(4, 4, partialWindows = true).forEach { window ->
+                        if (window.any { it.iconCollectionId == service.iconCollectionId }) {
+                            selectedIndex = i
+                            return@loop
+                        }
+                        i++
+                    }
+                    i++
+                }
+
+                if (selectedIndex == -1) {
+                    return@launch
+                }
+
+                Timber.i("Scroll to row $selectedIndex")
+                listState.scrollToItem(index = selectedIndex)
+            }
+        }
+    }
+}
+
+@Composable
+fun SectionHeader(header: String) {
+    Text(
+        text = header,
+        style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Bold),
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = MaterialTheme.colors.divider)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+    )
+}

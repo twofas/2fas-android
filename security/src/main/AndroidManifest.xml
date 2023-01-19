@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.twofasapp.security">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application>
+        <activity
+            android:name=".ui.lock.LockActivity"
+            android:label="Authenticate"
+            android:launchMode="singleTop"
+            android:noHistory="false" />
+    </application>
+</manifest>

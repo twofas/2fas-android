@@ -1,0 +1,219 @@
+<resources>
+
+    <style name="ImageButtonIcon">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:tint">?colorIcon</item>
+        <item name="android:tintMode">src_in</item>
+    </style>
+
+    <style name="ImageButtonIcon.Condensed">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:tintMode">src_in</item>
+    </style>
+
+    <!--TOOLBAR-->
+    <style name="AppBar.NonCoordinator" parent="Widget.MaterialComponents.AppBarLayout.Primary">
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+        <item name="android:translationZ">4dp</item>
+
+    </style>
+
+    <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/toolbar</item>
+    </style>
+
+    <style name="Toolbar.Back">
+        <item name="navigationIcon">@drawable/ic_back_arrow</item>
+        <item name="navigationIconTint">@color/toolbarIcon</item>
+    </style>
+
+    <style name="Toolbar.Close">
+        <item name="navigationIcon">@drawable/ic_toolbar_close</item>
+        <item name="navigationIconTint">@color/toolbarIcon</item>
+    </style>
+
+    <!--TEXT-->
+
+    <style name="Text" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="Text.Header">
+        <item name="android:textSize">26sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Text.Header.Light">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="Text.Header.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Title">
+        <item name="android:textSize">22sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Text.Title.Bold">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="Text.Subheader">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Text.Subheader.Bold">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="Text.Description">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Description.Bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="Text.Description.Bold.Secondary">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="Text.Description.Secondary">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="Text.Body">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.Body.Secondary">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="Text.Body.Bold">
+        <item name="android:fontFamily">sans-serif-medium</item>
+
+    </style>
+
+    <style name="Text.Caption">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Text.Caption.Secondary">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="Text.Caption.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <!--BUTTON-->
+
+    <style name="Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="cornerRadius">@dimen/material_button_radius</item>
+    </style>
+
+    <style name="Button.Normal.Icon" parent="Widget.MaterialComponents.Button.Icon">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="cornerRadius">@dimen/material_button_radius</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Button.Normal">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Button.Normal.Inverse">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
+    <style name="Button.Borderless" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="cornerRadius">@dimen/material_button_radius</item>
+    </style>
+
+    <style name="Button.Borderless.Inverse">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="cornerRadius">24dp</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+
+    </style>
+
+    <!--INPUT-->
+    <style name="TextInputTheme" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:colorControlActivated">?android:textColorPrimary</item>
+        <item name="hintTextColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="TextInputTheme.White">
+        <item name="android:colorControlActivated">#FFF</item>
+        <item name="colorControlActivated">#FFF</item>
+        <item name="android:colorControlNormal">#FFF</item>
+        <item name="colorControlNormal">#FFF</item>
+        <item name="hintTextColor">#B3FFFFFF</item>
+    </style>
+
+    <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox" />
+
+    <style name="TextInput.Transparent">
+        <item name="boxBackgroundColor">@color/windowBackground</item>
+        <item name="boxStrokeColor">@color/textPrimary</item>
+        <item name="hintTextColor">@color/textPrimary</item>
+        <item name="materialThemeOverlay">@style/Internal_TextInputTransparentTheme</item>
+    </style>
+
+    <style name="TextInput.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox" />
+
+    <style name="TextInput.Outlined.Primary" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/textInputPrimaryBoxStroke</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="hintTextColor">@color/textInputPrimaryHint</item>
+    </style>
+
+    <style name="EditText.Login" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="colorAccent">#FF4466</item>
+        <item name="colorControlNormal">#7744FF</item>
+        <item name="colorControlActivated">#33AA22</item>
+    </style>
+    <!--INTERNAL-->
+    <style name="Internal_TextInputTransparentTheme">
+        <item name="editTextStyle">@style/Internal_TextInputTransparentInputStyle
+        </item>
+    </style>
+
+    <style name="Internal_TextInputTransparentInputStyle" parent="@style/Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingEnd">2dp</item>
+    </style>
+</resources>

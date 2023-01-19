@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:gravity="center"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        tools:src="@drawable/service_default" />
+
+    <FrameLayout
+        android:id="@+id/label"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:visibility="gone"
+        tools:visibility="gone">
+
+        <View
+            android:id="@+id/labelIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/circle"
+            android:backgroundTint="#03A9F4" />
+
+        <TextView
+            android:id="@+id/labelText"
+            style="@style/Text.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            tools:text="RK" />
+
+    </FrameLayout>
+
+</merge>

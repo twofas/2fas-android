@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="coordinator" type="id" />
+    <item name="appBar" type="id" />
+    <item name="toolbar" type="id" />
+    <item name="loadingState" type="id" />
+    <item name="errorState" type="id" />
+    <item name="emptyState" type="id" />
+    <item name="contentState" type="id" />
+    <item name="recycler" type="id" />
+    <item name="swipeRefresh" type="id" />
+    <item name="frame" type="id" />
+
+    <item name="item_service" type="id" />
+    <item name="item_trashed_service" type="id" />
+    <item name="item_empty_trash" type="id" />
+    <item name="item_backup_notice" type="id" />
+    <item name="item_sync_error" type="id" />
+    <item name="item_group" type="id" />
+    <item name="item_no_services" type="id" />
+    <item name="item_no_services_matching_query" type="id" />
+    <item name="item_faq_header" type="id" />
+    <item name="item_faq_footer" type="id" />
+    <item name="item_faq_topic" type="id" />
+    <item name="item_settings_option" type="id" />
+    <item name="item_settings_category" type="id" />
+    <item name="item_divider" type="id" />
+    <item name="item_drawer_entry" type="id" />
+
+    <item name="item_entry_header" type="id" />
+    <item name="item_entry_simple" type="id" />
+    <item name="item_entry_chevron" type="id" />
+    <item name="item_entry_switch" type="id" />
+    <item name="item_entry_radio" type="id" />
+
+    <item name="item_widget_settings_header" type="id" />
+    <item name="item_widget_settings_service" type="id" />
+
+    <item name="item_browser_extension_empty" type="id" />
+
+</resources>

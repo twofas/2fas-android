@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/entryItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:minHeight="56dp"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/entryIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toStartOf="@id/entryTitle"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/entryTitle"
+        tools:src="@drawable/ic_hamburger" />
+
+    <ImageButton
+        android:id="@+id/actionIcon"
+        style="@style/ImageButtonIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:minHeight="0dp"
+        android:padding="0dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/entryTitle"
+        app:srcCompat="@drawable/ic_hamburger"
+        app:tint="#9B9B9B"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/entryTitle"
+        style="@style/Text.Description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@id/entrySubtitle"
+        app:layout_constraintEnd_toStartOf="@id/actionIcon"
+        app:layout_constraintStart_toEndOf="@id/entryIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/entrySubtitle"
+        style="@style/Text.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/simpleEntrySubtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/actionIcon"
+        app:layout_constraintStart_toStartOf="@id/entryTitle"
+        app:layout_constraintTop_toBottomOf="@id/entryTitle"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/entrySubtitleEnd"
+        style="@style/Text.Body.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textSize="17sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Title"
+        tools:visibility="visible" />
+
+</merge>

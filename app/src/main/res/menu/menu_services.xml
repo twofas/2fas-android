@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/commons__search"
+        app:actionLayout="@layout/layout_search"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_edit"
+        android:icon="@drawable/ic_toolbar_edit"
+        android:title="@string/commons__edit"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_sort"
+        android:icon="@drawable/ic_sort"
+        android:title="Sort"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_add_group"
+        android:icon="@drawable/ic_add_group"
+        android:title="Add group"
+        app:showAsAction="always" />
+</menu>

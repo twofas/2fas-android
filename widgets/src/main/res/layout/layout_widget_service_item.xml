@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/widget_item_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/widget_item_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp">
+
+        <ImageView
+            android:id="@+id/widget_chevron_active"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_widget_chevron_active"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp">
+
+            <ImageView
+                android:id="@+id/widget_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                tools:src="@drawable/service_default" />
+
+            <FrameLayout
+                android:id="@+id/widget_label"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/widget_label_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:src="@drawable/circle" />
+
+                <TextView
+                    android:id="@+id/widget_label_text"
+                    style="@style/Text.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="#FFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="RK" />
+
+            </FrameLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/widget_name"
+            style="@style/Text.Subheader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="2FAS Service"
+            android:textColor="@color/textPrimary" />
+
+        <TextView
+            android:id="@+id/widget_code"
+            style="@style/Text.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:textColor="@color/textPrimary"
+            android:visibility="gone"
+            tools:text="123 456" />
+
+        <LinearLayout
+            android:id="@+id/widget_expires_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                style="@style/Text.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expires in:"
+                android:textColor="@color/textPrimary"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/widget_expires"
+                style="@style/Text.Caption.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textPrimary"
+                android:textSize="13sp"
+                tools:text="22s" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/widget_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/widget_icon_background"
+            android:paddingHorizontal="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_widget_copy"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/widget_chevron_inactive"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_widget_chevron_inactive" />
+
+    </LinearLayout>
+
+</FrameLayout>

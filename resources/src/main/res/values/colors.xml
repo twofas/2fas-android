@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="windowBackground">#FFF</color>
+    <color name="toolbar">#F9F9F9</color>
+    <color name="statusbar">#F2F2F2</color>
+    <color name="toolbarIcon">#000</color>
+    <color name="drawerBackground">#FFF</color>
+    <color name="drawerIcon">#4C4C4C</color>
+    <color name="drawerText">#4C4C4C</color>
+    <color name="serviceCodeNormal">@color/textPrimary</color>
+    <color name="serviceCodeExpiring">#ec1c23</color>
+    <color name="textPrimary">#DD000000</color>
+    <color name="textSecondary">#8A000000</color>
+    <color name="textPrimaryInverse">#FFFFFFFF</color>
+    <color name="textSecondaryInverse">#B2FFFFFF</color>
+    <color name="colorDivider">#14000000</color>
+    <color name="tintIcon">#61000000</color>
+    <color name="groupBackground">#F5F5F5</color>
+    <color name="groupDivider">#E0E0E0</color>
+    <color name="groupTitle">#7B7B7B</color>
+
+    <color name="transparent">@android:color/transparent</color>
+    <color name="white">@android:color/white</color>
+
+    <color name="colorPrimary">#ed1c24</color>
+    <color name="colorRipple">#17ED1C24</color>
+    <color name="colorPrimaryDark">#0d000000</color>
+    <color name="colorAccent">#ed1c24</color>
+    <color name="accent">#ed1c24</color>
+    <color name="colorAccentGrayed">#66ED1C24</color>
+    <color name="colorTwoFasRed">#ED1C24</color>
+
+    <color name="fingerprintDefault">#607D8B</color>
+    <color name="fingerprintInvalid">#F4511E</color>
+    <color name="fingerprintValid">#009688</color>
+
+    <color name="textInputPrimaryBoxStroke">#4D000000</color>
+    <color name="textInputPrimaryHint">#61000000</color>
+
+    <color name="simpleEntrySubtitle">#61000000</color>
+    <color name="fabNeutral">#FFF</color>
+    <color name="fabNeutralIcon">#FF3F3F#F</color>
+
+</resources>

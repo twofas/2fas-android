@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/emptyState"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="16dp">
+
+    <ImageView
+        android:id="@+id/orbits"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@drawable/services_empty" />
+
+    <TextView
+        android:id="@+id/emptyStateTitle"
+        style="@style/Text.Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:text="@string/introduction__description_title" />
+
+    <Button
+        android:id="@+id/externalImport"
+        style="@style/Button.Outlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/introduction__import_external_app" />
+
+</LinearLayout>
