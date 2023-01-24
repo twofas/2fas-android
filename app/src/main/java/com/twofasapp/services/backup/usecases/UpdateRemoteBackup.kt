@@ -8,7 +8,7 @@ import com.twofasapp.services.googledrive.models.UpdateGoogleDriveFileResult
 import com.twofasapp.services.googledrive.models.mapToRemoteBackupErrorType
 import com.twofasapp.prefs.model.isSet
 import com.twofasapp.base.usecase.UseCaseParameterized
-import com.twofasapp.environment.AppConfig
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.usecases.services.GetServices
 import com.twofasapp.prefs.usecase.StoreGroups
 import com.twofasapp.services.domain.StoreServicesOrder
@@ -24,7 +24,7 @@ class UpdateRemoteBackup(
     private val remoteBackupKeyPreference: com.twofasapp.prefs.usecase.RemoteBackupKeyPreference,
     private val jsonSerializer: com.twofasapp.serialization.JsonSerializer,
     private val encryptBackup: EncryptBackup,
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
 ) : UseCaseParameterized<UpdateRemoteBackup.Params, Single<UpdateRemoteBackupResult>> {
 
     data class Params(
@@ -50,8 +50,8 @@ class UpdateRemoteBackup(
 
                 com.twofasapp.prefs.model.RemoteBackup(
                     updatedAt = params.updatedAt,
-                    appVersionCode = appConfig.versionCode,
-                    appVersionName = appConfig.versionName,
+                    appVersionCode = appBuild.versionCode,
+                    appVersionName = appBuild.versionName,
                     groups = groups.filter { it.id != null }.map { it.toRemote() },
                     services = servicesOrdered,
                     account = remoteBackupStatusPreference.get().account,

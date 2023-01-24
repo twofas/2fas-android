@@ -10,9 +10,9 @@ espresso = "3.5.0"
 koin = "3.2.2"
 koinAndroid = "3.3.0"
 kotest = "5.5.2"
-kotlin = "1.7.20"
+kotlin = "1.8.0"
 kotlinCoroutines = "1.6.4"
-kotlinKsp = "1.7.20-1.0.6"
+kotlinKsp = "1.8.0-1.0.8"
 ktlint = "3.12.0"
 ktor = "2.1.2"
 material3 = "1.0.1"
@@ -22,7 +22,6 @@ viewModel = "2.6.0-alpha03"
 [libraries]
 appcompat = "androidx.appcompat:appcompat:1.4.1"
 accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
-accompanistNavigationAnimation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanist" }
 accompanistPlaceholder = { module = "com.google.accompanist:accompanist-placeholder", version.ref = "accompanist" }
 accompanistSystemUi = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanistPager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
@@ -34,6 +33,7 @@ composeAnimation = { module = "androidx.compose.animation:animation", version.re
 composeCompiler = { module = "androidx.compose.compiler:compiler", version.ref = "composeCompiler" }
 composeMaterial2 = { module = "androidx.compose.material:material", version.ref = "compose" }
 composeUi = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+composeUiUtil = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 composeConstraint = "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
@@ -49,7 +49,7 @@ koinTestJunit = { module = "io.insert-koin:koin-test-junit4", version.ref = "koi
 kotest = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotlinCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
 kotlinCoroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinCoroutines" }
-kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0"
+kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
 kotlinTestJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 ktorAuth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 ktorContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
@@ -111,6 +111,7 @@ securityCrypto = "androidx.security:security-crypto:1.1.0-alpha03"
 secureStorage = "de.adorsys.android:securestoragelibrary:1.2.4"
 roomRx = { module = "androidx.room:room-rxjava2", version.ref = "room" }
 sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.2"
+apacheCommonsCodec = "commons-codec:commons-codec:1.15"
 
 [bundles]
 appCompat = [
@@ -148,7 +149,6 @@ barcodeScanner = [
 ]
 accompanist = [
     "accompanistFlowLayout",
-    "accompanistNavigationAnimation",
     "accompanistPlaceholder",
     "accompanistSystemUi",
     "accompanistPager",
@@ -162,6 +162,7 @@ compose = [
     "composeActivity",
     "composeMaterial2",
     "composeUi",
+    "composeUiUtil",
     "composeUiTooling",
     "material3",
     "material3Window",

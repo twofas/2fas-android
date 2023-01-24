@@ -14,17 +14,11 @@ import com.twofasapp.features.backup.import.ImportBackupActivity
 import com.twofasapp.features.backup.import.ImportBackupContract
 import com.twofasapp.features.backup.import.ImportBackupPresenter
 import com.twofasapp.features.main.DrawerPresenter
-import com.twofasapp.features.main.MainServicesActivity
 import com.twofasapp.features.main.MainContract
 import com.twofasapp.features.main.MainPresenter
+import com.twofasapp.features.main.MainServicesActivity
 import com.twofasapp.features.main.ToolbarPresenter
 import com.twofasapp.features.navigator.ActivityScopedNavigator
-import com.twofasapp.features.trash.TrashActivity
-import com.twofasapp.features.trash.TrashContract
-import com.twofasapp.features.trash.TrashPresenter
-import com.twofasapp.features.trash.delete.DisposeServiceActivity
-import com.twofasapp.features.trash.delete.DisposeServiceContract
-import com.twofasapp.features.trash.delete.DisposeServicePresenter
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.widgets.configure.WidgetSettingsActivity
 import com.twofasapp.widgets.configure.WidgetSettingsContract
@@ -85,9 +79,6 @@ val activityScopeModule = module {
     activityScope<BackupActivity> {
         scopedOf(::BackupPresenter) { bind<BackupContract.Presenter>() }
     }
-    activityScope<DisposeServiceActivity> {
-        scopedOf(::DisposeServicePresenter) { bind<DisposeServiceContract.Presenter>() }
-    }
     activityScope<ExportBackupActivity> {
         scopedOf(::ExportBackupPresenter) { bind<ExportBackupContract.Presenter>() }
     }
@@ -96,8 +87,5 @@ val activityScopeModule = module {
     }
     activityScope<WidgetSettingsActivity> {
         scopedOf(::WidgetSettingsPresenter) { bind<WidgetSettingsContract.Presenter>() }
-    }
-    activityScope<TrashActivity> {
-        scopedOf(::TrashPresenter) { bind<TrashContract.Presenter>() }
     }
 }

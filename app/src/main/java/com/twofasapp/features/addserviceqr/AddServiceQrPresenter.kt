@@ -3,19 +3,19 @@ package com.twofasapp.features.addserviceqr
 import android.net.Uri
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
-import com.twofasapp.environment.AppConfig
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.extensions.removeWhiteCharacters
-import com.twofasapp.externalimport.domain.ExternalImport
-import com.twofasapp.externalimport.domain.GoogleAuthenticatorImporter
+import com.twofasapp.feature.externalimport.domain.ExternalImport
+import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.OtpAuthLink
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.usecase.LastScannedQrPreference
 import com.twofasapp.qrscanner.domain.ReadQrFromImageRx
 import com.twofasapp.qrscanner.domain.ScanQr
+import com.twofasapp.services.domain.ConvertOtpLinkToService
 import com.twofasapp.usecases.services.AddService
 import com.twofasapp.usecases.services.CheckServiceExists
-import com.twofasapp.services.domain.ConvertOtpLinkToService
 import com.twofasapp.usecases.services.GetService
 import com.twofasapp.usecases.totp.ParseOtpAuthLink
 import io.reactivex.rxkotlin.toFlowable
@@ -33,7 +33,7 @@ class AddServiceQrPresenter(
     private val getService: GetService,
     private val readQrFromImageRx: ReadQrFromImageRx,
     private val googleAuthenticatorImporter: GoogleAuthenticatorImporter,
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
     private val lastScannedQrPreference: LastScannedQrPreference,
 ) : AddServiceQrContract.Presenter() {
 
@@ -69,7 +69,7 @@ class AddServiceQrPresenter(
             isGoogleAuthenticatorLink(content) -> importFromGoogleAuthenticator(isFromGallery, content)
             isMarketLink(content) -> view.showIncorrectQrStoreLink { resetScanner() }
             else -> {
-                if (appConfig.isDebug) {
+                if (appBuild.isDebuggable) {
                     lastScannedQrPreference.put(content)
                 }
 
@@ -125,6 +125,7 @@ class AddServiceQrPresenter(
                 )
                 return
             }
+
             is ExternalImport.ParsingError -> onSaveFailed(isFromGallery, result.reason)
             ExternalImport.UnsupportedError -> onSaveFailed(isFromGallery, null)
         }

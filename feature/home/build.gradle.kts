@@ -9,8 +9,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
-    implementation(project(":data:session"))
+    implementation(project(":core:di"))
+    implementation(project(":data:notifications"))
+    implementation(project(":data:services"))
     implementation(project(":core:common"))
     implementation(project(":core:locale"))
     implementation(project(":core:designsystem"))

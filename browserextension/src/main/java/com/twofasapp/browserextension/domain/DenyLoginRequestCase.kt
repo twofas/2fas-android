@@ -1,9 +1,9 @@
 package com.twofasapp.browserextension.domain
 
-import com.twofasapp.browserextension.domain.repository.BrowserExtensionRepository
+import com.twofasapp.data.browserext.BrowserExtRepository
 
-internal class DenyLoginRequestCase(
-    private val browserExtensionRepository: BrowserExtensionRepository,
+class DenyLoginRequestCase(
+    private val browserExtensionRepository: BrowserExtRepository,
 ) {
     suspend operator fun invoke(
         extensionId: String,

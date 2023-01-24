@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.twofasapp.base.dispatcher.Dispatchers
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.core.analytics.AnalyticsService
-import com.twofasapp.environment.AppConfig
 import com.twofasapp.prefs.usecase.CurrentAppVersionPreference
 import com.twofasapp.start.domain.ClearObsoletePrefsCase
 import com.twofasapp.start.domain.MigrateBoxToRoomCase
@@ -23,7 +23,7 @@ class OnAppUpdatedWork(
 
     private val dispatchers: Dispatchers by inject()
     private val analyticsService: AnalyticsService by inject()
-    private val appConfig: AppConfig by inject()
+    private val appBuild: AppBuild by inject()
     private val currentAppVersionPreference: CurrentAppVersionPreference by inject()
     private val clearObsoletePrefsCase: ClearObsoletePrefsCase by inject()
     private val migratePinCase: MigratePinCase by inject()
@@ -33,12 +33,12 @@ class OnAppUpdatedWork(
     override suspend fun doWork(): Result {
         return withContext(dispatchers.io()) {
             try {
-                if (appConfig.versionCode.toLong() == currentAppVersionPreference.get()) {
+                if (appBuild.versionCode.toLong() == currentAppVersionPreference.get()) {
                     Timber.d("Migration not needed")
                     return@withContext Result.success()
                 }
 
-                Timber.d("Start migration: ${appConfig.versionCode.toLong()} -> ${currentAppVersionPreference.get()}")
+                Timber.d("Start migration: ${appBuild.versionCode.toLong()} -> ${currentAppVersionPreference.get()}")
 
                 Timber.d("Migrate: Obsolete prefs")
                 clearObsoletePrefsCase.invoke()
@@ -53,7 +53,7 @@ class OnAppUpdatedWork(
                 migratePinCase.invoke()
 
                 Timber.d("Migration done!")
-                currentAppVersionPreference.put(appConfig.versionCode.toLong())
+                currentAppVersionPreference.put(appBuild.versionCode.toLong())
 
                 Result.success()
             } catch (e: Exception) {

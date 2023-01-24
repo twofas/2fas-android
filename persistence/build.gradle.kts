@@ -15,10 +15,14 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":prefs"))
-    implementation(project(":environment"))
+    
     implementation(project(":parsers"))
+    implementation(project(":data:notifications"))
+    implementation(project(":data:services"))
+    implementation(project(":data:browserext"))
+    implementation(project(":core:common"))
 
     implementation(libs.bundles.room)
     kapt(libs.roomCompiler)

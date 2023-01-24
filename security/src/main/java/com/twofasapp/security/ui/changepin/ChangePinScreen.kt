@@ -3,14 +3,14 @@ package com.twofasapp.security.ui.changepin
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import com.twofasapp.design.compose.Toolbar
+import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.navigation.SecurityDirections
 import com.twofasapp.navigation.SecurityRouter
 import com.twofasapp.resources.R
@@ -39,7 +39,7 @@ internal fun ChangePinScreen(
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = R.string.security__change_pin)) { router.navigateBack() }
+            TwTopAppBar(titleText = stringResource(id = R.string.security__change_pin))
         }
     ) { padding ->
         Box(

@@ -1,10 +1,9 @@
 package com.twofasapp.features.main
 
-import com.twofasapp.resources.R
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.core.analytics.AnalyticsService
-import com.twofasapp.environment.AppConfig
 import com.twofasapp.extensions.doNothing
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.permissions.CameraPermissionRequest
@@ -14,6 +13,7 @@ import com.twofasapp.prefs.model.RemoteBackupStatus
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import com.twofasapp.prefs.usecase.StoreGroups
+import com.twofasapp.resources.R
 import com.twofasapp.services.domain.ConvertOtpLinkToService
 import com.twofasapp.services.domain.StoreHotpServices
 import com.twofasapp.start.domain.DeeplinkHandler
@@ -42,7 +42,7 @@ class MainPresenter(
     private val syncSyncBackupDispatcher: SyncBackupWorkDispatcher,
     private val servicesRefreshTrigger: ServicesRefreshTrigger,
     private val addService: AddService,
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
     private val parseOtpAuthLink: ParseOtpAuthLink,
     private val convertOtpLinkToService: ConvertOtpLinkToService,
     private val deeplinkHandler: DeeplinkHandler,
@@ -109,7 +109,7 @@ class MainPresenter(
     }
 
     override fun markAppUpdateDisplayed() {
-        appUpdateLastCheckVersionPreference.put(appConfig.versionCode.toLong())
+        appUpdateLastCheckVersionPreference.put(appBuild.versionCode.toLong())
     }
 
     override fun updateUnreadNotifications(hasUnreadNotifications: Boolean) {
@@ -219,7 +219,7 @@ class MainPresenter(
     }
 
     override fun canDisplayAppUpdate(): Boolean {
-        return appConfig.versionCode.toLong() != appUpdateLastCheckVersionPreference.get()
+        return appBuild.versionCode.toLong() != appUpdateLastCheckVersionPreference.get()
                 && rateAppCondition.execute().not()
     }
 }

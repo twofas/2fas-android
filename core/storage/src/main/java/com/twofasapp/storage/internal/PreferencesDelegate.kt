@@ -3,6 +3,12 @@ package com.twofasapp.storage.internal
 import android.content.SharedPreferences
 import com.twofasapp.storage.EncryptedPreferences
 import com.twofasapp.storage.PlainPreferences
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 import timber.log.Timber
 
 internal class PreferencesDelegate(
@@ -11,6 +17,31 @@ internal class PreferencesDelegate(
 
     private val sharedPrefs: SharedPreferences by lazy {
         factory.create()
+    }
+
+    private val flow by lazy {
+        callbackFlow {
+            val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key: String? -> trySend(key) }
+            sharedPrefs.registerOnSharedPreferenceChangeListener(listener)
+            awaitClose { sharedPrefs.unregisterOnSharedPreferenceChangeListener(listener) }
+        }
+    }
+
+    override fun <T> observe(key: String, default: T): Flow<T> {
+        return flow
+            .filter { it == key || it == null }
+            .map {
+                @Suppress("UNCHECKED_CAST")
+                when (default) {
+                    is String -> getString(key) as T?
+                    is Int -> getInt(key) as T?
+                    is Long -> getLong(key) as T?
+                    is Boolean -> getBoolean(key) as T?
+                    is Float -> getFloat(key) as T?
+                    else -> throw IllegalArgumentException("Unsupported preference flow type")
+                } ?: default
+            }
+            .conflate()
     }
 
     override fun getBoolean(key: String): Boolean? {

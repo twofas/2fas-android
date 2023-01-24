@@ -5,7 +5,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.*
+import androidx.compose.material3.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -18,11 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.twofasapp.design.R
 import com.twofasapp.design.theme.radioColors
 import com.twofasapp.design.theme.switchColors
-import com.twofasapp.design.theme.textPrimary
-import com.twofasapp.design.theme.textSecondary
+import com.twofasapp.designsystem.TwTheme
 
 enum class SwitchEntryType { Switch, Radio }
 
@@ -54,7 +53,7 @@ fun SwitchEntry(
         Icon(
             painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder),
             contentDescription = null,
-            tint = if (iconTint != Color.Unspecified) iconTint else MaterialTheme.colors.primary,
+            tint = if (iconTint != Color.Unspecified) iconTint else TwTheme.color.primary,
             modifier = Modifier
                 .size(if (iconVisible) 24.dp else 0.dp)
                 .alpha(if (icon == null) 0f else alpha)
@@ -67,7 +66,7 @@ fun SwitchEntry(
 
         Text(
             text = title,
-            style = MaterialTheme.typography.body2.copy(fontSize = 17.sp, color = MaterialTheme.colors.textPrimary),
+            style = MaterialTheme.typography.body2.copy(fontSize = 17.sp, color =TwTheme.color.onSurfacePrimary),
             modifier = Modifier
                 .alpha(alpha)
                 .constrainAs(titleRef) {
@@ -85,7 +84,7 @@ fun SwitchEntry(
         if (subtitle.isNotEmpty()) {
             Text(
                 text = subtitle,
-                style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = MaterialTheme.colors.textSecondary),
+                style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                 modifier = Modifier
                     .alpha(alpha)
                     .constrainAs(subtitleRef) {

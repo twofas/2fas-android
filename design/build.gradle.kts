@@ -9,11 +9,13 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":prefs"))
     implementation(project(":extensions"))
     implementation(project(":resources"))
     implementation(project(":parsers"))
+
+    implementation(project(":core:designsystem"))
 
     implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.materialDialogs)

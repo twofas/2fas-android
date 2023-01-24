@@ -7,9 +7,9 @@ import android.os.Bundle
 import androidx.core.content.FileProvider
 import com.twofasapp.backup.databinding.ActivityExportBackupBinding
 import com.twofasapp.base.BaseActivityPresenter
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.core.RequestCodes
 import com.twofasapp.design.dialogs.InfoDialog
-import com.twofasapp.environment.AppConfig
 import com.twofasapp.extensions.clicksThrottled
 import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.extensions.toastLong
@@ -89,7 +89,7 @@ class ExportBackupActivity : BaseActivityPresenter<ActivityExportBackupBinding>(
         outputStream.write(content.toByteArray())
         outputStream.close()
 
-        val uri = FileProvider.getUriForFile(this, get<AppConfig>().id, file)
+        val uri = FileProvider.getUriForFile(this, get<AppBuild>().id, file)
 
         val shareIntent = Intent().apply {
             type = "*/*"

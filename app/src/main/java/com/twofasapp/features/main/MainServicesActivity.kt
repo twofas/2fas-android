@@ -27,15 +27,8 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.jakewharton.rxbinding3.appcompat.queryTextChanges
-import com.twofasapp.resources.R
 import com.twofasapp.base.BaseActivityPresenter
 import com.twofasapp.base.lifecycle.AuthAware
-import com.twofasapp.browserextension.domain.FetchTokenRequestsCase
-import com.twofasapp.browserextension.domain.ObserveMobileDeviceCase
-import com.twofasapp.browserextension.notification.BrowserExtensionRequestPayload
-import com.twofasapp.browserextension.notification.BrowserExtensionRequestReceiver
-import com.twofasapp.browserextension.notification.DomainMatcher
-import com.twofasapp.browserextension.ui.request.BrowserExtensionRequestActivity
 import com.twofasapp.databinding.ActivityMainBinding
 import com.twofasapp.design.dialogs.CancelAction
 import com.twofasapp.design.dialogs.ConfirmAction
@@ -53,18 +46,15 @@ import com.twofasapp.features.addserviceqr.AddServiceQrActivity
 import com.twofasapp.features.addserviceqr.ScanInfoDialog
 import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.features.services.addedservice.AddedServiceBottomSheet
-import com.twofasapp.notifications.domain.FetchNotificationsCase
-import com.twofasapp.notifications.domain.HasUnreadNotificationsCase
 import com.twofasapp.permissions.RationaleDialog
 import com.twofasapp.prefs.model.ServiceDto
+import com.twofasapp.resources.R
 import com.twofasapp.security.ui.security.SecurityActivity
 import com.twofasapp.services.domain.GetServicesCase
 import com.twofasapp.services.ui.ServiceActivity
 import com.twofasapp.usecases.services.EditStateObserver
 import com.twofasapp.usecases.services.SearchStateObserver
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import lt.neworld.spanner.Spanner
 import lt.neworld.spanner.Spans
@@ -80,10 +70,9 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
     private val presenter: MainContract.Presenter by injectThis()
     private val editStateObserver: EditStateObserver by inject()
     private val searchStateObserver: SearchStateObserver by inject()
-    private val hasUnreadNotificationsCase: HasUnreadNotificationsCase by inject()
-    private val fetchNotificationsCase: FetchNotificationsCase by inject()
-    private val fetchTokenRequestsCase: FetchTokenRequestsCase by inject()
-    private val observeMobileDeviceCase: ObserveMobileDeviceCase by inject()
+
+    //    private val fetchTokenRequestsCase: FetchTokenRequestsCase by inject()
+//    private val observeMobileDeviceCase: ObserveMobileDeviceCase by inject()
     private val getServicesCase: GetServicesCase by inject()
     private val authenticationDialogs = mutableMapOf<String, MaterialDialog>()
     private val fabMenuDelegate: FabMenuDelegate by lazy { FabMenuDelegate(this, viewBinding) }
@@ -135,114 +124,103 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
         }
 
         lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    hasUnreadNotificationsCase().flowOn(Dispatchers.IO).collect {
-                        presenter.updateUnreadNotifications(it)
-                    }
-                }
-            }
-        }
-
-        lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
-                launch(Dispatchers.IO) { fetchNotificationsCase() }
                 launch(Dispatchers.IO) {
-                    launch(Dispatchers.IO) {
-
-                        try {
-                            val mobileDevice = observeMobileDeviceCase.invoke().first()
-                            val tokenRequests = fetchTokenRequestsCase(mobileDevice.id)
-
-
-                            tokenRequests.forEach { tokenRequest ->
-                                val domain = DomainMatcher.extractDomain(tokenRequest.domain)
-                                val matchedServices = DomainMatcher.findServicesMatchingDomain(
-                                    getServicesCase(),
-                                    domain
-                                )
-
-                                runOnUiThread {
-                                    if (authenticationDialogs.containsKey(tokenRequest.requestId)
-                                            .not()
-                                    ) {
-                                        authenticationDialogs.put(
-                                            tokenRequest.requestId,
-                                            MaterialDialog(this@MainServicesActivity)
-                                                .title(text = "2FA token request")
-                                                .message(text = "Do you want to share the 2FA token to ${tokenRequest.domain}?")
-                                                .cancelable(false)
-                                                .positiveButton(text = "Approve") {
-                                                    val isOneDomainMatched =
-                                                        matchedServices.size == 1
-                                                    val serviceId =
-                                                        if (matchedServices.size == 1) matchedServices.first().id else null
-
-                                                    if (isOneDomainMatched) {
-                                                        val payload =
-                                                            BrowserExtensionRequestPayload(
-                                                                action = BrowserExtensionRequestPayload.Action.Approve,
-                                                                notificationId = -1,
-                                                                extensionId = tokenRequest.extensionId,
-                                                                requestId = tokenRequest.requestId,
-                                                                serviceId = serviceId ?: -1,
-                                                                domain = domain,
-                                                            )
-                                                        sendBroadcast(
-                                                            BrowserExtensionRequestReceiver.createIntent(
-                                                                this@MainServicesActivity,
-                                                                payload
-                                                            )
-                                                        )
-                                                    } else {
-
-                                                        val contentIntent = Intent(
-                                                            this@MainServicesActivity,
-                                                            BrowserExtensionRequestActivity::class.java
-                                                        ).apply {
-                                                            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-
-                                                            putExtra(
-                                                                BrowserExtensionRequestPayload.Key,
-                                                                BrowserExtensionRequestPayload(
-                                                                    action = BrowserExtensionRequestPayload.Action.Approve,
-                                                                    notificationId = -1,
-                                                                    extensionId = tokenRequest.extensionId,
-                                                                    requestId = tokenRequest.requestId,
-                                                                    serviceId = serviceId ?: -1,
-                                                                    domain = domain,
-                                                                )
-                                                            )
-                                                        }
-
-                                                        startActivity(contentIntent)
-                                                    }
-                                                }
-                                                .negativeButton(text = "Deny") {
-                                                    val payload = BrowserExtensionRequestPayload(
-                                                        action = BrowserExtensionRequestPayload.Action.Deny,
-                                                        notificationId = -1,
-                                                        extensionId = tokenRequest.extensionId,
-                                                        requestId = tokenRequest.requestId,
-                                                        serviceId = -1,
-                                                        domain = domain,
-                                                    )
-                                                    sendBroadcast(
-                                                        BrowserExtensionRequestReceiver.createIntent(
-                                                            this@MainServicesActivity,
-                                                            payload
-                                                        )
-                                                    )
-                                                }
-                                                .show { }
-                                        )
-                                    }
-                                }
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                    }
+//                    launch(Dispatchers.IO) {
+//
+//                        try {
+//                            val mobileDevice = observeMobileDeviceCase.invoke().first()
+//                            val tokenRequests = fetchTokenRequestsCase(mobileDevice.id)
+//
+//
+//                            tokenRequests.forEach { tokenRequest ->
+//                                val domain = DomainMatcher.extractDomain(tokenRequest.domain)
+//                                val matchedServices = DomainMatcher.findServicesMatchingDomain(
+//                                    getServicesCase(),
+//                                    domain
+//                                )
+//
+//                                runOnUiThread {
+//                                    if (authenticationDialogs.containsKey(tokenRequest.requestId)
+//                                            .not()
+//                                    ) {
+//                                        authenticationDialogs.put(
+//                                            tokenRequest.requestId,
+//                                            MaterialDialog(this@MainServicesActivity)
+//                                                .title(text = "2FA token request")
+//                                                .message(text = "Do you want to share the 2FA token to ${tokenRequest.domain}?")
+//                                                .cancelable(false)
+//                                                .positiveButton(text = "Approve") {
+//                                                    val isOneDomainMatched =
+//                                                        matchedServices.size == 1
+//                                                    val serviceId =
+//                                                        if (matchedServices.size == 1) matchedServices.first().id else null
+//
+//                                                    if (isOneDomainMatched) {
+//                                                        val payload =
+//                                                            BrowserExtensionRequestPayload(
+//                                                                action = BrowserExtensionRequestPayload.Action.Approve,
+//                                                                notificationId = -1,
+//                                                                extensionId = tokenRequest.extensionId,
+//                                                                requestId = tokenRequest.requestId,
+//                                                                serviceId = serviceId ?: -1,
+//                                                                domain = domain,
+//                                                            )
+//                                                        sendBroadcast(
+//                                                            BrowserExtensionRequestReceiver.createIntent(
+//                                                                this@MainServicesActivity,
+//                                                                payload
+//                                                            )
+//                                                        )
+//                                                    } else {
+//
+//                                                        val contentIntent = Intent(
+//                                                            this@MainServicesActivity,
+//                                                            BrowserExtensionRequestActivity::class.java
+//                                                        ).apply {
+//                                                            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+//
+//                                                            putExtra(
+//                                                                BrowserExtensionRequestPayload.Key,
+//                                                                BrowserExtensionRequestPayload(
+//                                                                    action = BrowserExtensionRequestPayload.Action.Approve,
+//                                                                    notificationId = -1,
+//                                                                    extensionId = tokenRequest.extensionId,
+//                                                                    requestId = tokenRequest.requestId,
+//                                                                    serviceId = serviceId ?: -1,
+//                                                                    domain = domain,
+//                                                                )
+//                                                            )
+//                                                        }
+//
+//                                                        startActivity(contentIntent)
+//                                                    }
+//                                                }
+//                                                .negativeButton(text = "Deny") {
+//                                                    val payload = BrowserExtensionRequestPayload(
+//                                                        action = BrowserExtensionRequestPayload.Action.Deny,
+//                                                        notificationId = -1,
+//                                                        extensionId = tokenRequest.extensionId,
+//                                                        requestId = tokenRequest.requestId,
+//                                                        serviceId = -1,
+//                                                        domain = domain,
+//                                                    )
+//                                                    sendBroadcast(
+//                                                        BrowserExtensionRequestReceiver.createIntent(
+//                                                            this@MainServicesActivity,
+//                                                            payload
+//                                                        )
+//                                                    )
+//                                                }
+//                                                .show { }
+//                                        )
+//                                    }
+//                                }
+//                            }
+//                        } catch (e: Exception) {
+//                            e.printStackTrace()
+//                        }
+//                    }
                 }
             }
         }

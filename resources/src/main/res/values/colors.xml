@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="windowBackground">#FFF</color>
-    <color name="toolbar">#F9F9F9</color>
+    <color name="toolbar">#FFF</color>
     <color name="statusbar">#F2F2F2</color>
     <color name="toolbarIcon">#000</color>
     <color name="drawerBackground">#FFF</color>

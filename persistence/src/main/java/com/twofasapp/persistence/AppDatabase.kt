@@ -9,15 +9,15 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.twofasapp.data.notifications.local.NotificationsDao
+import com.twofasapp.data.notifications.local.model.NotificationEntity
+import com.twofasapp.data.services.local.ServiceDao
+import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.persistence.converter.Converters
-import com.twofasapp.persistence.dao.NotificationDao
-import com.twofasapp.persistence.dao.PairedBrowserDao
-import com.twofasapp.persistence.dao.ServiceDao
-import com.twofasapp.persistence.model.NotificationEntity
-import com.twofasapp.persistence.model.PairedBrowserEntity
-import com.twofasapp.persistence.model.ServiceEntity
+import com.twofasapp.data.browserext.local.PairedBrowserDao
+import com.twofasapp.data.browserext.local.model.PairedBrowserEntity
 
 @Database(
     entities = [
@@ -40,7 +40,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun serviceDao(): ServiceDao
     abstract fun pairedBrowserDao(): PairedBrowserDao
-    abstract fun notificationDao(): NotificationDao
+    abstract fun notificationDao(): NotificationsDao
 }
 
 val MIGRATION_1_2 = object : Migration(1, 2) {

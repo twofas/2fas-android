@@ -9,7 +9,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.twofasapp.designsystem.MainAppTheme
-import com.twofasapp.designsystem.TwsTheme
+import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.feature.home.navigation.HomeGraph
 import com.twofasapp.feature.startup.navigation.StartupGraph
 import org.koin.androidx.compose.koinViewModel
@@ -24,7 +24,7 @@ fun MainScreen(
     MainAppTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = TwsTheme.color.background,
+            color = TwTheme.color.background,
         ) {
             uiState?.let {
                 val startDestination = when (it) {

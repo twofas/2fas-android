@@ -38,7 +38,7 @@ class StartActivity : AppCompatActivity() {
             deeplinkHandler.setQueuedDeeplink(incomingData = intent.data?.toString())
 
             if (getShowOnboardingCase()) {
-                router.navigate(StartDirections.Onboarding)
+//                router.navigate(StartDirections.Onboarding)
             } else {
                 authTracker.onSplashScreen()
                 router.navigate(StartDirections.Main)

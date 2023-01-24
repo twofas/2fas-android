@@ -9,9 +9,10 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":di"))
-    implementation(project(":environment"))
+    implementation(project(":core:di"))
+    
     implementation(project(":prefs"))
+    implementation(project(":core:common"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

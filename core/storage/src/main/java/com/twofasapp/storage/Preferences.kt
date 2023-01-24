@@ -1,5 +1,7 @@
 package com.twofasapp.storage
 
+import kotlinx.coroutines.flow.Flow
+
 interface Preferences {
     fun getBoolean(key: String): Boolean?
     fun getString(key: String): String?
@@ -12,6 +14,8 @@ interface Preferences {
     fun putLong(key: String, value: Long)
     fun putInt(key: String, value: Int)
     fun putFloat(key: String, value: Float)
+
+    fun <T> observe(key: String, default: T): Flow<T>
 
     fun delete(key: String)
 }

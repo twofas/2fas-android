@@ -92,10 +92,10 @@
         <!--        android:name=".ui.main.MainActivity"-->
 
         <activity
-            android:name=".start.ui.start.StartActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:noHistory="true"
+            android:noHistory="false"
             android:screenOrientation="locked"
             android:theme="@style/Theme.App">
             <intent-filter>
@@ -165,24 +165,8 @@
         </activity>
 
         <activity
-            android:name=".start.ui.onboarding.OnboardingActivity"
-            android:label="Onboarding" />
-
-        <activity
             android:name=".security.ui.security.SecurityActivity"
             android:label="Security" />
-
-        <activity
-            android:name=".features.trash.TrashActivity"
-            android:label="Trash" />
-
-        <activity
-            android:name=".features.trash.delete.DisposeServiceActivity"
-            android:label="Delete From Trash" />
-
-        <activity
-            android:name=".notifications.ui.NotificationsActivity"
-            android:label="Notifications" />
 
         <activity
             android:name=".widgets.configure.WidgetSettingsActivity"

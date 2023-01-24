@@ -1,17 +1,17 @@
 package com.twofasapp.featuretoggle.domain
 
-import com.twofasapp.environment.AppConfig
-import com.twofasapp.environment.BuildVariant
+import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.environment.BuildVariant
 import com.twofasapp.featuretoggle.domain.model.FeatureToggle
 import com.twofasapp.featuretoggle.domain.repository.FeatureToggleRepository
 
 internal class IsFeatureEnabledCaseImpl(
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
     private val featureToggleRepository: FeatureToggleRepository,
 ) : IsFeatureEnabledCase {
 
     override fun execute(featureToggle: FeatureToggle): Boolean {
-        if (appConfig.buildVariant == BuildVariant.Release) {
+        if (appBuild.buildVariant == BuildVariant.Release) {
             return featureToggle.default
         }
 

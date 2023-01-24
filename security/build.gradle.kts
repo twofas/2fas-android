@@ -10,7 +10,7 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":resources"))
     implementation(project(":extensions"))
     implementation(project(":design"))
@@ -19,6 +19,8 @@ dependencies {
     implementation(project(":featuretoggle"))
     implementation(project(":security:domain"))
     implementation(project(":time:domain"))
+
+    implementation(project(":core:designsystem"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

@@ -12,7 +12,6 @@ import com.twofasapp.prefs.usecase.LastPushesPreference
 import com.twofasapp.prefs.usecase.LastScannedQrPreference
 import com.twofasapp.prefs.usecase.LockMethodPreference
 import com.twofasapp.prefs.usecase.MigratedToRoomPreference
-import com.twofasapp.prefs.usecase.MobileDevicePreference
 import com.twofasapp.prefs.usecase.PinCodePreference
 import com.twofasapp.prefs.usecase.RateAppStatusPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
@@ -45,7 +44,6 @@ class PreferencesPlainModule : KoinModule {
         single { WidgetSettingsPreference(get<PlainPreferences>()) }
         single { AppUpdateLastCheckVersionPreference(get<PlainPreferences>()) }
         single { CurrentAppVersionPreference(get<PlainPreferences>()) }
-        single { MobileDevicePreference(get<PlainPreferences>()) }
         single { LastPushesPreference(get<PlainPreferences>()) }
         single { CacheValidityPreference(get<PlainPreferences>(), get()) }
     }

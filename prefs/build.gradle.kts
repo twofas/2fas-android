@@ -10,9 +10,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":serialization"))
-    implementation(project(":environment"))
+    
     implementation(project(":time:domain"))
     implementation(project(":extensions"))
 

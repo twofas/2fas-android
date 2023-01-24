@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-internal class PairingScanViewModel(
+class PairingScanViewModel(
     private val scanQr: ScanQr,
 ) : BaseViewModel() {
 
@@ -57,6 +57,16 @@ internal class PairingScanViewModel(
                 }
             }
 
+        }
+    }
+
+    fun pairMockedBrowser() {
+        viewModelScope.launch {
+            scanQr.publishResult(
+                ScanQr.Result(
+                    "twofas_c://662699c0-dab0-4c3e-93a8-81dc31e24747"
+                )
+            )
         }
     }
 }

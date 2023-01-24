@@ -29,17 +29,17 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import com.twofasapp.designsystem.TwsTheme
-import com.twofasapp.designsystem.composable.TwsPrimaryButton
-import com.twofasapp.designsystem.composable.TwsTextButton
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwButton
+import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.feature.startup.R
-import com.twofasapp.locale.TwsLocale
+import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun StartupRoute(
-    onFinish: () -> Unit,
+    openHome: () -> Unit,
     viewModel: StartupViewModel = koinViewModel()
 ) {
     StartupScreen(
@@ -47,11 +47,11 @@ internal fun StartupRoute(
         onNextClick = { viewModel.onNextClicked(it) },
         onStartUsingClick = {
             viewModel.onStartUsingClicked()
-            onFinish()
+            openHome()
         },
         onSkipClick = {
             viewModel.onSkipClicked()
-            onFinish()
+            openHome()
         },
     )
 }
@@ -88,49 +88,49 @@ internal fun StartupScreen(
                 when (page) {
                     0 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_one),
-                        headerText = TwsLocale.strings.startupStepOneHeader,
-                        bodyText = TwsLocale.strings.startupStepOneBody,
+                        headerText = TwLocale.strings.startupStepOneHeader,
+                        bodyText = TwLocale.strings.startupStepOneBody,
                         imageSize = 60.dp,
                     )
 
                     1 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_two),
-                        headerText = TwsLocale.strings.startupStepTwoHeader,
-                        bodyText = TwsLocale.strings.startupStepTwoBody,
+                        headerText = TwLocale.strings.startupStepTwoHeader,
+                        bodyText = TwLocale.strings.startupStepTwoBody,
                     )
 
                     2 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_three),
-                        headerText = TwsLocale.strings.startupStepThreeHeader,
-                        bodyText = TwsLocale.strings.startupStepThreeBody,
+                        headerText = TwLocale.strings.startupStepThreeHeader,
+                        bodyText = TwLocale.strings.startupStepThreeBody,
                     )
 
                     3 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_four),
-                        headerText = TwsLocale.strings.startupStepFourHeader,
-                        bodyText = TwsLocale.strings.startupStepFourBody,
+                        headerText = TwLocale.strings.startupStepFourHeader,
+                        bodyText = TwLocale.strings.startupStepFourBody,
                     )
                 }
             }
 
             if (pagerState.currentPage == 0) {
                 Text(
-                    text = TwsLocale.strings.startupTermsLabel,
+                    text = TwLocale.strings.startupTermsLabel,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = TwsTheme.color.onSurfaceDarker,
+                    color = TwTheme.color.onSurfaceSecondary,
                     modifier = Modifier
-                        .clip(TwsTheme.shape.roundedDefault)
+                        .clip(TwTheme.shape.roundedDefault)
                         .clickable {
                             onTermsClick()
-                            uriHandler.openUri(TwsLocale.links.terms)
+                            uriHandler.openUri(TwLocale.links.terms)
                         }
                         .padding(4.dp)
                 )
             } else {
                 HorizontalPagerIndicator(
                     pagerState = pagerState,
-                    activeColor = TwsTheme.color.primary,
-                    inactiveColor = TwsTheme.color.divider,
+                    activeColor = TwTheme.color.primary,
+                    inactiveColor = TwTheme.color.divider,
                     pageCount = pagerState.pageCount - 1,
                     pageIndexMapping = { it - 1 }
                 )
@@ -138,36 +138,37 @@ internal fun StartupScreen(
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            TwsPrimaryButton(
+            TwButton(
                 text = when (pagerState.currentPage) {
-                    1 -> TwsLocale.strings.commonNext
-                    2 -> TwsLocale.strings.commonNext
-                    3 -> TwsLocale.strings.startupStartCta
-                    else -> TwsLocale.strings.commonContinue
+                    1 -> TwLocale.strings.commonNext
+                    2 -> TwLocale.strings.commonNext
+                    3 -> TwLocale.strings.startupStartCta
+                    else -> TwLocale.strings.commonContinue
                 },
                 modifier = Modifier.padding(vertical = 24.dp),
-            ) {
-                if (pagerState.currentPage == pagerState.pageCount - 1) {
-                    onStartUsingClick()
-                } else {
-                    onNextClick(pagerState.currentPage)
+                onClick = {
+                    if (pagerState.currentPage == pagerState.pageCount - 1) {
+                        onStartUsingClick()
+                    } else {
+                        onNextClick(pagerState.currentPage)
+                    }
+
+                    scope.launch {
+                        pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
+                    }
                 }
 
-                scope.launch {
-                    pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
-                }
-            }
+            )
         }
 
         if (pagerState.currentPage != 0) {
-            TwsTextButton(
-                text = TwsLocale.strings.commonSkip,
+            TwTextButton(
+                text = TwLocale.strings.commonSkip,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(8.dp)
-            ) {
-                onSkipClick()
-            }
+                    .padding(8.dp),
+                onClick = { onSkipClick() }
+            )
         }
     }
 }

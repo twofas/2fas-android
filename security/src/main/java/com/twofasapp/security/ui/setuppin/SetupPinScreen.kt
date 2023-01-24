@@ -3,17 +3,22 @@ package com.twofasapp.security.ui.setuppin
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
-import androidx.compose.runtime.*
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.twofasapp.design.compose.Toolbar
 import com.twofasapp.design.compose.dialogs.ListDialog
+import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.navigation.SecurityRouter
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.model.PinDigits
@@ -47,7 +52,7 @@ internal fun SetupPinScreen(
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = R.string.security__create_pin)) { router.navigateBack() }
+            TwTopAppBar(titleText = stringResource(id = R.string.security__create_pin))
         }
     ) { padding ->
         Box(

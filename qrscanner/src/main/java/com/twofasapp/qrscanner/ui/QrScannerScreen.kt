@@ -20,7 +20,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
@@ -58,6 +58,7 @@ fun QrScannerScreen(
     viewModel: QrScannerViewModel = get(),
     isGalleryEnabled: Boolean = false,
     startWithGallery: Boolean = false,
+    modifier: Modifier = Modifier
 ) {
 
     val showReadError = viewModel.showPhotoReadError.collectAsState().value
@@ -68,27 +69,26 @@ fun QrScannerScreen(
 
     val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
 
-
-
     Scaffold(
         floatingActionButton = {
             if (isGalleryEnabled) {
                 FloatingActionButton(
                     onClick = { galleryLauncher.launch(galleryIntent) },
-                    backgroundColor = Color(0xFF4C4C4C),
+                    containerColor = Color(0xFF4C4C4C),
                 ) {
                     Icon(painter = painterResource(id = R.drawable.ic_photo_gallery), "", tint = Color.White)
                 }
             }
-        }
+        },
+        modifier = modifier
     ) { padding ->
 
-        Box(modifier = Modifier.padding(padding)) {
+        Box() {
             QrScannerPreview(onScanned = { viewModel.onScanned(it) })
 
             Text(
                 text = stringResource(id = R.string.tokens__scan_qr_code_title),
-                style = MaterialTheme.typography.h5.copy(fontSize = 20.sp), color = Color.White,
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 20.sp), color = Color.White,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()

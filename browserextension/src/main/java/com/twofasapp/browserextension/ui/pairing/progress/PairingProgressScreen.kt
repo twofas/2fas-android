@@ -1,11 +1,14 @@
 package com.twofasapp.browserextension.ui.pairing.progress
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -16,33 +19,46 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.airbnb.lottie.compose.*
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
+import com.twofasapp.design.compose.AnimatedContent
+import com.twofasapp.design.compose.ButtonHeight
+import com.twofasapp.design.compose.ButtonShape
+import com.twofasapp.design.compose.ButtonTextColor
+import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.resources.R
-import com.twofasapp.design.compose.*
-import com.twofasapp.navigation.SettingsDirections
-import com.twofasapp.navigation.SettingsRouter
-import org.koin.androidx.compose.get
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun PairingProgressScreen(
+fun PairingProgressScreen(
+    openMain: () -> Unit,
+    openPairingScan: () -> Unit,
     extensionId: String,
-    viewModel: PairingProgressViewModel = get(),
-    router: SettingsRouter = get(),
+    viewModel: PairingProgressViewModel = koinViewModel(),
 ) {
     val uiState = viewModel.uiState.collectAsState()
     viewModel.pairBrowser(extensionId)
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = if (uiState.value.isPairing) R.string.browser__pairing_with_browser else R.string.settings__browser_extension_result_toolbar_title)) {
-                router.navigate(SettingsDirections.GoBack)
-            }
+            TwTopAppBar(titleText = stringResource(id = if (uiState.value.isPairing) R.string.browser__pairing_with_browser else R.string.settings__browser_extension_result_toolbar_title))
         }
     ) { padding ->
         AnimatedContent(
             condition = uiState.value.isPairing,
             contentWhenTrue = { ProgressContent() },
-            contentWhenFalse = { ResultContent(uiState.value.isPairingSuccess, uiState.value.code, router) }
+            contentWhenFalse = {
+                ResultContent(
+                    onContinueClick = { openMain() },
+                    onScanAgainClick = { openPairingScan() },
+                    uiState.value.isPairingSuccess,
+                    uiState.value.code,
+                    padding
+                )
+            },
         )
     }
 }
@@ -57,9 +73,11 @@ internal fun ProgressContent() {
 
 @Composable
 internal fun ResultContent(
+    onContinueClick: () -> Unit = {},
+    onScanAgainClick: () -> Unit = {},
     isSuccess: Boolean,
     code: Int? = null,
-    router: SettingsRouter,
+    padding: PaddingValues,
 ) {
     val image = if (isSuccess) R.drawable.browser_extension_success_image else R.drawable.browser_extension_error_image
 
@@ -77,15 +95,19 @@ internal fun ResultContent(
 
     val cta = if (isSuccess) R.string.commons__continue else R.string.browser__result_error_cta
 
-    val ctaAction: () -> Unit = if (isSuccess) {
-        { router.navigate(SettingsDirections.GoBack) }
-    } else {
-        { router.navigate(SettingsDirections.PairingScan) }
+    val ctaAction: () -> Unit = {
+        if (isSuccess) {
+            onContinueClick()
+//        { router.navigate(SettingsDirections.GoBack) }
+        } else {
+            onScanAgainClick()
+//            { router.navigate(SettingsDirections.PairingScan) }
+        }
     }
-
     ConstraintLayout(
         modifier = Modifier
             .fillMaxHeight()
+            .padding(padding)
             .padding(horizontal = 16.dp)
     ) {
         val (content, pair) = createRefs()
@@ -112,14 +134,14 @@ internal fun ResultContent(
 
             Text(
                 text = stringResource(id = title),
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.titleLarge,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
             )
 
             Text(
                 text = stringResource(id = description),
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
             )

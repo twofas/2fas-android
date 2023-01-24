@@ -9,12 +9,12 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":resources"))
     implementation(project(":extensions"))
     implementation(project(":prefs"))
     implementation(project(":design"))
-    implementation(project(":environment"))
+    
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.fastAdapter)

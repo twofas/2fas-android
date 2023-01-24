@@ -32,7 +32,6 @@ import com.twofasapp.usecases.services.EditStateObserver
 import com.twofasapp.usecases.services.GetService
 import com.twofasapp.usecases.services.GetServices
 import com.twofasapp.usecases.services.GetServicesIncludingTrashed
-import com.twofasapp.usecases.services.GetTrashedServices
 import com.twofasapp.usecases.services.PinOptionsUseCase
 import com.twofasapp.usecases.services.RestoreService
 import com.twofasapp.usecases.services.SearchStateObserver
@@ -74,7 +73,6 @@ val useCaseModule = module {
     single<GetServicesUseCase> { GetServices(get()) }
     single { GetServices(get()) }
     single { GetServicesIncludingTrashed(get()) }
-    single { GetTrashedServices(get()) }
     single { ServicesObserver(get()) }
     single { GetService(get()) }
     single { TrashService(get(), get(), get(), get(), get(), get(), get(), get()) }

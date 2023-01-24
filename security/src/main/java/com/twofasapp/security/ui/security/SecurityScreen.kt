@@ -3,11 +3,16 @@ package com.twofasapp.security.ui.security
 import android.app.Activity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -15,11 +20,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.FragmentActivity
-import com.twofasapp.design.compose.*
+import com.twofasapp.design.compose.HeaderEntry
+import com.twofasapp.design.compose.SimpleEntry
+import com.twofasapp.design.compose.SubtitleGravity
+import com.twofasapp.design.compose.SwitchEntry
 import com.twofasapp.design.compose.dialogs.ListDialog
-import com.twofasapp.design.theme.divider
-import com.twofasapp.design.theme.textPrimary
-import com.twofasapp.design.theme.textSecondary
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.navigation.SecurityDirections
 import com.twofasapp.navigation.SecurityRouter
 import com.twofasapp.resources.R
@@ -44,7 +51,7 @@ internal fun SecurityScreen(
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = R.string.settings__security)) { activity?.onBackPressed() }
+            TwTopAppBar(titleText = stringResource(id = R.string.settings__security))
         }
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
@@ -58,7 +65,7 @@ internal fun SecurityScreen(
                     )
                 }
 
-                item { Divider(color = MaterialTheme.colors.divider) }
+                item { Divider(color = TwTheme.color.divider) }
                 item { HeaderEntry(text = stringResource(id = R.string.settings__biometrics)) }
 
                 item {
@@ -75,7 +82,7 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__option_fingerprint_description),
                         modifier = Modifier.padding(start = 24.dp, end = 16.dp, top = 8.dp),
-                        style = MaterialTheme.typography.body2.copy(color = MaterialTheme.colors.textSecondary)
+                        style = MaterialTheme.typography.body2.copy(color = TwTheme.color.onSurfaceSecondary)
                     )
                 }
 
@@ -100,7 +107,7 @@ internal fun SecurityScreen(
                     )
                 }
 
-                item { Divider(color = MaterialTheme.colors.divider) }
+                item { Divider(color = TwTheme.color.divider) }
                 item { HeaderEntry(text = stringResource(id = R.string.settings__app_blocking)) }
 
                 item {
@@ -116,8 +123,8 @@ internal fun SecurityScreen(
                 item {
                     Text(
                         text = stringResource(id = R.string.settings__how_many_attempts_footer),
-                        modifier = Modifier.padding(start = 72.dp, end = 16.dp,),
-                        style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = MaterialTheme.colors.textSecondary),
+                        modifier = Modifier.padding(start = 72.dp, end = 16.dp),
+                        style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                     )
                 }
 
@@ -135,12 +142,12 @@ internal fun SecurityScreen(
                 item {
                     Text(
                         text = stringResource(id = R.string.settings__block_for_footer),
-                        modifier = Modifier.padding(start = 72.dp, end = 16.dp,),
-                        style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = MaterialTheme.colors.textSecondary),
+                        modifier = Modifier.padding(start = 72.dp, end = 16.dp),
+                        style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                     )
                 }
 
-                item { Divider(color = MaterialTheme.colors.divider) }
+                item { Divider(color = TwTheme.color.divider) }
                 item { HeaderEntry(text = stringResource(id = R.string.settings__biometrics)) }
 
                 item {
@@ -158,7 +165,7 @@ internal fun SecurityScreen(
                     )
                 }
 
-                item { Divider(color = MaterialTheme.colors.divider) }
+                item { Divider(color = TwTheme.color.divider) }
             }
         }
 

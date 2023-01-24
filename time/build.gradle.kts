@@ -8,10 +8,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":time:domain"))
     implementation(project(":prefs"))
-    implementation(project(":network"))
     implementation(project(":truetime"))
     implementation(project(":truetime-rx"))
 

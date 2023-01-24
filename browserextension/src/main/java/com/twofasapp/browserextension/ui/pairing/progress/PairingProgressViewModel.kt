@@ -5,14 +5,14 @@ import com.twofasapp.base.BaseViewModel
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.browserextension.domain.PairBrowserCase
 import com.twofasapp.browserextension.domain.RegisterMobileDeviceCase
-import com.twofasapp.network.exception.BrowserAlreadyPairedException
+import com.twofasapp.data.browserext.remote.exception.BrowserAlreadyPairedException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-internal class PairingProgressViewModel(
+class PairingProgressViewModel(
     private val dispatchers: Dispatchers,
     private val registerMobileDeviceCase: RegisterMobileDeviceCase,
     private val pairBrowserCase: PairBrowserCase,

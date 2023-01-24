@@ -2,10 +2,10 @@ package com.twofasapp.browserextension.ui.main
 
 import com.twofasapp.base.UiEvent
 import com.twofasapp.base.UiState
-import com.twofasapp.browserextension.domain.model.MobileDevice
-import com.twofasapp.browserextension.domain.model.PairedBrowser
+import com.twofasapp.data.browserext.domain.MobileDevice
+import com.twofasapp.data.browserext.domain.PairedBrowser
 
-internal data class BrowserExtensionUiState(
+data class BrowserExtensionUiState(
     val isLoading: Boolean = true,
     val pairedBrowsers: List<PairedBrowser> = emptyList(),
     val mobileDevice: MobileDevice? = null,

@@ -4,14 +4,14 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
-import com.twofasapp.environment.AppConfig
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.featuretoggle.R
 import com.twofasapp.featuretoggle.domain.model.RemoteConfig
 import io.reactivex.Flowable
 import io.reactivex.processors.BehaviorProcessor
 
 internal class RemoteConfigRepositoryImpl(
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
 ) : RemoteConfigRepository {
 
     private val remoteConfig: FirebaseRemoteConfig?
@@ -29,7 +29,7 @@ internal class RemoteConfigRepositoryImpl(
     override fun fetchAndActivate() {
         remoteConfig?.setConfigSettingsAsync(
             remoteConfigSettings {
-                minimumFetchIntervalInSeconds = if (appConfig.isDebug) 0 else 3600
+                minimumFetchIntervalInSeconds = if (appBuild.isDebuggable) 0 else 3600
             }
         )
 

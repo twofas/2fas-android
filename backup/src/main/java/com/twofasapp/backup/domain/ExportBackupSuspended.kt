@@ -5,7 +5,7 @@ import android.net.Uri
 import com.twofasapp.backup.EncryptBackup
 import com.twofasapp.backup.domain.converter.toRemoteGroup
 import com.twofasapp.backup.domain.converter.toRemoteService
-import com.twofasapp.environment.AppConfig
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.prefs.model.RemoteBackup
 import com.twofasapp.prefs.model.RemoteService
 import com.twofasapp.serialization.JsonSerializer
@@ -17,7 +17,7 @@ import com.twofasapp.time.domain.TimeProvider
 class ExportBackupSuspended(
     private val context: Context,
     private val timeProvider: TimeProvider,
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
     private val servicesRepository: ServicesRepository,
     private val getServicesCase: GetServicesCase,
     private val getGroupsCase: GetGroupsCase,
@@ -46,8 +46,8 @@ class ExportBackupSuspended(
                     .copy(order = RemoteService.Order(position = servicesOrder.ids.indexOf(it.id)))
             },
             updatedAt = timeProvider.systemCurrentTime(),
-            appVersionCode = appConfig.versionCode,
-            appVersionName = appConfig.versionName,
+            appVersionCode = appBuild.versionCode,
+            appVersionName = appBuild.versionName,
             groups = groups.list.filter { group -> group.id != null }.map { group -> group.toRemoteGroup() },
             account = null,
         )
@@ -72,6 +72,7 @@ class ExportBackupSuspended(
 
                 Result.Success(json)
             }
+
             is EncryptBackup.Result.Error -> Result.Error(result.throwable)
         }
     }

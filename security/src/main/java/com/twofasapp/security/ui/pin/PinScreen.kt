@@ -1,11 +1,25 @@
 package com.twofasapp.security.ui.pin
 
-import androidx.compose.animation.*
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -15,7 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.FragmentActivity
 import com.twofasapp.design.compose.ProgressBar
-import com.twofasapp.design.theme.textPrimary
+import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.resources.R
 import com.twofasapp.security.ui.biometric.BiometricDialog
 
@@ -75,7 +89,7 @@ internal fun PinScreen(
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.body1,
-                color = if (errorMessage.isNotBlank()) MaterialTheme.colors.primary else MaterialTheme.colors.textPrimary
+                color = if (errorMessage.isNotBlank()) TwTheme.color.primary else TwTheme.color.onSurfacePrimary
             )
 
             PinInput(

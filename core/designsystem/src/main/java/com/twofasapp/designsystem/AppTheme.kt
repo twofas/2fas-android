@@ -13,6 +13,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.twofasapp.designsystem.internal.LocalThemeColors
+import com.twofasapp.designsystem.internal.ThemeColors
+import com.twofasapp.designsystem.internal.ThemeColorsDark
+import com.twofasapp.designsystem.internal.ThemeColorsLight
 
 @Composable
 fun MainAppTheme(
@@ -31,37 +35,37 @@ fun MainAppTheme(
         }
     }
 
-    val colors: TwsColors = when (isSystemInDarkTheme()) {
-        true -> TwsColorsDark()
-        false -> TwsColorsLight()
+    val colors: ThemeColors = when (isSystemInDarkTheme()) {
+        true -> ThemeColorsDark()
+        false -> ThemeColorsLight()
     }
 
     val colorScheme: ColorScheme = when (isSystemInDarkTheme()) {
         true -> darkColorScheme(
             primary = colors.primary,
-            onPrimary = colors.onSurface,
+            onPrimary = colors.onSurfacePrimary,
             background = colors.background,
-            onBackground = colors.onSurface,
+            onBackground = colors.onSurfacePrimary,
             surface = colors.surface,
-            onSurface = colors.onSurface,
+            onSurface = colors.onSurfacePrimary,
             surfaceVariant = colors.surface,
-            onSurfaceVariant = colors.onSurface,
+            onSurfaceVariant = colors.onSurfacePrimary,
         )
 
         false -> lightColorScheme(
             primary = colors.primary,
-            onPrimary = colors.onSurface,
+            onPrimary = colors.onSurfacePrimary,
             background = colors.background,
-            onBackground = colors.onSurface,
+            onBackground = colors.onSurfacePrimary,
             surface = colors.surface,
-            onSurface = colors.onSurface,
+            onSurface = colors.onSurfacePrimary,
             surfaceVariant = colors.surface,
-            onSurfaceVariant = colors.onSurface,
+            onSurfaceVariant = colors.onSurfacePrimary,
         )
     }
 
     CompositionLocalProvider(
-        LocalTwsColors provides colors,
+        LocalThemeColors provides colors,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,

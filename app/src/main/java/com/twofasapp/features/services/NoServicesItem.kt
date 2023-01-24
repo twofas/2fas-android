@@ -3,10 +3,8 @@ package com.twofasapp.features.services
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
-import com.twofasapp.resources.R
 import com.twofasapp.databinding.ItemNoServicesBinding
-import com.twofasapp.extensions.startActivity
-import com.twofasapp.externalimport.ui.ExternalImportActivity
+import com.twofasapp.resources.R
 
 class NoServicesItem : AbstractBindingItem<ItemNoServicesBinding>() {
 
@@ -19,9 +17,5 @@ class NoServicesItem : AbstractBindingItem<ItemNoServicesBinding>() {
 
     override fun bindView(binding: ItemNoServicesBinding, payloads: List<Any>) {
         super.bindView(binding, payloads)
-
-        binding.externalImport.setOnClickListener {
-            binding.root.context.startActivity<ExternalImportActivity>()
-        }
     }
 }

@@ -7,16 +7,20 @@ import com.twofasapp.browserextension.domain.FetchPairedBrowsersCase
 import com.twofasapp.browserextension.domain.ObserveMobileDeviceCase
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
 import com.twofasapp.browserextension.domain.UpdateMobileDeviceCase
-import com.twofasapp.navigation.SettingsDirections
-import com.twofasapp.navigation.SettingsRouter
 import com.twofasapp.permissions.CameraPermissionRequestFlow
 import com.twofasapp.permissions.PermissionStatus
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-internal class BrowserExtensionViewModel(
+class BrowserExtensionViewModel(
     private val dispatchers: Dispatchers,
-    private val settingsRouter: SettingsRouter,
     private val cameraPermissionRequest: CameraPermissionRequestFlow,
     private val observeMobileDeviceCase: ObserveMobileDeviceCase,
     private val observePairedBrowsersCase: ObservePairedBrowsersCase,
@@ -26,6 +30,8 @@ internal class BrowserExtensionViewModel(
 
     private val _uiState = MutableStateFlow(BrowserExtensionUiState())
     val uiState = _uiState.asStateFlow()
+
+    var onPairClick: () -> Unit = {}
 
     init {
         viewModelScope.launch {
@@ -56,7 +62,10 @@ internal class BrowserExtensionViewModel(
             .take(1)
             .onEach {
                 when (it) {
-                    PermissionStatus.GRANTED -> settingsRouter.navigate(SettingsDirections.PairingScan)
+                    PermissionStatus.GRANTED -> {
+                        onPairClick()
+                    }
+
                     PermissionStatus.DENIED -> Unit
                     PermissionStatus.DENIED_NEVER_ASK -> _uiState.update { state ->
                         state.copy(showRationaleDialog = true)

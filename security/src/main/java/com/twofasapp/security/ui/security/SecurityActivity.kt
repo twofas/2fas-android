@@ -7,8 +7,10 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.lifecycle.ViewModelStoreOwner
 import com.twofasapp.base.BaseComponentActivity
 import com.twofasapp.design.theme.AppThemeLegacy
+import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.navigation.SecurityRouter
 import com.twofasapp.navigation.base.RouterNavHost
+import com.twofasapp.prefs.model.AppTheme
 import org.koin.androidx.compose.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,7 +26,7 @@ class SecurityActivity : BaseComponentActivity() {
         viewModel.init()
 
         setContent {
-            AppThemeLegacy {
+            MainAppTheme {
                 Surface {
                     RouterNavHost(router = get<SecurityRouter>(), viewModelStoreOwner.current)
                 }

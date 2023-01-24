@@ -2,13 +2,13 @@ package com.twofasapp.services.data.converter
 
 import com.twofasapp.extensions.removeWhiteCharacters
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.persistence.model.ServiceEntity
+import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.prefs.model.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.services.domain.model.Service
 
-internal fun ServiceEntity.toService() = Service(
+internal fun com.twofasapp.data.services.local.model.ServiceEntity.toService() = Service(
     id = id,
     name = name,
     secret = secret,
@@ -43,7 +43,7 @@ internal fun ServiceEntity.toService() = Service(
     source = source?.let { Service.Source.valueOf(it) } ?: Service.DefaultSource,
 )
 
-internal fun Service.toEntity() = ServiceEntity(
+internal fun Service.toEntity() = com.twofasapp.data.services.local.model.ServiceEntity(
     id = id,
     name = name,
     secret = secret.removeWhiteCharacters(),

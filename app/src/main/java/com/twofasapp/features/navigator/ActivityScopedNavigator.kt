@@ -5,8 +5,6 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.net.Uri
 import androidx.core.os.bundleOf
-import com.twofasapp.resources.R
-import com.twofasapp.about.ui.AboutActivity
 import com.twofasapp.backup.ui.export.ExportBackupActivity
 import com.twofasapp.core.RequestCodes
 import com.twofasapp.developer.ui.DeveloperActivity
@@ -15,22 +13,18 @@ import com.twofasapp.extensions.openBrowserApp
 import com.twofasapp.extensions.startActivity
 import com.twofasapp.extensions.startActivityForResult
 import com.twofasapp.extensions.toastLong
-import com.twofasapp.externalimport.ui.ExternalImportActivity
 import com.twofasapp.features.addserviceqr.AddServiceQrActivity
 import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.features.backup.import.ImportBackupActivity
 import com.twofasapp.features.main.MainServicesActivity
-import com.twofasapp.features.trash.TrashActivity
-import com.twofasapp.features.trash.delete.DisposeServiceActivity
-import com.twofasapp.notifications.ui.NotificationsActivity
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.prefs.model.LockMethodEntity
 import com.twofasapp.prefs.model.ServiceDto
+import com.twofasapp.resources.R
 import com.twofasapp.security.ui.lock.LockActivity
 import com.twofasapp.security.ui.security.SecurityActivity
 import com.twofasapp.services.ui.ServiceActivity
-import com.twofasapp.settings.ui.SettingsActivity
 import com.twofasapp.start.ui.start.StartActivity
 
 
@@ -95,7 +89,6 @@ class ActivityScopedNavigator(
     }
 
     override fun openDisposeService(service: ServiceDto) {
-        activity.startActivity<DisposeServiceActivity>(DisposeServiceActivity.ARG_SERVICE to service)
     }
 
     override fun openSecurity() {
@@ -110,23 +103,21 @@ class ActivityScopedNavigator(
     }
 
     override fun openSettings() {
-        activity.startActivity<SettingsActivity>()
+//        activity.startActivity<SettingsActivity>()
     }
 
     override fun openExternalImport() {
-        activity.startActivity<ExternalImportActivity>()
+//        activity.startActivity<ExternalImportActivity>()
     }
 
     override fun openTrash() {
-        activity.startActivity<TrashActivity>()
     }
 
     override fun openAuthenticate(canGoBack: Boolean, requestCode: Int?) {
         when (checkLockStatus.execute()) {
             LockMethodEntity.NO_LOCK -> Unit
             else -> activity.startActivityForResult<LockActivity>(
-                requestCode
-                    ?: RequestCodes.AUTH_REQUEST_CODE, "canGoBack" to canGoBack
+                requestCode ?: RequestCodes.AUTH_REQUEST_CODE, "canGoBack" to canGoBack
             )
         }
     }
@@ -144,7 +135,7 @@ class ActivityScopedNavigator(
     }
 
     override fun openAbout() {
-        activity.startActivity<AboutActivity>()
+//        activity.startActivity<AboutActivity>()
     }
 
     override fun openDeveloperOptions() {
@@ -163,7 +154,7 @@ class ActivityScopedNavigator(
     }
 
     override fun openNotifications() {
-        activity.startActivity<NotificationsActivity>()
+        // TO BE REMOVED
     }
 
     private fun resolveIntent(intent: Intent, action: () -> Unit) {

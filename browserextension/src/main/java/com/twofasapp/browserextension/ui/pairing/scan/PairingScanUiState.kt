@@ -1,6 +1,6 @@
 package com.twofasapp.browserextension.ui.pairing.scan
 
-internal data class PairingScanUiState(
+data class PairingScanUiState(
     val isSuccess: Boolean = false,
     val extensionId: String = "",
     val showErrorDialog: Boolean = false,

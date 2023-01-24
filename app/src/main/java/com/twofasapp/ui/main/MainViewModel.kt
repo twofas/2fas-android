@@ -3,6 +3,8 @@ package com.twofasapp.ui.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.ktx.runSafely
+import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.session.SessionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -11,6 +13,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     private val dispatchers: Dispatchers,
     private val sessionRepository: SessionRepository,
+    private val notificationsRepository: NotificationsRepository,
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<MainUiState?> = MutableStateFlow(null)
@@ -23,6 +26,10 @@ class MainViewModel(
             }
 
             uiState.update { state }
+        }
+
+        viewModelScope.launch {
+            runSafely { notificationsRepository.fetchNotifications() }
         }
     }
 }

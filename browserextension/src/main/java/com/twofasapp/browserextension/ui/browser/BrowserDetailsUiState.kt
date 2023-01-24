@@ -3,7 +3,7 @@ package com.twofasapp.browserextension.ui.browser
 import com.twofasapp.base.UiEvent
 import com.twofasapp.base.UiState
 
-internal data class BrowserDetailsUiState(
+data class BrowserDetailsUiState(
     val extensionId: String = "",
     val browserName: String = "",
     val browserPairedAt: String = "",

@@ -2,15 +2,19 @@ package com.twofasapp.data.session
 
 import com.twofasapp.data.session.local.SessionLocalSource
 
-class SessionRepositoryImpl(
-    private val localSource: SessionLocalSource,
+internal class SessionRepositoryImpl(
+    private val local: SessionLocalSource,
 ) : SessionRepository {
 
     override suspend fun isOnboardingDisplayed(): Boolean {
-        return localSource.isOnboardingDisplayed()
+        return local.isOnboardingDisplayed()
     }
 
     override suspend fun setOnboardingDisplayed(isDisplayed: Boolean) {
-        localSource.setOnboardingDisplayed(isDisplayed)
+        local.setOnboardingDisplayed(isDisplayed)
+    }
+
+    override suspend fun setRateAppDisplayed(isDisplayed: Boolean) {
+
     }
 }
