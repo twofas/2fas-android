@@ -45,14 +45,14 @@ internal fun BrowserDetailsScreen(
         LazyColumn(modifier = Modifier.padding(padding)) {
             item {
                 SimpleEntry(
-                    title = "Name",
+                    title = stringResource(id = R.string.browser__name),
                     subtitle = uiState.browserName,
                 )
             }
 
             item {
                 SimpleEntry(
-                    title = "Date paired",
+                    title = stringResource(id = R.string.browser__pairing_date),
                     subtitle = uiState.browserPairedAt,
                 )
             }
@@ -64,15 +64,15 @@ internal fun BrowserDetailsScreen(
                     modifier = Modifier.padding(start = 72.dp, top = 6.dp, bottom = 2.dp),
                     border = BorderStroke(1.dp, MaterialTheme.colors.primary)
                 ) {
-                    Text(text = "Forget this web browser")
+                    Text(text = stringResource(id = R.string.browser__forget_this_browser))
                 }
             }
         }
 
         if (uiState.showConfirmDeleteDialog) {
             ConfirmDialog(
-                title = "Forget browser?",
-                text = "This removes connection between your device and browser.",
+                title = stringResource(id = R.string.browser__deleting_paired_device_title),
+                text = stringResource(id = R.string.browser__deleting_paired_device_content),
                 onDismiss = { viewModel.dismissConfirmForget() },
                 onNegative = { viewModel.dismissConfirmForget() },
                 onPositive = { viewModel.forgetBrowser() },

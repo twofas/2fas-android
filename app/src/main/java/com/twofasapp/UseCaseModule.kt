@@ -84,7 +84,7 @@ val useCaseModule = module {
     single { ConvertOtpLinkToService() }
     single { CheckServiceExists(get()) }
     single { GenerateTotp(get()) }
-    single { ServicesModelMapper(get(), get(), get(), get(), get(), get(), get()) }
+    single { ServicesModelMapper(androidContext(), get(), get(), get(), get(), get(), get(), get()) }
     single { CheckLockStatus(get()) }
     single { SaveLockStatus(get(), get()) }
     single { GetPinCode(get(), get(), get()) }

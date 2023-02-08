@@ -1,11 +1,11 @@
 package com.twofasapp.features.backup.settings
 
 import com.mikepenz.fastadapter.IItem
-import com.twofasapp.base.BasePresenter
 
 internal interface BackupSettingsContract {
 
     interface View {
+        fun getStringRes(res: Int): String
         fun updateItems(items: List<IItem<*>>)
         fun showSetPasswordDialog()
         fun showRemovePasswordDialog(showError: Boolean)

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             app:navigationIconTint="@color/white"
-            app:title="Scan QR Code"
+            app:title="@string/commons__scan_qr_code"
             app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>

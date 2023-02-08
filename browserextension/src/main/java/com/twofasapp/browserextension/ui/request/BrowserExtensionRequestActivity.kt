@@ -23,7 +23,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.twofasapp.base.BaseComponentActivity
-import com.twofasapp.resources.R
 import com.twofasapp.browserextension.notification.BrowserExtensionRequestPayload
 import com.twofasapp.browserextension.notification.BrowserExtensionRequestReceiver
 import com.twofasapp.design.compose.Toolbar
@@ -31,6 +30,7 @@ import com.twofasapp.design.theme.AppThemeLegacy
 import com.twofasapp.design.theme.backgroundSecondary
 import com.twofasapp.design.theme.textPrimary
 import com.twofasapp.design.theme.textSecondary
+import com.twofasapp.resources.R
 import com.twofasapp.services.domain.model.Service
 import com.twofasapp.services.view.ServiceCompact
 import org.koin.androidx.compose.get
@@ -76,7 +76,7 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
         }
 
         LazyColumn(modifier = Modifier.padding(padding)) {
-            item { HeaderItem(browserName = uiState.browserName, modifier = Modifier.animateItemPlacement()) }
+            item { HeaderItem(browserName = uiState.browserName, payload.domain, modifier = Modifier.animateItemPlacement()) }
 
             if (uiState.suggestedServices.isNotEmpty()) {
                 item { SectionItem(title = "Suggested", modifier = Modifier.animateItemPlacement()) }
@@ -112,9 +112,9 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
     }
 
     @Composable
-    internal fun HeaderItem(browserName: String, modifier: Modifier) {
+    internal fun HeaderItem(browserName: String, domain: String?, modifier: Modifier) {
         Text(
-            text = "$browserName requested a 2FA token. Select the service to authorize and save with this domain.",
+            text = stringResource(id = R.string.browser__request_source_description).format(browserName, domain),
             modifier = modifier
                 .fillMaxWidth()
                 .padding(start = 72.dp, end = 16.dp, top = 24.dp, bottom = 24.dp),
@@ -125,7 +125,7 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
     @Composable
     internal fun EmptyItem() {
         Text(
-            text = "For Browser Extension to work properly, please add services to the 2FAS app on your mobile phone.",
+            text = stringResource(id = R.string.extension__error_no_services),
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()

@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#78000000"
-                android:contentDescription="Cancel"
+                android:contentDescription="@string/commons__cancel"
                 android:visibility="gone" />
 
             <LinearLayout
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
-                android:contentDescription="Add"
+                android:contentDescription="@string/commons__add"
                 android:src="@drawable/ic_add"
                 app:backgroundTint="@color/colorAccent"
                 app:fabSize="normal"

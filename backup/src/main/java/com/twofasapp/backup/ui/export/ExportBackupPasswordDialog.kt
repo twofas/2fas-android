@@ -28,8 +28,8 @@ class ExportBackupPasswordDialog(
         binding = DialogExportBackupPasswordBinding.inflate(LayoutInflater.from(context))
 
         MaterialDialog(context)
-            .title(text = "Set password")
-            .message(text = "Increase protection of your backup file.")
+            .title(res = R.string.backup_settings_password_set_title)
+            .message(res = R.string.backup__set_password_title)
             .customView(view = binding.root, noVerticalPadding = true, horizontalPadding = false)
             .onPreShow {
                 binding.passwordEditText.post {

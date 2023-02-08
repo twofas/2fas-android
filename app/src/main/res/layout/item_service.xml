@@ -34,7 +34,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_drag_handle"
         app:tint="#9B9B9B"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        tools:ignore="HardcodedText" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/startBarrier"

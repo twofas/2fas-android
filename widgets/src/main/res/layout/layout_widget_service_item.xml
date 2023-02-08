@@ -78,7 +78,8 @@
             android:maxLines="1"
             android:singleLine="true"
             android:text="2FAS Service"
-            android:textColor="@color/textPrimary" />
+            android:textColor="@color/textPrimary"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/widget_code"

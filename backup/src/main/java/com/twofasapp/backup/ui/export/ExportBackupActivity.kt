@@ -44,7 +44,7 @@ class ExportBackupActivity : BaseActivityPresenter<ActivityExportBackupBinding>(
         }
     }
 
-    override fun showResultToast(text: String) = toastLong(text)
+    override fun showResultToast(res: Int) = toastLong(res)
 
     override fun toolbarBackClicks() = viewBinding.toolbar.navigationClicksThrottled()
 

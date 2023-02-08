@@ -3,7 +3,13 @@ package com.twofasapp.externalimport.ui.result
 import android.app.Activity
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -23,10 +29,10 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
 import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.resources.R
 import com.twofasapp.externalimport.domain.ExternalImport
 import com.twofasapp.navigation.ExternalImportDirections.ImportResult.Type
 import com.twofasapp.navigation.ExternalImportRouter
+import com.twofasapp.resources.R
 import org.koin.androidx.compose.get
 
 @Composable
@@ -45,7 +51,7 @@ internal fun ImportResultScreen(
     }
 
     if (uiState.finishSuccess) {
-        Toast.makeText(activity, "Tokens imported successfully!", Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity?.getString(R.string.backup__import_completed_successfuly), Toast.LENGTH_LONG).show()
         activity?.finish()
     }
 
@@ -82,37 +88,45 @@ internal fun ImportResultScreen(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Text(
-                    text = uiState.title,
-                    style = MaterialTheme.typography.h6,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
+                if (uiState.title != null) {
+                    Text(
+                        text = stringResource(id = uiState.title),
+                        style = MaterialTheme.typography.h6,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Text(
-                    text = uiState.description,
-                    style = MaterialTheme.typography.body1,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = 24.dp)
-                )
+                if (uiState.description != null) {
+                    Text(
+                        text = stringResource(id = uiState.description),
+                        style = MaterialTheme.typography.body1,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = 24.dp)
+                    )
+                }
 
-                if (uiState.counter.isNotBlank()) {
+                if (uiState.servicesToImport != 0 && uiState.totalServicesCount != 0) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
-                        text = uiState.counter,
+                        text = if (uiState.servicesToImport == uiState.totalServicesCount) {
+                            uiState.servicesToImport.toString()
+                        } else {
+                            stringResource(id = R.string.tokens__google_auth_out_of_title).format(uiState.servicesToImport, uiState.totalServicesCount)
+                        },
                         style = MaterialTheme.typography.h6,
                         modifier = Modifier.padding(horizontal = 24.dp)
                     )
                 }
 
-                if (uiState.footer.isNotBlank()) {
+                if (uiState.footer != null) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
-                        text = uiState.footer,
+                        text = stringResource(id = uiState.footer),
                         style = MaterialTheme.typography.body1,
                         modifier = Modifier.padding(horizontal = 24.dp)
                     )
@@ -133,7 +147,9 @@ internal fun ImportResultScreen(
                     .height(48.dp)
                     .align(Alignment.CenterHorizontally)
             ) {
-                Text(text = uiState.button.uppercase(), color = ButtonTextColor())
+                if (uiState.button != null) {
+                    Text(text = stringResource(id = uiState.button).uppercase(), color = ButtonTextColor())
+                }
             }
         }
     }
