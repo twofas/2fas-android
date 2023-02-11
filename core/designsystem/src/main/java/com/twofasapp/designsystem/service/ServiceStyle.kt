@@ -1,7 +1,8 @@
 package com.twofasapp.designsystem.service
 
 enum class ServiceStyle {
-    Normal,
-    Modal,
+    Default,
     Compact,
+    Edit,
+    Modal,
 }

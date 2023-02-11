@@ -1,8 +1,6 @@
 package com.twofasapp.designsystem.service.component
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,33 +12,27 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
 
 @Composable
-fun ServiceData(
-    name: String,
-    info: String?,
-    code: String? = null,
-    nextCode: String? = null,
+fun ServiceInfo(
+    text: String?,
     modifier: Modifier = Modifier,
+    style: TextStyle = TwTheme.typo.body3
 ) {
-    Column(modifier = modifier) {
-        ServiceName(name)
-        ServiceInfo(info)
-
-        if (code != null && nextCode != null) {
-            ServiceCode(code = code, nextCode = nextCode)
-        }
+    if (text.isNullOrEmpty().not()) {
+        Text(
+            text = text!!,
+            style = style,
+            color = TwTheme.color.onSurfaceSecondary,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = modifier,
+        )
+    } else {
+        Spacer(Modifier.width(8.dp))
     }
 }
-
-
-
-
 
 @Preview
 @Composable
 private fun Preview() {
-    ServiceData(
-        name = "Service Name",
-        info = "test@mail.com",
-        modifier = Modifier.fillMaxWidth()
-    )
+    ServiceInfo(text = "Info")
 }

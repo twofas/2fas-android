@@ -25,7 +25,8 @@ import com.twofasapp.designsystem.common.TwDropdownMenuItem
 import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.service.ServiceImageType
-import com.twofasapp.designsystem.service.ServiceNoCode
+import com.twofasapp.designsystem.service.ServiceState
+import com.twofasapp.designsystem.service.ServiceWithoutCode
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -74,22 +75,24 @@ private fun TrashScreen(
             }
 
             items(services, key = { it.id }) {
-                ServiceNoCode(
-                    name = it.name,
-                    info = it.info,
-                    imageType = when (it.imageType) {
-                        Service.ImageType.IconCollection -> ServiceImageType.Icon
-                        Service.ImageType.Label -> ServiceImageType.Label
-                    },
-                    iconLight = it.iconLight,
-                    iconDark = it.iconDark,
-                    labelText = it.labelText,
-                    labelColor = it.badgeColor.asState(),
+                ServiceWithoutCode(
+                    state = ServiceState(
+                        name = it.name,
+                        info = it.info,
+                        imageType = when (it.imageType) {
+                            Service.ImageType.IconCollection -> ServiceImageType.Icon
+                            Service.ImageType.Label -> ServiceImageType.Label
+                        },
+                        iconLight = it.iconLight,
+                        iconDark = it.iconDark,
+                        labelText = it.labelText,
+                        labelColor = it.badgeColor.asState(),
+                    ),
                     imageSize = 32.dp,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp, end = 0.dp),
-                    endContent = {
+                    content = {
                         var expanded by rememberSaveable { mutableStateOf(false) }
 
                         TwDropdownMenu(

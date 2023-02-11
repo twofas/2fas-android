@@ -17,7 +17,7 @@ internal fun AegisRoute(
     ImportFileScaffold(
         title = stringResource(id = R.string.externalimport_aegis),
         image = painterResource(id = R.drawable.ic_import_aegis),
-        description = { ImportDescription(text = "Export your accounts from Aegis to unencrypted JSON file and upload it using \"Choose JSON file\" button. Remember to remove the file after successful import.") }
+        description = { ImportDescription(text = stringResource(id = R.string.externalimport__aegis_msg)) }
     ) {
         ImportFilePickerButton(
             text = "Choose JSON file",

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.domain.Service
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -24,8 +25,9 @@ internal class ServicesViewModel(
         viewModelScope.launch {
             combine(
                 servicesRepository.observeServicesTicker(),
+                groupsRepository.observeGroups(),
                 isInEditMode,
-            ) { services, isInEditMode -> CombinedResult(services, isInEditMode) }.collect { result ->
+            ) { services, groups, isInEditMode -> CombinedResult(services, groups, isInEditMode) }.collect { result ->
 
                 uiState.update {
                     it.copy(
@@ -52,6 +54,7 @@ internal class ServicesViewModel(
 
     data class CombinedResult(
         val services: List<Service>,
+        val groups: List<Group>,
         val isInEditMode: Boolean,
     )
 }

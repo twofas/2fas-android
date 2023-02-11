@@ -9,8 +9,8 @@ data class ServicesUiState(
     val isInEditMode: Boolean = false,
     val events: List<ServicesStateEvent> = listOf(),
 ) {
-    fun getService(id: Long): Service {
-        return services.first { it.id == id }
+    fun getService(id: Long): Service? {
+        return services.firstOrNull() { it.id == id }
     }
 }
 

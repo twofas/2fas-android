@@ -10,7 +10,7 @@ data class Service(
     val period: Int?,
     val digits: Int?,
     val algorithm: Algorithm?,
-
+    val groupId: String? = null,
     val imageType: ImageType = ImageType.IconCollection,
     val iconCollectionId: String,
     val iconLight: String,
@@ -25,7 +25,6 @@ data class Service(
 //    val otp: Otp = Otp(),
 
 ////
-//    val groupId: String? = null,
 //    val assignedDomains: List<String> = emptyList(),
 //    val isDeleted: Boolean = false,
 ////    val backupSyncStatus: BackupSyncStatus = BackupSyncStatus.NOT_SYNCED,
@@ -87,9 +86,6 @@ data class Service(
 //        val hotpCounter: Int? = null,
 //        val algorithm: Algorithm = DefaultAlgorithm,
 //    )
-
-
-
 
 
 }

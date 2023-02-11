@@ -4,6 +4,7 @@ import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.GroupsRepositoryImpl
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.ServicesRepositoryImpl
+import com.twofasapp.data.services.local.GroupsLocalSource
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
 import com.twofasapp.di.KoinModule
@@ -17,6 +18,7 @@ class DataServicesModule : KoinModule {
         singleOf(::ServicesLocalSource)
         singleOf(::ServicesRepositoryImpl) { bind<ServicesRepository>() }
 
+        singleOf(::GroupsLocalSource)
         singleOf(::GroupsRepositoryImpl) { bind<GroupsRepository>() }
     }
 }

@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import timber.log.Timber
 
 internal class PreferencesDelegate(
@@ -27,8 +28,9 @@ internal class PreferencesDelegate(
         }
     }
 
-    override fun <T> observe(key: String, default: T): Flow<T> {
+    override fun <T> observe(key: String, default: T?): Flow<T?> {
         return flow
+            .onStart { emit(key) }
             .filter { it == key || it == null }
             .map {
                 @Suppress("UNCHECKED_CAST")
@@ -38,7 +40,7 @@ internal class PreferencesDelegate(
                     is Long -> getLong(key) as T?
                     is Boolean -> getBoolean(key) as T?
                     is Float -> getFloat(key) as T?
-                    else -> throw IllegalArgumentException("Unsupported preference flow type")
+                    else -> null
                 } ?: default
             }
             .conflate()

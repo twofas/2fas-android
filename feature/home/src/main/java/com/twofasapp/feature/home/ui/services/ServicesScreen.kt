@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
@@ -133,20 +134,21 @@ private fun ServicesScreen(
 
                 is ModalType.FocusService -> {
                     val id = (modalType as ModalType.FocusService).id
-
-                    FocusServiceModal(
-                        serviceState = uiState.getService(id).asState(),
-                        onEditClick = {
-                            listener.openService(activity, (modalType as ModalType.FocusService).id)
-                            scope.launch { modalState.hide() }
-                        },
-                        onCopyClick = {
-                            activity.copyToClipboard(
-                                uiState.getService(id).code?.current.toString()
-                            )
-                            scope.launch { modalState.hide() }
-                        }
-                    )
+                    uiState.getService(id)?.asState()?.let {
+                        FocusServiceModal(
+                            serviceState = it,
+                            onEditClick = {
+                                scope.launch { modalState.hide() }
+                                listener.openService(activity, (modalType as ModalType.FocusService).id)
+                            },
+                            onCopyClick = {
+                                scope.launch { modalState.hide() }
+                                activity.copyToClipboard(
+                                    uiState.getService(id)?.code?.current.toString()
+                                )
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -206,6 +208,8 @@ private fun ServicesScreen(
                     items = uiState.services,
                     type = { ServicesListItem.Service(it.id) }
                 ) { service ->
+                    Divider(color = TwTheme.color.divider)
+
                     ReorderableItem(
                         state = reorderableState,
                         key = service.id,
@@ -215,18 +219,18 @@ private fun ServicesScreen(
                     ) { isDragging ->
                         Service(
                             state = service.asState(),
-                            style = ServiceStyle.Normal,
-                            isInEditMode = uiState.isInEditMode,
+                            style = if (uiState.isInEditMode) ServiceStyle.Edit else ServiceStyle.Default,
                             modifier = Modifier
-                                .padding(horizontal = 8.dp, vertical = 4.dp)
                                 .shadow(if (isDragging) 8.dp else 0.dp)
-                                .run {
-                                    if (uiState.isInEditMode) {
-                                        detectReorderAfterLongPress(reorderableState)
-                                    } else {
-                                        this
-                                    }
-                                },
+                                .detectReorderAfterLongPress(reorderableState),
+
+//                                .run {
+//                                    if (uiState.isInEditMode) {
+//                                        detectReorderAfterLongPress(reorderableState)
+//                                    } else {
+//                                        this
+//                                    }
+//                                },
                             onClick = {
                                 modalType = ModalType.FocusService(service.id)
                                 scope.launch { modalState.show() }
@@ -239,6 +243,8 @@ private fun ServicesScreen(
                         )
                     }
                 }
+
+                item { Divider(color = TwTheme.color.divider) }
             }
         }
     }

@@ -27,8 +27,8 @@ internal fun Project.applyKotlinAndroid(
         compileOptions {
             isCoreLibraryDesugaringEnabled = true
 
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
+            sourceCompatibility = JavaVersion.VERSION_17
+            targetCompatibility = JavaVersion.VERSION_17
         }
 
         buildFeatures {
@@ -37,7 +37,7 @@ internal fun Project.applyKotlinAndroid(
         }
 
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = "17"
 
             freeCompilerArgs = freeCompilerArgs + listOf(
                 "-opt-in=kotlin.RequiresOptIn",

@@ -18,6 +18,7 @@ internal fun ServiceEntity.asDomain(): Service {
         period = otpPeriod,
         digits = otpDigits,
         algorithm = otpAlgorithm?.let { Service.Algorithm.valueOf(it) },
+        groupId = groupId,
         imageType = selectedImageType?.let {
             when (it) {
                 "Brand" -> Service.ImageType.IconCollection

@@ -28,7 +28,7 @@ internal fun FocusServiceModal(
 
         ModalList {
             SettingsLink(title = "Edit", icon = TwIcons.Edit) { onEditClick() }
-            SettingsLink(title = "Copy code", icon = TwIcons.Copy) { onCopyClick() }
+            SettingsLink(title = "Copy token", icon = TwIcons.Copy) { onCopyClick() }
         }
     }
 }

@@ -26,8 +26,8 @@ fun ServiceImage(
     iconDark: String,
     labelText: String?,
     labelColor: Color,
-    size: Dp = 36.dp,
     modifier: Modifier = Modifier,
+    size: Dp = 36.dp,
 ) {
     Box(modifier = modifier) {
         when (type) {

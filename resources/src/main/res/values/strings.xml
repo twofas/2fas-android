@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  Loco xml export: Android string resources
- Project: 2FAS iOS
+ Project: 2FAS App
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Wed, 28 Dec 2022 11:53:36 +0100
+ Exported at: Sat, 11 Feb 2023 08:20:15 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -160,7 +160,7 @@
     <string name="tokens__choose_method">Choose method</string>
     <string name="tokens__duplicated_private_key">Duplicated Service Key</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">Incorrect service key (only numbers 2 to 7, letters)</string>
+    <string name="tokens__incorrect_service_key">Incorrect service key (only numbers 2 to 7, letters), max. 512 chars long</string>
     <string name="tokens__try_again">OK, let\'s try again</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
@@ -646,4 +646,57 @@
     <string name="settings__recommendation">Check out this awesome two-factor authentication app from 2FAS: https://2fas.com</string>
     <string name="settings__acknowledgements">Acknowledgements</string>
     <string name="introduction__import_external_app">Import from external app</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="one">moments ago</item>
+        <item quantity="other">moments ago</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d days ago</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="one">%d week ago</item>
+        <item quantity="other">%d weeks ago</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="one">%d month ago</item>
+        <item quantity="other">%d months ago</item>
+    </plurals>
+    <string name="commons__unknown_error">Unknown error occurred! Try again!</string>
+    <string name="backup__export_result_success">File successfully saved!</string>
+    <string name="backup__share_result_failure">Could not share file!</string>
+    <string name="backup__enter_password_dialog_title">Type in password</string>
+    <string name="backup__remove_password_msg">Enter the backup password to proceed with remove.</string>
+    <string name="backup__revoke_google_access_msg">Enter the backup password to proceed with revoking access to Google.</string>
+    <string name="backup__synchronization_settings">Synchronization settings</string>
+    <string name="backup__local_file_title">Local file</string>
+    <string name="backup__drive_title">Google Drive sync</string>
+    <string name="backup__delete_file_title">Delete your backup file from Google Drive?</string>
+    <string name="backup__delete_file_msg">Google Sync will be disabled. Your tokens will remain locally, but the 2FAS app will be logged out from your Google Account on this and your synced other devices.</string>
+    <string name="backup__sync_status_waiting">Waiting for sync…</string>
+    <string name="backup__sync_status_progress">Syncing…</string>
+    <string name="import_backup_msg1_encrypted">You are going to import an encrypted backup file.</string>
+    <string name="externalimport__choose_json_cta">Choose JSON file</string>
+    <string name="externalimport__aegis_msg">Export your accounts from Aegis to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__raivo_msg">Use the \"Export OTPs to ZIP archive\" option in Raivo\'s Settings, save a ZIP file, extract it and import the JSON file using the \"Choose JSON file\" button.</string>
+    <string name="externalimport__no_tokens_msg">However, there are no services that could be imported.</string>
+    <string name="commons__try_again">Try again</string>
+    <string name="commons__proceed">Proceed</string>
+    <string name="externalimport__ga_title">Importing 2FA tokens from Google Authenticator app</string>
+    <string name="externalimport__aegis_title">Importing 2FA tokens from Aegis app</string>
+    <string name="externalimport__raivo_title">Importing 2FA tokens from Raivo app</string>
+    <string name="externalimport__ga_success_msg">This QR code allows importing tokens from Google Authenticator.</string>
+    <string name="externalimport__aegis_success_msg">This JSON file allows importing tokens from Aegis.</string>
+    <string name="externalimport__raivo_success_msg">This JSON file allows importing tokens from Raivo.</string>
+    <string name="externalimport__read_error">Could not read any tokens. Try to select a different file.</string>
+    <string name="settings__gd_sync_info">Google Drive sync info</string>
+    <string name="settings__gd_sync_disable_confirm">Are you sure? Without Google Drive sync, you won\'t be able to restore your tokens if you lose or reset your phone!</string>
 </resources>
