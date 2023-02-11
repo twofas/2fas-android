@@ -150,7 +150,7 @@ internal fun ServiceScreen(
                     uiState.hasChanges && uiState.isInputNameValid && uiState.isInputSecretValid && uiState.isInputInfoValid
                 },
             ) {
-                Text(text = "Save".uppercase())
+                Text(text = stringResource(id = R.string.commons__save).uppercase())
             }
 
         }) {

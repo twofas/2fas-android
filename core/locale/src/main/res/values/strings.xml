@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  Loco xml export: Android string resources
- Project: 2FAS iOS
+ Project: 2FAS App
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Wed, 28 Dec 2022 11:53:36 +0100
+ Exported at: Mon, 06 Feb 2023 13:27:59 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -160,7 +160,7 @@
     <string name="tokens__choose_method">Choose method</string>
     <string name="tokens__duplicated_private_key">Duplicated Service Key</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">Incorrect service key (only numbers 2 to 7, letters)</string>
+    <string name="tokens__incorrect_service_key">Incorrect service key (only numbers 2 to 7, letters), max. 512 chars long</string>
     <string name="tokens__try_again">OK, let\'s try again</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
@@ -215,7 +215,7 @@
     <string name="tokens__check_app_permissions">Check if the app has proper permissions in the System Settings</string>
     <string name="tokens__no_qr_codes_found">No QR codes found</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-
+        
         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">There is no correct QR code in the selected image. Please try a different image.</string>
     <string name="tokens__select_service">Select Service</string>

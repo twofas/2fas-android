@@ -100,7 +100,7 @@ internal fun ContentScreen(
                 shape = ButtonShape(),
                 modifier = Modifier.padding(start = 72.dp, top = 6.dp, bottom = 2.dp)
             ) {
-                Text(text = "+ Add new".uppercase(), color = ButtonTextColor())
+                Text(text = stringResource(id = R.string.browser__add_new).uppercase(), color = ButtonTextColor())
             }
         }
 
@@ -171,23 +171,23 @@ internal fun EmptyScreen(
             )
 
             Text(
-                text = "2FAS Web Browser extension",
+                text = stringResource(id = R.string.browser__info_title),
                 style = MaterialTheme.typography.h6,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
 
             Text(
-                text = "1. Install the 2FAS browser extension on your desktop computer.\n2. Pair it with your 2FAS app.",
+                text = stringResource(id = R.string.browser__info_description_first) + "\n\n" + stringResource(id = R.string.browser__info_description_second),
                 style = MaterialTheme.typography.body1,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
 
             Text(text = buildAnnotatedString {
-                append("More info: ")
+                append(stringResource(id = R.string.browser__more_info) + " ")
                 withStyle(style = SpanStyle(MaterialTheme.colors.primary)) {
-                    append("2fas.com/be")
+                    append(stringResource(id = R.string.browser__more_info_link_title))
                 }
             }, style = MaterialTheme.typography.body2, modifier = Modifier
                 .padding(horizontal = 16.dp)
@@ -206,7 +206,7 @@ internal fun EmptyScreen(
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }) {
-            Text(text = "Pair with web browser".uppercase(), color = ButtonTextColor())
+            Text(text = stringResource(id = R.string.browser__pair_with_web_browser).uppercase(), color = ButtonTextColor())
         }
     }
 }

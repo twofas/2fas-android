@@ -11,11 +11,11 @@ import com.afollestad.materialdialogs.customview.getCustomView
 import com.mikepenz.fastadapter.IItem
 import com.mikepenz.fastadapter.adapters.FastItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
+import com.twofasapp.backup.ui.export.ExportBackupPasswordDialog
 import com.twofasapp.base.BaseFragmentPresenter
 import com.twofasapp.databinding.FragmentBackupSettingsBinding
-import com.twofasapp.design.dialogs.SimpleInputDialog
-import com.twofasapp.backup.ui.export.ExportBackupPasswordDialog
 import com.twofasapp.design.dialogs.InfoDialog
+import com.twofasapp.design.dialogs.SimpleInputDialog
 import com.twofasapp.views.ModelDiffUtilCallback
 
 class BackupSettingsFragment : BaseFragmentPresenter<FragmentBackupSettingsBinding>(), BackupSettingsContract.View,
@@ -44,7 +44,7 @@ class BackupSettingsFragment : BaseFragmentPresenter<FragmentBackupSettingsBindi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setPresenter(presenter)
-        (requireActivity() as Listener).updateToolbar("Synchronization settings")
+        (requireActivity() as Listener).updateToolbar(getString(com.twofasapp.resources.R.string.backup__synchronization_settings))
 
         viewBinding.recycler.adapter = adapter
         viewBinding.recycler.itemAnimator = null
@@ -60,14 +60,14 @@ class BackupSettingsFragment : BaseFragmentPresenter<FragmentBackupSettingsBindi
 
     override fun showRemovePasswordDialog(showError: Boolean) {
         SimpleInputDialog(requireContext()).show(
-            title = "Type in password",
-            description = "Enter backup password to proceed with remove.",
-            okText = "Continue",
-            hint = "Password",
+            title = getString(com.twofasapp.resources.R.string.backup__enter_password_dialog_title),
+            description = getString(com.twofasapp.resources.R.string.backup__remove_password_msg),
+            okText = getString(com.twofasapp.resources.R.string.commons__continue),
+            hint = getString(com.twofasapp.resources.R.string.backup__password),
             allowEmpty = false,
             inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD,
             isPassword = true,
-            errorText = if (showError) "Incorrect password. Try again." else null
+            errorText = if (showError) getString(com.twofasapp.resources.R.string.backup__incorrect_password) else null
         ) {
             presenter.onRemovePasswordEntered(it)
         }
@@ -75,14 +75,14 @@ class BackupSettingsFragment : BaseFragmentPresenter<FragmentBackupSettingsBindi
 
     override fun showWipePasswordDialog(showError: Boolean) {
         SimpleInputDialog(requireContext()).show(
-            title = "Type in password",
-            description = "Enter backup password to proceed with revoking access to Google.",
-            okText = "Continue",
-            hint = "Password",
+            title = getString(com.twofasapp.resources.R.string.backup__enter_password_dialog_title),
+            description = getString(com.twofasapp.resources.R.string.backup__revoke_google_access_msg),
+            okText = getString(com.twofasapp.resources.R.string.commons__continue),
+            hint = getString(com.twofasapp.resources.R.string.backup__password),
             allowEmpty = false,
             inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD,
             isPassword = true,
-            errorText = if (showError) "Incorrect password. Try again." else null
+            errorText = if (showError) getString(com.twofasapp.resources.R.string.backup__incorrect_password) else null
         ) {
             presenter.onWipePasswordEntered(it)
         }
@@ -115,5 +115,9 @@ class BackupSettingsFragment : BaseFragmentPresenter<FragmentBackupSettingsBindi
 
     override fun onPasswordDialogCanceled() {
         presenter.onPasswordDialogCanceled()
+    }
+
+    override fun getStringRes(res: Int): String {
+        return getString(res)
     }
 }

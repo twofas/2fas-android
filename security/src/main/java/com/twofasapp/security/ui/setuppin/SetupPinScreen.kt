@@ -6,7 +6,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -72,15 +77,15 @@ internal fun SetupPinScreen(
                         .align(Alignment.BottomCenter)
                         .padding(16.dp)
                 ) {
-                    Text(text = "Pin options".uppercase())
+                    Text(text = stringResource(id = R.string.settings__select_pin_length).uppercase())
                 }
             }
         }
 
         if (showPinOptionsDialog) {
             ListDialog(
-                items = PinDigits.values().map { it.label },
-                selected = uiState.digits.label,
+                items = PinDigits.values().map { stringResource(id = it.label) },
+                selected = stringResource(id = uiState.digits.label),
                 onDismiss = { showPinOptionsDialog = false },
                 onSelected = { index, _ ->
                     currentPinState.reset()

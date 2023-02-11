@@ -123,7 +123,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Edit" />
+            android:text="@string/commons__edit" />
     </LinearLayout>
 
     <LinearLayout
@@ -146,6 +146,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Copy code" />
+            android:text="@string/tokens__copy_token" />
     </LinearLayout>
 </LinearLayout>

@@ -13,7 +13,7 @@ interface ExportBackupContract {
         fun passwordClicks(): Flowable<Boolean>
 
         fun showSaveFilePicker(filename: String)
-        fun showResultToast(text: String)
+        fun showResultToast(res: Int)
         fun showPasswordDialog()
         fun setPasswordSwitchChecked(isChecked: Boolean)
         fun showSharePicker(dirPath: String, dir: String, filename: String, content: String)

@@ -94,7 +94,7 @@ internal fun ChangeBrandScreen(
 
         LazyColumn(state = listState) {
             // Icon order
-            item(key = "icon_order") { SectionHeader(header = "Request a brand icon") }
+            item(key = "icon_order") { SectionHeader(header = stringResource(id = R.string.tokens__order_icon_title)) }
 
             item(key = "icon_order_details") {
 
@@ -107,7 +107,7 @@ internal fun ChangeBrandScreen(
 
                     Column(modifier = Modifier.padding(start = 24.dp)) {
                         Text(
-                            text = "Can’t find your brand icon in 2FAS app?",
+                            text = stringResource(id = R.string.tokens__order_icon_description),
                             style = MaterialTheme.typography.body1,
                         )
                         Spacer(modifier = Modifier.height(12.dp))
@@ -116,7 +116,7 @@ internal fun ChangeBrandScreen(
                             showBrandingDialog.value = true
                         }) {
                             Text(
-                                text = "Request a brand icon",
+                                text = stringResource(id = R.string.tokens__order_icon_link),
                                 style = MaterialTheme.typography.body1.copy(fontWeight = FontWeight.SemiBold),
                                 color = MaterialTheme.colors.primary,
                                 modifier = Modifier.align(CenterVertically)
@@ -189,8 +189,8 @@ internal fun ChangeBrandScreen(
 
         if (showBrandingDialog.value) {
             ListDialog(
-                title = "Select the request method",
-                items = listOf("Request icon as a user", "Submit icon as a company"),
+                title = stringResource(id = R.string.tokens__order_menu_title),
+                items = listOf(stringResource(id = R.string.tokens__order_menu_option_user), stringResource(id = R.string.tokens__order_menu_option_company)),
                 onDismiss = { showBrandingDialog.value = false },
                 onSelected = { index, _ ->
                     when (index) {

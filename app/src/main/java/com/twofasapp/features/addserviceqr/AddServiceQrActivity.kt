@@ -3,15 +3,15 @@ package com.twofasapp.features.addserviceqr
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
-import com.twofasapp.resources.R
 import com.twofasapp.base.BaseActivityPresenter
 import com.twofasapp.core.log.FileLogger
-import com.twofasapp.extensions.navigationClicksThrottled
-import com.twofasapp.extensions.toastLong
 import com.twofasapp.databinding.ActivityAddServiceQrBinding
 import com.twofasapp.design.dialogs.CancelAction
 import com.twofasapp.design.dialogs.ConfirmAction
 import com.twofasapp.design.dialogs.ConfirmDialog
+import com.twofasapp.extensions.navigationClicksThrottled
+import com.twofasapp.extensions.toastLong
+import com.twofasapp.resources.R
 import lt.neworld.spanner.Spanner
 import lt.neworld.spanner.Spans
 
@@ -98,27 +98,27 @@ class AddServiceQrActivity : BaseActivityPresenter<ActivityAddServiceQrBinding>(
         val counter = if (servicesCount == totalServicesCount) {
             servicesCount.toString()
         } else {
-            "$servicesCount out of $totalServicesCount"
+            getString(R.string.tokens__google_auth_out_of_title).format(servicesCount, totalServicesCount)
         }
 
         val desc = if (servicesCount == 0) {
-            Spanner().append("\nHowever there are no services that could be imported.")
+            Spanner().append("\n${getString(R.string.externalimport__no_tokens_msg)}")
         } else {
             Spanner()
-                .append("\nThis QR code allows you to import services from Google Authenticator.\n\n")
+                .append("\n${getString(R.string.tokens__google_auth_import_subtitle)}\n\n")
                 .append(counter, Spans.bold(), Spans.sizeDP(24))
                 .append("\n\n")
-                .append("${if (servicesCount == 1) "service" else "services"} will be imported.")
+                .append(getString(R.string.tokens__google_auth_import_subtitle_end))
         }
 
         val okText = if (servicesCount == 0) {
-            "Try again"
+            getString(R.string.commons__try_again)
         } else {
-            "Proceed"
+            getString(R.string.commons__proceed)
         }
 
         scanInfoDialog.show(
-            title = "Import 2FA services from Google Authenticator",
+            title = getString(R.string.tokens__google_auth_import),
             desc = "",
             descSpan = desc,
             okText = okText,

@@ -1,5 +1,7 @@
 package com.twofasapp.usecases.services
 
+import android.content.Context
+import com.twofasapp.R
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.entity.GroupModel
 import com.twofasapp.entity.ServiceModel
@@ -19,6 +21,7 @@ import io.reactivex.Single
 import java.time.Instant
 
 class ServicesModelMapper(
+    private val context: Context,
     private val generateTotp: GenerateTotp,
     private val storeServicesOrder: StoreServicesOrder,
     private val storeGroups: StoreGroups,
@@ -72,7 +75,7 @@ class ServicesModelMapper(
         return GroupModel(
             group = com.twofasapp.prefs.model.Group(
                 id = null,
-                name = "My Tokens",
+                name = context.getString(com.twofasapp.resources.R.string.tokens__my_tokens),
                 isExpanded = isExpanded,
             ),
             services = services
