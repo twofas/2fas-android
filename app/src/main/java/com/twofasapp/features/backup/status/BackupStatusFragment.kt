@@ -58,7 +58,7 @@ class BackupStatusFragment : BaseFragmentPresenter<FragmentBackupStatusBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setPresenter(presenter)
-        listener.updateToolbar("2FAS Backup")
+        listener.updateToolbar(getString(com.twofasapp.resources.R.string.backup__2fas_backup))
 
         viewBinding.recycler.adapter = adapter
         viewBinding.recycler.itemAnimator = null
@@ -107,9 +107,9 @@ class BackupStatusFragment : BaseFragmentPresenter<FragmentBackupStatusBinding>(
         passwordDialog.dismiss()
         passwordDialog.show(
             title = getString(com.twofasapp.resources.R.string.backup__enter_password_dialog_title),
-            description = "Enter backup password to enable sync.",
+            description = getString(com.twofasapp.resources.R.string.backup__backup_file_password_title),
             okText = getString(com.twofasapp.resources.R.string.commons__continue),
-            hint = "Password",
+            hint = getString(com.twofasapp.resources.R.string.backup__password),
             isCancelable = false,
             allowEmpty = false,
             inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD,

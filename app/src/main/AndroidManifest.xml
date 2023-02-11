@@ -131,7 +131,7 @@
 
         <activity
             android:name=".features.backup.BackupActivity"
-            android:label="2FAS Backup"
+            android:label="@string/backup__2fas_backup"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
