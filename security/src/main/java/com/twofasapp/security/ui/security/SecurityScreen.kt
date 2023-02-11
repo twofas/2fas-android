@@ -115,7 +115,11 @@ internal fun SecurityScreen(
                         title = stringResource(id = R.string.settings__limit_of_trials),
                         icon = painterResource(id = R.drawable.ic_limit_trials),
                         subtitleGravity = SubtitleGravity.END,
-                        subtitle = uiState.pinTrials.label,
+                        subtitle = if (uiState.pinTrials == PinTrials.NoLimit) {
+                            stringResource(id = R.string.settings__no_limit)
+                        } else {
+                            uiState.pinTrials.label
+                        },
                         click = { showTrailsDialog = true }
                     )
                 }
@@ -133,7 +137,7 @@ internal fun SecurityScreen(
                         title = stringResource(id = R.string.settings__block_for),
                         icon = painterResource(id = R.drawable.ic_block_for),
                         subtitleGravity = SubtitleGravity.END,
-                        subtitle = uiState.pinTimeout.label,
+                        subtitle = stringResource(id = uiState.pinTimeout.label),
                         isEnabled = uiState.pinTrials != PinTrials.NoLimit,
                         click = { showTimeoutDialog = true }
                     )
@@ -171,8 +175,14 @@ internal fun SecurityScreen(
 
         if (showTrailsDialog) {
             ListDialog(
-                items = PinTrials.values().map { it.label },
-                selected = uiState.pinTrials.label,
+                items = PinTrials.values().map {
+                    if (it == PinTrials.NoLimit) {
+                        stringResource(id = R.string.settings__no_limit)
+                    } else {
+                        it.label
+                    }
+                },
+                selected = if (uiState.pinTrials == PinTrials.NoLimit) stringResource(id = R.string.settings__no_limit) else uiState.pinTrials.label,
                 onDismiss = { showTrailsDialog = false },
                 onSelected = { index, _ -> viewModel.updatePinTrails(PinTrials.values()[index]) }
             )
@@ -180,8 +190,8 @@ internal fun SecurityScreen(
 
         if (showTimeoutDialog) {
             ListDialog(
-                items = PinTimeout.values().map { it.label },
-                selected = uiState.pinTimeout.label,
+                items = PinTimeout.values().map { stringResource(id = it.label) },
+                selected = stringResource(id = uiState.pinTimeout.label),
                 onDismiss = { showTimeoutDialog = false },
                 onSelected = { index, _ -> viewModel.updatePinTimeout(PinTimeout.values()[index]) }
             )

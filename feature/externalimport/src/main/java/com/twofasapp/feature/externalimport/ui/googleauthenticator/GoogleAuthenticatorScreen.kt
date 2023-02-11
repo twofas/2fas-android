@@ -75,15 +75,15 @@ internal fun GoogleAuthenticatorRoute(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "Export your accounts from Google Authenticator to a QR code using the \"Transfer Accounts\" option. Then make a screenshot and use the \"Choose QR code\" button below. If you're importing codes from another device, use the \"Scan QR code\" button instead.",
-                    style = MaterialTheme.typography.bodyMedium.copy(lineHeight = 22.sp, fontSize = 15.sp),
+                    text = stringResource(R.string.introduction__google_authenticator_import_process),
+                    style = MaterialTheme.typography.bodyMedium.copy(lineHeight = 22.sp, fontSize = 17.sp),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 32.dp)
                 )
             }
 
             TwButton(
-                text = "Scan QR code",
+                text = stringResource(id = R.string.commons__scan_qr_code),
                 onClick = {
                     cameraPermissionRequest.execute()
                         .take(1)
@@ -101,7 +101,7 @@ internal fun GoogleAuthenticatorRoute(
             )
 
             TwTextButton(
-                text = "Choose QR code",
+                text = stringResource(id = R.string.introduction__choose_qr_code),
                 onClick = {
                     cameraPermissionRequest.execute()
                         .take(1)

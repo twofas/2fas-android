@@ -45,17 +45,17 @@ class ExportBackupPresenter(
     override fun onFilePicked(fileUri: Uri?, isExportWithoutPasswordChecked: Boolean) {
         fileUri?.let {
             exportBackup.execute(it, if (isExportWithoutPasswordChecked) null else backupPassword).subscribe({ result ->
-                    when (result) {
-                        is ExportBackup.Result.Success -> {
-                            view.showResultToast("File successfully saved!")
-                            navigator.finish()
-                        }
-
-                        ExportBackup.Result.UnknownError -> {
-                            view.showResultToast("Unknown error occurred! Try again!")
-                        }
+                when (result) {
+                    is ExportBackup.Result.Success -> {
+                        view.showResultToast(com.twofasapp.resources.R.string.backup__export_result_success)
+                        navigator.finish()
                     }
-                }, { it.printStackTrace() }).addToDisposables()
+
+                    ExportBackup.Result.UnknownError -> {
+                        view.showResultToast(com.twofasapp.resources.R.string.commons__unknown_error)
+                    }
+                }
+            }, { it.printStackTrace() }).addToDisposables()
         }
     }
 
@@ -82,19 +82,19 @@ class ExportBackupPresenter(
         when (exportType) {
             ExportType.Download -> view.showSaveFilePicker(generateFilename())
             ExportType.Share -> exportBackup.execute(null, backupPassword).safelySubscribe {
-                    backupPassword = ""
+                backupPassword = ""
 
-                    when (it) {
-                        is ExportBackup.Result.Success -> view.showSharePicker(
-                            dirPath = filesProvider.getExternalTmpPath(),
-                            dir = "backup",
-                            filename = generateFilename(),
-                            content = it.backupContent,
-                        )
+                when (it) {
+                    is ExportBackup.Result.Success -> view.showSharePicker(
+                        dirPath = filesProvider.getExternalTmpPath(),
+                        dir = "backup",
+                        filename = generateFilename(),
+                        content = it.backupContent,
+                    )
 
-                        ExportBackup.Result.UnknownError -> view.showResultToast("Could not share file!")
-                    }
+                    ExportBackup.Result.UnknownError -> view.showResultToast(com.twofasapp.resources.R.string.backup__share_result_failure)
                 }
+            }
         }
     }
 

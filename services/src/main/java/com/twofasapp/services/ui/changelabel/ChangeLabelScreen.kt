@@ -62,7 +62,7 @@ internal fun ChangeLabelScreen(
                     },
                     enabled = labelText.value.isNotBlank() && labelText.value.isNotEmpty()
                 ) {
-                    Text(text = "Save".uppercase())
+                    Text(text = stringResource(id = R.string.commons__save).uppercase())
                 }
             })
 

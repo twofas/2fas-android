@@ -106,15 +106,15 @@ class BackupStatusFragment : BaseFragmentPresenter<FragmentBackupStatusBinding>(
         isPasswordDialogShown = true
         passwordDialog.dismiss()
         passwordDialog.show(
-            title = "Type in password",
+            title = getString(com.twofasapp.resources.R.string.backup__enter_password_dialog_title),
             description = "Enter backup password to enable sync.",
-            okText = "Continue",
+            okText = getString(com.twofasapp.resources.R.string.commons__continue),
             hint = "Password",
             isCancelable = false,
             allowEmpty = false,
             inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD,
             isPassword = true,
-            errorText = if (showError) "Incorrect password. Try again." else null,
+            errorText = if (showError) getString(com.twofasapp.resources.R.string.backup__incorrect_password) else null,
             cancelAction = {
                 isPasswordDialogShown = false
                 if (signOutOnCancel) {

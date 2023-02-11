@@ -48,7 +48,7 @@ internal fun ImportResultRoute(
     }
 
     if (uiState.finishSuccess) {
-        Toast.makeText(activity, "Tokens imported successfully!", Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity?.getString(R.string.backup__import_completed_successfuly), Toast.LENGTH_LONG).show()
         onFinish()
     }
 
@@ -85,37 +85,45 @@ internal fun ImportResultRoute(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Text(
-                    text = uiState.title,
-                    style = MaterialTheme.typography.titleMedium,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
+                if (uiState.title != null) {
+                    Text(
+                        text = stringResource(id = uiState.title),
+                        style = MaterialTheme.typography.titleMedium,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Text(
-                    text = uiState.description,
-                    style = MaterialTheme.typography.bodyMedium,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = 24.dp)
-                )
+                if (uiState.description != null) {
+                    Text(
+                        text = stringResource(id = uiState.description),
+                        style = MaterialTheme.typography.bodyMedium,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = 24.dp)
+                    )
+                }
 
-                if (uiState.counter.isNotBlank()) {
+                if (uiState.servicesToImport != 0 && uiState.totalServicesCount != 0) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
-                        text = uiState.counter,
+                        text = if (uiState.servicesToImport == uiState.totalServicesCount) {
+                            uiState.servicesToImport.toString()
+                        } else {
+                            stringResource(id = R.string.tokens__google_auth_out_of_title).format(uiState.servicesToImport, uiState.totalServicesCount)
+                        },
                         style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier.padding(horizontal = 24.dp)
                     )
                 }
 
-                if (uiState.footer.isNotBlank()) {
+                if (uiState.footer != null) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
-                        text = uiState.footer,
+                        text = stringResource(id = uiState.footer),
                         style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier.padding(horizontal = 24.dp)
                     )
@@ -123,7 +131,7 @@ internal fun ImportResultRoute(
             }
 
             TwButton(
-                text = uiState.button,
+                text = uiState.button?.let { stringResource(id = uiState.button) } ?: "",
                 onClick = {
                     if (uiState.importResult is ExternalImport.Success) {
                         viewModel.saveServices()

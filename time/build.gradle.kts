@@ -11,6 +11,8 @@ dependencies {
     implementation(project(":core:di"))
     implementation(project(":time:domain"))
     implementation(project(":prefs"))
+    implementation(project(":core:network"))
+    implementation(project(":resources"))
     implementation(project(":truetime"))
     implementation(project(":truetime-rx"))
 

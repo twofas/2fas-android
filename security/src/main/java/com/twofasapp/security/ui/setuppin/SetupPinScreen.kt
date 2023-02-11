@@ -77,15 +77,15 @@ internal fun SetupPinScreen(
                         .align(Alignment.BottomCenter)
                         .padding(16.dp)
                 ) {
-                    Text(text = "Pin options".uppercase())
+                    Text(text = stringResource(id = R.string.settings__select_pin_length).uppercase())
                 }
             }
         }
 
         if (showPinOptionsDialog) {
             ListDialog(
-                items = PinDigits.values().map { it.label },
-                selected = uiState.digits.label,
+                items = PinDigits.values().map { stringResource(id = it.label) },
+                selected = stringResource(id = uiState.digits.label),
                 onDismiss = { showPinOptionsDialog = false },
                 onSelected = { index, _ ->
                     currentPinState.reset()

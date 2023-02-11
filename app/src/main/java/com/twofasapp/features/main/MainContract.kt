@@ -32,6 +32,7 @@ interface MainContract {
         fun showServiceExistsDialog(confirmAction: ConfirmAction, cancelAction: CancelAction)
         fun checkAppVersionUpdate()
         fun showRemoveQrReminder(serviceDto: ServiceDto)
+        fun getStringRes(res: Int): String
     }
 
     abstract class Presenter : com.twofasapp.base.BasePresenter() {

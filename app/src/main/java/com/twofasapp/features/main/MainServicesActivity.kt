@@ -83,8 +83,8 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
     private lateinit var sortMenuItem: MenuItem
     private lateinit var searchMenuItem: MenuItem
     private lateinit var searchView: SearchView
-
     private val appUpdateManager by lazy { AppUpdateManagerFactory.create(this) }
+
     private val appUpdateListener: InstallStateUpdatedListener by lazy {
         InstallStateUpdatedListener { state ->
             if (state.installStatus() == InstallStatus.DOWNLOADED) {
@@ -92,7 +92,6 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
             }
         }
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(ActivityMainBinding::inflate)
@@ -147,10 +146,10 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
 //                                        authenticationDialogs.put(
 //                                            tokenRequest.requestId,
 //                                            MaterialDialog(this@MainServicesActivity)
-//                                                .title(text = "2FA token request")
-//                                                .message(text = "Do you want to share the 2FA token to ${tokenRequest.domain}?")
+//                                                .title(text = getString(R.string.browser__2fa_token_request_title))
+//                                                .message(text = getString(R.string.browser__2fa_token_request_content).plus(" ${tokenRequest.domain}?"))
 //                                                .cancelable(false)
-//                                                .positiveButton(text = "Approve") {
+//                                                .positiveButton(text = getString(R.string.extension__approve)) {
 //                                                    val isOneDomainMatched =
 //                                                        matchedServices.size == 1
 //                                                    val serviceId =
@@ -196,7 +195,7 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
 //                                                        startActivity(contentIntent)
 //                                                    }
 //                                                }
-//                                                .negativeButton(text = "Deny") {
+//                                                .negativeButton(text = getString(R.string.extension__deny)) {
 //                                                    val payload = BrowserExtensionRequestPayload(
 //                                                        action = BrowserExtensionRequestPayload.Action.Deny,
 //                                                        notificationId = -1,
@@ -251,6 +250,10 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
         checkAppVersionUpdate()
     }
 
+    override fun getStringRes(res: Int): String {
+        return getString(res)
+    }
+
     override fun onPause() {
         super.onPause()
         presenter.stopObservingPushes()
@@ -292,17 +295,15 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
 
     override fun showRemoveQrReminder(serviceDto: ServiceDto) {
         val desc = Spanner()
-            .append("Service is added successfully. We strongly recommend that you ")
-            .append("delete the QR code screenshot from your gallery", Spans.bold())
-            .append(".\n")
-            .append("If someone takes over this QR code printscreen, they will be able to get the 2FA codes to this service.")
-
+            .append(getString(R.string.tokens__gallery_advice_content_first))
+            .append(getString(R.string.tokens__gallery_advice_content_middle_bold), Spans.bold())
+            .append(getString(R.string.tokens__gallery_advice_content_last))
 
         removeQrReminderDialog.show(
-            title = "Best practice",
+            title = getString(R.string.tokens__gallery_advice_title),
             desc = "",
             descSpan = desc,
-            okText = "Got it!",
+            okText = getString(R.string.commons__got_it),
             imageRes = R.drawable.remove_qr_reminder_image,
             showCancel = false,
             action = { removeQrReminderDialog.dismiss() },
@@ -459,7 +460,7 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
 
     override fun showSortDialog(initialSelection: Int, onSelectAction: (Int) -> Unit) {
         MaterialDialog(this)
-            .title(text = "Sort by")
+            .title(text = getString(R.string.tokens__sort_by))
             .listItemsSingleChoice(
                 R.array.services_sort_type,
                 initialSelection = initialSelection

@@ -7,7 +7,7 @@
     </array>
 
     <array name="services_sort_type">
-        <item>A - Z</item>
-        <item>Manual</item>
+        <item>@string/tokens__sort_by_a_to_z</item>
+        <item>@string/tokens__sort_by_manual</item>
     </array>
 </resources>

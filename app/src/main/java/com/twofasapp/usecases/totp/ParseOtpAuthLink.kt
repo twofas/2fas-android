@@ -27,7 +27,9 @@ class ParseOtpAuthLink : UseCaseParameterized<ParseOtpAuthLink.Params, Single<Ot
                     Timber.i("Parse link: ${params.link}")
                 }
 
-                val uri = Uri.parse(Uri.decode(params.link))
+                val decoded = Uri.decode(params.link)
+                    .replace("#", "-") // remove hash, Uri.parse terminates on that
+                val uri = Uri.parse(decoded)
 
                 if (isUriValid(uri).not()) {
                     throw IllegalArgumentException("Link is not supported")

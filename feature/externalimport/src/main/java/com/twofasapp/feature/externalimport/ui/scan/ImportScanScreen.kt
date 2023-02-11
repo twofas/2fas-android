@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import com.twofasapp.core.encoding.encodeBase64ToString
 import com.twofasapp.design.dialogs.InfoDialog
 import com.twofasapp.designsystem.common.TwTopAppBar
@@ -23,7 +24,7 @@ internal fun ImportScanRoute(
     val activity = (LocalContext.current as? Activity)
 
     Scaffold(
-        topBar = { TwTopAppBar("Scan QR Code") }
+        topBar = { TwTopAppBar(stringResource(id = com.twofasapp.resources.R.string.commons__scan_qr_code)) }
     ) { padding ->
 
         QrScannerScreen(isGalleryEnabled = true, startWithGallery = startFromGallery, modifier = Modifier.padding(padding))

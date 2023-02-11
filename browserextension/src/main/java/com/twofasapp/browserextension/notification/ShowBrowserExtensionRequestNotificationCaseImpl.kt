@@ -6,12 +6,12 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
-import com.twofasapp.resources.R
 import com.twofasapp.browserextension.ui.request.BrowserExtensionRequestActivity
 import com.twofasapp.browserextension.ui.request.BrowserExtensionRequestApproveActivity
 import com.twofasapp.push.domain.ShowBrowserExtensionRequestNotificationCase
 import com.twofasapp.push.domain.model.Push
 import com.twofasapp.push.notification.NotificationChannelProvider
+import com.twofasapp.resources.R
 import com.twofasapp.security.domain.GetLockMethodCase
 import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.services.domain.GetServicesCase
@@ -35,8 +35,8 @@ class ShowBrowserExtensionRequestNotificationCaseImpl(
         val serviceId = if (matchedServices.size == 1) matchedServices.first().id else null
 
         val notification = NotificationCompat.Builder(context, notificationChannelProvider.getBrowserExtensionChannelId())
-            .setContentTitle("2FA token request")
-            .setContentText("Do you want to share the 2FA token to $domain?")
+            .setContentTitle(context.getString(R.string.browser__2fa_token_request_title))
+            .setContentText(context.getString(R.string.browser__2fa_token_request_content).plus(" $domain?"))
             .setStyle(NotificationCompat.BigTextStyle())
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
@@ -73,8 +73,10 @@ class ShowBrowserExtensionRequestNotificationCaseImpl(
                         domain = domain,
                     )
 
-                    val denyAction = NotificationCompat.Action.Builder(R.drawable.ic_action_deny, "Deny", denyIntent).build()
-                    val allowAction = NotificationCompat.Action.Builder(R.drawable.ic_action_allow, "Approve", allowIntent).build()
+                    val denyAction =
+                        NotificationCompat.Action.Builder(R.drawable.ic_action_deny, context.getString(R.string.extension__deny), denyIntent).build()
+                    val allowAction =
+                        NotificationCompat.Action.Builder(R.drawable.ic_action_allow, context.getString(R.string.extension__approve), allowIntent).build()
 
                     addAction(denyAction)
                     addAction(allowAction)
@@ -153,6 +155,7 @@ class ShowBrowserExtensionRequestNotificationCaseImpl(
                     context, notificationId + action.hashCode(), contentIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
                 )
             }
+
             else -> {
                 val notifyIntent = BrowserExtensionRequestReceiver.createIntent(context, payload)
                 PendingIntent.getBroadcast(
