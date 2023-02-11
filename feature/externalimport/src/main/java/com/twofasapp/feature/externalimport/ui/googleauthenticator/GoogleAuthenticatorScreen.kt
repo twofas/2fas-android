@@ -31,6 +31,7 @@ import com.twofasapp.design.compose.dialogs.RationaleDialog
 import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.feature.externalimport.ui.common.ImportDescription
 import com.twofasapp.permissions.CameraPermissionRequestFlow
 import com.twofasapp.permissions.PermissionStatus
 import com.twofasapp.resources.R
@@ -59,7 +60,7 @@ internal fun GoogleAuthenticatorRoute(
 
             Column(
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
+                horizontalAlignment = CenterHorizontally,
                 modifier = Modifier
                     .fillMaxSize()
                     .weight(1f)
@@ -69,17 +70,12 @@ internal fun GoogleAuthenticatorRoute(
                 Image(
                     painter = painterResource(id = R.drawable.import_google_authenticator),
                     contentDescription = null,
-                    modifier = Modifier.height(100.dp)
+                    modifier = Modifier.height(120.dp)
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Text(
-                    text = stringResource(R.string.introduction__google_authenticator_import_process),
-                    style = MaterialTheme.typography.bodyMedium.copy(lineHeight = 22.sp, fontSize = 17.sp),
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = 32.dp)
-                )
+                ImportDescription(text = stringResource(id = R.string.introduction__google_authenticator_import_process),)
             }
 
             TwButton(

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Sat, 11 Feb 2023 08:20:15 -0800
+ Exported at: Thu, 16 Feb 2023 09:40:27 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -534,7 +534,7 @@
     <string name="commons__search">Search</string>
     <string name="errors__no_app">No application that supports this link</string>
     <string name="permissions__camera_permission">Camera Permission</string>
-    <string name="permissions__camera_permission_description">Camera permission is required to scan QR Codes. If you want to use this feature go to Application Information -&amp;gt; Permissions and Enable Camera.</string>
+    <string name="permissions__camera_permission_description">Camera permission is required to scan QR Codes. If you want to use this feature go to Application Information and Permissions and Enable Camera.</string>
     <string name="security__disable_pin">Disable PIN</string>
     <string name="security__enter_your_new_pin">Please enter your new %s PIN</string>
     <string name="security__pin_error_incorrect">PIN incorrect! Please try again</string>
@@ -699,4 +699,11 @@
     <string name="externalimport__read_error">Could not read any tokens. Try to select a different file.</string>
     <string name="settings__gd_sync_info">Google Drive sync info</string>
     <string name="settings__gd_sync_disable_confirm">Are you sure? Without Google Drive sync, you won\'t be able to restore your tokens if you lose or reset your phone!</string>
+    <string name="extension__code_sent_msg">Code sent successfully</string>
+    <string name="extension__code_sent_error_msg">Error occurred when sending code</string>
+    <string name="tokens__add_service_title">Add new service</string>
+    <string name="tokens__customize_service_title">Customize service</string>
+    <string name="extension__services_suggested_header">Suggested</string>
+    <string name="extension__services_all_header">All services</string>
+    <string name="extension__services_other_header">Other services</string>
 </resources>

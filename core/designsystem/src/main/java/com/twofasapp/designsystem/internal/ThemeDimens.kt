@@ -7,7 +7,7 @@ import androidx.compose.ui.unit.dp
 @Immutable
 @Stable
 class ThemeDimens {
-    val buttonHeight = 44.dp
+    val buttonHeight = 46.dp
     val buttonHeightSmall = 36.dp
     val radiusDefault = 12.dp
     val radiusSmall = 8.dp

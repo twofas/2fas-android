@@ -39,7 +39,7 @@ class DeveloperActivity : BaseComponentActivity() {
                     topBar = {
                         Toolbar(title = "Developer Options", actions = {
                             TextButton(onClick = { restartApp() }) {
-                                Text(text = "Restart".uppercase())
+                                Text(text = "Restart")
                             }
                         }) { onBackPressed() }
                     }

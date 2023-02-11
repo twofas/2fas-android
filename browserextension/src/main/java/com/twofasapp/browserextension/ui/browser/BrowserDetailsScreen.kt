@@ -18,6 +18,7 @@ import com.twofasapp.design.compose.SimpleEntry
 import com.twofasapp.design.compose.dialogs.ConfirmDialog
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.locale.TwLocale
 import com.twofasapp.resources.R
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -47,11 +48,13 @@ fun BrowserDetailsScreen(
                 )
             }
 
-            item {
-                SimpleEntry(
-                    title = stringResource(id = R.string.browser__pairing_date),
-                    subtitle = uiState.browserPairedAt,
-                )
+            if (uiState.browserPairedAt != null) {
+                item {
+                    SimpleEntry(
+                        title = stringResource(id = R.string.browser__pairing_date),
+                        subtitle = TwLocale.formatDate(uiState.browserPairedAt),
+                    )
+                }
             }
             item { Divider(color = TwTheme.color.divider, modifier = Modifier.padding(vertical = 8.dp)) }
             item {

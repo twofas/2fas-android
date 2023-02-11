@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -49,14 +50,14 @@ fun PairingProgressScreen(
     ) { padding ->
         AnimatedContent(
             condition = uiState.value.isPairing,
-            contentWhenTrue = { ProgressContent() },
+            contentWhenTrue = { ProgressContent(Modifier.fillMaxSize().padding(padding)) },
             contentWhenFalse = {
                 ResultContent(
                     onContinueClick = { openMain() },
                     onScanAgainClick = { openPairingScan() },
                     uiState.value.isPairingSuccess,
                     uiState.value.code,
-                    padding
+                    modifier = Modifier.fillMaxSize().padding(padding)
                 )
             },
         )
@@ -64,11 +65,11 @@ fun PairingProgressScreen(
 }
 
 @Composable
-internal fun ProgressContent() {
+internal fun ProgressContent(modifier: Modifier) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.browser_extension_progress))
     val progress by animateLottieCompositionAsState(composition, iterations = LottieConstants.IterateForever)
 
-    LottieAnimation(composition, progress)
+    LottieAnimation(composition, progress, modifier = modifier)
 }
 
 @Composable
@@ -77,7 +78,7 @@ internal fun ResultContent(
     onScanAgainClick: () -> Unit = {},
     isSuccess: Boolean,
     code: Int? = null,
-    padding: PaddingValues,
+    modifier: Modifier
 ) {
     val image = if (isSuccess) R.drawable.browser_extension_success_image else R.drawable.browser_extension_error_image
 
@@ -98,16 +99,12 @@ internal fun ResultContent(
     val ctaAction: () -> Unit = {
         if (isSuccess) {
             onContinueClick()
-//        { router.navigate(SettingsDirections.GoBack) }
         } else {
             onScanAgainClick()
-//            { router.navigate(SettingsDirections.PairingScan) }
         }
     }
     ConstraintLayout(
-        modifier = Modifier
-            .fillMaxHeight()
-            .padding(padding)
+        modifier = modifier
             .padding(horizontal = 16.dp)
     ) {
         val (content, pair) = createRefs()
@@ -129,7 +126,6 @@ internal fun ResultContent(
                 contentDescription = null,
                 modifier = Modifier
                     .height(130.dp)
-                    .offset(y = (-16).dp)
             )
 
             Text(
@@ -156,7 +152,7 @@ internal fun ResultContent(
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }) {
-            Text(text = stringResource(id = cta).uppercase(), color = ButtonTextColor())
+            Text(text = stringResource(id = cta), color = ButtonTextColor())
         }
     }
 }

@@ -102,7 +102,7 @@ internal fun DeleteServiceScreen(
                 modifier = Modifier.height(ButtonHeight())
 
             ) {
-                Text(text = stringResource(id = R.string.delete_service_cta).uppercase(), color = ButtonTextColor())
+                Text(text = stringResource(id = R.string.delete_service_cta), color = ButtonTextColor())
             }
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -112,7 +112,7 @@ internal fun DeleteServiceScreen(
                 shape = ButtonShape(),
                 modifier = Modifier.height(ButtonHeight())
             ) {
-                Text(text = stringResource(id = R.string.commons__cancel).uppercase())
+                Text(text = stringResource(id = R.string.commons__cancel))
             }
         }
     }

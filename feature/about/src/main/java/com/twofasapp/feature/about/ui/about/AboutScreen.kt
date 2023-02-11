@@ -11,7 +11,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.core.app.ShareCompat
-import com.google.android.play.core.review.ReviewManagerFactory
 import com.twofasapp.designsystem.R
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
@@ -55,17 +54,7 @@ private fun AboutScreen(
 
                 item {
                     SettingsLink(title = TwLocale.strings.aboutWriteReview, icon = TwIcons.Write) {
-                        val manager = ReviewManagerFactory.create(activity)
-                        val request = manager.requestReviewFlow()
-                        request.addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                val flow = manager.launchReviewFlow(
-                                    activity,
-                                    task.result
-                                )
-                                flow.addOnCompleteListener { onReviewClick() }
-                            }
-                        }
+                        uriHandler.openUri(TwLocale.links.playStore)
                     }
                 }
 

@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.design.compose.dialogs.internal.BaseDialog
 import com.twofasapp.design.theme.radioColors
 import com.twofasapp.design.theme.textPrimary
+import com.twofasapp.designsystem.TwTheme
 
 @Composable
 fun ListDialog(
@@ -60,7 +61,7 @@ fun ListDialog(
 
                         Text(
                             text = it,
-                            style = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.textPrimary),
+                            style = MaterialTheme.typography.body1.copy(color = TwTheme.color.onSurfacePrimary),
                             modifier = Modifier
                                 .align(CenterVertically)
                                 .wrapContentWidth()

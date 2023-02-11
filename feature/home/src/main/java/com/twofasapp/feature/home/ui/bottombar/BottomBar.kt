@@ -20,16 +20,19 @@ private val bottomNavItems
         BottomNavItem(
             title = "Tokens",
             icon = TwIcons.Home,
+            iconSelected = TwIcons.HomeFilled,
             route = HomeNode.Services.route,
         ),
         BottomNavItem(
             title = "Settings",
             icon = TwIcons.Settings,
+            iconSelected = TwIcons.SettingsFilled,
             route = HomeNode.Settings.route,
         ),
         BottomNavItem(
             title = "Notifications",
             icon = TwIcons.Notification,
+            iconSelected = TwIcons.NotificationFilled,
             route = HomeNode.Notifications.route,
         ),
     )
@@ -52,7 +55,7 @@ internal fun BottomBar(
         bottomNavItems.forEachIndexed { index, item ->
             TwNavigationBarItem(
                 text = item.title,
-                icon = item.icon,
+                icon = if (index == selectedIndex) item.iconSelected else item.icon,
                 selected = index == selectedIndex,
                 showBadge = index == 2 && hasUnreadNotifications,
                 onClick = {

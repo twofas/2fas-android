@@ -12,7 +12,7 @@
     <dimen name="fab_distance_second">144dp</dimen>
     <dimen name="fab_label_padding_vertical">6dp</dimen>
     <dimen name="fab_label_padding_horizontal">12dp</dimen>
-    <dimen name="material_button_radius">6dp</dimen>
+    <dimen name="material_button_radius">24dp</dimen>
 
     <dimen name="service_code_size">38dp</dimen>
     <dimen name="service_item_size">120dp</dimen>

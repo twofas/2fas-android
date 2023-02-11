@@ -17,10 +17,10 @@ internal fun RaivoRoute(
     ImportFileScaffold(
         title = stringResource(id = R.string.externalimport_raivo),
         image = painterResource(id = R.drawable.ic_import_raivo),
-        description = { ImportDescription(text = "Use the \"Export OTPs to ZIP archive\" option in Raivo's Settings, save a ZIP file, extract it and import the JSON file using the \"Choose JSON file\" button.") }
+        description = { ImportDescription(text = stringResource(id = R.string.externalimport__raivo_msg)) }
     ) {
         ImportFilePickerButton(
-            text = "Choose JSON file",
+            text = stringResource(id = R.string.externalimport__choose_json_cta),
             fileType = "application/json",
             onFilePicked = { onFilePicked(it.toString().encodeBase64ToString()) }
         )

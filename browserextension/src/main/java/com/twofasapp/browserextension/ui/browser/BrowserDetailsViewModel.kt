@@ -5,6 +5,7 @@ import com.twofasapp.base.BaseViewModel
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.browserextension.domain.DeletePairedBrowserCase
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
+import com.twofasapp.time.domain.formatter.TimeFormatter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -33,7 +34,7 @@ class BrowserDetailsViewModel(
                         it.copy(
                             extensionId = extensionId,
                             browserName = browser.name,
-//                            browserPairedAt = browser.formatPairedAt(),
+                            browserPairedAt = browser.pairedAt,
                         )
                     }
                 }

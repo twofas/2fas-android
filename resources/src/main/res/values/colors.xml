@@ -2,7 +2,7 @@
 <resources>
     <color name="windowBackground">#FFF</color>
     <color name="toolbar">#FFF</color>
-    <color name="statusbar">#F2F2F2</color>
+    <color name="statusbar">#FFF</color>
     <color name="toolbarIcon">#000</color>
     <color name="drawerBackground">#FFF</color>
     <color name="drawerIcon">#4C4C4C</color>
@@ -40,5 +40,9 @@
     <color name="simpleEntrySubtitle">#61000000</color>
     <color name="fabNeutral">#FFF</color>
     <color name="fabNeutralIcon">#FF3F3F#F</color>
+
+    <color name="surface">#F9F9F9</color>
+    <color name="surfaceVariant">#EEEEEE</color>
+    <color name="onSurface">#000000</color>
 
 </resources>

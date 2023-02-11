@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@id/entryTitle"
         tools:text="Title" />
 
-    <androidx.appcompat.widget.SwitchCompat
+    <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/entrySwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

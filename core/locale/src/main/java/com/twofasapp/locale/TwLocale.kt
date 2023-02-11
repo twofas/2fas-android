@@ -3,6 +3,10 @@ package com.twofasapp.locale
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import kotlin.math.abs
 import kotlin.math.sign
 
@@ -36,6 +40,16 @@ object TwLocale {
         }
 
         return format(LocalContext.current, diff, diffSign, timeUnits.last())
+    }
+
+    fun formatDate(instant: Instant): String {
+        return LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
+            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+    }
+
+    fun formatDateTime(instant: Instant): String {
+        return LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
+            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
     }
 
     private fun format(context: Context, quantity: Long, sign: Int, timeUnit: TimeUnit): String {

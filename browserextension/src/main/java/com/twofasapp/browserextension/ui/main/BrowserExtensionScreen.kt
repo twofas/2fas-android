@@ -98,8 +98,7 @@ private fun ContentScreen(
         item { SettingsHeader(TwLocale.strings.browserExtPairedDevices) }
 
         items(uiState.pairedBrowsers, key = { it.id }) {
-            SettingsLink(it.name, onClick = { onBrowserClick(it.id) })
-            //                subtitle = it.formatPairedAt(),
+            SettingsLink(it.name, onClick = { onBrowserClick(it.id) }, subtitle = TwLocale.formatDate(it.pairedAt))
         }
 
         item {

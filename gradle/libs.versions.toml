@@ -57,7 +57,7 @@ ktorCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktorKotlinSerialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktorLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktorOkhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
-material = "com.google.android.material:material:1.5.0"
+material = "com.google.android.material:material:1.8.0"
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 material3Window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
 mockk = "io.mockk:mockk:1.13.2"

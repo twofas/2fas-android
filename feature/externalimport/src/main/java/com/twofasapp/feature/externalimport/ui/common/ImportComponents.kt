@@ -29,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 
@@ -51,7 +52,7 @@ internal fun ImportFileScaffold(
 
             Column(
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
+                horizontalAlignment = CenterHorizontally,
                 modifier = Modifier
                     .fillMaxSize()
                     .weight(1f)
@@ -61,7 +62,7 @@ internal fun ImportFileScaffold(
                 Image(
                     painter = image,
                     contentDescription = null,
-                    modifier = Modifier.height(100.dp)
+                    modifier = Modifier.height(120.dp)
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
@@ -80,7 +81,7 @@ internal fun ImportFileScaffold(
 internal fun ImportDescription(text: String) {
     Text(
         text = text,
-        style = MaterialTheme.typography.bodyMedium.copy(lineHeight = 22.sp, fontSize = 15.sp),
+        style = TwTheme.typo.body1,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(horizontal = 32.dp)
     )

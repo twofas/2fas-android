@@ -2,11 +2,12 @@ package com.twofasapp.browserextension.ui.browser
 
 import com.twofasapp.base.UiEvent
 import com.twofasapp.base.UiState
+import java.time.Instant
 
 data class BrowserDetailsUiState(
     val extensionId: String = "",
     val browserName: String = "",
-    val browserPairedAt: String = "",
+    val browserPairedAt: Instant? = null,
     val showConfirmDeleteDialog: Boolean = false,
     override val events: List<Event> = emptyList(),
 ) : UiState<BrowserDetailsUiState, BrowserDetailsUiState.Event> {

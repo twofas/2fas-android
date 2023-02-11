@@ -77,7 +77,7 @@ internal fun SetupPinScreen(
                         .align(Alignment.BottomCenter)
                         .padding(16.dp)
                 ) {
-                    Text(text = stringResource(id = R.string.settings__select_pin_length).uppercase())
+                    Text(text = stringResource(id = R.string.settings__select_pin_length))
                 }
             }
         }

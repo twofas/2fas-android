@@ -20,11 +20,9 @@ internal fun AegisRoute(
         description = { ImportDescription(text = stringResource(id = R.string.externalimport__aegis_msg)) }
     ) {
         ImportFilePickerButton(
-            text = "Choose JSON file",
+            text = stringResource(id = R.string.externalimport__choose_json_cta),
             fileType = "application/json",
-            onFilePicked = {
-                onFilePicked(it.toString().encodeBase64ToString())
-            }
+            onFilePicked = { onFilePicked(it.toString().encodeBase64ToString()) }
         )
     }
 }

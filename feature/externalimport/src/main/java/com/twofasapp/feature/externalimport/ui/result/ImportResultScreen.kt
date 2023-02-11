@@ -25,10 +25,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.feature.externalimport.domain.ExternalImport
 import com.twofasapp.feature.externalimport.navigation.ImportType
+import com.twofasapp.feature.externalimport.ui.common.ImportDescription
 import com.twofasapp.resources.R
 import org.koin.androidx.compose.get
 
@@ -80,7 +82,7 @@ internal fun ImportResultRoute(
                         }
                     ),
                     contentDescription = null,
-                    modifier = Modifier.height(80.dp)
+                    modifier = Modifier.height(120.dp)
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
@@ -88,7 +90,7 @@ internal fun ImportResultRoute(
                 if (uiState.title != null) {
                     Text(
                         text = stringResource(id = uiState.title),
-                        style = MaterialTheme.typography.titleMedium,
+                        style = TwTheme.typo.title,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
@@ -97,12 +99,7 @@ internal fun ImportResultRoute(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 if (uiState.description != null) {
-                    Text(
-                        text = stringResource(id = uiState.description),
-                        style = MaterialTheme.typography.bodyMedium,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(horizontal = 24.dp)
-                    )
+                    ImportDescription(text = stringResource(id = uiState.description))
                 }
 
                 if (uiState.servicesToImport != 0 && uiState.totalServicesCount != 0) {
@@ -114,7 +111,7 @@ internal fun ImportResultRoute(
                         } else {
                             stringResource(id = R.string.tokens__google_auth_out_of_title).format(uiState.servicesToImport, uiState.totalServicesCount)
                         },
-                        style = MaterialTheme.typography.titleMedium,
+                        style = TwTheme.typo.h3,
                         modifier = Modifier.padding(horizontal = 24.dp)
                     )
                 }
@@ -124,7 +121,7 @@ internal fun ImportResultRoute(
 
                     Text(
                         text = stringResource(id = uiState.footer),
-                        style = MaterialTheme.typography.bodyMedium,
+                        style = TwTheme.typo.body1,
                         modifier = Modifier.padding(horizontal = 24.dp)
                     )
                 }

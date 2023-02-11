@@ -70,7 +70,7 @@ private fun SettingsScreen(
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsExternalImport, icon = TwIcons.FileUpload) {
+                SettingsLink(title = TwLocale.strings.settingsExternalImport, icon = TwIcons.Download) {
                     listener.openExternalImport()
                 }
             }

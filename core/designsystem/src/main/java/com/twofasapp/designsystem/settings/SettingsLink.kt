@@ -2,10 +2,12 @@ package com.twofasapp.designsystem.settings
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -24,9 +26,11 @@ import com.twofasapp.locale.TwLocale
 @Composable
 fun SettingsLink(
     title: String,
+    subtitle: String? = null,
     icon: Painter? = null,
     image: Painter? = null,
     textColor: Color = TwTheme.color.onSurfacePrimary,
+    textColorSecondary: Color = TwTheme.color.onSurfaceSecondary,
     modifier: Modifier = Modifier,
     showEmptySpaceWhenIconMissing: Boolean = true,
     onClick: (() -> Unit)? = null,
@@ -35,8 +39,8 @@ fun SettingsLink(
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick != null) { onClick?.invoke() }
-            .height(56.dp)
-            .padding(horizontal = 24.dp),
+            .heightIn(min = 56.dp)
+            .padding(horizontal = 24.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (icon != null) {
@@ -49,14 +53,24 @@ fun SettingsLink(
 
         Spacer(modifier = Modifier.size(24.dp))
 
-        Text(
-            text = title,
-            style = TwTheme.typo.body1,
-            color = textColor,
-            modifier = Modifier.weight(1f)
-        )
-    }
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                style = TwTheme.typo.body1,
+                color = textColor,
+                modifier = Modifier.fillMaxWidth()
+            )
 
+            if (subtitle != null) {
+                Text(
+                    text = subtitle,
+                    style = TwTheme.typo.body3,
+                    color = textColorSecondary,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+        }
+    }
 }
 
 @Preview
