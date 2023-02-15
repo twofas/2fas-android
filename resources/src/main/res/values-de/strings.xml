@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Mon, 06 Feb 2023 13:27:59 -0800
+ Exported at: Wed, 15 Feb 2023 01:36:22 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -215,7 +215,7 @@
     <string name="tokens__check_app_permissions">Überprüfe, ob die App die richtigen Berechtigungen besitzt</string>
     <string name="tokens__no_qr_codes_found">Keine QR Codes gefunden</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
+
         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Es gibt keinen korrekten QR-Code in dem ausgewählten Bild. Bitte versuch ein anderes Bild.</string>
     <string name="tokens__select_service">Dienst auswählen</string>
@@ -544,7 +544,7 @@
     <string name="settings__option_fingerprint">Biometrische Sperre</string>
     <string name="settings__option_theme">Thema</string>
     <string name="settings__theme_option_auto">Automatisch</string>
-    <string name="settings__theme_option_auto_system">Automatisch - Systemeinstellungen</string>
+    <string name="settings__theme_option_auto_system">Auto - Systemeinstellungen</string>
     <string name="settings__theme_option_dark">Dunkel</string>
     <string name="settings__theme_option_light">Hell</string>
     <string name="tokens__copied_clipboard">Token in die Zwischenablage kopiert!</string>
@@ -646,4 +646,57 @@
     <string name="settings__recommendation">Sehe dir diese großartige Zwei-Faktor-Authentifizierungs-App von 2FAS an: https://2fas.com</string>
     <string name="settings__acknowledgements">Danksagung</string>
     <string name="introduction__import_external_app">Aus externer Anwendung Importieren</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="one">vor wenigen Augenblicken</item>
+        <item quantity="other">vor wenigen Augenblicken</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="one">vor %d Minute</item>
+        <item quantity="other">vor %d Minuten</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="one">vor %d Stunde</item>
+        <item quantity="other">vor %d Stunden</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="one">vor %d Tag</item>
+        <item quantity="other">vor %d Tagen</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="one">vor %d Woche</item>
+        <item quantity="other">vor %d Wochen</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="one">vor %d Monat</item>
+        <item quantity="other">vor %d Monaten</item>
+    </plurals>
+    <string name="commons__unknown_error">Unbekannter Fehler! Bitte versuche es erneut!</string>
+    <string name="backup__export_result_success">Datei erfolgreich gespeichert!</string>
+    <string name="backup__share_result_failure">Datei konnte nicht geteilt werden!</string>
+    <string name="backup__enter_password_dialog_title">Gebe das Passwort ein</string>
+    <string name="backup__remove_password_msg">Bitte gib das Backup Passwort ein, um mit dem Löschvorgang fortzufahren.</string>
+    <string name="backup__revoke_google_access_msg">Bitte gib das Backup-Passwort ein, um den Zugriff auf Google zu sperren.</string>
+    <string name="backup__synchronization_settings">Synchronisierungs-Einstellungen</string>
+    <string name="backup__local_file_title">Lokale Datei</string>
+    <string name="backup__drive_title">Google Drive Synchronisierung</string>
+    <string name="backup__delete_file_title">Möchtest du das Back Up aus Google Drive löschen?</string>
+    <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Tokens bestehen lokal, aber die 2FAS App wird aus deinem Google Account ausgeloggt und Ihre anderen synchronisierten Geräte\n.</string>
+    <string name="backup__sync_status_waiting">Warten auf Synchronisierung...</string>
+    <string name="backup__sync_status_progress">Synchronisiere...</string>
+    <string name="import_backup_msg1_encrypted">Du wirst eine verschlüsselte Backup-Datei importieren.</string>
+    <string name="externalimport__choose_json_cta">Wähle eine JSON Datei aus</string>
+    <string name="externalimport__aegis_msg">Exportiere dein Konto von Aegis in eine unverschlüsselte JSON Datei und lade sie über den \"JSON Datei auswählen\" Knopf aus. Vergesse nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
+    <string name="externalimport__raivo_msg">Verwende die \"Exportiere OTPs zu ZIP Archiv\" Option in Raivo\'s Einstellungen, speichere eine ZIP Datei, extrahiere sie und importiere die JSON Datei mit dem \"JSON Datei auswählen\" Knopf.</string>
+    <string name="externalimport__no_tokens_msg">Es gibt jedoch keine Dienste, die importiert werden könnten.</string>
+    <string name="commons__try_again">Erneut versuchen</string>
+    <string name="commons__proceed">Fortfahren</string>
+    <string name="externalimport__ga_title">2FA Tokens aus Google Authenticator importieren</string>
+    <string name="externalimport__aegis_title">2FA Tokens aus Aegis importieren</string>
+    <string name="externalimport__raivo_title">2FA Tokens aus Raivo importieren</string>
+    <string name="externalimport__ga_success_msg">Dieser QR-Code erlaubt es Tokens vom Google Authenticator zu importieren</string>
+    <string name="externalimport__aegis_success_msg">Diese JSON-Datei erlaubt es Tokens von Aegis zu importieren</string>
+    <string name="externalimport__raivo_success_msg">Diese JSON-Datei erlaubt es Tokens von Raivo zu importieren</string>
+    <string name="externalimport__read_error">Es konnten keine Token gelesen werden. Versuche eine andere Datei auszuwählen.</string>
+    <string name="settings__gd_sync_info">Google Drive Synchronisierungs-Informationen</string>
+    <string name="settings__gd_sync_disable_confirm">Bis du dir sicher? Ohne Google Drive Synchronisierung wirst du nicht mehr in der Lage sein deine Tokens wiederherzustellen, wenn du dein Smartphone verlierst oder zurücksetzt!</string>
 </resources>
