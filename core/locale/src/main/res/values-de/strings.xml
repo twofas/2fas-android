@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Wed, 15 Feb 2023 01:36:22 -0800
+ Exported at: Thu, 16 Feb 2023 09:40:23 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -534,7 +534,7 @@
     <string name="commons__search">Suchen</string>
     <string name="errors__no_app">Keine Anwendung, die diesen Link unterstützt</string>
     <string name="permissions__camera_permission">Kamera-Berechtigung</string>
-    <string name="permissions__camera_permission_description">Zum Scannen von QR-Codes ist eine Kamerazulassung erforderlich. Wenn du diese Funktion verwenden möchtest, gehe zu Anwendungsinformationen -&amp;gt; Berechtigungen und aktiviere die Kamera.</string>
+    <string name="permissions__camera_permission_description">Zum Scannen von QR-Codes ist eine Kamerazulassung erforderlich. Wenn du diese Funktion verwenden möchtest, gehe zu Anwendungsinformationen und Berechtigungen und aktiviere die Kamera.</string>
     <string name="security__disable_pin">PIN deaktivieren</string>
     <string name="security__enter_your_new_pin">Bitte gebe deine neue %s PIN ein</string>
     <string name="security__pin_error_incorrect">PIN falsch! Bitte versuche es erneut</string>
@@ -680,9 +680,9 @@
     <string name="backup__local_file_title">Lokale Datei</string>
     <string name="backup__drive_title">Google Drive Synchronisierung</string>
     <string name="backup__delete_file_title">Möchtest du das Back Up aus Google Drive löschen?</string>
-    <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Tokens bestehen lokal, aber die 2FAS App wird aus deinem Google Account ausgeloggt und Ihre anderen synchronisierten Geräte\n.</string>
-    <string name="backup__sync_status_waiting">Warten auf Synchronisierung...</string>
-    <string name="backup__sync_status_progress">Synchronisiere...</string>
+    <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Tokens bestehen lokal, aber die 2FAS App wird aus deinem Google Account ausgeloggt und Ihre anderen synchronisierten Geräte.</string>
+    <string name="backup__sync_status_waiting">Warten auf Synchronisierung…</string>
+    <string name="backup__sync_status_progress">Synchronisiere…</string>
     <string name="import_backup_msg1_encrypted">Du wirst eine verschlüsselte Backup-Datei importieren.</string>
     <string name="externalimport__choose_json_cta">Wähle eine JSON Datei aus</string>
     <string name="externalimport__aegis_msg">Exportiere dein Konto von Aegis in eine unverschlüsselte JSON Datei und lade sie über den \"JSON Datei auswählen\" Knopf aus. Vergesse nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
@@ -699,4 +699,11 @@
     <string name="externalimport__read_error">Es konnten keine Token gelesen werden. Versuche eine andere Datei auszuwählen.</string>
     <string name="settings__gd_sync_info">Google Drive Synchronisierungs-Informationen</string>
     <string name="settings__gd_sync_disable_confirm">Bis du dir sicher? Ohne Google Drive Synchronisierung wirst du nicht mehr in der Lage sein deine Tokens wiederherzustellen, wenn du dein Smartphone verlierst oder zurücksetzt!</string>
+    <string name="extension__code_sent_msg">Code erfolgreich gesendet</string>
+    <string name="extension__code_sent_error_msg">Beim Senden des Codes ist ein Fehler aufgetreten</string>
+    <string name="tokens__add_service_title">Neuen Dienst hinzufügen</string>
+    <string name="tokens__customize_service_title">Dienst anpassen</string>
+    <string name="extension__services_suggested_header">Empfohlen</string>
+    <string name="extension__services_all_header">Alle Tokens</string>
+    <string name="extension__services_other_header">Andere Tokens</string>
 </resources>

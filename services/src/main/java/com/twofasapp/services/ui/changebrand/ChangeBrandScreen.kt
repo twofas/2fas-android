@@ -75,7 +75,7 @@ internal fun ChangeBrandScreen(
         topBar = {
             ToolbarWithSearch(
                 title = stringResource(id = R.string.customization_change_brand),
-                searchHint = "Search",
+                searchHint = stringResource(id = R.string.commons__search),
                 onSearchValueChanged = { brandViewModel.applySearchFilter(it) }
             ) { router.navigateBack() }
         }

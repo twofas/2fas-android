@@ -79,7 +79,7 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
             item { HeaderItem(browserName = uiState.browserName, payload.domain, modifier = Modifier.animateItemPlacement()) }
 
             if (uiState.suggestedServices.isNotEmpty()) {
-                item { SectionItem(title = "Suggested", modifier = Modifier.animateItemPlacement()) }
+                item { SectionItem(title = stringResource(id = R.string.extension__services_suggested_header), modifier = Modifier.animateItemPlacement()) }
                 items(uiState.suggestedServices, key = { it.id }) {
 
                     ServiceItem(
@@ -94,7 +94,13 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
             if (uiState.otherServices.isNotEmpty()) {
                 item {
                     SectionItem(
-                        title = if (uiState.suggestedServices.isEmpty()) "All services" else "Other services",
+                        title = stringResource(
+                            id = if (uiState.suggestedServices.isEmpty()) {
+                                R.string.extension__services_all_header
+                            } else {
+                                R.string.extension__services_other_header
+                            }
+                        ),
                         modifier = Modifier.animateItemPlacement()
                     )
                 }
