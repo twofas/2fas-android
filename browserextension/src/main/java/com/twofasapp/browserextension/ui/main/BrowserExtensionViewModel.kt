@@ -7,17 +7,15 @@ import com.twofasapp.browserextension.domain.FetchPairedBrowsersCase
 import com.twofasapp.browserextension.domain.ObserveMobileDeviceCase
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
 import com.twofasapp.browserextension.domain.UpdateMobileDeviceCase
-import com.twofasapp.navigation.SettingsDirections
-import com.twofasapp.navigation.SettingsRouter
-import com.twofasapp.permissions.CameraPermissionRequestFlow
-import com.twofasapp.permissions.PermissionStatus
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 internal class BrowserExtensionViewModel(
     private val dispatchers: Dispatchers,
-    private val settingsRouter: SettingsRouter,
-    private val cameraPermissionRequest: CameraPermissionRequestFlow,
     private val observeMobileDeviceCase: ObserveMobileDeviceCase,
     private val observePairedBrowsersCase: ObservePairedBrowsersCase,
     private val updateMobileDeviceCase: UpdateMobileDeviceCase,
@@ -49,24 +47,6 @@ internal class BrowserExtensionViewModel(
                 runCatching { fetchPairedBrowsersCase() }
             }
         }
-    }
-
-    fun onPairBrowserClick() {
-        cameraPermissionRequest.execute()
-            .take(1)
-            .onEach {
-                when (it) {
-                    PermissionStatus.GRANTED -> settingsRouter.navigate(SettingsDirections.PairingScan)
-                    PermissionStatus.DENIED -> Unit
-                    PermissionStatus.DENIED_NEVER_ASK -> _uiState.update { state ->
-                        state.copy(showRationaleDialog = true)
-                    }
-                }
-            }.launchIn(viewModelScope)
-    }
-
-    fun onRationaleDialogDismiss() {
-        _uiState.update { it.copy(showRationaleDialog = false) }
     }
 
     fun onEditDeviceClick() {

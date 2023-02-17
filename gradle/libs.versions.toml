@@ -27,6 +27,7 @@ accompanistPlaceholder = { module = "com.google.accompanist:accompanist-placehol
 accompanistSystemUi = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanistPager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
 accompanistPagerIndicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
+accompanistPermissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 coilCompose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 composeActivity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
@@ -153,6 +154,7 @@ accompanist = [
     "accompanistSystemUi",
     "accompanistPager",
     "accompanistPagerIndicators",
+    "accompanistPermissions"
 ]
 coil = [
     "coil",

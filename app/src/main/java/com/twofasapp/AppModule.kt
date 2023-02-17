@@ -11,6 +11,7 @@ import com.twofasapp.environment.AppConfig
 import com.twofasapp.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.permissions.CameraPermissionRequest
 import com.twofasapp.permissions.CameraPermissionRequestFlow
+import com.twofasapp.permissions.NotificationsPermissionRequestFlow
 import com.twofasapp.services.analytics.AnalyticsServiceFirebase
 import com.twofasapp.services.googledrive.GoogleDriveService
 import com.twofasapp.services.googledrive.GoogleDriveServiceImpl
@@ -43,6 +44,7 @@ val applicationModule = module {
 
     factory { CameraPermissionRequest(activityContext()) }
     factory { CameraPermissionRequestFlow(activityContext()) }
+    factory { NotificationsPermissionRequestFlow(activityContext()) }
 
     single<Dispatchers> { AppDispatchers() }
 
