@@ -7,6 +7,9 @@ import androidx.compose.ui.res.painterResource
 
 @Immutable
 @Stable
+/*
+    Material Symbols, Rounded, NoFill, 600
+ */
 object TwIcons {
     val Placeholder @Composable get() = painterResource(R.drawable.ic_placeholder)
     val More @Composable get() = painterResource(R.drawable.ic_more)
@@ -42,4 +45,6 @@ object TwIcons {
     val Warning @Composable get() = painterResource(R.drawable.ic_warning)
     val Time @Composable get() = painterResource(R.drawable.ic_time)
     val Fingerprint @Composable get() = painterResource(R.drawable.ic_fingerprint)
+    val Theme @Composable get() = painterResource(R.drawable.ic_theme)
+    val NextToken @Composable get() = painterResource(R.drawable.ic_next_token)
 }

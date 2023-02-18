@@ -14,4 +14,5 @@ class ThemeShapes {
     val circle = CircleShape
     val roundedButton = RoundedCornerShape(24.dp)
     val roundedDefault = RoundedCornerShape(12.dp)
+    val dialog = RoundedCornerShape(24.dp)
 }

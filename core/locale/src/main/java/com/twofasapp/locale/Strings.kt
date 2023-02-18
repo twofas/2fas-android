@@ -8,6 +8,8 @@ import androidx.compose.runtime.Stable
 @Immutable
 class Strings(c: Context) {
     val placeholder = "Lorem ipsum"
+    val placeholderMedium =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     val placeholderLong =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
@@ -77,6 +79,10 @@ class Strings(c: Context) {
     val browserExtPairedDevices = c.getString(R.string.browser__paired_devices_browser_title)
     val browserExtDeviceName = c.getString(R.string.browser__this_device_name)
     val browserExtDeviceNameSubtitle = c.getString(R.string.browser__this_device_footer)
+
+    val settingsTheme = c.getString(R.string.settings__option_theme)
+    val settingsShowNextToken = c.getString(R.string.settings__show_next_token)
+
 //    val browserExt = c.getString(R.string.)
 //    val browserExt = c.getString(R.string.)
 //    val browserExt = c.getString(R.string.)

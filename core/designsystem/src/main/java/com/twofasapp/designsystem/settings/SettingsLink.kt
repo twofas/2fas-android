@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,50 +26,109 @@ import com.twofasapp.locale.TwLocale
 @Composable
 fun SettingsLink(
     title: String,
+    modifier: Modifier = Modifier,
     subtitle: String? = null,
     icon: Painter? = null,
     image: Painter? = null,
     textColor: Color = TwTheme.color.onSurfacePrimary,
     textColorSecondary: Color = TwTheme.color.onSurfaceSecondary,
-    modifier: Modifier = Modifier,
+    endContent: (@Composable () -> Unit)? = null,
     showEmptySpaceWhenIconMissing: Boolean = true,
-    onClick: (() -> Unit)? = null,
+    alignCenterIcon: Boolean = true,
+    onClick: (() -> Unit)? = null
 ) {
-    Row(
+
+    Column(
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick != null) { onClick?.invoke() }
             .heightIn(min = 56.dp)
             .padding(horizontal = 24.dp, vertical = 16.dp),
-        verticalAlignment = Alignment.CenterVertically
     ) {
-        if (icon != null) {
-            Icon(painter = icon, contentDescription = null, modifier = Modifier.size(24.dp), tint = TwTheme.color.primary)
-        } else if (image != null)
-            Image(painter = image, contentDescription = null, modifier = Modifier.size(24.dp))
-        else if (showEmptySpaceWhenIconMissing) {
-            Spacer(modifier = Modifier.size(24.dp))
-        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(icon, image, showEmptySpaceWhenIconMissing)
 
-        Spacer(modifier = Modifier.size(24.dp))
+            Spacer(Modifier.size(24.dp))
 
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = title,
-                style = TwTheme.typo.body1,
-                color = textColor,
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            if (subtitle != null) {
-                Text(
-                    text = subtitle,
-                    style = TwTheme.typo.body3,
-                    color = textColorSecondary,
+            Column(Modifier.weight(1f)) {
+                Title(
+                    title = title,
+                    textColor = textColor,
                     modifier = Modifier.fillMaxWidth()
                 )
+
+                if (alignCenterIcon) {
+                    Subtitle(
+                        subtitle = subtitle,
+                        textColorSecondary = textColorSecondary,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
+
+            if (endContent != null) {
+                Spacer(Modifier.width(8.dp))
+                endContent.invoke()
             }
         }
+
+        if (alignCenterIcon.not()) {
+            Subtitle(
+                subtitle = subtitle,
+                textColorSecondary = textColorSecondary,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 48.dp)
+            )
+        }
+    }
+}
+
+@Composable
+private fun Image(
+    icon: Painter?,
+    image: Painter?,
+    showEmptySpaceWhenIconMissing: Boolean,
+) {
+    if (icon != null) {
+        Icon(painter = icon, contentDescription = null, modifier = Modifier.size(24.dp), tint = TwTheme.color.primary)
+    } else if (image != null)
+        Image(painter = image, contentDescription = null, modifier = Modifier.size(24.dp))
+    else if (showEmptySpaceWhenIconMissing) {
+        Spacer(modifier = Modifier.size(24.dp))
+    }
+}
+
+@Composable
+private fun Title(
+    title: String,
+    textColor: Color,
+    modifier: Modifier,
+) {
+    Text(
+        text = title,
+        style = TwTheme.typo.body1,
+        color = textColor,
+        modifier = modifier
+    )
+}
+
+@Composable
+private fun Subtitle(
+    subtitle: String?,
+    textColorSecondary: Color,
+    modifier: Modifier,
+) {
+    if (subtitle != null) {
+        Text(
+            text = subtitle,
+            style = TwTheme.typo.body3,
+            color = textColorSecondary,
+            modifier = modifier.padding(top = 2.dp),
+        )
     }
 }
 
@@ -79,5 +138,29 @@ private fun Preview() {
     SettingsLink(
         title = TwLocale.strings.placeholder,
         icon = TwIcons.Placeholder,
+        endContent = {
+            Text(text = "Test")
+        }
+    )
+}
+
+@Preview
+@Composable
+private fun PreviewWithSubtitle() {
+    SettingsLink(
+        title = TwLocale.strings.placeholder,
+        subtitle = TwLocale.strings.placeholderMedium,
+        icon = TwIcons.Placeholder,
+    )
+}
+
+@Preview
+@Composable
+private fun PreviewWithSubtitleIconNotAligned() {
+    SettingsLink(
+        title = TwLocale.strings.placeholder,
+        subtitle = TwLocale.strings.placeholderMedium,
+        icon = TwIcons.Placeholder,
+        alignCenterIcon = false,
     )
 }
