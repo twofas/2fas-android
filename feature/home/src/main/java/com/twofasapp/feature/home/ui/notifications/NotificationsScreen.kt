@@ -74,7 +74,7 @@ private fun NotificationsScreen(
                     ) {
                         Text(
                             text = TwLocale.strings.notificationsEmpty,
-                            style = TwTheme.typo.body3,
+                            style = TwTheme.typo.body2,
                             color = TwTheme.color.onSurfacePrimary,
                             modifier = Modifier.align(Alignment.Center)
                         )

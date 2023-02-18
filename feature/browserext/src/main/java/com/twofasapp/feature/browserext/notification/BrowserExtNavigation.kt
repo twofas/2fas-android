@@ -8,6 +8,7 @@ import androidx.navigation.navArgument
 import androidx.navigation.navigation
 import com.twofasapp.browserextension.ui.browser.BrowserDetailsScreen
 import com.twofasapp.browserextension.ui.main.BrowserExtensionScreen
+import com.twofasapp.browserextension.ui.main.permission.BrowserExtensionPermissionScreen
 import com.twofasapp.browserextension.ui.pairing.progress.PairingProgressScreen
 import com.twofasapp.browserextension.ui.pairing.scan.PairingScanScreen
 import com.twofasapp.common.navigation.NavGraph
@@ -27,6 +28,7 @@ private sealed class Node(override val path: String) : NavNode {
     override val graph: NavGraph = BrowserExtGraph
 
     object Main : Node("main")
+    object Permission : Node("permission")
     object PairingScan : Node("pairing/scan")
     object PairingProgress : Node("pairing/progress?extensionId={${ExtensionId.name}}")
     object BrowserDetails : Node("details/{${ExtensionId.name}}")
@@ -71,6 +73,11 @@ fun NavGraphBuilder.browserExtNavigation(
                         popUpTo(Node.Main.route)
                     }
                 },
+                openPermission = {
+                    navController.navigate(Node.Permission.route) {
+                        popUpTo(Node.Main.route)
+                    }
+                },
                 extensionId = navController.currentBackStackEntry!!.arguments!!.getString(ExtensionId.name, "")
             )
         }
@@ -83,6 +90,12 @@ fun NavGraphBuilder.browserExtNavigation(
                 onFinish = { navController.popBackStack(Node.Main.route, false) },
                 extensionId = navController.currentBackStackEntry!!.arguments!!.getString(ExtensionId.name, "")
             )
+        }
+
+        composable(
+            route = Node.Permission.route,
+        ) {
+            BrowserExtensionPermissionScreen()
         }
     }
 }

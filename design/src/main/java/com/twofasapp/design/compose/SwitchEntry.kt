@@ -5,8 +5,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.*
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -66,7 +69,7 @@ fun SwitchEntry(
 
         Text(
             text = title,
-            style = MaterialTheme.typography.body2.copy(fontSize = 17.sp, color =TwTheme.color.onSurfacePrimary),
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 17.sp, color = TwTheme.color.onSurfacePrimary),
             modifier = Modifier
                 .alpha(alpha)
                 .constrainAs(titleRef) {
@@ -84,7 +87,7 @@ fun SwitchEntry(
         if (subtitle.isNotEmpty()) {
             Text(
                 text = subtitle,
-                style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                 modifier = Modifier
                     .alpha(alpha)
                     .constrainAs(subtitleRef) {
@@ -113,6 +116,7 @@ fun SwitchEntry(
                     onCheckedChange = { switch?.invoke(it) }
                 )
             }
+
             SwitchEntryType.Radio -> {
                 RadioButton(
                     selected = isChecked,

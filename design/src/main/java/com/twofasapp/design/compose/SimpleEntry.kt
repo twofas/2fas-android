@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -86,7 +86,7 @@ fun SimpleEntry(
 
         Text(
             text = title,
-            style = MaterialTheme.typography.body2.copy(fontSize = 17.sp, color = titleColor),
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 17.sp, color = titleColor),
             modifier = Modifier
                 .alpha(alpha)
                 .constrainAs(titleRef) {
@@ -104,7 +104,7 @@ fun SimpleEntry(
         if (subtitle.isNotEmpty() && subtitleGravity == SubtitleGravity.BOTTOM) {
             Text(
                 text = subtitle,
-                style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                 modifier = Modifier
                     .alpha(alpha)
                     .constrainAs(subtitleRef) {
@@ -120,7 +120,7 @@ fun SimpleEntry(
         if (subtitle.isNotEmpty() && subtitleGravity == SubtitleGravity.END) {
             Text(
                 text = subtitle,
-                style = MaterialTheme.typography.body2.copy(fontSize = 16.sp, color = TwTheme.color.onSurfaceSecondary),
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 16.sp, color = TwTheme.color.onSurfaceSecondary),
                 modifier = Modifier
                     .alpha(alpha)
                     .constrainAs(subtitleEndRef) {

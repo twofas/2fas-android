@@ -5,10 +5,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
-import androidx.compose.runtime.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -16,11 +21,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.twofasapp.design.compose.dialogs.internal.*
-import com.twofasapp.design.theme.textFieldDisabledText
-import com.twofasapp.design.theme.textFieldHint
-import com.twofasapp.design.theme.textFieldOutline
-import com.twofasapp.design.theme.textPrimary
+import com.twofasapp.design.compose.dialogs.internal.BaseDialogButtons
+import com.twofasapp.design.compose.dialogs.internal.BaseDialogContent
+import com.twofasapp.design.compose.dialogs.internal.BaseDialogSurface
+import com.twofasapp.design.compose.dialogs.internal.BaseDialogTextContent
+import com.twofasapp.design.compose.dialogs.internal.BaseDialogTitle
+import com.twofasapp.designsystem.TwTheme
 import kotlinx.coroutines.android.awaitFrame
 
 @Composable
@@ -81,6 +87,7 @@ fun InputDialog(
                                             "Input must be integer number"
                                         }
                                     }
+
                                     InputType.NumberDecimal -> {
                                         try {
                                             inputText.toFloat()
@@ -89,6 +96,7 @@ fun InputDialog(
                                             "Input must be a number"
                                         }
                                     }
+
                                     InputType.Password -> null
                                 }
                                 val validationResult = validation.invoke(inputText)
@@ -101,21 +109,27 @@ fun InputDialog(
                                     invalidInputTypeError != null -> invalidInputTypeError
                                     validationResult is Validation.Error -> validationResult.msg
                                         ?: validationResult.msgRes?.let { context.getString(it) }
+
                                     else -> null
                                 }
 
                             },
-                            textStyle = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.textPrimary),
+                            textStyle = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfacePrimary),
                             label = { if (hint != null) Text(text = hint) },
                             enabled = isEnabled,
                             error = validationErrorText ?: errorText ?: "",
                             colors = TextFieldDefaults.outlinedTextFieldColors(
-                                disabledTextColor = MaterialTheme.colors.textFieldDisabledText,
-                                focusedBorderColor = MaterialTheme.colors.textFieldOutline,
-                                unfocusedBorderColor = MaterialTheme.colors.textFieldOutline,
-                                focusedLabelColor = MaterialTheme.colors.textFieldHint,
-                                unfocusedLabelColor = MaterialTheme.colors.textFieldHint,
-                                errorLabelColor = MaterialTheme.colors.error,
+                                disabledTextColor = TwTheme.color.onSurfaceSecondary,
+                                focusedBorderColor = TwTheme.color.onSurfaceSecondary,
+                                unfocusedBorderColor = TwTheme.color.onSurfaceSecondary,
+                                focusedLabelColor = TwTheme.color.onSurfaceSecondary,
+                                unfocusedLabelColor = TwTheme.color.onSurfaceSecondary,
+                                errorLabelColor = TwTheme.color.error,
+                                errorCursorColor = TwTheme.color.error,
+                                errorBorderColor = TwTheme.color.error,
+                                errorLeadingIconColor = TwTheme.color.error,
+                                errorTrailingIconColor = TwTheme.color.error,
+                                errorSupportingTextColor = TwTheme.color.error,
                             ),
                             keyboardOptions = KeyboardOptions.Default.copy(
                                 keyboardType = when (inputType) {

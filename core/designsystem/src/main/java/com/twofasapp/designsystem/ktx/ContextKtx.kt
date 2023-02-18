@@ -25,7 +25,7 @@ val CompositionLocal<Context>.currentActivity: ComponentActivity
 
 val LocalBackDispatcher
     @Composable
-    get() = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
+    get() = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher!!
 
 fun Context.copyToClipboard(text: String, label: String = "Text", toast: String = "Copied!") {
     val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager

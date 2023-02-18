@@ -2,23 +2,23 @@ package com.twofasapp.design.compose
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.twofasapp.designsystem.TwTheme
 
 @Composable
 fun HeaderEntry(text: String) {
     Text(
         text = text,
-        style = MaterialTheme.typography.body2.copy(
+        style = MaterialTheme.typography.bodyMedium.copy(
             fontWeight = FontWeight.Medium,
-            color = Color(0xFFD81F26),
+            color = TwTheme.color.primaryDark,
             fontSize = 14.sp,
         ),
         modifier = Modifier

@@ -18,20 +18,19 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Divider
-import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ExposedDropdownMenuBox
-import androidx.compose.material.ExposedDropdownMenuDefaults
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.Divider
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -58,18 +57,13 @@ import androidx.core.os.bundleOf
 import com.twofasapp.design.compose.HeaderEntry
 import com.twofasapp.design.compose.InputEntry
 import com.twofasapp.design.compose.SimpleEntry
-import com.twofasapp.design.compose.Toolbar
 import com.twofasapp.design.compose.dialogs.ConfirmDialog
 import com.twofasapp.design.compose.dialogs.InputType
 import com.twofasapp.design.compose.dialogs.SimpleDialog
 import com.twofasapp.design.compose.dialogs.Validation
 import com.twofasapp.design.compose.serviceIconBitmap
-import com.twofasapp.design.theme.divider
-import com.twofasapp.design.theme.textFieldDisabledText
-import com.twofasapp.design.theme.textFieldHint
-import com.twofasapp.design.theme.textFieldOutline
-import com.twofasapp.navigation.ServiceDirections
-import com.twofasapp.navigation.ServiceRouter
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.resources.R
 import com.twofasapp.services.data.converter.toDeprecatedDto
@@ -84,12 +78,17 @@ import org.koin.androidx.compose.get
 import org.koin.androidx.compose.getViewModel
 import java.util.regex.Pattern
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun ServiceScreen(
+    onAdvanceClick: () -> Unit,
+    onChangeBrandClick: () -> Unit,
+    onChangeLabelClick: () -> Unit,
+    onDomainAssignmentClick: () -> Unit,
+    onDeleteClick: () -> Unit,
+    onSecurityClick: () -> Unit,
+    onAuthenticateSecretClick: () -> Unit,
     viewModel: ServiceViewModel = getViewModel(),
     generateTotp: GenerateTotp = get(),
-    router: ServiceRouter = get(),
 ) {
     val uiState = viewModel.uiState.collectAsState().value
     val service = uiState.service
@@ -110,7 +109,7 @@ internal fun ServiceScreen(
     activity?.intent?.removeExtra(ServiceActivity.ARG_SHOW_ICON_PICKER)
 
     if (showIconPicker) {
-        router.navigate(ServiceDirections.ChangeBrand)
+        onChangeBrandClick()
         return
     }
 
@@ -135,8 +134,8 @@ internal fun ServiceScreen(
     }
 
     Scaffold(topBar = {
-        Toolbar(
-            title = if (service.id == 0L) activity!!.getString(R.string.tokens__add_service_title) else activity!!.getString(R.string.tokens__customize_service_title),
+        TwTopAppBar(
+            titleText = if (service.id == 0L) activity!!.getString(R.string.tokens__add_service_title) else activity!!.getString(R.string.tokens__customize_service_title),
             actions = {
                 TextButton(
                     onClick = {
@@ -149,22 +148,16 @@ internal fun ServiceScreen(
                     enabled = if (service.id == 0L) {
                         uiState.isInputNameValid && uiState.isInputSecretValid && uiState.isInputInfoValid
                     } else {
-                        viewModel.saveService()
-                    }
-                },
-                enabled = if (service.id == 0L) {
-                    uiState.isInputNameValid && uiState.isInputSecretValid && uiState.isInputInfoValid
-                } else {
-                    uiState.hasChanges && uiState.isInputNameValid && uiState.isInputSecretValid && uiState.isInputInfoValid
-                },
-            ) {
-                Text(text = stringResource(id = R.string.commons__save))
-            }
+                        uiState.hasChanges && uiState.isInputNameValid && uiState.isInputSecretValid && uiState.isInputInfoValid
+                    },
+                ) {
+                    Text(text = stringResource(id = R.string.commons__save))
+                }
 
-            }) {
-            activity?.onBackPressed()
-        }
-    }) { padding ->
+            }
+        )
+    }
+    ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
             item(key = "customization_service_info") { HeaderEntry(stringResource(R.string.tokens__service_information)) }
 
@@ -216,7 +209,7 @@ internal fun ServiceScreen(
                         IconButton(onClick = {
                             when {
                                 service.id == 0L || uiState.isAuthenticated -> viewModel.toggleSecretVisibility()
-                                uiState.hasLock -> router.navigate(ServiceDirections.AuthenticateSecret)
+                                uiState.hasLock -> onAuthenticateSecretClick()
                                 uiState.hasLock.not() -> showNoLockDialog.value = true
                             }
                         }) {
@@ -263,12 +256,12 @@ internal fun ServiceScreen(
                                 readOnly = true,
                                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                                    disabledTextColor = MaterialTheme.colors.textFieldDisabledText,
-                                    focusedBorderColor = MaterialTheme.colors.textFieldOutline,
-                                    unfocusedBorderColor = MaterialTheme.colors.textFieldOutline,
-                                    focusedLabelColor = MaterialTheme.colors.textFieldHint,
-                                    unfocusedLabelColor = MaterialTheme.colors.textFieldHint,
-                                    errorLabelColor = MaterialTheme.colors.error,
+//                                    disabledTextColor = MaterialTheme.colors.textFieldDisabledText,
+//                                    focusedBorderColor = MaterialTheme.colors.textFieldOutline,
+//                                    unfocusedBorderColor = MaterialTheme.colors.textFieldOutline,
+//                                    focusedLabelColor = MaterialTheme.colors.textFieldHint,
+//                                    unfocusedLabelColor = MaterialTheme.colors.textFieldHint,
+                                    errorLabelColor = TwTheme.color.error,
                                 ),
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -278,23 +271,25 @@ internal fun ServiceScreen(
 
                                 ) {
                                 DropdownMenuItem(
+                                    text = {
+                                        Text(text = "Default")
+                                    },
                                     onClick = {
                                         viewModel.updateGroup(null)
                                         expanded = false
                                     }
-                                ) {
-                                    Text(text = "Default")
-                                }
+                                )
 
                                 uiState.groups.list.forEach { group ->
                                     DropdownMenuItem(
+                                        text = {
+                                            Text(text = group.name)
+                                        },
                                         onClick = {
                                             viewModel.updateGroup(group)
                                             expanded = false
                                         }
-                                    ) {
-                                        Text(text = group.name)
-                                    }
+                                    )
                                 }
                             }
                         }
@@ -302,17 +297,17 @@ internal fun ServiceScreen(
                 }
             }
 
-            item { Divider(color = MaterialTheme.colors.divider) }
+            item { Divider(color = TwTheme.color.divider) }
             item(key = "customization_advanced") {
                 SimpleEntry(title = stringResource(R.string.customization_advanced), click = {
                     if (service.id == 0L) {
                         showAdvancedWarningDialog.value = true
                     } else {
-                        router.navigate(ServiceDirections.Advanced)
+                        onAdvanceClick()
                     }
                 })
             }
-            item { Divider(color = MaterialTheme.colors.divider) }
+            item { Divider(color = TwTheme.color.divider) }
 
             item(key = "customization_personalization") { HeaderEntry(stringResource(R.string.customization_personalization)) }
 
@@ -326,7 +321,7 @@ internal fun ServiceScreen(
                 SimpleEntry(
                     title = stringResource(R.string.customization_change_brand),
                     isEnabled = isBrandSelected,
-                    click = { router.navigate(ServiceDirections.ChangeBrand) },
+                    click = { onChangeBrandClick() },
                 )
             }
 
@@ -334,7 +329,7 @@ internal fun ServiceScreen(
                 SimpleEntry(
                     title = stringResource(R.string.customization_edit_label),
                     isEnabled = isLabelSelected,
-                    click = { router.navigate(ServiceDirections.ChangeLabel) },
+                    click = { onChangeLabelClick() },
                 )
             }
 
@@ -349,15 +344,15 @@ internal fun ServiceScreen(
             item(key = "customization_browser_extension") {
                 SimpleEntry(title = stringResource(R.string.browser__browser_extension),
                     isEnabled = service.assignedDomains.isNotEmpty(),
-                    click = { router.navigate(ServiceDirections.DomainAssignment) })
+                    click = { onDomainAssignmentClick() })
             }
 
             if (service.id != 0L) {
-                item { Divider(color = MaterialTheme.colors.divider) }
+                item { Divider(color = TwTheme.color.divider) }
                 item(key = "customization_delete") {
                     SimpleEntry(
                         title = stringResource(R.string.commons__delete),
-                        click = { router.navigate(ServiceDirections.Delete) },
+                        click = { onDeleteClick() },
                     )
                 }
             }
@@ -381,7 +376,7 @@ internal fun ServiceScreen(
                 positiveText = stringResource(id = R.string.commons__set),
                 onDismiss = { showNoLockDialog.value = false },
                 onNegative = {},
-                onPositive = { router.navigate(ServiceDirections.Security) },
+                onPositive = { onSecurityClick() },
             )
         }
 
@@ -394,7 +389,7 @@ internal fun ServiceScreen(
                 negativeText = stringResource(id = R.string.commons__cancel),
                 onDismiss = { showAdvancedWarningDialog.value = false },
                 onNegative = {},
-                onPositive = { router.navigate(ServiceDirections.Advanced) },
+                onPositive = { onAdvanceClick() },
             )
         }
 
@@ -452,9 +447,9 @@ fun IconSelector(
             .size(88.dp)
             .run {
                 if (isBrandSelected) {
-                    border(2.dp, MaterialTheme.colors.primary, RoundedCornerShape(8.dp))
+                    border(2.dp, TwTheme.color.primary, RoundedCornerShape(8.dp))
                 } else {
-                    border(1.dp, MaterialTheme.colors.divider, RoundedCornerShape(8.dp))
+                    border(1.dp, TwTheme.color.divider, RoundedCornerShape(8.dp))
                 }
             }
             .clip(RoundedCornerShape(8.dp))
@@ -475,7 +470,7 @@ fun IconSelector(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_check_circle),
                     contentDescription = null,
-                    tint = MaterialTheme.colors.primary,
+                    tint = TwTheme.color.primary,
                     modifier = Modifier
                         .padding(6.dp)
                         .size(16.dp)
@@ -493,9 +488,9 @@ fun IconSelector(
             .size(88.dp)
             .run {
                 if (isLabelSelected) {
-                    border(2.dp, MaterialTheme.colors.primary, RoundedCornerShape(8.dp))
+                    border(2.dp, TwTheme.color.primary, RoundedCornerShape(8.dp))
                 } else {
-                    border(1.dp, MaterialTheme.colors.divider, RoundedCornerShape(8.dp))
+                    border(1.dp, TwTheme.color.divider, RoundedCornerShape(8.dp))
                 }
             }
             .clip(RoundedCornerShape(8.dp))
@@ -516,7 +511,7 @@ fun IconSelector(
                 text = service.labelText ?: service.name.take(2).uppercase(),
                 color = Color.White,
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Bold, letterSpacing = 0.5.sp, fontSize = 14.sp),
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = 0.5.sp, fontSize = 14.sp),
                 modifier = Modifier.align(Alignment.Center)
             )
 
@@ -524,7 +519,7 @@ fun IconSelector(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_check_circle),
                     contentDescription = null,
-                    tint = MaterialTheme.colors.primary,
+                    tint = TwTheme.color.primary,
                     modifier = Modifier
                         .padding(6.dp)
                         .size(16.dp)

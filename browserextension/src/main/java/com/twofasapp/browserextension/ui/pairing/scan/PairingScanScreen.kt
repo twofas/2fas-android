@@ -1,7 +1,6 @@
 package com.twofasapp.browserextension.ui.pairing.scan
 
 import android.app.Activity
-import androidx.compose.foundation.clickable
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -9,7 +8,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.twofasapp.design.dialogs.InfoDialog
@@ -29,7 +27,7 @@ fun PairingScanScreen(
 
     Scaffold(
         topBar = {
-            TwTopAppBar(titleText = stringResource(id = R.string.commons__scan_qr_code), modifier = Modifier.clickable { viewModel.pairMockedBrowser() }, showBackButton = true)
+            TwTopAppBar(titleText = stringResource(id = R.string.commons__scan_qr_code), showBackButton = true)
         }
     ) { padding ->
         QrScannerScreen()

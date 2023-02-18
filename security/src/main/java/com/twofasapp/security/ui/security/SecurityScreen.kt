@@ -3,7 +3,7 @@ package com.twofasapp.security.ui.security
 import android.app.Activity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -82,7 +82,7 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__option_fingerprint_description),
                         modifier = Modifier.padding(start = 24.dp, end = 16.dp, top = 8.dp),
-                        style = MaterialTheme.typography.body2.copy(color = TwTheme.color.onSurfaceSecondary)
+                        style = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfaceSecondary)
                     )
                 }
 
@@ -128,7 +128,7 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__how_many_attempts_footer),
                         modifier = Modifier.padding(start = 72.dp, end = 16.dp),
-                        style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                     )
                 }
 
@@ -147,7 +147,7 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__block_for_footer),
                         modifier = Modifier.padding(start = 72.dp, end = 16.dp),
-                        style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                     )
                 }
 

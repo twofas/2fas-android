@@ -59,14 +59,4 @@ class PairingScanViewModel(
 
         }
     }
-
-    fun pairMockedBrowser() {
-        viewModelScope.launch {
-            scanQr.publishResult(
-                ScanQr.Result(
-                    "twofas_c://662699c0-dab0-4c3e-93a8-81dc31e24747"
-                )
-            )
-        }
-    }
 }

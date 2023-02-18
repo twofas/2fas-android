@@ -18,9 +18,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -44,12 +44,9 @@ import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.design.compose.ToolbarWithSearch
 import com.twofasapp.design.compose.dialogs.ListDialog
 import com.twofasapp.design.compose.serviceIconBitmap
-import com.twofasapp.design.theme.divider
-import com.twofasapp.design.theme.textFieldHint
-import com.twofasapp.design.theme.textPrimary
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.extensions.openBrowserApp
-import com.twofasapp.navigation.ServiceDirections
-import com.twofasapp.navigation.ServiceRouter
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.ServiceViewModel
 import kotlinx.coroutines.launch
@@ -59,9 +56,9 @@ import timber.log.Timber
 
 @Composable
 internal fun ChangeBrandScreen(
+    onRequestIconClick: () -> Unit,
     viewModel: ServiceViewModel = getViewModel(),
     brandViewModel: ChangeBrandViewModel = get(),
-    router: ServiceRouter = get(),
     analyticsService: AnalyticsService = get(),
 ) {
     val service = viewModel.uiState.collectAsState().value.service
@@ -70,6 +67,7 @@ internal fun ChangeBrandScreen(
     val coroutineScope = rememberCoroutineScope()
     val activity = LocalContext.current as? Activity
     var showBrandingDialog = remember { mutableStateOf(false) }
+    val backDispatcher = LocalBackDispatcher
 
     Scaffold(
         topBar = {
@@ -77,22 +75,27 @@ internal fun ChangeBrandScreen(
                 title = stringResource(id = R.string.customization_change_brand),
                 searchHint = stringResource(id = R.string.commons__search),
                 onSearchValueChanged = { brandViewModel.applySearchFilter(it) }
-            ) { router.navigateBack() }
+            ) { backDispatcher.onBackPressed() }
         }
     ) { padding ->
         if (state.sections.isEmpty()) {
             Text(
                 text = stringResource(id = R.string.brand_empty_msg),
-                style = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.textFieldHint),
+                style = MaterialTheme.typography.bodyLarge.copy(color = TwTheme.color.onSurfaceSecondary),
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(padding)
                     .padding(horizontal = 16.dp, vertical = 24.dp)
             )
             return@Scaffold
         }
 
-        LazyColumn(state = listState) {
+        LazyColumn(
+            state = listState, modifier = Modifier
+                .fillMaxWidth()
+                .padding(padding)
+        ) {
             // Icon order
             item(key = "icon_order") { SectionHeader(header = stringResource(id = R.string.tokens__order_icon_title)) }
 
@@ -108,7 +111,7 @@ internal fun ChangeBrandScreen(
                     Column(modifier = Modifier.padding(start = 24.dp)) {
                         Text(
                             text = stringResource(id = R.string.tokens__order_icon_description),
-                            style = MaterialTheme.typography.body1,
+                            style = MaterialTheme.typography.bodyLarge,
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         Row(modifier = Modifier.clickable {
@@ -117,8 +120,8 @@ internal fun ChangeBrandScreen(
                         }) {
                             Text(
                                 text = stringResource(id = R.string.tokens__order_icon_link),
-                                style = MaterialTheme.typography.body1.copy(fontWeight = FontWeight.SemiBold),
-                                color = MaterialTheme.colors.primary,
+                                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.SemiBold),
+                                color = TwTheme.color.primary,
                                 modifier = Modifier.align(CenterVertically)
                             )
                         }
@@ -155,20 +158,20 @@ internal fun ChangeBrandScreen(
                                         .align(CenterHorizontally)
                                         .border(
                                             width = 2.dp,
-                                            color = if (it.iconCollectionId == service.iconCollectionId) MaterialTheme.colors.primary else MaterialTheme.colors.background,
+                                            color = if (it.iconCollectionId == service.iconCollectionId) TwTheme.color.primary else TwTheme.color.background,
                                             shape = CircleShape
                                         )
                                         .clip(CircleShape)
                                         .clickable {
                                             viewModel.updateBrand(it)
-                                            router.navigateBack()
+                                            backDispatcher.onBackPressed()
                                         }
                                         .padding(16.dp)
                                 )
 
                                 Text(
                                     text = it.name,
-                                    style = MaterialTheme.typography.caption.copy(color = MaterialTheme.colors.textPrimary),
+                                    style = MaterialTheme.typography.bodySmall.copy(color = TwTheme.color.onSurfacePrimary),
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis,
                                     modifier = Modifier
@@ -196,7 +199,7 @@ internal fun ChangeBrandScreen(
                     when (index) {
                         0 -> {
                             analyticsService.captureEvent(AnalyticsEvent.REQUEST_ICON_AS_USER_CLICK)
-                            router.navigate(ServiceDirections.RequestIcon)
+                            onRequestIconClick()
                         }
 
                         1 -> {
@@ -242,10 +245,10 @@ internal fun ChangeBrandScreen(
 fun SectionHeader(header: String) {
     Text(
         text = header,
-        style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Bold),
+        style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = MaterialTheme.colors.divider)
+            .background(color = TwTheme.color.divider)
             .padding(horizontal = 16.dp, vertical = 8.dp)
     )
 }

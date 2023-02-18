@@ -5,8 +5,6 @@ import com.twofasapp.base.BaseViewModel
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.browserextension.domain.DeletePairedBrowserCase
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
-import com.twofasapp.time.domain.formatter.TimeFormatter
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOn
@@ -18,8 +16,6 @@ class BrowserDetailsViewModel(
     private val observePairedBrowsersCase: ObservePairedBrowsersCase,
     private val deletePairedBrowserCase: DeletePairedBrowserCase,
 ) : BaseViewModel() {
-
-    var onFinish: () -> Unit = {}
 
     private val _uiState = MutableStateFlow(BrowserDetailsUiState())
     val uiState = _uiState.asStateFlow()
@@ -55,7 +51,9 @@ class BrowserDetailsViewModel(
         viewModelScope.launch(dispatchers.io()) {
             runSafely(catch = { postError() }) {
                 deletePairedBrowserCase(uiState.value.extensionId)
-                onFinish() // TODO: FIX
+                _uiState.update {
+                    it.postEvent(BrowserDetailsUiState.Event.Finish)
+                }
             }
         }
     }

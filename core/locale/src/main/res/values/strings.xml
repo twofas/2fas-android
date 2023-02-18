@@ -561,7 +561,7 @@
     <!-- A service with this Service Key already exists. Do you want to override it? -->
     <string name="tokens__service_already_exists">Service with this Service Key already exists. Do you want to override it?</string>
     <string name="tokens__service_key_invalid_characters">Key contains invalid characters</string>
-    <string name="tokens__show_service_key">how Service Key</string>
+    <string name="tokens__show_service_key">Show Service Key</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
     <string name="tokens__show_service_key_setup_lock">Your Service Key is protected. Please add a PIN or Fingerprint lock to see it.</string>
     <string name="tokens__tokens_list_is_empty">Services list is empty</string>

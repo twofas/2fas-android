@@ -14,8 +14,8 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.twofasapp.design.compose.dialogs.internal.BaseDialog
 import com.twofasapp.design.theme.textPrimary
+import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.services.view.toColor
 
@@ -80,7 +81,7 @@ internal fun ColorBadgeDialog(
                                 Tint.Yellow -> com.twofasapp.resources.R.string.color__yellow
                             }
                         ),
-                        style = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.textPrimary),
+                        style = MaterialTheme.typography.bodyLarge.copy(color = TwTheme.color.onSurfacePrimary),
                         modifier = Modifier
                             .align(CenterVertically)
                             .wrapContentWidth()

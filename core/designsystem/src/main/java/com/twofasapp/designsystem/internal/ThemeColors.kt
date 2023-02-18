@@ -24,6 +24,8 @@ abstract class ThemeColors {
     val iconTint: Color
         get() = onSurfaceSecondary
 
+    val error: Color = Color(0xFFB9171E)
+
     val accentLightBlue: Color = Color(0xFF7F9CFF)
     val accentIndigo: Color = Color(0xFF5E5CE6)
     val accentPurple: Color = Color(0xFFD95DDC)

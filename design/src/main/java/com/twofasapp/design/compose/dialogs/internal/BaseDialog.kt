@@ -14,10 +14,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -77,7 +77,7 @@ internal fun BaseDialogTitle(text: String?, center: Boolean = false) {
     if (showTitle) {
         Text(
             text = text.orEmpty(),
-            style = MaterialTheme.typography.h6.copy(color = TwTheme.color.onSurfacePrimary),
+            style = MaterialTheme.typography.titleLarge.copy(color = TwTheme.color.onSurfacePrimary),
             textAlign = if (center) TextAlign.Center else TextAlign.Start,
             modifier = titleModifier
         )
@@ -102,7 +102,7 @@ internal fun BaseDialogTextContent(text: String?, modifier: Modifier = Modifier)
     if (text.isNullOrBlank().not()) {
         Text(
             text = text.orEmpty(),
-            style = MaterialTheme.typography.body1.copy(color = TwTheme.color.onSurfaceSecondary, letterSpacing = 0.25.sp),
+            style = MaterialTheme.typography.bodyLarge.copy(color = TwTheme.color.onSurfaceSecondary, letterSpacing = 0.25.sp),
             modifier = modifier,
         )
     }

@@ -14,6 +14,7 @@ data class BrowserDetailsUiState(
 
     sealed class Event : UiEvent() {
         class ShowSnackbarError(val message: String) : Event()
+        object Finish: Event()
     }
 
     override fun copyStateWithNewEvents(events: List<Event>): BrowserDetailsUiState {

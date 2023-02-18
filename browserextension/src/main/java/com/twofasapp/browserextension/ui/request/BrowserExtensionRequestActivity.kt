@@ -7,14 +7,13 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -25,11 +24,11 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.base.BaseComponentActivity
 import com.twofasapp.browserextension.notification.BrowserExtensionRequestPayload
 import com.twofasapp.browserextension.notification.BrowserExtensionRequestReceiver
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.design.theme.AppThemeLegacy
-import com.twofasapp.design.theme.backgroundSecondary
-import com.twofasapp.design.theme.textPrimary
-import com.twofasapp.design.theme.textSecondary
+import com.twofasapp.designsystem.MainAppTheme
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.service.ServiceState
+import com.twofasapp.designsystem.service.ServiceWithoutCode
 import com.twofasapp.resources.R
 import com.twofasapp.services.domain.model.Service
 import com.twofasapp.services.view.ServiceCompact
@@ -42,11 +41,11 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
         val payload = intent.getParcelableExtra<BrowserExtensionRequestPayload>(BrowserExtensionRequestPayload.Key)!!
 
         setContent {
-            AppThemeLegacy {
+            MainAppTheme {
                 Scaffold(
-                    topBar = { Toolbar(title = stringResource(id = R.string.browser__request)) { onBackPressed() } }
+                    topBar = { TwTopAppBar(titleText = stringResource(id = R.string.browser__request)) }
                 ) { padding ->
-                    MainScreen(padding, payload)
+                    MainScreen(payload, Modifier.padding(padding))
                 }
             }
         }
@@ -55,8 +54,8 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class)
     @Composable
     internal fun MainScreen(
-        padding: PaddingValues,
         payload: BrowserExtensionRequestPayload,
+        modifier: Modifier,
         viewModel: BrowserExtensionRequestViewModel = get()
     ) {
         viewModel.init(
@@ -71,11 +70,11 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
         }
 
         if (uiState.otherServices.isEmpty() && uiState.suggestedServices.isEmpty()) {
-            EmptyItem()
+            EmptyItem(modifier)
             return
         }
 
-        LazyColumn(modifier = Modifier.padding(padding)) {
+        LazyColumn(modifier = modifier) {
             item { HeaderItem(browserName = uiState.browserName, payload.domain, modifier = Modifier.animateItemPlacement()) }
 
             if (uiState.suggestedServices.isNotEmpty()) {
@@ -124,19 +123,19 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
             modifier = modifier
                 .fillMaxWidth()
                 .padding(start = 72.dp, end = 16.dp, top = 24.dp, bottom = 24.dp),
-            style = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.textPrimary)
+            style = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfacePrimary)
         )
     }
 
     @Composable
-    internal fun EmptyItem() {
+    internal fun EmptyItem(modifier: Modifier) {
         Text(
             text = stringResource(id = R.string.extension__error_no_services),
             textAlign = TextAlign.Center,
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 24.dp),
-            style = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.textPrimary)
+            style = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfacePrimary)
         )
     }
 
@@ -146,9 +145,9 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
             text = title.uppercase(),
             modifier = modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colors.backgroundSecondary)
+                .background(TwTheme.color.surfaceVariant)
                 .padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 12.dp),
-            style = MaterialTheme.typography.body2.copy(color = MaterialTheme.colors.textSecondary)
+            style = MaterialTheme.typography.bodySmall.copy(color = TwTheme.color.onSurfaceSecondary)
         )
     }
 

@@ -16,7 +16,6 @@ class PairingProgressViewModel(
     private val dispatchers: Dispatchers,
     private val registerMobileDeviceCase: RegisterMobileDeviceCase,
     private val pairBrowserCase: PairBrowserCase,
-    private val notificationsPermissionRequestFlow: NotificationsPermissionRequestFlow,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(PairingProgressUiState())

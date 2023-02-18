@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -58,7 +58,7 @@ internal fun PinScreen(
 
     if (state == PinScreenState.Loading) {
         Box(modifier = Modifier.fillMaxSize()) {
-            ProgressBar(modifer = Modifier.align(Alignment.Center))
+            ProgressBar(modifier = Modifier.align(Alignment.Center))
         }
     }
 
@@ -88,7 +88,7 @@ internal fun PinScreen(
                     .padding(16.dp)
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyLarge,
                 color = if (errorMessage.isNotBlank()) TwTheme.color.primary else TwTheme.color.onSurfacePrimary
             )
 

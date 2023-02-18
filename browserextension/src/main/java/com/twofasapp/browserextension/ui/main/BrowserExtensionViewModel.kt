@@ -25,8 +25,6 @@ class BrowserExtensionViewModel(
     private val _uiState = MutableStateFlow(BrowserExtensionUiState())
     val uiState = _uiState.asStateFlow()
 
-    var onPairClick: () -> Unit = {}
-
     init {
         viewModelScope.launch {
 

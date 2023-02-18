@@ -5,9 +5,8 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.Surface
 import com.twofasapp.base.AuthTracker
-import com.twofasapp.design.theme.AppThemeLegacy
+import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.resources.R
 import org.koin.android.ext.android.inject
@@ -25,12 +24,10 @@ class LockActivity : AppCompatActivity() {
         makeWindowSecure()
 
         setContent {
-            AppThemeLegacy {
-                Surface {
-                    LockScreen {
-                        authTracker.onAuthenticated()
-                        finishWithSuccess()
-                    }
+            MainAppTheme {
+                LockScreen {
+                    authTracker.onAuthenticated()
+                    finishWithSuccess()
                 }
             }
         }

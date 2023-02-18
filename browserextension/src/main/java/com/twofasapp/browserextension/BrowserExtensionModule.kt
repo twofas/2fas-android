@@ -14,6 +14,7 @@ import com.twofasapp.browserextension.domain.UpdateMobileDeviceCase
 import com.twofasapp.browserextension.notification.ShowBrowserExtensionRequestNotificationCaseImpl
 import com.twofasapp.browserextension.ui.browser.BrowserDetailsViewModel
 import com.twofasapp.browserextension.ui.main.BrowserExtensionViewModel
+import com.twofasapp.browserextension.ui.main.permission.BrowserExtensionPermissionViewModel
 import com.twofasapp.browserextension.ui.pairing.progress.PairingProgressViewModel
 import com.twofasapp.browserextension.ui.pairing.scan.PairingScanViewModel
 import com.twofasapp.browserextension.ui.request.BrowserExtensionRequestViewModel

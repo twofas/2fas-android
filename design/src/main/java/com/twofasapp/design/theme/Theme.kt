@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.prefs.model.AppTheme
 
 @Composable
@@ -42,4 +43,4 @@ fun AppThemeLegacy(
 }
 
 @Composable
-fun isNight() = MaterialTheme.colors.background.luminance() < 0.5
+fun isNight() = TwTheme.color.background.luminance() < 0.5
