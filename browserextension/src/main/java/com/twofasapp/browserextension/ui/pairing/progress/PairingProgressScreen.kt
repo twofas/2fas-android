@@ -1,15 +1,18 @@
 package com.twofasapp.browserextension.ui.pairing.progress
 
+import android.app.NotificationManager
+import android.os.Build
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -29,16 +32,20 @@ import com.twofasapp.design.compose.AnimatedContent
 import com.twofasapp.design.compose.ButtonHeight
 import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
-import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.design.compose.Toolbar
+import com.twofasapp.navigation.SettingsDirections
+import com.twofasapp.navigation.SettingsRouter
 import com.twofasapp.resources.R
-import org.koin.androidx.compose.koinViewModel
+import org.koin.androidx.compose.get
 
 @Composable
 fun PairingProgressScreen(
     openMain: () -> Unit,
     openPairingScan: () -> Unit,
     extensionId: String,
-    viewModel: PairingProgressViewModel = koinViewModel(),
+    viewModel: PairingProgressViewModel = get(),
+    router: SettingsRouter = get(),
+    notificationManager: NotificationManager = get()
 ) {
     val uiState = viewModel.uiState.collectAsState()
     viewModel.pairBrowser(extensionId)
@@ -50,16 +57,8 @@ fun PairingProgressScreen(
     ) { padding ->
         AnimatedContent(
             condition = uiState.value.isPairing,
-            contentWhenTrue = { ProgressContent(Modifier.fillMaxSize().padding(padding)) },
-            contentWhenFalse = {
-                ResultContent(
-                    onContinueClick = { openMain() },
-                    onScanAgainClick = { openPairingScan() },
-                    uiState.value.isPairingSuccess,
-                    uiState.value.code,
-                    modifier = Modifier.fillMaxSize().padding(padding)
-                )
-            },
+            contentWhenTrue = { ProgressContent() },
+            contentWhenFalse = { ResultContent(uiState.value.isPairingSuccess, uiState.value.code, router, notificationManager) }
         )
     }
 }
@@ -78,7 +77,8 @@ internal fun ResultContent(
     onScanAgainClick: () -> Unit = {},
     isSuccess: Boolean,
     code: Int? = null,
-    modifier: Modifier
+    router: SettingsRouter,
+    notificationManager: NotificationManager,
 ) {
     val image = if (isSuccess) R.drawable.browser_extension_success_image else R.drawable.browser_extension_error_image
 
@@ -96,12 +96,18 @@ internal fun ResultContent(
 
     val cta = if (isSuccess) R.string.commons__continue else R.string.browser__result_error_cta
 
-    val ctaAction: () -> Unit = {
-        if (isSuccess) {
-            onContinueClick()
+    val ctaAction: () -> Unit = if (isSuccess) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (notificationManager.areNotificationsEnabled()) {
+                { router.navigate(SettingsDirections.GoBack) }
+            } else {
+                { router.navigate(SettingsDirections.Permission) }
+            }
         } else {
-            onScanAgainClick()
+            { router.navigate(SettingsDirections.GoBack) }
         }
+    } else {
+        { router.navigate(SettingsDirections.PairingScan) }
     }
     ConstraintLayout(
         modifier = modifier

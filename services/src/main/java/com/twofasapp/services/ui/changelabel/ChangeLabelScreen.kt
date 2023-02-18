@@ -57,7 +57,7 @@ internal fun ChangeLabelScreen(
             Toolbar(title = stringResource(id = R.string.customization_edit_label), actions = {
                 TextButton(
                     onClick = {
-                        viewModel.updateLabel(labelText.value.uppercase(), labelTint.value?: Tint.LightBlue)
+                        viewModel.updateLabel(labelText.value.uppercase(), labelTint.value ?: Tint.LightBlue)
                         router.navigateBack()
                     },
                     enabled = labelText.value.isNotBlank() && labelText.value.isNotEmpty()
@@ -85,7 +85,7 @@ internal fun ChangeLabelScreen(
             Box(modifier = Modifier.padding(24.dp)) {
                 TextFieldOutlined(
                     value = labelText.value,
-                    label = { Text(text = "Label (1 or 2 characters)") },
+                    label = { Text(text = stringResource(id = R.string.tokens__label_characters_title)) },
                     maxChars = 2,
                     onValueChange = { labelText.value = it.uppercase() },
                     keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Characters),
@@ -112,7 +112,19 @@ internal fun ChangeLabelScreen(
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
-                            text = it.displayName,
+                            stringResource(
+                                id = when (it) {
+                                    Tint.Default -> com.twofasapp.resources.R.string.color__neutral
+                                    Tint.LightBlue -> com.twofasapp.resources.R.string.color__light_blue
+                                    Tint.Indigo -> com.twofasapp.resources.R.string.color__indigo
+                                    Tint.Purple -> com.twofasapp.resources.R.string.color__purple
+                                    Tint.Turquoise -> com.twofasapp.resources.R.string.color__turquoise
+                                    Tint.Green -> com.twofasapp.resources.R.string.color__green
+                                    Tint.Red -> com.twofasapp.resources.R.string.color__red
+                                    Tint.Orange -> com.twofasapp.resources.R.string.color__orange
+                                    Tint.Yellow -> com.twofasapp.resources.R.string.color__yellow
+                                }
+                            ),
                             style = MaterialTheme.typography.caption.copy(color = MaterialTheme.colors.textPrimary),
                             modifier = Modifier
                                 .align(Alignment.CenterHorizontally)

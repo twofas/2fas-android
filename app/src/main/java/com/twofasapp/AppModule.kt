@@ -9,6 +9,7 @@ import com.twofasapp.core.cipher.CipherService
 import com.twofasapp.core.cipher.CipherServiceImpl
 import com.twofasapp.permissions.CameraPermissionRequest
 import com.twofasapp.permissions.CameraPermissionRequestFlow
+import com.twofasapp.permissions.NotificationsPermissionRequestFlow
 import com.twofasapp.services.analytics.AnalyticsServiceFirebase
 import com.twofasapp.services.googledrive.GoogleDriveService
 import com.twofasapp.services.googledrive.GoogleDriveServiceImpl
@@ -39,6 +40,7 @@ val applicationModule = module {
 
     factory { CameraPermissionRequest(activityContext()) }
     factory { CameraPermissionRequestFlow(activityContext()) }
+    factory { NotificationsPermissionRequestFlow(activityContext()) }
 
     single<Dispatchers> { AppDispatchers() }
 

@@ -35,6 +35,7 @@ dependencies {
     implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.rxJava)
     implementation(libs.bundles.appCompat)
+    implementation(libs.bundles.accompanist)
     implementation(libs.lottie)
     implementation(libs.timber)
     implementation(libs.kotlinCoroutines)

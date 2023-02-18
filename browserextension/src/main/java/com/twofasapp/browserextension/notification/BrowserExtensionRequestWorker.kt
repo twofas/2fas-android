@@ -58,8 +58,9 @@ class BrowserExtensionRequestWorker(
                                     }
                                 ),
                             )
-                            showToast("Code sent successfully")
+                            showToast(context.getString(com.twofasapp.resources.R.string.extension__code_sent_msg))
                         }
+
                         BrowserExtensionRequestPayload.Action.Deny -> {
                             denyLoginRequestCase.invoke(payload.extensionId, payload.requestId)
                         }
@@ -67,7 +68,7 @@ class BrowserExtensionRequestWorker(
 
 
                 } catch (e: Exception) {
-                    showToast("Error occurred when sending code")
+                    showToast(context.getString(com.twofasapp.resources.R.string.extension__code_sent_error_msg))
                 }
             }
 

@@ -20,7 +20,7 @@
             style="@style/Toolbar.Back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Import from the file" />
+            app:title="@string/backup__import_backup_file" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

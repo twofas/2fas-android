@@ -9,8 +9,6 @@ data class BrowserExtensionUiState(
     val isLoading: Boolean = true,
     val pairedBrowsers: List<PairedBrowser> = emptyList(),
     val mobileDevice: MobileDevice? = null,
-    val isCameraPermissionGranted: Boolean = false,
-    val showRationaleDialog: Boolean = false,
     val showEditDeviceDialog: Boolean = false,
     override val events: List<Event> = emptyList(),
 ) : UiState<BrowserExtensionUiState, BrowserExtensionUiState.Event> {

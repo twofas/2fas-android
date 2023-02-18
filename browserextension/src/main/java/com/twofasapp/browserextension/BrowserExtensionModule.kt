@@ -42,6 +42,7 @@ class BrowserExtensionModule : KoinModule {
         singleOf(::DeletePairedBrowserCase)
 
         viewModelOf(::BrowserExtensionViewModel)
+        viewModelOf(::BrowserExtensionPermissionViewModel)
         viewModelOf(::PairingScanViewModel)
         viewModelOf(::PairingProgressViewModel)
         viewModelOf(::BrowserExtensionRequestViewModel)
