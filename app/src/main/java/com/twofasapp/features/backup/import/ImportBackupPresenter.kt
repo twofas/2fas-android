@@ -1,8 +1,8 @@
 package com.twofasapp.features.backup.import
 
 import android.net.Uri
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.backup.domain.SyncBackupTrigger
+import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.services.domain.ShowBackupNotice
 
@@ -72,7 +72,7 @@ class ImportBackupPresenter(
                             ImportBackup.Result.Success -> {
                                 showBackupNotice.save(false)
                                 syncBackupDispatcher.dispatch(SyncBackupTrigger.FIRST_CONNECT)
-                                view.showResultToast("Services successfully imported!")
+                                view.showResultToast(com.twofasapp.resources.R.string.import_ga_success)
 
                                 if (isFromDeeplink) {
                                     navigator.openMain()
@@ -80,13 +80,15 @@ class ImportBackupPresenter(
                                     navigator.finishResultOk()
                                 }
                             }
+
                             ImportBackup.Result.WrongPasswordError -> {
                                 view.showContent(content?.numberOfServices ?: 0, password.isNullOrBlank().not())
                                 view.showWrongPasswordDialog { newPass -> import(password = newPass) }
                             }
+
                             ImportBackup.Result.UnknownError -> {
                                 view.showContent(content?.numberOfServices ?: 0, password.isNullOrBlank().not())
-                                view.showResultToast("Unknown error occurred! Try again!")
+                                view.showResultToast(com.twofasapp.resources.R.string.commons__unknown_error)
                             }
                         }
                     },
@@ -100,8 +102,8 @@ class ImportBackupPresenter(
 
     private fun handleError(exception: Throwable) {
         val msg = when (exception) {
-            is FileTooBigException -> "The file you are trying to import is too big. Size limit is 10 MB."
-            else -> "The file you are trying to import is invalid or damaged. Please choose another file."
+            is FileTooBigException -> com.twofasapp.resources.R.string.backup__import_error_file_size
+            else -> com.twofasapp.resources.R.string.backup__import_error_file_invalid
         }
         view.showError(msg)
     }

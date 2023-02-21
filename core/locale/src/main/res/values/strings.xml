@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Thu, 16 Feb 2023 09:40:27 -0800
+ Exported at: Tue, 21 Feb 2023 02:45:30 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -706,4 +706,8 @@
     <string name="extension__services_suggested_header">Suggested</string>
     <string name="extension__services_all_header">All services</string>
     <string name="extension__services_other_header">Other services</string>
+    <string name="settings__ssl_error_title">SSL Error</string>
+    <string name="settings__ssl_error_description">An SSL error has occurred and a secure connection to the server cannot be made. Ensure you have the latest version of the app or try to change the network.</string>
+    <string name="backup__import_error_file_size">The file you are trying to import is too big. Size limit is 10 MB.</string>
+    <string name="backup__import_error_file_invalid">The file you are trying to import is invalid or damaged. Please choose another file.</string>
 </resources>

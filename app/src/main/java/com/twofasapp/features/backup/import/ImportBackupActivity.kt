@@ -43,7 +43,7 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
         }
     }
 
-    override fun showResultToast(text: String) = toastLong(text)
+    override fun showResultToast(text: Int) = toastLong(text)
 
     override fun toolbarBackClicks() = viewBinding.toolbar.navigationClicksThrottled()
 
@@ -71,11 +71,11 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
         }
     }
 
-    override fun showError(msg: String) {
+    override fun showError(msg: Int) {
         viewBinding.progress.makeGone()
         viewBinding.content.makeGone()
         viewBinding.error.makeVisible()
-        viewBinding.descriptionError.text = msg
+        viewBinding.descriptionError.text = getString(msg)
     }
 
     override fun showProgress() {

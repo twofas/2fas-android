@@ -1,7 +1,6 @@
 package com.twofasapp.features.backup.import
 
 import android.net.Uri
-import com.twofasapp.base.BasePresenter
 import io.reactivex.Flowable
 
 interface ImportBackupContract {
@@ -13,9 +12,9 @@ interface ImportBackupContract {
         fun cancelErrorClicks(): Flowable<Unit>
         fun chooseAnotherFileClicks(): Flowable<Unit>
         fun showFilePicker()
-        fun showResultToast(text: String)
+        fun showResultToast(text: Int)
         fun showContent(numberOfServices: Int, isPasswordProtected: Boolean)
-        fun showError(msg: String)
+        fun showError(msg: Int)
         fun showProgress()
         fun showPasswordDialog(onConfirmed: (String) -> Unit)
         fun showWrongPasswordDialog(onConfirmed: (String) -> Unit)
