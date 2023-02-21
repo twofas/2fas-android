@@ -6,6 +6,7 @@ import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.browserextension.domain.PairBrowserCase
 import com.twofasapp.browserextension.domain.RegisterMobileDeviceCase
 import com.twofasapp.network.exception.BrowserAlreadyPairedException
+import com.twofasapp.permissions.NotificationsPermissionRequestFlow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,6 +17,7 @@ internal class PairingProgressViewModel(
     private val dispatchers: Dispatchers,
     private val registerMobileDeviceCase: RegisterMobileDeviceCase,
     private val pairBrowserCase: PairBrowserCase,
+    private val notificationsPermissionRequestFlow: NotificationsPermissionRequestFlow,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(PairingProgressUiState())

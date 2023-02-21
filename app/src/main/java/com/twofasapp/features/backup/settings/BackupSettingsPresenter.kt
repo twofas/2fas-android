@@ -123,27 +123,27 @@ internal class BackupSettingsPresenter(
             SimpleEntry(
                 titleRes = R.string.backup_settings_sync_title,
                 subtitle = when (syncStatus) {
-                    SyncStatus.Default -> "Waiting for sync..."
+                    SyncStatus.Default -> view.getStringRes(R.string.backup__sync_status_waiting)
                     is SyncStatus.Synced -> {
                         if (backupStatus.lastSyncMillis == 0L) {
-                            "Waiting for sync..."
+                            view.getStringRes(R.string.backup__sync_status_waiting)
                         } else {
                             durationFormatter.format(backupStatus.lastSyncMillis)
                         }
                     }
-                    SyncStatus.Syncing -> "Syncing..."
+                    SyncStatus.Syncing -> view.getStringRes(R.string.backup__sync_status_progress)
                     is SyncStatus.Error -> {
                         when ((syncStatus as SyncStatus.Error).trigger) {
                             SyncBackupTrigger.WIPE_DATA,
                             SyncBackupTrigger.SET_PASSWORD,
                             SyncBackupTrigger.REMOVE_PASSWORD -> {
                                 if (backupStatus.lastSyncMillis == 0L) {
-                                    "Waiting for sync..."
+                                    view.getStringRes(R.string.backup__sync_status_waiting)
                                 } else {
                                     durationFormatter.format(backupStatus.lastSyncMillis)
                                 }
                             }
-                            else -> "Error"
+                            else -> view.getStringRes(R.string.commons__error)
                         }
                     }
                 }

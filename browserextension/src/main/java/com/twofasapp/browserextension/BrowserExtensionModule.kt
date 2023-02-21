@@ -4,7 +4,20 @@ import com.twofasapp.browserextension.data.BrowserExtensionLocalData
 import com.twofasapp.browserextension.data.BrowserExtensionLocalDataImpl
 import com.twofasapp.browserextension.data.BrowserExtensionRemoteData
 import com.twofasapp.browserextension.data.BrowserExtensionRemoteDataImpl
-import com.twofasapp.browserextension.domain.*
+import com.twofasapp.browserextension.domain.ApproveLoginRequestCase
+import com.twofasapp.browserextension.domain.DeletePairedBrowserCase
+import com.twofasapp.browserextension.domain.DenyLoginRequestCase
+import com.twofasapp.browserextension.domain.EncryptCodeCase
+import com.twofasapp.browserextension.domain.FetchPairedBrowsersCase
+import com.twofasapp.browserextension.domain.FetchTokenRequestsCase
+import com.twofasapp.browserextension.domain.FetchTokenRequestsCaseImpl
+import com.twofasapp.browserextension.domain.ObserveMobileDeviceCase
+import com.twofasapp.browserextension.domain.ObserveMobileDeviceCaseImpl
+import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
+import com.twofasapp.browserextension.domain.ObservePairedBrowsersCaseImpl
+import com.twofasapp.browserextension.domain.PairBrowserCase
+import com.twofasapp.browserextension.domain.RegisterMobileDeviceCase
+import com.twofasapp.browserextension.domain.UpdateMobileDeviceCase
 import com.twofasapp.browserextension.domain.repository.BrowserExtensionRepository
 import com.twofasapp.browserextension.domain.repository.BrowserExtensionRepositoryImpl
 import com.twofasapp.browserextension.notification.ShowBrowserExtensionRequestNotificationCaseImpl
@@ -12,6 +25,8 @@ import com.twofasapp.browserextension.ui.browser.BrowserDetailsScreenFactory
 import com.twofasapp.browserextension.ui.browser.BrowserDetailsViewModel
 import com.twofasapp.browserextension.ui.main.BrowserExtensionScreenFactory
 import com.twofasapp.browserextension.ui.main.BrowserExtensionViewModel
+import com.twofasapp.browserextension.ui.main.permission.BrowserExtensionPermissionScreenFactory
+import com.twofasapp.browserextension.ui.main.permission.BrowserExtensionPermissionViewModel
 import com.twofasapp.browserextension.ui.pairing.progress.PairingProgressScreenFactory
 import com.twofasapp.browserextension.ui.pairing.progress.PairingProgressViewModel
 import com.twofasapp.browserextension.ui.pairing.scan.PairingScanScreenFactory
@@ -46,6 +61,7 @@ class BrowserExtensionModule : KoinModule {
         singleOf(::DeletePairedBrowserCase)
 
         viewModelOf(::BrowserExtensionViewModel)
+        viewModelOf(::BrowserExtensionPermissionViewModel)
         viewModelOf(::PairingScanViewModel)
         viewModelOf(::PairingProgressViewModel)
         viewModelOf(::BrowserExtensionRequestViewModel)
@@ -55,5 +71,6 @@ class BrowserExtensionModule : KoinModule {
         singleOf(::PairingProgressScreenFactory)
         singleOf(::PairingScanScreenFactory)
         singleOf(::BrowserDetailsScreenFactory)
+        singleOf(::BrowserExtensionPermissionScreenFactory)
     }
 }

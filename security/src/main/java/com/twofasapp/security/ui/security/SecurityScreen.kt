@@ -7,7 +7,12 @@ import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -15,10 +20,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.FragmentActivity
-import com.twofasapp.design.compose.*
+import com.twofasapp.design.compose.HeaderEntry
+import com.twofasapp.design.compose.SimpleEntry
+import com.twofasapp.design.compose.SubtitleGravity
+import com.twofasapp.design.compose.SwitchEntry
+import com.twofasapp.design.compose.Toolbar
 import com.twofasapp.design.compose.dialogs.ListDialog
 import com.twofasapp.design.theme.divider
-import com.twofasapp.design.theme.textPrimary
 import com.twofasapp.design.theme.textSecondary
 import com.twofasapp.navigation.SecurityDirections
 import com.twofasapp.navigation.SecurityRouter
@@ -108,7 +116,11 @@ internal fun SecurityScreen(
                         title = stringResource(id = R.string.settings__limit_of_trials),
                         icon = painterResource(id = R.drawable.ic_limit_trials),
                         subtitleGravity = SubtitleGravity.END,
-                        subtitle = uiState.pinTrials.label,
+                        subtitle = if (uiState.pinTrials == PinTrials.NoLimit) {
+                            stringResource(id = R.string.settings__no_limit)
+                        } else {
+                            uiState.pinTrials.label
+                        },
                         click = { showTrailsDialog = true }
                     )
                 }
@@ -116,7 +128,7 @@ internal fun SecurityScreen(
                 item {
                     Text(
                         text = stringResource(id = R.string.settings__how_many_attempts_footer),
-                        modifier = Modifier.padding(start = 72.dp, end = 16.dp,),
+                        modifier = Modifier.padding(start = 72.dp, end = 16.dp),
                         style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = MaterialTheme.colors.textSecondary),
                     )
                 }
@@ -126,7 +138,7 @@ internal fun SecurityScreen(
                         title = stringResource(id = R.string.settings__block_for),
                         icon = painterResource(id = R.drawable.ic_block_for),
                         subtitleGravity = SubtitleGravity.END,
-                        subtitle = uiState.pinTimeout.label,
+                        subtitle = stringResource(id = uiState.pinTimeout.label),
                         isEnabled = uiState.pinTrials != PinTrials.NoLimit,
                         click = { showTimeoutDialog = true }
                     )
@@ -135,7 +147,7 @@ internal fun SecurityScreen(
                 item {
                     Text(
                         text = stringResource(id = R.string.settings__block_for_footer),
-                        modifier = Modifier.padding(start = 72.dp, end = 16.dp,),
+                        modifier = Modifier.padding(start = 72.dp, end = 16.dp),
                         style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = MaterialTheme.colors.textSecondary),
                     )
                 }
@@ -164,8 +176,14 @@ internal fun SecurityScreen(
 
         if (showTrailsDialog) {
             ListDialog(
-                items = PinTrials.values().map { it.label },
-                selected = uiState.pinTrials.label,
+                items = PinTrials.values().map {
+                    if (it == PinTrials.NoLimit) {
+                        stringResource(id = R.string.settings__no_limit)
+                    } else {
+                        it.label
+                    }
+                },
+                selected = if (uiState.pinTrials == PinTrials.NoLimit) stringResource(id = R.string.settings__no_limit) else uiState.pinTrials.label,
                 onDismiss = { showTrailsDialog = false },
                 onSelected = { index, _ -> viewModel.updatePinTrails(PinTrials.values()[index]) }
             )
@@ -173,8 +191,8 @@ internal fun SecurityScreen(
 
         if (showTimeoutDialog) {
             ListDialog(
-                items = PinTimeout.values().map { it.label },
-                selected = uiState.pinTimeout.label,
+                items = PinTimeout.values().map { stringResource(id = it.label) },
+                selected = stringResource(id = uiState.pinTimeout.label),
                 onDismiss = { showTimeoutDialog = false },
                 onSelected = { index, _ -> viewModel.updatePinTimeout(PinTimeout.values()[index]) }
             )

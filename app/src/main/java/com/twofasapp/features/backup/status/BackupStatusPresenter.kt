@@ -2,7 +2,6 @@ package com.twofasapp.features.backup.status
 
 import com.mikepenz.fastadapter.IItem
 import com.twofasapp.BuildConfig
-import com.twofasapp.resources.R
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.core.analytics.AnalyticsService
@@ -17,6 +16,7 @@ import com.twofasapp.prefs.model.RemoteBackup
 import com.twofasapp.prefs.model.RemoteBackupStatus
 import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import com.twofasapp.resources.R
 import com.twofasapp.services.backup.models.RemoteBackupErrorType
 import com.twofasapp.services.backup.usecases.CheckRemoteBackupPassword
 import com.twofasapp.services.domain.ShowBackupNotice
@@ -94,7 +94,7 @@ internal class BackupStatusPresenter(
         items.add(createSyncSettingsItem())
 
         items.add(DividerItem())
-        items.add(HeaderEntry(text = "Local file").toItem())
+        items.add(HeaderEntry(textRes = R.string.backup__local_file_title).toItem())
         items.add(createImportItem())
         items.add(createExportItem())
 
@@ -163,7 +163,7 @@ internal class BackupStatusPresenter(
             }
 
             is GoogleAuthResult.Failure -> {
-                view.showErrorDialog(title = "Error", msg = result.reason.message.orEmpty())
+                view.showErrorDialog(titleRes = R.string.commons__error, msg = result.reason.message.orEmpty())
             }
         }
 
@@ -180,14 +180,14 @@ internal class BackupStatusPresenter(
 
     private fun createDriveSyncItem(): SwitchEntryItem {
         val subtitle = when {
-            isBackupActive && isPasswordError -> ""
-            isBackupActive -> ""
-            else -> "Automatically store and sync your backup file in the hidden folder on your Google Drive. This folder is only accessible to the 2FAS app."
+            isBackupActive && isPasswordError -> null
+            isBackupActive -> null
+            else -> R.string.backup_explanation_msg
         }
 
         return SwitchEntry(
-            title = "Google Drive sync",
-            subtitle = subtitle,
+            titleRes = R.string.backup__drive_title,
+            subtitleRes = subtitle,
             drawableRes = if (isBackupActive && isPasswordError.not()) R.drawable.ic_sync_on else R.drawable.ic_sync_off,
             drawableTintRes = R.color.accent,
             isChecked = isBackupActive && isPasswordError.not(),
@@ -197,7 +197,7 @@ internal class BackupStatusPresenter(
     }
 
     private fun createSyncSettingsItem() = SimpleEntry(
-        title = "Synchronization settings",
+        titleRes = R.string.backup__synchronization_settings,
         drawableRes = R.drawable.ic_drawer_settings,
         drawableTintRes = R.color.accent,
         isEnabled = isBackupActive && syncStatus != SyncStatus.Syncing,
@@ -232,14 +232,14 @@ internal class BackupStatusPresenter(
     } else null
 
     private fun createImportItem() = SimpleEntry(
-        title = "Import from file",
+        titleRes = R.string.backup__import_file,
         drawableRes = R.drawable.ic_import_file,
         clickAction = { navigator.openImportBackup() },
     ).toItem()
 
     private fun createExportItem() = SimpleEntry(
-        title = "Export to file",
-        subtitle = "Create an offline backup of your services.",
+        titleRes = R.string.backup__export_to_file,
+        subtitleRes = R.string.backup__file_backup_offline_title,
         isEnabled = isServicesListNotEmpty,
         drawableRes = R.drawable.ic_export_file,
         clickAction = { navigator.openExportBackup() },

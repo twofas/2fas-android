@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <uses-permission
         android:name="com.google.android.gms.permission.AD_ID"
         tools:node="remove" />
@@ -131,7 +133,7 @@
 
         <activity
             android:name=".features.backup.BackupActivity"
-            android:label="2FAS Backup"
+            android:label="@string/backup__2fas_backup"
             android:windowSoftInputMode="adjustResize" />
 
         <activity

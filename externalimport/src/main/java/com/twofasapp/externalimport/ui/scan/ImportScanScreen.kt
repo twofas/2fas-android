@@ -5,9 +5,11 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import com.twofasapp.core.encoding.encodeBase64ToString
 import com.twofasapp.design.compose.Toolbar
 import com.twofasapp.design.dialogs.InfoDialog
+import com.twofasapp.externalimport.R
 import com.twofasapp.navigation.ExternalImportDirections
 import com.twofasapp.navigation.ExternalImportRouter
 import com.twofasapp.qrscanner.ui.QrScannerScreen
@@ -25,7 +27,7 @@ internal fun ImportScanScreen(
     Scaffold(
         topBar = {
             Toolbar(
-                title = "Scan QR Code",
+                title = stringResource(id = com.twofasapp.resources.R.string.commons__scan_qr_code),
             ) {
                 router.navigateBack()
             }

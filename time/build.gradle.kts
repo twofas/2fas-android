@@ -12,6 +12,7 @@ dependencies {
     implementation(project(":time:domain"))
     implementation(project(":prefs"))
     implementation(project(":network"))
+    implementation(project(":resources"))
     implementation(project(":truetime"))
     implementation(project(":truetime-rx"))
 

@@ -1,7 +1,14 @@
 package com.twofasapp.browserextension.ui.pairing.progress
 
+import android.app.NotificationManager
+import android.os.Build
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -16,11 +23,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.airbnb.lottie.compose.*
-import com.twofasapp.resources.R
-import com.twofasapp.design.compose.*
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
+import com.twofasapp.design.compose.AnimatedContent
+import com.twofasapp.design.compose.ButtonHeight
+import com.twofasapp.design.compose.ButtonShape
+import com.twofasapp.design.compose.ButtonTextColor
+import com.twofasapp.design.compose.Toolbar
 import com.twofasapp.navigation.SettingsDirections
 import com.twofasapp.navigation.SettingsRouter
+import com.twofasapp.resources.R
 import org.koin.androidx.compose.get
 
 @Composable
@@ -28,6 +43,7 @@ internal fun PairingProgressScreen(
     extensionId: String,
     viewModel: PairingProgressViewModel = get(),
     router: SettingsRouter = get(),
+    notificationManager: NotificationManager = get()
 ) {
     val uiState = viewModel.uiState.collectAsState()
     viewModel.pairBrowser(extensionId)
@@ -42,7 +58,7 @@ internal fun PairingProgressScreen(
         AnimatedContent(
             condition = uiState.value.isPairing,
             contentWhenTrue = { ProgressContent() },
-            contentWhenFalse = { ResultContent(uiState.value.isPairingSuccess, uiState.value.code, router) }
+            contentWhenFalse = { ResultContent(uiState.value.isPairingSuccess, uiState.value.code, router, notificationManager) }
         )
     }
 }
@@ -60,6 +76,7 @@ internal fun ResultContent(
     isSuccess: Boolean,
     code: Int? = null,
     router: SettingsRouter,
+    notificationManager: NotificationManager,
 ) {
     val image = if (isSuccess) R.drawable.browser_extension_success_image else R.drawable.browser_extension_error_image
 
@@ -78,7 +95,15 @@ internal fun ResultContent(
     val cta = if (isSuccess) R.string.commons__continue else R.string.browser__result_error_cta
 
     val ctaAction: () -> Unit = if (isSuccess) {
-        { router.navigate(SettingsDirections.GoBack) }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (notificationManager.areNotificationsEnabled()) {
+                { router.navigate(SettingsDirections.GoBack) }
+            } else {
+                { router.navigate(SettingsDirections.Permission) }
+            }
+        } else {
+            { router.navigate(SettingsDirections.GoBack) }
+        }
     } else {
         { router.navigate(SettingsDirections.PairingScan) }
     }

@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.twofasapp.browserextension.ui.browser.BrowserDetailsScreenFactory
 import com.twofasapp.browserextension.ui.main.BrowserExtensionScreenFactory
+import com.twofasapp.browserextension.ui.main.permission.BrowserExtensionPermissionScreenFactory
 import com.twofasapp.browserextension.ui.pairing.progress.PairingProgressScreenFactory
 import com.twofasapp.browserextension.ui.pairing.scan.PairingScanScreenFactory
 import com.twofasapp.settings.ui.main.SettingsMainScreenFactory
@@ -19,6 +20,7 @@ class SettingsRouterImpl(
     private val pairingProgressScreenFactory: PairingProgressScreenFactory,
     private val pairingScanScreenFactory: PairingScanScreenFactory,
     private val browserDetailsScreenFactory: BrowserDetailsScreenFactory,
+    private val browserExtensionPermissionScreenFactory: BrowserExtensionPermissionScreenFactory,
 ) : SettingsRouter() {
 
     companion object {
@@ -29,6 +31,7 @@ class SettingsRouterImpl(
         private const val BROWSER_EXTENSION = "browser_extension"
         private const val BROWSER_DETAILS = "browser_details/{$ARG_EXTENSION_ID}"
         private const val PAIRING_SCAN = "pairing_scan"
+        private const val PERMISSION = "permission"
         private const val PAIRING_PROGRESS = "pairing_progress/{$ARG_EXTENSION_ID}"
     }
 
@@ -40,6 +43,7 @@ class SettingsRouterImpl(
             browserDetailsScreenFactory.create(it.arguments?.getString(ARG_EXTENSION_ID).orEmpty())
         })
         builder.composable(route = PAIRING_SCAN, content = { pairingScanScreenFactory.create() })
+        builder.composable(route = PERMISSION, content = { browserExtensionPermissionScreenFactory.create() })
         builder.composable(route = PAIRING_PROGRESS, content = {
             pairingProgressScreenFactory.create(it.arguments?.getString(ARG_EXTENSION_ID).orEmpty())
         })
@@ -59,6 +63,7 @@ class SettingsRouterImpl(
             SettingsDirections.Theme -> navController.navigate(THEME)
             SettingsDirections.BrowserExtension -> navController.navigate(BROWSER_EXTENSION)
             SettingsDirections.PairingScan -> navController.navigate(PAIRING_SCAN) { popUpTo(BROWSER_EXTENSION) }
+            SettingsDirections.Permission -> navController.navigate(PERMISSION) { popUpTo(BROWSER_EXTENSION) }
 
             is SettingsDirections.PairingProgress -> navController.navigate(
                 PAIRING_PROGRESS.replace("{$ARG_EXTENSION_ID}", direction.extensionId)

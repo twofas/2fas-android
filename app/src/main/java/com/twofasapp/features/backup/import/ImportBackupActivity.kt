@@ -6,13 +6,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import com.twofasapp.base.BaseActivityPresenter
+import com.twofasapp.databinding.ActivityImportBackupBinding
+import com.twofasapp.design.dialogs.InfoDialog
+import com.twofasapp.design.dialogs.SimpleInputDialog
+import com.twofasapp.extensions.clicksThrottled
 import com.twofasapp.extensions.makeGone
 import com.twofasapp.extensions.makeVisible
-import com.twofasapp.databinding.ActivityImportBackupBinding
-import com.twofasapp.extensions.*
-import com.twofasapp.design.dialogs.InfoDialog
-import com.twofasapp.core.analytics.AnalyticsService
-import com.twofasapp.design.dialogs.SimpleInputDialog
+import com.twofasapp.extensions.navigationClicksThrottled
+import com.twofasapp.extensions.toastLong
 import org.koin.android.ext.android.inject
 
 class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(), ImportBackupContract.View {
@@ -42,7 +43,7 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
         }
     }
 
-    override fun showResultToast(text: String) = toastLong(text)
+    override fun showResultToast(text: Int) = toastLong(text)
 
     override fun toolbarBackClicks() = viewBinding.toolbar.navigationClicksThrottled()
 
@@ -61,20 +62,20 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
 
         if (isPasswordProtected) {
             viewBinding.numberOfServices.makeGone()
-            viewBinding.description.text = "You are going to import encrypted backup file."
+            viewBinding.description.text = getString(com.twofasapp.resources.R.string.import_backup_msg1_encrypted)
 
         } else {
             viewBinding.numberOfServices.makeVisible()
-            viewBinding.description.text = "You are going to import backup file with"
-            viewBinding.numberOfServices.text = if (numberOfServices == 1) "1 service" else "$numberOfServices services"
+            viewBinding.description.text = getString(com.twofasapp.resources.R.string.import_backup_msg1)
+            viewBinding.numberOfServices.text = if (numberOfServices == 1) "1" else "$numberOfServices"
         }
     }
 
-    override fun showError(msg: String) {
+    override fun showError(msg: Int) {
         viewBinding.progress.makeGone()
         viewBinding.content.makeGone()
         viewBinding.error.makeVisible()
-        viewBinding.descriptionError.text = msg
+        viewBinding.descriptionError.text = getString(msg)
     }
 
     override fun showProgress() {
@@ -117,10 +118,10 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
 
     override fun showPasswordDialog(onConfirmed: (String) -> Unit) {
         SimpleInputDialog(this).show(
-            title = "Type in password",
-            description = "Enter backup file password to proceed with import.",
-            okText = "Continue",
-            hint = "Password",
+            title = getString(com.twofasapp.resources.R.string.backup__enter_password_dialog_title),
+            description = getString(com.twofasapp.resources.R.string.backup__enter_password_title),
+            okText = getString(com.twofasapp.resources.R.string.commons__continue),
+            hint = getString(com.twofasapp.resources.R.string.backup__password),
             allowEmpty = false,
             inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD,
             isPassword = true,
@@ -129,14 +130,14 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
 
     override fun showWrongPasswordDialog(onConfirmed: (String) -> Unit) {
         SimpleInputDialog(this).show(
-            title = "Type in password",
-            description = "Enter backup file password to proceed with import.",
-            okText = "Continue",
-            hint = "Password",
+            title = getString(com.twofasapp.resources.R.string.backup__enter_password_dialog_title),
+            description = getString(com.twofasapp.resources.R.string.backup__enter_password_title),
+            okText = getString(com.twofasapp.resources.R.string.commons__continue),
+            hint = getString(com.twofasapp.resources.R.string.backup__password),
             allowEmpty = false,
             inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD,
             isPassword = true,
-            errorText = "Incorrect password. Try again."
+            errorText = getString(com.twofasapp.resources.R.string.backup__incorrect_password)
         ) { onConfirmed.invoke(it) }
     }
 }

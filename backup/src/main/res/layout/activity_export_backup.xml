@@ -19,7 +19,7 @@
             style="@style/Toolbar.Back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Export to the file" />
+            app:title="@string/backup__export_to_file" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -1,11 +1,32 @@
 package com.twofasapp.services.ui.requesticon
 
 import android.app.Activity
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Divider
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.runtime.Composable
@@ -37,7 +58,7 @@ internal fun RequestIconScreen(
 ) {
     val activity = LocalContext.current as? Activity
     val shareText =
-        "Hey! I’m using 2FAS app for logging to your service with 2FA. However, your icon is missing! You can submit your icon here: https://2fas.com/yb"
+        stringResource(id = R.string.tokens__request_icon_provider_message)
 
     Scaffold(
         topBar = { Toolbar(title = stringResource(id = R.string.customization_request_icon)) { router.navigateBack() } }
@@ -60,7 +81,7 @@ internal fun RequestIconScreen(
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "Let us know on Discord",
+                text = stringResource(id = R.string.tokens__request_icon_social_title),
                 style = MaterialTheme.typography.h6,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -75,7 +96,7 @@ internal fun RequestIconScreen(
                     activity?.openBrowserApp(url = "https://discord.gg/q4cP6qh2g5")
                 }) {
                 Text(
-                    text = "Log in to our Discord server",
+                    text = stringResource(id = R.string.tokens__request_icon_social_link),
                     style = MaterialTheme.typography.body1,
                     color = MaterialTheme.colors.primary,
                     modifier = Modifier.align(CenterVertically)
@@ -91,7 +112,7 @@ internal fun RequestIconScreen(
                 )
             }
             Text(
-                text = "and let users vote for requested icons.",
+                text = stringResource(id = R.string.tokens__request_icon_social_description),
                 style = MaterialTheme.typography.body1,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -108,7 +129,7 @@ internal fun RequestIconScreen(
                         .align(Center)
                 )
                 Text(
-                    text = "or",
+                    text = stringResource(id = R.string.tokens__request_icon_middle),
                     style = MaterialTheme.typography.body1,
                     color = MaterialTheme.colors.textSecondary,
                     modifier = Modifier
@@ -129,7 +150,7 @@ internal fun RequestIconScreen(
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "Let the service provider know",
+                text = stringResource(id = R.string.tokens__request_icon_provider_title),
                 style = MaterialTheme.typography.h6,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -138,7 +159,7 @@ internal fun RequestIconScreen(
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "You can use Social Media or email and share this text with them:",
+                text = stringResource(id = R.string.tokens__request_icon_provider_description),
                 style = MaterialTheme.typography.body1,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -189,7 +210,7 @@ internal fun RequestIconScreen(
             }
 
             Text(
-                text = "Don’t forget to tag company’s official account!",
+                text = stringResource(id = R.string.tokens__request_icon_provider_footnote),
                 style = MaterialTheme.typography.body2,
                 color = MaterialTheme.colors.textPrimary,
                 textAlign = TextAlign.Center,

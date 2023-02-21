@@ -23,7 +23,6 @@ import com.twofasapp.design.compose.Toolbar
 import com.twofasapp.design.compose.dialogs.ConfirmDialog
 import com.twofasapp.design.theme.divider
 import com.twofasapp.design.theme.textSecondary
-import com.twofasapp.navigation.ServiceDirections
 import com.twofasapp.navigation.ServiceRouter
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.ServiceViewModel
@@ -43,12 +42,12 @@ internal fun DomainAssignmentScreen(
 
     Scaffold(
         topBar = { Toolbar(title = stringResource(id = R.string.browser__browser_extension)) { router.navigateBack() } }
-    ) {
+    ) { _ ->
 
         if (showConfirmDialog.value) {
             ConfirmDialog(
-                title = "Remove domain?",
-                text = "The next time you use the browser extension to login to ${clickedDomainName.value}, you’ll be asked to pair this domain again.",
+                title = stringResource(id = R.string.browser__deleting_extension_pairing_title),
+                text = stringResource(id = R.string.browser__deleting_extension_pairing_content, clickedDomainName.value),
                 onPositive = {
                     showConfirmDialog.value = false
                     viewModel.deleteDomainAssignment(clickedDomainName.value)
@@ -65,7 +64,7 @@ internal fun DomainAssignmentScreen(
         LazyColumn {
             item {
                 Text(
-                    text = "List of paired domains.",
+                    text = stringResource(id = R.string.browser__paired_domains_list_title),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 72.dp, end = 16.dp, top = 24.dp, bottom = 24.dp),

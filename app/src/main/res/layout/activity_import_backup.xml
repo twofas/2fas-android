@@ -20,7 +20,7 @@
             style="@style/Toolbar.Back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Import from the file" />
+            app:title="@string/backup__import_backup_file" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -151,7 +151,7 @@
             android:layout_marginHorizontal="@dimen/screen_padding_horizontal"
             android:layout_marginTop="40dp"
             android:gravity="center"
-            android:text="File error!"
+            android:text="@string/backup__file_error"
             app:layout_constraintBottom_toTopOf="@id/descriptionError"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +163,7 @@
             android:layout_marginHorizontal="@dimen/screen_padding_horizontal"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="The file you are trying to import is invalid or damaged. Please choose another file."
+            android:text="@string/backup__cant_read_file_error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleError" />
@@ -172,7 +172,7 @@
             android:id="@+id/chooseAnotherFile"
             style="@style/Button.Normal"
             android:layout_width="wrap_content"
-            android:text="Choose another file"
+            android:text="@string/backup__choose_antother_file"
             app:layout_constraintBottom_toTopOf="@id/cancelError"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

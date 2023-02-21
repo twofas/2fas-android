@@ -58,7 +58,7 @@ class BackupStatusFragment : BaseFragmentPresenter<FragmentBackupStatusBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setPresenter(presenter)
-        listener.updateToolbar("2FAS Backup")
+        listener.updateToolbar(getString(com.twofasapp.resources.R.string.backup__2fas_backup))
 
         viewBinding.recycler.adapter = adapter
         viewBinding.recycler.itemAnimator = null
@@ -106,15 +106,15 @@ class BackupStatusFragment : BaseFragmentPresenter<FragmentBackupStatusBinding>(
         isPasswordDialogShown = true
         passwordDialog.dismiss()
         passwordDialog.show(
-            title = "Type in password",
-            description = "Enter backup password to enable sync.",
-            okText = "Continue",
-            hint = "Password",
+            title = getString(com.twofasapp.resources.R.string.backup__enter_password_dialog_title),
+            description = getString(com.twofasapp.resources.R.string.backup__backup_file_password_title),
+            okText = getString(com.twofasapp.resources.R.string.commons__continue),
+            hint = getString(com.twofasapp.resources.R.string.backup__password),
             isCancelable = false,
             allowEmpty = false,
             inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD,
             isPassword = true,
-            errorText = if (showError) "Incorrect password. Try again." else null,
+            errorText = if (showError) getString(com.twofasapp.resources.R.string.backup__incorrect_password) else null,
             cancelAction = {
                 isPasswordDialogShown = false
                 if (signOutOnCancel) {

@@ -135,25 +135,27 @@ internal fun ServiceScreen(
     }
 
     Scaffold(topBar = {
-        Toolbar(title = if (service.id == 0L) "Add service" else "Customize service", actions = {
-            TextButton(
-                onClick = {
-                    if (service.id == 0L) {
-                        viewModel.tryInsertService(replaceIfExists = false)
+        Toolbar(
+            title = if (service.id == 0L) activity!!.getString(R.string.tokens__add_service_title) else activity!!.getString(R.string.tokens__customize_service_title),
+            actions = {
+                TextButton(
+                    onClick = {
+                        if (service.id == 0L) {
+                            viewModel.tryInsertService(replaceIfExists = false)
+                        } else {
+                            viewModel.saveService()
+                        }
+                    },
+                    enabled = if (service.id == 0L) {
+                        uiState.isInputNameValid && uiState.isInputSecretValid && uiState.isInputInfoValid
                     } else {
-                        viewModel.saveService()
-                    }
-                },
-                enabled = if (service.id == 0L) {
-                    uiState.isInputNameValid && uiState.isInputSecretValid && uiState.isInputInfoValid
-                } else {
-                    uiState.hasChanges && uiState.isInputNameValid && uiState.isInputSecretValid && uiState.isInputInfoValid
-                },
-            ) {
-                Text(text = "Save".uppercase())
-            }
+                        uiState.hasChanges && uiState.isInputNameValid && uiState.isInputSecretValid && uiState.isInputInfoValid
+                    },
+                ) {
+                    Text(text = stringResource(id = R.string.commons__save).uppercase())
+                }
 
-        }) {
+            }) {
             activity?.onBackPressed()
         }
     }) { padding ->

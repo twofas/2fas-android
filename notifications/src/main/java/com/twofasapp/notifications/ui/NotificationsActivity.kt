@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -42,7 +43,7 @@ class NotificationsActivity : BaseComponentActivity() {
         setContent {
             AppThemeLegacy {
                 Scaffold(
-                    topBar = { Toolbar(title = "Notifications") { onBackPressed() } }
+                    topBar = { Toolbar(title = stringResource(id = com.twofasapp.resources.R.string.commons__notifications)) { onBackPressed() } }
                 ) { padding ->
                     NotificationList(padding)
                 }
@@ -77,7 +78,7 @@ class NotificationsActivity : BaseComponentActivity() {
             }
         } else {
             Text(
-                text = "No new messages",
+                text = stringResource(id = com.twofasapp.resources.R.string.notifications__no_notifications),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(24.dp),

@@ -109,7 +109,7 @@ class ServiceItem(
             }
 
             nextCode.pivotX = 0f
-            nextCode.text = Spanner("Next token: ")
+            nextCode.text = Spanner(root.context.getString(R.string.tokens__next_token, ""))
                 .append(model.formatNextCode(), scaleSize(1.4f))
 
             if (model.shouldShowNextToken.not() || isInEditMode || model.service.authType == ServiceDto.AuthType.HOTP) {

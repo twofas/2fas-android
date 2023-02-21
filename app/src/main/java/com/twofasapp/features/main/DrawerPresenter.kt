@@ -76,10 +76,10 @@ class DrawerPresenter(
                 when (it) {
                     is SyncStatus.Default -> updateBadge(0, None)
                     is SyncStatus.Synced -> updateBadge(0, None)
-                    is SyncStatus.Syncing -> updateBadge(0, Label("Syncing..."))
+                    is SyncStatus.Syncing -> updateBadge(0, Label(view.getStringRes(R.string.backup__sync_status_progress)))
                     is SyncStatus.Error -> {
                         if (it.shouldShowError()) {
-                            updateBadge(0, Label("Error!"))
+                            updateBadge(0, Label(view.getStringRes(R.string.commons__error)))
                         } else {
                             updateBadge(0, None)
                         }

@@ -1,11 +1,26 @@
 package com.twofasapp.externalimport.ui.googleauthenticator
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -18,11 +33,11 @@ import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
 import com.twofasapp.design.compose.Toolbar
 import com.twofasapp.design.compose.dialogs.RationaleDialog
-import com.twofasapp.resources.R
 import com.twofasapp.navigation.ExternalImportDirections
 import com.twofasapp.navigation.ExternalImportRouter
 import com.twofasapp.permissions.CameraPermissionRequestFlow
 import com.twofasapp.permissions.PermissionStatus
+import com.twofasapp.resources.R
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
@@ -64,7 +79,7 @@ fun GoogleAuthenticatorScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "Export your accounts from Google Authenticator to a QR code using the \"Transfer Accounts\" option. Then make a screenshot and use the \"Choose QR code\" button below. If you're importing codes from another device, use the \"Scan QR code\" button instead.",
+                    text = stringResource(R.string.introduction__google_authenticator_import_process),
                     style = MaterialTheme.typography.body1.copy(lineHeight = 22.sp, fontSize = 17.sp),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 32.dp)
@@ -88,7 +103,7 @@ fun GoogleAuthenticatorScreen(
                     .height(48.dp)
                     .align(CenterHorizontally)
             ) {
-                Text(text = "Scan QR code".uppercase(), color = ButtonTextColor())
+                Text(text = stringResource(id = R.string.commons__scan_qr_code).uppercase(), color = ButtonTextColor())
             }
 
             TextButton(
@@ -109,7 +124,7 @@ fun GoogleAuthenticatorScreen(
                     .height(48.dp)
                     .align(CenterHorizontally)
             ) {
-                Text(text = "Choose QR code".uppercase())
+                Text(text = stringResource(id = R.string.introduction__choose_qr_code).uppercase())
             }
         }
 
