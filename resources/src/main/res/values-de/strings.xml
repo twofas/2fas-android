@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Thu, 16 Feb 2023 09:40:23 -0800
+ Exported at: Tue, 21 Feb 2023 02:46:51 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -681,8 +681,8 @@
     <string name="backup__drive_title">Google Drive Synchronisierung</string>
     <string name="backup__delete_file_title">Möchtest du das Back Up aus Google Drive löschen?</string>
     <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Tokens bestehen lokal, aber die 2FAS App wird aus deinem Google Account ausgeloggt und Ihre anderen synchronisierten Geräte.</string>
-    <string name="backup__sync_status_waiting">Warten auf Synchronisierung…</string>
-    <string name="backup__sync_status_progress">Synchronisiere…</string>
+    <string name="backup__sync_status_waiting">Warten auf Synchronisierung...</string>
+    <string name="backup__sync_status_progress">Synchronisiere...</string>
     <string name="import_backup_msg1_encrypted">Du wirst eine verschlüsselte Backup-Datei importieren.</string>
     <string name="externalimport__choose_json_cta">Wähle eine JSON Datei aus</string>
     <string name="externalimport__aegis_msg">Exportiere dein Konto von Aegis in eine unverschlüsselte JSON Datei und lade sie über den \"JSON Datei auswählen\" Knopf aus. Vergesse nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
@@ -706,4 +706,8 @@
     <string name="extension__services_suggested_header">Empfohlen</string>
     <string name="extension__services_all_header">Alle Tokens</string>
     <string name="extension__services_other_header">Andere Tokens</string>
+    <string name="settings__ssl_error_title">SSL Fehler</string>
+    <string name="settings__ssl_error_description">Ein SSL-Fehler ist aufgetreten, wodurch eine sichere Verbindung zum Server nicht hergestellt werden kann. Stelle sicher, dass du die neueste App-Version hast oder versuche, das Netzwerk zu ändern.</string>
+    <string name="backup__import_error_file_size">The file you are trying to import is too big. Size limit is 10 MB.</string>
+    <string name="backup__import_error_file_invalid">The file you are trying to import is invalid or damaged. Please choose another file.</string>
 </resources>
