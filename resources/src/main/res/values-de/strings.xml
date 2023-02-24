@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Tue, 21 Feb 2023 02:46:51 -0800
+ Exported at: Thu, 23 Feb 2023 14:33:22 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -37,7 +37,7 @@
     <!-- backup__turned_off_description_bold_part -->
     <string name="backup__2fas_backup">2FAS Backup</string>
     <string name="commons__close">Schließen</string>
-    <string name="commons__continue">Fortsetzten</string>
+    <string name="commons__continue">Fortsetzen</string>
     <string name="commons__copy">Kopieren</string>
     <string name="commons__delete">Löschen</string>
     <string name="commons__dismiss">Ablehnen</string>
@@ -108,7 +108,7 @@
     <string name="notifications__token_already_added">Dieses Token ist bereits in der Liste vorhanden</string>
     <string name="notifications__counter_copied">Zähler kopiert</string>
     <string name="notifications__token_copied">Token kopiert</string>
-    <string name="notifications__next_token_copied">Nächstes Token kopiert</string>
+    <string name="notifications__next_token_copied">Nächsten Token kopiert</string>
     <!-- notifications__would_you_like_to_add_this_code -->
     <string name="notifications__add_code_question_title">Möchtest du diesen Code hinzufügen: %s?</string>
     <!-- MARK: - Permissions -->
@@ -147,8 +147,8 @@
     <string name="settings__display_selected_services">Zeige ausgewählte Dienste im Widget des Startbildschirms....</string>
     <!-- settings__after_you_enable_widgets -->
     <string name="settings__widgets_title">Nachdem du Widgets aktiviert hast, können auf alle deine Tokens ohne deine PIN zugegriffen werden. Bist du dir sicher, Widgets zu aktivieren?</string>
-    <string name="settings__show_next_token">Nächstes Token anzeigen</string>
-    <string name="settings__see_incoming_tokens">Sehe eingehende Tokens in der Liste.</string>
+    <string name="settings__show_next_token">Nächsten Token anzeigen</string>
+    <string name="settings__see_incoming_tokens">Siehe eingehende Tokens in der Liste.</string>
     <string name="settings__trash">Papierkorb</string>
     <string name="settings__restore">Wiederherstellen</string>
     <string name="settings__trash_is_empty">Papierkorb ist leer</string>
@@ -182,7 +182,7 @@
     <!-- tokens__this_private_key_exists_used_in -->
     <string name="tokens__service_key_already_used_title">Der Serviceschlüssel aus dem gescannten Code wird bereits in %s verwendet. Du scannst ihn wahrscheinlich erneut</string>
     <string name="tokens__this_qr_code_is_inavlid">Dieser Code ist falsch oder wird nicht unterstützt. Versuch es erneut.</string>
-    <string name="tokens__type_service_name">Typ des Dienstes eingeben</string>
+    <string name="tokens__type_service_name">Dienstname eingeben</string>
     <string name="tokens__enter_service_name">Dienstname eingeben</string>
     <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
     <string name="tokens__service_name_unknown_title">Leider kennen wir diesen Dienst nicht. Wie würdest du ihn gerne nennen?</string>
@@ -202,13 +202,13 @@
     <string name="tokens__pick_background_color">Hintergrundfarbe auswählen:</string>
     <string name="tokens__num_added">%s hinzugefügt</string>
     <string name="tokens__next_token">Nächster Token: %s</string>
-    <string name="tokens__next_token_title">Nächster Token</string>
+    <string name="tokens__next_token_title">Nächster Tokenwert</string>
     <string name="tokens__my_tokens">Meine Tokens</string>
     <string name="tokens__removing_group">Gruppe entfernen</string>
     <!-- tokens__all_tokens_will_be_moved -->
     <string name="tokens__all_tokens_moved_to_group_title">Alle Tokens werden verschoben in die Gruppe: \"Meine Tokens\"</string>
     <string name="tokens__add_group">Gruppe hinzufügen</string>
-    <string name="tokens__group_name">Gruppen Name:</string>
+    <string name="tokens__group_name">Gruppenname:</string>
     <string name="tokens__select_from_gallery">Aus Galerie wählen</string>
     <string name="tokens__camera_is_unavailable">Kamera nicht verfügbar</string>
     <!-- tokens__check_if_app_has_proper_permissions -->
@@ -235,12 +235,12 @@
     <string name="tokens__sort_by_a_to_z">A - Z</string>
     <!-- tokens__sort_by_za -->
     <string name="tokens__sort_by_z_to_a">Z - A</string>
-    <string name="tokens__sort_by_manual">Manuel</string>
+    <string name="tokens__sort_by_manual">Manuell</string>
     <string name="tokens__advanced">Erweitert</string>
     <!-- tokens__advanced_alert_title -->
     <string name="tokens__advanced_alert">Alarm</string>
     <!-- tokens__advanced_alert_description -->
-    <string name="tokens__advanced_alert_description_title">Das Ändern der erweiterten Einstelllungen ist nicht empfohlen. Dies sollte nur getan werden wenn dein 2FA Anbieter es benötigt und du genaue Anweisungen hast.</string>
+    <string name="tokens__advanced_alert_description_title">Das Ändern der erweiterten Einstellungen ist nicht empfohlen. Dies sollte nur getan werden, wenn dein 2FA-Anbieter es benötigt und du genaue Anweisungen hast.</string>
     <string name="tokens__token_settings">Token Einstellungen</string>
     <string name="tokens__otp_authentication">OTP Authentifizierung\u0020</string>
     <string name="tokens__algorithm">Algorithmus</string>
@@ -255,7 +255,7 @@
     <string name="tokens__advanced_settings_footer_title">Das Ändern der erweiterten Einstelllungen ist nicht empfohlen. Dies sollte nur getan werden wenn dein 2FA Anbieter es benötigt und du genaue Anweisungen hast.</string>
     <string name="tokens__gallery_advice_title">Beste Methode</string>
     <string name="tokens__gallery_advice_content_first">Dienst erfolgreich hinzugefügt. Wir empfehlen dir sehr, dass du</string>
-    <string name="tokens__gallery_advice_content_middle_bold">lösche den QR Code aus deiner Galerie.</string>
+    <string name="tokens__gallery_advice_content_middle_bold">lösche den QR Screenshot aus deiner Galerie.</string>
     <string name="tokens__gallery_advice_content_last">Wenn jemand diesen QR-Code übernimmt, ist es möglich deine 2FA Codes über diesem Dienst zu erhalten.</string>
     <string name="tokens__request_icon_page_title">Ein Logo anfragen</string>
     <string name="tokens__request_icon_social_title">Uns über Discord kontaktieren</string>
@@ -302,7 +302,7 @@
     <!-- voiceover__sort_by -->
     <string name="voiceover__sort_by_title">Verwende Sortieren nach um die Sortierung der Dienste festzulegen</string>
     <string name="voiceover__spinner">Daten werden geladen</string>
-    <string name="backup__incorrect_secret">Die Token konnten nicht gesichert werden, weil das Geheimnis \"%s\" unzulässige Zeichen enthält. Entferne es aus der Liste und versuche es erneut</string>
+    <string name="backup__incorrect_secret">Die Tokens konnten nicht gesichert werden, weil das Geheimnis \"%s\" unzulässige Zeichen enthält. Entferne es aus der Liste und versuche es erneut</string>
     <string name="backup__import">Importieren</string>
     <string name="backup__export">Exportieren</string>
     <string name="backup__backup_disabled_title">2FAS Backup wird deaktiviert, um seine Integrität zu schützen.</string>
@@ -315,27 +315,27 @@
     <string name="camera__cant_initialize_camera_general">Kamera konnte nicht initialisiert werden. Versuche das Gerät neu zustarten</string>
     <string name="camera__cant_initialize_camera_split_view">Kamera konnte im geteilten Bildschirm-Modus nicht initialisiert werden. Öffne die App im Vollbildmodus und versuche es erneut</string>
     <string name="restore__how_to_restore">Wie kann ich die 2FAS-App wiederherstellen?</string>
-    <string name="restore__application_restoration">Wiederherstellung der Bewerbung</string>
+    <string name="restore__application_restoration">Wiederherstellung der Anwendung</string>
     <!-- restore_if_you_forgotten -->
     <string name="restore__reset_Pin_title">Wenn du die PIN vergessen hast oder die 2FAS-App zurücksetzen möchtest, musst du die App neu installieren.</string>
     <!-- restore_please_remember -->
-    <string name="restore__backup_advice">Beachte, dass du wenn du kein Backup hast und die App zurücksetzt, den Zugriff auf alle deine Codes verlierst. Und damit auch den Zugriff auf alle deine 2FA-gesicherten Konten.</string>
+    <string name="restore__backup_advice">Beachte, dass du sofern du keine Sicherung hast und die App zurücksetzt, den Zugriff auf alle deine Codes verlierst. Und damit auch den Zugriff auf alle deine 2FA gesicherten Konten.</string>
     <!-- restore_if_you_have_backup -->
-    <string name="restore__backup_title">Wenn du über ein Backup verfügst, kannst du alle deine Codes wiederherstellen.</string>
+    <string name="restore__backup_title">Wenn du über eine Sicherung verfügst, kannst du alle deine Codes wiederherstellen.</string>
     <string name="backup__cloud_backup">Cloud Backup</string>
     <string name="backup__icloud_sync">iCloud Sync</string>
     <string name="backup__section_description">EMPFOHLEN: iCloud Sync bewahrt deine Token sicher in Apple iCloud auf, für den Fall, dass dein Gerät verloren geht oder beschädigt wird. Lasse es eingeschaltet.</string>
     <string name="backup__file_backup">Datei-Backup</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Verwende Datei-Backup für die Offline-Sicherung deiner Token</string>
+    <string name="backup__file_backup_offline_title">Verwende Datei-Sicherung für die Offline-Sicherung deiner Tokens</string>
     <string name="backup__backup_removal">Backup entfernen</string>
     <string name="backup__delete_2fas_backup">2FAS Backup löschen</string>
-    <string name="backup__warning_introduction">Warnung! Wenn du 2FAS Backup löschst, werden zudem alle Tokens von anderen Geräten, die mit diesem Konto synchronisiert sind, gelöscht. Um die Token auf anderen Geräten zu erhalten, stelle bitte sicher, dass du 2FAS Backup vor dem Löschen ausgeschaltet hast.</string>
+    <string name="backup__warning_introduction">Warnung! Wenn du die 2FAS Sicherung löschst, werden zudem alle Tokens von anderen Geräten, die mit diesem Konto synchronisiert sind, gelöscht. Um die Tokens auf anderen Geräten zu erhalten, stelle bitte sicher, dass du die 2FAS Sicherung vor dem Löschen ausgeschaltet hast.</string>
     <!-- backup__i_want_to_delete -->
     <string name="backup__delete_title">Ich möchte das Backup löschen</string>
     <string name="backup__export_to_backup_file">Backup in Datei exportieren</string>
     <!-- backup__you_can_import_exported_file -->
-    <string name="backup__import_file_title">Du kannst exportierte Dateien mit der 2FAS Bewerbung auf andere Geräte importieren</string>
+    <string name="backup__import_file_title">Du kannst exportierte Dateien auf anderen Geräten mit der 2FAS Anwendung importieren</string>
     <string name="backup__export_to_file">Als Datei exportieren</string>
     <string name="backup__verify_pin">PIN überprüfen</string>
     <string name="backup__save_file">Datei Speichern</string>
@@ -358,7 +358,7 @@
     <string name="backup__passwords_dont_match">Passwörter stimmen nicht überein</string>
     <string name="backup__save_and_export">Speichern und exportieren</string>
     <string name="backup__set_password_title">Um den Schutz deiner Sicherungsdatei zu erhöhen, lege bitte das Passwort fest</string>
-    <string name="backup__enter_password_title">Gebe ein Passwort für diese Sicherungsdatei ein, um mit dem Importvorgang fortzufahren</string>
+    <string name="backup__enter_password_title">Gib ein Passwort für diese Sicherungsdatei ein, um mit dem Importvorgang fortzufahren</string>
     <string name="backup__backup_file_password_title">Ein Passwort für diese Sicherungsdatei festlegen</string>
     <string name="backup__incorrect_password">Falsches Passwort</string>
     <!-- %d - number -->
@@ -368,7 +368,7 @@
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Es existiert ein Problem mit iCloud. Überprüfe die Systemeinstellungen</string>
     <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">Diese Datei ist in einem neueren Format als dem, das die App unterstützt</string>
+    <string name="backup__newer_format_not_supported">Diese Datei ist in einer neueren Format-Version als diese, die die App unterstützt</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Diese Datei ist verschlüsselt. Wir unterstützen nur unverschlüsselte Dateien</string>
     <string name="tokens__copy_token">Token kopieren</string>
@@ -513,7 +513,7 @@
     <string name="backup_turn_off_title">Google Drive Sync Ausschalten?</string>
     <string name="backup_turn_off_msg1">2FA Token verbleiben auf diesem Gerät und in Google Drive, werden aber nicht synchronisiert. Du wirst auch aus deinem Google Konto abgemeldet.</string>
     <string name="backup_turn_off_msg2">Denke daran, das im Falle eines Verlusts oder einer Beschädigung des Geräts oder einer App-Entfernung du deine Tokens möglicherweise nicht wiederherstellen kannst und du den Zugang zu den durch 2FA gesicherten Konten verlieren wirst.</string>
-    <string name="backup_settings_password_set_subtitle">Sichere eine Google Drive Sicherung mit einem beliebigen Passwort.</string>
+    <string name="backup_settings_password_set_subtitle">Sichere eine Google Drive Sicherungsdatei mit einem beliebigen Passwort.</string>
     <string name="backup_settings_password_remove_title">Passwort entfernen</string>
     <string name="backup_settings_password_remove_subtitle">Entferne das Passwort zu deiner Google Drive Sicherungsdatei.</string>
     <string name="backup_settings_account_title">Google Konto</string>
@@ -561,7 +561,7 @@
     <!-- A service with this Service Key already exists. Do you want to override it? -->
     <string name="tokens__service_already_exists">Ein Dienst mit diesem Service Schlüssel existiert bereits. Möchtest du diesen ersetzen?</string>
     <string name="tokens__service_key_invalid_characters">Schlüssel enthält ungültige Zeichen</string>
-    <string name="tokens__show_service_key">wie Service Schlüssel</string>
+    <string name="tokens__show_service_key">Service Schlüssel anzeigen</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
     <string name="tokens__show_service_key_setup_lock">Dein Service Schlüssel ist geschützt. Bitte füge einen PIN oder eine Fingerabdrucksperre hinzu, um ihn zu sehen.</string>
     <string name="tokens__tokens_list_is_empty">Liste mit Diensten ist leer</string>
@@ -673,19 +673,19 @@
     <string name="commons__unknown_error">Unbekannter Fehler! Bitte versuche es erneut!</string>
     <string name="backup__export_result_success">Datei erfolgreich gespeichert!</string>
     <string name="backup__share_result_failure">Datei konnte nicht geteilt werden!</string>
-    <string name="backup__enter_password_dialog_title">Gebe das Passwort ein</string>
-    <string name="backup__remove_password_msg">Bitte gib das Backup Passwort ein, um mit dem Löschvorgang fortzufahren.</string>
-    <string name="backup__revoke_google_access_msg">Bitte gib das Backup-Passwort ein, um den Zugriff auf Google zu sperren.</string>
+    <string name="backup__enter_password_dialog_title">Gib das Passwort ein</string>
+    <string name="backup__remove_password_msg">Bitte gib das Sicherungs-Passwort ein, um mit dem Löschvorgang fortzufahren.</string>
+    <string name="backup__revoke_google_access_msg">Bitte gib das Sicherungs-Passwort ein, um den Zugriff auf Google zu sperren.</string>
     <string name="backup__synchronization_settings">Synchronisierungs-Einstellungen</string>
     <string name="backup__local_file_title">Lokale Datei</string>
-    <string name="backup__drive_title">Google Drive Synchronisierung</string>
-    <string name="backup__delete_file_title">Möchtest du das Back Up aus Google Drive löschen?</string>
-    <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Tokens bestehen lokal, aber die 2FAS App wird aus deinem Google Account ausgeloggt und Ihre anderen synchronisierten Geräte.</string>
-    <string name="backup__sync_status_waiting">Warten auf Synchronisierung...</string>
-    <string name="backup__sync_status_progress">Synchronisiere...</string>
-    <string name="import_backup_msg1_encrypted">Du wirst eine verschlüsselte Backup-Datei importieren.</string>
+    <string name="backup__drive_title">Google Drive Sync</string>
+    <string name="backup__delete_file_title">Möchtest du deine Sicherungsdatei aus Google Drive löschen?</string>
+    <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Tokens werden lokal bestehen bleiben, aber die 2FAS App wird aus deinem Google Account auf diesem und deinen anderen synchronisierten Geräten ausgeloggt.</string>
+    <string name="backup__sync_status_waiting">Warten auf Synchronisierung…</string>
+    <string name="backup__sync_status_progress">Synchronisiere…</string>
+    <string name="import_backup_msg1_encrypted">Du wirst eine verschlüsselte Sicherungsdatei importieren.</string>
     <string name="externalimport__choose_json_cta">Wähle eine JSON Datei aus</string>
-    <string name="externalimport__aegis_msg">Exportiere dein Konto von Aegis in eine unverschlüsselte JSON Datei und lade sie über den \"JSON Datei auswählen\" Knopf aus. Vergesse nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
+    <string name="externalimport__aegis_msg">Exportiere deine Konten von Aegis in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
     <string name="externalimport__raivo_msg">Verwende die \"Exportiere OTPs zu ZIP Archiv\" Option in Raivo\'s Einstellungen, speichere eine ZIP Datei, extrahiere sie und importiere die JSON Datei mit dem \"JSON Datei auswählen\" Knopf.</string>
     <string name="externalimport__no_tokens_msg">Es gibt jedoch keine Dienste, die importiert werden könnten.</string>
     <string name="commons__try_again">Erneut versuchen</string>
@@ -693,11 +693,11 @@
     <string name="externalimport__ga_title">2FA Tokens aus Google Authenticator importieren</string>
     <string name="externalimport__aegis_title">2FA Tokens aus Aegis importieren</string>
     <string name="externalimport__raivo_title">2FA Tokens aus Raivo importieren</string>
-    <string name="externalimport__ga_success_msg">Dieser QR-Code erlaubt es Tokens vom Google Authenticator zu importieren</string>
-    <string name="externalimport__aegis_success_msg">Diese JSON-Datei erlaubt es Tokens von Aegis zu importieren</string>
-    <string name="externalimport__raivo_success_msg">Diese JSON-Datei erlaubt es Tokens von Raivo zu importieren</string>
-    <string name="externalimport__read_error">Es konnten keine Token gelesen werden. Versuche eine andere Datei auszuwählen.</string>
-    <string name="settings__gd_sync_info">Google Drive Synchronisierungs-Informationen</string>
+    <string name="externalimport__ga_success_msg">Dieser QR-Code erlaubt es Tokens vom Google Authenticator zu importieren.</string>
+    <string name="externalimport__aegis_success_msg">Diese JSON-Datei erlaubt es Tokens von Aegis zu importieren.</string>
+    <string name="externalimport__raivo_success_msg">Diese JSON-Datei erlaubt es Tokens von Raivo zu importieren.</string>
+    <string name="externalimport__read_error">Es konnten keine Tokens gelesen werden. Versuche eine andere Datei auszuwählen.</string>
+    <string name="settings__gd_sync_info">Google Drive Sync-Info</string>
     <string name="settings__gd_sync_disable_confirm">Bis du dir sicher? Ohne Google Drive Synchronisierung wirst du nicht mehr in der Lage sein deine Tokens wiederherzustellen, wenn du dein Smartphone verlierst oder zurücksetzt!</string>
     <string name="extension__code_sent_msg">Code erfolgreich gesendet</string>
     <string name="extension__code_sent_error_msg">Beim Senden des Codes ist ein Fehler aufgetreten</string>
@@ -708,6 +708,6 @@
     <string name="extension__services_other_header">Andere Tokens</string>
     <string name="settings__ssl_error_title">SSL Fehler</string>
     <string name="settings__ssl_error_description">Ein SSL-Fehler ist aufgetreten, wodurch eine sichere Verbindung zum Server nicht hergestellt werden kann. Stelle sicher, dass du die neueste App-Version hast oder versuche, das Netzwerk zu ändern.</string>
-    <string name="backup__import_error_file_size">The file you are trying to import is too big. Size limit is 10 MB.</string>
-    <string name="backup__import_error_file_invalid">The file you are trying to import is invalid or damaged. Please choose another file.</string>
+    <string name="backup__import_error_file_size">Die Datei, die du versuchst zu importieren, ist zu groß. Die Größenbeschränkung beträgt 10 MB.</string>
+    <string name="backup__import_error_file_invalid">Die Datei, die du versuchst zu importieren, ist ungültig oder beschädigt. Bitte wähle eine andere Datei.</string>
 </resources>
