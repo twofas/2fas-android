@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Thu, 23 Feb 2023 14:33:22 -0800
+ Exported at: Sun, 05 Mar 2023 11:46:31 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -215,7 +215,7 @@
     <string name="tokens__check_app_permissions">Überprüfe, ob die App die richtigen Berechtigungen besitzt</string>
     <string name="tokens__no_qr_codes_found">Keine QR Codes gefunden</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-
+        
         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Es gibt keinen korrekten QR-Code in dem ausgewählten Bild. Bitte versuch ein anderes Bild.</string>
     <string name="tokens__select_service">Dienst auswählen</string>
@@ -681,8 +681,8 @@
     <string name="backup__drive_title">Google Drive Sync</string>
     <string name="backup__delete_file_title">Möchtest du deine Sicherungsdatei aus Google Drive löschen?</string>
     <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Tokens werden lokal bestehen bleiben, aber die 2FAS App wird aus deinem Google Account auf diesem und deinen anderen synchronisierten Geräten ausgeloggt.</string>
-    <string name="backup__sync_status_waiting">Warten auf Synchronisierung…</string>
-    <string name="backup__sync_status_progress">Synchronisiere…</string>
+    <string name="backup__sync_status_waiting">Warten auf Synchronisierung...</string>
+    <string name="backup__sync_status_progress">Synchronisiere...</string>
     <string name="import_backup_msg1_encrypted">Du wirst eine verschlüsselte Sicherungsdatei importieren.</string>
     <string name="externalimport__choose_json_cta">Wähle eine JSON Datei aus</string>
     <string name="externalimport__aegis_msg">Exportiere deine Konten von Aegis in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
@@ -710,4 +710,6 @@
     <string name="settings__ssl_error_description">Ein SSL-Fehler ist aufgetreten, wodurch eine sichere Verbindung zum Server nicht hergestellt werden kann. Stelle sicher, dass du die neueste App-Version hast oder versuche, das Netzwerk zu ändern.</string>
     <string name="backup__import_error_file_size">Die Datei, die du versuchst zu importieren, ist zu groß. Die Größenbeschränkung beträgt 10 MB.</string>
     <string name="backup__import_error_file_invalid">Die Datei, die du versuchst zu importieren, ist ungültig oder beschädigt. Bitte wähle eine andere Datei.</string>
+    <string name="appearance__toggle_active_search">Aktive Suche</string>
+    <string name="appearance__active_search_description">Aktive Suche beim Starten</string>
 </resources>
