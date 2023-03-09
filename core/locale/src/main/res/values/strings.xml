@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Sun, 05 Mar 2023 11:46:31 -0800
+ Exported at: Thu, 09 Mar 2023 00:56:28 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -712,4 +712,10 @@
     <string name="backup__import_error_file_invalid">The file you are trying to import is invalid or damaged. Please choose another file.</string>
     <string name="appearance__toggle_active_search">Active search</string>
     <string name="appearance__active_search_description">Active search on startup</string>
+    <string name="widgets__expires_in">Expires in:</string>
+    <string name="widgets__settings">Widget settings</string>
+    <string name="errors__input_integer_number">Input must be integer number</string>
+    <string name="errors__input_number">Input must be a number</string>
+    <string name="errors__input_empty">Input can not be empty</string>
+    <string name="errors__input_too_long">Input is too long. Limit: %d</string>
 </resources>
