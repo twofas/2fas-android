@@ -101,10 +101,10 @@ fun InputEntry(
                             if (num >= 0) {
                                 null
                             } else {
-                                "Input must be integer number"
+                                context.getString(com.twofasapp.resources.R.string.errors__input_integer_number)
                             }
                         } catch (e: Exception) {
-                            "Input must be integer number"
+                            context.getString(com.twofasapp.resources.R.string.errors__input_integer_number)
                         }
                     }
 
@@ -113,7 +113,7 @@ fun InputEntry(
                             inputText.toFloat()
                             null
                         } catch (e: Exception) {
-                            "Input must be a number"
+                            context.getString(com.twofasapp.resources.R.string.errors__input_number)
                         }
                     }
                 }
@@ -122,8 +122,10 @@ fun InputEntry(
                 isValid = isInCharactersLimit && validationResult == Validation.Ok && invalidInputTypeError == null
 
                 validationErrorText = when {
-                    isInCharactersLimit.not() && inputText.length > maxChars -> "Input is too long. Limit: $maxChars"
-                    isInCharactersLimit.not() && inputText.isEmpty() -> "Input can not be empty"
+                    isInCharactersLimit.not() && inputText.length > maxChars -> context.getString(com.twofasapp.resources.R.string.errors__input_integer_number)
+                        .format(maxChars)
+
+                    isInCharactersLimit.not() && inputText.isEmpty() -> context.getString(com.twofasapp.resources.R.string.errors__input_empty)
                     invalidInputTypeError != null -> invalidInputTypeError
                     validationResult is Validation.Error -> validationResult.msg
                         ?: validationResult.msgRes?.let { context.getString(it) }
