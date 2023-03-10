@@ -1,7 +1,7 @@
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.7.20")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin.get()}")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:${libs.versions.kotlin.get()}")
         classpath("com.google.gms:google-services:4.3.14")
         classpath("com.google.firebase:firebase-crashlytics-gradle:2.9.2")
     }
