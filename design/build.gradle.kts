@@ -16,6 +16,7 @@ dependencies {
     implementation(project(":parsers"))
 
     implementation(project(":core:designsystem"))
+    implementation(project(":data:session"))
 
     implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.materialDialogs)

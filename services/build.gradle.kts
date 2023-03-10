@@ -31,6 +31,7 @@ dependencies {
     implementation(project(":backup:domain"))
     implementation(project(":spanner"))
     implementation(project(":data:services"))
+    implementation(project(":data:session"))
 
     implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.rxJava)

@@ -9,6 +9,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
@@ -17,6 +18,12 @@ import com.twofasapp.designsystem.internal.LocalThemeColors
 import com.twofasapp.designsystem.internal.ThemeColors
 import com.twofasapp.designsystem.internal.ThemeColorsDark
 import com.twofasapp.designsystem.internal.ThemeColorsLight
+
+val LocalAppTheme = staticCompositionLocalOf { AppTheme.Auto }
+
+enum class AppTheme {
+    Auto, Light, Dark,
+}
 
 @Composable
 fun MainAppTheme(
@@ -35,12 +42,18 @@ fun MainAppTheme(
         }
     }
 
-    val colors: ThemeColors = when (isSystemInDarkTheme()) {
+    val isInDarkTheme = when (LocalAppTheme.current) {
+        AppTheme.Auto -> isSystemInDarkTheme()
+        AppTheme.Light -> false
+        AppTheme.Dark -> true
+    }
+
+    val colors: ThemeColors = when (isInDarkTheme) {
         true -> ThemeColorsDark()
         false -> ThemeColorsLight()
     }
 
-    val colorScheme: ColorScheme = when (isSystemInDarkTheme()) {
+    val colorScheme: ColorScheme = when (isInDarkTheme) {
         true -> darkColorScheme(
             primary = colors.primary,
             onPrimary = colors.onSurfacePrimary,
@@ -52,7 +65,7 @@ fun MainAppTheme(
             onSurfaceVariant = colors.onSurfacePrimary,
         )
 
-        false -> lightColorScheme(
+        else -> lightColorScheme(
             primary = colors.primary,
             onPrimary = colors.onSurfacePrimary,
             background = colors.background,

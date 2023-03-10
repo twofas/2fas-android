@@ -13,4 +13,5 @@ interface ServicesRepository {
     suspend fun deleteService(id: Long)
     suspend fun trashService(id: Long)
     suspend fun restoreService(id: Long)
+    suspend fun swapServices(from: Long, to: Long)
 }

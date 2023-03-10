@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
  */
 object TwIcons {
     val Placeholder @Composable get() = painterResource(R.drawable.ic_placeholder)
+    val ArrowBack @Composable get() = painterResource(R.drawable.ic_arrow_back)
     val More @Composable get() = painterResource(R.drawable.ic_more)
     val Home @Composable get() = painterResource(R.drawable.ic_home)
     val HomeFilled @Composable get() = painterResource(R.drawable.ic_home_filled)
@@ -47,4 +48,12 @@ object TwIcons {
     val Fingerprint @Composable get() = painterResource(R.drawable.ic_fingerprint)
     val Theme @Composable get() = painterResource(R.drawable.ic_theme)
     val NextToken @Composable get() = painterResource(R.drawable.ic_next_token)
+    val ChevronDown @Composable get() = painterResource(R.drawable.ic_chevron_down)
+    val ChevronUp @Composable get() = painterResource(R.drawable.ic_chevron_up)
+    val ArrowUpward @Composable get() = painterResource(R.drawable.ic_arrow_upward)
+    val ArrowDownward @Composable get() = painterResource(R.drawable.ic_arrow_downward)
+    val Sort @Composable get() = painterResource(R.drawable.ic_sort)
+    val AddGroup @Composable get() = painterResource(R.drawable.ic_add_group)
+    val Search @Composable get() = painterResource(R.drawable.ic_search)
+    val Close @Composable get() = painterResource(R.drawable.ic_close)
 }

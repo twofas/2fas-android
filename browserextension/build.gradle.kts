@@ -32,6 +32,7 @@ dependencies {
     implementation(project(":core:locale"))
     implementation(project(":security:domain"))
     implementation(project(":data:browserext"))
+    implementation(project(":data:session"))
     implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.rxJava)
     implementation(libs.bundles.appCompat)

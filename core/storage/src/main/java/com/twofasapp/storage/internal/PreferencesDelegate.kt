@@ -28,7 +28,7 @@ internal class PreferencesDelegate(
         }
     }
 
-    override fun <T> observe(key: String, default: T?): Flow<T?> {
+    override fun <T> observe(key: String, default: T): Flow<T?> {
         return flow
             .onStart { emit(key) }
             .filter { it == key || it == null }

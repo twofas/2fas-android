@@ -54,7 +54,7 @@ fun SwitchEntry(
         val alpha = if (isEnabled) 1f else 0.3f
 
         Icon(
-            painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder),
+            painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder_old),
             contentDescription = null,
             tint = if (iconTint != Color.Unspecified) iconTint else TwTheme.color.primary,
             modifier = Modifier

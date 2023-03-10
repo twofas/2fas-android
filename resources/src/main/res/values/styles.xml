@@ -30,7 +30,7 @@
     </style>
 
     <style name="Toolbar.Back">
-        <item name="navigationIcon">@drawable/ic_back_arrow</item>
+        <item name="navigationIcon">@drawable/ic_back_arrow_old</item>
         <item name="navigationIconTint">@color/toolbarIcon</item>
     </style>
 

@@ -27,7 +27,7 @@ import com.twofasapp.security.ui.security.SecurityActivity
 import com.twofasapp.services.ui.ServiceActivity
 
 @Composable
-fun MainNavHost(
+internal fun MainNavHost(
     navController: NavHostController,
     startDestination: String,
 ) {

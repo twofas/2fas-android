@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
 
 @Composable
-fun ServiceBadge(color: Color) {
+internal fun ServiceBadge(color: Color) {
     Box(
         Modifier
             .fillMaxHeight()

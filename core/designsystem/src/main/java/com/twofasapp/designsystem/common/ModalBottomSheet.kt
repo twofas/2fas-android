@@ -1,7 +1,12 @@
 package com.twofasapp.designsystem.common
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetDefaults
@@ -10,7 +15,9 @@ import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
 
@@ -26,6 +33,11 @@ fun ModalBottomSheet(
         sheetState = sheetState,
         sheetContent = {
             Column(Modifier.navigationBarsPadding()) {
+                SlideHandle(
+                    modifier = Modifier
+                        .padding(top = 12.dp)
+                        .align(CenterHorizontally)
+                )
                 sheetContent()
             }
         },
@@ -35,5 +47,18 @@ fun ModalBottomSheet(
         sheetContentColor = TwTheme.color.onSurfacePrimary,
         scrimColor = ModalBottomSheetDefaults.scrimColor,
         content = content,
+    )
+}
+
+@Composable
+fun SlideHandle(
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .width(44.dp)
+            .height(4.dp)
+            .clip(TwTheme.shape.roundedDefault)
+            .background(TwTheme.color.surfaceVariant)
     )
 }

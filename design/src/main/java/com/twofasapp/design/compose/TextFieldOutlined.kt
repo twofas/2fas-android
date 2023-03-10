@@ -82,7 +82,7 @@ fun TextFieldOutlined(
             leadingIcon = leadingIcon,
             trailingIcon = trailingIcon ?: {
                 if (error.isNotEmpty())
-                    Icon(painterResource(id = R.drawable.ic_error), "error", tint = TwTheme.color.error)
+                    Icon(painterResource(id = R.drawable.ic_error_old), "error", tint = TwTheme.color.error)
             },
             isError = isError,
             visualTransformation = visualTransformation,

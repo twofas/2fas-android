@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.twofasapp.base.AuthTracker
+import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.navigation.StartDirections
 import com.twofasapp.navigation.StartRouter
@@ -20,7 +21,7 @@ import org.koin.core.parameter.parametersOf
 
 class StartActivity : AppCompatActivity() {
 
-    private val appThemePreference: AppThemePreference by inject()
+    private val settingsRepository: SettingsRepository by inject()
     private val getShowOnboardingCase: GetShowOnboardingCase by inject()
     private val deeplinkHandler: DeeplinkHandler by inject()
     private val authTracker: AuthTracker by inject()
@@ -29,7 +30,7 @@ class StartActivity : AppCompatActivity() {
     private val router: StartRouter by inject { parametersOf(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        ThemeState.applyTheme(appThemePreference.get())
+        ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)

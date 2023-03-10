@@ -16,7 +16,11 @@ class Strings(c: Context) {
     val commonNext = c.getString(R.string.commons__next)
     val commonContinue = c.getString(R.string.commons__continue)
     val commonSkip = c.getString(R.string.commons__skip)
+    val commonEdit = c.getString(R.string.commons__edit)
     val commonDelete = c.getString(R.string.commons__delete)
+    val commonCancel = c.getString(R.string.commons__cancel)
+    val commonSave = c.getString(R.string.commons__save)
+    val commonAdd = c.getString(R.string.commons__add)
 
     val startupTermsLabel = c.getString(R.string.introduction__tos)
     val startupStepOneHeader = c.getString(R.string.introduction__page_1_title)
@@ -32,6 +36,11 @@ class Strings(c: Context) {
     val servicesEmptyBody = c.getString(R.string.introduction__description_title)
     val servicesEmptyImportCta = c.getString(R.string.introduction__import_external_app)
     val servicesEmptyPairServiceCta = c.getString(R.string.introduction__pair_new_service)
+    val servicesMyTokens = c.getString(R.string.tokens__my_tokens)
+    val servicesManageList = "Manage list"
+    val groupsAdd = c.getString(R.string.tokens__add_group)
+    val groupsEdit = c.getString(R.string.commons__edit)
+    val groupsName = c.getString(R.string.tokens__group_name)
 
     val externalImportTitle = c.getString(R.string.settings__external_import)
     val externalImportHeader = c.getString(R.string.externalimport_select_app)
@@ -81,7 +90,11 @@ class Strings(c: Context) {
     val browserExtDeviceNameSubtitle = c.getString(R.string.browser__this_device_footer)
 
     val settingsTheme = c.getString(R.string.settings__option_theme)
-    val settingsShowNextToken = c.getString(R.string.settings__show_next_token)
+    val settingsShowNextCode = c.getString(R.string.settings__show_next_token)
+    val settingsShowNextCodeBody = "Show next token when current one is about to expire."
+    val settingsAutoFocusSearch = c.getString(R.string.appearance__toggle_active_search)
+    val settingsAutoFocusSearchBody = c.getString(R.string.appearance__active_search_description)
+    val settingsServicesStyle = "List style"
 
 //    val browserExt = c.getString(R.string.)
 //    val browserExt = c.getString(R.string.)

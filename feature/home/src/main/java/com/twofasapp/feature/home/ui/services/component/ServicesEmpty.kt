@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.services
+package com.twofasapp.feature.home.ui.services.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

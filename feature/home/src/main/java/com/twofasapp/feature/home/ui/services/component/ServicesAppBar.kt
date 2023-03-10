@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.services
+package com.twofasapp.feature.home.ui.services.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
@@ -7,16 +7,12 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -35,13 +31,18 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.R
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwDropdownMenu
+import com.twofasapp.designsystem.common.TwDropdownMenuItem
 import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.locale.TwLocale
 
 @Composable
 internal fun ServicesAppBar(
     isInEditMode: Boolean,
-    onEditModeChange: () -> Unit,
+    onEditModeChange: () -> Unit = {},
+    onSortClick: () -> Unit = {},
+    onAddGroupClick: () -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior,
 ) {
     AnimatedVisibility(
@@ -52,7 +53,20 @@ internal fun ServicesAppBar(
         TwTopAppBar(
             titleText = "Manage list",
             onBackClick = onEditModeChange,
-            scrollBehavior = scrollBehavior
+            scrollBehavior = scrollBehavior,
+            actions = {
+                TwIconButton(
+                    painter = TwIcons.Sort,
+                    tint = TwTheme.color.primary,
+                    onClick = onSortClick,
+                )
+
+                TwIconButton(
+                    painter = TwIcons.AddGroup,
+                    tint = TwTheme.color.primary,
+                    onClick = onAddGroupClick,
+                )
+            }
         )
     }
 
@@ -81,7 +95,7 @@ private fun SearchBar(
     modifier: Modifier,
     onToggleEditMode: () -> Unit,
 ) {
-    var expanded by remember { mutableStateOf(false) }
+    var dropdownVisible by remember { mutableStateOf(false) }
 
     val animVisibleState = remember { MutableTransitionState(false) }
     animVisibleState.targetState = true
@@ -101,14 +115,13 @@ private fun SearchBar(
                 painter = painterResource(id = R.drawable.logo_2fas), contentDescription = null, modifier = Modifier.size(24.dp)
             )
 
-
             TextField(
                 value = "",
                 onValueChange = {},
                 modifier = Modifier.weight(1f),
                 placeholder = { Text(text = "Search") },
                 colors = TextFieldDefaults.textFieldColors(
-                    textColor = Color.Gray,
+                    focusedTextColor = Color.Gray,
                     disabledTextColor = Color.Transparent,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -116,26 +129,19 @@ private fun SearchBar(
                 )
             )
 
-
-            Box {
-                TwIconButton(painter = TwIcons.More, onClick = { expanded = true })
-                DropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false },
-                    modifier = Modifier
-                        .widthIn(min = 160.dp)
-                        .background(TwTheme.color.surface)
-                ) {
-                    DropdownMenuItem(
-                        text = { Text("Manage list", modifier = Modifier.padding(start = 16.dp)) },
-                        onClick = {
-                            onToggleEditMode()
-                            expanded = false
-                        },
-                        modifier = Modifier.background(TwTheme.color.surface)
-                    )
-
-                }
+            TwDropdownMenu(
+                expanded = dropdownVisible,
+                onDismissRequest = { dropdownVisible = false },
+                anchor = { TwIconButton(painter = TwIcons.More, onClick = { dropdownVisible = true }) }
+            ) {
+                TwDropdownMenuItem(
+                    text = TwLocale.strings.servicesManageList,
+                    icon = TwIcons.Edit,
+                    onClick = {
+                        onToggleEditMode()
+                        dropdownVisible = false
+                    },
+                )
             }
         }
     }

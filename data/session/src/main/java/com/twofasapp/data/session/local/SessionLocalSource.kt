@@ -8,11 +8,11 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
         private const val KeyShowOnboardWarning = "showOnboardWarning"
     }
 
-    suspend fun isOnboardingDisplayed(): Boolean {
+    fun isOnboardingDisplayed(): Boolean {
         return preferences.getBoolean(KeyShowOnboardWarning)?.not() ?: false
     }
 
-    suspend fun setOnboardingDisplayed(isDisplayed: Boolean) {
+    fun setOnboardingDisplayed(isDisplayed: Boolean) {
         preferences.putBoolean(KeyShowOnboardWarning, isDisplayed.not())
     }
 }

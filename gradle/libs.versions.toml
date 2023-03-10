@@ -1,26 +1,26 @@
 [versions]
 accompanist = "0.27.0"
-agp = "8.1.0-alpha06"
+agp = "8.1.0-alpha08"
 coil = "2.2.2"
-compose = "1.3.0"
+compose = "1.4.0-beta02"
 composeActivity = "1.6.1"
 composeCompiler = "1.4.3"
 core = "1.9.0"
-espresso = "3.5.0"
-koin = "3.2.2"
-koinAndroid = "3.3.0"
-kotest = "5.5.2"
+espresso = "3.5.1"
+koin = "3.3.2"
+koinAndroid = "3.4.1"
+kotest = "5.5.5"
 kotlin = "1.8.10"
 kotlinCoroutines = "1.6.4"
 kotlinKsp = "1.8.10-1.0.9"
 ktlint = "3.12.0"
-ktor = "2.1.2"
-material3 = "1.0.1"
-room = "2.5.0-beta01"
-viewModel = "2.6.0-alpha03"
+ktor = "2.2.2"
+material3 = "1.1.0-alpha07"
+room = "2.5.0"
+viewModel = "2.6.0-rc01"
 
 [libraries]
-appcompat = "androidx.appcompat:appcompat:1.4.1"
+appcompat = "androidx.appcompat:appcompat:1.6.1"
 accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
 accompanistPlaceholder = { module = "com.google.accompanist:accompanist-placeholder", version.ref = "accompanist" }
 accompanistSystemUi = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
@@ -40,7 +40,7 @@ composeConstraint = "androidx.constraintlayout:constraintlayout-compose:1.0.0-be
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
 coreSplash = "androidx.core:core-splashscreen:1.0.0"
 dataStore = "androidx.datastore:datastore-preferences:1.0.0"
-desugar = "com.android.tools:desugar_jdk_libs:1.1.5"
+desugar = "com.android.tools:desugar_jdk_libs:2.0.2"
 espressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 javaxInject = "javax.inject:javax.inject:1"
 junit = "junit:junit:4.13.2"
@@ -62,7 +62,7 @@ material = "com.google.android.material:material:1.8.0"
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 material3Window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
 mockk = "io.mockk:mockk:1.13.2"
-navigationCompose = "androidx.navigation:navigation-compose:2.5.2"
+navigationCompose = "androidx.navigation:navigation-compose:2.5.3"
 robolectric = "org.robolectric:robolectric:4.9"
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
@@ -79,8 +79,8 @@ viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", 
 viewModelComposeRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "viewModel" }
 viewModelLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "viewModel" }
 viewModelSavedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "viewModel" }
-webkit = "androidx.webkit:webkit:1.5.0"
-workManager = "androidx.work:work-runtime-ktx:2.7.1"
+webkit = "androidx.webkit:webkit:1.6.0"
+workManager = "androidx.work:work-runtime-ktx:2.8.0"
 playReview = "com.google.android.play:review:2.0.1"
 playReviewKtx = "com.google.android.play:review-ktx:2.0.1"
 playUpdate = "com.google.android.play:app-update:2.0.1"
@@ -99,19 +99,19 @@ materialDialogsInput = "com.afollestad.material-dialogs:input:3.3.0"
 rxBinding = "com.jakewharton.rxbinding3:rxbinding:3.1.0"
 rxBindingAppCompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:3.1.0"
 rxBindingMaterial = "com.jakewharton.rxbinding3:rxbinding-material:3.1.0"
-workManagerRx = "androidx.work:work-rxjava2:2.7.1"
+workManagerRx = "androidx.work:work-rxjava2:2.8.0"
 lottie = "com.airbnb.android:lottie-compose:5.0.3"
 protobuf = "com.google.protobuf:protobuf-kotlin-lite:3.19.1"
 biometric = "androidx.biometric:biometric:1.1.0"
-coroutinesToRx = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.6.1"
-barcodeScanning = "com.google.mlkit:barcode-scanning:17.0.2"
-camera2 = "androidx.camera:camera-camera2:1.1.0-beta02"
-camera2Lifecycle = "androidx.camera:camera-lifecycle:1.1.0-beta02"
-camera2View = "androidx.camera:camera-view:1.1.0-beta02"
-securityCrypto = "androidx.security:security-crypto:1.1.0-alpha03"
+coroutinesToRx = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.6.4"
+barcodeScanning = "com.google.mlkit:barcode-scanning:17.0.3"
+camera2 = "androidx.camera:camera-camera2:1.2.1"
+camera2Lifecycle = "androidx.camera:camera-lifecycle:1.2.1"
+camera2View = "androidx.camera:camera-view:1.2.1"
+securityCrypto = "androidx.security:security-crypto:1.1.0-alpha05"
 secureStorage = "de.adorsys.android:securestoragelibrary:1.2.4"
 roomRx = { module = "androidx.room:room-rxjava2", version.ref = "room" }
-sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.2"
+sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.3"
 apacheCommonsCodec = "commons-codec:commons-codec:1.15"
 
 [bundles]

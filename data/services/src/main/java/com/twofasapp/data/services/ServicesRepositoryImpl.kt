@@ -13,11 +13,16 @@ import kotlinx.coroutines.withContext
 internal class ServicesRepositoryImpl(
     private val dispatchers: Dispatchers,
     private val codeGenerator: ServiceCodeGenerator,
-    private val localServices: ServicesLocalSource,
+    private val local: ServicesLocalSource,
 ) : ServicesRepository {
 
     override fun observeServices(): Flow<List<Service>> {
-        return localServices.observeServices()
+        return combine(
+            local.observeServices(),
+            local.observeOrder(),
+        ) { services, order ->
+            services.sortedBy { order.ids.indexOf(it.id) }
+        }
     }
 
     override fun observeServicesTicker(): Flow<List<Service>> {
@@ -31,36 +36,36 @@ internal class ServicesRepositoryImpl(
     }
 
     override fun observeDeletedServices(): Flow<List<Service>> {
-        return localServices.observeDeletedServices()
+        return local.observeDeletedServices()
     }
 
     override fun observeService(id: Long): Flow<Service> {
-        return localServices.observeService(id)
+        return local.observeService(id)
     }
 
     override suspend fun getServices(): List<Service> {
         return withContext(dispatchers.io) {
-            localServices.getServices()
+            local.getServices()
         }
     }
 
     override suspend fun getService(id: Long): Service {
         return withContext(dispatchers.io) {
-            localServices.getService(id)
+            local.getService(id)
 
         }
     }
 
     override suspend fun deleteService(id: Long) {
         withContext(dispatchers.io) {
-            localServices.deleteService(id)
+            local.deleteService(id)
         }
     }
 
     override suspend fun trashService(id: Long) {
         withContext(dispatchers.io) {
-            localServices.updateService(
-                localServices.getService(id).copy(
+            local.updateService(
+                local.getService(id).copy(
                     // TODO: see TrashService.kt
                 )
             )
@@ -69,11 +74,17 @@ internal class ServicesRepositoryImpl(
 
     override suspend fun restoreService(id: Long) {
         withContext(dispatchers.io) {
-            localServices.updateService(
-                localServices.getService(id).copy(
+            local.updateService(
+                local.getService(id).copy(
                     // TODO: see RestoreService.kt
                 )
             )
+        }
+    }
+
+    override suspend fun swapServices(from: Long, to: Long) {
+        withContext(dispatchers.io) {
+            local.swapServices(from, to)
         }
     }
 }

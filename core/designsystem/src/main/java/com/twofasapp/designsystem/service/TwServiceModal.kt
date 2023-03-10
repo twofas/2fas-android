@@ -20,8 +20,9 @@ import com.twofasapp.designsystem.service.component.ServiceName
 import com.twofasapp.designsystem.service.component.ServiceTimer
 
 @Composable
-internal fun ServiceModal(
+fun TwServiceModal(
     state: ServiceState,
+    showNextCode: Boolean = false,
     modifier: Modifier = Modifier,
     containerColor: Color = TwTheme.color.background,
 ) {
@@ -60,6 +61,7 @@ internal fun ServiceModal(
             ServiceCode(
                 code = state.code,
                 nextCode = state.nextCode,
+                nextCodeVisible = state.timer <= 5 && showNextCode,
                 modifier = Modifier.weight(1f),
             )
 
@@ -75,5 +77,5 @@ internal fun ServiceModal(
 @Preview
 @Composable
 private fun Preview() {
-    ServiceModal(state = ServicePreview)
+    TwServiceModal(state = ServicePreview)
 }

@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.services
+package com.twofasapp.feature.home.ui.services.modal
 
 internal sealed interface ModalType {
     object AddService : ModalType

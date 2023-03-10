@@ -15,7 +15,7 @@ interface Preferences {
     fun putInt(key: String, value: Int)
     fun putFloat(key: String, value: Float)
 
-    fun <T> observe(key: String, default: T?): Flow<T?>
+    fun <T> observe(key: String, default: T): Flow<T?>
 
     fun delete(key: String)
 }

@@ -12,6 +12,8 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.twofasapp.base.BaseComponentActivity
 import com.twofasapp.core.log.FileLogger
+import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.navigation.base.withOwner
 import com.twofasapp.services.navigation.ServiceGraph
@@ -39,8 +41,10 @@ class ServiceActivity : BaseComponentActivity() {
 
     private val viewModel: ServiceViewModel by viewModel()
     private val externalNavigator: ServiceExternalNavigator by inject()
+    private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
         super.onCreate(savedInstanceState)
         val viewModelStoreOwner = compositionLocalOf<ViewModelStoreOwner> { this }
 

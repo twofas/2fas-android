@@ -1,8 +1,8 @@
 package com.twofasapp.data.session.local
 
-import com.twofasapp.common.ktx.camelCaseBeginUpper
 import com.twofasapp.data.session.domain.AppSettings
 import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,36 +13,47 @@ internal class SettingsLocalSource(
 ) {
 
     companion object {
-        private const val KeyShowNextToken = "showNextToken"
-
-        // Legacy format was using Json serializer to store enum, example:
-        // <string name="appTheme">&quot;LIGHT&quot;</string> (<string name="appTheme">"LIGHT</string>)
-        private const val KeyAppTheme = "appTheme"
+        private const val KeyShowNextCode = "showNextToken"
+        private const val KeySelectedTheme = "selectedTheme"
+        private const val KeyServicesStyle = "servicesStyle"
+        private const val KeyAutoFocusSearch = "autoFocusSearch"
 
     }
 
     private val appSettingsFlow: MutableStateFlow<AppSettings> by lazy {
-        MutableStateFlow(
-            AppSettings(
-                showNextToken = preferences.getBoolean(KeyShowNextToken) ?: false,
-                selectedTheme = preferences.getString(KeyAppTheme)?.let {
-                    SelectedTheme.valueOf(it.replace("\"", "").lowercase().camelCaseBeginUpper())
-                } ?: SelectedTheme.Auto
-            )
-        )
+        MutableStateFlow(getAppSettings())
     }
 
     fun observeAppSettings(): Flow<AppSettings> {
         return appSettingsFlow
     }
 
-    suspend fun setShowNextToken(showNextToken: Boolean) {
-        appSettingsFlow.update { it.copy(showNextToken = showNextToken) }
-        preferences.putBoolean(KeyShowNextToken, showNextToken)
+    fun getAppSettings(): AppSettings {
+        return AppSettings(
+            showNextCode = preferences.getBoolean(KeyShowNextCode) ?: false,
+            autoFocusSearch = preferences.getBoolean(KeyAutoFocusSearch) ?: false,
+            selectedTheme = preferences.getString(KeySelectedTheme)?.let { SelectedTheme.valueOf(it) } ?: SelectedTheme.Auto,
+            servicesStyle = preferences.getString(KeyServicesStyle)?.let { ServicesStyle.valueOf(it) } ?: ServicesStyle.Default,
+        )
     }
 
-    suspend fun setSelectedTheme(selectedTheme: SelectedTheme) {
+    fun setShowNextCode(showNextCode: Boolean) {
+        appSettingsFlow.update { it.copy(showNextCode = showNextCode) }
+        preferences.putBoolean(KeyShowNextCode, showNextCode)
+    }
+
+    fun setSelectedTheme(selectedTheme: SelectedTheme) {
         appSettingsFlow.update { it.copy(selectedTheme = selectedTheme) }
-        preferences.putString(KeyAppTheme, selectedTheme.name.uppercase()) // TODO Replace
+        preferences.putString(KeySelectedTheme, selectedTheme.name)
+    }
+
+    fun setServicesStyle(servicesStyle: ServicesStyle) {
+        appSettingsFlow.update { it.copy(servicesStyle = servicesStyle) }
+        preferences.putString(KeyServicesStyle, servicesStyle.name)
+    }
+
+    fun setAutoFocusSearch(autoFocusSearch: Boolean) {
+        appSettingsFlow.update { it.copy(autoFocusSearch = autoFocusSearch) }
+        preferences.putBoolean(KeyAutoFocusSearch, autoFocusSearch)
     }
 }

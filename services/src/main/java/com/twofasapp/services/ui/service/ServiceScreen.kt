@@ -468,7 +468,7 @@ fun IconSelector(
 
             if (isBrandSelected) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_check_circle),
+                    painter = painterResource(id = R.drawable.ic_check_circle_old),
                     contentDescription = null,
                     tint = TwTheme.color.primary,
                     modifier = Modifier
@@ -517,7 +517,7 @@ fun IconSelector(
 
             if (isLabelSelected) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_check_circle),
+                    painter = painterResource(id = R.drawable.ic_check_circle_old),
                     contentDescription = null,
                     tint = TwTheme.color.primary,
                     modifier = Modifier

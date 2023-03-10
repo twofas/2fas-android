@@ -14,5 +14,5 @@ class ThemeColorsDark : ThemeColors() {
     override val onSurfaceSecondary: Color = Color(0xFF636363)
     override val onSurfaceTertiary: Color = Color(0xFF9E9E9E)
     override val primaryIndicator: Color = Color(0xFF482227)
-
+    override val serviceBackgroundWithGroups: Color = Color(0xFF17181B)
 }

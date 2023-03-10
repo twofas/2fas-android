@@ -35,7 +35,7 @@
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:textSize="18sp"
-        app:drawableEndCompat="@drawable/ic_chevron_right"
+        app:drawableEndCompat="@drawable/ic_chevron_right_old"
         app:drawableTint="?android:textColorSecondary"
         tools:text="On" />
 </LinearLayout>

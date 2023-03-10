@@ -11,6 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ListRadioDialog
@@ -28,7 +29,9 @@ internal fun AppSettingsRoute(
     AppSettingsScreen(
         uiState = uiState,
         onSelectedThemeChange = { viewModel.setSelectedTheme(it) },
-        onShowNextTokenToggle = { viewModel.toggleShowNextToken() }
+        onServicesStyleChange = { viewModel.setServiceStyle(it) },
+        onShowNextTokenToggle = { viewModel.toggleShowNextToken() },
+        onAutoFocusSearchToggle = { viewModel.toggleAutoFocusSearch() }
     )
 }
 
@@ -36,9 +39,12 @@ internal fun AppSettingsRoute(
 private fun AppSettingsScreen(
     uiState: AppSettingsUiState,
     onSelectedThemeChange: (SelectedTheme) -> Unit,
+    onServicesStyleChange: (ServicesStyle) -> Unit,
     onShowNextTokenToggle: () -> Unit,
+    onAutoFocusSearchToggle: () -> Unit,
 ) {
     var showThemeDialog by remember { mutableStateOf(false) }
+    var showServicesStyleDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = { TwTopAppBar(titleText = TwLocale.strings.settingsAppearance) }
@@ -48,19 +54,38 @@ private fun AppSettingsScreen(
             item {
                 SettingsLink(
                     title = TwLocale.strings.settingsTheme,
-                    subtitle = uiState.selectedTheme.name,
+                    subtitle = uiState.appSettings.selectedTheme.name,
                     icon = TwIcons.Theme,
                     onClick = { showThemeDialog = true }
                 )
             }
 
             item {
+                SettingsLink(
+                    title = TwLocale.strings.settingsServicesStyle,
+                    subtitle = uiState.appSettings.servicesStyle.name,
+                    icon = TwIcons.Theme,
+                    onClick = { showServicesStyleDialog = true }
+                )
+            }
+
+            item {
                 SettingsSwitch(
-                    title = TwLocale.strings.settingsShowNextToken,
-                    checked = uiState.showNextToken,
+                    title = TwLocale.strings.settingsShowNextCode,
+                    checked = uiState.appSettings.showNextCode,
                     onCheckedChange = { onShowNextTokenToggle() },
-                    subtitle = "Show next token when current one is about to expire.",
+                    subtitle = TwLocale.strings.settingsShowNextCodeBody,
                     icon = TwIcons.NextToken,
+                )
+            }
+
+            item {
+                SettingsSwitch(
+                    title = TwLocale.strings.settingsAutoFocusSearch,
+                    checked = uiState.appSettings.autoFocusSearch,
+                    onCheckedChange = { onAutoFocusSearchToggle() },
+                    subtitle = TwLocale.strings.settingsAutoFocusSearchBody,
+                    icon = TwIcons.Search,
                 )
             }
         }
@@ -70,32 +95,19 @@ private fun AppSettingsScreen(
                 onDismissRequest = { showThemeDialog = false },
                 title = TwLocale.strings.settingsTheme,
                 options = SelectedTheme.values().map { it.name },
-                selectedOption = uiState.selectedTheme.name,
-                onOptionSelected = { index, _ -> onSelectedThemeChange(SelectedTheme.values()[index]) }
+                selectedOption = uiState.appSettings.selectedTheme.name,
+                onOptionSelected = { index, _ -> onSelectedThemeChange(SelectedTheme.values()[index]) },
+            )
+        }
+
+        if (showServicesStyleDialog) {
+            ListRadioDialog(
+                onDismissRequest = { showServicesStyleDialog = false },
+                title = TwLocale.strings.settingsServicesStyle,
+                options = ServicesStyle.values().map { it.name },
+                selectedOption = uiState.appSettings.servicesStyle.name,
+                onOptionSelected = { index, _ -> onServicesStyleChange(ServicesStyle.values()[index]) },
             )
         }
     }
 }
-
-//item {
-//    SimpleEntry(
-//        title = stringResource(id = R.string.settings__option_theme),
-//        subtitle = when (uiState.theme) {
-//            AppTheme.AUTO -> stringResource(R.string.settings__theme_option_auto)
-//            AppTheme.LIGHT -> stringResource(R.string.settings__theme_option_light)
-//            AppTheme.DARK -> stringResource(R.string.settings__theme_option_dark)
-//        },
-//        subtitleGravity = SubtitleGravity.END,
-//        icon = painterResource(id = R.drawable.ic_option_theme),
-//        click = { router.navigate(SettingsDirections.Theme) }
-//    )
-//}
-//
-//item {
-//    SwitchEntry(
-//        title = stringResource(id = R.string.settings__show_next_token),
-//        icon = painterResource(id = R.drawable.ic_next_token),
-//        isChecked = uiState.showNextToken,
-//        switch = { isChecked -> viewModel.changeShowNextToken(isChecked) }
-//    )
-//}

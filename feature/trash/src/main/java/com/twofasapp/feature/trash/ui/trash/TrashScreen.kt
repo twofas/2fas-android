@@ -93,24 +93,27 @@ private fun TrashScreen(
                         .fillMaxWidth()
                         .padding(start = 16.dp, end = 0.dp),
                     content = {
-                        var expanded by rememberSaveable { mutableStateOf(false) }
+                        var dropdownVisible by rememberSaveable { mutableStateOf(false) }
 
                         TwDropdownMenu(
-                            expanded = expanded,
-                            onDismissRequest = { expanded = false },
-                            anchor = { TwIconButton(painter = TwIcons.More, onClick = { expanded = true }) }
+                            expanded = dropdownVisible,
+                            onDismissRequest = { dropdownVisible = false },
+                            anchor = { TwIconButton(painter = TwIcons.More, onClick = { dropdownVisible = true }) }
                         ) {
                             TwDropdownMenuItem(
                                 text = TwLocale.strings.trashRestoreCta,
+                                icon = TwIcons.Refresh,
                                 onClick = {
-                                    expanded = false
+                                    dropdownVisible = false
                                     onRestoreClick(it.id)
                                 }
                             )
                             TwDropdownMenuItem(
                                 text = TwLocale.strings.trashDisposeCta,
+                                icon = TwIcons.Delete,
+                                contentColor = TwTheme.color.accentRed,
                                 onClick = {
-                                    expanded = false
+                                    dropdownVisible = false
                                     onDisposeClick(it.id)
                                 }
                             )

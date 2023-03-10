@@ -92,7 +92,7 @@ internal class BackupSettingsPresenter(
             SimpleEntry(
                 titleRes = R.string.backup_settings_delete_title,
                 subtitleRes = R.string.backup_settings_delete_subtitle,
-                drawableRes = R.drawable.ic_backup_delete,
+                drawableRes = R.drawable.ic_backup_delete_old,
                 isEnabled = syncStatus != SyncStatus.Syncing,
                 clickAction = {
                     view.showWipeConfirmDialog {

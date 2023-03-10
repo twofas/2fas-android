@@ -3,7 +3,6 @@ package com.twofasapp
 import com.twofasapp.backup.ui.export.ExportBackupActivity
 import com.twofasapp.backup.ui.export.ExportBackupContract
 import com.twofasapp.backup.ui.export.ExportBackupPresenter
-import com.twofasapp.di.extensions.scopedOf
 import com.twofasapp.features.addserviceqr.AddServiceQrActivity
 import com.twofasapp.features.addserviceqr.AddServiceQrContract
 import com.twofasapp.features.addserviceqr.AddServiceQrPresenter
@@ -26,6 +25,7 @@ import com.twofasapp.widgets.configure.WidgetSettingsPresenter
 import org.koin.androidx.scope.ScopeActivity
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.scopedOf
 import org.koin.dsl.ScopeDSL
 import org.koin.dsl.module
 
@@ -74,7 +74,24 @@ val activityScopeModule = module {
     }
 
     activityScope<AddServiceQrActivity> {
-        scopedOf(::AddServiceQrPresenter) { bind<AddServiceQrContract.Presenter>() }
+        scoped<AddServiceQrContract.Presenter> {
+            AddServiceQrPresenter(
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+            )
+        }
     }
     activityScope<BackupActivity> {
         scopedOf(::BackupPresenter) { bind<BackupContract.Presenter>() }

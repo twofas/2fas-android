@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.twofasapp.base.AuthTracker
+import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.resources.R
@@ -14,6 +15,7 @@ import org.koin.android.ext.android.inject
 class LockActivity : AppCompatActivity() {
 
     private val authTracker: AuthTracker by inject()
+    private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(0, 0)

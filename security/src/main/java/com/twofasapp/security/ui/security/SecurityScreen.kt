@@ -71,7 +71,7 @@ internal fun SecurityScreen(
                 item {
                     SwitchEntry(
                         title = stringResource(id = R.string.settings__option_fingerprint),
-                        icon = painterResource(id = R.drawable.ic_fingerprint),
+                        icon = painterResource(id = R.drawable.ic_fingerprint_old),
                         isChecked = false,
                         isEnabled = false,
                         switch = { isChecked -> }
@@ -102,7 +102,7 @@ internal fun SecurityScreen(
                 item {
                     SimpleEntry(
                         title = stringResource(id = R.string.security__change_pin),
-                        icon = painterResource(id = R.drawable.ic_change_pin),
+                        icon = painterResource(id = R.drawable.ic_change_pin_old),
                         click = { router.navigate(SecurityDirections.ChangePin) }
                     )
                 }
@@ -113,7 +113,7 @@ internal fun SecurityScreen(
                 item {
                     SimpleEntry(
                         title = stringResource(id = R.string.settings__limit_of_trials),
-                        icon = painterResource(id = R.drawable.ic_limit_trials),
+                        icon = painterResource(id = R.drawable.ic_limit_trials_old),
                         subtitleGravity = SubtitleGravity.END,
                         subtitle = if (uiState.pinTrials == PinTrials.NoLimit) {
                             stringResource(id = R.string.settings__no_limit)
@@ -135,7 +135,7 @@ internal fun SecurityScreen(
                 item {
                     SimpleEntry(
                         title = stringResource(id = R.string.settings__block_for),
-                        icon = painterResource(id = R.drawable.ic_block_for),
+                        icon = painterResource(id = R.drawable.ic_block_for_old),
                         subtitleGravity = SubtitleGravity.END,
                         subtitle = stringResource(id = uiState.pinTimeout.label),
                         isEnabled = uiState.pinTrials != PinTrials.NoLimit,
@@ -157,7 +157,7 @@ internal fun SecurityScreen(
                 item {
                     SwitchEntry(
                         title = stringResource(id = R.string.settings__option_fingerprint),
-                        icon = painterResource(id = R.drawable.ic_fingerprint),
+                        icon = painterResource(id = R.drawable.ic_fingerprint_old),
                         isChecked = uiState.lockMethod == LockMethod.Biometrics,
                         switch = { isChecked ->
                             if (isChecked) {

@@ -5,6 +5,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonDefaults.textButtonColors
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonColors
@@ -76,20 +77,22 @@ fun TwOutlinedButton(
 fun TwTextButton(
     text: String,
     onClick: () -> Unit,
-    height: Dp = TwTheme.dimen.buttonHeight,
     modifier: Modifier = Modifier,
     style: TextStyle = TwTheme.typo.body2,
     enabled: Boolean = true,
 ) {
     TextButton(
         onClick = onClick,
-        modifier = modifier.height(height),
         enabled = enabled,
+        modifier = modifier,
+        colors = textButtonColors(
+            contentColor = TwTheme.color.primary,
+            disabledContentColor = TwTheme.color.onSurfaceSecondary,
+        )
     ) {
         Text(
             text = text,
             style = style,
-            color = TwTheme.color.primary
         )
     }
 }
@@ -99,13 +102,13 @@ fun TwIconButton(
     painter: Painter? = null,
     contentDescription: String? = null,
     onClick: () -> Unit = {},
-    tint: Color? = null,
     modifier: Modifier = Modifier,
+    tint: Color? = null,
     iconModifier: Modifier = Modifier,
     enabled: Boolean = true,
     colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable (() -> Unit)? = null,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {
     IconButton(
         onClick = onClick,

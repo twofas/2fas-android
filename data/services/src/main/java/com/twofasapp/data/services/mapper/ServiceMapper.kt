@@ -1,7 +1,9 @@
 package com.twofasapp.data.services.mapper
 
 import com.twofasapp.data.services.domain.Service
+import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServiceEntity
+import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.parsers.ServiceIcons
 
 internal fun ServiceEntity.asDomain(): Service {
@@ -63,3 +65,12 @@ internal fun Service.asEntity(): ServiceEntity {
         assignedDomains = listOf()
     )
 }
+
+internal fun ServicesOrderEntity.asDomain() =
+    ServicesOrder(
+        ids = ids,
+        type = when (type) {
+            ServicesOrderEntity.Type.Alphabetical -> ServicesOrder.Type.Alphabetical
+            ServicesOrderEntity.Type.Manual -> ServicesOrder.Type.Manual
+        }
+    )

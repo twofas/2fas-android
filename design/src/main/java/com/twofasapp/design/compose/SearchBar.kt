@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -22,6 +20,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -58,7 +57,7 @@ fun SearchBar(
             },
             textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 18.sp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                textColor = TwTheme.color.onSurfacePrimary,
+                focusedTextColor = TwTheme.color.onSurfacePrimary,
                 disabledTextColor = Color.Black,
                 focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent,
@@ -86,7 +85,7 @@ fun SearchBar(
                         onClearClick()
                     }) {
                         Icon(
-                            imageVector = Icons.Filled.Close,
+                            painter = TwIcons.Close,
                             tint = TwTheme.color.onSurfacePrimary,
                             contentDescription = null
                         )

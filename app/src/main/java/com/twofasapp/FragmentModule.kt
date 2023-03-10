@@ -1,7 +1,6 @@
 package com.twofasapp
 
 import com.twofasapp.base.BaseBottomSheet
-import com.twofasapp.di.extensions.scopedOf
 import com.twofasapp.features.backup.settings.BackupSettingsContract
 import com.twofasapp.features.backup.settings.BackupSettingsFragment
 import com.twofasapp.features.backup.settings.BackupSettingsPresenter
@@ -21,6 +20,7 @@ import com.twofasapp.qrscanner.QrScannerPresenter
 import org.koin.androidx.scope.ScopeFragment
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.scopedOf
 import org.koin.dsl.ScopeDSL
 import org.koin.dsl.module
 
@@ -42,12 +42,49 @@ inline fun <reified T : BaseBottomSheet<*>> Module.bottomSheetScope(scopeSet: Sc
 val fragmentScopeModule = module {
 
     fragmentScope<ServicesFragment> {
-        scopedOf(::ServicesPresenter) { bind<ServicesContract.Presenter>() }
+        scoped<ServicesContract.Presenter> {
+            ServicesPresenter(
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+            )
+        }
     }
 
-
     fragmentScope<BackupStatusFragment> {
-        scopedOf(::BackupStatusPresenter) { bind<BackupStatusContract.Presenter>() }
+        scoped<BackupStatusContract.Presenter> {
+            BackupStatusPresenter(
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get(),
+            )
+        }
     }
     fragmentScope<com.twofasapp.qrscanner.QrScannerFragment> {
         scopedOf(::QrScannerPresenter) { bind<QrScannerContract.Presenter>() }

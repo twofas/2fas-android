@@ -137,7 +137,7 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
                 android:contentDescription="@string/commons__add"
-                android:src="@drawable/ic_add"
+                android:src="@drawable/ic_add_old"
                 app:backgroundTint="@color/colorAccent"
                 app:fabSize="normal"
                 app:tint="@color/white" />

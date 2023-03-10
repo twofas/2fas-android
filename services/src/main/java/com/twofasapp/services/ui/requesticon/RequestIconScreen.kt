@@ -69,7 +69,7 @@ internal fun RequestIconScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
             Image(
-                painter = painterResource(id = R.drawable.ic_message),
+                painter = painterResource(id = R.drawable.ic_message_old),
                 contentDescription = null,
                 modifier = Modifier
                     .height(64.dp)

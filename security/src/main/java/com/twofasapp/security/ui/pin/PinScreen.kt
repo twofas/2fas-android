@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -57,7 +58,7 @@ internal fun PinScreen(
     var showBiometricDialog by remember { mutableStateOf(true) }
 
     if (state == PinScreenState.Loading) {
-        Box(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize().background(TwTheme.color.background)) {
             ProgressBar(modifier = Modifier.align(Alignment.Center))
         }
     }
@@ -68,7 +69,7 @@ internal fun PinScreen(
         exit = fadeOut()
     ) {
         Column(
-            modifier = modifier.fillMaxSize(),
+            modifier = modifier.fillMaxSize().background(TwTheme.color.background),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

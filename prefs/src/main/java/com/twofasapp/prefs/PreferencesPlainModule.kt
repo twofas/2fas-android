@@ -1,7 +1,6 @@
 package com.twofasapp.prefs
 
 import com.twofasapp.di.KoinModule
-import com.twofasapp.prefs.usecase.AppThemePreference
 import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
 import com.twofasapp.prefs.usecase.CacheValidityPreference
 import com.twofasapp.prefs.usecase.CurrentAppVersionPreference
@@ -39,7 +38,6 @@ class PreferencesPlainModule : KoinModule {
         single { LastScannedQrPreference(get<PlainPreferences>()) }
         single { RemoteBackupStatusPreference(get<PlainPreferences>()) }
         single { ServicesOrderPreference(get<PlainPreferences>()) }
-        single { AppThemePreference(get<PlainPreferences>()) }
         single { GroupsPreference(get<PlainPreferences>()) }
         single { WidgetSettingsPreference(get<PlainPreferences>()) }
         single { AppUpdateLastCheckVersionPreference(get<PlainPreferences>()) }

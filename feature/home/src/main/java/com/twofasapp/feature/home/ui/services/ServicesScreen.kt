@@ -2,16 +2,18 @@ package com.twofasapp.feature.home.ui.services
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
@@ -25,25 +27,36 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.ModalBottomSheet
 import com.twofasapp.designsystem.common.isScrollingUp
+import com.twofasapp.designsystem.dialog.InputDialog
+import com.twofasapp.designsystem.group.ServicesGroup
 import com.twofasapp.designsystem.ktx.copyToClipboard
 import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.lazy.listItem
-import com.twofasapp.designsystem.lazy.listItems
-import com.twofasapp.designsystem.service.Service
-import com.twofasapp.designsystem.service.ServiceStyle
+import com.twofasapp.designsystem.service.TwService
+import com.twofasapp.designsystem.service.TwServiceDefaults
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
+import com.twofasapp.feature.home.ui.services.component.ServicesAppBar
+import com.twofasapp.feature.home.ui.services.component.ServicesEmpty
+import com.twofasapp.feature.home.ui.services.component.ServicesFab
+import com.twofasapp.feature.home.ui.services.component.ServicesProgress
 import com.twofasapp.feature.home.ui.services.modal.AddServiceModal
 import com.twofasapp.feature.home.ui.services.modal.FocusServiceModal
+import com.twofasapp.feature.home.ui.services.modal.ModalType
+import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
 import org.burnoutcrew.reorderable.ReorderableItem
-import org.burnoutcrew.reorderable.detectReorderAfterLongPress
+import org.burnoutcrew.reorderable.detectReorder
 import org.burnoutcrew.reorderable.rememberReorderableLazyListState
 import org.burnoutcrew.reorderable.reorderable
 import org.koin.androidx.compose.koinViewModel
@@ -65,6 +78,13 @@ internal fun ServicesRoute(
         onFabClick = { viewModel.toggleAddMenu() },
         onExternalImportClick = onExternalImportClick,
         onEditModeChange = { viewModel.toggleEditMode() },
+        onToggleGroupExpand = { viewModel.toggleGroup(it) },
+        onAddGroup = { viewModel.addGroup(it) },
+        onMoveUpGroup = { viewModel.moveUpGroup(it) },
+        onMoveDownGroup = { viewModel.moveDownGroup(it) },
+        onEditGroup = { id, name -> viewModel.editGroup(id, name) },
+        onDeleteGroup = { viewModel.deleteGroup(it) },
+        onSwapServices = { from, to -> viewModel.swapServices(from, to) }
     )
 }
 
@@ -78,24 +98,35 @@ private fun ServicesScreen(
     onFabClick: () -> Unit = {},
     onExternalImportClick: () -> Unit = {},
     onEditModeChange: () -> Unit = {},
+    onToggleGroupExpand: (String?) -> Unit = {},
+    onAddGroup: (String) -> Unit = {},
+    onMoveUpGroup: (String) -> Unit = {},
+    onMoveDownGroup: (String) -> Unit = {},
+    onEditGroup: (String, String) -> Unit = { _, _ -> },
+    onDeleteGroup: (String) -> Unit = {},
+    onSwapServices: (Long, Long) -> Unit = { _, _ -> },
 ) {
 
+    var showAddGroupDialog by remember { mutableStateOf(false) }
+    var showEditGroupDialog by remember { mutableStateOf(false) }
+    var clickedGroup by remember { mutableStateOf<Group?>(null) }
     val topAppBarState = rememberTopAppBarState()
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(topAppBarState)
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
     val modalState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
     var modalType by remember { mutableStateOf<ModalType>(ModalType.AddService) }
     val activity = LocalContext.currentActivity
     val scope = rememberCoroutineScope()
-    val reorderableState = rememberReorderableLazyListState(
-        maxScrollPerFrame = 40.dp,
-        onMove = { from, to ->
-//                viewModel.orderList.update {
-//                    it.toMutableList().apply {
-//                        add(to.index - 1, removeAt(from.index - 1))
-//                    }
-//                }
-        }
-    )
+
+    val data = remember { mutableStateOf(List(100) { "Item $it" }) }
+    val listState = rememberLazyListState()
+    val reorderableState = rememberReorderableLazyListState(listState = listState, onMove = { from, to ->
+        println("order: $from -> $to")
+        onSwapServices((from.key as String).split(":")[1].toLong(), (to.key as String).split(":")[1].toLong())
+//        println("order: ${listState.layoutInfo.visibleItemsInfo.map { it.key }}")
+//        data.value = data.value.toMutableList().apply {
+//            add(to.index, removeAt(from.index))
+//        }
+    })
 
     uiState.events.firstOrNull()?.let {
         when (it) {
@@ -137,6 +168,7 @@ private fun ServicesScreen(
                     uiState.getService(id)?.asState()?.let {
                         FocusServiceModal(
                             serviceState = it,
+                            showNextCode = uiState.appSettings.showNextCode,
                             onEditClick = {
                                 scope.launch { modalState.hide() }
                                 listener.openService(activity, (modalType as ModalType.FocusService).id)
@@ -160,6 +192,8 @@ private fun ServicesScreen(
                     isInEditMode = uiState.isInEditMode,
                     onEditModeChange = onEditModeChange,
                     scrollBehavior = scrollBehavior,
+                    onSortClick = {}, // TODO
+                    onAddGroupClick = { showAddGroupDialog = true },
                 )
             },
             floatingActionButton = {
@@ -174,13 +208,14 @@ private fun ServicesScreen(
         ) { padding ->
 
             LazyColumn(
+                state = reorderableState.listState,
                 modifier = Modifier
                     .fillMaxSize()
                     .background(TwTheme.color.background)
                     .padding(padding)
                     .reorderable(reorderableState),
-                state = reorderableState.listState,
-                contentPadding = PaddingValues(vertical = 8.dp)
+                contentPadding = PaddingValues(top = 8.dp, bottom = 48.dp),
+                userScrollEnabled = uiState.services.isNotEmpty(),
             ) {
                 if (uiState.isLoading) {
                     listItem(ServicesListItem.Loader) {
@@ -198,54 +233,115 @@ private fun ServicesScreen(
                         ServicesEmpty(
                             modifier = Modifier
                                 .fillParentMaxSize()
-                                .animateItemPlacement(),
-                            onExternalImportClick = onExternalImportClick
+                                .animateItemPlacement(), onExternalImportClick = onExternalImportClick
                         )
                     }
                 }
 
-                listItems(
-                    items = uiState.services,
-                    type = { ServicesListItem.Service(it.id) }
-                ) { service ->
-                    Divider(color = TwTheme.color.divider)
+                uiState.groups.forEach { group ->
 
-                    ReorderableItem(
-                        state = reorderableState,
-                        key = service.id,
-                        modifier = Modifier
-                            .animateItemPlacement()
-                            .animateContentSize()
-                    ) { isDragging ->
-                        Service(
-                            state = service.asState(),
-                            style = if (uiState.isInEditMode) ServiceStyle.Edit else ServiceStyle.Default,
-                            modifier = Modifier
-                                .shadow(if (isDragging) 8.dp else 0.dp)
-                                .detectReorderAfterLongPress(reorderableState),
+                    if (uiState.groups.size > 1) {
+                        listItem(ServicesListItem.Group(group.id)) {
+                            ServicesGroup(
+                                id = group.id,
+                                name = group.name ?: TwLocale.strings.servicesMyTokens,
+                                count = uiState.services.count { it.groupId == group.id },
+                                expanded = group.isExpanded,
+                                editMode = uiState.isInEditMode,
+                                modifier = Modifier
+                                    .animateContentSize()
+                                    .animateItemPlacement(),
+                                onClick = { onToggleGroupExpand(group.id) },
+                                onExpandClick = { onToggleGroupExpand(group.id) },
+                                onMoveUpClick = { onMoveUpGroup(group.id.orEmpty()) },
+                                onMoveDownClick = { onMoveDownGroup(group.id.orEmpty()) },
+                                onEditClick = {
+                                    clickedGroup = group
+                                    showEditGroupDialog = true
+                                },
+                                onDeleteClick = { onDeleteGroup(group.id.orEmpty()) },
+                            )
+                        }
+                    }
 
-//                                .run {
-//                                    if (uiState.isInEditMode) {
-//                                        detectReorderAfterLongPress(reorderableState)
-//                                    } else {
-//                                        this
-//                                    }
-//                                },
-                            onClick = {
-                                modalType = ModalType.FocusService(service.id)
-                                scope.launch { modalState.show() }
-                            },
-                            onLongClick = {
-                                activity.copyToClipboard(
-                                    service.code?.current.toString()
-                                )
-                            },
-                        )
+                    if (group.isExpanded) {
+                        uiState.services.filter { it.groupId == group.id }.forEach { service ->
+                            listItem(ServicesListItem.Service(service.id)) {
+
+                                ReorderableItem(
+                                    state = reorderableState,
+                                    key = ServicesListItem.Service(service.id).key,
+                                    modifier = Modifier
+                                        .animateItemPlacement()
+                                        .animateContentSize(),
+                                ) { isDragging ->
+                                    val elevation = animateDpAsState(if (isDragging) 16.dp else 0.dp)
+
+                                    TwService(
+                                        state = service.asState(),
+                                        style = when (uiState.appSettings.servicesStyle) {
+                                            ServicesStyle.Default -> TwServiceDefaults.defaultStyle()
+                                            ServicesStyle.Compact -> TwServiceDefaults.compactStyle()
+                                        },
+                                        editMode = uiState.isInEditMode,
+                                        showNextCode = uiState.appSettings.showNextCode,
+                                        containerColor = if (uiState.groups.size == 1) {
+                                            TwTheme.color.background
+                                        } else {
+                                            TwTheme.color.serviceBackgroundWithGroups
+                                        },
+                                        modifier = Modifier.shadow(elevation.value),
+                                        dragModifier = Modifier.detectReorder(reorderableState),
+                                        onClick = {
+                                            modalType = ModalType.FocusService(service.id)
+                                            scope.launch { modalState.show() }
+                                        },
+                                        onLongClick = {
+                                            activity.copyToClipboard(
+                                                service.code?.current.toString()
+                                            )
+                                        },
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
-
-                item { Divider(color = TwTheme.color.divider) }
             }
+        }
+
+        if (showAddGroupDialog) {
+            InputDialog(title = TwLocale.strings.groupsAdd,
+                onDismissRequest = { showAddGroupDialog = false },
+                positive = TwLocale.strings.commonAdd,
+                negative = TwLocale.strings.commonCancel,
+                hint = TwLocale.strings.groupsName,
+                showCounter = true,
+                minLength = 1,
+                maxLength = 32,
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Sentences,
+                    keyboardType = KeyboardType.Text,
+                ),
+                onPositiveClick = { onAddGroup(it) })
+        }
+
+        if (showEditGroupDialog) {
+            InputDialog(title = TwLocale.strings.groupsEdit,
+                onDismissRequest = { showEditGroupDialog = false },
+                positive = TwLocale.strings.commonSave,
+                negative = TwLocale.strings.commonCancel,
+                hint = TwLocale.strings.groupsName,
+                prefill = clickedGroup?.name.orEmpty(),
+                showCounter = true,
+                minLength = 1,
+                maxLength = 32,
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Sentences,
+                    keyboardType = KeyboardType.Text,
+                ),
+                onPositiveClick = { onEditGroup(clickedGroup?.id.orEmpty(), it) })
         }
     }
 }
+

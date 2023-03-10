@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
@@ -29,7 +28,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.twofasapp.design.compose.dialogs.InputType
 import com.twofasapp.design.compose.dialogs.Validation
-import com.twofasapp.design.theme.primary
 import com.twofasapp.designsystem.TwTheme
 
 @Composable
@@ -72,7 +70,7 @@ fun InputEntry(
         var isValid by remember { mutableStateOf(allowEmpty) }
 
         Icon(
-            painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder),
+            painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder_old),
             contentDescription = null,
             tint = if (iconTint != Color.Unspecified) iconTint else TwTheme.color.primary,
             modifier = Modifier

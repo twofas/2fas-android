@@ -1,15 +1,28 @@
 package com.twofasapp.data.services.local
 
 import com.twofasapp.data.services.domain.Service
+import com.twofasapp.data.services.domain.ServicesOrder
+import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.data.services.mapper.asEntity
+import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import timber.log.Timber
+import java.util.Collections
 
 internal class ServicesLocalSource(
-    private val dao: ServiceDao
+    private val json: Json,
+    private val preferences: PlainPreferences,
+    private val dao: ServiceDao,
 ) {
+    companion object {
+        private const val KeyOrder = "servicesOrder"
+    }
+
     private fun log(msg: String) {
         Timber.tag("ServicesDao").i(msg)
     }
@@ -45,6 +58,33 @@ internal class ServicesLocalSource(
 
     suspend fun updateService(service: Service) {
         dao.update(service.asEntity())
+    }
+
+    private fun getOrder(): ServicesOrderEntity {
+        return preferences.getString(KeyOrder)?.let {
+            json.decodeFromString(it)
+        } ?: ServicesOrderEntity()
+    }
+
+    fun observeOrder(): Flow<ServicesOrder> {
+        return preferences.observe(KeyOrder, "").map { value ->
+            (value?.let {
+                try {
+                    json.decodeFromString(value)
+                } catch (e: Exception) {
+                    ServicesOrderEntity()
+                }
+            } ?: ServicesOrderEntity()).asDomain()
+        }
+    }
+
+    fun swapServices(from: Long, to: Long) {
+        val local = getOrder()
+        val ids = local.ids.toMutableList()
+
+        Collections.swap(ids, ids.indexOf(from), ids.indexOf(to))
+
+        preferences.putString(KeyOrder, json.encodeToString(local.copy(ids = ids)))
     }
 //
 //    fun select(): Single<List<ServiceDto>> {

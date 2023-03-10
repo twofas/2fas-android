@@ -51,7 +51,6 @@ fun ServiceImage(
                         text = labelText.orEmpty(),
                         style = TwTheme.typo.body2,
                         color = Color.White,
-                        modifier = Modifier.offset(x = (-0.8).dp)
                     )
                 }
             }

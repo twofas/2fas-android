@@ -70,7 +70,7 @@ fun SimpleEntry(
             )
         } else {
             Icon(
-                painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder),
+                painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder_old),
                 contentDescription = null,
                 tint = if (iconTint != Color.Unspecified) iconTint else TwTheme.color.primary,
                 modifier = Modifier
@@ -149,7 +149,7 @@ fun SimpleEntry(
                 }
         ) {
             Icon(
-                painter = iconEnd ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder),
+                painter = iconEnd ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder_old),
                 contentDescription = null,
                 tint = if (iconEndTint != Color.Unspecified) iconEndTint else TwTheme.color.iconTint,
             )

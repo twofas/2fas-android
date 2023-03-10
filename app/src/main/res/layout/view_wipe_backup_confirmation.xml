@@ -10,7 +10,7 @@
         style="@style/ImageButtonIcon"
         android:layout_gravity="end"
         android:padding="6dp"
-        app:srcCompat="@drawable/ic_close"
+        app:srcCompat="@drawable/ic_close_old"
         app:tint="@color/textPrimary" />
 
     <ImageView

@@ -710,4 +710,6 @@
     <string name="settings__ssl_error_description">An SSL error has occurred and a secure connection to the server cannot be made. Ensure you have the latest version of the app or try to change the network.</string>
     <string name="backup__import_error_file_size">The file you are trying to import is too big. Size limit is 10 MB.</string>
     <string name="backup__import_error_file_invalid">The file you are trying to import is invalid or damaged. Please choose another file.</string>
+    <string name="appearance__toggle_active_search">Active search</string>
+    <string name="appearance__active_search_description">Active search on startup</string>
 </resources>

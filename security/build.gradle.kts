@@ -11,6 +11,7 @@ android {
 dependencies {
     implementation(project(":base"))
     implementation(project(":core:di"))
+    implementation(project(":data:session"))
     implementation(project(":resources"))
     implementation(project(":extensions"))
     implementation(project(":design"))

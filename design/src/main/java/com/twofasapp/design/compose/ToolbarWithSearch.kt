@@ -1,9 +1,6 @@
 package com.twofasapp.design.compose
 
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -11,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 
@@ -25,33 +23,29 @@ fun ToolbarWithSearch(
 ) {
     val showSearch = remember { mutableStateOf(false) }
 
-    TwTopAppBar(
-        title = {
+    TwTopAppBar(title = {
+        if (showSearch.value) {
+            SearchBar(hint = searchHint, showSearch = showSearch, onValueChanged = onSearchValueChanged)
+        } else {
+            Text(text = title, color = TwTheme.color.onSurfacePrimary)
+        }
+    }, navigationIcon = {
+        IconButton(onClick = {
             if (showSearch.value) {
-                SearchBar(hint = searchHint, showSearch = showSearch, onValueChanged = onSearchValueChanged)
+                showSearch.value = false
             } else {
-                Text(text = title, color = TwTheme.color.onSurfacePrimary)
+                navigationClick.invoke()
             }
-        },
-        navigationIcon = {
-            IconButton(onClick = {
-                if (showSearch.value) {
-                    showSearch.value = false
-                } else {
-                    navigationClick.invoke()
-                }
-            }) {
-                Icon(Icons.Filled.ArrowBack, null, tint = TwTheme.color.onSurfacePrimary)
+        }) {
+            Icon(TwIcons.ArrowBack, null, tint = TwTheme.color.onSurfacePrimary)
+        }
+    }, actions = {
+        if (showSearch.value.not()) {
+            IconButton(onClick = { showSearch.value = true }) {
+                Icon(TwIcons.Search, null, tint = TwTheme.color.primary)
             }
-        },
-        actions = {
-            if (showSearch.value.not()) {
-                IconButton(onClick = { showSearch.value = true }) {
-                    Icon(Icons.Filled.Search, null, tint = TwTheme.color.primary)
-                }
-            }
-            actions()
-        },
-        modifier = modifier
+        }
+        actions()
+    }, modifier = modifier
     )
 }

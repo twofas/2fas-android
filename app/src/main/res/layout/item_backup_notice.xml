@@ -22,7 +22,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="24dp"
-                app:srcCompat="@drawable/ic_google_drive"
+                app:srcCompat="@drawable/ic_google_drive_old"
                 app:tint="@color/colorAccent" />
 
             <TextView

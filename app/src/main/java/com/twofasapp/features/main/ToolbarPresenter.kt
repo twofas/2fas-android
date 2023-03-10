@@ -71,7 +71,7 @@ class ToolbarPresenter(
                             ToolbarState(
                                 titleRes = null,
                                 isTitleCentered = false,
-                                iconRes = R.drawable.ic_back_arrow,
+                                iconRes = R.drawable.ic_back_arrow_old,
                                 iconContentDescription = "Close Search",
                                 iconAction = { searchStateObserver.offer(false) }
                             )
@@ -85,7 +85,7 @@ class ToolbarPresenter(
                             ToolbarState(
                                 titleRes = R.string.commons__edit,
                                 isTitleCentered = false,
-                                iconRes = R.drawable.ic_back_arrow,
+                                iconRes = R.drawable.ic_back_arrow_old,
                                 iconContentDescription = "Close Edit",
                                 iconAction = { editStateObserver.offer(false) }
                             )

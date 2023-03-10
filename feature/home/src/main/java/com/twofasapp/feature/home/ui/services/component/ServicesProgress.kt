@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.services
+package com.twofasapp.feature.home.ui.services.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable

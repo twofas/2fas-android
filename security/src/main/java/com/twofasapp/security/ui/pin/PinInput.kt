@@ -80,7 +80,7 @@ internal fun PinInput(
                     }
                 }, modifier = Modifier.align(Alignment.CenterEnd)) {
                     Icon(
-                        painterResource(id = R.drawable.ic_backspace), null,
+                        painterResource(id = R.drawable.ic_backspace_old), null,
                         tint = if (enteredDigits == 0) {
                             Color(0x80606060)
                         } else {

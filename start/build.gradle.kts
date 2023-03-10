@@ -27,6 +27,7 @@ dependencies {
     implementation(project(":parsers"))
     implementation(project(":core:common"))
     implementation(project(":core:storage"))
+    implementation(project(":data:session"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

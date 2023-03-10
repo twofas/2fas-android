@@ -7,12 +7,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.service.TwServiceDefaults
 
 @Composable
 fun ServiceName(
     text: String,
     modifier: Modifier = Modifier,
-    style: TextStyle = TwTheme.typo.body3
+    style: TextStyle = TwServiceDefaults.defaultStyle().name
 ) {
     Text(
         text = text,
