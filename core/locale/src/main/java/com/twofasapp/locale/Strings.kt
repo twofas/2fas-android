@@ -21,6 +21,7 @@ class Strings(c: Context) {
     val commonCancel = c.getString(R.string.commons__cancel)
     val commonSave = c.getString(R.string.commons__save)
     val commonAdd = c.getString(R.string.commons__add)
+    val commonSearch = c.getString(R.string.commons__search)
 
     val startupTermsLabel = c.getString(R.string.introduction__tos)
     val startupStepOneHeader = c.getString(R.string.introduction__page_1_title)
@@ -38,6 +39,8 @@ class Strings(c: Context) {
     val servicesEmptyPairServiceCta = c.getString(R.string.introduction__pair_new_service)
     val servicesMyTokens = c.getString(R.string.tokens__my_tokens)
     val servicesManageList = "Manage list"
+    val servicesSortBy = c.getString(R.string.tokens__sort_by)
+    val servicesSortByOptions = listOf(c.getString(R.string.tokens__sort_by_a_to_z), c.getString(R.string.tokens__sort_by_manual))
     val groupsAdd = c.getString(R.string.tokens__add_group)
     val groupsEdit = c.getString(R.string.commons__edit)
     val groupsName = c.getString(R.string.tokens__group_name)

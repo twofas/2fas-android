@@ -11,19 +11,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.service.component.ServiceBadge
-import com.twofasapp.designsystem.service.component.ServiceImage
-import com.twofasapp.designsystem.service.component.ServiceInfo
-import com.twofasapp.designsystem.service.component.ServiceName
+import com.twofasapp.designsystem.service.atoms.ServiceBadge
+import com.twofasapp.designsystem.service.atoms.ServiceImage
+import com.twofasapp.designsystem.service.atoms.ServiceInfo
+import com.twofasapp.designsystem.service.atoms.ServiceName
 
 @Composable
-fun ServiceWithoutCode(
+fun DsServiceSimple(
     state: ServiceState,
     modifier: Modifier = Modifier,
-    imageSize: Dp = 36.dp,
     showBadge: Boolean = false,
     containerColor: Color = TwTheme.color.background,
     content: @Composable () -> Unit = {},
@@ -47,7 +45,6 @@ fun ServiceWithoutCode(
             iconDark = state.iconDark,
             labelText = state.labelText,
             labelColor = state.labelColor,
-            size = imageSize,
         )
 
         Column(Modifier.weight(1f)) {
@@ -62,9 +59,8 @@ fun ServiceWithoutCode(
 @Preview
 @Composable
 private fun Preview() {
-    ServiceWithoutCode(
+    DsServiceSimple(
         state = ServicePreview,
-        modifier = Modifier.fillMaxWidth(),
-        content = {}
-    )
+        modifier = Modifier.fillMaxWidth()
+    ) {}
 }

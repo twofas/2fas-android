@@ -26,7 +26,7 @@ import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.service.ServiceImageType
 import com.twofasapp.designsystem.service.ServiceState
-import com.twofasapp.designsystem.service.ServiceWithoutCode
+import com.twofasapp.designsystem.service.DsServiceSimple
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -75,7 +75,7 @@ private fun TrashScreen(
             }
 
             items(services, key = { it.id }) {
-                ServiceWithoutCode(
+                DsServiceSimple(
                     state = ServiceState(
                         name = it.name,
                         info = it.info,
@@ -88,38 +88,36 @@ private fun TrashScreen(
                         labelText = it.labelText,
                         labelColor = it.badgeColor.asState(),
                     ),
-                    imageSize = 32.dp,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp, end = 0.dp),
-                    content = {
-                        var dropdownVisible by rememberSaveable { mutableStateOf(false) }
+                        .padding(start = 16.dp, end = 0.dp)
+                ) {
+                    var dropdownVisible by rememberSaveable { mutableStateOf(false) }
 
-                        TwDropdownMenu(
-                            expanded = dropdownVisible,
-                            onDismissRequest = { dropdownVisible = false },
-                            anchor = { TwIconButton(painter = TwIcons.More, onClick = { dropdownVisible = true }) }
-                        ) {
-                            TwDropdownMenuItem(
-                                text = TwLocale.strings.trashRestoreCta,
-                                icon = TwIcons.Refresh,
-                                onClick = {
-                                    dropdownVisible = false
-                                    onRestoreClick(it.id)
-                                }
-                            )
-                            TwDropdownMenuItem(
-                                text = TwLocale.strings.trashDisposeCta,
-                                icon = TwIcons.Delete,
-                                contentColor = TwTheme.color.accentRed,
-                                onClick = {
-                                    dropdownVisible = false
-                                    onDisposeClick(it.id)
-                                }
-                            )
-                        }
+                    TwDropdownMenu(
+                        expanded = dropdownVisible,
+                        onDismissRequest = { dropdownVisible = false },
+                        anchor = { TwIconButton(painter = TwIcons.More, onClick = { dropdownVisible = true }) }
+                    ) {
+                        TwDropdownMenuItem(
+                            text = TwLocale.strings.trashRestoreCta,
+                            icon = TwIcons.Refresh,
+                            onClick = {
+                                dropdownVisible = false
+                                onRestoreClick(it.id)
+                            }
+                        )
+                        TwDropdownMenuItem(
+                            text = TwLocale.strings.trashDisposeCta,
+                            icon = TwIcons.Delete,
+                            contentColor = TwTheme.color.accentRed,
+                            onClick = {
+                                dropdownVisible = false
+                                onDisposeClick(it.id)
+                            }
+                        )
                     }
-                )
+                }
             }
         }
     }

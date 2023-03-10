@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.ModalList
-import com.twofasapp.designsystem.service.TwServiceModal
+import com.twofasapp.designsystem.service.DsServiceModal
 import com.twofasapp.designsystem.service.ServiceState
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsLink
@@ -18,7 +18,7 @@ internal fun FocusServiceModal(
     onCopyClick: () -> Unit = {},
 ) {
     Column {
-        TwServiceModal(
+        DsServiceModal(
             state = serviceState,
             showNextCode = showNextCode,
             containerColor = TwTheme.color.surface,

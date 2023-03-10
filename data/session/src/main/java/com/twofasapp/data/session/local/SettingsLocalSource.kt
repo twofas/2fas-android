@@ -2,6 +2,7 @@ package com.twofasapp.data.session.local
 
 import com.twofasapp.data.session.domain.AppSettings
 import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
@@ -16,6 +17,7 @@ internal class SettingsLocalSource(
         private const val KeyShowNextCode = "showNextToken"
         private const val KeySelectedTheme = "selectedTheme"
         private const val KeyServicesStyle = "servicesStyle"
+        private const val KeyServicesSort = "servicesSort"
         private const val KeyAutoFocusSearch = "autoFocusSearch"
 
     }
@@ -34,6 +36,7 @@ internal class SettingsLocalSource(
             autoFocusSearch = preferences.getBoolean(KeyAutoFocusSearch) ?: false,
             selectedTheme = preferences.getString(KeySelectedTheme)?.let { SelectedTheme.valueOf(it) } ?: SelectedTheme.Auto,
             servicesStyle = preferences.getString(KeyServicesStyle)?.let { ServicesStyle.valueOf(it) } ?: ServicesStyle.Default,
+            servicesSort = preferences.getString(KeyServicesSort)?.let { ServicesSort.valueOf(it) } ?: ServicesSort.Manual,
         )
     }
 
@@ -55,5 +58,10 @@ internal class SettingsLocalSource(
     fun setAutoFocusSearch(autoFocusSearch: Boolean) {
         appSettingsFlow.update { it.copy(autoFocusSearch = autoFocusSearch) }
         preferences.putBoolean(KeyAutoFocusSearch, autoFocusSearch)
+    }
+
+    fun setServicesSort(servicesSort: ServicesSort) {
+        appSettingsFlow.update { it.copy(servicesSort = servicesSort) }
+        preferences.putString(KeyServicesSort, servicesSort.name)
     }
 }

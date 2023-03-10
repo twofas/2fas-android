@@ -9,6 +9,8 @@ data class ServicesUiState(
     val services: List<Service> = emptyList(),
     val isLoading: Boolean = true,
     val isInEditMode: Boolean = false,
+    val searchQuery: String = "",
+    val searchFocused: Boolean = false,
     val appSettings: AppSettings = AppSettings(),
     val events: List<ServicesStateEvent> = listOf(),
 ) {

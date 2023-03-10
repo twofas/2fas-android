@@ -3,6 +3,7 @@ package com.twofasapp.data.session
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.data.session.domain.AppSettings
 import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.data.session.local.SettingsLocalSource
 import kotlinx.coroutines.flow.Flow
@@ -42,6 +43,12 @@ internal class SettingsRepositoryImpl(
     override suspend fun setAutoFocusSearch(autoFocusSearch: Boolean) {
         withContext(dispatchers.io) {
             local.setAutoFocusSearch(autoFocusSearch)
+        }
+    }
+
+    override suspend fun setServicesSort(servicesSort: ServicesSort) {
+        withContext(dispatchers.io) {
+            local.setServicesSort(servicesSort)
         }
     }
 }

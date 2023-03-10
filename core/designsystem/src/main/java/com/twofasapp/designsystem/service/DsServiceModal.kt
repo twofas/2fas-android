@@ -13,14 +13,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.service.component.ServiceCode
-import com.twofasapp.designsystem.service.component.ServiceImage
-import com.twofasapp.designsystem.service.component.ServiceInfo
-import com.twofasapp.designsystem.service.component.ServiceName
-import com.twofasapp.designsystem.service.component.ServiceTimer
+import com.twofasapp.designsystem.service.atoms.ServiceCode
+import com.twofasapp.designsystem.service.atoms.ServiceImage
+import com.twofasapp.designsystem.service.atoms.ServiceInfo
+import com.twofasapp.designsystem.service.atoms.ServiceName
+import com.twofasapp.designsystem.service.atoms.ServiceTextDefaults
+import com.twofasapp.designsystem.service.atoms.ServiceTimer
 
 @Composable
-fun TwServiceModal(
+fun DsServiceModal(
     state: ServiceState,
     showNextCode: Boolean = false,
     modifier: Modifier = Modifier,
@@ -35,18 +36,18 @@ fun TwServiceModal(
     ) {
         ServiceName(
             text = state.name,
-            style = TwTheme.typo.title,
+            textStyles = ServiceTextDefaults.modal(),
             modifier = Modifier.padding(horizontal = 16.dp)
         )
 
         ServiceInfo(
             text = state.info,
-            style = TwTheme.typo.body1,
+            textStyles = ServiceTextDefaults.modal(),
             modifier = Modifier.padding(horizontal = 16.dp)
         )
 
         Row(
-            modifier = Modifier.padding(top = 16.dp, start = 16.dp),
+            modifier = Modifier.padding(top = 8.dp, start = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -61,6 +62,7 @@ fun TwServiceModal(
             ServiceCode(
                 code = state.code,
                 nextCode = state.nextCode,
+                timer = state.timer,
                 nextCodeVisible = state.timer <= 5 && showNextCode,
                 modifier = Modifier.weight(1f),
             )
@@ -77,5 +79,5 @@ fun TwServiceModal(
 @Preview
 @Composable
 private fun Preview() {
-    TwServiceModal(state = ServicePreview)
+    DsServiceModal(state = ServicePreview)
 }

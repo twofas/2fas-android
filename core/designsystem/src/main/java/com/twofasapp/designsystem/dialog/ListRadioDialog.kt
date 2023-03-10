@@ -23,7 +23,8 @@ fun ListRadioDialog(
     onDismissRequest: () -> Unit,
     title: String? = null,
     options: List<String>,
-    selectedOption: String,
+    selectedOption: String? = null,
+    selectedIndex: Int? = null,
     onOptionSelected: (Int, String) -> Unit = { _, _ -> },
 ) {
     BaseDialog(
@@ -33,12 +34,19 @@ fun ListRadioDialog(
 
         Column(Modifier.selectableGroup()) {
             options.forEachIndexed { index, text ->
+
+                val isSelected = if (selectedOption != null) {
+                    text == selectedOption
+                } else {
+                    index == selectedIndex
+                }
+
                 Row(
                     Modifier
                         .fillMaxWidth()
                         .height(52.dp)
                         .selectable(
-                            selected = (text == selectedOption),
+                            selected = isSelected,
                             onClick = {
                                 onOptionSelected(index, text)
                                 onDismissRequest()
@@ -49,9 +57,9 @@ fun ListRadioDialog(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     RadioButton(
-                        selected = (text == selectedOption),
+                        selected = isSelected,
                         onClick = null,
-                        colors =  RadioButtonDefaults.colors(
+                        colors = RadioButtonDefaults.colors(
                             selectedColor = TwTheme.color.primary,
                             unselectedColor = TwTheme.color.onSurfaceSecondary,
                         )

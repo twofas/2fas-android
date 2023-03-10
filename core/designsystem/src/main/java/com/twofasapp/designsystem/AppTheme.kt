@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.twofasapp.designsystem.internal.LocalThemeColors
 import com.twofasapp.designsystem.internal.ThemeColors
 import com.twofasapp.designsystem.internal.ThemeColorsDark
@@ -30,6 +31,7 @@ fun MainAppTheme(
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current
+    val systemUiController = rememberSystemUiController()
 
     if (view.isInEditMode.not()) {
         SideEffect {
@@ -75,6 +77,10 @@ fun MainAppTheme(
             surfaceVariant = colors.surface,
             onSurfaceVariant = colors.onSurfacePrimary,
         )
+    }
+
+    SideEffect {
+        systemUiController.setSystemBarsColor(color = colors.background)
     }
 
     CompositionLocalProvider(

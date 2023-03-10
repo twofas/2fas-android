@@ -1,4 +1,4 @@
-package com.twofasapp.designsystem.service.component
+package com.twofasapp.designsystem.service.atoms
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
@@ -6,28 +6,28 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.service.animateExpireColor
 
 enum class NextCodeGravity { Below, End }
 
 @Composable
-fun ServiceCode(
+internal fun ServiceCode(
     code: String,
     nextCode: String,
+    timer: Int,
+    modifier: Modifier = Modifier,
     nextCodeVisible: Boolean = false,
     nextCodeGravity: NextCodeGravity = NextCodeGravity.Below,
-    color: Color = TwTheme.color.onSurfacePrimary,
-    style: TextStyle = TwTheme.typo.h1.copy(fontWeight = FontWeight.ExtraLight),
-    modifier: Modifier = Modifier,
+    textStyles: ServiceTextStyle = ServiceTextDefaults.default(),
 ) {
+    val color by animateExpireColor(timer = timer)
 
     when (nextCodeGravity) {
         NextCodeGravity.Below ->
@@ -36,7 +36,7 @@ fun ServiceCode(
             ) {
                 Text(
                     text = code.formatCode(),
-                    style = style,
+                    style = textStyles.codeTextStyle,
                     color = color,
                     maxLines = 1,
                     overflow = TextOverflow.Visible,
@@ -59,7 +59,7 @@ fun ServiceCode(
             ) {
                 Text(
                     text = code.formatCode(),
-                    style = style,
+                    style = textStyles.codeTextStyle,
                     color = color,
                     maxLines = 1,
                     overflow = TextOverflow.Visible,
@@ -95,6 +95,7 @@ private fun Preview() {
     ServiceCode(
         code = "123456",
         nextCode = "789987",
+        timer = 10,
         nextCodeVisible = true
     )
 }
@@ -105,8 +106,9 @@ private fun PreviewCompact() {
     ServiceCode(
         code = "123456",
         nextCode = "789987",
+        timer = 10,
         nextCodeVisible = true,
         nextCodeGravity = NextCodeGravity.End,
-        style = TwTheme.typo.h3.copy(fontWeight = FontWeight.Light)
+        textStyles = ServiceTextDefaults.compact(),
     )
 }

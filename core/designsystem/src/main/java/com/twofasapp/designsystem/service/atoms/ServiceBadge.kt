@@ -1,4 +1,4 @@
-package com.twofasapp.designsystem.service.component
+package com.twofasapp.designsystem.service.atoms
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -12,7 +12,9 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
 
 @Composable
-internal fun ServiceBadge(color: Color) {
+internal fun ServiceBadge(
+    color: Color,
+) {
     Box(
         Modifier
             .fillMaxHeight()

@@ -5,4 +5,5 @@ data class AppSettings(
     val autoFocusSearch: Boolean = false,
     val selectedTheme: SelectedTheme = SelectedTheme.Auto,
     val servicesStyle: ServicesStyle = ServicesStyle.Default,
+    val servicesSort: ServicesSort = ServicesSort.Manual,
 )

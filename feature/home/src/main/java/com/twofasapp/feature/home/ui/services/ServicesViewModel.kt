@@ -7,6 +7,8 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.data.session.domain.AppSettings
+import com.twofasapp.data.session.domain.ServicesSort
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
@@ -21,29 +23,42 @@ internal class ServicesViewModel(
 //    val orderList = MutableStateFlow(listOf(1, 2, 3, 4, 5, 6))
 
     private val isInEditMode = MutableStateFlow(false)
+    private val searchQuery = MutableStateFlow("")
 
     init {
+        searchFocused(settingsRepository.getAppSettings().autoFocusSearch)
+
         launchScoped {
             combine(
                 groupsRepository.observeGroups(),
                 servicesRepository.observeServicesTicker(),
+                settingsRepository.observeAppSettings(),
                 isInEditMode,
-            ) { groups, services, isInEditMode -> CombinedResult(groups, services, isInEditMode) }.collect { result ->
+                searchQuery,
+            ) { groups, services, appSettings, isInEditMode, query -> CombinedResult(groups, services, isInEditMode, appSettings, query) }.collect { result ->
 
-                uiState.update {
-                    it.copy(
-                        groups = result.groups,
-                        services = result.services,
+
+                uiState.update { state ->
+                    state.copy(
+                        groups = if (result.searchQuery.isEmpty()) {
+                            result.groups
+                        } else {
+                            result.groups.map { it.copy(isExpanded = true) }
+                        },
+                        services = result.services
+                            .sortedBy {
+                                when (result.appSettings.servicesSort) {
+                                    ServicesSort.Alphabetical -> it.name.lowercase()
+                                    ServicesSort.Manual -> null
+                                }
+                            }
+                            .filter { service -> service.isMatchingQuery(result.searchQuery) },
                         isLoading = false,
                         isInEditMode = result.isInEditMode,
+                        appSettings = result.appSettings
                     )
                 }
             }
-        }
-
-        launchScoped {
-            settingsRepository.observeAppSettings()
-                .collect { appSettings -> uiState.update { it.copy(appSettings = appSettings) } }
         }
     }
 
@@ -60,7 +75,8 @@ internal class ServicesViewModel(
     }
 
     fun search(query: String) {
-
+        searchQuery.update { query }
+        uiState.update { it.copy(searchQuery = query) }
     }
 
     fun toggleGroup(id: String?) {
@@ -91,9 +107,32 @@ internal class ServicesViewModel(
         launchScoped { servicesRepository.swapServices(from, to) }
     }
 
+    fun updateSort(index: Int) {
+        launchScoped {
+            settingsRepository.setServicesSort(
+                when (index) {
+                    0 -> ServicesSort.Alphabetical
+                    else -> ServicesSort.Manual
+                }
+            )
+        }
+    }
+
+    fun searchFocused(focused: Boolean) {
+        uiState.update { it.copy(searchFocused = focused) }
+    }
+
+    private fun Service.isMatchingQuery(query: String): Boolean {
+        return name.contains(query, true) ||
+                info?.contains(query, true) ?: false ||
+                tags.contains(query.lowercase())
+    }
+
     data class CombinedResult(
         val groups: List<Group>,
         val services: List<Service>,
         val isInEditMode: Boolean,
+        val appSettings: AppSettings,
+        val searchQuery: String,
     )
 }

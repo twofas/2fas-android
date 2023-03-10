@@ -5,6 +5,7 @@ import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.parsers.ServiceIcons
+import com.twofasapp.parsers.SupportedServices
 
 internal fun ServiceEntity.asDomain(): Service {
     val iconCollectionId = iconCollectionId ?: ServiceIcons.defaultCollectionId
@@ -13,6 +14,7 @@ internal fun ServiceEntity.asDomain(): Service {
 
     return Service(
         id = id,
+        serviceTypeId = serviceTypeId,
         secret = secret,
         name = name,
         info = otpAccount,
@@ -33,7 +35,8 @@ internal fun ServiceEntity.asDomain(): Service {
         iconDark = iconDark,
         labelText = labelText,
         labelColor = labelBackgroundColor?.let { color -> Service.Tint.valueOf(color) },
-        badgeColor = badgeColor?.let { Service.Tint.valueOf(it) }
+        badgeColor = badgeColor?.let { Service.Tint.valueOf(it) },
+        tags = SupportedServices.list.firstOrNull { serviceTypeId == it.id }?.tags?.map { it.lowercase() }.orEmpty()
     )
 }
 

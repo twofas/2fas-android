@@ -2,6 +2,7 @@ package com.twofasapp.data.services.domain
 
 data class Service(
     val id: Long,
+    val serviceTypeId: String?,
     val secret: String,
     val code: Code? = null,
     val name: String,
@@ -18,6 +19,7 @@ data class Service(
     val labelText: String? = null,
     val labelColor: Tint? = null,
     val badgeColor: Tint?,
+    val tags: List<String>,
 
     val isDeleted: Boolean = false,
 
