@@ -106,7 +106,7 @@
                 style="@style/Text.Caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Expires in:"
+                android:text="@string/widgets__expires_in"
                 android:textColor="@color/textPrimary"
                 android:textSize="11sp" />
 

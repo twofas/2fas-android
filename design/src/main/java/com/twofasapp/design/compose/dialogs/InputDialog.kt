@@ -76,10 +76,10 @@ fun InputDialog(
                                             if (num >= 0) {
                                                 null
                                             } else {
-                                                "Input must be integer number"
+                                                context.getString(com.twofasapp.resources.R.string.errors__input_integer_number)
                                             }
                                         } catch (e: Exception) {
-                                            "Input must be integer number"
+                                            context.getString(com.twofasapp.resources.R.string.errors__input_integer_number)
                                         }
                                     }
                                     InputType.NumberDecimal -> {
@@ -87,7 +87,7 @@ fun InputDialog(
                                             inputText.toFloat()
                                             null
                                         } catch (e: Exception) {
-                                            "Input must be a number"
+                                            context.getString(com.twofasapp.resources.R.string.errors__input_number)
                                         }
                                     }
                                     InputType.Password -> null
@@ -97,8 +97,11 @@ fun InputDialog(
                                 isPositiveEnabled = isInCharactersLimit && validationResult == Validation.Ok && invalidInputTypeError == null
 
                                 validationErrorText = when {
-                                    isInCharactersLimit.not() && inputText.length > (maxLength ?: 999999) -> "Input is too long. Limit: $maxLength"
-                                    isInCharactersLimit.not() && inputText.isEmpty() -> "Input can not be empty"
+                                    isInCharactersLimit.not() && inputText.length > (maxLength
+                                        ?: 999999) -> context.getString(com.twofasapp.resources.R.string.errors__input_integer_number)
+                                        .format(maxLength)
+
+                                    isInCharactersLimit.not() && inputText.isEmpty() -> context.getString(com.twofasapp.resources.R.string.errors__input_empty)
                                     invalidInputTypeError != null -> invalidInputTypeError
                                     validationResult is Validation.Error -> validationResult.msg
                                         ?: validationResult.msgRes?.let { context.getString(it) }

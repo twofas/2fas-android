@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Sun, 05 Mar 2023 12:00:35 -0800
+ Exported at: Thu, 09 Mar 2023 00:56:28 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -362,9 +362,9 @@
     <string name="backup__backup_file_password_title">Define uma palavra-passe para este ficheiro de cópia de segurança</string>
     <string name="backup__incorrect_password">Palavra-passe Incorreta</string>
     <!-- %d - number -->
-    <string name="backup__new_services">%s novo(s) serviço(s)</string>
+    <string name="backup__new_services">%d novo(s) serviço(s)</string>
     <!-- %d - number -->
-    <string name="backup__services_imported_count">%s serviço(s) importado(s) de ficheiro</string>
+    <string name="backup__services_imported_count">%d serviço(s) importado(s) de ficheiro</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Existe um problema com o iCloud. Verifica as definições do sistema</string>
     <!-- backup__newer_schema_unsupported -->
@@ -528,7 +528,7 @@
     <string name="externalimport_google_authenticator">Google Authenticator</string>
     <string name="externalimport_aegis">Aegis</string>
     <string name="externalimport_raivo">Raivo OTP</string>
-    <string name="android__app_name">Autenticação 2FAS</string>
+    <string name="android__app_name">2FAS Auth</string>
     <string name="commons__yes">Sim</string>
     <string name="commons__no">Não</string>
     <string name="commons__search">Procurar</string>
@@ -712,4 +712,10 @@
     <string name="backup__import_error_file_invalid">O ficheiro que estás a tentar importar é inválido ou está danificado. Por favor, escolhe outro ficheiro.</string>
     <string name="appearance__toggle_active_search">Pesquisa ativa</string>
     <string name="appearance__active_search_description">Pesquisa ativa ao iniciar</string>
+    <string name="widgets__expires_in">Expira em:</string>
+    <string name="widgets__settings">Definições do Widget</string>
+    <string name="errors__input_integer_number">O valor tem de ser um número inteiro</string>
+    <string name="errors__input_number">O valor tem de ser um número</string>
+    <string name="errors__input_empty">O valor não pode estar vazio</string>
+    <string name="errors__input_too_long">O valor é muito longo. Limite: %d</string>
 </resources>

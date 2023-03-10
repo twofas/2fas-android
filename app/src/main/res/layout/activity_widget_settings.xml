@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:menu="@menu/menu_widget_settings"
-                app:title="Widget settings" />
+                app:title="@string/widgets__settings" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
