@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,6 +37,7 @@ fun BaseDialog(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     title: String? = null,
+    body: String? = null,
     positive: String? = null,
     negative: String? = null,
     onPositiveClick: (() -> Unit)? = null,
@@ -73,6 +75,10 @@ fun BaseDialog(
                     Title(text = title)
                 }
 
+                if (body != null) {
+                    Body(text = body)
+                }
+
                 content()
 
                 if (showActions) {
@@ -102,7 +108,22 @@ private fun Title(
 ) {
     Text(
         text = text,
-        style = TwTheme.typo.title,
+        style = MaterialTheme.typography.headlineSmall,
+        color = TwTheme.color.onSurfacePrimary,
+        modifier = Modifier
+            .padding(horizontal = DialogPadding)
+            .padding(TitlePadding)
+    )
+}
+
+@Composable
+private fun Body(
+    text: String,
+) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.bodyMedium,
+        color = TwTheme.color.onSurfaceTertiary,
         modifier = Modifier
             .padding(horizontal = DialogPadding)
             .padding(TitlePadding)
@@ -162,6 +183,7 @@ private fun PreviewButtons() {
     BaseDialog(
         onDismissRequest = { },
         title = TwLocale.strings.placeholder,
+        body = TwLocale.strings.placeholderLong,
         positive = "Ok",
         negative = "Cancel",
         positiveEnabled = false,

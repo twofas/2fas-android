@@ -5,6 +5,7 @@ import com.twofasapp.BuildConfig
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.core.analytics.AnalyticsService
+import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.design.settings.DividerItem
 import com.twofasapp.design.settings.HeaderEntry
 import com.twofasapp.design.settings.SimpleEntry
@@ -46,6 +47,7 @@ internal class BackupStatusPresenter(
     private val googleDriveService: GoogleDriveService,
     private val jsonSerializer: com.twofasapp.serialization.JsonSerializer,
     private val checkRemoteBackupPassword: CheckRemoteBackupPassword,
+    private val sessionRepository: SessionRepository,
 ) : BackupStatusContract.Presenter() {
 
     private var syncStatus: SyncStatus = SyncStatus.Default
@@ -116,6 +118,8 @@ internal class BackupStatusPresenter(
                     it.copy(state = RemoteBackupStatus.State.NOT_CONFIGURED, reference = null)
                 }
                 remoteBackupKeyPreference.delete()
+
+                sessionRepository.resetBackupReminder()
                 updateViewState()
             }
 

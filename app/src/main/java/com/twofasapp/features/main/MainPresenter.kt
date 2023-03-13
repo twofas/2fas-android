@@ -11,7 +11,9 @@ import com.twofasapp.permissions.PermissionStatus
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.RemoteBackupStatus
 import com.twofasapp.prefs.model.ServiceDto
+import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import com.twofasapp.prefs.usecase.ServicesOrderPreference
 import com.twofasapp.prefs.usecase.StoreGroups
 import com.twofasapp.resources.R
 import com.twofasapp.services.domain.ConvertOtpLinkToService
@@ -50,8 +52,8 @@ class MainPresenter(
     private val analyticsService: AnalyticsService,
     private val currentBackupSchema: CurrentBackupSchema,
     private val checkServiceExists: CheckServiceExists,
-    private val servicesOrderPreference: com.twofasapp.prefs.usecase.ServicesOrderPreference,
-    private val appUpdateLastCheckVersionPreference: com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference,
+    private val servicesOrderPreference: ServicesOrderPreference,
+    private val appUpdateLastCheckVersionPreference: AppUpdateLastCheckVersionPreference,
     private val observeSyncStatus: ObserveSyncStatus,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
 ) : MainContract.Presenter() {

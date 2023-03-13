@@ -14,6 +14,7 @@ import com.twofasapp.data.session.domain.SelectedTheme
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.designsystem.settings.SettingsSwitch
@@ -31,6 +32,7 @@ internal fun AppSettingsRoute(
         onSelectedThemeChange = { viewModel.setSelectedTheme(it) },
         onServicesStyleChange = { viewModel.setServiceStyle(it) },
         onShowNextTokenToggle = { viewModel.toggleShowNextToken() },
+        onShowBackupNoticeToggle = { viewModel.toggleShowBackupNotice() },
         onAutoFocusSearchToggle = { viewModel.toggleAutoFocusSearch() }
     )
 }
@@ -41,10 +43,12 @@ private fun AppSettingsScreen(
     onSelectedThemeChange: (SelectedTheme) -> Unit,
     onServicesStyleChange: (ServicesStyle) -> Unit,
     onShowNextTokenToggle: () -> Unit,
+    onShowBackupNoticeToggle: () -> Unit,
     onAutoFocusSearchToggle: () -> Unit,
 ) {
     var showThemeDialog by remember { mutableStateOf(false) }
     var showServicesStyleDialog by remember { mutableStateOf(false) }
+    var showConfirmDisableBackupNotice by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = { TwTopAppBar(titleText = TwLocale.strings.settingsAppearance) }
@@ -64,7 +68,7 @@ private fun AppSettingsScreen(
                 SettingsLink(
                     title = TwLocale.strings.settingsServicesStyle,
                     subtitle = uiState.appSettings.servicesStyle.name,
-                    icon = TwIcons.Theme,
+                    icon = TwIcons.ListStyle,
                     onClick = { showServicesStyleDialog = true }
                 )
             }
@@ -88,6 +92,21 @@ private fun AppSettingsScreen(
                     icon = TwIcons.Search,
                 )
             }
+
+            item {
+                SettingsSwitch(
+                    title = TwLocale.strings.settingsShowBackupNotice,
+                    checked = uiState.appSettings.showBackupNotice,
+                    onCheckedChange = { checked ->
+                        if (checked.not()) {
+                            showConfirmDisableBackupNotice = true
+                        } else {
+                            onShowBackupNoticeToggle()
+                        }
+                    },
+                    icon = TwIcons.CloudOff,
+                )
+            }
         }
 
         if (showThemeDialog) {
@@ -107,6 +126,15 @@ private fun AppSettingsScreen(
                 options = ServicesStyle.values().map { it.name },
                 selectedOption = uiState.appSettings.servicesStyle.name,
                 onOptionSelected = { index, _ -> onServicesStyleChange(ServicesStyle.values()[index]) },
+            )
+        }
+
+        if (showConfirmDisableBackupNotice) {
+            ConfirmDialog(
+                onDismissRequest = { showConfirmDisableBackupNotice = false },
+                title = TwLocale.strings.settingsShowBackupNotice,
+                body = TwLocale.strings.settingsShowBackupNoticeConfirmBody,
+                onConfirm = { onShowBackupNoticeToggle() }
             )
         }
     }

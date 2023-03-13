@@ -1,5 +1,6 @@
 package com.twofasapp.designsystem.service.atoms
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -28,7 +29,7 @@ internal object ServiceTextDefaults {
     fun default() = ServiceTextStyle(
         nameTextStyle = TwTheme.typo.body3.copy(fontWeight = FontWeight.Medium),
         infoTextStyle = TwTheme.typo.body4.copy(fontWeight = FontWeight.Normal),
-        codeTextStyle = TwTheme.typo.h1.copy(fontWeight = FontWeight.ExtraLight),
+        codeTextStyle = TwTheme.typo.codeExtraLight,
         imageLabelTextStyle = TwTheme.typo.body2,
         timerTextStyle = TwTheme.typo.caption,
     )
@@ -37,7 +38,7 @@ internal object ServiceTextDefaults {
     fun compact() = ServiceTextStyle(
         nameTextStyle = TwTheme.typo.caption.copy(fontWeight = FontWeight.Medium),
         infoTextStyle = TwTheme.typo.caption.copy(fontWeight = FontWeight.Normal),
-        codeTextStyle = TwTheme.typo.h3.copy(fontWeight = FontWeight.Light),
+        codeTextStyle = TwTheme.typo.codeLightSmall,
         imageLabelTextStyle = TwTheme.typo.body4,
         timerTextStyle = TwTheme.typo.caption.copy(fontSize = 11.sp),
     )
@@ -46,7 +47,7 @@ internal object ServiceTextDefaults {
     fun modal() = ServiceTextStyle(
         nameTextStyle = TwTheme.typo.title.copy(fontWeight = FontWeight.Normal),
         infoTextStyle = TwTheme.typo.body1.copy(fontWeight = FontWeight.Normal),
-        codeTextStyle = TwTheme.typo.h1.copy(fontWeight = FontWeight.ExtraLight),
+        codeTextStyle = TwTheme.typo.codeExtraLight,
         imageLabelTextStyle = TwTheme.typo.body2,
         timerTextStyle = TwTheme.typo.caption,
     )
@@ -55,7 +56,7 @@ internal object ServiceTextDefaults {
 internal object ServiceDimensDefaults {
     @Composable
     fun default() = ServiceDimens(
-        cellHeight = 124.dp,
+        cellHeight = 130.dp,
         cellHeightInEdit = 64.dp,
         imageSize = 36.dp,
         timerSize = 32.dp,

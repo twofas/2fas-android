@@ -6,6 +6,7 @@ import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.domain.Service
+import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.domain.AppSettings
 import com.twofasapp.data.session.domain.ServicesSort
@@ -13,10 +14,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 
+@Suppress("UNCHECKED_CAST")
 internal class ServicesViewModel(
     private val servicesRepository: ServicesRepository,
     private val groupsRepository: GroupsRepository,
     private val settingsRepository: SettingsRepository,
+    private val sessionRepository: SessionRepository,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(ServicesUiState())
@@ -32,11 +35,25 @@ internal class ServicesViewModel(
             combine(
                 groupsRepository.observeGroups(),
                 servicesRepository.observeServicesTicker(),
-                settingsRepository.observeAppSettings(),
                 isInEditMode,
+                settingsRepository.observeAppSettings(),
+                sessionRepository.observeShowBackupReminder(),
+                sessionRepository.observeBackupEnabled(),
                 searchQuery,
-            ) { groups, services, appSettings, isInEditMode, query -> CombinedResult(groups, services, isInEditMode, appSettings, query) }.collect { result ->
+            ) { array ->
+                CombinedResult(
+                    groups = array[0] as List<Group>,
+                    services = array[1] as List<Service>,
+                    isInEditMode = array[2] as Boolean,
+                    appSettings = array[3] as AppSettings,
+                    showBackupReminder = array[4] as Boolean,
+                    backupEnabled = array[5] as Boolean,
+                    searchQuery = array[6] as String,
+                )
+            }.collect { result ->
 
+                val showSyncReminder = result.appSettings.showBackupNotice && result.showBackupReminder && result.backupEnabled.not()
+                val showSyncNoticeBar = result.appSettings.showBackupNotice && showSyncReminder.not() && result.backupEnabled.not()
 
                 uiState.update { state ->
                     state.copy(
@@ -53,11 +70,21 @@ internal class ServicesViewModel(
                                 }
                             }
                             .filter { service -> service.isMatchingQuery(result.searchQuery) },
+                        showSyncNoticeBar = showSyncNoticeBar,
+                        showSyncReminder = showSyncReminder,
+                        totalGroups = result.groups.size,
+                        totalServices = result.services.size,
                         isLoading = false,
                         isInEditMode = result.isInEditMode,
                         appSettings = result.appSettings
                     )
                 }
+            }
+        }
+
+        launchScoped {
+            servicesRepository.observeRecentlyAddedService().collect {
+                publishEvent(ServicesStateEvent.ShowServiceAddedModal(it.id))
             }
         }
     }
@@ -68,6 +95,10 @@ internal class ServicesViewModel(
 
     fun toggleAddMenu() {
         uiState.update { it.copy(events = it.events.plus(ServicesStateEvent.ShowAddServiceModal)) }
+    }
+
+    fun publishEvent(event: ServicesStateEvent) {
+        uiState.update { it.copy(events = it.events.plus(event)) }
     }
 
     fun consumeEvent(event: ServicesStateEvent) {
@@ -122,6 +153,12 @@ internal class ServicesViewModel(
         uiState.update { it.copy(searchFocused = focused) }
     }
 
+    fun dismissSyncReminder() {
+        launchScoped {
+            sessionRepository.resetBackupReminder()
+        }
+    }
+
     private fun Service.isMatchingQuery(query: String): Boolean {
         return name.contains(query, true) ||
                 info?.contains(query, true) ?: false ||
@@ -133,6 +170,8 @@ internal class ServicesViewModel(
         val services: List<Service>,
         val isInEditMode: Boolean,
         val appSettings: AppSettings,
+        val showBackupReminder: Boolean,
+        val backupEnabled: Boolean,
         val searchQuery: String,
     )
 }

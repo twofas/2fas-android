@@ -6,8 +6,13 @@ import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.data.services.mapper.asEntity
 import com.twofasapp.storage.PlainPreferences
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -22,6 +27,12 @@ internal class ServicesLocalSource(
     companion object {
         private const val KeyOrder = "servicesOrder"
     }
+
+    private val recentlyAddedServiceFlow: MutableSharedFlow<Service?> = MutableSharedFlow(
+        replay = 0,
+        extraBufferCapacity = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    )
 
     private fun log(msg: String) {
         Timber.tag("ServicesDao").i(msg)
@@ -45,6 +56,10 @@ internal class ServicesLocalSource(
 
     fun observeService(id: Long): Flow<Service> {
         return dao.observe(id).map { it.asDomain() }
+    }
+
+    fun observeRecentlyAddedService(): Flow<Service> {
+        return recentlyAddedServiceFlow.filterNotNull()
     }
 
     suspend fun getService(id: Long): Service {
@@ -85,6 +100,12 @@ internal class ServicesLocalSource(
         Collections.swap(ids, ids.indexOf(from), ids.indexOf(to))
 
         preferences.putString(KeyOrder, json.encodeToString(local.copy(ids = ids)))
+    }
+
+    fun pushRecentlyAddedService(id: Long) {
+        GlobalScope.launch {
+            recentlyAddedServiceFlow.tryEmit(getService(id))
+        }
     }
 //
 //    fun select(): Single<List<ServiceDto>> {

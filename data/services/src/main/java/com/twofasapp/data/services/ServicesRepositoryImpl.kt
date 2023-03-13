@@ -43,6 +43,10 @@ internal class ServicesRepositoryImpl(
         return local.observeService(id)
     }
 
+    override fun observeRecentlyAddedService(): Flow<Service> {
+        return local.observeRecentlyAddedService()
+    }
+
     override suspend fun getServices(): List<Service> {
         return withContext(dispatchers.io) {
             local.getServices()
@@ -76,6 +80,7 @@ internal class ServicesRepositoryImpl(
         withContext(dispatchers.io) {
             local.updateService(
                 local.getService(id).copy(
+                    isDeleted = false,
                     // TODO: see RestoreService.kt
                 )
             )
@@ -86,5 +91,9 @@ internal class ServicesRepositoryImpl(
         withContext(dispatchers.io) {
             local.swapServices(from, to)
         }
+    }
+
+    override fun pushRecentlyAddedService(id: Long) {
+        local.pushRecentlyAddedService(id)
     }
 }

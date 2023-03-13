@@ -18,13 +18,11 @@ class ServicesModule : KoinModule {
 
         singleOf(::ServicesLocalDataImpl) { bind<ServicesLocalData>() }
         singleOf(::ServicesRepositoryImpl) { bind<ServicesRepository>() }
-        singleOf(::GroupsRepositoryImpl) { bind<GroupsRepository>() }
 
         singleOf(::EditServiceUseCaseImpl) { bind<EditServiceUseCase>() }
         singleOf(::DeleteServiceUseCaseImpl) { bind<DeleteServiceUseCase>() }
 
         singleOf(::GetServicesCaseImpl) { bind<GetServicesCase>() }
-        singleOf(::GetGroupsCaseImpl) { bind<GetGroupsCase>() }
         singleOf(::ObserveServicesCaseImpl) { bind<ObserveServicesCase>() }
         singleOf(::ObserveServiceCaseImpl) { bind<ObserveServiceCase>() }
         singleOf(::EditServiceCaseImpl) { bind<EditServiceCase>() }

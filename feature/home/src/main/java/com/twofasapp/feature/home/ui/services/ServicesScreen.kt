@@ -1,12 +1,15 @@
 package com.twofasapp.feature.home.ui.services
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.Animatable
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -52,8 +55,11 @@ import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.feature.home.ui.services.component.ServicesAppBar
 import com.twofasapp.feature.home.ui.services.component.ServicesEmpty
+import com.twofasapp.feature.home.ui.services.component.ServicesEmptySearch
 import com.twofasapp.feature.home.ui.services.component.ServicesFab
 import com.twofasapp.feature.home.ui.services.component.ServicesProgress
+import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
+import com.twofasapp.feature.home.ui.services.component.SyncReminder
 import com.twofasapp.feature.home.ui.services.modal.AddServiceModal
 import com.twofasapp.feature.home.ui.services.modal.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.modal.ModalType
@@ -69,9 +75,9 @@ import org.koin.androidx.compose.koinViewModel
 internal fun ServicesRoute(
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
-    onExternalImportClick: () -> Unit = {},
     viewModel: ServicesViewModel = koinViewModel()
 ) {
+    val activity = LocalContext.currentActivity
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     ServicesScreen(
@@ -80,7 +86,7 @@ internal fun ServicesRoute(
         bottomBarListener = bottomBarListener,
         onEventConsumed = { viewModel.consumeEvent(it) },
         onFabClick = { viewModel.toggleAddMenu() },
-        onExternalImportClick = onExternalImportClick,
+        onExternalImportClick = { listener.openExternalImport() },
         onEditModeChange = { viewModel.toggleEditMode() },
         onToggleGroupExpand = { viewModel.toggleGroup(it) },
         onAddGroup = { viewModel.addGroup(it) },
@@ -91,7 +97,9 @@ internal fun ServicesRoute(
         onSwapServices = { from, to -> viewModel.swapServices(from, to) },
         onSortChange = { viewModel.updateSort(it) },
         onSearchQueryChange = { viewModel.search(it) },
-        onSearchFocusChange = { viewModel.searchFocused(it) }
+        onSearchFocusChange = { viewModel.searchFocused(it) },
+        onOpenBackupClick = { listener.openBackup(activity) },
+        onDismissSyncReminderClick = { viewModel.dismissSyncReminder() }
     )
 }
 
@@ -115,6 +123,8 @@ private fun ServicesScreen(
     onSortChange: (Int) -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
+    onOpenBackupClick: () -> Unit = {},
+    onDismissSyncReminderClick: () -> Unit = {},
 ) {
 
     val focusRequester = remember { FocusRequester() }
@@ -140,10 +150,26 @@ private fun ServicesScreen(
 //        }
     })
 
+    val serviceContainerColor = if (uiState.totalGroups == 1) {
+        TwTheme.color.background
+    } else {
+        TwTheme.color.serviceBackgroundWithGroups
+    }
+    val serviceContainerColorBlink = TwTheme.color.surfaceVariant
+    val serviceContainerColorBlinking = remember { Animatable(serviceContainerColor) }
+
+    var recentlyAddedService by remember { mutableStateOf<Long?>(null) }
+
+
     uiState.events.firstOrNull()?.let {
         when (it) {
             ServicesStateEvent.ShowAddServiceModal -> {
                 modalType = ModalType.AddService
+                scope.launch { modalState.show() }
+            }
+
+            is ServicesStateEvent.ShowServiceAddedModal -> {
+                modalType = ModalType.FocusService(it.id, true)
                 scope.launch { modalState.show() }
             }
         }
@@ -168,6 +194,23 @@ private fun ServicesScreen(
     }
 
     ModalBottomSheet(
+        onDismissRequest = {
+            if (modalType is ModalType.FocusService && (modalType as ModalType.FocusService).isRecentlyAdded) {
+                val id = (modalType as ModalType.FocusService).id
+
+                scope.launch {
+                    listState.animateScrollToItem(uiState.services.indexOfFirst { it.id == id })
+                    recentlyAddedService = id
+
+                    repeat(3) {
+                        serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(150))
+                        serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(150))
+                    }
+
+                    recentlyAddedService = null
+                }
+            }
+        },
         sheetState = modalState,
         sheetContent = {
             when (modalType) {
@@ -196,7 +239,8 @@ private fun ServicesScreen(
                             onCopyClick = {
                                 scope.launch { modalState.hide() }
                                 activity.copyToClipboard(
-                                    uiState.getService(id)?.code?.current.toString()
+                                    text = uiState.getService(id)?.code?.current.toString(),
+                                    isSensitive = true
                                 )
                             }
                         )
@@ -224,7 +268,7 @@ private fun ServicesScreen(
             floatingActionButton = {
                 ServicesFab(
                     isVisible = uiState.isLoading.not(),
-                    isExtendedVisible = uiState.services.isEmpty(),
+                    isExtendedVisible = uiState.totalServices == 0,
                     isNormalVisible = reorderableState.listState.isScrollingUp(),
                     onClick = onFabClick,
                 )
@@ -253,12 +297,50 @@ private fun ServicesScreen(
                     return@LazyColumn
                 }
 
-                if (uiState.services.isEmpty() && uiState.groups.isEmpty() && uiState.searchQuery.isEmpty()) {
+                if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
                     listItem(ServicesListItem.Empty) {
                         ServicesEmpty(
                             modifier = Modifier
                                 .fillParentMaxSize()
-                                .animateItemPlacement(), onExternalImportClick = onExternalImportClick
+                                .animateItemPlacement(),
+                            onExternalImportClick = onExternalImportClick
+                        )
+                    }
+
+                    return@LazyColumn
+                }
+
+                if (uiState.totalServices > 0 && uiState.totalGroups == 1 && uiState.services.isEmpty()) {
+                    listItem(ServicesListItem.EmptySearch) {
+                        ServicesEmptySearch(
+                            modifier = Modifier
+                                .fillParentMaxSize()
+                                .animateItemPlacement(),
+                        )
+                    }
+
+                    return@LazyColumn
+                }
+
+                if (uiState.showSyncNoticeBar) {
+                    listItem(ServicesListItem.SyncNoticeBar) {
+                        SyncNoticeBar(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp),
+                            onOpenBackupClick = onOpenBackupClick,
+                        )
+                    }
+                }
+
+                if (uiState.showSyncReminder) {
+                    listItem(ServicesListItem.SyncReminder) {
+                        SyncReminder(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 16.dp),
+                            onOpenBackupClick = onOpenBackupClick,
+                            onDismissClick = onDismissSyncReminderClick,
                         )
                     }
                 }
@@ -310,20 +392,20 @@ private fun ServicesScreen(
                                         },
                                         editMode = uiState.isInEditMode,
                                         showNextCode = uiState.appSettings.showNextCode,
-                                        containerColor = if (uiState.groups.size == 1) {
-                                            TwTheme.color.background
+                                        containerColor = if (recentlyAddedService == service.id) {
+                                            serviceContainerColorBlinking.value
                                         } else {
-                                            TwTheme.color.serviceBackgroundWithGroups
+                                            serviceContainerColor
                                         },
                                         modifier = Modifier.shadow(elevation.value),
                                         dragHandleVisible = uiState.appSettings.servicesSort == ServicesSort.Manual,
                                         dragModifier = Modifier.detectReorder(state = reorderableState),
                                         onClick = {
-                                            modalType = ModalType.FocusService(service.id)
+                                            modalType = ModalType.FocusService(service.id, false)
                                             scope.launch { modalState.show() }
                                         },
                                         onLongClick = {
-                                            activity.copyToClipboard(service.code?.current.toString())
+                                            activity.copyToClipboard(service.code?.current.toString(), isSensitive = true)
                                         },
                                     )
                                 }

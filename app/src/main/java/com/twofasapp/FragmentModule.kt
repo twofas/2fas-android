@@ -83,6 +83,7 @@ val fragmentScopeModule = module {
                 get(),
                 get(),
                 get(),
+                get(),
             )
         }
     }

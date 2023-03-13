@@ -51,4 +51,10 @@ internal class SettingsRepositoryImpl(
             local.setServicesSort(servicesSort)
         }
     }
+
+    override suspend fun setShowBackupNotice(showBackupNotice: Boolean) {
+        withContext(dispatchers.io) {
+            local.setShowBackupNotice(showBackupNotice)
+        }
+    }
 }

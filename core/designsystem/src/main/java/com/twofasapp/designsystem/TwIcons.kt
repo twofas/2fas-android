@@ -32,6 +32,8 @@ object TwIcons {
     val DragHandle @Composable get() = painterResource(R.drawable.ic_drag_handle)
     val Add @Composable get() = painterResource(R.drawable.ic_add)
     val CloudUpload @Composable get() = painterResource(R.drawable.ic_cloud_upload)
+    val Cloud @Composable get() = painterResource(R.drawable.ic_cloud)
+    val CloudOff @Composable get() = painterResource(R.drawable.ic_cloud_off)
     val Delete @Composable get() = painterResource(R.drawable.ic_delete)
     val Extension @Composable get() = painterResource(R.drawable.ic_extension)
     val Eye @Composable get() = painterResource(R.drawable.ic_eye)
@@ -56,4 +58,5 @@ object TwIcons {
     val AddGroup @Composable get() = painterResource(R.drawable.ic_add_group)
     val Search @Composable get() = painterResource(R.drawable.ic_search)
     val Close @Composable get() = painterResource(R.drawable.ic_close)
+    val ListStyle @Composable get() = painterResource(R.drawable.ic_list_style)
 }

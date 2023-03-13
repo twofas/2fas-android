@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
@@ -69,6 +70,7 @@ fun TwOutlinedButton(
         Text(
             text = text,
             style = style,
+            color = TwTheme.color.primary
         )
     }
 }
@@ -76,10 +78,12 @@ fun TwOutlinedButton(
 @Composable
 fun TwTextButton(
     text: String,
-    onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
     style: TextStyle = TwTheme.typo.body2,
     enabled: Boolean = true,
+    maxLines: Int = Int.MAX_VALUE,
+    textAlign: TextAlign? = null,
 ) {
     TextButton(
         onClick = onClick,
@@ -93,6 +97,8 @@ fun TwTextButton(
         Text(
             text = text,
             style = style,
+            maxLines = maxLines,
+            textAlign = textAlign,
         )
     }
 }

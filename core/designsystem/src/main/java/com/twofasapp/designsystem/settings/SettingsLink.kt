@@ -2,6 +2,7 @@ package com.twofasapp.designsystem.settings
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -43,7 +44,9 @@ fun SettingsLink(
             .fillMaxWidth()
             .clickable(onClick != null) { onClick?.invoke() }
             .heightIn(min = 56.dp)
-            .padding(horizontal = 24.dp, vertical = 16.dp),
+            .padding(vertical = 16.dp)
+            .padding(start = 24.dp, end = 16.dp),
+        verticalArrangement = Arrangement.Center
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),

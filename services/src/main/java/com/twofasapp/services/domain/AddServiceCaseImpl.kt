@@ -18,7 +18,7 @@ internal class AddServiceCaseImpl(
     private val showBackupNotice: ShowBackupNotice,
 ) : AddServiceCase {
 
-    override suspend fun invoke(service: Service, trigger: AddServiceCase.Trigger) {
+    override suspend fun invoke(service: Service, trigger: AddServiceCase.Trigger): Long {
         val serviceId = repository.insertService(
             service.copy(
                 id = 0L,
@@ -58,5 +58,7 @@ internal class AddServiceCaseImpl(
             analyticsService.captureEvent(AnalyticsEvent.FIRST_CODE)
             showBackupNotice.save(true)
         }
+
+        return serviceId
     }
 }

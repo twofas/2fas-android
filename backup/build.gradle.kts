@@ -25,6 +25,8 @@ dependencies {
     implementation(project(":services:domain"))
     implementation(project(":serialization"))
     implementation(project(":time:domain"))
+    implementation(project(":data:services"))
+    implementation(project(":data:session"))
 
     implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.rxJava)

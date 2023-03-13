@@ -88,7 +88,11 @@ fun DsService(
                 .combinedClickable(
                     enabled = onClick != null,
                     onClick = { onClick?.invoke() },
-                    onLongClick = { onLongClick?.invoke() },
+                    onLongClick = {
+                        if (editMode.not()) {
+                            onLongClick?.invoke()
+                        }
+                    },
                 ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp)

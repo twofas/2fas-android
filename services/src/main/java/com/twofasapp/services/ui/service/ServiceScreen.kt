@@ -27,7 +27,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextFieldDefaults
@@ -64,6 +63,7 @@ import com.twofasapp.design.compose.dialogs.Validation
 import com.twofasapp.design.compose.serviceIconBitmap
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.locale.TwLocale
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.resources.R
 import com.twofasapp.services.data.converter.toDeprecatedDto
@@ -234,63 +234,54 @@ internal fun ServiceScreen(
                 )
             }
 
-            if (uiState.groups.list.isNotEmpty()) {
+            if (uiState.groups.isNotEmpty()) {
                 item(key = "groups_dropdown") {
-                    Surface(
+
+                    ExposedDropdownMenuBox(
+                        expanded = expanded,
+                        onExpandedChange = { expanded = expanded.not() },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(end = 16.dp, start = 72.dp, bottom = 24.dp, top = 8.dp),
-                    ) {
-                        ExposedDropdownMenuBox(
-                            expanded = expanded,
-                            onExpandedChange = { expanded = expanded.not() },
-                        ) {
-                            OutlinedTextField(
-                                value = uiState.groups.getById(service.groupId)?.name ?: "Default",
-                                onValueChange = { },
-                                label = {
-                                    Text(
-                                        "Group",
-                                    )
-                                },
-                                readOnly = true,
-                                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                                colors = TextFieldDefaults.outlinedTextFieldColors(
-//                                    disabledTextColor = MaterialTheme.colors.textFieldDisabledText,
-//                                    focusedBorderColor = MaterialTheme.colors.textFieldOutline,
-//                                    unfocusedBorderColor = MaterialTheme.colors.textFieldOutline,
-//                                    focusedLabelColor = MaterialTheme.colors.textFieldHint,
-//                                    unfocusedLabelColor = MaterialTheme.colors.textFieldHint,
-                                    errorLabelColor = TwTheme.color.error,
-                                ),
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                            ExposedDropdownMenu(
-                                expanded = expanded,
-                                onDismissRequest = { expanded = false },
 
-                                ) {
+                        ) {
+                        OutlinedTextField(
+                            value = uiState.groups.firstOrNull { it.id == service.groupId }?.name ?: TwLocale.strings.servicesMyTokens,
+                            onValueChange = { },
+                            label = { Text(stringResource(id = R.string.tokens__group)) },
+                            readOnly = true,
+                            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                            colors = TextFieldDefaults.outlinedTextFieldColors(errorLabelColor = TwTheme.color.error),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .menuAnchor()
+                        )
+
+                        ExposedDropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = { expanded = false },
+                            modifier = Modifier.background(TwTheme.color.surface),
+                        ) {
+                            DropdownMenuItem(
+                                text = {
+                                    Text(text = TwLocale.strings.servicesMyTokens, color = TwTheme.color.onSurfacePrimary)
+                                },
+                                onClick = {
+                                    viewModel.updateGroup(null)
+                                    expanded = false
+                                }
+                            )
+
+                            uiState.groups.filter { it.name != null }.forEach { group ->
                                 DropdownMenuItem(
                                     text = {
-                                        Text(text = "Default")
+                                        Text(text = group.name.orEmpty(), color = TwTheme.color.onSurfacePrimary)
                                     },
                                     onClick = {
-                                        viewModel.updateGroup(null)
+                                        viewModel.updateGroup(group)
                                         expanded = false
                                     }
                                 )
-
-                                uiState.groups.list.forEach { group ->
-                                    DropdownMenuItem(
-                                        text = {
-                                            Text(text = group.name)
-                                        },
-                                        onClick = {
-                                            viewModel.updateGroup(group)
-                                            expanded = false
-                                        }
-                                    )
-                                }
                             }
                         }
                     }

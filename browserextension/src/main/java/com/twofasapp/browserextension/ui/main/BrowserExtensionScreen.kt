@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
@@ -32,6 +33,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
@@ -43,9 +45,9 @@ import com.twofasapp.browserextension.ui.main.permission.RequestPermission
 import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
 import com.twofasapp.design.compose.SimpleEntry
-import com.twofasapp.design.compose.dialogs.InputDialog
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.InputDialog
 import com.twofasapp.designsystem.screen.CommonContent
 import com.twofasapp.designsystem.settings.SettingsHeader
 import com.twofasapp.locale.TwLocale
@@ -185,13 +187,24 @@ private fun ContentScreen(
 
     if (uiState.showEditDeviceDialog) {
         InputDialog(
+            onDismissRequest = { viewModel.onEditDeviceDialogDismiss() },
             prefill = uiState.mobileDevice?.name.orEmpty(),
             hint = stringResource(id = R.string.browser__device_name),
-            allowEmpty = false,
+            positive = stringResource(id = R.string.commons__OK),
+            negative = stringResource(id = R.string.commons__cancel),
+            minLength = 1,
             maxLength = 100,
-            onDismiss = { viewModel.onEditDeviceDialogDismiss() },
-            onPositive = { viewModel.onEditDeviceDialogDismiss(it) },
+            keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
+            onPositiveClick = {viewModel.onEditDeviceDialogDismiss(it)},
         )
+//        InputDialo(
+//            prefill = uiState.mobileDevice?.name.orEmpty(),
+//            hint = stringResource(id = R.string.browser__device_name),
+//            allowEmpty = false,
+//            maxLength = 100,
+//            onDismiss = { viewModel.onEditDeviceDialogDismiss() },
+//            onPositive = { viewModel.onEditDeviceDialogDismiss(it) },
+//        )
     }
 }
 

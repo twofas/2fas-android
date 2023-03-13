@@ -108,12 +108,15 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.SwitchCompat
+                <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/deleteSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:checked="false" />
+                    android:checked="false"
+                    app:thumbTint="@color/material_switch_thumb"
+                    app:trackDecorationTint="@color/material_switch_border"
+                    app:trackTint="@color/material_switch_track" />
 
                 <TextView
                     android:id="@+id/deleteLabel"

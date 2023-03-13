@@ -15,6 +15,7 @@ import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,10 +25,18 @@ import com.twofasapp.designsystem.TwTheme
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ModalBottomSheet(
+    onDismissRequest: () -> Unit = {},
     sheetState: ModalBottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden),
     sheetContent: @Composable () -> Unit,
     content: @Composable () -> Unit
 ) {
+    if (sheetState.currentValue != ModalBottomSheetValue.Hidden) {
+        DisposableEffect(Unit) {
+            onDispose {
+                onDismissRequest()
+            }
+        }
+    }
     ModalBottomSheetLayout(
         modifier = Modifier,
         sheetState = sheetState,

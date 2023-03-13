@@ -8,8 +8,11 @@ data class Service(
     val name: String,
     val info: String?,
     val authType: AuthType,
+    val link: String?,
+    val issuer: String?,
     val period: Int?,
     val digits: Int?,
+    val hotpCounter: Int? = null,
     val algorithm: Algorithm?,
     val groupId: String? = null,
     val imageType: ImageType = ImageType.IconCollection,
@@ -20,8 +23,10 @@ data class Service(
     val labelColor: Tint? = null,
     val badgeColor: Tint?,
     val tags: List<String>,
-
     val isDeleted: Boolean = false,
+    val updatedAt: Long = 0,
+    val source: Source,
+    val assignedDomains: List<String> = emptyList(),
 
 
 //    val otp: Otp = Otp(),

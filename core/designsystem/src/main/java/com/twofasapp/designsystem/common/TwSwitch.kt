@@ -1,17 +1,14 @@
 package com.twofasapp.designsystem.common
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchColors
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
 
 @Composable
@@ -27,10 +24,9 @@ fun TwSwitch(
         checkedBorderColor = Color.Transparent,
         checkedIconColor = TwTheme.color.primary,
 
-        uncheckedThumbColor = TwTheme.color.onSurfaceTertiary,
-        uncheckedTrackColor = TwTheme.color.onSurfaceSecondary,
-        uncheckedBorderColor = TwTheme.color.onSurfaceTertiary,
-        uncheckedIconColor = TwTheme.color.onSurfacePrimary,
+        uncheckedThumbColor = TwTheme.color.switchThumb,
+        uncheckedTrackColor = TwTheme.color.switchTrack,
+        uncheckedBorderColor = TwTheme.color.switchThumb.copy(alpha = 0.3f),
     ),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {

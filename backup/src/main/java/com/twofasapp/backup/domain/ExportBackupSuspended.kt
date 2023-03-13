@@ -3,16 +3,17 @@ package com.twofasapp.backup.domain
 import android.content.Context
 import android.net.Uri
 import com.twofasapp.backup.EncryptBackup
-import com.twofasapp.backup.domain.converter.toRemoteGroup
 import com.twofasapp.backup.domain.converter.toRemoteService
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.prefs.model.RemoteBackup
+import com.twofasapp.prefs.model.RemoteGroup
 import com.twofasapp.prefs.model.RemoteService
 import com.twofasapp.serialization.JsonSerializer
 import com.twofasapp.services.data.ServicesRepository
-import com.twofasapp.services.domain.GetGroupsCase
 import com.twofasapp.services.domain.GetServicesCase
 import com.twofasapp.time.domain.TimeProvider
+import kotlinx.coroutines.flow.firstOrNull
 
 class ExportBackupSuspended(
     private val context: Context,
@@ -20,7 +21,7 @@ class ExportBackupSuspended(
     private val appBuild: AppBuild,
     private val servicesRepository: ServicesRepository,
     private val getServicesCase: GetServicesCase,
-    private val getGroupsCase: GetGroupsCase,
+    private val groupsRepository: GroupsRepository,
     private val encryptBackup: EncryptBackup,
     private val jsonSerializer: JsonSerializer,
 ) {
@@ -38,7 +39,7 @@ class ExportBackupSuspended(
     suspend operator fun invoke(fileUri: Uri?, password: String?): Result {
         val services = getServicesCase()
         val servicesOrder = servicesRepository.getServicesOrder()
-        val groups = getGroupsCase()
+        val groups = groupsRepository.observeGroups().firstOrNull().orEmpty()
 
         val remoteBackup = RemoteBackup(
             services = services.map {
@@ -48,7 +49,15 @@ class ExportBackupSuspended(
             updatedAt = timeProvider.systemCurrentTime(),
             appVersionCode = appBuild.versionCode,
             appVersionName = appBuild.versionName,
-            groups = groups.list.filter { group -> group.id != null }.map { group -> group.toRemoteGroup() },
+            groups = groups.filter { group -> group.id != null }.map { group ->
+                RemoteGroup(
+                    id = group.id.orEmpty(),
+                    name = group.name.orEmpty(),
+                    isExpanded = group.isExpanded,
+                    updatedAt = group.updatedAt,
+
+                    )
+            },
             account = null,
         )
 

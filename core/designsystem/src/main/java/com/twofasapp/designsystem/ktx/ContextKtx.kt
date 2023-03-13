@@ -1,9 +1,12 @@
 package com.twofasapp.designsystem.ktx
 
 import android.content.ClipData
+import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.ContextWrapper
+import android.os.Build
+import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.runtime.Composable
@@ -27,10 +30,29 @@ val LocalBackDispatcher
     @Composable
     get() = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher!!
 
-fun Context.copyToClipboard(text: String, label: String = "Text", toast: String = "Copied!") {
+fun Context.copyToClipboard(
+    text: String,
+    label: String = "Text",
+    toast: String = "Copied!",
+    isSensitive: Boolean = false,
+) {
     val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-    val clipData = ClipData.newPlainText(label, text)
+    val clipData = ClipData.newPlainText(label, text).apply {
+        if (isSensitive) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                description.extras = PersistableBundle().apply {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        putBoolean(ClipDescription.EXTRA_IS_SENSITIVE, true)
+                    } else {
+                        putBoolean("android.content.extra.IS_SENSITIVE", true)
+                    }
+                }
+            }
+        }
+    }
     clipboardManager.setPrimaryClip(clipData)
 
-    Toast.makeText(this, toast, Toast.LENGTH_SHORT).show()
+    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
+        Toast.makeText(this, toast, Toast.LENGTH_SHORT).show()
+    }
 }

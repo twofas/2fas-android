@@ -13,6 +13,9 @@ class Strings(c: Context) {
     val placeholderLong =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
+    val commonOk = c.getString(R.string.commons__OK)
+    val commonYes = c.getString(R.string.commons__yes)
+    val commonNo = c.getString(R.string.commons__no)
     val commonNext = c.getString(R.string.commons__next)
     val commonContinue = c.getString(R.string.commons__continue)
     val commonSkip = c.getString(R.string.commons__skip)
@@ -37,6 +40,8 @@ class Strings(c: Context) {
     val servicesEmptyBody = c.getString(R.string.introduction__description_title)
     val servicesEmptyImportCta = c.getString(R.string.introduction__import_external_app)
     val servicesEmptyPairServiceCta = c.getString(R.string.introduction__pair_new_service)
+    val servicesEmptySearch = c.getString(R.string.tokens__service_not_found_search)
+    val servicesEmptySearchBody = c.getString(R.string.tokens__try_different_search_term)
     val servicesMyTokens = c.getString(R.string.tokens__my_tokens)
     val servicesManageList = "Manage list"
     val servicesSortBy = c.getString(R.string.tokens__sort_by)
@@ -98,8 +103,22 @@ class Strings(c: Context) {
     val settingsAutoFocusSearch = c.getString(R.string.appearance__toggle_active_search)
     val settingsAutoFocusSearchBody = c.getString(R.string.appearance__active_search_description)
     val settingsServicesStyle = "List style"
+    val settingsShowBackupNotice = c.getString(R.string.settings__gd_sync_info)
+    val settingsShowBackupNoticeConfirmBody = c.getString(R.string.settings__gd_sync_disable_confirm)
 
-//    val browserExt = c.getString(R.string.)
+    val backupSyncNotice = "Google Drive not synced."
+    val backupSyncCta = "Go to backup settings "
+    val backupReminder = c.getString(R.string.backup_notice_title)
+    val backupReminderBody = c.getString(R.string.backup_notice_msg)
+    val backupReminderDismiss = c.getString(R.string.backup_notice_later)
+    val backupReminderCta = c.getString(R.string.backup_notice_cta)
+
+    val disposeBody1 = c.getString(R.string.tokens__do_you_really_want_to_remove_all_devices)
+    val disposeBody2 = c.getString(R.string.tokens__caution)
+    val disposeBody3 = c.getString(R.string.tokens__you_will_not_be_able_to_sign_in_to_your)
+    val disposeConfirm = c.getString(R.string.tokens__i_want_to_delete_this_token)
+    val disposeCta = c.getString(R.string.tokens__remove_it_forever)
+
 //    val browserExt = c.getString(R.string.)
 //    val browserExt = c.getString(R.string.)
 //    val browserExt = c.getString(R.string.)

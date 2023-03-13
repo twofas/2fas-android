@@ -14,4 +14,5 @@ interface SettingsRepository {
     suspend fun setServicesStyle(servicesStyle: ServicesStyle)
     suspend fun setServicesSort(servicesSort: ServicesSort)
     suspend fun setAutoFocusSearch(autoFocusSearch: Boolean)
+    suspend fun setShowBackupNotice(showBackupNotice: Boolean)
 }

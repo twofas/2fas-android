@@ -44,7 +44,7 @@ fun CommonContent(
         ) {
 
             if (image != null) {
-                Image(painter = image, contentDescription = null, Modifier.height(120.dp))
+                Image(painter = image, contentDescription = null, Modifier.height(TwTheme.dimen.commonContentImageHeight))
                 Spacer(Modifier.height(24.dp))
             }
 

@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
  Loco xml export: Android string resources
  Project: 2FAS App
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Sun, 05 Mar 2023 11:46:31 -0800
+ Exported at: Sun, 12 Mar 2023 11:14:33 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -585,7 +586,7 @@
     <string name="widgets_warning_title">WARNING!</string>
     <string name="widgets_warning_cta">Yes, I am sure</string>
     <string name="backup_notice_title">2FAS Backup</string>
-    <string name="backup_notice_msg">Turn on 2FAS Backup and keep your codes secure in Google Drive.</string>
+    <string name="backup_notice_msg">Turn on 2FAS Backup. In case of resetting\nor losing your phone, you will be able to restore all your tokens.</string>
     <string name="brand_empty_msg">Sorry, brand not found</string>
     <!-- Select which services will be visible on widget: -->
     <string name="widgets_select_msg">Select which services will be visible on the widget:</string>
@@ -717,5 +718,4 @@
     <string name="errors__input_number">Input must be a number</string>
     <string name="errors__input_empty">Input can not be empty</string>
     <string name="errors__input_too_long">Input is too long. Limit: %d</string>
-
 </resources>

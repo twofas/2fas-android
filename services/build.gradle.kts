@@ -13,6 +13,7 @@ dependencies {
     implementation(project(":core:di"))
     implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
+    implementation(project(":core:locale"))
     implementation(project(":core"))
     implementation(project(":design"))
     implementation(project(":extensions"))

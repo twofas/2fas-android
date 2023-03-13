@@ -13,16 +13,6 @@ fun Color.Companion.parse(hexString: String): Color =
     Color(color = android.graphics.Color.parseColor(hexString))
 
 @Composable
-fun switchColors(): SwitchColors {
-    return SwitchDefaults.colors(
-        checkedThumbColor = TwTheme.color.primary,
-        checkedTrackColor = TwTheme.color.primary,
-        uncheckedThumbColor = Color(0xFFECECEC),
-        uncheckedTrackColor = Color(0xFF585858),
-    )
-}
-
-@Composable
 fun radioColors(): RadioButtonColors {
     return RadioButtonDefaults.colors(
         selectedColor = TwTheme.color.primary,

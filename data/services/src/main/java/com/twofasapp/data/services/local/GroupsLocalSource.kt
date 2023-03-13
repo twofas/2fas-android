@@ -49,7 +49,7 @@ internal class GroupsLocalSource(
                         GroupEntity(
                             id = UUID.randomUUID().toString(),
                             name = name,
-                            isExpanded = false,
+                            isExpanded = true,
                             updatedAt = timeProvider.systemCurrentTime(),
                             backupSyncStatus = "" // TODO
                         )

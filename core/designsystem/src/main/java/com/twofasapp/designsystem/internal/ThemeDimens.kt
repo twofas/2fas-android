@@ -11,4 +11,5 @@ class ThemeDimens {
     val buttonHeightSmall = 36.dp
     val radiusDefault = 12.dp
     val radiusSmall = 8.dp
+    val commonContentImageHeight = 120.dp
 }

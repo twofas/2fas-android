@@ -15,6 +15,7 @@ internal class SettingsLocalSource(
 
     companion object {
         private const val KeyShowNextCode = "showNextToken"
+        private const val KeyShowBackupNotice = "showBackupNotice"
         private const val KeySelectedTheme = "selectedTheme"
         private const val KeyServicesStyle = "servicesStyle"
         private const val KeyServicesSort = "servicesSort"
@@ -34,6 +35,7 @@ internal class SettingsLocalSource(
         return AppSettings(
             showNextCode = preferences.getBoolean(KeyShowNextCode) ?: false,
             autoFocusSearch = preferences.getBoolean(KeyAutoFocusSearch) ?: false,
+            showBackupNotice = preferences.getBoolean(KeyShowBackupNotice) ?: true,
             selectedTheme = preferences.getString(KeySelectedTheme)?.let { SelectedTheme.valueOf(it) } ?: SelectedTheme.Auto,
             servicesStyle = preferences.getString(KeyServicesStyle)?.let { ServicesStyle.valueOf(it) } ?: ServicesStyle.Default,
             servicesSort = preferences.getString(KeyServicesSort)?.let { ServicesSort.valueOf(it) } ?: ServicesSort.Manual,
@@ -63,5 +65,10 @@ internal class SettingsLocalSource(
     fun setServicesSort(servicesSort: ServicesSort) {
         appSettingsFlow.update { it.copy(servicesSort = servicesSort) }
         preferences.putString(KeyServicesSort, servicesSort.name)
+    }
+
+    fun setShowBackupNotice(showBackupNotice: Boolean) {
+        appSettingsFlow.update { it.copy(showBackupNotice = showBackupNotice) }
+        preferences.putBoolean(KeyShowBackupNotice, showBackupNotice)
     }
 }

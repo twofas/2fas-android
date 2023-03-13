@@ -15,4 +15,6 @@ class ThemeColorsLight : ThemeColors() {
     override val onSurfaceTertiary: Color = Color(0xFF4C4C4C)
     override val primaryIndicator: Color = Color(0xFFF8E2E3)
     override val serviceBackgroundWithGroups: Color = Color(0xFFFCFCFC)
+    override val switchTrack: Color = Color(0xFFEEEEEE)
+    override val switchThumb: Color = Color(0xFFBBBBBB)
 }

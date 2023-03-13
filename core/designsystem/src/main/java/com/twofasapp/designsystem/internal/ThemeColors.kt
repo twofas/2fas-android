@@ -12,6 +12,8 @@ abstract class ThemeColors {
     abstract val onSurfaceTertiary: Color
     abstract val primaryIndicator: Color
     abstract val serviceBackgroundWithGroups: Color
+    abstract val switchTrack: Color
+    abstract val switchThumb: Color
 
     val primary: Color = Color(0xFFED1C24)
     val primaryDark: Color = Color(0xFFD81F26)

@@ -2,6 +2,7 @@ package com.twofasapp.backup.ui.export
 
 import android.net.Uri
 import com.twofasapp.backup.data.FilesProvider
+import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.prefs.model.LockMethodEntity
@@ -14,6 +15,7 @@ class ExportBackupPresenter(
     private val checkLockStatus: CheckLockStatus,
     private val exportBackup: ExportBackup,
     private val filesProvider: FilesProvider,
+    private val sessionRepository: SessionRepository,
 ) : ExportBackupContract.Presenter() {
 
     private var backupPassword: String = ""
@@ -47,6 +49,7 @@ class ExportBackupPresenter(
             exportBackup.execute(it, if (isExportWithoutPasswordChecked) null else backupPassword).subscribe({ result ->
                 when (result) {
                     is ExportBackup.Result.Success -> {
+                        sessionRepository.resetBackupReminder()
                         view.showResultToast(com.twofasapp.resources.R.string.backup__export_result_success)
                         navigator.finish()
                     }

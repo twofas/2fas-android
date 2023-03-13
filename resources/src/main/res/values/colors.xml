@@ -45,4 +45,10 @@
     <color name="surfaceVariant">#EEEEEE</color>
     <color name="onSurface">#000000</color>
 
+    <color name="switchTrack">#FFEEEEEE</color>
+    <color name="switchThumb">#FFBBBBBB</color>
+    <color name="switchBorder">#4DBBBBBB</color>
+
+
+
 </resources>

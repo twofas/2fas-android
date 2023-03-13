@@ -45,7 +45,7 @@ internal fun BaseDialogSurface(content: @Composable () -> Unit) {
             .sizeIn(maxHeight = maxHeight, maxWidth = maxWidth)
             .clipToBounds()
             .wrapContentHeight(),
-        shape = RoundedCornerShape(6.dp),
+        shape = RoundedCornerShape(24.dp),
         color = TwTheme.color.surface,
     ) {
         content()

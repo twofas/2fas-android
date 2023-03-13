@@ -34,4 +34,8 @@
     <color name="surface">#1A1B21</color>
     <color name="surfaceVariant">#232323</color>
     <color name="onSurface">#FFFFFF</color>
+
+    <color name="switchTrack">#FF1F2025</color>
+    <color name="switchThumb">#FF48494E</color>
+    <color name="switchBorder">#4D48494E</color>
 </resources>

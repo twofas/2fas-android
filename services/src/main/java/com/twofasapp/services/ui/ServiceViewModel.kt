@@ -6,14 +6,15 @@ import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.core.analytics.AnalyticsEvent
 import com.twofasapp.core.analytics.AnalyticsParam
 import com.twofasapp.core.analytics.AnalyticsService
+import com.twofasapp.data.services.GroupsRepository
+import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.Group
 import com.twofasapp.extensions.removeWhiteCharacters
-import com.twofasapp.prefs.model.Group
 import com.twofasapp.prefs.model.LockMethodEntity
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.prefs.usecase.LockMethodPreference
 import com.twofasapp.services.domain.AddServiceCase
 import com.twofasapp.services.domain.EditServiceCase
-import com.twofasapp.services.domain.GetGroupsCase
 import com.twofasapp.services.domain.GetServicesCase
 import com.twofasapp.services.domain.MoveToTrashCase
 import com.twofasapp.services.domain.ObserveServiceCase
@@ -22,6 +23,7 @@ import com.twofasapp.services.domain.model.Service
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -33,8 +35,9 @@ internal class ServiceViewModel(
     private val editServiceCase: EditServiceCase,
     private val moveToTrashCase: MoveToTrashCase,
     private val addServiceCase: AddServiceCase,
-    private val getGroupsCase: GetGroupsCase,
     private val lockMethodPreference: LockMethodPreference,
+    private val groupsRepository: GroupsRepository,
+    private val servicesRepository: ServicesRepository,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(ServiceUiState())
@@ -96,7 +99,7 @@ internal class ServiceViewModel(
             }
 
             launch(dispatchers.io()) {
-                _uiState.update { it.copy(groups = getGroupsCase.invoke()) }
+                _uiState.update { it.copy(groups = groupsRepository.observeGroups().firstOrNull().orEmpty()) }
             }
         }
     }
@@ -110,7 +113,10 @@ internal class ServiceViewModel(
             if (replaceIfExists || isExists.not()) {
                 runCatching { addServiceCase(uiState.value.service) }
                     .onFailure { _uiState.update { it.copy(showInsertErrorDialog = true) } }
-                    .onSuccess { _uiState.update { it.copy(finish = true, finishWithResult = true) } }
+                    .onSuccess {
+                        servicesRepository.pushRecentlyAddedService(it)
+                        _uiState.update { it.copy(finish = true, finishWithResult = true) }
+                    }
             } else {
                 _uiState.update { it.copy(showServiceExistsDialog = true) }
             }

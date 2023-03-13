@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,8 +22,8 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.twofasapp.design.theme.radioColors
-import com.twofasapp.design.theme.switchColors
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwSwitch
 
 enum class SwitchEntryType { Switch, Radio }
 
@@ -102,9 +101,8 @@ fun SwitchEntry(
 
         when (type) {
             SwitchEntryType.Switch -> {
-                Switch(
+                TwSwitch(
                     checked = isChecked,
-                    colors = switchColors(),
                     enabled = isEnabled,
                     modifier = Modifier
                         .size(24.dp)

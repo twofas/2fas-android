@@ -1,5 +1,6 @@
 package com.twofasapp.services.ui
 
+import com.twofasapp.data.services.domain.Group
 import com.twofasapp.prefs.model.Groups
 import com.twofasapp.services.domain.model.Service
 
@@ -15,7 +16,7 @@ internal data class ServiceUiState(
     val isSecretVisible: Boolean = false,
     val isSaveEnabled: Boolean = false,
     val hasChanges: Boolean = false,
-    val groups: Groups = Groups(),
+    val groups: List<Group> = emptyList(),
     val isInputNameValid: Boolean = service.id != 0L,
     val isInputSecretValid: Boolean = service.id != 0L,
     val isInputInfoValid: Boolean = true,

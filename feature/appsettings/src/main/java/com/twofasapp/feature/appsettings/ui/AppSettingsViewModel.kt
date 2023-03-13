@@ -46,4 +46,10 @@ class AppSettingsViewModel(
             settingsRepository.setAutoFocusSearch(uiState.value.appSettings.autoFocusSearch.not())
         }
     }
+
+    fun toggleShowBackupNotice() {
+        launchScoped {
+            settingsRepository.setShowBackupNotice(uiState.value.appSettings.showBackupNotice.not())
+        }
+    }
 }

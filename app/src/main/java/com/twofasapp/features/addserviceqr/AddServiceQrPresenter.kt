@@ -4,6 +4,7 @@ import android.net.Uri
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.extensions.removeWhiteCharacters
 import com.twofasapp.feature.externalimport.domain.ExternalImport
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
@@ -35,6 +36,7 @@ class AddServiceQrPresenter(
     private val googleAuthenticatorImporter: GoogleAuthenticatorImporter,
     private val appBuild: AppBuild,
     private val lastScannedQrPreference: LastScannedQrPreference,
+    private val servicesRepository: ServicesRepository,
 ) : AddServiceQrContract.Presenter() {
 
     private lateinit var otpAuthLink: OtpAuthLink
@@ -153,6 +155,8 @@ class AddServiceQrPresenter(
     }
 
     private fun onSaveCompleted(serviceDto: ServiceDto, isFromGallery: Boolean) {
+        servicesRepository.pushRecentlyAddedService(serviceDto.id)
+
         navigator.finishResultOk(
             mapOf(
                 AddServiceQrActivity.RESULT_SERVICE to serviceDto.copy(secret = serviceDto.secret.removeWhiteCharacters()),

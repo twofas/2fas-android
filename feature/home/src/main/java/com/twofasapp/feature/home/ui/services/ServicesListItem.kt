@@ -8,6 +8,9 @@ sealed class ServicesListItem(
 ) : ListItem {
     object Loader : ServicesListItem("Loader", "Loader")
     object Empty : ServicesListItem("Empty", "Empty")
+    object EmptySearch : ServicesListItem("EmptySearch", "EmptySearch")
+    object SyncNoticeBar : ServicesListItem("SyncNoticeBar", "SyncNoticeBar")
+    object SyncReminder : ServicesListItem("SyncReminder", "SyncReminder")
     data class Service(val id: Long) : ServicesListItem("Service:$id", "Service")
     data class Group(val id: String? = "Group") : ServicesListItem("Group:$id", "Group")
 }
