@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Thu, 09 Mar 2023 00:56:28 -0800
+ Exported at: Tue, 14 Mar 2023 03:55:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -86,7 +86,7 @@
     <!-- introduction__start_using -->
     <string name="introduction__title">Começa a usar o 2FAS</string>
     <string name="introduction__tos">Termos de serviço</string>
-    <string name="introduction__description_title">Conecta as tuas contas de serviços online com o 2FAS ou importa os teus tokens.</string>
+    <string name="introduction__description_title">Conecta as tuas contas online com o 2FAS ou importa os teus tokens.</string>
     <string name="introduction__pair_new_service">Conecta um novo serviço</string>
     <!-- introduction__import_2fas -->
     <string name="introduction__import_2fas_title">Importa um ficheiro de cópia de segurança 2FAS</string>
@@ -151,11 +151,11 @@
     <string name="settings__see_incoming_tokens">Mostrar os tokens recebidos na lista.</string>
     <string name="settings__trash">Lixo</string>
     <string name="settings__restore">Restaurar</string>
-    <string name="settings__trash_is_empty">O Lixo está vazio</string>
+    <string name="settings__trash_is_empty">O lixo está vazio</string>
     <string name="settings__share_app">Partilhar aplicação</string>
     <!-- tokens__remove_from_list -->
     <string name="tokens__delete_token">Tens a certeza que queres eliminar o token de:</string>
-    <string name="tokens__move_to_trash">Mover para o Lixo</string>
+    <string name="tokens__move_to_trash">Mover para o lixo</string>
     <string name="tokens__additional_info">Informação adicional</string>
     <string name="tokens__choose_method">Escolher método</string>
     <string name="tokens__duplicated_private_key">Chave de Serviço duplicada</string>
@@ -385,7 +385,7 @@
     <string name="color__yellow">Amarelo</string>
     <string name="settings__knowledge">Conhecimento</string>
     <string name="settings__support_and_share">Ajuda e Partilha</string>
-    <string name="settings__tell_a_friend">Diz a um amigo</string>
+    <string name="settings__tell_a_friend">Partilha com um amigo</string>
     <string name="settings__write_a_review">Escreve uma crítica</string>
     <string name="settings__about">Sobre</string>
     <string name="settings__privacy_policy">Política de Privacidade</string>
@@ -399,7 +399,7 @@
     <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Bloquear após X tentativas falhadas:</string>
-    <string name="settings__how_many_attempts_footer">Selecionar o número máximo de tentativas de códigos mal sucedidos antes de bloquear a aplicação</string>
+    <string name="settings__how_many_attempts_footer">Seleciona o número máximo de tentativas de códigos mal sucedidos antes de bloquear a aplicação</string>
     <string name="settings__block_for">Tempo de bloqueio</string>
     <string name="settings__3_minutes">3 minutos</string>
     <string name="settings__5_minutes">5 minutos</string>
@@ -417,24 +417,24 @@
     <string name="new_version__skip_title">Saltar esta versão</string>
     <!-- new_version__later_action -->
     <string name="new_version__update_later">Atualizar depois</string>
-    <string name="browser__browser_extension">Extensão do Navegador de Internet</string>
-    <string name="browser__info_title">Extensão de Navegador de Internet 2FAS</string>
-    <string name="browser__info_description_first">Instala a extensão do navegador de Internet 2FAS no teu computador</string>
+    <string name="browser__browser_extension">Extensão de Navegador</string>
+    <string name="browser__info_title">Extensão de Navegador 2FAS</string>
+    <string name="browser__info_description_first">Instala a extensão de navegador 2FAS no teu computador</string>
     <string name="browser__info_description_second">Conecta-a com a aplicação 2FAS</string>
     <string name="browser__more_info">Mais informação:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
     <string name="browser__pair_with_web_browser">Conecta com o navegador de Internet</string>
     <string name="browser__more_info_link">https://www.2fas.com/be</string>
     <string name="browser__pairing_successful_title">Conexão bem sucedida!</string>
-    <string name="browser__pairing_successful_description">O 2FAS irá enviar uma notificação sempre que entrares nos teus serviços online ao usar este navegador de internet. Não irás precisar mais de digitar novamente os teus tokens a cada uso.</string>
+    <string name="browser__pairing_successful_description">O 2FAS irá enviar uma notificação sempre que entrares nos teus serviços online ao usar este navegador. Não irás precisar mais de digitar novamente os teus tokens a cada uso.</string>
     <string name="browser__pairing_failed_title">A conexão falhou :(</string>
-    <string name="browser__pairing_failed_description">Este código QR não foi reconhecido, e a 2FAS não conseguiu conectar este dispositivo com a extensão do navegador de Internet. Por favor, tenta novamente.</string>
+    <string name="browser__pairing_failed_description">Este código QR não foi reconhecido, e a 2FAS não conseguiu conectar este dispositivo com a extensão do navegador. Por favor, tenta novamente.</string>
     <!-- browser__pairing_already_paired_title -->
     <string name="browser__already_paired_title">Já está conectado!</string>
     <!-- browser__pairing_already_paired_description -->
-    <string name="browser__already_paired_description">Esta extensão do navegador de Internet já está conectada com este dispositivo.</string>
+    <string name="browser__already_paired_description">Esta extensão do navegador já está conectada com este dispositivo.</string>
     <string name="browser__contact_support">Entrar em contacto</string>
-    <string name="browser__pairing_with_browser">Conexão com o navegador de Internet</string>
+    <string name="browser__pairing_with_browser">Conexão com o navegador</string>
     <!-- browser__paired_devices -->
     <string name="browser__paired_devices_browser_title">Dispositivos conectados (navegadores de Internet)</string>
     <string name="browser__add_new">Adicionar novo</string>
@@ -442,24 +442,24 @@
     <string name="browser__this_device_name">Nome do dispositivo</string>
     <string name="browser__device_name">Nome do dispositivo</string>
     <string name="browser__name">Nome</string>
-    <string name="browser__this_device_footer">Este nome irá ajudar-te a identificar este dispositivo entre outros conectados com a extensão do navegador de Internet 2FAS</string>
-    <string name="browser__browser_extension_settings">Definições da Extensão do Navegador de Internet</string>
+    <string name="browser__this_device_footer">Este nome irá ajudar-te a identificar este dispositivo entre outros conectados com a extensão de navegador 2FAS</string>
+    <string name="browser__browser_extension_settings">Definições da Extensão de Navegador</string>
     <string name="browser__unkown_name">&lt;NOME_DESCONHECIDO&gt;</string>
     <string name="browser__request_source_description">%1$s pediu um token 2FA para %2$s. Seleciona um serviço para autorizar e guardar com este domínio.</string>
-    <string name="browser__request">Pedido do Navegador de Internet</string>
+    <string name="browser__request">Pedido do Navegador</string>
     <!-- browser__code_success -->
     <string name="browser__code_success_title">O token foi enviado com sucesso!</string>
     <string name="browser__code_failure">Erro ao enviar o código. %s</string>
     <string name="browser__deleting_paired_device_title">Eliminar dispositivo</string>
     <string name="browser__deleting_paired_device_content">Tens a certeza que queres eliminar este dispositivo?</string>
     <string name="browser__pairing_date">Data de conexão</string>
-    <string name="browser__forget_this_browser">Esquecer este navegador de internet</string>
+    <string name="browser__forget_this_browser">Esquecer este navegador</string>
     <!-- browser__service_is_paired_list_description -->
     <string name="browser__paired_domains_list_title">Lista de domínios conectados</string>
     <string name="browser__deleting_extension_pairing_title">Eliminar domínio?</string>
     <string name="browser__deleting_extension_pairing_content">A próxima vez que usares a extensão do navegador para entrar em %s, irá te ser pedido para conectares este domínio novamente.</string>
     <string name="browser__push_notifications_title">Notificações</string>
-    <string name="browser__push_notifications_content">Para teres acesso a funções como a Extensão do Navegador de Internet, a aplicação precisa de acesso para enviar notificações. Podes mudar esta definição nas Definições do Sistema a qualquer momento.</string>
+    <string name="browser__push_notifications_content">Para teres acesso a funções como a Extensão do Navegador, a aplicação precisa de acesso para enviar notificações. Podes mudar esta definição nas Definições do Sistema a qualquer momento.</string>
     <string name="browser__request_expired">Pedido expirado</string>
     <string name="browser__2fa_token_request_title">Pedido de Token 2FA</string>
     <string name="browser__2fa_token_request_content">Queres partilhar o código 2FA de\u0020</string>
@@ -479,7 +479,7 @@
     <string name="tokens__caution">ATENÇÃO</string>
     <string name="tokens__qr_point_and_scan_again">Aponta a tua câmara para o código QR certo e digitaliza novamente.</string>
     <string name="tokens__service_unsaved_changes">Queres descartar as alterações?</string>
-    <string name="tokens__service_unsaved_changes_title">Mudanças não guardadas</string>
+    <string name="tokens__service_unsaved_changes_title">Alterações não guardadas</string>
     <string name="tokens__service_key_invalid_format">A chave tem um formato inválido</string>
     <string name="intent_error_no_gallery_app">Erro de sistema! Não existe uma aplicação de galeria no sistema.</string>
     <string name="gdrive_permission_title">Permissão do Google Drive</string>
@@ -518,8 +518,8 @@
     <string name="backup_settings_password_remove_subtitle">Eliminar a palavra-passe do ficheiro da cópia de segurança do teu Google Drive</string>
     <string name="backup_settings_account_title">Conta Google</string>
     <string name="backup_settings_sync_title">Última sincronização</string>
-    <string name="browser_extension_result_success_description">O 2FAS irá enviar uma notificação sempre que entrares nos teus serviços online ao usar este navegador de internet. Não irás precisar mais de digitar novamente os teus tokens a cada uso.</string>
-    <string name="browser_extension_browser_dialog">Nome do Navegador de Internet</string>
+    <string name="browser_extension_result_success_description">O 2FAS irá enviar uma notificação sempre que entrares nos teus serviços online ao usar este navegador. Não irás precisar mais de digitar novamente os teus tokens a cada uso.</string>
+    <string name="browser_extension_browser_dialog">Nome do Navegador</string>
     <string name="biometric_dialog_auth_title">Autenticar</string>
     <string name="biometric_dialog_auth_subtitle">Usa as tuas credenciais biométricas</string>
     <string name="about_licenses">Licenças de código aberto</string>
@@ -596,7 +596,7 @@
     <string name="backup_settings_delete_title">Eliminar cópia de segurança do Google Drive</string>
     <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
     <string name="backup_settings_delete_subtitle">Se eliminares este ficheiro do teu Google Drive, a sincronização em todos os teus dispositivos irá ser desativada, e os teus tokens irão permanecer apenas neste e noutros dispositivos através do armazenamento local.</string>
-    <string name="browser__result_error_browser_paired">A tua aplicação 2FAS já está conectada com este navegador de Internet.</string>
+    <string name="browser__result_error_browser_paired">A tua aplicação 2FAS já está conectada com este navegador.</string>
     <!-- Scan QR code again -->
     <string name="browser__result_error_cta">Digitaliza o código QR novamente</string>
     <string name="browser__scan_error_dialog_title">Erro</string>
@@ -622,11 +622,11 @@
     <string name="extension__error_while_sending">Erro ao enviar token</string>
     <string name="extension__not_paired_title">Este website não foi conectado</string>
     <string name="extension__not_paired_content">Abre a aplicação e seleciona um serviço para este domínio</string>
-    <string name="extension__error_open_the_app">Abre a aplicação e verifica se a extensão do navegador de Internet está devidamente conectada</string>
+    <string name="extension__error_open_the_app">Abre a aplicação e verifica se a extensão do navegador está devidamente conectada</string>
     <string name="extension__error_no_internet">Houve um problema com a conexão</string>
     <string name="extension__try_again">Por favor tenta novamente</string>
     <string name="extension__error">Erro</string>
-    <string name="extension__error_no_services">Para a extensão do navegador de internet funcionar, por favor adiciona serviços à aplicação 2FAS</string>
+    <string name="extension__error_no_services">Para a extensão do navegador funcionar, por favor adiciona serviços à aplicação 2FAS</string>
     <string name="extension__approve">Aprovar</string>
     <string name="extension__deny">Recusar</string>
     <string name="settings__turn_pin_code_to_enable_faceid">Liga o código PIN e a autenticação por Face ID para prevenir acesso não autorizado aos teus tokens neste dispositivo.</string>
