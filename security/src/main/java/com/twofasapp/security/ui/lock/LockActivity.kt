@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.resources.R
@@ -18,6 +19,8 @@ class LockActivity : AppCompatActivity() {
     private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
+
         overridePendingTransition(0, 0)
         if (resources.getBoolean(R.bool.isPortraitOnly)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT

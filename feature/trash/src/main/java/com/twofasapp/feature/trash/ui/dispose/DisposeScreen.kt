@@ -84,7 +84,7 @@ private fun DisposeScreen(
                 Text(
                     text = TwLocale.strings.disposeBody1,
                     color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.body1,
+                    style = TwTheme.typo.body3,
                     textAlign = TextAlign.Center,
                 )
 
@@ -96,7 +96,7 @@ private fun DisposeScreen(
                 Text(
                     text = TwLocale.strings.disposeBody2 + "\n" + TwLocale.strings.disposeBody3.format(uiState.serviceName, uiState.serviceName),
                     color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.body1,
+                    style = TwTheme.typo.body3,
                     textAlign = TextAlign.Center,
                 )
             }

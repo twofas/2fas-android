@@ -19,21 +19,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.twofasapp.design.compose.dialogs.ListDialog
 import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.navigation.SecurityRouter
+import com.twofasapp.designsystem.dialog.ListRadioDialog
+import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.model.PinDigits
 import com.twofasapp.security.ui.pin.PinScreen
 import com.twofasapp.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.security.ui.pin.vibrateInvalidPin
-import com.twofasapp.security.ui.security.SecurityViewModel
-import org.koin.androidx.compose.get
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun SetupPinScreen(
-    viewModel: SecurityViewModel = getViewModel(),
-    setupViewModel: SetupPinViewModel = get(),
-    router: SecurityRouter = get(),
+    setupViewModel: SetupPinViewModel = koinViewModel(),
 ) {
     val uiState = setupViewModel.uiState.collectAsState().value
     val currentPinState = rememberCurrentPinState()
@@ -43,7 +40,7 @@ internal fun SetupPinScreen(
     uiState.getMostRecentEvent()?.let {
         when (it) {
             SetupPinUiState.Event.ClearCurrentPin -> currentPinState.reset()
-            SetupPinUiState.Event.Finish -> router.navigateBack()
+            SetupPinUiState.Event.Finish -> LocalBackDispatcher.onBackPressed()
             SetupPinUiState.Event.NotifyInvalidPin -> vibrateInvalidPin(LocalContext.current)
         }
 
@@ -83,11 +80,11 @@ internal fun SetupPinScreen(
         }
 
         if (showPinOptionsDialog) {
-            ListDialog(
-                items = PinDigits.values().map { stringResource(id = it.label) },
-                selected = stringResource(id = uiState.digits.label),
-                onDismiss = { showPinOptionsDialog = false },
-                onSelected = { index, _ ->
+            ListRadioDialog(
+                options = PinDigits.values().map { stringResource(id = it.label) },
+                selectedOption = stringResource(id = uiState.digits.label),
+                onDismissRequest = { showPinOptionsDialog = false },
+                onOptionSelected = { index, _ ->
                     currentPinState.reset()
                     setupViewModel.pinDigitsChanged(PinDigits.values()[index])
                 }

@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
@@ -63,7 +62,7 @@ fun ServicesGroup(
                 .fillMaxWidth()
                 .height(48.dp)
                 .background(TwTheme.color.background)
-                .clickable { onClick() },
+                .clickable(enabled = editMode.not()) { onClick() },
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Box(modifier = Modifier.width(64.dp)) {
@@ -127,7 +126,7 @@ fun ServicesGroup(
                         )
                     }
                 }
-            } else {
+            } else if (editMode.not()) {
                 TwIconButton(
                     painter = if (expanded) {
                         TwIcons.ChevronUp

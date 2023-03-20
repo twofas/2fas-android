@@ -21,7 +21,7 @@ dependencies {
     implementation(project(":persistence"))
     implementation(project(":push"))
     implementation(project(":resources"))
-    implementation(project(":navigation"))
+    
     implementation(project(":services:domain"))
     implementation(project(":serialization"))
     implementation(project(":time:domain"))

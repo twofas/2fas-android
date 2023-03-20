@@ -1,24 +1,157 @@
 package com.twofasapp.ui.main
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.InstallStateUpdatedListener
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
+import com.google.android.play.core.install.model.UpdateAvailability
+import com.twofasapp.base.AuthTracker
+import com.twofasapp.base.lifecycle.AuthAware
+import com.twofasapp.base.lifecycle.AuthLifecycle
+import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.theme.ThemeState
-import com.twofasapp.prefs.usecase.AppThemePreference
+import com.twofasapp.extensions.doNothing
+import com.twofasapp.extensions.toastLong
+import com.twofasapp.resources.R
+import com.twofasapp.start.domain.DeeplinkHandler
+import com.twofasapp.start.domain.work.OnAppUpdatedWorkDispatcher
+import com.twofasapp.time.domain.work.SyncTimeWorkDispatcher
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AuthAware {
+
+    companion object {
+        private const val UPDATE_REQUEST_CODE = 43513
+    }
+
     private val settingsRepository: SettingsRepository by inject()
+    private val sessionRepository: SessionRepository by inject()
+    private val servicesRepository: ServicesRepository by inject()
+    private val onAppUpdatedWorkDispatcher: OnAppUpdatedWorkDispatcher by inject()
+    private val syncTimeWorkDispatcher: SyncTimeWorkDispatcher by inject()
+    private val deeplinkHandler: DeeplinkHandler by inject()
+    private val authTracker: AuthTracker by inject()
+
+    private val appUpdateManager by lazy { AppUpdateManagerFactory.create(this) }
+    private val appUpdateListener: InstallStateUpdatedListener by lazy {
+        InstallStateUpdatedListener { state ->
+            if (state.installStatus() == InstallStatus.DOWNLOADED) {
+                showSnackbarForCompleteUpdate()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
-
         super.onCreate(savedInstanceState)
+
         installSplashScreen()
 
         setContent { MainScreen() }
+
+        authTracker.onSplashScreen()
+        onAppUpdatedWorkDispatcher.dispatch()
+        syncTimeWorkDispatcher.dispatch()
+
+        attachAuthLifecycleObserver()
+    }
+
+    override fun onAuthenticated() {
+        checkAppVersionUpdate()
+        intent?.data?.let {
+            deeplinkHandler.setQueuedDeeplink(incomingData = it.toString())
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        servicesRepository.setTickerEnabled(true)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        servicesRepository.setTickerEnabled(false)
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        intent?.data?.let {
+            deeplinkHandler.setQueuedDeeplink(incomingData = it.toString())
+        }
+    }
+
+    private fun attachAuthLifecycleObserver() {
+        lifecycle.addObserver(
+            AuthLifecycle(
+                authTracker = get(),
+                navigator = get { parametersOf(this) },
+                authAware = this as? AuthAware
+            )
+        )
+    }
+
+    private fun showSnackbarForCompleteUpdate() {
+        try {
+            Snackbar.make(
+                findViewById(R.id.coordinator),
+                "An update has just been downloaded.",
+                Snackbar.LENGTH_INDEFINITE
+            ).apply {
+                setAction("RESTART") {
+                    appUpdateManager.unregisterListener(appUpdateListener)
+                    appUpdateManager.completeUpdate()
+                }
+                show()
+            }
+
+        } catch (e: Exception) {
+            doNothing()
+        }
+    }
+
+    private fun checkAppVersionUpdate() {
+        appUpdateManager.appUpdateInfo
+            .addOnSuccessListener { appUpdateInfo ->
+                if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                    showSnackbarForCompleteUpdate()
+                }
+
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)
+                    && appUpdateInfo.clientVersionStalenessDays() == null
+                ) {
+                    if (sessionRepository.showAppUpdate()) {
+                        sessionRepository.setAppUpdateDisplayed()
+                        appUpdateManager.registerListener(appUpdateListener)
+                        appUpdateManager.startUpdateFlowForResult(
+                            appUpdateInfo,
+                            AppUpdateType.FLEXIBLE,
+                            this,
+                            UPDATE_REQUEST_CODE
+                        )
+                    }
+                }
+            }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != RESULT_OK) return
+
+        if (requestCode == UPDATE_REQUEST_CODE) {
+            toastLong("Updating. Please wait...")
+            return
+        }
     }
 }

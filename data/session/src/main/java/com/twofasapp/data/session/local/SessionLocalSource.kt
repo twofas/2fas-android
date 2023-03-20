@@ -17,7 +17,7 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
     }
 
     fun isOnboardingDisplayed(): Boolean {
-        return preferences.getBoolean(KeyShowOnboardWarning)?.not() ?: true
+        return preferences.getBoolean(KeyShowOnboardWarning)?.not() ?: false
     }
 
     fun setOnboardingDisplayed(isDisplayed: Boolean) {

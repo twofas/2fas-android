@@ -5,7 +5,6 @@ import com.twofasapp.browserextension.domain.DeletePairedBrowserCase
 import com.twofasapp.browserextension.domain.DenyLoginRequestCase
 import com.twofasapp.browserextension.domain.EncryptCodeCase
 import com.twofasapp.browserextension.domain.FetchPairedBrowsersCase
-import com.twofasapp.browserextension.domain.FetchTokenRequestsCase
 import com.twofasapp.browserextension.domain.ObserveMobileDeviceCase
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
 import com.twofasapp.browserextension.domain.PairBrowserCase
@@ -36,7 +35,6 @@ class BrowserExtensionModule : KoinModule {
         singleOf(::UpdateMobileDeviceCase)
         singleOf(::ObservePairedBrowsersCase)
         singleOf(::FetchPairedBrowsersCase)
-        singleOf(::FetchTokenRequestsCase)
         singleOf(::ApproveLoginRequestCase)
         singleOf(::DenyLoginRequestCase)
         singleOf(::EncryptCodeCase)

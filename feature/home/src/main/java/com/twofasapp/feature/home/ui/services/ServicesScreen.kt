@@ -1,9 +1,10 @@
 package com.twofasapp.feature.home.ui.services
 
+import android.Manifest
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.EaseOut
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -28,34 +29,36 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.ModalBottomSheet
+import com.twofasapp.designsystem.common.RequestPermission
+import com.twofasapp.designsystem.common.TwEmptyScreen
+import com.twofasapp.designsystem.common.TwOutlinedButton
 import com.twofasapp.designsystem.common.isScrollingUp
 import com.twofasapp.designsystem.dialog.InputDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.designsystem.group.ServicesGroup
-import com.twofasapp.designsystem.ktx.copyToClipboard
 import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.lazy.listItem
 import com.twofasapp.designsystem.service.DsService
 import com.twofasapp.designsystem.service.ServiceStyle
+import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.feature.home.ui.services.component.ServicesAppBar
-import com.twofasapp.feature.home.ui.services.component.ServicesEmpty
-import com.twofasapp.feature.home.ui.services.component.ServicesEmptySearch
 import com.twofasapp.feature.home.ui.services.component.ServicesFab
 import com.twofasapp.feature.home.ui.services.component.ServicesProgress
 import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
@@ -99,7 +102,8 @@ internal fun ServicesRoute(
         onSearchQueryChange = { viewModel.search(it) },
         onSearchFocusChange = { viewModel.searchFocused(it) },
         onOpenBackupClick = { listener.openBackup(activity) },
-        onDismissSyncReminderClick = { viewModel.dismissSyncReminder() }
+        onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
+        onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
     )
 }
 
@@ -119,18 +123,20 @@ private fun ServicesScreen(
     onMoveDownGroup: (String) -> Unit = {},
     onEditGroup: (String, String) -> Unit = { _, _ -> },
     onDeleteGroup: (String) -> Unit = {},
-    onSwapServices: (Long, Long) -> Unit = { _, _ -> },
+    onSwapServices: (Int, Int) -> Unit = { _, _ -> },
     onSortChange: (Int) -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
     onOpenBackupClick: () -> Unit = {},
     onDismissSyncReminderClick: () -> Unit = {},
+    onIncrementHotpCounterClick: (Service) -> Unit = {},
 ) {
 
     val focusRequester = remember { FocusRequester() }
     var showAddGroupDialog by remember { mutableStateOf(false) }
     var showEditGroupDialog by remember { mutableStateOf(false) }
     var showSortDialog by remember { mutableStateOf(false) }
+    var askForPermission by remember { mutableStateOf(false) }
     var clickedGroup by remember { mutableStateOf<Group?>(null) }
     val topAppBarState = rememberTopAppBarState()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
@@ -142,8 +148,10 @@ private fun ServicesScreen(
     val data = remember { mutableStateOf(List(100) { "Item $it" }) }
     val listState = rememberLazyListState()
     val reorderableState = rememberReorderableLazyListState(listState = listState, onMove = { from, to ->
-        println("order: $from -> $to")
-        onSwapServices((from.key as String).split(":")[1].toLong(), (to.key as String).split(":")[1].toLong())
+        onSwapServices(from.index, to.index)
+
+        println("Order: From: $from -> To: $to")
+//        onSwapServices((from.key as String).split(":")[1].toLong(), (to.key as String).split(":")[1].toLong())
 //        println("order: ${listState.layoutInfo.visibleItemsInfo.map { it.key }}")
 //        data.value = data.value.toMutableList().apply {
 //            add(to.index, removeAt(from.index))
@@ -155,7 +163,7 @@ private fun ServicesScreen(
     } else {
         TwTheme.color.serviceBackgroundWithGroups
     }
-    val serviceContainerColorBlink = TwTheme.color.surfaceVariant
+    val serviceContainerColorBlink = TwTheme.color.primary.copy(alpha = 0.2f)
     val serviceContainerColorBlinking = remember { Animatable(serviceContainerColor) }
 
     var recentlyAddedService by remember { mutableStateOf<Long?>(null) }
@@ -202,10 +210,8 @@ private fun ServicesScreen(
                     listState.animateScrollToItem(uiState.services.indexOfFirst { it.id == id })
                     recentlyAddedService = id
 
-                    repeat(3) {
-                        serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(150))
-                        serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(150))
-                    }
+                    serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(0))
+                    serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(1500, easing = EaseOut))
 
                     recentlyAddedService = null
                 }
@@ -217,31 +223,37 @@ private fun ServicesScreen(
                 is ModalType.AddService ->
                     AddServiceModal(
                         onAddManuallyClick = {
-                            listener.openAddManuallyService(activity)
-                            scope.launch { modalState.hide() }
+                            scope.launch {
+                                modalState.hide()
+                                listener.openAddManuallyService(activity)
+                            }
                         },
                         onScanQrClick = {
-                            listener.openAddQrService(activity)
-                            scope.launch { modalState.hide() }
+                            scope.launch {
+                                modalState.hide()
+                                askForPermission = true
+                            }
                         }
                     )
 
                 is ModalType.FocusService -> {
                     val id = (modalType as ModalType.FocusService).id
-                    uiState.getService(id)?.asState()?.let {
+                    val service = uiState.getService(id)
+                    service?.asState()?.let {
                         FocusServiceModal(
                             serviceState = it,
                             showNextCode = uiState.appSettings.showNextCode,
                             onEditClick = {
-                                scope.launch { modalState.hide() }
-                                listener.openService(activity, (modalType as ModalType.FocusService).id)
+                                scope.launch {
+                                    modalState.hide()
+                                    listener.openService(activity, (modalType as ModalType.FocusService).id)
+                                }
                             },
                             onCopyClick = {
-                                scope.launch { modalState.hide() }
-                                activity.copyToClipboard(
-                                    text = uiState.getService(id)?.code?.current.toString(),
-                                    isSensitive = true
-                                )
+                                it.copyToClipboard(activity, uiState.appSettings.showNextCode)
+                            },
+                            onIncrementCounterClick = {
+                                onIncrementHotpCounterClick(service)
                             }
                         )
                     }
@@ -299,11 +311,18 @@ private fun ServicesScreen(
 
                 if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
                     listItem(ServicesListItem.Empty) {
-                        ServicesEmpty(
+                        TwEmptyScreen(
+                            body = TwLocale.strings.servicesEmptyBody,
+                            image = painterResource(id = R.drawable.img_services_empty),
+                            additionalContent = {
+                                TwOutlinedButton(
+                                    text = TwLocale.strings.servicesEmptyImportCta,
+                                    onClick = onExternalImportClick,
+                                )
+                            },
                             modifier = Modifier
                                 .fillParentMaxSize()
-                                .animateItemPlacement(),
-                            onExternalImportClick = onExternalImportClick
+                                .animateItemPlacement()
                         )
                     }
 
@@ -312,7 +331,10 @@ private fun ServicesScreen(
 
                 if (uiState.totalServices > 0 && uiState.totalGroups == 1 && uiState.services.isEmpty()) {
                     listItem(ServicesListItem.EmptySearch) {
-                        ServicesEmptySearch(
+                        TwEmptyScreen(
+                            title = TwLocale.strings.servicesEmptySearch,
+                            body = TwLocale.strings.servicesEmptySearchBody,
+                            image = painterResource(id = R.drawable.img_services_empty_search),
                             modifier = Modifier
                                 .fillParentMaxSize()
                                 .animateItemPlacement(),
@@ -371,7 +393,7 @@ private fun ServicesScreen(
                         }
                     }
 
-                    if (group.isExpanded) {
+                    if (group.isExpanded || uiState.isInEditMode) {
                         uiState.services.filter { it.groupId == group.id }.forEach { service ->
                             listItem(ServicesListItem.Service(service.id)) {
 
@@ -380,12 +402,12 @@ private fun ServicesScreen(
                                     key = ServicesListItem.Service(service.id).key,
                                     modifier = Modifier
                                         .animateItemPlacement()
-                                        .animateContentSize(),
+                                        .animateContentSize()
+                                        ,
                                 ) { isDragging ->
-                                    val elevation = animateDpAsState(if (isDragging) 16.dp else 0.dp)
-
+                                    val state = service.asState()
                                     DsService(
-                                        state = service.asState(),
+                                        state = state,
                                         style = when (uiState.appSettings.servicesStyle) {
                                             ServicesStyle.Default -> ServiceStyle.Default
                                             ServicesStyle.Compact -> ServiceStyle.Compact
@@ -397,16 +419,21 @@ private fun ServicesScreen(
                                         } else {
                                             serviceContainerColor
                                         },
-                                        modifier = Modifier.shadow(elevation.value),
+                                        modifier = Modifier,
                                         dragHandleVisible = uiState.appSettings.servicesSort == ServicesSort.Manual,
                                         dragModifier = Modifier.detectReorder(state = reorderableState),
                                         onClick = {
-                                            modalType = ModalType.FocusService(service.id, false)
-                                            scope.launch { modalState.show() }
+                                            scope.launch {
+                                                modalType = ModalType.FocusService(service.id, false)
+                                                modalState.show()
+                                            }
                                         },
                                         onLongClick = {
-                                            activity.copyToClipboard(service.code?.current.toString(), isSensitive = true)
+                                            state.copyToClipboard(activity, uiState.appSettings.showNextCode)
                                         },
+                                        onIncrementCounterClick = {
+                                            onIncrementHotpCounterClick(service)
+                                        }
                                     )
                                 }
                             }
@@ -459,6 +486,19 @@ private fun ServicesScreen(
                     ServicesSort.Manual -> 1
                 },
                 onOptionSelected = { index, _ -> onSortChange(index) }
+            )
+        }
+
+        if (askForPermission) {
+            RequestPermission(
+                permission = Manifest.permission.CAMERA,
+                onGranted = {
+                    askForPermission = false
+                    listener.openAddQrService(activity)
+                },
+                onDismissRequest = { askForPermission = false },
+                rationaleTitle = TwLocale.strings.permissionCameraTitle,
+                rationaleText = TwLocale.strings.permissionCameraBody,
             )
         }
     }

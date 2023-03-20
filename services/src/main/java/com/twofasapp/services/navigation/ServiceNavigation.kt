@@ -1,27 +1,26 @@
 package com.twofasapp.services.navigation
 
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavType
+import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.twofasapp.common.navigation.NavGraph
-import com.twofasapp.common.navigation.NavNode
+import com.twofasapp.services.ui.ServiceScreenRoute
 
 object ServiceGraph : NavGraph {
-    override val route: String = "service"
+    override val route: String = "service/{${ServiceNavArg.ServiceId.name}}"
 }
 
-//internal object NavArg {
-//    val ExtensionId = navArgument("id") { type = NavType.StringType }
-//}
+object ServiceNavArg {
+    val ServiceId = navArgument("id") {
+        type = NavType.LongType
+        defaultValue = 0L
+    }
+}
 
-sealed class ServiceNode(override val path: String) : NavNode {
-    override val graph: NavGraph = ServiceGraph
-
-    object Main : ServiceNode("main")
-    object DomainAssignment : ServiceNode("domain_assignment")
-    object AdvancedSettings : ServiceNode("advanced_settings")
-    object ChangeBrand : ServiceNode("change_brand")
-    object ChangeLabel : ServiceNode("change_label")
-    object RequestIcon : ServiceNode("request_icon")
-    object Delete : ServiceNode("delete_service")
-
-//    object PairingProgress : Node("pairing/progress?extensionId={${ExtensionId.name}}")
-//    object BrowserDetails : Node("details/{${ExtensionId.name}}")
+fun NavGraphBuilder.serviceNavigation(navController: NavController) {
+    composable(ServiceGraph.route, arguments = listOf(ServiceNavArg.ServiceId)) {
+        ServiceScreenRoute(navController)
+    }
 }

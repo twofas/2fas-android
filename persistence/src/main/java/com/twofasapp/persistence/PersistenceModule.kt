@@ -32,6 +32,7 @@ class PersistenceModule : KoinModule {
                 MIGRATION_5_6,
                 MIGRATION_6_7,
                 MIGRATION_9_10,
+                MIGRATION_10_11,
             )
 
             if (get<AppBuild>().isDebuggable.not()) {

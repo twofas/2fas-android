@@ -55,6 +55,8 @@ internal class ServicesViewModel(
                 val showSyncReminder = result.appSettings.showBackupNotice && result.showBackupReminder && result.backupEnabled.not()
                 val showSyncNoticeBar = result.appSettings.showBackupNotice && showSyncReminder.not() && result.backupEnabled.not()
 
+//                servicesRepository.setTickerEnabled(result.isInEditMode.not())
+
                 uiState.update { state ->
                     state.copy(
                         groups = if (result.searchQuery.isEmpty()) {
@@ -76,7 +78,24 @@ internal class ServicesViewModel(
                         totalServices = result.services.size,
                         isLoading = false,
                         isInEditMode = result.isInEditMode,
-                        appSettings = result.appSettings
+                        appSettings = result.appSettings,
+                        items = buildList {
+                            result.groups.forEach { group ->
+                                if (showSyncNoticeBar) {
+                                    add(ServicesListItem.SyncNoticeBar)
+                                }
+
+                                if (showSyncReminder) {
+                                    add(ServicesListItem.SyncReminder)
+                                }
+
+                                add(ServicesListItem.Group(group.id))
+
+                                result.services.filter { it.groupId == group.id }.forEach { service ->
+                                    add(ServicesListItem.Service(service.id))
+                                }
+                            }
+                        }
                     )
                 }
             }
@@ -95,10 +114,6 @@ internal class ServicesViewModel(
 
     fun toggleAddMenu() {
         uiState.update { it.copy(events = it.events.plus(ServicesStateEvent.ShowAddServiceModal)) }
-    }
-
-    fun publishEvent(event: ServicesStateEvent) {
-        uiState.update { it.copy(events = it.events.plus(event)) }
     }
 
     fun consumeEvent(event: ServicesStateEvent) {
@@ -134,8 +149,32 @@ internal class ServicesViewModel(
         launchScoped { groupsRepository.moveDownGroup(id) }
     }
 
-    fun swapServices(from: Long, to: Long) {
-        launchScoped { servicesRepository.swapServices(from, to) }
+    fun swapServices(from: Int, to: Int) {
+        var items = uiState.value.items.toMutableList()
+        val fromItem = items[from]
+        val toItem = items[to]
+
+        if (fromItem is ServicesListItem.Service && toItem is ServicesListItem.Service) {
+            // Swap items
+            items = items.apply { add(to, removeAt(from)) }
+
+            servicesRepository.updateServicesOrder(
+                ids = items.filterIsInstance<ServicesListItem.Service>().map { it.id }
+            )
+        }
+
+        if (fromItem is ServicesListItem.Service && toItem is ServicesListItem.Group) {
+            val groupId = if (from < to) {
+                toItem.id
+            } else {
+                items.subList(0, to)
+                    .filterIsInstance<ServicesListItem.Group>()
+                    .asReversed()
+                    .firstOrNull()?.id
+            }
+
+            launchScoped { servicesRepository.setServiceGroup(fromItem.id, groupId) }
+        }
     }
 
     fun updateSort(index: Int) {
@@ -157,6 +196,14 @@ internal class ServicesViewModel(
         launchScoped {
             sessionRepository.resetBackupReminder()
         }
+    }
+
+    fun incrementHotpCounter(service: Service) {
+        launchScoped { servicesRepository.incrementHotpCounter(service) }
+    }
+
+    private fun publishEvent(event: ServicesStateEvent) {
+        uiState.update { it.copy(events = it.events.plus(event)) }
     }
 
     private fun Service.isMatchingQuery(query: String): Boolean {

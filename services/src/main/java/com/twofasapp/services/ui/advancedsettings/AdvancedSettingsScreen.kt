@@ -27,7 +27,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun AdvancedSettingsScreen(
-    viewModel: ServiceViewModel = koinViewModel()
+    viewModel: ServiceViewModel
 ) {
 
     val service = viewModel.uiState.collectAsState().value.service

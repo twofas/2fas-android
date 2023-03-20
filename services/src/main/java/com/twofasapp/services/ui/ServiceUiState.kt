@@ -1,7 +1,6 @@
 package com.twofasapp.services.ui
 
 import com.twofasapp.data.services.domain.Group
-import com.twofasapp.prefs.model.Groups
 import com.twofasapp.services.domain.model.Service
 
 internal data class ServiceUiState(
@@ -10,7 +9,6 @@ internal data class ServiceUiState(
     val showServiceExistsDialog: Boolean = false,
     val showInsertErrorDialog: Boolean = false,
     val finish: Boolean = false,
-    val finishWithResult: Boolean = false,
     val hasLock: Boolean = false,
     val isAuthenticated: Boolean = false,
     val isSecretVisible: Boolean = false,
@@ -22,3 +20,7 @@ internal data class ServiceUiState(
     val isInputInfoValid: Boolean = true,
     val hasSavedLabel: Boolean = false,
 )
+
+internal sealed interface ServiceUiEvent {
+    object Finish : ServiceUiEvent
+}

@@ -1,9 +1,11 @@
 package com.twofasapp.data.session
 
 import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.session.local.SessionLocalSource
 import com.twofasapp.prefs.model.RemoteBackupStatus
+import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -12,9 +14,11 @@ import java.time.Duration
 
 internal class SessionRepositoryImpl(
     private val dispatchers: Dispatchers,
+    private val appBuild: AppBuild,
     private val local: SessionLocalSource,
     private val timeProvider: TimeProvider,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
+    private val appUpdateLastCheckVersionPreference: AppUpdateLastCheckVersionPreference
 ) : SessionRepository {
 
     override suspend fun isOnboardingDisplayed(): Boolean {
@@ -25,6 +29,14 @@ internal class SessionRepositoryImpl(
 
     override suspend fun showBackupReminder(): Boolean {
         return true
+    }
+
+    override fun showAppUpdate(): Boolean {
+        return appBuild.versionCode.toLong() != appUpdateLastCheckVersionPreference.get()
+    }
+
+    override fun setAppUpdateDisplayed() {
+        appUpdateLastCheckVersionPreference.put(appBuild.versionCode.toLong())
     }
 
     override suspend fun setOnboardingDisplayed(isDisplayed: Boolean) {

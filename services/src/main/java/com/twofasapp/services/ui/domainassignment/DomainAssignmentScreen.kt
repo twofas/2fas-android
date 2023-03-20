@@ -25,12 +25,11 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.ServiceViewModel
-import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun DomainAssignmentScreen(
-    viewModel: ServiceViewModel = getViewModel(),
+    viewModel: ServiceViewModel,
 ) {
 
     val service = viewModel.uiState.collectAsState().value.service

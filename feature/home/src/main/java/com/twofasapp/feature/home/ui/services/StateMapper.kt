@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.service.ServiceAuthType
 import com.twofasapp.designsystem.service.ServiceImageType
 import com.twofasapp.designsystem.service.ServiceState
 
@@ -16,9 +17,15 @@ fun Service.asState(): ServiceState {
         nextCode = code?.next.orEmpty(),
         timer = code?.timer ?: 0,
         progress = code?.progress ?: 0f,
+        hotpCounter = hotpCounter,
+        hotpCounterEnabled = if (hotpCounterTimestamp == null) true else hotpCounterTimestamp!! + 5000L < System.currentTimeMillis(),
         imageType = when (imageType) {
             Service.ImageType.IconCollection -> ServiceImageType.Icon
             Service.ImageType.Label -> ServiceImageType.Label
+        },
+        authType = when (authType) {
+            Service.AuthType.TOTP -> ServiceAuthType.Totp
+            Service.AuthType.HOTP -> ServiceAuthType.Hotp
         },
         iconLight = iconLight,
         iconDark = iconDark,

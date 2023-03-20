@@ -14,14 +14,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.design.compose.ButtonHeight
@@ -30,19 +30,29 @@ import com.twofasapp.design.compose.ButtonTextColor
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
-import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.resources.R
+import com.twofasapp.services.ui.ServiceUiEvent
 import com.twofasapp.services.ui.ServiceViewModel
-import org.koin.androidx.compose.getViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 internal fun DeleteServiceScreen(
-    viewModel: ServiceViewModel = getViewModel(),
+    viewModel: ServiceViewModel,
 ) {
 
     val service = viewModel.uiState.collectAsState().value.service
-    val activity = LocalContext.currentActivity
     val backDispatcher = LocalBackDispatcher
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(Unit) {
+        scope.launch {
+            viewModel.events.collect {
+                when (it) {
+                    ServiceUiEvent.Finish -> scope.launch { backDispatcher.onBackPressed() }
+                }
+            }
+        }
+    }
 
     Scaffold(
         topBar = { TwTopAppBar(titleText = "") }
@@ -95,10 +105,7 @@ internal fun DeleteServiceScreen(
             }
 
             Button(
-                onClick = {
-                    viewModel.delete()
-                    activity.finish()
-                },
+                onClick = { viewModel.delete() },
                 shape = ButtonShape(),
                 modifier = Modifier.height(ButtonHeight())
 
@@ -117,10 +124,4 @@ internal fun DeleteServiceScreen(
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun DeleteServiceScreenPreview() {
-    DeleteServiceScreen()
 }

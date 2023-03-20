@@ -11,17 +11,18 @@ android {
 dependencies {
     implementation(project(":base"))
     implementation(project(":core:di"))
+    implementation(project(":core:common"))
+    implementation(project(":core:locale"))
+    implementation(project(":core:designsystem"))
     implementation(project(":data:session"))
     implementation(project(":resources"))
     implementation(project(":extensions"))
     implementation(project(":design"))
     implementation(project(":prefs"))
-    implementation(project(":navigation"))
+    
     implementation(project(":featuretoggle"))
     implementation(project(":security:domain"))
     implementation(project(":time:domain"))
-
-    implementation(project(":core:designsystem"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

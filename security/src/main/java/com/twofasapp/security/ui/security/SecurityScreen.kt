@@ -3,8 +3,8 @@ package com.twofasapp.security.ui.security
 import android.app.Activity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,20 +27,21 @@ import com.twofasapp.design.compose.SwitchEntry
 import com.twofasapp.design.compose.dialogs.ListDialog
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.navigation.SecurityDirections
-import com.twofasapp.navigation.SecurityRouter
+import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.domain.model.PinTimeout
 import com.twofasapp.security.domain.model.PinTrials
 import com.twofasapp.security.ui.biometric.BiometricDialog
-import org.koin.androidx.compose.get
 import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun SecurityScreen(
-    viewModel: SecurityViewModel = getViewModel(),
-    router: SecurityRouter = get(),
+    viewModel: SecurityViewModel = koinViewModel(),
+    openSetupPin: () -> Unit,
+    openDisablePin: () -> Unit,
+    openChangePin: () -> Unit,
 ) {
     val uiState = viewModel.uiState.collectAsState().value
     val activity = (LocalContext.current as? Activity)
@@ -61,7 +62,7 @@ internal fun SecurityScreen(
                         title = stringResource(id = R.string.settings__pin_code),
                         icon = painterResource(id = R.drawable.ic_pin_code),
                         isChecked = false,
-                        switch = { router.navigate(SecurityDirections.SetupPin) }
+                        switch = { openSetupPin() }
                     )
                 }
 
@@ -95,7 +96,7 @@ internal fun SecurityScreen(
                         title = stringResource(id = R.string.settings__pin_code),
                         icon = painterResource(id = R.drawable.ic_pin_code),
                         isChecked = true,
-                        switch = { router.navigate(SecurityDirections.DisablePin) }
+                        switch = { openDisablePin() }
                     )
                 }
 
@@ -103,7 +104,7 @@ internal fun SecurityScreen(
                     SimpleEntry(
                         title = stringResource(id = R.string.security__change_pin),
                         icon = painterResource(id = R.drawable.ic_change_pin_old),
-                        click = { router.navigate(SecurityDirections.ChangePin) }
+                        click = { openChangePin() }
                     )
                 }
 
@@ -174,26 +175,26 @@ internal fun SecurityScreen(
         }
 
         if (showTrailsDialog) {
-            ListDialog(
-                items = PinTrials.values().map {
+            ListRadioDialog(
+                options = PinTrials.values().map {
                     if (it == PinTrials.NoLimit) {
                         stringResource(id = R.string.settings__no_limit)
                     } else {
                         it.label
                     }
                 },
-                selected = if (uiState.pinTrials == PinTrials.NoLimit) stringResource(id = R.string.settings__no_limit) else uiState.pinTrials.label,
-                onDismiss = { showTrailsDialog = false },
-                onSelected = { index, _ -> viewModel.updatePinTrails(PinTrials.values()[index]) }
+                selectedOption = if (uiState.pinTrials == PinTrials.NoLimit) stringResource(id = R.string.settings__no_limit) else uiState.pinTrials.label,
+                onDismissRequest = { showTrailsDialog = false },
+                onOptionSelected = { index, _ -> viewModel.updatePinTrails(PinTrials.values()[index]) }
             )
         }
 
         if (showTimeoutDialog) {
-            ListDialog(
-                items = PinTimeout.values().map { stringResource(id = it.label) },
-                selected = stringResource(id = uiState.pinTimeout.label),
-                onDismiss = { showTimeoutDialog = false },
-                onSelected = { index, _ -> viewModel.updatePinTimeout(PinTimeout.values()[index]) }
+            ListRadioDialog(
+                options = PinTimeout.values().map { stringResource(id = it.label) },
+                selectedOption = stringResource(id = uiState.pinTimeout.label),
+                onDismissRequest = { showTimeoutDialog = false },
+                onOptionSelected = { index, _ -> viewModel.updatePinTimeout(PinTimeout.values()[index]) }
             )
         }
 

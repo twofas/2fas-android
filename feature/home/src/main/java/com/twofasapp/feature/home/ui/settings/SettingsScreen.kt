@@ -104,7 +104,7 @@ private fun SettingsScreen(
             item { SettingsDivider() }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsDonate, icon = TwIcons.Favorite) {
+                SettingsLink(title = TwLocale.strings.settingsDonate, icon = TwIcons.Favorite, external = true) {
                     uriHandler.openUri(TwLocale.links.donate)
                 }
             }

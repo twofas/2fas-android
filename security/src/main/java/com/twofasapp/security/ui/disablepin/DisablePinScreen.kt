@@ -11,17 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.navigation.SecurityRouter
+import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
 import com.twofasapp.security.ui.pin.PinScreen
 import com.twofasapp.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.security.ui.pin.vibrateInvalidPin
-import org.koin.androidx.compose.get
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun DisablePinScreen(
-    viewModel: DisablePinViewModel = get(),
-    router: SecurityRouter = get(),
+    viewModel: DisablePinViewModel = koinViewModel(),
 ) {
     val uiState = viewModel.uiState.collectAsState().value
     val currentPinState = rememberCurrentPinState()
@@ -29,7 +28,7 @@ internal fun DisablePinScreen(
     uiState.getMostRecentEvent()?.let {
         when (it) {
             DisablePinUiState.Event.ClearCurrentPin -> currentPinState.reset()
-            DisablePinUiState.Event.Finish -> router.navigateBack()
+            DisablePinUiState.Event.Finish -> LocalBackDispatcher.onBackPressed()
             DisablePinUiState.Event.NotifyInvalidPin -> vibrateInvalidPin(LocalContext.current)
         }
 

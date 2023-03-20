@@ -29,7 +29,7 @@ import com.twofasapp.design.compose.serviceIconBitmap
 import com.twofasapp.design.theme.isNight
 import com.twofasapp.design.theme.parse
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.prefs.model.BackupSyncStatus
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.services.domain.model.Service
 

@@ -40,11 +40,10 @@ import com.twofasapp.resources.R
 import com.twofasapp.services.ui.ServiceViewModel
 import com.twofasapp.services.view.ServiceIcon
 import com.twofasapp.services.view.toColor
-import org.koin.androidx.compose.getViewModel
 
 @Composable
 internal fun ChangeLabelScreen(
-    viewModel: ServiceViewModel = getViewModel(),
+    viewModel: ServiceViewModel,
 ) {
     val service = viewModel.uiState.collectAsState().value.service
     val labelText = remember { mutableStateOf(service.labelText.orEmpty()) }

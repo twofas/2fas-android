@@ -4,6 +4,7 @@ import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.core.analytics.AnalyticsEvent
 import com.twofasapp.core.analytics.AnalyticsParam
 import com.twofasapp.core.analytics.AnalyticsService
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.GenerateTotp
@@ -53,7 +54,7 @@ class AddService(
                 servicesRepository.insertService(
                     params.service.copy(
                         id = 0,
-                        backupSyncStatus = com.twofasapp.prefs.model.BackupSyncStatus.NOT_SYNCED,
+                        backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                         updatedAt = timeProvider.systemCurrentTime(),
                     )
                 )

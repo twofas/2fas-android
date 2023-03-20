@@ -4,6 +4,7 @@ import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
 
@@ -41,10 +42,12 @@ internal fun ServiceEntity.asDomain(): Service {
         link = otpLink,
         issuer = otpIssuer,
         hotpCounter = hotpCounter,
+        hotpCounterTimestamp = hotpCounterTimestamp,
         isDeleted = isDeleted ?: false,
         updatedAt = updatedAt,
         source = source?.let { Service.Source.valueOf(it) } ?: Service.Source.Manual,
         assignedDomains = assignedDomains.orEmpty(),
+        backupSyncStatus = BackupSyncStatus.valueOf(backupSyncStatus)
     )
 }
 
@@ -63,7 +66,7 @@ internal fun Service.asEntity(): ServiceEntity {
         otpDigits = digits,
         otpPeriod = period,
         otpAlgorithm = algorithm?.name,
-        backupSyncStatus = "NOT_SYNCED", // TODO
+        backupSyncStatus = backupSyncStatus.name,
         updatedAt = updatedAt,
         badgeColor = badgeColor?.name,
         selectedImageType = imageType.name,
@@ -73,6 +76,7 @@ internal fun Service.asEntity(): ServiceEntity {
         isDeleted = isDeleted,
         authType = authType.name,
         hotpCounter = hotpCounter,
+        hotpCounterTimestamp = hotpCounterTimestamp,
         assignedDomains = assignedDomains
     )
 }

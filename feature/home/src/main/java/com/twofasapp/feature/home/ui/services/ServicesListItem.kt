@@ -12,5 +12,5 @@ sealed class ServicesListItem(
     object SyncNoticeBar : ServicesListItem("SyncNoticeBar", "SyncNoticeBar")
     object SyncReminder : ServicesListItem("SyncReminder", "SyncReminder")
     data class Service(val id: Long) : ServicesListItem("Service:$id", "Service")
-    data class Group(val id: String? = "Group") : ServicesListItem("Group:$id", "Group")
+    data class Group(val id: String?) : ServicesListItem("Group:${id ?: "Default"}", "Group")
 }

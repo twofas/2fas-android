@@ -14,7 +14,7 @@ dependencies {
     implementation(project(":design"))
     implementation(project(":resources"))
     implementation(project(":extensions"))
-    implementation(project(":navigation"))
+    
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.rxJava)
     implementation(libs.bundles.barcodeScanner)

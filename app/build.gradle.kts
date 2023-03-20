@@ -36,7 +36,7 @@ dependencies {
     implementation(project(":services"))
     implementation(project(":services:domain"))
     implementation(project(":widgets:domain"))
-    implementation(project(":navigation"))
+    
     implementation(project(":backup"))
     implementation(project(":core"))
     implementation(project(":featuretoggle"))

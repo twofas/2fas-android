@@ -10,7 +10,7 @@ import com.twofasapp.entity.SyncBackupResult
 import com.twofasapp.extensions.doNothing
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.prefs.model.BackupSyncStatus
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.Group
 import com.twofasapp.prefs.model.Groups
 import com.twofasapp.prefs.model.RemoteBackup

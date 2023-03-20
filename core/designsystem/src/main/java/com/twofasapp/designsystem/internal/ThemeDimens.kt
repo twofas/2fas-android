@@ -12,4 +12,5 @@ class ThemeDimens {
     val radiusDefault = 12.dp
     val radiusSmall = 8.dp
     val commonContentImageHeight = 120.dp
+    val bottomBarHeight = 80.dp
 }

@@ -11,9 +11,6 @@ import com.twofasapp.features.navigator.ActivityScopedNavigator
 import com.twofasapp.features.services.ServicesContract
 import com.twofasapp.features.services.ServicesFragment
 import com.twofasapp.features.services.ServicesPresenter
-import com.twofasapp.features.services.addedservice.AddedServiceBottomSheet
-import com.twofasapp.features.services.addedservice.AddedServiceContract
-import com.twofasapp.features.services.addedservice.AddedServicePresenter
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.qrscanner.QrScannerContract
 import com.twofasapp.qrscanner.QrScannerPresenter
@@ -50,18 +47,6 @@ val fragmentScopeModule = module {
                 get(),
                 get(),
                 get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
             )
         }
     }
@@ -89,9 +74,6 @@ val fragmentScopeModule = module {
     }
     fragmentScope<com.twofasapp.qrscanner.QrScannerFragment> {
         scopedOf(::QrScannerPresenter) { bind<QrScannerContract.Presenter>() }
-    }
-    bottomSheetScope<AddedServiceBottomSheet> {
-        scopedOf(::AddedServicePresenter) { bind<AddedServiceContract.Presenter>() }
     }
     fragmentScope<BackupSettingsFragment> {
         scopedOf(::BackupSettingsPresenter) { bind<BackupSettingsContract.Presenter>() }

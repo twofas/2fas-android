@@ -16,7 +16,7 @@ class TrashViewModel(
 
     val services: StateFlow<List<Service>> =
         servicesRepository.observeDeletedServices()
-            .map { list -> list.sortedByDescending { it.id } } // TODO: Sort by time
+            .map { list -> list.sortedByDescending { it.updatedAt } }
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000),

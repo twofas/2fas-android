@@ -3,7 +3,7 @@ package com.twofasapp.services.data
 import com.twofasapp.extensions.removeWhiteCharacters
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.data.services.local.ServiceDao
-import com.twofasapp.prefs.model.BackupSyncStatus
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.services.data.converter.toEntity
@@ -139,6 +139,7 @@ internal class ServicesLocalDataImpl(
                 isDeleted = service.isDeleted,
                 authType = service.authType.name,
                 hotpCounter = service.hotpCounter,
+                hotpCounterTimestamp = null,
                 assignedDomains = service.assignedDomains
             )
         )
@@ -181,6 +182,7 @@ internal class ServicesLocalDataImpl(
                     isDeleted = it.isDeleted,
                     authType = it.authType.name,
                     hotpCounter = it.hotpCounter,
+                    hotpCounterTimestamp = null,
                     assignedDomains = it.assignedDomains,
                 )
             }.toTypedArray()

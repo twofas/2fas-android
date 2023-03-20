@@ -23,7 +23,7 @@ dependencies {
     implementation(project(":push"))
     implementation(project(":qrscanner"))
 
-    implementation(project(":navigation"))
+    
     implementation(project(":services:domain"))
     implementation(project(":time:domain"))
     implementation(project(":serialization"))
@@ -33,6 +33,7 @@ dependencies {
     implementation(project(":security:domain"))
     implementation(project(":data:browserext"))
     implementation(project(":data:session"))
+    implementation(project(":data:services"))
     implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.rxJava)
     implementation(libs.bundles.appCompat)

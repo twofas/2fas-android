@@ -5,8 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.twofasapp.common.ktx.clearGraphBackStack
+import com.twofasapp.common.navigation.withArg
 import com.twofasapp.extensions.startActivity
-import com.twofasapp.extensions.startActivityForResult
 import com.twofasapp.feature.about.navigation.AboutGraph
 import com.twofasapp.feature.about.navigation.aboutNavigation
 import com.twofasapp.feature.appsettings.navigation.AppSettingsGraph
@@ -23,8 +23,11 @@ import com.twofasapp.feature.trash.navigation.TrashGraph
 import com.twofasapp.feature.trash.navigation.trashNavigation
 import com.twofasapp.features.addserviceqr.AddServiceQrActivity
 import com.twofasapp.features.backup.BackupActivity
-import com.twofasapp.security.ui.security.SecurityActivity
-import com.twofasapp.services.ui.ServiceActivity
+import com.twofasapp.security.navigation.SecurityGraph
+import com.twofasapp.security.navigation.securityNavigation
+import com.twofasapp.services.navigation.ServiceGraph
+import com.twofasapp.services.navigation.ServiceNavArg
+import com.twofasapp.services.navigation.serviceNavigation
 
 @Composable
 internal fun MainNavHost(
@@ -41,7 +44,7 @@ internal fun MainNavHost(
             navController = navController,
             listener = object : HomeNavigationListener {
                 override fun openAddManuallyService(activity: Activity) {
-                    activity.startActivity<ServiceActivity>()
+                    navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, 0L))
                 }
 
                 override fun openAddQrService(activity: Activity) {
@@ -49,10 +52,7 @@ internal fun MainNavHost(
                 }
 
                 override fun openService(activity: Activity, serviceId: Long) {
-                    activity.startActivityForResult<ServiceActivity>(
-                        ServiceActivity.REQUEST_KEY_ADD_SERVICE,
-                        ServiceActivity.ARG_SERVICE_ID to serviceId,
-                    )
+                    navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, serviceId))
                 }
 
                 override fun openExternalImport() {
@@ -64,7 +64,7 @@ internal fun MainNavHost(
                 }
 
                 override fun openSecurity(activity: Activity) {
-                    activity.startActivity<SecurityActivity>()
+                    navController.navigate(SecurityGraph.route)
                 }
 
                 override fun openBackup(activity: Activity) {
@@ -91,8 +91,10 @@ internal fun MainNavHost(
         )
 
         appSettingsNavigation()
+        serviceNavigation(navController = navController)
         trashNavigation(navController = navController)
         aboutNavigation(navController = navController)
         browserExtNavigation(navController = navController)
+        securityNavigation(navController = navController)
     }
 }

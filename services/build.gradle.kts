@@ -27,7 +27,7 @@ dependencies {
     implementation(project(":services:domain"))
     implementation(project(":widgets:domain"))
     implementation(project(":time:domain"))
-    implementation(project(":navigation"))
+    
     implementation(project(":parsers"))
     implementation(project(":backup:domain"))
     implementation(project(":spanner"))

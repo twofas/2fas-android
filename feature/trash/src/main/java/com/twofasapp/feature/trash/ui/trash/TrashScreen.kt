@@ -1,20 +1,18 @@
 package com.twofasapp.feature.trash.ui.trash
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.services.domain.Service
@@ -22,11 +20,14 @@ import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwDropdownMenu
 import com.twofasapp.designsystem.common.TwDropdownMenuItem
+import com.twofasapp.designsystem.common.TwEmptyScreen
 import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.service.DsServiceSimple
+import com.twofasapp.designsystem.service.ServiceAuthType
 import com.twofasapp.designsystem.service.ServiceImageType
 import com.twofasapp.designsystem.service.ServiceState
-import com.twofasapp.designsystem.service.DsServiceSimple
+import com.twofasapp.feature.trash.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -57,18 +58,11 @@ private fun TrashScreen(
 
             if (services.isEmpty()) {
                 item {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 24.dp)
-                    ) {
-                        Text(
-                            text = TwLocale.strings.trashEmpty,
-                            style = TwTheme.typo.body3,
-                            color = TwTheme.color.onSurfacePrimary,
-                            modifier = Modifier.align(Alignment.Center)
-                        )
-                    }
+                    TwEmptyScreen(
+                        body = TwLocale.strings.trashEmpty,
+                        image = painterResource(id = R.drawable.img_trash),
+                        modifier = Modifier.fillParentMaxSize(),
+                    )
                 }
 
                 return@LazyColumn

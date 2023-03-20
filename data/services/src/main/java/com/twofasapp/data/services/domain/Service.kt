@@ -1,5 +1,7 @@
 package com.twofasapp.data.services.domain
 
+import com.twofasapp.di.BackupSyncStatus
+
 data class Service(
     val id: Long,
     val serviceTypeId: String?,
@@ -13,6 +15,7 @@ data class Service(
     val period: Int?,
     val digits: Int?,
     val hotpCounter: Int? = null,
+    val hotpCounterTimestamp: Long? = null,
     val algorithm: Algorithm?,
     val groupId: String? = null,
     val imageType: ImageType = ImageType.IconCollection,
@@ -27,22 +30,8 @@ data class Service(
     val updatedAt: Long = 0,
     val source: Source,
     val assignedDomains: List<String> = emptyList(),
-
-
-//    val otp: Otp = Otp(),
-
-////
-//    val assignedDomains: List<String> = emptyList(),
-//    val isDeleted: Boolean = false,
-////    val backupSyncStatus: BackupSyncStatus = BackupSyncStatus.NOT_SYNCED,
-//    var updatedAt: Long = 0,
-//    val serviceTypeId: String?,
-//    val source: Source,
-//    val tags: List<String> = emptyList(),
+    val backupSyncStatus: BackupSyncStatus,
 ) {
-
-//
-
     data class Code(
         val current: String,
         val next: String,
@@ -65,34 +54,4 @@ data class Service(
         Orange,
         Yellow;
     }
-//    companion object {
-//        const val DefaultPeriod = 30
-//        const val DefaultDigits = 6
-//        const val DefaultHotpCounter = 1
-//        val DefaultAlgorithm = OtpData.Algorithm.SHA1
-//        val DefaultAuthType = AuthType.TOTP
-//        val DefaultSource = Source.Manual
-//
-////        fun createDefault() = Service(
-////            id = 0,
-////            name = "",
-////            secret = "",
-//////            iconCollectionId = ServiceIcons.defaultCollectionId,
-////            serviceTypeId = null,
-////            source = Source.Manual,
-////        )
-//    }
-
-//    data class Otp(
-//        val link: String? = null,
-//        val label: String = "",
-//        val account: String = "",
-//        val issuer: String? = null,
-//        val digits: Int = DefaultDigits,
-//        val period: Int = DefaultPeriod,
-//        val hotpCounter: Int? = null,
-//        val algorithm: Algorithm = DefaultAlgorithm,
-//    )
-
-
 }

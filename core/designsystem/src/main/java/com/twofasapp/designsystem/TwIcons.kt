@@ -59,4 +59,5 @@ object TwIcons {
     val Search @Composable get() = painterResource(R.drawable.ic_search)
     val Close @Composable get() = painterResource(R.drawable.ic_close)
     val ListStyle @Composable get() = painterResource(R.drawable.ic_list_style)
+    val IncrementHotp @Composable get() = painterResource(R.drawable.ic_increment_hotp)
 }

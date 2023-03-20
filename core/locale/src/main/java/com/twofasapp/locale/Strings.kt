@@ -46,6 +46,8 @@ class Strings(c: Context) {
     val servicesManageList = "Manage list"
     val servicesSortBy = c.getString(R.string.tokens__sort_by)
     val servicesSortByOptions = listOf(c.getString(R.string.tokens__sort_by_a_to_z), c.getString(R.string.tokens__sort_by_manual))
+    val servicesCopyToken = c.getString(R.string.tokens__copied_clipboard)
+    val servicesCopyNextToken = c.getString(R.string.tokens__next_copied_clipboard)
     val groupsAdd = c.getString(R.string.tokens__add_group)
     val groupsEdit = c.getString(R.string.commons__edit)
     val groupsName = c.getString(R.string.tokens__group_name)
@@ -77,6 +79,7 @@ class Strings(c: Context) {
 
     val settingsBackup = c.getString(R.string.backup__2fas_backup)
     val settingsSecurity = c.getString(R.string.settings__security)
+    val settingsSettings = c.getString(R.string.settings__settings)
     val settingsAppearance = "Appearance"
     val settingsExternalImport = c.getString(R.string.settings__external_import)
     val settingsBrowserExt = c.getString(R.string.browser__browser_extension)
@@ -119,7 +122,10 @@ class Strings(c: Context) {
     val disposeConfirm = c.getString(R.string.tokens__i_want_to_delete_this_token)
     val disposeCta = c.getString(R.string.tokens__remove_it_forever)
 
-//    val browserExt = c.getString(R.string.)
+    val permissionCameraTitle = c.getString(R.string.permissions__camera_permission)
+    val permissionCameraBody = c.getString(R.string.permissions__camera_permission_description)
+    val permissionPushTitle = c.getString(R.string.browser__push_notifications_title)
+    val permissionPushBody = c.getString(R.string.browser__push_notifications_content)
 //    val browserExt = c.getString(R.string.)
 //    val browserExt = c.getString(R.string.)
 //    val browserExt = c.getString(R.string.)

@@ -15,9 +15,12 @@ dependencies {
     implementation(project(":core:otp"))
 
     implementation(project(":parsers"))
+    implementation(project(":widgets:domain"))
+    implementation(project(":backup:domain"))
 
     implementation(libs.bundles.room)
     implementation(libs.kotlinCoroutines)
     implementation(libs.kotlinSerialization)
     implementation(libs.timber)
+    implementation(project(mapOf("path" to ":prefs")))
 }

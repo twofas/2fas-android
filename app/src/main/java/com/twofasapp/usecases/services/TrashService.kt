@@ -3,6 +3,7 @@ package com.twofasapp.usecases.services
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.base.usecase.UseCaseParameterized
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.domain.StoreServicesOrder
 import com.twofasapp.services.data.ServicesRepository
@@ -30,7 +31,7 @@ class TrashService(
 
     override fun execute(params: Params, subscribeScheduler: Scheduler, observeScheduler: Scheduler): Completable {
         val newService = params.service.copy(
-            backupSyncStatus = com.twofasapp.prefs.model.BackupSyncStatus.NOT_SYNCED,
+            backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
             updatedAt = timeProvider.systemCurrentTime(),
             isDeleted = true,
         )

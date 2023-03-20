@@ -3,6 +3,7 @@ package com.twofasapp.data.services.local
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.local.model.GroupEntity
 import com.twofasapp.data.services.local.model.GroupsEntity
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -51,7 +52,7 @@ internal class GroupsLocalSource(
                             name = name,
                             isExpanded = true,
                             updatedAt = timeProvider.systemCurrentTime(),
-                            backupSyncStatus = "" // TODO
+                            backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                         )
                     )
                 )
@@ -77,7 +78,11 @@ internal class GroupsLocalSource(
                 local.copy(
                     list = local.list.map { group ->
                         if (group.id == id) {
-                            group.copy(name = name)
+                            group.copy(
+                                name = name,
+                                updatedAt = timeProvider.systemCurrentTime(),
+                                backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                            )
                         } else {
                             group
                         }

@@ -27,6 +27,7 @@ import com.twofasapp.designsystem.service.atoms.ServiceBadge
 import com.twofasapp.designsystem.service.atoms.ServiceCode
 import com.twofasapp.designsystem.service.atoms.ServiceDimens
 import com.twofasapp.designsystem.service.atoms.ServiceDimensDefaults
+import com.twofasapp.designsystem.service.atoms.ServiceHotp
 import com.twofasapp.designsystem.service.atoms.ServiceImage
 import com.twofasapp.designsystem.service.atoms.ServiceInfo
 import com.twofasapp.designsystem.service.atoms.ServiceName
@@ -66,6 +67,7 @@ fun DsService(
     dragModifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
     onLongClick: (() -> Unit)? = null,
+    onIncrementCounterClick: (() -> Unit)? = null,
 ) {
     val textStyles: ServiceTextStyle = when (style) {
         ServiceStyle.Default -> ServiceTextDefaults.default()
@@ -130,11 +132,12 @@ fun DsService(
                         code = state.code,
                         nextCode = state.nextCode,
                         timer = state.timer,
-                        nextCodeVisible = state.timer <= ServiceExpireTransitionThreshold && showNextCode,
+                        nextCodeVisible = state.isNextCodeEnabled(showNextCode),
                         nextCodeGravity = when (style) {
                             ServiceStyle.Default -> NextCodeGravity.Below
                             ServiceStyle.Compact -> NextCodeGravity.End
                         },
+                        animateColor = state.authType == ServiceAuthType.Totp,
                         textStyles = textStyles,
                         modifier = Modifier.fillMaxWidth(),
                     )
@@ -142,13 +145,24 @@ fun DsService(
             }
 
             if (editMode.not()) {
-                ServiceTimer(
-                    timer = state.timer,
-                    progress = state.progress,
-                    textStyles = textStyles,
-                    dimens = dimens,
-                    modifier = Modifier.padding(end = 12.dp)
-                )
+                when (state.authType) {
+                    ServiceAuthType.Totp -> {
+                        ServiceTimer(
+                            timer = state.timer,
+                            progress = state.progress,
+                            textStyles = textStyles,
+                            dimens = dimens,
+                            modifier = Modifier.padding(end = 12.dp)
+                        )
+                    }
+
+                    ServiceAuthType.Hotp -> {
+                        ServiceHotp(
+                            enabled = state.hotpCounterEnabled,
+                            onClick = { onIncrementCounterClick?.invoke() }
+                        )
+                    }
+                }
             }
 
             if (editMode && dragHandleVisible) {
@@ -170,6 +184,13 @@ private fun PreviewDefault() {
 
 @Preview
 @Composable
+private fun PreviewDefaultHotp() {
+    DsService(state = ServicePreview.copy(authType = ServiceAuthType.Hotp))
+}
+
+
+@Preview
+@Composable
 private fun PreviewCompact() {
     DsService(state = ServicePreview, style = ServiceStyle.Compact)
 }
@@ -186,8 +207,10 @@ internal val ServicePreview = ServiceState(
     code = "123456",
     nextCode = "789987",
     timer = 10,
+    hotpCounter = 1,
     progress = .33f,
     imageType = ServiceImageType.Label,
+    authType = ServiceAuthType.Totp,
     iconLight = "",
     iconDark = "",
     labelText = "2F",

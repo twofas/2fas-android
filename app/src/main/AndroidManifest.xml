@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <uses-permission
         android:name="com.google.android.gms.permission.AD_ID"
@@ -27,8 +27,8 @@
         android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
-        android:localeConfig="@xml/locales_config"
         android:label="@string/android__app_name"
+        android:localeConfig="@xml/locales_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.App">
 
@@ -128,11 +128,6 @@
             android:label="Add service by scanning QR Code" />
 
         <activity
-            android:name=".services.ui.ServiceActivity"
-            android:label="Show Service"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
             android:name=".features.backup.BackupActivity"
             android:label="@string/backup__2fas_backup"
             android:windowSoftInputMode="adjustResize" />
@@ -166,10 +161,6 @@
 
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".security.ui.security.SecurityActivity"
-            android:label="Security" />
 
         <activity
             android:name=".widgets.configure.WidgetSettingsActivity"

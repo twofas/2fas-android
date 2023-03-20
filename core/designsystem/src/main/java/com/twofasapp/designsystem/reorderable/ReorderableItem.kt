@@ -86,7 +86,14 @@ fun ReorderableItem(
                 defaultDraggingModifier
             }
         }
-    Box(modifier = draggingModifier.then(modifier)) {// Replace from "modifier.then(draggingModifier)) in order to animateContentSize worked
+
+    // Original
+//    Box(modifier = modifier.then(draggingModifier)) {
+//        content(isDragging)
+//    }
+
+    // Modified in order to animate works
+    Box(modifier = draggingModifier.then(modifier)) {
         content(isDragging)
     }
 }

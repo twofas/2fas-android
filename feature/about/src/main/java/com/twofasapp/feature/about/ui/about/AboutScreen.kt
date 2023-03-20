@@ -53,19 +53,19 @@ private fun AboutScreen(
                 item { SettingsHeader(title = TwLocale.strings.aboutGeneral) }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutWriteReview, icon = TwIcons.Write) {
+                    SettingsLink(title = TwLocale.strings.aboutWriteReview, icon = TwIcons.Write, external = true) {
                         uriHandler.openUri(TwLocale.links.playStore)
                     }
                 }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutPrivacyPolicy, icon = TwIcons.LockOpen) {
+                    SettingsLink(title = TwLocale.strings.aboutPrivacyPolicy, icon = TwIcons.LockOpen, external = true) {
                         uriHandler.openUri(TwLocale.links.privacyPolicy)
                     }
                 }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutTerms, icon = TwIcons.Terms) {
+                    SettingsLink(title = TwLocale.strings.aboutTerms, icon = TwIcons.Terms, external = true) {
                         uriHandler.openUri(TwLocale.links.terms)
                     }
                 }

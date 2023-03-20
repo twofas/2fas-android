@@ -16,12 +16,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwIcon
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -35,6 +37,7 @@ fun SettingsLink(
     textColorSecondary: Color = TwTheme.color.onSurfaceSecondary,
     endContent: (@Composable () -> Unit)? = null,
     showEmptySpaceWhenIconMissing: Boolean = true,
+    external: Boolean = false,
     alignCenterIcon: Boolean = true,
     onClick: (() -> Unit)? = null
 ) {
@@ -75,6 +78,12 @@ fun SettingsLink(
             if (endContent != null) {
                 Spacer(Modifier.width(8.dp))
                 endContent.invoke()
+            } else if (external) {
+                TwIcon(
+                    painter = TwIcons.ExternalLink,
+                    tint = TwTheme.color.iconTint,
+                    modifier = Modifier.size(20.dp).alpha(0.7f)
+                )
             }
         }
 
@@ -138,13 +147,22 @@ private fun Subtitle(
 @Preview
 @Composable
 private fun Preview() {
-    SettingsLink(
-        title = TwLocale.strings.placeholder,
-        icon = TwIcons.Placeholder,
-        endContent = {
-            Text(text = "Test")
-        }
-    )
+    Column {
+
+        SettingsLink(
+            title = TwLocale.strings.placeholder,
+            icon = TwIcons.Placeholder,
+            endContent = {
+                Text(text = "Test")
+            }
+        )
+
+        SettingsLink(
+            title = TwLocale.strings.placeholder,
+            icon = TwIcons.Placeholder,
+            external = true
+        )
+    }
 }
 
 @Preview

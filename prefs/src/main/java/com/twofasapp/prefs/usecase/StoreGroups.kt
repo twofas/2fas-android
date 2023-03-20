@@ -1,6 +1,7 @@
 package com.twofasapp.prefs.usecase
 
-import com.twofasapp.prefs.model.BackupSyncStatus.NOT_SYNCED
+import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.di.BackupSyncStatus.NOT_SYNCED
 import com.twofasapp.time.domain.TimeProvider
 import java.util.*
 
@@ -92,6 +93,6 @@ class StoreGroups(
 
     fun markAllSynced() {
         val groups = all()
-        groupsPreference.put(groups.copy(list = groups.list.map { it.copy(backupSyncStatus = com.twofasapp.prefs.model.BackupSyncStatus.SYNCED) }.toMutableList()))
+        groupsPreference.put(groups.copy(list = groups.list.map { it.copy(backupSyncStatus = BackupSyncStatus.SYNCED) }.toMutableList()))
     }
 }

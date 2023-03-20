@@ -3,7 +3,7 @@ package com.twofasapp.feature.trash.ui.dispose
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.ktx.launchScoped
-import com.twofasapp.common.navigation.errorNavArg
+import com.twofasapp.common.navigation.getOrThrow
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.trash.navigation.NavArg
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +14,7 @@ class DisposeViewModel(
     private val servicesRepository: ServicesRepository,
 ) : ViewModel() {
 
-    private val serviceId: Long = savedStateHandle[NavArg.ServiceId.name] ?: errorNavArg(NavArg.ServiceId)
+    private val serviceId: Long = savedStateHandle.getOrThrow(NavArg.ServiceId.name)
 
     val uiState = MutableStateFlow(DisposeUiState(""))
 

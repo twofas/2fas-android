@@ -1,5 +1,6 @@
 package com.twofasapp.data.services.local.model
 
+import com.twofasapp.di.BackupSyncStatus
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -8,7 +9,7 @@ internal data class GroupEntity(
     val name: String,
     val isExpanded: Boolean = true,
     val updatedAt: Long = 0,
-    val backupSyncStatus: String,
+    val backupSyncStatus: BackupSyncStatus,
 ) {
 
 //    companion object {

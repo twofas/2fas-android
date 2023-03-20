@@ -22,7 +22,7 @@ interface BrowserExtRepository {
 
     suspend fun fetchPairedBrowsers()
 
-    suspend fun fetchTokenRequests(deviceId: String): List<TokenRequest>
+    suspend fun fetchTokenRequests(): List<TokenRequest>
 
     suspend fun acceptLoginRequest(
         deviceId: String,

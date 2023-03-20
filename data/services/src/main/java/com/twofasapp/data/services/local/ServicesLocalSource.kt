@@ -10,6 +10,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -17,7 +18,6 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import timber.log.Timber
-import java.util.Collections
 
 internal class ServicesLocalSource(
     private val json: Json,
@@ -33,6 +33,10 @@ internal class ServicesLocalSource(
         extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST,
     )
+
+    private val servicesOrderFlow: MutableStateFlow<ServicesOrderEntity> by lazy {
+        MutableStateFlow(getOrder())
+    }
 
     private fun log(msg: String) {
         Timber.tag("ServicesDao").i(msg)
@@ -81,30 +85,66 @@ internal class ServicesLocalSource(
         } ?: ServicesOrderEntity()
     }
 
-    fun observeOrder(): Flow<ServicesOrder> {
-        return preferences.observe(KeyOrder, "").map { value ->
-            (value?.let {
-                try {
-                    json.decodeFromString(value)
-                } catch (e: Exception) {
-                    ServicesOrderEntity()
-                }
-            } ?: ServicesOrderEntity()).asDomain()
-        }
+    private fun saveOrder(entity: ServicesOrderEntity) {
+        preferences.putString(KeyOrder, json.encodeToString(entity))
     }
 
-    fun swapServices(from: Long, to: Long) {
-        val local = getOrder()
-        val ids = local.ids.toMutableList()
+    fun observeOrder(): Flow<ServicesOrder> {
+//        return preferences.observe(KeyOrder, "").map { value ->
+//            (value?.let {
+//                try {
+//                    json.decodeFromString(value)
+//                } catch (e: Exception) {
+//                    ServicesOrderEntity()
+//                }
+//            } ?: ServicesOrderEntity()).asDomain()
+//        }
 
-        Collections.swap(ids, ids.indexOf(from), ids.indexOf(to))
+        return servicesOrderFlow.map { it.asDomain() }
+    }
 
-        preferences.putString(KeyOrder, json.encodeToString(local.copy(ids = ids)))
+    fun deleteServiceFromOrder(id: Long) {
+        val newOrder = servicesOrderFlow.value.copy(
+            ids = servicesOrderFlow.value.ids.minus(id)
+        )
+
+        servicesOrderFlow.tryEmit(newOrder)
+        saveOrder(newOrder)
+    }
+
+    fun addServiceToOrder(id: Long) {
+        val newOrder = servicesOrderFlow.value.copy(
+            ids = servicesOrderFlow.value.ids.plus(id)
+        )
+
+        servicesOrderFlow.tryEmit(newOrder)
+        saveOrder(newOrder)
     }
 
     fun pushRecentlyAddedService(id: Long) {
         GlobalScope.launch {
             recentlyAddedServiceFlow.tryEmit(getService(id))
+        }
+    }
+
+    suspend fun incrementHotpCounter(id: Long, counter: Int, timestamp: Long) {
+        dao.update(
+            dao.select(id).copy(hotpCounter = counter, hotpCounterTimestamp = timestamp)
+        )
+    }
+
+    suspend fun setServiceGroup(id: Long, groupId: String?) {
+        dao.update(
+            dao.select(id).copy(groupId = groupId)
+        )
+    }
+
+    fun saveServicesOrder(ids: List<Long>) {
+        val local = servicesOrderFlow.value
+
+        local.copy(ids = ids).let {
+            servicesOrderFlow.tryEmit(it)
+            saveOrder(it)
         }
     }
 //

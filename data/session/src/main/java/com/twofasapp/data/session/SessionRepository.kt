@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.Flow
 interface SessionRepository {
     suspend fun isOnboardingDisplayed(): Boolean
     suspend fun showBackupReminder(): Boolean
+    fun showAppUpdate(): Boolean
+    fun setAppUpdateDisplayed()
     suspend fun setOnboardingDisplayed(isDisplayed: Boolean)
     suspend fun setRateAppDisplayed(isDisplayed: Boolean)
     fun observeShowBackupReminder(): Flow<Boolean>

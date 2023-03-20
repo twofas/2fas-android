@@ -173,11 +173,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.twofasapp.features.main.MainNavigationView
-        android:id="@+id/drawerNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:layout_marginEnd="12dp" />
-
 </com.twofasapp.features.main.EdgeDrawerLayout>

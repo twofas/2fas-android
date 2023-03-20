@@ -22,6 +22,7 @@ internal fun ServiceCode(
     code: String,
     nextCode: String,
     timer: Int,
+    animateColor: Boolean = true,
     modifier: Modifier = Modifier,
     nextCodeVisible: Boolean = false,
     nextCodeGravity: NextCodeGravity = NextCodeGravity.Below,
@@ -37,7 +38,7 @@ internal fun ServiceCode(
                 Text(
                     text = code.formatCode(),
                     style = textStyles.codeTextStyle,
-                    color = color,
+                    color = if (animateColor) color else TwTheme.color.onSurfacePrimary,
                     maxLines = 1,
                     overflow = TextOverflow.Visible,
                 )
@@ -60,7 +61,7 @@ internal fun ServiceCode(
                 Text(
                     text = code.formatCode(),
                     style = textStyles.codeTextStyle,
-                    color = color,
+                    color = if (animateColor) color else TwTheme.color.onSurfacePrimary,
                     maxLines = 1,
                     overflow = TextOverflow.Visible,
                 )

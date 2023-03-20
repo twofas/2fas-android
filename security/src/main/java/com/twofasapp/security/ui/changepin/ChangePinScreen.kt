@@ -11,18 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.navigation.SecurityDirections
-import com.twofasapp.navigation.SecurityRouter
 import com.twofasapp.resources.R
 import com.twofasapp.security.ui.pin.PinScreen
 import com.twofasapp.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.security.ui.pin.vibrateInvalidPin
-import org.koin.androidx.compose.get
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun ChangePinScreen(
-    viewModel: ChangePinViewModel = get(),
-    router: SecurityRouter = get(),
+    viewModel: ChangePinViewModel = koinViewModel(),
+    openSetupPin: () -> Unit,
 ) {
     val uiState = viewModel.uiState.collectAsState().value
     val currentPinState = rememberCurrentPinState()
@@ -30,7 +28,7 @@ internal fun ChangePinScreen(
     uiState.getMostRecentEvent()?.let {
         when (it) {
             ChangePinUiState.Event.ClearCurrentPin -> currentPinState.reset()
-            ChangePinUiState.Event.NavigateToSetup -> router.navigate(SecurityDirections.SetupPin)
+            ChangePinUiState.Event.NavigateToSetup -> openSetupPin()
             ChangePinUiState.Event.NotifyInvalidPin -> vibrateInvalidPin(LocalContext.current)
         }
 

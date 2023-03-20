@@ -23,9 +23,21 @@ class ServiceCodeGenerator(
             null -> OtpData.Algorithm.SHA1
         }
 
-        // TODO: Handle HOTP
-        val currentCounter = timeProvider.systemCurrentTime() / period.toMillis()
-        val nextCounter = (timeProvider.systemCurrentTime() + period.toMillis()) / period.toMillis()
+        var currentCounter = 0L
+        var nextCounter = 0L
+
+        when (service.authType) {
+            Service.AuthType.TOTP -> {
+                currentCounter = timeProvider.systemCurrentTime() / period.toMillis()
+                nextCounter = (timeProvider.systemCurrentTime() + period.toMillis()) / period.toMillis()
+            }
+
+            Service.AuthType.HOTP -> {
+                currentCounter = (service.hotpCounter ?: 1).toLong()
+                nextCounter = (service.hotpCounter ?: 1) + 1L
+            }
+        }
+
 
         val otpData = OtpData(
             counter = currentCounter,

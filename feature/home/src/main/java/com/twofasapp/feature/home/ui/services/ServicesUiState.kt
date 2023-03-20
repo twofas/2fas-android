@@ -17,6 +17,7 @@ data class ServicesUiState(
     val showSyncReminder: Boolean = true,
     val appSettings: AppSettings = AppSettings(),
     val events: List<ServicesStateEvent> = listOf(),
+    val items: List<ServicesListItem> = emptyList()
 ) {
     fun getService(id: Long): Service? {
         return services.firstOrNull() { it.id == id }

@@ -7,7 +7,10 @@ import com.twofasapp.security.domain.EditLockMethodCase
 import com.twofasapp.security.domain.EditPinOptionsCase
 import com.twofasapp.security.domain.ObserveLockMethodCase
 import com.twofasapp.security.domain.ObservePinOptionsCase
-import com.twofasapp.security.domain.model.*
+import com.twofasapp.security.domain.model.LockMethod
+import com.twofasapp.security.domain.model.PinOptions
+import com.twofasapp.security.domain.model.PinTimeout
+import com.twofasapp.security.domain.model.PinTrials
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
@@ -25,7 +28,7 @@ internal class SecurityViewModel(
     private val _uiState = MutableStateFlow(SecurityUiState())
     val uiState = _uiState.asStateFlow()
 
-    fun init() {
+    init {
         viewModelScope.launch(dispatchers.io()) {
             combine(
                 observeLockMethodCase.invoke(),

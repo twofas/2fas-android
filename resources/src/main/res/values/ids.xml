@@ -14,7 +14,6 @@
     <item name="item_service" type="id" />
     <item name="item_trashed_service" type="id" />
     <item name="item_empty_trash" type="id" />
-    <item name="item_backup_notice" type="id" />
     <item name="item_sync_error" type="id" />
     <item name="item_group" type="id" />
     <item name="item_no_services" type="id" />

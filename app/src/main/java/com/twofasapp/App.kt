@@ -68,7 +68,6 @@ class App : MultiDexApplication() {
                 ).plus(
                     listOf(
                         StartModule(),
-                        NavigationModule(),
                         SerializationModule(),
                         TimeModule(),
                         ParsersModule(),

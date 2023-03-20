@@ -1,6 +1,7 @@
 package com.twofasapp.prefs.model
 
 import android.os.Parcelable
+import com.twofasapp.di.BackupSyncStatus
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

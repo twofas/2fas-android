@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.service.atoms.ServiceCode
+import com.twofasapp.designsystem.service.atoms.ServiceHotp
 import com.twofasapp.designsystem.service.atoms.ServiceImage
 import com.twofasapp.designsystem.service.atoms.ServiceInfo
 import com.twofasapp.designsystem.service.atoms.ServiceName
@@ -27,6 +28,7 @@ fun DsServiceModal(
     showNextCode: Boolean = false,
     modifier: Modifier = Modifier,
     containerColor: Color = TwTheme.color.background,
+    onIncrementCounterClick: (() -> Unit)? = null,
 ) {
     val textStyles = ServiceTextDefaults.modal()
 
@@ -73,16 +75,29 @@ fun DsServiceModal(
                 code = state.code,
                 nextCode = state.nextCode,
                 timer = state.timer,
-                nextCodeVisible = state.timer <= ServiceExpireTransitionThreshold && showNextCode,
+                nextCodeVisible = state.isNextCodeEnabled(showNextCode),
+                animateColor = state.authType == ServiceAuthType.Totp,
                 modifier = Modifier.weight(1f),
                 textStyles = textStyles,
             )
 
-            ServiceTimer(
-                timer = state.timer,
-                progress = state.progress,
-                modifier = Modifier.padding(end = 12.dp),
-            )
+            when (state.authType) {
+                ServiceAuthType.Totp -> {
+                    ServiceTimer(
+                        timer = state.timer,
+                        progress = state.progress,
+                        textStyles = textStyles,
+                        modifier = Modifier.padding(end = 12.dp)
+                    )
+                }
+
+                ServiceAuthType.Hotp -> {
+                    ServiceHotp(
+                        enabled = state.hotpCounterEnabled,
+                        onClick = { onIncrementCounterClick?.invoke() }
+                    )
+                }
+            }
         }
     }
 }

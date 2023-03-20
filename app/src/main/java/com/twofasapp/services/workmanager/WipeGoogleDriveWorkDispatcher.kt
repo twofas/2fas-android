@@ -2,7 +2,7 @@ package com.twofasapp.services.workmanager
 
 import android.content.Context
 import androidx.work.*
-import com.twofasapp.base.work.WorkDispatcher
+import com.twofasapp.di.WorkDispatcher
 import timber.log.Timber
 
 class WipeGoogleDriveWorkDispatcher(private val context: Context) : WorkDispatcher {

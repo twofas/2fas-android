@@ -41,11 +41,11 @@ import androidx.compose.ui.unit.sp
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
-import com.twofasapp.browserextension.ui.main.permission.RequestPermission
 import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
 import com.twofasapp.design.compose.SimpleEntry
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.RequestPermission
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.InputDialog
 import com.twofasapp.designsystem.screen.CommonContent
@@ -98,9 +98,9 @@ fun BrowserExtensionScreen(
                 askForPermission = false
                 openPairingScan()
             },
-            onDismiss = { askForPermission = false },
-            rationaleTitle = stringResource(id = R.string.permissions__camera_permission),
-            rationaleText = stringResource(id = R.string.permissions__camera_permission_description),
+            onDismissRequest = { askForPermission = false },
+            rationaleTitle = TwLocale.strings.permissionCameraTitle,
+            rationaleText = TwLocale.strings.permissionCameraBody,
         )
     }
 
@@ -195,7 +195,7 @@ private fun ContentScreen(
             minLength = 1,
             maxLength = 100,
             keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
-            onPositiveClick = {viewModel.onEditDeviceDialogDismiss(it)},
+            onPositiveClick = { viewModel.onEditDeviceDialogDismiss(it) },
         )
 //        InputDialo(
 //            prefill = uiState.mobileDevice?.name.orEmpty(),

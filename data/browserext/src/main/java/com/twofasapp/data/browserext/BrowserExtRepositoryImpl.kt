@@ -1,5 +1,6 @@
 package com.twofasapp.data.browserext
 
+import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.data.browserext.domain.PairedBrowser
 import com.twofasapp.data.browserext.domain.TokenRequest
@@ -11,8 +12,11 @@ import com.twofasapp.data.browserext.remote.model.PairBrowserBody
 import com.twofasapp.data.browserext.remote.model.RegisterDeviceBody
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.withContext
 
 internal class BrowserExtRepositoryImpl(
+    private val dispatchers: Dispatchers,
     private val localSource: BrowserExtLocalSource,
     private val remoteSource: BrowserExtRemoteSource,
 ) : BrowserExtRepository {
@@ -74,8 +78,12 @@ internal class BrowserExtRepositoryImpl(
         }
     }
 
-    override suspend fun fetchTokenRequests(deviceId: String): List<TokenRequest> {
-        return remoteSource.fetchTokenRequests(deviceId).map { it.asDomain() }
+    override suspend fun fetchTokenRequests(): List<TokenRequest> {
+        return withContext(dispatchers.io) {
+            observeMobileDevice().firstOrNull()?.id?.let {
+                remoteSource.fetchTokenRequests(it).map { it.asDomain() }
+            } ?: emptyList()
+        }
     }
 
     override suspend fun deletePairedBrowser(deviceId: String, extensionId: String) {

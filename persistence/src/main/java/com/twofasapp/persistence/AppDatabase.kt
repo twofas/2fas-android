@@ -35,7 +35,7 @@ import com.twofasapp.data.browserext.local.model.PairedBrowserEntity
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
-        const val DB_VERSION = 10
+        const val DB_VERSION = 11
     }
 
     abstract fun serviceDao(): ServiceDao
@@ -203,6 +203,12 @@ val MIGRATION_9_10 = object : Migration(9, 10) {
             execSQL("DROP TABLE local_services")
             execSQL("ALTER TABLE local_services_backup RENAME to local_services")
         }
+    }
+}
+
+val MIGRATION_10_11 = object : Migration(10, 11) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE local_services ADD COLUMN hotpCounterTimestamp INTEGER")
     }
 }
 

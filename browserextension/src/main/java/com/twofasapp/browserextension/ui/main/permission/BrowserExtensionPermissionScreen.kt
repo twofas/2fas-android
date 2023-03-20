@@ -28,7 +28,9 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.twofasapp.design.compose.ButtonHeight
 import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
+import com.twofasapp.designsystem.common.RequestPermission
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.locale.TwLocale
 import com.twofasapp.resources.R
 
 @Composable
@@ -102,12 +104,12 @@ fun BrowserExtensionPermissionScreen() {
                 RequestPermission(
                     permission = Manifest.permission.POST_NOTIFICATIONS,
                     onGranted = { onBackDispatcher?.onBackPressed() },
-                    onDismiss = {
+                    onDismissRequest = {
                         askForPermission = false
                         onBackDispatcher?.onBackPressed()
                     },
-                    rationaleTitle = stringResource(id = R.string.browser__push_notifications_title),
-                    rationaleText = stringResource(id = R.string.browser__push_notifications_content),
+                    rationaleTitle = TwLocale.strings.permissionPushTitle,
+                    rationaleText = TwLocale.strings.permissionPushBody,
                 )
             }
         }

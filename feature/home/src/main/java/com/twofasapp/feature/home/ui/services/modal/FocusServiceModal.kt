@@ -16,12 +16,14 @@ internal fun FocusServiceModal(
     showNextCode: Boolean = false,
     onEditClick: () -> Unit = {},
     onCopyClick: () -> Unit = {},
+    onIncrementCounterClick: () -> Unit = {},
 ) {
     Column {
         DsServiceModal(
             state = serviceState,
             showNextCode = showNextCode,
             containerColor = TwTheme.color.surface,
+            onIncrementCounterClick = onIncrementCounterClick
         )
 
         SettingsDivider()

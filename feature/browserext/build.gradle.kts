@@ -15,7 +15,7 @@ dependencies {
     implementation(project(":core:designsystem"))
 
     implementation(project(":browserextension")) // TO BE REMOVED
-    implementation(project(":navigation")) // TO BE REMOVED
+     // TO BE REMOVED
 0
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)

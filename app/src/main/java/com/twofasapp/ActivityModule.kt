@@ -12,11 +12,9 @@ import com.twofasapp.features.backup.BackupPresenter
 import com.twofasapp.features.backup.import.ImportBackupActivity
 import com.twofasapp.features.backup.import.ImportBackupContract
 import com.twofasapp.features.backup.import.ImportBackupPresenter
-import com.twofasapp.features.main.DrawerPresenter
 import com.twofasapp.features.main.MainContract
 import com.twofasapp.features.main.MainPresenter
 import com.twofasapp.features.main.MainServicesActivity
-import com.twofasapp.features.main.ToolbarPresenter
 import com.twofasapp.features.navigator.ActivityScopedNavigator
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.widgets.configure.WidgetSettingsActivity
@@ -41,23 +39,8 @@ val activityScopeModule = module {
     factory<ScopedNavigator> { ActivityScopedNavigator(get(), get()) }
 
     activityScope<MainServicesActivity> {
-        scoped { DrawerPresenter(get(), get(), get()) }
-        scoped { ToolbarPresenter(get(), get(), get(), get(), get(), get()) }
         scoped<MainContract.Presenter> {
             MainPresenter(
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
                 get(),
                 get(),
                 get(),
