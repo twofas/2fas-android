@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.twofasapp.design.R
 import com.twofasapp.design.theme.icon
 import com.twofasapp.design.theme.textPrimary
 import com.twofasapp.design.theme.textSecondary
@@ -100,6 +99,7 @@ fun SimpleEntry(
                     )
                     start.linkTo(iconRef.end, margin = if (iconVisibleWhenNotSet) 28.dp else 16.dp)
                     end.linkTo(iconEndRef.start)
+                    end.linkTo(subtitleEndRef.start)
                     width = Dimension.fillToConstraints
                 }
         )
