@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Tue, 14 Mar 2023 03:55:24 -0700
+ Exported at: Thu, 23 Mar 2023 13:08:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -718,4 +718,7 @@
     <string name="errors__input_number">O valor tem de ser um número</string>
     <string name="errors__input_empty">O valor não pode estar vazio</string>
     <string name="errors__input_too_long">O valor é muito longo. Limite: %d</string>
+    <string name="commons__best_match">Melhor correspondência</string>
+    <string name="settings__enable_crashlytics">Send anonymous crash reports</string>
+    <string name="settings__enable_crashlytics_description">Send anonymous crash reports to help 2FAS identify and solve issues in the app (app restart required).</string>
 </resources>

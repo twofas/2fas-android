@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Mon, 20 Mar 2023 22:33:35 -0700
+ Exported at: Thu, 23 Mar 2023 13:08:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -719,4 +719,6 @@
     <string name="errors__input_empty">Le champ ne peut être vide</string>
     <string name="errors__input_too_long">La valeur saisie est trop longue. Limite : %d</string>
     <string name="commons__best_match">Meilleur correspondance</string>
+    <string name="settings__enable_crashlytics">Send anonymous crash reports</string>
+    <string name="settings__enable_crashlytics_description">Send anonymous crash reports to help 2FAS identify and solve issues in the app (app restart required).</string>
 </resources>
