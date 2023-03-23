@@ -8,7 +8,6 @@ import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.core.cipher.CipherService
 import com.twofasapp.core.cipher.CipherServiceImpl
 import com.twofasapp.environment.AppConfig
-import com.twofasapp.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.permissions.CameraPermissionRequest
 import com.twofasapp.permissions.CameraPermissionRequestFlow
 import com.twofasapp.permissions.NotificationsPermissionRequestFlow
@@ -30,7 +29,7 @@ val applicationModule = module {
     single<SyncBackupWorkDispatcher> { SyncBackupWorkDispatcherImpl(androidContext(), get()) }
     single { WipeGoogleDriveWorkDispatcher(androidContext()) }
 
-    single<com.twofasapp.core.analytics.AnalyticsService> { AnalyticsServiceFirebase().apply { init(androidContext()) } }
+    single<com.twofasapp.core.analytics.AnalyticsService> { AnalyticsServiceFirebase() }
 
     single<AppConfig> { AppConfigImpl() }
 
