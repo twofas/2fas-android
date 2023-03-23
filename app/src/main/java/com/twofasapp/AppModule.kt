@@ -11,7 +11,7 @@ import com.twofasapp.environment.AppConfig
 import com.twofasapp.permissions.CameraPermissionRequest
 import com.twofasapp.permissions.CameraPermissionRequestFlow
 import com.twofasapp.permissions.NotificationsPermissionRequestFlow
-import com.twofasapp.services.analytics.AnalyticsServiceFirebase
+import com.twofasapp.services.analytics.AnalyticsServiceLegacy
 import com.twofasapp.services.googledrive.GoogleDriveService
 import com.twofasapp.services.googledrive.GoogleDriveServiceImpl
 import com.twofasapp.services.workmanager.SyncBackupWorkDispatcherImpl
@@ -29,7 +29,7 @@ val applicationModule = module {
     single<SyncBackupWorkDispatcher> { SyncBackupWorkDispatcherImpl(androidContext(), get()) }
     single { WipeGoogleDriveWorkDispatcher(androidContext()) }
 
-    single<com.twofasapp.core.analytics.AnalyticsService> { AnalyticsServiceFirebase() }
+    single<com.twofasapp.core.analytics.AnalyticsService> { AnalyticsServiceLegacy() }
 
     single<AppConfig> { AppConfigImpl() }
 

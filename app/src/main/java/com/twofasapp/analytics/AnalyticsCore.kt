@@ -4,7 +4,7 @@ import com.twofasapp.common.analytics.Analytics
 import com.twofasapp.common.analytics.AnalyticsEvent
 import com.twofasapp.common.analytics.AnalyticsParam
 
-class AnalyticsFirebase : Analytics {
+class AnalyticsCore : Analytics {
 
     override fun captureException(exception: Throwable?) {
     }

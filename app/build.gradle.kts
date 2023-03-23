@@ -93,13 +93,21 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.biometric:biometric:1.1.0")
 
-    implementation("com.google.android.gms:play-services-auth:20.1.0")
-    implementation("com.google.http-client:google-http-client-gson:1.40.1")
-    implementation("com.google.api-client:google-api-client-android:1.32.2") {
-        exclude("org.apache.httpcomponents", "guava-jdk5")
+    implementation("com.google.android.gms:play-services-auth:20.4.0"){
+        exclude("com.google.http-client", "google-http-client")
+        exclude("com.google.http-client", "google-http-client-jackson")
     }
-    implementation("com.google.apis:google-api-services-drive:v3-rev20211017-1.32.1") {
+
+    implementation("com.github.rafakob.google-http-java-client:google-http-client-gson:1.43.0")
+
+    implementation("com.google.api-client:google-api-client-android:2.2.0") {
         exclude("org.apache.httpcomponents", "guava-jdk5")
+        exclude("com.google.http-client","google-http-client")
+    }
+    implementation("com.google.apis:google-api-services-drive:v3-rev197-1.25.0") {
+        exclude("org.apache.httpcomponents", "guava-jdk5")
+        exclude("com.google.http-client","google-http-client")
+
     }
 
     // Utilities
