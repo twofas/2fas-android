@@ -155,7 +155,7 @@ internal class BackupSettingsPresenter(
 
     override fun onPasswordDialogSaved(password: String) {
         backupPassword = password
-        syncBackupDispatcher.dispatch(SyncBackupTrigger.SET_PASSWORD, backupPassword)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SET_PASSWORD, backupPassword)
         updateViewState()
     }
 
@@ -164,12 +164,12 @@ internal class BackupSettingsPresenter(
     }
 
     override fun onRemovePasswordEntered(password: String) {
-        syncBackupDispatcher.dispatch(SyncBackupTrigger.REMOVE_PASSWORD, password)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.REMOVE_PASSWORD, password)
         updateViewState()
     }
 
     override fun onWipePasswordEntered(password: String) {
-        syncBackupDispatcher.dispatch(SyncBackupTrigger.WIPE_DATA, password)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.WIPE_DATA, password)
         updateViewState()
     }
 

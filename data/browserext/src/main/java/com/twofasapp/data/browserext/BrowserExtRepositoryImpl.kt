@@ -78,11 +78,23 @@ internal class BrowserExtRepositoryImpl(
         }
     }
 
-    override suspend fun fetchTokenRequests(): List<TokenRequest> {
+    override fun observeTokenRequests(): Flow<List<TokenRequest>> {
+        return localSource.observeTokenRequests()
+    }
+
+    override suspend fun fetchTokenRequests() {
         return withContext(dispatchers.io) {
-            observeMobileDevice().firstOrNull()?.id?.let {
-                remoteSource.fetchTokenRequests(it).map { it.asDomain() }
-            } ?: emptyList()
+            observeMobileDevice().firstOrNull()?.id?.let { deviceId ->
+                localSource.updateTokenRequests(
+                    remoteSource.fetchTokenRequests(deviceId).map { it.asDomain() }
+                )
+            }
+        }
+    }
+
+    override suspend fun deleteTokenRequest(requestId: String) {
+        withContext(dispatchers.io) {
+            localSource.deleteTokenRequest(requestId)
         }
     }
 

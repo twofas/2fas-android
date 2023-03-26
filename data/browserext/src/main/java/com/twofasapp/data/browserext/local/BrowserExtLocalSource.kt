@@ -2,6 +2,7 @@ package com.twofasapp.data.browserext.local
 
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.data.browserext.domain.PairedBrowser
+import com.twofasapp.data.browserext.domain.TokenRequest
 import com.twofasapp.data.browserext.local.model.MobileDeviceEntity
 import com.twofasapp.data.browserext.local.model.PairedBrowserEntity
 import com.twofasapp.data.browserext.mapper.asDomain
@@ -10,6 +11,7 @@ import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onSubscription
 import kotlinx.serialization.decodeFromString
@@ -32,6 +34,8 @@ internal class BrowserExtLocalSource(
         onBufferOverflow = BufferOverflow.DROP_OLDEST,
     )
 
+    private val tokenRequestsFlow: MutableStateFlow<List<TokenRequest>> = MutableStateFlow(emptyList())
+
     fun observeMobileDevice(): Flow<MobileDevice> {
         return mobileDeviceFlow.onSubscription {
             val device = preferences.getString(KeyMobileDevice)?.let {
@@ -45,6 +49,18 @@ internal class BrowserExtLocalSource(
     fun observePairedBrowsers(): Flow<List<PairedBrowser>> {
         return dao.observe()
             .map { list -> list.map { it.toDomain() } }
+    }
+
+    fun observeTokenRequests(): Flow<List<TokenRequest>> {
+        return tokenRequestsFlow
+    }
+
+    suspend fun updateTokenRequests(requests: List<TokenRequest>) {
+        tokenRequestsFlow.emit(requests)
+    }
+
+    suspend fun deleteTokenRequest(requestId: String) {
+        tokenRequestsFlow.emit(tokenRequestsFlow.value.filterNot { it.requestId == requestId })
     }
 
     suspend fun saveMobileDevice(mobileDevice: MobileDevice) {

@@ -1,11 +1,13 @@
 package com.twofasapp.common.ktx
 
+import android.content.BroadcastReceiver
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
@@ -35,4 +37,18 @@ fun ViewModel.launchScoped(
     block: suspend CoroutineScope.() -> Unit
 ): Job {
     return viewModelScope.launch(context, start, block)
+}
+
+fun BroadcastReceiver.launchScoped(
+    context: CoroutineContext = EmptyCoroutineContext,
+    block: suspend CoroutineScope.() -> Unit
+) {
+    val pendingResult = goAsync()
+    CoroutineScope(SupervisorJob()).launch(context) {
+        try {
+            block()
+        } finally {
+            pendingResult.finish()
+        }
+    }
 }

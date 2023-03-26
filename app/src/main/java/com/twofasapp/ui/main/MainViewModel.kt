@@ -62,24 +62,26 @@ internal class MainViewModel(
 
         launchScoped {
             runSafely { browserExtRepository.fetchTokenRequests() }
-                .onSuccess { requests ->
+        }
 
-                    uiState.update { state ->
-                        state.copy(
-                            browserExtRequests = state.browserExtRequests.plus(requests.map { request ->
-                                val domain = DomainMatcher.extractDomain(request.domain)
-                                val matchedServices = DomainMatcher.findServicesMatchingDomainNew(servicesRepository.getServices(), domain)
+        launchScoped {
+            browserExtRepository.observeTokenRequests().collect { requests ->
+                uiState.update { state ->
+                    state.copy(
+                        browserExtRequests = requests.map { request ->
+                            val domain = DomainMatcher.extractDomain(request.domain)
+                            val matchedServices = DomainMatcher.findServicesMatchingDomainNew(servicesRepository.getServices(), domain)
 
-                                BrowserExtRequest(
-                                    request = request,
-                                    domain = domain,
-                                    matchedServices = matchedServices,
-                                )
-                            }
-                            ).distinctBy { it.request.requestId }
-                        )
-                    }
+                            BrowserExtRequest(
+                                request = request,
+                                domain = domain,
+                                matchedServices = matchedServices,
+                            )
+                        }
+                            .distinctBy { it.request.requestId }
+                    )
                 }
+            }
         }
 
         launchScoped {
@@ -107,5 +109,9 @@ internal class MainViewModel(
                     onError = {}
                 )
         }
+    }
+
+    fun browserExtRequestHandled(browserExtRequest: BrowserExtRequest) {
+        launchScoped { browserExtRepository.deleteTokenRequest(browserExtRequest.request.requestId) }
     }
 }

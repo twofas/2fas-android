@@ -108,14 +108,14 @@ class App : MultiDexApplication() {
             @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
             fun onMoveToBackground() {
                 authTracker.onMovingToBackground()
-                syncBackupDispatcher.dispatch(SyncBackupTrigger.APP_BACKGROUND)
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_BACKGROUND)
                 pinOptionsUseCase.tmpDigits = null
             }
         })
 
         registerActivityLifecycleCallbacks(activityProvider)
 
-        syncBackupDispatcher.dispatch(SyncBackupTrigger.APP_START)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_START)
 
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
 

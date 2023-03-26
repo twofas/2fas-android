@@ -1,11 +1,7 @@
 package com.twofasapp.features.main
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.SpannableStringBuilder
-import android.text.Spanned
-import android.text.style.StyleSpan
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -186,35 +182,6 @@ class MainServicesActivity : BaseActivityPresenter<ActivityMainBinding>(), MainC
             action = { removeQrReminderDialog.dismiss() },
             actionDismiss = { },
         )
-    }
-
-    override fun showLoginRequestDialog(title: String, content: String, authenticationId: Int) {
-        val contentBuilder = SpannableStringBuilder(title)
-
-        try {
-            Regex("(?:.*)(?:from )(.*)(?: to )(.*)(?: account)(?:.*)").matchEntire(title)?.groupValues?.let {
-                val browser = it.getOrNull(1)
-                val account = it.getOrNull(2)
-
-                if (browser != null && account != null) {
-                    contentBuilder.setSpan(
-                        StyleSpan(Typeface.BOLD),
-                        title.indexOf(browser),
-                        title.indexOf(browser) + browser.length,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-
-                    contentBuilder.setSpan(
-                        StyleSpan(Typeface.BOLD),
-                        title.indexOf(account),
-                        title.indexOf(account) + account.length,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                }
-            }
-        } catch (e: Exception) {
-            /* do nothing */
-        }
     }
 
     override fun showRateApp() {

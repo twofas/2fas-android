@@ -83,7 +83,7 @@ internal class ImportResultViewModel(
                 (uiState.value.importResult as ExternalImport.Success).servicesToImport.asFlow()
                     .onEach { addServiceCase(it.toService()) }
                     .onCompletion {
-                        syncBackupDispatcher.dispatch(SyncBackupTrigger.SERVICES_CHANGED)
+                        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
                         _uiState.update { it.copy(finishSuccess = true) }
                     }
                     .collect()

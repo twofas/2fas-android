@@ -45,10 +45,10 @@ internal class ServicesRepositoryImpl(
     override fun observeServicesTicker(): Flow<List<Service>> {
         return combine(
             isTickerEnabled,
-            tickerFlow(100000L),
+            tickerFlow(1000L),
             observeServices(),
         ) { a, b, c -> Pair(a, c) }
-//            .filter { it.first } // TODO
+//            .filter { it.first } // TODO: ticker
             .map { (_, services) ->
                 services.map { codeGenerator.generate(it) }
             }
@@ -86,6 +86,10 @@ internal class ServicesRepositoryImpl(
     override suspend fun deleteService(id: Long) {
         withContext(dispatchers.io) {
             local.deleteService(id)
+
+            if (remoteBackupStatusPreference.get().state == RemoteBackupStatus.State.ACTIVE) {
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+            }
         }
     }
 
@@ -125,7 +129,7 @@ internal class ServicesRepositoryImpl(
                     )
                 )
 
-                syncBackupDispatcher.dispatch(trigger = SyncBackupTrigger.SERVICES_CHANGED)
+                syncBackupDispatcher.tryDispatch(trigger = SyncBackupTrigger.SERVICES_CHANGED)
             }
         }
     }
@@ -148,7 +152,7 @@ internal class ServicesRepositoryImpl(
             widgetActions.onServiceChanged()
 
             if (remoteBackupStatusPreference.get().state == RemoteBackupStatus.State.ACTIVE) {
-                syncBackupDispatcher.dispatch(SyncBackupTrigger.SERVICES_CHANGED)
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
             }
         }
     }

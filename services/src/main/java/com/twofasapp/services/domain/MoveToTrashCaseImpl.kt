@@ -40,7 +40,7 @@ internal class MoveToTrashCaseImpl(
         // Sync backup if active and add service to recently deleted
         if (triggerSync && remoteBackupStatusPreference.get().state == RemoteBackupStatus.State.ACTIVE) {
             repository.addToRecentlyDeleted(service.secret)
-            syncBackupDispatcher.dispatch(SyncBackupTrigger.SERVICES_CHANGED)
+            syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
         }
     }
 }

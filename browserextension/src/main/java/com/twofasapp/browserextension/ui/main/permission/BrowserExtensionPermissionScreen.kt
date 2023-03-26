@@ -48,6 +48,7 @@ fun BrowserExtensionPermissionScreen() {
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxHeight()
+                .padding(padding)
                 .padding(horizontal = 16.dp)
         ) {
             val (content, pair) = createRefs()
@@ -74,7 +75,7 @@ fun BrowserExtensionPermissionScreen() {
 
                 Text(
                     text = stringResource(id = R.string.browser__push_notifications_title),
-                    style = MaterialTheme.typography.titleMedium,
+                    style = MaterialTheme.typography.titleLarge,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                 )

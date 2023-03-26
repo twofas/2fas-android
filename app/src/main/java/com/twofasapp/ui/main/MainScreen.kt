@@ -6,6 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -24,6 +26,7 @@ internal fun MainScreen(
 ) {
     val navController: NavHostController = rememberNavController()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
     if (uiState.startDestination != null && uiState.selectedTheme != null) {
         CompositionLocalProvider(
@@ -44,6 +47,17 @@ internal fun MainScreen(
                     }
 
                     MainNavHost(navController, startDestination = startDestination)
+
+                    if (uiState.browserExtRequests.isNotEmpty()) {
+                        val browserExtRequest = uiState.browserExtRequests.first()
+                        BrowserExtRequestDialog(
+                            browserExtRequest = browserExtRequest,
+                            onRequestHandled = {
+                                viewModel.browserExtRequestHandled(browserExtRequest)
+                                NotificationManagerCompat.from(context).cancel(null, browserExtRequest.request.requestId.hashCode())
+                            }
+                        )
+                    }
                 }
             }
         }

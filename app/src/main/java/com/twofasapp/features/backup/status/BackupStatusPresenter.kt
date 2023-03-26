@@ -145,7 +145,7 @@ internal class BackupStatusPresenter(
                         schemaVersion = RemoteBackup.CURRENT_SCHEMA,
                     )
                 )
-                syncBackupDispatcher.dispatch(SyncBackupTrigger.FIRST_CONNECT)
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.FIRST_CONNECT)
             }
 
             is GoogleAuthResult.Canceled -> {
@@ -317,7 +317,7 @@ internal class BackupStatusPresenter(
                 trigger ?: (syncStatus as? SyncStatus.Error)?.trigger
             )
 
-            syncBackupDispatcher.dispatch(trigger ?: SyncBackupTrigger.FIRST_CONNECT)
+            syncBackupDispatcher.tryDispatch(trigger ?: SyncBackupTrigger.FIRST_CONNECT)
         }
     }
 

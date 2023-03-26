@@ -25,6 +25,8 @@ class Strings(c: Context) {
     val commonSave = c.getString(R.string.commons__save)
     val commonAdd = c.getString(R.string.commons__add)
     val commonSearch = c.getString(R.string.commons__search)
+    val commonApprove = c.getString(R.string.commons__approve)
+    val commonDeny = c.getString(R.string.commons__deny)
 
     val startupTermsLabel = c.getString(R.string.introduction__tos)
     val startupStepOneHeader = c.getString(R.string.introduction__page_1_title)
@@ -126,6 +128,9 @@ class Strings(c: Context) {
     val permissionCameraBody = c.getString(R.string.permissions__camera_permission_description)
     val permissionPushTitle = c.getString(R.string.browser__push_notifications_title)
     val permissionPushBody = c.getString(R.string.browser__push_notifications_content)
+
+    val tokenRequestTitle = c.getString(R.string.browser__2fa_token_request_title)
+    val tokenRequestBody = c.getString(R.string.browser__2fa_token_request_content)
 //    val browserExt = c.getString(R.string.)
 //    val browserExt = c.getString(R.string.)
 //    val browserExt = c.getString(R.string.)

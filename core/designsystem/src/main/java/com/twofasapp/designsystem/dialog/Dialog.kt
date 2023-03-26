@@ -46,13 +46,14 @@ fun BaseDialog(
     negativeEnabled: Boolean = true,
     shape: Shape = TwTheme.shape.dialog,
     containerColor: Color = TwTheme.color.surface,
+    properties: DialogProperties = DialogProperties(),
     content: @Composable () -> Unit = {},
 ) {
     val showActions = positive != null || negative != null
 
     Dialog(
         onDismissRequest = onDismissRequest,
-        properties = DialogProperties(),
+        properties = properties,
     ) {
         Surface(
             modifier = modifier,

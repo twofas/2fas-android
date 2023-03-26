@@ -21,6 +21,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.app.NotificationManagerCompat
 import com.twofasapp.base.BaseComponentActivity
 import com.twofasapp.browserextension.notification.BrowserExtensionRequestPayload
 import com.twofasapp.browserextension.notification.BrowserExtensionRequestReceiver
@@ -49,7 +50,12 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
                 Scaffold(
                     topBar = { TwTopAppBar(titleText = stringResource(id = R.string.browser__request)) }
                 ) { padding ->
-                    MainScreen(payload, Modifier.padding(padding).background(TwTheme.color.background))
+                    MainScreen(
+                        payload,
+                        Modifier
+                            .padding(padding)
+                            .background(TwTheme.color.background)
+                    )
                 }
             }
         }
@@ -176,8 +182,15 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
                             putExtra(BrowserExtensionRequestPayload.Key, payload.copy(serviceId = service.id))
                         }
                         .let {
-                            viewModel.assignDomain(service, payload.domain.orEmpty()) {
-                                activity?.sendBroadcast(it)
+                            viewModel.assignDomain(
+                                requestId = payload.requestId,
+                                service = service,
+                                domain = payload.domain.orEmpty()
+                            ) {
+                                NotificationManagerCompat
+                                    .from(activity!!)
+                                    .cancel(null, payload.requestId.hashCode())
+                                activity.sendBroadcast(it)
                                 finish()
                             }
                         }

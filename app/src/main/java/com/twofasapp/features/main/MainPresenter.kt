@@ -42,18 +42,6 @@ class MainPresenter(
         watchDisposables.clear()
     }
 
-
-//    override fun onAddGroupClick() {
-//        view.showCreateGroupDialog {
-//            val group = com.twofasapp.prefs.model.Group.generateNew(it)
-//            storeGroups.add(group)
-//            servicesRefreshTrigger.trigger()
-//            syncSyncBackupDispatcher.dispatch(SyncBackupTrigger.GROUPS_CHANGED)
-//            analyticsService.captureEvent(com.twofasapp.core.analytics.AnalyticsEvent.GROUP_ADD)
-//        }
-//    }
-
-
     private fun saveService(incomingData: String) {
         parseOtpAuthLink.execute(ParseOtpAuthLink.Params(incomingData))
             .map { convertOtpLinkToService.execute(it) }

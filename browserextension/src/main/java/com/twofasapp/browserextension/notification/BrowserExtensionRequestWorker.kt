@@ -8,6 +8,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.twofasapp.browserextension.domain.ApproveLoginRequestCase
 import com.twofasapp.browserextension.domain.DenyLoginRequestCase
+import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.serialization.JsonSerializer
 import com.twofasapp.services.domain.GenerateTotp
 import com.twofasapp.services.domain.GetServicesCase
@@ -29,6 +30,7 @@ class BrowserExtensionRequestWorker(
     private val generateTotp: GenerateTotp by inject()
     private val getServicesCase: GetServicesCase by inject()
     private val jsonSerializer: JsonSerializer by inject()
+    private val browserExtRepository: BrowserExtRepository by inject()
 
     override suspend fun doWork(): Result {
         return withContext(Dispatchers.IO) {
@@ -66,6 +68,7 @@ class BrowserExtensionRequestWorker(
                         }
                     }
 
+                    browserExtRepository.deleteTokenRequest(payload.requestId)
 
                 } catch (e: Exception) {
                     showToast(context.getString(com.twofasapp.resources.R.string.extension__code_sent_error_msg))

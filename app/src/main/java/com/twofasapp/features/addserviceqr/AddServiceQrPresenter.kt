@@ -107,7 +107,7 @@ class AddServiceQrPresenter(
                         if (result.servicesToImport.isNotEmpty()) {
                             result.servicesToImport.toFlowable()
                                 .concatMapCompletable { addService.execute(AddService.Params(it)) }
-                                .doOnComplete { syncBackupDispatcher.dispatch(SyncBackupTrigger.SERVICES_CHANGED) }
+                                .doOnComplete { syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED) }
                                 .safelySubscribe {
                                     analyticsService.captureEvent(com.twofasapp.core.analytics.AnalyticsEvent.IMPORT_GOOGLE_AUTHENTICATOR)
                                     view.showSuccessImportToast()
@@ -149,7 +149,7 @@ class AddServiceQrPresenter(
         }
 
         addService.execute(AddService.Params(service))
-            .doOnComplete { syncBackupDispatcher.dispatch(SyncBackupTrigger.SERVICES_CHANGED) }
+            .doOnComplete { syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED) }
             .andThen(getService.execute(service.secret))
             .safelySubscribe(onSuccess = { onSaveCompleted(it, isFromGallery) }, onError = { onSaveFailed(false, it) })
     }

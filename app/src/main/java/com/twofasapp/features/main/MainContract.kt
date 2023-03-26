@@ -7,7 +7,6 @@ import com.twofasapp.prefs.model.ServiceDto
 interface MainContract {
 
     interface View {
-        fun showLoginRequestDialog(title: String, content: String, authenticationId: Int)
         fun showRateApp()
         fun showUpgradeAppNoticeDialog(action: () -> Unit)
         fun showServiceExistsDialog(confirmAction: ConfirmAction, cancelAction: CancelAction)

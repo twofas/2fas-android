@@ -20,7 +20,7 @@ class ServicesPresenter(
 
 
     fun onGroupDelete() {
-        syncSyncBackupDispatcher.dispatch(SyncBackupTrigger.GROUPS_CHANGED)
+        syncSyncBackupDispatcher.tryDispatch(SyncBackupTrigger.GROUPS_CHANGED)
         analyticsService.captureEvent(com.twofasapp.core.analytics.AnalyticsEvent.GROUP_REMOVE)
     }
 

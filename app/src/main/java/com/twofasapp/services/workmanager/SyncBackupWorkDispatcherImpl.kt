@@ -17,7 +17,7 @@ class SyncBackupWorkDispatcherImpl(
     private val remoteBackupStatusPreference: com.twofasapp.prefs.usecase.RemoteBackupStatusPreference,
 ) : SyncBackupWorkDispatcher {
 
-    override fun dispatch(trigger: SyncBackupTrigger, password: String?) {
+    override fun tryDispatch(trigger: SyncBackupTrigger, password: String?) {
         val constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
@@ -47,6 +47,10 @@ class SyncBackupWorkDispatcherImpl(
             Timber.d("Append new SyncBackupWork by replacing retry work")
             WorkManager.getInstance(context).enqueueUniqueWork("SyncBackupWork", ExistingWorkPolicy.REPLACE, request)
         }
+    }
+
+    override suspend fun dispatch(trigger: SyncBackupTrigger, password: String?) {
+        tryDispatch(trigger, password)
     }
 
     private fun findEnqueuedWork() = WorkManager.getInstance(context).getWorkInfosForUniqueWork("SyncBackupWork").get()
