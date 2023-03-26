@@ -58,7 +58,7 @@ class OnAppUpdatedWork(
                 Result.success()
             } catch (e: Exception) {
                 Timber.e(e)
-                analyticsService.captureException(e)
+                
                 Result.failure()
             }
         }

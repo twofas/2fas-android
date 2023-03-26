@@ -1,6 +1,6 @@
 package com.twofasapp.di
 
-import com.twofasapp.analytics.AnalyticsFirebase
+import com.twofasapp.analytics.AnalyticsCore
 import com.twofasapp.common.analytics.Analytics
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
@@ -13,6 +13,7 @@ import org.koin.dsl.module
 
 class AppModule : KoinModule {
     override fun provide() = module {
+        singleOf(::AnalyticsCore) { bind<Analytics>() }
         single {
             Json {
                 ignoreUnknownKeys = true
@@ -21,7 +22,6 @@ class AppModule : KoinModule {
                 coerceInputValues = true
             }
         }
-        singleOf(::AnalyticsFirebase) { bind<Analytics>() }
         singleOf(::AppBuildImpl) { bind<AppBuild>() }
         singleOf(::TimeProviderImpl) { bind<TimeProvider>() }
     }

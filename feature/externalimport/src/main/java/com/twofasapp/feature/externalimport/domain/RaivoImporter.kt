@@ -74,7 +74,7 @@ internal class RaivoImporter(
             )
         } catch (e: Exception) {
             e.printStackTrace()
-            analyticsService.captureException(e)
+            
             return ExternalImport.ParsingError(e)
         }
     }

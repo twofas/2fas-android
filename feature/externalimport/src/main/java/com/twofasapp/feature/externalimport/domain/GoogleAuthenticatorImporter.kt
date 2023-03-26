@@ -1,13 +1,13 @@
 package com.twofasapp.feature.externalimport.domain
 
 import android.net.Uri
-import com.google.common.io.BaseEncoding
-import com.twofasapp.GoogleAuthenticatorProto.*
+import com.twofasapp.GoogleAuthenticatorProto.MigrationPayload
 import com.twofasapp.core.encoding.decodeBase64ToByteArray
 import com.twofasapp.extensions.doNothing
 import com.twofasapp.prefs.model.OtpAuthLink
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.domain.ConvertOtpLinkToService
+import org.apache.commons.codec.binary.Base32
 
 class GoogleAuthenticatorImporter(
     private val convertOtpLinkToService: ConvertOtpLinkToService,
@@ -61,7 +61,7 @@ class GoogleAuthenticatorImporter(
         val otpLink = OtpAuthLink(
             type = parseType(otpParameters.type),
             label = label,
-            secret = BaseEncoding.base32().omitPadding().encode(otpParameters.secret.toByteArray()),
+            secret = Base32().encodeAsString(otpParameters.secret.toByteArray()),
             issuer = otpParameters.issuer,
             params = parseParams(otpParameters),
             link = null,
@@ -109,6 +109,7 @@ class GoogleAuthenticatorImporter(
             MigrationPayload.Algorithm.ALGORITHM_UNSPECIFIED,
             MigrationPayload.Algorithm.ALGORITHM_MD5,
             MigrationPayload.Algorithm.UNRECOGNIZED -> doNothing()
+
             else -> doNothing()
         }
 

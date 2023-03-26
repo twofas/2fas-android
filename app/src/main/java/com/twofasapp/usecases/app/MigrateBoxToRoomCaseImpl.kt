@@ -85,7 +85,7 @@ class MigrateBoxToRoomCaseImpl(
             }
 
         } catch (e: Exception) {
-            analyticsService.captureException(e)
+            
         }
     }
 }

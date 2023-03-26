@@ -65,14 +65,14 @@ class ExportBackupActivity : BaseActivityPresenter<ActivityExportBackupBinding>(
         try {
             startActivityForResult(intent, EXPORT_FILE_PICKER)
         } catch (e: ActivityNotFoundException) {
-            analyticsService.captureException(e)
+            
             InfoDialog(
                 context = this,
                 title = "Error",
                 msg = "Could not find system file provider.\n\nIf you removed default documents application you need to restore it in order to make the export work."
             ).show()
         } catch (e: Exception) {
-            analyticsService.captureException(e)
+            
             toastLong("System error! Could not launch file provider!")
         }
     }

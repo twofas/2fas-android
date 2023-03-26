@@ -4,7 +4,6 @@ import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.services.domain.ConvertOtpLinkToService
 import com.twofasapp.services.domain.StoreHotpServices
-import com.twofasapp.usecases.backup.CurrentBackupSchema
 import com.twofasapp.usecases.rateapp.RateAppCondition
 import com.twofasapp.usecases.rateapp.UpdateRateAppStatus
 import com.twofasapp.usecases.services.AddService
@@ -23,7 +22,6 @@ class MainPresenter(
     private val convertOtpLinkToService: ConvertOtpLinkToService,
     private val rateAppCondition: RateAppCondition,
     private val analyticsService: AnalyticsService,
-    private val currentBackupSchema: CurrentBackupSchema,
 ) : MainContract.Presenter() {
 
     private val watchDisposables = CompositeDisposable()
@@ -35,16 +33,6 @@ class MainPresenter(
         when {
             rateAppCondition.execute() -> view.showRateApp()
         }
-
-        currentBackupSchema.observe()
-            .safelySubscribe { latestVersion ->
-                if (com.twofasapp.prefs.model.RemoteBackup.CURRENT_SCHEMA < latestVersion && currentBackupSchema.isNoticeDisplayed()
-                        .not()
-                ) {
-                    currentBackupSchema.markNoticeDisplayed()
-                    view.showUpgradeAppNoticeDialog { navigator.openGooglePlay() }
-                }
-            }
     }
 
     override fun startObservingPushes() {

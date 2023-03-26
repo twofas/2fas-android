@@ -18,7 +18,6 @@ import com.twofasapp.start.domain.MigrateBoxToRoomCase
 import com.twofasapp.usecases.app.CheckConnectionStatus
 import com.twofasapp.usecases.app.FirstCodeAdded
 import com.twofasapp.usecases.app.MigrateBoxToRoomCaseImpl
-import com.twofasapp.usecases.backup.CurrentBackupSchema
 import com.twofasapp.usecases.backup.ObserveSyncStatus
 import com.twofasapp.usecases.backup.SyncBackupServices
 import com.twofasapp.usecases.rateapp.RateAppCondition
@@ -99,6 +98,5 @@ val useCaseModule = module {
     single<WidgetItemPresenterDelegate> { WidgetItemPresenterDelegateImpl(androidContext(), get()) }
     single<WidgetReceiverPresenterDelegate> { WidgetReceiverPresenterDelegateImpl(androidContext(), get(), get(), get(), get(), get()) }
     single { StoreRecentlyDeleted(get()) }
-    single { CurrentBackupSchema(get()) }
     single { ObserveSyncStatus() }
 }
