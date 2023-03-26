@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.prefs.usecase.AppThemePreference
+import com.twofasapp.prefs.usecase.SendCrashLogsPreference
 import com.twofasapp.prefs.usecase.ShowNextTokenPreference
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,6 +15,7 @@ internal class SettingsMainViewModel(
     private val dispatchers: Dispatchers,
     private val appThemePreference: AppThemePreference,
     private val showNextTokenPreference: ShowNextTokenPreference,
+    private val sendCrashLogsPreference: SendCrashLogsPreference,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(SettingsMainUiState())
@@ -33,12 +35,24 @@ internal class SettingsMainViewModel(
                     _uiState.update { state -> state.copy(showNextToken = it) }
                 }
             }
+
+            launch(dispatchers.io()) {
+                sendCrashLogsPreference.flow().collect {
+                    _uiState.update { state -> state.copy(sendCrashLogs = it) }
+                }
+            }
         }
     }
 
     fun changeShowNextToken(isChecked: Boolean) {
         viewModelScope.launch(dispatchers.io()) {
             showNextTokenPreference.put(isChecked)
+        }
+    }
+
+    fun changeSendCrashLogs(isChecked: Boolean) {
+        viewModelScope.launch(dispatchers.io()) {
+            sendCrashLogsPreference.put(isChecked)
         }
     }
 }

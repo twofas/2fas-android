@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Tue, 14 Mar 2023 03:55:24 -0700
+ Exported at: Sat, 25 Mar 2023 14:49:44 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -95,11 +95,11 @@
     <!-- introduction__not_sure -->
     <string name="introduction__what_to_do">Du weißt nicht, was du tun sollst?</string>
     <!-- introduction__ga_import_description -->
-    <string name="introduction__google_authenticator_import_process">Exportiere deine Konten aus Google Authenticator in einen QR-Code, indem du die Option \"Konten übertragen\" verwendst. Führe dann einen Screenshot durch und verwende die Schaltfläche \"QR-Code auswählen\" unten. Wenn du Codes von einem anderen Gerät importierst, verwende stattdessen die Schaltfläche \"QR-Code scannen\".</string>
+    <string name="introduction__google_authenticator_import_process">Exportiere deine Konten aus Google Authenticator in einen QR-Code, indem du die Option \"Konten übertragen\" verwendst. Mach einen Screenshot und verwende unten die Schaltfläche \"QR-Code auswählen\". Wenn du Codes von einem anderen Gerät importierst, verwende stattdessen die Schaltfläche \"QR-Code scannen\".</string>
     <!-- introduction__choose_qr -->
-    <string name="introduction__choose_qr_code">QR-Code auswählen</string>
+    <string name="introduction__choose_qr_code">QR Code auswählen</string>
     <!-- introduction__scan_qr -->
-    <string name="introduction__scan_qr_code">QR-Code scannen</string>
+    <string name="introduction__scan_qr_code">QR Code scannen</string>
     <!-- Original: Adding code -->
     <string name="notifications__adding_code">Hinzufügen eines neuen Codes</string>
     <!-- notifications__private_key_copied -->
@@ -428,7 +428,7 @@
     <string name="browser__pairing_successful_title">Kopplung erfolgreich!</string>
     <string name="browser__pairing_successful_description">2FAS wird dir eine Benachrichtigung senden wann immer du dich im Browser in einen Online-Dienst einloggen willst. Du musst deinen Token nicht mehr bei jeder Verwendung erneut eingeben.</string>
     <string name="browser__pairing_failed_title">Verbindung fehlgeschlagen :(</string>
-    <string name="browser__pairing_failed_description">Dieser QR Code wurde nicht erkannt und 2FAS konnte das Gerät nicht mit der Browser-Erweiterung koppeln. Bitte versuche es erneut.</string>
+    <string name="browser__pairing_failed_description">Dieser QR-Code wurde nicht erkannt und 2FAS konnte das Gerät nicht mit der Browser-Erweiterung koppeln. Bitte versuche es erneut.</string>
     <!-- browser__pairing_already_paired_title -->
     <string name="browser__already_paired_title">Bereits gekoppelt!</string>
     <!-- browser__pairing_already_paired_description -->
@@ -503,7 +503,7 @@
     <string name="customization_edit_label">Kennzeichnung bearbeiten</string>
     <string name="groups_delete_msg">Bist du dir sicher, das du diese Gruppe löschen möchtest?</string>
     <string name="export_backup_title">Deine Sicherungsdatei ist zum Exportieren bereit</string>
-    <string name="export_backup_msg">Exportiere diese Datei, um die 2FAS-Tokens zu sichern. Du kannst die Datei später auf anderen Geräten mit der 2FAS Anwendung importieren.</string>
+    <string name="export_backup_msg">Exportiere diese Datei, um deine 2FAS-Tokens zu sichern. Du kannst die Datei später auf anderen Geräten mit der 2FAS Anwendung importieren.</string>
     <string name="export_backup_pass">Datei ohne Passwort exportieren\n(nicht empfohlen)</string>
     <string name="import_backup_msg2">Die Datei wird mit der Dienstleiste der App synchronisiert.</string>
     <string name="backup_notice_later">Vielleicht später</string>
@@ -553,7 +553,7 @@
     <string name="tokens__fab_addmanually">Manuell hinzufügen</string>
     <string name="tokens__qr_does_not_work">Dieser QR Code funktioniert nicht!</string>
     <!-- Could not read QR code from the image! -->
-    <string name="tokens__qr_read_image_failed">Der QR Code konnte nicht gelesen werden!</string>
+    <string name="tokens__qr_read_image_failed">Der QR-Code konnte nicht gelesen werden!</string>
     <string name="tokens__qr_read_image_try_again">Versuche eine andere Sprache auszuwählen.</string>
     <string name="tokens__remove_it_forever">Dienst endgültig löschen</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
@@ -598,7 +598,7 @@
     <string name="backup_settings_delete_subtitle">Wenn du diese Datei aus deinem Google Drive löschst, wird die Synchronisierung auf allen synchronisierten Geräten deaktiviert und die Token bleiben nur auf diesem und anderen Geräten über den lokalen Speicher erhalten.</string>
     <string name="browser__result_error_browser_paired">Deine 2FAS-App ist bereits mit diesem Browser gekoppelt.</string>
     <!-- Scan QR code again -->
-    <string name="browser__result_error_cta">Scanne den QR-Code erneut</string>
+    <string name="browser__result_error_cta">Scanne den QR Code erneut</string>
     <string name="browser__scan_error_dialog_title">Fehler</string>
     <!-- Scanned QR code has unsupported format. Please try again. -->
     <string name="browser__scan_error_dialog_msg_invalid_code">Der gescannte QR-Code hat ein nicht unterstütztes Format. Bitte versuche es erneut.</string>
@@ -686,7 +686,7 @@
     <string name="import_backup_msg1_encrypted">Du wirst eine verschlüsselte Sicherungsdatei importieren.</string>
     <string name="externalimport__choose_json_cta">Wähle eine JSON Datei aus</string>
     <string name="externalimport__aegis_msg">Exportiere deine Konten von Aegis in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
-    <string name="externalimport__raivo_msg">Verwende die \"Exportiere OTPs zu ZIP Archiv\" Option in Raivo\'s Einstellungen, speichere eine ZIP Datei, extrahiere sie und importiere die JSON Datei mit dem \"JSON Datei auswählen\" Knopf.</string>
+    <string name="externalimport__raivo_msg">Verwende die \"Exportiere OTPs zu ZIP Archiv\" Option in Raivo\'s Einstellungen, speichere eine ZIP Datei, extrahiere sie und importiere die JSON Datei mit der \"JSON Datei auswählen\" Option.</string>
     <string name="externalimport__no_tokens_msg">Es gibt jedoch keine Dienste, die importiert werden könnten.</string>
     <string name="commons__try_again">Erneut versuchen</string>
     <string name="commons__proceed">Fortfahren</string>
@@ -705,7 +705,7 @@
     <string name="tokens__customize_service_title">Dienst anpassen</string>
     <string name="extension__services_suggested_header">Empfohlen</string>
     <string name="extension__services_all_header">Alle Tokens</string>
-    <string name="extension__services_other_header">Andere Tokens</string>
+    <string name="extension__services_other_header">Andere Dienste</string>
     <string name="settings__ssl_error_title">SSL Fehler</string>
     <string name="settings__ssl_error_description">Ein SSL-Fehler ist aufgetreten, wodurch eine sichere Verbindung zum Server nicht hergestellt werden kann. Stelle sicher, dass du die neueste App-Version hast oder versuche, das Netzwerk zu ändern.</string>
     <string name="backup__import_error_file_size">Die Datei, die du versuchst zu importieren, ist zu groß. Die Größenbeschränkung beträgt 10 MB.</string>
@@ -718,4 +718,7 @@
     <string name="errors__input_number">Eingabe muss eine Nummer sein</string>
     <string name="errors__input_empty">Eingabe darf nicht leer sein</string>
     <string name="errors__input_too_long">Eingabe ist zu lang. Limit: %d</string>
+    <string name="commons__best_match">Bester Treffer</string>
+    <string name="settings__enable_crashlytics">Anonyme Absturzberichte senden</string>
+    <string name="settings__enable_crashlytics_description">Sende anonyme Absturzberichte, um 2FAS beim Identifizieren und Lösen von Fehlern in der App zu helfen (App Neustart erforderlich).</string>
 </resources>

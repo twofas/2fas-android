@@ -14,7 +14,6 @@ import com.twofasapp.extensions.makeGone
 import com.twofasapp.extensions.makeVisible
 import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.extensions.toastLong
-import org.koin.android.ext.android.inject
 
 class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(), ImportBackupContract.View {
 
@@ -23,7 +22,6 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
     }
 
     private val presenter: ImportBackupContract.Presenter by injectThis()
-    private val analyticsService: com.twofasapp.core.analytics.AnalyticsService by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,7 +93,7 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
             startActivityForResult(intent, IMPORT_FILE_PICKER)
             return
         } catch (e: Exception) {
-            analyticsService.captureException(e)
+
         }
 
         intent.action = Intent.ACTION_GET_CONTENT
@@ -104,14 +102,14 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
             startActivityForResult(intent, IMPORT_FILE_PICKER)
             return
         } catch (e: ActivityNotFoundException) {
-            analyticsService.captureException(e)
+            
             InfoDialog(
                 context = this,
                 title = "Error",
                 msg = "Could not find system file provider.\n\nIf you removed default documents application you need to restore it in order to make the import work."
             ).show()
         } catch (e: Exception) {
-            analyticsService.captureException(e)
+            
             toastLong("System error! Could not launch file provider!")
         }
     }

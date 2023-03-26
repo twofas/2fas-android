@@ -7,6 +7,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.twofasapp.about.AboutModule
 import com.twofasapp.backup.BackupModule
 import com.twofasapp.backup.domain.SyncBackupTrigger
@@ -19,7 +20,6 @@ import com.twofasapp.developer.DeveloperModule
 import com.twofasapp.di.Modules
 import com.twofasapp.externalimport.ExternalImportModule
 import com.twofasapp.featuretoggle.FeatureToggleModule
-import com.twofasapp.featuretoggle.domain.FetchRemoteConfigCase
 import com.twofasapp.network.NetworkModule
 import com.twofasapp.notifications.NotificationsModule
 import com.twofasapp.parsers.ParsersModule
@@ -27,6 +27,7 @@ import com.twofasapp.permissions.PermissionsModule
 import com.twofasapp.persistence.PersistenceModule
 import com.twofasapp.prefs.PreferencesEncryptedModule
 import com.twofasapp.prefs.PreferencesPlainModule
+import com.twofasapp.prefs.usecase.SendCrashLogsPreference
 import com.twofasapp.push.PushModule
 import com.twofasapp.qrscanner.QrScannerModule
 import com.twofasapp.security.SecurityModule
@@ -44,16 +45,14 @@ import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
-import java.util.Locale
 
 class App : MultiDexApplication() {
 
     private val authTracker: AuthTracker by inject()
-    private val analyticsService: com.twofasapp.core.analytics.AnalyticsService by inject()
     private val syncBackupDispatcher: SyncBackupWorkDispatcher by inject()
     private val pinOptionsUseCase: PinOptionsUseCase by inject()
     private val activityProvider: ActivityProvider by inject()
-    private val fetchRemoteConfigCase: FetchRemoteConfigCase by inject()
+    private val sendCrashLogsPreference: SendCrashLogsPreference by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -111,8 +110,6 @@ class App : MultiDexApplication() {
             System.setProperty("kotlinx.coroutines.debug", "on")
         }
 
-        analyticsService.setUserCountry(Locale.getDefault().country)
-
         authTracker.onAppCreate()
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver {
@@ -127,10 +124,11 @@ class App : MultiDexApplication() {
             }
         })
 
-        fetchRemoteConfigCase.execute()
         registerActivityLifecycleCallbacks(activityProvider)
 
         syncBackupDispatcher.dispatch(SyncBackupTrigger.APP_START)
+
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
 
         FileLogger.log("App start")
     }

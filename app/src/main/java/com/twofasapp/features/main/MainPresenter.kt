@@ -1,6 +1,5 @@
 package com.twofasapp.features.main
 
-import com.twofasapp.resources.R
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.core.analytics.AnalyticsService
@@ -12,12 +11,14 @@ import com.twofasapp.permissions.PermissionStatus
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.RemoteBackupStatus
 import com.twofasapp.prefs.model.ServiceDto
+import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import com.twofasapp.prefs.usecase.ServicesOrderPreference
 import com.twofasapp.prefs.usecase.StoreGroups
+import com.twofasapp.resources.R
 import com.twofasapp.services.domain.ConvertOtpLinkToService
 import com.twofasapp.services.domain.StoreHotpServices
 import com.twofasapp.start.domain.DeeplinkHandler
-import com.twofasapp.usecases.backup.CurrentBackupSchema
 import com.twofasapp.usecases.backup.ObserveSyncStatus
 import com.twofasapp.usecases.backup.model.SyncStatus
 import com.twofasapp.usecases.rateapp.RateAppCondition
@@ -48,10 +49,9 @@ class MainPresenter(
     private val deeplinkHandler: DeeplinkHandler,
     private val rateAppCondition: RateAppCondition,
     private val analyticsService: AnalyticsService,
-    private val currentBackupSchema: CurrentBackupSchema,
     private val checkServiceExists: CheckServiceExists,
-    private val servicesOrderPreference: com.twofasapp.prefs.usecase.ServicesOrderPreference,
-    private val appUpdateLastCheckVersionPreference: com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference,
+    private val servicesOrderPreference: ServicesOrderPreference,
+    private val appUpdateLastCheckVersionPreference: AppUpdateLastCheckVersionPreference,
     private val observeSyncStatus: ObserveSyncStatus,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
 ) : MainContract.Presenter() {
@@ -69,16 +69,6 @@ class MainPresenter(
         when {
             rateAppCondition.execute() -> view.showRateApp()
         }
-
-        currentBackupSchema.observe()
-            .safelySubscribe { latestVersion ->
-                if (com.twofasapp.prefs.model.RemoteBackup.CURRENT_SCHEMA < latestVersion && currentBackupSchema.isNoticeDisplayed()
-                        .not()
-                ) {
-                    currentBackupSchema.markNoticeDisplayed()
-                    view.showUpgradeAppNoticeDialog { navigator.openGooglePlay() }
-                }
-            }
 
         observeSyncStatus.observe()
             .safelySubscribe {
