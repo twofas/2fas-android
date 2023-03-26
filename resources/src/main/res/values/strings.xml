@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Sat, 25 Mar 2023 14:49:44 -0700
+ Exported at: Sun, 26 Mar 2023 13:20:22 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -697,7 +697,7 @@
     <string name="externalimport__aegis_success_msg">This JSON file allows importing tokens from Aegis.</string>
     <string name="externalimport__raivo_success_msg">This JSON file allows importing tokens from Raivo.</string>
     <string name="externalimport__read_error">Could not read any tokens. Try to select a different file.</string>
-    <string name="settings__gd_sync_info">Google Drive sync info</string>
+    <string name="settings__gd_sync_info">Google Drive sync reminder</string>
     <string name="settings__gd_sync_disable_confirm">Are you sure? Without Google Drive sync, you won\'t be able to restore your tokens if you lose or reset your phone!</string>
     <string name="extension__code_sent_msg">Code sent successfully</string>
     <string name="extension__code_sent_error_msg">Error occurred when sending code</string>
@@ -721,4 +721,12 @@
     <string name="commons__best_match">Best match</string>
     <string name="settings__enable_crashlytics">Send anonymous crash reports</string>
     <string name="settings__enable_crashlytics_description">Send anonymous crash reports to help 2FAS identify and solve issues in the app (app restart required).</string>
+    <string name="tokens__manage_list">Manage list</string>
+    <string name="settings__appearance">Appearance</string>
+    <string name="settings__show_next_token_desc">Show next token when current one is about to expire.</string>
+    <string name="settings__list_style">List style</string>
+    <string name="backup__reminder_msg">Google Drive not synced.</string>
+    <string name="backup__reminder_cta">Go to backup settings</string>
+    <string name="settings__list_style_option_default">Default</string>
+    <string name="settings__list_style_option_compact">Compact</string>
 </resources>

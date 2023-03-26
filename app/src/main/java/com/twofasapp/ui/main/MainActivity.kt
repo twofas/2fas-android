@@ -154,4 +154,71 @@ class MainActivity : AppCompatActivity(), AuthAware {
             return
         }
     }
+
+
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        if (resultCode != RESULT_OK) return
+//
+//
+//        if (requestCode == AddServiceQrActivity.REQUEST_CODE) {
+//            val isFromGallery =
+//                data?.getBooleanExtra(AddServiceQrActivity.RESULT_IS_FROM_GALLERY, false) ?: false
+//            data?.getParcelableExtra<ServiceDto>(AddServiceQrActivity.RESULT_SERVICE)?.let {
+//            }
+//            return
+//        }
+//    }
+//
+//    override fun showRemoveQrReminder(serviceDto: ServiceDto) {
+//        val desc = Spanner()
+//            .append(getString(R.string.tokens__gallery_advice_content_first))
+//            .append(getString(R.string.tokens__gallery_advice_content_middle_bold), Spans.bold())
+//            .append(getString(R.string.tokens__gallery_advice_content_last))
+//
+//        removeQrReminderDialog.show(
+//            title = getString(R.string.tokens__gallery_advice_title),
+//            desc = "",
+//            descSpan = desc,
+//            okText = getString(R.string.commons__got_it),
+//            imageRes = R.drawable.remove_qr_reminder_image,
+//            showCancel = false,
+//            action = { removeQrReminderDialog.dismiss() },
+//            actionDismiss = { },
+//        )
+//    }
+//
+//    override fun showRateApp() {
+//        val manager = ReviewManagerFactory.create(this)
+//        val request = manager.requestReviewFlow()
+//        request.addOnCompleteListener { task ->
+//            if (task.isSuccessful) {
+//                val flow = manager.launchReviewFlow(this, task.result)
+//                flow.addOnCompleteListener {
+//                    presenter.onReviewSuccess()
+//                }
+//            } else {
+//                presenter.onReviewFailed(task.exception)
+//            }
+//        }
+//    }
+//
+//    override fun showUpgradeAppNoticeDialog(action: () -> Unit) {
+//        ConfirmDialog(
+//            context = this,
+//            title = getString(R.string.update_app_title),
+//            msg = getString(R.string.update_app_msg),
+//            positiveButtonText = "Update",
+//            negativeButtonText = "Later",
+//        ).show(
+//            confirmAction = { action() }
+//        )
+//    }
+//
+//    override fun showServiceExistsDialog(confirmAction: ConfirmAction, cancelAction: CancelAction) {
+//        ConfirmDialog(this, R.string.commons__warning, R.string.tokens__service_already_exists)
+//            .show(confirmAction = confirmAction, cancelAction = cancelAction)
+//    }
 }

@@ -119,11 +119,6 @@
         </activity>
 
         <activity
-            android:name=".features.main.MainServicesActivity"
-            android:label="Services List"
-            android:launchMode="singleTask" />
-
-        <activity
             android:name=".features.addserviceqr.AddServiceQrActivity"
             android:label="Add service by scanning QR Code" />
 

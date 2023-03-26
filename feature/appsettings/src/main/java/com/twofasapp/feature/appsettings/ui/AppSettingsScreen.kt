@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.session.domain.SelectedTheme
 import com.twofasapp.data.session.domain.ServicesStyle
@@ -18,6 +19,7 @@ import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.designsystem.settings.SettingsSwitch
+import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -110,11 +112,12 @@ private fun AppSettingsScreen(
         }
 
         if (showThemeDialog) {
+
             ListRadioDialog(
                 onDismissRequest = { showThemeDialog = false },
                 title = TwLocale.strings.settingsTheme,
-                options = SelectedTheme.values().map { it.name },
-                selectedOption = uiState.appSettings.selectedTheme.name,
+                options = SelectedTheme.values().map { it.toStringResource() },
+                selectedOption = uiState.appSettings.selectedTheme.toStringResource(),
                 onOptionSelected = { index, _ -> onSelectedThemeChange(SelectedTheme.values()[index]) },
             )
         }
@@ -123,8 +126,8 @@ private fun AppSettingsScreen(
             ListRadioDialog(
                 onDismissRequest = { showServicesStyleDialog = false },
                 title = TwLocale.strings.settingsServicesStyle,
-                options = ServicesStyle.values().map { it.name },
-                selectedOption = uiState.appSettings.servicesStyle.name,
+                options = ServicesStyle.values().map { it.toStringResource() },
+                selectedOption = uiState.appSettings.servicesStyle.toStringResource(),
                 onOptionSelected = { index, _ -> onServicesStyleChange(ServicesStyle.values()[index]) },
             )
         }
@@ -137,5 +140,22 @@ private fun AppSettingsScreen(
                 onConfirm = { onShowBackupNoticeToggle() }
             )
         }
+    }
+}
+
+@Composable
+private fun SelectedTheme.toStringResource(): String {
+    return when (this) {
+        SelectedTheme.Auto -> stringResource(id = R.string.settings__theme_option_auto)
+        SelectedTheme.Light -> stringResource(id = R.string.settings__theme_option_light)
+        SelectedTheme.Dark -> stringResource(id = R.string.settings__theme_option_dark)
+    }
+}
+
+@Composable
+private fun ServicesStyle.toStringResource(): String {
+    return when (this) {
+        ServicesStyle.Default -> stringResource(id = R.string.settings__list_style_option_default)
+        ServicesStyle.Compact -> stringResource(id = R.string.settings__list_style_option_compact)
     }
 }

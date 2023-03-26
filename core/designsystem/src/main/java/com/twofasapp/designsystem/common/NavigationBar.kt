@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
 
@@ -38,7 +39,7 @@ fun RowScope.TwNavigationBarItem(
     NavigationBarItem(
         selected = selected,
         onClick = onClick,
-        label = { Text(text) },
+        label = { Text(text, maxLines = 1, overflow = TextOverflow.Ellipsis) },
         icon = {
             BadgedBox(badge = {
                 if (showBadge) {

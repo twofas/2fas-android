@@ -28,6 +28,10 @@ class Strings(c: Context) {
     val commonApprove = c.getString(R.string.commons__approve)
     val commonDeny = c.getString(R.string.commons__deny)
 
+    val bottomBarTokens = c.getString(R.string.commons__tokens)
+    val bottomBarSettings = c.getString(R.string.settings__settings)
+    val bottomBarNotifications = c.getString(R.string.commons__notifications)
+
     val startupTermsLabel = c.getString(R.string.introduction__tos)
     val startupStepOneHeader = c.getString(R.string.introduction__page_1_title)
     val startupStepOneBody = c.getString(R.string.introduction__page_1_content)
@@ -45,7 +49,7 @@ class Strings(c: Context) {
     val servicesEmptySearch = c.getString(R.string.tokens__service_not_found_search)
     val servicesEmptySearchBody = c.getString(R.string.tokens__try_different_search_term)
     val servicesMyTokens = c.getString(R.string.tokens__my_tokens)
-    val servicesManageList = "Manage list"
+    val servicesManageList = c.getString(R.string.tokens__manage_list)
     val servicesSortBy = c.getString(R.string.tokens__sort_by)
     val servicesSortByOptions = listOf(c.getString(R.string.tokens__sort_by_a_to_z), c.getString(R.string.tokens__sort_by_manual))
     val servicesCopyToken = c.getString(R.string.tokens__copied_clipboard)
@@ -53,6 +57,10 @@ class Strings(c: Context) {
     val groupsAdd = c.getString(R.string.tokens__add_group)
     val groupsEdit = c.getString(R.string.commons__edit)
     val groupsName = c.getString(R.string.tokens__group_name)
+    val addManually = c.getString(R.string.tokens__fab_addmanually)
+    val addQr = c.getString(R.string.commons__scan_qr_code)
+    val editService = c.getString(R.string.commons__edit)
+    val copyToken = c.getString(R.string.tokens__copy_token)
 
     val externalImportTitle = c.getString(R.string.settings__external_import)
     val externalImportHeader = c.getString(R.string.externalimport_select_app)
@@ -82,7 +90,7 @@ class Strings(c: Context) {
     val settingsBackup = c.getString(R.string.backup__2fas_backup)
     val settingsSecurity = c.getString(R.string.settings__security)
     val settingsSettings = c.getString(R.string.settings__settings)
-    val settingsAppearance = "Appearance"
+    val settingsAppearance = c.getString(R.string.settings__appearance)
     val settingsExternalImport = c.getString(R.string.settings__external_import)
     val settingsBrowserExt = c.getString(R.string.browser__browser_extension)
     val settingsTrash = c.getString(R.string.settings__trash)
@@ -104,15 +112,15 @@ class Strings(c: Context) {
 
     val settingsTheme = c.getString(R.string.settings__option_theme)
     val settingsShowNextCode = c.getString(R.string.settings__show_next_token)
-    val settingsShowNextCodeBody = "Show next token when current one is about to expire."
+    val settingsShowNextCodeBody = c.getString(R.string.settings__show_next_token_desc)
     val settingsAutoFocusSearch = c.getString(R.string.appearance__toggle_active_search)
     val settingsAutoFocusSearchBody = c.getString(R.string.appearance__active_search_description)
-    val settingsServicesStyle = "List style"
+    val settingsServicesStyle = c.getString(R.string.settings__list_style)
     val settingsShowBackupNotice = c.getString(R.string.settings__gd_sync_info)
     val settingsShowBackupNoticeConfirmBody = c.getString(R.string.settings__gd_sync_disable_confirm)
 
-    val backupSyncNotice = "Google Drive not synced."
-    val backupSyncCta = "Go to backup settings "
+    val backupSyncNotice = c.getString(R.string.backup__reminder_msg)
+    val backupSyncCta = c.getString(R.string.backup__reminder_cta)
     val backupReminder = c.getString(R.string.backup_notice_title)
     val backupReminderBody = c.getString(R.string.backup_notice_msg)
     val backupReminderDismiss = c.getString(R.string.backup_notice_later)

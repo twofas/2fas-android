@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.common.ModalList
 import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.locale.TwLocale
 
 @Composable
 internal fun AddServiceModal(
@@ -11,7 +12,7 @@ internal fun AddServiceModal(
     onScanQrClick: () -> Unit = {},
 ) {
     ModalList {
-        SettingsLink(title = "Add manually", icon = TwIcons.Edit) { onAddManuallyClick() }
-        SettingsLink(title = "Scan QR code", icon = TwIcons.Qr) { onScanQrClick() }
+        SettingsLink(title = TwLocale.strings.addManually, icon = TwIcons.Edit) { onAddManuallyClick() }
+        SettingsLink(title = TwLocale.strings.addQr, icon = TwIcons.Qr) { onScanQrClick() }
     }
 }

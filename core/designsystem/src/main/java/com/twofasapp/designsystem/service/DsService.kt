@@ -89,11 +89,13 @@ fun DsService(
                 .background(containerColor)
                 .combinedClickable(
                     enabled = onClick != null,
-                    onClick = { onClick?.invoke() },
-                    onLongClick = {
+                    onClick = {
                         if (editMode.not()) {
-                            onLongClick?.invoke()
+                            onClick?.invoke()
                         }
+                    },
+                    onLongClick = {
+                        onLongClick?.invoke()
                     },
                 ),
             verticalAlignment = Alignment.CenterVertically,

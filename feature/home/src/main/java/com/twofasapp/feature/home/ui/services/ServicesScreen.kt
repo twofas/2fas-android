@@ -422,13 +422,13 @@ private fun ServicesScreen(
                                         modifier = Modifier,
                                         dragHandleVisible = uiState.appSettings.servicesSort == ServicesSort.Manual,
                                         dragModifier = Modifier.detectReorder(state = reorderableState),
-                                        onClick = {
+                                        onLongClick = {
                                             scope.launch {
                                                 modalType = ModalType.FocusService(service.id, false)
                                                 modalState.show()
                                             }
                                         },
-                                        onLongClick = {
+                                        onClick = {
                                             state.copyToClipboard(activity, uiState.appSettings.showNextCode)
                                         },
                                         onIncrementCounterClick = {

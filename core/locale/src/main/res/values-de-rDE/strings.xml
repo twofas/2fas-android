@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sat, 25 Mar 2023 14:49:44 -0700
+ Exported at: Sun, 26 Mar 2023 13:20:22 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -721,4 +721,12 @@
     <string name="commons__best_match">Bester Treffer</string>
     <string name="settings__enable_crashlytics">Anonyme Absturzberichte senden</string>
     <string name="settings__enable_crashlytics_description">Sende anonyme Absturzberichte, um 2FAS beim Identifizieren und Lösen von Fehlern in der App zu helfen (App Neustart erforderlich).</string>
+    <string name="tokens__manage_list">Manage list</string>
+    <string name="settings__appearance">Appearance</string>
+    <string name="settings__show_next_token_desc">Show next token when current one is about to expire.</string>
+    <string name="settings__list_style">List style</string>
+    <string name="backup__reminder_msg">Google Drive not synced.</string>
+    <string name="backup__reminder_cta">Go to backup settings</string>
+    <string name="settings__list_style_option_default">Default</string>
+    <string name="settings__list_style_option_compact">Compact</string>
 </resources>

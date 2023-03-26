@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sat, 25 Mar 2023 14:49:44 -0700
+ Exported at: Sun, 26 Mar 2023 13:20:22 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -147,7 +147,7 @@
     <string name="settings__display_selected_services">Afficher les services sélectionnés pour les widgets de l\'écran d\'accueil.</string>
     <!-- settings__after_you_enable_widgets -->
     <string name="settings__widgets_title">Après avoir activé les widgets, toutes vos codes 2FA seront accessibles sans code PIN. Êtes-vous sur de vouloir activer les widgets ?</string>
-    <string name="settings__show_next_token">Afficher le code suivant</string>
+    <string name="settings__show_next_token">Afficher le prochain code</string>
     <string name="settings__see_incoming_tokens">Voir les prochains codes sur la liste.</string>
     <string name="settings__trash">Corbeille</string>
     <string name="settings__restore">Restaurer</string>
@@ -371,7 +371,7 @@
     <string name="backup__newer_format_not_supported">Ce fichier est dans un format plus récent que celui que l\'application supporte.</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Ce fichier est crypté. Nous ne supportons que les fichiers non cryptés</string>
-    <string name="tokens__copy_token">Copié le code</string>
+    <string name="tokens__copy_token">Code copié</string>
     <!-- tokens__i_want_to_delete_this_servie -->
     <string name="tokens__i_want_to_delete_this_token">Oui, je veux supprimer ce service</string>
     <string name="color__neutral">Neutre</string>
@@ -719,6 +719,14 @@
     <string name="errors__input_empty">Le champ ne peut être vide</string>
     <string name="errors__input_too_long">La valeur saisie est trop longue. Limite : %d</string>
     <string name="commons__best_match">Meilleur correspondance</string>
-    <string name="settings__enable_crashlytics">Send anonymous crash reports</string>
-    <string name="settings__enable_crashlytics_description">Send anonymous crash reports to help 2FAS identify and solve issues in the app (app restart required).</string>
+    <string name="settings__enable_crashlytics">Envoyer des rapports d\'erreur anonymes</string>
+    <string name="settings__enable_crashlytics_description">Envoyer des rapports d\'erreur anonymes pour aider 2FAS à identifier et à résoudre les erreurs dans l\'application (redémarrage de l\'application nécessaire).</string>
+    <string name="tokens__manage_list">Manage list</string>
+    <string name="settings__appearance">Appearance</string>
+    <string name="settings__show_next_token_desc">Show next token when current one is about to expire.</string>
+    <string name="settings__list_style">List style</string>
+    <string name="backup__reminder_msg">Google Drive not synced.</string>
+    <string name="backup__reminder_cta">Go to backup settings</string>
+    <string name="settings__list_style_option_default">Default</string>
+    <string name="settings__list_style_option_compact">Compact</string>
 </resources>

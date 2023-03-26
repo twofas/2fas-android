@@ -14,13 +14,13 @@ import com.twofasapp.extensions.toastLong
 import com.twofasapp.features.addserviceqr.AddServiceQrActivity
 import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.features.backup.import.ImportBackupActivity
-import com.twofasapp.features.main.MainServicesActivity
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.prefs.model.LockMethodEntity
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.resources.R
 import com.twofasapp.security.ui.lock.LockActivity
+import com.twofasapp.ui.main.MainActivity
 
 
 class ActivityScopedNavigator(
@@ -58,7 +58,7 @@ class ActivityScopedNavigator(
     }
 
     override fun openMain() {
-        activity.startActivity<MainServicesActivity>()
+        activity.startActivity<MainActivity>()
     }
 
     override fun openGooglePlay() {

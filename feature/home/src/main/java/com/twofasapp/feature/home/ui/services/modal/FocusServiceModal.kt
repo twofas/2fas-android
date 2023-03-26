@@ -9,6 +9,7 @@ import com.twofasapp.designsystem.service.DsServiceModal
 import com.twofasapp.designsystem.service.ServiceState
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.locale.TwLocale
 
 @Composable
 internal fun FocusServiceModal(
@@ -29,8 +30,8 @@ internal fun FocusServiceModal(
         SettingsDivider()
 
         ModalList {
-            SettingsLink(title = "Edit", icon = TwIcons.Edit) { onEditClick() }
-            SettingsLink(title = "Copy token", icon = TwIcons.Copy) { onCopyClick() }
+            SettingsLink(title = TwLocale.strings.editService, icon = TwIcons.Edit) { onEditClick() }
+            SettingsLink(title = TwLocale.strings.copyToken, icon = TwIcons.Copy) { onCopyClick() }
         }
     }
 }

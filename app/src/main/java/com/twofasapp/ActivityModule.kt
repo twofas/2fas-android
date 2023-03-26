@@ -12,9 +12,6 @@ import com.twofasapp.features.backup.BackupPresenter
 import com.twofasapp.features.backup.import.ImportBackupActivity
 import com.twofasapp.features.backup.import.ImportBackupContract
 import com.twofasapp.features.backup.import.ImportBackupPresenter
-import com.twofasapp.features.main.MainContract
-import com.twofasapp.features.main.MainPresenter
-import com.twofasapp.features.main.MainServicesActivity
 import com.twofasapp.features.navigator.ActivityScopedNavigator
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.widgets.configure.WidgetSettingsActivity
@@ -37,23 +34,6 @@ inline fun <reified T : ScopeActivity> Module.activityScope(scopeSet: ScopeDSL.(
 val activityScopeModule = module {
 
     factory<ScopedNavigator> { ActivityScopedNavigator(get(), get()) }
-
-    activityScope<MainServicesActivity> {
-        scoped<MainContract.Presenter> {
-            MainPresenter(
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-            )
-        }
-    }
 
     activityScope<AddServiceQrActivity> {
         scoped<AddServiceQrContract.Presenter> {

@@ -10,6 +10,7 @@ import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.common.TwNavigationBar
 import com.twofasapp.designsystem.common.TwNavigationBarItem
 import com.twofasapp.feature.home.navigation.HomeNode
+import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import org.koin.androidx.compose.koinViewModel
@@ -18,19 +19,19 @@ private val bottomNavItems
     @Composable
     get() = listOf(
         BottomNavItem(
-            title = "Tokens",
+            title = TwLocale.strings.bottomBarTokens,
             icon = TwIcons.Home,
             iconSelected = TwIcons.HomeFilled,
             route = HomeNode.Services.route,
         ),
         BottomNavItem(
-            title = "Settings",
+            title = TwLocale.strings.bottomBarSettings,
             icon = TwIcons.Settings,
             iconSelected = TwIcons.SettingsFilled,
             route = HomeNode.Settings.route,
         ),
         BottomNavItem(
-            title = "Notifications",
+            title = TwLocale.strings.bottomBarNotifications,
             icon = TwIcons.Notification,
             iconSelected = TwIcons.NotificationFilled,
             route = HomeNode.Notifications.route,
