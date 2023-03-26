@@ -277,7 +277,7 @@ internal fun ServiceScreen(
                                         expanded = false
                                     }
                                 ) {
-                                    Text(text = "Default")
+                                    Text(text = stringResource(id = R.string.tokens__my_tokens))
                                 }
 
                                 uiState.groups.list.forEach { group ->

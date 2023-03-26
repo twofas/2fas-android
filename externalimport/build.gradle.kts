@@ -49,13 +49,15 @@ dependencies {
     implementation(libs.kotlinCoroutines)
     implementation(libs.webkit)
     implementation(libs.protobuf)
+    implementation(libs.apacheCommonsCodec)
 
-    implementation("com.google.api-client:google-api-client-android:1.32.2")
+    implementation("com.google.api-client:google-api-client-android:2.2.0") {
+        exclude("org.apache.httpcomponents", "guava-jdk5")
+        exclude("com.google.http-client","google-http-client")
+    }
 
     implementation(platform("com.google.firebase:firebase-bom:31.1.0"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-messaging-ktx")
     implementation("com.google.firebase:firebase-crashlytics")
-    implementation("com.google.firebase:firebase-config-ktx")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1")
 }

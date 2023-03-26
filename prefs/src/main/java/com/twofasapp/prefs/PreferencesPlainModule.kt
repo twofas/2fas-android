@@ -16,6 +16,7 @@ import com.twofasapp.prefs.usecase.MobileDevicePreference
 import com.twofasapp.prefs.usecase.PinCodePreference
 import com.twofasapp.prefs.usecase.RateAppStatusPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import com.twofasapp.prefs.usecase.SendCrashLogsPreference
 import com.twofasapp.prefs.usecase.ServicesOrderPreference
 import com.twofasapp.prefs.usecase.ShowNextTokenPreference
 import com.twofasapp.prefs.usecase.ShowOnboardingPreference
@@ -48,5 +49,6 @@ class PreferencesPlainModule : KoinModule {
         single { MobileDevicePreference(get<PlainPreferences>()) }
         single { LastPushesPreference(get<PlainPreferences>()) }
         single { CacheValidityPreference(get<PlainPreferences>(), get()) }
+        single { SendCrashLogsPreference(get<PlainPreferences>()) }
     }
 }

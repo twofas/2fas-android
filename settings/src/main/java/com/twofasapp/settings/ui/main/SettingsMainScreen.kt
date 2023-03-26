@@ -54,6 +54,16 @@ internal fun SettingsMainScreen(
             }
 
             item {
+                SwitchEntry(
+                    title = stringResource(id = R.string.settings__enable_crashlytics),
+                    subtitle = stringResource(id = R.string.settings__enable_crashlytics_description),
+                    icon = painterResource(id = R.drawable.ic_crashes),
+                    isChecked = uiState.sendCrashLogs,
+                    switch = { isChecked -> viewModel.changeSendCrashLogs(isChecked) }
+                )
+            }
+
+            item {
                 SimpleEntry(
                     title = stringResource(id = R.string.browser__browser_extension),
                     icon = painterResource(id = R.drawable.ic_option_browser_extension),
