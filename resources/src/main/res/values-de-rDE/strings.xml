@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Tue, 14 Mar 2023 03:55:24 -0700
+ Exported at: Mon, 20 Mar 2023 22:33:35 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -705,7 +705,7 @@
     <string name="tokens__customize_service_title">Dienst anpassen</string>
     <string name="extension__services_suggested_header">Empfohlen</string>
     <string name="extension__services_all_header">Alle Tokens</string>
-    <string name="extension__services_other_header">Andere Tokens</string>
+    <string name="extension__services_other_header">Andere Dienste</string>
     <string name="settings__ssl_error_title">SSL Fehler</string>
     <string name="settings__ssl_error_description">Ein SSL-Fehler ist aufgetreten, wodurch eine sichere Verbindung zum Server nicht hergestellt werden kann. Stelle sicher, dass du die neueste App-Version hast oder versuche, das Netzwerk zu ändern.</string>
     <string name="backup__import_error_file_size">Die Datei, die du versuchst zu importieren, ist zu groß. Die Größenbeschränkung beträgt 10 MB.</string>
@@ -718,4 +718,5 @@
     <string name="errors__input_number">Eingabe muss eine Nummer sein</string>
     <string name="errors__input_empty">Eingabe darf nicht leer sein</string>
     <string name="errors__input_too_long">Eingabe ist zu lang. Limit: %d</string>
+    <string name="commons__best_match">Bester Treffer</string>
 </resources>

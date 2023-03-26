@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Sun, 12 Mar 2023 11:14:33 -0700
+ Exported at: Mon, 20 Mar 2023 22:33:35 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -718,4 +718,5 @@
     <string name="errors__input_number">Input must be a number</string>
     <string name="errors__input_empty">Input can not be empty</string>
     <string name="errors__input_too_long">Input is too long. Limit: %d</string>
+    <string name="commons__best_match">Best match</string>
 </resources>
