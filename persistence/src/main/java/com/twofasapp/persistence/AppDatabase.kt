@@ -9,6 +9,8 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.twofasapp.data.browserext.local.PairedBrowserDao
+import com.twofasapp.data.browserext.local.model.PairedBrowserEntity
 import com.twofasapp.data.notifications.local.NotificationsDao
 import com.twofasapp.data.notifications.local.model.NotificationEntity
 import com.twofasapp.data.services.local.ServiceDao
@@ -16,8 +18,6 @@ import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.persistence.converter.Converters
-import com.twofasapp.data.browserext.local.PairedBrowserDao
-import com.twofasapp.data.browserext.local.model.PairedBrowserEntity
 
 @Database(
     entities = [

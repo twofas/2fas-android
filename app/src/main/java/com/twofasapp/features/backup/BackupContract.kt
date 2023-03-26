@@ -1,7 +1,6 @@
 package com.twofasapp.features.backup
 
 import android.content.Intent
-import com.twofasapp.base.BasePresenter
 import io.reactivex.Flowable
 
 internal interface BackupContract {

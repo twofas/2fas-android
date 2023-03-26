@@ -2,7 +2,6 @@ package com.twofasapp.prefs.usecase
 
 import com.twofasapp.prefs.internals.PreferenceBoolean
 import com.twofasapp.storage.Preferences
-import com.twofasapp.prefs.internals.PreferenceModel
 
 @Deprecated("Remove - old appThemeKey")
 class AppThemePreference(preferences: Preferences) : PreferenceBoolean(preferences) {

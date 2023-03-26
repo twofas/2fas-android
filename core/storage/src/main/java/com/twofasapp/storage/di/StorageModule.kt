@@ -5,9 +5,9 @@ import com.twofasapp.storage.EncryptedPreferences
 import com.twofasapp.storage.EncryptedPreferencesImpl
 import com.twofasapp.storage.PlainPreferences
 import com.twofasapp.storage.PlainPreferencesImpl
-import com.twofasapp.storage.internal.PreferencesDelegate
 import com.twofasapp.storage.internal.EncryptedSharedPreferencesFactory
 import com.twofasapp.storage.internal.PlainSharedPreferencesFactory
+import com.twofasapp.storage.internal.PreferencesDelegate
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

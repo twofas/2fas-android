@@ -1,8 +1,8 @@
 package com.twofasapp.usecases.services
 
+import com.twofasapp.base.usecase.UseCase
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.data.ServicesRepository
-import com.twofasapp.base.usecase.UseCase
 import io.reactivex.Scheduler
 import io.reactivex.Single
 

@@ -24,7 +24,6 @@ import com.twofasapp.designsystem.common.TwEmptyScreen
 import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.service.DsServiceSimple
-import com.twofasapp.designsystem.service.ServiceAuthType
 import com.twofasapp.designsystem.service.ServiceImageType
 import com.twofasapp.designsystem.service.ServiceState
 import com.twofasapp.feature.trash.R

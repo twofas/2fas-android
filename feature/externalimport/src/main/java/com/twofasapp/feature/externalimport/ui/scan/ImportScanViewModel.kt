@@ -4,9 +4,9 @@ import android.net.Uri
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.base.dispatcher.Dispatchers
-import com.twofasapp.resources.R
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.qrscanner.domain.ScanQr
+import com.twofasapp.resources.R
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

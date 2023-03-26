@@ -5,12 +5,8 @@ import android.view.WindowManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.PermissionChecker
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.lifecycleScope
 import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.permissions.PermissionStatus
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 internal class PermissionActivity : FragmentActivity(), ActivityCompat.OnRequestPermissionsResultCallback {

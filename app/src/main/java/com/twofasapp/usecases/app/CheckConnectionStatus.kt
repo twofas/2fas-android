@@ -3,8 +3,8 @@ package com.twofasapp.usecases.app
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import com.twofasapp.entity.ConnectionStatus
 import com.twofasapp.base.usecase.UseCase
+import com.twofasapp.entity.ConnectionStatus
 import io.reactivex.Scheduler
 
 class CheckConnectionStatus(

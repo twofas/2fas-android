@@ -4,7 +4,7 @@ import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.services.domain.DeleteServiceUseCase
 import io.reactivex.Completable
 import io.reactivex.Scheduler
-import java.util.*
+import java.util.Locale
 
 class DeleteDuplicatedService(
     private val getServicesIncludingTrashed: GetServicesIncludingTrashed,

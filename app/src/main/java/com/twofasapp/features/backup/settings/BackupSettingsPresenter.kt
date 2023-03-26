@@ -1,9 +1,8 @@
 package com.twofasapp.features.backup.settings
 
 import com.mikepenz.fastadapter.IItem
-import com.twofasapp.resources.R
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.backup.domain.SyncBackupTrigger
+import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.design.settings.DividerItem
 import com.twofasapp.design.settings.HeaderEntry
 import com.twofasapp.design.settings.SimpleEntry
@@ -11,6 +10,7 @@ import com.twofasapp.extensions.doNothing
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import com.twofasapp.resources.R
 import com.twofasapp.services.workmanager.WipeGoogleDriveWorkDispatcher
 import com.twofasapp.time.domain.formatter.DurationFormatter
 import com.twofasapp.usecases.app.CheckConnectionStatus

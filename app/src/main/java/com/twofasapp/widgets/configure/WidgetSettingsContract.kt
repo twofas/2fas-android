@@ -1,7 +1,6 @@
 package com.twofasapp.widgets.configure
 
 import com.mikepenz.fastadapter.IItem
-import com.twofasapp.base.BasePresenter
 import io.reactivex.Flowable
 
 interface WidgetSettingsContract {

@@ -1,10 +1,14 @@
 package com.twofasapp.parsers
 
 import com.twofasapp.parsers.domain.IconCollection
-import com.twofasapp.parsers.domain.IconCollection.IconType.*
+import com.twofasapp.parsers.domain.IconCollection.IconType.Dark
+import com.twofasapp.parsers.domain.IconCollection.IconType.Light
 import com.twofasapp.parsers.domain.MatchRule
-import com.twofasapp.parsers.domain.MatchRule.Field.*
-import com.twofasapp.parsers.domain.MatchRule.Matcher.*
+import com.twofasapp.parsers.domain.MatchRule.Field.Issuer
+import com.twofasapp.parsers.domain.MatchRule.Field.Label
+import com.twofasapp.parsers.domain.MatchRule.Matcher.Contains
+import com.twofasapp.parsers.domain.MatchRule.Matcher.Equals
+import com.twofasapp.parsers.domain.MatchRule.Matcher.StartsWith
 import com.twofasapp.parsers.domain.SupportedService
 
 object SupportedServices {

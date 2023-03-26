@@ -3,8 +3,6 @@ package com.twofasapp.design.theme
 import androidx.compose.material.Colors
 import androidx.compose.material3.RadioButtonColors
 import androidx.compose.material3.RadioButtonDefaults
-import androidx.compose.material3.SwitchColors
-import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.twofasapp.designsystem.TwTheme

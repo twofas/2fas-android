@@ -3,9 +3,9 @@ package com.twofasapp.design.settings
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
-import com.twofasapp.resources.R
 import com.twofasapp.extensions.dpToPx
 import com.twofasapp.extensions.getString
+import com.twofasapp.resources.R
 
 class HeaderEntryView : androidx.appcompat.widget.AppCompatTextView {
 

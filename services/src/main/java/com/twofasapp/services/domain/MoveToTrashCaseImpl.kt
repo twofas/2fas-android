@@ -1,7 +1,7 @@
 package com.twofasapp.services.domain
 
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.backup.domain.SyncBackupTrigger
+import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.RemoteBackupStatus
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference

@@ -17,10 +17,8 @@ import com.twofasapp.databinding.ActivityMainBinding
 import com.twofasapp.design.dialogs.CancelAction
 import com.twofasapp.design.dialogs.ConfirmAction
 import com.twofasapp.design.dialogs.ConfirmDialog
-import com.twofasapp.extensions.startActivity
 import com.twofasapp.features.addserviceqr.AddServiceQrActivity
 import com.twofasapp.features.addserviceqr.ScanInfoDialog
-import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.resources.R
 import kotlinx.coroutines.Dispatchers

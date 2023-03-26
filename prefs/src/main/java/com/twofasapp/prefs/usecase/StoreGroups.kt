@@ -3,7 +3,7 @@ package com.twofasapp.prefs.usecase
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.di.BackupSyncStatus.NOT_SYNCED
 import com.twofasapp.time.domain.TimeProvider
-import java.util.*
+import java.util.Collections
 
 class StoreGroups(
     private val groupsPreference: GroupsPreference,

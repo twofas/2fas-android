@@ -3,9 +3,9 @@ package com.twofasapp.widgets.configure
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mikepenz.fastadapter.binding.ModelAbstractBindingItem
-import com.twofasapp.resources.R
 import com.twofasapp.databinding.ItemWidgetSettingsServiceBinding
 import com.twofasapp.extensions.makeGoneIfEmpty
+import com.twofasapp.resources.R
 
 class WidgetSettingsServiceItem(model: WidgetSettingsService) :
     ModelAbstractBindingItem<WidgetSettingsService, ItemWidgetSettingsServiceBinding>(model) {

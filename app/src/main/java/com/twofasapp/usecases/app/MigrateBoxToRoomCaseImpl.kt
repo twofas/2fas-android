@@ -2,10 +2,10 @@ package com.twofasapp.usecases.app
 
 import android.content.Context
 import com.twofasapp.core.analytics.AnalyticsEvent
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.entity.MyObjectBox
 import com.twofasapp.entity.Service
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.usecase.MigratedToRoomPreference
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.StoreServicesOrder

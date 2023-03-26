@@ -24,7 +24,6 @@ import com.twofasapp.design.compose.HeaderEntry
 import com.twofasapp.design.compose.SimpleEntry
 import com.twofasapp.design.compose.SubtitleGravity
 import com.twofasapp.design.compose.SwitchEntry
-import com.twofasapp.design.compose.dialogs.ListDialog
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ListRadioDialog
@@ -33,7 +32,6 @@ import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.domain.model.PinTimeout
 import com.twofasapp.security.domain.model.PinTrials
 import com.twofasapp.security.ui.biometric.BiometricDialog
-import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

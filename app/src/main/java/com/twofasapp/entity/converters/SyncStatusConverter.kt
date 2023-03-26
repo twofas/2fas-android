@@ -2,7 +2,7 @@ package com.twofasapp.entity.converters
 
 import com.twofasapp.entity.SyncStatus
 import io.objectbox.converter.PropertyConverter
-import java.util.*
+import java.util.Locale
 
 class SyncStatusConverter : PropertyConverter<SyncStatus, String> {
     override fun convertToEntityProperty(databaseValue: String): SyncStatus {

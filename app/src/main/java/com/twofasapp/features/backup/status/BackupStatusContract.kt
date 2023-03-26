@@ -1,7 +1,6 @@
 package com.twofasapp.features.backup.status
 
 import com.mikepenz.fastadapter.IItem
-import com.twofasapp.base.BasePresenter
 
 internal interface BackupStatusContract {
 

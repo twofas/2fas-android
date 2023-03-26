@@ -1,7 +1,6 @@
 package com.twofasapp.feature.home.navigation
 
 import android.app.Activity
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
@@ -9,7 +8,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.twofasapp.common.navigation.NavGraph
 import com.twofasapp.common.navigation.NavNode
-import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.feature.home.ui.notifications.NotificationsRoute
 import com.twofasapp.feature.home.ui.services.ServicesRoute

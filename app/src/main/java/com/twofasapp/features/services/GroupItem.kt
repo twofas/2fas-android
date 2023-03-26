@@ -11,9 +11,9 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.mikepenz.fastadapter.binding.ModelAbstractBindingItem
-import com.twofasapp.resources.R
 import com.twofasapp.databinding.ItemGroupBinding
 import com.twofasapp.entity.GroupModel
+import com.twofasapp.resources.R
 
 class GroupItem(
     model: GroupModel,

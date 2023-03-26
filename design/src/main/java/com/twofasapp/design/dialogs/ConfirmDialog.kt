@@ -2,9 +2,9 @@ package com.twofasapp.design.dialogs
 
 import android.content.Context
 import com.afollestad.materialdialogs.MaterialDialog
-import com.twofasapp.resources.R
 import com.twofasapp.extensions.onNegativeButtonClick
 import com.twofasapp.extensions.onPositiveButtonClick
+import com.twofasapp.resources.R
 
 typealias ConfirmAction = () -> Unit
 typealias CancelAction = () -> Unit

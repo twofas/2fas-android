@@ -4,7 +4,7 @@ import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.extensions.removeWhiteCharacters
 import io.reactivex.Scheduler
 import io.reactivex.Single
-import java.util.*
+import java.util.Locale
 
 class CheckServiceExists(private val getServices: GetServices) : UseCaseParameterized<String, Single<Boolean>> {
 

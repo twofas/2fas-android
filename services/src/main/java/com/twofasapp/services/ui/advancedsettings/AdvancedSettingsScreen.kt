@@ -23,7 +23,6 @@ import com.twofasapp.services.domain.model.Service
 import com.twofasapp.services.domain.model.Service.AuthType.HOTP
 import com.twofasapp.services.domain.model.Service.AuthType.TOTP
 import com.twofasapp.services.ui.ServiceViewModel
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun AdvancedSettingsScreen(

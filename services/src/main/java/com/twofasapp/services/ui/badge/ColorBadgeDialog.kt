@@ -24,7 +24,6 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.twofasapp.design.compose.dialogs.internal.BaseDialog
-import com.twofasapp.design.theme.textPrimary
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.services.view.toColor

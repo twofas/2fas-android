@@ -1,7 +1,7 @@
 package com.twofasapp.services.domain.model
 
-import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.model.Tint
 
 data class Service(

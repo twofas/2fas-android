@@ -1,7 +1,7 @@
 package com.twofasapp.prefs.internals
 
-import com.twofasapp.storage.Preferences
 import com.twofasapp.serialization.JsonSerializer
+import com.twofasapp.storage.Preferences
 import io.reactivex.Flowable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onSubscription
