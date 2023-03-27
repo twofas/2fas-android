@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sat, 25 Mar 2023 14:49:44 -0700
+ Exported at: Mon, 27 Mar 2023 09:20:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -254,8 +254,8 @@
     <string name="tokens__totp">TOTP</string>
     <string name="tokens__advanced_settings_footer_title">Das Ändern der erweiterten Einstelllungen ist nicht empfohlen. Dies sollte nur getan werden wenn dein 2FA Anbieter es benötigt und du genaue Anweisungen hast.</string>
     <string name="tokens__gallery_advice_title">Beste Methode</string>
-    <string name="tokens__gallery_advice_content_first">Dienst erfolgreich hinzugefügt. Wir empfehlen dir sehr, dass du</string>
-    <string name="tokens__gallery_advice_content_middle_bold">lösche den QR Screenshot aus deiner Galerie.</string>
+    <string name="tokens__gallery_advice_content_first">Dienst erfolgreich hinzugefügt. Wir empfehlen dir sehr, dass du\u0020</string>
+    <string name="tokens__gallery_advice_content_middle_bold">lösche den QR Screenshot aus deiner Galerie.\u0020</string>
     <string name="tokens__gallery_advice_content_last">Wenn jemand diesen QR-Code übernimmt, ist es möglich deine 2FA Codes über diesem Dienst zu erhalten.</string>
     <string name="tokens__request_icon_page_title">Ein Logo anfragen</string>
     <string name="tokens__request_icon_social_title">Uns über Discord kontaktieren</string>
@@ -721,4 +721,12 @@
     <string name="commons__best_match">Bester Treffer</string>
     <string name="settings__enable_crashlytics">Anonyme Absturzberichte senden</string>
     <string name="settings__enable_crashlytics_description">Sende anonyme Absturzberichte, um 2FAS beim Identifizieren und Lösen von Fehlern in der App zu helfen (App Neustart erforderlich).</string>
+    <string name="tokens__manage_list">Manage list</string>
+    <string name="settings__appearance">Appearance</string>
+    <string name="settings__show_next_token_desc">Show next token when current one is about to expire.</string>
+    <string name="settings__list_style">List style</string>
+    <string name="backup__reminder_msg">Google Drive not synced.</string>
+    <string name="backup__reminder_cta">Go to backup settings</string>
+    <string name="settings__list_style_option_default">Default</string>
+    <string name="settings__list_style_option_compact">Compact</string>
 </resources>
