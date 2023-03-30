@@ -247,13 +247,9 @@ internal fun ServiceScreen(
                             onExpandedChange = { expanded = expanded.not() },
                         ) {
                             OutlinedTextField(
-                                value = uiState.groups.getById(service.groupId)?.name ?: "Default",
+                                value = uiState.groups.getById(service.groupId)?.name ?: stringResource(id = R.string.tokens__my_tokens),
                                 onValueChange = { },
-                                label = {
-                                    Text(
-                                        "Group",
-                                    )
-                                },
+                                label = { Text(text = stringResource(id = R.string.tokens__group),) },
                                 readOnly = true,
                                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                                 colors = TextFieldDefaults.outlinedTextFieldColors(

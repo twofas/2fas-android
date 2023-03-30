@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sat, 25 Mar 2023 14:49:44 -0700
+ Exported at: Thu, 30 Mar 2023 12:12:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -16,7 +16,7 @@
     <string name="NSFaceIDUsageDescription">Vous pouvez déverrouiller l\'application en utilisant Face ID</string>
     <!-- MARK: - App -->
     <string name="app__name">2FAS Authenticator</string>
-    <string name="commons__2fas">2FA Authenticator (2FAS App)</string>
+    <string name="commons__2fas">Authentificateur 2FA (2FAS App)</string>
     <string name="commons__OK">OK</string>
     <string name="commons__add">Ajouter</string>
     <!-- MARK: - Commons -->
@@ -45,7 +45,7 @@
     <string name="commons__edit">Modifier</string>
     <string name="commons__enter_code_manually">Entrer le code manuellement</string>
     <string name="commons__error">Erreur</string>
-    <string name="commons__info">Info</string>
+    <string name="commons__info">Informations</string>
     <string name="commons__next">Suivant</string>
     <string name="commons__notice">Annonce</string>
     <string name="commons__off">Off</string>
@@ -146,8 +146,8 @@
     <string name="settings__widgets">Widgets</string>
     <string name="settings__display_selected_services">Afficher les services sélectionnés pour les widgets de l\'écran d\'accueil.</string>
     <!-- settings__after_you_enable_widgets -->
-    <string name="settings__widgets_title">Après avoir activé les widgets, toutes vos codes 2FA seront accessibles sans code PIN. Êtes-vous sur de vouloir activer les widgets ?</string>
-    <string name="settings__show_next_token">Afficher le code suivant</string>
+    <string name="settings__widgets_title">Après avoir activé les widgets, tous vos codes 2FA seront accessibles sans code PIN. Êtes-vous sur de vouloir activer les widgets ?</string>
+    <string name="settings__show_next_token">Afficher le prochain code</string>
     <string name="settings__see_incoming_tokens">Voir les prochains codes sur la liste.</string>
     <string name="settings__trash">Corbeille</string>
     <string name="settings__restore">Restaurer</string>
@@ -206,7 +206,7 @@
     <string name="tokens__my_tokens">Mes Codes</string>
     <string name="tokens__removing_group">Suppression du groupe</string>
     <!-- tokens__all_tokens_will_be_moved -->
-    <string name="tokens__all_tokens_moved_to_group_title">Tout les codes 2FA seront déplacés dans le groupe : \"Mes Codes\"</string>
+    <string name="tokens__all_tokens_moved_to_group_title">Tous les codes 2FA seront déplacés dans le groupe : \"Mes Codes\"</string>
     <string name="tokens__add_group">Ajouter groupe</string>
     <string name="tokens__group_name">Nom du groupe :</string>
     <string name="tokens__select_from_gallery">Choisir depuis la galerie</string>
@@ -255,7 +255,7 @@
     <string name="tokens__advanced_settings_footer_title">Modifier les réglages avancés n\'est pas recommandé. Faites le que si votre fournisseur 2FA l\'exige et vous fournit des consignes claires.</string>
     <string name="tokens__gallery_advice_title">Meilleur pratique</string>
     <string name="tokens__gallery_advice_content_first">Service ajouté avec succès. Nous vous recommandons vivement de\u0020</string>
-    <string name="tokens__gallery_advice_content_middle_bold">supprimer le QR code de votre galerie.</string>
+    <string name="tokens__gallery_advice_content_middle_bold">supprimer le QR code de votre galerie.\u0020</string>
     <string name="tokens__gallery_advice_content_last">Si quelqu\'un récupère cette capture d\'écran, il sera en mesure d\'obtenir vos codes 2FA pour ce service.</string>
     <string name="tokens__request_icon_page_title">Demander une icône</string>
     <string name="tokens__request_icon_social_title">Faites-le nous savoir sur Discord</string>
@@ -345,7 +345,7 @@
     <string name="backup__import_file">Importer le fichier</string>
     <string name="backup__choose_antother_file">Choisissez un autre fichier</string>
     <string name="backup__no_new_services">Rien à importer</string>
-    <string name="backup__file_error">Erreur de fichier!</string>
+    <string name="backup__file_error">Erreur de fichier !</string>
     <!-- backup__services_form_file_will_be_merged -->
     <string name="backup__services_merge_title">Les services du fichiers seront fusionnés avec ceux présents dans votre application</string>
     <string name="backup__no_new_services_error">Soit ce fichier est vide, soit tous les services qu\'il contient sont déjà disponibles dans l\'application.</string>
@@ -371,7 +371,7 @@
     <string name="backup__newer_format_not_supported">Ce fichier est dans un format plus récent que celui que l\'application supporte.</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Ce fichier est crypté. Nous ne supportons que les fichiers non cryptés</string>
-    <string name="tokens__copy_token">Copié le code</string>
+    <string name="tokens__copy_token">Copier le code</string>
     <!-- tokens__i_want_to_delete_this_servie -->
     <string name="tokens__i_want_to_delete_this_token">Oui, je veux supprimer ce service</string>
     <string name="color__neutral">Neutre</string>
@@ -400,7 +400,7 @@
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Bloquer après X tentatives</string>
     <string name="settings__how_many_attempts_footer">Sélectionnez le nombre maximum de tentatives avant le verrouillage de l\'application</string>
-    <string name="settings__block_for">Durée de verrouillage</string>
+    <string name="settings__block_for">Délai de verrouillage</string>
     <string name="settings__3_minutes">3 minutes</string>
     <string name="settings__5_minutes">5 minutes</string>
     <string name="settings__10_minutes">10 minutes</string>
@@ -567,7 +567,7 @@
     <string name="tokens__tokens_list_is_empty">La liste des services est vide</string>
     <string name="tokens__use_plus_button_to_add_tokens">Utilisez le bouton \"+\" pour ajouter un nouveau service</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Impossible de vous connecter à votre compte %1$s sans ce code tant que la vérification en deux étapes %2$s est activée.</string>
-    <string name="import_ga_success">Services importés avec succès!</string>
+    <string name="import_ga_success">Services importés avec succès !</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
     <string name="backup_error_network">Vous avez besoin d\'une connexion internet pour synchroniser votre sauvegarde. Veuillez vous connecter à internet et réessayez.</string>
     <string name="update_app_title">Mise à jour de l\'application</string>
@@ -586,16 +586,16 @@
     <string name="widgets_warning_title">ATTENTION!</string>
     <string name="widgets_warning_cta">Oui, je suis sûr</string>
     <string name="backup_notice_title">Sauvegarde 2FAS</string>
-    <string name="backup_notice_msg">Activer la sauvegarde 2FAS et garder vos codes en sécurité dans Google Drive.</string>
+    <string name="backup_notice_msg">Activer la sauvegarde 2FAS. Dans le cas où vous perdez ou restaurez votre appareil, vous pourrez alors récupérer toutes vos clés.</string>
     <string name="brand_empty_msg">Désolé, marque non trouvée</string>
     <!-- Select which services will be visible on widget: -->
-    <string name="widgets_select_msg">Sélectionnez quels services seront visible sur le widget:</string>
+    <string name="widgets_select_msg">Sélectionnez quels services seront visible sur le widget :</string>
     <string name="backup_turn_off_cta">Désactiver la Synchro</string>
     <string name="backup_turn_off_cancel">Annuler</string>
     <string name="backup_settings_password_set_title">Définir le mot de passe</string>
     <string name="backup_settings_delete_title">Supprimer la sauvegarde de Google Drive</string>
     <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
-    <string name="backup_settings_delete_subtitle">Si vous supprimez ce fichier de votre Google Drive, la synchronisation sera désactivée de tous les appareils synchronisés et les clés resteront sur cet appareil et sur les autres seulement via le stockage local.</string>
+    <string name="backup_settings_delete_subtitle">Si vous supprimez ce fichier de votre Google Drive, la synchronisation sera désactivée de tous les appareils synchronisés et les clés resteront sur cet appareil et sur les autres uniquement via le stockage local.</string>
     <string name="browser__result_error_browser_paired">Votre application 2FAS est déjà appairée avec ce navigateur.</string>
     <!-- Scan QR code again -->
     <string name="browser__result_error_cta">Veuillez scanner le QR code de nouveau</string>
@@ -608,7 +608,7 @@
     <string name="biometric_dialog_setup_cancel">Annuler</string>
     <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
     <string name="settings__option_fingerprint_description">Pour activer le Verrouillage Biométrique, vous devez configurer un code PIN.</string>
-    <string name="settings__block_for_footer">Sélectionner la durée pendant laquelle l\'application sera verrouillée</string>
+    <string name="settings__block_for_footer">Sélectionner le délai restant avant le verrouillage de l\'application.</string>
     <string name="error__out_of_disk_space">La base de données semble avoir été endommagée par un manque d\'espace disque ou par une autre situation similaire</string>
     <string name="error__cloud_backup_newer_version">La sauvegarde Cloud a été migrée vers la nouvelle version. Veuillez mettre à jour l\'application</string>
     <string name="error__cloud_backup_encrypted_not_supported">La sauvegarde Cloud est cryptée. Veuillez mettre à jour l\'application pour bénéficier de cette fonctionnalité</string>
@@ -719,6 +719,19 @@
     <string name="errors__input_empty">Le champ ne peut être vide</string>
     <string name="errors__input_too_long">La valeur saisie est trop longue. Limite : %d</string>
     <string name="commons__best_match">Meilleur correspondance</string>
-    <string name="settings__enable_crashlytics">Send anonymous crash reports</string>
-    <string name="settings__enable_crashlytics_description">Send anonymous crash reports to help 2FAS identify and solve issues in the app (app restart required).</string>
+    <string name="settings__enable_crashlytics">Envoyer des rapports d\'erreur anonymes</string>
+    <string name="settings__enable_crashlytics_description">Envoyer des rapports d\'erreur anonymes pour aider 2FAS à identifier et à résoudre les erreurs dans l\'application (redémarrage de l\'application nécessaire).</string>
+    <string name="tokens__manage_list">Gestion de la liste</string>
+    <string name="settings__appearance">Apparence</string>
+    <string name="settings__show_next_token_desc">Afficher le prochain code lorsque le code actuel est sur le point d\'expirer.</string>
+    <string name="settings__list_style">Style de liste</string>
+    <string name="backup__reminder_msg">Google Drive n\'est pas synchronisé.</string>
+    <string name="backup__reminder_cta">Accéder aux paramètres de sauvegarde</string>
+    <string name="settings__list_style_option_default">Défaut</string>
+    <string name="settings__list_style_option_compact">Compacte</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Exportez vos comptes LastPass vers un fichier JSON non crypté et importez le en utilisant le bouton \"Choisir un fichier JSON\". N\'oubliez pas de supprimer le fichier après avoir réussie l\'importation.</string>
+    <string name="settings__about_crash_optout_title">Rapports d\'incident</string>
+    <string name="settings__about_crash_optout_toggle_title">Refus de recevoir les rapports d\'incident</string>
+    <string name="settings__about_crash_optout_description">Les rapports d\'incident nous aident à améliorer l\'application lorsque les choses tournent mal. Les changements seront appliqués lors du prochain lancement de l\'application.</string>
 </resources>
