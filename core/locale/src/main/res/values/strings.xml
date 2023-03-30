@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Mon, 27 Mar 2023 09:20:24 -0700
+ Exported at: Thu, 30 Mar 2023 12:12:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -729,4 +729,9 @@
     <string name="backup__reminder_cta">Go to backup settings</string>
     <string name="settings__list_style_option_default">Default</string>
     <string name="settings__list_style_option_compact">Compact</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Export your accounts from LastPass to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="settings__about_crash_optout_title">Crash Reports</string>
+    <string name="settings__about_crash_optout_toggle_title">Opt-out of Crash Reports</string>
+    <string name="settings__about_crash_optout_description">Crash Reports help us improve the app when things go very wrong. Changes will be applied on the next app run.</string>
 </resources>

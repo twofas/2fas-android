@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Mon, 27 Mar 2023 09:20:24 -0700
+ Exported at: Thu, 30 Mar 2023 12:12:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -729,4 +729,9 @@
     <string name="backup__reminder_cta">Vai a definições da cópia de segurança</string>
     <string name="settings__list_style_option_default">Padrão</string>
     <string name="settings__list_style_option_compact">Compacto</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Exporta as tuas contas da aplicação LastPass para um ficheiro JSON não encriptado e usa o botão \"Escolhe o ficheiro JSON\" para importá-lo. Lembra-te de remover o ficheiro após importares com sucesso.</string>
+    <string name="settings__about_crash_optout_title">Crash Reports</string>
+    <string name="settings__about_crash_optout_toggle_title">Opt-out of Crash Reports</string>
+    <string name="settings__about_crash_optout_description">Crash Reports help us improve the app when things go very wrong. Changes will be applied on the next app run.</string>
 </resources>

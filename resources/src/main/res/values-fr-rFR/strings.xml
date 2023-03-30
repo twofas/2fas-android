@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Mon, 27 Mar 2023 09:20:24 -0700
+ Exported at: Thu, 30 Mar 2023 12:12:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -16,7 +16,7 @@
     <string name="NSFaceIDUsageDescription">Vous pouvez déverrouiller l\'application en utilisant Face ID</string>
     <!-- MARK: - App -->
     <string name="app__name">2FAS Authenticator</string>
-    <string name="commons__2fas">2FA Authenticator (2FAS App)</string>
+    <string name="commons__2fas">Authentificateur 2FA (2FAS App)</string>
     <string name="commons__OK">OK</string>
     <string name="commons__add">Ajouter</string>
     <!-- MARK: - Commons -->
@@ -45,7 +45,7 @@
     <string name="commons__edit">Modifier</string>
     <string name="commons__enter_code_manually">Entrer le code manuellement</string>
     <string name="commons__error">Erreur</string>
-    <string name="commons__info">Info</string>
+    <string name="commons__info">Informations</string>
     <string name="commons__next">Suivant</string>
     <string name="commons__notice">Annonce</string>
     <string name="commons__off">Off</string>
@@ -371,7 +371,7 @@
     <string name="backup__newer_format_not_supported">Ce fichier est dans un format plus récent que celui que l\'application supporte.</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Ce fichier est crypté. Nous ne supportons que les fichiers non cryptés</string>
-    <string name="tokens__copy_token">Code copié</string>
+    <string name="tokens__copy_token">Copier le code</string>
     <!-- tokens__i_want_to_delete_this_servie -->
     <string name="tokens__i_want_to_delete_this_token">Oui, je veux supprimer ce service</string>
     <string name="color__neutral">Neutre</string>
@@ -400,7 +400,7 @@
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Bloquer après X tentatives</string>
     <string name="settings__how_many_attempts_footer">Sélectionnez le nombre maximum de tentatives avant le verrouillage de l\'application</string>
-    <string name="settings__block_for">Durée de verrouillage</string>
+    <string name="settings__block_for">Délai de verrouillage</string>
     <string name="settings__3_minutes">3 minutes</string>
     <string name="settings__5_minutes">5 minutes</string>
     <string name="settings__10_minutes">10 minutes</string>
@@ -586,7 +586,7 @@
     <string name="widgets_warning_title">ATTENTION!</string>
     <string name="widgets_warning_cta">Oui, je suis sûr</string>
     <string name="backup_notice_title">Sauvegarde 2FAS</string>
-    <string name="backup_notice_msg">Activer la sauvegarde 2FAS et garder vos codes en sécurité dans Google Drive.</string>
+    <string name="backup_notice_msg">Activer la sauvegarde 2FAS. Dans le cas où vous perdez ou restaurez votre appareil, vous pourrez alors récupérer toutes vos clés.</string>
     <string name="brand_empty_msg">Désolé, marque non trouvée</string>
     <!-- Select which services will be visible on widget: -->
     <string name="widgets_select_msg">Sélectionnez quels services seront visible sur le widget :</string>
@@ -595,7 +595,7 @@
     <string name="backup_settings_password_set_title">Définir le mot de passe</string>
     <string name="backup_settings_delete_title">Supprimer la sauvegarde de Google Drive</string>
     <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
-    <string name="backup_settings_delete_subtitle">Si vous supprimez ce fichier de votre Google Drive, la synchronisation sera désactivée de tous les appareils synchronisés et les clés resteront sur cet appareil et sur les autres seulement via le stockage local.</string>
+    <string name="backup_settings_delete_subtitle">Si vous supprimez ce fichier de votre Google Drive, la synchronisation sera désactivée de tous les appareils synchronisés et les clés resteront sur cet appareil et sur les autres uniquement via le stockage local.</string>
     <string name="browser__result_error_browser_paired">Votre application 2FAS est déjà appairée avec ce navigateur.</string>
     <!-- Scan QR code again -->
     <string name="browser__result_error_cta">Veuillez scanner le QR code de nouveau</string>
@@ -608,7 +608,7 @@
     <string name="biometric_dialog_setup_cancel">Annuler</string>
     <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
     <string name="settings__option_fingerprint_description">Pour activer le Verrouillage Biométrique, vous devez configurer un code PIN.</string>
-    <string name="settings__block_for_footer">Sélectionner la durée pendant laquelle l\'application sera verrouillée</string>
+    <string name="settings__block_for_footer">Sélectionner le délai restant avant le verrouillage de l\'application.</string>
     <string name="error__out_of_disk_space">La base de données semble avoir été endommagée par un manque d\'espace disque ou par une autre situation similaire</string>
     <string name="error__cloud_backup_newer_version">La sauvegarde Cloud a été migrée vers la nouvelle version. Veuillez mettre à jour l\'application</string>
     <string name="error__cloud_backup_encrypted_not_supported">La sauvegarde Cloud est cryptée. Veuillez mettre à jour l\'application pour bénéficier de cette fonctionnalité</string>
@@ -729,4 +729,9 @@
     <string name="backup__reminder_cta">Accéder aux paramètres de sauvegarde</string>
     <string name="settings__list_style_option_default">Défaut</string>
     <string name="settings__list_style_option_compact">Compacte</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Exportez vos comptes LastPass vers un fichier JSON non crypté et importez le en utilisant le bouton \"Choisir un fichier JSON\". N\'oubliez pas de supprimer le fichier après avoir réussie l\'importation.</string>
+    <string name="settings__about_crash_optout_title">Rapports d\'incident</string>
+    <string name="settings__about_crash_optout_toggle_title">Refus de recevoir les rapports d\'incident</string>
+    <string name="settings__about_crash_optout_description">Les rapports d\'incident nous aident à améliorer l\'application lorsque les choses tournent mal. Les changements seront appliqués lors du prochain lancement de l\'application.</string>
 </resources>
