@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Sat, 25 Mar 2023 14:49:44 -0700
+ Exported at: Thu, 30 Mar 2023 12:12:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -586,7 +586,7 @@
     <string name="widgets_warning_title">WARNING!</string>
     <string name="widgets_warning_cta">Yes, I am sure</string>
     <string name="backup_notice_title">2FAS Backup</string>
-    <string name="backup_notice_msg">Turn on 2FAS Backup. In case of resetting\nor losing your phone, you will be able to restore all your tokens.</string>
+    <string name="backup_notice_msg">Enable 2FAS Backup. In the event of a reset or loss of your phone, you will be able to restore all your tokens.</string>
     <string name="brand_empty_msg">Sorry, brand not found</string>
     <!-- Select which services will be visible on widget: -->
     <string name="widgets_select_msg">Select which services will be visible on the widget:</string>
@@ -697,7 +697,7 @@
     <string name="externalimport__aegis_success_msg">This JSON file allows importing tokens from Aegis.</string>
     <string name="externalimport__raivo_success_msg">This JSON file allows importing tokens from Raivo.</string>
     <string name="externalimport__read_error">Could not read any tokens. Try to select a different file.</string>
-    <string name="settings__gd_sync_info">Google Drive sync info</string>
+    <string name="settings__gd_sync_info">Google Drive sync reminder</string>
     <string name="settings__gd_sync_disable_confirm">Are you sure? Without Google Drive sync, you won\'t be able to restore your tokens if you lose or reset your phone!</string>
     <string name="extension__code_sent_msg">Code sent successfully</string>
     <string name="extension__code_sent_error_msg">Error occurred when sending code</string>
@@ -721,4 +721,17 @@
     <string name="commons__best_match">Best match</string>
     <string name="settings__enable_crashlytics">Send anonymous crash reports</string>
     <string name="settings__enable_crashlytics_description">Send anonymous crash reports to help 2FAS identify and solve issues in the app (app restart required).</string>
+    <string name="tokens__manage_list">Manage list</string>
+    <string name="settings__appearance">Appearance</string>
+    <string name="settings__show_next_token_desc">Show next token when current one is about to expire.</string>
+    <string name="settings__list_style">List style</string>
+    <string name="backup__reminder_msg">Google Drive not synced.</string>
+    <string name="backup__reminder_cta">Go to backup settings</string>
+    <string name="settings__list_style_option_default">Default</string>
+    <string name="settings__list_style_option_compact">Compact</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Export your accounts from LastPass to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="settings__about_crash_optout_title">Crash Reports</string>
+    <string name="settings__about_crash_optout_toggle_title">Opt-out of Crash Reports</string>
+    <string name="settings__about_crash_optout_description">Crash Reports help us improve the app when things go very wrong. Changes will be applied on the next app run.</string>
 </resources>
