@@ -52,6 +52,7 @@ val activityScopeModule = module {
                 get(),
                 get(),
                 get(),
+                get(),
             )
         }
     }

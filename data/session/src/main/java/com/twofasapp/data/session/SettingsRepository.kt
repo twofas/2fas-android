@@ -15,4 +15,5 @@ interface SettingsRepository {
     suspend fun setServicesSort(servicesSort: ServicesSort)
     suspend fun setAutoFocusSearch(autoFocusSearch: Boolean)
     suspend fun setShowBackupNotice(showBackupNotice: Boolean)
+    suspend fun setSendCrashLogs(sendCrashLogs: Boolean)
 }

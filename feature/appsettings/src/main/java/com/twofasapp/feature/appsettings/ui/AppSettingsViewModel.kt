@@ -52,4 +52,10 @@ class AppSettingsViewModel(
             settingsRepository.setShowBackupNotice(uiState.value.appSettings.showBackupNotice.not())
         }
     }
+
+    fun toggleSendCrashLogs() {
+        launchScoped {
+            settingsRepository.setSendCrashLogs(uiState.value.appSettings.sendCrashLogs.not())
+        }
+    }
 }

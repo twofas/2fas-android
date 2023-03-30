@@ -8,8 +8,6 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.twofasapp.about.AboutModule
 import com.twofasapp.backup.BackupModule
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
@@ -20,8 +18,6 @@ import com.twofasapp.core.log.FileLogger
 import com.twofasapp.developer.DeveloperModule
 import com.twofasapp.di.Modules
 import com.twofasapp.featuretoggle.FeatureToggleModule
-import com.twofasapp.network.NetworkModule
-import com.twofasapp.notifications.NotificationsModule
 import com.twofasapp.parsers.ParsersModule
 import com.twofasapp.permissions.PermissionsModule
 import com.twofasapp.persistence.PersistenceModule

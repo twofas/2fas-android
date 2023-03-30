@@ -20,6 +20,7 @@ internal class SettingsLocalSource(
         private const val KeyServicesStyle = "servicesStyle"
         private const val KeyServicesSort = "servicesSort"
         private const val KeyAutoFocusSearch = "autoFocusSearch"
+        private const val KeySendCrashLogs = "sendCrashLogs"
 
     }
 
@@ -36,6 +37,7 @@ internal class SettingsLocalSource(
             showNextCode = preferences.getBoolean(KeyShowNextCode) ?: false,
             autoFocusSearch = preferences.getBoolean(KeyAutoFocusSearch) ?: false,
             showBackupNotice = preferences.getBoolean(KeyShowBackupNotice) ?: true,
+            sendCrashLogs = preferences.getBoolean(KeySendCrashLogs) ?: true,
             selectedTheme = preferences.getString(KeySelectedTheme)?.let { SelectedTheme.valueOf(it) } ?: SelectedTheme.Auto,
             servicesStyle = preferences.getString(KeyServicesStyle)?.let { ServicesStyle.valueOf(it) } ?: ServicesStyle.Default,
             servicesSort = preferences.getString(KeyServicesSort)?.let { ServicesSort.valueOf(it) } ?: ServicesSort.Manual,
@@ -70,5 +72,10 @@ internal class SettingsLocalSource(
     fun setShowBackupNotice(showBackupNotice: Boolean) {
         appSettingsFlow.update { it.copy(showBackupNotice = showBackupNotice) }
         preferences.putBoolean(KeyShowBackupNotice, showBackupNotice)
+    }
+
+    fun setSendCrashLogs(sendCrashLogs: Boolean) {
+        appSettingsFlow.update { it.copy(sendCrashLogs = sendCrashLogs) }
+        preferences.putBoolean(KeySendCrashLogs, sendCrashLogs)
     }
 }

@@ -57,4 +57,10 @@ internal class SettingsRepositoryImpl(
             local.setShowBackupNotice(showBackupNotice)
         }
     }
+
+    override suspend fun setSendCrashLogs(sendCrashLogs: Boolean) {
+        withContext(dispatchers.io) {
+            local.setSendCrashLogs(sendCrashLogs)
+        }
+    }
 }
