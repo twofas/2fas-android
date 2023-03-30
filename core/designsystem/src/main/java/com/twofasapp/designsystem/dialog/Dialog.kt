@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -38,6 +39,7 @@ fun BaseDialog(
     modifier: Modifier = Modifier,
     title: String? = null,
     body: String? = null,
+    bodyAnnotated: AnnotatedString? = null,
     positive: String? = null,
     negative: String? = null,
     onPositiveClick: (() -> Unit)? = null,
@@ -76,8 +78,11 @@ fun BaseDialog(
                     Title(text = title)
                 }
 
-                if (body != null) {
-                    Body(text = body)
+                if (body != null || bodyAnnotated != null) {
+                    Body(
+                        text = body,
+                        textAnnotated = bodyAnnotated,
+                    )
                 }
 
                 content()
@@ -119,16 +124,28 @@ private fun Title(
 
 @Composable
 private fun Body(
-    text: String,
+    text: String?,
+    textAnnotated: AnnotatedString?,
 ) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.bodyMedium,
-        color = TwTheme.color.onSurfaceTertiary,
-        modifier = Modifier
-            .padding(horizontal = DialogPadding)
-            .padding(TitlePadding)
-    )
+    if (text != null) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyMedium,
+            color = TwTheme.color.onSurfaceTertiary,
+            modifier = Modifier
+                .padding(horizontal = DialogPadding)
+                .padding(TitlePadding)
+        )
+    } else if (textAnnotated != null) {
+        Text(
+            text = textAnnotated,
+            style = MaterialTheme.typography.bodyMedium,
+            color = TwTheme.color.onSurfaceTertiary,
+            modifier = Modifier
+                .padding(horizontal = DialogPadding)
+                .padding(TitlePadding)
+        )
+    }
 }
 
 @Composable

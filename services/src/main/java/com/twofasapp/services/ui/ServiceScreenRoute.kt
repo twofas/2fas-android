@@ -36,6 +36,8 @@ private sealed class Node(override val path: String) : NavNode {
 @Composable
 internal fun ServiceScreenRoute(
     navController: NavController,
+    openSecurity: () -> Unit,
+    openAuth: (successCallback: () -> Unit) -> Unit,
     serviceViewModel: ServiceViewModel = koinViewModel(),
 ) {
     val navHostController = rememberNavController()
@@ -52,11 +54,11 @@ internal fun ServiceScreenRoute(
                     onChangeLabelClick = { navHostController.navigate(Node.ChangeLabel.route) },
                     onDomainAssignmentClick = { navHostController.navigate(Node.DomainAssignment.route) },
                     onDeleteClick = { navHostController.navigate(Node.Delete.route) },
-                    onSecurityClick = {
-//                                externalNavigator.openSecurity(this@ServiceActivity)
-                    },
+                    onSecurityClick = { openSecurity() },
                     onAuthenticateSecretClick = {
-//                                externalNavigator.openAuthenticate(this@ServiceActivity)
+                        openAuth {
+                            serviceViewModel.secretAuthenticated()
+                        }
                     },
                     viewModel = serviceViewModel,
                 )

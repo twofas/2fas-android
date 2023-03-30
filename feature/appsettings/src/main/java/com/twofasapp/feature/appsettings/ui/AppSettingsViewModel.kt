@@ -8,7 +8,7 @@ import com.twofasapp.data.session.domain.ServicesStyle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
-class AppSettingsViewModel(
+internal class AppSettingsViewModel(
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
@@ -25,7 +25,15 @@ class AppSettingsViewModel(
 
     fun setSelectedTheme(selectedTheme: SelectedTheme) {
         launchScoped {
+            val shouldRecreate = selectedTheme != uiState.value.appSettings.selectedTheme
+
             settingsRepository.setSelectedTheme(selectedTheme)
+
+            if (shouldRecreate) {
+                uiState.update {
+                    it.copy(events = it.events.plus(AppSettingsUiEvent.Recreate))
+                }
+            }
         }
     }
 
@@ -57,5 +65,9 @@ class AppSettingsViewModel(
         launchScoped {
             settingsRepository.setSendCrashLogs(uiState.value.appSettings.sendCrashLogs.not())
         }
+    }
+
+    fun consumeEvent(event: AppSettingsUiEvent) {
+        uiState.update { it.copy(events = it.events.minus(event)) }
     }
 }

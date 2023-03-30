@@ -1,5 +1,6 @@
 package com.twofasapp.data.services
 
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.Service
 import kotlinx.coroutines.flow.Flow
 
@@ -8,7 +9,7 @@ interface ServicesRepository {
     fun observeServicesTicker(): Flow<List<Service>>
     fun observeDeletedServices(): Flow<List<Service>>
     fun observeService(id: Long): Flow<Service>
-    fun observeRecentlyAddedService(): Flow<Service>
+    fun observeRecentlyAddedService(): Flow<RecentlyAddedService>
     fun setTickerEnabled(enabled: Boolean)
     suspend fun getServices(): List<Service>
     suspend fun getService(id: Long): Service
@@ -18,5 +19,5 @@ interface ServicesRepository {
     suspend fun restoreService(id: Long)
     fun updateServicesOrder(ids: List<Long>)
     suspend fun incrementHotpCounter(service: Service)
-    fun pushRecentlyAddedService(id: Long)
+    fun pushRecentlyAddedService(id: Long, source: RecentlyAddedService.Source)
 }

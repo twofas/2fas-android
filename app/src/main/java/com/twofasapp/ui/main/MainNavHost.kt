@@ -1,10 +1,14 @@
 package com.twofasapp.ui.main
 
 import android.app.Activity
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.twofasapp.common.ktx.clearGraphBackStack
+import com.twofasapp.common.ktx.intentFor
 import com.twofasapp.common.navigation.withArg
 import com.twofasapp.extensions.startActivity
 import com.twofasapp.feature.about.navigation.AboutGraph
@@ -25,6 +29,7 @@ import com.twofasapp.features.addserviceqr.AddServiceQrActivity
 import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.security.navigation.SecurityGraph
 import com.twofasapp.security.navigation.securityNavigation
+import com.twofasapp.security.ui.lock.LockActivity
 import com.twofasapp.services.navigation.ServiceGraph
 import com.twofasapp.services.navigation.ServiceNavArg
 import com.twofasapp.services.navigation.serviceNavigation
@@ -34,6 +39,15 @@ internal fun MainNavHost(
     navController: NavHostController,
     startDestination: String,
 ) {
+    val context = LocalContext.current
+    var authSuccessCallback: () -> Unit = {}
+    val startAuthForResult =
+        rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                authSuccessCallback()
+            }
+        }
+
     NavHost(navController = navController, startDestination = startDestination) {
 
         startupNavigation(
@@ -90,8 +104,17 @@ internal fun MainNavHost(
             onFinish = { navController.clearGraphBackStack() }
         )
 
+        serviceNavigation(
+            navController = navController,
+            openSecurity = { navController.navigate(SecurityGraph.route) },
+            openAuth = { onSuccess ->
+                authSuccessCallback = onSuccess
+
+                startAuthForResult.launch(context.intentFor<LockActivity>("canGoBack" to true))
+            },
+        )
+
         appSettingsNavigation()
-        serviceNavigation(navController = navController)
         trashNavigation(navController = navController)
         aboutNavigation(navController = navController)
         browserExtNavigation(navController = navController)

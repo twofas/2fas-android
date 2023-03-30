@@ -1,5 +1,6 @@
 package com.twofasapp.data.services.local
 
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
@@ -28,7 +29,7 @@ internal class ServicesLocalSource(
         private const val KeyOrder = "servicesOrder"
     }
 
-    private val recentlyAddedServiceFlow: MutableSharedFlow<Service?> = MutableSharedFlow(
+    private val recentlyAddedServiceFlow: MutableSharedFlow<RecentlyAddedService> = MutableSharedFlow(
         replay = 0,
         extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST,
@@ -62,7 +63,7 @@ internal class ServicesLocalSource(
         return dao.observe(id).map { it.asDomain() }
     }
 
-    fun observeRecentlyAddedService(): Flow<Service> {
+    fun observeRecentlyAddedService(): Flow<RecentlyAddedService> {
         return recentlyAddedServiceFlow.filterNotNull()
     }
 
@@ -121,9 +122,14 @@ internal class ServicesLocalSource(
         saveOrder(newOrder)
     }
 
-    fun pushRecentlyAddedService(id: Long) {
+    fun pushRecentlyAddedService(id: Long, source: RecentlyAddedService.Source) {
         GlobalScope.launch {
-            recentlyAddedServiceFlow.tryEmit(getService(id))
+            recentlyAddedServiceFlow.tryEmit(
+                RecentlyAddedService(
+                    service = getService(id),
+                    source = source,
+                )
+            )
         }
     }
 
@@ -146,6 +152,10 @@ internal class ServicesLocalSource(
             servicesOrderFlow.tryEmit(it)
             saveOrder(it)
         }
+    }
+
+    suspend fun cleanUpGroups(groupIds: List<String>) {
+        dao.cleanUpGroups(groupIds)
     }
 //
 //    fun select(): Single<List<ServiceDto>> {

@@ -28,7 +28,22 @@ interface ServiceDao {
     @Update
     suspend fun update(entity: ServiceEntity)
 
-    // LLegacy
+    @Update
+    suspend fun update(vararg entity: ServiceEntity)
+
+    @Transaction
+    suspend fun cleanUpGroups(groupIds: List<String>) {
+        val local = select().toMutableList()
+
+        local.removeAll { it.groupId == null }
+        local.removeAll { groupIds.contains(it.groupId) }
+
+        update(*local
+            .map { it.copy(groupId = null) }
+            .toTypedArray())
+    }
+
+    // Legacy
     @Query("SELECT * FROM local_services")
     fun legacySelect(): Single<List<ServiceEntity>>
 

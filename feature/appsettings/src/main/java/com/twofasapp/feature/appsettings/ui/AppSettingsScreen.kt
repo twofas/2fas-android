@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.session.domain.SelectedTheme
@@ -17,6 +18,7 @@ import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
+import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.designsystem.settings.SettingsSwitch
 import com.twofasapp.locale.R
@@ -27,10 +29,12 @@ import org.koin.androidx.compose.koinViewModel
 internal fun AppSettingsRoute(
     viewModel: AppSettingsViewModel = koinViewModel()
 ) {
+
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     AppSettingsScreen(
         uiState = uiState,
+        onConsumeEvent = { viewModel.consumeEvent(it) },
         onSelectedThemeChange = { viewModel.setSelectedTheme(it) },
         onServicesStyleChange = { viewModel.setServiceStyle(it) },
         onShowNextTokenToggle = { viewModel.toggleShowNextToken() },
@@ -43,6 +47,7 @@ internal fun AppSettingsRoute(
 @Composable
 private fun AppSettingsScreen(
     uiState: AppSettingsUiState,
+    onConsumeEvent: (AppSettingsUiEvent) -> Unit,
     onSelectedThemeChange: (SelectedTheme) -> Unit,
     onServicesStyleChange: (ServicesStyle) -> Unit,
     onShowNextTokenToggle: () -> Unit,
@@ -50,9 +55,18 @@ private fun AppSettingsScreen(
     onAutoFocusSearchToggle: () -> Unit,
     onSendCrashLogsToggle: () -> Unit,
 ) {
+    val activity = LocalContext.currentActivity
     var showThemeDialog by remember { mutableStateOf(false) }
     var showServicesStyleDialog by remember { mutableStateOf(false) }
     var showConfirmDisableBackupNotice by remember { mutableStateOf(false) }
+
+    uiState.events.firstOrNull()?.let {
+        onConsumeEvent(it)
+
+        when (it) {
+            AppSettingsUiEvent.Recreate -> activity.recreate()
+        }
+    }
 
     Scaffold(
         topBar = { TwTopAppBar(titleText = TwLocale.strings.settingsAppearance) }
@@ -124,7 +138,6 @@ private fun AppSettingsScreen(
         }
 
         if (showThemeDialog) {
-
             ListRadioDialog(
                 onDismissRequest = { showThemeDialog = false },
                 title = TwLocale.strings.settingsTheme,

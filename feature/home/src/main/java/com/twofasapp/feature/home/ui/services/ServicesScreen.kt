@@ -28,13 +28,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.services.domain.Group
@@ -47,6 +53,7 @@ import com.twofasapp.designsystem.common.RequestPermission
 import com.twofasapp.designsystem.common.TwEmptyScreen
 import com.twofasapp.designsystem.common.TwOutlinedButton
 import com.twofasapp.designsystem.common.isScrollingUp
+import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.InputDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.designsystem.group.ServicesGroup
@@ -107,7 +114,7 @@ internal fun ServicesRoute(
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class, ExperimentalComposeUiApi::class)
 @Composable
 private fun ServicesScreen(
     uiState: ServicesUiState,
@@ -133,9 +140,12 @@ private fun ServicesScreen(
 ) {
 
     val focusRequester = remember { FocusRequester() }
+    val keyboardController = LocalSoftwareKeyboardController.current
     var showAddGroupDialog by remember { mutableStateOf(false) }
     var showEditGroupDialog by remember { mutableStateOf(false) }
+    var showDeleteGroupDialog by remember { mutableStateOf(false) }
     var showSortDialog by remember { mutableStateOf(false) }
+    var showQrFromGalleryDialog by remember { mutableStateOf(false) }
     var askForPermission by remember { mutableStateOf(false) }
     var clickedGroup by remember { mutableStateOf<Group?>(null) }
     val topAppBarState = rememberTopAppBarState()
@@ -174,6 +184,10 @@ private fun ServicesScreen(
             ServicesStateEvent.ShowAddServiceModal -> {
                 modalType = ModalType.AddService
                 scope.launch { modalState.show() }
+            }
+
+            ServicesStateEvent.ShowQrFromGalleryDialog -> {
+                showQrFromGalleryDialog = true
             }
 
             is ServicesStateEvent.ShowServiceAddedModal -> {
@@ -370,26 +384,31 @@ private fun ServicesScreen(
                 uiState.groups.forEach { group ->
 
                     if (uiState.groups.size > 1) {
-                        listItem(ServicesListItem.Group(group.id)) {
-                            ServicesGroup(
-                                id = group.id,
-                                name = group.name ?: TwLocale.strings.servicesMyTokens,
-                                count = uiState.services.count { it.groupId == group.id },
-                                expanded = group.isExpanded,
-                                editMode = uiState.isInEditMode,
-                                modifier = Modifier
-                                    .animateContentSize()
-                                    .animateItemPlacement(),
-                                onClick = { onToggleGroupExpand(group.id) },
-                                onExpandClick = { onToggleGroupExpand(group.id) },
-                                onMoveUpClick = { onMoveUpGroup(group.id.orEmpty()) },
-                                onMoveDownClick = { onMoveDownGroup(group.id.orEmpty()) },
-                                onEditClick = {
-                                    clickedGroup = group
-                                    showEditGroupDialog = true
-                                },
-                                onDeleteClick = { onDeleteGroup(group.id.orEmpty()) },
-                            )
+                        if (group.id != null || (uiState.services.count { it.groupId == null } > 0)) {
+                            listItem(ServicesListItem.Group(group.id)) {
+                                ServicesGroup(
+                                    id = group.id,
+                                    name = group.name ?: TwLocale.strings.servicesMyTokens,
+                                    count = uiState.services.count { it.groupId == group.id },
+                                    expanded = group.isExpanded,
+                                    editMode = uiState.isInEditMode,
+                                    modifier = Modifier
+                                        .animateContentSize()
+                                        .animateItemPlacement(),
+                                    onClick = { onToggleGroupExpand(group.id) },
+                                    onExpandClick = { onToggleGroupExpand(group.id) },
+                                    onMoveUpClick = { onMoveUpGroup(group.id.orEmpty()) },
+                                    onMoveDownClick = { onMoveDownGroup(group.id.orEmpty()) },
+                                    onEditClick = {
+                                        clickedGroup = group
+                                        showEditGroupDialog = true
+                                    },
+                                    onDeleteClick = {
+                                        clickedGroup = group
+                                        showDeleteGroupDialog = true
+                                    },
+                                )
+                            }
                         }
                     }
 
@@ -402,8 +421,7 @@ private fun ServicesScreen(
                                     key = ServicesListItem.Service(service.id).key,
                                     modifier = Modifier
                                         .animateItemPlacement()
-                                        .animateContentSize()
-                                        ,
+                                        .animateContentSize(),
                                 ) { isDragging ->
                                     val state = service.asState()
                                     DsService(
@@ -423,6 +441,7 @@ private fun ServicesScreen(
                                         dragHandleVisible = uiState.appSettings.servicesSort == ServicesSort.Manual,
                                         dragModifier = Modifier.detectReorder(state = reorderableState),
                                         onLongClick = {
+                                            keyboardController?.hide()
                                             scope.launch {
                                                 modalType = ModalType.FocusService(service.id, false)
                                                 modalState.show()
@@ -476,6 +495,15 @@ private fun ServicesScreen(
                 onPositiveClick = { onEditGroup(clickedGroup?.id.orEmpty(), it) })
         }
 
+        if (showDeleteGroupDialog) {
+            ConfirmDialog(
+                onDismissRequest = { showDeleteGroupDialog = false },
+                title = TwLocale.strings.commonDelete,
+                body = TwLocale.strings.groupsDelete,
+                onConfirm = { onDeleteGroup(clickedGroup?.id.orEmpty()) },
+            )
+        }
+
         if (showSortDialog) {
             ListRadioDialog(
                 onDismissRequest = { showSortDialog = false },
@@ -486,6 +514,24 @@ private fun ServicesScreen(
                     ServicesSort.Manual -> 1
                 },
                 onOptionSelected = { index, _ -> onSortChange(index) }
+            )
+        }
+
+        if (showQrFromGalleryDialog) {
+            ConfirmDialog(
+                onDismissRequest = { showQrFromGalleryDialog = false },
+                title = TwLocale.strings.servicesQrFromGalleryTitle,
+                positive = TwLocale.strings.servicesQrFromGalleryCta,
+                negative = null,
+                bodyAnnotated = buildAnnotatedString {
+                    append(TwLocale.strings.servicesQrFromGalleryBody1)
+
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                        append(TwLocale.strings.servicesQrFromGalleryBody2)
+                    }
+
+                    append(TwLocale.strings.servicesQrFromGalleryBody3)
+                }
             )
         }
 

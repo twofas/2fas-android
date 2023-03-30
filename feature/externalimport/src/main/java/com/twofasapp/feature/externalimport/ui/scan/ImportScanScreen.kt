@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -29,8 +30,10 @@ internal fun ImportScanRoute(
 
         QrScannerScreen(isGalleryEnabled = true, startWithGallery = startFromGallery, modifier = Modifier.padding(padding))
 
-        if (uiState.value.isSuccess) {
-            onScanned(uiState.value.content.encodeBase64ToString())
+        LaunchedEffect(uiState.value.isSuccess) {
+            if (uiState.value.isSuccess) {
+                onScanned(uiState.value.content.encodeBase64ToString())
+            }
         }
 
         if (uiState.value.showErrorDialog) {

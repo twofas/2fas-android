@@ -62,7 +62,7 @@ fun ServicesGroup(
                 .fillMaxWidth()
                 .height(48.dp)
                 .background(TwTheme.color.background)
-                .clickable(enabled = editMode.not()) { onClick() },
+                .clickable(enabled = editMode.not() && count > 0) { onClick() },
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Box(modifier = Modifier.width(64.dp)) {
@@ -126,14 +126,14 @@ fun ServicesGroup(
                         )
                     }
                 }
-            } else if (editMode.not()) {
+            } else if (editMode.not() && count > 0) {
                 TwIconButton(
                     painter = if (expanded) {
                         TwIcons.ChevronUp
                     } else {
                         TwIcons.ChevronDown
                     },
-                    onClick = { onExpandClick(expanded.not()) }
+                    onClick = { onExpandClick(expanded.not()) },
                 )
             }
         }

@@ -10,6 +10,7 @@ import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.extensions.removeWhiteCharacters
 import com.twofasapp.prefs.model.LockMethodEntity
 import com.twofasapp.prefs.model.Tint
@@ -119,7 +120,10 @@ internal class ServiceViewModel(
                 runCatching { addServiceCase(uiState.value.service) }
                     .onFailure { _uiState.update { it.copy(showInsertErrorDialog = true) } }
                     .onSuccess {
-                        servicesRepository.pushRecentlyAddedService(it)
+                        servicesRepository.pushRecentlyAddedService(
+                            id = it,
+                            source = RecentlyAddedService.Source.Manually
+                        )
                         _uiState.update { it.copy(finish = true) }
                     }
             } else {
@@ -138,7 +142,7 @@ internal class ServiceViewModel(
                     labelText = text.uppercase().take(2),
                 )
             } else {
-                it.copy(name = text)
+                it.copy(name = text.trim())
             }
         }
     }
@@ -150,7 +154,7 @@ internal class ServiceViewModel(
 
     fun updateInfo(text: String, isValid: Boolean) {
         _uiState.update { it.copy(isInputInfoValid = isValid) }
-        updateService { it.copy(otp = it.otp.copy(account = text)) }
+        updateService { it.copy(otp = it.otp.copy(account = text.trim())) }
     }
 
     fun deleteDomainAssignment(domain: String) {

@@ -152,7 +152,11 @@ internal fun ServiceScreen(
                     maxChars = 30,
                     allowEmpty = false,
                     onValueChange = { isValid, text ->
-                        viewModel.updateName(text, isValid)
+                        if (text.isBlank()) {
+                            viewModel.updateName(text, false)
+                        } else {
+                            viewModel.updateName(text, isValid)
+                        }
                     },
                     keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
                     focusRequester = focusRequester,

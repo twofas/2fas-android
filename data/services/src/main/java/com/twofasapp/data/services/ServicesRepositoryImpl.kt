@@ -5,6 +5,7 @@ import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.tickerFlow
 import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
@@ -62,7 +63,7 @@ internal class ServicesRepositoryImpl(
         return local.observeService(id)
     }
 
-    override fun observeRecentlyAddedService(): Flow<Service> {
+    override fun observeRecentlyAddedService(): Flow<RecentlyAddedService> {
         return local.observeRecentlyAddedService()
     }
 
@@ -171,7 +172,7 @@ internal class ServicesRepositoryImpl(
         }
     }
 
-    override fun pushRecentlyAddedService(id: Long) {
-        local.pushRecentlyAddedService(id)
+    override fun pushRecentlyAddedService(id: Long, source: RecentlyAddedService.Source) {
+        local.pushRecentlyAddedService(id, source)
     }
 }

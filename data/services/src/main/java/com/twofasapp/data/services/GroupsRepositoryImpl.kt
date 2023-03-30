@@ -3,6 +3,7 @@ package com.twofasapp.data.services
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.local.GroupsLocalSource
+import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.mapper.asDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -11,6 +12,7 @@ import kotlinx.coroutines.withContext
 internal class GroupsRepositoryImpl(
     private val dispatchers: Dispatchers,
     private val local: GroupsLocalSource,
+    private val localServices: ServicesLocalSource,
 ) : GroupsRepository {
 
     override fun observeGroups(): Flow<List<Group>> {
@@ -29,12 +31,14 @@ internal class GroupsRepositoryImpl(
     override suspend fun addGroup(name: String) {
         withContext(dispatchers.io) {
             local.addGroup(name)
+            localServices.cleanUpGroups(local.getGroups().ids)
         }
     }
 
     override suspend fun deleteGroup(id: String) {
         withContext(dispatchers.io) {
             local.deleteGroup(id)
+            localServices.cleanUpGroups(local.getGroups().ids)
         }
     }
 

@@ -19,8 +19,12 @@ object ServiceNavArg {
     }
 }
 
-fun NavGraphBuilder.serviceNavigation(navController: NavController) {
+fun NavGraphBuilder.serviceNavigation(
+    navController: NavController,
+    openSecurity: () -> Unit,
+    openAuth: (successCallback: () -> Unit) -> Unit,
+) {
     composable(ServiceGraph.route, arguments = listOf(ServiceNavArg.ServiceId)) {
-        ServiceScreenRoute(navController)
+        ServiceScreenRoute(navController, openSecurity, openAuth)
     }
 }

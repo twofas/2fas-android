@@ -5,6 +5,7 @@ import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
@@ -102,8 +103,11 @@ internal class ServicesViewModel(
         }
 
         launchScoped {
-            servicesRepository.observeRecentlyAddedService().collect {
-                publishEvent(ServicesStateEvent.ShowServiceAddedModal(it.id))
+            servicesRepository.observeRecentlyAddedService().collect { recentlyAdded ->
+                if (recentlyAdded.source == RecentlyAddedService.Source.QrGallery) {
+                    publishEvent(ServicesStateEvent.ShowQrFromGalleryDialog)
+                }
+                publishEvent(ServicesStateEvent.ShowServiceAddedModal(recentlyAdded.service.id))
             }
         }
     }

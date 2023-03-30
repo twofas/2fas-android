@@ -34,7 +34,7 @@ internal class GroupsLocalSource(
         }
     }
 
-    private fun getGroups(): GroupsEntity {
+    fun getGroups(): GroupsEntity {
         return preferences.getString(KeyGroups)?.let {
             json.decodeFromString(it)
         } ?: GroupsEntity()

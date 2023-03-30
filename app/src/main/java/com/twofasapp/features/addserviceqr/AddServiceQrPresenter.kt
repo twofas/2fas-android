@@ -5,6 +5,7 @@ import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.extensions.removeWhiteCharacters
 import com.twofasapp.feature.externalimport.domain.ExternalImport
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
@@ -155,7 +156,14 @@ class AddServiceQrPresenter(
     }
 
     private fun onSaveCompleted(serviceDto: ServiceDto, isFromGallery: Boolean) {
-        servicesRepository.pushRecentlyAddedService(serviceDto.id)
+        servicesRepository.pushRecentlyAddedService(
+            id = serviceDto.id,
+            source = if (isFromGallery) {
+                RecentlyAddedService.Source.QrGallery
+            } else {
+                RecentlyAddedService.Source.QrScan
+            }
+        )
 
         navigator.finishResultOk(
             mapOf(

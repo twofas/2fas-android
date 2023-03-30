@@ -90,7 +90,7 @@ private fun SettingsScreen(
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsSupport, icon = TwIcons.Support) {
+                SettingsLink(title = TwLocale.strings.settingsSupport, icon = TwIcons.Support, external = true) {
                     uriHandler.openUri(TwLocale.links.support)
                 }
             }
