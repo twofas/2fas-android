@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Sun, 26 Mar 2023 13:20:22 -0700
+ Exported at: Thu, 30 Mar 2023 12:12:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -254,8 +254,8 @@
     <string name="tokens__totp">TOTP</string>
     <string name="tokens__advanced_settings_footer_title">Mudar definições avançadas não é recomendado. Fá-lo apenas quando o fornecedor do 2FA pedir e quando tiveres instruções claras.</string>
     <string name="tokens__gallery_advice_title">Melhor prática</string>
-    <string name="tokens__gallery_advice_content_first">O serviço foi adicionado com sucesso. Nós recomendamos fortemente que tu</string>
-    <string name="tokens__gallery_advice_content_middle_bold">elimines o código QR da tua galeria.</string>
+    <string name="tokens__gallery_advice_content_first">O serviço foi adicionado com sucesso. Nós recomendamos fortemente que tu\u0020</string>
+    <string name="tokens__gallery_advice_content_middle_bold">elimines o código QR da tua galeria.\u0020</string>
     <string name="tokens__gallery_advice_content_last">Se alguém tiver acesso a este código QR, irão poder usar os códigos 2FA para este serviço.</string>
     <string name="tokens__request_icon_page_title">Pedir um ícone</string>
     <string name="tokens__request_icon_social_title">Avisa-nos no Discord</string>
@@ -586,7 +586,7 @@
     <string name="widgets_warning_title">ATENÇÃO!</string>
     <string name="widgets_warning_cta">Sim, tenho a certeza</string>
     <string name="backup_notice_title">Cópia de Segurança 2FAS</string>
-    <string name="backup_notice_msg">Liga a cópia de segurança 2FAS e mantém os teus códigos seguros no Google Drive.</string>
+    <string name="backup_notice_msg">Liga a cópia de segurança 2FAS. Caso o telemóvel tenha sido formatado ou perdido, irás poder restaurar todos os teus tokens.</string>
     <string name="brand_empty_msg">Desculpa, marca não encontrada</string>
     <!-- Select which services will be visible on widget: -->
     <string name="widgets_select_msg">Seleciona que serviços vão estar visíveis no widget:</string>
@@ -721,12 +721,17 @@
     <string name="commons__best_match">Melhor correspondência</string>
     <string name="settings__enable_crashlytics">Envia relatórios anônimos de falhas</string>
     <string name="settings__enable_crashlytics_description">Envia relatórios anônimos de falhas para ajudar a 2FAS a identificar e resolver problemas na aplicação (é necessário reiniciar a aplicação).</string>
-    <string name="tokens__manage_list">Manage list</string>
-    <string name="settings__appearance">Appearance</string>
-    <string name="settings__show_next_token_desc">Show next token when current one is about to expire.</string>
-    <string name="settings__list_style">List style</string>
-    <string name="backup__reminder_msg">Google Drive not synced.</string>
-    <string name="backup__reminder_cta">Go to backup settings</string>
-    <string name="settings__list_style_option_default">Default</string>
-    <string name="settings__list_style_option_compact">Compact</string>
+    <string name="tokens__manage_list">Gerir lista</string>
+    <string name="settings__appearance">Aparência</string>
+    <string name="settings__show_next_token_desc">Mostrar o token seguinte quando o atual estiver a expirar.</string>
+    <string name="settings__list_style">Estilo da lista</string>
+    <string name="backup__reminder_msg">O Google Drive não está sincronizado.</string>
+    <string name="backup__reminder_cta">Vai a definições da cópia de segurança</string>
+    <string name="settings__list_style_option_default">Padrão</string>
+    <string name="settings__list_style_option_compact">Compacto</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Exporta as tuas contas da aplicação LastPass para um ficheiro JSON não encriptado e usa o botão \"Escolhe o ficheiro JSON\" para importá-lo. Lembra-te de remover o ficheiro após importares com sucesso.</string>
+    <string name="settings__about_crash_optout_title">Crash Reports</string>
+    <string name="settings__about_crash_optout_toggle_title">Opt-out of Crash Reports</string>
+    <string name="settings__about_crash_optout_description">Crash Reports help us improve the app when things go very wrong. Changes will be applied on the next app run.</string>
 </resources>
