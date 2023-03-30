@@ -1,7 +1,6 @@
 package com.twofasapp.data.notifications
 
 import com.twofasapp.common.coroutines.Dispatchers
-import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.notifications.domain.Notification
 import com.twofasapp.data.notifications.local.NotificationsLocalSource
 import com.twofasapp.data.notifications.mappper.asDomain
@@ -9,18 +8,12 @@ import com.twofasapp.data.notifications.remote.NotificationsRemoteSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
-import java.time.Duration
 
 internal class NotificationsRepositoryImpl(
     private val dispatchers: Dispatchers,
     private val local: NotificationsLocalSource,
     private val remote: NotificationsRemoteSource,
-    private val timeProvider: TimeProvider,
 ) : NotificationsRepository {
-
-    companion object {
-        private const val publishedAfterDays = 90L
-    }
 
     override suspend fun getNotifications(): List<Notification> {
         return withContext(dispatchers.io) {
@@ -30,7 +23,7 @@ internal class NotificationsRepositoryImpl(
 
     override suspend fun fetchNotifications() {
         withContext(dispatchers.io) {
-            val remoteData = remote.fetchNotifications(timeProvider.currentDateTimeUtc().minusDays(publishedAfterDays))
+            val remoteData = remote.fetchNotifications()
             local.saveNotifications(remoteData.map { it.asDomain() })
         }
     }
@@ -48,7 +41,7 @@ internal class NotificationsRepositoryImpl(
     }
 
     private fun List<Notification>.filterOutTooOldNotifications(): List<Notification> {
-        return filter { it.publishTime > timeProvider.systemCurrentTime() - Duration.ofDays(publishedAfterDays).toMillis() }
-            .sortedWith(compareBy({ it.isRead }, { it.publishTime.unaryMinus() }))
+//        return filter { it.publishTime > timeProvider.systemCurrentTime() - Duration.ofDays(publishedAfterDays).toMillis() }
+        return sortedWith(compareBy({ it.isRead }, { it.publishTime.unaryMinus() }))
     }
 }

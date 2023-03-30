@@ -12,10 +12,12 @@ internal class NotificationsRemoteSource(
     private val client: HttpClient,
 ) {
 
-    suspend fun fetchNotifications(publishedAfter: OffsetDateTime): List<NotificationJson> {
+    suspend fun fetchNotifications(publishedAfter: OffsetDateTime? = null): List<NotificationJson> {
         return client.get("/mobile/notifications") {
             parameter("platform", "android")
-            parameter("published_after", publishedAfter.format(DateTimeFormatter.ISO_INSTANT))
+            if (publishedAfter != null) {
+                parameter("published_after", publishedAfter.format(DateTimeFormatter.ISO_INSTANT))
+            }
         }.body()
     }
 }
