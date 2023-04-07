@@ -1,8 +1,7 @@
 <center><img src="https://static.2fas.com/images/logo-dark-mode.svg?version=4200cbe91dc8c225b6376894c9138eca" width ="400">
 </center>
 
-![introductory photo](https://static.2fas.com/images/free-to-use-img-dark.svg?version=3fa67495cf2415d69df4a6a878fc7898#gh-dark-mode-only)
-![introductory photo](https://static.2fas.com/images/free-to-use-img.svg?version=dd2af35ab160069c7070004b7d77031b#gh-light-mode-only)
+![introductory photo](https://static.2fas.com/images/ga-2-dark.png?version=39721627636b5dd9b125b733435f5182)
 
 # Open Source 2FAS for Android
 
