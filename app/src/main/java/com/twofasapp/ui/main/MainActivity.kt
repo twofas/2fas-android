@@ -4,14 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.data.services.ServicesRepository
@@ -21,9 +19,6 @@ import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.extensions.doNothing
 import com.twofasapp.extensions.toastLong
 import com.twofasapp.resources.R
-import com.twofasapp.start.domain.DeeplinkHandler
-import com.twofasapp.start.domain.work.OnAppUpdatedWorkDispatcher
-import com.twofasapp.time.domain.work.SyncTimeWorkDispatcher
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -37,11 +32,6 @@ class MainActivity : AppCompatActivity(), AuthAware {
     private val settingsRepository: SettingsRepository by inject()
     private val sessionRepository: SessionRepository by inject()
     private val servicesRepository: ServicesRepository by inject()
-    private val onAppUpdatedWorkDispatcher: OnAppUpdatedWorkDispatcher by inject()
-    private val syncTimeWorkDispatcher: SyncTimeWorkDispatcher by inject()
-    private val deeplinkHandler: DeeplinkHandler by inject()
-    private val authTracker: AuthTracker by inject()
-
     private val appUpdateManager by lazy { AppUpdateManagerFactory.create(this) }
     private val appUpdateListener: InstallStateUpdatedListener by lazy {
         InstallStateUpdatedListener { state ->
@@ -55,22 +45,10 @@ class MainActivity : AppCompatActivity(), AuthAware {
         ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
         super.onCreate(savedInstanceState)
 
-        installSplashScreen()
-
         setContent { MainScreen() }
 
-        authTracker.onSplashScreen()
-        onAppUpdatedWorkDispatcher.dispatch()
-        syncTimeWorkDispatcher.dispatch()
-
         attachAuthLifecycleObserver()
-    }
-
-    override fun onAuthenticated() {
         checkAppVersionUpdate()
-        intent?.data?.let {
-            deeplinkHandler.setQueuedDeeplink(incomingData = it.toString())
-        }
     }
 
     override fun onResume() {
@@ -78,16 +56,11 @@ class MainActivity : AppCompatActivity(), AuthAware {
         servicesRepository.setTickerEnabled(true)
     }
 
+    override fun onAuthenticated() = Unit
+
     override fun onPause() {
         super.onPause()
         servicesRepository.setTickerEnabled(false)
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        intent?.data?.let {
-            deeplinkHandler.setQueuedDeeplink(incomingData = it.toString())
-        }
     }
 
     private fun attachAuthLifecycleObserver() {

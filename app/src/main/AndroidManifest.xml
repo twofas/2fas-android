@@ -95,7 +95,7 @@
         <!--        android:name=".ui.main.MainActivity"-->
 
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.main.StartActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:noHistory="false"
@@ -117,6 +117,11 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:launchMode="singleTask"
+            android:name=".ui.main.MainActivity"
+            android:label="Add service by scanning QR Code" />
 
         <activity
             android:name=".features.addserviceqr.AddServiceQrActivity"
