@@ -104,6 +104,7 @@ internal fun ServicesRoute(
         onMoveDownGroup = { viewModel.moveDownGroup(it) },
         onEditGroup = { id, name -> viewModel.editGroup(id, name) },
         onDeleteGroup = { viewModel.deleteGroup(it) },
+        onDragStart = { viewModel.onDragStart() },
         onDragEnd = { viewModel.onDragEnd(it) },
         onSortChange = { viewModel.updateSort(it) },
         onSearchQueryChange = { viewModel.search(it) },
@@ -130,6 +131,7 @@ private fun ServicesScreen(
     onMoveDownGroup: (String) -> Unit = {},
     onEditGroup: (String, String) -> Unit = { _, _ -> },
     onDeleteGroup: (String) -> Unit = {},
+    onDragStart: () -> Unit = { },
     onDragEnd: (List<ServicesListItem>) -> Unit = { },
     onSortChange: (Int) -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
@@ -156,12 +158,13 @@ private fun ServicesScreen(
     val scope = rememberCoroutineScope()
 
     var isDragging by remember { mutableStateOf(false) }
-    val data = remember { mutableStateOf(List(100) { "Item $it" }) }
+//    val data = remember { mutableStateOf(List(100) { "Item $it" }) }
     val reorderableData = remember { mutableStateOf(uiState.items) }
     val listState = rememberLazyListState()
     val reorderableState = rememberReorderableLazyListState(
         listState = listState,
         onMove = { from, to ->
+            onDragStart()
             isDragging = true
             val fromItem = reorderableData.value[from.index]
             val toItem = reorderableData.value[to.index]

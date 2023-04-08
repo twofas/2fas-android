@@ -18,6 +18,7 @@ import com.twofasapp.widgets.domain.WidgetActions
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
@@ -49,7 +50,7 @@ internal class ServicesRepositoryImpl(
             tickerFlow(1_000L),
             observeServices(),
         ) { a, b, c -> Pair(a, c) }
-//            .filter { it.first } // TODO: ticker
+            .filter { it.first } // ticker enabled
             .map { (_, services) ->
                 services.map { codeGenerator.generate(it) }
             }

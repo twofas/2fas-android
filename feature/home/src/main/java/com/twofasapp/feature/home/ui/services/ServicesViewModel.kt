@@ -15,7 +15,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
-import java.util.Collections
 
 @Suppress("UNCHECKED_CAST")
 internal class ServicesViewModel(
@@ -175,51 +174,6 @@ internal class ServicesViewModel(
         launchScoped { groupsRepository.moveDownGroup(id) }
     }
 
-    fun swapServices(from: Int, to: Int) {
-        val items = uiState.value.items.toMutableList()
-
-        val fromItem = items[from]
-        val toItem = items[to]
-
-        if (fromItem is ServicesListItem.ServiceItem && toItem is ServicesListItem.ServiceItem) {
-
-            Collections.swap(uiState.value.items, from, to)
-
-//            uiState.update { it.copy(items = items) }
-
-//            servicesRepository.updateServicesOrder(
-//                ids = items.filterIsInstance<ServicesListItem.ServiceItem>().map { it.service.id }
-//            )
-        }
-
-
-//        var items = uiState.value.items.toMutableList()
-//        val fromItem = items[from]
-//        val toItem = items[to]
-//
-//        if (fromItem is ServicesListItem.ServiceItem && toItem is ServicesListItem.ServiceItem) {
-//            // Swap items
-//            items = items.apply { add(to, removeAt(from)) }
-//
-//            servicesRepository.updateServicesOrder(
-//                ids = items.filterIsInstance<ServicesListItem.ServiceItem>().map { it.id }
-//            )
-//        }
-//
-//        if (fromItem is ServicesListItem.ServiceItem && toItem is ServicesListItem.GroupItem) {
-//            val groupId = if (from < to) {
-//                toItem.id
-//            } else {
-//                items.subList(0, to)
-//                    .filterIsInstance<ServicesListItem.GroupItem>()
-//                    .asReversed()
-//                    .firstOrNull()?.id
-//            }
-//
-//            launchScoped { servicesRepository.setServiceGroup(fromItem.id, groupId) }
-//        }
-    }
-
     fun updateSort(index: Int) {
         launchScoped {
             settingsRepository.setServicesSort(
@@ -255,6 +209,10 @@ internal class ServicesViewModel(
                 tags.contains(query.lowercase())
     }
 
+    fun onDragStart() {
+        servicesRepository.setTickerEnabled(false)
+    }
+
     fun onDragEnd(data: List<ServicesListItem>) {
         launchScoped(Dispatchers.IO) {
             var groupId: String? = null
@@ -265,15 +223,15 @@ internal class ServicesViewModel(
                 }
 
                 if (item is ServicesListItem.ServiceItem && item.service.groupId != groupId) {
-                    launchScoped {
-                        servicesRepository.setServiceGroup(item.service.id, groupId)
-                    }
+                    servicesRepository.setServiceGroup(item.service.id, groupId)
                 }
             }
 
             servicesRepository.updateServicesOrder(
                 ids = data.filterIsInstance<ServicesListItem.ServiceItem>().map { it.service.id }
             )
+
+            servicesRepository.setTickerEnabled(true)
         }
     }
 
