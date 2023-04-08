@@ -40,6 +40,8 @@ data class Service(
             iconCollectionId = ServiceIcons.defaultCollectionId,
             serviceTypeId = null,
             source = Source.Manual,
+            selectedImageType = ImageType.Label,
+            labelBackgroundColor = Tint.values().random(),
         )
     }
 

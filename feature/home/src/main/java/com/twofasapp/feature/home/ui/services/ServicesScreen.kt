@@ -243,7 +243,7 @@ private fun ServicesScreen(
                     recentlyAddedService = id
 
                     serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(0))
-                    serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(1500, easing = EaseOut))
+                    serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(2000, easing = EaseOut))
 
                     recentlyAddedService = null
                 }
@@ -458,6 +458,7 @@ private fun ServicesScreen(
 
                                     DsService(
                                         state = state,
+                                        modifier = Modifier,
                                         style = when (uiState.appSettings.servicesStyle) {
                                             ServicesStyle.Default -> ServiceStyle.Default
                                             ServicesStyle.Compact -> ServiceStyle.Compact
@@ -469,23 +470,21 @@ private fun ServicesScreen(
                                         } else {
                                             serviceContainerColor
                                         },
-                                        modifier = Modifier,
                                         dragHandleVisible = uiState.appSettings.servicesSort == ServicesSort.Manual,
                                         dragModifier = Modifier.detectReorder(state = reorderableState),
+                                        onClick = {
+                                            state.copyToClipboard(activity, uiState.appSettings.showNextCode)
+                                        },
                                         onLongClick = {
                                             keyboardController?.hide()
                                             scope.launch {
                                                 modalType = ModalType.FocusService(service.id, false)
                                                 modalState.show()
                                             }
-                                        },
-                                        onClick = {
-                                            state.copyToClipboard(activity, uiState.appSettings.showNextCode)
-                                        },
-                                        onIncrementCounterClick = {
-                                            onIncrementHotpCounterClick(service)
                                         }
-                                    )
+                                    ) {
+                                        onIncrementHotpCounterClick(service)
+                                    }
                                 }
                             }
                         }

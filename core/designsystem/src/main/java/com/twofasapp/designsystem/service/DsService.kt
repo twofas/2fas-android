@@ -62,7 +62,6 @@ fun DsService(
     style: ServiceStyle = ServiceStyle.Default,
     editMode: Boolean = false,
     showNextCode: Boolean = false,
-    showExpand: Boolean = true,
     containerColor: Color = TwTheme.color.background,
     dragHandleVisible: Boolean = true,
     dragModifier: Modifier = Modifier,
