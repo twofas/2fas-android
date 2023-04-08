@@ -103,10 +103,14 @@ class App : MultiDexApplication() {
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver {
             @OnLifecycleEvent(Lifecycle.Event.ON_START)
-            fun onMoveToForeground() = authTracker.onMovingToForeground()
+            fun onMoveToForeground() {
+                Timber.d("App :: onMoveToForeground")
+                authTracker.onMovingToForeground()
+            }
 
             @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
             fun onMoveToBackground() {
+                Timber.d("App :: onMoveToBackground")
                 authTracker.onMovingToBackground()
                 syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_BACKGROUND)
                 pinOptionsUseCase.tmpDigits = null
