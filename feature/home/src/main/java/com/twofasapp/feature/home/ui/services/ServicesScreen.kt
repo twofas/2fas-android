@@ -235,7 +235,11 @@ private fun ServicesScreen(
                 val id = (modalType as ModalType.FocusService).id
 
                 scope.launch {
-                    listState.animateScrollToItem(uiState.services.indexOfFirst { it.id == id })
+                    listState.animateScrollToItem(
+                        uiState.items.indexOfFirst {
+                            it is ServicesListItem.ServiceItem && it.service.id == id
+                        }
+                    )
                     recentlyAddedService = id
 
                     serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(0))
