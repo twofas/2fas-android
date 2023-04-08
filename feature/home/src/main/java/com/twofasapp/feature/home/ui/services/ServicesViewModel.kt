@@ -11,9 +11,11 @@ import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.domain.AppSettings
 import com.twofasapp.data.session.domain.ServicesSort
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
+import java.util.Collections
 
 @Suppress("UNCHECKED_CAST")
 internal class ServicesViewModel(
@@ -60,11 +62,6 @@ internal class ServicesViewModel(
 
                 uiState.update { state ->
                     state.copy(
-                        groups = if (result.searchQuery.isEmpty()) {
-                            result.groups
-                        } else {
-                            result.groups.map { it.copy(isExpanded = true) }
-                        },
                         services = result.services
                             .sortedBy {
                                 when (result.appSettings.servicesSort) {
@@ -81,19 +78,44 @@ internal class ServicesViewModel(
                         isInEditMode = result.isInEditMode,
                         appSettings = result.appSettings,
                         items = buildList {
-                            result.groups.forEach { group ->
-                                if (showSyncNoticeBar) {
-                                    add(ServicesListItem.SyncNoticeBar)
+
+                            if (showSyncNoticeBar) {
+                                add(ServicesListItem.SyncNoticeBar)
+                            }
+
+                            if (showSyncReminder) {
+                                add(ServicesListItem.SyncReminder)
+                            }
+
+                            val groupedServices: Map<Group, List<Service>> = buildMap {
+                                result.groups.forEach { group ->
+                                    put(
+                                        key = group,
+                                        value = result.services
+                                            .filter { it.groupId == group.id }
+                                            .sortedBy {
+                                                when (result.appSettings.servicesSort) {
+                                                    ServicesSort.Alphabetical -> it.name.lowercase()
+                                                    ServicesSort.Manual -> null
+                                                }
+                                            }
+                                            .filter { service -> service.isMatchingQuery(result.searchQuery) }
+                                    )
+                                }
+                            }
+
+                            groupedServices.forEach { (group, services) ->
+
+                                if (groupedServices.size > 1) {
+                                    if (group.id != null || services.isNotEmpty() || result.searchQuery.isNotEmpty()) {
+                                        add(ServicesListItem.GroupItem(result.groups.first { it.id == group.id }))
+                                    }
                                 }
 
-                                if (showSyncReminder) {
-                                    add(ServicesListItem.SyncReminder)
-                                }
-
-                                add(ServicesListItem.Group(group.id))
-
-                                result.services.filter { it.groupId == group.id }.forEach { service ->
-                                    add(ServicesListItem.Service(service.id))
+                                if (group.isExpanded || result.isInEditMode) {
+                                    services.forEach { service ->
+                                        add(ServicesListItem.ServiceItem(service))
+                                    }
                                 }
                             }
                         }
@@ -154,31 +176,48 @@ internal class ServicesViewModel(
     }
 
     fun swapServices(from: Int, to: Int) {
-        var items = uiState.value.items.toMutableList()
+        val items = uiState.value.items.toMutableList()
+
         val fromItem = items[from]
         val toItem = items[to]
 
-        if (fromItem is ServicesListItem.Service && toItem is ServicesListItem.Service) {
-            // Swap items
-            items = items.apply { add(to, removeAt(from)) }
+        if (fromItem is ServicesListItem.ServiceItem && toItem is ServicesListItem.ServiceItem) {
 
-            servicesRepository.updateServicesOrder(
-                ids = items.filterIsInstance<ServicesListItem.Service>().map { it.id }
-            )
+            Collections.swap(uiState.value.items, from, to)
+
+//            uiState.update { it.copy(items = items) }
+
+//            servicesRepository.updateServicesOrder(
+//                ids = items.filterIsInstance<ServicesListItem.ServiceItem>().map { it.service.id }
+//            )
         }
 
-        if (fromItem is ServicesListItem.Service && toItem is ServicesListItem.Group) {
-            val groupId = if (from < to) {
-                toItem.id
-            } else {
-                items.subList(0, to)
-                    .filterIsInstance<ServicesListItem.Group>()
-                    .asReversed()
-                    .firstOrNull()?.id
-            }
 
-            launchScoped { servicesRepository.setServiceGroup(fromItem.id, groupId) }
-        }
+//        var items = uiState.value.items.toMutableList()
+//        val fromItem = items[from]
+//        val toItem = items[to]
+//
+//        if (fromItem is ServicesListItem.ServiceItem && toItem is ServicesListItem.ServiceItem) {
+//            // Swap items
+//            items = items.apply { add(to, removeAt(from)) }
+//
+//            servicesRepository.updateServicesOrder(
+//                ids = items.filterIsInstance<ServicesListItem.ServiceItem>().map { it.id }
+//            )
+//        }
+//
+//        if (fromItem is ServicesListItem.ServiceItem && toItem is ServicesListItem.GroupItem) {
+//            val groupId = if (from < to) {
+//                toItem.id
+//            } else {
+//                items.subList(0, to)
+//                    .filterIsInstance<ServicesListItem.GroupItem>()
+//                    .asReversed()
+//                    .firstOrNull()?.id
+//            }
+//
+//            launchScoped { servicesRepository.setServiceGroup(fromItem.id, groupId) }
+//        }
     }
 
     fun updateSort(index: Int) {
@@ -214,6 +253,28 @@ internal class ServicesViewModel(
         return name.contains(query, true) ||
                 info?.contains(query, true) ?: false ||
                 tags.contains(query.lowercase())
+    }
+
+    fun onDragEnd(data: List<ServicesListItem>) {
+        launchScoped(Dispatchers.IO) {
+            var groupId: String? = null
+
+            data.forEach { item ->
+                if (item is ServicesListItem.GroupItem) {
+                    groupId = item.group.id
+                }
+
+                if (item is ServicesListItem.ServiceItem && item.service.groupId != groupId) {
+                    launchScoped {
+                        servicesRepository.setServiceGroup(item.service.id, groupId)
+                    }
+                }
+            }
+
+            servicesRepository.updateServicesOrder(
+                ids = data.filterIsInstance<ServicesListItem.ServiceItem>().map { it.service.id }
+            )
+        }
     }
 
     data class CombinedResult(

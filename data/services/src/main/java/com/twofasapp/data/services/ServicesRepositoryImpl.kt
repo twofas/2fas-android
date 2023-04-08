@@ -46,7 +46,7 @@ internal class ServicesRepositoryImpl(
     override fun observeServicesTicker(): Flow<List<Service>> {
         return combine(
             isTickerEnabled,
-            tickerFlow(1000L),
+            tickerFlow(1_000L),
             observeServices(),
         ) { a, b, c -> Pair(a, c) }
 //            .filter { it.first } // TODO: ticker

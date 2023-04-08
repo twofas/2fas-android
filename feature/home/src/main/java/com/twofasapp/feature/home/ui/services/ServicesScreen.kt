@@ -104,7 +104,7 @@ internal fun ServicesRoute(
         onMoveDownGroup = { viewModel.moveDownGroup(it) },
         onEditGroup = { id, name -> viewModel.editGroup(id, name) },
         onDeleteGroup = { viewModel.deleteGroup(it) },
-        onSwapServices = { from, to -> viewModel.swapServices(from, to) },
+        onDragEnd = { viewModel.onDragEnd(it) },
         onSortChange = { viewModel.updateSort(it) },
         onSearchQueryChange = { viewModel.search(it) },
         onSearchFocusChange = { viewModel.searchFocused(it) },
@@ -130,7 +130,7 @@ private fun ServicesScreen(
     onMoveDownGroup: (String) -> Unit = {},
     onEditGroup: (String, String) -> Unit = { _, _ -> },
     onDeleteGroup: (String) -> Unit = {},
-    onSwapServices: (Int, Int) -> Unit = { _, _ -> },
+    onDragEnd: (List<ServicesListItem>) -> Unit = { },
     onSortChange: (Int) -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
@@ -155,18 +155,29 @@ private fun ServicesScreen(
     val activity = LocalContext.currentActivity
     val scope = rememberCoroutineScope()
 
+    var isDragging by remember { mutableStateOf(false) }
     val data = remember { mutableStateOf(List(100) { "Item $it" }) }
+    val reorderableData = remember { mutableStateOf(uiState.items) }
     val listState = rememberLazyListState()
-    val reorderableState = rememberReorderableLazyListState(listState = listState, onMove = { from, to ->
-        onSwapServices(from.index, to.index)
-
-        println("Order: From: $from -> To: $to")
-//        onSwapServices((from.key as String).split(":")[1].toLong(), (to.key as String).split(":")[1].toLong())
-//        println("order: ${listState.layoutInfo.visibleItemsInfo.map { it.key }}")
-//        data.value = data.value.toMutableList().apply {
-//            add(to.index, removeAt(from.index))
-//        }
-    })
+    val reorderableState = rememberReorderableLazyListState(
+        listState = listState,
+        onMove = { from, to ->
+            isDragging = true
+            val fromItem = reorderableData.value[from.index]
+            val toItem = reorderableData.value[to.index]
+            if (fromItem is ServicesListItem.ServiceItem) {
+                if (toItem is ServicesListItem.ServiceItem || (toItem is ServicesListItem.GroupItem && toItem.group.id != null)) {
+                    reorderableData.value = reorderableData.value.toMutableList().apply {
+                        add(to.index, removeAt(from.index))
+                    }
+                }
+            }
+        },
+        onDragEnd = { _, _ ->
+            isDragging = false
+            onDragEnd(reorderableData.value)
+        },
+    )
 
     val serviceContainerColor = if (uiState.totalGroups == 1) {
         TwTheme.color.background
@@ -177,7 +188,7 @@ private fun ServicesScreen(
     val serviceContainerColorBlinking = remember { Animatable(serviceContainerColor) }
 
     var recentlyAddedService by remember { mutableStateOf<Long?>(null) }
-
+    reorderableData.value = uiState.items
 
     uiState.events.firstOrNull()?.let {
         when (it) {
@@ -358,34 +369,36 @@ private fun ServicesScreen(
                     return@LazyColumn
                 }
 
-                if (uiState.showSyncNoticeBar) {
-                    listItem(ServicesListItem.SyncNoticeBar) {
-                        SyncNoticeBar(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 8.dp),
-                            onOpenBackupClick = onOpenBackupClick,
-                        )
-                    }
-                }
+                reorderableData.value.forEach { item ->
 
-                if (uiState.showSyncReminder) {
-                    listItem(ServicesListItem.SyncReminder) {
-                        SyncReminder(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 16.dp),
-                            onOpenBackupClick = onOpenBackupClick,
-                            onDismissClick = onDismissSyncReminderClick,
-                        )
-                    }
-                }
+                    when (item) {
+                        ServicesListItem.SyncNoticeBar -> {
+                            listItem(item) {
+                                SyncNoticeBar(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 8.dp),
+                                    onOpenBackupClick = onOpenBackupClick,
+                                )
+                            }
+                        }
 
-                uiState.groups.forEach { group ->
+                        ServicesListItem.SyncReminder -> {
+                            listItem(item) {
+                                SyncReminder(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 16.dp),
+                                    onOpenBackupClick = onOpenBackupClick,
+                                    onDismissClick = onDismissSyncReminderClick,
+                                )
+                            }
+                        }
 
-                    if (uiState.groups.size > 1) {
-                        if (group.id != null || (uiState.services.count { it.groupId == null } > 0)) {
-                            listItem(ServicesListItem.Group(group.id)) {
+                        is ServicesListItem.GroupItem -> {
+                            val group = item.group
+
+                            listItem(item) {
                                 ServicesGroup(
                                     id = group.id,
                                     name = group.name ?: TwLocale.strings.servicesMyTokens,
@@ -394,7 +407,13 @@ private fun ServicesScreen(
                                     editMode = uiState.isInEditMode,
                                     modifier = Modifier
                                         .animateContentSize()
-                                        .animateItemPlacement(),
+                                        .then(
+                                            if (isDragging) {
+                                                Modifier
+                                            } else {
+                                                Modifier.animateItemPlacement()
+                                            }
+                                        ),
                                     onClick = { onToggleGroupExpand(group.id) },
                                     onExpandClick = { onToggleGroupExpand(group.id) },
                                     onMoveUpClick = { onMoveUpGroup(group.id.orEmpty()) },
@@ -410,20 +429,26 @@ private fun ServicesScreen(
                                 )
                             }
                         }
-                    }
 
-                    if (group.isExpanded || uiState.isInEditMode) {
-                        uiState.services.filter { it.groupId == group.id }.forEach { service ->
-                            listItem(ServicesListItem.Service(service.id)) {
+                        is ServicesListItem.ServiceItem -> {
+                            val service = item.service
 
+                            listItem(item) {
                                 ReorderableItem(
                                     state = reorderableState,
-                                    key = ServicesListItem.Service(service.id).key,
+                                    key = item.key,
                                     modifier = Modifier
-                                        .animateItemPlacement()
-                                        .animateContentSize(),
+                                        .animateContentSize()
+                                        .then(
+                                            if (isDragging) {
+                                                Modifier
+                                            } else {
+                                                Modifier.animateItemPlacement()
+                                            }
+                                        ),
                                 ) { isDragging ->
                                     val state = service.asState()
+
                                     DsService(
                                         state = state,
                                         style = when (uiState.appSettings.servicesStyle) {
@@ -457,96 +482,98 @@ private fun ServicesScreen(
                                 }
                             }
                         }
+
+                        else -> Unit
                     }
                 }
             }
         }
+    }
 
-        if (showAddGroupDialog) {
-            InputDialog(title = TwLocale.strings.groupsAdd,
-                onDismissRequest = { showAddGroupDialog = false },
-                positive = TwLocale.strings.commonAdd,
-                negative = TwLocale.strings.commonCancel,
-                hint = TwLocale.strings.groupsName,
-                showCounter = true,
-                minLength = 1,
-                maxLength = 32,
-                keyboardOptions = KeyboardOptions(
-                    capitalization = KeyboardCapitalization.Sentences,
-                    keyboardType = KeyboardType.Text,
-                ),
-                onPositiveClick = { onAddGroup(it) })
-        }
+    if (showAddGroupDialog) {
+        InputDialog(title = TwLocale.strings.groupsAdd,
+            onDismissRequest = { showAddGroupDialog = false },
+            positive = TwLocale.strings.commonAdd,
+            negative = TwLocale.strings.commonCancel,
+            hint = TwLocale.strings.groupsName,
+            showCounter = true,
+            minLength = 1,
+            maxLength = 32,
+            keyboardOptions = KeyboardOptions(
+                capitalization = KeyboardCapitalization.Sentences,
+                keyboardType = KeyboardType.Text,
+            ),
+            onPositiveClick = { onAddGroup(it) })
+    }
 
-        if (showEditGroupDialog) {
-            InputDialog(title = TwLocale.strings.groupsEdit,
-                onDismissRequest = { showEditGroupDialog = false },
-                positive = TwLocale.strings.commonSave,
-                negative = TwLocale.strings.commonCancel,
-                hint = TwLocale.strings.groupsName,
-                prefill = clickedGroup?.name.orEmpty(),
-                showCounter = true,
-                minLength = 1,
-                maxLength = 32,
-                keyboardOptions = KeyboardOptions(
-                    capitalization = KeyboardCapitalization.Sentences,
-                    keyboardType = KeyboardType.Text,
-                ),
-                onPositiveClick = { onEditGroup(clickedGroup?.id.orEmpty(), it) })
-        }
+    if (showEditGroupDialog) {
+        InputDialog(title = TwLocale.strings.groupsEdit,
+            onDismissRequest = { showEditGroupDialog = false },
+            positive = TwLocale.strings.commonSave,
+            negative = TwLocale.strings.commonCancel,
+            hint = TwLocale.strings.groupsName,
+            prefill = clickedGroup?.name.orEmpty(),
+            showCounter = true,
+            minLength = 1,
+            maxLength = 32,
+            keyboardOptions = KeyboardOptions(
+                capitalization = KeyboardCapitalization.Sentences,
+                keyboardType = KeyboardType.Text,
+            ),
+            onPositiveClick = { onEditGroup(clickedGroup?.id.orEmpty(), it) })
+    }
 
-        if (showDeleteGroupDialog) {
-            ConfirmDialog(
-                onDismissRequest = { showDeleteGroupDialog = false },
-                title = TwLocale.strings.commonDelete,
-                body = TwLocale.strings.groupsDelete,
-                onConfirm = { onDeleteGroup(clickedGroup?.id.orEmpty()) },
-            )
-        }
+    if (showDeleteGroupDialog) {
+        ConfirmDialog(
+            onDismissRequest = { showDeleteGroupDialog = false },
+            title = TwLocale.strings.commonDelete,
+            body = TwLocale.strings.groupsDelete,
+            onConfirm = { onDeleteGroup(clickedGroup?.id.orEmpty()) },
+        )
+    }
 
-        if (showSortDialog) {
-            ListRadioDialog(
-                onDismissRequest = { showSortDialog = false },
-                title = TwLocale.strings.servicesSortBy,
-                options = TwLocale.strings.servicesSortByOptions,
-                selectedIndex = when (uiState.appSettings.servicesSort) {
-                    ServicesSort.Alphabetical -> 0
-                    ServicesSort.Manual -> 1
-                },
-                onOptionSelected = { index, _ -> onSortChange(index) }
-            )
-        }
+    if (showSortDialog) {
+        ListRadioDialog(
+            onDismissRequest = { showSortDialog = false },
+            title = TwLocale.strings.servicesSortBy,
+            options = TwLocale.strings.servicesSortByOptions,
+            selectedIndex = when (uiState.appSettings.servicesSort) {
+                ServicesSort.Alphabetical -> 0
+                ServicesSort.Manual -> 1
+            },
+            onOptionSelected = { index, _ -> onSortChange(index) }
+        )
+    }
 
-        if (showQrFromGalleryDialog) {
-            ConfirmDialog(
-                onDismissRequest = { showQrFromGalleryDialog = false },
-                title = TwLocale.strings.servicesQrFromGalleryTitle,
-                positive = TwLocale.strings.servicesQrFromGalleryCta,
-                negative = null,
-                bodyAnnotated = buildAnnotatedString {
-                    append(TwLocale.strings.servicesQrFromGalleryBody1)
+    if (showQrFromGalleryDialog) {
+        ConfirmDialog(
+            onDismissRequest = { showQrFromGalleryDialog = false },
+            title = TwLocale.strings.servicesQrFromGalleryTitle,
+            positive = TwLocale.strings.servicesQrFromGalleryCta,
+            negative = null,
+            bodyAnnotated = buildAnnotatedString {
+                append(TwLocale.strings.servicesQrFromGalleryBody1)
 
-                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                        append(TwLocale.strings.servicesQrFromGalleryBody2)
-                    }
-
-                    append(TwLocale.strings.servicesQrFromGalleryBody3)
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append(TwLocale.strings.servicesQrFromGalleryBody2)
                 }
-            )
-        }
 
-        if (askForPermission) {
-            RequestPermission(
-                permission = Manifest.permission.CAMERA,
-                onGranted = {
-                    askForPermission = false
-                    listener.openAddQrService(activity)
-                },
-                onDismissRequest = { askForPermission = false },
-                rationaleTitle = TwLocale.strings.permissionCameraTitle,
-                rationaleText = TwLocale.strings.permissionCameraBody,
-            )
-        }
+                append(TwLocale.strings.servicesQrFromGalleryBody3)
+            }
+        )
+    }
+
+    if (askForPermission) {
+        RequestPermission(
+            permission = Manifest.permission.CAMERA,
+            onGranted = {
+                askForPermission = false
+                listener.openAddQrService(activity)
+            },
+            onDismissRequest = { askForPermission = false },
+            rationaleTitle = TwLocale.strings.permissionCameraTitle,
+            rationaleText = TwLocale.strings.permissionCameraBody,
+        )
     }
 }
 
