@@ -11,7 +11,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -34,10 +33,6 @@ internal class ServicesLocalSource(
         extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST,
     )
-
-    private val servicesOrderFlow: MutableStateFlow<ServicesOrderEntity> by lazy {
-        MutableStateFlow(getOrder())
-    }
 
     private fun log(msg: String) {
         Timber.tag("ServicesDao").i(msg)
@@ -91,34 +86,31 @@ internal class ServicesLocalSource(
     }
 
     fun observeOrder(): Flow<ServicesOrder> {
-//        return preferences.observe(KeyOrder, "").map { value ->
-//            (value?.let {
-//                try {
-//                    json.decodeFromString(value)
-//                } catch (e: Exception) {
-//                    ServicesOrderEntity()
-//                }
-//            } ?: ServicesOrderEntity()).asDomain()
-//        }
-
-        return servicesOrderFlow.map { it.asDomain() }
+        return preferences.observe(KeyOrder, "").map { value ->
+            (value?.let {
+                try {
+                    json.decodeFromString(value)
+                } catch (e: Exception) {
+                    ServicesOrderEntity()
+                }
+            } ?: ServicesOrderEntity()).asDomain()
+        }
     }
 
     fun deleteServiceFromOrder(id: Long) {
-        val newOrder = servicesOrderFlow.value.copy(
-            ids = servicesOrderFlow.value.ids.minus(id)
+        val local = getOrder()
+        val newOrder = local.copy(
+            ids = local.ids.minus(id)
         )
 
-        servicesOrderFlow.tryEmit(newOrder)
         saveOrder(newOrder)
     }
 
     fun addServiceToOrder(id: Long) {
-        val newOrder = servicesOrderFlow.value.copy(
-            ids = servicesOrderFlow.value.ids.plus(id)
+        val local = getOrder()
+        val newOrder = local.copy(
+            ids = local.ids.plus(id)
         )
-
-        servicesOrderFlow.tryEmit(newOrder)
         saveOrder(newOrder)
     }
 
@@ -146,12 +138,8 @@ internal class ServicesLocalSource(
     }
 
     fun saveServicesOrder(ids: List<Long>) {
-        val local = servicesOrderFlow.value
-
-        local.copy(ids = ids).let {
-            servicesOrderFlow.tryEmit(it)
-            saveOrder(it)
-        }
+        val local = getOrder()
+        saveOrder(local.copy(ids = ids))
     }
 
     suspend fun cleanUpGroups(groupIds: List<String>) {

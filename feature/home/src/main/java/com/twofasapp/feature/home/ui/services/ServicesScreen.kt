@@ -74,6 +74,7 @@ import com.twofasapp.feature.home.ui.services.modal.AddServiceModal
 import com.twofasapp.feature.home.ui.services.modal.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.modal.ModalType
 import com.twofasapp.locale.TwLocale
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.burnoutcrew.reorderable.ReorderableItem
 import org.burnoutcrew.reorderable.detectReorder
@@ -177,8 +178,11 @@ private fun ServicesScreen(
             }
         },
         onDragEnd = { _, _ ->
-            isDragging = false
             onDragEnd(reorderableData.value)
+            scope.launch {
+                delay(500)
+                isDragging = false
+            }
         },
     )
 

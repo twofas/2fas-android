@@ -57,18 +57,18 @@ internal class ServicesViewModel(
                 val showSyncReminder = result.appSettings.showBackupNotice && result.showBackupReminder && result.backupEnabled.not()
                 val showSyncNoticeBar = result.appSettings.showBackupNotice && showSyncReminder.not() && result.backupEnabled.not()
 
-//                servicesRepository.setTickerEnabled(result.isInEditMode.not())
+                val filteredServices = result.services
+                    .sortedBy {
+                        when (result.appSettings.servicesSort) {
+                            ServicesSort.Alphabetical -> it.name.lowercase()
+                            ServicesSort.Manual -> null
+                        }
+                    }
+                    .filter { service -> service.isMatchingQuery(result.searchQuery) }
 
                 uiState.update { state ->
                     state.copy(
-                        services = result.services
-                            .sortedBy {
-                                when (result.appSettings.servicesSort) {
-                                    ServicesSort.Alphabetical -> it.name.lowercase()
-                                    ServicesSort.Manual -> null
-                                }
-                            }
-                            .filter { service -> service.isMatchingQuery(result.searchQuery) },
+                        services = filteredServices,
                         showSyncNoticeBar = showSyncNoticeBar,
                         showSyncReminder = showSyncReminder,
                         totalGroups = result.groups.size,
@@ -90,15 +90,8 @@ internal class ServicesViewModel(
                                 result.groups.forEach { group ->
                                     put(
                                         key = group,
-                                        value = result.services
+                                        value = filteredServices
                                             .filter { it.groupId == group.id }
-                                            .sortedBy {
-                                                when (result.appSettings.servicesSort) {
-                                                    ServicesSort.Alphabetical -> it.name.lowercase()
-                                                    ServicesSort.Manual -> null
-                                                }
-                                            }
-                                            .filter { service -> service.isMatchingQuery(result.searchQuery) }
                                     )
                                 }
                             }
@@ -210,10 +203,12 @@ internal class ServicesViewModel(
     }
 
     fun onDragStart() {
+        println("onDragStart")
         servicesRepository.setTickerEnabled(false)
     }
 
     fun onDragEnd(data: List<ServicesListItem>) {
+        println("onDragEnd")
         launchScoped(Dispatchers.IO) {
             var groupId: String? = null
 

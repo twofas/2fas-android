@@ -2,11 +2,10 @@ package com.twofasapp.services.ui
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.twofasapp.backup.domain.SyncBackupTrigger
+import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.common.navigation.getOrThrow
-import com.twofasapp.core.analytics.AnalyticsEvent
-import com.twofasapp.core.analytics.AnalyticsParam
-import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
@@ -33,7 +32,6 @@ import kotlinx.coroutines.launch
 
 internal class ServiceViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val analytics: AnalyticsService,
     private val observeServiceCase: ObserveServiceCase,
     private val getServicesCase: GetServicesCase,
     private val editServiceCase: EditServiceCase,
@@ -42,6 +40,7 @@ internal class ServiceViewModel(
     private val lockMethodPreference: LockMethodPreference,
     private val groupsRepository: GroupsRepository,
     private val servicesRepository: ServicesRepository,
+    private val syncBackupWorkDispatcher: SyncBackupWorkDispatcher,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(ServiceUiState())
@@ -124,6 +123,8 @@ internal class ServiceViewModel(
                             id = it,
                             source = RecentlyAddedService.Source.Manually
                         )
+                        syncBackupWorkDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+
                         _uiState.update { it.copy(finish = true) }
                     }
             } else {
@@ -175,27 +176,27 @@ internal class ServiceViewModel(
     }
 
     fun updateAlgorithm(algorithm: Service.Algorithm) {
-        analytics.captureEvent(AnalyticsEvent.ALGORITHM_CHOSEN, AnalyticsParam.TYPE to algorithm.name)
+//        analytics.captureEvent(AnalyticsEvent.ALGORITHM_CHOSEN, AnalyticsParam.TYPE to algorithm.name)
         updateService { it.copy(otp = it.otp.copy(algorithm = algorithm)) }
     }
 
     fun updatePeriod(period: Int) {
-        analytics.captureEvent(AnalyticsEvent.REFRESH_TIME_CHOSEN, AnalyticsParam.TYPE to period.toString())
+//        analytics.captureEvent(AnalyticsEvent.REFRESH_TIME_CHOSEN, AnalyticsParam.TYPE to period.toString())
         updateService { it.copy(otp = it.otp.copy(period = period)) }
     }
 
     fun updateDigits(digits: Int) {
-        analytics.captureEvent(AnalyticsEvent.NUMBER_OF_DIGITS_CHOSEN, AnalyticsParam.TYPE to digits.toString())
+//        analytics.captureEvent(AnalyticsEvent.NUMBER_OF_DIGITS_CHOSEN, AnalyticsParam.TYPE to digits.toString())
         updateService { it.copy(otp = it.otp.copy(digits = digits)) }
     }
 
     fun updateInitialCounter(counter: Int) {
-        analytics.captureEvent(AnalyticsEvent.INITIAL_COUNTER_CHOSEN, AnalyticsParam.TYPE to counter.toString())
+//        analytics.captureEvent(AnalyticsEvent.INITIAL_COUNTER_CHOSEN, AnalyticsParam.TYPE to counter.toString())
         updateService { it.copy(otp = it.otp.copy(hotpCounter = counter)) }
     }
 
     fun updateBadge(tint: Tint) {
-        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_BADGE_SET)
+//        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_BADGE_SET)
         updateService {
             it.copy(
                 badge = if (tint == Tint.Default && uiState.value.persistedService.badge == null) {
@@ -208,7 +209,7 @@ internal class ServiceViewModel(
     }
 
     fun updateBrand(brandIcon: BrandIcon) {
-        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_BRAND_SET)
+//        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_BRAND_SET)
         updateService {
             it.copy(selectedImageType = Service.ImageType.IconCollection)
         }
@@ -221,7 +222,7 @@ internal class ServiceViewModel(
     }
 
     fun updateLabel(text: String, tint: Tint) {
-        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_LABEL_SET)
+//        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_LABEL_SET)
         updateService(persists = true) {
             it.copy(
                 selectedImageType = Service.ImageType.Label,

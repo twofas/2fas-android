@@ -142,7 +142,9 @@ internal class ServicesLocalDataImpl(
                 hotpCounterTimestamp = null,
                 assignedDomains = service.assignedDomains
             )
-        )
+        ).also {
+            Timber.d("InsertService: Inserted with id $it")
+        }
     }
 
     override suspend fun delete(id: Long) {
@@ -151,7 +153,9 @@ internal class ServicesLocalDataImpl(
 
     override suspend fun insertService(service: Service): Long {
         Timber.d("InsertService: $service")
-        return dao.legacyInsertSuspend(service.toEntity())
+        return dao.legacyInsertSuspend(service.toEntity()).also {
+            Timber.d("InsertService: Inserted with id $it")
+        }
     }
 
     override fun updateService(vararg services: ServiceDto): Completable {
