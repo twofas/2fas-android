@@ -69,6 +69,7 @@ internal class ServicesViewModel(
                 uiState.update { state ->
                     state.copy(
                         services = filteredServices,
+                        groups = result.groups,
                         showSyncNoticeBar = showSyncNoticeBar,
                         showSyncReminder = showSyncReminder,
                         totalGroups = result.groups.size,

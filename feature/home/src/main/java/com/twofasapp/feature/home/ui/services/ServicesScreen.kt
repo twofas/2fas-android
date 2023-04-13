@@ -237,19 +237,22 @@ private fun ServicesScreen(
         onDismissRequest = {
             if (modalType is ModalType.FocusService && (modalType as ModalType.FocusService).isRecentlyAdded) {
                 val id = (modalType as ModalType.FocusService).id
+                val groupId = uiState.services.first { it.id == id }.groupId
 
-                scope.launch {
-                    listState.animateScrollToItem(
-                        uiState.items.indexOfFirst {
-                            it is ServicesListItem.ServiceItem && it.service.id == id
-                        }
-                    )
-                    recentlyAddedService = id
+                if (uiState.groups.first { it.id == groupId }.isExpanded) {
+                    scope.launch {
+                        listState.animateScrollToItem(
+                            uiState.items.indexOfFirst {
+                                it is ServicesListItem.ServiceItem && it.service.id == id
+                            }
+                        )
+                        recentlyAddedService = id
 
-                    serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(0))
-                    serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(2000, easing = EaseOut))
+                        serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(0))
+                        serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(2000, easing = EaseOut))
 
-                    recentlyAddedService = null
+                        recentlyAddedService = null
+                    }
                 }
             }
         },
