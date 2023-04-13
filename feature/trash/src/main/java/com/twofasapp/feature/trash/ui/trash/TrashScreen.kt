@@ -1,3 +1,4 @@
+
 package com.twofasapp.feature.trash.ui.trash
 
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -79,7 +80,7 @@ private fun TrashScreen(
                         iconLight = it.iconLight,
                         iconDark = it.iconDark,
                         labelText = it.labelText,
-                        labelColor = it.badgeColor.asState(),
+                        labelColor = it.labelColor.asState(),
                     ),
                     modifier = Modifier
                         .fillMaxWidth()
