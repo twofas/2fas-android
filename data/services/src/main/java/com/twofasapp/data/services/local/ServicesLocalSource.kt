@@ -1,11 +1,13 @@
 package com.twofasapp.data.services.local
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.data.services.mapper.asEntity
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.BufferOverflow
@@ -23,6 +25,7 @@ internal class ServicesLocalSource(
     private val json: Json,
     private val preferences: PlainPreferences,
     private val dao: ServiceDao,
+    private val timeProvider: TimeProvider,
 ) {
     companion object {
         private const val KeyOrder = "servicesOrder"
@@ -127,13 +130,22 @@ internal class ServicesLocalSource(
 
     suspend fun incrementHotpCounter(id: Long, counter: Int, timestamp: Long) {
         dao.update(
-            dao.select(id).copy(hotpCounter = counter, hotpCounterTimestamp = timestamp)
+            dao.select(id).copy(
+                hotpCounter = counter,
+                hotpCounterTimestamp = timestamp,
+                backupSyncStatus = BackupSyncStatus.NOT_SYNCED.name,
+                updatedAt = timeProvider.systemCurrentTime(),
+            )
         )
     }
 
     suspend fun setServiceGroup(id: Long, groupId: String?) {
         dao.update(
-            dao.select(id).copy(groupId = groupId)
+            dao.select(id).copy(
+                groupId = groupId,
+                backupSyncStatus = BackupSyncStatus.NOT_SYNCED.name,
+                updatedAt = timeProvider.systemCurrentTime(),
+            )
         )
     }
 
