@@ -41,6 +41,7 @@ data class Service(
             serviceTypeId = null,
             source = Source.Manual,
             selectedImageType = ImageType.Label,
+            labelText = "",
             labelBackgroundColor = Tint.values().random(),
         )
     }

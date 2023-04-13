@@ -63,7 +63,7 @@ internal fun GoogleAuthenticatorRoute(
                     .padding(vertical = 16.dp)
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.import_google_authenticator),
+                    painter = painterResource(id = R.drawable.ic_import_ga),
                     contentDescription = null,
                     modifier = Modifier.height(120.dp)
                 )

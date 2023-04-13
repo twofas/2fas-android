@@ -176,27 +176,22 @@ internal class ServiceViewModel(
     }
 
     fun updateAlgorithm(algorithm: Service.Algorithm) {
-//        analytics.captureEvent(AnalyticsEvent.ALGORITHM_CHOSEN, AnalyticsParam.TYPE to algorithm.name)
         updateService { it.copy(otp = it.otp.copy(algorithm = algorithm)) }
     }
 
     fun updatePeriod(period: Int) {
-//        analytics.captureEvent(AnalyticsEvent.REFRESH_TIME_CHOSEN, AnalyticsParam.TYPE to period.toString())
         updateService { it.copy(otp = it.otp.copy(period = period)) }
     }
 
     fun updateDigits(digits: Int) {
-//        analytics.captureEvent(AnalyticsEvent.NUMBER_OF_DIGITS_CHOSEN, AnalyticsParam.TYPE to digits.toString())
         updateService { it.copy(otp = it.otp.copy(digits = digits)) }
     }
 
     fun updateInitialCounter(counter: Int) {
-//        analytics.captureEvent(AnalyticsEvent.INITIAL_COUNTER_CHOSEN, AnalyticsParam.TYPE to counter.toString())
         updateService { it.copy(otp = it.otp.copy(hotpCounter = counter)) }
     }
 
     fun updateBadge(tint: Tint) {
-//        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_BADGE_SET)
         updateService {
             it.copy(
                 badge = if (tint == Tint.Default && uiState.value.persistedService.badge == null) {
@@ -209,7 +204,6 @@ internal class ServiceViewModel(
     }
 
     fun updateBrand(brandIcon: BrandIcon) {
-//        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_BRAND_SET)
         updateService {
             it.copy(selectedImageType = Service.ImageType.IconCollection)
         }
@@ -222,7 +216,6 @@ internal class ServiceViewModel(
     }
 
     fun updateLabel(text: String, tint: Tint) {
-//        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_LABEL_SET)
         updateService(persists = true) {
             it.copy(
                 selectedImageType = Service.ImageType.Label,
@@ -237,7 +230,7 @@ internal class ServiceViewModel(
             it.copy(
                 selectedImageType = imageType,
                 labelText = if (imageType == Service.ImageType.Label) labelText?.uppercase() ?: uiState.value.service.name.take(2).uppercase() else null,
-                labelBackgroundColor = if (imageType == Service.ImageType.Label) labelBackgroundColor ?: Tint.LightBlue else null,
+                labelBackgroundColor = if (imageType == Service.ImageType.Label) labelBackgroundColor else it.labelBackgroundColor,
             )
         }
     }
