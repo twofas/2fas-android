@@ -17,7 +17,7 @@ internal class NotificationsRepositoryImpl(
 
     override suspend fun getNotifications(): List<Notification> {
         return withContext(dispatchers.io) {
-            local.getNotifications().filterOutTooOldNotifications()
+            local.getNotifications().sortedByTime()
         }
     }
 
@@ -36,12 +36,11 @@ internal class NotificationsRepositoryImpl(
 
     override fun hasUnreadNotifications(): Flow<Boolean> {
         return local.observeNotifications()
-            .map { it.filterOutTooOldNotifications() }
+            .map { it.sortedByTime() }
             .map { list -> list.any { it.isRead.not() } }
     }
 
-    private fun List<Notification>.filterOutTooOldNotifications(): List<Notification> {
-//        return filter { it.publishTime > timeProvider.systemCurrentTime() - Duration.ofDays(publishedAfterDays).toMillis() }
+    private fun List<Notification>.sortedByTime(): List<Notification> {
         return sortedWith(compareBy({ it.isRead }, { it.publishTime.unaryMinus() }))
     }
 }

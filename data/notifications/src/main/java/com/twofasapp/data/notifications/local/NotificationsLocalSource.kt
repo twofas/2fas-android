@@ -24,10 +24,6 @@ internal class NotificationsLocalSource(
         notificationsDao.upsert(notifications.map { it.asEntity() })
     }
 
-    suspend fun deleteNotifications(ids: List<String>) {
-        notificationsDao.delete(ids)
-    }
-
     suspend fun readAllNotifications() {
         notificationsDao.update(
             *notificationsDao.select().map { it.copy(isRead = true) }.toTypedArray()

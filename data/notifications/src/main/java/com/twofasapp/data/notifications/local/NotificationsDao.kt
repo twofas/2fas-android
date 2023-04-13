@@ -22,9 +22,19 @@ interface NotificationsDao {
     suspend fun upsert(entities: List<NotificationEntity>) {
         val localEntities = select()
 
+        // workaround for marking old notifications as read
+        val thresholdNotification = localEntities
+            .firstOrNull { it.id == "98322bc1-07c5-4ab0-bced-d3b73d982755" }
+
         val merged = entities.map { remote ->
             val matchedEntity = localEntities.find { it.id == remote.id }
-            remote.copy(isRead = matchedEntity?.isRead ?: false)
+
+            if (thresholdNotification?.isRead == true && remote.publishTime <= 1672527600000) {
+                // all notifications from 2022 year
+                remote.copy(isRead = true)
+            } else {
+                remote.copy(isRead = matchedEntity?.isRead ?: false)
+            }
         }
 
         deleteAll()
