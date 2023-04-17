@@ -489,7 +489,7 @@ fun IconSelector(
             Box(
                 modifier = Modifier
                     .width(28.dp)
-                    .height(16.dp)
+                    .height(18.dp)
                     .clip(TwTheme.shape.roundedDefault)
                     .background(TwTheme.color.background)
                     .align(Alignment.Center),

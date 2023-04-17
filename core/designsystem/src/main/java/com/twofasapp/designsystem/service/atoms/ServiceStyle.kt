@@ -41,7 +41,7 @@ internal object ServiceTextDefaults {
         nameTextStyle = TwTheme.typo.caption.copy(fontWeight = FontWeight.Medium),
         infoTextStyle = TwTheme.typo.caption.copy(fontWeight = FontWeight.Normal),
         codeTextStyle = TwTheme.typo.codeLightSmall,
-        imageLabelTextStyle = TwTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 12.dp), lineHeight = dpToSp(dp = 14.dp)),
+        imageLabelTextStyle = TwTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 11.dp), lineHeight = dpToSp(dp = 15.dp)),
         timerTextStyle = TwTheme.typo.caption.copy(fontSize = 11.sp),
     )
 
@@ -61,7 +61,7 @@ internal object ServiceDimensDefaults {
         cellHeight = 130.dp,
         cellHeightInEdit = 64.dp,
         imageSize = 40.dp,
-        labelPillHeight = 16.dp,
+        labelPillHeight = 18.dp,
         labelPillWidth = 28.dp,
         timerSize = 32.dp,
     )
@@ -71,8 +71,8 @@ internal object ServiceDimensDefaults {
         cellHeight = 80.dp,
         cellHeightInEdit = 64.dp,
         imageSize = 30.dp,
-        labelPillHeight = 14.dp,
-        labelPillWidth = 22.dp,
+        labelPillHeight = 13.dp,
+        labelPillWidth = 21.dp,
         timerSize = 28.dp,
     )
 }

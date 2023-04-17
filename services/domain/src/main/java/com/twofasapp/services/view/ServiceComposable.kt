@@ -53,7 +53,7 @@ fun ServiceIcon(
                 Box(
                     modifier = Modifier
                         .width(45.dp)
-                        .height(26.dp)
+                        .height(28.dp)
                         .clip(RoundedCornerShape(16.dp))
                         .background(TwTheme.color.background)
                         .align(Alignment.Center),
