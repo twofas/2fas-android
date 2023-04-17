@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocal
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Dp
 import androidx.core.app.ComponentActivity
 
 val CompositionLocal<Context>.currentActivity: ComponentActivity
@@ -56,3 +58,6 @@ fun Context.copyToClipboard(
         Toast.makeText(this, toast, Toast.LENGTH_SHORT).show()
     }
 }
+
+@Composable
+fun dpToSp(dp: Dp) = with(LocalDensity.current) { dp.toSp() }

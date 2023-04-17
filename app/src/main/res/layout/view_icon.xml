@@ -28,7 +28,7 @@
         <View
             android:id="@+id/labelMask"
             android:layout_width="25dp"
-            android:layout_height="17dp"
+            android:layout_height="15dp"
             android:layout_gravity="center"
             android:background="@drawable/round_rect"
             android:backgroundTint="@color/windowBackground" />
@@ -41,6 +41,7 @@
             android:layout_gravity="center"
             android:textColor="@color/textPrimary"
             android:textStyle="bold"
+            android:textSize="13dp"
             tools:text="G2" />
 
     </FrameLayout>

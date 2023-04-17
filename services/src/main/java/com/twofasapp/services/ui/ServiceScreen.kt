@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -41,7 +42,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -51,7 +51,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.twofasapp.design.compose.HeaderEntry
 import com.twofasapp.design.compose.InputEntry
 import com.twofasapp.design.compose.SimpleEntry
@@ -62,6 +61,7 @@ import com.twofasapp.design.compose.dialogs.Validation
 import com.twofasapp.design.compose.serviceIconBitmap
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.dpToSp
 import com.twofasapp.locale.TwLocale
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.resources.R
@@ -486,11 +486,20 @@ fun IconSelector(
                     .background(shape = CircleShape, color = service.labelBackgroundColor.toColor(Tint.LightBlue))
             )
 
+            Box(
+                modifier = Modifier
+                    .width(28.dp)
+                    .height(16.dp)
+                    .clip(TwTheme.shape.roundedDefault)
+                    .background(TwTheme.color.background)
+                    .align(Alignment.Center),
+            )
+
             Text(
                 text = service.labelText ?: service.name.take(2).uppercase(),
-                color = Color.White,
+                color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = 0.5.sp, fontSize = 14.sp),
+                style = TwTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
                 modifier = Modifier.align(Alignment.Center)
             )
 

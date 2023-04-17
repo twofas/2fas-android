@@ -7,6 +7,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.ktx.dpToSp
 
 internal data class ServiceTextStyle(
     val nameTextStyle: TextStyle,
@@ -31,7 +32,7 @@ internal object ServiceTextDefaults {
         nameTextStyle = TwTheme.typo.body3.copy(fontWeight = FontWeight.Medium),
         infoTextStyle = TwTheme.typo.body4.copy(fontWeight = FontWeight.Normal),
         codeTextStyle = TwTheme.typo.codeExtraLight,
-        imageLabelTextStyle = TwTheme.typo.body4.copy(fontWeight = FontWeight.Bold),
+        imageLabelTextStyle = TwTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
         timerTextStyle = TwTheme.typo.caption,
     )
 
@@ -40,7 +41,7 @@ internal object ServiceTextDefaults {
         nameTextStyle = TwTheme.typo.caption.copy(fontWeight = FontWeight.Medium),
         infoTextStyle = TwTheme.typo.caption.copy(fontWeight = FontWeight.Normal),
         codeTextStyle = TwTheme.typo.codeLightSmall,
-        imageLabelTextStyle = TwTheme.typo.body4.copy(fontWeight = FontWeight.Bold, fontSize = 10.sp),
+        imageLabelTextStyle = TwTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 12.dp), lineHeight = dpToSp(dp = 14.dp)),
         timerTextStyle = TwTheme.typo.caption.copy(fontSize = 11.sp),
     )
 
@@ -49,7 +50,7 @@ internal object ServiceTextDefaults {
         nameTextStyle = TwTheme.typo.title.copy(fontWeight = FontWeight.Normal),
         infoTextStyle = TwTheme.typo.body1.copy(fontWeight = FontWeight.Normal),
         codeTextStyle = TwTheme.typo.codeExtraLight,
-        imageLabelTextStyle = TwTheme.typo.body4.copy(fontWeight = FontWeight.Bold),
+        imageLabelTextStyle = TwTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
         timerTextStyle = TwTheme.typo.caption,
     )
 }
@@ -59,9 +60,9 @@ internal object ServiceDimensDefaults {
     fun default() = ServiceDimens(
         cellHeight = 130.dp,
         cellHeightInEdit = 64.dp,
-        imageSize = 36.dp,
+        imageSize = 40.dp,
         labelPillHeight = 16.dp,
-        labelPillWidth = 18.dp,
+        labelPillWidth = 28.dp,
         timerSize = 32.dp,
     )
 
@@ -69,9 +70,9 @@ internal object ServiceDimensDefaults {
     fun compact() = ServiceDimens(
         cellHeight = 80.dp,
         cellHeightInEdit = 64.dp,
-        imageSize = 32.dp,
-        labelPillHeight = 12.dp,
-        labelPillWidth = 18.dp,
+        imageSize = 30.dp,
+        labelPillHeight = 14.dp,
+        labelPillWidth = 22.dp,
         timerSize = 28.dp,
     )
 }
