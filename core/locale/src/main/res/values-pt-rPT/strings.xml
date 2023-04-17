@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Thu, 30 Mar 2023 12:12:12 -0700
+ Exported at: Sun, 16 Apr 2023 22:15:05 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -254,7 +254,9 @@
     <string name="tokens__totp">TOTP</string>
     <string name="tokens__advanced_settings_footer_title">Mudar definições avançadas não é recomendado. Fá-lo apenas quando o fornecedor do 2FA pedir e quando tiveres instruções claras.</string>
     <string name="tokens__gallery_advice_title">Melhor prática</string>
+    <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">O serviço foi adicionado com sucesso. Nós recomendamos fortemente que tu\u0020</string>
+    <!-- ADD A SPACE AFTER COMA -->
     <string name="tokens__gallery_advice_content_middle_bold">elimines o código QR da tua galeria.\u0020</string>
     <string name="tokens__gallery_advice_content_last">Se alguém tiver acesso a este código QR, irão poder usar os códigos 2FA para este serviço.</string>
     <string name="tokens__request_icon_page_title">Pedir um ícone</string>
@@ -731,7 +733,5 @@
     <string name="settings__list_style_option_compact">Compacto</string>
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Exporta as tuas contas da aplicação LastPass para um ficheiro JSON não encriptado e usa o botão \"Escolhe o ficheiro JSON\" para importá-lo. Lembra-te de remover o ficheiro após importares com sucesso.</string>
-    <string name="settings__about_crash_optout_title">Crash Reports</string>
-    <string name="settings__about_crash_optout_toggle_title">Opt-out of Crash Reports</string>
-    <string name="settings__about_crash_optout_description">Crash Reports help us improve the app when things go very wrong. Changes will be applied on the next app run.</string>
+    <string name="settings__about_crash_optout_title">Relatórios de Falhas</string>
 </resources>

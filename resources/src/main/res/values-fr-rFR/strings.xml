@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Thu, 30 Mar 2023 12:12:12 -0700
+ Exported at: Sun, 16 Apr 2023 22:15:05 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -203,7 +203,7 @@
     <string name="tokens__num_added">%s ajouté</string>
     <string name="tokens__next_token">Prochain code : %s</string>
     <string name="tokens__next_token_title">Valeur du prochain code</string>
-    <string name="tokens__my_tokens">Mes Codes</string>
+    <string name="tokens__my_tokens">Mes Comptes</string>
     <string name="tokens__removing_group">Suppression du groupe</string>
     <!-- tokens__all_tokens_will_be_moved -->
     <string name="tokens__all_tokens_moved_to_group_title">Tous les codes 2FA seront déplacés dans le groupe : \"Mes Codes\"</string>
@@ -254,7 +254,9 @@
     <string name="tokens__totp">TOTP</string>
     <string name="tokens__advanced_settings_footer_title">Modifier les réglages avancés n\'est pas recommandé. Faites le que si votre fournisseur 2FA l\'exige et vous fournit des consignes claires.</string>
     <string name="tokens__gallery_advice_title">Meilleur pratique</string>
+    <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">Service ajouté avec succès. Nous vous recommandons vivement de\u0020</string>
+    <!-- ADD A SPACE AFTER COMA -->
     <string name="tokens__gallery_advice_content_middle_bold">supprimer le QR code de votre galerie.\u0020</string>
     <string name="tokens__gallery_advice_content_last">Si quelqu\'un récupère cette capture d\'écran, il sera en mesure d\'obtenir vos codes 2FA pour ce service.</string>
     <string name="tokens__request_icon_page_title">Demander une icône</string>
@@ -732,6 +734,4 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Exportez vos comptes LastPass vers un fichier JSON non crypté et importez le en utilisant le bouton \"Choisir un fichier JSON\". N\'oubliez pas de supprimer le fichier après avoir réussie l\'importation.</string>
     <string name="settings__about_crash_optout_title">Rapports d\'incident</string>
-    <string name="settings__about_crash_optout_toggle_title">Refus de recevoir les rapports d\'incident</string>
-    <string name="settings__about_crash_optout_description">Les rapports d\'incident nous aident à améliorer l\'application lorsque les choses tournent mal. Les changements seront appliqués lors du prochain lancement de l\'application.</string>
 </resources>

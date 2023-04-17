@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android string resources
+ Project: 2FAS App
+ Release: Working copy
+ Locale: uk-UA, Ukrainian (Ukraine)
+ Exported by: rafakob
+ Exported at: Sun, 16 Apr 2023 22:15:05 -0700
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- InfoPlist.strings
+        TwoFAS
+        Created by Zbigniew Cisiński on 14/03/2020.
+        Copyright © 2020 The Code. All rights reserved. -->
+    <string name="NSCameraUsageDescription">Використовується для сканування QR-кодів</string>
+    <string name="NSFaceIDUsageDescription">Ви можете розблокувати додаток за допомогою Face ID</string>
+    <!-- MARK: - App -->
+    <string name="app__name">2FA Authenticator</string>
+    <string name="commons__2fas">2FA Authenticator (додаток 2FAS)</string>
+    <string name="commons__OK">Добре</string>
+    <string name="commons__add">Додати</string>
+    <!-- MARK: - Commons -->
+    <string name="commons__cancel">Відміна</string>
+    <string name="commons__notifications">Сповіщення</string>
+    <!-- A number replaces %d, for example, 4 of 5. -->
+    <string name="commons__page_of_page_title">%1$d з %2$d</string>
+    <!-- notifications__service_already_removed_from_backup -->
+    <string name="notifications__service_already_removed_title">Службу вже видалено з резервної копії</string>
+    <!-- notifications__service_already_modified_in_backup -->
+    <string name="notifications__service_already_modified_title">Сервіс вже змінено в резервній копії</string>
+    <!-- backup__user_is_over_quota_on_icloud -->
+    <string name="backup__user_over_quota_icloud">Користувач перевищив квоту на iCloud</string>
+    <!-- backup__icloud_is_not_available -->
+    <string name="backup__icloud_not_available">iCloud недоступний</string>
+    <!-- backup__icloud_has_been_disabled_by_user -->
+    <string name="backup__icloud_disabled_title">iCloud було відключено користувачем</string>
+    <!-- backup__turned_off_description_bold_part -->
+    <string name="backup__2fas_backup">Резервне копіювання 2FAS</string>
+    <string name="commons__close">Закрити</string>
+    <string name="commons__continue">Продовжити</string>
+    <string name="commons__copy">Копіювати</string>
+    <string name="commons__delete">Видалити</string>
+    <string name="commons__dismiss">Відхилити</string>
+    <string name="commons__done">Готово</string>
+    <string name="commons__edit">Редагувати</string>
+    <string name="commons__enter_code_manually">Ввести код вручну</string>
+    <string name="commons__error">Помилка</string>
+    <string name="commons__info">Інформація</string>
+    <string name="commons__next">Наступний</string>
+    <string name="commons__notice">Повідомлення</string>
+    <string name="commons__off">Вимкнено</string>
+    <string name="commons__on">Увімкнено</string>
+    <!-- commons__point_your_camera_at_code_on_website -->
+    <string name="commons__camera_title">Наведіть камеру на екран, щоб просканувати QR-код</string>
+    <string name="commons__rename">Перейменувати</string>
+    <string name="commons__retry">Повторити спробу</string>
+    <string name="commons__save">Зберегти</string>
+    <string name="commons__scan_qr_code">Відскануйте QR-код</string>
+    <string name="commons__service">Сервіс</string>
+    <string name="commons__set">Встановити</string>
+    <string name="commons__skip">Пропустити</string>
+    <string name="commons__tokens">Токени</string>
+    <string name="commons__warning">Попередження</string>
+    <string name="commons__no_results">Немає результатів</string>
+    <string name="commons__customize">Налаштувати</string>
+    <string name="commons__approve">Одобрити</string>
+    <string name="commons__deny">Відмовити</string>
+    <!-- max. %d chars = Maximum number of characters
+        commons__provided_text_too_long -->
+    <string name="commons__text_long_title">Наданий текст задовгий (макс. %d символів)</string>
+    <string name="commons__got_it">Зрозуміло!</string>
+    <string name="fingerprint__verifying">Перевірка…</string>
+    <!-- fingerprint__setup_content -->
+    <string name="fingerprint__confirm_title">Щоб продовжити, підтвердьте відбиток пальця.</string>
+    <!-- fingerprint__use_pin -->
+    <string name="fingerprint__use_pin_title">Цього разу використовуйте PIN-код</string>
+    <!-- MARK: - Introduction -->
+    <string name="introduction__page_1_title">Ви чудові!</string>
+    <string name="introduction__page_1_content">Завдяки додатку 2FAS, якому довіряють понад 3 мільйони користувачів у всьому світі, ваш телефон щойно став особистим та безпечним ключем до ваших онлайн-сервісів.</string>
+    <string name="introduction__page_2_title">Простий</string>
+    <string name="introduction__page_2_content">З’єднайте 2FAS зі своїми онлайн-сервісами. Активуйте двофакторний захист за лічені секунди за допомогою свого QR-коду.</string>
+    <string name="introduction__page_3_title">Приватний</string>
+    <string name="introduction__page_3_content">2FAS поважає та захищає вашу конфіденційність. Цей додаток ніколи не збиратиме, не оброблятиме та не використовуватиме ваші особисті дані.</string>
+    <string name="introduction__page_4_title">Безпечний</string>
+    <string name="introduction__page_4_content_ios">Ваші токени зберігаються в режимі офлайн у пам’яті пристрою, тому не забувайте створювати резервні копії своїх сервісів! Використовуйте iCloud Sync і PIN-код для захисту від несанкціонованого доступу та пошкодження пристрою.</string>
+    <!-- introduction__start_using -->
+    <string name="introduction__title">Почніть використовувати 2FAS</string>
+    <string name="introduction__tos">Умови використання</string>
+    <string name="introduction__description_title">З’єднайте обліковий запис онлайн-сервісу з 2FAS або імпортуйте свої токени</string>
+    <string name="introduction__pair_new_service">Підключити новий сервіс</string>
+    <!-- introduction__import_2fas -->
+    <string name="introduction__import_2fas_title">Імпортувати файл резервної копії 2FAS</string>
+    <!-- introduction__import_ga -->
+    <string name="introduction__import_google_authenticator">Імпортувати з Google Authenticator</string>
+    <!-- introduction__not_sure -->
+    <string name="introduction__what_to_do">Не знаєте, що робити?</string>
+    <!-- introduction__ga_import_description -->
+    <string name="introduction__google_authenticator_import_process">Експортуйте свої облікові записи з Google Authenticator у QR-код за допомогою опції «Перенести облікові записи». Потім за допомогою іншого пристрою сфотографуйте експортований QR-код, надішліть його на свій пристрій (або зробіть знімок екрана, якщо можливо) і скористайтеся опцією «Вибрати QR-код» нижче. Якщо ви імпортуєте коди з іншого пристрою, скористайтеся кнопкою «Сканувати QR-код».</string>
+    <!-- introduction__choose_qr -->
+    <string name="introduction__choose_qr_code">Виберіть QR-код</string>
+    <!-- introduction__scan_qr -->
+    <string name="introduction__scan_qr_code">Відскануйте QR-код</string>
+    <!-- Original: Adding code -->
+    <string name="notifications__adding_code">Додавання нового коду</string>
+    <!-- notifications__private_key_copied -->
+    <string name="notifications__service_key_copied">Ключ сервісу скопійовано</string>
+    <!-- voiceover__token_is_already_on_the_list -->
+    <string name="notifications__token_already_added">Цей токен вже присутній у списку</string>
+    <string name="notifications__counter_copied">Лічильник скопійовано</string>
+    <string name="notifications__token_copied">Токен скопійовано</string>
+    <string name="notifications__next_token_copied">Наступний токен скопійовано</string>
+    <!-- notifications__would_you_like_to_add_this_code -->
+    <string name="notifications__add_code_question_title">Бажаєте додати цей код: %s?</string>
+    <!-- MARK: - Permissions -->
+    <string name="permissions__open_settings">Відкрийте налаштування</string>
+    <string name="security__incorrect_PIN">Неправильний PIN-код</string>
+    <string name="security__change_pin">Змінити PIN-код</string>
+    <string name="security__confirm_you_are_device_owner">Підтвердьте, що ви власник пристрою</string>
+    <!-- security__confirm_your_new_pin -->
+    <string name="security__confirm_new_pin">Підтвердьте свій новий PIN-код</string>
+    <string name="security__create_pin">Створіть PIN-код</string>
+    <string name="security__enter_current_pin">Введіть свій поточний PIN-код</string>
+    <!-- security__enter_your_new_pin -->
+    <string name="security__enter_new_pin">Введіть новий PIN-код</string>
+    <!-- security__enter_your_pin -->
+    <string name="security__enter_pin">Будь ласка, введіть свій PIN-код</string>
+    <!-- MARK: - Security -->
+    <string name="security__too_many_attempts_try_again_after_formatter">Забагато спроб. Будь ласка спробуйте ще раз %s</string>
+    <string name="security__too_many_attempts_try_again_after">Забагато спроб. Повторіть спробу через %s хвилин.</string>
+    <!-- security__too_many_attempts_try_again_later -->
+    <string name="security__too_many_attempts_error">Забагато спроб. Будь-ласка спробуйте пізніше.</string>
+    <!-- security__too_many_attempts_try_again_after_one_minute -->
+    <string name="security__too_many_attempts_error_2">Забагато спроб. Будь ласка, спробуйте через одну хвилину</string>
+    <string name="settings__backup_and_synchronization">Резервне копіювання та синхронізація</string>
+    <string name="settings__choose_topic">Оберіть тему</string>
+    <string name="settings__configure_mail_service_try_again">Налаштуйте поштовий сервіс та повторіть спробу</string>
+    <string name="settings__general">Загальні</string>
+    <string name="settings__mail_services_not_available">Поштові послуги недоступні</string>
+    <string name="settings__problem">Проблема</string>
+    <string name="settings__security">Безпека</string>
+    <string name="settings__select_pin_length">Виберіть довжину PIN-коду</string>
+    <string name="settings__settings">Налаштування</string>
+    <!-- czy to dalej będzie w aplikacji? -->
+    <string name="settings__suggestion">Пропозиція</string>
+    <string name="settings__advanced">Додатково</string>
+    <string name="settings__widgets">Віджети</string>
+    <string name="settings__display_selected_services">Відображати вибрані сервіси на віджетах головного екрана.</string>
+    <!-- settings__after_you_enable_widgets -->
+    <string name="settings__widgets_title">Після того, як ви ввімкнете віджети, усі ваші токени можна буде отримати без PIN-коду.\n\nВи впевнені, що бажаєте ввімкнути віджети?</string>
+    <string name="settings__show_next_token">Показати наступний токен</string>
+    <string name="settings__see_incoming_tokens">Перегляньте вхідні токени в списку.</string>
+    <string name="settings__trash">Кошик</string>
+    <string name="settings__restore">Відновити</string>
+    <string name="settings__trash_is_empty">Кошик пустий</string>
+    <string name="settings__share_app">Поширити додаток</string>
+    <!-- tokens__remove_from_list -->
+    <string name="tokens__delete_token">Ви впевнені, що бажаєте видалити токен для:</string>
+    <string name="tokens__move_to_trash">Перемістити в кошик</string>
+    <string name="tokens__additional_info">Додаткова інформація</string>
+    <string name="tokens__choose_method">Оберіть метод</string>
+    <string name="tokens__duplicated_private_key">Дублікат ключа сервісу</string>
+    <!-- tokens__incorrect_private_key -->
+    <string name="tokens__incorrect_service_key">Неправильний сервісний ключ (лише цифри від 2 до 7, літери), макс. довжина 512 символів</string>
+    <string name="tokens__try_again">Добре, давайте спробуємо ще раз</string>
+    <!-- Original: To capture the QR code
+        tokens__point_right_2fa_code -->
+    <string name="tokens__scan_qr_code_title">Наведіть камеру на екран, щоб відсканувати QR-код</string>
+    <!-- tokens__private_key -->
+    <string name="tokens__service_key">Ключ сервісу</string>
+    <string name="tokens__qr_code_leads_to_app_store">Цей QR-код переведе вас у App Store</string>
+    <!-- tokens__remove_it_forever -->
+    <string name="tokens__remove_forever">Видалити токен</string>
+    <!-- tokens__search_by_service_name_or_login -->
+    <string name="tokens__search_service_title">Знайти сервіс</string>
+    <!-- tokens__search_sorry_service_not_found -->
+    <string name="tokens__service_not_found_search">Вибачте, сервіс не знайдено</string>
+    <!-- Original: Take another try with a different search term
+        tokens__search_take_another_try_different_search_term -->
+    <string name="tokens__try_different_search_term">Зробіть ще одну спробу з іншим пошуковим терміном</string>
+    <string name="tokens__service_key_to_short">Ключ занадто короткий. Мінімум 4 символи</string>
+    <string name="tokens__service_name">Ім\'я сервісу</string>
+    <!-- tokens__this_private_key_exists_used_in -->
+    <string name="tokens__service_key_already_used_title">Ключ сервісу зі сканованого коду вже використовується в %s. Ви, ймовірно, скануєте його знову</string>
+    <string name="tokens__this_qr_code_is_inavlid">Цей код неправильний або не підтримується. Спробуйте знову.</string>
+    <string name="tokens__type_service_name">Введіть ім\'я сервісу</string>
+    <string name="tokens__enter_service_name">Введіть ім\'я сервісу</string>
+    <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
+    <string name="tokens__service_name_unknown_title">На жаль, ми не знаємо цього сервісу. Як би ви хотіли його назвати?</string>
+    <!-- tokens__you_wont_be_able_to_restore -->
+    <string name="tokens__token_not_possible_to_restore">Ви більше не зможете відновити цей токен.</string>
+    <string name="tokens__badge_color">Колір значку</string>
+    <string name="tokens__change_brand_icon">Змінити значок бренду</string>
+    <string name="tokens__change_label">Змінити ярлик</string>
+    <string name="tokens__service_information">Інформація про сервіс</string>
+    <string name="tokens__personalization">Персоналізація</string>
+    <string name="tokens__brand_icon">Значок бренду</string>
+    <string name="tokens__label">Ярлик</string>
+    <!-- tokens__remove_the_service -->
+    <string name="tokens__remove_service_from_app">Видалити цей сервіс з додатку 2FAS</string>
+    <!-- tokens__label_one_or_two -->
+    <string name="tokens__label_characters_title">Ярлик (1 або 2 символи):</string>
+    <string name="tokens__pick_background_color">Виберіть колір фону:</string>
+    <string name="tokens__num_added">%s додано</string>
+    <string name="tokens__next_token">Наступний токен: %s</string>
+    <string name="tokens__next_token_title">Наступне значення токену</string>
+    <string name="tokens__my_tokens">Мої токени</string>
+    <string name="tokens__removing_group">Видалення групи</string>
+    <!-- tokens__all_tokens_will_be_moved -->
+    <string name="tokens__all_tokens_moved_to_group_title">Усі токени будуть перенесені в групу: «Мої токени»</string>
+    <string name="tokens__add_group">Додати групу</string>
+    <string name="tokens__group_name">Назва групи:</string>
+    <string name="tokens__select_from_gallery">Виберіть із галереї</string>
+    <string name="tokens__camera_is_unavailable">Камера недоступна</string>
+    <!-- tokens__check_if_app_has_proper_permissions -->
+    <string name="tokens__check_app_permissions">Перевірте, чи програма має відповідні дозволи в системних налаштуваннях</string>
+    <string name="tokens__no_qr_codes_found">QR-коди не знайдено</string>
+    <!-- tokens__no_correct_qr_code_had_been_found
+        
+        No correct QR codes had been found in the selected image. Please try a different image. -->
+    <string name="tokens__no_correct_qr_code_found_title">На вибраному зображенні немає правильного QR-коду. Спробуйте інше зображення.</string>
+    <string name="tokens__select_service">Оберіть сервіс</string>
+    <string name="tokens__adding_service_question_title">Який сервіс ви хочете додати?</string>
+    <string name="tokens__retype_this_token">Повторно введіть цей токен</string>
+    <!-- tokens__unlock_and_retype_this_token -->
+    <string name="tokens__unlock_and_retype_token_title">Розблокуйте та повторно введіть цей токен</string>
+    <string name="tokens__group">Група</string>
+    <string name="tokens__select_group">Виберіть групу</string>
+    <string name="tokens__google_auth_import">Імпорт токенів 2FA із програми Google Authenticator</string>
+    <string name="tokens__google_auth_import_subtitle">Цей QR-код дозволяє імпортувати токени з Google Authenticator</string>
+    <!-- A number replaces %d  -->
+    <string name="tokens__google_auth_out_of_title">%1$d із %2$d</string>
+    <string name="tokens__google_auth_import_subtitle_end">Токени будуть імпортовані.</string>
+    <string name="tokens__sort_by">Сортувати за</string>
+    <!-- tokens__sort_by_az -->
+    <string name="tokens__sort_by_a_to_z">A - Z</string>
+    <!-- tokens__sort_by_za -->
+    <string name="tokens__sort_by_z_to_a">Z - A</string>
+    <string name="tokens__sort_by_manual">Ручне</string>
+    <string name="tokens__advanced">Додатково</string>
+    <!-- tokens__advanced_alert_title -->
+    <string name="tokens__advanced_alert">Попередження</string>
+    <!-- tokens__advanced_alert_description -->
+    <string name="tokens__advanced_alert_description_title">Змінювати додаткові параметри не рекомендується. Робіть це лише тоді, коли цього вимагає ваш постачальник 2FA і якщо у вас є чіткі інструкції.</string>
+    <string name="tokens__token_settings">Налаштування токену</string>
+    <string name="tokens__otp_authentication">Автентифікація OTP</string>
+    <string name="tokens__algorithm">Алгоритм</string>
+    <string name="tokens__refresh_time">Час оновлення</string>
+    <string name="tokens__number_of_digits">Кількість цифр</string>
+    <string name="tokens__counter">Лічильник</string>
+    <string name="tokens__initial_counter">Початковий лічильник</string>
+    <!-- A number replaces %d -->
+    <string name="tokens__second">%d секунд</string>
+    <string name="tokens__hotp">HOTP</string>
+    <string name="tokens__totp">TOTP</string>
+    <string name="tokens__advanced_settings_footer_title">Змінювати додаткові параметри не рекомендується. Робіть це лише тоді, коли цього вимагає ваш постачальник 2FA і якщо у вас є чіткі інструкції.</string>
+    <string name="tokens__gallery_advice_title">Найкраща практика</string>
+    <!-- ADD A SPACE AT THE END -->
+    <string name="tokens__gallery_advice_content_first">Сервіс успішно додано. Ми рекомендуємо вам</string>
+    <!-- ADD A SPACE AFTER COMA -->
+    <string name="tokens__gallery_advice_content_middle_bold">видалити знімок екрана QR зі своєї галереї.</string>
+    <string name="tokens__gallery_advice_content_last">Якщо хтось візьме цей знімок екрана з QR-кодом, він зможе отримати ваші коди 2FA до цього сервісу.</string>
+    <string name="tokens__request_icon_page_title">Надіслати запит на значок</string>
+    <string name="tokens__request_icon_social_title">Повідомте нас у Discord</string>
+    <string name="tokens__request_icon_social_link">Увійдіть на наш сервер Discord</string>
+    <string name="tokens__request_icon_social_description">і дозвольте користувачам голосувати за потрібні значки.</string>
+    <string name="tokens__request_icon_middle">або</string>
+    <string name="tokens__request_icon_provider_title">Повідомте постачальника послуг</string>
+    <string name="tokens__request_icon_provider_description">Ви можете скористатися соціальними мережами або електронною поштою та поділитися цим текстом з ними:</string>
+    <string name="tokens__request_icon_provider_message">Привіт! Я використовую додаток 2FAS, щоб увійти у ваш сервіс за допомогою 2FA. Однак ваш значок відсутній! Ви можете надіслати свій значок тут: https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_footnote">Не забудьте відмітити офіційний акаунт компанії!</string>
+    <string name="tokens__order_icon_description">Не можете знайти значок бренду в додатку 2FAS?</string>
+    <string name="tokens__order_icon_link">Надіслати запит на значок бренду</string>
+    <string name="tokens__order_icon_title">Надіслати запит на значок бренду</string>
+    <string name="tokens__order_menu_title">Оберіть метод запиту</string>
+    <string name="tokens__order_menu_option_user">Надіслати запит на значок як користувач</string>
+    <string name="tokens__order_menu_option_company">Надіслати значок як компанія</string>
+    <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
+    <string name="tokens__sign_in_not_possible_title">Ви не зможете ввійти до свого %1$s облікового запису без цього токену, доки увімкнено другий фактор автентифікації для %2$s.</string>
+    <string name="voiceover__show_service_key">Показати ключ сервісу</string>
+    <string name="voiceover__copy_service_key">Скопіювати ключ сервісу</string>
+    <!-- voiceover__seconds_left -->
+    <string name="voiceover__seconds_left_counter_title">Лічильник із секундами, що залишилися до зміни токена</string>
+    <string name="voiceover__delete_button">Кнопка видалення</string>
+    <string name="voiceover__service_deleted">Сервіс видалено</string>
+    <!-- voiceover__hidden_secret_key_use_show button -->
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Це поле містить прихований секретний ключ. Щоб відкрити його, скористайтеся кнопкою «Показати». Це працюватиме, лише якщо ви встановили PIN-код додатку для екрана блокування</string>
+    <string name="voiceover__service_name">Назва сервісу: %s</string>
+    <string name="voiceover__additional_info">Додаткова інформація: %s</string>
+    <string name="voiceover__token_tap_to_copy">Токен %s. Торкніться, щоб скопіювати</string>
+    <string name="voiceover__edit">Редагувати %s</string>
+    <string name="voiceover__service_label_with_name_and_color">Ярлик сервісу з назвою %1$s і кольором %2$s</string>
+    <string name="voiceover__service_icon">Значок сервісу %s</string>
+    <string name="voiceover__selected">Вибрано</string>
+    <string name="voiceover__not_selected">Не вибрано</string>
+    <string name="voiceover__badge_color">Колір значка: %s</string>
+    <string name="voiceover__dismissing">Відміна</string>
+    <string name="voiceover__secret_hint">Тільки цифри від 2 до 9, букви. Мінімум 4 символи</string>
+    <string name="voiceover__add_service">Додати сервіс</string>
+    <string name="voiceover__add_group">Додати групу</string>
+    <!-- voiceover__use_add_service_button -->
+    <string name="voiceover__use_add_service_button_title">Використовуйте кнопку «Додати послугу», щоб додати нову послугу</string>
+    <string name="voiceover__no_search_results">Немає результатів пошуку</string>
+    <!-- voiceover__sort_by -->
+    <string name="voiceover__sort_by_title">Використовуйте «Сортувати за», щоб налаштувати сортування сервісів</string>
+    <string name="voiceover__spinner">Завантаження вмісту</string>
+    <string name="backup__incorrect_secret">Не вдалося створити резервну копію токенів, оскільки \"%s\" секрет містить недопустимі символи. Видаліть його зі списку та повторіть спробу</string>
+    <string name="backup__import">Імпорт</string>
+    <string name="backup__export">Експорт</string>
+    <string name="backup__backup_disabled_title">Резервне копіювання 2FAS буде вимкнено, щоб захистити його цілісність</string>
+    <string name="backup__error_while_exporting_file">Помилка під час експорту файлу</string>
+    <string name="backup__import_completed_successfuly">Імпорт успішно завершено</string>
+    <!-- camera__video_device_in_use_by_another_app -->
+    <string name="camera__camera_used_by_other_app_title">Інша програма використовує камеру. Якщо закриття інших програм не допомогло, перезавантажте пристрій</string>
+    <!-- camera__video_device_unavailable_due_to_system_overload  -->
+    <string name="camera__camera_unavailable_title">Камера недоступна через перевантаження системи. Спробуйте перезавантажити пристрій</string>
+    <string name="camera__cant_initialize_camera_general">Не вдається ініціалізувати камеру. Спробуйте перезавантажити пристрій</string>
+    <string name="camera__cant_initialize_camera_split_view">Не вдається ініціалізувати камеру в режимі Split View. Відкрийте програму на весь екран і повторіть спробу</string>
+    <string name="restore__how_to_restore">Як відновити додаток 2FAS?</string>
+    <string name="restore__application_restoration">Відновлення програми</string>
+    <!-- restore_if_you_forgotten -->
+    <string name="restore__reset_Pin_title">Якщо ви забули PIN-код або бажаєте скинути налаштування програми 2FAS, вам потрібно перевстановити програму.</string>
+    <!-- restore_please_remember -->
+    <string name="restore__backup_advice">Майте на увазі, що якщо у вас немає резервної копії і ви скинете налаштування програми, ви втратите доступ до всіх своїх кодів. А отже, доступ до всіх ваших облікових записів, захищених 2FA.</string>
+    <!-- restore_if_you_have_backup -->
+    <string name="restore__backup_title">Якщо у вас є резервна копія, не переживайте, ви зможете відновити всі свої коди.</string>
+    <string name="backup__cloud_backup">Хмарне резервне копіювання</string>
+    <string name="backup__icloud_sync">iCloud Sync</string>
+    <string name="backup__section_description">РЕКОМЕНДОВАНО: iCloud Sync зберігає ваші токени в Apple iCloud у безпеці у разі втрати або пошкодження вашого пристрою. Тримайте його ввімкненим.</string>
+    <string name="backup__file_backup">Резервне копіювання файлів</string>
+    <!-- backup__use_file_backup_for -->
+    <string name="backup__file_backup_offline_title">Використовуйте резервну копію файлів для автономного резервного копіювання ваших токенів</string>
+    <string name="backup__backup_removal">Видалення резервної копії</string>
+    <string name="backup__delete_2fas_backup">Видалити резервну копію 2FAS</string>
+    <string name="backup__warning_introduction">УВАГА! Якщо ви видалите резервну копію 2FAS, ви також видалите всі токени з інших пристроїв, синхронізованих із цим обліковим записом. Щоб зберегти токени на інших пристроях, переконайтеся, що ви вимкнули резервне копіювання 2FAS перед видаленням</string>
+    <!-- backup__i_want_to_delete -->
+    <string name="backup__delete_title">Я хочу видалити резервну копію</string>
+    <string name="backup__export_to_backup_file">Експорт резервної копії у файл</string>
+    <!-- backup__you_can_import_exported_file -->
+    <string name="backup__import_file_title">Ви можете імпортувати експортовані файли на інші пристрої за допомогою додатку 2FAS</string>
+    <string name="backup__export_to_file">Експорт у файл</string>
+    <string name="backup__verify_pin">Підтвердьте PIN-код</string>
+    <string name="backup__save_file">Зберегти файл</string>
+    <string name="backup__import_backup_file">Імпорт файлу резервної копії</string>
+    <!-- backup__youre_goint_to_import_backup -->
+    <string name="backup__import_other_devices">Ви збираєтеся імпортувати файл резервної копії, що містить</string>
+    <string name="backup__import_file">Імпорт файлу</string>
+    <string name="backup__choose_antother_file">Виберіть інший файл</string>
+    <string name="backup__no_new_services">Немає сервісів для імпорту</string>
+    <string name="backup__file_error">Помилка файлу!</string>
+    <!-- backup__services_form_file_will_be_merged -->
+    <string name="backup__services_merge_title">Сервіси з файлу буде об’єднано з тими, які є у вашому додатку</string>
+    <string name="backup__no_new_services_error">Або цей файл порожній, або всі сервіси в ньому вже доступні в додатку</string>
+    <string name="backup__update_required_to_import_title">Щоб імпортувати вміст цього файлу, вам знадобиться нова версія програми. Найновішу версію можна знайти в App Store</string>
+    <string name="backup__cant_read_file_error">Не вдається прочитати цей файл. Він може бути пошкоджений, або під час спроби доступу до нього сталася помилка. Будь ласка, оберіть інший файл</string>
+    <string name="backup__password">Пароль</string>
+    <string name="backup__repeat_password">Повторіть пароль</string>
+    <string name="backup__incorrect_character_error">Неправильний символ. Використовуйте лише літери A-Z, a-z, цифри та спеціальні символи: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__to_short_error">Надана фраза занадто коротка (мінімум 3 символи)</string>
+    <string name="backup__passwords_dont_match">Паролі не збігаються</string>
+    <string name="backup__save_and_export">Зберегти і експортувати</string>
+    <string name="backup__set_password_title">Щоб посилити захист файлу резервної копії, будь ласка, встановіть пароль</string>
+    <string name="backup__enter_password_title">Введіть пароль для цього файлу резервної копії, щоб продовжити процес імпорту</string>
+    <string name="backup__backup_file_password_title">Встановіть пароль для цього файлу резервної копії</string>
+    <string name="backup__incorrect_password">Неправильний пароль</string>
+    <!-- %d - number -->
+    <string name="backup__new_services">%d нових сервісів</string>
+    <!-- %d - number -->
+    <string name="backup__services_imported_count">%d сервісів імпортовано з файлу</string>
+    <!-- backup__user_has_icloud_problem -->
+    <string name="backup__icloud_problem">Виникла проблема з iCloud. Перевірте налаштування системи</string>
+    <!-- backup__newer_schema_unsupported -->
+    <string name="backup__newer_format_not_supported">Цей файл має новішу версію формату, ніж та, яку підтримує додаток</string>
+    <!-- backup__encrypted_unsupported -->
+    <string name="backup__encrypted_files_not_supported">Цей файл зашифровано. Ми підтримуємо лише незашифровані файли</string>
+    <string name="tokens__copy_token">Копіювати токен</string>
+    <!-- tokens__i_want_to_delete_this_servie -->
+    <string name="tokens__i_want_to_delete_this_token">Так, я хочу видалити цей сервіс</string>
+    <string name="color__neutral">Нейтральний</string>
+    <string name="color__light_blue">Блакитний</string>
+    <string name="color__indigo">Індиго</string>
+    <string name="color__purple">Фіолетовий</string>
+    <string name="color__turquoise">Бірюзовий</string>
+    <string name="color__green">Зелений</string>
+    <string name="color__red">Червоний</string>
+    <string name="color__orange">Оранжевий</string>
+    <string name="color__yellow">Жовтий</string>
+    <string name="settings__knowledge">Знання</string>
+    <string name="settings__support_and_share">Підтримати та поділитися</string>
+    <string name="settings__tell_a_friend">Розповісти другу</string>
+    <string name="settings__write_a_review">Написати відгук</string>
+    <string name="settings__about">Про додаток</string>
+    <string name="settings__privacy_policy">Політика конфіденційності</string>
+    <string name="settings__terms_of_service">Умови використання</string>
+    <string name="settings__version">Версія додатку %s</string>
+    <string name="settings__no_limit">Немає ліміту</string>
+    <string name="settings__pin_code">PIN-код</string>
+    <string name="settings__app_security">Безпека додатку</string>
+    <string name="settings__app_blocking">Налаштування блокування</string>
+    <string name="settings__face_id">Face ID</string>
+    <string name="settings__touch_id">Touch ID</string>
+    <!-- settings__how_many_attempts_header -->
+    <string name="settings__too_many_attempts_header">Блокувати після X невдалих спроб:</string>
+    <string name="settings__how_many_attempts_footer">Виберіть максимальну кількість невдалих спроб вводу пароля перед блокуванням програми.</string>
+    <string name="settings__block_for">Час блокування</string>
+    <string name="settings__3_minutes">3 хвилини</string>
+    <string name="settings__5_minutes">5 хвилин</string>
+    <string name="settings__10_minutes">10 хвилин</string>
+    <string name="settings__limit_of_trials">Максимум невдалих спроб</string>
+    <string name="settings__pin_4_digits">4-значний код</string>
+    <string name="settings__pin_6_digits">6-значний код</string>
+    <string name="settings__biometric_authentication">Біометрична аутентифікація</string>
+    <string name="settings__donations">Пожертвування</string>
+    <string name="settings__donate_twofas">Пожертвувати 2FAS</string>
+    <string name="new_version__new_version_title">Нова версія</string>
+    <string name="new_version__new_version_message_ios">Нова версія 2FAS доступна в AppStore. Оновіть зараз!</string>
+    <string name="new_version__update_action">Оновити зараз</string>
+    <!-- new_version__skip_action -->
+    <string name="new_version__skip_title">Пропустити цю версію</string>
+    <!-- new_version__later_action -->
+    <string name="new_version__update_later">Оновити пізніше</string>
+    <string name="browser__browser_extension">Браузерне розширення</string>
+    <string name="browser__info_title">Браузерне розширення 2FAS</string>
+    <string name="browser__info_description_first">Встановіть браузерне розширення 2FAS на свій комп’ютер</string>
+    <string name="browser__info_description_second">Підключіть це з вашим 2FAS додатком</string>
+    <string name="browser__more_info">Більше інформації:</string>
+    <string name="browser__more_info_link_title">2fas.com/be</string>
+    <string name="browser__pair_with_web_browser">Підключитися до веб браузеру</string>
+    <string name="browser__more_info_link">https://www.2fas.com/be</string>
+    <string name="browser__pairing_successful_title">Підключення успішне!</string>
+    <string name="browser__pairing_successful_description">2FAS надсилатиме вам Push-сповіщення кожного разу, коли ви входите у свої онлайн-сервіси за допомогою цього веб-браузера. Вам більше не потрібно буде повторно вводити свої токени для кожного використання.</string>
+    <string name="browser__pairing_failed_title">Підключення не вдалося :(</string>
+    <string name="browser__pairing_failed_description">Цей QR-код не було розпізнано, і 2FAS не зміг підключити цей пристрій до браузерного розширення. Будь ласка, спробуйте ще раз.</string>
+    <!-- browser__pairing_already_paired_title -->
+    <string name="browser__already_paired_title">Вже підключено!</string>
+    <!-- browser__pairing_already_paired_description -->
+    <string name="browser__already_paired_description">Це браузерне розширення вже підключено до цього пристрою.</string>
+    <string name="browser__contact_support">Звернутися до служби підтримки</string>
+    <string name="browser__pairing_with_browser">Підключення до браузеру</string>
+    <!-- browser__paired_devices -->
+    <string name="browser__paired_devices_browser_title">Підключені пристрої (веб браузери)</string>
+    <string name="browser__add_new">Додати новий</string>
+    <!-- browser__this_device -->
+    <string name="browser__this_device_name">Псевдонім пристрою</string>
+    <string name="browser__device_name">Псевдонім пристрою</string>
+    <string name="browser__name">Ім\'я</string>
+    <string name="browser__this_device_footer">Цей псевдонім допоможе вам ідентифікувати цей пристрій серед інших пристроїв, підключених до браузерного розширення 2FAS</string>
+    <string name="browser__browser_extension_settings">Налаштування браузерного розширення</string>
+    <string name="browser__unkown_name">&lt;Невідоме_ім\'я&gt;</string>
+    <string name="browser__request_source_description">%1$s подав запит на 2FA токен для %2$s. Виберіть службу для авторизації та збереження з цим доменом.</string>
+    <string name="browser__request">Браузерний запит</string>
+    <!-- browser__code_success -->
+    <string name="browser__code_success_title">Токен надіслано успішно!</string>
+    <string name="browser__code_failure">Помилка при надсиланні коду. %s</string>
+    <string name="browser__deleting_paired_device_title">Видалити підключений пристрій</string>
+    <string name="browser__deleting_paired_device_content">Чи впевнені ви, що хочете видалити підключений пристрій?</string>
+    <string name="browser__pairing_date">Дата підключення</string>
+    <string name="browser__forget_this_browser">Забути цей веб браузер</string>
+    <!-- browser__service_is_paired_list_description -->
+    <string name="browser__paired_domains_list_title">Список підключених доменів.</string>
+    <string name="browser__deleting_extension_pairing_title">Видалити домен?</string>
+    <string name="browser__deleting_extension_pairing_content">Наступного разу, коли ви використовуватимете ,браузерне розширення для входу в %s, вам буде запропоновано знову підключити цей домен.</string>
+    <string name="browser__push_notifications_title">Push-сповіщення</string>
+    <string name="browser__push_notifications_content">Щоб отримати доступ до таких функцій, як браузерне розширення, додатку потрібен доступ до Push-повідомлень. Ви можете будь-коли змінити це налаштування в системних налаштуваннях.</string>
+    <string name="browser__request_expired">Термін дії запиту минув</string>
+    <string name="browser__2fa_token_request_title">Запит 2FA токену</string>
+    <string name="browser__2fa_token_request_content">Чи хочете ви поширити 2FA токен для</string>
+    <string name="notifications__no_notifications">Немає сповіщень</string>
+    <string name="CFBundleSpokenName">2 F A S</string>
+    <string name="commons__2fas_toolbar">2FAS</string>
+    <string name="backup__google_drive_not_available">Google Drive недоступний</string>
+    <string name="backup__google_drive_disabled_title">Google Drive був відключений користувачем</string>
+    <string name="backup__update_required_to_import_title_2">Щоб імпортувати вміст цього файлу, вам знадобиться нова версія програми. Найновішу версію можна знайти в Google Store</string>
+    <string name="tokens__qr_code_leads_to_google_store">Цей QR-код приведе вас до Google Store</string>
+    <string name="introduction__page_4_content_android">Ваші токени зберігаються в режимі офлайн у пам’яті пристрою, тому не забувайте створювати резервні копії своїх сервісів! Використовуйте Google Drive Sync і PIN-код для захисту від несанкціонованого доступу та пошкодження пристрою.</string>
+    <string name="new_version__new_version_message_android">Нова версія 2FAS доступна в Google Store. Оновити зараз!</string>
+    <string name="security_error_no_match">PIN-код не збігається! Будь ласка, спробуйте ще раз.</string>
+    <string name="settings_developer_options">Налаштування виробника</string>
+    <string name="settings__external_import">Імпорт токенів</string>
+    <string name="settings__browser_extension_result_toolbar_title">Результат підключення</string>
+    <string name="tokens__caution">УВАГА</string>
+    <string name="tokens__qr_point_and_scan_again">Наведіть камеру на потрібний QR-код і повторіть сканування.</string>
+    <string name="tokens__service_unsaved_changes">Бажаєте скасувати зміни?</string>
+    <string name="tokens__service_unsaved_changes_title">Незбережені зміни</string>
+    <string name="tokens__service_key_invalid_format">Ключ має недійсний формат</string>
+    <string name="intent_error_no_gallery_app">Системна помилка! Немає системного додатку галереї.</string>
+    <string name="gdrive_permission_title">Дозвіл Google Drive</string>
+    <string name="gdrive_permission_msg">Нам потрібен дозвіл Google Drive, щоб зберігати файли резервної копії в даних програми.</string>
+    <string name="gdrive_internet_title">Потрібне підключення до Інтернету</string>
+    <string name="gdrive_internet_msg">Для синхронізації з Google потрібно ввімкнути підключення до Інтернету.</string>
+    <string name="gdrive_wipe_internet_msg">Щоб скасувати доступ до Google Drive, вам потрібно ввімкнути підключення до Інтернету.</string>
+    <string name="backup_explanation_msg">Автоматично зберігайте та синхронізуйте файл резервної копії в прихованій папці на Диску Google. Ця папка доступна лише для додатку 2FAS.</string>
+    <string name="backup_error_unknown">Під час резервної синхронізації сталася помилка. Перезапустіть додаток через кілька хвилин і повторіть спробу.</string>
+    <string name="backup_error_encrypt_unknown">Під час шифрування резервної копії сталася помилка. Встановіть пароль ще раз.</string>
+    <string name="backup_error_decrypt_unknown">Під час дешифрування резервної копії сталася помилка. Встановіть пароль ще раз.</string>
+    <string name="backup__google_drive_problem_title">Виникла проблема з iCloud. Перевірте системні налаштування</string>
+    <string name="backup_error_auth">Виникла проблема з дозволами вашого облікового запису Google Drive. Спробуйте ввімкнути та вимкнути синхронізацію.</string>
+    <string name="backup_error_no_password">Виникла проблема з дозволами вашого облікового запису Google Drive. Спробуйте ввімкнути та вимкнути синхронізацію.</string>
+    <string name="backup_error_wrong_password">Ваша резервна копія захищена паролем, але наданий пароль неправильний. Увімкніть її та введіть свій пароль.</string>
+    <string name="customization_service_assignment">Призначення сервісу</string>
+    <string name="customization_personalization">Персоналізація</string>
+    <string name="customization_change_brand">Змінити брендінг</string>
+    <string name="customization_advanced">Додатково</string>
+    <string name="customization_request_icon">Надіслати запит на значок</string>
+    <string name="customization_edit_label">Редагувати ярлик</string>
+    <string name="groups_delete_msg">Ви впевнені, що хочете видалити цю групу?</string>
+    <string name="export_backup_title">Ваш файл резервної копії готовий для експорту</string>
+    <string name="export_backup_msg">Експортуйте цей файл, щоб надійно зберігати резервні копії ваших токенів 2FAS. Ви можете імпортувати його пізніше на цей або інші пристрої за допомогою програми 2FAS.</string>
+    <string name="export_backup_pass">Експорт файлу без пароля\n(не рекомендовано)</string>
+    <string name="import_backup_msg2">Файл буде синхронізовано зі списком сервісів програми.</string>
+    <string name="backup_notice_later">Можливо пізніше</string>
+    <string name="backup_notice_cta">Ввімкнути</string>
+    <string name="widgets_empty_msg">Сервіси не додано</string>
+    <string name="backup__section_description_google">РЕКОМЕНДОВАНО: Google Drive Sync зберігає ваші токени на Google Drive в безпеці у разі втрати або пошкодження вашого пристрою. Тримайте його ввімкненим.</string>
+    <string name="backup_turn_off_title">Вимкнути Google Drive Sync?</string>
+    <string name="backup_turn_off_msg1">Токени 2FA залишаться на цьому пристрої та на вашому Диску Google, але не будуть синхронізовані. Ви також вийдете зі свого облікового запису Google.</string>
+    <string name="backup_turn_off_msg2">Пам’ятайте, що у разі втрати або пошкодження цього пристрою чи видалення програми ви, можливо, не зможете відновити свої токени, і ви втратите доступ до онлайн-акаунтів, захищених 2FA.</string>
+    <string name="backup_settings_password_set_subtitle">Захистіть файл резервної копії Google Drive за допомогою спеціального пароля.</string>
+    <string name="backup_settings_password_remove_title">Видалити пароль</string>
+    <string name="backup_settings_password_remove_subtitle">Видалити пароль для файлу резервної копії Google Drive.</string>
+    <string name="backup_settings_account_title">Обліковий запис Google</string>
+    <string name="backup_settings_sync_title">Остання синхронізація</string>
+    <string name="browser_extension_result_success_description">2FAS надсилатиме вам PUSH-повідомлення кожного разу, коли ви входите у свої онлайн-сервіси за допомогою цього веб-браузера. Вам більше не потрібно буде повторно вводити свої токени для кожного використання.</string>
+    <string name="browser_extension_browser_dialog">Назва браузера</string>
+    <string name="biometric_dialog_auth_title">Автентифікувати</string>
+    <string name="biometric_dialog_auth_subtitle">Використовуйте свої біометричні облікові дані</string>
+    <string name="about_licenses">Ліцензії з відкритим кодом</string>
+    <string name="externalimport_description">Ви можете імпортувати свої токени в 2FAS з різних додатків. Виберіть додаток зі списку та дотримуйтесь інструкцій.</string>
+    <string name="externalimport_select_app">Виберіть додаток</string>
+    <string name="externalimport_google_authenticator">Google Authenticator</string>
+    <string name="externalimport_aegis">Aegis</string>
+    <string name="externalimport_raivo">Raivo OTP</string>
+    <string name="android__app_name">2FAS Auth</string>
+    <string name="commons__yes">Так</string>
+    <string name="commons__no">Ні</string>
+    <string name="commons__search">Пошук</string>
+    <string name="errors__no_app">Немає додатку, що підтримує це посилання</string>
+    <string name="permissions__camera_permission">Дозвіл камери</string>
+    <string name="permissions__camera_permission_description">Для сканування QR-кодів потрібен дозвіл камери. Якщо ви хочете скористатися цією функцією, перейдіть до розділу Інформація про програму та дозволи та увімкніть камеру.</string>
+    <string name="security__disable_pin">Вимкнути PIN-код</string>
+    <string name="security__enter_your_new_pin">Будь ласка, введіть свій новий PIN %s</string>
+    <string name="security__pin_error_incorrect">PIN-код неправильний! Будь ласка, спробуйте ще раз</string>
+    <string name="settings__biometrics">Біометрія</string>
+    <string name="settings__support">Підтримка 2FAS</string>
+    <string name="settings__developer">Налаштування розробника</string>
+    <string name="settings__option_fingerprint">Біометричний замок</string>
+    <string name="settings__option_theme">Тема</string>
+    <string name="settings__theme_option_auto">Автоматично</string>
+    <string name="settings__theme_option_auto_system">Автоматично - Системні налаштування</string>
+    <string name="settings__theme_option_dark">Темна</string>
+    <string name="settings__theme_option_light">Світла</string>
+    <string name="tokens__copied_clipboard">Токен скопійовано у буфер обміну!</string>
+    <string name="tokens__next_copied_clipboard">Наступний токен скопійовано у буфер обміну!</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Ви бажаєте остаточно видалити цю службу 2FA?</string>
+    <string name="tokens__fab_addmanually">Додати вручну</string>
+    <string name="tokens__qr_does_not_work">Цей QR-код не працює!</string>
+    <!-- Could not read QR code from the image! -->
+    <string name="tokens__qr_read_image_failed">Не вдалося прочитати QR-код із зображення!</string>
+    <string name="tokens__qr_read_image_try_again">Спробуйте вибрати інше зображення.</string>
+    <string name="tokens__remove_it_forever">Видалити сервіс назавжди</string>
+    <!-- Service could not be added, Service Key is invalid. Try again. -->
+    <string name="tokens__service_add_error">Не вдалося додати сервіс, оскільки ключ сервісу недійсний. Спробуйте знову.</string>
+    <!-- A service with this Service Key already exists. Do you want to override it? -->
+    <string name="tokens__service_already_exists">Сервіс з цим ключем сервісу вже існує. Ви хочете змінити це?</string>
+    <string name="tokens__service_key_invalid_characters">Ключ містить недійсні символи</string>
+    <string name="tokens__show_service_key">Показати ключ сервісу</string>
+    <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
+    <string name="tokens__show_service_key_setup_lock">Ваш ключ сервісу захищено. Щоб побачити його, додайте PIN-код або блокування відбитком пальця.</string>
+    <string name="tokens__tokens_list_is_empty">Список сервісів пустий</string>
+    <string name="tokens__use_plus_button_to_add_tokens">Використовуйте кнопку «+», щоб додати новий сервіс</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Ви не зможете ввійти у свій обліковий запис %1$s без цього токену, доки увімкнено двофакторну автентифікацію для %2$s.\n\nВи не зможете відновити цей токен із кошика 2FAS.</string>
+    <string name="import_ga_success">Сервіси успішно імпортовано!</string>
+    <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
+    <string name="backup_error_network">Для синхронізації резервної копії потрібне активне підключення до Інтернету. Увімкніть підключення до мережі та повторіть спробу.</string>
+    <string name="update_app_title">Оновити додаток</string>
+    <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
+    <string name="update_app_msg">Оновіть 2FAS до останньої версії, щоб отримати всі функції та підтримувати високий рівень безпеки.</string>
+    <string name="delete_service_title">Ви видаляєте</string>
+    <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
+    <string name="delete_service_msg">зі списку сервісів 2FAS.\n\nПам’ятайте: доки у вас увімкнено подвійну автентифікацію, ви не ввійдете до облікового запису %s без цього токену.</string>
+    <string name="delete_service_cta">Видалити</string>
+    <string name="export_backup_cta">Експорт</string>
+    <string name="export_backup_share_cta">Поширити</string>
+    <string name="import_backup_title">Імпортувати резервну копію з файлу</string>
+    <string name="import_backup_msg1">Ви збираєтеся імпортувати файл резервної копії за допомогою</string>
+    <string name="import_backup_cta">Імпорт</string>
+    <string name="widgets_warning_msg">Токени, видимі у віджеті, не захищені вашим PIN-кодом.\n\nВи впевнені, що бажаєте відобразити свої токени у віджеті?</string>
+    <string name="widgets_warning_title">УВАГА!</string>
+    <string name="widgets_warning_cta">Так, я впевнений</string>
+    <string name="backup_notice_title">Резервне копіювання 2FAS</string>
+    <string name="backup_notice_msg">Увімкніть резервне копіювання 2FAS. У разі скидання або втрати телефону ви зможете відновити всі свої токени.</string>
+    <string name="brand_empty_msg">Вибачте, бренд не знайдено</string>
+    <!-- Select which services will be visible on widget: -->
+    <string name="widgets_select_msg">Виберіть, які служби відображатимуться на віджеті:</string>
+    <string name="backup_turn_off_cta">Вимкнути синхронізацію</string>
+    <string name="backup_turn_off_cancel">Відміна</string>
+    <string name="backup_settings_password_set_title">Встановити пароль</string>
+    <string name="backup_settings_delete_title">Видалити файл резервної копії з Google Драйв</string>
+    <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
+    <string name="backup_settings_delete_subtitle">Якщо ви видалите цей файл зі свого Google Drive, синхронізацію на всіх синхронізованих пристроях буде вимкнено, а токени залишаться лише на цьому та інших пристроях через локальне сховище.</string>
+    <string name="browser__result_error_browser_paired">Ваш додаток 2FAS уже підключено до цього браузера.</string>
+    <!-- Scan QR code again -->
+    <string name="browser__result_error_cta">Ще раз відскануйте QR-код</string>
+    <string name="browser__scan_error_dialog_title">Помилка</string>
+    <!-- Scanned QR code has unsupported format. Please try again. -->
+    <string name="browser__scan_error_dialog_msg_invalid_code">Відсканований QR-код має непідтримуваний формат. Будь ласка спробуйте ще раз.</string>
+    <string name="browser__scan_error_dialog_msg_unknown">Невідома помилка під час сканування QR-коду. Будь ласка спробуйте ще раз.</string>
+    <string name="biometric_dialog_auth_cancel">Використати PIN-код цього разу</string>
+    <string name="biometric_dialog_setup_title">Увімкнути аутентифікацію</string>
+    <string name="biometric_dialog_setup_cancel">Відміна</string>
+    <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
+    <string name="settings__option_fingerprint_description">Щоб увімкнути біометричне блокування, вам потрібно ввімкнути та встановити PIN-код.</string>
+    <string name="settings__block_for_footer">Виберіть час, на який програма буде заблокована.</string>
+    <string name="error__out_of_disk_space">Схоже, що у вас зараз закінчилося місце на диску, або подібна подія в минулому пошкодила базу даних</string>
+    <string name="error__cloud_backup_newer_version">Хмарне резервне копіювання перенесено на нову версію. Оновіть програму</string>
+    <string name="error__cloud_backup_encrypted_not_supported">Хмарне резервне копіювання зашифровано. Оновіть додаток, щоб підтримувати цю функцію</string>
+    <string name="extension__continue_to_app">Продовжити до додатку</string>
+    <string name="extension__cancel">Відміна</string>
+    <string name="extension__authorize">Авторизувати</string>
+    <string name="extension__dismiss">Відміна</string>
+    <string name="extension__request_sent">Запит надіслано</string>
+    <string name="extension__send_question_title">Надіслати токен?</string>
+    <string name="extension__send_question_content">%1$s запросив 2FAS токен для %2$s</string>
+    <string name="extension__error_while_sending">Помилка при надсиланні токену</string>
+    <string name="extension__not_paired_title">Цей вебсайт не підключено</string>
+    <string name="extension__not_paired_content">Відкрийте програму та виберіть сервіс для цього домену</string>
+    <string name="extension__error_open_the_app">Відкрийте програму та перевірте, чи правильно підключено браузерне розширення</string>
+    <string name="extension__error_no_internet">Виникла проблема з підключенням</string>
+    <string name="extension__try_again">Будь ласка, спробуйте ще раз</string>
+    <string name="extension__error">Помилка</string>
+    <string name="extension__error_no_services">Щоб браузерне розширення працювало, додайте сервіси до додатку 2FAS</string>
+    <string name="extension__approve">Одобрити</string>
+    <string name="extension__deny">Відмовити</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">Увімкніть авторизацію PIN-коду та Face ID, щоб запобігти несанкціонованому доступу до ваших токенів на цьому пристрої.</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Увімкніть авторизацію PIN-коду та Touch ID, щоб запобігти несанкціонованому доступу до ваших токенів на цьому пристрої.</string>
+    <string name="settings__send_logs_error_not_exists">Наданий код неправильний. Перевірте його ще раз</string>
+    <string name="settings__send_logs_error_expired">Термін дії наданого коду минув. Зверніться до служби підтримки, щоб отримати новий</string>
+    <string name="settings__send_logs_error_no_internet">Немає інтернету. Будь ласка, перевірте з\'єднання та повторіть спробу</string>
+    <string name="settings__send_logs_error_server">Схоже, виникла проблема з нашим сервером. Якщо проблема не зникає, зверніться до нашої служби підтримки</string>
+    <string name="settings__send_logs_error_title">Операція не вдалася</string>
+    <string name="settings__send_logs_sent_title">Логи надіслано</string>
+    <string name="settings__send_logs_sent_description">Ми їх перевіримо, але це може зайняти деякий час.</string>
+    <string name="commons__send">Надіслати</string>
+    <string name="settings__send_logs_title">Надсилання логів</string>
+    <string name="settings__send_logs_description_link">Код, наданий командою підтримки, було заповнено автоматично. Надіслати журнали?</string>
+    <string name="settings__send_logs_description_edit">Введіть або вставте код, наданий нашою командою підтримки</string>
+    <string name="settings__send_logs">Надіслати логи</string>
+    <string name="settings__recommendation">Перегляньте цю чудову програму двофакторної автентифікації від 2FAS: https://2fas.com</string>
+    <string name="settings__acknowledgements">Подяки</string>
+    <string name="introduction__import_external_app">Імпорт із зовнішнього додатку</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="one">секунду тому</item>
+        <item quantity="few">секунди тому</item>
+        <item quantity="other">секунд тому</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="one">%d хвилину тому</item>
+        <item quantity="few">%d хвилини тому</item>
+        <item quantity="other">%d хвилин тому</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="one">%d годину тому</item>
+        <item quantity="few">%d години тому</item>
+        <item quantity="other">%d годин тому</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="one">%d день тому</item>
+        <item quantity="few">%d дні тому</item>
+        <item quantity="other">%d днів тому</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="one">%d тиждень тому</item>
+        <item quantity="few">%d тижні тому</item>
+        <item quantity="other">%d тижнів тому</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="one">%d місяць тому</item>
+        <item quantity="few">%d місяці тому</item>
+        <item quantity="other">%d місяців тому</item>
+    </plurals>
+    <string name="commons__unknown_error">От халепа! Сталася невідома помилка, спробуйте знову</string>
+    <string name="backup__export_result_success">Файл успішно збережено!</string>
+    <string name="backup__share_result_failure">Поширення файлу не вдалося!</string>
+    <string name="backup__enter_password_dialog_title">Введіть пароль</string>
+    <string name="backup__remove_password_msg">Введіть пароль резервної копії, щоб продовжити видалення.</string>
+    <string name="backup__revoke_google_access_msg">Введіть пароль резервної копії, щоб продовжити скасування доступу до Google.</string>
+    <string name="backup__synchronization_settings">Налаштування синхронізації</string>
+    <string name="backup__local_file_title">Локальний файл</string>
+    <string name="backup__drive_title">Google Drive синхронізація</string>
+    <string name="backup__delete_file_title">Видалити файл резервної копії з Google Drive?</string>
+    <string name="backup__delete_file_msg">Google Sync буде вимкнено. Ваші токени залишаться локально, але додаток 2FAS буде виведено з вашого облікового запису Google на цьому та інших синхронізованих пристроях.</string>
+    <string name="backup__sync_status_waiting">Очікування синхронізації...</string>
+    <string name="backup__sync_status_progress">Синхронізація...</string>
+    <string name="import_backup_msg1_encrypted">Ви збираєтеся імпортувати зашифрований файл резервної копії.</string>
+    <string name="externalimport__choose_json_cta">Обрати JSON файл</string>
+    <string name="externalimport__aegis_msg">Експортуйте свої облікові записи з Aegis у незашифрований файл JSON і завантажте його за допомогою кнопки «Вибрати файл JSON». Не забудьте видалити файл після успішного імпорту.</string>
+    <string name="externalimport__raivo_msg">Скористайтеся опцією «Експортувати одноразові паролі до архіву ZIP» у налаштуваннях Raivo, збережіть файл ZIP, розпакуйте його та імпортуйте файл JSON за допомогою кнопки «Вибрати файл JSON».</string>
+    <string name="externalimport__no_tokens_msg">Проте сервісів, які можна було б імпортувати, немає.</string>
+    <string name="commons__try_again">Спробувати ще раз</string>
+    <string name="commons__proceed">Продовжити</string>
+    <string name="externalimport__ga_title">Імпорт токенів 2FA із додатку Google Authenticator</string>
+    <string name="externalimport__aegis_title">Імпорт токенів 2FA із додатку Aegis</string>
+    <string name="externalimport__raivo_title">Імпорт токенів 2FA із додатку Raivo</string>
+    <string name="externalimport__ga_success_msg">Цей QR-код дозволяє імпортувати токени з Google Authenticator.</string>
+    <string name="externalimport__aegis_success_msg">Цей файл JSON дозволяє імпортувати токени з Aegis.</string>
+    <string name="externalimport__raivo_success_msg">Цей файл JSON дозволяє імпортувати токени з Raivo.</string>
+    <string name="externalimport__read_error">Не вдалося прочитати жодного токена. Спробуйте вибрати інший файл.</string>
+    <string name="settings__gd_sync_info">Інформація про синхронізацію із Google Drive</string>
+    <string name="settings__gd_sync_disable_confirm">Ви впевнені? Без синхронізації з Google Drive ви не зможете відновити свої токени, якщо втратите доступ або скинете налаштування телефону!</string>
+    <string name="extension__code_sent_msg">Код успішно відправлено</string>
+    <string name="extension__code_sent_error_msg">Сталася помилка під час надсилання коду</string>
+    <string name="tokens__add_service_title">Додати новий сервіс</string>
+    <string name="tokens__customize_service_title">Персоналізувати сервіс</string>
+    <string name="extension__services_suggested_header">Запропоновані</string>
+    <string name="extension__services_all_header">Всі сервіси</string>
+    <string name="extension__services_other_header">Інші сервіси</string>
+    <string name="settings__ssl_error_title">Сталася помилка SSL</string>
+    <string name="settings__ssl_error_description">Сталася помилка SSL і не вдається встановити безпечне з\'єднання з сервером. Переконайтеся, що у вас остання версія додатка або спробуйте змінити мережу.</string>
+    <string name="backup__import_error_file_size">Файл, який ви намагаєтеся імпортувати, завеликий. Максимальний розмір файлу – 10 МБ.</string>
+    <string name="backup__import_error_file_invalid">Файл, який ви намагаєтеся імпортувати недійсний або пошкоджений. Будь ласка, оберіть інший файл.</string>
+    <string name="appearance__toggle_active_search">Активний пошук</string>
+    <string name="appearance__active_search_description">Активний пошук під час запуску</string>
+    <string name="widgets__expires_in">Завершується через:</string>
+    <string name="widgets__settings">Налаштування віджету</string>
+    <string name="errors__input_integer_number">Введені дані повинні бути цілим числом</string>
+    <string name="errors__input_number">Ви повинні ввести число</string>
+    <string name="errors__input_empty">Це поле не може бути пустим</string>
+    <string name="errors__input_too_long">Введене число занадто довге. Ліміт: %d</string>
+    <string name="commons__best_match">Найкраще співпадіння</string>
+    <string name="settings__enable_crashlytics">Надсилати анонімні дані про збої в роботі програми.</string>
+    <string name="settings__enable_crashlytics_description">Надіслати анонімний звіт про аварійне завершення роботи, щоб допомогти 2FAS виявити та вирішити проблему в додатку (потрібно перезавантажити програму).</string>
+    <string name="tokens__manage_list">Керувати списком</string>
+    <string name="settings__appearance">Зовнішній вигляд</string>
+    <string name="settings__show_next_token_desc">Показати наступний токен, коли час поточного практично завершився.</string>
+    <string name="settings__list_style">Стиль списку</string>
+    <string name="backup__reminder_msg">Відсутня синхронізація із Google Drive</string>
+    <string name="backup__reminder_cta">Перейдіть до налаштувань резервного копіювання</string>
+    <string name="settings__list_style_option_default">По замовчуванню</string>
+    <string name="settings__list_style_option_compact">Компактний</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Експортуйте акаунти із LastPass в незашифрований файл JSON й завантажте його використовуючи кнопку \"Обрати JSON файл\". Не забудьте видалити файл після успішного імпортування.</string>
+    <string name="settings__about_crash_optout_title">Повідомлення про помилки</string>
+</resources>
