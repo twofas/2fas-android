@@ -179,7 +179,7 @@ private fun ContentScreen(
                     shape = ButtonShape(),
                     modifier = Modifier.padding(start = 72.dp, top = 6.dp, bottom = 2.dp)
                 ) {
-                    Text(text = "Enable Notifications".uppercase(), color = ButtonTextColor())
+                    Text(text = "Enable Notifications", color = ButtonTextColor())
                 }
             }
         }

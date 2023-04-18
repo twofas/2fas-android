@@ -13,8 +13,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -33,6 +35,7 @@ import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.resources.R
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.get
 import org.koin.androidx.compose.koinViewModel
 
@@ -45,8 +48,14 @@ fun PairingProgressScreen(
     viewModel: PairingProgressViewModel = koinViewModel(),
     notificationManager: NotificationManager = get()
 ) {
+    val scope = rememberCoroutineScope()
     val uiState = viewModel.uiState.collectAsState()
-    viewModel.pairBrowser(extensionId)
+
+    LaunchedEffect(Unit) {
+        scope.launch {
+            viewModel.pairBrowser(extensionId)
+        }
+    }
 
     Scaffold(
         topBar = {

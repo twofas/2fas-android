@@ -65,7 +65,7 @@ internal class BrowserExtLocalSource(
 
     suspend fun saveMobileDevice(mobileDevice: MobileDevice) {
         preferences.putString(KeyMobileDevice, json.encodeToString(mobileDevice.asEntity()))
-        mobileDeviceFlow.tryEmit(mobileDevice)
+        mobileDeviceFlow.emit(mobileDevice)
     }
 
     suspend fun savePairedBrowser(pairedBrowser: PairedBrowser) {

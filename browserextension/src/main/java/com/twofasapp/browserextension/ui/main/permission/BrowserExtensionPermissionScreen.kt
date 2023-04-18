@@ -98,7 +98,7 @@ fun BrowserExtensionPermissionScreen() {
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
                     }) {
-                Text(text = stringResource(id = R.string.commons__continue).uppercase(), color = ButtonTextColor())
+                Text(text = stringResource(id = R.string.commons__continue), color = ButtonTextColor())
             }
 
             if (askForPermission) {
