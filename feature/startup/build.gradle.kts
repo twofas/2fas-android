@@ -9,7 +9,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":data:session"))
     implementation(project(":core:common"))
     implementation(project(":core:locale"))

@@ -8,6 +8,8 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.twofasapp.browserextension.ui.request.BrowserExtensionRequestActivity
 import com.twofasapp.browserextension.ui.request.BrowserExtensionRequestApproveActivity
+import com.twofasapp.common.ktx.runSafely
+import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.push.domain.ShowBrowserExtensionRequestNotificationCase
 import com.twofasapp.push.domain.model.Push
 import com.twofasapp.push.notification.NotificationChannelProvider
@@ -22,11 +24,13 @@ class ShowBrowserExtensionRequestNotificationCaseImpl(
     private val notificationChannelProvider: NotificationChannelProvider,
     private val getLockMethodCase: GetLockMethodCase,
     private val getServicesCase: GetServicesCase,
+    private val browserExtRepository: BrowserExtRepository,
 ) : ShowBrowserExtensionRequestNotificationCase {
 
     private val keyguardManager: KeyguardManager = context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
 
     override suspend fun invoke(push: Push.BrowserExtensionRequest) {
+        runSafely { browserExtRepository.fetchTokenRequests() }
 
         val domain = DomainMatcher.extractDomain(push.domain)
         val matchedServices = DomainMatcher.findServicesMatchingDomain(getServicesCase(), domain)

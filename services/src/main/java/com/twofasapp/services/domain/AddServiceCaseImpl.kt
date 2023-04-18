@@ -3,7 +3,7 @@ package com.twofasapp.services.domain
 import com.twofasapp.core.analytics.AnalyticsEvent
 import com.twofasapp.core.analytics.AnalyticsParam
 import com.twofasapp.core.analytics.AnalyticsService
-import com.twofasapp.prefs.model.BackupSyncStatus
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.usecase.FirstCodeAddedPreference
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.model.Service
@@ -18,7 +18,7 @@ internal class AddServiceCaseImpl(
     private val showBackupNotice: ShowBackupNotice,
 ) : AddServiceCase {
 
-    override suspend fun invoke(service: Service, trigger: AddServiceCase.Trigger) {
+    override suspend fun invoke(service: Service, trigger: AddServiceCase.Trigger): Long {
         val serviceId = repository.insertService(
             service.copy(
                 id = 0L,
@@ -58,5 +58,7 @@ internal class AddServiceCaseImpl(
             analyticsService.captureEvent(AnalyticsEvent.FIRST_CODE)
             showBackupNotice.save(true)
         }
+
+        return serviceId
     }
 }

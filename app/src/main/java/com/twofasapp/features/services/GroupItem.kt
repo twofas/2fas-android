@@ -11,9 +11,9 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.mikepenz.fastadapter.binding.ModelAbstractBindingItem
-import com.twofasapp.resources.R
 import com.twofasapp.databinding.ItemGroupBinding
 import com.twofasapp.entity.GroupModel
+import com.twofasapp.resources.R
 
 class GroupItem(
     model: GroupModel,
@@ -54,7 +54,7 @@ class GroupItem(
             moveDown.isEnabled = isLast.not()
             moveDown.alpha = if (isLast.not()) 1f else .2f
 
-            toggle.setImageResource(if (model.group.isExpanded) R.drawable.ic_expanded else R.drawable.ic_collapsed)
+            toggle.setImageResource(if (model.group.isExpanded) R.drawable.ic_expanded_old else R.drawable.ic_collapsed_old)
             toggle.isVisible = model.services.isNotEmpty() && isInEditMode.not() && isInSearchMode.not()
 
             if (model.services.isNotEmpty() && isInEditMode.not() && isInSearchMode.not()) {

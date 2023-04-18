@@ -3,9 +3,9 @@ package com.twofasapp.services.workmanager
 import android.content.Context
 import androidx.work.RxWorker
 import androidx.work.WorkerParameters
-import com.twofasapp.entity.SyncBackupResult
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupTrigger.SERVICES_CHANGED
+import com.twofasapp.entity.SyncBackupResult
 import com.twofasapp.usecases.backup.SyncBackupServices
 import io.reactivex.Single
 import org.koin.core.component.KoinComponent

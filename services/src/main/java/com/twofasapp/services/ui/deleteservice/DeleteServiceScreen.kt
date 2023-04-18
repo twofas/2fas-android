@@ -1,50 +1,61 @@
 package com.twofasapp.services.ui.deleteservice
 
-import android.app.Activity
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.design.compose.ButtonHeight
 import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.design.theme.textPrimary
-import com.twofasapp.navigation.ServiceRouter
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
+import com.twofasapp.services.ui.ServiceUiEvent
 import com.twofasapp.services.ui.ServiceViewModel
-import org.koin.androidx.compose.get
-import org.koin.androidx.compose.getViewModel
+import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun DeleteServiceScreen(
-    viewModel: ServiceViewModel = getViewModel(),
-    router: ServiceRouter = get()
+    viewModel: ServiceViewModel,
 ) {
 
     val service = viewModel.uiState.collectAsState().value.service
-    val activity = LocalContext.current as? Activity
+    val backDispatcher = LocalBackDispatcher
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(Unit) {
+        scope.launch {
+            viewModel.events.collect {
+                when (it) {
+                    ServiceUiEvent.Finish -> scope.launch { backDispatcher.onBackPressed() }
+                }
+            }
+        }
+    }
 
     Scaffold(
-        topBar = {
-            Toolbar(
-                title = "",
-                backgroundColor = MaterialTheme.colors.background,
-                elevation = 0.dp
-            ) { router.navigateBack() }
-        }
+        topBar = { TwTopAppBar(titleText = "") }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -73,53 +84,44 @@ internal fun DeleteServiceScreen(
                 Text(
                     text = stringResource(id = R.string.delete_service_title),
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.h6.copy(fontSize = 22.sp),
-                    color = MaterialTheme.colors.textPrimary,
+                    style = MaterialTheme.typography.titleMedium.copy(fontSize = 22.sp),
+                    color = TwTheme.color.onSurfacePrimary,
                 )
 
                 Text(
                     text = service.name,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(vertical = 16.dp),
-                    style = MaterialTheme.typography.h6.copy(fontSize = 18.sp),
-                    color = MaterialTheme.colors.textPrimary,
+                    style = MaterialTheme.typography.titleSmall.copy(fontSize = 18.sp),
+                    color = TwTheme.color.onSurfacePrimary,
                 )
 
                 Text(
                     text = stringResource(id = R.string.delete_service_msg, service.name),
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.body1,
-                    color = MaterialTheme.colors.textPrimary,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = TwTheme.color.onSurfacePrimary,
                 )
             }
 
             Button(
-                onClick = {
-                    viewModel.delete()
-                    activity?.finish()
-                },
+                onClick = { viewModel.delete() },
                 shape = ButtonShape(),
                 modifier = Modifier.height(ButtonHeight())
 
             ) {
-                Text(text = stringResource(id = R.string.delete_service_cta).uppercase(), color = ButtonTextColor())
+                Text(text = stringResource(id = R.string.delete_service_cta), color = ButtonTextColor())
             }
 
             Spacer(modifier = Modifier.height(8.dp))
 
             TextButton(
-                onClick = { router.navigateBack() },
+                onClick = { backDispatcher.onBackPressed() },
                 shape = ButtonShape(),
                 modifier = Modifier.height(ButtonHeight())
             ) {
-                Text(text = stringResource(id = R.string.commons__cancel).uppercase())
+                Text(text = stringResource(id = R.string.commons__cancel))
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun DeleteServiceScreenPreview() {
-    DeleteServiceScreen()
 }

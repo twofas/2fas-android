@@ -8,7 +8,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":resources"))
     implementation(project(":extensions"))
 

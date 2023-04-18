@@ -1,7 +1,6 @@
 package com.twofasapp.usecases.services
 
 import android.content.Context
-import com.twofasapp.R
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.entity.GroupModel
 import com.twofasapp.entity.ServiceModel

@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <uses-permission
         android:name="com.google.android.gms.permission.AD_ID"
@@ -28,6 +28,7 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/android__app_name"
+        android:localeConfig="@xml/locales_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.App">
 
@@ -94,10 +95,10 @@
         <!--        android:name=".ui.main.MainActivity"-->
 
         <activity
-            android:name=".start.ui.start.StartActivity"
+            android:name=".ui.main.StartActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:noHistory="true"
+            android:noHistory="false"
             android:screenOrientation="locked"
             android:theme="@style/Theme.App">
             <intent-filter>
@@ -118,18 +119,13 @@
         </activity>
 
         <activity
-            android:name=".features.main.MainServicesActivity"
-            android:label="Services List"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:name=".ui.main.MainActivity"
+            android:label="Add service by scanning QR Code" />
 
         <activity
             android:name=".features.addserviceqr.AddServiceQrActivity"
             android:label="Add service by scanning QR Code" />
-
-        <activity
-            android:name=".services.ui.ServiceActivity"
-            android:label="Show Service"
-            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".features.backup.BackupActivity"
@@ -165,26 +161,6 @@
 
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".start.ui.onboarding.OnboardingActivity"
-            android:label="Onboarding" />
-
-        <activity
-            android:name=".security.ui.security.SecurityActivity"
-            android:label="Security" />
-
-        <activity
-            android:name=".features.trash.TrashActivity"
-            android:label="Trash" />
-
-        <activity
-            android:name=".features.trash.delete.DisposeServiceActivity"
-            android:label="Delete From Trash" />
-
-        <activity
-            android:name=".notifications.ui.NotificationsActivity"
-            android:label="Notifications" />
 
         <activity
             android:name=".widgets.configure.WidgetSettingsActivity"

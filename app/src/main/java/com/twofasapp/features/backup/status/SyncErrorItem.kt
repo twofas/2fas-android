@@ -3,9 +3,9 @@ package com.twofasapp.features.backup.status
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mikepenz.fastadapter.binding.ModelAbstractBindingItem
+import com.twofasapp.databinding.ItemSyncErrorBinding
 import com.twofasapp.extensions.makeGoneIfBlank
 import com.twofasapp.resources.R
-import com.twofasapp.databinding.ItemSyncErrorBinding
 import com.twofasapp.services.backup.models.RemoteBackupErrorType
 
 class SyncErrorItem(model: Model) : ModelAbstractBindingItem<SyncErrorItem.Model, ItemSyncErrorBinding>(model) {

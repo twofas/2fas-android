@@ -13,11 +13,9 @@ import com.twofasapp.start.domain.MigratePinCaseImpl
 import com.twofasapp.start.domain.MigrateUnknownServicesCase
 import com.twofasapp.start.domain.MigrateUnknownServicesCaseImpl
 import com.twofasapp.start.domain.work.OnAppUpdatedWorkDispatcher
-import com.twofasapp.start.ui.onboarding.OnboardingViewModel
 import com.twofasapp.start.work.OnAppUpdatedWorkDispatcherImpl
 import com.twofasapp.storage.EncryptedPreferences
 import com.twofasapp.storage.PlainPreferences
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -25,8 +23,6 @@ import org.koin.dsl.module
 class StartModule : KoinModule {
 
     override fun provide() = module {
-        viewModelOf(::OnboardingViewModel)
-
         singleOf(::DeeplinkHandler)
 
         singleOf(::OnAppUpdatedWorkDispatcherImpl) { bind<OnAppUpdatedWorkDispatcher>() }

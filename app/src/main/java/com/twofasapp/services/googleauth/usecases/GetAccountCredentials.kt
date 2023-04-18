@@ -2,8 +2,8 @@ package com.twofasapp.services.googleauth.usecases
 
 import android.content.Context
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.twofasapp.services.googleauth.models.AccountCredentials
 import com.twofasapp.base.usecase.UseCase
+import com.twofasapp.services.googleauth.models.AccountCredentials
 import io.reactivex.Scheduler
 
 class GetAccountCredentials(

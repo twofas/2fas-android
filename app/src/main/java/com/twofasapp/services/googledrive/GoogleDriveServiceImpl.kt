@@ -15,14 +15,18 @@ import com.google.api.services.drive.DriveScopes
 import com.google.api.services.drive.model.File
 import com.twofasapp.services.googleauth.models.AccountCredentials
 import com.twofasapp.services.googleauth.usecases.GetAccountCredentials
-import com.twofasapp.services.googledrive.models.*
+import com.twofasapp.services.googledrive.models.DeleteGoogleDriveFileResult
+import com.twofasapp.services.googledrive.models.GetGoogleDriveFileResult
+import com.twofasapp.services.googledrive.models.GoogleDriveErrorType
 import com.twofasapp.services.googledrive.models.GoogleDriveErrorType.CREDENTIALS_NOT_FOUND
+import com.twofasapp.services.googledrive.models.GoogleDriveFile
+import com.twofasapp.services.googledrive.models.UpdateGoogleDriveFileResult
 import io.reactivex.Single
 import timber.log.Timber
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.util.*
+import java.util.Collections
 
 class GoogleDriveServiceImpl(
     private val context: Context,

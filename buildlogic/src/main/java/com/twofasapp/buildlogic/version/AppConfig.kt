@@ -6,7 +6,7 @@ object AppConfig {
     const val compileSdk = 33
 
     private const val verMajor = 4
-    private const val verMinor = 3
+    private const val verMinor = 5
     private const val verPatch = 0
     private const val verInternal = 0
 

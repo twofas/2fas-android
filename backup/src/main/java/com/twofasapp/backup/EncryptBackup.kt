@@ -1,6 +1,11 @@
 package com.twofasapp.backup
 
-import com.twofasapp.backup.domain.*
+import com.twofasapp.backup.domain.BackupCipherEncryptResult
+import com.twofasapp.backup.domain.BackupCipherPlainData
+import com.twofasapp.backup.domain.KeyEncoded
+import com.twofasapp.backup.domain.Password
+import com.twofasapp.backup.domain.PlainData
+import com.twofasapp.backup.domain.SaltEncoded
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.extensions.ifNotBlank
 import io.reactivex.Scheduler

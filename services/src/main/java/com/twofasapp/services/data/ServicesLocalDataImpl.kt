@@ -1,10 +1,9 @@
 package com.twofasapp.services.data
 
+import com.twofasapp.data.services.local.ServiceDao
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.extensions.removeWhiteCharacters
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.persistence.dao.ServiceDao
-import com.twofasapp.persistence.model.ServiceEntity
-import com.twofasapp.prefs.model.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.services.data.converter.toEntity
@@ -22,7 +21,7 @@ internal class ServicesLocalDataImpl(
 ) : ServicesLocalData {
 
     override fun select(): Single<List<ServiceDto>> {
-        return dao.select()
+        return dao.legacySelect()
             .map { list ->
                 list.map { local ->
                     ServiceDto(
@@ -61,21 +60,21 @@ internal class ServicesLocalDataImpl(
     }
 
     override suspend fun selectAll(): List<Service> {
-        return dao.selectAll().map { it.toService() }
+        return dao.legacySelectAll().map { it.toService() }
     }
 
     override fun selectFlow(): Flow<List<Service>> {
-        return dao.selectFlow().map { list ->
+        return dao.legacySelectFlow().map { list ->
             list.map { it.toService() }
         }
     }
 
     override fun observe(serviceId: Long): Flow<Service> {
-        return dao.observe(serviceId).map { it.toService() }
+        return dao.legacyObserve(serviceId).map { it.toService() }
     }
 
     override fun observe(): Flowable<List<ServiceDto>> {
-        return dao.observe()
+        return dao.legacyObserve()
             .map { list ->
                 list.map { local ->
                     ServiceDto(
@@ -115,8 +114,8 @@ internal class ServicesLocalDataImpl(
 
     override fun insertService(service: ServiceDto): Single<Long> {
         Timber.d("InsertService: $service")
-        return dao.insert(
-            ServiceEntity(
+        return dao.legacyInsert(
+            com.twofasapp.data.services.local.model.ServiceEntity(
                 id = 0,
                 name = service.name,
                 secret = service.secret.removeWhiteCharacters(),
@@ -140,25 +139,30 @@ internal class ServicesLocalDataImpl(
                 isDeleted = service.isDeleted,
                 authType = service.authType.name,
                 hotpCounter = service.hotpCounter,
+                hotpCounterTimestamp = null,
                 assignedDomains = service.assignedDomains
             )
-        )
+        ).also {
+            Timber.d("InsertService: Inserted with id $it")
+        }
     }
 
     override suspend fun delete(id: Long) {
-        dao.deleteById(id)
+        dao.legacyDeleteById(id)
     }
 
     override suspend fun insertService(service: Service): Long {
         Timber.d("InsertService: $service")
-        return dao.insertSuspend(service.toEntity())
+        return dao.legacyInsertSuspend(service.toEntity()).also {
+            Timber.d("InsertService: Inserted with id $it")
+        }
     }
 
     override fun updateService(vararg services: ServiceDto): Completable {
         Timber.d("UpdateServices: ${services.toList()}")
-        return dao.update(
+        return dao.legacyUpdate(
             *services.map {
-                ServiceEntity(
+                com.twofasapp.data.services.local.model.ServiceEntity(
                     id = it.id,
                     name = it.name,
                     secret = it.secret,
@@ -182,6 +186,7 @@ internal class ServicesLocalDataImpl(
                     isDeleted = it.isDeleted,
                     authType = it.authType.name,
                     hotpCounter = it.hotpCounter,
+                    hotpCounterTimestamp = null,
                     assignedDomains = it.assignedDomains,
                 )
             }.toTypedArray()
@@ -189,16 +194,16 @@ internal class ServicesLocalDataImpl(
     }
 
     override suspend fun updateServiceSuspend(vararg services: Service) {
-        dao.updateSuspend(*services.map { it.toEntity() }.toTypedArray())
+        dao.legacyUpdateSuspend(*services.map { it.toEntity() }.toTypedArray())
     }
 
     override fun deleteService(vararg services: ServiceDto): Completable {
         Timber.d("DeleteServices: ${services.toList()}")
-        return dao.deleteById(services.map { it.id })
+        return dao.legacyDeleteById(services.map { it.id })
     }
 
     override fun deleteService(id: Long): Completable {
         Timber.d("DeleteService: $id")
-        return dao.deleteById(listOf(id))
+        return dao.legacyDeleteById(listOf(id))
     }
 }

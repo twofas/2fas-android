@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="windowBackground">#15161B</color>
-    <color name="toolbar">#15161B</color>
-    <color name="statusbar">#14151A</color>
+    <color name="windowBackground">#101116</color>
+    <color name="toolbar">#101116</color>
+    <color name="statusbar">#101116</color>
     <color name="toolbarIcon">#FFF</color>
-    <color name="drawerBackground">#15161B</color>
+    <color name="drawerBackground">#101116</color>
     <color name="drawerIcon">#ECECEC</color>
     <color name="drawerText">#ECECEC</color>
     <color name="serviceCodeNormal">@color/textPrimary</color>
@@ -31,4 +31,11 @@
     <color name="fabNeutral">#FF3F3F3F</color>
     <color name="fabNeutralIcon">#FFF</color>
 
+    <color name="surface">#1A1B21</color>
+    <color name="surfaceVariant">#232323</color>
+    <color name="onSurface">#FFFFFF</color>
+
+    <color name="switchTrack">#FF1F2025</color>
+    <color name="switchThumb">#FF48494E</color>
+    <color name="switchBorder">#4D48494E</color>
 </resources>

@@ -3,7 +3,12 @@ package com.twofasapp.security.data.converter
 import com.twofasapp.prefs.model.InvalidPinStatusEntity
 import com.twofasapp.prefs.model.LockMethodEntity
 import com.twofasapp.prefs.model.PinOptionsEntity
-import com.twofasapp.security.domain.model.*
+import com.twofasapp.security.domain.model.InvalidPinStatus
+import com.twofasapp.security.domain.model.LockMethod
+import com.twofasapp.security.domain.model.PinDigits
+import com.twofasapp.security.domain.model.PinOptions
+import com.twofasapp.security.domain.model.PinTimeout
+import com.twofasapp.security.domain.model.PinTrials
 
 internal fun PinOptions.toEntity() = PinOptionsEntity(
     digits = digits.value,

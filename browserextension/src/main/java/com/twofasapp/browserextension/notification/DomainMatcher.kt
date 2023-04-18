@@ -14,6 +14,14 @@ object DomainMatcher {
         return services.filter { it.assignedDomains.contains(domain) }
     }
 
+
+    fun findServicesMatchingDomainNew(
+        services: List<com.twofasapp.data.services.domain.Service>,
+        domain: String
+    ): List<com.twofasapp.data.services.domain.Service> {
+        return services.filter { it.assignedDomains.contains(domain) }
+    }
+
     fun findServicesSuggestedForDomain(services: List<Service>, domain: String?): List<Service> {
         return services.filter { service -> domain?.contains(service.name, true) ?: false }
     }

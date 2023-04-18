@@ -17,13 +17,13 @@
 
     <item
         android:id="@+id/menu_sort"
-        android:icon="@drawable/ic_sort"
+        android:icon="@drawable/ic_sort_old"
         android:title="@string/tokens__sort_by"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/menu_add_group"
-        android:icon="@drawable/ic_add_group"
+        android:icon="@drawable/ic_add_group_old"
         android:title="@string/tokens__add_group"
         app:showAsAction="always" />
 </menu>

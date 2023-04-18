@@ -8,15 +8,16 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import com.mikepenz.fastadapter.IItem
 import com.mikepenz.fastadapter.adapters.FastItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
-import com.twofasapp.extensions.makeGone
-import com.twofasapp.extensions.makeVisible
-import com.twofasapp.resources.R
-import com.twofasapp.base.lifecycle.AuthAware
-import com.twofasapp.extensions.clicksThrottled
-import com.twofasapp.extensions.navigationClicksThrottled
-import com.twofasapp.databinding.ActivityWidgetSettingsBinding
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.BaseActivityPresenter
+import com.twofasapp.base.lifecycle.AuthAware
+import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.databinding.ActivityWidgetSettingsBinding
+import com.twofasapp.design.theme.ThemeState
+import com.twofasapp.extensions.clicksThrottled
+import com.twofasapp.extensions.makeGone
+import com.twofasapp.extensions.makeVisible
+import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.views.ModelDiffUtilCallback
 import com.twofasapp.widgets.broadcast.WidgetBroadcaster
 import org.koin.android.ext.android.inject
@@ -27,8 +28,11 @@ class WidgetSettingsActivity : BaseActivityPresenter<ActivityWidgetSettingsBindi
     private val authTracker: AuthTracker by inject()
     private val fastAdapter = FastItemAdapter<IItem<*>>()
     private var saveMenuButton: TextView? = null
+    private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
+
         authTracker.onWidgetSettingsScreen()
         super.onCreate(savedInstanceState)
         setContentView(ActivityWidgetSettingsBinding::inflate)

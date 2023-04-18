@@ -1,20 +1,20 @@
 package com.twofasapp.push.domain.repository
 
 import com.google.firebase.messaging.RemoteMessage
-import com.twofasapp.environment.AppConfig
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.prefs.model.LastPushesEntity
 import com.twofasapp.prefs.usecase.LastPushesPreference
 import com.twofasapp.time.domain.TimeProvider
 import timber.log.Timber
 
 class PushLogger(
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
     private val timeProvider: TimeProvider,
     private val lastPushesPreference: LastPushesPreference,
 ) {
 
     fun logMessage(remoteMessage: RemoteMessage) {
-        if (appConfig.isDebug) {
+        if (appBuild.isDebuggable) {
             try {
                 Timber.i("Data: ${remoteMessage.data}, notification.title=${remoteMessage.notification?.title}, notification.body=${remoteMessage.notification?.body}")
                 lastPushesPreference.put {
@@ -38,7 +38,7 @@ class PushLogger(
     }
 
     fun logToken(token: String) {
-        if (appConfig.isDebug) {
+        if (appBuild.isDebuggable) {
             Timber.i("onNewToken")
             Timber.i(token)
         }

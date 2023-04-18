@@ -41,7 +41,7 @@ internal class DurationFormatterImpl(
 
     private fun format(quantity: Long, sign: Int, timeUnit: TimeUnit): String {
         return context.resources.getQuantityString(
-            if (sign > 0) timeUnit.pastStringRes else timeUnit.pastStringRes, // TODO: Handle future values
+            if (sign > 0) timeUnit.pastStringRes else timeUnit.pastStringRes, // Handle future values
             quantity.toInt(),
             quantity.toInt(),
         )

@@ -74,7 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description">
 
-        <androidx.appcompat.widget.SwitchCompat
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/passwordSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,7 +83,10 @@
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:minHeight="0dp"
-            android:paddingVertical="0dp" />
+            android:paddingVertical="0dp"
+            app:thumbTint="@color/material_switch_thumb"
+            app:trackDecorationTint="@color/material_switch_border"
+            app:trackTint="@color/material_switch_track" />
 
         <TextView
             style="@style/Text.Description"
@@ -101,7 +104,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:text="@string/export_backup_share_cta"
-        app:icon="@drawable/ic_share"
+        app:icon="@drawable/ic_share_old"
         app:iconGravity="textStart"
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -116,7 +119,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/export_backup_cta"
-        app:icon="@drawable/ic_download"
+        app:icon="@drawable/ic_download_old"
         app:iconGravity="textStart"
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

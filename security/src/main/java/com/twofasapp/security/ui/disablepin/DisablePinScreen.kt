@@ -3,25 +3,24 @@ package com.twofasapp.security.ui.disablepin
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.navigation.SecurityRouter
+import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
 import com.twofasapp.security.ui.pin.PinScreen
 import com.twofasapp.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.security.ui.pin.vibrateInvalidPin
-import org.koin.androidx.compose.get
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun DisablePinScreen(
-    viewModel: DisablePinViewModel = get(),
-    router: SecurityRouter = get(),
+    viewModel: DisablePinViewModel = koinViewModel(),
 ) {
     val uiState = viewModel.uiState.collectAsState().value
     val currentPinState = rememberCurrentPinState()
@@ -29,7 +28,7 @@ internal fun DisablePinScreen(
     uiState.getMostRecentEvent()?.let {
         when (it) {
             DisablePinUiState.Event.ClearCurrentPin -> currentPinState.reset()
-            DisablePinUiState.Event.Finish -> router.navigateBack()
+            DisablePinUiState.Event.Finish -> LocalBackDispatcher.onBackPressed()
             DisablePinUiState.Event.NotifyInvalidPin -> vibrateInvalidPin(LocalContext.current)
         }
 
@@ -38,7 +37,7 @@ internal fun DisablePinScreen(
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = R.string.security__disable_pin)) { router.navigateBack() }
+            TwTopAppBar(titleText = stringResource(id = R.string.security__disable_pin))
         }
     ) { padding ->
         Box(

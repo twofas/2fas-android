@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="@id/startBarrier"
         app:layout_constraintStart_toStartOf="@id/serviceBadge"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_drag_handle"
+        app:srcCompat="@drawable/ic_drag_handle_old"
         app:tint="#9B9B9B"
         tools:visibility="visible"
         tools:ignore="HardcodedText" />
@@ -160,7 +160,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_chevron"
+        app:srcCompat="@drawable/ic_chevron_old"
         app:tint="#9B9B9B" />
 
     <ImageButton

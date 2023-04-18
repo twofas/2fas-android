@@ -1,10 +1,10 @@
 package com.twofasapp.browserextension.domain
 
-import com.twofasapp.browserextension.domain.repository.BrowserExtensionRepository
+import com.twofasapp.data.browserext.BrowserExtRepository
 import kotlinx.coroutines.flow.first
 
-internal class ApproveLoginRequestCase(
-    private val browserExtensionRepository: BrowserExtensionRepository,
+class ApproveLoginRequestCase(
+    private val browserExtensionRepository: BrowserExtRepository,
     private val observeMobileDeviceCase: ObserveMobileDeviceCase,
     private val observePairedBrowsersCase: ObservePairedBrowsersCase,
     private val encryptCodeCase: EncryptCodeCase,

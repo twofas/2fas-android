@@ -7,11 +7,14 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
-import androidx.compose.runtime.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.FocusRequester
@@ -27,12 +30,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.twofasapp.design.R
 import com.twofasapp.design.compose.dialogs.InputType
 import com.twofasapp.design.compose.dialogs.Validation
-import com.twofasapp.design.theme.textFieldDisabledText
-import com.twofasapp.design.theme.textFieldHint
-import com.twofasapp.design.theme.textFieldOutline
+import com.twofasapp.designsystem.TwTheme
 
 @Composable
 fun InputEntry(
@@ -74,9 +74,9 @@ fun InputEntry(
         var isValid by remember { mutableStateOf(allowEmpty) }
 
         Icon(
-            painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder),
+            painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder_old),
             contentDescription = null,
-            tint = if (iconTint != Color.Unspecified) iconTint else MaterialTheme.colors.primary,
+            tint = if (iconTint != Color.Unspecified) iconTint else TwTheme.color.primary,
             modifier = Modifier
                 .size(if (iconVisibleWhenNotSet) 24.dp else 0.dp)
                 .alpha(if (icon == null) 0f else alpha)
@@ -111,6 +111,7 @@ fun InputEntry(
                             context.getString(com.twofasapp.resources.R.string.errors__input_integer_number)
                         }
                     }
+
                     InputType.NumberDecimal -> {
                         try {
                             inputText.toFloat()
@@ -132,6 +133,7 @@ fun InputEntry(
                     invalidInputTypeError != null -> invalidInputTypeError
                     validationResult is Validation.Error -> validationResult.msg
                         ?: validationResult.msgRes?.let { context.getString(it) }
+
                     else -> null
                 }
 
@@ -141,12 +143,17 @@ fun InputEntry(
             enabled = isEnabled,
             readOnly = readOnly,
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                disabledTextColor = MaterialTheme.colors.textFieldDisabledText,
-                focusedBorderColor = MaterialTheme.colors.textFieldOutline,
-                unfocusedBorderColor = MaterialTheme.colors.textFieldOutline,
-                focusedLabelColor = MaterialTheme.colors.textFieldHint,
-                unfocusedLabelColor = MaterialTheme.colors.textFieldHint,
-                errorLabelColor = MaterialTheme.colors.error,
+                disabledTextColor = TwTheme.color.onSurfaceSecondary,
+                focusedBorderColor = TwTheme.color.onSurfaceSecondary,
+                unfocusedBorderColor = TwTheme.color.onSurfaceSecondary,
+                focusedLabelColor = TwTheme.color.onSurfaceSecondary,
+                unfocusedLabelColor = TwTheme.color.onSurfaceSecondary,
+                errorLabelColor = TwTheme.color.error,
+                errorCursorColor = TwTheme.color.error,
+                errorBorderColor = TwTheme.color.error,
+                errorLeadingIconColor = TwTheme.color.error,
+                errorTrailingIconColor = TwTheme.color.error,
+                errorSupportingTextColor = TwTheme.color.error,
             ),
             visualTransformation = visualTransformation,
             keyboardOptions = keyboardOptions.copy(

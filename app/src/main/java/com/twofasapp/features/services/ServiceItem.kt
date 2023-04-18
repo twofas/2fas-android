@@ -25,8 +25,6 @@ import com.twofasapp.extensions.visible
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.model.toColor
 import com.twofasapp.resources.R
-import lt.neworld.spanner.Spanner
-import lt.neworld.spanner.Spans.scaleSize
 
 class ServiceItem(
     model: ServiceModel,
@@ -109,8 +107,7 @@ class ServiceItem(
             }
 
             nextCode.pivotX = 0f
-            nextCode.text = Spanner(root.context.getString(R.string.tokens__next_token, ""))
-                .append(model.formatNextCode(), scaleSize(1.4f))
+            nextCode.text = model.formatNextCode()
 
             if (model.shouldShowNextToken.not() || isInEditMode || model.service.authType == ServiceDto.AuthType.HOTP) {
                 showAccount(this)

@@ -9,7 +9,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":prefs"))
     implementation(project(":resources"))
 

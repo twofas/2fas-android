@@ -1,6 +1,14 @@
 package com.twofasapp.backup
 
-import com.twofasapp.backup.domain.*
+import com.twofasapp.backup.domain.BackupCipherDecryptResult
+import com.twofasapp.backup.domain.BackupCipherEncryptResult
+import com.twofasapp.backup.domain.BackupCipherEncryptedData
+import com.twofasapp.backup.domain.BackupCipherPlainData
+import com.twofasapp.backup.domain.DecryptResult
+import com.twofasapp.backup.domain.EncryptedData
+import com.twofasapp.backup.domain.KeyEncoded
+import com.twofasapp.backup.domain.Password
+import com.twofasapp.backup.domain.SaltEncoded
 
 interface BackupCipherService {
     companion object {

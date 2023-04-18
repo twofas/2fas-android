@@ -1,57 +1,65 @@
 package com.twofasapp.services.ui
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.twofasapp.backup.domain.SyncBackupTrigger
+import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
-import com.twofasapp.core.analytics.AnalyticsEvent
-import com.twofasapp.core.analytics.AnalyticsParam
-import com.twofasapp.core.analytics.AnalyticsService
+import com.twofasapp.common.navigation.getOrThrow
+import com.twofasapp.data.services.GroupsRepository
+import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.extensions.removeWhiteCharacters
-import com.twofasapp.prefs.model.Group
 import com.twofasapp.prefs.model.LockMethodEntity
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.prefs.usecase.LockMethodPreference
 import com.twofasapp.services.domain.AddServiceCase
 import com.twofasapp.services.domain.EditServiceCase
-import com.twofasapp.services.domain.GetGroupsCase
 import com.twofasapp.services.domain.GetServicesCase
 import com.twofasapp.services.domain.MoveToTrashCase
 import com.twofasapp.services.domain.ObserveServiceCase
 import com.twofasapp.services.domain.model.BrandIcon
 import com.twofasapp.services.domain.model.Service
+import com.twofasapp.services.navigation.ServiceNavArg
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 internal class ServiceViewModel(
-    private val dispatchers: Dispatchers,
-    private val analytics: AnalyticsService,
+    private val savedStateHandle: SavedStateHandle,
     private val observeServiceCase: ObserveServiceCase,
     private val getServicesCase: GetServicesCase,
     private val editServiceCase: EditServiceCase,
     private val moveToTrashCase: MoveToTrashCase,
     private val addServiceCase: AddServiceCase,
-    private val getGroupsCase: GetGroupsCase,
     private val lockMethodPreference: LockMethodPreference,
+    private val groupsRepository: GroupsRepository,
+    private val servicesRepository: ServicesRepository,
+    private val syncBackupWorkDispatcher: SyncBackupWorkDispatcher,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(ServiceUiState())
     val uiState = _uiState.asStateFlow()
+    val events = MutableSharedFlow<ServiceUiEvent>()
 
+    private val serviceId: Long = savedStateHandle.getOrThrow(ServiceNavArg.ServiceId.name)
     private var isFirstLoad: Boolean = true
 
-    fun init(serviceId: Long) {
+    init {
         _uiState.update {
             it.copy(
                 hasLock = lockMethodPreference.get() != LockMethodEntity.NO_LOCK,
             )
         }
 
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(kotlinx.coroutines.Dispatchers.IO) {
 
-            launch(dispatchers.io()) {
+            launch(kotlinx.coroutines.Dispatchers.IO) {
                 observeServiceCase(serviceId)
                     .catch { }
                     .collect { service ->
@@ -87,7 +95,7 @@ internal class ServiceViewModel(
                     }
             }
 
-            launch(dispatchers.io()) {
+            launch(kotlinx.coroutines.Dispatchers.IO) {
                 lockMethodPreference.flow(false).collect { lockStatus ->
                     _uiState.update {
                         it.copy(hasLock = lockStatus != LockMethodEntity.NO_LOCK)
@@ -95,14 +103,14 @@ internal class ServiceViewModel(
                 }
             }
 
-            launch(dispatchers.io()) {
-                _uiState.update { it.copy(groups = getGroupsCase.invoke()) }
+            launch(kotlinx.coroutines.Dispatchers.IO) {
+                _uiState.update { it.copy(groups = groupsRepository.observeGroups().firstOrNull().orEmpty()) }
             }
         }
     }
 
     fun tryInsertService(replaceIfExists: Boolean) {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(kotlinx.coroutines.Dispatchers.IO) {
             val isExists = getServicesCase().find {
                 it.secret.removeWhiteCharacters().lowercase() == uiState.value.service.secret.removeWhiteCharacters().lowercase()
             } != null
@@ -110,7 +118,15 @@ internal class ServiceViewModel(
             if (replaceIfExists || isExists.not()) {
                 runCatching { addServiceCase(uiState.value.service) }
                     .onFailure { _uiState.update { it.copy(showInsertErrorDialog = true) } }
-                    .onSuccess { _uiState.update { it.copy(finish = true, finishWithResult = true) } }
+                    .onSuccess {
+                        servicesRepository.pushRecentlyAddedService(
+                            id = it,
+                            source = RecentlyAddedService.Source.Manually
+                        )
+                        syncBackupWorkDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+
+                        _uiState.update { it.copy(finish = true) }
+                    }
             } else {
                 _uiState.update { it.copy(showServiceExistsDialog = true) }
             }
@@ -127,7 +143,7 @@ internal class ServiceViewModel(
                     labelText = text.uppercase().take(2),
                 )
             } else {
-                it.copy(name = text)
+                it.copy(name = text.trim())
             }
         }
     }
@@ -139,7 +155,7 @@ internal class ServiceViewModel(
 
     fun updateInfo(text: String, isValid: Boolean) {
         _uiState.update { it.copy(isInputInfoValid = isValid) }
-        updateService { it.copy(otp = it.otp.copy(account = text)) }
+        updateService { it.copy(otp = it.otp.copy(account = text.trim())) }
     }
 
     fun deleteDomainAssignment(domain: String) {
@@ -160,27 +176,22 @@ internal class ServiceViewModel(
     }
 
     fun updateAlgorithm(algorithm: Service.Algorithm) {
-        analytics.captureEvent(AnalyticsEvent.ALGORITHM_CHOSEN, AnalyticsParam.TYPE to algorithm.name)
         updateService { it.copy(otp = it.otp.copy(algorithm = algorithm)) }
     }
 
     fun updatePeriod(period: Int) {
-        analytics.captureEvent(AnalyticsEvent.REFRESH_TIME_CHOSEN, AnalyticsParam.TYPE to period.toString())
         updateService { it.copy(otp = it.otp.copy(period = period)) }
     }
 
     fun updateDigits(digits: Int) {
-        analytics.captureEvent(AnalyticsEvent.NUMBER_OF_DIGITS_CHOSEN, AnalyticsParam.TYPE to digits.toString())
         updateService { it.copy(otp = it.otp.copy(digits = digits)) }
     }
 
     fun updateInitialCounter(counter: Int) {
-        analytics.captureEvent(AnalyticsEvent.INITIAL_COUNTER_CHOSEN, AnalyticsParam.TYPE to counter.toString())
         updateService { it.copy(otp = it.otp.copy(hotpCounter = counter)) }
     }
 
     fun updateBadge(tint: Tint) {
-        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_BADGE_SET)
         updateService {
             it.copy(
                 badge = if (tint == Tint.Default && uiState.value.persistedService.badge == null) {
@@ -193,7 +204,6 @@ internal class ServiceViewModel(
     }
 
     fun updateBrand(brandIcon: BrandIcon) {
-        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_BRAND_SET)
         updateService {
             it.copy(selectedImageType = Service.ImageType.IconCollection)
         }
@@ -206,7 +216,6 @@ internal class ServiceViewModel(
     }
 
     fun updateLabel(text: String, tint: Tint) {
-        analytics.captureEvent(AnalyticsEvent.CUSTOMIZATION_LABEL_SET)
         updateService(persists = true) {
             it.copy(
                 selectedImageType = Service.ImageType.Label,
@@ -221,7 +230,7 @@ internal class ServiceViewModel(
             it.copy(
                 selectedImageType = imageType,
                 labelText = if (imageType == Service.ImageType.Label) labelText?.uppercase() ?: uiState.value.service.name.take(2).uppercase() else null,
-                labelBackgroundColor = if (imageType == Service.ImageType.Label) labelBackgroundColor ?: Tint.LightBlue else null,
+                labelBackgroundColor = if (imageType == Service.ImageType.Label) labelBackgroundColor else it.labelBackgroundColor,
             )
         }
     }
@@ -231,7 +240,7 @@ internal class ServiceViewModel(
             _uiState.update { it.copy(service = action.invoke(it.service)) }
             updateSaveState()
         } else {
-            viewModelScope.launch(dispatchers.io()) {
+            viewModelScope.launch(kotlinx.coroutines.Dispatchers.IO) {
                 val service = action.invoke(uiState.value.persistedService)
                 editServiceCase(service)
             }
@@ -249,8 +258,10 @@ internal class ServiceViewModel(
     }
 
     fun delete() {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(kotlinx.coroutines.Dispatchers.IO) {
             moveToTrashCase.invoke(uiState.value.service.id, true)
+            events.emit(ServiceUiEvent.Finish)
+            _uiState.emit(_uiState.value.copy(finish = true))
         }
     }
 
@@ -276,9 +287,9 @@ internal class ServiceViewModel(
     }
 
     fun saveService() {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(kotlinx.coroutines.Dispatchers.IO) {
             editServiceCase(uiState.value.service)
-            _uiState.update { it.copy(finish = true, finishWithResult = false) }
+            _uiState.update { it.copy(finish = true) }
         }
     }
 }

@@ -9,6 +9,6 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":extensions"))
 }

@@ -1,5 +1,6 @@
 package com.twofasapp.prefs.model
 
+import com.twofasapp.di.BackupSyncStatus
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

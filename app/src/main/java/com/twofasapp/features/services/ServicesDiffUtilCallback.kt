@@ -7,13 +7,13 @@ import com.mikepenz.fastadapter.diff.DiffCallback
 class ServicesDiffUtilCallback : DiffCallback<IItem<*>> {
 
     override fun areContentsTheSame(oldItem: IItem<*>, newItem: IItem<*>): Boolean {
-        if (oldItem is BackupNoticeItem && newItem is BackupNoticeItem) {
-            return true
-        }
-
-        if (oldItem is NoServicesItem && newItem is NoServicesItem) {
-            return true
-        }
+//        if (oldItem is BackupNoticeItem && newItem is BackupNoticeItem) {
+//            return true
+//        }
+//
+//        if (oldItem is NoServicesItem && newItem is NoServicesItem) {
+//            return true
+//        }
 
         if (oldItem is ServiceItem && newItem is ServiceItem) {
             return oldItem.model == newItem.model

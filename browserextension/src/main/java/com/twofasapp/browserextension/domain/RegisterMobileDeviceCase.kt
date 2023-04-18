@@ -2,21 +2,21 @@ package com.twofasapp.browserextension.domain
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import com.twofasapp.browserextension.domain.model.MobileDevice
-import com.twofasapp.browserextension.domain.repository.BrowserExtensionRepository
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.core.encoding.encodeBase64ToString
-import com.twofasapp.environment.AppConfig
+import com.twofasapp.data.browserext.BrowserExtRepository
+import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.push.domain.GetFcmTokenCase
 import kotlinx.coroutines.flow.first
 import java.security.KeyPair
 import java.security.KeyPairGenerator
 import java.security.KeyStore
 
-internal class RegisterMobileDeviceCase(
-    private val browserExtensionRepository: BrowserExtensionRepository,
+class RegisterMobileDeviceCase(
+    private val browserExtensionRepository: BrowserExtRepository,
     private val observeMobileDeviceCase: ObserveMobileDeviceCase,
     private val getFcmTokenCase: GetFcmTokenCase,
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
 ) {
 
     companion object {
@@ -31,7 +31,7 @@ internal class RegisterMobileDeviceCase(
             mobileDevice
         } else {
             browserExtensionRepository.registerMobileDevice(
-                deviceName = mobileDevice.name.ifBlank { appConfig.deviceName },
+                deviceName = mobileDevice.name.ifBlank { appBuild.deviceName },
                 devicePublicKey = createDevicePublicKey(),
                 fcmToken = fcmToken,
             )

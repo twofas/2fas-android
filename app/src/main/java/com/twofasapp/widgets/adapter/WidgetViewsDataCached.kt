@@ -1,7 +1,6 @@
 package com.twofasapp.widgets.adapter
 
 import com.twofasapp.entity.ServiceModel
-import com.twofasapp.prefs.model.Widget
 import com.twofasapp.usecases.services.GetServices
 import com.twofasapp.usecases.services.ServicesModelMapper
 import com.twofasapp.usecases.widgets.GetWidgetSettings

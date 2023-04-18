@@ -3,8 +3,8 @@ package com.twofasapp.widgets.configure
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
-import com.twofasapp.resources.R
 import com.twofasapp.databinding.ItemWidgetSettingsHeaderBinding
+import com.twofasapp.resources.R
 
 class WidgetSettingsHeaderItem : AbstractBindingItem<ItemWidgetSettingsHeaderBinding>() {
 

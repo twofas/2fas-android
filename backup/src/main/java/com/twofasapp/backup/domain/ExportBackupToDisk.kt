@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.Uri
 import com.twofasapp.backup.EncryptBackup
 import com.twofasapp.backup.ui.export.ExportBackup
-import com.twofasapp.environment.AppConfig
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.prefs.usecase.ServicesOrderPreference
 import com.twofasapp.prefs.usecase.StoreGroups
 import com.twofasapp.services.domain.GetServicesUseCase
@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers
 
 class ExportBackupToDisk(
     private val context: Context,
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
     private val getServices: GetServicesUseCase,
     private val timeProvider: TimeProvider,
     private val servicesOrderPreference: ServicesOrderPreference,
@@ -36,8 +36,8 @@ class ExportBackupToDisk(
                             it.mapToRemote()
                                 .copy(order = com.twofasapp.prefs.model.RemoteService.Order(position = servicesOrder.ids.indexOf(it.id)))
                         },
-                    appVersionCode = appConfig.versionCode,
-                    appVersionName = appConfig.versionName,
+                    appVersionCode = appBuild.versionCode,
+                    appVersionName = appBuild.versionName,
                     groups = storeGroups.all().list.filter { group -> group.id != null }.map { group -> group.toRemote() },
                     account = null,
                 )
@@ -60,6 +60,7 @@ class ExportBackupToDisk(
                             Single.just(ExportBackup.Result.Success(jsonSerializer.serializePretty(result.encryptedRemoteBackup)))
                         }
                     }
+
                     is EncryptBackup.Result.Error -> Single.just(ExportBackup.Result.UnknownError)
                 }
             }

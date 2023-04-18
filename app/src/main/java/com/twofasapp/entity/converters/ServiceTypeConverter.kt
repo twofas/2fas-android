@@ -1,8 +1,7 @@
 package com.twofasapp.entity.converters
 
-import com.twofasapp.prefs.model.ServiceType
 import io.objectbox.converter.PropertyConverter
-import java.util.*
+import java.util.Locale
 
 class ServiceTypeConverter : PropertyConverter<com.twofasapp.prefs.model.ServiceType, String> {
     override fun convertToEntityProperty(databaseValue: String?): com.twofasapp.prefs.model.ServiceType {

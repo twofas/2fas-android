@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import com.twofasapp.extensions.dpToPx
 import com.twofasapp.databinding.ViewTurnOffBackupConfirmationBinding
+import com.twofasapp.extensions.dpToPx
 
 class TurnOffBackupConfirmation : LinearLayout {
     constructor(context: Context) : super(context)

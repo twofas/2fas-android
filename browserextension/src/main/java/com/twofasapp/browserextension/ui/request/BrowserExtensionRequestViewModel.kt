@@ -5,6 +5,7 @@ import com.twofasapp.base.BaseViewModel
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
 import com.twofasapp.browserextension.notification.DomainMatcher
+import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.services.domain.AssignServiceDomainCase
 import com.twofasapp.services.domain.GetServicesCase
 import com.twofasapp.services.domain.model.Service
@@ -19,6 +20,7 @@ internal class BrowserExtensionRequestViewModel(
     private val observePairedBrowsersCase: ObservePairedBrowsersCase,
     private val getServicesCase: GetServicesCase,
     private val assignServiceDomainCase: AssignServiceDomainCase,
+    private val browserExtRepository: BrowserExtRepository,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(BrowserExtensionRequestUiState())
@@ -46,9 +48,15 @@ internal class BrowserExtensionRequestViewModel(
         }
     }
 
-    fun assignDomain(service: Service, domain: String, onFinish: () -> Unit) {
+    fun assignDomain(
+        requestId: String,
+        service: Service,
+        domain: String,
+        onFinish: () -> Unit
+    ) {
         viewModelScope.launch(dispatchers.io()) {
             assignServiceDomainCase(service, domain)
+            browserExtRepository.deleteTokenRequest(requestId)
             onFinish.invoke()
         }
     }

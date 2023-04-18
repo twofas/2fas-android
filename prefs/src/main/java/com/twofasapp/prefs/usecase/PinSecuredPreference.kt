@@ -1,8 +1,8 @@
 package com.twofasapp.prefs.usecase
 
 import android.content.Context
-import com.twofasapp.storage.Preferences
 import com.twofasapp.prefs.internals.PreferenceString
+import com.twofasapp.storage.Preferences
 import de.adorsys.android.securestoragelibrary.SecurePreferences
 
 // Historically it was only saved in SecurePreferences, migrate at some point

@@ -1,10 +1,10 @@
 package com.twofasapp.widgets.configure
 
-import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.ScopedNavigator
-import com.twofasapp.prefs.model.LockMethodEntity
-import com.twofasapp.usecases.services.GetServices
 import com.twofasapp.prefs.model.CheckLockStatus
+import com.twofasapp.prefs.model.LockMethodEntity
+import com.twofasapp.prefs.model.ServiceDto
+import com.twofasapp.usecases.services.GetServices
 import com.twofasapp.usecases.widgets.GetWidgetSettings
 import com.twofasapp.usecases.widgets.UpdateWidget
 import com.twofasapp.widgets.broadcast.WidgetBroadcaster
@@ -91,7 +91,7 @@ class WidgetSettingsPresenter(
         services.map {
             WidgetSettingsService(
                 id = it.id,
-                name = it.name,
+                serviceDto = it,
                 isChecked = checkedServiceIds.contains(it.id),
                 switchAction = { entry, isChecked ->
                     if (isChecked) {

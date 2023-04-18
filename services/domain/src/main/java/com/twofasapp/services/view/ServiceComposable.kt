@@ -10,14 +10,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -26,13 +29,11 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.design.compose.serviceIconBitmap
-import com.twofasapp.design.theme.divider
 import com.twofasapp.design.theme.isNight
 import com.twofasapp.design.theme.parse
-import com.twofasapp.design.theme.textPrimary
-import com.twofasapp.design.theme.textSecondary
-import com.twofasapp.prefs.model.BackupSyncStatus
-import com.twofasapp.prefs.model.ServiceType
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.ktx.dpToSp
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.services.domain.model.Service
 
@@ -49,11 +50,20 @@ fun ServiceIcon(
                 modifier = modifier
                     .background(shape = CircleShape, color = service.labelBackgroundColor.toColor())
             ) {
+                Box(
+                    modifier = Modifier
+                        .width(45.dp)
+                        .height(28.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(TwTheme.color.background)
+                        .align(Alignment.Center),
+                )
+
                 Text(
                     text = service.labelText.orEmpty().uppercase(),
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.onSurface,
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Bold, letterSpacing = 0.5.sp, fontSize = fontSize),
+                    style = TwTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 22.dp), lineHeight = dpToSp(dp = 32.dp)),
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
@@ -89,8 +99,8 @@ fun ServiceCompact(
                 Text(
                     text = service.name,
                     modifier = Modifier.fillMaxWidth(),
-                    style = MaterialTheme.typography.body1.copy(
-                        color = MaterialTheme.colors.textPrimary,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = TwTheme.color.onSurfacePrimary,
                         fontSize = 18.sp,
                     ),
                     maxLines = 1,
@@ -101,7 +111,7 @@ fun ServiceCompact(
                     Text(
                         text = service.otp.account,
                         modifier = Modifier.fillMaxWidth(),
-                        style = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.textSecondary, fontSize = 14.sp),
+                        style = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfaceSecondary, fontSize = 14.sp),
                         maxLines = 1,
                     )
                 }
@@ -109,7 +119,7 @@ fun ServiceCompact(
         }
 
         if (showDivider) {
-            Divider(color = MaterialTheme.colors.divider)
+            Divider(color = TwTheme.color.divider)
         }
     }
 }

@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -22,9 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.twofasapp.design.theme.icon
-import com.twofasapp.design.theme.textPrimary
-import com.twofasapp.design.theme.textSecondary
+import com.twofasapp.designsystem.TwTheme
 
 enum class SubtitleGravity { BOTTOM, END }
 
@@ -41,7 +39,7 @@ fun SimpleEntry(
     iconEndTint: Color = Color.Unspecified,
     isEnabled: Boolean = true,
     iconEndClick: (() -> Unit)? = null,
-    titleColor: Color = MaterialTheme.colors.textPrimary,
+    titleColor: Color = TwTheme.color.onSurfacePrimary,
     modifier: Modifier = Modifier,
     click: (() -> Unit)? = null,
 ) {
@@ -72,9 +70,9 @@ fun SimpleEntry(
             )
         } else {
             Icon(
-                painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder),
+                painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder_old),
                 contentDescription = null,
-                tint = if (iconTint != Color.Unspecified) iconTint else MaterialTheme.colors.primary,
+                tint = if (iconTint != Color.Unspecified) iconTint else TwTheme.color.primary,
                 modifier = Modifier
                     .size(if (iconVisibleWhenNotSet) 24.dp else 0.dp)
                     .alpha(if (icon == null) 0f else alpha)
@@ -88,7 +86,7 @@ fun SimpleEntry(
 
         Text(
             text = title,
-            style = MaterialTheme.typography.body2.copy(fontSize = 17.sp, color = titleColor),
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 17.sp, color = titleColor),
             modifier = Modifier
                 .alpha(alpha)
                 .constrainAs(titleRef) {
@@ -107,7 +105,7 @@ fun SimpleEntry(
         if (subtitle.isNotEmpty() && subtitleGravity == SubtitleGravity.BOTTOM) {
             Text(
                 text = subtitle,
-                style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = MaterialTheme.colors.textSecondary),
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                 modifier = Modifier
                     .alpha(alpha)
                     .constrainAs(subtitleRef) {
@@ -123,7 +121,7 @@ fun SimpleEntry(
         if (subtitle.isNotEmpty() && subtitleGravity == SubtitleGravity.END) {
             Text(
                 text = subtitle,
-                style = MaterialTheme.typography.body2.copy(fontSize = 16.sp, color = MaterialTheme.colors.textSecondary),
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 16.sp, color = TwTheme.color.onSurfaceSecondary),
                 modifier = Modifier
                     .alpha(alpha)
                     .constrainAs(subtitleEndRef) {
@@ -152,9 +150,9 @@ fun SimpleEntry(
                 }
         ) {
             Icon(
-                painter = iconEnd ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder),
+                painter = iconEnd ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder_old),
                 contentDescription = null,
-                tint = if (iconEndTint != Color.Unspecified) iconEndTint else MaterialTheme.colors.icon,
+                tint = if (iconEndTint != Color.Unspecified) iconEndTint else TwTheme.color.iconTint,
             )
         }
 

@@ -1,7 +1,8 @@
 package com.twofasapp.backup.domain
 
-import com.twofasapp.base.work.WorkDispatcher
+import com.twofasapp.di.WorkDispatcher
 
 interface SyncBackupWorkDispatcher : WorkDispatcher {
-    fun dispatch(trigger: SyncBackupTrigger, password: String? = null)
+    fun tryDispatch(trigger: SyncBackupTrigger, password: String? = null)
+    suspend fun dispatch(trigger: SyncBackupTrigger, password: String? = null)
 }

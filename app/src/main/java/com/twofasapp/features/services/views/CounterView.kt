@@ -8,9 +8,9 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import com.twofasapp.databinding.ViewCounterBinding
 import com.twofasapp.extensions.getColorFromRes
 import com.twofasapp.resources.R
-import com.twofasapp.databinding.ViewCounterBinding
 
 class CounterView : FrameLayout {
 

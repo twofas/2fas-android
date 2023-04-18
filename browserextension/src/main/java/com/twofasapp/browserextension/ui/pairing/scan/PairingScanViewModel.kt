@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-internal class PairingScanViewModel(
+class PairingScanViewModel(
     private val scanQr: ScanQr,
 ) : BaseViewModel() {
 

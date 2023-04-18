@@ -63,7 +63,7 @@
             android:clickable="false"
             android:focusable="false"
             android:tint="#9B9B9B"
-            app:srcCompat="@drawable/ic_expanded" />
+            app:srcCompat="@drawable/ic_expanded_old" />
 
         <ImageButton
             android:id="@+id/edit"

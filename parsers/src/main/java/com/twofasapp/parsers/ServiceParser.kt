@@ -1,9 +1,10 @@
 package com.twofasapp.parsers
 
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.parsers.domain.SupportedService
-import com.twofasapp.prefs.model.BackupSyncStatus
 import com.twofasapp.prefs.model.OtpAuthLink
 import com.twofasapp.prefs.model.ServiceDto
+import com.twofasapp.prefs.model.Tint
 
 object ServiceParser {
 
@@ -53,6 +54,8 @@ object ServiceParser {
             }
         }
 
+        val iconCollectionId = supportedService?.iconCollection?.id ?: ServiceIcons.defaultCollectionId
+
         return ServiceDto(
             name = name.take(30),
             secret = link.secret,
@@ -69,10 +72,10 @@ object ServiceParser {
             updatedAt = 0,
             assignedDomains = emptyList(),
             serviceTypeId = supportedService?.id,
-            selectedImageType = ServiceDto.ImageType.IconCollection,
-            iconCollectionId = supportedService?.iconCollection?.id ?: ServiceIcons.defaultCollectionId,
-//            labelText = name.uppercase().take(2),
-//            labelBackgroundColor = Tint.LightBlue,
+            selectedImageType = if (iconCollectionId == ServiceIcons.defaultCollectionId) ServiceDto.ImageType.Label else ServiceDto.ImageType.IconCollection,
+            iconCollectionId = iconCollectionId,
+            labelText = if (iconCollectionId == ServiceIcons.defaultCollectionId) name.uppercase().take(2) else null,
+            labelBackgroundColor = if (iconCollectionId == ServiceIcons.defaultCollectionId) Tint.values().random() else null,
             source = ServiceDto.Source.Link,
         )
     }

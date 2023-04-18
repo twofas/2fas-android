@@ -10,15 +10,15 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":di"))
+    implementation(project(":core:di"))
+    implementation(project(":core:designsystem"))
     implementation(project(":design"))
     implementation(project(":extensions"))
     implementation(project(":permissions"))
     implementation(project(":prefs"))
     implementation(project(":persistence"))
-    implementation(project(":network"))
     implementation(project(":push"))
-    implementation(project(":environment"))
+    
     implementation(project(":resources"))
     implementation(project(":parsers"))
     implementation(project(":time:domain"))
@@ -30,4 +30,5 @@ dependencies {
     implementation(libs.bundles.rxJava)
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)
+    implementation(libs.apacheCommonsCodec)
 }

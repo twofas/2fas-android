@@ -9,15 +9,15 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.twofasapp.data.browserext.local.PairedBrowserDao
+import com.twofasapp.data.browserext.local.model.PairedBrowserEntity
+import com.twofasapp.data.notifications.local.NotificationsDao
+import com.twofasapp.data.notifications.local.model.NotificationEntity
+import com.twofasapp.data.services.local.ServiceDao
+import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.persistence.converter.Converters
-import com.twofasapp.persistence.dao.NotificationDao
-import com.twofasapp.persistence.dao.PairedBrowserDao
-import com.twofasapp.persistence.dao.ServiceDao
-import com.twofasapp.persistence.model.NotificationEntity
-import com.twofasapp.persistence.model.PairedBrowserEntity
-import com.twofasapp.persistence.model.ServiceEntity
 
 @Database(
     entities = [
@@ -35,12 +35,12 @@ import com.twofasapp.persistence.model.ServiceEntity
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
-        const val DB_VERSION = 10
+        const val DB_VERSION = 11
     }
 
     abstract fun serviceDao(): ServiceDao
     abstract fun pairedBrowserDao(): PairedBrowserDao
-    abstract fun notificationDao(): NotificationDao
+    abstract fun notificationDao(): NotificationsDao
 }
 
 val MIGRATION_1_2 = object : Migration(1, 2) {
@@ -203,6 +203,12 @@ val MIGRATION_9_10 = object : Migration(9, 10) {
             execSQL("DROP TABLE local_services")
             execSQL("ALTER TABLE local_services_backup RENAME to local_services")
         }
+    }
+}
+
+val MIGRATION_10_11 = object : Migration(10, 11) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE local_services ADD COLUMN hotpCounterTimestamp INTEGER")
     }
 }
 

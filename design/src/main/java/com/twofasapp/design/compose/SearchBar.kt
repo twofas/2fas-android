@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -22,8 +20,8 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.twofasapp.design.theme.textFieldHint
-import com.twofasapp.design.theme.textPrimary
+import com.twofasapp.designsystem.TwIcons
+import com.twofasapp.designsystem.TwTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -55,17 +53,17 @@ fun SearchBar(
                 onValueChanged(it)
             },
             placeholder = {
-                Text(text = hint, style = MaterialTheme.typography.body1.copy(fontSize = 18.sp))
+                Text(text = hint, style = MaterialTheme.typography.bodyMedium.copy(fontSize = 18.sp))
             },
-            textStyle = MaterialTheme.typography.body1.copy(fontSize = 18.sp),
+            textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 18.sp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                textColor = MaterialTheme.colors.textPrimary,
+                focusedTextColor = TwTheme.color.onSurfacePrimary,
                 disabledTextColor = Color.Black,
                 focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent,
-                focusedLabelColor = MaterialTheme.colors.textFieldHint,
-                unfocusedLabelColor = MaterialTheme.colors.textFieldHint,
-                errorLabelColor = MaterialTheme.colors.error,
+                focusedLabelColor = TwTheme.color.onSurfaceSecondary,
+                unfocusedLabelColor = TwTheme.color.onSurfaceSecondary,
+                errorLabelColor = TwTheme.color.error,
             ),
             trailingIcon = {
                 AnimatedVisibility(
@@ -87,8 +85,8 @@ fun SearchBar(
                         onClearClick()
                     }) {
                         Icon(
-                            imageVector = Icons.Filled.Close,
-                            tint = MaterialTheme.colors.textPrimary,
+                            painter = TwIcons.Close,
+                            tint = TwTheme.color.onSurfacePrimary,
                             contentDescription = null
                         )
                     }

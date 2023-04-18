@@ -14,10 +14,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -32,9 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.twofasapp.design.compose.dialogs.SimpleDialog
-import com.twofasapp.design.theme.dialog
-import com.twofasapp.design.theme.textPrimary
-import com.twofasapp.design.theme.textSecondary
+import com.twofasapp.designsystem.TwTheme
 
 @Composable
 internal fun BaseDialogSurface(content: @Composable () -> Unit) {
@@ -47,8 +45,8 @@ internal fun BaseDialogSurface(content: @Composable () -> Unit) {
             .sizeIn(maxHeight = maxHeight, maxWidth = maxWidth)
             .clipToBounds()
             .wrapContentHeight(),
-        shape = RoundedCornerShape(6.dp),
-        color = MaterialTheme.colors.dialog,
+        shape = RoundedCornerShape(24.dp),
+        color = TwTheme.color.surface,
     ) {
         content()
     }
@@ -60,7 +58,7 @@ internal fun BaseDialogIcon(painter: Painter?, tint: Color?, modifier: Modifier)
         Spacer(modifier = Modifier.height(24.dp))
         Icon(
             painter = painter,
-            tint = tint ?: MaterialTheme.colors.primary,
+            tint = tint ?: TwTheme.color.primary,
             contentDescription = null,
             modifier = Modifier
                 .size(80.dp)
@@ -79,7 +77,7 @@ internal fun BaseDialogTitle(text: String?, center: Boolean = false) {
     if (showTitle) {
         Text(
             text = text.orEmpty(),
-            style = MaterialTheme.typography.h6.copy(color = MaterialTheme.colors.textPrimary),
+            style = MaterialTheme.typography.titleLarge.copy(color = TwTheme.color.onSurfacePrimary),
             textAlign = if (center) TextAlign.Center else TextAlign.Start,
             modifier = titleModifier
         )
@@ -104,7 +102,7 @@ internal fun BaseDialogTextContent(text: String?, modifier: Modifier = Modifier)
     if (text.isNullOrBlank().not()) {
         Text(
             text = text.orEmpty(),
-            style = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.textSecondary, letterSpacing = 0.25.sp),
+            style = MaterialTheme.typography.bodyLarge.copy(color = TwTheme.color.onSurfaceSecondary, letterSpacing = 0.25.sp),
             modifier = modifier,
         )
     }
@@ -133,7 +131,7 @@ internal fun BaseDialogButtons(
                     onNegative.invoke()
                     onDismiss.invoke()
                 }, enabled = isNegativeEnabled) {
-                    Text(text = negativeText?.uppercase() ?: LocalContext.current.getString(com.twofasapp.resources.R.string.commons__cancel))
+                    Text(text = negativeText ?: LocalContext.current.getString(com.twofasapp.resources.R.string.commons__cancel), color = TwTheme.color.primary)
                 }
                 Spacer(modifier = Modifier.width(8.dp))
             }
@@ -142,7 +140,7 @@ internal fun BaseDialogButtons(
                     onPositive.invoke()
                     onDismiss.invoke()
                 }, enabled = isPositiveEnabled) {
-                    Text(text = positiveText?.uppercase() ?: LocalContext.current.getString(com.twofasapp.resources.R.string.commons__OK))
+                    Text(text = positiveText ?: LocalContext.current.getString(com.twofasapp.resources.R.string.commons__OK), color = TwTheme.color.primary)
                 }
             }
         }

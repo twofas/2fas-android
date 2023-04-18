@@ -1,8 +1,8 @@
 package com.twofasapp.prefs.usecase
 
-import com.twofasapp.storage.Preferences
 import com.twofasapp.prefs.internals.PreferenceModel
 import com.twofasapp.prefs.model.InvalidPinStatusEntity
+import com.twofasapp.storage.Preferences
 
 class InvalidPinStatusPreference(preferences: Preferences) : PreferenceModel<InvalidPinStatusEntity>(preferences) {
 

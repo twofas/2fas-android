@@ -3,24 +3,28 @@ package com.twofasapp.developer.ui
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import com.twofasapp.base.BaseComponentActivity
+import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.compose.HeaderEntry
 import com.twofasapp.design.compose.SimpleEntry
 import com.twofasapp.design.compose.SwitchEntry
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.design.theme.AppThemeLegacy
-import com.twofasapp.resources.R
+import com.twofasapp.design.theme.ThemeState
+import com.twofasapp.designsystem.MainAppTheme
+import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.extensions.copyToClipboard
 import com.twofasapp.extensions.restartApp
+import com.twofasapp.resources.R
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.Instant
 import java.time.LocalDateTime
@@ -30,21 +34,23 @@ import java.time.format.DateTimeFormatter
 class DeveloperActivity : BaseComponentActivity() {
 
     private val viewModel: DeveloperViewModel by viewModel()
+    private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
         super.onCreate(savedInstanceState)
         setContent {
-            AppThemeLegacy {
+            MainAppTheme {
                 Scaffold(
                     topBar = {
-                        Toolbar(title = "Developer Options", actions = {
+                        TwTopAppBar(titleText = "Developer Options", actions = {
                             TextButton(onClick = { restartApp() }) {
-                                Text(text = "Restart".uppercase())
+                                Text(text = "Restart")
                             }
-                        }) { onBackPressed() }
+                        })
                     }
-                ) {
-                    ItemsList()
+                ) { padding ->
+                    ItemsList(Modifier.padding(padding))
                 }
             }
         }
@@ -52,10 +58,10 @@ class DeveloperActivity : BaseComponentActivity() {
 
     @OptIn(ExperimentalFoundationApi::class)
     @Composable
-    private fun ItemsList() {
+    private fun ItemsList(modifier: Modifier) {
         val uiState = viewModel.uiState.collectAsState().value
 
-        LazyColumn {
+        LazyColumn(modifier) {
             item { HeaderEntry(text = "Feature toggles") }
             items(uiState.featureToggles.toList(), key = { it.first.name }) {
                 SwitchEntry(
@@ -72,7 +78,7 @@ class DeveloperActivity : BaseComponentActivity() {
                     SimpleEntry(
                         title = "FCM Token",
                         subtitle = uiState.fcmToken,
-                        icon = painterResource(id = R.drawable.ic_push),
+                        icon = painterResource(id = R.drawable.ic_push_old),
                         click = { copyToClipboard(uiState.fcmToken) },
                         modifier = Modifier.animateItemPlacement(),
                     )

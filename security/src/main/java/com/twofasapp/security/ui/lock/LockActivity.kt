@@ -5,9 +5,10 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.Surface
 import com.twofasapp.base.AuthTracker
-import com.twofasapp.design.theme.AppThemeLegacy
+import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.design.theme.ThemeState
+import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.resources.R
 import org.koin.android.ext.android.inject
@@ -15,8 +16,11 @@ import org.koin.android.ext.android.inject
 class LockActivity : AppCompatActivity() {
 
     private val authTracker: AuthTracker by inject()
+    private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
+
         overridePendingTransition(0, 0)
         if (resources.getBoolean(R.bool.isPortraitOnly)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -25,12 +29,10 @@ class LockActivity : AppCompatActivity() {
         makeWindowSecure()
 
         setContent {
-            AppThemeLegacy {
-                Surface {
-                    LockScreen {
-                        authTracker.onAuthenticated()
-                        finishWithSuccess()
-                    }
+            MainAppTheme {
+                LockScreen {
+                    authTracker.onAuthenticated()
+                    finishWithSuccess()
                 }
             }
         }

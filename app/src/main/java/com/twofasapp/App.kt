@@ -8,7 +8,6 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.twofasapp.about.AboutModule
 import com.twofasapp.backup.BackupModule
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
@@ -18,10 +17,7 @@ import com.twofasapp.browserextension.BrowserExtensionModule
 import com.twofasapp.core.log.FileLogger
 import com.twofasapp.developer.DeveloperModule
 import com.twofasapp.di.Modules
-import com.twofasapp.externalimport.ExternalImportModule
 import com.twofasapp.featuretoggle.FeatureToggleModule
-import com.twofasapp.network.NetworkModule
-import com.twofasapp.notifications.NotificationsModule
 import com.twofasapp.parsers.ParsersModule
 import com.twofasapp.permissions.PermissionsModule
 import com.twofasapp.persistence.PersistenceModule
@@ -36,7 +32,6 @@ import com.twofasapp.services.ServicesModule
 import com.twofasapp.services.backup.remoteBackupModule
 import com.twofasapp.services.backupcipher.backupCipherModule
 import com.twofasapp.services.googleauth.googleAuthModule
-import com.twofasapp.settings.SettingsModule
 import com.twofasapp.start.StartModule
 import com.twofasapp.time.TimeModule
 import com.twofasapp.usecases.services.PinOptionsUseCase
@@ -72,27 +67,21 @@ class App : MultiDexApplication() {
                 ).plus(
                     listOf(
                         StartModule(),
-                        NavigationModule(),
                         SerializationModule(),
                         TimeModule(),
                         ParsersModule(),
                         PermissionsModule(),
                         PreferencesPlainModule(),
                         PreferencesEncryptedModule(),
-                        NetworkModule(),
                         BrowserExtensionModule(),
                         PushModule(),
                         PersistenceModule(),
                         QrScannerModule(),
-                        AboutModule(),
-                        SettingsModule(),
                         ServicesModule(),
-                        NotificationsModule(),
                         BackupModule(),
                         FeatureToggleModule(),
                         DeveloperModule(),
                         SecurityModule(),
-                        ExternalImportModule(),
                     )
                         .map { it.provide() }
                         .plus(Modules.provide())
@@ -114,19 +103,23 @@ class App : MultiDexApplication() {
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver {
             @OnLifecycleEvent(Lifecycle.Event.ON_START)
-            fun onMoveToForeground() = authTracker.onMovingToForeground()
+            fun onMoveToForeground() {
+                Timber.d("App :: onMoveToForeground")
+                authTracker.onMovingToForeground()
+            }
 
             @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
             fun onMoveToBackground() {
+                Timber.d("App :: onMoveToBackground")
                 authTracker.onMovingToBackground()
-                syncBackupDispatcher.dispatch(SyncBackupTrigger.APP_BACKGROUND)
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_BACKGROUND)
                 pinOptionsUseCase.tmpDigits = null
             }
         })
 
         registerActivityLifecycleCallbacks(activityProvider)
 
-        syncBackupDispatcher.dispatch(SyncBackupTrigger.APP_START)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_START)
 
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
 

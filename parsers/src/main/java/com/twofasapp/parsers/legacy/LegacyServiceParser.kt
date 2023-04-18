@@ -1,6 +1,6 @@
 package com.twofasapp.parsers.legacy
 
-import com.twofasapp.prefs.model.BackupSyncStatus
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.OtpAuthLink
 import com.twofasapp.prefs.model.OtpAuthLink.Companion.ALGORITHM_PARAM
 import com.twofasapp.prefs.model.OtpAuthLink.Companion.COUNTER
