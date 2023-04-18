@@ -1,8 +1,8 @@
 package com.twofasapp.services.googleauth.usecases
 
 import android.content.Intent
-import com.twofasapp.services.googleauth.GoogleAuthService
 import com.twofasapp.base.usecase.UseCaseParameterized
+import com.twofasapp.services.googleauth.GoogleAuthService
 import io.reactivex.Scheduler
 
 class HandleSignInToGoogleResult(

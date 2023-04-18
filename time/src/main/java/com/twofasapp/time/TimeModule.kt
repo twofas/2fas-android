@@ -1,7 +1,12 @@
 package com.twofasapp.time
 
 import com.twofasapp.di.KoinModule
-import com.twofasapp.time.domain.*
+import com.twofasapp.time.domain.RecalculateTimeDeltaCase
+import com.twofasapp.time.domain.RecalculateTimeDeltaCaseImpl
+import com.twofasapp.time.domain.SyncTimeCase
+import com.twofasapp.time.domain.SyncTimeCaseImpl
+import com.twofasapp.time.domain.TimeProvider
+import com.twofasapp.time.domain.TimeProviderImpl
 import com.twofasapp.time.domain.formatter.DurationFormatter
 import com.twofasapp.time.domain.formatter.DurationFormatterImpl
 import com.twofasapp.time.domain.work.SyncTimeWorkDispatcher

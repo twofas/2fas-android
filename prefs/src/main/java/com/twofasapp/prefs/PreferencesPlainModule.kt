@@ -1,7 +1,6 @@
 package com.twofasapp.prefs
 
 import com.twofasapp.di.KoinModule
-import com.twofasapp.prefs.usecase.AppThemePreference
 import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
 import com.twofasapp.prefs.usecase.CacheValidityPreference
 import com.twofasapp.prefs.usecase.CurrentAppVersionPreference
@@ -12,7 +11,6 @@ import com.twofasapp.prefs.usecase.LastPushesPreference
 import com.twofasapp.prefs.usecase.LastScannedQrPreference
 import com.twofasapp.prefs.usecase.LockMethodPreference
 import com.twofasapp.prefs.usecase.MigratedToRoomPreference
-import com.twofasapp.prefs.usecase.MobileDevicePreference
 import com.twofasapp.prefs.usecase.PinCodePreference
 import com.twofasapp.prefs.usecase.RateAppStatusPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
@@ -41,12 +39,10 @@ class PreferencesPlainModule : KoinModule {
         single { LastScannedQrPreference(get<PlainPreferences>()) }
         single { RemoteBackupStatusPreference(get<PlainPreferences>()) }
         single { ServicesOrderPreference(get<PlainPreferences>()) }
-        single { AppThemePreference(get<PlainPreferences>()) }
         single { GroupsPreference(get<PlainPreferences>()) }
         single { WidgetSettingsPreference(get<PlainPreferences>()) }
         single { AppUpdateLastCheckVersionPreference(get<PlainPreferences>()) }
         single { CurrentAppVersionPreference(get<PlainPreferences>()) }
-        single { MobileDevicePreference(get<PlainPreferences>()) }
         single { LastPushesPreference(get<PlainPreferences>()) }
         single { CacheValidityPreference(get<PlainPreferences>(), get()) }
         single { SendCrashLogsPreference(get<PlainPreferences>()) }

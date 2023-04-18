@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import org.koin.core.component.KoinScopeComponent
-import org.koin.core.scope.Scope
 import com.twofasapp.resources.R
 import org.koin.android.scope.createScope
+import org.koin.core.component.KoinScopeComponent
+import org.koin.core.scope.Scope
 
 abstract class BaseBottomSheet<Binding : ViewBinding> : BottomSheetDialogFragment(), KoinScopeComponent {
 

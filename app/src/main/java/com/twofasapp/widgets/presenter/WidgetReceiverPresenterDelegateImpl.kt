@@ -1,13 +1,17 @@
 package com.twofasapp.widgets.presenter
 
 import android.appwidget.AppWidgetManager
-import android.content.*
-import com.twofasapp.widgets.R
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
 import com.twofasapp.extensions.doNothing
 import com.twofasapp.time.domain.TimeProvider
 import com.twofasapp.usecases.widgets.DeactivateAllWidgets
 import com.twofasapp.usecases.widgets.GetWidgetSettings
 import com.twofasapp.usecases.widgets.UpdateWidget
+import com.twofasapp.widgets.R
 import com.twofasapp.widgets.WidgetLogger
 import com.twofasapp.widgets.WidgetProvider
 import com.twofasapp.widgets.broadcast.WidgetBroadcaster

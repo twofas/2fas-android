@@ -1,11 +1,11 @@
 package com.twofasapp.browserextension.domain
 
-import com.twofasapp.browserextension.domain.repository.BrowserExtensionRepository
+import com.twofasapp.data.browserext.BrowserExtRepository
 import kotlinx.coroutines.flow.first
 
-internal class DeletePairedBrowserCase(
+class DeletePairedBrowserCase(
     private val observeMobileDeviceCase: ObserveMobileDeviceCase,
-    private val browserExtensionRepository: BrowserExtensionRepository,
+    private val browserExtensionRepository: BrowserExtRepository,
 ) {
     suspend operator fun invoke(extensionId: String) {
         return browserExtensionRepository.deletePairedBrowser(

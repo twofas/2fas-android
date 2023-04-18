@@ -6,10 +6,15 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import com.twofasapp.design.R
 import com.twofasapp.design.databinding.ViewRadioEntryBinding
-import com.twofasapp.extensions.*
-import kotlin.with
+import com.twofasapp.extensions.dpToPx
+import com.twofasapp.extensions.getDrawableFromAttr
+import com.twofasapp.extensions.getString
+import com.twofasapp.extensions.makeGoneIfEmpty
+import com.twofasapp.extensions.makeInvisible
+import com.twofasapp.extensions.makeVisible
+import com.twofasapp.extensions.setTint
+import com.twofasapp.extensions.setTintRes
 
 class RadioEntryView : ConstraintLayout {
 

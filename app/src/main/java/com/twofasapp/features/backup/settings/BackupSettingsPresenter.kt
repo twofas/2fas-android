@@ -1,9 +1,8 @@
 package com.twofasapp.features.backup.settings
 
 import com.mikepenz.fastadapter.IItem
-import com.twofasapp.resources.R
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.backup.domain.SyncBackupTrigger
+import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.design.settings.DividerItem
 import com.twofasapp.design.settings.HeaderEntry
 import com.twofasapp.design.settings.SimpleEntry
@@ -11,6 +10,7 @@ import com.twofasapp.extensions.doNothing
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import com.twofasapp.resources.R
 import com.twofasapp.services.workmanager.WipeGoogleDriveWorkDispatcher
 import com.twofasapp.time.domain.formatter.DurationFormatter
 import com.twofasapp.usecases.app.CheckConnectionStatus
@@ -92,7 +92,7 @@ internal class BackupSettingsPresenter(
             SimpleEntry(
                 titleRes = R.string.backup_settings_delete_title,
                 subtitleRes = R.string.backup_settings_delete_subtitle,
-                drawableRes = R.drawable.ic_backup_delete,
+                drawableRes = R.drawable.ic_backup_delete_old,
                 isEnabled = syncStatus != SyncStatus.Syncing,
                 clickAction = {
                     view.showWipeConfirmDialog {
@@ -155,7 +155,7 @@ internal class BackupSettingsPresenter(
 
     override fun onPasswordDialogSaved(password: String) {
         backupPassword = password
-        syncBackupDispatcher.dispatch(SyncBackupTrigger.SET_PASSWORD, backupPassword)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SET_PASSWORD, backupPassword)
         updateViewState()
     }
 
@@ -164,12 +164,12 @@ internal class BackupSettingsPresenter(
     }
 
     override fun onRemovePasswordEntered(password: String) {
-        syncBackupDispatcher.dispatch(SyncBackupTrigger.REMOVE_PASSWORD, password)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.REMOVE_PASSWORD, password)
         updateViewState()
     }
 
     override fun onWipePasswordEntered(password: String) {
-        syncBackupDispatcher.dispatch(SyncBackupTrigger.WIPE_DATA, password)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.WIPE_DATA, password)
         updateViewState()
     }
 

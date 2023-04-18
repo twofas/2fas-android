@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Thu, 30 Mar 2023 12:12:12 -0700
+ Exported at: Mon, 17 Apr 2023 08:59:14 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -95,7 +95,7 @@
     <!-- introduction__not_sure -->
     <string name="introduction__what_to_do">Not sure what to do?</string>
     <!-- introduction__ga_import_description -->
-    <string name="introduction__google_authenticator_import_process">Export your accounts from Google Authenticator to a QR code using the \"Transfer Accounts\" option. Then make a screenshot and use the \"Choose QR code\" button below. If you\'re importing codes from another device, use the \"Scan QR code\" button instead.</string>
+    <string name="introduction__google_authenticator_import_process">Export your accounts from Google Authenticator to a QR code using the \"Transfer Accounts\" option. Then using another device, take a picture of exported QR code, send it to your device (or make a screenshot if possible), and use the \"Choose QR code\" option below. If you\'re importing codes from another device, use the \"Scan QR code\" button instead.</string>
     <!-- introduction__choose_qr -->
     <string name="introduction__choose_qr_code">Choose QR code</string>
     <!-- introduction__scan_qr -->
@@ -254,7 +254,9 @@
     <string name="tokens__totp">TOTP</string>
     <string name="tokens__advanced_settings_footer_title">Changing advanced settings is not recommended. Do so only when your 2FA provider requires it and when you have clear instructions.</string>
     <string name="tokens__gallery_advice_title">Best practice</string>
+    <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">Service added successfully. We strongly recommend that you\u0020</string>
+    <!-- ADD A SPACE AFTER COMA -->
     <string name="tokens__gallery_advice_content_middle_bold">delete the QR screenshot from your gallery.</string>
     <string name="tokens__gallery_advice_content_last">\nIf someone takes over this QR code screenshot, they will be able to get your 2FA codes to this service.</string>
     <string name="tokens__request_icon_page_title">Request an icon</string>
@@ -732,6 +734,4 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Export your accounts from LastPass to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
     <string name="settings__about_crash_optout_title">Crash Reports</string>
-    <string name="settings__about_crash_optout_toggle_title">Opt-out of Crash Reports</string>
-    <string name="settings__about_crash_optout_description">Crash Reports help us improve the app when things go very wrong. Changes will be applied on the next app run.</string>
 </resources>

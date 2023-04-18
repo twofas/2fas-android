@@ -7,10 +7,10 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
+import com.twofasapp.resources.R
 import org.koin.android.ext.android.get
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.Qualifier
-import com.twofasapp.resources.R
 
 abstract class BaseComponentActivity : AppCompatActivity() {
 

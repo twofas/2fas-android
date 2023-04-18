@@ -4,12 +4,12 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.view.View
 import android.widget.RemoteViews
-import com.twofasapp.widgets.R
 import com.twofasapp.entity.ServiceModel
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.isNight
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.model.toColor
+import com.twofasapp.widgets.R
 import com.twofasapp.widgets.broadcast.WidgetBroadcaster
 
 class WidgetItemPresenterDelegateImpl(

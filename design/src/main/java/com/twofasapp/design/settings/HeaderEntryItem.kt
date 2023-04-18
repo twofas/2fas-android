@@ -3,8 +3,8 @@ package com.twofasapp.design.settings
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mikepenz.fastadapter.binding.ModelAbstractBindingItem
-import com.twofasapp.resources.R
 import com.twofasapp.design.databinding.ItemEntryHeaderBinding
+import com.twofasapp.resources.R
 
 class HeaderEntryItem(model: HeaderEntry) : ModelAbstractBindingItem<HeaderEntry, ItemEntryHeaderBinding>(model) {
 

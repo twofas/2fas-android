@@ -21,14 +21,14 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Share
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
@@ -42,18 +42,14 @@ import androidx.compose.ui.unit.dp
 import androidx.core.app.ShareCompat
 import com.twofasapp.core.analytics.AnalyticsEvent
 import com.twofasapp.core.analytics.AnalyticsService
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.design.theme.divider
-import com.twofasapp.design.theme.textPrimary
-import com.twofasapp.design.theme.textSecondary
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.extensions.openBrowserApp
-import com.twofasapp.navigation.ServiceRouter
 import com.twofasapp.resources.R
 import org.koin.androidx.compose.get
 
 @Composable
 internal fun RequestIconScreen(
-    router: ServiceRouter = get(),
     analyticsService: AnalyticsService = get(),
 ) {
     val activity = LocalContext.current as? Activity
@@ -61,7 +57,7 @@ internal fun RequestIconScreen(
         stringResource(id = R.string.tokens__request_icon_provider_message)
 
     Scaffold(
-        topBar = { Toolbar(title = stringResource(id = R.string.customization_request_icon)) { router.navigateBack() } }
+        topBar = { TwTopAppBar(titleText = stringResource(id = R.string.customization_request_icon)) }
     ) { padding ->
 
         Column(
@@ -73,7 +69,7 @@ internal fun RequestIconScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
             Image(
-                painter = painterResource(id = R.drawable.ic_message),
+                painter = painterResource(id = R.drawable.ic_message_old),
                 contentDescription = null,
                 modifier = Modifier
                     .height(64.dp)
@@ -82,7 +78,7 @@ internal fun RequestIconScreen(
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_social_title),
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -97,15 +93,15 @@ internal fun RequestIconScreen(
                 }) {
                 Text(
                     text = stringResource(id = R.string.tokens__request_icon_social_link),
-                    style = MaterialTheme.typography.body1,
-                    color = MaterialTheme.colors.primary,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = TwTheme.color.primary,
                     modifier = Modifier.align(CenterVertically)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Icon(
                     painter = painterResource(id = R.drawable.ic_open_new),
                     contentDescription = null,
-                    tint = MaterialTheme.colors.primary,
+                    tint = TwTheme.color.primary,
                     modifier = Modifier
                         .size(20.dp)
                         .align(CenterVertically)
@@ -113,7 +109,7 @@ internal fun RequestIconScreen(
             }
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_social_description),
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -130,11 +126,11 @@ internal fun RequestIconScreen(
                 )
                 Text(
                     text = stringResource(id = R.string.tokens__request_icon_middle),
-                    style = MaterialTheme.typography.body1,
-                    color = MaterialTheme.colors.textSecondary,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = TwTheme.color.onSurfaceSecondary,
                     modifier = Modifier
                         .align(Center)
-                        .background(color = MaterialTheme.colors.background)
+                        .background(color = TwTheme.color.background)
                         .padding(horizontal = 16.dp)
                 )
             }
@@ -151,7 +147,7 @@ internal fun RequestIconScreen(
             Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_title),
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -160,7 +156,7 @@ internal fun RequestIconScreen(
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_description),
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -173,13 +169,13 @@ internal fun RequestIconScreen(
                         .height(IntrinsicSize.Min)
                         .fillMaxWidth()
                         .padding(24.dp)
-                        .border(width = 1.dp, color = MaterialTheme.colors.divider, shape = RoundedCornerShape(12.dp))
+                        .border(width = 1.dp, color = TwTheme.color.divider, shape = RoundedCornerShape(12.dp))
                         .padding(horizontal = 4.dp)
                 ) {
 
                     Text(
                         text = shareText,
-                        style = MaterialTheme.typography.body2,
+                        style = MaterialTheme.typography.bodySmall,
                         modifier = Modifier
                             .weight(1f)
                             .padding(12.dp)
@@ -188,7 +184,7 @@ internal fun RequestIconScreen(
                         modifier = Modifier
                             .fillMaxHeight()
                             .width(1.dp),
-                        color = MaterialTheme.colors.divider
+                        color = TwTheme.color.divider
                     )
                     IconButton(modifier = Modifier.align(CenterVertically),
                         onClick = {
@@ -202,7 +198,7 @@ internal fun RequestIconScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Outlined.Share,
-                            tint = MaterialTheme.colors.primary,
+                            tint = TwTheme.color.primary,
                             contentDescription = null
                         )
                     }
@@ -211,8 +207,8 @@ internal fun RequestIconScreen(
 
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_footnote),
-                style = MaterialTheme.typography.body2,
-                color = MaterialTheme.colors.textPrimary,
+                style = MaterialTheme.typography.bodySmall,
+                color = TwTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()

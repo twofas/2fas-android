@@ -16,10 +16,10 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
@@ -32,45 +32,41 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.design.theme.textPrimary
-import com.twofasapp.navigation.ServiceRouter
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.prefs.model.Tint
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.ServiceViewModel
 import com.twofasapp.services.view.ServiceIcon
 import com.twofasapp.services.view.toColor
-import org.koin.androidx.compose.get
-import org.koin.androidx.compose.getViewModel
 
 @Composable
 internal fun ChangeLabelScreen(
-    viewModel: ServiceViewModel = getViewModel(),
-    router: ServiceRouter = get()
+    viewModel: ServiceViewModel,
 ) {
     val service = viewModel.uiState.collectAsState().value.service
     val labelText = remember { mutableStateOf(service.labelText.orEmpty()) }
     val labelTint = remember { mutableStateOf(service.labelBackgroundColor) }
+    val backDispatcher = LocalBackDispatcher
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = R.string.customization_edit_label), actions = {
+            TwTopAppBar(titleText = stringResource(id = R.string.customization_edit_label), actions = {
                 TextButton(
                     onClick = {
                         viewModel.updateLabel(labelText.value.uppercase(), labelTint.value ?: Tint.LightBlue)
-                        router.navigateBack()
+                        backDispatcher.onBackPressed()
                     },
                     enabled = labelText.value.isNotBlank() && labelText.value.isNotEmpty()
                 ) {
-                    Text(text = stringResource(id = R.string.commons__save).uppercase())
+                    Text(text = stringResource(id = R.string.commons__save))
                 }
             })
-
-            { router.navigateBack() }
         }
     ) { padding ->
 
-        Column {
+        Column(Modifier.padding(padding)) {
             Box(modifier = Modifier.padding(24.dp)) {
                 ServiceIcon(
                     service = service.copy(
@@ -125,7 +121,7 @@ internal fun ChangeLabelScreen(
                                     Tint.Yellow -> com.twofasapp.resources.R.string.color__yellow
                                 }
                             ),
-                            style = MaterialTheme.typography.caption.copy(color = MaterialTheme.colors.textPrimary),
+                            style = MaterialTheme.typography.bodySmall.copy(color = TwTheme.color.onSurfacePrimary),
                             modifier = Modifier
                                 .align(Alignment.CenterHorizontally)
                                 .wrapContentWidth()

@@ -10,9 +10,9 @@ object StartupGraph : NavGraph {
 }
 
 fun NavGraphBuilder.startupNavigation(
-    onFinish: () -> Unit
+    openHome: () -> Unit,
 ) {
     composable(route = StartupGraph.route) {
-        StartupRoute(onFinish)
+        StartupRoute(openHome)
     }
 }

@@ -1,9 +1,9 @@
 package com.twofasapp.prefs.usecase
 
-import com.twofasapp.storage.Preferences
 import com.twofasapp.prefs.internals.PreferenceModel
 import com.twofasapp.prefs.model.RemoteBackup
 import com.twofasapp.prefs.model.RemoteBackupStatus
+import com.twofasapp.storage.Preferences
 
 class RemoteBackupStatusPreference(preferences: Preferences) : PreferenceModel<RemoteBackupStatus>(preferences) {
 

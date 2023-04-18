@@ -3,8 +3,9 @@ package com.twofasapp.widgets.configure
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mikepenz.fastadapter.binding.ModelAbstractBindingItem
-import com.twofasapp.resources.R
 import com.twofasapp.databinding.ItemWidgetSettingsServiceBinding
+import com.twofasapp.extensions.makeGoneIfEmpty
+import com.twofasapp.resources.R
 
 class WidgetSettingsServiceItem(model: WidgetSettingsService) :
     ModelAbstractBindingItem<WidgetSettingsService, ItemWidgetSettingsServiceBinding>(model) {
@@ -17,7 +18,10 @@ class WidgetSettingsServiceItem(model: WidgetSettingsService) :
 
     override fun bindView(binding: ItemWidgetSettingsServiceBinding, payloads: List<Any>) {
         with(binding) {
-            name.text = model.name
+            name.text = model.serviceDto.name
+            info.text = model.serviceDto.otpAccount
+            info.makeGoneIfEmpty()
+            iconLayout.updateIcon(model.serviceDto)
             switchButton.isChecked = model.isChecked
             root.setOnClickListener { model.switchAction?.invoke(model, switchButton.isChecked.not()) }
         }

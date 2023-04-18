@@ -1,5 +1,6 @@
 package com.twofasapp.services.backup.usecases
 
+import com.twofasapp.backup.DecryptBackup
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.prefs.model.RemoteBackup
 import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference
@@ -8,7 +9,6 @@ import com.twofasapp.services.backup.models.GetRemoteBackupResult
 import com.twofasapp.services.backup.models.GetRemoteBackupResult.Failure
 import com.twofasapp.services.backup.models.GetRemoteBackupResult.Success
 import com.twofasapp.services.backup.models.RemoteBackupErrorType
-import com.twofasapp.backup.DecryptBackup
 import com.twofasapp.services.googledrive.GoogleDriveService
 import com.twofasapp.services.googledrive.models.GetGoogleDriveFileResult
 import com.twofasapp.services.googledrive.models.mapToRemoteBackupErrorType

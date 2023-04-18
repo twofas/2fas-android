@@ -1,7 +1,7 @@
 package com.twofasapp.services.domain
 
-import com.twofasapp.services.domain.model.Service
 import com.twofasapp.services.data.ServicesRepository
+import com.twofasapp.services.domain.model.Service
 import kotlinx.coroutines.flow.Flow
 
 internal class ObserveServiceCaseImpl(

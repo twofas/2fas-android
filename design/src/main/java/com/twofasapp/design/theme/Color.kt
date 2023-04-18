@@ -1,27 +1,19 @@
 package com.twofasapp.design.theme
 
-import androidx.compose.material.*
-import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.Colors
+import androidx.compose.material3.RadioButtonColors
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.twofasapp.designsystem.TwTheme
 
 fun Color.Companion.parse(hexString: String): Color =
     Color(color = android.graphics.Color.parseColor(hexString))
 
 @Composable
-fun switchColors(): SwitchColors {
-    return SwitchDefaults.colors(
-        checkedThumbColor = colors.primary,
-        checkedTrackColor = colors.primary,
-        uncheckedThumbColor = Color(0xFFECECEC),
-        uncheckedTrackColor = Color(0xFF585858),
-    )
-}
-
-@Composable
 fun radioColors(): RadioButtonColors {
     return RadioButtonDefaults.colors(
-        selectedColor = colors.primary,
+        selectedColor = TwTheme.color.primary,
         unselectedColor = Color(0xFF585858),
     )
 }

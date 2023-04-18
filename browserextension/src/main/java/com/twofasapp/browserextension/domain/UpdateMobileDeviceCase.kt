@@ -1,10 +1,10 @@
 package com.twofasapp.browserextension.domain
 
-import com.twofasapp.browserextension.domain.repository.BrowserExtensionRepository
+import com.twofasapp.data.browserext.BrowserExtRepository
 import kotlinx.coroutines.flow.first
 
-internal class UpdateMobileDeviceCase(
-    private val browserExtensionRepository: BrowserExtensionRepository
+class UpdateMobileDeviceCase(
+    private val browserExtensionRepository: BrowserExtRepository
 ) {
 
     data class Params(

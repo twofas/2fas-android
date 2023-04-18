@@ -1,5 +1,6 @@
 package com.twofasapp.services.domain
 
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.time.domain.TimeProvider
@@ -15,7 +16,7 @@ internal class EditServiceUseCaseImpl(
 
     override fun execute(params: ServiceDto, subscribeScheduler: Scheduler, observeScheduler: Scheduler): Completable {
         val newService = params.copy(
-            backupSyncStatus = com.twofasapp.prefs.model.BackupSyncStatus.NOT_SYNCED,
+            backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
             updatedAt = timeProvider.systemCurrentTime()
         )
 

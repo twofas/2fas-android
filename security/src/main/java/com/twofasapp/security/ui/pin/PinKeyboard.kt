@@ -8,9 +8,8 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,7 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.twofasapp.design.theme.textPrimary
+import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.resources.R
 
 internal enum class Keys {
@@ -92,7 +91,7 @@ internal fun PinKeyboard(
                     Icon(
                         painterResource(id = R.drawable.key_fingerprint),
                         null,
-                        tint = MaterialTheme.colors.textPrimary,
+                        tint = TwTheme.color.onSurfacePrimary,
                         modifier = Modifier
                             .align(Alignment.Center)
                             .alpha(alpha),
@@ -105,7 +104,7 @@ internal fun PinKeyboard(
                         modifier = Modifier
                             .align(Alignment.Center)
                             .alpha(alpha),
-                        color = MaterialTheme.colors.textPrimary,
+                        color = TwTheme.color.onSurfacePrimary,
                         fontWeight = FontWeight.Light
                     )
                 }

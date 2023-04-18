@@ -7,10 +7,8 @@ import com.twofasapp.base.dispatcher.AppDispatchers
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.core.cipher.CipherService
 import com.twofasapp.core.cipher.CipherServiceImpl
-import com.twofasapp.environment.AppConfig
 import com.twofasapp.permissions.CameraPermissionRequest
 import com.twofasapp.permissions.CameraPermissionRequestFlow
-import com.twofasapp.permissions.NotificationsPermissionRequestFlow
 import com.twofasapp.services.analytics.AnalyticsServiceLegacy
 import com.twofasapp.services.googledrive.GoogleDriveService
 import com.twofasapp.services.googledrive.GoogleDriveServiceImpl
@@ -31,8 +29,6 @@ val applicationModule = module {
 
     single<com.twofasapp.core.analytics.AnalyticsService> { AnalyticsServiceLegacy() }
 
-    single<AppConfig> { AppConfigImpl() }
-
     single<CipherService> { CipherServiceImpl() }
 
     single<com.twofasapp.backup.data.FilesProvider> { com.twofasapp.backup.data.FilesProviderImpl(androidContext()) }
@@ -43,7 +39,6 @@ val applicationModule = module {
 
     factory { CameraPermissionRequest(activityContext()) }
     factory { CameraPermissionRequestFlow(activityContext()) }
-    factory { NotificationsPermissionRequestFlow(activityContext()) }
 
     single<Dispatchers> { AppDispatchers() }
 

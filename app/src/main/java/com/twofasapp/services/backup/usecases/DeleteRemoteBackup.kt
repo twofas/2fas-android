@@ -1,10 +1,10 @@
 package com.twofasapp.services.backup.usecases
 
+import com.twofasapp.base.usecase.UseCase
 import com.twofasapp.services.backup.models.DeleteRemoteBackupResult
 import com.twofasapp.services.googledrive.GoogleDriveService
 import com.twofasapp.services.googledrive.models.DeleteGoogleDriveFileResult
 import com.twofasapp.services.googledrive.models.mapToRemoteBackupErrorType
-import com.twofasapp.base.usecase.UseCase
 import io.reactivex.Scheduler
 import io.reactivex.Single
 

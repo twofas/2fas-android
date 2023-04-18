@@ -1,10 +1,10 @@
 package com.twofasapp.browserextension.domain
 
-import com.twofasapp.browserextension.domain.repository.BrowserExtensionRepository
+import com.twofasapp.data.browserext.BrowserExtRepository
 import kotlinx.coroutines.flow.first
 
-internal class PairBrowserCase(
-    private val browserExtensionRepository: BrowserExtensionRepository,
+class PairBrowserCase(
+    private val browserExtensionRepository: BrowserExtRepository,
     private val observeMobileDeviceCase: ObserveMobileDeviceCase,
 ) {
 

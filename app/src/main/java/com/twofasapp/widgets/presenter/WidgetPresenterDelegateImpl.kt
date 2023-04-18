@@ -7,9 +7,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
-import com.twofasapp.widgets.R
-import com.twofasapp.start.ui.start.StartActivity
+import com.twofasapp.ui.main.MainActivity
 import com.twofasapp.usecases.widgets.DeleteWidget
+import com.twofasapp.widgets.R
 import com.twofasapp.widgets.WidgetProvider
 import com.twofasapp.widgets.adapter.WidgetViewsService
 import com.twofasapp.widgets.broadcast.WidgetBroadcaster
@@ -44,7 +44,7 @@ class WidgetPresenterDelegateImpl(
     }
 
     private fun RemoteViews.setLogoButton(appWidgetId: Int) {
-        val intent = Intent(context, StartActivity::class.java)
+        val intent = Intent(context, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
 
         setOnClickPendingIntent(R.id.widget_logo, pendingIntent)

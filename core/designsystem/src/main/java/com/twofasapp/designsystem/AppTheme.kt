@@ -9,16 +9,29 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.twofasapp.designsystem.internal.LocalThemeColors
+import com.twofasapp.designsystem.internal.ThemeColors
+import com.twofasapp.designsystem.internal.ThemeColorsDark
+import com.twofasapp.designsystem.internal.ThemeColorsLight
+
+val LocalAppTheme = staticCompositionLocalOf { AppTheme.Auto }
+
+enum class AppTheme {
+    Auto, Light, Dark,
+}
 
 @Composable
 fun MainAppTheme(
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current
+    val systemUiController = rememberSystemUiController()
 
     if (view.isInEditMode.not()) {
         SideEffect {
@@ -31,37 +44,47 @@ fun MainAppTheme(
         }
     }
 
-    val colors: TwsColors = when (isSystemInDarkTheme()) {
-        true -> TwsColorsDark()
-        false -> TwsColorsLight()
+    val isInDarkTheme = when (LocalAppTheme.current) {
+        AppTheme.Auto -> isSystemInDarkTheme()
+        AppTheme.Light -> false
+        AppTheme.Dark -> true
     }
 
-    val colorScheme: ColorScheme = when (isSystemInDarkTheme()) {
+    val colors: ThemeColors = when (isInDarkTheme) {
+        true -> ThemeColorsDark()
+        false -> ThemeColorsLight()
+    }
+
+    val colorScheme: ColorScheme = when (isInDarkTheme) {
         true -> darkColorScheme(
             primary = colors.primary,
-            onPrimary = colors.onSurface,
+            onPrimary = colors.onSurfacePrimary,
             background = colors.background,
-            onBackground = colors.onSurface,
+            onBackground = colors.onSurfacePrimary,
             surface = colors.surface,
-            onSurface = colors.onSurface,
+            onSurface = colors.onSurfacePrimary,
             surfaceVariant = colors.surface,
-            onSurfaceVariant = colors.onSurface,
+            onSurfaceVariant = colors.onSurfacePrimary,
         )
 
-        false -> lightColorScheme(
+        else -> lightColorScheme(
             primary = colors.primary,
-            onPrimary = colors.onSurface,
+            onPrimary = colors.onSurfacePrimary,
             background = colors.background,
-            onBackground = colors.onSurface,
+            onBackground = colors.onSurfacePrimary,
             surface = colors.surface,
-            onSurface = colors.onSurface,
+            onSurface = colors.onSurfacePrimary,
             surfaceVariant = colors.surface,
-            onSurfaceVariant = colors.onSurface,
+            onSurfaceVariant = colors.onSurfacePrimary,
         )
+    }
+
+    SideEffect {
+        systemUiController.setSystemBarsColor(color = colors.background)
     }
 
     CompositionLocalProvider(
-        LocalTwsColors provides colors,
+        LocalThemeColors provides colors,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,

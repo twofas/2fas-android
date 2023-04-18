@@ -1,18 +1,15 @@
 package com.twofasapp.services.ui
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.compose.material.Surface
 import androidx.compose.runtime.compositionLocalOf
 import androidx.lifecycle.ViewModelStoreOwner
+import androidx.navigation.compose.rememberNavController
 import com.twofasapp.base.BaseComponentActivity
 import com.twofasapp.core.log.FileLogger
-import com.twofasapp.design.theme.AppThemeLegacy
-import com.twofasapp.navigation.ServiceRouter
-import com.twofasapp.navigation.base.RouterNavHost
-import org.koin.androidx.compose.get
+import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.design.theme.ThemeState
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ServiceActivity : BaseComponentActivity() {
@@ -27,8 +24,11 @@ class ServiceActivity : BaseComponentActivity() {
     }
 
     private val viewModel: ServiceViewModel by viewModel()
+    private val externalNavigator: ServiceExternalNavigator by inject()
+    private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
         super.onCreate(savedInstanceState)
         val viewModelStoreOwner = compositionLocalOf<ViewModelStoreOwner> { this }
 
@@ -36,22 +36,12 @@ class ServiceActivity : BaseComponentActivity() {
 
         FileLogger.logScreen(if (serviceId == 0L) "AddServiceManually" else "EditService")
 
-        viewModel.init(serviceId)
+//        viewModel.init(serviceId)
 
         setContent {
-            AppThemeLegacy {
-                Surface {
-                    RouterNavHost(router = get<ServiceRouter>(), viewModelStoreOwner.current)
-                }
-            }
-        }
-    }
+            val navController = rememberNavController()
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_KEY_AUTH_SERVICE && resultCode == Activity.RESULT_OK) {
-            viewModel.secretAuthenticated()
-            return
+
         }
     }
 }

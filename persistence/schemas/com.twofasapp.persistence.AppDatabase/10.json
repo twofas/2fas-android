@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 10,
-    "identityHash": "4ac53348b74186d1bf32e34cd8bc3859",
+    "identityHash": "56758751cbb1b9b7dace8948dbdc9666",
     "entities": [
       {
         "tableName": "local_services",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `secret` TEXT NOT NULL, `serviceTypeId` TEXT, `iconCollectionId` TEXT, `source` TEXT, `otpLink` TEXT, `otpLabel` TEXT, `otpAccount` TEXT, `otpIssuer` TEXT, `otpDigits` INTEGER, `otpPeriod` INTEGER, `otpAlgorithm` TEXT, `backupSyncStatus` TEXT NOT NULL, `updatedAt` INTEGER NOT NULL, `badgeColor` TEXT, `selectedImageType` TEXT, `labelText` TEXT, `labelBackgroundColor` TEXT, `groupId` TEXT, `isDeleted` INTEGER, `authType` TEXT, `hotpCounter` INTEGER, `assignedDomains` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `secret` TEXT NOT NULL, `serviceTypeId` TEXT, `iconCollectionId` TEXT, `source` TEXT, `otpLink` TEXT, `otpLabel` TEXT, `otpAccount` TEXT, `otpIssuer` TEXT, `otpDigits` INTEGER, `otpPeriod` INTEGER, `otpAlgorithm` TEXT, `backupSyncStatus` TEXT NOT NULL, `updatedAt` INTEGER NOT NULL, `badgeColor` TEXT, `selectedImageType` TEXT, `labelText` TEXT, `labelBackgroundColor` TEXT, `groupId` TEXT, `isDeleted` INTEGER, `authType` TEXT, `hotpCounter` INTEGER, `hotpCounterTimestamp` INTEGER, `assignedDomains` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -147,6 +147,12 @@
             "notNull": false
           },
           {
+            "fieldPath": "hotpCounterTimestamp",
+            "columnName": "hotpCounterTimestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
             "fieldPath": "assignedDomains",
             "columnName": "assignedDomains",
             "affinity": "TEXT",
@@ -154,10 +160,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -192,10 +198,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -254,10 +260,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -266,7 +272,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4ac53348b74186d1bf32e34cd8bc3859')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '56758751cbb1b9b7dace8948dbdc9666')"
     ]
   }
 }

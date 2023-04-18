@@ -8,11 +8,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":base"))
     implementation(project(":prefs"))
-    implementation(project(":environment"))
+    
     implementation(project(":time:domain"))
+    implementation(project(":core:common"))
 
     implementation(libs.kotlinCoroutines)
     implementation(libs.timber)

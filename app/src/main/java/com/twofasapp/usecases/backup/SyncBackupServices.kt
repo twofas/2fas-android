@@ -1,17 +1,16 @@
 package com.twofasapp.usecases.backup
 
 import android.annotation.SuppressLint
-import com.twofasapp.BuildConfig
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.base.usecase.UseCaseParameterized
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.core.analytics.AnalyticsEvent
 import com.twofasapp.core.analytics.AnalyticsParam
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.entity.SyncBackupResult
-import com.twofasapp.environment.AppConfig
 import com.twofasapp.extensions.doNothing
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.prefs.model.BackupSyncStatus
 import com.twofasapp.prefs.model.Group
 import com.twofasapp.prefs.model.Groups
 import com.twofasapp.prefs.model.RemoteBackup
@@ -53,7 +52,7 @@ class SyncBackupServices(
     private val analyticsService: com.twofasapp.core.analytics.AnalyticsService,
     private val storeRecentlyDeleted: StoreRecentlyDeleted,
     private val observeSyncStatus: ObserveSyncStatus,
-    private val appConfig: AppConfig,
+    private val appBuild: AppBuild,
 ) : UseCaseParameterized<SyncBackupServices.Params, Single<SyncBackupResult>> {
 
     data class Params(
@@ -192,7 +191,7 @@ class SyncBackupServices(
         val localSchemaVersion = backupStatus.schemaVersion
         val remoteSchemaVersion = remoteStatus.schemaVersion
 
-        val localAppVersionCode = appConfig.versionCode
+        val localAppVersionCode = appBuild.versionCode
         val remoteAppVersionCode = remoteStatus.appVersionCode
 
         // Sync matching groups

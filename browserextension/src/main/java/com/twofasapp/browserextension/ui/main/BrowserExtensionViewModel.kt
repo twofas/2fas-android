@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-internal class BrowserExtensionViewModel(
+class BrowserExtensionViewModel(
     private val dispatchers: Dispatchers,
     private val observeMobileDeviceCase: ObserveMobileDeviceCase,
     private val observePairedBrowsersCase: ObservePairedBrowsersCase,

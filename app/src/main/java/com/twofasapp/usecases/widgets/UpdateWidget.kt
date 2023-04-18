@@ -1,7 +1,5 @@
 package com.twofasapp.usecases.widgets
 
-import com.twofasapp.prefs.model.Widget
-import com.twofasapp.prefs.usecase.WidgetSettingsPreference
 import com.twofasapp.base.usecase.UseCaseParameterized
 import io.reactivex.Scheduler
 

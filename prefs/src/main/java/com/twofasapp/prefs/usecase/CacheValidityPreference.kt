@@ -1,9 +1,9 @@
 package com.twofasapp.prefs.usecase
 
-import com.twofasapp.storage.Preferences
 import com.twofasapp.prefs.internals.PreferenceModel
 import com.twofasapp.prefs.model.CacheEntry
 import com.twofasapp.prefs.model.CacheValidity
+import com.twofasapp.storage.Preferences
 import com.twofasapp.time.domain.TimeProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

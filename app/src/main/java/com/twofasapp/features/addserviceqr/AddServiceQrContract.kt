@@ -1,7 +1,6 @@
 package com.twofasapp.features.addserviceqr
 
 import android.net.Uri
-import com.twofasapp.base.BasePresenter
 import com.twofasapp.design.dialogs.CancelAction
 import com.twofasapp.design.dialogs.ConfirmAction
 import io.reactivex.Flowable

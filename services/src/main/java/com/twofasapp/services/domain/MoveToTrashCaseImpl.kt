@@ -1,8 +1,8 @@
 package com.twofasapp.services.domain
 
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.backup.domain.SyncBackupTrigger
-import com.twofasapp.prefs.model.BackupSyncStatus
+import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.RemoteBackupStatus
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import com.twofasapp.services.data.ServicesRepository
@@ -40,7 +40,7 @@ internal class MoveToTrashCaseImpl(
         // Sync backup if active and add service to recently deleted
         if (triggerSync && remoteBackupStatusPreference.get().state == RemoteBackupStatus.State.ACTIVE) {
             repository.addToRecentlyDeleted(service.secret)
-            syncBackupDispatcher.dispatch(SyncBackupTrigger.SERVICES_CHANGED)
+            syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
         }
     }
 }

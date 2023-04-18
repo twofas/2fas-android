@@ -5,26 +5,23 @@ import com.twofasapp.base.BaseViewModel
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.browserextension.domain.DeletePairedBrowserCase
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
-import com.twofasapp.navigation.SettingsDirections
-import com.twofasapp.navigation.SettingsRouter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-internal class BrowserDetailsViewModel(
+class BrowserDetailsViewModel(
     private val dispatchers: Dispatchers,
     private val observePairedBrowsersCase: ObservePairedBrowsersCase,
     private val deletePairedBrowserCase: DeletePairedBrowserCase,
-    private val settingsRouter: SettingsRouter,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(BrowserDetailsUiState())
     val uiState = _uiState.asStateFlow()
 
     fun init(extensionId: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatchers.io()) {
             observePairedBrowsersCase().flowOn(dispatchers.io()).collect { list ->
                 val browser = list.find { it.id == extensionId }
 
@@ -33,7 +30,7 @@ internal class BrowserDetailsViewModel(
                         it.copy(
                             extensionId = extensionId,
                             browserName = browser.name,
-                            browserPairedAt = browser.formatPairedAt(),
+                            browserPairedAt = browser.pairedAt,
                         )
                     }
                 }
@@ -54,7 +51,9 @@ internal class BrowserDetailsViewModel(
         viewModelScope.launch(dispatchers.io()) {
             runSafely(catch = { postError() }) {
                 deletePairedBrowserCase(uiState.value.extensionId)
-                settingsRouter.navigate(SettingsDirections.GoBack)
+                _uiState.update {
+                    it.postEvent(BrowserDetailsUiState.Event.Finish)
+                }
             }
         }
     }

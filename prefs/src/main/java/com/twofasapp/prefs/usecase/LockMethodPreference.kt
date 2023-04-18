@@ -1,8 +1,8 @@
 package com.twofasapp.prefs.usecase
 
-import com.twofasapp.storage.Preferences
 import com.twofasapp.prefs.internals.PreferenceModel
 import com.twofasapp.prefs.model.LockMethodEntity
+import com.twofasapp.storage.Preferences
 
 class LockMethodPreference(preferences: Preferences) : PreferenceModel<LockMethodEntity>(preferences) {
 

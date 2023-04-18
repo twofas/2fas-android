@@ -3,9 +3,9 @@ package com.twofasapp.security.ui.setuppin
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -17,23 +17,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.design.compose.dialogs.ListDialog
-import com.twofasapp.navigation.SecurityRouter
+import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.ListRadioDialog
+import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.model.PinDigits
 import com.twofasapp.security.ui.pin.PinScreen
 import com.twofasapp.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.security.ui.pin.vibrateInvalidPin
-import com.twofasapp.security.ui.security.SecurityViewModel
-import org.koin.androidx.compose.get
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun SetupPinScreen(
-    viewModel: SecurityViewModel = getViewModel(),
-    setupViewModel: SetupPinViewModel = get(),
-    router: SecurityRouter = get(),
+    setupViewModel: SetupPinViewModel = koinViewModel(),
 ) {
     val uiState = setupViewModel.uiState.collectAsState().value
     val currentPinState = rememberCurrentPinState()
@@ -43,7 +39,7 @@ internal fun SetupPinScreen(
     uiState.getMostRecentEvent()?.let {
         when (it) {
             SetupPinUiState.Event.ClearCurrentPin -> currentPinState.reset()
-            SetupPinUiState.Event.Finish -> router.navigateBack()
+            SetupPinUiState.Event.Finish -> LocalBackDispatcher.onBackPressed()
             SetupPinUiState.Event.NotifyInvalidPin -> vibrateInvalidPin(LocalContext.current)
         }
 
@@ -52,7 +48,7 @@ internal fun SetupPinScreen(
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = R.string.security__create_pin)) { router.navigateBack() }
+            TwTopAppBar(titleText = stringResource(id = R.string.security__create_pin))
         }
     ) { padding ->
         Box(
@@ -77,17 +73,17 @@ internal fun SetupPinScreen(
                         .align(Alignment.BottomCenter)
                         .padding(16.dp)
                 ) {
-                    Text(text = stringResource(id = R.string.settings__select_pin_length).uppercase())
+                    Text(text = stringResource(id = R.string.settings__select_pin_length))
                 }
             }
         }
 
         if (showPinOptionsDialog) {
-            ListDialog(
-                items = PinDigits.values().map { stringResource(id = it.label) },
-                selected = stringResource(id = uiState.digits.label),
-                onDismiss = { showPinOptionsDialog = false },
-                onSelected = { index, _ ->
+            ListRadioDialog(
+                options = PinDigits.values().map { stringResource(id = it.label) },
+                selectedOption = stringResource(id = uiState.digits.label),
+                onDismissRequest = { showPinOptionsDialog = false },
+                onOptionSelected = { index, _ ->
                     currentPinState.reset()
                     setupViewModel.pinDigitsChanged(PinDigits.values()[index])
                 }

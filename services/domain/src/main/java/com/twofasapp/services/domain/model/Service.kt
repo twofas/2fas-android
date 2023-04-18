@@ -1,7 +1,7 @@
 package com.twofasapp.services.domain.model
 
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.prefs.model.BackupSyncStatus
 import com.twofasapp.prefs.model.Tint
 
 data class Service(
@@ -40,6 +40,9 @@ data class Service(
             iconCollectionId = ServiceIcons.defaultCollectionId,
             serviceTypeId = null,
             source = Source.Manual,
+            selectedImageType = ImageType.Label,
+            labelText = "",
+            labelBackgroundColor = Tint.values().random(),
         )
     }
 

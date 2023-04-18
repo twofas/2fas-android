@@ -1,8 +1,8 @@
 package com.twofasapp.prefs.usecase
 
-import com.twofasapp.storage.Preferences
 import com.twofasapp.prefs.internals.PreferenceModel
 import com.twofasapp.prefs.model.LastPushesEntity
+import com.twofasapp.storage.Preferences
 
 class LastPushesPreference(preferences: Preferences) : PreferenceModel<LastPushesEntity>(preferences) {
     override val key: String = "lastPushes"

@@ -3,10 +3,10 @@ package com.twofasapp.security.ui.security
 import android.app.Activity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -24,24 +24,22 @@ import com.twofasapp.design.compose.HeaderEntry
 import com.twofasapp.design.compose.SimpleEntry
 import com.twofasapp.design.compose.SubtitleGravity
 import com.twofasapp.design.compose.SwitchEntry
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.design.compose.dialogs.ListDialog
-import com.twofasapp.design.theme.divider
-import com.twofasapp.design.theme.textSecondary
-import com.twofasapp.navigation.SecurityDirections
-import com.twofasapp.navigation.SecurityRouter
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.domain.model.PinTimeout
 import com.twofasapp.security.domain.model.PinTrials
 import com.twofasapp.security.ui.biometric.BiometricDialog
-import org.koin.androidx.compose.get
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun SecurityScreen(
-    viewModel: SecurityViewModel = getViewModel(),
-    router: SecurityRouter = get(),
+    viewModel: SecurityViewModel = koinViewModel(),
+    openSetupPin: () -> Unit,
+    openDisablePin: () -> Unit,
+    openChangePin: () -> Unit,
 ) {
     val uiState = viewModel.uiState.collectAsState().value
     val activity = (LocalContext.current as? Activity)
@@ -52,7 +50,7 @@ internal fun SecurityScreen(
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = R.string.settings__security)) { activity?.onBackPressed() }
+            TwTopAppBar(titleText = stringResource(id = R.string.settings__security))
         }
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
@@ -62,17 +60,17 @@ internal fun SecurityScreen(
                         title = stringResource(id = R.string.settings__pin_code),
                         icon = painterResource(id = R.drawable.ic_pin_code),
                         isChecked = false,
-                        switch = { router.navigate(SecurityDirections.SetupPin) }
+                        switch = { openSetupPin() }
                     )
                 }
 
-                item { Divider(color = MaterialTheme.colors.divider) }
+                item { Divider(color = TwTheme.color.divider) }
                 item { HeaderEntry(text = stringResource(id = R.string.settings__biometrics)) }
 
                 item {
                     SwitchEntry(
                         title = stringResource(id = R.string.settings__option_fingerprint),
-                        icon = painterResource(id = R.drawable.ic_fingerprint),
+                        icon = painterResource(id = R.drawable.ic_fingerprint_old),
                         isChecked = false,
                         isEnabled = false,
                         switch = { isChecked -> }
@@ -83,7 +81,7 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__option_fingerprint_description),
                         modifier = Modifier.padding(start = 24.dp, end = 16.dp, top = 8.dp),
-                        style = MaterialTheme.typography.body2.copy(color = MaterialTheme.colors.textSecondary)
+                        style = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfaceSecondary)
                     )
                 }
 
@@ -96,25 +94,25 @@ internal fun SecurityScreen(
                         title = stringResource(id = R.string.settings__pin_code),
                         icon = painterResource(id = R.drawable.ic_pin_code),
                         isChecked = true,
-                        switch = { router.navigate(SecurityDirections.DisablePin) }
+                        switch = { openDisablePin() }
                     )
                 }
 
                 item {
                     SimpleEntry(
                         title = stringResource(id = R.string.security__change_pin),
-                        icon = painterResource(id = R.drawable.ic_change_pin),
-                        click = { router.navigate(SecurityDirections.ChangePin) }
+                        icon = painterResource(id = R.drawable.ic_change_pin_old),
+                        click = { openChangePin() }
                     )
                 }
 
-                item { Divider(color = MaterialTheme.colors.divider) }
+                item { Divider(color = TwTheme.color.divider) }
                 item { HeaderEntry(text = stringResource(id = R.string.settings__app_blocking)) }
 
                 item {
                     SimpleEntry(
                         title = stringResource(id = R.string.settings__limit_of_trials),
-                        icon = painterResource(id = R.drawable.ic_limit_trials),
+                        icon = painterResource(id = R.drawable.ic_limit_trials_old),
                         subtitleGravity = SubtitleGravity.END,
                         subtitle = if (uiState.pinTrials == PinTrials.NoLimit) {
                             stringResource(id = R.string.settings__no_limit)
@@ -129,14 +127,14 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__how_many_attempts_footer),
                         modifier = Modifier.padding(start = 72.dp, end = 16.dp),
-                        style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = MaterialTheme.colors.textSecondary),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                     )
                 }
 
                 item {
                     SimpleEntry(
                         title = stringResource(id = R.string.settings__block_for),
-                        icon = painterResource(id = R.drawable.ic_block_for),
+                        icon = painterResource(id = R.drawable.ic_block_for_old),
                         subtitleGravity = SubtitleGravity.END,
                         subtitle = stringResource(id = uiState.pinTimeout.label),
                         isEnabled = uiState.pinTrials != PinTrials.NoLimit,
@@ -148,17 +146,17 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__block_for_footer),
                         modifier = Modifier.padding(start = 72.dp, end = 16.dp),
-                        style = MaterialTheme.typography.body2.copy(fontSize = 14.sp, color = MaterialTheme.colors.textSecondary),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
                     )
                 }
 
-                item { Divider(color = MaterialTheme.colors.divider) }
+                item { Divider(color = TwTheme.color.divider) }
                 item { HeaderEntry(text = stringResource(id = R.string.settings__biometrics)) }
 
                 item {
                     SwitchEntry(
                         title = stringResource(id = R.string.settings__option_fingerprint),
-                        icon = painterResource(id = R.drawable.ic_fingerprint),
+                        icon = painterResource(id = R.drawable.ic_fingerprint_old),
                         isChecked = uiState.lockMethod == LockMethod.Biometrics,
                         switch = { isChecked ->
                             if (isChecked) {
@@ -170,31 +168,31 @@ internal fun SecurityScreen(
                     )
                 }
 
-                item { Divider(color = MaterialTheme.colors.divider) }
+                item { Divider(color = TwTheme.color.divider) }
             }
         }
 
         if (showTrailsDialog) {
-            ListDialog(
-                items = PinTrials.values().map {
+            ListRadioDialog(
+                options = PinTrials.values().map {
                     if (it == PinTrials.NoLimit) {
                         stringResource(id = R.string.settings__no_limit)
                     } else {
                         it.label
                     }
                 },
-                selected = if (uiState.pinTrials == PinTrials.NoLimit) stringResource(id = R.string.settings__no_limit) else uiState.pinTrials.label,
-                onDismiss = { showTrailsDialog = false },
-                onSelected = { index, _ -> viewModel.updatePinTrails(PinTrials.values()[index]) }
+                selectedOption = if (uiState.pinTrials == PinTrials.NoLimit) stringResource(id = R.string.settings__no_limit) else uiState.pinTrials.label,
+                onDismissRequest = { showTrailsDialog = false },
+                onOptionSelected = { index, _ -> viewModel.updatePinTrails(PinTrials.values()[index]) }
             )
         }
 
         if (showTimeoutDialog) {
-            ListDialog(
-                items = PinTimeout.values().map { stringResource(id = it.label) },
-                selected = stringResource(id = uiState.pinTimeout.label),
-                onDismiss = { showTimeoutDialog = false },
-                onSelected = { index, _ -> viewModel.updatePinTimeout(PinTimeout.values()[index]) }
+            ListRadioDialog(
+                options = PinTimeout.values().map { stringResource(id = it.label) },
+                selectedOption = stringResource(id = uiState.pinTimeout.label),
+                onDismissRequest = { showTimeoutDialog = false },
+                onOptionSelected = { index, _ -> viewModel.updatePinTimeout(PinTimeout.values()[index]) }
             )
         }
 

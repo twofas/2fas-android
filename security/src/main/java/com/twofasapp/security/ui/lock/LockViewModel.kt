@@ -4,10 +4,18 @@ import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.resources.R
-import com.twofasapp.security.domain.*
+import com.twofasapp.security.domain.EditInvalidPinStatusCase
+import com.twofasapp.security.domain.GetPinCase
+import com.twofasapp.security.domain.ObserveInvalidPinStatusCase
+import com.twofasapp.security.domain.ObserveLockMethodCase
+import com.twofasapp.security.domain.ObservePinOptionsCase
 import com.twofasapp.security.ui.pin.PinScreenState
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 internal class LockViewModel(

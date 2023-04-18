@@ -6,6 +6,3 @@ plugins {
 android {
     namespace = "com.twofasapp.time.domain"
 }
-
-dependencies {
-}

@@ -1,7 +1,6 @@
 package com.twofasapp.backup.ui.export
 
 import android.net.Uri
-import com.twofasapp.base.BasePresenter
 import io.reactivex.Flowable
 
 interface ExportBackupContract {

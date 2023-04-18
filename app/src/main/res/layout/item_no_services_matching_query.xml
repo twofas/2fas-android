@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Text.Description.Bold.Secondary"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginVertical="24dp"
-    android:gravity="center"
-    android:text="@string/tokens__service_not_found_search" />

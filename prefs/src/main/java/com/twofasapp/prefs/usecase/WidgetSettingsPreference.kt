@@ -1,8 +1,8 @@
 package com.twofasapp.prefs.usecase
 
-import com.twofasapp.storage.Preferences
 import com.twofasapp.prefs.internals.PreferenceModel
 import com.twofasapp.prefs.model.WidgetSettings
+import com.twofasapp.storage.Preferences
 
 class WidgetSettingsPreference(preferences: Preferences) : PreferenceModel<WidgetSettings>(preferences) {
 

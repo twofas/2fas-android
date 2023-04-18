@@ -10,6 +10,7 @@ android {
 
 dependencies {
     implementation(project(":core:common"))
+    implementation(project(":core:locale"))
 
     implementation(libs.core)
     implementation(libs.bundles.appCompat)

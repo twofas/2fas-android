@@ -5,17 +5,18 @@ import android.os.Build
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -32,50 +33,77 @@ import com.twofasapp.design.compose.AnimatedContent
 import com.twofasapp.design.compose.ButtonHeight
 import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.navigation.SettingsDirections
-import com.twofasapp.navigation.SettingsRouter
+import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.resources.R
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.get
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun PairingProgressScreen(
+fun PairingProgressScreen(
+    openMain: () -> Unit,
+    openPairingScan: () -> Unit,
+    openPermission: () -> Unit,
     extensionId: String,
-    viewModel: PairingProgressViewModel = get(),
-    router: SettingsRouter = get(),
+    viewModel: PairingProgressViewModel = koinViewModel(),
     notificationManager: NotificationManager = get()
 ) {
+    val scope = rememberCoroutineScope()
     val uiState = viewModel.uiState.collectAsState()
-    viewModel.pairBrowser(extensionId)
+
+    LaunchedEffect(Unit) {
+        scope.launch {
+            viewModel.pairBrowser(extensionId)
+        }
+    }
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = if (uiState.value.isPairing) R.string.browser__pairing_with_browser else R.string.settings__browser_extension_result_toolbar_title)) {
-                router.navigate(SettingsDirections.GoBack)
-            }
+            TwTopAppBar(titleText = stringResource(id = if (uiState.value.isPairing) R.string.browser__pairing_with_browser else R.string.settings__browser_extension_result_toolbar_title))
         }
     ) { padding ->
         AnimatedContent(
             condition = uiState.value.isPairing,
-            contentWhenTrue = { ProgressContent() },
-            contentWhenFalse = { ResultContent(uiState.value.isPairingSuccess, uiState.value.code, router, notificationManager) }
+            contentWhenTrue = {
+                ProgressContent(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(padding)
+                )
+            },
+            contentWhenFalse = {
+                ResultContent(
+                    onContinueClick = { openMain() },
+                    onScanAgainClick = { openPairingScan() },
+                    onContinueWithoutPermissionClick = { openPermission() },
+                    isSuccess = uiState.value.isPairingSuccess,
+                    code = uiState.value.code,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(padding),
+                    notificationManager = notificationManager,
+                )
+            }
         )
     }
 }
 
 @Composable
-internal fun ProgressContent() {
+internal fun ProgressContent(modifier: Modifier) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.browser_extension_progress))
     val progress by animateLottieCompositionAsState(composition, iterations = LottieConstants.IterateForever)
 
-    LottieAnimation(composition, progress)
+    LottieAnimation(composition, progress, modifier = modifier)
 }
 
 @Composable
 internal fun ResultContent(
+    onContinueClick: () -> Unit = {},
+    onContinueWithoutPermissionClick: () -> Unit = {},
+    onScanAgainClick: () -> Unit = {},
     isSuccess: Boolean,
     code: Int? = null,
-    router: SettingsRouter,
+    modifier: Modifier,
     notificationManager: NotificationManager,
 ) {
     val image = if (isSuccess) R.drawable.browser_extension_success_image else R.drawable.browser_extension_error_image
@@ -97,20 +125,18 @@ internal fun ResultContent(
     val ctaAction: () -> Unit = if (isSuccess) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (notificationManager.areNotificationsEnabled()) {
-                { router.navigate(SettingsDirections.GoBack) }
+                { onContinueClick() }
             } else {
-                { router.navigate(SettingsDirections.Permission) }
+                { onContinueWithoutPermissionClick() }
             }
         } else {
-            { router.navigate(SettingsDirections.GoBack) }
+            { onContinueClick() }
         }
     } else {
-        { router.navigate(SettingsDirections.PairingScan) }
+        { onScanAgainClick() }
     }
-
     ConstraintLayout(
-        modifier = Modifier
-            .fillMaxHeight()
+        modifier = modifier
             .padding(horizontal = 16.dp)
     ) {
         val (content, pair) = createRefs()
@@ -132,19 +158,18 @@ internal fun ResultContent(
                 contentDescription = null,
                 modifier = Modifier
                     .height(130.dp)
-                    .offset(y = (-16).dp)
             )
 
             Text(
                 text = stringResource(id = title),
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.titleLarge,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
             )
 
             Text(
                 text = stringResource(id = description),
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
             )
@@ -159,7 +184,7 @@ internal fun ResultContent(
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }) {
-            Text(text = stringResource(id = cta).uppercase(), color = ButtonTextColor())
+            Text(text = stringResource(id = cta), color = ButtonTextColor())
         }
     }
 }

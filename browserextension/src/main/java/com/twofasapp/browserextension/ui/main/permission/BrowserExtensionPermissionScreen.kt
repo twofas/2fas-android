@@ -1,6 +1,7 @@
 package com.twofasapp.browserextension.ui.main.permission
 
 import android.Manifest
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,10 +9,10 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,34 +25,30 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.twofasapp.browserextension.ui.main.RequestPermission
 import com.twofasapp.design.compose.ButtonHeight
 import com.twofasapp.design.compose.ButtonShape
 import com.twofasapp.design.compose.ButtonTextColor
-import com.twofasapp.design.compose.Toolbar
-import com.twofasapp.navigation.SettingsDirections
-import com.twofasapp.navigation.SettingsRouter
+import com.twofasapp.designsystem.common.RequestPermission
+import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.locale.TwLocale
 import com.twofasapp.resources.R
-import org.koin.androidx.compose.get
 
 @Composable
-internal fun BrowserExtensionPermissionScreen(
-    router: SettingsRouter = get(),
-) {
+fun BrowserExtensionPermissionScreen() {
     // Launched only on >= TIRAMISU
     var askForPermission by remember { mutableStateOf(false) }
+    val onBackDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
 
     Scaffold(
         topBar = {
-            Toolbar(title = stringResource(id = R.string.browser__browser_extension)) {
-                router.navigate(SettingsDirections.GoBack)
-            }
+            TwTopAppBar(titleText = stringResource(id = R.string.browser__browser_extension))
         }
     ) { padding ->
 
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxHeight()
+                .padding(padding)
                 .padding(horizontal = 16.dp)
         ) {
             val (content, pair) = createRefs()
@@ -78,14 +75,14 @@ internal fun BrowserExtensionPermissionScreen(
 
                 Text(
                     text = stringResource(id = R.string.browser__push_notifications_title),
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.titleLarge,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                 )
 
                 Text(
                     text = stringResource(id = R.string.browser__push_notifications_content),
-                    style = MaterialTheme.typography.body1,
+                    style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                 )
@@ -101,19 +98,19 @@ internal fun BrowserExtensionPermissionScreen(
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
                     }) {
-                Text(text = stringResource(id = R.string.commons__continue).uppercase(), color = ButtonTextColor())
+                Text(text = stringResource(id = R.string.commons__continue), color = ButtonTextColor())
             }
 
             if (askForPermission) {
                 RequestPermission(
                     permission = Manifest.permission.POST_NOTIFICATIONS,
-                    onGranted = { router.navigateBack() },
-                    onDismiss = {
+                    onGranted = { onBackDispatcher?.onBackPressed() },
+                    onDismissRequest = {
                         askForPermission = false
-                        router.navigateBack()
+                        onBackDispatcher?.onBackPressed()
                     },
-                    rationaleTitle = stringResource(id = R.string.browser__push_notifications_title),
-                    rationaleText = stringResource(id = R.string.browser__push_notifications_content),
+                    rationaleTitle = TwLocale.strings.permissionPushTitle,
+                    rationaleText = TwLocale.strings.permissionPushBody,
                 )
             }
         }

@@ -71,7 +71,7 @@ class ImportBackupPresenter(
                         when (it) {
                             ImportBackup.Result.Success -> {
                                 showBackupNotice.save(false)
-                                syncBackupDispatcher.dispatch(SyncBackupTrigger.FIRST_CONNECT)
+                                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.FIRST_CONNECT)
                                 view.showResultToast(com.twofasapp.resources.R.string.import_ga_success)
 
                                 if (isFromDeeplink) {

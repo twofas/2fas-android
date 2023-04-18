@@ -1,11 +1,12 @@
 package com.twofasapp.usecases.services
 
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.backup.domain.SyncBackupTrigger
+import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.base.usecase.UseCaseParameterized
+import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
-import com.twofasapp.services.domain.StoreServicesOrder
 import com.twofasapp.services.data.ServicesRepository
+import com.twofasapp.services.domain.StoreServicesOrder
 import com.twofasapp.time.domain.TimeProvider
 import com.twofasapp.widgets.adapter.WidgetViewsData
 import com.twofasapp.widgets.broadcast.WidgetBroadcaster
@@ -24,7 +25,7 @@ class RestoreService(
 
     override fun execute(params: ServiceDto, subscribeScheduler: Scheduler, observeScheduler: Scheduler): Completable {
         val newService = params.copy(
-            backupSyncStatus = com.twofasapp.prefs.model.BackupSyncStatus.NOT_SYNCED,
+            backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
             updatedAt = timeProvider.systemCurrentTime(),
             isDeleted = false,
         )
@@ -40,7 +41,7 @@ class RestoreService(
             }
             .doOnComplete {
                 if (remoteBackupStatusPreference.get().state == com.twofasapp.prefs.model.RemoteBackupStatus.State.ACTIVE) {
-                    syncBackupDispatcher.dispatch(SyncBackupTrigger.SERVICES_CHANGED)
+                    syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
                 }
             }
             .subscribeOn(subscribeScheduler)

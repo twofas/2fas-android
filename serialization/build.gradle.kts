@@ -9,6 +9,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 }

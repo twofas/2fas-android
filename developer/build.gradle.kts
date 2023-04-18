@@ -10,11 +10,13 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":di"))
+    implementation(project(":core:di"))
+    implementation(project(":core:designsystem"))
+    implementation(project(":data:session"))
     implementation(project(":resources"))
     implementation(project(":extensions"))
     implementation(project(":design"))
-    implementation(project(":environment"))
+    
     implementation(project(":prefs"))
     implementation(project(":featuretoggle"))
     implementation(project(":push"))

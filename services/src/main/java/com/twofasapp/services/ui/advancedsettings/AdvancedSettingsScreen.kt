@@ -1,35 +1,32 @@
 package com.twofasapp.services.ui.advancedsettings
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.twofasapp.design.compose.SimpleEntry
 import com.twofasapp.design.compose.SwitchEntry
 import com.twofasapp.design.compose.SwitchEntryType
-import com.twofasapp.design.compose.Toolbar
 import com.twofasapp.design.compose.dialogs.InputDialog
 import com.twofasapp.design.compose.dialogs.InputType
 import com.twofasapp.design.compose.dialogs.ListDialog
-import com.twofasapp.design.theme.divider
-import com.twofasapp.navigation.ServiceRouter
+import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.resources.R
 import com.twofasapp.services.domain.model.Service
 import com.twofasapp.services.domain.model.Service.AuthType.HOTP
 import com.twofasapp.services.domain.model.Service.AuthType.TOTP
 import com.twofasapp.services.ui.ServiceViewModel
-import org.koin.androidx.compose.get
-import org.koin.androidx.compose.getViewModel
 
 @Composable
 internal fun AdvancedSettingsScreen(
-    viewModel: ServiceViewModel = getViewModel(),
-    router: ServiceRouter = get()
+    viewModel: ServiceViewModel
 ) {
 
     val service = viewModel.uiState.collectAsState().value.service
@@ -40,10 +37,10 @@ internal fun AdvancedSettingsScreen(
     val isEnabled = service.id == 0L
 
     Scaffold(
-        topBar = { Toolbar(title = stringResource(id = R.string.customization_advanced)) { router.navigateBack() } }
+        topBar = { TwTopAppBar(titleText = stringResource(id = R.string.customization_advanced)) }
     ) { padding ->
 
-        LazyColumn {
+        LazyColumn(modifier = Modifier.padding(padding)) {
             item {
                 SwitchEntry(
                     title = "TOTP",
@@ -69,7 +66,7 @@ internal fun AdvancedSettingsScreen(
                 )
             }
 
-            item { Divider(color = MaterialTheme.colors.divider) }
+            item { Divider(color = TwTheme.color.divider) }
 
             item {
                 SimpleEntry(
@@ -115,7 +112,7 @@ internal fun AdvancedSettingsScreen(
                 )
             }
 
-            item { Divider(color = MaterialTheme.colors.divider) }
+            item { Divider(color = TwTheme.color.divider) }
         }
 
         if (showAlgorithmDialog.value) {

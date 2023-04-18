@@ -9,8 +9,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":core:di"))
     implementation(project(":core:storage"))
+    implementation(project(":core:common"))
+    implementation(project(":prefs"))
 
     implementation(libs.kotlinCoroutines)
     implementation(libs.kotlinSerialization)
