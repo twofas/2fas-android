@@ -12,8 +12,10 @@ import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocal
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.unit.Dp
 import androidx.core.app.ComponentActivity
+import com.twofasapp.designsystem.R
 
 val CompositionLocal<Context>.currentActivity: ComponentActivity
     @Composable
@@ -61,3 +63,11 @@ fun Context.copyToClipboard(
 
 @Composable
 fun dpToSp(dp: Dp) = with(LocalDensity.current) { dp.toSp() }
+
+fun UriHandler.openSafely(uri: String, context: Context? = null) {
+    try {
+        openUri(uri)
+    } catch (e: Exception) {
+        context?.let { Toast.makeText(it, it.getText(R.string.errors__no_app), Toast.LENGTH_SHORT).show() }
+    }
+}

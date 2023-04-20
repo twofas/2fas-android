@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -32,6 +33,7 @@ import com.google.accompanist.pager.rememberPagerState
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwTextButton
+import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.feature.startup.R
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
@@ -67,6 +69,7 @@ internal fun StartupScreen(
     val scope = rememberCoroutineScope()
     val pagerState = rememberPagerState()
     val uriHandler = LocalUriHandler.current
+    val context = LocalContext.current
 
     Box(
         modifier = Modifier
@@ -122,7 +125,7 @@ internal fun StartupScreen(
                         .clip(TwTheme.shape.roundedDefault)
                         .clickable {
                             onTermsClick()
-                            uriHandler.openUri(TwLocale.links.terms)
+                            uriHandler.openSafely(TwLocale.links.terms, context)
                         }
                         .padding(4.dp)
                 )

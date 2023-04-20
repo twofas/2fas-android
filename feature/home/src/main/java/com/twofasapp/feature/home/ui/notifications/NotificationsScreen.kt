@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -29,6 +30,7 @@ import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwEmptyScreen
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
@@ -56,6 +58,7 @@ private fun NotificationsScreen(
     onNotificationClick: (Notification) -> Unit,
 ) {
     val uriHandler = LocalUriHandler.current
+    val context = LocalContext.current
 
     Scaffold(
         bottomBar = { BottomBar(2, bottomBarListener) },
@@ -83,7 +86,7 @@ private fun NotificationsScreen(
                     modifier = Modifier
                         .clickable {
                             onNotificationClick(notification)
-                            uriHandler.openUri(notification.link)
+                            uriHandler.openSafely(notification.link, context)
                         }
                         .background(if (notification.isRead) TwTheme.color.surface else TwTheme.color.background)
                         .padding(16.dp)

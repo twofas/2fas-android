@@ -48,6 +48,7 @@ import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.RequestPermission
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.InputDialog
+import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.designsystem.screen.CommonContent
 import com.twofasapp.designsystem.settings.SettingsHeader
 import com.twofasapp.locale.TwLocale
@@ -214,6 +215,7 @@ internal fun EmptyScreen(
     modifier: Modifier,
 ) {
     val uriHandler = LocalUriHandler.current
+    val context = LocalContext.current
 
     CommonContent(
         image = painterResource(id = R.drawable.browser_extension_start_image),
@@ -234,7 +236,7 @@ internal fun EmptyScreen(
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
                     .padding(top = 16.dp)
-                    .clickable { uriHandler.openUri(TwLocale.links.browserExt) },
+                    .clickable { uriHandler.openSafely(TwLocale.links.browserExt, context) },
             )
         },
         modifier = modifier,

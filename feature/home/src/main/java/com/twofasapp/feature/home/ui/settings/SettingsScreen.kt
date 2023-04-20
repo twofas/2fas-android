@@ -13,6 +13,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
@@ -91,7 +92,7 @@ private fun SettingsScreen(
 
             item {
                 SettingsLink(title = TwLocale.strings.settingsSupport, icon = TwIcons.Support, external = true) {
-                    uriHandler.openUri(TwLocale.links.support)
+                    uriHandler.openSafely(TwLocale.links.support, activity)
                 }
             }
 
@@ -105,7 +106,7 @@ private fun SettingsScreen(
 
             item {
                 SettingsLink(title = TwLocale.strings.settingsDonate, icon = TwIcons.Favorite, external = true) {
-                    uriHandler.openUri(TwLocale.links.donate)
+                    uriHandler.openSafely(TwLocale.links.donate, activity)
                 }
             }
         }
