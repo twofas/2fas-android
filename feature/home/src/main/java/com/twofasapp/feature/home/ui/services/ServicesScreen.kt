@@ -237,9 +237,9 @@ private fun ServicesScreen(
         onDismissRequest = {
             if (modalType is ModalType.FocusService && (modalType as ModalType.FocusService).isRecentlyAdded) {
                 val id = (modalType as ModalType.FocusService).id
-                val groupId = uiState.services.first { it.id == id }.groupId
+                val groupId = uiState.services.firstOrNull { it.id == id }?.groupId
 
-                if (uiState.groups.first { it.id == groupId }.isExpanded) {
+                if (uiState.groups.firstOrNull { it.id == groupId }?.isExpanded == true) {
                     scope.launch {
                         listState.animateScrollToItem(
                             uiState.items.indexOfFirst {
