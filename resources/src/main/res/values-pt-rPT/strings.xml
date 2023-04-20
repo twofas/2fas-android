@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Mon, 17 Apr 2023 08:59:14 -0700
+ Exported at: Thu, 20 Apr 2023 13:06:22 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -734,4 +734,6 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Exporta as tuas contas da aplicação LastPass para um ficheiro JSON não encriptado e usa o botão \"Escolhe o ficheiro JSON\" para importá-lo. Lembra-te de remover o ficheiro após importares com sucesso.</string>
     <string name="settings__about_crash_optout_title">Relatórios de Falhas</string>
+    <string name="externalimport__lastpass_title">A importar tokens 2FA da aplicação LastPass</string>
+    <string name="externalimport__lastpass_success_msg">Este ficheiro JSON permite importar tokens da aplicação LastPass.</string>
 </resources>

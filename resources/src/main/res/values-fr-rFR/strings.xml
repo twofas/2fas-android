@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Mon, 17 Apr 2023 08:59:14 -0700
+ Exported at: Thu, 20 Apr 2023 13:06:22 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -734,4 +734,6 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Exportez vos comptes LastPass vers un fichier JSON non crypté et importez le en utilisant le bouton \"Choisir un fichier JSON\". N\'oubliez pas de supprimer le fichier après avoir réussie l\'importation.</string>
     <string name="settings__about_crash_optout_title">Rapports d\'incident</string>
+    <string name="externalimport__lastpass_title">Importation des clés 2FA depuis l\'application LastPass</string>
+    <string name="externalimport__lastpass_success_msg">Ce fichier JSON permet d\'importer des clés depuis LastPass.</string>
 </resources>

@@ -30,6 +30,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.designsystem.R
@@ -62,7 +63,7 @@ internal fun ServicesAppBar(
         exit = fadeOut(),
     ) {
         TwTopAppBar(
-            titleText = "Manage list",
+            titleText = stringResource(id = R.string.tokens__manage_list),
             onBackClick = onEditModeChange,
             scrollBehavior = scrollBehavior,
             actions = {
