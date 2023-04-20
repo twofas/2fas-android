@@ -15,6 +15,7 @@ import com.twofasapp.designsystem.R
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsHeader
 import com.twofasapp.designsystem.settings.SettingsLink
@@ -54,19 +55,19 @@ private fun AboutScreen(
 
                 item {
                     SettingsLink(title = TwLocale.strings.aboutWriteReview, icon = TwIcons.Write, external = true) {
-                        uriHandler.openUri(TwLocale.links.playStore)
+                        uriHandler.openSafely(TwLocale.links.playStore, activity)
                     }
                 }
 
                 item {
                     SettingsLink(title = TwLocale.strings.aboutPrivacyPolicy, icon = TwIcons.LockOpen, external = true) {
-                        uriHandler.openUri(TwLocale.links.privacyPolicy)
+                        uriHandler.openSafely(TwLocale.links.privacyPolicy, activity)
                     }
                 }
 
                 item {
                     SettingsLink(title = TwLocale.strings.aboutTerms, icon = TwIcons.Terms, external = true) {
-                        uriHandler.openUri(TwLocale.links.terms)
+                        uriHandler.openSafely(TwLocale.links.terms, activity)
                     }
                 }
 
