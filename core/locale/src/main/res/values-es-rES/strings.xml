@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Thu, 20 Apr 2023 13:06:22 -0700
+ Exported at: Mon, 24 Apr 2023 10:25:09 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -736,4 +736,8 @@
     <string name="settings__about_crash_optout_title">Reportes de fallo</string>
     <string name="externalimport__lastpass_title">Importando tokens 2FA desde la aplicación LastPass</string>
     <string name="externalimport__lastpass_success_msg">Este archivo JSON permite importar tus códigos desde LastPass.</string>
+    <string name="externalimport__info_lastpass_title">Importar tokens desde LastPass</string>
+    <string name="externalimport__info_aegis_title">Importar tokens desde Aegis</string>
+    <string name="externalimport__info_raivo_title">Importar tokens desde Raivo OTP</string>
+    <string name="externalimport__info_google_authenticator_title">Importar tokens desde Google Authenticator</string>
 </resources>
