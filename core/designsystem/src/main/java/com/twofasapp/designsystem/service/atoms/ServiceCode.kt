@@ -13,6 +13,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.ResponsiveText
 import com.twofasapp.designsystem.service.animateExpireColor
 
 enum class NextCodeGravity { Below, End }
@@ -35,12 +36,11 @@ internal fun ServiceCode(
             Column(
                 modifier = modifier,
             ) {
-                Text(
+                ResponsiveText(
                     text = code.formatCode(),
                     style = textStyles.codeTextStyle,
                     color = if (animateColor) color else TwTheme.color.onSurfacePrimary,
                     maxLines = 1,
-                    overflow = TextOverflow.Visible,
                 )
 
                 AnimatedVisibility(visible = nextCodeVisible) {
@@ -58,12 +58,11 @@ internal fun ServiceCode(
                 modifier = modifier,
                 verticalAlignment = Alignment.Bottom,
             ) {
-                Text(
+                ResponsiveText(
                     text = code.formatCode(),
                     style = textStyles.codeTextStyle,
                     color = if (animateColor) color else TwTheme.color.onSurfacePrimary,
                     maxLines = 1,
-                    overflow = TextOverflow.Visible,
                 )
 
                 AnimatedVisibility(visible = nextCodeVisible) {
