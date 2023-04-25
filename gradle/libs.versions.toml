@@ -38,9 +38,9 @@ composeUiUtil = { module = "androidx.compose.ui:ui-util", version.ref = "compose
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 composeConstraint = "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
-coreSplash = "androidx.core:core-splashscreen:1.0.0"
+coreSplash = "androidx.core:core-splashscreen:1.0.1"
 dataStore = "androidx.datastore:datastore-preferences:1.0.0"
-desugar = "com.android.tools:desugar_jdk_libs:2.0.2"
+desugar = "com.android.tools:desugar_jdk_libs:2.0.3"
 espressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 javaxInject = "javax.inject:javax.inject:1"
 junit = "junit:junit:4.13.2"
@@ -79,8 +79,8 @@ viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", 
 viewModelComposeRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "viewModel" }
 viewModelLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "viewModel" }
 viewModelSavedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "viewModel" }
-webkit = "androidx.webkit:webkit:1.6.0"
-workManager = "androidx.work:work-runtime-ktx:2.8.0"
+webkit = "androidx.webkit:webkit:1.6.1"
+workManager = "androidx.work:work-runtime-ktx:2.8.1"
 playReview = "com.google.android.play:review:2.0.1"
 playReviewKtx = "com.google.android.play:review-ktx:2.0.1"
 playUpdate = "com.google.android.play:app-update:2.0.1"
@@ -99,15 +99,15 @@ materialDialogsInput = "com.afollestad.material-dialogs:input:3.3.0"
 rxBinding = "com.jakewharton.rxbinding3:rxbinding:3.1.0"
 rxBindingAppCompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:3.1.0"
 rxBindingMaterial = "com.jakewharton.rxbinding3:rxbinding-material:3.1.0"
-workManagerRx = "androidx.work:work-rxjava2:2.8.0"
+workManagerRx = "androidx.work:work-rxjava2:2.8.1"
 lottie = "com.airbnb.android:lottie-compose:5.0.3"
 protobuf = "com.google.protobuf:protobuf-kotlin-lite:3.19.1"
 biometric = "androidx.biometric:biometric:1.1.0"
 coroutinesToRx = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.6.4"
-barcodeScanning = "com.google.mlkit:barcode-scanning:17.0.3"
-camera2 = "androidx.camera:camera-camera2:1.2.1"
-camera2Lifecycle = "androidx.camera:camera-lifecycle:1.2.1"
-camera2View = "androidx.camera:camera-view:1.2.1"
+barcodeScanning = "com.google.mlkit:barcode-scanning:17.1.0"
+camera2 = "androidx.camera:camera-camera2:1.2.2"
+camera2Lifecycle = "androidx.camera:camera-lifecycle:1.2.2"
+camera2View = "androidx.camera:camera-view:1.2.2"
 securityCrypto = "androidx.security:security-crypto:1.1.0-alpha05"
 secureStorage = "de.adorsys.android:securestoragelibrary:1.2.4"
 roomRx = { module = "androidx.room:room-rxjava2", version.ref = "room" }
