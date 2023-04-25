@@ -76,7 +76,7 @@ private fun AppSettingsScreen(
             item {
                 SettingsLink(
                     title = TwLocale.strings.settingsTheme,
-                    subtitle = uiState.appSettings.selectedTheme.name,
+                    subtitle = uiState.appSettings.selectedTheme.toStringResource(),
                     icon = TwIcons.Theme,
                     onClick = { showThemeDialog = true }
                 )
@@ -85,7 +85,7 @@ private fun AppSettingsScreen(
             item {
                 SettingsLink(
                     title = TwLocale.strings.settingsServicesStyle,
-                    subtitle = uiState.appSettings.servicesStyle.name,
+                    subtitle = uiState.appSettings.servicesStyle.toStringResource(),
                     icon = TwIcons.ListStyle,
                     onClick = { showServicesStyleDialog = true }
                 )

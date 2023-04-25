@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Mon, 17 Apr 2023 08:59:14 -0700
+ Exported at: Mon, 24 Apr 2023 10:25:09 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -734,4 +734,10 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Exportiere deine Konten von LastPass in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
     <string name="settings__about_crash_optout_title">Absturzberichte</string>
+    <string name="externalimport__lastpass_title">2FA Tokens aus LastPass importieren</string>
+    <string name="externalimport__lastpass_success_msg">Diese JSON-Datei erlaubt es Tokens von LastPass zu importieren.</string>
+    <string name="externalimport__info_lastpass_title"></string>
+    <string name="externalimport__info_aegis_title"></string>
+    <string name="externalimport__info_raivo_title"></string>
+    <string name="externalimport__info_google_authenticator_title"></string>
 </resources>

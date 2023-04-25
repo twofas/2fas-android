@@ -7,8 +7,8 @@ object AppConfig {
 
     private const val verMajor = 4
     private const val verMinor = 5
-    private const val verPatch = 0
-    private const val verInternal = 2
+    private const val verPatch = 1
+    private const val verInternal = 0
 
     const val versionCode = verMajor * 1000000 + verMinor * 10000 + verPatch * 100 + verInternal
     const val versionName = "${verMajor}.${verMinor}.${verPatch}"
