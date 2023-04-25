@@ -170,34 +170,65 @@ val MIGRATION_9_10 = object : Migration(9, 10) {
                 val hotpCounter = c.intOrNull("hotpCounter")
                 val assignedDomains = c.stringOrNull("assignedDomains")
 
-                execSQL(
-                    "INSERT INTO local_services_backup VALUES (" +
-                            "$id," +
-                            "${name.escape()}," +
-                            "${secret.escape()}," +
-                            "${serviceTypeId.escape()}," +
-                            "${iconCollectionId.escape()}," +
-                            "${source.escape()}," +
-                            "${otpLink.escape()}," +
-                            "${otpLabel.escape()}," +
-                            "${otpAccount.escape()}," +
-                            "${otpIssuer.escape()}," +
-                            "$otpDigits," +
-                            "$otpPeriod," +
-                            "${otpAlgorithm.escape()}," +
-                            "${backupSyncStatus.escape()}," +
-                            "$updatedAt," +
-                            "${badgeColor.escape()}," +
-                            "${selectedImageType.escape()}," +
-                            "${labelText.escape()}," +
-                            "${labelBackgroundColor.escape()}," +
-                            "${groupId.escape()}," +
-                            "${isDeleted ?: "NULL"}," +
-                            "${authType.escape()}," +
-                            "$hotpCounter," +
-                            "${assignedDomains.escape()}" +
-                            ")"
-                )
+                try {
+                    execSQL(
+                        "INSERT INTO local_services_backup VALUES (" +
+                                "$id," +
+                                "${name.escape()}," +
+                                "${secret.escape()}," +
+                                "${serviceTypeId.escape()}," +
+                                "${iconCollectionId.escape()}," +
+                                "${source.escape()}," +
+                                "${otpLink.escape()}," +
+                                "${otpLabel.escape()}," +
+                                "${otpAccount.escape()}," +
+                                "${otpIssuer.escape()}," +
+                                "$otpDigits," +
+                                "$otpPeriod," +
+                                "${otpAlgorithm.escape()}," +
+                                "${backupSyncStatus.escape()}," +
+                                "$updatedAt," +
+                                "${badgeColor.escape()}," +
+                                "${selectedImageType.escape()}," +
+                                "${labelText.escape()}," +
+                                "${labelBackgroundColor.escape()}," +
+                                "${groupId.escape()}," +
+                                "${isDeleted ?: "NULL"}," +
+                                "${authType.escape()}," +
+                                "$hotpCounter," +
+                                "${assignedDomains.escape()}" +
+                                ")"
+                    )
+                } catch (e: Exception) {
+                    execSQL(
+                        "INSERT INTO local_services_backup VALUES (" +
+                                "$id," +
+                                "${name.escapeNormalize()}," +
+                                "${secret.escape()}," +
+                                "${serviceTypeId.escape()}," +
+                                "${iconCollectionId.escape()}," +
+                                "${source.escape()}," +
+                                "${otpLink.escapeNormalize()}," +
+                                "${otpLabel.escapeNormalize()}," +
+                                "${otpAccount.escapeNormalize()}," +
+                                "${otpIssuer.escapeNormalize()}," +
+                                "$otpDigits," +
+                                "$otpPeriod," +
+                                "${otpAlgorithm.escape()}," +
+                                "${backupSyncStatus.escape()}," +
+                                "$updatedAt," +
+                                "${badgeColor.escape()}," +
+                                "${selectedImageType.escape()}," +
+                                "${labelText.escape()}," +
+                                "${labelBackgroundColor.escape()}," +
+                                "${groupId.escape()}," +
+                                "${isDeleted ?: "NULL"}," +
+                                "${authType.escape()}," +
+                                "$hotpCounter," +
+                                "${assignedDomains.escapeNormalize()}" +
+                                ")"
+                    )
+                }
             }
 
             execSQL("DROP TABLE local_services")
@@ -229,6 +260,15 @@ private fun Cursor.stringOrNull(column: String): String? {
 }
 
 private fun String?.escape(): String {
+    return if (this == null) {
+        "NULL"
+    } else {
+        // Remove quotes before insert
+        "\"${replace("\"", "")}\""
+    }
+}
+
+private fun String?.escapeNormalize(): String {
     return if (this == null) {
         "NULL"
     } else {

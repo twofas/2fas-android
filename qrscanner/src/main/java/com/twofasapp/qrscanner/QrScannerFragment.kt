@@ -71,26 +71,29 @@ class QrScannerFragment : BaseFragmentPresenter<FragmentQrScannerBinding>(), QrS
     }
 
     private fun startCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+        context?.let {
+            val cameraProviderFuture = ProcessCameraProvider.getInstance(it)
 
-        cameraProviderFuture.addListener({
-            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+            cameraProviderFuture.addListener({
+                val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+                val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
-            try {
-                cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(
-                    this,
-                    cameraSelector,
-                    previewUseCase,
-                    imageAnalysisUseCase
-                )
+                try {
+                    cameraProvider.unbindAll()
+                    cameraProvider.bindToLifecycle(
+                        this,
+                        cameraSelector,
+                        previewUseCase,
+                        imageAnalysisUseCase
+                    )
 
-            } catch (exc: Exception) {
-                Toast.makeText(requireContext(), "Camera could not be launched. Try again.", Toast.LENGTH_LONG).show()
-            }
+                } catch (exc: Exception) {
+                    Toast.makeText(it, "Camera could not be launched. Try again.", Toast.LENGTH_LONG).show()
+                }
 
-        }, ContextCompat.getMainExecutor(requireContext()))
+            }, ContextCompat.getMainExecutor(it))
+        }
+
     }
 
     @SuppressLint("UnsafeOptInUsageError")
