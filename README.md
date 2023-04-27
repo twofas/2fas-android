@@ -28,17 +28,7 @@ We use GitHub for bug reports. Please visit the [2FAS for Android issues page](h
 
 ## Contributing
 
-We welcome contributions to the Open Source 2FAS project. If you would like to contribute, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your changes.
-3. Make your changes.
-4. Commit your changes and push them to your fork.
-5. Create a new pull request from your fork to the `master` branch of the main repository.
-
-We will review your pull request and, if it is approved, merge it into the main codebase.
-
-By sharing ideas and code with the 2FAS community, either through GitHub or Discord, you agree that these contributions become the property of the 2FAS community and may be implemented into the 2FAS open source code.
+We welcome contributions to the Open Source 2FAS project. If you would like to contribute, please see the [contribution guide](./CONTRIBUTING.md).
 
 ## Donations
 
