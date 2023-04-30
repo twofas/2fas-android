@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Mon, 24 Apr 2023 10:25:08 -0700
+ Exported at: Sun, 30 Apr 2023 05:40:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -740,4 +740,6 @@
     <string name="externalimport__info_aegis_title">Import tokens from Aegis</string>
     <string name="externalimport__info_raivo_title">Import tokens from Raivo OTP</string>
     <string name="externalimport__info_google_authenticator_title">Import tokens from Google Authenticator</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">s</string>
 </resources>

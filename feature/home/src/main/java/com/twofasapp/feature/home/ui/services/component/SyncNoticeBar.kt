@@ -28,7 +28,8 @@ internal fun SyncNoticeBar(
     Row(
         modifier = modifier
             .background(TwTheme.color.surface)
-            .padding(start = 16.dp, end = 4.dp),
+            .padding(start = 16.dp, end = 4.dp)
+            .padding(vertical = 2.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
 
@@ -53,6 +54,7 @@ internal fun SyncNoticeBar(
             text = TwLocale.strings.backupSyncCta,
             onClick = onOpenBackupClick,
             textAlign = TextAlign.Center,
+            modifier = Modifier.weight(1f)
         )
     }
 }
