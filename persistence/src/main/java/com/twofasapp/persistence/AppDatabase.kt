@@ -18,6 +18,7 @@ import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.persistence.converter.Converters
+import java.text.Normalizer
 
 @Database(
     entities = [
@@ -273,6 +274,7 @@ private fun String?.escapeNormalize(): String {
         "NULL"
     } else {
         // Remove quotes before insert
-        "\"${replace("\"", "")}\""
+        val normalized = Normalizer.normalize(this, Normalizer.Form.NFD);
+        "\"${normalized.replace("\"", "").replace("[^\\x00-\\x7F]", "")}\""
     }
 }
