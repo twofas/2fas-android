@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation(project(":core:di"))
+    implementation(project(":core:common"))
     implementation(project(":time:domain"))
     implementation(project(":prefs"))
     implementation(project(":core:network"))

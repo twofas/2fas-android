@@ -5,6 +5,7 @@ import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.rx2.await
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 class SyncTimeCaseImpl(
     private val recalculateTimeDeltaCase: RecalculateTimeDeltaCase

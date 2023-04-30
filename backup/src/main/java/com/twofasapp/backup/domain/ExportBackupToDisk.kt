@@ -5,10 +5,10 @@ import android.net.Uri
 import com.twofasapp.backup.EncryptBackup
 import com.twofasapp.backup.ui.export.ExportBackup
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.prefs.usecase.ServicesOrderPreference
 import com.twofasapp.prefs.usecase.StoreGroups
 import com.twofasapp.services.domain.GetServicesUseCase
-import com.twofasapp.time.domain.TimeProvider
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -42,7 +42,16 @@ class ExportBackupToDisk(
                     account = null,
                 )
             }
-            .flatMap { encryptBackup.execute(EncryptBackup.Params(backup = it, password = password, saltEncoded = null, keyEncoded = null)) }
+            .flatMap {
+                encryptBackup.execute(
+                    EncryptBackup.Params(
+                        backup = it,
+                        password = password,
+                        saltEncoded = null,
+                        keyEncoded = null
+                    )
+                )
+            }
             .flatMap { result ->
                 when (result) {
                     is EncryptBackup.Result.Success -> {

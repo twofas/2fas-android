@@ -1,6 +1,7 @@
 package com.twofasapp.usecases.app
 
 import android.content.Context
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.core.analytics.AnalyticsEvent
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.entity.MyObjectBox
@@ -10,7 +11,6 @@ import com.twofasapp.prefs.usecase.MigratedToRoomPreference
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.StoreServicesOrder
 import com.twofasapp.start.domain.MigrateBoxToRoomCase
-import com.twofasapp.time.domain.TimeProvider
 
 class MigrateBoxToRoomCaseImpl(
     private val context: Context,

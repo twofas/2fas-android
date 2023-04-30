@@ -20,7 +20,6 @@ dependencies {
     implementation(project(":prefs"))
     
     implementation(project(":serialization"))
-    implementation(project(":time"))
     implementation(project(":spanner"))
     implementation(project(":truetime"))
     implementation(project(":truetime-rx"))
@@ -39,6 +38,7 @@ dependencies {
     
     implementation(project(":backup"))
     implementation(project(":core"))
+    implementation(project(":time"))
     implementation(project(":featuretoggle"))
     implementation(project(":developer"))
     implementation(project(":backup:domain"))

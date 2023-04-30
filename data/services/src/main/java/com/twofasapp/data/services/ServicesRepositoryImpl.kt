@@ -14,6 +14,7 @@ import com.twofasapp.prefs.model.RecentlyDeletedService
 import com.twofasapp.prefs.model.RemoteBackupStatus
 import com.twofasapp.prefs.usecase.RecentlyDeletedPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import com.twofasapp.time.domain.RecalculateTimeDeltaCase
 import com.twofasapp.widgets.domain.WidgetActions
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,6 +32,7 @@ internal class ServicesRepositoryImpl(
     private val syncBackupDispatcher: SyncBackupWorkDispatcher,
     private val recentlyDeletedPreference: RecentlyDeletedPreference,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
+    private val recalculateTimeDeltaCase: RecalculateTimeDeltaCase,
 ) : ServicesRepository {
 
     private val isTickerEnabled = MutableStateFlow(true)
@@ -175,5 +177,9 @@ internal class ServicesRepositoryImpl(
 
     override fun pushRecentlyAddedService(id: Long, source: RecentlyAddedService.Source) {
         local.pushRecentlyAddedService(id, source)
+    }
+
+    override suspend fun recalculateTimeDelta() {
+        recalculateTimeDeltaCase.invoke()
     }
 }

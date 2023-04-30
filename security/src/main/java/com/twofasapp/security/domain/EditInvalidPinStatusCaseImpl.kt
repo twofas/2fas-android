@@ -1,8 +1,8 @@
 package com.twofasapp.security.domain
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.security.data.SecurityRepository
 import com.twofasapp.security.domain.model.InvalidPinStatus
-import com.twofasapp.time.domain.TimeProvider
 import kotlinx.coroutines.flow.first
 
 internal class EditInvalidPinStatusCaseImpl(

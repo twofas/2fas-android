@@ -11,6 +11,7 @@ android {
 
 dependencies {
     implementation(project(":core:di"))
+    implementation(project(":core:common"))
     implementation(project(":serialization"))
     
     implementation(project(":time:domain"))

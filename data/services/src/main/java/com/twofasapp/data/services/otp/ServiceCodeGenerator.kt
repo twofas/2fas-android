@@ -28,8 +28,8 @@ class ServiceCodeGenerator(
 
         when (service.authType) {
             Service.AuthType.TOTP -> {
-                currentCounter = timeProvider.systemCurrentTime() / period.toMillis()
-                nextCounter = (timeProvider.systemCurrentTime() + period.toMillis()) / period.toMillis()
+                currentCounter = timeProvider.realCurrentTime() / period.toMillis()
+                nextCounter = (timeProvider.realCurrentTime() + period.toMillis()) / period.toMillis()
             }
 
             Service.AuthType.HOTP -> {
@@ -53,16 +53,14 @@ class ServiceCodeGenerator(
             code = Service.Code(
                 current = authenticator.generateOtpCode(otpData),
                 next = authenticator.generateOtpCode(otpData.copy(counter = nextCounter)),
-                timer = timer,
+                timer = timer.toInt(),
                 progress = timer / period.toFloat()
             )
         )
     }
 
-    private fun calculateTimer(period: Int): Int {
-//        return 30 - (Instant.now().epochSecond + timeProvider.realTimeDelta() / 1000) % 30
-        return (period - (Instant.now().epochSecond) % period).toInt()
-
+    private fun calculateTimer(period: Int): Long {
+        return period - (Instant.now().epochSecond + timeProvider.realTimeDelta() / 1000) % period
     }
 
     private fun Int.toMillis(): Long {

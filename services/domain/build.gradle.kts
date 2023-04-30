@@ -12,6 +12,7 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":core:di"))
     implementation(project(":core:designsystem"))
+    implementation(project(":core:common"))
     implementation(project(":design"))
     implementation(project(":extensions"))
     implementation(project(":permissions"))

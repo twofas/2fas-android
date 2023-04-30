@@ -1,12 +1,12 @@
 package com.twofasapp.services.data
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.prefs.model.RecentlyDeletedService
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.model.ServicesOrder
 import com.twofasapp.prefs.usecase.RecentlyDeletedPreference
 import com.twofasapp.prefs.usecase.ServicesOrderPreference
 import com.twofasapp.services.domain.model.Service
-import com.twofasapp.time.domain.TimeProvider
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single

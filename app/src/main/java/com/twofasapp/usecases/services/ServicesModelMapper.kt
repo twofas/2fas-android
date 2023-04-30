@@ -2,6 +2,7 @@ package com.twofasapp.usecases.services
 
 import android.content.Context
 import com.twofasapp.base.usecase.UseCaseParameterized
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.entity.GroupModel
 import com.twofasapp.entity.ServiceModel
 import com.twofasapp.entity.Services
@@ -14,7 +15,6 @@ import com.twofasapp.services.domain.GenerateTotp
 import com.twofasapp.services.domain.StoreHotpServices
 import com.twofasapp.services.domain.StoreServicesOrder
 import com.twofasapp.services.domain.model.Service
-import com.twofasapp.time.domain.TimeProvider
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import java.time.Instant

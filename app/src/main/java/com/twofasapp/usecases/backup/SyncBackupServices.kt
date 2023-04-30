@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.core.analytics.AnalyticsEvent
 import com.twofasapp.core.analytics.AnalyticsParam
 import com.twofasapp.di.BackupSyncStatus
@@ -25,7 +26,6 @@ import com.twofasapp.services.backup.usecases.GetRemoteBackup
 import com.twofasapp.services.backup.usecases.UpdateRemoteBackup
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.EditServiceUseCase
-import com.twofasapp.time.domain.TimeProvider
 import com.twofasapp.usecases.backup.model.SyncStatus
 import com.twofasapp.usecases.services.AddService
 import com.twofasapp.usecases.services.GetServices

@@ -1,8 +1,8 @@
 package com.twofasapp.time.domain.formatter
 
 import android.content.Context
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.resources.R
-import com.twofasapp.time.domain.TimeProvider
 import kotlin.math.abs
 import kotlin.math.sign
 
