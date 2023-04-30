@@ -25,12 +25,12 @@ class RecalculateTimeDeltaCaseImpl(
         return if (TrueTime.isInitialized()) {
             Timber.d("TrueTime: synced - ${TrueTimeRx.now()}")
 
-            val delta = timeDeltaPreference.get()
+//            val delta = timeDeltaPreference.get()
             val newDelta = TrueTimeRx.now().time - System.currentTimeMillis()
 
-            if (abs(newDelta - delta) > 1000) {
+//            if (abs(newDelta - delta) > 1000) {
                 timeDeltaPreference.put(newDelta)
-            }
+//            }
 
             true
         } else {

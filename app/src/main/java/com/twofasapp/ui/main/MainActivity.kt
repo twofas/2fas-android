@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
     private fun showSnackbarForCompleteUpdate() {
         try {
             Snackbar.make(
-                findViewById(R.id.coordinator),
+                window.decorView.rootView,
                 "An update has just been downloaded.",
                 Snackbar.LENGTH_INDEFINITE
             ).apply {

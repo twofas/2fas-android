@@ -13,6 +13,7 @@ class ServiceCodeGenerator(
 
     fun generate(service: Service): Service {
         val period = service.period ?: 30
+        val periodMillis = period * 1000
         val digits = service.digits ?: 6
         val algorithm = when (service.algorithm) {
             Service.Algorithm.SHA1 -> OtpData.Algorithm.SHA1
@@ -47,20 +48,23 @@ class ServiceCodeGenerator(
             algorithm = algorithm,
         )
 
-        val timer = calculateTimer(period)
+        val timerLeftMillis = periodMillis - timeProvider.realCurrentTime() % periodMillis
+        val timer = timerLeftMillis / 1000 + 1 // show 1 as the last number instead of 0, just for nicer UI
+        val progress = timer / period.toFloat()
 
         return service.copy(
             code = Service.Code(
                 current = authenticator.generateOtpCode(otpData),
                 next = authenticator.generateOtpCode(otpData.copy(counter = nextCounter)),
                 timer = timer.toInt(),
-                progress = timer / period.toFloat()
+                progress = progress,
             )
         )
     }
 
-    private fun calculateTimer(period: Int): Long {
-        return period - (Instant.now().epochSecond + timeProvider.realTimeDelta() / 1000) % period
+    // To be removed
+    private fun calculateTimer(period: Int): Int {
+        return period - ((Instant.now().epochSecond + timeProvider.realTimeDelta() / 1000) % period).toInt()
     }
 
     private fun Int.toMillis(): Long {
