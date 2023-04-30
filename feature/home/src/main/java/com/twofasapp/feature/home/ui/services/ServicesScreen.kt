@@ -74,6 +74,7 @@ import com.twofasapp.feature.home.ui.services.modal.AddServiceModal
 import com.twofasapp.feature.home.ui.services.modal.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.modal.ModalType
 import com.twofasapp.locale.TwLocale
+import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.burnoutcrew.reorderable.ReorderableItem
@@ -218,6 +219,7 @@ private fun ServicesScreen(
 
     LaunchedEffect(Unit) {
         if (uiState.searchFocused) {
+            awaitFrame()
             focusRequester.requestFocus()
         }
     }
