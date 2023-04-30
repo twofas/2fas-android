@@ -83,7 +83,6 @@ internal class ServicesRepositoryImpl(
     override suspend fun getService(id: Long): Service {
         return withContext(dispatchers.io) {
             local.getService(id)
-
         }
     }
 

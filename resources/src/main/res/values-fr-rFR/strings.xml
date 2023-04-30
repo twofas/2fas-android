@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Mon, 24 Apr 2023 10:25:09 -0700
+ Exported at: Sun, 30 Apr 2023 05:40:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -736,8 +736,10 @@
     <string name="settings__about_crash_optout_title">Rapports d\'incident</string>
     <string name="externalimport__lastpass_title">Importation des clés 2FA depuis l\'application LastPass</string>
     <string name="externalimport__lastpass_success_msg">Ce fichier JSON permet d\'importer des clés depuis LastPass.</string>
-    <string name="externalimport__info_lastpass_title"></string>
-    <string name="externalimport__info_aegis_title"></string>
-    <string name="externalimport__info_raivo_title"></string>
-    <string name="externalimport__info_google_authenticator_title"></string>
+    <string name="externalimport__info_lastpass_title">Importer les clés 2FA depuis Lastpass</string>
+    <string name="externalimport__info_aegis_title">Importer les clés 2FA depuis Aegis</string>
+    <string name="externalimport__info_raivo_title">Importer les clés 2FA depuis Raivo OTP</string>
+    <string name="externalimport__info_google_authenticator_title">Importer les clés 2FA depuis Google Authenticator</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">s</string>
 </resources>
