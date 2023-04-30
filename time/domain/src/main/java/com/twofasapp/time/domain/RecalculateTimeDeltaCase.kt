@@ -1,5 +1,5 @@
 package com.twofasapp.time.domain
 
 interface RecalculateTimeDeltaCase {
-    operator fun invoke()
+    suspend operator fun invoke()
 }

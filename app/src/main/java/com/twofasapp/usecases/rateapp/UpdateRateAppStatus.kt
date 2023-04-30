@@ -1,7 +1,7 @@
 package com.twofasapp.usecases.rateapp
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.prefs.usecase.RateAppStatusPreference
-import com.twofasapp.time.domain.TimeProvider
 import com.twofasapp.usecases.rateapp.RateAppCondition.Companion.COUNTER_THRESHOLD
 import java.time.Instant
 

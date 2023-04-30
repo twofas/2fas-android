@@ -1,5 +1,6 @@
 package com.twofasapp.services.domain
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.core.analytics.AnalyticsEvent
 import com.twofasapp.core.analytics.AnalyticsParam
 import com.twofasapp.core.analytics.AnalyticsService
@@ -7,7 +8,6 @@ import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.usecase.FirstCodeAddedPreference
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.model.Service
-import com.twofasapp.time.domain.TimeProvider
 
 internal class AddServiceCaseImpl(
     private val repository: ServicesRepository,

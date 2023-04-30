@@ -1,9 +1,9 @@
 package com.twofasapp.services.domain
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.data.ServicesRepository
-import com.twofasapp.time.domain.TimeProvider
 import com.twofasapp.widgets.domain.WidgetActions
 import io.reactivex.Completable
 import io.reactivex.Scheduler

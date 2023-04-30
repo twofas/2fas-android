@@ -22,7 +22,7 @@ dependencies {
     
     implementation(project(":featuretoggle"))
     implementation(project(":security:domain"))
-    implementation(project(":time:domain"))
+    implementation(project(":core:common"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

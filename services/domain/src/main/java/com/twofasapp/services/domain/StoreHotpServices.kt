@@ -1,7 +1,7 @@
 package com.twofasapp.services.domain
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.prefs.model.ServiceDto
-import com.twofasapp.time.domain.TimeProvider
 
 class StoreHotpServices(
     private val timeProvider: TimeProvider,

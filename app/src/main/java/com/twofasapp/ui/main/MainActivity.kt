@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.InstallStateUpdatedListener
@@ -19,6 +20,8 @@ import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.extensions.doNothing
 import com.twofasapp.extensions.toastLong
 import com.twofasapp.resources.R
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
             }
         }
     }
+    private var recalculateTimeJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
@@ -54,6 +58,10 @@ class MainActivity : AppCompatActivity(), AuthAware {
     override fun onResume() {
         super.onResume()
         servicesRepository.setTickerEnabled(true)
+
+        recalculateTimeJob = lifecycleScope.launch {
+            servicesRepository.recalculateTimeDelta()
+        }
     }
 
     override fun onAuthenticated() = Unit
@@ -61,6 +69,8 @@ class MainActivity : AppCompatActivity(), AuthAware {
     override fun onPause() {
         super.onPause()
         servicesRepository.setTickerEnabled(false)
+        recalculateTimeJob?.cancel()
+        recalculateTimeJob = null
     }
 
     private fun attachAuthLifecycleObserver() {

@@ -1,8 +1,8 @@
 package com.twofasapp.prefs.usecase
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.di.BackupSyncStatus.NOT_SYNCED
-import com.twofasapp.time.domain.TimeProvider
 import java.util.Collections
 
 class StoreGroups(

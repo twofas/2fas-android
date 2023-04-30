@@ -2,9 +2,9 @@ package com.twofasapp.push.domain.repository
 
 import com.google.firebase.messaging.RemoteMessage
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.prefs.model.LastPushesEntity
 import com.twofasapp.prefs.usecase.LastPushesPreference
-import com.twofasapp.time.domain.TimeProvider
 import timber.log.Timber
 
 class PushLogger(

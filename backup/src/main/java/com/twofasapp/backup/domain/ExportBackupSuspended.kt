@@ -5,6 +5,7 @@ import android.net.Uri
 import com.twofasapp.backup.EncryptBackup
 import com.twofasapp.backup.domain.converter.toRemoteService
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.prefs.model.RemoteBackup
 import com.twofasapp.prefs.model.RemoteGroup
@@ -12,7 +13,6 @@ import com.twofasapp.prefs.model.RemoteService
 import com.twofasapp.serialization.JsonSerializer
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.GetServicesCase
-import com.twofasapp.time.domain.TimeProvider
 import kotlinx.coroutines.flow.firstOrNull
 
 class ExportBackupSuspended(

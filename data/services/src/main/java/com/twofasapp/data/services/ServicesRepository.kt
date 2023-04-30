@@ -20,4 +20,5 @@ interface ServicesRepository {
     fun updateServicesOrder(ids: List<Long>)
     suspend fun incrementHotpCounter(service: Service)
     fun pushRecentlyAddedService(id: Long, source: RecentlyAddedService.Source)
+    suspend fun recalculateTimeDelta()
 }

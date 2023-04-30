@@ -1,9 +1,9 @@
 package com.twofasapp.services.domain
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.model.Service
-import com.twofasapp.time.domain.TimeProvider
 import com.twofasapp.widgets.domain.WidgetActions
 
 internal class EditServiceCaseImpl(

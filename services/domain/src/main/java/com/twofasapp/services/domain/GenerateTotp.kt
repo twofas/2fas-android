@@ -1,8 +1,9 @@
 package com.twofasapp.services.domain
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.services.domain.otp.OtpAuthenticator
 import com.twofasapp.services.domain.otp.OtpData
-import com.twofasapp.time.domain.TimeProvider
+
 
 class GenerateTotp(
     private val timeProvider: TimeProvider,

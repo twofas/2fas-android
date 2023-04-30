@@ -1,5 +1,6 @@
 package com.twofasapp.security.data
 
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.prefs.usecase.InvalidPinStatusPreference
 import com.twofasapp.prefs.usecase.LockMethodPreference
 import com.twofasapp.prefs.usecase.PinOptionsPreference
@@ -9,7 +10,6 @@ import com.twofasapp.security.data.converter.toEntity
 import com.twofasapp.security.domain.model.InvalidPinStatus
 import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.domain.model.PinOptions
-import com.twofasapp.time.domain.TimeProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlin.math.ceil
