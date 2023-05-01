@@ -62,10 +62,14 @@ internal class GroupsLocalSource(
 
     fun deleteGroup(id: String) {
         val local = getGroups()
+        val newList = local.list.filterNot { it.id == id }
 
         preferences.putString(
             KeyGroups, json.encodeToString(
-                local.copy(list = local.list.filterNot { it.id == id })
+                local.copy(
+                    list = newList,
+                    isDefaultGroupExpanded = if (newList.isEmpty()) true else local.isDefaultGroupExpanded
+                )
             )
         )
     }

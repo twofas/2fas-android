@@ -105,7 +105,7 @@ internal class ServicesViewModel(
                                     }
                                 }
 
-                                if (group.isExpanded || result.isInEditMode) {
+                                if (group.isExpanded || result.isInEditMode || groupedServices.size == 1) {
                                     services.forEach { service ->
                                         add(ServicesListItem.ServiceItem(service))
                                     }
