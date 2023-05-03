@@ -20,9 +20,10 @@ We welcome code contributions to the 2FAS for Android project. If you are intere
 1. Fork this repository to your own GitHub account
 2. Clone the repository to your local machine
 3. Create a new branch for your changes (e.g. `feature/new-login-screen`)
-4. Make your changes and commit them to your branch
-5. Push your branch to your fork on GitHub
-6. Open a pull request from your branch to the `develop` branch of this repository
+4. Follow the [Project Setup](#project-setup)
+5. Make your changes and commit them to your branch
+6. Push your branch to your fork on GitHub
+7. Open a pull request from your branch to the `develop` branch of this repository
 
 Please make sure your pull request includes the following:
 
