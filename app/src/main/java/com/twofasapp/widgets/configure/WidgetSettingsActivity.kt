@@ -17,6 +17,7 @@ import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.extensions.clicksThrottled
 import com.twofasapp.extensions.makeGone
 import com.twofasapp.extensions.makeVisible
+import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.views.ModelDiffUtilCallback
 import com.twofasapp.widgets.broadcast.WidgetBroadcaster
@@ -35,6 +36,7 @@ class WidgetSettingsActivity : BaseActivityPresenter<ActivityWidgetSettingsBindi
 
         authTracker.onWidgetSettingsScreen()
         super.onCreate(savedInstanceState)
+        makeWindowSecure()
         setContentView(ActivityWidgetSettingsBinding::inflate)
         setPresenter(presenter)
         viewBinding.recycler.adapter = fastAdapter

@@ -18,6 +18,7 @@ import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.extensions.doNothing
+import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.extensions.toastLong
 import com.twofasapp.resources.R
 import kotlinx.coroutines.Job
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
         super.onCreate(savedInstanceState)
+        makeWindowSecure()
 
         setContent { MainScreen() }
 

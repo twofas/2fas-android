@@ -12,6 +12,7 @@ import com.twofasapp.design.dialogs.SimpleInputDialog
 import com.twofasapp.extensions.clicksThrottled
 import com.twofasapp.extensions.makeGone
 import com.twofasapp.extensions.makeVisible
+import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.extensions.toastLong
 
@@ -25,6 +26,7 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        makeWindowSecure()
         setContentView(ActivityImportBackupBinding::inflate)
         setPresenter(presenter)
 
