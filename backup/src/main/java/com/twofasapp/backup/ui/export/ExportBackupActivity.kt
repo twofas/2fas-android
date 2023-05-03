@@ -11,6 +11,7 @@ import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.core.RequestCodes
 import com.twofasapp.design.dialogs.InfoDialog
 import com.twofasapp.extensions.clicksThrottled
+import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.extensions.toastLong
 import org.koin.android.ext.android.get
@@ -29,6 +30,7 @@ class ExportBackupActivity : BaseActivityPresenter<ActivityExportBackupBinding>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        makeWindowSecure()
         setContentView(ActivityExportBackupBinding::inflate)
         setPresenter(presenter)
     }

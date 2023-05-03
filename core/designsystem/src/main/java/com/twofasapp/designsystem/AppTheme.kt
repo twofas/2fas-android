@@ -1,6 +1,7 @@
 package com.twofasapp.designsystem
 
 import android.app.Activity
+import android.view.WindowManager
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
@@ -40,6 +41,13 @@ fun MainAppTheme(
                 navigationBarColor = Color.Transparent.toArgb()
 
                 WindowCompat.setDecorFitsSystemWindows(this, false)
+
+                if (BuildConfig.BUILD_TYPE.equals("release", true)) {
+                    setFlags(
+                        WindowManager.LayoutParams.FLAG_SECURE,
+                        WindowManager.LayoutParams.FLAG_SECURE
+                    )
+                }
             }
         }
     }

@@ -7,6 +7,7 @@ import com.twofasapp.base.BaseActivityPresenter
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.databinding.ActivityBackupBinding
 import com.twofasapp.design.theme.ThemeState
+import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.features.backup.settings.BackupSettingsFragment
 import com.twofasapp.features.backup.status.BackupStatusFragment
@@ -26,6 +27,7 @@ class BackupActivity : BaseActivityPresenter<ActivityBackupBinding>(), BackupCon
         ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
 
         super.onCreate(savedInstanceState)
+        makeWindowSecure()
         setContentView(ActivityBackupBinding::inflate)
         setPresenter(presenter)
 
