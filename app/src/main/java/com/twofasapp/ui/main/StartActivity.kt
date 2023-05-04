@@ -33,7 +33,9 @@ class StartActivity : AppCompatActivity(), AuthAware {
         onAppUpdatedWorkDispatcher.dispatch()
         syncTimeWorkDispatcher.dispatch()
 
-        authTracker.onSplashScreen()
+        if (savedInstanceState == null) {
+            authTracker.onSplashScreen()
+        }
 
         lifecycle.addObserver(
             AuthLifecycle(
