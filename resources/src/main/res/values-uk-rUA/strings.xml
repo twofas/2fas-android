@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Fri, 05 May 2023 06:02:33 -0700
+ Exported at: Sat, 06 May 2023 11:09:43 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -257,7 +257,7 @@
     <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">Сервіс успішно додано. Ми дуже рекомендуємо вам\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
-    <string name="tokens__gallery_advice_content_middle_bold">видалити знімок QR-коду зі своєї галереї.</string>
+    <string name="tokens__gallery_advice_content_middle_bold">видалити знімок QR-коду зі своєї галереї.\u0020</string>
     <string name="tokens__gallery_advice_content_last">Якщо хтось отримає доступ до цього знімку із QR-кодом, він зможе отримати ваші коди двоетапної перевірки до цього сервісу.</string>
     <string name="tokens__request_icon_page_title">Надіслати запит на значок</string>
     <string name="tokens__request_icon_social_title">Повідомте нам у Discord</string>
@@ -468,11 +468,11 @@
     <string name="notifications__no_notifications">Немає сповіщень</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
-    <string name="backup__google_drive_not_available">Google Диск недоступний</string>
-    <string name="backup__google_drive_disabled_title">Google Диск був відключений користувачем</string>
+    <string name="backup__google_drive_not_available">Google Drive недоступний</string>
+    <string name="backup__google_drive_disabled_title">Google Drive був відключений користувачем</string>
     <string name="backup__update_required_to_import_title_2">Щоб імпортувати вміст цього файлу, вам знадобиться нова версія додатку. Найновішу версію можна знайти в Google Store</string>
     <string name="tokens__qr_code_leads_to_google_store">Цей QR-код перенаправить вас до Google Store</string>
-    <string name="introduction__page_4_content_android">Ваші токени зберігаються в режимі офлайн у пам’яті пристрою, тому не забувайте створювати резервні копії своїх сервісів! Використовуйте синхронізацію із Google Диском для захисту від несанкціонованого доступу та пошкодження пристрою.</string>
+    <string name="introduction__page_4_content_android">Ваші токени зберігаються в режимі офлайн у пам’яті пристрою, тому не забувайте створювати резервні копії своїх сервісів! Використовуйте синхронізацію із Google Drive для захисту від несанкціонованого доступу та пошкодження пристрою.</string>
     <string name="new_version__new_version_message_android">Нова версія додатку 2FAS доступна в Google Store. Оновіть як найшидше! Йдіть у ногу з часом !</string>
     <string name="security_error_no_match">ПІН-коди не збігаються! Будь ласка, спробуйте ще раз.</string>
     <string name="settings_developer_options">Налаштування виробника</string>
@@ -484,17 +484,17 @@
     <string name="tokens__service_unsaved_changes_title">Незбережені зміни</string>
     <string name="tokens__service_key_invalid_format">Недійсний формат ключа</string>
     <string name="intent_error_no_gallery_app">Системна помилка! Немає системного додатку галереї.</string>
-    <string name="gdrive_permission_title">Дозвіл Google Диск</string>
-    <string name="gdrive_permission_msg">Нам потрібен дозвіл Google Диск, щоб зберігати файли резервної копії в даних додатку.</string>
+    <string name="gdrive_permission_title">Дозвіл Google Drive</string>
+    <string name="gdrive_permission_msg">Нам потрібен дозвіл Google Drive, щоб зберігати файли резервної копії в даних додатку.</string>
     <string name="gdrive_internet_title">Потрібне підключення до Інтернету</string>
     <string name="gdrive_internet_msg">Для синхронізації з Google потрібно ввімкнути підключення до Інтернету.</string>
-    <string name="gdrive_wipe_internet_msg">Щоб скасувати доступ до Google Диск, вам потрібно ввімкнути підключення до Інтернету.</string>
-    <string name="backup_explanation_msg">Автоматично синхронізуйте та зберігайте файли резервної копії у прихованій папці на вашому Google Диску. Ця папка доступна лише для додатку 2FAS.</string>
+    <string name="gdrive_wipe_internet_msg">Щоб скасувати доступ до Google Drive, вам потрібно ввімкнути підключення до Інтернету.</string>
+    <string name="backup_explanation_msg">Автоматично синхронізуйте та зберігайте файли резервної копії у прихованій папці на вашому Google Drive. Ця папка доступна лише для додатку 2FAS.</string>
     <string name="backup_error_unknown">Під час резервної синхронізації сталася помилка. Перезапустіть додаток через кілька хвилин і повторіть спробу.</string>
     <string name="backup_error_encrypt_unknown">Під час шифрування резервної копії сталася помилка. Встановіть пароль ще раз.</string>
     <string name="backup_error_decrypt_unknown">Під час дешифрування резервної копії сталася помилка. Встановіть пароль ще раз.</string>
     <string name="backup__google_drive_problem_title">Виникла проблема з iCloud. Перевірте системні налаштування</string>
-    <string name="backup_error_auth">Виникла проблема з дозволами вашого облікового запису Google Диск. Спробуйте ввімкнути та вимкнути синхронізацію.</string>
+    <string name="backup_error_auth">Виникла проблема з дозволами вашого облікового запису Google Drive. Спробуйте ввімкнути та вимкнути синхронізацію.</string>
     <string name="backup_error_no_password">Виникла проблема з дозволами вашого облікового запису Google Диск. Спробуйте ввімкнути та вимкнути синхронізацію.</string>
     <string name="backup_error_wrong_password">Ваша резервна копія захищена паролем, але наданий пароль неправильний. Увімкніть її та введіть свій пароль.</string>
     <string name="customization_service_assignment">Призначення сервісу</string>
@@ -511,13 +511,13 @@
     <string name="backup_notice_later">Можливо пізніше</string>
     <string name="backup_notice_cta">Ввімкнути</string>
     <string name="widgets_empty_msg">Сервіси не додано</string>
-    <string name="backup__section_description_google">РЕКОМЕНДОВАНО: Синхронізація Google Диску зберігає ваші токени на Диску Google в безпеці у разі втрати або пошкодження вашого пристрою. Тримайте його ввімкненим.</string>
-    <string name="backup_turn_off_title">Вимкнути синхронізацію Google Диск?</string>
-    <string name="backup_turn_off_msg1">Ваші токени залишаться на цьому пристрої та у вашому Диску Google, але не будуть синхронізовані. Також ви вийдете зі свого облікового запису Google.</string>
+    <string name="backup__section_description_google">РЕКОМЕНДОВАНО: Синхронізація Google Drive зберігає ваші токени на Google Drive в безпеці у разі втрати або пошкодження вашого пристрою. Тримайте його ввімкненим.</string>
+    <string name="backup_turn_off_title">Вимкнути синхронізацію Google Drive?</string>
+    <string name="backup_turn_off_msg1">Ваші токени залишаться на цьому пристрої та у вашому Google Drive, але не будуть синхронізовані. Також ви вийдете зі свого облікового запису Google.</string>
     <string name="backup_turn_off_msg2">Пам’ятай, що у разі втрати або пошкодження цього пристрою чи видалення програми, можливо, не зможеш відновити свої токени, і втратиш доступ до онлайн-акаунтів, захищених двоетапною авторизацією.</string>
-    <string name="backup_settings_password_set_subtitle">Захистіть файл резервної копії Google Диск за допомогою спеціального пароля.</string>
+    <string name="backup_settings_password_set_subtitle">Захистіть файл резервної копії Google Drive за допомогою спеціального пароля.</string>
     <string name="backup_settings_password_remove_title">Видалити пароль</string>
-    <string name="backup_settings_password_remove_subtitle">Видалити пароль для файлу резервної копії Google Диск.</string>
+    <string name="backup_settings_password_remove_subtitle">Видалити пароль для файлу резервної копії Google Drive.</string>
     <string name="backup_settings_account_title">Обліковий запис Google</string>
     <string name="backup_settings_sync_title">Остання синхронізація</string>
     <string name="browser_extension_result_success_description">2FAS надсилатиме вам PUSH-сповіщення кожного разу, коли ви входитимете у свої онлайн-сервіси за допомогою цього веб-браузера. Вам більше не знадобиться повторно вводити свої токени.</string>
@@ -551,7 +551,7 @@
     <string name="settings__theme_option_light">Світла</string>
     <string name="tokens__copied_clipboard">Токен скопійовано в буфер обміну!</string>
     <string name="tokens__next_copied_clipboard">Наступний токен скопійовано в буфер обміну!</string>
-    <string name="tokens__do_you_really_want_to_remove_all_devices">Ви справді бажаєте видалити 2FA сервіс ?</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Ви справді бажаєте видалити 2FA сервіс?</string>
     <string name="tokens__fab_addmanually">Додати вручну</string>
     <string name="tokens__qr_does_not_work">QR-код не працює!</string>
     <!-- Could not read QR code from the image! -->
@@ -595,9 +595,9 @@
     <string name="backup_turn_off_cta">Вимкнути синхронізацію</string>
     <string name="backup_turn_off_cancel">Відміна</string>
     <string name="backup_settings_password_set_title">Встановити пароль</string>
-    <string name="backup_settings_delete_title">Видалити файл резервної копії з Google Диск</string>
+    <string name="backup_settings_delete_title">Видалити файл резервної копії з Google Drive</string>
     <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
-    <string name="backup_settings_delete_subtitle">Якщо ви видалите цей файл зі свого Диска Google, синхронізацію на всіх синхронізованих пристроях буде вимкнено, а токени залишаться лише на цьому та інших пристроях через локальне сховище.</string>
+    <string name="backup_settings_delete_subtitle">Якщо ви видалите цей файл зі свого Google Drive, синхронізацію на всіх синхронізованих пристроях буде вимкнено, а токени залишаться лише на цьому та інших пристроях через локальне сховище.</string>
     <string name="browser__result_error_browser_paired">Ваш додаток 2FAS вже підключено до цього браузера.</string>
     <!-- Scan QR code again -->
     <string name="browser__result_error_cta">Cпробуйте ще раз відсканувати QR-код</string>
@@ -686,8 +686,8 @@
     <string name="backup__revoke_google_access_msg">Введіть пароль резервної копії, щоб продовжити скасування доступу до Google.</string>
     <string name="backup__synchronization_settings">Налаштування синхронізації</string>
     <string name="backup__local_file_title">Локальний файл</string>
-    <string name="backup__drive_title">Синхронізація Google Диск</string>
-    <string name="backup__delete_file_title">Видалити файл резервної копії з Google Диск?</string>
+    <string name="backup__drive_title">Синхронізація із Google Drive</string>
+    <string name="backup__delete_file_title">Видалити файл резервної копії з Google Drive?</string>
     <string name="backup__delete_file_msg">Синхронізацію Google буде вимкнено. Ваші токени залишаться у додатку, 2FAS не матиме доступу до вашого облікового запису Google й не зможе синхронізуватися з іншими пристроями.</string>
     <string name="backup__sync_status_waiting">Очікування синхронізації...</string>
     <string name="backup__sync_status_progress">Синхронізація...</string>
@@ -705,8 +705,8 @@
     <string name="externalimport__aegis_success_msg">Цей JSON файл дозволяє імпортувати токени з Aegis.</string>
     <string name="externalimport__raivo_success_msg">Цей JSON файл дозволяє імпортувати токени з Raivo.</string>
     <string name="externalimport__read_error">Не вдалося зчитати жодних токенів. Спробуйте обрати інший файл.</string>
-    <string name="settings__gd_sync_info">Нагадування про синхронізацію Google Диск</string>
-    <string name="settings__gd_sync_disable_confirm">Ви впевнені? Без синхронізації з Google Диском ви не зможете відновити свої токени, якщо втратите доступ або скинете налаштування телефону!</string>
+    <string name="settings__gd_sync_info">Нагадування про синхронізацію Google Drive</string>
+    <string name="settings__gd_sync_disable_confirm">Ви впевнені? Без синхронізації з Google Drive ви не зможете відновити свої токени, якщо втратите доступ або скинете налаштування телефону!</string>
     <string name="extension__code_sent_msg">Код успішно відправлено</string>
     <string name="extension__code_sent_error_msg">Сталася помилка під час надсилання коду</string>
     <string name="tokens__add_service_title">Додати новий сервіс</string>
@@ -733,7 +733,7 @@
     <string name="settings__appearance">Зовнішній вигляд</string>
     <string name="settings__show_next_token_desc">Показати наступний токен, коли час поточного практично завершився.</string>
     <string name="settings__list_style">Стиль списку</string>
-    <string name="backup__reminder_msg">Відсутня синхронізація із Google Диск</string>
+    <string name="backup__reminder_msg">Відсутня синхронізація із Google Drive</string>
     <string name="backup__reminder_cta">Перейдіть до налаштувань резервного копіювання</string>
     <string name="settings__list_style_option_default">По замовчуванню</string>
     <string name="settings__list_style_option_compact">Компактний</string>
