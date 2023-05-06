@@ -112,6 +112,7 @@ securityCrypto = "androidx.security:security-crypto:1.1.0-alpha05"
 secureStorage = "de.adorsys.android:securestoragelibrary:1.2.4"
 roomRx = { module = "androidx.room:room-rxjava2", version.ref = "room" }
 sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.4"
+reLinker = "com.getkeepsafe.relinker:relinker:1.4.5"
 apacheCommonsCodec = "commons-codec:commons-codec:1.15"
 
 [bundles]
