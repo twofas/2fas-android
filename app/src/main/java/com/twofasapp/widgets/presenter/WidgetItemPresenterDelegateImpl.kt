@@ -17,6 +17,10 @@ class WidgetItemPresenterDelegateImpl(
     private val widgetBroadcaster: WidgetBroadcaster,
 ) : WidgetItemPresenterDelegate {
 
+    private val secUnit: String by lazy {
+        context.getString(R.string.time_unit_seconds_short)
+    }
+
     override fun updateItemView(
         appWidgetId: Int,
         position: Int,
@@ -27,7 +31,7 @@ class WidgetItemPresenterDelegateImpl(
 
             setTextViewText(R.id.widget_name, model.service.name)
             setTextViewText(R.id.widget_code, model.formatCode())
-            setTextViewText(R.id.widget_expires, "${model.counter}s")
+            setTextViewText(R.id.widget_expires, "${model.counter}$secUnit")
 
             setViewVisibility(R.id.widget_code, widgetService.isActive.visibleOrGone())
             setViewVisibility(R.id.widget_expires_layout, widgetService.isActive.visibleOrGone())
@@ -35,7 +39,6 @@ class WidgetItemPresenterDelegateImpl(
             setViewVisibility(R.id.widget_chevron_active, widgetService.isActive.visibleOrGone())
             setViewVisibility(R.id.widget_chevron_inactive, widgetService.isActive.not().visibleOrGone())
             setViewVisibility(R.id.widget_name, widgetService.isActive.not().visibleOrGone())
-
             setOnClickFillInIntent(R.id.widget_item_root, widgetBroadcaster.intentItemClick(position))
             setOnClickFillInIntent(R.id.widget_copy, widgetBroadcaster.intentItemCopyClick(position, model.code))
             setIcon(model.service)

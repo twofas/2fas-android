@@ -57,7 +57,13 @@ internal fun SetupPinScreen(
                 .fillMaxSize(), contentAlignment = Alignment.Center
         ) {
             PinScreen(
-                message = stringResource(id = uiState.message, "${uiState.digits.value}-digit"),
+                message = stringResource(
+                    id = uiState.message,
+                    when (uiState.digits) {
+                        PinDigits.Code4 -> stringResource(id = R.string.settings__pin_4_digits)
+                        PinDigits.Code6 -> stringResource(id = R.string.settings__pin_6_digits)
+                    }
+                ),
                 errorMessage = uiState.errorMessage?.let { stringResource(id = it) }.orEmpty(),
                 digits = uiState.digits.value,
                 showLogo = false,

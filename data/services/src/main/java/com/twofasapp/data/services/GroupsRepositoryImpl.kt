@@ -16,16 +16,19 @@ internal class GroupsRepositoryImpl(
 ) : GroupsRepository {
 
     override fun observeGroups(): Flow<List<Group>> {
-        return local.observeGroups().map { groups ->
-            listOf(
-                // Default group
-                Group(
-                    id = null,
-                    name = null,
-                    isExpanded = groups.isDefaultGroupExpanded
+        return local.observeGroups()
+            .map { groups ->
+                listOf(
+                    // Default group
+                    Group(
+                        id = null,
+                        name = null,
+                        isExpanded = groups.isDefaultGroupExpanded
+                    )
                 )
-            ).plus(groups.list.map { it.asDomain() })
-        }
+                    .plus(groups.list.map { it.asDomain() })
+                    .distinctBy { it.id }
+            }
     }
 
     override suspend fun addGroup(name: String) {

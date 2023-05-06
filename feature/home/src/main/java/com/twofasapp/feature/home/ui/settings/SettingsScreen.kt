@@ -127,14 +127,14 @@ private fun SettingsScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                        .padding(top = 24.dp, bottom = 24.dp),
+                    horizontalArrangement = Arrangement.spacedBy(14.dp, Alignment.CenterHorizontally),
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_youtube),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(56.dp)
+                            .size(48.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.youtube, activity) }
                     )
@@ -142,7 +142,7 @@ private fun SettingsScreen(
                         painter = painterResource(id = R.drawable.ic_twitter),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(56.dp)
+                            .size(48.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.twitter, activity) }
                     )
@@ -150,7 +150,7 @@ private fun SettingsScreen(
                         painter = painterResource(id = R.drawable.ic_discord),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(56.dp)
+                            .size(48.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.discord, activity) }
                     )
@@ -159,7 +159,7 @@ private fun SettingsScreen(
                         contentDescription = null,
                         tint = TwTheme.color.onSurfacePrimary,
                         modifier = Modifier
-                            .size(56.dp)
+                            .size(48.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.github, activity) }
                     )

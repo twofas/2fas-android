@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Sun, 30 Apr 2023 05:40:07 -0700
+ Exported at: Sat, 06 May 2023 04:07:55 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -742,4 +742,22 @@
     <string name="externalimport__info_google_authenticator_title">Importa tokens do Google Authenticator</string>
     <!-- Counter eg.: "25s" -->
     <string name="time_unit_seconds_short">s</string>
+    <string name="tokens__add_title">Pair the service with 2FAS</string>
+    <string name="tokens__add_description">Point your camera at the screen to capture the QR code.</string>
+    <string name="tokens__add_other_methods">Other methods</string>
+    <string name="tokens__add_enter_manual">Enter secret key</string>
+    <string name="tokens__add_from_gallery">Upload an image with the QR code</string>
+    <string name="tokens__add_success_title">Almost done!</string>
+    <string name="tokens__add_success_description">To finish pairing the service, you need to retype this token.</string>
+    <string name="tokens__add_manual_title">Pair the service with 2FAS</string>
+    <string name="tokens__add_manual_description">Type in the service name and service key.</string>
+    <string name="tokens__add_manual_service_name">Service name (required)</string>
+    <string name="tokens__add_manual_service_key">Service key (required)</string>
+    <string name="tokens__add_manual_other">Other settings</string>
+    <string name="tokens__add_manual_other_optional">(optional)</string>
+    <string name="tokens__add_manual_done_cta">Add service</string>
+    <string name="tokens__add_manual_help_cta">Don’t know what to do? Tap for help</string>
+    <string name="tokens__add_manual_advanced">Advanced token settings</string>
+    <string name="tokens__add_manual_additional_info">Additional info</string>
+    <string name="tokens__add_manual_advanced_description">Changing default token settings is not recommended. Do so only when your 2FA provider requires it and when you have clear instructions.</string>
 </resources>

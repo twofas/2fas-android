@@ -25,5 +25,6 @@ dependencies {
     implementation(project(":core:common"))
 
     implementation(libs.bundles.room)
+    implementation(libs.reLinker)
     kapt(libs.roomCompiler)
 }

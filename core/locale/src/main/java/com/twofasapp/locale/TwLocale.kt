@@ -60,7 +60,7 @@ object TwLocale {
         )
     }
 
-    enum class TimeUnit(val millis: Long, val pastStringRes: Int) {
+    private enum class TimeUnit(val millis: Long, val pastStringRes: Int) {
         Second(1_000L, R.plurals.past_duration_seconds),
         Minute(60 * 1_000L, R.plurals.past_duration_minutes),
         Hour(60 * 60 * 1_000L, R.plurals.past_duration_hours),
