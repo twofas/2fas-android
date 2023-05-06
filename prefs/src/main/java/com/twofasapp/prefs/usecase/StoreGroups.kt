@@ -3,7 +3,6 @@ package com.twofasapp.prefs.usecase
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.di.BackupSyncStatus.NOT_SYNCED
-import java.util.Collections
 
 class StoreGroups(
     private val groupsPreference: GroupsPreference,
@@ -14,13 +13,13 @@ class StoreGroups(
         return groupsPreference.get()
     }
 
-    fun append(newGroups: List<com.twofasapp.prefs.model.Group>) {
-        val groups = all()
-        groups.list.map { group -> group.id }
+    fun append(remoteGroups: List<com.twofasapp.prefs.model.Group>) {
+        val local = all()
+        local.list.map { group -> group.id }
 
-        newGroups.forEach { remoteGroup ->
-            if (groups.list.find { it.id == remoteGroup.id } == null) {
-                groups.list.add(
+        remoteGroups.forEach { remoteGroup ->
+            if (local.list.find { it.id == remoteGroup.id } == null) {
+                local.list.add(
                     com.twofasapp.prefs.model.Group(
                         id = remoteGroup.id,
                         name = remoteGroup.name,
@@ -32,11 +31,18 @@ class StoreGroups(
             }
         }
 
-        groupsPreference.put(groups)
+
+
+        groupsPreference.put(local.copy(list = local.list.distinctBy { it.id }.toMutableList()))
     }
 
     fun updateOrder(groups: List<com.twofasapp.prefs.model.Group>) {
-        groupsPreference.put(all().copy(list = groups.map { it.copy(updatedAt = timeProvider.systemCurrentTime(), backupSyncStatus = NOT_SYNCED) }
+        groupsPreference.put(all().copy(list = groups.map {
+            it.copy(
+                updatedAt = timeProvider.systemCurrentTime(),
+                backupSyncStatus = NOT_SYNCED
+            )
+        }
             .toMutableList()))
     }
 
@@ -47,10 +53,10 @@ class StoreGroups(
     }
 
     fun add(group: com.twofasapp.prefs.model.Group) {
-        val groups = all()
-        groups.list.add(group.copy(updatedAt = timeProvider.systemCurrentTime(), backupSyncStatus = NOT_SYNCED))
+        val local = all()
+        local.list.add(group.copy(updatedAt = timeProvider.systemCurrentTime(), backupSyncStatus = NOT_SYNCED))
 
-        groupsPreference.put(groups)
+        groupsPreference.put(local.copy(list = local.list.distinctBy { it.id }.toMutableList()))
     }
 
     fun edit(group: com.twofasapp.prefs.model.Group) {
@@ -68,27 +74,6 @@ class StoreGroups(
         groups.list.remove(group)
 
         groupsPreference.put(groups)
-    }
-
-    fun moveUp(group: com.twofasapp.prefs.model.Group) {
-        val groups = all()
-        val index = groups.list.map { it.id }.indexOf(group.id)
-        Collections.swap(groups.list, index, index - 1)
-
-        groupsPreference.put(groups)
-    }
-
-    fun moveDown(group: com.twofasapp.prefs.model.Group) {
-        val groups = all()
-        val index = groups.list.map { it.id }.indexOf(group.id)
-        Collections.swap(groups.list, index, index + 1)
-
-        groupsPreference.put(groups)
-    }
-
-    fun toggleDefaultGroupExpanded() {
-        val groups = all()
-        groupsPreference.put(groups.copy(isDefaultGroupExpanded = groups.isDefaultGroupExpanded.not()))
     }
 
     fun markAllSynced() {

@@ -54,7 +54,7 @@ internal class GroupsLocalSource(
                             updatedAt = timeProvider.systemCurrentTime(),
                             backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                         )
-                    )
+                    ).distinctBy { it.id }
                 )
             )
         )
@@ -129,7 +129,7 @@ internal class GroupsLocalSource(
                     } else {
                         group
                     }
-                }
+                }.distinctBy { it.id }
             )
         }
 
