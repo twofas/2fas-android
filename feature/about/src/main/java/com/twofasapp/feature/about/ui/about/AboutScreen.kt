@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.core.app.ShareCompat
 import com.twofasapp.designsystem.R
 import com.twofasapp.designsystem.TwIcons
@@ -93,7 +94,7 @@ private fun AboutScreen(
             }
 
             SettingsLink(
-                title = "Version $versionName",
+                title = stringResource(id = R.string.settings__version, versionName),
                 image = painterResource(id = R.drawable.logo_2fas),
                 textColor = TwTheme.color.onSurfaceSecondary
             )

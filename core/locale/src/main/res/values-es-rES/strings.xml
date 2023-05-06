@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Fri, 05 May 2023 06:02:33 -0700
+ Exported at: Sat, 06 May 2023 04:07:55 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -750,14 +750,14 @@
     <string name="tokens__add_success_title">¡Casi listo!</string>
     <string name="tokens__add_success_description">Para finalizar el emparejamiento con el servicio, debes escribir de nuevo este token.</string>
     <string name="tokens__add_manual_title">Emparejando servicio con 2FAS</string>
-    <string name="tokens__add_manual_description">Type in the service name and service key.</string>
-    <string name="tokens__add_manual_service_name">Service name (required)</string>
-    <string name="tokens__add_manual_service_key">Service key (required)</string>
-    <string name="tokens__add_manual_other">Other settings</string>
-    <string name="tokens__add_manual_other_optional">(optional)</string>
-    <string name="tokens__add_manual_done_cta">Add service</string>
-    <string name="tokens__add_manual_help_cta">Don’t know what to do? Tap for help</string>
-    <string name="tokens__add_manual_advanced">Advanced token settings</string>
-    <string name="tokens__add_manual_additional_info">Additional info</string>
-    <string name="tokens__add_manual_advanced_description">Changing default token settings is not recommended. Do so only when your 2FA provider requires it and when you have clear instructions.</string>
+    <string name="tokens__add_manual_description">Escribe el nombre y clave del servicio.</string>
+    <string name="tokens__add_manual_service_name">Nombre del servicio (obligatorio)</string>
+    <string name="tokens__add_manual_service_key">Clave del servicio (obligatorio)</string>
+    <string name="tokens__add_manual_other">Otros ajustes</string>
+    <string name="tokens__add_manual_other_optional">(opcional)</string>
+    <string name="tokens__add_manual_done_cta">Añadir servicio</string>
+    <string name="tokens__add_manual_help_cta">¿No sabes qué hacer? Pulsa para obtener ayuda</string>
+    <string name="tokens__add_manual_advanced">Ajustes avanzados de tokens</string>
+    <string name="tokens__add_manual_additional_info">Información adicional</string>
+    <string name="tokens__add_manual_advanced_description">No es recomendable cambiar los ajustes por defecto de token. Hazlo solo cuando tu proveedor 2FA lo requiera y cuando tengas instrucciones claras.</string>
 </resources>

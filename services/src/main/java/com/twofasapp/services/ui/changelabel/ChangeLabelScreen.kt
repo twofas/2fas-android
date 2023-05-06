@@ -30,6 +30,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.designsystem.TwTheme
@@ -123,8 +125,12 @@ internal fun ChangeLabelScreen(
                             ),
                             style = MaterialTheme.typography.bodySmall.copy(color = TwTheme.color.onSurfacePrimary),
                             modifier = Modifier
+                                .padding(horizontal = 8.dp)
                                 .align(Alignment.CenterHorizontally)
-                                .wrapContentWidth()
+                                .wrapContentWidth(),
+                            textAlign = TextAlign.Center,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
                         )
                     }
                 }

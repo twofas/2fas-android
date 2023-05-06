@@ -48,6 +48,7 @@ internal class BackupSettingsPresenter(
                             wipeData()
                         }
                     }
+
                     SyncStatus.Syncing -> doNothing()
                     is SyncStatus.Error -> handleErrors(it.trigger)
                 }
@@ -111,7 +112,7 @@ internal class BackupSettingsPresenter(
         )
 
         items.add(DividerItem())
-        items.add(HeaderEntry(text = "Info").toItem())
+        items.add(HeaderEntry(textRes = R.string.commons__info).toItem())
 
         items.add(
             SimpleEntry(
@@ -131,6 +132,7 @@ internal class BackupSettingsPresenter(
                             durationFormatter.format(backupStatus.lastSyncMillis)
                         }
                     }
+
                     SyncStatus.Syncing -> view.getStringRes(R.string.backup__sync_status_progress)
                     is SyncStatus.Error -> {
                         when ((syncStatus as SyncStatus.Error).trigger) {
@@ -143,6 +145,7 @@ internal class BackupSettingsPresenter(
                                     durationFormatter.format(backupStatus.lastSyncMillis)
                                 }
                             }
+
                             else -> view.getStringRes(R.string.commons__error)
                         }
                     }
