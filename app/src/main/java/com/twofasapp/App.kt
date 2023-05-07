@@ -36,6 +36,7 @@ import com.twofasapp.start.StartModule
 import com.twofasapp.time.TimeModule
 import com.twofasapp.usecases.services.PinOptionsUseCase
 import io.reactivex.plugins.RxJavaPlugins
+import net.sqlcipher.database.SQLiteDatabase
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -124,6 +125,11 @@ class App : MultiDexApplication() {
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
 
         FileLogger.log("App start")
+
+        try {
+            SQLiteDatabase.loadLibs(this)
+        } catch (e: Exception) {
+        }
     }
 
     override fun attachBaseContext(base: Context) {

@@ -1,7 +1,6 @@
 package com.twofasapp.persistence
 
 import androidx.room.Room
-import com.getkeepsafe.relinker.ReLinker
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.di.KoinModule
 import com.twofasapp.persistence.cipher.DatabaseKeyGenerator
@@ -36,12 +35,6 @@ class PersistenceModule : KoinModule {
                 MIGRATION_9_10,
                 MIGRATION_10_11,
             )
-
-            SQLiteDatabase.loadLibs(context) { libraries: Array<String?> ->
-                libraries.forEach { library ->
-                    ReLinker.loadLibrary(context, library)
-                }
-            }
 
             if (get<AppBuild>().isDebuggable.not()) {
                 val factory = SupportFactory(SQLiteDatabase.getBytes(get<GetDatabaseMasterKey>().execute().toCharArray()))
