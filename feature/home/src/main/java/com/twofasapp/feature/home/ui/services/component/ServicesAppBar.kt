@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -31,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.designsystem.R
@@ -171,10 +174,14 @@ private fun SearchBar(
                             }
                         }
                     }
-                }
+                },
+            maxLines = 1,
+            singleLine = true,
+            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Search),
+            keyboardActions = KeyboardActions(onSearch = { onSearchFocusChange(false) })
         )
 
-        AnimatedVisibility(visible = focused) {
+        AnimatedVisibility(visible = focused || query.isNotEmpty()) {
             TwIconButton(
                 painter = TwIcons.Close,
                 onClick = {
@@ -187,7 +194,7 @@ private fun SearchBar(
             )
         }
 
-        AnimatedVisibility(visible = focused.not()) {
+        AnimatedVisibility(visible = focused.not() && query.isEmpty()) {
             TwDropdownMenu(
                 expanded = showDropdown,
                 onDismissRequest = { showDropdown = false },

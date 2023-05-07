@@ -28,6 +28,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -76,6 +77,7 @@ import com.twofasapp.feature.home.ui.services.modal.ModalType
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import org.burnoutcrew.reorderable.ReorderableItem
 import org.burnoutcrew.reorderable.detectReorder
@@ -222,6 +224,16 @@ private fun ServicesScreen(
             awaitFrame()
             focusRequester.requestFocus()
         }
+    }
+
+    LaunchedEffect(Unit) {
+        snapshotFlow { listState.isScrollInProgress }
+            .filter { it }
+            .collect { isScrollInProgress ->
+                if (isScrollInProgress) {
+                    onSearchFocusChange(false)
+                }
+            }
     }
 
     BackHandler(

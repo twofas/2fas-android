@@ -101,11 +101,20 @@ internal class ServicesViewModel(
 
                                 if (groupedServices.size > 1) {
                                     if (group.id != null || services.isNotEmpty() || result.searchQuery.isNotEmpty()) {
-                                        add(ServicesListItem.GroupItem(result.groups.first { it.id == group.id }))
+                                        val group = result.groups.first { it.id == group.id }
+                                        add(
+                                            ServicesListItem.GroupItem(
+                                                if (result.searchQuery.isNotEmpty()) {
+                                                    group.copy(isExpanded = true)
+                                                } else {
+                                                    group
+                                                }
+                                            )
+                                        )
                                     }
                                 }
 
-                                if (group.isExpanded || result.isInEditMode || groupedServices.size == 1) {
+                                if (group.isExpanded || result.isInEditMode || groupedServices.size == 1 || result.searchQuery.isNotEmpty()) {
                                     services.forEach { service ->
                                         add(ServicesListItem.ServiceItem(service))
                                     }
@@ -145,6 +154,8 @@ internal class ServicesViewModel(
     }
 
     fun toggleGroup(id: String?) {
+        if (uiState.value.searchQuery.isNotEmpty()) return
+
         launchScoped { groupsRepository.toggleGroup(id) }
     }
 
@@ -180,6 +191,8 @@ internal class ServicesViewModel(
     }
 
     fun searchFocused(focused: Boolean) {
+        if (uiState.value.searchFocused == focused) return
+
         uiState.update { it.copy(searchFocused = focused) }
     }
 
