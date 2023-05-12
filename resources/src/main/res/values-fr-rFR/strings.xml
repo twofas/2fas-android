@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sat, 06 May 2023 11:08:38 -0700
+ Exported at: Fri, 12 May 2023 06:50:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -742,22 +742,26 @@
     <string name="externalimport__info_google_authenticator_title">Importer les clés 2FA depuis Google Authenticator</string>
     <!-- Counter eg.: "25s" -->
     <string name="time_unit_seconds_short">s</string>
-    <string name="tokens__add_title">Pair the service with 2FAS</string>
-    <string name="tokens__add_description">Point your camera at the screen to capture the QR code.</string>
-    <string name="tokens__add_other_methods">Other methods</string>
-    <string name="tokens__add_enter_manual">Enter secret key</string>
-    <string name="tokens__add_from_gallery">Upload an image with the QR code</string>
-    <string name="tokens__add_success_title">Almost done!</string>
-    <string name="tokens__add_success_description">To finish pairing the service, you need to retype this token.</string>
-    <string name="tokens__add_manual_title">Pair the service with 2FAS</string>
-    <string name="tokens__add_manual_description">Type in the service name and service key.</string>
-    <string name="tokens__add_manual_service_name">Service name (required)</string>
-    <string name="tokens__add_manual_service_key">Service key (required)</string>
-    <string name="tokens__add_manual_other">Other settings</string>
-    <string name="tokens__add_manual_other_optional">(optional)</string>
-    <string name="tokens__add_manual_done_cta">Add service</string>
-    <string name="tokens__add_manual_help_cta">Don’t know what to do? Tap for help</string>
-    <string name="tokens__add_manual_advanced">Advanced token settings</string>
-    <string name="tokens__add_manual_additional_info">Additional info</string>
-    <string name="tokens__add_manual_advanced_description">Changing default token settings is not recommended. Do so only when your 2FA provider requires it and when you have clear instructions.</string>
+    <string name="tokens__add_title">Associer le service à 2FAS</string>
+    <string name="tokens__add_description">Pointez votre appareil photo vers l\'écran pour capturer le code QR.</string>
+    <string name="tokens__add_other_methods">Autres méthodes</string>
+    <string name="tokens__add_enter_manual">Saisir la clé secrète</string>
+    <string name="tokens__add_from_gallery">Charger une image avec le code QR</string>
+    <string name="tokens__add_success_title">C\'est presque fini !</string>
+    <string name="tokens__add_success_description">Pour terminer l\'appairage du service, vous devez ressaisir ce token.</string>
+    <string name="tokens__add_manual_title">Associer le service à 2FAS</string>
+    <string name="tokens__add_manual_description">Saisissez le nom et la clé du service.</string>
+    <string name="tokens__add_manual_service_name">Nom du service (obligatoire)</string>
+    <string name="tokens__add_manual_service_key">Clé de service (obligatoire)</string>
+    <string name="tokens__add_manual_other">Autres paramètres</string>
+    <string name="tokens__add_manual_other_optional">(facultatif)</string>
+    <string name="tokens__add_manual_done_cta">Ajouter un service</string>
+    <string name="tokens__add_manual_help_cta">Vous ne savez pas quoi faire ? Demandez de l\'aide</string>
+    <string name="tokens__add_manual_advanced">Paramètres avancés du token</string>
+    <string name="tokens__add_manual_additional_info">Informations additionnelles</string>
+    <string name="tokens__add_manual_advanced_description">Il n\'est pas recommandé de modifier les paramètres par défaut des tokens. Ne le faites que si votre fournisseur 2FA l\'exige et si vous disposez d\'instructions claires.</string>
+    <string name="settings__option_screenshots_description">Allow screenshots of the app for 5 minutes.</string>
+    <string name="settings__option_screenshots">Allow screenshots</string>
+    <string name="settings__option_screenshots_confirm_title">Allow screenshots of the app?</string>
+    <string name="settings__option_screenshots_confirm_description">Are you sure? This option allows you to screenshot and record any screen within the app. However, this will also allow any external attempts of capturing screens in the app.\nFor safety reasons, this option will be automatically turned off after 5 minutes.</string>
 </resources>

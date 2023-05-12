@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Sat, 06 May 2023 11:08:38 -0700
+ Exported at: Fri, 12 May 2023 06:50:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -401,7 +401,7 @@
     <string name="settings__touch_id">Identificación táctil</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Bloquear después de X intentos fallidos.</string>
-    <string name="settings__how_many_attempts_footer">Establece el número máximo de intentos fallidos para abrir la aplicación antes se quede bloqueada.</string>
+    <string name="settings__how_many_attempts_footer">Establece el número máximo de intentos fallidos de introducir el código de acceso antes de bloquear la aplicación (el tiempo de bloqueo se puede cambiar más abajo).\n</string>
     <string name="settings__block_for">Tiempo de bloqueo</string>
     <string name="settings__3_minutes">3 minutos</string>
     <string name="settings__5_minutes">5 minutos</string>
@@ -760,4 +760,8 @@
     <string name="tokens__add_manual_advanced">Ajustes avanzados de tokens</string>
     <string name="tokens__add_manual_additional_info">Información adicional</string>
     <string name="tokens__add_manual_advanced_description">No es recomendable cambiar los ajustes por defecto de token. Hazlo solo cuando tu proveedor 2FA lo requiera y cuando tengas instrucciones claras.</string>
+    <string name="settings__option_screenshots_description">Allow screenshots of the app for 5 minutes.</string>
+    <string name="settings__option_screenshots">Allow screenshots</string>
+    <string name="settings__option_screenshots_confirm_title">Allow screenshots of the app?</string>
+    <string name="settings__option_screenshots_confirm_description">Are you sure? This option allows you to screenshot and record any screen within the app. However, this will also allow any external attempts of capturing screens in the app.\nFor safety reasons, this option will be automatically turned off after 5 minutes.</string>
 </resources>
