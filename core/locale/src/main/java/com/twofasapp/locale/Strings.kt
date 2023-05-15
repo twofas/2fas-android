@@ -86,6 +86,7 @@ class Strings(c: Context) {
     val aboutTitle = c.getString(R.string.settings__about)
     val aboutGeneral = c.getString(R.string.settings__general)
     val aboutShare = c.getString(R.string.settings__share_app)
+    val aboutSendCrashes = c.getString(R.string.settings__about_crash_optout_title)
     val aboutWriteReview = c.getString(R.string.settings__write_a_review)
     val aboutPrivacyPolicy = c.getString(R.string.settings__privacy_policy)
     val aboutTerms = c.getString(R.string.settings__terms_of_service)

@@ -6,12 +6,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.core.app.ShareCompat
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.designsystem.R
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
@@ -20,6 +22,7 @@ import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsHeader
 import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.designsystem.settings.SettingsSwitch
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -28,18 +31,25 @@ internal fun AboutRoute(
     openLicenses: () -> Unit,
     viewModel: AboutViewModel = koinViewModel()
 ) {
+
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     AboutScreen(
+        uiState = uiState,
         versionName = viewModel.versionName,
         onLicensesClick = openLicenses,
-        onReviewClick = { viewModel.reviewDone() }
+        onReviewClick = { viewModel.reviewDone() },
+        onSendCrashLogsToggle = { viewModel.toggleSendCrashLogs() }
     )
 }
 
 @Composable
 private fun AboutScreen(
+    uiState: AboutUiState,
     versionName: String,
     onLicensesClick: () -> Unit,
     onReviewClick: () -> Unit,
+    onSendCrashLogsToggle: () -> Unit,
 ) {
     val activity = LocalContext.current as Activity
     val uriHandler = LocalUriHandler.current
@@ -90,6 +100,20 @@ private fun AboutScreen(
                             .setText(shareText)
                             .startChooser()
                     }
+                }
+
+                item { SettingsDivider() }
+
+                item { SettingsHeader(title = TwLocale.strings.aboutSendCrashes) }
+
+                item {
+                    SettingsSwitch(
+                        title = TwLocale.strings.settingsSendCrashes,
+                        subtitle = TwLocale.strings.settingsSendCrashesBody,
+                        icon = TwIcons.Settings,
+                        checked = uiState.appSettings.sendCrashLogs,
+                        onCheckedChange = { onSendCrashLogsToggle() }
+                    )
                 }
             }
 

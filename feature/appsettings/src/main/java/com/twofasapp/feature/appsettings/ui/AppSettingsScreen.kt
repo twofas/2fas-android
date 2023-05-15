@@ -40,7 +40,6 @@ internal fun AppSettingsRoute(
         onShowNextTokenToggle = { viewModel.toggleShowNextToken() },
         onShowBackupNoticeToggle = { viewModel.toggleShowBackupNotice() },
         onAutoFocusSearchToggle = { viewModel.toggleAutoFocusSearch() },
-        onSendCrashLogsToggle = { viewModel.toggleSendCrashLogs() },
     )
 }
 
@@ -53,7 +52,6 @@ private fun AppSettingsScreen(
     onShowNextTokenToggle: () -> Unit,
     onShowBackupNoticeToggle: () -> Unit,
     onAutoFocusSearchToggle: () -> Unit,
-    onSendCrashLogsToggle: () -> Unit,
 ) {
     val activity = LocalContext.currentActivity
     var showThemeDialog by remember { mutableStateOf(false) }
@@ -123,16 +121,6 @@ private fun AppSettingsScreen(
                         }
                     },
                     icon = TwIcons.CloudOff,
-                )
-            }
-
-            item {
-                SettingsSwitch(
-                    title = TwLocale.strings.settingsSendCrashes,
-                    subtitle = TwLocale.strings.settingsSendCrashesBody,
-                    icon = TwIcons.Settings,
-                    checked = uiState.appSettings.sendCrashLogs,
-                    onCheckedChange = { onSendCrashLogsToggle() }
                 )
             }
         }
