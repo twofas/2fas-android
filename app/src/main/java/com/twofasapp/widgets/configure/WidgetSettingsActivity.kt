@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.mikepenz.fastadapter.IItem
 import com.mikepenz.fastadapter.adapters.FastItemAdapter
@@ -21,6 +22,7 @@ import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.views.ModelDiffUtilCallback
 import com.twofasapp.widgets.broadcast.WidgetBroadcaster
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class WidgetSettingsActivity : BaseActivityPresenter<ActivityWidgetSettingsBinding>(), WidgetSettingsContract.View, AuthAware {
@@ -36,7 +38,11 @@ class WidgetSettingsActivity : BaseActivityPresenter<ActivityWidgetSettingsBindi
 
         authTracker.onWidgetSettingsScreen()
         super.onCreate(savedInstanceState)
-        makeWindowSecure()
+        lifecycleScope.launch {
+            settingsRepository.observeAppSettings().collect {
+                makeWindowSecure(allow = it.allowScreenshots)
+            }
+        }
         setContentView(ActivityWidgetSettingsBinding::inflate)
         setPresenter(presenter)
         viewBinding.recycler.adapter = fastAdapter

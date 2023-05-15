@@ -3,6 +3,7 @@ package com.twofasapp.features.backup
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.lifecycleScope
 import com.twofasapp.base.BaseActivityPresenter
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.databinding.ActivityBackupBinding
@@ -12,9 +13,11 @@ import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.features.backup.settings.BackupSettingsFragment
 import com.twofasapp.features.backup.status.BackupStatusFragment
 import com.twofasapp.resources.R
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class BackupActivity : BaseActivityPresenter<ActivityBackupBinding>(), BackupContract.View, BackupStatusFragment.Listener, BackupSettingsFragment.Listener {
+class BackupActivity : BaseActivityPresenter<ActivityBackupBinding>(), BackupContract.View, BackupStatusFragment.Listener,
+    BackupSettingsFragment.Listener {
 
     companion object {
         const val EXTRA_IS_OPENED_FROM_BACKUP_NOTICE = "isOpenedFromBackupNotice"
@@ -27,7 +30,13 @@ class BackupActivity : BaseActivityPresenter<ActivityBackupBinding>(), BackupCon
         ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
 
         super.onCreate(savedInstanceState)
-        makeWindowSecure()
+
+        lifecycleScope.launch {
+            settingsRepository.observeAppSettings().collect {
+                makeWindowSecure(allow = it.allowScreenshots)
+            }
+        }
+
         setContentView(ActivityBackupBinding::inflate)
         setPresenter(presenter)
 

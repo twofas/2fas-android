@@ -63,4 +63,10 @@ internal class SettingsRepositoryImpl(
             local.setSendCrashLogs(sendCrashLogs)
         }
     }
+
+    override suspend fun setAllowScreenshots(allow: Boolean) {
+        withContext(dispatchers.io) {
+            local.setAllowScreenshots(allow)
+        }
+    }
 }

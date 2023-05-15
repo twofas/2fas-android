@@ -49,7 +49,11 @@ class MainActivity : AppCompatActivity(), AuthAware {
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
         super.onCreate(savedInstanceState)
-        makeWindowSecure()
+        lifecycleScope.launch {
+            settingsRepository.observeAppSettings().collect {
+                makeWindowSecure(allow = it.allowScreenshots)
+            }
+        }
 
         setContent { MainScreen() }
 

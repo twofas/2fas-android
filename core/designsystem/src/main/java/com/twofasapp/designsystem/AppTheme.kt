@@ -42,12 +42,12 @@ fun MainAppTheme(
 
                 WindowCompat.setDecorFitsSystemWindows(this, false)
 
-                if (BuildConfig.BUILD_TYPE.equals("release", true)) {
-                    setFlags(
-                        WindowManager.LayoutParams.FLAG_SECURE,
-                        WindowManager.LayoutParams.FLAG_SECURE
-                    )
-                }
+//                if (BuildConfig.BUILD_TYPE.equals("release", true)) {
+//                    setFlags(
+//                        WindowManager.LayoutParams.FLAG_SECURE,
+//                        WindowManager.LayoutParams.FLAG_SECURE
+//                    )
+//                }
             }
         }
     }

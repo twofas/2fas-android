@@ -21,7 +21,7 @@ internal class PermissionActivity : FragmentActivity(), ActivityCompat.OnRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        makeWindowSecure()
+        makeWindowSecure(allow = true)
         window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 
         val permission = intent.getStringExtra(PERMISSION_KEY)

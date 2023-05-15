@@ -16,4 +16,6 @@ dependencies {
 
     implementation(libs.kotlinCoroutines)
     implementation(libs.kotlinSerialization)
+    implementation(libs.workManager)
+    implementation(libs.timber)
 }
