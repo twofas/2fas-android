@@ -61,12 +61,6 @@ internal class AppSettingsViewModel(
         }
     }
 
-    fun toggleSendCrashLogs() {
-        launchScoped {
-            settingsRepository.setSendCrashLogs(uiState.value.appSettings.sendCrashLogs.not())
-        }
-    }
-
     fun consumeEvent(event: AppSettingsUiEvent) {
         uiState.update { it.copy(events = it.events.minus(event)) }
     }

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sat, 06 May 2023 11:08:38 -0700
+ Exported at: Mon, 15 May 2023 22:23:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -742,22 +742,26 @@
     <string name="externalimport__info_google_authenticator_title">Importiere tokens von Google Authenticator</string>
     <!-- Counter eg.: "25s" -->
     <string name="time_unit_seconds_short">s</string>
-    <string name="tokens__add_title">Pair the service with 2FAS</string>
-    <string name="tokens__add_description">Point your camera at the screen to capture the QR code.</string>
-    <string name="tokens__add_other_methods">Other methods</string>
-    <string name="tokens__add_enter_manual">Enter secret key</string>
-    <string name="tokens__add_from_gallery">Upload an image with the QR code</string>
-    <string name="tokens__add_success_title">Almost done!</string>
-    <string name="tokens__add_success_description">To finish pairing the service, you need to retype this token.</string>
-    <string name="tokens__add_manual_title">Pair the service with 2FAS</string>
-    <string name="tokens__add_manual_description">Type in the service name and service key.</string>
-    <string name="tokens__add_manual_service_name">Service name (required)</string>
-    <string name="tokens__add_manual_service_key">Service key (required)</string>
-    <string name="tokens__add_manual_other">Other settings</string>
+    <string name="tokens__add_title">Verbinde den Dienst mit 2FAS</string>
+    <string name="tokens__add_description">Richte die Kamer auf den Bildschirm, um den QR-Code zu erfassen.</string>
+    <string name="tokens__add_other_methods">Andere Methoden</string>
+    <string name="tokens__add_enter_manual">Gebe den Geheimschlüssel ein</string>
+    <string name="tokens__add_from_gallery">Bild mit dem QR-Code hochladen</string>
+    <string name="tokens__add_success_title">Fast fertig!</string>
+    <string name="tokens__add_success_description">Um die Verbindung des Dienstes abzuschließen, musst du den Token erneut eingeben.</string>
+    <string name="tokens__add_manual_title">Verbinde den Dienst mit 2FAS</string>
+    <string name="tokens__add_manual_description">Gebe den Dienstnamen und den Geheimschlüssel ein.</string>
+    <string name="tokens__add_manual_service_name">Name des Dienstes (erforderlich)</string>
+    <string name="tokens__add_manual_service_key">Geheimschlüssel (erforderlich)</string>
+    <string name="tokens__add_manual_other">Andere Einstellungen</string>
     <string name="tokens__add_manual_other_optional">(optional)</string>
-    <string name="tokens__add_manual_done_cta">Add service</string>
-    <string name="tokens__add_manual_help_cta">Don’t know what to do? Tap for help</string>
-    <string name="tokens__add_manual_advanced">Advanced token settings</string>
-    <string name="tokens__add_manual_additional_info">Additional info</string>
-    <string name="tokens__add_manual_advanced_description">Changing default token settings is not recommended. Do so only when your 2FA provider requires it and when you have clear instructions.</string>
+    <string name="tokens__add_manual_done_cta">Dienst hinzufügen</string>
+    <string name="tokens__add_manual_help_cta">Du weist nicht was du tun sollst? Tippen sie hier für Hilfe</string>
+    <string name="tokens__add_manual_advanced">Erweiterte Token-Einstellungen</string>
+    <string name="tokens__add_manual_additional_info">Zusätzliche Info</string>
+    <string name="tokens__add_manual_advanced_description">Das Ändern der Standard-Token-Einstellung wird nicht empfohlen. Du sollst dies nut tun, wenn der 2FA-Anbieter es verlangt und wenn du klare Anweisungen hast.</string>
+    <string name="settings__option_screenshots_description">Screenshots in der App für 5 Minuten erlauben.</string>
+    <string name="settings__option_screenshots">Screenshots erlauben</string>
+    <string name="settings__option_screenshots_confirm_title">Willst du Screenshots innerhalb der App zulassen?</string>
+    <string name="settings__option_screenshots_confirm_description">Bist du dir sicher? Mit dieser Option kannst du Screenshots erstellen und jeden Bildschirm innerhalb der App aufzeichnen. Jedoch erlaubt dies auch alle externen Versuche, den Bildshirm innerhalb der App zu erfassen.\nAus Sicherheitsgründen wird diese Option automatisch nach 5 Minuten ausgeschaltet.</string>
 </resources>

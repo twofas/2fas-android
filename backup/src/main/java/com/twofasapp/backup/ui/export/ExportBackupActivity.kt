@@ -5,32 +5,40 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.FileProvider
+import androidx.lifecycle.lifecycleScope
 import com.twofasapp.backup.databinding.ActivityExportBackupBinding
 import com.twofasapp.base.BaseActivityPresenter
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.core.RequestCodes
+import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.dialogs.InfoDialog
 import com.twofasapp.extensions.clicksThrottled
 import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.extensions.toastLong
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.FileOutputStream
 
-class ExportBackupActivity : BaseActivityPresenter<ActivityExportBackupBinding>(), ExportBackupContract.View, ExportBackupPasswordDialog.Listener {
+class ExportBackupActivity : BaseActivityPresenter<ActivityExportBackupBinding>(), ExportBackupContract.View,
+    ExportBackupPasswordDialog.Listener {
 
     companion object {
         private const val EXPORT_FILE_PICKER = 48453
     }
 
     private val presenter: ExportBackupContract.Presenter by injectThis()
-    private val analyticsService: com.twofasapp.core.analytics.AnalyticsService by inject()
+    private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        makeWindowSecure()
+        lifecycleScope.launch {
+            settingsRepository.observeAppSettings().collect {
+                makeWindowSecure(allow = it.allowScreenshots)
+            }
+        }
         setContentView(ActivityExportBackupBinding::inflate)
         setPresenter(presenter)
     }
@@ -67,14 +75,14 @@ class ExportBackupActivity : BaseActivityPresenter<ActivityExportBackupBinding>(
         try {
             startActivityForResult(intent, EXPORT_FILE_PICKER)
         } catch (e: ActivityNotFoundException) {
-            
+
             InfoDialog(
                 context = this,
                 title = "Error",
                 msg = "Could not find system file provider.\n\nIf you removed default documents application you need to restore it in order to make the export work."
             ).show()
         } catch (e: Exception) {
-            
+
             toastLong("System error! Could not launch file provider!")
         }
     }

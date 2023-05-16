@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Sat, 06 May 2023 11:08:38 -0700
+ Exported at: Mon, 15 May 2023 22:23:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -76,7 +76,7 @@
     <string name="fingerprint__use_pin_title">Usar PIN esta vez</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">¡Eres increíble!</string>
-    <string name="introduction__page_1_content">Tu celular se ha vuelto una llave privada y segura a tus servicios online gracias a la aplicación 2FAS - Más de 3 millones de usuarios alrededor del mundo confían en 2FAS.</string>
+    <string name="introduction__page_1_content">Tu celular se ha vuelto una clave privada y segura a tus servicios online gracias a la aplicación 2FAS - Más de 3 millones de usuarios alrededor del mundo confían en 2FAS.</string>
     <string name="introduction__page_2_title">Simple</string>
     <string name="introduction__page_2_content">Empareje 2FAS con su cuenta de servicios en línea. Active la seguridad de autenticación de dos factores en segundos con su código QR.</string>
     <string name="introduction__page_3_title">Privado</string>
@@ -103,7 +103,7 @@
     <!-- Original: Adding code -->
     <string name="notifications__adding_code">Añadiendo un nuevo código</string>
     <!-- notifications__private_key_copied -->
-    <string name="notifications__service_key_copied">Llave de servicio copiada</string>
+    <string name="notifications__service_key_copied">Clave Secreta copiada</string>
     <!-- voiceover__token_is_already_on_the_list -->
     <string name="notifications__token_already_added">Este token ya está presente en la lista</string>
     <string name="notifications__counter_copied">Contador Copiado</string>
@@ -160,13 +160,13 @@
     <string name="tokens__choose_method">Seleccionar método</string>
     <string name="tokens__duplicated_private_key">Llave de Servicio Duplicada</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">Llave de servicio incorrecta (sólo números 2 a 7, letras) máximo 512 caracteres de longitud.</string>
+    <string name="tokens__incorrect_service_key">Clave Secreta incorrecta (sólo números 2 a 7, letras) máximo 512 caracteres de longitud.</string>
     <string name="tokens__try_again">Ok. Intentemos nuevamente</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Apunte la cámara hacia la pantalla para escanear el código QR</string>
     <!-- tokens__private_key -->
-    <string name="tokens__service_key">Llave de Servicio</string>
+    <string name="tokens__service_key">Clave Secreta</string>
     <string name="tokens__qr_code_leads_to_app_store">Este código QR te lleva a la App Store</string>
     <!-- tokens__remove_it_forever -->
     <string name="tokens__remove_forever">Eliminar código</string>
@@ -177,10 +177,10 @@
     <!-- Original: Take another try with a different search term
         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Intente de nuevo con un término de búsqueda diferente</string>
-    <string name="tokens__service_key_to_short">La Llave es demasiado corta. Mínimo 4 caracteres.</string>
+    <string name="tokens__service_key_to_short">La clave es demasiado corta. Mínimo 4 caracteres.</string>
     <string name="tokens__service_name">Nombre del servicio</string>
     <!-- tokens__this_private_key_exists_used_in -->
-    <string name="tokens__service_key_already_used_title">La llave de servicio del código escaneado ya está siendo usada en %s. Probablemente la está escaneando nuevamente.</string>
+    <string name="tokens__service_key_already_used_title">La Clave Secreta del código escaneado ya está siendo usada en %s. Probablemente la estás escaneando nuevamente.</string>
     <string name="tokens__this_qr_code_is_inavlid">Este código es incorrecto o incompatible. Intente de nuevo.</string>
     <string name="tokens__type_service_name">Escriba el Nombre de Servicio</string>
     <string name="tokens__enter_service_name">Ingrese el nombre del servicio</string>
@@ -277,8 +277,8 @@
     <string name="tokens__order_menu_option_company">Enviar ícono como una empresa</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
     <string name="tokens__sign_in_not_possible_title">No podrás iniciar sesión en tu cuenta %1$s sin este código de seguridad, siempre y cuando tenga activada la autenticación de segundo factor para %2$s.</string>
-    <string name="voiceover__show_service_key">Mostrar Clave de Servicio</string>
-    <string name="voiceover__copy_service_key">Copiar Clave de Servicio</string>
+    <string name="voiceover__show_service_key">Mostrar Clave Secreta</string>
+    <string name="voiceover__copy_service_key">Copiar Clave Secreta</string>
     <!-- voiceover__seconds_left -->
     <string name="voiceover__seconds_left_counter_title">Contador de segundos faltantes para el cambio de código</string>
     <string name="voiceover__delete_button">Botón Borrar</string>
@@ -401,7 +401,7 @@
     <string name="settings__touch_id">Identificación táctil</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Bloquear después de X intentos fallidos.</string>
-    <string name="settings__how_many_attempts_footer">Establece el número máximo de intentos fallidos para abrir la aplicación antes se quede bloqueada.</string>
+    <string name="settings__how_many_attempts_footer">Establece el número máximo de intentos fallidos de introducir el código de acceso antes de bloquear la aplicación (el tiempo de bloqueo se puede cambiar más abajo).\n</string>
     <string name="settings__block_for">Tiempo de bloqueo</string>
     <string name="settings__3_minutes">3 minutos</string>
     <string name="settings__5_minutes">5 minutos</string>
@@ -559,13 +559,13 @@
     <string name="tokens__qr_read_image_try_again">Trata de seleccionar una imagen diferente.</string>
     <string name="tokens__remove_it_forever">Eliminar servicio para siempre</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
-    <string name="tokens__service_add_error">El servicio no pudo ser añadido porque la clave es inválida. Inténtalo de nuevo.</string>
+    <string name="tokens__service_add_error">El servicio no pudo ser añadido porque la Clave Secreta es inválida. Inténtalo de nuevo.</string>
     <!-- A service with this Service Key already exists. Do you want to override it? -->
-    <string name="tokens__service_already_exists">Ya existe un servicio con esta clave ¿Deseas sobreescribirlo?</string>
+    <string name="tokens__service_already_exists">Ya existe un servicio con esta Clave Secreta ¿Deseas sobreescribirlo?</string>
     <string name="tokens__service_key_invalid_characters">La clave contiene caracteres no válidos</string>
-    <string name="tokens__show_service_key">Mostrar Nombre de Servicio</string>
+    <string name="tokens__show_service_key">Mostrar Clave Secreta</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
-    <string name="tokens__show_service_key_setup_lock">Tu clave de servicio esta protegida. Por favor, añade un PIN o tu huella digital para verla.</string>
+    <string name="tokens__show_service_key_setup_lock">Tu Clave Secreta está protegida. Por favor, añade un PIN o tu huella digital para verla.</string>
     <string name="tokens__tokens_list_is_empty">La lista de servicios está vacía</string>
     <string name="tokens__use_plus_button_to_add_tokens">Usa el botón \"+\" para añadir un nuevo servicio</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">No podrás ingresar a tu cuenta de %1$s sin este código mientras tengas activada la autenticación de doble factor en %2$s.\n\nNo podrás restaurar este código desde la papelera de 2FAS.</string>
@@ -750,9 +750,9 @@
     <string name="tokens__add_success_title">¡Casi listo!</string>
     <string name="tokens__add_success_description">Para finalizar el emparejamiento con el servicio, debes escribir de nuevo este token.</string>
     <string name="tokens__add_manual_title">Emparejando servicio con 2FAS</string>
-    <string name="tokens__add_manual_description">Escribe el nombre y clave del servicio.</string>
+    <string name="tokens__add_manual_description">Escribe el nombre y clave secreta.</string>
     <string name="tokens__add_manual_service_name">Nombre del servicio (obligatorio)</string>
-    <string name="tokens__add_manual_service_key">Clave del servicio (obligatorio)</string>
+    <string name="tokens__add_manual_service_key">Clave Secreta (obligatorio)</string>
     <string name="tokens__add_manual_other">Otros ajustes</string>
     <string name="tokens__add_manual_other_optional">(opcional)</string>
     <string name="tokens__add_manual_done_cta">Añadir servicio</string>
@@ -760,4 +760,8 @@
     <string name="tokens__add_manual_advanced">Ajustes avanzados de tokens</string>
     <string name="tokens__add_manual_additional_info">Información adicional</string>
     <string name="tokens__add_manual_advanced_description">No es recomendable cambiar los ajustes por defecto de token. Hazlo solo cuando tu proveedor 2FA lo requiera y cuando tengas instrucciones claras.</string>
+    <string name="settings__option_screenshots_description">Permitir capturas de pantalla por 5 minutos.</string>
+    <string name="settings__option_screenshots">Permitir capturas de pantalla</string>
+    <string name="settings__option_screenshots_confirm_title">¿Permitir capturas de pantalla de la aplicación?</string>
+    <string name="settings__option_screenshots_confirm_description">¿Estás seguro? Esta opción te permite tomar capturas y grabaciones de cualquier pantalla de la aplicación. Sin embargo, esto también podría permitir cualquier intento externo de capturar la pantalla de la aplicación.\nPor razones de seguridad, esta opción será deshabilitada automáticamente después de 5 minutos.</string>
 </resources>

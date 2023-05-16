@@ -6,6 +6,7 @@ import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.SettingsRepositoryImpl
 import com.twofasapp.data.session.local.SessionLocalSource
 import com.twofasapp.data.session.local.SettingsLocalSource
+import com.twofasapp.data.session.work.DisableScreenshotsWorkDispatcher
 import com.twofasapp.di.KoinModule
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
@@ -18,5 +19,7 @@ class DataSessionModule : KoinModule {
 
         singleOf(::SettingsLocalSource)
         singleOf(::SettingsRepositoryImpl) { bind<SettingsRepository>() }
+
+        singleOf(::DisableScreenshotsWorkDispatcher)
     }
 }

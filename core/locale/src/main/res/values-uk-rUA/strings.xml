@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Sat, 06 May 2023 11:09:43 -0700
+ Exported at: Mon, 15 May 2023 22:23:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -95,7 +95,7 @@
     <!-- introduction__not_sure -->
     <string name="introduction__what_to_do">Ви не впевнені в тому, що роботи?</string>
     <!-- introduction__ga_import_description -->
-    <string name="introduction__google_authenticator_import_process">Експортуйте свої облікові записи з Google Authenticator до QR-коду за допомогою опції «Перенести облікові записи». Потім використовуючи інший пристрій, сфотографуйте експортований QR-код, надішліть його на свій пристрій (або зробіть знімок екрана, якщо можливо) та використайте параметр \"Виберіть QR-код\" нижче. Якщо ви імпортуєте коди з іншого пристрою, замість цього скористайтеся кнопкою \"Сканувати QR -код\".</string>
+    <string name="introduction__google_authenticator_import_process">Експортуйте свої облікові записи з Google Authenticator до QR-коду за допомогою опції «Перенести облікові записи». Потім використовуючи інший пристрій, сфотографуйте експортований QR-код, надішліть його на свій пристрій (або зробіть знімок екрана, якщо можливо) та використайте параметр \"Обрати QR-код\" нижче. Якщо ви імпортуєте коди з іншого пристрою, замість цього скористайтеся кнопкою \"Сканувати QR-код\".</string>
     <!-- introduction__choose_qr -->
     <string name="introduction__choose_qr_code">Обрати QR-код</string>
     <!-- introduction__scan_qr -->
@@ -103,7 +103,7 @@
     <!-- Original: Adding code -->
     <string name="notifications__adding_code">Додавання нового коду</string>
     <!-- notifications__private_key_copied -->
-    <string name="notifications__service_key_copied">Ключ сервісу скопійовано</string>
+    <string name="notifications__service_key_copied">Секретний ключ скопійовано</string>
     <!-- voiceover__token_is_already_on_the_list -->
     <string name="notifications__token_already_added">Цей токен уже знаходиться у вашому списку</string>
     <string name="notifications__counter_copied">Лічильник скопійовано</string>
@@ -158,15 +158,15 @@
     <string name="tokens__move_to_trash">Перемістити в кошик</string>
     <string name="tokens__additional_info">Додаткова інформація</string>
     <string name="tokens__choose_method">Оберіть метод</string>
-    <string name="tokens__duplicated_private_key">Дубльовання Ключа Сервісу</string>
+    <string name="tokens__duplicated_private_key">Дубльований секретний ключ</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">Неправильний сервісний ключ (лише цифри від 2 до 7, літери), макс. довжина 512 символів</string>
+    <string name="tokens__incorrect_service_key">Некоректний секретний ключ (лише цифри від 2 до 7, літери), макс. довжина 512 символів</string>
     <string name="tokens__try_again">Гаразд, давайте спробуємо знову</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Наведіть камеру на екран, щоб відсканувати QR-код</string>
     <!-- tokens__private_key -->
-    <string name="tokens__service_key">Ключ Сервісу</string>
+    <string name="tokens__service_key">Секретний ключ</string>
     <string name="tokens__qr_code_leads_to_app_store">Цей QR-код перенаправить вас у App Store</string>
     <!-- tokens__remove_it_forever -->
     <string name="tokens__remove_forever">Видалити токен</string>
@@ -178,9 +178,9 @@
         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Спробуйте ще раз з іншим пошуковим терміном</string>
     <string name="tokens__service_key_to_short">Ключ занадто короткий. Мінімум 4 символи</string>
-    <string name="tokens__service_name">Ім\'я Сервісу</string>
+    <string name="tokens__service_name">Ім\'я сервісу</string>
     <!-- tokens__this_private_key_exists_used_in -->
-    <string name="tokens__service_key_already_used_title">Ключ сервісу з відсканованого коду вже використовується у %s. Ви, ймовірно, скануєте його знову</string>
+    <string name="tokens__service_key_already_used_title">Секретний ключ з відсканованого коду вже використовується у %s. Ви, ймовірно, скануєте його знову</string>
     <string name="tokens__this_qr_code_is_inavlid">Код невірний або не підтримується. Спробуйте ще раз.</string>
     <string name="tokens__type_service_name">Введіть ім\'я сервісу</string>
     <string name="tokens__enter_service_name">Введіть ім\'я сервісу</string>
@@ -240,7 +240,7 @@
     <!-- tokens__advanced_alert_title -->
     <string name="tokens__advanced_alert">Попередження</string>
     <!-- tokens__advanced_alert_description -->
-    <string name="tokens__advanced_alert_description_title">Не рекомендується змінювати розширені параметри. Робіть це лише тоді, коли цього вимагає ваш 2FA-провайдер і коли у маєте чіткі інструкції.</string>
+    <string name="tokens__advanced_alert_description_title">Не рекомендується змінювати розширені параметри. Робіть це лише тоді, коли цього вимагає ваш 2FA-провайдер і коли ви маєте чіткі інструкції.</string>
     <string name="tokens__token_settings">Налаштування токену</string>
     <string name="tokens__otp_authentication">Автентифікація OTP</string>
     <string name="tokens__algorithm">Алгоритм</string>
@@ -257,7 +257,7 @@
     <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">Сервіс успішно додано. Ми дуже рекомендуємо вам\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
-    <string name="tokens__gallery_advice_content_middle_bold">видалити знімок QR-коду зі своєї галереї.\u0020</string>
+    <string name="tokens__gallery_advice_content_middle_bold">видалити скріншот QR-коду зі своєї галереї.</string>
     <string name="tokens__gallery_advice_content_last">Якщо хтось отримає доступ до цього знімку із QR-кодом, він зможе отримати ваші коди двоетапної перевірки до цього сервісу.</string>
     <string name="tokens__request_icon_page_title">Надіслати запит на значок</string>
     <string name="tokens__request_icon_social_title">Повідомте нам у Discord</string>
@@ -277,8 +277,8 @@
     <string name="tokens__order_menu_option_company">Надіслати значок як компанія</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
     <string name="tokens__sign_in_not_possible_title">Ви не зможете ввійти до свого %1$s облікового запису без цього токену, доки увімкнено фактор двоетапної перевірки для %2$s.</string>
-    <string name="voiceover__show_service_key">Показати ключ сервісу</string>
-    <string name="voiceover__copy_service_key">Скопіювати ключ сервісу</string>
+    <string name="voiceover__show_service_key">Показати секретний ключ</string>
+    <string name="voiceover__copy_service_key">Скопіювати секретний ключ</string>
     <!-- voiceover__seconds_left -->
     <string name="voiceover__seconds_left_counter_title">Лічильник із секундами, що залишилися до зміни токена</string>
     <string name="voiceover__delete_button">Кнопка видалення</string>
@@ -341,9 +341,9 @@
     <string name="backup__export_to_file">Експортувати у файл</string>
     <string name="backup__verify_pin">Підтвердьте ПІН-код</string>
     <string name="backup__save_file">Зберегти файл</string>
-    <string name="backup__import_backup_file">Імпортувати файл із резервної копії</string>
+    <string name="backup__import_backup_file">Імпорт файлу резервної копії</string>
     <!-- backup__youre_goint_to_import_backup -->
-    <string name="backup__import_other_devices">Ви збираєтеся імпортувати файл із резервної копії, що містить</string>
+    <string name="backup__import_other_devices">Ви збираєтеся імпортувати файл резервної копії, що містить</string>
     <string name="backup__import_file">Імпортувати файл</string>
     <string name="backup__choose_antother_file">Оберіть інший файл</string>
     <string name="backup__no_new_services">Немає сервісів для імпорту</string>
@@ -393,7 +393,7 @@
     <string name="settings__privacy_policy">Політика конфіденційності</string>
     <string name="settings__terms_of_service">Умови використання</string>
     <string name="settings__version">Версія додатку %s</string>
-    <string name="settings__no_limit">Безлімітний</string>
+    <string name="settings__no_limit">Без ліміту</string>
     <string name="settings__pin_code">ПІН-код</string>
     <string name="settings__app_security">Безпека додатку</string>
     <string name="settings__app_blocking">Налаштувати блокування</string>
@@ -401,8 +401,8 @@
     <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Заблокувати після X невдалих спроб:</string>
-    <string name="settings__how_many_attempts_footer">Виберіть максимальну кількість невдалих спроб пароля, перш ніж додаток буде заблоковано.</string>
-    <string name="settings__block_for">Заблоковано ще</string>
+    <string name="settings__how_many_attempts_footer">Виберіть максимальну кількість невдалих спроб введення пароля, перед блокуванням програми (час блокування можна змінити нижче).</string>
+    <string name="settings__block_for">Час блокування</string>
     <string name="settings__3_minutes">3 хвилини</string>
     <string name="settings__5_minutes">5 хвилин</string>
     <string name="settings__10_minutes">10 хвилин</string>
@@ -559,13 +559,13 @@
     <string name="tokens__qr_read_image_try_again">Спробуйте обрати інше зображення.</string>
     <string name="tokens__remove_it_forever">Назавжди видалити цей сервіс</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
-    <string name="tokens__service_add_error">Не вдалося додати сервіс, оскільки ключ служби недійсний. Спробуйте знову.</string>
+    <string name="tokens__service_add_error">Не вдалося додати сервіс, оскільки секретний ключ недійсний. Спробуйте знову.</string>
     <!-- A service with this Service Key already exists. Do you want to override it? -->
-    <string name="tokens__service_already_exists">Служба з цим ключем вже існує. Ви хочете його перезаписати?</string>
+    <string name="tokens__service_already_exists">Сервіс з цим секретним ключем вже існує. Ви хочете його перезаписати?</string>
     <string name="tokens__service_key_invalid_characters">Ключ містить недійсні символи</string>
-    <string name="tokens__show_service_key">Показати Ключ Сервісу</string>
+    <string name="tokens__show_service_key">Показати секретний ключ</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
-    <string name="tokens__show_service_key_setup_lock">Ваш Ключ Сервісу захищено. Будь ласка, додайте ПІН-код або відбиток пальця, щоб його побачити.</string>
+    <string name="tokens__show_service_key_setup_lock">Ваш секретний ключ захищено. Будь ласка, додайте ПІН-код або відбиток пальця, щоб його побачити.</string>
     <string name="tokens__tokens_list_is_empty">Список сервісів порожній</string>
     <string name="tokens__use_plus_button_to_add_tokens">Використовуйте кнопку «+», щоб додати новий сервіс</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Ви не зможете ввійти у свій обліковий запис %1$s без цього токена, доки увімкнено двоетапну автентифікацію для %2$s.\n\nВи не зможете відновити токен із кошика 2FAS.</string>
@@ -639,9 +639,9 @@
     <string name="settings__send_logs_error_server">Схоже, виникла проблема з нашим сервером. Якщо проблема не зникає, зверніться до нашої служби підтримки</string>
     <string name="settings__send_logs_error_title">Операція не вдалася</string>
     <string name="settings__send_logs_sent_title">Логи надіслано</string>
-    <string name="settings__send_logs_sent_description">Ми їх перевіримо, але це може зайняти деякий час.</string>
+    <string name="settings__send_logs_sent_description">Дякуюємо, що звернулися. Ми проаналізуємо їх як можна швидше.</string>
     <string name="commons__send">Надіслати</string>
-    <string name="settings__send_logs_title">Надсилання логів</string>
+    <string name="settings__send_logs_title">Логи були надіслані</string>
     <string name="settings__send_logs_description_link">Код, наданий командою підтримки, було заповнено автоматично. Надіслати журнали?</string>
     <string name="settings__send_logs_description_edit">Введіть або вставте код, наданий нашою командою підтримки</string>
     <string name="settings__send_logs">Надіслати логи</string>
@@ -758,7 +758,7 @@
     <string name="tokens__add_manual_title">З\'єднайте із додатком 2FAS.</string>
     <string name="tokens__add_manual_description">Введіть ім\'я сервісу і наданий секретний ключ.</string>
     <string name="tokens__add_manual_service_name">Ім\'я сервісу (обов\'язково)</string>
-    <string name="tokens__add_manual_service_key">Ключ сервісу (обов\'язково)</string>
+    <string name="tokens__add_manual_service_key">Секретний ключ (обов\'язково)</string>
     <string name="tokens__add_manual_other">Інші налаштування</string>
     <string name="tokens__add_manual_other_optional">(опціонально)</string>
     <string name="tokens__add_manual_done_cta">Додати сервіс</string>
@@ -766,4 +766,8 @@
     <string name="tokens__add_manual_advanced">Розширені налаштування токена</string>
     <string name="tokens__add_manual_additional_info">Додаткова інформація</string>
     <string name="tokens__add_manual_advanced_description">Не рекомендується змінювати параметри токенів за замовчуванням. Робіть це лише тоді, коли цього вимагає ваш 2FA-провайдер та якщо маєте чіткі інструкції.</string>
+    <string name="settings__option_screenshots_description">Дозволити скріншоти додатку на 5 хвилин.</string>
+    <string name="settings__option_screenshots">Дозволити скріншоти</string>
+    <string name="settings__option_screenshots_confirm_title">Дозволити скріншоти додатку?</string>
+    <string name="settings__option_screenshots_confirm_description">Ви впевнені? Ця опція дозволяє робити скріншоти та записувати будь-який екран додатку. Однак це також дозволить будь-які зовнішні спроби запису екранів у додатку.\nЗ міркувань безпеки ця опція автоматично вимкнеться через 5 хвилин.</string>
 </resources>

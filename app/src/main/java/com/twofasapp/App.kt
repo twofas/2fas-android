@@ -14,11 +14,13 @@ import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.base.ActivityProvider
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.browserextension.BrowserExtensionModule
+import com.twofasapp.common.analytics.Analytics
 import com.twofasapp.core.log.FileLogger
 import com.twofasapp.developer.DeveloperModule
 import com.twofasapp.di.Modules
 import com.twofasapp.featuretoggle.FeatureToggleModule
 import com.twofasapp.parsers.ParsersModule
+import com.twofasapp.parsers.SupportedServices
 import com.twofasapp.permissions.PermissionsModule
 import com.twofasapp.persistence.PersistenceModule
 import com.twofasapp.prefs.PreferencesEncryptedModule
@@ -49,9 +51,17 @@ class App : MultiDexApplication() {
     private val pinOptionsUseCase: PinOptionsUseCase by inject()
     private val activityProvider: ActivityProvider by inject()
     private val sendCrashLogsPreference: SendCrashLogsPreference by inject()
+    private val analytics: Analytics by inject()
 
     override fun onCreate() {
         super.onCreate()
+
+        try {
+            SupportedServices.load(this@App)
+        } catch (e: Exception) {
+            analytics.captureException(e)
+        }
+
         startKoin {
             // androidLogger(level = Level.DEBUG)
             androidContext(this@App)

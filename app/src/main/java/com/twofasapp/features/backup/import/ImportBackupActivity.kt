@@ -5,7 +5,9 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import androidx.lifecycle.lifecycleScope
 import com.twofasapp.base.BaseActivityPresenter
+import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.databinding.ActivityImportBackupBinding
 import com.twofasapp.design.dialogs.InfoDialog
 import com.twofasapp.design.dialogs.SimpleInputDialog
@@ -15,6 +17,8 @@ import com.twofasapp.extensions.makeVisible
 import com.twofasapp.extensions.makeWindowSecure
 import com.twofasapp.extensions.navigationClicksThrottled
 import com.twofasapp.extensions.toastLong
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(), ImportBackupContract.View {
 
@@ -23,10 +27,15 @@ class ImportBackupActivity : BaseActivityPresenter<ActivityImportBackupBinding>(
     }
 
     private val presenter: ImportBackupContract.Presenter by injectThis()
+    private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        makeWindowSecure()
+        lifecycleScope.launch {
+            settingsRepository.observeAppSettings().collect {
+                makeWindowSecure(allow = it.allowScreenshots)
+            }
+        }
         setContentView(ActivityImportBackupBinding::inflate)
         setPresenter(presenter)
 

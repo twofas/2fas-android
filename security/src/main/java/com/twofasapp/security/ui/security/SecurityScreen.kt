@@ -24,8 +24,10 @@ import com.twofasapp.design.compose.HeaderEntry
 import com.twofasapp.design.compose.SimpleEntry
 import com.twofasapp.design.compose.SubtitleGravity
 import com.twofasapp.design.compose.SwitchEntry
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.model.LockMethod
@@ -47,6 +49,7 @@ internal fun SecurityScreen(
     var showTrailsDialog by remember { mutableStateOf(false) }
     var showTimeoutDialog by remember { mutableStateOf(false) }
     var showBiometricDialog by remember { mutableStateOf(false) }
+    var showScreenshotsConfirmDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -70,6 +73,7 @@ internal fun SecurityScreen(
                 item {
                     SwitchEntry(
                         title = stringResource(id = R.string.settings__option_fingerprint),
+                        subtitle = stringResource(id = R.string.settings__option_fingerprint_description),
                         icon = painterResource(id = R.drawable.ic_fingerprint_old),
                         isChecked = false,
                         isEnabled = false,
@@ -77,11 +81,21 @@ internal fun SecurityScreen(
                     )
                 }
 
+                item { Divider(color = TwTheme.color.divider, modifier = Modifier.padding(vertical = 8.dp)) }
+
                 item {
-                    Text(
-                        text = stringResource(id = R.string.settings__option_fingerprint_description),
-                        modifier = Modifier.padding(start = 24.dp, end = 16.dp, top = 8.dp),
-                        style = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfaceSecondary)
+                    SwitchEntry(
+                        title = stringResource(id = R.string.settings__option_screenshots),
+                        subtitle = stringResource(id = R.string.settings__option_screenshots_description),
+                        icon = TwIcons.Screenshot,
+                        isChecked = uiState.allowScreenshots,
+                        switch = { isChecked ->
+                            if (isChecked) {
+                                showScreenshotsConfirmDialog = true
+                            } else {
+                                viewModel.toggleScreenshots()
+                            }
+                        }
                     )
                 }
 
@@ -168,6 +182,24 @@ internal fun SecurityScreen(
                     )
                 }
 
+                item { Divider(color = TwTheme.color.divider, modifier = Modifier.padding(vertical = 8.dp)) }
+
+                item {
+                    SwitchEntry(
+                        title = stringResource(id = R.string.settings__option_screenshots),
+                        subtitle = stringResource(id = R.string.settings__option_screenshots_description),
+                        icon = TwIcons.Screenshot,
+                        isChecked = uiState.allowScreenshots,
+                        switch = { isChecked ->
+                            if (isChecked) {
+                                showScreenshotsConfirmDialog = true
+                            } else {
+                                viewModel.toggleScreenshots()
+                            }
+                        }
+                    )
+                }
+
                 item { Divider(color = TwTheme.color.divider) }
             }
         }
@@ -209,6 +241,17 @@ internal fun SecurityScreen(
                 onError = { showBiometricDialog = false },
                 onDismiss = { showBiometricDialog = false },
             ).show()
+        }
+
+        if (showScreenshotsConfirmDialog) {
+            ConfirmDialog(
+                onDismissRequest = { showScreenshotsConfirmDialog = false },
+                title = stringResource(id = R.string.settings__option_screenshots_confirm_title),
+                body = stringResource(id = R.string.settings__option_screenshots_confirm_description),
+                negative = stringResource(id = R.string.commons__no),
+                positive = stringResource(id = R.string.commons__yes),
+                onConfirm = { viewModel.toggleScreenshots() }
+            )
         }
     }
 }

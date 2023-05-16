@@ -16,4 +16,5 @@ interface SettingsRepository {
     suspend fun setAutoFocusSearch(autoFocusSearch: Boolean)
     suspend fun setShowBackupNotice(showBackupNotice: Boolean)
     suspend fun setSendCrashLogs(sendCrashLogs: Boolean)
+    suspend fun setAllowScreenshots(allow: Boolean)
 }
