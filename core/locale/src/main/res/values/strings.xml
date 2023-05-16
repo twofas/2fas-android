@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Fri, 12 May 2023 06:50:40 -0700
+ Exported at: Mon, 15 May 2023 22:23:23 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -103,7 +103,7 @@
     <!-- Original: Adding code -->
     <string name="notifications__adding_code">Adding a new code</string>
     <!-- notifications__private_key_copied -->
-    <string name="notifications__service_key_copied">Service Key Copied</string>
+    <string name="notifications__service_key_copied">Secret Key Copied</string>
     <!-- voiceover__token_is_already_on_the_list -->
     <string name="notifications__token_already_added">This token is already present on the list</string>
     <string name="notifications__counter_copied">Counter Copied</string>
@@ -158,15 +158,15 @@
     <string name="tokens__move_to_trash">Move to Trash</string>
     <string name="tokens__additional_info">Additional info</string>
     <string name="tokens__choose_method">Choose method</string>
-    <string name="tokens__duplicated_private_key">Duplicated Service Key</string>
+    <string name="tokens__duplicated_private_key">Duplicated Secret Key</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">Incorrect service key (only numbers 2 to 7, letters), max. 512 chars long</string>
+    <string name="tokens__incorrect_service_key">Incorrect Secret key (only numbers 2 to 7, letters), max. 512 chars long</string>
     <string name="tokens__try_again">OK, let\'s try again</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Point your camera to the screen to scan the QR Code</string>
     <!-- tokens__private_key -->
-    <string name="tokens__service_key">Service Key</string>
+    <string name="tokens__service_key">Secret Key</string>
     <string name="tokens__qr_code_leads_to_app_store">This QR Code takes you to the App Store</string>
     <!-- tokens__remove_it_forever -->
     <string name="tokens__remove_forever">Delete Token\u0020</string>
@@ -180,7 +180,7 @@
     <string name="tokens__service_key_to_short">Key is too short. Minimum 4 characters</string>
     <string name="tokens__service_name">Service Name</string>
     <!-- tokens__this_private_key_exists_used_in -->
-    <string name="tokens__service_key_already_used_title">Service key from scanned code is already used in %s. You\'re probably scanning it again</string>
+    <string name="tokens__service_key_already_used_title">Secret key from scanned code is already used in %s. You\'re probably scanning it again</string>
     <string name="tokens__this_qr_code_is_inavlid">This code is incorrect or not supported. Try again.</string>
     <string name="tokens__type_service_name">Type Service Name</string>
     <string name="tokens__enter_service_name">Enter Service Name</string>
@@ -277,8 +277,8 @@
     <string name="tokens__order_menu_option_company">Submit icon as a company</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
     <string name="tokens__sign_in_not_possible_title">You will not be able to sign in to your %1$s account without this token, as long as you have second factor authentication for %2$s turned on.</string>
-    <string name="voiceover__show_service_key">Show Service Key</string>
-    <string name="voiceover__copy_service_key">Copy Service Key</string>
+    <string name="voiceover__show_service_key">Show Secret Key</string>
+    <string name="voiceover__copy_service_key">Copy Secret Key</string>
     <!-- voiceover__seconds_left -->
     <string name="voiceover__seconds_left_counter_title">Counter with seconds left to token change</string>
     <string name="voiceover__delete_button">Delete button</string>
@@ -559,13 +559,13 @@
     <string name="tokens__qr_read_image_try_again">Try to select a different image.</string>
     <string name="tokens__remove_it_forever">Delete service forever</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
-    <string name="tokens__service_add_error">Service could not be added because Service Key is invalid. Try again.</string>
+    <string name="tokens__service_add_error">Service could not be added because Secret Key is invalid. Try again.</string>
     <!-- A service with this Service Key already exists. Do you want to override it? -->
-    <string name="tokens__service_already_exists">Service with this Service Key already exists. Do you want to override it?</string>
+    <string name="tokens__service_already_exists">Service with this Secret Key already exists. Do you want to override it?</string>
     <string name="tokens__service_key_invalid_characters">Key contains invalid characters</string>
-    <string name="tokens__show_service_key">Show Service Key</string>
+    <string name="tokens__show_service_key">Show Secret Key</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
-    <string name="tokens__show_service_key_setup_lock">Your Service Key is protected. Please add a PIN or Fingerprint lock to see it.</string>
+    <string name="tokens__show_service_key_setup_lock">Your Secret key is protected. Please add a PIN or Fingerprint lock to see it.</string>
     <string name="tokens__tokens_list_is_empty">Services list is empty</string>
     <string name="tokens__use_plus_button_to_add_tokens">Use the \"+\" button to add a new service</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">You will be unable to sign in to your %1$s account without this token as long as you have two-factor authentication for %2$s enabled.\n\nYou will be unable to restore this token from 2FAS trash.</string>
@@ -639,9 +639,9 @@
     <string name="settings__send_logs_error_server">There seems to be a problem with our server. If it persists please contact our support team</string>
     <string name="settings__send_logs_error_title">Operation failed</string>
     <string name="settings__send_logs_sent_title">Logs sent</string>
-    <string name="settings__send_logs_sent_description">We\'ll check them out, but it could take some time.</string>
+    <string name="settings__send_logs_sent_description">Thanks for reaching out. We\'ll analyze them as soon as possible.</string>
     <string name="commons__send">Send</string>
-    <string name="settings__send_logs_title">Sending logs</string>
+    <string name="settings__send_logs_title">Logs have been sent</string>
     <string name="settings__send_logs_description_link">Code provided by support team was autofilled. Send logs?</string>
     <string name="settings__send_logs_description_edit">Please enter or paste code provided by our support team</string>
     <string name="settings__send_logs">Send logs</string>
@@ -750,9 +750,9 @@
     <string name="tokens__add_success_title">Almost done!</string>
     <string name="tokens__add_success_description">To finish pairing the service, you need to retype this token.</string>
     <string name="tokens__add_manual_title">Pair the service with 2FAS</string>
-    <string name="tokens__add_manual_description">Type in the service name and service key.</string>
+    <string name="tokens__add_manual_description">Type in the service name and secret key.</string>
     <string name="tokens__add_manual_service_name">Service name (required)</string>
-    <string name="tokens__add_manual_service_key">Service key (required)</string>
+    <string name="tokens__add_manual_service_key">Secret Key (required)</string>
     <string name="tokens__add_manual_other">Other settings</string>
     <string name="tokens__add_manual_other_optional">(optional)</string>
     <string name="tokens__add_manual_done_cta">Add service</string>

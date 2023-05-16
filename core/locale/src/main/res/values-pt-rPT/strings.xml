@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Fri, 12 May 2023 06:50:40 -0700
+ Exported at: Mon, 15 May 2023 22:23:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -103,7 +103,7 @@
     <!-- Original: Adding code -->
     <string name="notifications__adding_code">A adicionar um novo código</string>
     <!-- notifications__private_key_copied -->
-    <string name="notifications__service_key_copied">A Chave do Serviço foi copiada</string>
+    <string name="notifications__service_key_copied">A Chave Secreta foi copiada</string>
     <!-- voiceover__token_is_already_on_the_list -->
     <string name="notifications__token_already_added">Este token já está presente na lista</string>
     <string name="notifications__counter_copied">O Contador foi copiado</string>
@@ -158,15 +158,15 @@
     <string name="tokens__move_to_trash">Mover para o lixo</string>
     <string name="tokens__additional_info">Informação adicional</string>
     <string name="tokens__choose_method">Escolher método</string>
-    <string name="tokens__duplicated_private_key">Chave de Serviço duplicada</string>
+    <string name="tokens__duplicated_private_key">Chave Secreta duplicada</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">Chave de Serviço incorreta (apenas números 2 a 7, letras), máx, 512 caracteres</string>
+    <string name="tokens__incorrect_service_key">Chave Secreta incorreta (apenas números 2 a 7, letras), máx, 512 caracteres</string>
     <string name="tokens__try_again">Ok, vamos tentar novamente</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Aponta a tua câmara ao ecrã para digitalizar o código QR</string>
     <!-- tokens__private_key -->
-    <string name="tokens__service_key">Chave do Serviço</string>
+    <string name="tokens__service_key">Chave Secreta</string>
     <string name="tokens__qr_code_leads_to_app_store">Este código QR leva-te à App Store</string>
     <!-- tokens__remove_it_forever -->
     <string name="tokens__remove_forever">Eliminar Token</string>
@@ -180,7 +180,7 @@
     <string name="tokens__service_key_to_short">A chave é muito pequena. Mínimo 4 caracteres</string>
     <string name="tokens__service_name">Nome do Serviço</string>
     <!-- tokens__this_private_key_exists_used_in -->
-    <string name="tokens__service_key_already_used_title">A chave de serviço do código digitalizado já está a ser utilizada em %s. Deves estar a digitalizá-lo novamente</string>
+    <string name="tokens__service_key_already_used_title">A chave secreta do código digitalizado já está a ser utilizada em %s. Deves estar a digitalizá-lo novamente</string>
     <string name="tokens__this_qr_code_is_inavlid">Este código está incorreto ou não é suportado. Tenta novamente.</string>
     <string name="tokens__type_service_name">Tipo de Nome do Serviço</string>
     <string name="tokens__enter_service_name">Digita o Nome do Serviço</string>
@@ -277,8 +277,8 @@
     <string name="tokens__order_menu_option_company">Envia um ícone enquanto empresa</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
     <string name="tokens__sign_in_not_possible_title">Não vais conseguir entrar na tua conta %s sem este token enquanto tiveres ativado a autenticação de dois fatores para essa conta.</string>
-    <string name="voiceover__show_service_key">Mostrar a Chave do Serviço</string>
-    <string name="voiceover__copy_service_key">Copiar a Chave do Serviço</string>
+    <string name="voiceover__show_service_key">Mostrar a Chave Secreta</string>
+    <string name="voiceover__copy_service_key">Copiar a Chave Secreta</string>
     <!-- voiceover__seconds_left -->
     <string name="voiceover__seconds_left_counter_title">Contador com os segundos restantes para a mudança do token</string>
     <string name="voiceover__delete_button">Remover</string>
@@ -401,7 +401,7 @@
     <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Bloquear após X tentativas falhadas:</string>
-    <string name="settings__how_many_attempts_footer">Seleciona o número máximo de tentativas de códigos mal sucedidos antes de bloquear a aplicação</string>
+    <string name="settings__how_many_attempts_footer">Seleciona o número máximo de tentativas de códigos malsucedidos antes de bloquear a aplicação (o tempo de bloqueamento pode ser mudado abaixo).</string>
     <string name="settings__block_for">Tempo de bloqueio</string>
     <string name="settings__3_minutes">3 minutos</string>
     <string name="settings__5_minutes">5 minutos</string>
@@ -559,13 +559,13 @@
     <string name="tokens__qr_read_image_try_again">Tenta selecionar uma imagem diferente.</string>
     <string name="tokens__remove_it_forever">Eliminar serviço permanentemente</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
-    <string name="tokens__service_add_error">O serviço não foi adicionado porque a Chave de Serviço é inválida. Tenta novamente.</string>
+    <string name="tokens__service_add_error">O serviço não foi adicionado porque a Chave Secreta é inválida. Tenta novamente.</string>
     <!-- A service with this Service Key already exists. Do you want to override it? -->
     <string name="tokens__service_already_exists">Um serviço com esta chave já existe. Queres sobrepô-lo?</string>
     <string name="tokens__service_key_invalid_characters">A chave contém caracteres inválidos</string>
-    <string name="tokens__show_service_key">Mostrar a Chave do Serviço</string>
+    <string name="tokens__show_service_key">Mostrar a Chave Secreta</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
-    <string name="tokens__show_service_key_setup_lock">A tua Chave de Serviço está protegida. Por favor, adiciona um PIN ou um bloqueio por impressão digital para a ver.</string>
+    <string name="tokens__show_service_key_setup_lock">A tua Chave Secreta está protegida. Por favor, adiciona um PIN ou um bloqueio por impressão digital para a ver.</string>
     <string name="tokens__tokens_list_is_empty">A lista de serviços está vazia</string>
     <string name="tokens__use_plus_button_to_add_tokens">Usa o butão \"+\" para adicionar um novo serviço</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Não irás poder entrar na tua conta %s sem este token enquanto tiveres a autenticação de dois fatores ativada para essa conta.\n\nNão irás poder restaurar este token do lixo da 2FAS.</string>
@@ -639,9 +639,9 @@
     <string name="settings__send_logs_error_server">Parece haver um problema com o nosso servidor. Se continuar por favor contacta-nos\u0020</string>
     <string name="settings__send_logs_error_title">A operação falhou</string>
     <string name="settings__send_logs_sent_title">Registros enviados</string>
-    <string name="settings__send_logs_sent_description">Vamos verificar, mas pode demorar algum tempo.</string>
+    <string name="settings__send_logs_sent_description">Obrigado por nos ter dito. Vamos verificá-los o mais breve possível.</string>
     <string name="commons__send">Enviar</string>
-    <string name="settings__send_logs_title">A enviar registros</string>
+    <string name="settings__send_logs_title">Os registros foram enviados</string>
     <string name="settings__send_logs_description_link">O código fornecido pela equipa de ajuda foi preenchido automaticamente. Enviar registros?</string>
     <string name="settings__send_logs_description_edit">Por favor digita ou cola o código fornecido pela nossa equipa de ajuda</string>
     <string name="settings__send_logs">Enviar registros</string>
@@ -750,9 +750,9 @@
     <string name="tokens__add_success_title">Quase concluído!</string>
     <string name="tokens__add_success_description">Para terminar de conectar o serviço, precisas de digitar novamente este token.</string>
     <string name="tokens__add_manual_title">Conecta o serviço com 2FAS</string>
-    <string name="tokens__add_manual_description">Digita o nome e a chave do serviço.</string>
+    <string name="tokens__add_manual_description">Digita o nome e a chave secreta.</string>
     <string name="tokens__add_manual_service_name">Nome do serviço (obrigatório)</string>
-    <string name="tokens__add_manual_service_key">Chave do serviço (obrigatório)</string>
+    <string name="tokens__add_manual_service_key">Chave secreta (obrigatório)</string>
     <string name="tokens__add_manual_other">Outras definições</string>
     <string name="tokens__add_manual_other_optional">(opcional)</string>
     <string name="tokens__add_manual_done_cta">Adicionar serviço</string>
@@ -760,8 +760,8 @@
     <string name="tokens__add_manual_advanced">Definições avançadas do token</string>
     <string name="tokens__add_manual_additional_info">Informação adicional</string>
     <string name="tokens__add_manual_advanced_description">Mudar as definições padrão de tokens não é recomendado. Fá-lo apenas quando o fornecedor do 2FA pedi-lo e quando tiveres instruções claras.</string>
-    <string name="settings__option_screenshots_description">Allow screenshots of the app for 5 minutes.</string>
-    <string name="settings__option_screenshots">Allow screenshots</string>
-    <string name="settings__option_screenshots_confirm_title">Allow screenshots of the app?</string>
-    <string name="settings__option_screenshots_confirm_description">Are you sure? This option allows you to screenshot and record any screen within the app. However, this will also allow any external attempts of capturing screens in the app.\nFor safety reasons, this option will be automatically turned off after 5 minutes.</string>
+    <string name="settings__option_screenshots_description">Permitir capturas de ecrã dentro da aplicação por 5 minutos.</string>
+    <string name="settings__option_screenshots">Permitir capturas de ecrã</string>
+    <string name="settings__option_screenshots_confirm_title">Permitir capturas de ecrã dentro da aplicação?</string>
+    <string name="settings__option_screenshots_confirm_description">Tens a certeza? Esta opção irá permitir capturas e gravações de ecrã dentro da aplicação. Contudo, isto irá também permitir tentativas externas de capturar ecrãs dentro da aplicação.\nPor razões de segurança, esta opção irá ser automaticamente desligada depois de 5 minutos.</string>
 </resources>
