@@ -88,7 +88,7 @@ fun MainAppTheme(
     }
 
     SideEffect {
-        systemUiController.setSystemBarsColor(color = colors.background)
+        systemUiController.setStatusBarColor(color = colors.background)
     }
 
     CompositionLocalProvider(
