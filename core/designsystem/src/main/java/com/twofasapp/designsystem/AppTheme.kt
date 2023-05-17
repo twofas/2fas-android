@@ -1,7 +1,7 @@
 package com.twofasapp.designsystem
 
 import android.app.Activity
-import android.view.WindowManager
+import android.view.View
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
@@ -10,11 +10,13 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.twofasapp.designsystem.internal.LocalThemeColors
 import com.twofasapp.designsystem.internal.ThemeColors
@@ -25,6 +27,16 @@ val LocalAppTheme = staticCompositionLocalOf { AppTheme.Auto }
 
 enum class AppTheme {
     Auto, Light, Dark,
+}
+
+@Composable
+fun isGestureNavigationEnabled(view: View): Boolean {
+    val windowInsets = WindowInsetsCompat.toWindowInsetsCompat(
+        view.rootWindowInsets, view
+    )
+    val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemGestures())
+
+    return insets.left > 0 && insets.right > 0
 }
 
 @Composable
@@ -89,6 +101,12 @@ fun MainAppTheme(
 
     SideEffect {
         systemUiController.setStatusBarColor(color = colors.background)
+    }
+
+    if (!isGestureNavigationEnabled(view)) {
+        SideEffect {
+            systemUiController.setNavigationBarColor(color = colors.background)
+        }
     }
 
     CompositionLocalProvider(
