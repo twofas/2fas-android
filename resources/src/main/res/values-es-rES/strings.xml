@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Mon, 15 May 2023 22:23:24 -0700
+ Exported at: Sun, 21 May 2023 11:26:00 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -189,7 +189,7 @@
     <!-- tokens__you_wont_be_able_to_restore -->
     <string name="tokens__token_not_possible_to_restore">Ya no podrás reestablecer este código</string>
     <string name="tokens__badge_color">Color de insignia</string>
-    <string name="tokens__change_brand_icon">Cambiar el icono de la marca</string>
+    <string name="tokens__change_brand_icon">Cambiar el ícono de la marca</string>
     <string name="tokens__change_label">Cambiar etiqueta</string>
     <string name="tokens__service_information">Información de Servicio</string>
     <string name="tokens__personalization">Personalización</string>
@@ -262,18 +262,18 @@
     <string name="tokens__request_icon_page_title">Solicitar un ícono</string>
     <string name="tokens__request_icon_social_title">Cuéntanos en Discord</string>
     <string name="tokens__request_icon_social_link">Inicie sesión en nuestro servidor de Discord</string>
-    <string name="tokens__request_icon_social_description">y permite que los usuarios voten por los iconos solicitados.</string>
+    <string name="tokens__request_icon_social_description">y permite que los usuarios voten por los íconos solicitados.</string>
     <string name="tokens__request_icon_middle">o</string>
     <string name="tokens__request_icon_provider_title">Avisar al proveedor de servicios</string>
     <string name="tokens__request_icon_provider_description">Puede usar las redes sociales o el correo electrónico y compartir este texto con ellos:</string>
     <string name="tokens__request_icon_provider_message">¡Hola! Estoy usando la aplicación 2FAS para iniciar sesión en su servicio en dos pasos (2FA). Sin embargo, ¡falta tu icono! Puede enviar su icono aquí: https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_footnote">¡No olvides etiquetar la cuenta oficial de la compañía!</string>
-    <string name="tokens__order_icon_description">¿No encuentras el icono de marca en la aplicación 2FAS?</string>
-    <string name="tokens__order_icon_link">Solicitar un icono de marca</string>
-    <string name="tokens__order_icon_title">Solicitar un icono de marca</string>
+    <string name="tokens__order_icon_description">¿No encuentras el ícono de marca en la aplicación 2FAS?</string>
+    <string name="tokens__order_icon_link">Solicitar un ícono de marca</string>
+    <string name="tokens__order_icon_title">Solicitar un ícono de marca</string>
     <string name="tokens__order_menu_title">Elige el método de la solicitud</string>
-    <string name="tokens__order_menu_option_user">Solicitar icono como usario</string>
+    <string name="tokens__order_menu_option_user">Solicitar ícono como usuario</string>
     <string name="tokens__order_menu_option_company">Enviar ícono como una empresa</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
     <string name="tokens__sign_in_not_possible_title">No podrás iniciar sesión en tu cuenta %1$s sin este código de seguridad, siempre y cuando tenga activada la autenticación de segundo factor para %2$s.</string>

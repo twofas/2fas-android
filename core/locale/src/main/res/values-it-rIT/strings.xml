@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Mon, 15 May 2023 22:51:33 -0700
+ Exported at: Sun, 21 May 2023 11:27:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -55,7 +55,7 @@
     <string name="commons__rename">Rinomina</string>
     <string name="commons__retry">Riprova</string>
     <string name="commons__save">Salva</string>
-    <string name="commons__scan_qr_code">Scannerizza il codice QR</string>
+    <string name="commons__scan_qr_code">Scansiona il codice QR</string>
     <string name="commons__service">Servizio</string>
     <string name="commons__set">Set</string>
     <string name="commons__skip">Salta</string>
@@ -95,11 +95,11 @@
     <!-- introduction__not_sure -->
     <string name="introduction__what_to_do">Non sei sicuro di cosa fare?</string>
     <!-- introduction__ga_import_description -->
-    <string name="introduction__google_authenticator_import_process">Esporta i tuoi account da Google Authenticator in un codice QR utilizzando l\'opzione \"Trasferisci account\". Quindi fai uno screenshot e utilizza il pulsante \"Scegli codice QR\" qui sotto. Se stai importando i codici da un altro dispositivo, utilizza invece il pulsante \"Scansiona codice QR\".</string>
+    <string name="introduction__google_authenticator_import_process">Esporta i tuoi account da Google Authenticator in un codice QR utilizzando l\'opzione \"Trasferisci account\". Quindi fai uno screenshot e utilizza il pulsante \"Scegli codice QR\" qui sotto. Se stai importando i codici da un altro dispositivo, utilizza invece il pulsante \"Scansiona il codice QR\".</string>
     <!-- introduction__choose_qr -->
     <string name="introduction__choose_qr_code">Scegli codice QR</string>
     <!-- introduction__scan_qr -->
-    <string name="introduction__scan_qr_code">Scannerizza il codice QR</string>
+    <string name="introduction__scan_qr_code">Scansiona il codice QR</string>
     <!-- Original: Adding code -->
     <string name="notifications__adding_code">Aggiunta di un nuovo codice</string>
     <!-- notifications__private_key_copied -->
@@ -215,7 +215,7 @@
     <string name="tokens__check_app_permissions">Controlla se l\'app dispone delle autorizzazioni necessarie nelle Impostazioni di sistema</string>
     <string name="tokens__no_qr_codes_found">Nessun codice QR trovato</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
+
         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Non è presente un codice QR corretto nell\'immagine selezionata. Si prega di provare un\'immagine diversa.</string>
     <string name="tokens__select_service">Seleziona servizio</string>
@@ -257,7 +257,7 @@
     <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">Servizio aggiunto correttamente. Ti consigliamo fortemente di\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
-    <string name="tokens__gallery_advice_content_middle_bold">Elimina lo screenshot del codice QR dalla tua galleria.\u0020</string>
+    <string name="tokens__gallery_advice_content_middle_bold">elimina lo screenshot del codice QR dalla tua galleria.\u0020</string>
     <string name="tokens__gallery_advice_content_last">Se qualcuno ottiene questo screenshot del codice QR, sarà in grado di ottenere i tuoi codici 2FA per il servizio.</string>
     <string name="tokens__request_icon_page_title">Richiedi un\'icona</string>
     <string name="tokens__request_icon_social_title">Faccelo sapere su Discord</string>
@@ -687,7 +687,7 @@
     <string name="backup__sync_status_progress">Sincronizzazione...</string>
     <string name="import_backup_msg1_encrypted">Stai per importare un file di backup criptato.</string>
     <string name="externalimport__choose_json_cta">Scegli il file JSON</string>
-    <string name="externalimport__aegis_msg">Esporta i tuoi account da Aegis in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
+    <string name="externalimport__aegis_msg">Esporta i tuoi account da Aegis in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
     <string name="externalimport__raivo_msg">Usa l\'opzione \"Esporta gli OTP in un archivio ZIP\" nelle impostazioni di Raivo, salva un file ZIP, estrailo, e importa il JSON file tramite il pulsante \"Scegli il file JSON\"</string>
     <string name="externalimport__no_tokens_msg">Tuttavia, non ci sono servizi che potrebbero essere importati.</string>
     <string name="commons__try_again">Prova di nuovo</string>
@@ -732,7 +732,7 @@
     <string name="settings__list_style_option_default">Predifinito</string>
     <string name="settings__list_style_option_compact">Compatto</string>
     <string name="externalimport_lastpass">LastPass</string>
-    <string name="externalimport__lastpass_msg">Esporta i tuoi account da LastPass in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
+    <string name="externalimport__lastpass_msg">Esporta i tuoi account da LastPass in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
     <string name="settings__about_crash_optout_title">Rapporti sugli arresti anomali</string>
     <string name="externalimport__lastpass_title">Importazione di token 2FA dall\'app LastPass\n</string>
     <string name="externalimport__lastpass_success_msg">Questo file JSON permette di importare i token da LastPass.</string>
