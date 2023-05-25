@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android string resources
+ Project: 2FAS App
+ Release: Working copy
+ Locale: it-IT, Italian (Italy)
+ Exported by: rafakob
+ Exported at: Sun, 21 May 2023 11:27:24 -0700
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- InfoPlist.strings
+        TwoFAS
+        Created by Zbigniew Cisiński on 14/03/2020.
+        Copyright © 2020 The Code. All rights reserved. -->
+    <string name="NSCameraUsageDescription">Usato per scannerizzare i codici QR</string>
+    <string name="NSFaceIDUsageDescription">Puoi sbloccare l\'applicazione utilizzando Face ID</string>
+    <!-- MARK: - App -->
+    <string name="app__name">2FAS Authenticator</string>
+    <string name="commons__2fas">2FA Authenticator (2FAS App)</string>
+    <string name="commons__OK">OK</string>
+    <string name="commons__add">Aggiungi</string>
+    <!-- MARK: - Commons -->
+    <string name="commons__cancel">Annulla</string>
+    <string name="commons__notifications">Notifiche</string>
+    <!-- A number replaces %d, for example, 4 of 5. -->
+    <string name="commons__page_of_page_title">%1$d di %2$d</string>
+    <!-- notifications__service_already_removed_from_backup -->
+    <string name="notifications__service_already_removed_title">Servizio già rimosso dal backup</string>
+    <!-- notifications__service_already_modified_in_backup -->
+    <string name="notifications__service_already_modified_title">Servizio già modificato nel backup</string>
+    <!-- backup__user_is_over_quota_on_icloud -->
+    <string name="backup__user_over_quota_icloud">L\'utente ha superato la quota su iCloud</string>
+    <!-- backup__icloud_is_not_available -->
+    <string name="backup__icloud_not_available">iCloud non è disponibile</string>
+    <!-- backup__icloud_has_been_disabled_by_user -->
+    <string name="backup__icloud_disabled_title">iCloud è stato disabilitato dall\'utente</string>
+    <!-- backup__turned_off_description_bold_part -->
+    <string name="backup__2fas_backup">Backup 2FAS</string>
+    <string name="commons__close">Chiudi</string>
+    <string name="commons__continue">Continua</string>
+    <string name="commons__copy">Copia</string>
+    <string name="commons__delete">Cancella</string>
+    <string name="commons__dismiss">Annulla</string>
+    <string name="commons__done">Fatto</string>
+    <string name="commons__edit">Modifica</string>
+    <string name="commons__enter_code_manually">Inserisci il codice manualmente</string>
+    <string name="commons__error">Errore</string>
+    <string name="commons__info">Info</string>
+    <string name="commons__next">Prossimo</string>
+    <string name="commons__notice">Avviso</string>
+    <string name="commons__off">Off</string>
+    <string name="commons__on">On</string>
+    <!-- commons__point_your_camera_at_code_on_website -->
+    <string name="commons__camera_title">Punta la fotocamera sullo schermo per acquisire il codice QR</string>
+    <string name="commons__rename">Rinomina</string>
+    <string name="commons__retry">Riprova</string>
+    <string name="commons__save">Salva</string>
+    <string name="commons__scan_qr_code">Scansiona il codice QR</string>
+    <string name="commons__service">Servizio</string>
+    <string name="commons__set">Set</string>
+    <string name="commons__skip">Salta</string>
+    <string name="commons__tokens">Token</string>
+    <string name="commons__warning">Attenzione</string>
+    <string name="commons__no_results">Nessun risultato</string>
+    <string name="commons__customize">Personalizza</string>
+    <string name="commons__approve">Approva</string>
+    <string name="commons__deny">Rifiuta</string>
+    <!-- max. %d chars = Maximum number of characters
+        commons__provided_text_too_long -->
+    <string name="commons__text_long_title">Il testo fornito è troppo lungo (massimo %d caratteri)</string>
+    <string name="commons__got_it">Capito!</string>
+    <string name="fingerprint__verifying">Verifica...</string>
+    <!-- fingerprint__setup_content -->
+    <string name="fingerprint__confirm_title">Conferma con la tua impronta digitale per continuare.</string>
+    <!-- fingerprint__use_pin -->
+    <string name="fingerprint__use_pin_title">Usa il PIN questa volta</string>
+    <!-- MARK: - Introduction -->
+    <string name="introduction__page_1_title">Sei incredibile!</string>
+    <string name="introduction__page_1_content">Il tuo telefono è appena diventato una chiave privata e protetta per i tuoi servizi online grazie all\'app 2FAS - scelta da oltre 3 milioni di utenti in tutto il mondo.</string>
+    <string name="introduction__page_2_title">Semplice</string>
+    <string name="introduction__page_2_content">Associa 2FAS ai tuoi servizi online. Attiva la sicurezza a due fattori in pochi secondi con il tuo codice QR.</string>
+    <string name="introduction__page_3_title">Privato</string>
+    <string name="introduction__page_3_content">2FAS rispetta e protegge la tua privacy. Questa app non raccoglierà, elaborerà o utilizzerà mai nessuno dei tuoi dati personali.</string>
+    <string name="introduction__page_4_title">Proteggi</string>
+    <string name="introduction__page_4_content_ios">I tuoi token vengono archiviati offline tramite la memoria del dispositivo, quindi ricordati di eseguire il backup dei tuoi servizi! Usa iCloud Sync e un codice PIN per proteggerti da accessi non autorizzati e danni al dispositivo.</string>
+    <!-- introduction__start_using -->
+    <string name="introduction__title">Inizia ad usare 2FAS</string>
+    <string name="introduction__tos">Termini di servizio</string>
+    <string name="introduction__description_title">Associa il tuo account del servizio online con 2FAS o importa i tuoi token</string>
+    <string name="introduction__pair_new_service">Associa un nuovo servizio</string>
+    <!-- introduction__import_2fas -->
+    <string name="introduction__import_2fas_title">Importa il file di backup 2FAS</string>
+    <!-- introduction__import_ga -->
+    <string name="introduction__import_google_authenticator">importa da Google Authenticator</string>
+    <!-- introduction__not_sure -->
+    <string name="introduction__what_to_do">Non sei sicuro di cosa fare?</string>
+    <!-- introduction__ga_import_description -->
+    <string name="introduction__google_authenticator_import_process">Esporta i tuoi account da Google Authenticator in un codice QR utilizzando l\'opzione \"Trasferisci account\". Quindi fai uno screenshot e utilizza il pulsante \"Scegli codice QR\" qui sotto. Se stai importando i codici da un altro dispositivo, utilizza invece il pulsante \"Scansiona il codice QR\".</string>
+    <!-- introduction__choose_qr -->
+    <string name="introduction__choose_qr_code">Scegli codice QR</string>
+    <!-- introduction__scan_qr -->
+    <string name="introduction__scan_qr_code">Scansiona il codice QR</string>
+    <!-- Original: Adding code -->
+    <string name="notifications__adding_code">Aggiunta di un nuovo codice</string>
+    <!-- notifications__private_key_copied -->
+    <string name="notifications__service_key_copied">Chiave segreta copiata</string>
+    <!-- voiceover__token_is_already_on_the_list -->
+    <string name="notifications__token_already_added">Questo token è già presente nell\'elenco</string>
+    <string name="notifications__counter_copied">Timer copiato</string>
+    <string name="notifications__token_copied">Token copiato</string>
+    <string name="notifications__next_token_copied">Prossimo token copiato</string>
+    <!-- notifications__would_you_like_to_add_this_code -->
+    <string name="notifications__add_code_question_title">Vuoi aggiungere questo codice: %s?</string>
+    <!-- MARK: - Permissions -->
+    <string name="permissions__open_settings">Apri impostazioni</string>
+    <string name="security__incorrect_PIN">PIN non corretto</string>
+    <string name="security__change_pin">Cambia PIN</string>
+    <string name="security__confirm_you_are_device_owner">Per favore conferma che tu sei il possessore del dispositivo</string>
+    <!-- security__confirm_your_new_pin -->
+    <string name="security__confirm_new_pin">Per favore conferma il tuo nuovo PIN</string>
+    <string name="security__create_pin">Crea PIN</string>
+    <string name="security__enter_current_pin">Per favore inserisci il tuo attuale PIN</string>
+    <!-- security__enter_your_new_pin -->
+    <string name="security__enter_new_pin">Per favore inserisci il tuo nuovo PIN</string>
+    <!-- security__enter_your_pin -->
+    <string name="security__enter_pin">Per favore inserisci il tuo PIN</string>
+    <!-- MARK: - Security -->
+    <string name="security__too_many_attempts_try_again_after_formatter">Troppi tentativi. Per favore riprova di nuovo %s</string>
+    <string name="security__too_many_attempts_try_again_after">Troppi tentativi. Per favore riprova dopo %s minuti.</string>
+    <!-- security__too_many_attempts_try_again_later -->
+    <string name="security__too_many_attempts_error">Troppi tentativi. Per favore riprova più tardi.</string>
+    <!-- security__too_many_attempts_try_again_after_one_minute -->
+    <string name="security__too_many_attempts_error_2">Troppi tentativi. Per favore riprova dopo un minuto.</string>
+    <string name="settings__backup_and_synchronization">Backup e Sincronizzazione</string>
+    <string name="settings__choose_topic">Scegli argomento</string>
+    <string name="settings__configure_mail_service_try_again">Configura il servizio di posta e riprova</string>
+    <string name="settings__general">Generale</string>
+    <string name="settings__mail_services_not_available">I servizi mail non sono disponibili</string>
+    <string name="settings__problem">Problema</string>
+    <string name="settings__security">Sicurezza</string>
+    <string name="settings__select_pin_length">Seleziona la lunghezza del PIN</string>
+    <string name="settings__settings">Impostazioni</string>
+    <!-- czy to dalej będzie w aplikacji? -->
+    <string name="settings__suggestion">Suggerimento</string>
+    <string name="settings__advanced">Avanzate</string>
+    <string name="settings__widgets">Widget</string>
+    <string name="settings__display_selected_services">Visualizza i servizi selezionati sui widget della schermata iniziale.</string>
+    <!-- settings__after_you_enable_widgets -->
+    <string name="settings__widgets_title">Dopo aver abilitato i widget, è possibile accedere a tutti i tuoi token senza il tuo codice PIN.\n\nSei sicuro di voler abilitare i widget?</string>
+    <string name="settings__show_next_token">Mostra il prossimo token</string>
+    <string name="settings__see_incoming_tokens">Visualizza sulla lista i prossimi token.</string>
+    <string name="settings__trash">Cestino</string>
+    <string name="settings__restore">Ripristina</string>
+    <string name="settings__trash_is_empty">Il cestino è vuoto</string>
+    <string name="settings__share_app">Condividi l\'app</string>
+    <!-- tokens__remove_from_list -->
+    <string name="tokens__delete_token">Sei sicuro di voler eliminare il token per:</string>
+    <string name="tokens__move_to_trash">Sposta nel cestino</string>
+    <string name="tokens__additional_info">Informazioni aggiuntive</string>
+    <string name="tokens__choose_method">Scegli metodo</string>
+    <string name="tokens__duplicated_private_key">Duplica chiave segreta</string>
+    <!-- tokens__incorrect_private_key -->
+    <string name="tokens__incorrect_service_key">Chiave segreta errata (solo numeri da 2 a 7 e lettere), max. 512 caratteri di lunghezza</string>
+    <string name="tokens__try_again">OK, proviamo di nuovo</string>
+    <!-- Original: To capture the QR code
+        tokens__point_right_2fa_code -->
+    <string name="tokens__scan_qr_code_title">Punta la fotocamera sullo schermo per scansionare il codice QR</string>
+    <!-- tokens__private_key -->
+    <string name="tokens__service_key">Chiave segreta</string>
+    <string name="tokens__qr_code_leads_to_app_store">Questo codice QR ti porta all\'App Store</string>
+    <!-- tokens__remove_it_forever -->
+    <string name="tokens__remove_forever">Rimuovi token</string>
+    <!-- tokens__search_by_service_name_or_login -->
+    <string name="tokens__search_service_title">Cerca servizio</string>
+    <!-- tokens__search_sorry_service_not_found -->
+    <string name="tokens__service_not_found_search">Spiacente, servizio non trovato</string>
+    <!-- Original: Take another try with a different search term
+        tokens__search_take_another_try_different_search_term -->
+    <string name="tokens__try_different_search_term">Fai un altro tentativo con un termine di ricerca diverso</string>
+    <string name="tokens__service_key_to_short">La chiave è troppo corta. Usare minimo 4 caratteri</string>
+    <string name="tokens__service_name">Nome del servizio</string>
+    <!-- tokens__this_private_key_exists_used_in -->
+    <string name="tokens__service_key_already_used_title">La chiave segreta scansionata è già utilizzata in %s. Probabilmente la stai scansionando di nuovo</string>
+    <string name="tokens__this_qr_code_is_inavlid">Questo codice non è corretto o non è supportato. Riprova.</string>
+    <string name="tokens__type_service_name">Digita il nome del servizio</string>
+    <string name="tokens__enter_service_name">Inserisci il nome del servizio</string>
+    <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
+    <string name="tokens__service_name_unknown_title">Sfortunatamente non conosciamo quel servizio. Come vorresti chiamarlo?</string>
+    <!-- tokens__you_wont_be_able_to_restore -->
+    <string name="tokens__token_not_possible_to_restore">Non potrai più ripristinare questo token.</string>
+    <string name="tokens__badge_color">Colore del badge</string>
+    <string name="tokens__change_brand_icon">Cambia l\'icona del brand</string>
+    <string name="tokens__change_label">Cambia etichetta</string>
+    <string name="tokens__service_information">Informazioni del servizio</string>
+    <string name="tokens__personalization">Personalizzazione</string>
+    <string name="tokens__brand_icon">Icona del brand</string>
+    <string name="tokens__label">Etichetta</string>
+    <!-- tokens__remove_the_service -->
+    <string name="tokens__remove_service_from_app">Rimuovi il servizio dall\'app 2FAS</string>
+    <!-- tokens__label_one_or_two -->
+    <string name="tokens__label_characters_title">Etichetta (1 o 2 caratteri):</string>
+    <string name="tokens__pick_background_color">Scegli il colore di sfondo:</string>
+    <string name="tokens__num_added">%s aggiunto</string>
+    <string name="tokens__next_token">Prossimo token: %s</string>
+    <string name="tokens__next_token_title">Valore del prossimo token</string>
+    <string name="tokens__my_tokens">I miei token</string>
+    <string name="tokens__removing_group">Rimozione del gruppo</string>
+    <!-- tokens__all_tokens_will_be_moved -->
+    <string name="tokens__all_tokens_moved_to_group_title">Tutti i token verranno spostati nel gruppo: \"I miei token\"</string>
+    <string name="tokens__add_group">Aggiungi gruppo</string>
+    <string name="tokens__group_name">Nome del gruppo:</string>
+    <string name="tokens__select_from_gallery">Seleziona dalla Galleria</string>
+    <string name="tokens__camera_is_unavailable">La fotocamera non è disponibile</string>
+    <!-- tokens__check_if_app_has_proper_permissions -->
+    <string name="tokens__check_app_permissions">Controlla se l\'app dispone delle autorizzazioni necessarie nelle Impostazioni di sistema</string>
+    <string name="tokens__no_qr_codes_found">Nessun codice QR trovato</string>
+    <!-- tokens__no_correct_qr_code_had_been_found
+
+        No correct QR codes had been found in the selected image. Please try a different image. -->
+    <string name="tokens__no_correct_qr_code_found_title">Non è presente un codice QR corretto nell\'immagine selezionata. Si prega di provare un\'immagine diversa.</string>
+    <string name="tokens__select_service">Seleziona servizio</string>
+    <string name="tokens__adding_service_question_title">Quale servizio vuoi aggiungere?</string>
+    <string name="tokens__retype_this_token">Ridigita questo token</string>
+    <!-- tokens__unlock_and_retype_this_token -->
+    <string name="tokens__unlock_and_retype_token_title">Sblocca e ridigita questo token</string>
+    <string name="tokens__group">Gruppo</string>
+    <string name="tokens__select_group">Seleziona gruppo</string>
+    <string name="tokens__google_auth_import">Importazione di token 2FA dall\'app Google Authenticator</string>
+    <string name="tokens__google_auth_import_subtitle">Questo codice QR permette di importare i token da Google Authenticator</string>
+    <!-- A number replaces %d  -->
+    <string name="tokens__google_auth_out_of_title">%1$d su %2$d</string>
+    <string name="tokens__google_auth_import_subtitle_end">I token verranno importati.</string>
+    <string name="tokens__sort_by">Ordina per</string>
+    <!-- tokens__sort_by_az -->
+    <string name="tokens__sort_by_a_to_z">A - Z</string>
+    <!-- tokens__sort_by_za -->
+    <string name="tokens__sort_by_z_to_a">Z - A</string>
+    <string name="tokens__sort_by_manual">Manuale</string>
+    <string name="tokens__advanced">Avanzata</string>
+    <!-- tokens__advanced_alert_title -->
+    <string name="tokens__advanced_alert">Attento</string>
+    <!-- tokens__advanced_alert_description -->
+    <string name="tokens__advanced_alert_description_title">Non è raccomandato modificare le impostazioni avanzate. Fallo solo quando il tuo provider 2FA lo richiede e quando hai istruzioni chiare.</string>
+    <string name="tokens__token_settings">Impostazioni del token</string>
+    <string name="tokens__otp_authentication">Autenticazione con OTP</string>
+    <string name="tokens__algorithm">Algoritmo</string>
+    <string name="tokens__refresh_time">Tempo di aggiornamento</string>
+    <string name="tokens__number_of_digits">Numero di cifre</string>
+    <string name="tokens__counter">Timer</string>
+    <string name="tokens__initial_counter">Timer iniziale</string>
+    <!-- A number replaces %d -->
+    <string name="tokens__second">%d secondi</string>
+    <string name="tokens__hotp">HOTP</string>
+    <string name="tokens__totp">TOTP</string>
+    <string name="tokens__advanced_settings_footer_title">Non è consigliato modificare le impostazioni avanzate. Fallo solo quando il tuo provider 2FA lo richiede e quando hai istruzioni chiare.</string>
+    <string name="tokens__gallery_advice_title">La migliore pratica</string>
+    <!-- ADD A SPACE AT THE END -->
+    <string name="tokens__gallery_advice_content_first">Servizio aggiunto correttamente. Ti consigliamo fortemente di\u0020</string>
+    <!-- ADD A SPACE AFTER COMA -->
+    <string name="tokens__gallery_advice_content_middle_bold">elimina lo screenshot del codice QR dalla tua galleria.\u0020</string>
+    <string name="tokens__gallery_advice_content_last">Se qualcuno ottiene questo screenshot del codice QR, sarà in grado di ottenere i tuoi codici 2FA per il servizio.</string>
+    <string name="tokens__request_icon_page_title">Richiedi un\'icona</string>
+    <string name="tokens__request_icon_social_title">Faccelo sapere su Discord</string>
+    <string name="tokens__request_icon_social_link">Accedi al nostro server Discord</string>
+    <string name="tokens__request_icon_social_description">e consentire agli utenti di votare per le icone richieste.</string>
+    <string name="tokens__request_icon_middle">o</string>
+    <string name="tokens__request_icon_provider_title">Lascia che il fornitore del servizio lo sappia</string>
+    <string name="tokens__request_icon_provider_description">Puoi utilizzare i social media o l\'e-mail e condividere questo testo con loro.</string>
+    <string name="tokens__request_icon_provider_message">Ehi! Sto usando l\'app 2FAS per accedere al tuo servizio con l\'autenticazione a 2 fattori. Tuttavia, manca la tua icona! Puoi inviare la tua icona qui: https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_footnote">Non dimenticarti di taggare l\'account ufficiale dell\'azienda!</string>
+    <string name="tokens__order_icon_description">Non riesci a trovare l\'icona di un brand nell\'app 2FAS?</string>
+    <string name="tokens__order_icon_link">Richiedi un\'icona del brand</string>
+    <string name="tokens__order_icon_title">Richiedi un\'icona del brand</string>
+    <string name="tokens__order_menu_title">Seleziona il metodo richiesto</string>
+    <string name="tokens__order_menu_option_user">Richiedi un\'icona come utente</string>
+    <string name="tokens__order_menu_option_company">Invia un\'icona come azienda</string>
+    <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
+    <string name="tokens__sign_in_not_possible_title">Senza questo token non sarai in grado di accedere al tuo account %1$s finché avrai abilitato l\'autenticazione a due fattori per %2$s.</string>
+    <string name="voiceover__show_service_key">Mostra chiave segreta</string>
+    <string name="voiceover__copy_service_key">Copia chiave segreta</string>
+    <!-- voiceover__seconds_left -->
+    <string name="voiceover__seconds_left_counter_title">Timer con i secondi rimasti prima del cambio del token</string>
+    <string name="voiceover__delete_button">Elimina pulsante</string>
+    <string name="voiceover__service_deleted">Servizio rimosso</string>
+    <!-- voiceover__hidden_secret_key_use_show button -->
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Questo campo contiene una chiave segreta nascosta. Per rivelarlo, usa il pulsante Mostra. Funzionerà solo se hai impostato il PIN per la schermata di blocco</string>
+    <string name="voiceover__service_name">Nome del servizio: %s</string>
+    <string name="voiceover__additional_info">Informazioni aggiuntive: %s</string>
+    <string name="voiceover__token_tap_to_copy">Token %s. Tocca per copiare</string>
+    <string name="voiceover__edit">Modifica %s</string>
+    <string name="voiceover__service_label_with_name_and_color">Etichetta del servizio con nome %1$s e colore %2$s</string>
+    <string name="voiceover__service_icon">%s icona del servizio</string>
+    <string name="voiceover__selected">Selezionato</string>
+    <string name="voiceover__not_selected">Non selezionato</string>
+    <string name="voiceover__badge_color">Colore del badge: %s</string>
+    <string name="voiceover__dismissing">Dismettere</string>
+    <string name="voiceover__secret_hint">Solo numeri da 2 a 9 e lettere. Almeno 4 caratteri</string>
+    <string name="voiceover__add_service">Aggiungi servizio</string>
+    <string name="voiceover__add_group">Aggiungi gruppo</string>
+    <!-- voiceover__use_add_service_button -->
+    <string name="voiceover__use_add_service_button_title">Utilizza il pulsante \"Aggiungi servizio\" per aggiungere un nuovo servizio</string>
+    <string name="voiceover__no_search_results">Nessun risultato trovato</string>
+    <!-- voiceover__sort_by -->
+    <string name="voiceover__sort_by_title">Utilizza \"Ordina per\" per impostare l\'ordinamento dei servizi</string>
+    <string name="voiceover__spinner">Caricamento del contenuto</string>
+    <string name="backup__incorrect_secret">Impossibile eseguire il backup dei token perché il segreto \"%s\" contiene caratteri non validi. Rimuovilo dall\'elenco e riprova</string>
+    <string name="backup__import">Importa</string>
+    <string name="backup__export">Esporta</string>
+    <string name="backup__backup_disabled_title">Il backup 2FAS verrà disabilitato per proteggerne l\'integrità</string>
+    <string name="backup__error_while_exporting_file">Si è verificato un errore durante l\'esportazione del file</string>
+    <string name="backup__import_completed_successfuly">Importazione completata con successo</string>
+    <!-- camera__video_device_in_use_by_another_app -->
+    <string name="camera__camera_used_by_other_app_title">Un\'altra app sta utilizzando la fotocamera. Se la chiusura di altre app non aiuta, riavvia il dispositivo</string>
+    <!-- camera__video_device_unavailable_due_to_system_overload  -->
+    <string name="camera__camera_unavailable_title">La fotocamera non è disponibile a causa del sovraccarico del sistema. Prova a riavviare il dispositivo</string>
+    <string name="camera__cant_initialize_camera_general">Impossibile aprire la fotocamera. Prova a riavviare il dispositivo</string>
+    <string name="camera__cant_initialize_camera_split_view">Impossibile aprire la fotocamera in modalità Split View. Apri l\'app a schermo intero e prova di nuovo</string>
+    <string name="restore__how_to_restore">Come ripristinare l\'app 2FAS?</string>
+    <string name="restore__application_restoration">Ripristino dell\'applicazione</string>
+    <!-- restore_if_you_forgotten -->
+    <string name="restore__reset_Pin_title">Se hai dimenticato il PIN o vuoi resettare l\'app 2FAS, devi reinstallare l\'app</string>
+    <!-- restore_please_remember -->
+    <string name="restore__backup_advice">Tieni a mente che se non disponi di un backup e reimposti l\'app, perderai l\'accesso a tutti i tuoi codici. Di conseguenza, l\'accesso a tutti i tuoi account protetti dall\'autenticazione a 2 fattori.</string>
+    <!-- restore_if_you_have_backup -->
+    <string name="restore__backup_title">Se hai un backup, non preoccuparti, riuscirai a ripristinare tutti i tuoi codici.</string>
+    <string name="backup__cloud_backup">Backup su cloud</string>
+    <string name="backup__icloud_sync">Sincronizzazione iCloud</string>
+    <string name="backup__section_description">RACCOMANDATO: La sincronizzazione iCloud mantiene i tuoi token al sicuro in Apple iCloud in caso di smarrimento o danneggiamento del tuo dispositivo. Tienilo attivo.</string>
+    <string name="backup__file_backup">Backup su file</string>
+    <!-- backup__use_file_backup_for -->
+    <string name="backup__file_backup_offline_title">Usa il Backup su file per il backup offline dei tuoi token</string>
+    <string name="backup__backup_removal">Rimozione del backup</string>
+    <string name="backup__delete_2fas_backup">Cancella il backup 2FAS</string>
+    <string name="backup__warning_introduction">Attenzione! Se elimini il backup 2FAS, cancellerai anche tutti i token da altri dispositivi sincronizzati su questo account. Per conservare i token su altri dispositivi, assicurati di aver disattivato il backup 2FAS prima dell\'eliminazione</string>
+    <!-- backup__i_want_to_delete -->
+    <string name="backup__delete_title">Voglio cancellare il backup</string>
+    <string name="backup__export_to_backup_file">Esporta il backup su file</string>
+    <!-- backup__you_can_import_exported_file -->
+    <string name="backup__import_file_title">Puoi importare i file esportati su altri dispositivi con l\'applicazione 2FAS</string>
+    <string name="backup__export_to_file">Esporta su file</string>
+    <string name="backup__verify_pin">Verifica il PIN</string>
+    <string name="backup__save_file">Salva il file</string>
+    <string name="backup__import_backup_file">Importa file di backup</string>
+    <!-- backup__youre_goint_to_import_backup -->
+    <string name="backup__import_other_devices">Stai per importare un file di backup contenente</string>
+    <string name="backup__import_file">Importa file</string>
+    <string name="backup__choose_antother_file">Scegli un altro file</string>
+    <string name="backup__no_new_services">Niente da importare</string>
+    <string name="backup__file_error">Errore nel file!</string>
+    <!-- backup__services_form_file_will_be_merged -->
+    <string name="backup__services_merge_title">I servizi del file verranno uniti a quelli della tua app</string>
+    <string name="backup__no_new_services_error">Questo file è vuoto oppure tutti i servizi all\'interno sono già disponibili nell\'app</string>
+    <string name="backup__update_required_to_import_title">Avrai bisogno di una nuova versione dell\'app per importare il contenuto di questo file. Puoi trovare la versione più recente nell\'App Store</string>
+    <string name="backup__cant_read_file_error">Impossibile leggere questo file. Può essere danneggiato o si è verificato un errore durante il tentativo di accesso. Si prega di sceglierne un altro</string>
+    <string name="backup__password">Password</string>
+    <string name="backup__repeat_password">Ripeti password</string>
+    <string name="backup__incorrect_character_error">Carattere errato. Utilizza solo lettere A-Z, a-z, cifre e caratteri speciali: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__to_short_error">La frase fornita è troppo breve (min. 3 caratteri)</string>
+    <string name="backup__passwords_dont_match">Le password non coincidono</string>
+    <string name="backup__save_and_export">Salva ed esporta</string>
+    <string name="backup__set_password_title">Per aumentare la protezione del tuo file di backup imposta la password</string>
+    <string name="backup__enter_password_title">Digita la password per questo file di backup per procedere con il processo di importazione</string>
+    <string name="backup__backup_file_password_title">Imposta una password per questo file di backup</string>
+    <string name="backup__incorrect_password">Password errata</string>
+    <!-- %d - number -->
+    <string name="backup__new_services">%d nuovi servizi</string>
+    <!-- %d - number -->
+    <string name="backup__services_imported_count">%d servizi importati dal file</string>
+    <!-- backup__user_has_icloud_problem -->
+    <string name="backup__icloud_problem">C\'è un problema con iCloud. Controlla le impostazioni di sistema</string>
+    <!-- backup__newer_schema_unsupported -->
+    <string name="backup__newer_format_not_supported">Questo file è in una versione con un formato più recente rispetto a quella supportata dall\'app</string>
+    <!-- backup__encrypted_unsupported -->
+    <string name="backup__encrypted_files_not_supported">Questo file è crittografato. Supportiamo solo file non crittografati</string>
+    <string name="tokens__copy_token">Copia il token</string>
+    <!-- tokens__i_want_to_delete_this_servie -->
+    <string name="tokens__i_want_to_delete_this_token">Sì, voglio eliminare questo servizio</string>
+    <string name="color__neutral">Neutrale</string>
+    <string name="color__light_blue">Azzurro</string>
+    <string name="color__indigo">Indaco</string>
+    <string name="color__purple">Viola</string>
+    <string name="color__turquoise">Turchese</string>
+    <string name="color__green">Verde</string>
+    <string name="color__red">Rosso</string>
+    <string name="color__orange">Arancione</string>
+    <string name="color__yellow">Giallo</string>
+    <string name="settings__knowledge">Conoscenza</string>
+    <string name="settings__support_and_share">Supporta e condividi</string>
+    <string name="settings__tell_a_friend">Dillo a un amico</string>
+    <string name="settings__write_a_review">Scrivi una recensione</string>
+    <string name="settings__about">A proposito</string>
+    <string name="settings__privacy_policy">Informativa sulla privacy</string>
+    <string name="settings__terms_of_service">Termini di Servizio</string>
+    <string name="settings__version">Versione dell\'app %s</string>
+    <string name="settings__no_limit">Nessun limite</string>
+    <string name="settings__pin_code">Codice PIN</string>
+    <string name="settings__app_security">Sicurezza dell\'app</string>
+    <string name="settings__app_blocking">Impostazioni di blocco</string>
+    <string name="settings__face_id">Face ID</string>
+    <string name="settings__touch_id">Touch ID</string>
+    <!-- settings__how_many_attempts_header -->
+    <string name="settings__too_many_attempts_header">Blocca dopo X tentativi falliti:</string>
+    <string name="settings__how_many_attempts_footer">Seleziona il numero massimo di tentativi falliti di inserimento del codice di sblocco prima di bloccare l\'applicazione (il tempo di blocco può essere modificato qui sotto).\n</string>
+    <string name="settings__block_for">Tempo di blocco</string>
+    <string name="settings__3_minutes">3 minuti</string>
+    <string name="settings__5_minutes">5 minuti</string>
+    <string name="settings__10_minutes">10 minuti</string>
+    <string name="settings__limit_of_trials">Numero massimo di tentativi falliti</string>
+    <string name="settings__pin_4_digits">Codice a 4 cifre</string>
+    <string name="settings__pin_6_digits">Codice a 6 cifre</string>
+    <string name="settings__biometric_authentication">Autenticazione biometrica</string>
+    <string name="settings__donations">Donazioni</string>
+    <string name="settings__donate_twofas">Fai una donazione a 2FAS</string>
+    <string name="new_version__new_version_title">Nuova versione</string>
+    <string name="new_version__new_version_message_ios">Una nuova versione di 2FAS è disponibile sull\'App Store. Aggiorna ora!</string>
+    <string name="new_version__update_action">Aggiorna ora</string>
+    <!-- new_version__skip_action -->
+    <string name="new_version__skip_title">Salta questa versione</string>
+    <!-- new_version__later_action -->
+    <string name="new_version__update_later">Aggiorna dopo</string>
+    <string name="browser__browser_extension">Estensione browser</string>
+    <string name="browser__info_title">Estensione 2FAS per browser web</string>
+    <string name="browser__info_description_first">Installa l\'estensione del browser 2FAS sul tuo computer desktop</string>
+    <string name="browser__info_description_second">Associalo con la tua app 2FAS.</string>
+    <string name="browser__more_info">Più info:</string>
+    <string name="browser__more_info_link_title">2fas.com/be</string>
+    <string name="browser__pair_with_web_browser">Associa con il browser web</string>
+    <string name="browser__more_info_link">https://www.2fas.com/be</string>
+    <string name="browser__pairing_successful_title">Associazione avvenuta con successo!</string>
+    <string name="browser__pairing_successful_description">2FAS ti invierà una notifica push ogni volta che accedi ai tuoi servizi online utilizzando questo browser web. Non sarà più necessario digitare i token nuovamente per ogni utilizzo.</string>
+    <string name="browser__pairing_failed_title">Associazione fallita :(</string>
+    <string name="browser__pairing_failed_description">Questo codice QR non è stato riconosciuto e 2FAS non ha potuto associare questo dispositivo all\'estensione del browser. Per favore riprova.</string>
+    <!-- browser__pairing_already_paired_title -->
+    <string name="browser__already_paired_title">Già associato!</string>
+    <!-- browser__pairing_already_paired_description -->
+    <string name="browser__already_paired_description">Questa estensione del browser è già associata a questo dispositivo.</string>
+    <string name="browser__contact_support">Contatta il supporto tecnico</string>
+    <string name="browser__pairing_with_browser">Accoppiamento con il browser</string>
+    <!-- browser__paired_devices -->
+    <string name="browser__paired_devices_browser_title">Dispositivi associati (browser web)</string>
+    <string name="browser__add_new">Aggiungi nuovo</string>
+    <!-- browser__this_device -->
+    <string name="browser__this_device_name">Soprannome del dispositivo</string>
+    <string name="browser__device_name">Soprannome del dispositivo</string>
+    <string name="browser__name">Nome</string>
+    <string name="browser__this_device_footer">Questo soprannome ti aiuterà a identificare questo dispositivo tra gli altri dispositivi associati all\'estensione 2FAS del browser</string>
+    <string name="browser__browser_extension_settings">Impostazioni delle estensioni del browser</string>
+    <string name="browser__unkown_name">&lt;UNKOWN_NAME&gt;</string>
+    <string name="browser__request_source_description">%1$s ha richiesto un token 2FA per %2$s. Seleziona il servizio da autorizzare e salva con questo dominio.</string>
+    <string name="browser__request">Richiesta del browser</string>
+    <!-- browser__code_success -->
+    <string name="browser__code_success_title">Il token è stato inviato con successo!</string>
+    <string name="browser__code_failure">Errore durante l\'invio del codice. %s</string>
+    <string name="browser__deleting_paired_device_title">Eliminazione del dispositivo associato</string>
+    <string name="browser__deleting_paired_device_content">Sei sicuro di voler eliminare il dispositivo associato?</string>
+    <string name="browser__pairing_date">Data associata</string>
+    <string name="browser__forget_this_browser">Dimentica questo browser web</string>
+    <!-- browser__service_is_paired_list_description -->
+    <string name="browser__paired_domains_list_title">Lista dei domini associati.</string>
+    <string name="browser__deleting_extension_pairing_title">Rimuovi il dominio?</string>
+    <string name="browser__deleting_extension_pairing_content">La prossima volta che utilizzerai l\'estensione del browser per accedere a %s, ti verrà chiesto di associare nuovamente questo dominio.</string>
+    <string name="browser__push_notifications_title">Notifiche push</string>
+    <string name="browser__push_notifications_content">Per accedere a funzionalità come l\'estensione browser è necessario l\'accesso alle notifiche push. Puoi modificare questa impostazione in qualsiasi momento nelle impostazioni di sistema.</string>
+    <string name="browser__request_expired">Richiesta scaduta</string>
+    <string name="browser__2fa_token_request_title">Richiesta di token 2FA</string>
+    <string name="browser__2fa_token_request_content">Vuoi condividere il token 2FA per\u0020</string>
+    <string name="notifications__no_notifications">Nessuna notifica</string>
+    <string name="CFBundleSpokenName">2 F A S</string>
+    <string name="commons__2fas_toolbar">2FAS</string>
+    <string name="backup__google_drive_not_available">Google Drive non è disponibile</string>
+    <string name="backup__google_drive_disabled_title">Google Drive è stato disabilitato dall\'utente</string>
+    <string name="backup__update_required_to_import_title_2">Avrai bisogno di una nuova versione dell\'app per importare il contenuto di questo file. Puoi trovare la versione più recente nel Google Store</string>
+    <string name="tokens__qr_code_leads_to_google_store">Questo codice QR ti porta nel Google Store</string>
+    <string name="introduction__page_4_content_android">I tuoi token vengono archiviati offline tramite la memoria del dispositivo, quindi ricordati di eseguire il backup dei tuoi servizi! Utilizza la sincronizzazione Google Drive e il codice PIN per proteggerti da accessi non autorizzati e danni al dispositivo.</string>
+    <string name="new_version__new_version_message_android">Una nuova versione di 2FAS è disponibile su Google Store. Aggiorna ora l\'app!</string>
+    <string name="security_error_no_match">Il PIN non corrisponde! Per favore prova di nuovo.</string>
+    <string name="settings_developer_options">Opzioni sviluppatore</string>
+    <string name="settings__external_import">Importa i token</string>
+    <string name="settings__browser_extension_result_toolbar_title">Risultato dell\'associazione</string>
+    <string name="tokens__caution">ATTENZIONE</string>
+    <string name="tokens__qr_point_and_scan_again">Punta la fotocamera sul codice QR corretto e scansiona di nuovo.</string>
+    <string name="tokens__service_unsaved_changes">Vuoi annullare le modifiche?</string>
+    <string name="tokens__service_unsaved_changes_title">Modifiche non salvate</string>
+    <string name="tokens__service_key_invalid_format">Il formato della chiave non è valido</string>
+    <string name="intent_error_no_gallery_app">Errore di sistema! Non esiste un\'applicazione della galleria di sistema.</string>
+    <string name="gdrive_permission_title">Autorizzazione di Google Drive</string>
+    <string name="gdrive_permission_msg">Abbiamo bisogno dell\'autorizzazione a Google Drive per salvare i file di backup nei dati dell\'applicazione.</string>
+    <string name="gdrive_internet_title">È richiesta la connessione a Internet</string>
+    <string name="gdrive_internet_msg">Per sincronizzarsi con Google, è necessario attivare una connessione a Internet.</string>
+    <string name="gdrive_wipe_internet_msg">Per revocare l\'accesso a Google Drive, è necessario attivare la connessione a Internet.</string>
+    <string name="backup_explanation_msg">Archivia e sincronizza automaticamente il file di backup nella cartella nascosta del tuo Google Drive. Questa cartella è accessibile solo dall\'applicazione 2FAS.</string>
+    <string name="backup_error_unknown">Si è verificato un errore durante la sincronizzazione del backup. Riavviare l\'applicazione riprovare dopo qualche minuto.</string>
+    <string name="backup_error_encrypt_unknown">Si è verificato un errore durante la codifica del backup. Si prega di impostare nuovamente la password.</string>
+    <string name="backup_error_decrypt_unknown">Si è verificato un errore durante la decodifica del backup. Si prega di impostare nuovamente la password.</string>
+    <string name="backup__google_drive_problem_title">C\'è un problema con iCloud. Controllare le impostazioni di sistema</string>
+    <string name="backup_error_auth">Si è verificato un problema con le autorizzazioni dell\'account Google Drive. Provare ad attivare e disattivare la sincronizzazione.</string>
+    <string name="backup_error_no_password">Il tuo backup è protetto da password. Attivalo e inserisci la tua password.</string>
+    <string name="backup_error_wrong_password">Il backup è protetto da password ma la password fornita non è corretta. Attivalo e inserisci la tua password.</string>
+    <string name="customization_service_assignment">Assegnazione del servizio</string>
+    <string name="customization_personalization">Personalizzazione</string>
+    <string name="customization_change_brand">Cambia il marchio</string>
+    <string name="customization_advanced">Avanzate</string>
+    <string name="customization_request_icon">Richiedi un icona</string>
+    <string name="customization_edit_label">Modifica etichetta</string>
+    <string name="groups_delete_msg">Sei sicuro di voler eliminare questo gruppo?</string>
+    <string name="export_backup_title">Il tuo file di backup è pronto per essere esportato</string>
+    <string name="export_backup_msg">Esporta questo file per mantenere i tuoi token 2FAS al sicuro nel backup. Puoi importarlo in un secondo momento su questo o altri dispositivi utilizzando l\'app 2FAS.</string>
+    <string name="export_backup_pass">Esporta file senza password\n(non consigliato)</string>
+    <string name="import_backup_msg2">Il file verrà sincronizzato con l\'elenco dei servizi dell\'app.</string>
+    <string name="backup_notice_later">Forse più tardi</string>
+    <string name="backup_notice_cta">Attiva</string>
+    <string name="widgets_empty_msg">Nessun servizio aggiunto</string>
+    <string name="backup__section_description_google">CONSIGLIATO: Google Drive Sync mantiene i token al sicuro in Google Drive in caso di perdita o danneggiamento del dispositivo. Lasciatala attiva.</string>
+    <string name="backup_turn_off_title">Disattivare la sincronizzazione Google Drive?</string>
+    <string name="backup_turn_off_msg1">I token dell\'autenticazione a due fattori rimarranno su questo dispositivo e sul tuo Google Drive, ma non verranno sincronizzati. Verrai disconnesso anche dal tuo account Google.</string>
+    <string name="backup_turn_off_msg2">Ricorda, in caso di smarrimento o danneggiamento di questo dispositivo oppure rimozione dell\'app, potresti non essere in grado di recuperare i tuoi token e perderai l\'accesso agli account online protetti dall\'autenticazione a due fattori.</string>
+    <string name="backup_settings_password_set_subtitle">Proteggi un file di backup di Google Drive con una password personalizzata.</string>
+    <string name="backup_settings_password_remove_title">Rimuovi password</string>
+    <string name="backup_settings_password_remove_subtitle">Rimuovi la password per il tuo file di backup Google Drive.</string>
+    <string name="backup_settings_account_title">Account Google</string>
+    <string name="backup_settings_sync_title">Ultima sincronizzazione</string>
+    <string name="browser_extension_result_success_description">2FAS ti invierà notifiche push ogni volta che accedi ai tuoi servizi online utilizzando questo browser web. Non sarà più necessario digitare i token nuovamente per ogni utilizzo.</string>
+    <string name="browser_extension_browser_dialog">Nome del browser</string>
+    <string name="biometric_dialog_auth_title">Autentica</string>
+    <string name="biometric_dialog_auth_subtitle">Utilizza le tue credenziali biometriche</string>
+    <string name="about_licenses">Licenze open source</string>
+    <string name="externalimport_description">Puoi importare i tuoi token in 2FAS da diverse app. Scegli un\'app dall\'elenco e segui le istruzioni.</string>
+    <string name="externalimport_select_app">Seleziona app</string>
+    <string name="externalimport_google_authenticator">Google Authenticator</string>
+    <string name="externalimport_aegis">Aegis</string>
+    <string name="externalimport_raivo">Raivo OTP</string>
+    <string name="android__app_name">2FAS Auth</string>
+    <string name="commons__yes">Si</string>
+    <string name="commons__no">No</string>
+    <string name="commons__search">Cerca</string>
+    <string name="errors__no_app">Nessuna applicazione che supporta questo link</string>
+    <string name="permissions__camera_permission">Accesso alla fotocamera</string>
+    <string name="permissions__camera_permission_description">L\'accesso alla fotocamera è necessario per la scansione dei codici QR. Se vuoi utilizzare questa funzione, vai in Informazioni e Autorizzazioni dell\'applicazione e abilita la fotocamera.</string>
+    <string name="security__disable_pin">Disabilita il PIN</string>
+    <string name="security__enter_your_new_pin">Per favore digita il tuo nuovo PIN %s</string>
+    <string name="security__pin_error_incorrect">Il PIN non è corretto! Per favore riprova</string>
+    <string name="settings__biometrics">Biometrica</string>
+    <string name="settings__support">Supporto di 2FAS</string>
+    <string name="settings__developer">Opzioni sviluppatore</string>
+    <string name="settings__option_fingerprint">Blocco biometrico</string>
+    <string name="settings__option_theme">Tema</string>
+    <string name="settings__theme_option_auto">Auto</string>
+    <string name="settings__theme_option_auto_system">Auto - Impostazioni di sistema</string>
+    <string name="settings__theme_option_dark">Scuro</string>
+    <string name="settings__theme_option_light">Chiaro</string>
+    <string name="tokens__copied_clipboard">Token copiato negli appunti!</string>
+    <string name="tokens__next_copied_clipboard">Prossimo token copiato negli appunti!</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Vuoi permanentemente eliminare questo servizio 2FA?</string>
+    <string name="tokens__fab_addmanually">Aggiungi manualmente</string>
+    <string name="tokens__qr_does_not_work">Questo codice QR non funziona!</string>
+    <!-- Could not read QR code from the image! -->
+    <string name="tokens__qr_read_image_failed">Impossibile leggere il codice QR dall\'immagine!</string>
+    <string name="tokens__qr_read_image_try_again">Prova a selezionare un\'immagine diversa.</string>
+    <string name="tokens__remove_it_forever">Elimina servizio per sempre</string>
+    <!-- Service could not be added, Service Key is invalid. Try again. -->
+    <string name="tokens__service_add_error">Non è stato possibile aggiungere un servizio poiché la chiave segreta non è valida. Riprova.</string>
+    <!-- A service with this Service Key already exists. Do you want to override it? -->
+    <string name="tokens__service_already_exists">Il servizio con questa chiave segreta esiste già. Si desidera sovrascriverlo?</string>
+    <string name="tokens__service_key_invalid_characters">La chiave contiene caratteri non validi</string>
+    <string name="tokens__show_service_key">Mostra chiave segreta</string>
+    <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
+    <string name="tokens__show_service_key_setup_lock">La tua chiave segreta è protetta. Aggiungi un PIN o un blocco biometrico per vederla.</string>
+    <string name="tokens__tokens_list_is_empty">La lista dei servizi è vuota</string>
+    <string name="tokens__use_plus_button_to_add_tokens">Usa il pulsante \"+\" per aggiungere un nuovo servizio</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Senza questo token non sarai in grado di accedere al tuo account %1$s finché avrai abilitato l\'autenticazione a due fattori per %2$s.\n\nNon sarai in grado di ripristinare questo token dal cestino 2FAS.</string>
+    <string name="import_ga_success">Servizi importati con successo!</string>
+    <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
+    <string name="backup_error_network">È necessaria una connessione Internet attiva per sincronizzare il backup. Attiva la connessione a internet e riprova.</string>
+    <string name="update_app_title">Aggiorna app</string>
+    <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
+    <string name="update_app_msg">Effettua l\'aggiornamento alla versione 2FAS più recente per ottenere tutte le funzionalità e mantenere un livello di sicurezza elevato.</string>
+    <string name="delete_service_title">Stai cancellando</string>
+    <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
+    <string name="delete_service_msg">dall\'elenco dei servizi 2FAS.\n\nRicorda, fino a quando non disattiverai l\'autenticazione a due fattori, non riuscirai ad accedere all\'account %s senza questo token.</string>
+    <string name="delete_service_cta">Cancella</string>
+    <string name="export_backup_cta">Esporta</string>
+    <string name="export_backup_share_cta">Condividi</string>
+    <string name="import_backup_title">Importa il backup dal file</string>
+    <string name="import_backup_msg1">Stai per importare il file di backup con</string>
+    <string name="import_backup_cta">Importa</string>
+    <string name="widgets_warning_msg">I token visibili nel widget non sono protetti dal tuo codice PIN.\n\nSei sicuro di voler visualizzare i tuoi token nel widget?</string>
+    <string name="widgets_warning_title">ATTENZIONE!</string>
+    <string name="widgets_warning_cta">Sì, sono sicuro</string>
+    <string name="backup_notice_title">Backup 2FAS</string>
+    <string name="backup_notice_msg">Attiva il backup 2FAS. In caso di ripristino o perdita del telefono, riuscirai a recuperare tutti i tuoi token.</string>
+    <string name="brand_empty_msg">Spiacente, brand non trovato</string>
+    <!-- Select which services will be visible on widget: -->
+    <string name="widgets_select_msg">Seleziona quali servizi saranno visibili sul widget:</string>
+    <string name="backup_turn_off_cta">Disabilita sincronizzazione</string>
+    <string name="backup_turn_off_cancel">Annulla</string>
+    <string name="backup_settings_password_set_title">Imposta la password</string>
+    <string name="backup_settings_delete_title">Cancella il file di backup da Google Drive</string>
+    <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
+    <string name="backup_settings_delete_subtitle">Se elimini questo file dal tuo Google Drive, la sincronizzazione su tutti i dispositivi sincronizzati verrà disabilitata e i token rimarranno solo su questo e altri dispositivi tramite l\'archiviazione locale.</string>
+    <string name="browser__result_error_browser_paired">La tua app 2FAS è già associata a questo browser.</string>
+    <!-- Scan QR code again -->
+    <string name="browser__result_error_cta">Scannerizza nuovamente il codice QR</string>
+    <string name="browser__scan_error_dialog_title">Errore</string>
+    <!-- Scanned QR code has unsupported format. Please try again. -->
+    <string name="browser__scan_error_dialog_msg_invalid_code">Il codice QR scansionato ha un formato non supportato. Per favore riprova.</string>
+    <string name="browser__scan_error_dialog_msg_unknown">Errore sconosciuto durante la scansione del codice QR. Per favore riprova.</string>
+    <string name="biometric_dialog_auth_cancel">Utilizza il PIN questa volta</string>
+    <string name="biometric_dialog_setup_title">Abilita autenticazione</string>
+    <string name="biometric_dialog_setup_cancel">Annulla</string>
+    <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
+    <string name="settings__option_fingerprint_description">Per abilitare lo sblocco biometrico, è necessario abilitare e impostare un codice PIN.</string>
+    <string name="settings__block_for_footer">Seleziona il tempo dopo il quale l\'app verrà bloccata.</string>
+    <string name="error__out_of_disk_space">Sembra che o hai esaurito lo spazio su disco o che un evento del genere in passato abbia danneggiato il database</string>
+    <string name="error__cloud_backup_newer_version">Il backup su cloud è stato migrato alla\u0020\u0020nuova versione. Aggiorna l\'app</string>
+    <string name="error__cloud_backup_encrypted_not_supported">Il backup su cloud è crittografato. Aggiorna l\'app per supportare questa funzione</string>
+    <string name="extension__continue_to_app">Continua nell\'app</string>
+    <string name="extension__cancel">Annulla</string>
+    <string name="extension__authorize">Autorizza</string>
+    <string name="extension__dismiss">Ignora</string>
+    <string name="extension__request_sent">Richiesta inviata</string>
+    <string name="extension__send_question_title">Invia il token?</string>
+    <string name="extension__send_question_content">%1$s ha richiesto un token 2FAS per %2$s</string>
+    <string name="extension__error_while_sending">Si è verificato un errore durante l\'invio del token</string>
+    <string name="extension__not_paired_title">Questo sito non risulta associato</string>
+    <string name="extension__not_paired_content">Apri l\'app e seleziona un servizio per questo dominio</string>
+    <string name="extension__error_open_the_app">Apri l\'app e controlla se l\'estensione del browser è correttamente associata</string>
+    <string name="extension__error_no_internet">C\'è un problema di connessione</string>
+    <string name="extension__try_again">Per favore riprova</string>
+    <string name="extension__error">Errore</string>
+    <string name="extension__error_no_services">Per far funzionare l\'estensione del browser, per favore aggiungi i servizi all\'app 2FAS</string>
+    <string name="extension__approve">Approva</string>
+    <string name="extension__deny">Nega</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">Abilita il codice PIN e l\'autorizzazione con Face ID per impedire l\'accesso non autorizzato ai tuoi token su questo dispositivo.</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Abilita il codice PIN e l\'autorizzazione con Touch ID per impedire l\'accesso non autorizzato ai tuoi token su questo dispositivo.</string>
+    <string name="settings__send_logs_error_not_exists">Il codice fornito non è corretto. Per favore ricontrollalo</string>
+    <string name="settings__send_logs_error_expired">Il codice fornito è scaduto. Per favore contatta il team di supporto per ottenerne uno nuovo</string>
+    <string name="settings__send_logs_error_no_internet">Non c\'è internet. Per favore verifica la connessione e riprova</string>
+    <string name="settings__send_logs_error_server">Sembra esserci un problema con il nostro server. Se persiste, contatta il nostro team di supporto</string>
+    <string name="settings__send_logs_error_title">Operazione non riuscita</string>
+    <string name="settings__send_logs_sent_title">Registri inviati</string>
+    <string name="settings__send_logs_sent_description">Li controlleremo, ma potrebbe volerci del tempo.</string>
+    <string name="commons__send">Invia</string>
+    <string name="settings__send_logs_title">Invio dei registri in corso</string>
+    <string name="settings__send_logs_description_link">Il codice fornito dal team di assistenza è stato compilato automaticamente. Inviare i log?</string>
+    <string name="settings__send_logs_description_edit">Per favore inserisci o incolla il codice fornito dal nostro team di assistenza</string>
+    <string name="settings__send_logs">Invia registri</string>
+    <string name="settings__recommendation">Dai un\'occhiata a questa fantastica app di autenticazione a due fattori di 2FAS: https://2fas.com</string>
+    <string name="settings__acknowledgements">Ringraziamenti</string>
+    <string name="introduction__import_external_app">Importa da un\'app esterna</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="one">momenti fa</item>
+        <item quantity="other">momenti fa</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="one">%d minuto fa</item>
+        <item quantity="other">%d minuti fa</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="one">%d ora fa</item>
+        <item quantity="other">%d ore fa</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="one">%d giorno fa</item>
+        <item quantity="other">%d giorni fa</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="one">%d settimana fa</item>
+        <item quantity="other">%d settimane fa</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="one">%d mese fa</item>
+        <item quantity="other">%d mesi fa</item>
+    </plurals>
+    <string name="commons__unknown_error">Si è verificato un errore sconosciuto! Prova di nuovo!</string>
+    <string name="backup__export_result_success">File salvato correttamente!</string>
+    <string name="backup__share_result_failure">Impossibile condividere il file!</string>
+    <string name="backup__enter_password_dialog_title">Digita la password</string>
+    <string name="backup__remove_password_msg">Inserisci la password di backup per procedere con la rimozione</string>
+    <string name="backup__revoke_google_access_msg">Inserisci la password di backup per procedere con la revoca dell\'accesso a Google</string>
+    <string name="backup__synchronization_settings">Impostazioni di sincronizzazione</string>
+    <string name="backup__local_file_title">File locale</string>
+    <string name="backup__drive_title">Sincronizzazione Google Drive</string>
+    <string name="backup__delete_file_title">Rimuovere il tuo backup da Google Drive?</string>
+    <string name="backup__delete_file_msg">La sincronizzazione con Google verrà disattivata. I tuoi token rimarranno in locale, ma l\'app 2FAS verrà scollegata dal tuo account Google su questo e sugli altri tuoi dispositivi sincronizzati.</string>
+    <string name="backup__sync_status_waiting">In attesa della sincronizzazione...</string>
+    <string name="backup__sync_status_progress">Sincronizzazione...</string>
+    <string name="import_backup_msg1_encrypted">Stai per importare un file di backup criptato.</string>
+    <string name="externalimport__choose_json_cta">Scegli il file JSON</string>
+    <string name="externalimport__aegis_msg">Esporta i tuoi account da Aegis in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
+    <string name="externalimport__raivo_msg">Usa l\'opzione \"Esporta gli OTP in un archivio ZIP\" nelle impostazioni di Raivo, salva un file ZIP, estrailo, e importa il JSON file tramite il pulsante \"Scegli il file JSON\"</string>
+    <string name="externalimport__no_tokens_msg">Tuttavia, non ci sono servizi che potrebbero essere importati.</string>
+    <string name="commons__try_again">Prova di nuovo</string>
+    <string name="commons__proceed">Procedi</string>
+    <string name="externalimport__ga_title">Importazione di token 2FA dall\'app Google Authenticator</string>
+    <string name="externalimport__aegis_title">Importazione di token 2FA dall\'app Aegis</string>
+    <string name="externalimport__raivo_title">Importazione di token 2FA dall\'app Raivo</string>
+    <string name="externalimport__ga_success_msg">Questo codice QR permette di importare i token da Google Authenticator.</string>
+    <string name="externalimport__aegis_success_msg">Questo file JSON permette di importare i token da Aegis.</string>
+    <string name="externalimport__raivo_success_msg">Questo file JSON permette di importare i token da Raivo.</string>
+    <string name="externalimport__read_error">Impossibile leggere i token. Prova a selezionare un file diverso.</string>
+    <string name="settings__gd_sync_info">Informazioni sulla sincronizzazione con Google Drive</string>
+    <string name="settings__gd_sync_disable_confirm">Sei sicuro? Senza la sincronizzazione con Google Drive, non potrai recuperare i token in caso di perdita o ripristino del telefono!</string>
+    <string name="extension__code_sent_msg">Codice inviato con successo</string>
+    <string name="extension__code_sent_error_msg">Si è verificato un errore durante l\'invio del codice</string>
+    <string name="tokens__add_service_title">Aggiungi un nuovo servizio</string>
+    <string name="tokens__customize_service_title">Personalizza servizio</string>
+    <string name="extension__services_suggested_header">Suggerito</string>
+    <string name="extension__services_all_header">Tutti i servizi</string>
+    <string name="extension__services_other_header">Altri servizi</string>
+    <string name="settings__ssl_error_title">Errore SSL</string>
+    <string name="settings__ssl_error_description">Si è verificato un errore SSL e non è possibile stabilire una connessione sicura con il server. Assicurati di avere l\'ultima versione dell\'app o prova a cambiare la rete internet.</string>
+    <string name="backup__import_error_file_size">Il file che stai tentando di importare è troppo grande. Il limite di dimensione è di 10 MB.</string>
+    <string name="backup__import_error_file_invalid">Il file che stai tentando di importare non è valido o è danneggiato.\u0020\u0020Scegli un altro file.</string>
+    <string name="appearance__toggle_active_search">Ricerca attiva</string>
+    <string name="appearance__active_search_description">Ricerca attiva all\'avvio</string>
+    <string name="widgets__expires_in">Scade tra:</string>
+    <string name="widgets__settings">Impostazioni del widget</string>
+    <string name="errors__input_integer_number">L\'input deve essere un numero intero</string>
+    <string name="errors__input_number">L\'input deve essere un numero</string>
+    <string name="errors__input_empty">L\'input non può essere vuoto</string>
+    <string name="errors__input_too_long">L\'input è troppo lungo. Limite: %d</string>
+    <string name="commons__best_match">Miglior abbinamento</string>
+    <string name="settings__enable_crashlytics">Invia rapporti anonimi sugli arresti anomali</string>
+    <string name="settings__enable_crashlytics_description">Invia rapporti anonimi sugli arresti anomali per aiutare 2FAS a identificare e risolvere i problemi nell\'app (è richiesto il riavvio dell\'app).</string>
+    <string name="tokens__manage_list">Gestisci l\'elenco</string>
+    <string name="settings__appearance">Aspetto</string>
+    <string name="settings__show_next_token_desc">Mostra il prossimo token quando quello attuale sta per scadere</string>
+    <string name="settings__list_style">Stile dell\'elenco</string>
+    <string name="backup__reminder_msg">Google Drive non è sincronizzato.</string>
+    <string name="backup__reminder_cta">Vai alle impostazioni di backup</string>
+    <string name="settings__list_style_option_default">Predifinito</string>
+    <string name="settings__list_style_option_compact">Compatto</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Esporta i tuoi account da LastPass in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
+    <string name="settings__about_crash_optout_title">Rapporti sugli arresti anomali</string>
+    <string name="externalimport__lastpass_title">Importazione di token 2FA dall\'app LastPass\n</string>
+    <string name="externalimport__lastpass_success_msg">Questo file JSON permette di importare i token da LastPass.</string>
+    <string name="externalimport__info_lastpass_title">Importa token da LastPass</string>
+    <string name="externalimport__info_aegis_title">Importa token da Aegis</string>
+    <string name="externalimport__info_raivo_title">Importa token da Raivo OTP</string>
+    <string name="externalimport__info_google_authenticator_title">Importa token da Google Authenticator</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">s</string>
+    <string name="tokens__add_title">Associa il servizio con 2FAS</string>
+    <string name="tokens__add_description">Punta la fotocamera allo schermo per catturare il codice QR.</string>
+    <string name="tokens__add_other_methods">Altri metodi</string>
+    <string name="tokens__add_enter_manual">Inserisci la chiave segreta</string>
+    <string name="tokens__add_from_gallery">Carica un immagine con il codice QR</string>
+    <string name="tokens__add_success_title">Quasi fatto!</string>
+    <string name="tokens__add_success_description">Per terminare l\'accoppiamento con il servizio, devi digitare ancora questo token.</string>
+    <string name="tokens__add_manual_title">Associa il servizio con 2FAS</string>
+    <string name="tokens__add_manual_description">Digita il nome e la chiave segreta</string>
+    <string name="tokens__add_manual_service_name">Nome servizio (obbligatoria)</string>
+    <string name="tokens__add_manual_service_key">Chiave segreta (obbligatoria)</string>
+    <string name="tokens__add_manual_other">Altre impostazioni</string>
+    <string name="tokens__add_manual_other_optional">(opzionale)</string>
+    <string name="tokens__add_manual_done_cta">Aggiungi servizio</string>
+    <string name="tokens__add_manual_help_cta">Non sai cosa fare? Premi per aiuto</string>
+    <string name="tokens__add_manual_advanced">Impostazioni token avanzate</string>
+    <string name="tokens__add_manual_additional_info">Info aggiuntive</string>
+    <string name="tokens__add_manual_advanced_description">Cambiare le impostazioni predefinite non è consigliato. Fallo solo quando il tuo provider 2FA lo richiede e quando hai istruzioni chiare</string>
+    <string name="settings__option_screenshots_description">Consenti gli screenshot dell\'app per 5 minuti.</string>
+    <string name="settings__option_screenshots">Consenti gli screenshot</string>
+    <string name="settings__option_screenshots_confirm_title">Consentire gli screenshot dell\'app?</string>
+    <string name="settings__option_screenshots_confirm_description">Sei sicuro? Questa opzione consente di effettuare screenshot e registrare qualsiasi schermata all\'interno dell\'applicazione. Tuttavia, consentirà anche qualsiasi tentativo esterno di catturare schermate nell\'app.\nPer motivi di sicurezza, questa opzione si disattiva automaticamente dopo 5 minuti.</string>
+</resources>
