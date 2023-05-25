@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Sun, 21 May 2023 11:27:24 -0700
+ Exported at: Thu, 25 May 2023 06:20:21 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -95,7 +95,7 @@
     <!-- introduction__not_sure -->
     <string name="introduction__what_to_do">Non sei sicuro di cosa fare?</string>
     <!-- introduction__ga_import_description -->
-    <string name="introduction__google_authenticator_import_process">Esporta i tuoi account da Google Authenticator in un codice QR utilizzando l\'opzione \"Trasferisci account\". Quindi fai uno screenshot e utilizza il pulsante \"Scegli codice QR\" qui sotto. Se stai importando i codici da un altro dispositivo, utilizza invece il pulsante \"Scansiona il codice QR\".</string>
+    <string name="introduction__google_authenticator_import_process">Esporta i tuoi account da Google Authenticator in un codice QR utilizzando l\'opzione \"Trasferisci account\". Quindi fai uno screenshot e utilizza il pulsante \"Carica codice QR\" qui sotto. Se stai importando i codici da un altro dispositivo, utilizza invece il pulsante \"Scansiona il codice QR\".</string>
     <!-- introduction__choose_qr -->
     <string name="introduction__choose_qr_code">Scegli codice QR</string>
     <!-- introduction__scan_qr -->
@@ -148,7 +148,7 @@
     <!-- settings__after_you_enable_widgets -->
     <string name="settings__widgets_title">Dopo aver abilitato i widget, è possibile accedere a tutti i tuoi token senza il tuo codice PIN.\n\nSei sicuro di voler abilitare i widget?</string>
     <string name="settings__show_next_token">Mostra il prossimo token</string>
-    <string name="settings__see_incoming_tokens">Visualizza sulla lista i prossimi token.</string>
+    <string name="settings__see_incoming_tokens">Visualizza nella lista i prossimi token.</string>
     <string name="settings__trash">Cestino</string>
     <string name="settings__restore">Ripristina</string>
     <string name="settings__trash_is_empty">Il cestino è vuoto</string>
@@ -156,7 +156,7 @@
     <!-- tokens__remove_from_list -->
     <string name="tokens__delete_token">Sei sicuro di voler eliminare il token per:</string>
     <string name="tokens__move_to_trash">Sposta nel cestino</string>
-    <string name="tokens__additional_info">Informazioni aggiuntive</string>
+    <string name="tokens__additional_info">Info aggiuntive</string>
     <string name="tokens__choose_method">Scegli metodo</string>
     <string name="tokens__duplicated_private_key">Duplica chiave segreta</string>
     <!-- tokens__incorrect_private_key -->
@@ -215,7 +215,7 @@
     <string name="tokens__check_app_permissions">Controlla se l\'app dispone delle autorizzazioni necessarie nelle Impostazioni di sistema</string>
     <string name="tokens__no_qr_codes_found">Nessun codice QR trovato</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-
+        
         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Non è presente un codice QR corretto nell\'immagine selezionata. Si prega di provare un\'immagine diversa.</string>
     <string name="tokens__select_service">Seleziona servizio</string>
@@ -236,11 +236,11 @@
     <!-- tokens__sort_by_za -->
     <string name="tokens__sort_by_z_to_a">Z - A</string>
     <string name="tokens__sort_by_manual">Manuale</string>
-    <string name="tokens__advanced">Avanzata</string>
+    <string name="tokens__advanced">Avanzate</string>
     <!-- tokens__advanced_alert_title -->
     <string name="tokens__advanced_alert">Attento</string>
     <!-- tokens__advanced_alert_description -->
-    <string name="tokens__advanced_alert_description_title">Non è raccomandato modificare le impostazioni avanzate. Fallo solo quando il tuo provider 2FA lo richiede e quando hai istruzioni chiare.</string>
+    <string name="tokens__advanced_alert_description_title">Non è consigliato modificare le impostazioni avanzate. Fallo solo quando il tuo fornitore dell\'autenticazione a due fattori lo richiede e quando hai istruzioni chiare.</string>
     <string name="tokens__token_settings">Impostazioni del token</string>
     <string name="tokens__otp_authentication">Autenticazione con OTP</string>
     <string name="tokens__algorithm">Algoritmo</string>
@@ -252,7 +252,7 @@
     <string name="tokens__second">%d secondi</string>
     <string name="tokens__hotp">HOTP</string>
     <string name="tokens__totp">TOTP</string>
-    <string name="tokens__advanced_settings_footer_title">Non è consigliato modificare le impostazioni avanzate. Fallo solo quando il tuo provider 2FA lo richiede e quando hai istruzioni chiare.</string>
+    <string name="tokens__advanced_settings_footer_title">Non è consigliato modificare le impostazioni avanzate. Fallo solo quando il tuo fornitore dell\'autenticazione a due fattori lo richiede e quando hai istruzioni chiare.</string>
     <string name="tokens__gallery_advice_title">La migliore pratica</string>
     <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">Servizio aggiunto correttamente. Ti consigliamo fortemente di\u0020</string>
@@ -270,8 +270,8 @@
     <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_footnote">Non dimenticarti di taggare l\'account ufficiale dell\'azienda!</string>
     <string name="tokens__order_icon_description">Non riesci a trovare l\'icona di un brand nell\'app 2FAS?</string>
-    <string name="tokens__order_icon_link">Richiedi un\'icona del brand</string>
-    <string name="tokens__order_icon_title">Richiedi un\'icona del brand</string>
+    <string name="tokens__order_icon_link">Richiedi l\'icona del brand</string>
+    <string name="tokens__order_icon_title">Richiedi l\'icona del brand</string>
     <string name="tokens__order_menu_title">Seleziona il metodo richiesto</string>
     <string name="tokens__order_menu_option_user">Richiedi un\'icona come utente</string>
     <string name="tokens__order_menu_option_company">Invia un\'icona come azienda</string>
@@ -286,7 +286,7 @@
     <!-- voiceover__hidden_secret_key_use_show button -->
     <string name="voiceover__reveal_hidden_secret_key_button_title">Questo campo contiene una chiave segreta nascosta. Per rivelarlo, usa il pulsante Mostra. Funzionerà solo se hai impostato il PIN per la schermata di blocco</string>
     <string name="voiceover__service_name">Nome del servizio: %s</string>
-    <string name="voiceover__additional_info">Informazioni aggiuntive: %s</string>
+    <string name="voiceover__additional_info">Info aggiuntive: %s</string>
     <string name="voiceover__token_tap_to_copy">Token %s. Tocca per copiare</string>
     <string name="voiceover__edit">Modifica %s</string>
     <string name="voiceover__service_label_with_name_and_color">Etichetta del servizio con nome %1$s e colore %2$s</string>
@@ -326,16 +326,16 @@
     <string name="restore__backup_title">Se hai un backup, non preoccuparti, riuscirai a ripristinare tutti i tuoi codici.</string>
     <string name="backup__cloud_backup">Backup su cloud</string>
     <string name="backup__icloud_sync">Sincronizzazione iCloud</string>
-    <string name="backup__section_description">RACCOMANDATO: La sincronizzazione iCloud mantiene i tuoi token al sicuro in Apple iCloud in caso di smarrimento o danneggiamento del tuo dispositivo. Tienilo attivo.</string>
+    <string name="backup__section_description">RACCOMANDAZIONE: La sincronizzazione iCloud mantiene i tuoi token al sicuro su Apple iCloud in caso di smarrimento o danneggiamento del tuo dispositivo. Tienila attivo.</string>
     <string name="backup__file_backup">Backup su file</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Usa il Backup su file per il backup offline dei tuoi token</string>
+    <string name="backup__file_backup_offline_title">Usa il backup su file per avere una copia offline dei tuoi token</string>
     <string name="backup__backup_removal">Rimozione del backup</string>
     <string name="backup__delete_2fas_backup">Cancella il backup 2FAS</string>
     <string name="backup__warning_introduction">Attenzione! Se elimini il backup 2FAS, cancellerai anche tutti i token da altri dispositivi sincronizzati su questo account. Per conservare i token su altri dispositivi, assicurati di aver disattivato il backup 2FAS prima dell\'eliminazione</string>
     <!-- backup__i_want_to_delete -->
     <string name="backup__delete_title">Voglio cancellare il backup</string>
-    <string name="backup__export_to_backup_file">Esporta il backup su file</string>
+    <string name="backup__export_to_backup_file">Esporta il backup su un file</string>
     <!-- backup__you_can_import_exported_file -->
     <string name="backup__import_file_title">Puoi importare i file esportati su altri dispositivi con l\'applicazione 2FAS</string>
     <string name="backup__export_to_file">Esporta su file</string>
@@ -454,8 +454,8 @@
     <string name="browser__code_failure">Errore durante l\'invio del codice. %s</string>
     <string name="browser__deleting_paired_device_title">Eliminazione del dispositivo associato</string>
     <string name="browser__deleting_paired_device_content">Sei sicuro di voler eliminare il dispositivo associato?</string>
-    <string name="browser__pairing_date">Data associata</string>
-    <string name="browser__forget_this_browser">Dimentica questo browser web</string>
+    <string name="browser__pairing_date">Data di associazione</string>
+    <string name="browser__forget_this_browser">Dimentica questo browser</string>
     <!-- browser__service_is_paired_list_description -->
     <string name="browser__paired_domains_list_title">Lista dei domini associati.</string>
     <string name="browser__deleting_extension_pairing_title">Rimuovi il dominio?</string>
@@ -464,7 +464,7 @@
     <string name="browser__push_notifications_content">Per accedere a funzionalità come l\'estensione browser è necessario l\'accesso alle notifiche push. Puoi modificare questa impostazione in qualsiasi momento nelle impostazioni di sistema.</string>
     <string name="browser__request_expired">Richiesta scaduta</string>
     <string name="browser__2fa_token_request_title">Richiesta di token 2FA</string>
-    <string name="browser__2fa_token_request_content">Vuoi condividere il token 2FA per\u0020</string>
+    <string name="browser__2fa_token_request_content">Vuoi condividere il token 2FA per</string>
     <string name="notifications__no_notifications">Nessuna notifica</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
@@ -551,7 +551,7 @@
     <string name="settings__theme_option_light">Chiaro</string>
     <string name="tokens__copied_clipboard">Token copiato negli appunti!</string>
     <string name="tokens__next_copied_clipboard">Prossimo token copiato negli appunti!</string>
-    <string name="tokens__do_you_really_want_to_remove_all_devices">Vuoi permanentemente eliminare questo servizio 2FA?</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Vuoi permanentemente eliminare questo 2FA?</string>
     <string name="tokens__fab_addmanually">Aggiungi manualmente</string>
     <string name="tokens__qr_does_not_work">Questo codice QR non funziona!</string>
     <!-- Could not read QR code from the image! -->
@@ -568,7 +568,7 @@
     <string name="tokens__show_service_key_setup_lock">La tua chiave segreta è protetta. Aggiungi un PIN o un blocco biometrico per vederla.</string>
     <string name="tokens__tokens_list_is_empty">La lista dei servizi è vuota</string>
     <string name="tokens__use_plus_button_to_add_tokens">Usa il pulsante \"+\" per aggiungere un nuovo servizio</string>
-    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Senza questo token non sarai in grado di accedere al tuo account %1$s finché avrai abilitato l\'autenticazione a due fattori per %2$s.\n\nNon sarai in grado di ripristinare questo token dal cestino 2FAS.</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Senza questo token non sarai in grado di accedere al tuo account %1$s finché avrai abilitata l\'autenticazione a due fattori per %2$s.\n\nNon sarai in grado di ripristinare questo token dal cestino 2FAS.</string>
     <string name="import_ga_success">Servizi importati con successo!</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
     <string name="backup_error_network">È necessaria una connessione Internet attiva per sincronizzare il backup. Attiva la connessione a internet e riprova.</string>
@@ -688,7 +688,7 @@
     <string name="import_backup_msg1_encrypted">Stai per importare un file di backup criptato.</string>
     <string name="externalimport__choose_json_cta">Scegli il file JSON</string>
     <string name="externalimport__aegis_msg">Esporta i tuoi account da Aegis in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
-    <string name="externalimport__raivo_msg">Usa l\'opzione \"Esporta gli OTP in un archivio ZIP\" nelle impostazioni di Raivo, salva un file ZIP, estrailo, e importa il JSON file tramite il pulsante \"Scegli il file JSON\"</string>
+    <string name="externalimport__raivo_msg">Usa l\'opzione \"Esporta gli OTP in un archivio ZIP\" nelle impostazioni di Raivo, salva un file ZIP, estrailo, e importa il file JSON tramite il pulsante \"Scegli il file JSON\"</string>
     <string name="externalimport__no_tokens_msg">Tuttavia, non ci sono servizi che potrebbero essere importati.</string>
     <string name="commons__try_again">Prova di nuovo</string>
     <string name="commons__proceed">Procedi</string>
@@ -712,8 +712,8 @@
     <string name="settings__ssl_error_description">Si è verificato un errore SSL e non è possibile stabilire una connessione sicura con il server. Assicurati di avere l\'ultima versione dell\'app o prova a cambiare la rete internet.</string>
     <string name="backup__import_error_file_size">Il file che stai tentando di importare è troppo grande. Il limite di dimensione è di 10 MB.</string>
     <string name="backup__import_error_file_invalid">Il file che stai tentando di importare non è valido o è danneggiato.\u0020\u0020Scegli un altro file.</string>
-    <string name="appearance__toggle_active_search">Ricerca attiva</string>
-    <string name="appearance__active_search_description">Ricerca attiva all\'avvio</string>
+    <string name="appearance__toggle_active_search">Attiva la ricerca</string>
+    <string name="appearance__active_search_description">Attiva la ricerca all\'avvio</string>
     <string name="widgets__expires_in">Scade tra:</string>
     <string name="widgets__settings">Impostazioni del widget</string>
     <string name="errors__input_integer_number">L\'input deve essere un numero intero</string>
@@ -722,7 +722,7 @@
     <string name="errors__input_too_long">L\'input è troppo lungo. Limite: %d</string>
     <string name="commons__best_match">Miglior abbinamento</string>
     <string name="settings__enable_crashlytics">Invia rapporti anonimi sugli arresti anomali</string>
-    <string name="settings__enable_crashlytics_description">Invia rapporti anonimi sugli arresti anomali per aiutare 2FAS a identificare e risolvere i problemi nell\'app (è richiesto il riavvio dell\'app).</string>
+    <string name="settings__enable_crashlytics_description">Invia rapporti sugli arresti anomali per aiutare 2FAS a identificare e risolvere i problemi nell\'app (è richiesto il riavvio dell\'app).</string>
     <string name="tokens__manage_list">Gestisci l\'elenco</string>
     <string name="settings__appearance">Aspetto</string>
     <string name="settings__show_next_token_desc">Mostra il prossimo token quando quello attuale sta per scadere</string>
@@ -734,7 +734,7 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Esporta i tuoi account da LastPass in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
     <string name="settings__about_crash_optout_title">Rapporti sugli arresti anomali</string>
-    <string name="externalimport__lastpass_title">Importazione di token 2FA dall\'app LastPass\n</string>
+    <string name="externalimport__lastpass_title">Importazione di token 2FA dall\'app LastPass</string>
     <string name="externalimport__lastpass_success_msg">Questo file JSON permette di importare i token da LastPass.</string>
     <string name="externalimport__info_lastpass_title">Importa token da LastPass</string>
     <string name="externalimport__info_aegis_title">Importa token da Aegis</string>
@@ -759,7 +759,7 @@
     <string name="tokens__add_manual_help_cta">Non sai cosa fare? Premi per aiuto</string>
     <string name="tokens__add_manual_advanced">Impostazioni token avanzate</string>
     <string name="tokens__add_manual_additional_info">Info aggiuntive</string>
-    <string name="tokens__add_manual_advanced_description">Cambiare le impostazioni predefinite non è consigliato. Fallo solo quando il tuo provider 2FA lo richiede e quando hai istruzioni chiare</string>
+    <string name="tokens__add_manual_advanced_description">Cambiare le impostazioni predefinite non è consigliato. Fallo solo quando il tuo fornitore per la 2FA lo richiede e quando hai istruzioni chiare</string>
     <string name="settings__option_screenshots_description">Consenti gli screenshot dell\'app per 5 minuti.</string>
     <string name="settings__option_screenshots">Consenti gli screenshot</string>
     <string name="settings__option_screenshots_confirm_title">Consentire gli screenshot dell\'app?</string>
