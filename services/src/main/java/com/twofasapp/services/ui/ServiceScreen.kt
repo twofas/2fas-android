@@ -222,6 +222,49 @@ internal fun ServiceScreen(
                 )
             }
 
+            item(key = "customization_advanced") {
+                SimpleEntry(title = stringResource(R.string.customization_advanced), click = {
+                    if (service.id == 0L) {
+                        showAdvancedWarningDialog.value = true
+                    } else {
+                        onAdvanceClick()
+                    }
+                })
+            }
+
+            item { Divider(color = TwTheme.color.divider) }
+
+            item(key = "customization_personalization") { HeaderEntry(stringResource(R.string.customization_personalization)) }
+
+            item(key = "icon_selector") {
+                IconSelector(service, isBrandSelected = isBrandSelected, isLabelSelected = isLabelSelected) {
+                    viewModel.updateIconType(it, service.labelText, service.labelBackgroundColor)
+                }
+            }
+
+            item(key = "customization_change_brand") {
+                SimpleEntry(
+                    title = stringResource(R.string.customization_change_brand),
+                    isEnabled = isBrandSelected,
+                    click = { onChangeBrandClick() },
+                )
+            }
+
+            item(key = "customization_edit_label") {
+                SimpleEntry(
+                    title = stringResource(R.string.customization_edit_label),
+                    isEnabled = isLabelSelected,
+                    click = { onChangeLabelClick() },
+                )
+            }
+
+            item(key = "customization_badge_color") {
+                SimpleEntry(title = stringResource(R.string.tokens__badge_color),
+                    icon = painterResource(id = R.drawable.vector_circle),
+                    iconTint = uiState.service.badge?.color.toColor(),
+                    click = { showBadgeDialog.value = true })
+            }
+
             if (uiState.groups.isNotEmpty()) {
                 item(key = "groups_dropdown") {
 
@@ -230,7 +273,7 @@ internal fun ServiceScreen(
                         onExpandedChange = { expanded = expanded.not() },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(end = 16.dp, start = 72.dp, bottom = 24.dp, top = 8.dp),
+                            .padding(end = 16.dp, start = 72.dp, bottom = 24.dp, top = 16.dp),
 
                         ) {
                         OutlinedTextField(
@@ -277,49 +320,8 @@ internal fun ServiceScreen(
             }
 
             item { Divider(color = TwTheme.color.divider) }
-            item(key = "customization_advanced") {
-                SimpleEntry(title = stringResource(R.string.customization_advanced), click = {
-                    if (service.id == 0L) {
-                        showAdvancedWarningDialog.value = true
-                    } else {
-                        onAdvanceClick()
-                    }
-                })
-            }
-            item { Divider(color = TwTheme.color.divider) }
 
-            item(key = "customization_personalization") { HeaderEntry(stringResource(R.string.customization_personalization)) }
-
-            item(key = "icon_selector") {
-                IconSelector(service, isBrandSelected = isBrandSelected, isLabelSelected = isLabelSelected) {
-                    viewModel.updateIconType(it, service.labelText, service.labelBackgroundColor)
-                }
-            }
-
-            item(key = "customization_change_brand") {
-                SimpleEntry(
-                    title = stringResource(R.string.customization_change_brand),
-                    isEnabled = isBrandSelected,
-                    click = { onChangeBrandClick() },
-                )
-            }
-
-            item(key = "customization_edit_label") {
-                SimpleEntry(
-                    title = stringResource(R.string.customization_edit_label),
-                    isEnabled = isLabelSelected,
-                    click = { onChangeLabelClick() },
-                )
-            }
-
-            item(key = "customization_badge_color") {
-                SimpleEntry(title = stringResource(R.string.tokens__badge_color),
-                    icon = painterResource(id = R.drawable.vector_circle),
-                    iconTint = uiState.service.badge?.color.toColor(),
-                    click = { showBadgeDialog.value = true })
-            }
-
-            item(key = "customization_service_assignment") { HeaderEntry(stringResource(R.string.customization_service_assignment)) }
+            item(key = "customization_service_assignment") { HeaderEntry(stringResource(R.string.tokens__add_manual_other)) }
             item(key = "customization_browser_extension") {
                 SimpleEntry(title = stringResource(R.string.browser__browser_extension),
                     isEnabled = service.assignedDomains.isNotEmpty(),
@@ -332,6 +334,7 @@ internal fun ServiceScreen(
                     SimpleEntry(
                         title = stringResource(R.string.commons__delete),
                         click = { onDeleteClick() },
+                        titleColor = TwTheme.color.primary
                     )
                 }
             }
