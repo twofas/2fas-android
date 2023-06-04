@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Thu, 25 May 2023 06:20:21 -0700
+ Exported at: Sun, 04 Jun 2023 06:50:18 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -641,7 +641,7 @@
     <string name="settings__send_logs_sent_title">Logs sent</string>
     <string name="settings__send_logs_sent_description">Thanks for reaching out. We\'ll analyze them as soon as possible.</string>
     <string name="commons__send">Send</string>
-    <string name="settings__send_logs_title">Logs have been sent</string>
+    <string name="settings__send_logs_title">Sending logs</string>
     <string name="settings__send_logs_description_link">Code provided by support team was autofilled. Send logs?</string>
     <string name="settings__send_logs_description_edit">Please enter or paste code provided by our support team</string>
     <string name="settings__send_logs">Send logs</string>
