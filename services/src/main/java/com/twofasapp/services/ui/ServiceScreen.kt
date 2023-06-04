@@ -142,7 +142,7 @@ internal fun ServiceScreen(
         )
     }
     ) { padding ->
-        LazyColumn(modifier = Modifier.padding(padding)) {
+        LazyColumn(modifier = Modifier.padding(top = padding.calculateTopPadding())) {
             item(key = "customization_service_info") { HeaderEntry(stringResource(R.string.tokens__service_information)) }
 
             item(key = "tokens__service_name") {

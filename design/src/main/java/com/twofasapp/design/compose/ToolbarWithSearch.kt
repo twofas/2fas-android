@@ -33,6 +33,7 @@ fun ToolbarWithSearch(
         IconButton(onClick = {
             if (showSearch.value) {
                 showSearch.value = false
+                onSearchValueChanged("")
             } else {
                 navigationClick.invoke()
             }
