@@ -30,11 +30,11 @@
             android:id="@+id/simpleInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Test"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
-            android:hint="Test"
-            tools:text="Hello, World!"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            tools:text="Hello, World!" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
