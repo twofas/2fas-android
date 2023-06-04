@@ -10,7 +10,7 @@ import com.twofasapp.extensions.removeWhiteCharacters
 import com.twofasapp.feature.externalimport.domain.ExternalImport
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.prefs.ScopedNavigator
-import com.twofasapp.prefs.model.OtpAuthLink
+import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.usecase.LastScannedQrPreference
 import com.twofasapp.qrscanner.domain.ReadQrFromImageRx
@@ -156,14 +156,14 @@ class AddServiceQrPresenter(
     }
 
     private fun onSaveCompleted(serviceDto: ServiceDto, isFromGallery: Boolean) {
-        servicesRepository.pushRecentlyAddedService(
-            id = serviceDto.id,
-            source = if (isFromGallery) {
-                RecentlyAddedService.Source.QrGallery
-            } else {
-                RecentlyAddedService.Source.QrScan
-            }
-        )
+//        servicesRepository.pushRecentlyAddedService(
+//            id = serviceDto.id,
+//            source = if (isFromGallery) {
+//                RecentlyAddedService.Source.QrGallery
+//            } else {
+//                RecentlyAddedService.Source.QrScan
+//            }
+//        )
 
         navigator.finishResultOk(
             mapOf(

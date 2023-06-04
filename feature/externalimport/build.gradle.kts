@@ -43,9 +43,11 @@ dependencies {
     implementation(project(":serialization"))
 
     implementation(project(":core:common"))
+    implementation(project(":core:android"))
     implementation(project(":core:locale"))
     implementation(project(":core:designsystem"))
     implementation(project(":data:services"))
+    implementation(project(":parsers"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

@@ -18,6 +18,7 @@ import com.twofasapp.design.compose.dialogs.InputType
 import com.twofasapp.design.compose.dialogs.ListDialog
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.locale.TwLocale
 import com.twofasapp.resources.R
 import com.twofasapp.services.domain.model.Service
 import com.twofasapp.services.domain.model.Service.AuthType.HOTP
@@ -70,7 +71,7 @@ internal fun AdvancedSettingsScreen(
 
             item {
                 SimpleEntry(
-                    title = stringResource(R.string.tokens__algorithm),
+                    title = TwLocale.strings.addManualAlgorithm,
                     subtitle = service.otp.algorithm.name,
                     isEnabled = isEnabled,
                     click = {
@@ -84,7 +85,7 @@ internal fun AdvancedSettingsScreen(
             if (service.authType == TOTP) {
                 item {
                     SimpleEntry(
-                        title = stringResource(R.string.tokens__refresh_time),
+                        title = TwLocale.strings.addManualRefreshTime,
                         subtitle = service.otp.period.toString(),
                         isEnabled = isEnabled,
                         click = { showPeriodDialog.value = true }
@@ -95,7 +96,7 @@ internal fun AdvancedSettingsScreen(
             if (service.authType == HOTP) {
                 item {
                     SimpleEntry(
-                        title = if (isEnabled) stringResource(R.string.tokens__initial_counter) else stringResource(R.string.tokens__counter),
+                        title = if (isEnabled) TwLocale.strings.addManualInitialCounter else stringResource(R.string.tokens__counter),
                         subtitle = (service.otp.hotpCounter ?: 1).toString(),
                         isEnabled = isEnabled,
                         click = { showCounterDialog.value = true }
@@ -105,7 +106,7 @@ internal fun AdvancedSettingsScreen(
 
             item {
                 SimpleEntry(
-                    title = stringResource(R.string.tokens__number_of_digits),
+                    title = TwLocale.strings.addManualDigits,
                     subtitle = service.otp.digits.toString(),
                     isEnabled = isEnabled,
                     click = { showDigitsDialog.value = true }

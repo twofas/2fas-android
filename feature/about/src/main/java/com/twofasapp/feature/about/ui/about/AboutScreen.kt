@@ -14,7 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.core.app.ShareCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.R
+import com.twofasapp.locale.R
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
@@ -119,7 +119,7 @@ private fun AboutScreen(
 
             SettingsLink(
                 title = stringResource(id = R.string.settings__version, versionName),
-                image = painterResource(id = R.drawable.logo_2fas),
+                image = painterResource(id = com.twofasapp.designsystem.R.drawable.logo_2fas),
                 textColor = TwTheme.color.onSurfaceSecondary
             )
         }

@@ -26,7 +26,7 @@ internal fun BrowserExtRequestDialog(
         body = TwLocale.strings.tokenRequestBody.plus("${browserExtRequest.domain}?"),
         positive = TwLocale.strings.commonApprove,
         negative = TwLocale.strings.commonDeny,
-        onConfirm = {
+        onPositive = {
             val isOneDomainMatched =
                 browserExtRequest.matchedServices.size == 1
             val serviceId =
@@ -71,7 +71,7 @@ internal fun BrowserExtRequestDialog(
                 activity.startActivity(contentIntent)
             }
         },
-        onDeny = {
+        onNegative = {
             val payload = BrowserExtensionRequestPayload(
                 action = BrowserExtensionRequestPayload.Action.Deny,
                 notificationId = -1,

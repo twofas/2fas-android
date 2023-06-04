@@ -5,7 +5,6 @@ import com.instacart.library.truetime.TrueTimeRx
 import com.twofasapp.prefs.usecase.TimeDeltaPreference
 import kotlinx.coroutines.delay
 import timber.log.Timber
-import kotlin.math.abs
 
 class RecalculateTimeDeltaCaseImpl(
     private val timeDeltaPreference: TimeDeltaPreference,
@@ -29,7 +28,7 @@ class RecalculateTimeDeltaCaseImpl(
             val newDelta = TrueTimeRx.now().time - System.currentTimeMillis()
 
 //            if (abs(newDelta - delta) > 1000) {
-                timeDeltaPreference.put(newDelta)
+            timeDeltaPreference.put(newDelta)
 //            }
 
             true

@@ -250,7 +250,7 @@ internal fun SecurityScreen(
                 body = stringResource(id = R.string.settings__option_screenshots_confirm_description),
                 negative = stringResource(id = R.string.commons__no),
                 positive = stringResource(id = R.string.commons__yes),
-                onConfirm = { viewModel.toggleScreenshots() }
+                onPositive = { viewModel.toggleScreenshots() }
             )
         }
     }

@@ -1,7 +1,7 @@
 package com.twofasapp.start.domain
 
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.prefs.model.OtpAuthLink
+import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.services.domain.ConvertOtpToServiceCase
 import com.twofasapp.services.domain.EditServiceCase
 import com.twofasapp.services.domain.GetServicesCase

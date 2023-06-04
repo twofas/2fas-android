@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.unit.Dp
 import androidx.core.app.ComponentActivity
-import com.twofasapp.designsystem.R
+import com.twofasapp.locale.R
 
 val CompositionLocal<Context>.currentActivity: ComponentActivity
     @Composable
