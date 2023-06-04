@@ -96,10 +96,6 @@ class ActivityScopedNavigator(
         activity.startActivity<BackupActivity>(BackupActivity.EXTRA_IS_OPENED_FROM_BACKUP_NOTICE to isOpenedFromBackupNotice)
     }
 
-    override fun openAddServiceQr() {
-        activity.startActivityForResult<AddServiceQrActivity>(AddServiceQrActivity.REQUEST_CODE)
-    }
-
     override fun openDeveloperOptions() {
         activity.startActivity<DeveloperActivity>()
     }

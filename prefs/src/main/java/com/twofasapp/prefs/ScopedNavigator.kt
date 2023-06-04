@@ -16,7 +16,6 @@ interface ScopedNavigator {
     fun openAuthenticate(canGoBack: Boolean = false, requestCode: Int? = null)
     fun openSecurityWithAuth()
     fun openBackup(isOpenedFromBackupNotice: Boolean = false)
-    fun openAddServiceQr()
     fun openDeveloperOptions()
     fun openExportBackup()
     fun openImportBackup()

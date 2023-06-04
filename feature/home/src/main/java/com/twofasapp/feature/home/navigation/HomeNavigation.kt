@@ -82,8 +82,6 @@ fun NavGraphBuilder.homeNavigation(
 }
 
 interface HomeNavigationListener {
-    fun openAddManuallyService(activity: Activity)
-    fun openAddQrService(activity: Activity)
     fun openService(activity: Activity, serviceId: Long)
     fun openExternalImport()
     fun openBrowserExt()

@@ -40,7 +40,6 @@ import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
 import com.twofasapp.feature.startup.navigation.startupNavigation
 import com.twofasapp.feature.trash.navigation.TrashGraph
 import com.twofasapp.feature.trash.navigation.trashNavigation
-import com.twofasapp.features.addserviceqr.AddServiceQrActivity
 import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.security.navigation.SecurityGraph
 import com.twofasapp.security.navigation.securityNavigation
@@ -93,14 +92,6 @@ internal fun MainNavHost(
             homeNavigation(
                 navController = navController,
                 listener = object : HomeNavigationListener {
-                    override fun openAddManuallyService(activity: Activity) {
-                        navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, 0L))
-                    }
-
-                    override fun openAddQrService(activity: Activity) {
-                        activity.startActivity<AddServiceQrActivity>()
-                    }
-
                     override fun openService(activity: Activity, serviceId: Long) {
                         navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, serviceId))
                     }
