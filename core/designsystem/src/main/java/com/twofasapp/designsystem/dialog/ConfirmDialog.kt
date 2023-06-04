@@ -14,8 +14,8 @@ fun ConfirmDialog(
     bodyAnnotated: AnnotatedString? = null,
     positive: String? = TwLocale.strings.commonYes,
     negative: String? = TwLocale.strings.commonNo,
-    onConfirm: () -> Unit = {},
-    onDeny: () -> Unit = {},
+    onPositive: () -> Unit = {},
+    onNegative: () -> Unit = {},
     properties: DialogProperties = DialogProperties(),
 ) {
     BaseDialog(
@@ -25,8 +25,8 @@ fun ConfirmDialog(
         bodyAnnotated = bodyAnnotated,
         positive = positive,
         negative = negative,
-        onPositiveClick = onConfirm,
-        onNegativeClick = onDeny,
+        onPositiveClick = onPositive,
+        onNegativeClick = onNegative,
         properties = properties,
     )
 }

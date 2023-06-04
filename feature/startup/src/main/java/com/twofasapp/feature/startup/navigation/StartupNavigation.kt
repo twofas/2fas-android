@@ -2,10 +2,10 @@ package com.twofasapp.feature.startup.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.twofasapp.common.navigation.NavGraph
+import com.twofasapp.android.navigation.NavGraph
 import com.twofasapp.feature.startup.ui.StartupRoute
 
-object StartupGraph : NavGraph {
+object StartupGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "startup"
 }
 

@@ -6,13 +6,13 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
-import com.twofasapp.common.navigation.NavGraph
-import com.twofasapp.common.navigation.NavNode
-import com.twofasapp.common.navigation.withArg
+import com.twofasapp.android.navigation.NavGraph
+import com.twofasapp.android.navigation.NavNode
+import com.twofasapp.android.navigation.withArg
 import com.twofasapp.feature.trash.ui.dispose.DisposeRoute
 import com.twofasapp.feature.trash.ui.trash.TrashRoute
 
-object TrashGraph : NavGraph {
+object TrashGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "trash"
 }
 
@@ -20,8 +20,8 @@ internal object NavArg {
     val ServiceId = navArgument("id") { type = NavType.LongType }
 }
 
-private sealed class Node(override val path: String) : NavNode {
-    override val graph: NavGraph = TrashGraph
+private sealed class Node(override val path: String) : com.twofasapp.android.navigation.NavNode {
+    override val graph: com.twofasapp.android.navigation.NavGraph = TrashGraph
 
     object Main : Node("main")
     object Dispose : Node("dispose/{${NavArg.ServiceId.name}}")

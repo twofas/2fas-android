@@ -4,12 +4,31 @@ import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.otp.OtpAuthenticator
 import com.twofasapp.otp.OtpData
+import timber.log.Timber
 import java.time.Instant
 
 class ServiceCodeGenerator(
     private val timeProvider: TimeProvider,
 ) {
     private val authenticator = OtpAuthenticator()
+
+    fun check(secret: String): Boolean {
+        return try {
+            authenticator.generateOtpCode(
+                OtpData(
+                    counter = timeProvider.realCurrentTime() / 30.toMillis(),
+                    secret = secret,
+                    digits = 6,
+                    period = 30,
+                    algorithm = OtpData.Algorithm.SHA1,
+                )
+            )
+            true
+        } catch (e: Exception) {
+            Timber.e(e)
+            false
+        }
+    }
 
     fun generate(service: Service): Service {
         val period = service.period ?: 30

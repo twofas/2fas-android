@@ -1,7 +1,7 @@
 package com.twofasapp.data.services.domain
 
 data class RecentlyAddedService(
-    val service: Service,
+    val serviceId: Long,
     val source: Source,
 ) {
     enum class Source {

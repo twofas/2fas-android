@@ -4,7 +4,7 @@ import android.net.Uri
 import com.twofasapp.BuildConfig
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.entity.exceptions.InvalidOtpLinkFormat
-import com.twofasapp.prefs.model.OtpAuthLink
+import com.twofasapp.parsers.domain.OtpAuthLink
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import timber.log.Timber

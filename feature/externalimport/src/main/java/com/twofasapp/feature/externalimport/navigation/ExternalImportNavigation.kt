@@ -6,9 +6,9 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
-import com.twofasapp.common.navigation.NavGraph
-import com.twofasapp.common.navigation.NavNode
-import com.twofasapp.common.navigation.withArg
+import com.twofasapp.android.navigation.NavGraph
+import com.twofasapp.android.navigation.NavNode
+import com.twofasapp.android.navigation.withArg
 import com.twofasapp.feature.externalimport.navigation.ExternalImportNode.Aegis
 import com.twofasapp.feature.externalimport.navigation.ExternalImportNode.GoogleAuthenticator
 import com.twofasapp.feature.externalimport.navigation.ExternalImportNode.Raivo
@@ -22,7 +22,7 @@ import com.twofasapp.feature.externalimport.ui.result.ImportResultRoute
 import com.twofasapp.feature.externalimport.ui.scan.ImportScanRoute
 import com.twofasapp.feature.externalimport.ui.selector.SelectorRoute
 
-object ExternalImportGraph : NavGraph {
+object ExternalImportGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "externalimport"
 }
 
@@ -34,8 +34,8 @@ private object NavArg {
     val StartFromGallery = navArgument("startFromGallery") { type = NavType.BoolType; }
 }
 
-private sealed class ExternalImportNode(override val path: String) : NavNode {
-    override val graph: NavGraph = ExternalImportGraph
+private sealed class ExternalImportNode(override val path: String) : com.twofasapp.android.navigation.NavNode {
+    override val graph: com.twofasapp.android.navigation.NavGraph = ExternalImportGraph
 
     object Selector : ExternalImportNode("selector")
     object GoogleAuthenticator : ExternalImportNode("googleauthenticator")

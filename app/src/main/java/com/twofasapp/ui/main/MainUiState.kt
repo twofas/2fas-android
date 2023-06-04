@@ -6,6 +6,7 @@ internal data class MainUiState(
     val selectedTheme: SelectedTheme? = null,
     val startDestination: StartDestination? = null,
     val browserExtRequests: List<BrowserExtRequest> = emptyList(),
+    val addServiceAdvancedExpanded: Boolean = false
 ) {
     enum class StartDestination {
         Home, Onboarding

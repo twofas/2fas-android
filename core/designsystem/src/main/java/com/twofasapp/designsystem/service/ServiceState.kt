@@ -44,4 +44,24 @@ data class ServiceState(
     fun isNextCodeEnabled(showNextCode: Boolean): Boolean {
         return timer <= ServiceExpireTransitionThreshold && showNextCode && authType == ServiceAuthType.Totp
     }
+
+    companion object {
+        val Empty = ServiceState(
+            name = "",
+            info = null,
+            code = "",
+            nextCode = "",
+            timer = 0,
+            hotpCounter = null,
+            hotpCounterEnabled = false,
+            progress = 0.0f,
+            imageType = ServiceImageType.Icon,
+            authType = ServiceAuthType.Totp,
+            iconLight = "",
+            iconDark = "",
+            labelText = null,
+            labelColor = Color.Unspecified,
+            badgeColor = Color.Unspecified,
+        )
+    }
 }

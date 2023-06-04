@@ -3,7 +3,6 @@ package com.twofasapp.usecases.services
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.core.analytics.AnalyticsEvent
-import com.twofasapp.core.analytics.AnalyticsParam
 import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
@@ -65,34 +64,11 @@ class AddService(
                 if (params.service.authType == ServiceDto.AuthType.HOTP && params.trigger != Trigger.ADD_FROM_BACKUP) {
                     storeHotpServices.onServiceAdded(params.service)
                 }
-
-                if (params.trigger != Trigger.ADD_FROM_BACKUP) {
-                    analyticsService.captureEvent(
-                        AnalyticsEvent.CODE_TYPE_ADDED,
-                        AnalyticsParam.TYPE to params.service.authType.name
-                    )
-                }
-
-                if (params.service.serviceTypeId.isNullOrBlank() && params.service.otpIssuer.isNullOrBlank()
-                        .not() && params.service.source == ServiceDto.Source.Link
-                ) {
-                    analyticsService.captureEvent(
-                        AnalyticsEvent.MISSING_ICON, AnalyticsParam.TYPE to params.service.otpIssuer
-                    )
-                }
-
-                if (params.service.serviceTypeId.isNullOrBlank().not() && params.service.source == ServiceDto.Source.Link) {
-                    analyticsService.captureEvent(
-                        AnalyticsEvent.SUPPORTED_ICON, AnalyticsParam.TYPE to (params.service.otpIssuer ?: params.service.name)
-                    )
-                }
             }
             .flatMapCompletable {
                 Completable.fromCallable {
                     if (firstCodeAdded.isAdded().not()) {
-                        analyticsService.captureEvent(AnalyticsEvent.FIRST_CODE)
                         showBackupNotice.save(true)
-                        firstCodeAdded.save(true)
                     }
                 }
             }

@@ -5,10 +5,10 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.twofasapp.common.navigation.NavGraph
+import com.twofasapp.android.navigation.NavGraph
 import com.twofasapp.services.ui.ServiceScreenRoute
 
-object ServiceGraph : NavGraph {
+object ServiceGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "service/{${ServiceNavArg.ServiceId.name}}"
 }
 

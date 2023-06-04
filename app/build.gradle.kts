@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":time:domain"))
 
     implementation(project(":core:common"))
+    implementation(project(":core:android"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:storage"))
     implementation(project(":core:network"))
@@ -64,6 +65,7 @@ dependencies {
     implementation(project(":feature:externalimport"))
     implementation(project(":feature:browserext"))
     implementation(project(":feature:appsettings"))
+    implementation(project(":feature:qrscan"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.rxJava)
@@ -87,6 +89,7 @@ dependencies {
     implementation(libs.coroutinesToRx)
     implementation(libs.workManager)
     implementation(libs.workManagerRx)
+    implementation(libs.activityX)
 
     implementation(libs.coreSplash)
 

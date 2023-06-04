@@ -6,8 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.twofasapp.common.navigation.NavGraph
-import com.twofasapp.common.navigation.NavNode
+import com.twofasapp.android.navigation.NavGraph
+import com.twofasapp.android.navigation.NavNode
 import com.twofasapp.services.ui.advancedsettings.AdvancedSettingsScreen
 import com.twofasapp.services.ui.changebrand.ChangeBrandScreen
 import com.twofasapp.services.ui.changelabel.ChangeLabelScreen
@@ -16,13 +16,13 @@ import com.twofasapp.services.ui.domainassignment.DomainAssignmentScreen
 import com.twofasapp.services.ui.requesticon.RequestIconScreen
 import org.koin.androidx.compose.koinViewModel
 
-internal object ServiceInternalGraph : NavGraph {
+internal object ServiceInternalGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "service_internal"
 }
 
 
-private sealed class Node(override val path: String) : NavNode {
-    override val graph: NavGraph = ServiceInternalGraph
+private sealed class Node(override val path: String) : com.twofasapp.android.navigation.NavNode {
+    override val graph: com.twofasapp.android.navigation.NavGraph = ServiceInternalGraph
 
     object Main : Node("main")
     object DomainAssignment : Node("domain_assignment")

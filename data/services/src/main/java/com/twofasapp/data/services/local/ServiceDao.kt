@@ -19,11 +19,20 @@ interface ServiceDao {
     @Query("SELECT * FROM local_services WHERE id=:id")
     suspend fun select(id: Long): ServiceEntity
 
+    @Query("SELECT * FROM local_services WHERE secret=:secret")
+    suspend fun selectBySecret(secret: String): ServiceEntity?
+
     @Query("SELECT * FROM local_services WHERE id=:id")
     fun observe(id: Long): Flow<ServiceEntity>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(serviceEntity: ServiceEntity): Long
+
     @Query("DELETE FROM local_services WHERE id == :id")
     suspend fun delete(id: Long)
+
+    @Query("DELETE FROM local_services WHERE secret == :secret")
+    suspend fun deleteBySecret(secret: String)
 
     @Update
     suspend fun update(entity: ServiceEntity)

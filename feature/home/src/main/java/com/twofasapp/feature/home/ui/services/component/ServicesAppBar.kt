@@ -30,13 +30,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.twofasapp.designsystem.R
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwDropdownMenu
@@ -45,6 +43,7 @@ import com.twofasapp.designsystem.common.TwIcon
 import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwImage
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -120,10 +119,6 @@ private fun SearchBar(
     onSearchFocusChange: (Boolean) -> Unit,
     focusRequester: FocusRequester,
 ) {
-    if (focused.not()) {
-        LocalFocusManager.current.clearFocus()
-    }
-
     var showDropdown by remember { mutableStateOf(false) }
 
     Row(
@@ -136,7 +131,7 @@ private fun SearchBar(
     ) {
 
         AnimatedVisibility(visible = focused.not()) {
-            TwImage(painter = painterResource(id = R.drawable.logo_2fas), modifier = Modifier.size(24.dp))
+            TwImage(painter = painterResource(id = com.twofasapp.designsystem.R.drawable.logo_2fas), modifier = Modifier.size(24.dp))
         }
 
         AnimatedVisibility(visible = focused) {

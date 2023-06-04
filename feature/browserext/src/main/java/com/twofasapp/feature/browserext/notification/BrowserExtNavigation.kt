@@ -11,12 +11,12 @@ import com.twofasapp.browserextension.ui.main.BrowserExtensionScreen
 import com.twofasapp.browserextension.ui.main.permission.BrowserExtensionPermissionScreen
 import com.twofasapp.browserextension.ui.pairing.progress.PairingProgressScreen
 import com.twofasapp.browserextension.ui.pairing.scan.PairingScanScreen
-import com.twofasapp.common.navigation.NavGraph
-import com.twofasapp.common.navigation.NavNode
-import com.twofasapp.common.navigation.withArg
+import com.twofasapp.android.navigation.NavGraph
+import com.twofasapp.android.navigation.NavNode
+import com.twofasapp.android.navigation.withArg
 import com.twofasapp.feature.browserext.notification.NavArg.ExtensionId
 
-object BrowserExtGraph : NavGraph {
+object BrowserExtGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "browserext"
 }
 
@@ -24,8 +24,8 @@ internal object NavArg {
     val ExtensionId = navArgument("id") { type = NavType.StringType }
 }
 
-private sealed class Node(override val path: String) : NavNode {
-    override val graph: NavGraph = BrowserExtGraph
+private sealed class Node(override val path: String) : com.twofasapp.android.navigation.NavNode {
+    override val graph: com.twofasapp.android.navigation.NavGraph = BrowserExtGraph
 
     object Main : Node("main")
     object Permission : Node("permission")

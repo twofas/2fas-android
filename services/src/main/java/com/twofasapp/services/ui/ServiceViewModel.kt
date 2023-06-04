@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.common.navigation.getOrThrow
+import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
@@ -120,8 +120,10 @@ internal class ServiceViewModel(
                     .onFailure { _uiState.update { it.copy(showInsertErrorDialog = true) } }
                     .onSuccess {
                         servicesRepository.pushRecentlyAddedService(
-                            id = it,
-                            source = RecentlyAddedService.Source.Manually
+                           RecentlyAddedService(
+                               serviceId = it,
+                               source = RecentlyAddedService.Source.Manually
+                           )
                         )
                         syncBackupWorkDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
 
@@ -172,7 +174,6 @@ internal class ServiceViewModel(
                 updateService { service -> service.copy(authType = authType, otp = service.otp.copy(algorithm = Service.Algorithm.SHA1)) }
             }
         }
-
     }
 
     fun updateAlgorithm(algorithm: Service.Algorithm) {

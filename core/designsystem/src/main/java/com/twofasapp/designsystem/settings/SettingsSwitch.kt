@@ -38,7 +38,7 @@ fun SettingsSwitch(
                 onCheckedChange = onCheckedChange,
             )
         },
-        showEmptySpaceWhenIconMissing = showEmptySpaceWhenIconMissing,
+        showEmptySpaceWhenNoIcon = showEmptySpaceWhenIconMissing,
         alignCenterIcon = alignCenterIcon,
         onClick = { onCheckedChange?.invoke((checked.not())) }
     )

@@ -61,10 +61,26 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <service
             android:name=".widgets.adapter.WidgetViewsService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <!--
+            Prompt Google Play services to install the backported photo picker module
+            https://developer.android.com/training/data-storage/shared/photopicker#device-availability
+        -->
+        <!--suppress AndroidDomInspection -->
+        <service android:name="com.google.android.gms.metadata.ModuleDependencies"
+            android:enabled="false"
+            android:exported="false"
+            tools:ignore="MissingClass">
+            <intent-filter>
+                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+            </intent-filter>
+            <meta-data android:name="photopicker_activity:0:required" android:value="" />
+        </service>
 
         <receiver
             android:name=".widgets.WidgetProvider"
@@ -117,9 +133,9 @@
         </activity>
 
         <activity
-            android:launchMode="singleTask"
             android:name=".ui.main.MainActivity"
-            android:label="Add service by scanning QR Code" />
+            android:label="Add service by scanning QR Code"
+            android:launchMode="singleTask" />
 
         <activity
             android:name=".features.addserviceqr.AddServiceQrActivity"

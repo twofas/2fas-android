@@ -18,7 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 
 @Composable
@@ -40,7 +42,7 @@ fun ModalListItem(
     text: String,
     icon: Painter,
     iconTint: Color = TwTheme.color.primary,
-    onClick: () -> Unit,
+    onClick: () -> Unit = {},
 ) {
     Row(
         modifier = Modifier
@@ -61,5 +63,15 @@ fun ModalListItem(
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.weight(1f),
         )
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    ModalList {
+        ModalListItem(text = "Test 1", icon = TwIcons.Placeholder)
+        ModalListItem(text = "Test 2", icon = TwIcons.Placeholder)
+        ModalListItem(text = "Test 3", icon = TwIcons.Placeholder)
     }
 }

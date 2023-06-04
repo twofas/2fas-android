@@ -2,6 +2,8 @@ package com.twofasapp.buildlogic.extension
 
 import com.android.build.api.dsl.CommonExtension
 import com.twofasapp.buildlogic.version.AppConfig
+import com.twofasapp.buildlogic.version.AppConfig.compileSdk
+import com.twofasapp.buildlogic.version.AppConfig.minSdk
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
@@ -9,7 +11,7 @@ import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 internal fun Project.applyKotlinAndroid(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     commonExtension.apply {
         compileSdk = AppConfig.compileSdk
@@ -76,6 +78,6 @@ internal fun Project.applyKotlinAndroid(
     }
 }
 
-internal fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
+internal fun CommonExtension<*, *, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
     (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }

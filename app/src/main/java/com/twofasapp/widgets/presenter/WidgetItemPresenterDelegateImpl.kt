@@ -18,7 +18,7 @@ class WidgetItemPresenterDelegateImpl(
 ) : WidgetItemPresenterDelegate {
 
     private val secUnit: String by lazy {
-        context.getString(R.string.time_unit_seconds_short)
+        context.getString(com.twofasapp.locale.R.string.time_unit_seconds_short)
     }
 
     override fun updateItemView(

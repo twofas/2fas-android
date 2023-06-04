@@ -7,6 +7,7 @@ import com.twofasapp.data.services.di.DataServicesModule
 import com.twofasapp.data.session.di.DataSessionModule
 import com.twofasapp.feature.about.di.AboutModule
 import com.twofasapp.feature.appsettings.di.AppSettingsModule
+import com.twofasapp.feature.di.QrScanModule
 import com.twofasapp.feature.externalimport.di.ExternalImportModule
 import com.twofasapp.feature.home.di.HomeModule
 import com.twofasapp.feature.startup.di.StartupModule
@@ -38,6 +39,7 @@ object Modules {
         AppSettingsModule(),
         TrashModule(),
         AboutModule(),
+        QrScanModule(),
     )
 
     fun provide(): List<Module> =
