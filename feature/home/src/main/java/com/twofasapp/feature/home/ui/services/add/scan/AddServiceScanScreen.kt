@@ -8,18 +8,23 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwCenterTopAppBar
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.InfoDialog
 import com.twofasapp.designsystem.settings.SettingsLink
@@ -49,8 +54,24 @@ internal fun AddServiceScanScreen(
     }
 
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .verticalScroll(rememberScrollState()),
     ) {
+        TwCenterTopAppBar(
+            titleText = TwLocale.strings.addTitle,
+            containerColor = Color.Transparent,
+            showBackButton = false,
+        )
+
+        Text(
+            text = TwLocale.strings.addDescription,
+            color = TwTheme.color.onSurfacePrimary,
+            style = TwTheme.typo.body1,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(horizontal = 16.dp),
+        )
+
         QrScan(
             modifier = Modifier
                 .padding(16.dp)
