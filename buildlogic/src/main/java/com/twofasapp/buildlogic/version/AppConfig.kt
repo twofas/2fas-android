@@ -6,8 +6,8 @@ object AppConfig {
     const val compileSdk = 33
 
     private const val verMajor = 4
-    private const val verMinor = 5
-    private const val verPatch = 14
+    private const val verMinor = 6
+    private const val verPatch = 0
     private const val verInternal = 0
 
     const val versionCode = verMajor * 1000000 + verMinor * 10000 + verPatch * 100 + verInternal
