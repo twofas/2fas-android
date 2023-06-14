@@ -105,9 +105,9 @@ internal fun AddServiceManualScreen(
             singleLine = true,
             maxLines = 1,
             trailingIcon = {
-                if (uiState.iconLight != null) {
+                if (uiState.iconLight != null || uiState.iconDark != null) {
                     Image(
-                        bitmap = assetAsBitmap(if (TwTheme.isDark) uiState.iconLight.orEmpty() else uiState.iconDark.orEmpty()),
+                        bitmap = assetAsBitmap(if (TwTheme.isDark) uiState.iconDark.orEmpty() else uiState.iconLight.orEmpty()),
                         contentDescription = null,
                         modifier = Modifier
                             .padding(end = 8.dp)
