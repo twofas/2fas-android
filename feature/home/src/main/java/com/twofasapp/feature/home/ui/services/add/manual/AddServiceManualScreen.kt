@@ -257,7 +257,9 @@ internal fun AddServiceManualScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { showAlgorithmDialog = true }
+                    .clickable(uiState.authType == Service.AuthType.TOTP) {
+                        showAlgorithmDialog = true
+                    }
                     .padding(horizontal = 24.dp, vertical = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,

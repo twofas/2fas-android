@@ -67,6 +67,7 @@ internal class AddServiceManualViewModel(
                     algorithm = Service.Algorithm.SHA1,
                 )
             }
+
         }
     }
 
