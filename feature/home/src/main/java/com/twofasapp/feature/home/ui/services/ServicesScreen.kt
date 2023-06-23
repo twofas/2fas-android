@@ -108,6 +108,7 @@ internal fun ServicesRoute(
         onSearchFocusChange = { viewModel.searchFocused(it) },
         onOpenBackupClick = { listener.openBackup(activity) },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
+        onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) }
     )
 }
 
@@ -445,10 +446,11 @@ private fun ServicesScreen(
                                     onLongClick = {
                                         keyboardController?.hide()
                                         listener.openFocusServiceModal(service.id)
+                                    },
+                                    onIncrementCounterClick = {
+                                        onIncrementHotpCounterClick(service)
                                     }
-                                ) {
-                                    onIncrementHotpCounterClick(service)
-                                }
+                                )
                             }
                         }
                     }
