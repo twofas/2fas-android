@@ -111,7 +111,7 @@ object ServiceParser {
 
     private fun String.removeWhiteSpaces() = this.replace(" ", "")
 
-    private fun parseSupportedAlgorithm(otpAlgorithm: String?): Service.Algorithm? =
+    fun parseSupportedAlgorithm(otpAlgorithm: String?): Service.Algorithm? =
         when {
             otpAlgorithm == null -> null
             otpAlgorithm.equals("SHA1", ignoreCase = true) -> Service.Algorithm.SHA1

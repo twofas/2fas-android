@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 internal class ServicesRepositoryImpl(
     private val dispatchers: Dispatchers,
@@ -193,6 +194,31 @@ internal class ServicesRepositoryImpl(
 
     override fun isSecretValid(secret: String): Boolean {
         return codeGenerator.check(secret)
+    }
+
+    override fun isServiceValid(link: OtpAuthLink): Boolean {
+        return try {
+            val otpAlgorithm = link.params[OtpAuthLink.ALGORITHM_PARAM]
+            val algorithm = when {
+                otpAlgorithm == null -> Service.Algorithm.SHA1
+                otpAlgorithm.equals("SHA1", ignoreCase = true) -> Service.Algorithm.SHA1
+                otpAlgorithm.equals("SHA224", ignoreCase = true) -> Service.Algorithm.SHA224
+                otpAlgorithm.equals("SHA256", ignoreCase = true) -> Service.Algorithm.SHA256
+                otpAlgorithm.equals("SHA384", ignoreCase = true) -> Service.Algorithm.SHA384
+                otpAlgorithm.equals("SHA512", ignoreCase = true) -> Service.Algorithm.SHA512
+                else -> return false
+            }
+
+            codeGenerator.check(
+                secret = link.secret,
+                digits = link.params[OtpAuthLink.DIGITS_PARAM]?.toIntOrNull() ?: 6,
+                period = link.params[OtpAuthLink.PERIOD_PARAM]?.toIntOrNull() ?: 30,
+                algorithm = algorithm
+            )
+        } catch (e: Exception) {
+            Timber.e(e)
+            false
+        }
     }
 
     override suspend fun addService(link: OtpAuthLink): Long {
