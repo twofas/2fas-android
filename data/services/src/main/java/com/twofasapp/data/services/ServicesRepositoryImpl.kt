@@ -99,6 +99,19 @@ internal class ServicesRepositoryImpl(
         }
     }
 
+    override suspend fun updateService(service: Service) {
+        withContext(dispatchers.io) {
+            local.updateService(
+                service.copy(
+                    backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                    updatedAt = timeProvider.systemCurrentTime(),
+                )
+            )
+
+            widgetActions.onServiceChanged()
+        }
+    }
+
     override suspend fun setServiceGroup(id: Long, groupId: String?) {
         withContext(dispatchers.io) {
             local.setServiceGroup(id, groupId)
@@ -120,7 +133,6 @@ internal class ServicesRepositoryImpl(
 
             local.deleteServiceFromOrder(id)
             widgetActions.onServiceDeleted(id)
-
 
             if (remoteBackupStatusPreference.get().state == RemoteBackupStatus.State.ACTIVE) {
                 val recentlyDeleted = recentlyDeletedPreference.get()

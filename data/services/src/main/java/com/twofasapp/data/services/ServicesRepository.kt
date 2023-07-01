@@ -15,6 +15,7 @@ interface ServicesRepository {
     suspend fun getServices(): List<Service>
     suspend fun getService(id: Long): Service
     suspend fun deleteService(id: Long)
+    suspend fun updateService(service: Service)
     suspend fun setServiceGroup(id: Long, groupId: String?)
     suspend fun trashService(id: Long)
     suspend fun restoreService(id: Long)

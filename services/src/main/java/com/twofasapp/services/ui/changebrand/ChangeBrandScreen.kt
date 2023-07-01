@@ -49,7 +49,7 @@ import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.extensions.openBrowserApp
 import com.twofasapp.resources.R
-import com.twofasapp.services.ui.ServiceViewModel
+import com.twofasapp.services.ui.EditServiceViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.get
 import org.koin.androidx.compose.getViewModel
@@ -58,7 +58,7 @@ import timber.log.Timber
 @Composable
 internal fun ChangeBrandScreen(
     onRequestIconClick: () -> Unit,
-    viewModel: ServiceViewModel = getViewModel(),
+    viewModel: EditServiceViewModel = getViewModel(),
     brandViewModel: ChangeBrandViewModel = get(),
     analyticsService: AnalyticsService = get(),
 ) {

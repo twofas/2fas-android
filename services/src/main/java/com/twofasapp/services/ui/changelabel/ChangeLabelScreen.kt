@@ -2,6 +2,7 @@ package com.twofasapp.services.ui.changelabel
 
 import TextFieldOutlined
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -29,40 +31,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.twofasapp.data.services.domain.Service
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
-import com.twofasapp.prefs.model.Tint
+import com.twofasapp.designsystem.ktx.dpToSp
 import com.twofasapp.resources.R
-import com.twofasapp.services.ui.ServiceViewModel
-import com.twofasapp.services.view.ServiceIcon
-import com.twofasapp.services.view.toColor
+import com.twofasapp.services.ui.EditServiceViewModel
+import com.twofasapp.services.ui.asColor
 
 @Composable
 internal fun ChangeLabelScreen(
-    viewModel: ServiceViewModel,
+    viewModel: EditServiceViewModel,
 ) {
     val service = viewModel.uiState.collectAsState().value.service
-    val labelText = remember { mutableStateOf(service.labelText.orEmpty()) }
-    val labelTint = remember { mutableStateOf(service.labelBackgroundColor) }
+    val labelText = remember { mutableStateOf(service.labelText ?: service.name.take(2).uppercase()) }
+    val labelTint = remember { mutableStateOf(service.labelColor ?: Service.Tint.Default) }
     val backDispatcher = LocalBackDispatcher
 
     Scaffold(
         topBar = {
             TwTopAppBar(titleText = stringResource(id = R.string.customization_edit_label), actions = {
-                TextButton(
-                    onClick = {
-                        viewModel.updateLabel(labelText.value.uppercase(), labelTint.value ?: Tint.LightBlue)
-                        backDispatcher.onBackPressed()
-                    },
-                    enabled = labelText.value.isNotBlank() && labelText.value.isNotEmpty()
-                ) {
-                    Text(text = stringResource(id = R.string.commons__save))
+                TextButton(onClick = { backDispatcher.onBackPressed() }) {
+                    Text(text = stringResource(id = R.string.commons__done))
                 }
             })
         }
@@ -70,14 +66,32 @@ internal fun ChangeLabelScreen(
 
         Column(Modifier.padding(padding)) {
             Box(modifier = Modifier.padding(24.dp)) {
-                ServiceIcon(
-                    service = service.copy(
-                        labelText = labelText.value,
-                        labelBackgroundColor = labelTint.value,
-                    ),
-                    modifier = Modifier.size(64.dp),
-                    fontSize = 24.sp
-                )
+                Box(
+                    modifier = Modifier
+                        .size(64.dp)
+                        .background(shape = CircleShape, color = service.labelColor.asColor())
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .width(45.dp)
+                            .height(28.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(TwTheme.color.background)
+                            .align(Alignment.Center),
+                    )
+
+                    Text(
+                        text = labelText.value,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        textAlign = TextAlign.Center,
+                        style = TwTheme.typo.body3.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = dpToSp(dp = 22.dp),
+                            lineHeight = dpToSp(dp = 32.dp)
+                        ),
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
             }
 
             Box(modifier = Modifier.padding(24.dp)) {
@@ -85,17 +99,24 @@ internal fun ChangeLabelScreen(
                     value = labelText.value,
                     label = { Text(text = stringResource(id = R.string.tokens__label_characters_title)) },
                     maxChars = 2,
-                    onValueChange = { labelText.value = it.uppercase() },
+                    onValueChange = {
+                        labelText.value = it.uppercase()
+                        viewModel.updateLabel(labelText.value.uppercase(), labelTint.value)
+                    },
                     keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Characters),
                 )
             }
 
             LazyRow {
-                items(Tint.values().toList(), key = { it.name }) {
+                items(Service.Tint.values().toList(), key = { it.name }) {
                     Column(modifier = Modifier
                         .width(80.dp)
                         .clip(CircleShape)
-                        .clickable { labelTint.value = it }
+                        .clickable {
+                            labelTint.value = it
+
+                            viewModel.updateLabel(labelText.value.uppercase(), labelTint.value)
+                        }
                         .padding(vertical = 12.dp)) {
                         Box(
                             modifier = Modifier
@@ -103,7 +124,7 @@ internal fun ChangeLabelScreen(
                                 .align(Alignment.CenterHorizontally)
                                 .clip(CircleShape)
                                 .border(
-                                    BorderStroke(if (it == labelTint.value) 50.dp else 5.dp, SolidColor(it.toColor())), CircleShape
+                                    BorderStroke(if (it == labelTint.value) 50.dp else 5.dp, SolidColor(it.asColor())), CircleShape
                                 )
                         )
 
@@ -112,15 +133,15 @@ internal fun ChangeLabelScreen(
                         Text(
                             stringResource(
                                 id = when (it) {
-                                    Tint.Default -> com.twofasapp.resources.R.string.color__neutral
-                                    Tint.LightBlue -> com.twofasapp.resources.R.string.color__light_blue
-                                    Tint.Indigo -> com.twofasapp.resources.R.string.color__indigo
-                                    Tint.Purple -> com.twofasapp.resources.R.string.color__purple
-                                    Tint.Turquoise -> com.twofasapp.resources.R.string.color__turquoise
-                                    Tint.Green -> com.twofasapp.resources.R.string.color__green
-                                    Tint.Red -> com.twofasapp.resources.R.string.color__red
-                                    Tint.Orange -> com.twofasapp.resources.R.string.color__orange
-                                    Tint.Yellow -> com.twofasapp.resources.R.string.color__yellow
+                                    Service.Tint.Default -> R.string.color__neutral
+                                    Service.Tint.LightBlue -> R.string.color__light_blue
+                                    Service.Tint.Indigo -> R.string.color__indigo
+                                    Service.Tint.Purple -> R.string.color__purple
+                                    Service.Tint.Turquoise -> R.string.color__turquoise
+                                    Service.Tint.Green -> R.string.color__green
+                                    Service.Tint.Red -> R.string.color__red
+                                    Service.Tint.Orange -> R.string.color__orange
+                                    Service.Tint.Yellow -> R.string.color__yellow
                                 }
                             ),
                             style = MaterialTheme.typography.bodySmall.copy(color = TwTheme.color.onSurfacePrimary),

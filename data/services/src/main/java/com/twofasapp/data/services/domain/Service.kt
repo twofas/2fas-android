@@ -54,4 +54,38 @@ data class Service(
         Orange,
         Yellow;
     }
+
+    companion object {
+        val Empty = Service(
+            id = 0L,
+            serviceTypeId = null,
+            secret = "",
+            code = null,
+            name = "",
+            info = null,
+            authType = AuthType.TOTP,
+            link = null,
+            issuer = null,
+            period = null,
+            digits = null,
+            hotpCounter = null,
+            hotpCounterTimestamp = null,
+            algorithm = null,
+            groupId = null,
+            imageType = ImageType.IconCollection,
+            iconCollectionId = "",
+            iconLight = "",
+            iconDark = "",
+            labelText = null,
+            labelColor = null,
+            badgeColor = null,
+            tags = listOf(),
+            isDeleted = false,
+            updatedAt = 0L,
+            source = Source.Link,
+            assignedDomains = listOf(),
+            backupSyncStatus = BackupSyncStatus.SYNCED,
+
+            )
+    }
 }

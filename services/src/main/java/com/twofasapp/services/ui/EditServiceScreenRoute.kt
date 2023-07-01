@@ -6,8 +6,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.twofasapp.android.navigation.NavGraph
-import com.twofasapp.android.navigation.NavNode
 import com.twofasapp.services.ui.advancedsettings.AdvancedSettingsScreen
 import com.twofasapp.services.ui.changebrand.ChangeBrandScreen
 import com.twofasapp.services.ui.changelabel.ChangeLabelScreen
@@ -34,11 +32,11 @@ private sealed class Node(override val path: String) : com.twofasapp.android.nav
 }
 
 @Composable
-internal fun ServiceScreenRoute(
+internal fun EditServiceScreenRoute(
     navController: NavController,
     openSecurity: () -> Unit,
     openAuth: (successCallback: () -> Unit) -> Unit,
-    serviceViewModel: ServiceViewModel = koinViewModel(),
+    serviceViewModel: EditServiceViewModel = koinViewModel(),
 ) {
     val navHostController = rememberNavController()
 
@@ -47,7 +45,7 @@ internal fun ServiceScreenRoute(
 
             composable(Node.Main.route) {
 
-                ServiceScreen(
+                EditServiceScreen(
                     onBackClick = { navController.popBackStack() },
                     onAdvanceClick = { navHostController.navigate(Node.AdvancedSettings.route) },
                     onChangeBrandClick = { navHostController.navigate(Node.ChangeBrand.route) },
