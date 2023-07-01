@@ -13,14 +13,34 @@ class ServiceCodeGenerator(
     private val authenticator = OtpAuthenticator()
 
     fun check(secret: String): Boolean {
+        return check(
+            secret = secret,
+            digits = 6,
+            period = 30,
+            algorithm = Service.Algorithm.SHA1
+        )
+    }
+
+    fun check(
+        secret: String,
+        digits: Int,
+        period: Int,
+        algorithm: Service.Algorithm,
+    ): Boolean {
         return try {
             authenticator.generateOtpCode(
                 OtpData(
                     counter = timeProvider.realCurrentTime() / 30.toMillis(),
                     secret = secret,
-                    digits = 6,
-                    period = 30,
-                    algorithm = OtpData.Algorithm.SHA1,
+                    digits = digits,
+                    period = period,
+                    algorithm = when (algorithm) {
+                        Service.Algorithm.SHA1 -> OtpData.Algorithm.SHA1
+                        Service.Algorithm.SHA224 -> OtpData.Algorithm.SHA224
+                        Service.Algorithm.SHA256 -> OtpData.Algorithm.SHA256
+                        Service.Algorithm.SHA384 -> OtpData.Algorithm.SHA384
+                        Service.Algorithm.SHA512 -> OtpData.Algorithm.SHA512
+                    },
                 )
             )
             true

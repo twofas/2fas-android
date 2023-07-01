@@ -24,6 +24,7 @@ interface ServicesRepository {
     suspend fun recalculateTimeDelta()
     suspend fun isServiceExists(secret: String): Boolean
     fun isSecretValid(secret: String): Boolean
+    fun isServiceValid(link: OtpAuthLink): Boolean
     suspend fun addService(link: OtpAuthLink): Long
     suspend fun addService(service: Service): Long
     fun observeAddServiceAdvancedExpanded(): Flow<Boolean>

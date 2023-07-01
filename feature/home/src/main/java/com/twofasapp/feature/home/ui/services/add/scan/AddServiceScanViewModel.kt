@@ -64,7 +64,7 @@ internal class AddServiceScanViewModel(
                 return@launchScoped
             }
 
-            if (servicesRepository.isSecretValid(link.secret).not()) {
+            if (servicesRepository.isServiceValid(link).not()) {
                 uiState.update { it.copy(showInvalidQrDialog = true) }
                 return@launchScoped
             }
