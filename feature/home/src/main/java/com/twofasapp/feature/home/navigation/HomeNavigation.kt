@@ -6,19 +6,17 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.twofasapp.common.navigation.NavGraph
-import com.twofasapp.common.navigation.NavNode
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.feature.home.ui.notifications.NotificationsRoute
 import com.twofasapp.feature.home.ui.services.ServicesRoute
 import com.twofasapp.feature.home.ui.settings.SettingsRoute
 
-object HomeGraph : NavGraph {
+object HomeGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "home"
 }
 
-internal sealed class HomeNode(override val path: String) : NavNode {
-    override val graph: NavGraph = HomeGraph
+internal sealed class HomeNode(override val path: String) : com.twofasapp.android.navigation.NavNode {
+    override val graph: com.twofasapp.android.navigation.NavGraph = HomeGraph
 
     object Services : HomeNode("services")
     object Settings : HomeNode("settings")
@@ -84,8 +82,6 @@ fun NavGraphBuilder.homeNavigation(
 }
 
 interface HomeNavigationListener {
-    fun openAddManuallyService(activity: Activity)
-    fun openAddQrService(activity: Activity)
     fun openService(activity: Activity, serviceId: Long)
     fun openExternalImport()
     fun openBrowserExt()
@@ -94,4 +90,6 @@ interface HomeNavigationListener {
     fun openAppSettings()
     fun openTrash()
     fun openAbout()
+    fun openAddServiceModal()
+    fun openFocusServiceModal(id: Long)
 }

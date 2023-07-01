@@ -37,6 +37,12 @@ internal class ServicesLocalSource(
         onBufferOverflow = BufferOverflow.DROP_OLDEST,
     )
 
+    private val addServiceAdvancedExpanded: MutableSharedFlow<Boolean> = MutableSharedFlow(
+        replay = 0,
+        extraBufferCapacity = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    )
+
     private fun log(msg: String) {
         Timber.tag("ServicesDao").i(msg)
     }
@@ -65,13 +71,26 @@ internal class ServicesLocalSource(
         return recentlyAddedServiceFlow.filterNotNull()
     }
 
+    suspend fun insertService(service: Service): Long {
+        return dao.insert(service.asEntity())
+    }
+
     suspend fun getService(id: Long): Service {
         return dao.select(id).asDomain()
+    }
+
+    suspend fun getServiceBySecret(secret: String): Service? {
+        return dao.selectBySecret(secret)?.asDomain()
     }
 
     suspend fun deleteService(id: Long) {
         log("Delete service $id")
         dao.delete(id)
+    }
+
+    suspend fun deleteService(secret: String) {
+        log("Delete service")
+        return dao.deleteBySecret(secret)
     }
 
     suspend fun updateService(service: Service) {
@@ -117,14 +136,9 @@ internal class ServicesLocalSource(
         saveOrder(newOrder)
     }
 
-    fun pushRecentlyAddedService(id: Long, source: RecentlyAddedService.Source) {
+    fun pushRecentlyAddedService(recentlyAddedService: RecentlyAddedService) {
         GlobalScope.launch {
-            recentlyAddedServiceFlow.tryEmit(
-                RecentlyAddedService(
-                    service = getService(id),
-                    source = source,
-                )
-            )
+            recentlyAddedServiceFlow.emit(recentlyAddedService)
         }
     }
 
@@ -156,6 +170,14 @@ internal class ServicesLocalSource(
 
     suspend fun cleanUpGroups(groupIds: List<String>) {
         dao.cleanUpGroups(groupIds)
+    }
+
+    fun observeAddServiceAdvancedExpanded(): Flow<Boolean> {
+        return addServiceAdvancedExpanded
+    }
+
+     fun pushAddServiceAdvancedExpanded(expanded: Boolean) {
+        addServiceAdvancedExpanded.tryEmit(expanded)
     }
 //
 //    fun select(): Single<List<ServiceDto>> {

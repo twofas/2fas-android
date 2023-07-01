@@ -12,4 +12,5 @@ dependencies {
     implementation(project(":core:di"))
     implementation(project(":prefs"))
     implementation(project(":serialization"))
+    implementation(libs.timber)
 }

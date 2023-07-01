@@ -29,6 +29,7 @@ fun InputDialog(
     enabled: Boolean = true,
     positive: String? = null,
     negative: String? = null,
+    positiveEnabled: ((String) -> Boolean)? = null,
     onPositiveClick: ((String) -> Unit)? = null,
     onNegativeClick: (() -> Unit)? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -42,11 +43,11 @@ fun InputDialog(
 
     var input by remember { mutableStateOf(prefill.orEmpty()) }
 
-    val positiveEnabled by remember {
+    val positiveEnabledState by remember {
         derivedStateOf {
             when {
                 input.trim().length !in minLength..maxLength -> false
-                else -> true
+                else -> positiveEnabled?.invoke(input) ?: true
             }
         }
     }
@@ -59,7 +60,7 @@ fun InputDialog(
         negative = negative,
         onPositiveClick = { onPositiveClick?.invoke(input.trim()) },
         onNegativeClick = onNegativeClick,
-        positiveEnabled = positiveEnabled,
+        positiveEnabled = positiveEnabledState,
         negativeEnabled = true,
     ) {
         Spacer(modifier = Modifier.height(8.dp))

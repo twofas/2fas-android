@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -74,8 +75,10 @@ internal fun ChangeBrandScreen(
             ToolbarWithSearch(
                 title = stringResource(id = R.string.customization_change_brand),
                 searchHint = stringResource(id = R.string.commons__search),
-                onSearchValueChanged = { brandViewModel.applySearchFilter(it) }
-            ) { backDispatcher.onBackPressed() }
+                onSearchValueChanged = { brandViewModel.applySearchFilter(it) },
+            ) {
+                backDispatcher.onBackPressed()
+            }
         }
     ) { padding ->
         if (state.sections.isEmpty()) {
@@ -94,7 +97,8 @@ internal fun ChangeBrandScreen(
         LazyColumn(
             state = listState, modifier = Modifier
                 .fillMaxWidth()
-                .padding(padding)
+                .imePadding()
+                .padding(top = padding.calculateTopPadding())
         ) {
             // Icon order
             item(key = "icon_order") { SectionHeader(header = stringResource(id = R.string.tokens__order_icon_title)) }

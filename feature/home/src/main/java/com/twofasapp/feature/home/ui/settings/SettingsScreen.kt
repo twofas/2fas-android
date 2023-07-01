@@ -131,37 +131,41 @@ private fun SettingsScreen(
                     horizontalArrangement = Arrangement.spacedBy(14.dp, Alignment.CenterHorizontally),
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_youtube),
+                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_discord),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(48.dp)
-                            .clip(CircleShape)
-                            .clickable { uriHandler.openSafely(TwLocale.links.youtube, activity) }
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_twitter),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(48.dp)
-                            .clip(CircleShape)
-                            .clickable { uriHandler.openSafely(TwLocale.links.twitter, activity) }
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_discord),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(48.dp)
+                            .size(52.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.discord, activity) }
+                            .padding(12.dp),
+                    )
+                    Image(
+                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_youtube),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(52.dp)
+                            .clip(CircleShape)
+                            .clickable { uriHandler.openSafely(TwLocale.links.youtube, activity) }
+                            .padding(12.dp),
+                    )
+                    Image(
+                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_twitter),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(52.dp)
+                            .clip(CircleShape)
+                            .clickable { uriHandler.openSafely(TwLocale.links.twitter, activity) }
+                            .padding(12.dp),
                     )
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_github),
+                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_github),
                         contentDescription = null,
                         tint = TwTheme.color.onSurfacePrimary,
                         modifier = Modifier
-                            .size(48.dp)
+                            .size(52.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.github, activity) }
+                            .padding(12.dp),
                     )
                 }
             }

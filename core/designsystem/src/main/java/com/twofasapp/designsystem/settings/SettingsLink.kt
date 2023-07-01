@@ -36,7 +36,7 @@ fun SettingsLink(
     textColor: Color = TwTheme.color.onSurfacePrimary,
     textColorSecondary: Color = TwTheme.color.onSurfaceSecondary,
     endContent: (@Composable () -> Unit)? = null,
-    showEmptySpaceWhenIconMissing: Boolean = true,
+    showEmptySpaceWhenNoIcon: Boolean = true,
     external: Boolean = false,
     alignCenterIcon: Boolean = true,
     onClick: (() -> Unit)? = null
@@ -55,7 +55,7 @@ fun SettingsLink(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(icon, image, showEmptySpaceWhenIconMissing)
+            Image(icon, image, showEmptySpaceWhenNoIcon)
 
             Spacer(Modifier.size(24.dp))
 

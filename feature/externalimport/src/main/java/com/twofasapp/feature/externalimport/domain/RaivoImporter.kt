@@ -3,7 +3,7 @@ package com.twofasapp.feature.externalimport.domain
 import android.content.Context
 import android.net.Uri
 import com.twofasapp.core.analytics.AnalyticsService
-import com.twofasapp.prefs.model.OtpAuthLink
+import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.serialization.JsonSerializer
 import com.twofasapp.services.domain.ConvertOtpLinkToService
@@ -80,7 +80,7 @@ internal class RaivoImporter(
     }
 
     private fun parseService(entry: Entry): ServiceDto {
-        val otpLink = OtpAuthLink(
+        val otpLink = com.twofasapp.parsers.domain.OtpAuthLink(
             type = entry.kind.uppercase(),
             label = entry.account,
             secret = entry.secret,
@@ -97,10 +97,10 @@ internal class RaivoImporter(
     private fun parseParams(entry: Entry): Map<String, String> {
         val params = mutableMapOf<String, String>()
 
-        entry.algorithm?.let { params[OtpAuthLink.ALGORITHM_PARAM] = it }
-        entry.timer?.let { params[OtpAuthLink.PERIOD_PARAM] = it }
-        entry.digits?.let { params[OtpAuthLink.DIGITS_PARAM] = it }
-        entry.counter?.let { params[OtpAuthLink.COUNTER] = it }
+        entry.algorithm?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.ALGORITHM_PARAM] = it }
+        entry.timer?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.PERIOD_PARAM] = it }
+        entry.digits?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.DIGITS_PARAM] = it }
+        entry.counter?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.COUNTER] = it }
 
         return params
     }

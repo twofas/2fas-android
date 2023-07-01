@@ -1,5 +1,6 @@
 package com.twofasapp.buildlogic.extension
 
+import com.android.build.api.dsl.AndroidResources
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.BuildFeatures
 import com.android.build.api.dsl.BuildType
@@ -13,7 +14,7 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.findByType
 import org.gradle.kotlin.dsl.getByType
 
-internal fun Project.getBuildExtension(): CommonExtension<out BuildFeatures, out BuildType, out DefaultConfig, out ProductFlavor>? =
+internal fun Project.getBuildExtension(): CommonExtension<out BuildFeatures, out BuildType, out DefaultConfig, out ProductFlavor, out AndroidResources>? =
     extensions.findByType<ApplicationExtension>() ?: extensions.findByType<LibraryExtension>()
 
 internal val Project.libs: VersionCatalog

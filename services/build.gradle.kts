@@ -33,6 +33,7 @@ dependencies {
     implementation(project(":spanner"))
     implementation(project(":data:services"))
     implementation(project(":data:session"))
+    implementation(project(":core:android"))
 
     implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.rxJava)

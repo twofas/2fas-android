@@ -8,6 +8,7 @@ import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.services.domain.ConvertOtpLinkToService
@@ -90,6 +91,12 @@ internal class MainViewModel(
                 deeplinkHandler.setQueuedDeeplink(null)
             }
         }
+
+        launchScoped {
+            servicesRepository.observeAddServiceAdvancedExpanded().collect { expanded ->
+                uiState.update { it.copy(addServiceAdvancedExpanded = expanded) }
+            }
+        }
     }
 
     @SuppressLint("CheckResult")
@@ -113,5 +120,13 @@ internal class MainViewModel(
 
     fun browserExtRequestHandled(browserExtRequest: BrowserExtRequest) {
         launchScoped { browserExtRepository.deleteTokenRequest(browserExtRequest.request.requestId) }
+    }
+
+    fun serviceAdded(recentlyAddedService: RecentlyAddedService) {
+        servicesRepository.pushRecentlyAddedService(recentlyAddedService)
+    }
+
+    fun toggleAdvanceExpanded() {
+        launchScoped { servicesRepository.pushAddServiceAdvancedExpanded(uiState.value.addServiceAdvancedExpanded.not()) }
     }
 }

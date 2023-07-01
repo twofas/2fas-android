@@ -3,9 +3,6 @@ package com.twofasapp
 import com.twofasapp.backup.ui.export.ExportBackupActivity
 import com.twofasapp.backup.ui.export.ExportBackupContract
 import com.twofasapp.backup.ui.export.ExportBackupPresenter
-import com.twofasapp.features.addserviceqr.AddServiceQrActivity
-import com.twofasapp.features.addserviceqr.AddServiceQrContract
-import com.twofasapp.features.addserviceqr.AddServiceQrPresenter
 import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.features.backup.BackupContract
 import com.twofasapp.features.backup.BackupPresenter
@@ -35,27 +32,6 @@ val activityScopeModule = module {
 
     factory<ScopedNavigator> { ActivityScopedNavigator(get(), get()) }
 
-    activityScope<AddServiceQrActivity> {
-        scoped<AddServiceQrContract.Presenter> {
-            AddServiceQrPresenter(
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-            )
-        }
-    }
     activityScope<BackupActivity> {
         scopedOf(::BackupPresenter) { bind<BackupContract.Presenter>() }
     }

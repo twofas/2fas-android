@@ -2,6 +2,7 @@ package com.twofasapp.design.dialogs
 
 import android.content.Context
 import android.text.InputType
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -110,6 +111,7 @@ class SimpleInputDialog(private val context: Context) {
 
             if (isPassword) {
                 binding.simpleInputLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
+                binding.simpleInputEditText.transformationMethod = PasswordTransformationMethod.getInstance()
             } else {
                 binding.simpleInputLayout.endIconMode = TextInputLayout.END_ICON_NONE
             }

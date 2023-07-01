@@ -150,7 +150,7 @@ private fun AppSettingsScreen(
                 onDismissRequest = { showConfirmDisableBackupNotice = false },
                 title = TwLocale.strings.settingsShowBackupNotice,
                 body = TwLocale.strings.settingsShowBackupNoticeConfirmBody,
-                onConfirm = { onShowBackupNoticeToggle() }
+                onPositive = { onShowBackupNoticeToggle() }
             )
         }
     }

@@ -13,6 +13,7 @@ dependencies {
     implementation(project(":core:di"))
     implementation(project(":core:common"))
     implementation(project(":core:locale"))
+    implementation(project(":core:android"))
     implementation(project(":core:designsystem"))
     implementation(project(":data:session"))
     implementation(project(":resources"))

@@ -15,9 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
@@ -34,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -49,7 +47,6 @@ import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.ModalBottomSheet
 import com.twofasapp.designsystem.common.RequestPermission
 import com.twofasapp.designsystem.common.TwEmptyScreen
 import com.twofasapp.designsystem.common.TwOutlinedButton
@@ -71,9 +68,6 @@ import com.twofasapp.feature.home.ui.services.component.ServicesFab
 import com.twofasapp.feature.home.ui.services.component.ServicesProgress
 import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
 import com.twofasapp.feature.home.ui.services.component.SyncReminder
-import com.twofasapp.feature.home.ui.services.modal.AddServiceModal
-import com.twofasapp.feature.home.ui.services.modal.FocusServiceModal
-import com.twofasapp.feature.home.ui.services.modal.ModalType
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.delay
@@ -99,7 +93,6 @@ internal fun ServicesRoute(
         listener = listener,
         bottomBarListener = bottomBarListener,
         onEventConsumed = { viewModel.consumeEvent(it) },
-        onFabClick = { viewModel.toggleAddMenu() },
         onExternalImportClick = { listener.openExternalImport() },
         onEditModeChange = { viewModel.toggleEditMode() },
         onToggleGroupExpand = { viewModel.toggleGroup(it) },
@@ -115,18 +108,17 @@ internal fun ServicesRoute(
         onSearchFocusChange = { viewModel.searchFocused(it) },
         onOpenBackupClick = { listener.openBackup(activity) },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
-        onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
+        onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) }
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
 @Composable
 private fun ServicesScreen(
     uiState: ServicesUiState,
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
     onEventConsumed: (ServicesStateEvent) -> Unit,
-    onFabClick: () -> Unit = {},
     onExternalImportClick: () -> Unit = {},
     onEditModeChange: () -> Unit = {},
     onToggleGroupExpand: (String?) -> Unit = {},
@@ -146,6 +138,7 @@ private fun ServicesScreen(
 ) {
 
     val focusRequester = remember { FocusRequester() }
+    val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
     var showAddGroupDialog by remember { mutableStateOf(false) }
     var showEditGroupDialog by remember { mutableStateOf(false) }
@@ -156,8 +149,6 @@ private fun ServicesScreen(
     var clickedGroup by remember { mutableStateOf<Group?>(null) }
     val topAppBarState = rememberTopAppBarState()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
-    val modalState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
-    var modalType by remember { mutableStateOf<ModalType>(ModalType.AddService) }
     val activity = LocalContext.currentActivity
     val scope = rememberCoroutineScope()
 
@@ -202,20 +193,38 @@ private fun ServicesScreen(
 
     uiState.events.firstOrNull()?.let {
         when (it) {
-            ServicesStateEvent.ShowAddServiceModal -> {
-                modalType = ModalType.AddService
-                scope.launch { modalState.show() }
-            }
-
             ServicesStateEvent.ShowQrFromGalleryDialog -> {
                 showQrFromGalleryDialog = true
             }
 
-            is ServicesStateEvent.ShowServiceAddedModal -> {
-                modalType = ModalType.FocusService(it.id, true)
-                scope.launch { modalState.show() }
+            is ServicesStateEvent.ServiceAdded -> {
+                val serviceId = it.id
+                val service = uiState.services.firstOrNull { it.id == serviceId }
+
+                if (service != null) {
+                    if (uiState.groups.firstOrNull { it.id == service.groupId }?.isExpanded == true) {
+                        scope.launch {
+                            val serviceIndex = uiState.items.indexOfFirst {
+                                it is ServicesListItem.ServiceItem && it.service.id == serviceId
+                            }
+
+                            if (serviceIndex < 0) {
+                                return@launch
+                            }
+
+                            listState.animateScrollToItem(serviceIndex)
+                            recentlyAddedService = serviceId
+
+                            serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(0))
+                            serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(2000, easing = EaseOut))
+
+                            recentlyAddedService = null
+                        }
+                    }
+                }
             }
         }
+
         onEventConsumed(it)
     }
 
@@ -223,6 +232,12 @@ private fun ServicesScreen(
         if (uiState.searchFocused) {
             awaitFrame()
             focusRequester.requestFocus()
+        }
+    }
+
+    LaunchedEffect(uiState.searchFocused) {
+        if (uiState.searchFocused.not()) {
+            focusManager.clearFocus()
         }
     }
 
@@ -237,286 +252,210 @@ private fun ServicesScreen(
     }
 
     BackHandler(
-        enabled = uiState.isInEditMode || modalState.isVisible || uiState.searchFocused
+        enabled = uiState.isInEditMode || uiState.searchFocused
     ) {
         when {
-            modalState.isVisible -> scope.launch { modalState.hide() }
             uiState.isInEditMode -> onEditModeChange()
             uiState.searchQuery.isNotEmpty() -> onSearchQueryChange("")
             uiState.searchFocused -> onSearchFocusChange(false)
         }
     }
 
-    ModalBottomSheet(
-        onDismissRequest = {
-            if (modalType is ModalType.FocusService && (modalType as ModalType.FocusService).isRecentlyAdded) {
-                val id = (modalType as ModalType.FocusService).id
-                val service = uiState.services.firstOrNull { it.id == id } ?: return@ModalBottomSheet
-
-                if (uiState.groups.firstOrNull { it.id == service.groupId }?.isExpanded == true) {
-                    scope.launch {
-
-                        val serviceIndex = uiState.items.indexOfFirst {
-                            it is ServicesListItem.ServiceItem && it.service.id == id
-                        }
-
-                        if (serviceIndex < 0) {
-                            return@launch
-                        }
-
-                        listState.animateScrollToItem(serviceIndex)
-                        recentlyAddedService = id
-
-                        serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(0))
-                        serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(2000, easing = EaseOut))
-
-                        recentlyAddedService = null
-                    }
-                }
-            }
+    Scaffold(
+        bottomBar = { BottomBar(0, bottomBarListener) },
+        topBar = {
+            ServicesAppBar(
+                query = uiState.searchQuery,
+                isInEditMode = uiState.isInEditMode,
+                isSearchFocused = uiState.searchFocused,
+                onEditModeChange = onEditModeChange,
+                scrollBehavior = scrollBehavior,
+                onSortClick = { showSortDialog = true },
+                onAddGroupClick = { showAddGroupDialog = true },
+                onSearchQueryChange = onSearchQueryChange,
+                onSearchFocusChange = onSearchFocusChange,
+                focusRequester = focusRequester,
+            )
         },
-        sheetState = modalState,
-        sheetContent = {
-            when (modalType) {
-                is ModalType.AddService ->
-                    AddServiceModal(
-                        onAddManuallyClick = {
-                            scope.launch {
-                                modalState.hide()
-                                listener.openAddManuallyService(activity)
-                            }
-                        },
-                        onScanQrClick = {
-                            scope.launch {
-                                modalState.hide()
-                                askForPermission = true
-                            }
-                        }
+        floatingActionButton = {
+            ServicesFab(
+                isVisible = uiState.isLoading.not(),
+                isExtendedVisible = uiState.totalServices == 0,
+                isNormalVisible = reorderableState.listState.isScrollingUp(),
+                onClick = { askForPermission = true },
+            )
+        },
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+    ) { padding ->
+
+        LazyColumn(
+            state = reorderableState.listState,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(TwTheme.color.background)
+                .padding(padding)
+                .reorderable(reorderableState),
+            contentPadding = PaddingValues(top = 8.dp, bottom = 48.dp),
+            userScrollEnabled = uiState.services.isNotEmpty(),
+        ) {
+            if (uiState.isLoading) {
+                listItem(ServicesListItem.Loader) {
+                    ServicesProgress(
+                        Modifier
+                            .fillParentMaxSize()
+                            .animateItemPlacement()
                     )
-
-                is ModalType.FocusService -> {
-                    val id = (modalType as ModalType.FocusService).id
-                    val service = uiState.getService(id)
-                    service?.asState()?.let {
-                        FocusServiceModal(
-                            serviceState = it,
-                            showNextCode = uiState.appSettings.showNextCode,
-                            onEditClick = {
-                                scope.launch {
-                                    modalState.hide()
-                                    listener.openService(activity, (modalType as ModalType.FocusService).id)
-                                }
-                            },
-                            onCopyClick = {
-                                it.copyToClipboard(activity, uiState.appSettings.showNextCode)
-                            },
-                            onIncrementCounterClick = {
-                                onIncrementHotpCounterClick(service)
-                            }
-                        )
-                    }
                 }
+                return@LazyColumn
             }
-        }
-    ) {
-        Scaffold(
-            bottomBar = { BottomBar(0, bottomBarListener) },
-            topBar = {
-                ServicesAppBar(
-                    query = uiState.searchQuery,
-                    isInEditMode = uiState.isInEditMode,
-                    isSearchFocused = uiState.searchFocused,
-                    onEditModeChange = onEditModeChange,
-                    scrollBehavior = scrollBehavior,
-                    onSortClick = { showSortDialog = true },
-                    onAddGroupClick = { showAddGroupDialog = true },
-                    onSearchQueryChange = onSearchQueryChange,
-                    onSearchFocusChange = onSearchFocusChange,
-                    focusRequester = focusRequester,
-                )
-            },
-            floatingActionButton = {
-                ServicesFab(
-                    isVisible = uiState.isLoading.not(),
-                    isExtendedVisible = uiState.totalServices == 0,
-                    isNormalVisible = reorderableState.listState.isScrollingUp(),
-                    onClick = onFabClick,
-                )
-            },
-            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
-        ) { padding ->
 
-            LazyColumn(
-                state = reorderableState.listState,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(TwTheme.color.background)
-                    .padding(padding)
-                    .reorderable(reorderableState),
-                contentPadding = PaddingValues(top = 8.dp, bottom = 48.dp),
-                userScrollEnabled = uiState.services.isNotEmpty(),
-            ) {
-                if (uiState.isLoading) {
-                    listItem(ServicesListItem.Loader) {
-                        ServicesProgress(
-                            Modifier
-                                .fillParentMaxSize()
-                                .animateItemPlacement()
-                        )
-                    }
-                    return@LazyColumn
+            if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
+                listItem(ServicesListItem.Empty) {
+                    TwEmptyScreen(
+                        body = TwLocale.strings.servicesEmptyBody,
+                        image = painterResource(id = R.drawable.img_services_empty),
+                        additionalContent = {
+                            TwOutlinedButton(
+                                text = TwLocale.strings.servicesEmptyImportCta,
+                                onClick = onExternalImportClick,
+                            )
+                        },
+                        modifier = Modifier
+                            .fillParentMaxSize()
+                            .animateItemPlacement()
+                    )
                 }
 
-                if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
-                    listItem(ServicesListItem.Empty) {
-                        TwEmptyScreen(
-                            body = TwLocale.strings.servicesEmptyBody,
-                            image = painterResource(id = R.drawable.img_services_empty),
-                            additionalContent = {
-                                TwOutlinedButton(
-                                    text = TwLocale.strings.servicesEmptyImportCta,
-                                    onClick = onExternalImportClick,
-                                )
-                            },
-                            modifier = Modifier
-                                .fillParentMaxSize()
-                                .animateItemPlacement()
-                        )
-                    }
+                return@LazyColumn
+            }
 
-                    return@LazyColumn
+            if (uiState.totalServices > 0 && uiState.totalGroups == 1 && uiState.services.isEmpty()) {
+                listItem(ServicesListItem.EmptySearch) {
+                    TwEmptyScreen(
+                        title = TwLocale.strings.servicesEmptySearch,
+                        body = TwLocale.strings.servicesEmptySearchBody,
+                        image = painterResource(id = R.drawable.img_services_empty_search),
+                        modifier = Modifier
+                            .fillParentMaxSize()
+                            .animateItemPlacement(),
+                    )
                 }
 
-                if (uiState.totalServices > 0 && uiState.totalGroups == 1 && uiState.services.isEmpty()) {
-                    listItem(ServicesListItem.EmptySearch) {
-                        TwEmptyScreen(
-                            title = TwLocale.strings.servicesEmptySearch,
-                            body = TwLocale.strings.servicesEmptySearchBody,
-                            image = painterResource(id = R.drawable.img_services_empty_search),
-                            modifier = Modifier
-                                .fillParentMaxSize()
-                                .animateItemPlacement(),
-                        )
+                return@LazyColumn
+            }
+
+            reorderableData.value.forEach { item ->
+
+                when (item) {
+                    ServicesListItem.SyncNoticeBar -> {
+                        listItem(item) {
+                            SyncNoticeBar(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 8.dp),
+                                onOpenBackupClick = onOpenBackupClick,
+                            )
+                        }
                     }
 
-                    return@LazyColumn
-                }
-
-                reorderableData.value.forEach { item ->
-
-                    when (item) {
-                        ServicesListItem.SyncNoticeBar -> {
-                            listItem(item) {
-                                SyncNoticeBar(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(vertical = 8.dp),
-                                    onOpenBackupClick = onOpenBackupClick,
-                                )
-                            }
+                    ServicesListItem.SyncReminder -> {
+                        listItem(item) {
+                            SyncReminder(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 16.dp),
+                                onOpenBackupClick = onOpenBackupClick,
+                                onDismissClick = onDismissSyncReminderClick,
+                            )
                         }
+                    }
 
-                        ServicesListItem.SyncReminder -> {
-                            listItem(item) {
-                                SyncReminder(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(vertical = 16.dp),
-                                    onOpenBackupClick = onOpenBackupClick,
-                                    onDismissClick = onDismissSyncReminderClick,
-                                )
-                            }
-                        }
+                    is ServicesListItem.GroupItem -> {
+                        val group = item.group
 
-                        is ServicesListItem.GroupItem -> {
-                            val group = item.group
-
-                            listItem(item) {
-                                ServicesGroup(
-                                    id = group.id,
-                                    name = group.name ?: TwLocale.strings.servicesMyTokens,
-                                    count = uiState.services.count { it.groupId == group.id },
-                                    expanded = group.isExpanded,
-                                    editMode = uiState.isInEditMode,
-                                    modifier = Modifier
-                                        .animateContentSize()
-                                        .then(
-                                            if (isDragging) {
-                                                Modifier
-                                            } else {
-                                                Modifier.animateItemPlacement()
-                                            }
-                                        ),
-                                    onClick = { onToggleGroupExpand(group.id) },
-                                    onExpandClick = { onToggleGroupExpand(group.id) },
-                                    onMoveUpClick = { onMoveUpGroup(group.id.orEmpty()) },
-                                    onMoveDownClick = { onMoveDownGroup(group.id.orEmpty()) },
-                                    onEditClick = {
-                                        clickedGroup = group
-                                        showEditGroupDialog = true
-                                    },
-                                    onDeleteClick = {
-                                        clickedGroup = group
-                                        showDeleteGroupDialog = true
-                                    },
-                                )
-                            }
-                        }
-
-                        is ServicesListItem.ServiceItem -> {
-                            val service = item.service
-
-                            listItem(item) {
-                                ReorderableItem(
-                                    state = reorderableState,
-                                    key = item.key,
-                                    modifier = Modifier
-                                        .animateContentSize()
-                                        .then(
-                                            if (isDragging) {
-                                                Modifier
-                                            } else {
-                                                Modifier.animateItemPlacement()
-                                            }
-                                        ),
-                                ) { isDragging ->
-                                    val state = service.asState()
-
-                                    DsService(
-                                        state = state,
-                                        modifier = Modifier,
-                                        style = when (uiState.appSettings.servicesStyle) {
-                                            ServicesStyle.Default -> ServiceStyle.Default
-                                            ServicesStyle.Compact -> ServiceStyle.Compact
-                                        },
-                                        editMode = uiState.isInEditMode,
-                                        showNextCode = uiState.appSettings.showNextCode,
-                                        containerColor = if (recentlyAddedService == service.id) {
-                                            serviceContainerColorBlinking.value
+                        listItem(item) {
+                            ServicesGroup(
+                                id = group.id,
+                                name = group.name ?: TwLocale.strings.servicesMyTokens,
+                                count = uiState.services.count { it.groupId == group.id },
+                                expanded = group.isExpanded,
+                                editMode = uiState.isInEditMode,
+                                modifier = Modifier
+                                    .animateContentSize()
+                                    .then(
+                                        if (isDragging) {
+                                            Modifier
                                         } else {
-                                            serviceContainerColor
-                                        },
-                                        dragHandleVisible = uiState.appSettings.servicesSort == ServicesSort.Manual,
-                                        dragModifier = Modifier.detectReorder(state = reorderableState),
-                                        onClick = {
-                                            state.copyToClipboard(activity, uiState.appSettings.showNextCode)
-                                        },
-                                        onLongClick = {
-                                            keyboardController?.hide()
-                                            scope.launch {
-                                                modalType = ModalType.FocusService(service.id, false)
-                                                modalState.show()
-                                            }
+                                            Modifier.animateItemPlacement()
                                         }
-                                    ) {
+                                    ),
+                                onClick = { onToggleGroupExpand(group.id) },
+                                onExpandClick = { onToggleGroupExpand(group.id) },
+                                onMoveUpClick = { onMoveUpGroup(group.id.orEmpty()) },
+                                onMoveDownClick = { onMoveDownGroup(group.id.orEmpty()) },
+                                onEditClick = {
+                                    clickedGroup = group
+                                    showEditGroupDialog = true
+                                },
+                                onDeleteClick = {
+                                    clickedGroup = group
+                                    showDeleteGroupDialog = true
+                                },
+                            )
+                        }
+                    }
+
+                    is ServicesListItem.ServiceItem -> {
+                        val service = item.service
+
+                        listItem(item) {
+                            ReorderableItem(
+                                state = reorderableState,
+                                key = item.key,
+                                modifier = Modifier
+                                    .animateContentSize()
+                                    .then(
+                                        if (isDragging) {
+                                            Modifier
+                                        } else {
+                                            Modifier.animateItemPlacement()
+                                        }
+                                    ),
+                            ) { isDragging ->
+                                val state = service.asState()
+
+                                DsService(
+                                    state = state,
+                                    modifier = Modifier,
+                                    style = when (uiState.appSettings.servicesStyle) {
+                                        ServicesStyle.Default -> ServiceStyle.Default
+                                        ServicesStyle.Compact -> ServiceStyle.Compact
+                                    },
+                                    editMode = uiState.isInEditMode,
+                                    showNextCode = uiState.appSettings.showNextCode,
+                                    containerColor = if (recentlyAddedService == service.id) {
+                                        serviceContainerColorBlinking.value
+                                    } else {
+                                        serviceContainerColor
+                                    },
+                                    dragHandleVisible = uiState.appSettings.servicesSort == ServicesSort.Manual,
+                                    dragModifier = Modifier.detectReorder(state = reorderableState),
+                                    onClick = {
+                                        state.copyToClipboard(activity, uiState.appSettings.showNextCode)
+                                    },
+                                    onLongClick = {
+                                        keyboardController?.hide()
+                                        listener.openFocusServiceModal(service.id)
+                                    },
+                                    onIncrementCounterClick = {
                                         onIncrementHotpCounterClick(service)
                                     }
-                                }
+                                )
                             }
                         }
-
-                        else -> Unit
                     }
+
+                    else -> Unit
                 }
             }
         }
@@ -560,7 +499,7 @@ private fun ServicesScreen(
             onDismissRequest = { showDeleteGroupDialog = false },
             title = TwLocale.strings.commonDelete,
             body = TwLocale.strings.groupsDelete,
-            onConfirm = { onDeleteGroup(clickedGroup?.id.orEmpty()) },
+            onPositive = { onDeleteGroup(clickedGroup?.id.orEmpty()) },
         )
     }
 
@@ -600,7 +539,7 @@ private fun ServicesScreen(
             permission = Manifest.permission.CAMERA,
             onGranted = {
                 askForPermission = false
-                listener.openAddQrService(activity)
+                listener.openAddServiceModal()
             },
             onDismissRequest = { askForPermission = false },
             rationaleTitle = TwLocale.strings.permissionCameraTitle,

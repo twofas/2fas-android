@@ -37,6 +37,7 @@ object TwIcons {
     val Delete @Composable get() = painterResource(R.drawable.ic_delete)
     val Extension @Composable get() = painterResource(R.drawable.ic_extension)
     val Eye @Composable get() = painterResource(R.drawable.ic_eye)
+    val EyeSlash @Composable get() = painterResource(R.drawable.ic_eye_slash)
     val Favorite @Composable get() = painterResource(R.drawable.ic_favorite)
     val Download @Composable get() = painterResource(R.drawable.ic_download)
     val Info @Composable get() = painterResource(R.drawable.ic_info)
@@ -61,4 +62,6 @@ object TwIcons {
     val ListStyle @Composable get() = painterResource(R.drawable.ic_list_style)
     val IncrementHotp @Composable get() = painterResource(R.drawable.ic_increment_hotp)
     val Screenshot @Composable get() = painterResource(R.drawable.ic_screenshot)
+    val Keyboard @Composable get() = painterResource(R.drawable.ic_keyboard)
+    val Panorama @Composable get() = painterResource(R.drawable.ic_panorama)
 }

@@ -3,7 +3,7 @@ package com.twofasapp.feature.externalimport.domain
 import android.content.Context
 import android.net.Uri
 import com.twofasapp.core.analytics.AnalyticsService
-import com.twofasapp.prefs.model.OtpAuthLink
+import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.serialization.JsonSerializer
 import com.twofasapp.services.domain.ConvertOtpLinkToService
@@ -96,7 +96,7 @@ internal class AegisImporter(
     }
 
     private fun parseService(entry: Entry): ServiceDto {
-        val otpLink = OtpAuthLink(
+        val otpLink = com.twofasapp.parsers.domain.OtpAuthLink(
             type = entry.type.uppercase(),
             label = entry.name,
             secret = entry.info.secret,
@@ -113,10 +113,10 @@ internal class AegisImporter(
     private fun parseParams(entry: Entry): Map<String, String> {
         val params = mutableMapOf<String, String>()
 
-        entry.info.algo?.let { params[OtpAuthLink.ALGORITHM_PARAM] = it }
-        entry.info.period?.let { params[OtpAuthLink.PERIOD_PARAM] = it.toString() }
-        entry.info.digits?.let { params[OtpAuthLink.DIGITS_PARAM] = it.toString() }
-        entry.info.counter?.let { params[OtpAuthLink.COUNTER] = it.toString() }
+        entry.info.algo?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.ALGORITHM_PARAM] = it }
+        entry.info.period?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.PERIOD_PARAM] = it.toString() }
+        entry.info.digits?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.DIGITS_PARAM] = it.toString() }
+        entry.info.counter?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.COUNTER] = it.toString() }
 
         return params
     }

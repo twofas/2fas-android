@@ -4,8 +4,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.twofasapp.common.navigation.NavGraph
-import com.twofasapp.common.navigation.NavNode
+import com.twofasapp.android.navigation.NavGraph
+import com.twofasapp.android.navigation.NavNode
 import com.twofasapp.security.ui.changepin.ChangePinScreen
 import com.twofasapp.security.ui.disablepin.DisablePinScreen
 import com.twofasapp.security.ui.security.SecurityScreen

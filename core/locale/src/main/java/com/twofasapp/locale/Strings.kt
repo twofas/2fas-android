@@ -181,6 +181,14 @@ class Strings(c: Context) {
     val addScanServiceExistsPositiveCta = c.getString(R.string.commons__yes)
     val addScanServiceExistsNegativeCta = c.getString(R.string.commons__no)
 
+    val addScanErrorTitle = c.getString(R.string.tokens__qr_does_not_work)
+    val addScanErrorBody = c.getString(R.string.tokens__qr_point_and_scan_again)
+    val addScanErrorPositiveCta = c.getString(R.string.tokens__try_again)
+
+    val addGalleryErrorTitle = c.getString(R.string.tokens__qr_read_image_failed)
+    val addGalleryErrorBody = c.getString(R.string.tokens__qr_read_image_try_again)
+    val addGalleryErrorPositiveCta = c.getString(R.string.tokens__try_again)
+
 
 //    val add = c.getString(R.string.tokens__add_)
 }
