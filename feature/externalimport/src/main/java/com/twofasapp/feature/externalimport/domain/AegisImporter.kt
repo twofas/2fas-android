@@ -2,8 +2,7 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
-import com.twofasapp.core.analytics.AnalyticsService
-import com.twofasapp.parsers.domain.OtpAuthLink
+import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.serialization.JsonSerializer
 import com.twofasapp.services.domain.ConvertOtpLinkToService
@@ -14,7 +13,7 @@ internal class AegisImporter(
     private val context: Context,
     private val jsonSerializer: JsonSerializer,
     private val convertOtpLinkToService: ConvertOtpLinkToService,
-    private val analyticsService: AnalyticsService,
+    private val servicesRepository: ServicesRepository,
 ) : ExternalImporter {
 
     @Serializable
@@ -30,9 +29,9 @@ internal class AegisImporter(
     @Serializable
     data class Entry(
         val type: String,
-        val name: String,
-        val issuer: String,
-        val note: String,
+        val name: String, // info
+        val issuer: String, // issuer and name
+        val note: String, // not relevant
         val info: Info,
     ) {
         @Serializable
@@ -80,6 +79,7 @@ internal class AegisImporter(
                         true
                     ) || it.info.algo.equals("SHA384", true) || it.info.algo.equals("SHA512", true)
                 }
+                .filter { servicesRepository.isSecretValid(it.info.secret) }
                 .forEach { entry ->
                     servicesToImport.add(parseService(entry))
                 }
@@ -90,7 +90,7 @@ internal class AegisImporter(
             )
         } catch (e: Exception) {
             e.printStackTrace()
-            
+
             return ExternalImport.ParsingError(e)
         }
     }
@@ -98,7 +98,7 @@ internal class AegisImporter(
     private fun parseService(entry: Entry): ServiceDto {
         val otpLink = com.twofasapp.parsers.domain.OtpAuthLink(
             type = entry.type.uppercase(),
-            label = entry.name,
+            label = if (entry.issuer.isNotBlank()) "${entry.name}:${entry.name}" else entry.name,
             secret = entry.info.secret,
             issuer = entry.issuer,
             params = parseParams(entry),
@@ -107,7 +107,7 @@ internal class AegisImporter(
 
         val parsed = convertOtpLinkToService.execute(otpLink)
 
-        return parsed.copy(name = entry.name, otpAccount = entry.note)
+        return parsed
     }
 
     private fun parseParams(entry: Entry): Map<String, String> {
