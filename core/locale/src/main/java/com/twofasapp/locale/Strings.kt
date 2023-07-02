@@ -116,6 +116,8 @@ class Strings(c: Context) {
     val browserExtPairedDevices = c.getString(R.string.browser__paired_devices_browser_title)
     val browserExtDeviceName = c.getString(R.string.browser__this_device_name)
     val browserExtDeviceNameSubtitle = c.getString(R.string.browser__this_device_footer)
+    val browserPairManuallyCta = c.getString(R.string.browser__pair_manually_cta)
+    val browserPairManuallyHint = c.getString(R.string.browser__pair_manually_hint)
 
     val settingsTheme = c.getString(R.string.settings__option_theme)
     val settingsShowNextCode = c.getString(R.string.settings__show_next_token)

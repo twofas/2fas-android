@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Sun, 04 Jun 2023 06:50:19 -0700
+ Exported at: Sun, 02 Jul 2023 00:37:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -468,11 +468,11 @@
     <string name="notifications__no_notifications">Brak powiadomień</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
-    <string name="backup__google_drive_not_available">Google Drive nie jest dostępny</string>
-    <string name="backup__google_drive_disabled_title">Google Drive został wyłączony przez użytkownika</string>
+    <string name="backup__google_drive_not_available">Dysk Google nie jest dostępny</string>
+    <string name="backup__google_drive_disabled_title">Dysk Google został wyłączony przez użytkownika</string>
     <string name="backup__update_required_to_import_title_2">Aby zaimportować zawartość tego pliku, będziesz potrzebował nowej wersji aplikacji. Najnowszą wersję znajdziesz w Sklepie Google</string>
     <string name="tokens__qr_code_leads_to_google_store">Ten kod QR przeniesie Cię do Sklepu Google</string>
-    <string name="introduction__page_4_content_android">Twoje tokeny są przechowywane w trybie offline za pośrednictwem pamięci masowej urządzenia, więc pamiętaj o utworzeniu kopii zapasowej swoich usług! Użyj Google Drive Sync i hasła PIN, aby zabezpieczyć się przed nieautoryzowanym dostępem i uszkodzeniem urządzenia.</string>
+    <string name="introduction__page_4_content_android">Twoje tokeny są przechowywane w trybie offline za pośrednictwem pamięci masowej urządzenia, więc pamiętaj o utworzeniu kopii zapasowej swoich usług! Użyj Synchronizacji Dysku Google i hasła PIN, aby zabezpieczyć się przed nieautoryzowanym dostępem i uszkodzeniem urządzenia.</string>
     <string name="new_version__new_version_message_android">W Sklepie Google dostępna jest nowa wersja programu 2FAS. Zaktualizuj teraz!</string>
     <string name="security_error_no_match">PIN nie pasuje! Proszę spróbować ponownie.</string>
     <string name="settings_developer_options">Opcje Dewelopera</string>
@@ -484,17 +484,17 @@
     <string name="tokens__service_unsaved_changes_title">Niezapisane zmiany</string>
     <string name="tokens__service_key_invalid_format">Klucz ma nieprawidłowy format</string>
     <string name="intent_error_no_gallery_app">Błąd systemu! Nie ma systemowej aplikacji Galeria.</string>
-    <string name="gdrive_permission_title">Zgoda na dostęp do Google Drive</string>
-    <string name="gdrive_permission_msg">Potrzebujemy zgody na dostęp do Google Drive, aby zapisać pliki kopii zapasowej w danych aplikacji.</string>
+    <string name="gdrive_permission_title">Zgoda na dostęp do Dysku Google</string>
+    <string name="gdrive_permission_msg">Potrzebujemy zgody na dostęp do Dysku Google, aby zapisać pliki kopii zapasowej w danych aplikacji.</string>
     <string name="gdrive_internet_title">Wymagane połączenie z Internetem</string>
     <string name="gdrive_internet_msg">W celu synchronizacji z Google należy włączyć połączenie z Internetem.</string>
-    <string name="gdrive_wipe_internet_msg">Aby cofnąć dostęp do Google Drive, należy włączyć połączenie internetowe.</string>
+    <string name="gdrive_wipe_internet_msg">Aby cofnąć dostęp do Dysku Google, należy włączyć połączenie internetowe.</string>
     <string name="backup_explanation_msg">Włącz automatyczną synchronizacje Twoich danych z plikiem kopii zapasowej przechowywanym w ukrytym folderze na Twoim Dysku Google. Plik ten oraz folder dostępny jest jedynie dla aplikacji 2FAS.</string>
     <string name="backup_error_unknown">Podczas synchronizacji kopii zapasowej wystąpił błąd. Proszę ponownie uruchomić aplikację i spróbować ponownie po kilku minutach.</string>
     <string name="backup_error_encrypt_unknown">Podczas szyfrowania kopii zapasowej wystąpił błąd. Proszę ponownie ustawić hasło.</string>
     <string name="backup_error_decrypt_unknown">Podczas odszyfrowywania kopii zapasowej wystąpił błąd. Proszę ponownie ustawić hasło.</string>
     <string name="backup__google_drive_problem_title">Wystąpił problem z iCloud. Sprawdź ustawienia systemowe</string>
-    <string name="backup_error_auth">Wystąpił problem z uprawnieniami konta Google Drive. Spróbuj wyłączyć i włączyć synchronizację.</string>
+    <string name="backup_error_auth">Wystąpił problem z uprawnieniami konta Dysku Google. Spróbuj wyłączyć i włączyć synchronizację.</string>
     <string name="backup_error_no_password">Kopia zapasowa jest chroniona hasłem. Włącz ją i wprowadź swoje hasło.</string>
     <string name="backup_error_wrong_password">Kopia zapasowa jest chroniona hasłem, ale podane hasło jest nieprawidłowe. Włącz ją i wprowadź hasło.</string>
     <string name="customization_service_assignment">Przydział serwisów</string>
@@ -511,7 +511,7 @@
     <string name="backup_notice_later">Może później</string>
     <string name="backup_notice_cta">Włącz</string>
     <string name="widgets_empty_msg">Nie dodano żadnych serwisów</string>
-    <string name="backup__section_description_google">ZALECANE: Synchronizacja Google Drive zabezpiecza tokeny w Google Drive w przypadku utraty lub uszkodzenia urządzenia. Miej ją włączoną.</string>
+    <string name="backup__section_description_google">ZALECANE: Synchronizacja z Dyskiem Google zabezpiecza tokeny na Dysku Google w przypadku utraty lub uszkodzenia urządzenia. Miej ją włączoną.</string>
     <string name="backup_turn_off_title">Czy na pewno wyłączyć synchronizacje z Dyskiem Google?</string>
     <string name="backup_turn_off_msg1">Wszystkie Twoje tokeny pozostaną na tym urządzeniu w pamięci lokalnej oraz w ukrytym pliku na Twoim Dysku Google. Nie będą one jednak synchronizowane. Zostaniesz również wylogowany z Twojego konta Google.</string>
     <string name="backup_turn_off_msg2">Pamiętaj, że w przypadku utraty lub uszkodzenia tego urządzenia lub usunięcia aplikacji 2FAS, możesz nie być w stanie odzyskać swoich tokenów i stracisz dostęp do kont internetowych zabezpieczonych przez 2FA!</string>
@@ -705,8 +705,8 @@
     <string name="externalimport__aegis_success_msg">Ten plik JSON umożliwia import tokenów z Aegis.</string>
     <string name="externalimport__raivo_success_msg">Ten plik JSON umożliwia import tokenów z Raivo.</string>
     <string name="externalimport__read_error">Nie udało się odczytać żadnych tokenów. Spróbuj wybrać inny plik.</string>
-    <string name="settings__gd_sync_info">Pokazuj przypomnienie o synchronizacji z Google Drive</string>
-    <string name="settings__gd_sync_disable_confirm">Czy jesteś pewien? Bez synchronizacji z Google Drive nie będziesz mógł przywrócić swoich tokenów, jeśli zgubisz lub zresetujesz telefon!</string>
+    <string name="settings__gd_sync_info">Pokazuj przypomnienie o synchronizacji z Dyskiem Google</string>
+    <string name="settings__gd_sync_disable_confirm">Czy jesteś pewien? Bez synchronizacji z Dyskiem Google nie będziesz mógł przywrócić swoich tokenów, jeśli zgubisz lub zresetujesz telefon!</string>
     <string name="extension__code_sent_msg">Kod wysłany pomyślnie</string>
     <string name="extension__code_sent_error_msg">Wystąpił błąd podczas wysyłania kodu</string>
     <string name="tokens__add_service_title">Dodaj nowy serwis</string>
@@ -733,7 +733,7 @@
     <string name="settings__appearance">Wygląd</string>
     <string name="settings__show_next_token_desc">Pokaż następny token kilka sekund przez wygaśnięciem aktualnego tokenu</string>
     <string name="settings__list_style">Styl listy serwisów</string>
-    <string name="backup__reminder_msg">Dysk Google nie zsynchronizowany.</string>
+    <string name="backup__reminder_msg">Dysk Google nie jest zsynchronizowany.</string>
     <string name="backup__reminder_cta">Ustawienia</string>
     <string name="settings__list_style_option_default">Domyślny</string>
     <string name="settings__list_style_option_compact">Kompaktowy</string>
@@ -770,4 +770,16 @@
     <string name="settings__option_screenshots">Zezwalaj na zrzuty ekranu</string>
     <string name="settings__option_screenshots_confirm_title">Pozwolić na zrzuty ekranu w aplikacji?</string>
     <string name="settings__option_screenshots_confirm_description">Czy na pewno? Ta opcja umożliwia zrzuty ekranu i nagrywanie dowolnego ekranu w aplikacji. Jednocześnie umożliwia ona próby przechwycenia ekranu przez zewnętrzne aplikacje. Ze względów bezpieczeństwa, opcja ta zostanie automatycznie wyłączona po 5 minutach.</string>
+    <string name="social__social_media">Media społecznościowe</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">Twitter</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Schowaj tokeny</string>
+    <string name="settings__hide_tokens_description">Pokaż token po kliknięciu</string>
+    <string name="browser__pair_manually_cta">Pair manually</string>
+    <string name="browser__pair_manually_hint">Pairing code</string>
 </resources>

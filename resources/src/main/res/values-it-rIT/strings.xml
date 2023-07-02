@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Sun, 04 Jun 2023 06:50:19 -0700
+ Exported at: Sun, 02 Jul 2023 00:37:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -764,4 +764,16 @@
     <string name="settings__option_screenshots">Consenti gli screenshot</string>
     <string name="settings__option_screenshots_confirm_title">Consentire gli screenshot dell\'app?</string>
     <string name="settings__option_screenshots_confirm_description">Sei sicuro? Questa opzione consente di effettuare screenshot e registrare qualsiasi schermata all\'interno dell\'applicazione. Tuttavia, consentirà anche qualsiasi tentativo esterno di catturare schermate nell\'app.\nPer motivi di sicurezza, questa opzione si disattiva automaticamente dopo 5 minuti.</string>
+    <string name="social__social_media">Media sociali</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">Twitter</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Nascondi token</string>
+    <string name="settings__hide_tokens_description">I token saranno rivelati al tocco</string>
+    <string name="browser__pair_manually_cta">Pair manually</string>
+    <string name="browser__pair_manually_hint">Pairing code</string>
 </resources>

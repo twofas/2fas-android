@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Sun, 04 Jun 2023 06:50:19 -0700
+ Exported at: Sun, 02 Jul 2023 00:37:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -764,4 +764,16 @@
     <string name="settings__option_screenshots">Permitir capturas de ecrã</string>
     <string name="settings__option_screenshots_confirm_title">Permitir capturas de ecrã dentro da aplicação?</string>
     <string name="settings__option_screenshots_confirm_description">Tens a certeza? Esta opção irá permitir capturas e gravações de ecrã dentro da aplicação. Contudo, isto irá também permitir tentativas externas de capturar ecrãs dentro da aplicação.\nPor razões de segurança, esta opção irá ser automaticamente desligada depois de 5 minutos.</string>
+    <string name="social__social_media">Redes sociais</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">Twitter</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Esconder tokens</string>
+    <string name="settings__hide_tokens_description">Os tokens serão revelados ao tocar</string>
+    <string name="browser__pair_manually_cta">Pair manually</string>
+    <string name="browser__pair_manually_hint">Pairing code</string>
 </resources>

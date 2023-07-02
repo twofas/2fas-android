@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sun, 04 Jun 2023 06:50:18 -0700
+ Exported at: Sun, 02 Jul 2023 00:37:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -103,7 +103,7 @@
     <!-- Original: Adding code -->
     <string name="notifications__adding_code">Ajouter un nouveau code</string>
     <!-- notifications__private_key_copied -->
-    <string name="notifications__service_key_copied">Clé de configuration copiée</string>
+    <string name="notifications__service_key_copied">Clé secrète copiée</string>
     <!-- voiceover__token_is_already_on_the_list -->
     <string name="notifications__token_already_added">Cette clé 2FA est déjà présente sur la liste</string>
     <string name="notifications__counter_copied">Compteur copié</string>
@@ -158,15 +158,15 @@
     <string name="tokens__move_to_trash">Déplacer vers la corbeille</string>
     <string name="tokens__additional_info">Information supplémentaire</string>
     <string name="tokens__choose_method">Sélectionner une méthode</string>
-    <string name="tokens__duplicated_private_key">Clé de configuration dupliquée</string>
+    <string name="tokens__duplicated_private_key">Clé secrète dupliquée</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">Clé de configuration incorrecte (uniquement les nombres de 2 à 7 et les lettres), longueur max. de 512 caractères</string>
+    <string name="tokens__incorrect_service_key">Clé secrète incorrecte (uniquement les nombres de 2 à 7 et les lettres), longueur max. de 512 caractères</string>
     <string name="tokens__try_again">OK, réessayons</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Dirigez votre appareil photo vers l\'écran pour scanner le QR code.</string>
     <!-- tokens__private_key -->
-    <string name="tokens__service_key">Clé de configuration</string>
+    <string name="tokens__service_key">Clé secrète</string>
     <string name="tokens__qr_code_leads_to_app_store">Ce QR code vous renvoie vers l\'App Store</string>
     <!-- tokens__remove_it_forever -->
     <string name="tokens__remove_forever">Supprimer la clé</string>
@@ -180,7 +180,7 @@
     <string name="tokens__service_key_to_short">Trop court. Minimum 4 caractères</string>
     <string name="tokens__service_name">Nom du service</string>
     <!-- tokens__this_private_key_exists_used_in -->
-    <string name="tokens__service_key_already_used_title">La clé de configuration du code scanné est déjà utilisée dans %s. Vous êtes probablement en train de le scanner à nouveau</string>
+    <string name="tokens__service_key_already_used_title">La Clé secrète du code scanné est déjà utilisée dans %s. Vous êtes probablement en train de le scanner à nouveau</string>
     <string name="tokens__this_qr_code_is_inavlid">Ce code est incorrect ou n\'est pas supporté. Réessayez.</string>
     <string name="tokens__type_service_name">Saisir le nom du service</string>
     <string name="tokens__enter_service_name">Entrer le nom du service</string>
@@ -277,8 +277,8 @@
     <string name="tokens__order_menu_option_company">Soumettre l\'icône en tant que société</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
     <string name="tokens__sign_in_not_possible_title">Il vous sera impossible de vous connecter à votre compte %1$s sans ce code, tant que la vérification en deux étapes\u0020\u0020%2$s est activée.</string>
-    <string name="voiceover__show_service_key">Afficher la clé de configuration</string>
-    <string name="voiceover__copy_service_key">Copie de la clé de configuration</string>
+    <string name="voiceover__show_service_key">Afficher la Clé secrète</string>
+    <string name="voiceover__copy_service_key">Copie de la Clé secrète</string>
     <!-- voiceover__seconds_left -->
     <string name="voiceover__seconds_left_counter_title">Compteur avec les secondes restantes pour le changement de clé 2FA</string>
     <string name="voiceover__delete_button">Bouton supprimer</string>
@@ -559,13 +559,13 @@
     <string name="tokens__qr_read_image_try_again">Veuillez sélectionner une autre image.</string>
     <string name="tokens__remove_it_forever">Supprimer le service définitivement</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
-    <string name="tokens__service_add_error">Le service ne peut être ajouté car la clé de configuration est invalide. Veuillez réessayer.</string>
+    <string name="tokens__service_add_error">Le service ne peut être ajouté car la Clé secrète est invalide. Veuillez réessayer.</string>
     <!-- A service with this Service Key already exists. Do you want to override it? -->
-    <string name="tokens__service_already_exists">Un service avec cette clé de configuration existe déjà. Voulez-vous l’écraser ?</string>
+    <string name="tokens__service_already_exists">Un service avec cette Clé secrète existe déjà. Voulez-vous l’écraser ?</string>
     <string name="tokens__service_key_invalid_characters">La clé contient des caractères invalides</string>
-    <string name="tokens__show_service_key">Afficher la clé de configuration</string>
+    <string name="tokens__show_service_key">Afficher la Clé secrète</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
-    <string name="tokens__show_service_key_setup_lock">Votre clé de configuration est protégée. Ajoutez un code PIN ou un verrouillage par empreinte pour l\'afficher.</string>
+    <string name="tokens__show_service_key_setup_lock">Votre Clé secrète est protégée. Ajoutez un code PIN ou un verrouillage par empreinte pour l\'afficher.</string>
     <string name="tokens__tokens_list_is_empty">La liste des services est vide</string>
     <string name="tokens__use_plus_button_to_add_tokens">Utilisez le bouton \"+\" pour ajouter un nouveau service</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Impossible de vous connecter à votre compte %1$s sans ce code tant que la vérification en deux étapes %2$s est activée.</string>
@@ -750,9 +750,9 @@
     <string name="tokens__add_success_title">C\'est presque fini !</string>
     <string name="tokens__add_success_description">Pour terminer l\'appairage du service, vous devez ressaisir ce token.</string>
     <string name="tokens__add_manual_title">Associer le service à 2FAS</string>
-    <string name="tokens__add_manual_description">Saisissez le nom et la clé du service.</string>
+    <string name="tokens__add_manual_description">Saisissez le nom et la clé secrète.</string>
     <string name="tokens__add_manual_service_name">Nom du service (obligatoire)</string>
-    <string name="tokens__add_manual_service_key">Clé de service (obligatoire)</string>
+    <string name="tokens__add_manual_service_key">Clé secrète (obligatoire)</string>
     <string name="tokens__add_manual_other">Autres paramètres</string>
     <string name="tokens__add_manual_other_optional">(facultatif)</string>
     <string name="tokens__add_manual_done_cta">Ajouter un service</string>
@@ -764,4 +764,16 @@
     <string name="settings__option_screenshots">Autoriser les captures d\'écran</string>
     <string name="settings__option_screenshots_confirm_title">Autoriser les captures d\'écran de l\'application ?</string>
     <string name="settings__option_screenshots_confirm_description">Êtes-vous sûr ? Cette option vous permet de faire des captures d\'écran et d\'enregistrer n\'importe quel écran dans l\'application. Cependant, cette option autorise également toute tentative externe de capture d\'écran dans l\'application.\nPour des raisons de sécurité, cette option sera automatiquement désactivée au bout de 5 minutes.</string>
+    <string name="social__social_media">Médias sociaux</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">Twitter</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Cacher les clés</string>
+    <string name="settings__hide_tokens_description">Les jetons sont révélés lorsque vous appuyez sur l\'écran.</string>
+    <string name="browser__pair_manually_cta">Pair manually</string>
+    <string name="browser__pair_manually_hint">Pairing code</string>
 </resources>

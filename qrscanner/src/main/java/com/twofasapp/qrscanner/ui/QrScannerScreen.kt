@@ -93,6 +93,7 @@ fun QrScannerScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(24.dp)
+                    .padding(top = 64.dp)
                     .background(color = Color(0xBF000000))
                     .padding(8.dp)
 
