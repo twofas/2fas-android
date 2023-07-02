@@ -2,6 +2,7 @@ package com.twofasapp.feature.externalimport.di
 
 import com.twofasapp.di.KoinModule
 import com.twofasapp.feature.externalimport.domain.AegisImporter
+import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.LastPassImporter
 import com.twofasapp.feature.externalimport.domain.RaivoImporter
@@ -21,5 +22,6 @@ class ExternalImportModule : KoinModule {
         factoryOf(::AegisImporter)
         factoryOf(::RaivoImporter)
         factoryOf(::LastPassImporter)
+        factoryOf(::AuthenticatorProImporter)
     }
 }

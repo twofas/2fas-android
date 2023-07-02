@@ -211,6 +211,9 @@ internal class ServicesRepositoryImpl(
     override fun isServiceValid(link: OtpAuthLink): Boolean {
         return try {
             val otpAlgorithm = link.params[OtpAuthLink.ALGORITHM_PARAM]
+            val otpDigits = link.params[OtpAuthLink.DIGITS_PARAM]?.toIntOrNull()
+            val otpPeriod = link.params[OtpAuthLink.PERIOD_PARAM]?.toIntOrNull()
+
             val algorithm = when {
                 otpAlgorithm == null -> Service.Algorithm.SHA1
                 otpAlgorithm.equals("SHA1", ignoreCase = true) -> Service.Algorithm.SHA1
@@ -221,10 +224,26 @@ internal class ServicesRepositoryImpl(
                 else -> return false
             }
 
+            val digits = when {
+                otpDigits == 6 -> 6
+                otpDigits == 7 -> 7
+                otpDigits == 8 -> 8
+                otpDigits == null -> 6
+                else -> return false
+            }
+
+            val period = when {
+                otpPeriod == 30 -> 30
+                otpPeriod == 60 -> 60
+                otpPeriod == 90 -> 90
+                otpPeriod == null -> 30
+                else -> return false
+            }
+
             codeGenerator.check(
                 secret = link.secret,
-                digits = link.params[OtpAuthLink.DIGITS_PARAM]?.toIntOrNull() ?: 6,
-                period = link.params[OtpAuthLink.PERIOD_PARAM]?.toIntOrNull() ?: 30,
+                digits = digits,
+                period = period,
                 algorithm = algorithm
             )
         } catch (e: Exception) {

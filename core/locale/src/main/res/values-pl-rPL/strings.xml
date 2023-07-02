@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Sun, 02 Jul 2023 00:37:49 -0700
+ Exported at: Sun, 02 Jul 2023 04:39:36 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -782,4 +782,10 @@
     <string name="settings__hide_tokens_description">Pokaż token po kliknięciu</string>
     <string name="browser__pair_manually_cta">Pair manually</string>
     <string name="browser__pair_manually_hint">Pairing code</string>
+    <string name="externalimport__info_authenticatorpro_title">Import tokens from Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">This text file allows importing tokens from Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Importing 2FA tokens from Authenticator Pro app</string>
+    <string name="externalimport__authenticatorpro_msg">Export your accounts from Authenticator Pro to an unencrypted text file and upload it using the \"Choose text file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">Choose text file</string>
 </resources>

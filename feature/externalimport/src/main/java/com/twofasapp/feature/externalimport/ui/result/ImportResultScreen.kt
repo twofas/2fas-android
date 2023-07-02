@@ -79,6 +79,7 @@ internal fun ImportResultRoute(
                             ImportType.Aegis -> R.drawable.ic_import_aegis
                             ImportType.Raivo -> R.drawable.ic_import_raivo
                             ImportType.LastPass -> R.drawable.ic_import_lastpass
+                            ImportType.AuthenticatorPro -> R.drawable.ic_import_authenticatorpro
                         }
                     ),
                     contentDescription = null,

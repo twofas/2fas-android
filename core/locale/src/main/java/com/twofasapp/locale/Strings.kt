@@ -70,11 +70,12 @@ class Strings(c: Context) {
 
     val externalImportTitle = c.getString(R.string.settings__external_import)
     val externalImportHeader = c.getString(R.string.externalimport_select_app)
+    val externalImportNotice = c.getString(R.string.externalimport_description)
     val externalImportGoogleAuthenticator = c.getString(R.string.externalimport_google_authenticator)
     val externalImportAegis = c.getString(R.string.externalimport_aegis)
     val externalImportRaivo = c.getString(R.string.externalimport_raivo)
     val externalImportLastPass = c.getString(R.string.externalimport_lastpass)
-    val externalImportNotice = c.getString(R.string.externalimport_description)
+    val externalImportAuthenticatorPro = c.getString(R.string.externalimport__authenticatorpro)
 
     val trashTitle = c.getString(R.string.settings__trash)
     val trashEmpty = c.getString(R.string.settings__trash_is_empty)

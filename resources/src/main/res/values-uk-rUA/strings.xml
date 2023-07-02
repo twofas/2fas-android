@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Sun, 02 Jul 2023 00:37:49 -0700
+ Exported at: Sun, 02 Jul 2023 04:39:36 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -780,6 +780,12 @@
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Сховати токени</string>
     <string name="settings__hide_tokens_description">Показати токени при натисканні</string>
-    <string name="browser__pair_manually_cta">Pair manually</string>
-    <string name="browser__pair_manually_hint">Pairing code</string>
+    <string name="browser__pair_manually_cta">Підключити вручну</string>
+    <string name="browser__pair_manually_hint">Код підключення</string>
+    <string name="externalimport__info_authenticatorpro_title">Імпорт токенів з Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">Цей текстовий файл дозволяє імпорт токенів з Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Імпорт 2ФА токенів з додатку Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_msg">Експортуйте ваші акаунти з Authenticator Pro в незашифрований текстовий файл і завантажте його, використовуючи кнопку \"Обрати текстовий файл\". Не забудьте видалити файл після успішного імпорту.</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">Оберіть текстовий файл</string>
 </resources>

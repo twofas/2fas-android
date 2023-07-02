@@ -19,12 +19,14 @@ internal fun SelectorRoute(
     onAegisClick: () -> Unit,
     onRaivoClick: () -> Unit,
     onLastPassClick: () -> Unit,
+    onAuthenticatorProClick: () -> Unit,
 ) {
     SelectorScreen(
         onGoogleAuthenticatorClick = onGoogleAuthenticatorClick,
         onAegisClick = onAegisClick,
         onRaivoClick = onRaivoClick,
         onLastPassClick = onLastPassClick,
+        onAuthenticatorProClick = onAuthenticatorProClick,
     )
 }
 
@@ -34,6 +36,7 @@ private fun SelectorScreen(
     onAegisClick: () -> Unit,
     onRaivoClick: () -> Unit,
     onLastPassClick: () -> Unit,
+    onAuthenticatorProClick: () -> Unit,
 ) {
 
     Scaffold(
@@ -74,6 +77,14 @@ private fun SelectorScreen(
                     title = TwLocale.strings.externalImportLastPass,
                     image = painterResource(id = R.drawable.logo_lastpass),
                     onClick = onLastPassClick
+                )
+            }
+
+            item {
+                SettingsLink(
+                    title = TwLocale.strings.externalImportAuthenticatorPro,
+                    image = painterResource(id = R.drawable.logo_authenticatorpro),
+                    onClick = onAuthenticatorProClick
                 )
             }
 
