@@ -2,28 +2,34 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
+import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.serialization.JsonSerializer
 import com.twofasapp.services.domain.ConvertOtpLinkToService
 import kotlinx.serialization.Serializable
 import java.io.BufferedReader
 
-internal class RaivoImporter(
+internal class LastPassImporter(
     private val context: Context,
     private val jsonSerializer: JsonSerializer,
     private val convertOtpLinkToService: ConvertOtpLinkToService,
+    private val servicesRepository: ServicesRepository,
 ) : ExternalImporter {
 
     @Serializable
-    data class Entry(
-        val kind: String,
-        val issuer: String,
-        val account: String,
+    data class Model(
+        val accounts: List<Account>,
+    )
+
+    @Serializable
+    data class Account(
+        val issuerName: String,
+        val userName: String,
         val secret: String,
-        val timer: String?,
-        val digits: String?,
-        val algorithm: String?,
-        val counter: String?,
+        val algorithm: String,
+        val timeStep: Int,
+        val digits: Int,
     )
 
     override fun isSchemaSupported(content: String): Boolean {
@@ -43,24 +49,25 @@ internal class RaivoImporter(
 
             val inputStream = context.contentResolver.openInputStream(fileUri)!!
             val json = inputStream.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
-            val model = jsonSerializer.deserialize<List<Entry>>(json)
+            val model = jsonSerializer.deserialize<Model>(json)
 
             fileDescriptor?.close()
             inputStream.close()
 
-            val totalServices = model.size
+            val totalServices = model.accounts.size
             val servicesToImport = mutableListOf<ServiceDto>()
 
             model
-                .filter { it.kind.equals("totp", true) || it.kind.equals("hotp", true) }
-                .filter { it.digits.equals("6") || it.digits.equals("7") || it.digits.equals("8") }
-                .filter { it.timer.equals("30") || it.timer.equals("60") || it.timer.equals("90") }
+                .accounts
+                .filter { it.digits == 6 || it.digits == 7 || it.digits == 8 }
+                .filter { it.timeStep == 30 || it.timeStep == 60 || it.timeStep == 90 }
                 .filter {
                     it.algorithm.equals("SHA1", true) || it.algorithm.equals("SHA224", true) || it.algorithm.equals(
                         "SHA256",
                         true
                     ) || it.algorithm.equals("SHA384", true) || it.algorithm.equals("SHA512", true)
                 }
+                .filter { servicesRepository.isSecretValid(it.secret) }
                 .forEach { entry ->
                     servicesToImport.add(parseService(entry))
                 }
@@ -76,29 +83,26 @@ internal class RaivoImporter(
         }
     }
 
-    private fun parseService(entry: Entry): ServiceDto {
-        val otpLink = com.twofasapp.parsers.domain.OtpAuthLink(
-            type = entry.kind.uppercase(),
-            label = entry.account,
-            secret = entry.secret,
-            issuer = entry.issuer,
-            params = parseParams(entry),
+    private fun parseService(account: Account): ServiceDto {
+        val otpLink = OtpAuthLink(
+            type = "TOTP",
+            label = account.userName,
+            secret = account.secret,
+            issuer = account.issuerName,
+            params = parseParams(account),
             link = null,
         )
 
         val parsed = convertOtpLinkToService.execute(otpLink)
 
-        return parsed.copy(otpAccount = entry.account)
+        return parsed.copy(otpAccount = account.userName)
     }
 
-    private fun parseParams(entry: Entry): Map<String, String> {
+    private fun parseParams(account: Account): Map<String, String> {
         val params = mutableMapOf<String, String>()
-
-        entry.algorithm?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.ALGORITHM_PARAM] = it }
-        entry.timer?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.PERIOD_PARAM] = it }
-        entry.digits?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.DIGITS_PARAM] = it }
-        entry.counter?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.COUNTER] = it }
-
+        account.algorithm.let { params[OtpAuthLink.ALGORITHM_PARAM] = it }
+        account.timeStep.let { params[OtpAuthLink.PERIOD_PARAM] = it.toString() }
+        account.digits.let { params[OtpAuthLink.DIGITS_PARAM] = it.toString() }
         return params
     }
 }

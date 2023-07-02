@@ -28,7 +28,7 @@ internal fun ImportScanRoute(
         topBar = { TwTopAppBar(stringResource(id = com.twofasapp.resources.R.string.commons__scan_qr_code)) }
     ) { padding ->
 
-        QrScannerScreen(isGalleryEnabled = true, startWithGallery = startFromGallery, modifier = Modifier.padding(padding))
+        QrScannerScreen(isGalleryEnabled = true, startWithGallery = startFromGallery, modifier = Modifier.padding(top = padding.calculateTopPadding()))
 
         LaunchedEffect(uiState.value.isSuccess) {
             if (uiState.value.isSuccess) {

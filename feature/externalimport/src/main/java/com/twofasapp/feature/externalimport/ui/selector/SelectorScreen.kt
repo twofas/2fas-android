@@ -18,11 +18,13 @@ internal fun SelectorRoute(
     onGoogleAuthenticatorClick: () -> Unit,
     onAegisClick: () -> Unit,
     onRaivoClick: () -> Unit,
+    onLastPassClick: () -> Unit,
 ) {
     SelectorScreen(
         onGoogleAuthenticatorClick = onGoogleAuthenticatorClick,
         onAegisClick = onAegisClick,
-        onRaivoClick = onRaivoClick
+        onRaivoClick = onRaivoClick,
+        onLastPassClick = onLastPassClick,
     )
 }
 
@@ -31,13 +33,14 @@ private fun SelectorScreen(
     onGoogleAuthenticatorClick: () -> Unit,
     onAegisClick: () -> Unit,
     onRaivoClick: () -> Unit,
+    onLastPassClick: () -> Unit,
 ) {
 
     Scaffold(
         topBar = { TwTopAppBar(TwLocale.strings.externalImportTitle) }
     ) { padding ->
 
-        LazyColumn(modifier = Modifier.padding(padding)) {
+        LazyColumn(modifier = Modifier.padding(top = padding.calculateTopPadding())) {
             item {
                 SettingsHeader(title = TwLocale.strings.externalImportHeader)
             }
@@ -63,6 +66,14 @@ private fun SelectorScreen(
                     title = TwLocale.strings.externalImportRaivo,
                     image = painterResource(id = R.drawable.logo_raivo),
                     onClick = onRaivoClick
+                )
+            }
+
+            item {
+                SettingsLink(
+                    title = TwLocale.strings.externalImportLastPass,
+                    image = painterResource(id = R.drawable.logo_lastpass),
+                    onClick = onLastPassClick
                 )
             }
 
