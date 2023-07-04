@@ -27,7 +27,7 @@ import com.twofasapp.designsystem.TwTheme
 @Composable
 fun TwButton(
     text: String,
-    onClick: () -> Unit,
+    onClick: () -> Unit = {},
     height: Dp = TwTheme.dimen.buttonHeight,
     modifier: Modifier = Modifier,
     style: TextStyle = TwTheme.typo.body2,
