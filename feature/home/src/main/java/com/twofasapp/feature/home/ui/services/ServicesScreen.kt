@@ -145,7 +145,6 @@ private fun ServicesScreen(
     var showDeleteGroupDialog by remember { mutableStateOf(false) }
     var showSortDialog by remember { mutableStateOf(false) }
     var showQrFromGalleryDialog by remember { mutableStateOf(false) }
-    var askForPermission by remember { mutableStateOf(false) }
     var clickedGroup by remember { mutableStateOf<Group?>(null) }
     val topAppBarState = rememberTopAppBarState()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
@@ -282,7 +281,7 @@ private fun ServicesScreen(
                 isVisible = uiState.isLoading.not(),
                 isExtendedVisible = uiState.totalServices == 0,
                 isNormalVisible = reorderableState.listState.isScrollingUp(),
-                onClick = { askForPermission = true },
+                onClick = {  listener.openAddServiceModal() },
             )
         },
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
@@ -534,17 +533,17 @@ private fun ServicesScreen(
         )
     }
 
-    if (askForPermission) {
-        RequestPermission(
-            permission = Manifest.permission.CAMERA,
-            onGranted = {
-                askForPermission = false
-                listener.openAddServiceModal()
-            },
-            onDismissRequest = { askForPermission = false },
-            rationaleTitle = TwLocale.strings.permissionCameraTitle,
-            rationaleText = TwLocale.strings.permissionCameraBody,
-        )
-    }
+//    if (askForPermission) {
+//        RequestPermission(
+//            permission = Manifest.permission.CAMERA,
+//            onGranted = {
+//                askForPermission = false
+//                listener.openAddServiceModal()
+//            },
+//            onDismissRequest = { askForPermission = false },
+//            rationaleTitle = TwLocale.strings.permissionCameraTitle,
+//            rationaleText = TwLocale.strings.permissionCameraBody,
+//        )
+//    }
 }
 

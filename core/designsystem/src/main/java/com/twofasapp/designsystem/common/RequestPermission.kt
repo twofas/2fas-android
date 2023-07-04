@@ -16,9 +16,11 @@ import com.twofasapp.designsystem.dialog.RationaleDialog
 @Composable
 fun RequestPermission(
     permission: String,
+    rationaleEnabled: Boolean = true,
     rationaleTitle: String = "",
     rationaleText: String = "",
     onGranted: () -> Unit = {},
+    onDenied: () -> Unit = {},
     onDismissRequest: () -> Unit = {},
 ) {
     var showRationale by remember { mutableStateOf(false) }
@@ -30,6 +32,7 @@ fun RequestPermission(
             onGranted()
         } else {
             showRationale = true
+            onDenied()
         }
     }
 
@@ -42,9 +45,11 @@ fun RequestPermission(
         }
     }
 
-    if (showRationale) {
+    if (showRationale && rationaleEnabled) {
         RationaleDialog(
-            title = rationaleTitle, text = rationaleText, onDismissRequest = onDismissRequest
+            title = rationaleTitle,
+            text = rationaleText,
+            onDismissRequest = onDismissRequest
         )
     }
 }

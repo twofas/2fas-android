@@ -5,8 +5,11 @@ import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.PersistableBundle
+import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.runtime.Composable
@@ -28,6 +31,13 @@ val CompositionLocal<Context>.currentActivity: ComponentActivity
         }
 
         error("No component activity")
+    }
+
+val Context.settingsIntent: Intent
+    get() {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", packageName, null))
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        return intent
     }
 
 val LocalBackDispatcher
