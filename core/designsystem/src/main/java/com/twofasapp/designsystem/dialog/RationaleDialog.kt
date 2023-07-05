@@ -1,10 +1,8 @@
 package com.twofasapp.designsystem.dialog
 
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import com.twofasapp.designsystem.ktx.settingsIntent
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -30,9 +28,7 @@ fun RationaleDialog(
             if (onPositive != null) {
                 onPositive.invoke()
             } else {
-                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", context.packageName, null))
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                context.startActivity(intent)
+                context.startActivity(context.settingsIntent)
                 onDismissRequest()
             }
         },

@@ -2,6 +2,7 @@ package com.twofasapp.feature.qrscan
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.camera.core.CameraSelector
@@ -11,7 +12,12 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.platform.LocalLifecycleOwner
@@ -22,6 +28,8 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
+import kotlinx.coroutines.android.awaitFrame
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.concurrent.Executor
 import java.util.concurrent.ExecutorService
@@ -38,61 +46,77 @@ fun QrScan(
     val cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     val coroutineScope = rememberCoroutineScope()
     val lifecycleOwner = LocalLifecycleOwner.current
+    val isBelowAndroid8 = Build.VERSION.SDK_INT <= 26
 
-    AndroidView(
-        modifier = modifier.clipToBounds(),
-        factory = { context ->
-            val previewView = PreviewView(context).apply {
-                this.scaleType = scaleType
-                layoutParams = ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                )
-            }
+    // Workaround for https://issuetracker.google.com/issues/285336815
+    var showScanner by remember { mutableStateOf(false) }
 
-            val barcodeScanner = BarcodeScanning.getClient(
-                BarcodeScannerOptions.Builder()
-                    .setBarcodeFormats(
-                        Barcode.FORMAT_QR_CODE,
-                    ).build()
-            )
-            val cameraExecutor: ExecutorService by lazy {
-                Executors.newSingleThreadExecutor()
-            }
+    LaunchedEffect(Unit) {
+        if (isBelowAndroid8) {
+            delay(200)
+        } else {
+            awaitFrame()
+        }
 
-            val previewUseCase by lazy {
-                Preview.Builder().build().also {
-                    it.setSurfaceProvider(previewView.surfaceProvider)
+        showScanner = true
+    }
+
+    if (showScanner) {
+        AndroidView(
+            modifier = modifier.clipToBounds(),
+            factory = { context ->
+                val previewView = PreviewView(context).apply {
+                    this.scaleType = scaleType
+                    layoutParams = ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
                 }
-            }
-            val imageAnalysisUseCase by lazy {
-                ImageAnalysis.Builder().build().also {
-                    it.setAnalyzer(cameraExecutor) { imageProxy ->
-                        processImageProxy(barcodeScanner, imageProxy) { text ->
-                            onScanned.invoke(text)
+
+                val barcodeScanner = BarcodeScanning.getClient(
+                    BarcodeScannerOptions.Builder()
+                        .setBarcodeFormats(
+                            Barcode.FORMAT_QR_CODE,
+                        ).build()
+                )
+                val cameraExecutor: ExecutorService by lazy {
+                    Executors.newSingleThreadExecutor()
+                }
+
+                val previewUseCase by lazy {
+                    Preview.Builder().build().also {
+                        it.setSurfaceProvider(previewView.surfaceProvider)
+                    }
+                }
+                val imageAnalysisUseCase by lazy {
+                    ImageAnalysis.Builder().build().also {
+                        it.setAnalyzer(cameraExecutor) { imageProxy ->
+                            processImageProxy(barcodeScanner, imageProxy) { text ->
+                                onScanned.invoke(text)
+                            }
                         }
                     }
                 }
-            }
 
-            coroutineScope.launch {
-                val cameraProvider = context.getCameraProvider()
-                try {
-                    cameraProvider.unbindAll()
-                    cameraProvider.bindToLifecycle(
-                        lifecycleOwner,
-                        cameraSelector,
-                        previewUseCase,
-                        imageAnalysisUseCase,
-                    )
-                } catch (e: Exception) {
-                    Toast.makeText(context, "Camera could not be launched. Try again.", Toast.LENGTH_LONG).show()
+                coroutineScope.launch {
+                    val cameraProvider = context.getCameraProvider()
+                    try {
+                        cameraProvider.unbindAll()
+                        cameraProvider.bindToLifecycle(
+                            lifecycleOwner,
+                            cameraSelector,
+                            previewUseCase,
+                            imageAnalysisUseCase,
+                        )
+                    } catch (e: Exception) {
+                        Toast.makeText(context, "Camera could not be launched. Try again.", Toast.LENGTH_LONG).show()
+                    }
                 }
-            }
 
-            previewView
-        },
-    )
+                previewView
+            },
+        )
+    }
 }
 
 @SuppressLint("UnsafeOptInUsageError")
