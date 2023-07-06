@@ -54,7 +54,7 @@ object OtpLinkParser {
         }
     }
 
-    private fun isUriValid(uri: Uri?) = uri?.scheme?.toLowerCase() == OTPAUTH
+    private fun isUriValid(uri: Uri?) = uri?.scheme?.lowercase() == OTPAUTH
 
     private fun isAuthorityValid(uri: Uri) =
         uri.authority?.lowercase() == TOTP || uri.authority?.lowercase() == HOTP
