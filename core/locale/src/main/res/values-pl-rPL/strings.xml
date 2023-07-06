@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Sun, 02 Jul 2023 04:39:36 -0700
+ Exported at: Thu, 06 Jul 2023 01:29:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -770,7 +770,7 @@
     <string name="settings__option_screenshots">Zezwalaj na zrzuty ekranu</string>
     <string name="settings__option_screenshots_confirm_title">Pozwolić na zrzuty ekranu w aplikacji?</string>
     <string name="settings__option_screenshots_confirm_description">Czy na pewno? Ta opcja umożliwia zrzuty ekranu i nagrywanie dowolnego ekranu w aplikacji. Jednocześnie umożliwia ona próby przechwycenia ekranu przez zewnętrzne aplikacje. Ze względów bezpieczeństwa, opcja ta zostanie automatycznie wyłączona po 5 minutach.</string>
-    <string name="social__social_media">Media społecznościowe</string>
+    <string name="social__social_media">Linki do mediów społecznościowych</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
     <string name="social__twitter">Twitter</string>
@@ -780,12 +780,12 @@
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Schowaj tokeny</string>
     <string name="settings__hide_tokens_description">Pokaż token po kliknięciu</string>
-    <string name="browser__pair_manually_cta">Pair manually</string>
-    <string name="browser__pair_manually_hint">Pairing code</string>
-    <string name="externalimport__info_authenticatorpro_title">Import tokens from Authenticator Pro</string>
-    <string name="externalimport__authenticatorpro_success_msg">This text file allows importing tokens from Authenticator Pro.</string>
-    <string name="externalimport__authenticatorpro_title">Importing 2FA tokens from Authenticator Pro app</string>
-    <string name="externalimport__authenticatorpro_msg">Export your accounts from Authenticator Pro to an unencrypted text file and upload it using the \"Choose text file\" button. Remember to remove the file after a successful import.</string>
+    <string name="browser__pair_manually_cta">Sparuj ręcznie</string>
+    <string name="browser__pair_manually_hint">Parowanie kodu</string>
+    <string name="externalimport__info_authenticatorpro_title">Importuj tokeny z Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">Ten plik tekstowy pozawala na importowanie tokenów z Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Importowanie tokenów 2FA z aplikacji Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_msg">Wyeksportuj swoje konta z Authenticator Pro do niezaszyfrowanego pliku tekstowego i wgraj go za pomocą przycisku \"Wybierz plik tekstowy\". Pamiętaj, o usunięciu pliku po udanym imporcie.</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
-    <string name="externalimport__choose_txt_cta">Choose text file</string>
+    <string name="externalimport__choose_txt_cta">Wybierz plik tekstowy</string>
 </resources>
