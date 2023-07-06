@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Sun, 04 Jun 2023 06:50:19 -0700
+ Exported at: Thu, 06 Jul 2023 01:29:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -764,4 +764,22 @@
     <string name="settings__option_screenshots">Permitir capturas de pantalla</string>
     <string name="settings__option_screenshots_confirm_title">¿Permitir capturas de pantalla de la aplicación?</string>
     <string name="settings__option_screenshots_confirm_description">¿Estás seguro? Esta opción te permite tomar capturas y grabaciones de cualquier pantalla de la aplicación. Sin embargo, esto también podría permitir cualquier intento externo de capturar la pantalla de la aplicación.\nPor razones de seguridad, esta opción será deshabilitada automáticamente después de 5 minutos.</string>
+    <string name="social__social_media">Medios sociales</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">Twitter</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Ocultar los tokens</string>
+    <string name="settings__hide_tokens_description">Los tokens se revelarán al tacto</string>
+    <string name="browser__pair_manually_cta">Emparejar manualmente</string>
+    <string name="browser__pair_manually_hint">Código de emparejamiento</string>
+    <string name="externalimport__info_authenticatorpro_title">Importar tokens desde Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">Este archivo de texto permite importar tokens desde Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Importando tokens desde la aplicación Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_msg">Exporta tus cuentas desde Authenticator Pro a un archivo de texto no encriptado y subirlo usando el botón \"Elegir archivo de texto\". Recuerda eliminar este archivo después de importarlo correctamente.</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">Elegir archivo de texto</string>
 </resources>

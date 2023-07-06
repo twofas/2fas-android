@@ -7,8 +7,10 @@ import com.twofasapp.base.BaseViewModel
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.core.encoding.decodeBase64
 import com.twofasapp.feature.externalimport.domain.AegisImporter
+import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
 import com.twofasapp.feature.externalimport.domain.ExternalImport
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
+import com.twofasapp.feature.externalimport.domain.LastPassImporter
 import com.twofasapp.feature.externalimport.domain.RaivoImporter
 import com.twofasapp.feature.externalimport.navigation.ImportType
 import com.twofasapp.resources.R
@@ -25,11 +27,13 @@ import kotlinx.coroutines.launch
 
 internal class ImportResultViewModel(
     private val dispatchers: Dispatchers,
+    private val addServiceCase: AddServiceCase,
+    private val syncBackupDispatcher: SyncBackupWorkDispatcher,
     private val googleAuthenticatorImporter: GoogleAuthenticatorImporter,
     private val aegisImporter: AegisImporter,
     private val raivoImporter: RaivoImporter,
-    private val addServiceCase: AddServiceCase,
-    private val syncBackupDispatcher: SyncBackupWorkDispatcher,
+    private val lastPassImporter: LastPassImporter,
+    private val authenticatorProImporter: AuthenticatorProImporter,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(ImportResultUiState())
@@ -41,6 +45,8 @@ internal class ImportResultViewModel(
                 ImportType.GoogleAuthenticator -> googleAuthenticatorImporter.read(content.decodeBase64())
                 ImportType.Aegis -> aegisImporter.read(content.decodeBase64())
                 ImportType.Raivo -> raivoImporter.read(content.decodeBase64())
+                ImportType.LastPass -> lastPassImporter.read(content.decodeBase64())
+                ImportType.AuthenticatorPro -> authenticatorProImporter.read(content.decodeBase64())
             }
 
             when (result) {
@@ -95,11 +101,15 @@ internal class ImportResultViewModel(
         ImportType.GoogleAuthenticator -> R.string.externalimport__ga_title
         ImportType.Aegis -> R.string.externalimport__aegis_title
         ImportType.Raivo -> R.string.externalimport__raivo_title
+        ImportType.LastPass -> R.string.externalimport__lastpass_title
+        ImportType.AuthenticatorPro -> R.string.externalimport__authenticatorpro_title
     }
 
     private fun getSuccessDescription(type: ImportType) = when (type) {
         ImportType.GoogleAuthenticator -> R.string.externalimport__ga_success_msg
         ImportType.Aegis -> R.string.externalimport__aegis_success_msg
         ImportType.Raivo -> R.string.externalimport__raivo_success_msg
+        ImportType.LastPass -> R.string.externalimport__lastpass_success_msg
+        ImportType.AuthenticatorPro -> R.string.externalimport__authenticatorpro_success_msg
     }
 }

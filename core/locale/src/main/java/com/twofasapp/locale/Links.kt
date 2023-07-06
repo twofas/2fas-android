@@ -12,8 +12,11 @@ class Links {
     val donate = "https://2fas.com/donate"
     val support = "https://support.2fas.com"
     val browserExt = "https://2fas.com/be"
-    val youtube = "https://www.youtube.com/@2FAS"
+    val youtube = "https://www.youtube.com/@2fas"
     val twitter = "https://twitter.com/2FAS_com"
     val discord = "https://discord.gg/q4cP6qh2g5"
     val github = "https://github.com/twofas"
+    val linkedin = "https://www.linkedin.com/company/2fasapp/"
+    val reddit = "https://www.reddit.com/r/2fas_com"
+    val facebook = "https://facebook.com/twofas"
 }

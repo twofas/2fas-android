@@ -25,7 +25,6 @@ import com.twofasapp.usecases.rateapp.UpdateRateAppStatus
 import com.twofasapp.usecases.services.AddService
 import com.twofasapp.usecases.services.CheckServiceExists
 import com.twofasapp.usecases.services.DeleteDuplicatedService
-import com.twofasapp.usecases.services.GetService
 import com.twofasapp.usecases.services.GetServices
 import com.twofasapp.usecases.services.GetServicesIncludingTrashed
 import com.twofasapp.usecases.services.PinOptionsUseCase
@@ -61,7 +60,6 @@ val useCaseModule = module {
     single<GetServicesUseCase> { GetServices(get()) }
     single { GetServices(get()) }
     single { GetServicesIncludingTrashed(get()) }
-    single { GetService(get()) }
     single { TrashService(get(), get(), get(), get(), get(), get(), get(), get()) }
     single { RestoreService(get(), get(), get(), get(), get(), get(), get()) }
     single { UpdateServiceGroup(get()) }

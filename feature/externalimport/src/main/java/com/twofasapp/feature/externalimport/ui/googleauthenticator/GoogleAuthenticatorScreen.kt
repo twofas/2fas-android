@@ -50,7 +50,7 @@ internal fun GoogleAuthenticatorRoute(
         Column(
             Modifier
                 .fillMaxWidth()
-                .padding(padding)
+                .padding(top = padding.calculateTopPadding())
         ) {
 
             Column(

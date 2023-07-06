@@ -5,8 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.twofasapp.android.navigation.NavGraph
-import com.twofasapp.services.ui.ServiceScreenRoute
+import com.twofasapp.services.ui.EditServiceScreenRoute
 
 object ServiceGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "service/{${ServiceNavArg.ServiceId.name}}"
@@ -25,6 +24,6 @@ fun NavGraphBuilder.serviceNavigation(
     openAuth: (successCallback: () -> Unit) -> Unit,
 ) {
     composable(ServiceGraph.route, arguments = listOf(ServiceNavArg.ServiceId)) {
-        ServiceScreenRoute(navController, openSecurity, openAuth)
+        EditServiceScreenRoute(navController, openSecurity, openAuth)
     }
 }

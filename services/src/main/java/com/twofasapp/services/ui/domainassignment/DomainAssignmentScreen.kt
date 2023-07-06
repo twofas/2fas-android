@@ -25,12 +25,12 @@ import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
-import com.twofasapp.services.ui.ServiceViewModel
+import com.twofasapp.services.ui.EditServiceViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun DomainAssignmentScreen(
-    viewModel: ServiceViewModel,
+    viewModel: EditServiceViewModel,
 ) {
 
     val service = viewModel.uiState.collectAsState().value.service

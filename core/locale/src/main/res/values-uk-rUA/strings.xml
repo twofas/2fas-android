@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Sun, 04 Jun 2023 06:50:19 -0700
+ Exported at: Thu, 06 Jul 2023 01:29:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -770,4 +770,22 @@
     <string name="settings__option_screenshots">Дозволити скріншоти</string>
     <string name="settings__option_screenshots_confirm_title">Дозволити скріншоти додатку?</string>
     <string name="settings__option_screenshots_confirm_description">Ви впевнені? Ця опція дозволяє робити скріншоти та записувати будь-який екран додатку. Однак це також дозволить будь-які зовнішні спроби запису екранів у додатку.\nЗ міркувань безпеки ця опція автоматично вимкнеться через 5 хвилин.</string>
+    <string name="social__social_media">Соціальні медіа</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">Twitter</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Сховати токени</string>
+    <string name="settings__hide_tokens_description">Показати токени при натисканні</string>
+    <string name="browser__pair_manually_cta">Підключити вручну</string>
+    <string name="browser__pair_manually_hint">Код підключення</string>
+    <string name="externalimport__info_authenticatorpro_title">Імпорт токенів з Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">Цей текстовий файл дозволяє імпорт токенів з Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Імпорт 2ФА токенів з додатку Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_msg">Експортуйте ваші акаунти з Authenticator Pro в незашифрований текстовий файл і завантажте його, використовуючи кнопку \"Обрати текстовий файл\". Не забудьте видалити файл після успішного імпорту.</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">Оберіть текстовий файл</string>
 </resources>

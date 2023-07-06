@@ -2,8 +2,6 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
-import com.twofasapp.core.analytics.AnalyticsService
-import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.serialization.JsonSerializer
 import com.twofasapp.services.domain.ConvertOtpLinkToService
@@ -14,7 +12,6 @@ internal class RaivoImporter(
     private val context: Context,
     private val jsonSerializer: JsonSerializer,
     private val convertOtpLinkToService: ConvertOtpLinkToService,
-    private val analyticsService: AnalyticsService,
 ) : ExternalImporter {
 
     @Serializable
@@ -74,7 +71,7 @@ internal class RaivoImporter(
             )
         } catch (e: Exception) {
             e.printStackTrace()
-            
+
             return ExternalImport.ParsingError(e)
         }
     }

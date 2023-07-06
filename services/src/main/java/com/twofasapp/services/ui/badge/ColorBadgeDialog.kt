@@ -23,16 +23,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.twofasapp.data.services.domain.Service
 import com.twofasapp.design.compose.dialogs.internal.BaseDialog
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.prefs.model.Tint
-import com.twofasapp.services.view.toColor
+import com.twofasapp.services.ui.asColor
 
 @Composable
 internal fun ColorBadgeDialog(
-    selected: Tint,
+    selected: Service.Tint,
     onDismiss: () -> Unit = {},
-    onSelected: (Tint) -> Unit = {}
+    onSelected: (Service.Tint) -> Unit = {}
 ) {
     BaseDialog(
         applyContentModifier = false,
@@ -40,7 +40,7 @@ internal fun ColorBadgeDialog(
     ) {
 
         LazyColumn {
-            items(Tint.values().toList(), key = { it.name }) {
+            items(Service.Tint.values().toList(), key = { it.name }) {
 
                 Row(
                     modifier = Modifier
@@ -60,7 +60,7 @@ internal fun ColorBadgeDialog(
                             .align(CenterVertically)
                             .clip(CircleShape)
                             .border(
-                                BorderStroke(if (it == selected) 50.dp else 5.dp, SolidColor(it.toColor())), CircleShape
+                                BorderStroke(if (it == selected) 50.dp else 5.dp, SolidColor(it.asColor())), CircleShape
                             )
                     )
 
@@ -69,15 +69,15 @@ internal fun ColorBadgeDialog(
                     Text(
                         stringResource(
                             id = when (it) {
-                                Tint.Default -> com.twofasapp.resources.R.string.color__neutral
-                                Tint.LightBlue -> com.twofasapp.resources.R.string.color__light_blue
-                                Tint.Indigo -> com.twofasapp.resources.R.string.color__indigo
-                                Tint.Purple -> com.twofasapp.resources.R.string.color__purple
-                                Tint.Turquoise -> com.twofasapp.resources.R.string.color__turquoise
-                                Tint.Green -> com.twofasapp.resources.R.string.color__green
-                                Tint.Red -> com.twofasapp.resources.R.string.color__red
-                                Tint.Orange -> com.twofasapp.resources.R.string.color__orange
-                                Tint.Yellow -> com.twofasapp.resources.R.string.color__yellow
+                                Service.Tint.Default -> com.twofasapp.resources.R.string.color__neutral
+                                Service.Tint.LightBlue -> com.twofasapp.resources.R.string.color__light_blue
+                                Service.Tint.Indigo -> com.twofasapp.resources.R.string.color__indigo
+                                Service.Tint.Purple -> com.twofasapp.resources.R.string.color__purple
+                                Service.Tint.Turquoise -> com.twofasapp.resources.R.string.color__turquoise
+                                Service.Tint.Green -> com.twofasapp.resources.R.string.color__green
+                                Service.Tint.Red -> com.twofasapp.resources.R.string.color__red
+                                Service.Tint.Orange -> com.twofasapp.resources.R.string.color__orange
+                                Service.Tint.Yellow -> com.twofasapp.resources.R.string.color__yellow
                             }
                         ),
                         style = MaterialTheme.typography.bodyLarge.copy(color = TwTheme.color.onSurfacePrimary),

@@ -31,13 +31,13 @@ import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
-import com.twofasapp.services.ui.ServiceUiEvent
-import com.twofasapp.services.ui.ServiceViewModel
+import com.twofasapp.services.ui.EditServiceUiEvent
+import com.twofasapp.services.ui.EditServiceViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun DeleteServiceScreen(
-    viewModel: ServiceViewModel,
+    viewModel: EditServiceViewModel,
 ) {
 
     val service = viewModel.uiState.collectAsState().value.service
@@ -48,7 +48,7 @@ internal fun DeleteServiceScreen(
         scope.launch {
             viewModel.events.collect {
                 when (it) {
-                    ServiceUiEvent.Finish -> scope.launch { backDispatcher.onBackPressed() }
+                    EditServiceUiEvent.Finish -> scope.launch { backDispatcher.onBackPressed() }
                 }
             }
         }

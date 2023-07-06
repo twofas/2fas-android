@@ -60,7 +60,7 @@ internal fun ImportResultRoute(
         Column(
             Modifier
                 .fillMaxWidth()
-                .padding(padding)
+                .padding(top = padding.calculateTopPadding())
         ) {
 
             Column(
@@ -78,6 +78,8 @@ internal fun ImportResultRoute(
                             ImportType.GoogleAuthenticator -> R.drawable.ic_import_ga
                             ImportType.Aegis -> R.drawable.ic_import_aegis
                             ImportType.Raivo -> R.drawable.ic_import_raivo
+                            ImportType.LastPass -> R.drawable.ic_import_lastpass
+                            ImportType.AuthenticatorPro -> R.drawable.ic_import_authenticatorpro
                         }
                     ),
                     contentDescription = null,

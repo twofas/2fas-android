@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sun, 04 Jun 2023 06:50:19 -0700
+ Exported at: Thu, 06 Jul 2023 01:29:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -103,7 +103,7 @@
     <!-- Original: Adding code -->
     <string name="notifications__adding_code">Hinzufügen eines neuen Codes</string>
     <!-- notifications__private_key_copied -->
-    <string name="notifications__service_key_copied">Service Schlüssel Kopiert</string>
+    <string name="notifications__service_key_copied">Geheimschlüssel Kopiert</string>
     <!-- voiceover__token_is_already_on_the_list -->
     <string name="notifications__token_already_added">Dieses Token ist bereits in der Liste vorhanden</string>
     <string name="notifications__counter_copied">Zähler kopiert</string>
@@ -158,15 +158,15 @@
     <string name="tokens__move_to_trash">In den Papierkorb verschieben</string>
     <string name="tokens__additional_info">Zusätzliche Informationen</string>
     <string name="tokens__choose_method">Methode auswählen</string>
-    <string name="tokens__duplicated_private_key">Duplizierter Dienstschlüssel</string>
+    <string name="tokens__duplicated_private_key">Duplizierter Geheimschlüssel</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">Falscher Dienstschlüssel (nur Zahlen von 2 bis 7, Buchstaben), max. 512 Zeichen lang</string>
+    <string name="tokens__incorrect_service_key">Falscher Geheimschlüssel (nur Zahlen von 2 bis 7, Buchstaben), max. 512 Zeichen lang</string>
     <string name="tokens__try_again">OK, erneut versuchen</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Richte die Kamera auf den Bildschirm, um den QR-Code zu scannen</string>
     <!-- tokens__private_key -->
-    <string name="tokens__service_key">Serviceschlüssel</string>
+    <string name="tokens__service_key">Geheimschlüssel</string>
     <string name="tokens__qr_code_leads_to_app_store">Dieser QR-Code führt dich zum App-Store</string>
     <!-- tokens__remove_it_forever -->
     <string name="tokens__remove_forever">Token löschen</string>
@@ -180,7 +180,7 @@
     <string name="tokens__service_key_to_short">Schlüssel zu kurz. Minimum 4 Zeichen</string>
     <string name="tokens__service_name">Service-Name</string>
     <!-- tokens__this_private_key_exists_used_in -->
-    <string name="tokens__service_key_already_used_title">Der Serviceschlüssel aus dem gescannten Code wird bereits in %s verwendet. Du scannst ihn wahrscheinlich erneut</string>
+    <string name="tokens__service_key_already_used_title">Der Geheimschlüssel aus dem gescannten Code wird bereits in %s verwendet. Du scannst ihn wahrscheinlich erneut</string>
     <string name="tokens__this_qr_code_is_inavlid">Dieser Code ist falsch oder wird nicht unterstützt. Versuch es erneut.</string>
     <string name="tokens__type_service_name">Dienstname eingeben</string>
     <string name="tokens__enter_service_name">Dienstname eingeben</string>
@@ -277,14 +277,14 @@
     <string name="tokens__order_menu_option_company">Logo einreichen als Unternehmen</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
     <string name="tokens__sign_in_not_possible_title">Ohne dieses Token kannst du dich nicht bei deinem %1$s-Konto anmelden, sofern du die Zweitfaktor-Authentifizierung für %2$s aktiviert hast.</string>
-    <string name="voiceover__show_service_key">Serviceschlüssel anzeigen</string>
-    <string name="voiceover__copy_service_key">Serviceschlüssel kopieren</string>
+    <string name="voiceover__show_service_key">Geheimschlüssel anzeigen</string>
+    <string name="voiceover__copy_service_key">Geheimschlüssel kopieren</string>
     <!-- voiceover__seconds_left -->
     <string name="voiceover__seconds_left_counter_title">Zähler mit den verbleibenden Sekunden bis zum Tokenwechsel</string>
     <string name="voiceover__delete_button">Löschknopf</string>
     <string name="voiceover__service_deleted">Dienst gelöscht</string>
     <!-- voiceover__hidden_secret_key_use_show button -->
-    <string name="voiceover__reveal_hidden_secret_key_button_title">Dieses Feld beinhaltet einen versteckten geheimen Schlüssel. Verwende den Anzeigen Knopf, um ihn anzuzeigen. Es wird nur funktionieren wenn du den Apps Pin für den Sperrbildschirm eingerichtet hast</string>
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Dieses Feld beinhaltet einen versteckten Geheimschlüssel. Verwende den Anzeigen Knopf, um ihn anzuzeigen. Es wird nur funktionieren wenn du den Apps Pin für den Sperrbildschirm eingerichtet hast</string>
     <string name="voiceover__service_name">Dienstname: %s</string>
     <string name="voiceover__additional_info">Zusätzliche Informationen: %s</string>
     <string name="voiceover__token_tap_to_copy">Token %s. Tippe zum Kopieren</string>
@@ -559,13 +559,13 @@
     <string name="tokens__qr_read_image_try_again">Versuche eine andere Sprache auszuwählen.</string>
     <string name="tokens__remove_it_forever">Dienst endgültig löschen</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
-    <string name="tokens__service_add_error">Dienst konnte nicht hinzugefügt werden, denn der Service Schlüssel ist ungültig. Bitte versuche es nochmal.</string>
+    <string name="tokens__service_add_error">Dienst konnte nicht hinzugefügt werden, denn der Geheimschlüssel ist ungültig. Bitte versuche es nochmal.</string>
     <!-- A service with this Service Key already exists. Do you want to override it? -->
-    <string name="tokens__service_already_exists">Ein Dienst mit diesem Service Schlüssel existiert bereits. Möchtest du diesen ersetzen?</string>
+    <string name="tokens__service_already_exists">Ein Dienst mit diesem Geheimschlüssel existiert bereits. Möchtest du diesen ersetzen?</string>
     <string name="tokens__service_key_invalid_characters">Schlüssel enthält ungültige Zeichen</string>
-    <string name="tokens__show_service_key">Service Schlüssel anzeigen</string>
+    <string name="tokens__show_service_key">Geheimschlüssel anzeigen</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
-    <string name="tokens__show_service_key_setup_lock">Dein Service Schlüssel ist geschützt. Bitte füge einen PIN oder eine Fingerabdrucksperre hinzu, um ihn zu sehen.</string>
+    <string name="tokens__show_service_key_setup_lock">Dein Geheimschlüssel ist geschützt. Bitte füge einen PIN oder eine Fingerabdrucksperre hinzu, um ihn zu sehen.</string>
     <string name="tokens__tokens_list_is_empty">Liste mit Diensten ist leer</string>
     <string name="tokens__use_plus_button_to_add_tokens">Verwende den \"+\" Knopf, um einen neuen Dienst hinzuzufügen</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Du kannst dich ohne dieses Token nicht mehr bei deinem %1$s-Konto anmelden, solange die Zwei-Faktor-Authentifizierung für %2$s aktiviert ist.\n\nDu kannst dieses Token nicht aus dem 2FAS-Papierkorb wiederherstellen.</string>
@@ -764,4 +764,22 @@
     <string name="settings__option_screenshots">Screenshots erlauben</string>
     <string name="settings__option_screenshots_confirm_title">Willst du Screenshots innerhalb der App zulassen?</string>
     <string name="settings__option_screenshots_confirm_description">Bist du dir sicher? Mit dieser Option kannst du Screenshots erstellen und jeden Bildschirm innerhalb der App aufzeichnen. Jedoch erlaubt dies auch alle externen Versuche, den Bildshirm innerhalb der App zu erfassen.\nAus Sicherheitsgründen wird diese Option automatisch nach 5 Minuten ausgeschaltet.</string>
+    <string name="social__social_media">Soziale Medien</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">Twitter</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Token ausblenden</string>
+    <string name="settings__hide_tokens_description">Token werden nach dem antippen enthüllt</string>
+    <string name="browser__pair_manually_cta">Manuell Koppeln</string>
+    <string name="browser__pair_manually_hint">Pairing-Code</string>
+    <string name="externalimport__info_authenticatorpro_title">Token aus Authenticator Pro importieren</string>
+    <string name="externalimport__authenticatorpro_success_msg">Diese Textdatei ermöglicht den Import von Token aus Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">2FA-Tokens aus der Authenticator Pro App importieren</string>
+    <string name="externalimport__authenticatorpro_msg">Exportiere deine Konten von Authenticator Pro in eine unverschlüsselte Textdatei und lade diese über die \"Textdatei hochladen\" Schaltfläche hoch. Denke daran die Datei nach erfolgreichen Import zu löschen.</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">Text Datei Auswählen</string>
 </resources>

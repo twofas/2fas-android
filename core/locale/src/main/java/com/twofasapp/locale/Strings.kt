@@ -70,10 +70,12 @@ class Strings(c: Context) {
 
     val externalImportTitle = c.getString(R.string.settings__external_import)
     val externalImportHeader = c.getString(R.string.externalimport_select_app)
+    val externalImportNotice = c.getString(R.string.externalimport_description)
     val externalImportGoogleAuthenticator = c.getString(R.string.externalimport_google_authenticator)
     val externalImportAegis = c.getString(R.string.externalimport_aegis)
     val externalImportRaivo = c.getString(R.string.externalimport_raivo)
-    val externalImportNotice = c.getString(R.string.externalimport_description)
+    val externalImportLastPass = c.getString(R.string.externalimport_lastpass)
+    val externalImportAuthenticatorPro = c.getString(R.string.externalimport__authenticatorpro)
 
     val trashTitle = c.getString(R.string.settings__trash)
     val trashEmpty = c.getString(R.string.settings__trash_is_empty)
@@ -93,6 +95,14 @@ class Strings(c: Context) {
     val aboutLicenses = c.getString(R.string.about_licenses)
     val aboutTellFriend = c.getString(R.string.settings__tell_a_friend)
     val aboutTellFriendShareText = c.getString(R.string.settings__recommendation)
+    val aboutSocialMedia = c.getString(R.string.social__social_media)
+    val aboutSocialDiscord = c.getString(R.string.social__discord)
+    val aboutSocialYouTube = c.getString(R.string.social__youtube)
+    val aboutSocialTwitter = c.getString(R.string.social__twitter)
+    val aboutSocialGitHub = c.getString(R.string.social__github)
+    val aboutSocialLinkedIn = c.getString(R.string.social__linkedin)
+    val aboutSocialReddit = c.getString(R.string.social__reddit)
+    val aboutSocialFacebook = c.getString(R.string.social__facebook)
 
     val settingsBackup = c.getString(R.string.backup__2fas_backup)
     val settingsSecurity = c.getString(R.string.settings__security)
@@ -116,6 +126,8 @@ class Strings(c: Context) {
     val browserExtPairedDevices = c.getString(R.string.browser__paired_devices_browser_title)
     val browserExtDeviceName = c.getString(R.string.browser__this_device_name)
     val browserExtDeviceNameSubtitle = c.getString(R.string.browser__this_device_footer)
+    val browserPairManuallyCta = c.getString(R.string.browser__pair_manually_cta)
+    val browserPairManuallyHint = c.getString(R.string.browser__pair_manually_hint)
 
     val settingsTheme = c.getString(R.string.settings__option_theme)
     val settingsShowNextCode = c.getString(R.string.settings__show_next_token)
