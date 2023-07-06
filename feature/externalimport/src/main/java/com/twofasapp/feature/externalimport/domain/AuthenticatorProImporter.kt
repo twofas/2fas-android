@@ -39,6 +39,7 @@ internal class AuthenticatorProImporter(
 
             text.lines()
                 .filter { it.isNotBlank() }
+                .filter { it.startsWith("otpauth", ignoreCase = true) }
                 .mapNotNull { OtpLinkParser.parseLegacy(it) }
                 .filter { servicesRepository.isServiceValid(it) }
                 .forEach { entry -> servicesToImport.add(convertOtpLinkToService.execute(entry)) }

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sun, 02 Jul 2023 04:39:36 -0700
+ Exported at: Thu, 06 Jul 2023 01:29:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -774,12 +774,12 @@
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Token ausblenden</string>
     <string name="settings__hide_tokens_description">Token werden nach dem antippen enthüllt</string>
-    <string name="browser__pair_manually_cta">Pair manually</string>
-    <string name="browser__pair_manually_hint">Pairing code</string>
-    <string name="externalimport__info_authenticatorpro_title">Import tokens from Authenticator Pro</string>
-    <string name="externalimport__authenticatorpro_success_msg">This text file allows importing tokens from Authenticator Pro.</string>
-    <string name="externalimport__authenticatorpro_title">Importing 2FA tokens from Authenticator Pro app</string>
-    <string name="externalimport__authenticatorpro_msg">Export your accounts from Authenticator Pro to an unencrypted text file and upload it using the \"Choose text file\" button. Remember to remove the file after a successful import.</string>
+    <string name="browser__pair_manually_cta">Manuell Koppeln</string>
+    <string name="browser__pair_manually_hint">Pairing-Code</string>
+    <string name="externalimport__info_authenticatorpro_title">Token aus Authenticator Pro importieren</string>
+    <string name="externalimport__authenticatorpro_success_msg">Diese Textdatei ermöglicht den Import von Token aus Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">2FA-Tokens aus der Authenticator Pro App importieren</string>
+    <string name="externalimport__authenticatorpro_msg">Exportiere deine Konten von Authenticator Pro in eine unverschlüsselte Textdatei und lade diese über die \"Textdatei hochladen\" Schaltfläche hoch. Denke daran die Datei nach erfolgreichen Import zu löschen.</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
-    <string name="externalimport__choose_txt_cta">Choose text file</string>
+    <string name="externalimport__choose_txt_cta">Text Datei Auswählen</string>
 </resources>

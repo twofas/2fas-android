@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Sun, 02 Jul 2023 04:39:36 -0700
+ Exported at: Thu, 06 Jul 2023 01:29:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -774,12 +774,12 @@
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Esconder tokens</string>
     <string name="settings__hide_tokens_description">Os tokens serão revelados ao tocar</string>
-    <string name="browser__pair_manually_cta">Pair manually</string>
-    <string name="browser__pair_manually_hint">Pairing code</string>
-    <string name="externalimport__info_authenticatorpro_title">Import tokens from Authenticator Pro</string>
-    <string name="externalimport__authenticatorpro_success_msg">This text file allows importing tokens from Authenticator Pro.</string>
-    <string name="externalimport__authenticatorpro_title">Importing 2FA tokens from Authenticator Pro app</string>
-    <string name="externalimport__authenticatorpro_msg">Export your accounts from Authenticator Pro to an unencrypted text file and upload it using the \"Choose text file\" button. Remember to remove the file after a successful import.</string>
+    <string name="browser__pair_manually_cta">Conectar manualmente</string>
+    <string name="browser__pair_manually_hint">Código de conexão</string>
+    <string name="externalimport__info_authenticatorpro_title">Importa tokens do Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">Este ficheiro de texto permite importar tokens do Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">A importar tokens 2FA da aplicação Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_msg">Exporta as tuas contas da aplicação Authenticator Pro para um ficheiro de texto não encriptado e usa o botão \"Escolher ficheiro de texto\" para importá-lo. Lembra-te de remover o ficheiro após importares com sucesso.</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
-    <string name="externalimport__choose_txt_cta">Choose text file</string>
+    <string name="externalimport__choose_txt_cta">Escolher ficheiro de texto</string>
 </resources>
