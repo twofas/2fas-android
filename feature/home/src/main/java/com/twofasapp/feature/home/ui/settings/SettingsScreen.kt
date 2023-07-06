@@ -137,7 +137,7 @@ private fun SettingsScreen(
                             .size(52.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.discord, activity) }
-                            .padding(12.dp),
+                            .padding(14.dp),
                     )
                     Image(
                         painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_youtube),
@@ -146,7 +146,7 @@ private fun SettingsScreen(
                             .size(52.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.youtube, activity) }
-                            .padding(12.dp),
+                            .padding(14.dp),
                     )
                     Image(
                         painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_twitter),
@@ -155,7 +155,7 @@ private fun SettingsScreen(
                             .size(52.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.twitter, activity) }
-                            .padding(12.dp),
+                            .padding(14.dp),
                     )
                     Icon(
                         painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_github),
@@ -165,7 +165,7 @@ private fun SettingsScreen(
                             .size(52.dp)
                             .clip(CircleShape)
                             .clickable { uriHandler.openSafely(TwLocale.links.github, activity) }
-                            .padding(12.dp),
+                            .padding(14.dp),
                     )
                 }
             }
