@@ -1,6 +1,8 @@
 package com.twofasapp.di
 
 import com.twofasapp.analytics.AnalyticsCore
+import com.twofasapp.android.biometric.BiometricKeyProvider
+import com.twofasapp.biometric.BiometricKeyProviderImpl
 import com.twofasapp.common.analytics.Analytics
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
@@ -24,5 +26,6 @@ class AppModule : KoinModule {
         }
         singleOf(::AppBuildImpl) { bind<AppBuild>() }
         singleOf(::TimeProviderImpl) { bind<TimeProvider>() }
+        singleOf(::BiometricKeyProviderImpl) { bind<BiometricKeyProvider>() }
     }
 }

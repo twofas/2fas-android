@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Thu, 06 Jul 2023 07:36:34 -0700
+ Exported at: Sat, 08 Jul 2023 23:37:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -782,4 +782,5 @@
     <string name="externalimport__authenticatorpro_msg">Esporta i tuoi account da Authenticator Pro in un file di testo non crittografato e caricalo utilizzando il pulsante \"Scegli il file di testo\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
     <string name="externalimport__choose_txt_cta">Scegli il file di testo</string>
+    <string name="fingerprint__biometric_invalidated">Biometric login is disabled due to changes in system fingerprint settings</string>
 </resources>

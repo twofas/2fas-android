@@ -1,12 +1,15 @@
 package com.twofasapp.security.ui.biometric
 
+import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.widget.Toast
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.twofasapp.android.biometric.BiometricKeyProvider
 import com.twofasapp.resources.R
 import java.util.concurrent.Executor
+import javax.crypto.Cipher
 
 class BiometricDialog(
     private val activity: FragmentActivity,
@@ -18,6 +21,8 @@ class BiometricDialog(
     private val onFailed: () -> Unit,
     private val onError: () -> Unit,
     private val onDismiss: () -> Unit = {},
+    private val onBiometricInvalidated: () -> Unit = {},
+    private val biometricKeyProvider: BiometricKeyProvider,
 ) {
 
     private lateinit var executor: Executor
@@ -63,6 +68,15 @@ class BiometricDialog(
             .setNegativeButtonText(activity.getString(cancelRes))
             .build()
 
-        biometricPrompt.authenticate(promptInfo)
+        try {
+            val cipher = Cipher.getInstance(BiometricKeyProvider.TRANSFORMATION)
+            cipher.init(Cipher.ENCRYPT_MODE, biometricKeyProvider.getSecretKey())
+            biometricPrompt.authenticate(promptInfo, BiometricPrompt.CryptoObject(cipher))
+        } catch (e: KeyPermanentlyInvalidatedException) {
+            onBiometricInvalidated()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            onError()
+        }
     }
 }

@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.FragmentActivity
+import com.twofasapp.android.biometric.BiometricKeyProvider
 import com.twofasapp.design.compose.ProgressBar
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.resources.R
@@ -53,12 +54,18 @@ internal fun PinScreen(
     modifier: Modifier = Modifier,
     onPinEntered: (String) -> Unit = {},
     onBiometricsVerified: () -> Unit = {},
+    onBiometricsInvalidated: () -> Unit = {},
+    biometricKeyProvider: BiometricKeyProvider? = null,
 ) {
 
     var showBiometricDialog by remember { mutableStateOf(true) }
 
     if (state == PinScreenState.Loading) {
-        Box(modifier = Modifier.fillMaxSize().background(TwTheme.color.background)) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(TwTheme.color.background)
+        ) {
             ProgressBar(modifier = Modifier.align(Alignment.Center))
         }
     }
@@ -69,7 +76,9 @@ internal fun PinScreen(
         exit = fadeOut()
     ) {
         Column(
-            modifier = modifier.fillMaxSize().background(TwTheme.color.background),
+            modifier = modifier
+                .fillMaxSize()
+                .background(TwTheme.color.background),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -122,7 +131,7 @@ internal fun PinScreen(
         }
     }
 
-    if (showBiometricDialog && showBiometrics) {
+    if (showBiometricDialog && showBiometrics && biometricKeyProvider != null) {
         BiometricDialog(
             activity = LocalContext.current as FragmentActivity,
             onSuccess = {
@@ -132,6 +141,8 @@ internal fun PinScreen(
             onFailed = { showBiometricDialog = false },
             onError = { showBiometricDialog = false },
             onDismiss = { showBiometricDialog = false },
+            onBiometricInvalidated = { onBiometricsInvalidated() },
+            biometricKeyProvider = biometricKeyProvider,
         ).show()
     }
 

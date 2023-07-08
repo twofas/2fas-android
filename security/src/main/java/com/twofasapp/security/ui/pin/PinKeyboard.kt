@@ -77,15 +77,15 @@ internal fun PinKeyboard(
                     .padding(8.dp)
                     .height(64.dp)
                     .clip(CircleShape)
-                    .run {
+                    .then(
                         if (it == Keys.Biometrics) {
-                            clickable(isEnabled) { onBiometricsClick() }
-                        } else if (it != Keys.Empty) {
-                            clickable(isEnabled) { onKeyClick(it.toKeyInt()) }
+                            Modifier.clickable(isEnabled) { onBiometricsClick() }
+                        } else if (it != Keys.Empty && it != Keys.Empty2) {
+                            Modifier.clickable(isEnabled) { onKeyClick(it.toKeyInt()) }
                         } else {
-                            this
+                            Modifier
                         }
-                    }
+                    )
             ) {
                 if (it == Keys.Biometrics) {
                     Icon(
