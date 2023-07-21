@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Sat, 08 Jul 2023 23:37:06 -0700
+ Exported at: Fri, 21 Jul 2023 07:33:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -649,7 +649,7 @@
     <string name="settings__acknowledgements">Acknowledgements</string>
     <string name="introduction__import_external_app">Import from external app</string>
     <plurals name="past_duration_seconds">
-        <item quantity="one">moments ago</item>
+        <item quantity="one">moment ago</item>
         <item quantity="other">moments ago</item>
     </plurals>
     <plurals name="past_duration_minutes">
@@ -783,4 +783,11 @@
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
     <string name="externalimport__choose_txt_cta">Choose text file</string>
     <string name="fingerprint__biometric_invalidated">Biometric login is disabled due to changes in system fingerprint settings</string>
+    <string name="tokens__last_pass_import">Importing 2FA tokens from the LastPass app</string>
+    <string name="tokens__last_pass_import_subtitle">This QR code allows importing tokens from LastPass</string>
+    <string name="tokens__add_with_guide">Guide me</string>
+    <string name="guides__select_title">Browse services</string>
+    <string name="guides__select_description">Select service to pair with the 2FAS app</string>
+    <string name="guides__select_provide_guide">Do you want to provide 2FA guides for your service?</string>
+    <string name="guides__select_provide_guide_cta">Apply now</string>
 </resources>
