@@ -25,6 +25,7 @@ internal class SettingsLocalSource(
         private const val KeyAutoFocusSearch = "autoFocusSearch"
         private const val KeySendCrashLogs = "sendCrashLogs"
         private const val KeyAllowScreenshots = "allowScreenshots"
+        private const val KeyHideCodes = "hideCodes"
     }
 
     private val appSettingsFlow: MutableStateFlow<AppSettings> by lazy {
@@ -49,6 +50,7 @@ internal class SettingsLocalSource(
             selectedTheme = preferences.getString(KeySelectedTheme)?.let { SelectedTheme.valueOf(it) } ?: SelectedTheme.Auto,
             servicesStyle = preferences.getString(KeyServicesStyle)?.let { ServicesStyle.valueOf(it) } ?: ServicesStyle.Default,
             servicesSort = preferences.getString(KeyServicesSort)?.let { ServicesSort.valueOf(it) } ?: ServicesSort.Manual,
+            hideCodes = preferences.getBoolean(KeyHideCodes) ?: false,
         )
     }
 
@@ -90,5 +92,10 @@ internal class SettingsLocalSource(
     fun setAllowScreenshots(allow: Boolean) {
         appSettingsFlow.update { it.copy(allowScreenshots = allow) }
         preferences.putBoolean(KeyAllowScreenshots, allow)
+    }
+
+    fun setHideCodes(hideCodes: Boolean) {
+        appSettingsFlow.update { it.copy(hideCodes = hideCodes) }
+        preferences.putBoolean(KeyHideCodes, hideCodes)
     }
 }

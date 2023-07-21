@@ -68,6 +68,7 @@ internal fun Service.toEntity() = com.twofasapp.data.services.local.model.Servic
     hotpCounter = otp.hotpCounter,
     hotpCounterTimestamp = null,
     assignedDomains = assignedDomains,
+    revealTimestamp = null,
 )
 
 internal fun Service.toDeprecatedDto() = ServiceDto(

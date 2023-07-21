@@ -31,6 +31,7 @@ data class Service(
     val source: Source,
     val assignedDomains: List<String> = emptyList(),
     val backupSyncStatus: BackupSyncStatus,
+    val revealTimestamp: Long? = null,
 ) {
     data class Code(
         val current: String,

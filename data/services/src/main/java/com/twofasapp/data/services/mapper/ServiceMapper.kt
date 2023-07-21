@@ -47,7 +47,8 @@ internal fun ServiceEntity.asDomain(): Service {
         updatedAt = updatedAt,
         source = source?.let { Service.Source.valueOf(it) } ?: Service.Source.Manual,
         assignedDomains = assignedDomains.orEmpty(),
-        backupSyncStatus = BackupSyncStatus.valueOf(backupSyncStatus)
+        backupSyncStatus = BackupSyncStatus.valueOf(backupSyncStatus),
+        revealTimestamp = revealTimestamp,
     )
 }
 
@@ -77,7 +78,8 @@ internal fun Service.asEntity(): ServiceEntity {
         authType = authType.name,
         hotpCounter = hotpCounter,
         hotpCounterTimestamp = hotpCounterTimestamp,
-        assignedDomains = assignedDomains
+        assignedDomains = assignedDomains,
+        revealTimestamp = revealTimestamp,
     )
 }
 

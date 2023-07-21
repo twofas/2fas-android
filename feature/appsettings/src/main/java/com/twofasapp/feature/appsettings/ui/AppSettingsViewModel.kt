@@ -64,4 +64,10 @@ internal class AppSettingsViewModel(
     fun consumeEvent(event: AppSettingsUiEvent) {
         uiState.update { it.copy(events = it.events.minus(event)) }
     }
+
+    fun toggleHideTokens() {
+        launchScoped {
+            settingsRepository.setHideCodes(uiState.value.appSettings.hideCodes.not())
+        }
+    }
 }

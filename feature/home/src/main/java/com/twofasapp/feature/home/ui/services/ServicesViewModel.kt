@@ -239,6 +239,14 @@ internal class ServicesViewModel(
         }
     }
 
+    fun reveal(service: Service) {
+        launchScoped {
+            servicesRepository.revealService(
+                id = service.id,
+            )
+        }
+    }
+
     data class CombinedResult(
         val groups: List<Group>,
         val services: List<Service>,

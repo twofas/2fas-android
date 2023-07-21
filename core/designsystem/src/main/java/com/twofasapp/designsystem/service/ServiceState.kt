@@ -21,6 +21,7 @@ data class ServiceState(
     val labelText: String?,
     val labelColor: Color,
     val badgeColor: Color = Color.Unspecified,
+    val revealed: Boolean,
 ) {
 
     fun copyToClipboard(activity: Activity, showNextToken: Boolean) {
@@ -62,6 +63,7 @@ data class ServiceState(
             labelText = null,
             labelColor = Color.Unspecified,
             badgeColor = Color.Unspecified,
+            revealed = true,
         )
     }
 }

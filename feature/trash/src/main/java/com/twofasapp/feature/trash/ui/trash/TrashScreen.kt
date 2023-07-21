@@ -81,6 +81,7 @@ private fun TrashScreen(
                         iconDark = it.iconDark,
                         labelText = it.labelText,
                         labelColor = it.labelColor.asState(),
+                        revealed = true,
                     ),
                     modifier = Modifier
                         .fillMaxWidth()

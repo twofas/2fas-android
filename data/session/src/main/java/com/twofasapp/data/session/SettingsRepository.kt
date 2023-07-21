@@ -17,4 +17,5 @@ interface SettingsRepository {
     suspend fun setShowBackupNotice(showBackupNotice: Boolean)
     suspend fun setSendCrashLogs(sendCrashLogs: Boolean)
     suspend fun setAllowScreenshots(allow: Boolean)
+    suspend fun setHideCodes(hideCodes: Boolean)
 }

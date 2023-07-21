@@ -49,7 +49,8 @@ fun FocusServiceModal(
         iconDark = "",
         labelText = null,
         labelColor = Color.Unspecified,
-        badgeColor = Color.Unspecified
+        badgeColor = Color.Unspecified,
+        revealed = true,
     )
 
     Modal {
@@ -59,10 +60,11 @@ fun FocusServiceModal(
             DsServiceModal(
                 state = serviceState,
                 showNextCode = uiState.showNextCode,
+                hideCodes = uiState.hideCodes,
                 containerColor = TwTheme.color.surface,
-                onIncrementCounterClick = { viewModel.incrementCounter() }
+                onIncrementCounterClick = { viewModel.incrementCounter() },
+                onRevealClick = { viewModel.reveal() }
             )
-
 
             SettingsDivider()
 

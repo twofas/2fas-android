@@ -140,7 +140,8 @@ internal class ServicesLocalDataImpl(
                 authType = service.authType.name,
                 hotpCounter = service.hotpCounter,
                 hotpCounterTimestamp = null,
-                assignedDomains = service.assignedDomains
+                assignedDomains = service.assignedDomains,
+                revealTimestamp = null,
             )
         ).also {
             Timber.d("InsertService: Inserted with id $it")
@@ -188,6 +189,7 @@ internal class ServicesLocalDataImpl(
                     hotpCounter = it.hotpCounter,
                     hotpCounterTimestamp = null,
                     assignedDomains = it.assignedDomains,
+                    revealTimestamp = null,
                 )
             }.toTypedArray()
         )

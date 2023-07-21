@@ -18,10 +18,11 @@ import com.twofasapp.designsystem.common.TwIcon
 @Composable
 internal fun ServiceHotp(
     enabled: Boolean = true,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    modifier: Modifier = Modifier
 ) {
 
-    Box(modifier = Modifier
+    Box(modifier = modifier
         .size(56.dp)
         .clip(CircleShape)
         .clickable(enabled) { onClick() }
