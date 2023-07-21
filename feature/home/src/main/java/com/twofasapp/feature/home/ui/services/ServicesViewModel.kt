@@ -207,6 +207,7 @@ internal class ServicesViewModel(
 
     private fun Service.isMatchingQuery(query: String): Boolean {
         return name.contains(query, true) ||
+                issuer?.contains(query, true) ?: false ||
                 info?.contains(query, true) ?: false ||
                 tags.contains(query.lowercase())
     }
