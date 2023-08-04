@@ -70,7 +70,7 @@ internal fun AddServiceSuccessScreen(
                 DsServiceModal(
                     state = service.asState(),
                     showNextCode = uiState.showNextCode,
-                    hideCodes = uiState.hideCodes,
+                    hideCodes = false,
                     containerColor = TwTheme.color.surface,
                     onIncrementCounterClick = { viewModel.incrementHotpCounter(service) },
                     onRevealClick = { viewModel.reveal(service) }
