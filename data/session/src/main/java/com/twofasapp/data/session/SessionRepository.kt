@@ -12,4 +12,6 @@ interface SessionRepository {
     fun observeShowBackupReminder(): Flow<Boolean>
     fun observeBackupEnabled(): Flow<Boolean>
     fun resetBackupReminder()
+    suspend fun getAppInstallTimestamp(): Long
+    suspend fun markAppInstalled()
 }

@@ -4,12 +4,14 @@ import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
+import java.time.Instant
 
 internal class SessionLocalSource(private val preferences: PlainPreferences) {
 
     companion object {
         private const val KeyShowOnboardWarning = "showOnboardWarning"
         private const val KeyBackupReminderTimestamp = "backupReminderTimestamp"
+        private const val KeyAppInstallTimestamp = "appInstallTimestamp"
     }
 
     private val backupReminderTimestampFlow: MutableStateFlow<Long> by lazy {
@@ -35,5 +37,15 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
     fun setBackupReminderTimestamp(millis: Long) {
         backupReminderTimestampFlow.update { millis }
         preferences.putLong(KeyBackupReminderTimestamp, millis)
+    }
+
+    fun getAppInstallTimestamp(): Long {
+        return preferences.getLong(KeyAppInstallTimestamp) ?: Instant.now().toEpochMilli()
+    }
+
+    fun markAppInstalled() {
+        if (preferences.getLong(KeyAppInstallTimestamp) == null) {
+            preferences.putLong(KeyAppInstallTimestamp, Instant.now().toEpochMilli())
+        }
     }
 }

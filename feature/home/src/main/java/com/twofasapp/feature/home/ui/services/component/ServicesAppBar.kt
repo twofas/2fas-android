@@ -6,6 +6,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Badge
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -51,9 +53,11 @@ internal fun ServicesAppBar(
     query: String,
     isInEditMode: Boolean,
     isSearchFocused: Boolean,
+    hasUnreadNotifications: Boolean,
     onEditModeChange: () -> Unit = {},
     onSortClick: () -> Unit = {},
     onAddGroupClick: () -> Unit = {},
+    onNotificationsClick: () -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
     focusRequester: FocusRequester,
@@ -93,7 +97,7 @@ internal fun ServicesAppBar(
             title = {
                 SearchBar(
                     modifier = Modifier
-                        .padding(end = 16.dp)
+                        .padding(end = 8.dp)
                         .height(56.dp),
                     query = query,
                     focused = isSearchFocused,
@@ -105,6 +109,24 @@ internal fun ServicesAppBar(
             },
             showBackButton = false,
             scrollBehavior = scrollBehavior,
+            actions = {
+                Box {
+                    TwIconButton(
+                        painter = TwIcons.Notification,
+                        tint = TwTheme.color.iconTint,
+                        onClick = onNotificationsClick,
+                    )
+
+                    if (hasUnreadNotifications) {
+                        Badge(
+                            containerColor = TwTheme.color.primary,
+                            modifier = Modifier
+                                .align(Alignment.Center)
+                                .padding(start = 18.dp, bottom = 18.dp)
+                        )
+                    }
+                }
+            }
         )
     }
 }

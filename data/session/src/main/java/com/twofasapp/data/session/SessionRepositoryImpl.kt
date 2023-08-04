@@ -66,4 +66,12 @@ internal class SessionRepositoryImpl(
             timeProvider.systemCurrentTime() + Duration.ofDays(21).toMillis()
         )
     }
+
+    override suspend fun getAppInstallTimestamp(): Long {
+        return local.getAppInstallTimestamp()
+    }
+
+    override suspend fun markAppInstalled() {
+        local.markAppInstalled()
+    }
 }

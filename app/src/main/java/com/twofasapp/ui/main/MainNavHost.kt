@@ -33,7 +33,9 @@ import com.twofasapp.feature.externalimport.navigation.ExternalImportGraph
 import com.twofasapp.feature.externalimport.navigation.externalImportNavigation
 import com.twofasapp.feature.home.navigation.HomeGraph
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
+import com.twofasapp.feature.home.navigation.NotificationsGraph
 import com.twofasapp.feature.home.navigation.homeNavigation
+import com.twofasapp.feature.home.navigation.notificationsNavigation
 import com.twofasapp.feature.home.ui.services.add.AddServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
@@ -120,6 +122,10 @@ internal fun MainNavHost(
                         navController.navigate(TrashGraph.route)
                     }
 
+                    override fun openNotifications() {
+                        navController.navigate(NotificationsGraph.route)
+                    }
+
                     override fun openAbout() {
                         navController.navigate(AboutGraph.route)
                     }
@@ -151,6 +157,7 @@ internal fun MainNavHost(
             )
 
             appSettingsNavigation()
+            notificationsNavigation()
             trashNavigation(navController = navController)
             aboutNavigation(navController = navController)
             browserExtNavigation(navController = navController)

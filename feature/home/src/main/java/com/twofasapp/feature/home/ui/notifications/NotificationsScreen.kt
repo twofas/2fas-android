@@ -32,20 +32,16 @@ import com.twofasapp.designsystem.common.TwEmptyScreen
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.feature.home.R
-import com.twofasapp.feature.home.ui.bottombar.BottomBar
-import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun NotificationsRoute(
-    bottomBarListener: BottomBarListener,
     viewModel: NotificationsViewModel = koinViewModel(),
 ) {
     val notifications by viewModel.notificationsList.collectAsStateWithLifecycle()
 
     NotificationsScreen(
-        bottomBarListener = bottomBarListener,
         notifications = notifications,
         onNotificationClick = { viewModel.onNotificationClick(it) }
     )
@@ -53,7 +49,6 @@ internal fun NotificationsRoute(
 
 @Composable
 private fun NotificationsScreen(
-    bottomBarListener: BottomBarListener,
     notifications: List<Notification>,
     onNotificationClick: (Notification) -> Unit,
 ) {
@@ -61,14 +56,12 @@ private fun NotificationsScreen(
     val context = LocalContext.current
 
     Scaffold(
-        bottomBar = { BottomBar(2, bottomBarListener) },
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.notificationsTitle, showBackButton = false) },
+        topBar = { TwTopAppBar(titleText = TwLocale.strings.notificationsTitle) },
     ) { padding ->
 
-        LazyColumn(Modifier.padding(padding)) {
+        LazyColumn(Modifier.padding(top = padding.calculateTopPadding())) {
 
             if (notifications.isEmpty()) {
-
                 item {
                     TwEmptyScreen(
                         body = TwLocale.strings.notificationsEmpty,

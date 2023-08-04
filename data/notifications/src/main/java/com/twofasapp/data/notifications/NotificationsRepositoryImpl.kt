@@ -8,6 +8,8 @@ import com.twofasapp.data.notifications.remote.NotificationsRemoteSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import java.time.Instant
+import java.time.ZoneId
 
 internal class NotificationsRepositoryImpl(
     private val dispatchers: Dispatchers,
@@ -21,9 +23,11 @@ internal class NotificationsRepositoryImpl(
         }
     }
 
-    override suspend fun fetchNotifications() {
+    override suspend fun fetchNotifications(sinceMillis: Long) {
         withContext(dispatchers.io) {
-            val remoteData = remote.fetchNotifications()
+            val remoteData = remote.fetchNotifications(
+                publishedAfter = Instant.ofEpochMilli(sinceMillis).atZone(ZoneId.systemDefault()).toOffsetDateTime()
+            )
             local.saveNotifications(remoteData.map { it.asDomain() })
         }
     }
