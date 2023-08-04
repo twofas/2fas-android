@@ -112,7 +112,7 @@ fun DsServiceModal(
                 }
             }
 
-            if (state.revealed || hideCodes.not()) {
+            if (state.revealed || hideCodes.not() || state.authType == ServiceAuthType.Hotp) {
                 when (state.authType) {
                     ServiceAuthType.Totp -> {
                         ServiceTimer(
@@ -131,20 +131,22 @@ fun DsServiceModal(
                     }
                 }
             } else {
-                Box(
-                    Modifier
-                        .size(56.dp)
-                        .clip(CircleShape)
-                        .clickable { onRevealClick?.invoke() }
-                ) {
-                    Icon(
-                        painter = TwIcons.Eye,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(24.dp)
-                            .align(Alignment.Center),
-                        tint = TwTheme.color.iconTint
-                    )
+                if (state.authType == ServiceAuthType.Totp) {
+                    Box(
+                        Modifier
+                            .size(56.dp)
+                            .clip(CircleShape)
+                            .clickable { onRevealClick?.invoke() }
+                    ) {
+                        Icon(
+                            painter = TwIcons.Eye,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(24.dp)
+                                .align(Alignment.Center),
+                            tint = TwTheme.color.iconTint
+                        )
+                    }
                 }
             }
         }
@@ -154,11 +156,15 @@ fun DsServiceModal(
 @Preview
 @Composable
 private fun Preview() {
-    DsServiceModal(state = ServicePreview.copy(revealed = true), hideCodes = true)
-}
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
 
-@Preview
-@Composable
-private fun PreviewHidden() {
-    DsServiceModal(state = ServicePreview.copy(revealed = false), hideCodes = true)
+        DsServiceModal(state = ServicePreview.copy(revealed = true), hideCodes = true)
+        DsServiceModal(state = ServicePreview.copy(revealed = false), hideCodes = true)
+
+        DsServiceModal(state = ServicePreview.copy(revealed = true, authType = ServiceAuthType.Hotp), hideCodes = true)
+        DsServiceModal(state = ServicePreview.copy(revealed = false, authType = ServiceAuthType.Hotp), hideCodes = true)
+    }
 }

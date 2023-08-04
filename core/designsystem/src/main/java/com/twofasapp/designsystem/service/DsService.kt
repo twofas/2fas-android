@@ -180,7 +180,7 @@ fun DsService(
 
             if (editMode.not()) {
 
-                if (state.revealed || hideCodes.not()) {
+                if (state.revealed || hideCodes.not() || state.authType == ServiceAuthType.Hotp) {
                     when (state.authType) {
                         ServiceAuthType.Totp -> {
                             ServiceTimer(
@@ -196,26 +196,28 @@ fun DsService(
                             ServiceHotp(
                                 enabled = state.hotpCounterEnabled,
                                 onClick = { onIncrementCounterClick?.invoke() },
-                                modifier = Modifier.padding(end = 4.dp)
+                                modifier = Modifier.padding(end = 7.dp)
                             )
                         }
                     }
                 } else {
-                    Box(
-                        Modifier
-                            .padding(end = 7.dp)
-                            .size(56.dp)
-                            .clip(CircleShape)
-                            .clickable { onRevealClick?.invoke() }
-                    ) {
-                        Icon(
-                            painter = TwIcons.Eye,
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(24.dp)
-                                .align(Alignment.Center),
-                            tint = TwTheme.color.iconTint
-                        )
+                    if (state.authType == ServiceAuthType.Totp) {
+                        Box(
+                            Modifier
+                                .padding(end = 7.dp)
+                                .size(56.dp)
+                                .clip(CircleShape)
+                                .clickable { onRevealClick?.invoke() }
+                        ) {
+                            Icon(
+                                painter = TwIcons.Eye,
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(24.dp)
+                                    .align(Alignment.Center),
+                                tint = TwTheme.color.iconTint
+                            )
+                        }
                     }
                 }
             }
@@ -270,6 +272,7 @@ private fun PreviewDefault() {
         DsService(state = ServicePreview.copy(timer = 3), showNextCode = true, hideCodes = true)
         DsService(state = ServicePreview.copy(timer = 3, revealed = false), showNextCode = true, hideCodes = true)
         DsService(state = ServicePreview.copy(authType = ServiceAuthType.Hotp))
+        DsService(state = ServicePreview.copy(authType = ServiceAuthType.Hotp, revealed = false), hideCodes = true)
     }
 }
 
@@ -284,6 +287,12 @@ private fun PreviewCompact() {
         DsService(state = ServicePreview, style = ServiceStyle.Compact)
         DsService(state = ServicePreview.copy(timer = 3), style = ServiceStyle.Compact, showNextCode = true, hideCodes = true)
         DsService(state = ServicePreview.copy(revealed = false), style = ServiceStyle.Compact, hideCodes = true)
+        DsService(state = ServicePreview.copy(authType = ServiceAuthType.Hotp), style = ServiceStyle.Compact)
+        DsService(
+            state = ServicePreview.copy(authType = ServiceAuthType.Hotp, revealed = false),
+            style = ServiceStyle.Compact,
+            hideCodes = true
+        )
     }
 }
 
