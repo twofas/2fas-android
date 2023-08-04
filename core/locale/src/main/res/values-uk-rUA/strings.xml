@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Fri, 21 Jul 2023 07:33:24 -0700
+ Exported at: Fri, 04 Aug 2023 12:29:35 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -791,9 +791,11 @@
     <string name="fingerprint__biometric_invalidated">Біометричний вхід вимкнено через зміни системних налаштувань відбитків пальців</string>
     <string name="tokens__last_pass_import">Імпортувати токени із додатку LastPass</string>
     <string name="tokens__last_pass_import_subtitle">Цей QR-код дозволяє імпортувати токени з LastPass</string>
-    <string name="tokens__add_with_guide">Guide me</string>
-    <string name="guides__select_title">Browse services</string>
-    <string name="guides__select_description">Select service to pair with the 2FAS app</string>
-    <string name="guides__select_provide_guide">Do you want to provide 2FA guides for your service?</string>
-    <string name="guides__select_provide_guide_cta">Apply now</string>
+    <string name="tokens__add_with_guide">Покажіть мені</string>
+    <string name="guides__select_title">Перегляд сервісів</string>
+    <string name="guides__select_description">Обрати сервіс для підключення до додатку 2FAS</string>
+    <string name="guides__select_provide_guide">Чи хочете ви надати 2FA інструкції для вашого сервісу?</string>
+    <string name="guides__select_provide_guide_cta">Застосувати зараз</string>
+    <string name="color__pink">Pink</string>
+    <string name="color__brown">Brown</string>
 </resources>

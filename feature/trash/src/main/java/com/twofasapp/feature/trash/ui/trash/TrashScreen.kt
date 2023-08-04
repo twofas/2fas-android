@@ -130,6 +130,8 @@ private fun Service.Tint?.asState(): Color {
         Service.Tint.Red -> TwTheme.color.accentRed
         Service.Tint.Orange -> TwTheme.color.accentOrange
         Service.Tint.Yellow -> TwTheme.color.accentYellow
+        Service.Tint.Pink -> TwTheme.color.accentPink
+        Service.Tint.Brown -> TwTheme.color.accentBrown
         null -> TwTheme.color.surfaceVariant
     }
 }

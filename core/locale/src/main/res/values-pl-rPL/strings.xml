@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Fri, 21 Jul 2023 07:33:24 -0700
+ Exported at: Fri, 04 Aug 2023 12:29:35 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -796,4 +796,6 @@
     <string name="guides__select_description">Select service to pair with the 2FAS app</string>
     <string name="guides__select_provide_guide">Do you want to provide 2FA guides for your service?</string>
     <string name="guides__select_provide_guide_cta">Apply now</string>
+    <string name="color__pink">Pink</string>
+    <string name="color__brown">Brown</string>
 </resources>
