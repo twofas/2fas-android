@@ -46,7 +46,13 @@ internal class AddServiceSuccessViewModel(
     }
 
     fun incrementHotpCounter(service: Service) {
-        launchScoped { servicesRepository.incrementHotpCounter(service) }
+        launchScoped {
+            servicesRepository.incrementHotpCounter(service)
+
+            if (uiState.value.hideCodes) {
+                servicesRepository.revealService(id = service.id)
+            }
+        }
     }
 
     fun reveal(service: Service) {

@@ -43,7 +43,13 @@ class FocusServiceViewModel(
 
     fun incrementCounter() {
         uiState.value.service?.let {
-            launchScoped { servicesRepository.incrementHotpCounter(it) }
+            launchScoped {
+                servicesRepository.incrementHotpCounter(it)
+
+                if (uiState.value.hideCodes) {
+                    servicesRepository.revealService(serviceId)
+                }
+            }
         }
     }
 
