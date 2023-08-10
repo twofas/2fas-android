@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Thu, 06 Jul 2023 01:29:02 -0700
+ Exported at: Fri, 21 Jul 2023 07:33:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -25,9 +25,9 @@
     <!-- A number replaces %d, for example, 4 of 5. -->
     <string name="commons__page_of_page_title">%1$d de %2$d</string>
     <!-- notifications__service_already_removed_from_backup -->
-    <string name="notifications__service_already_removed_title">El servicio ya fue removido del respaldo</string>
+    <string name="notifications__service_already_removed_title">El servicio ya está eliminado del respaldo</string>
     <!-- notifications__service_already_modified_in_backup -->
-    <string name="notifications__service_already_modified_title">El servicio ya fue modificado en el respaldo</string>
+    <string name="notifications__service_already_modified_title">El servicio ya está modificado en el respaldo</string>
     <!-- backup__user_is_over_quota_on_icloud -->
     <string name="backup__user_over_quota_icloud">El usuario ha excedido la cuota de almacenamiento de iCloud</string>
     <!-- backup__icloud_is_not_available -->
@@ -782,4 +782,12 @@
     <string name="externalimport__authenticatorpro_msg">Exporta tus cuentas desde Authenticator Pro a un archivo de texto no encriptado y subirlo usando el botón \"Elegir archivo de texto\". Recuerda eliminar este archivo después de importarlo correctamente.</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
     <string name="externalimport__choose_txt_cta">Elegir archivo de texto</string>
+    <string name="fingerprint__biometric_invalidated">El inicio de sesión biométrico está deshabilitado debido a los cambios en la configuración de huellas dactilares del sistema</string>
+    <string name="tokens__last_pass_import">Importando tokens 2FA del LastPass</string>
+    <string name="tokens__last_pass_import_subtitle">Este código de QR permite importar tokens del LastPass</string>
+    <string name="tokens__add_with_guide">Guide me</string>
+    <string name="guides__select_title">Browse services</string>
+    <string name="guides__select_description">Select service to pair with the 2FAS app</string>
+    <string name="guides__select_provide_guide">Do you want to provide 2FA guides for your service?</string>
+    <string name="guides__select_provide_guide_cta">Apply now</string>
 </resources>

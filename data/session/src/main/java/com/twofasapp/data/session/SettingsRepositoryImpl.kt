@@ -69,4 +69,10 @@ internal class SettingsRepositoryImpl(
             local.setAllowScreenshots(allow)
         }
     }
+
+    override suspend fun setHideCodes(hideCodes: Boolean) {
+        withContext(dispatchers.io) {
+            local.setHideCodes(hideCodes)
+        }
+    }
 }

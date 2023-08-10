@@ -31,7 +31,8 @@ fun Service.asState(): ServiceState {
         iconDark = iconDark,
         labelText = labelText,
         labelColor = labelColor.asState(),
-        badgeColor = badgeColor.asState()
+        badgeColor = badgeColor.asState(),
+        revealed = revealTimestamp?.let { it + 10000L > System.currentTimeMillis() } ?: false,
     )
 }
 

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Thu, 06 Jul 2023 01:29:02 -0700
+ Exported at: Fri, 21 Jul 2023 07:33:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -782,4 +782,12 @@
     <string name="externalimport__authenticatorpro_msg">Exportez vos comptes depuis Authenticator Pro vers un fichier texte non crypté et transmettez le via le bouton \"Choisir un fichier texte\". Souvenez-vous de supprimer ce fichier une fois importé avec succès.</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
     <string name="externalimport__choose_txt_cta">Choisir un fichier texte</string>
+    <string name="fingerprint__biometric_invalidated">Les connexions biométriques ont été désactivées en raison de changements dans les paramètres biométriques du système.</string>
+    <string name="tokens__last_pass_import">Importation de clés 2FA à partir de l\'application LastPass</string>
+    <string name="tokens__last_pass_import_subtitle">Ce QR code autorise l\'importation de clés 2FA depuis LastPass</string>
+    <string name="tokens__add_with_guide">Guide me</string>
+    <string name="guides__select_title">Browse services</string>
+    <string name="guides__select_description">Select service to pair with the 2FAS app</string>
+    <string name="guides__select_provide_guide">Do you want to provide 2FA guides for your service?</string>
+    <string name="guides__select_provide_guide_cta">Apply now</string>
 </resources>

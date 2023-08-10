@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.FragmentActivity
+import com.twofasapp.android.biometric.BiometricKeyProvider
 import com.twofasapp.design.compose.HeaderEntry
 import com.twofasapp.design.compose.SimpleEntry
 import com.twofasapp.design.compose.SubtitleGravity
@@ -35,10 +36,12 @@ import com.twofasapp.security.domain.model.PinTimeout
 import com.twofasapp.security.domain.model.PinTrials
 import com.twofasapp.security.ui.biometric.BiometricDialog
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun SecurityScreen(
     viewModel: SecurityViewModel = koinViewModel(),
+    biometricKeyProvider: BiometricKeyProvider = koinInject(),
     openSetupPin: () -> Unit,
     openDisablePin: () -> Unit,
     openChangePin: () -> Unit,
@@ -240,6 +243,8 @@ internal fun SecurityScreen(
                 onFailed = { showBiometricDialog = false },
                 onError = { showBiometricDialog = false },
                 onDismiss = { showBiometricDialog = false },
+                onBiometricInvalidated = {},
+                biometricKeyProvider = biometricKeyProvider,
             ).show()
         }
 

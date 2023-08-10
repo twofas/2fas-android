@@ -286,4 +286,10 @@ internal class ServicesRepositoryImpl(
     override fun pushAddServiceAdvancedExpanded(expanded: Boolean) {
         local.pushAddServiceAdvancedExpanded(expanded)
     }
+
+    override suspend fun revealService(id: Long) {
+        withContext(dispatchers.io) {
+            local.revealService(id)
+        }
+    }
 }

@@ -32,5 +32,6 @@ data class ServiceEntity(
     @ColumnInfo(name = "authType") val authType: String?,
     @ColumnInfo(name = "hotpCounter") val hotpCounter: Int?,
     @ColumnInfo(name = "hotpCounterTimestamp") val hotpCounterTimestamp: Long?,
+    @ColumnInfo(name = "revealTimestamp") val revealTimestamp: Long?,
     @ColumnInfo(name = "assignedDomains") val assignedDomains: List<String>?,
 )

@@ -36,7 +36,7 @@ import java.text.Normalizer
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
-        const val DB_VERSION = 11
+        const val DB_VERSION = 12
     }
 
     abstract fun serviceDao(): ServiceDao
@@ -241,6 +241,12 @@ val MIGRATION_9_10 = object : Migration(9, 10) {
 val MIGRATION_10_11 = object : Migration(10, 11) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL("ALTER TABLE local_services ADD COLUMN hotpCounterTimestamp INTEGER")
+    }
+}
+
+val MIGRATION_11_12 = object : Migration(11, 12) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE local_services ADD COLUMN revealTimestamp INTEGER")
     }
 }
 

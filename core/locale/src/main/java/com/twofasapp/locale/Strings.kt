@@ -139,6 +139,8 @@ class Strings(c: Context) {
     val settingsShowBackupNoticeConfirmBody = c.getString(R.string.settings__gd_sync_disable_confirm)
     val settingsSendCrashes = c.getString(R.string.settings__enable_crashlytics)
     val settingsSendCrashesBody = c.getString(R.string.settings__enable_crashlytics_description)
+    val settingsHideCodes = c.getString(R.string.settings__hide_tokens_title)
+    val settingsHideCodesBody = c.getString(R.string.settings__hide_tokens_description)
 
     val backupSyncNotice = c.getString(R.string.backup__reminder_msg)
     val backupSyncCta = c.getString(R.string.backup__reminder_cta)

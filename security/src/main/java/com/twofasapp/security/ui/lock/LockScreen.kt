@@ -8,18 +8,21 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import com.twofasapp.android.biometric.BiometricKeyProvider
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.ui.pin.PinScreen
 import com.twofasapp.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.security.ui.pin.vibrateInvalidPin
-import org.koin.androidx.compose.get
+import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 internal fun LockScreen(
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-    viewModel: LockViewModel = get(),
+    viewModel: LockViewModel = koinViewModel(),
+    biometricKeyProvider: BiometricKeyProvider = koinInject(),
     onSuccess: () -> Unit = {},
 ) {
     val uiState = viewModel.uiState.collectAsState().value
@@ -54,6 +57,7 @@ internal fun LockScreen(
                 id = R.string.security__too_many_attempts_try_again_after,
                 uiState.invalidPinStatus.timeLeftMin.toString()
             )
+
             uiState.errorMessage != null -> stringResource(id = uiState.errorMessage)
             else -> ""
         },
@@ -64,6 +68,11 @@ internal fun LockScreen(
         state = uiState.pinScreenState,
         currentPinState = currentPinState,
         onPinEntered = { viewModel.pinEntered(it) },
-        onBiometricsVerified = { viewModel.biometricsVerified() }
+        onBiometricsVerified = { viewModel.biometricsVerified() },
+        onBiometricsInvalidated = {
+            biometricKeyProvider.deleteSecretKey()
+            viewModel.disableBiometric()
+        },
+        biometricKeyProvider = biometricKeyProvider,
     )
 }

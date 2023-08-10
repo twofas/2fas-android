@@ -40,6 +40,7 @@ internal fun AppSettingsRoute(
         onShowNextTokenToggle = { viewModel.toggleShowNextToken() },
         onShowBackupNoticeToggle = { viewModel.toggleShowBackupNotice() },
         onAutoFocusSearchToggle = { viewModel.toggleAutoFocusSearch() },
+        onHideCodesToggle = { viewModel.toggleHideTokens() }
     )
 }
 
@@ -52,6 +53,7 @@ private fun AppSettingsScreen(
     onShowNextTokenToggle: () -> Unit,
     onShowBackupNoticeToggle: () -> Unit,
     onAutoFocusSearchToggle: () -> Unit,
+    onHideCodesToggle: () -> Unit,
 ) {
     val activity = LocalContext.currentActivity
     var showThemeDialog by remember { mutableStateOf(false) }
@@ -92,26 +94,27 @@ private fun AppSettingsScreen(
             item {
                 SettingsSwitch(
                     title = TwLocale.strings.settingsShowNextCode,
-                    checked = uiState.appSettings.showNextCode,
-                    onCheckedChange = { onShowNextTokenToggle() },
                     subtitle = TwLocale.strings.settingsShowNextCodeBody,
                     icon = TwIcons.NextToken,
+                    checked = uiState.appSettings.showNextCode,
+                    onCheckedChange = { onShowNextTokenToggle() },
                 )
             }
 
             item {
                 SettingsSwitch(
                     title = TwLocale.strings.settingsAutoFocusSearch,
-                    checked = uiState.appSettings.autoFocusSearch,
-                    onCheckedChange = { onAutoFocusSearchToggle() },
                     subtitle = TwLocale.strings.settingsAutoFocusSearchBody,
                     icon = TwIcons.Search,
+                    checked = uiState.appSettings.autoFocusSearch,
+                    onCheckedChange = { onAutoFocusSearchToggle() },
                 )
             }
 
             item {
                 SettingsSwitch(
                     title = TwLocale.strings.settingsShowBackupNotice,
+                    icon = TwIcons.CloudOff,
                     checked = uiState.appSettings.showBackupNotice,
                     onCheckedChange = { checked ->
                         if (checked.not()) {
@@ -120,7 +123,16 @@ private fun AppSettingsScreen(
                             onShowBackupNoticeToggle()
                         }
                     },
-                    icon = TwIcons.CloudOff,
+                )
+            }
+
+            item {
+                SettingsSwitch(
+                    title = TwLocale.strings.settingsHideCodes,
+                    subtitle = TwLocale.strings.settingsHideCodesBody,
+                    icon = TwIcons.Eye,
+                    checked = uiState.appSettings.hideCodes,
+                    onCheckedChange = { onHideCodesToggle() },
                 )
             }
         }

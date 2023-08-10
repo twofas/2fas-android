@@ -9,4 +9,5 @@ data class AppSettings(
     val selectedTheme: SelectedTheme = SelectedTheme.Auto,
     val servicesStyle: ServicesStyle = ServicesStyle.Default,
     val servicesSort: ServicesSort = ServicesSort.Manual,
+    val hideCodes: Boolean = false,
 )

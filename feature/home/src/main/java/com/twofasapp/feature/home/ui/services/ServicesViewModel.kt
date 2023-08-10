@@ -198,7 +198,13 @@ internal class ServicesViewModel(
     }
 
     fun incrementHotpCounter(service: Service) {
-        launchScoped { servicesRepository.incrementHotpCounter(service) }
+        launchScoped {
+            servicesRepository.incrementHotpCounter(service)
+
+            if (uiState.value.appSettings.hideCodes) {
+                servicesRepository.revealService(id = service.id)
+            }
+        }
     }
 
     private fun publishEvent(event: ServicesStateEvent) {
@@ -207,6 +213,7 @@ internal class ServicesViewModel(
 
     private fun Service.isMatchingQuery(query: String): Boolean {
         return name.contains(query, true) ||
+                issuer?.contains(query, true) ?: false ||
                 info?.contains(query, true) ?: false ||
                 tags.contains(query.lowercase())
     }
@@ -236,6 +243,14 @@ internal class ServicesViewModel(
             )
 
             servicesRepository.setTickerEnabled(true)
+        }
+    }
+
+    fun reveal(service: Service) {
+        launchScoped {
+            servicesRepository.revealService(
+                id = service.id,
+            )
         }
     }
 

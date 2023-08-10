@@ -1,6 +1,5 @@
 package com.twofasapp.feature.home.ui.services
 
-import android.Manifest
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.animateContentSize
@@ -47,7 +46,6 @@ import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.RequestPermission
 import com.twofasapp.designsystem.common.TwEmptyScreen
 import com.twofasapp.designsystem.common.TwOutlinedButton
 import com.twofasapp.designsystem.common.isScrollingUp
@@ -108,7 +106,8 @@ internal fun ServicesRoute(
         onSearchFocusChange = { viewModel.searchFocused(it) },
         onOpenBackupClick = { listener.openBackup(activity) },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
-        onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) }
+        onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
+        onRevealClick = { viewModel.reveal(it) }
     )
 }
 
@@ -135,6 +134,7 @@ private fun ServicesScreen(
     onOpenBackupClick: () -> Unit = {},
     onDismissSyncReminderClick: () -> Unit = {},
     onIncrementHotpCounterClick: (Service) -> Unit = {},
+    onRevealClick: (Service) -> Unit = {},
 ) {
 
     val focusRequester = remember { FocusRequester() }
@@ -281,7 +281,7 @@ private fun ServicesScreen(
                 isVisible = uiState.isLoading.not(),
                 isExtendedVisible = uiState.totalServices == 0,
                 isNormalVisible = reorderableState.listState.isScrollingUp(),
-                onClick = {  listener.openAddServiceModal() },
+                onClick = { listener.openAddServiceModal() },
             )
         },
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
@@ -432,6 +432,7 @@ private fun ServicesScreen(
                                     },
                                     editMode = uiState.isInEditMode,
                                     showNextCode = uiState.appSettings.showNextCode,
+                                    hideCodes = uiState.appSettings.hideCodes,
                                     containerColor = if (recentlyAddedService == service.id) {
                                         serviceContainerColorBlinking.value
                                     } else {
@@ -439,16 +440,13 @@ private fun ServicesScreen(
                                     },
                                     dragHandleVisible = uiState.appSettings.servicesSort == ServicesSort.Manual,
                                     dragModifier = Modifier.detectReorder(state = reorderableState),
-                                    onClick = {
-                                        state.copyToClipboard(activity, uiState.appSettings.showNextCode)
-                                    },
+                                    onClick = { state.copyToClipboard(activity, uiState.appSettings.showNextCode) },
                                     onLongClick = {
                                         keyboardController?.hide()
                                         listener.openFocusServiceModal(service.id)
                                     },
-                                    onIncrementCounterClick = {
-                                        onIncrementHotpCounterClick(service)
-                                    }
+                                    onIncrementCounterClick = { onIncrementHotpCounterClick(service) },
+                                    onRevealClick = { onRevealClick(service) }
                                 )
                             }
                         }

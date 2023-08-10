@@ -66,7 +66,12 @@ fun Context.copyToClipboard(
     }
     clipboardManager.setPrimaryClip(clipData)
 
-    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
+    val manufacturer = Build.MANUFACTURER.lowercase()
+    val shouldShowToast = Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2
+            || manufacturer.contains("xiaomi")
+            || manufacturer.contains("redmi")
+
+    if (shouldShowToast) {
         Toast.makeText(this, toast, Toast.LENGTH_SHORT).show()
     }
 }

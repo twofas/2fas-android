@@ -9,7 +9,6 @@ import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.feature.home.ui.services.add.NavArg
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.update
 
 internal class AddServiceSuccessViewModel(
@@ -35,14 +34,28 @@ internal class AddServiceSuccessViewModel(
 
         launchScoped {
             settingsRepository.observeAppSettings()
-                .distinctUntilChangedBy { it.showNextCode }
                 .collect { settings ->
-                    uiState.update { it.copy(showNextCode = settings.showNextCode) }
+                    uiState.update {
+                        it.copy(
+                            showNextCode = settings.showNextCode,
+                            hideCodes = settings.hideCodes,
+                        )
+                    }
                 }
         }
     }
 
     fun incrementHotpCounter(service: Service) {
-        launchScoped { servicesRepository.incrementHotpCounter(service) }
+        launchScoped {
+            servicesRepository.incrementHotpCounter(service)
+
+            if (uiState.value.hideCodes) {
+                servicesRepository.revealService(id = service.id)
+            }
+        }
+    }
+
+    fun reveal(service: Service) {
+        launchScoped { servicesRepository.revealService(service.id) }
     }
 }
