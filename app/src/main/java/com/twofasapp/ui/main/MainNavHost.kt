@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.navigation.material.bottomSheet
+import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.android.navigation.clearGraphBackStack
 import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.android.navigation.withArg
@@ -84,7 +85,9 @@ internal fun MainNavHost(
 
         NavHost(
             navController = navController,
-            startDestination = startDestination
+            startDestination = startDestination,
+            enterTransition = NavAnimation.Enter,
+            exitTransition = NavAnimation.Exit,
         ) {
 
             startupNavigation(

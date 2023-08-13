@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.common.Modal
 import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualScreen
@@ -25,7 +26,9 @@ fun AddServiceModal(
     Modal {
         NavHost(
             navController = navController,
-            startDestination = "main"
+            startDestination = "main",
+            enterTransition = NavAnimation.Enter,
+            exitTransition = NavAnimation.Exit,
         ) {
 
             composable(route = "main") {

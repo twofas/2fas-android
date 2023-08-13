@@ -2,15 +2,14 @@
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     alias(libs.plugins.kotlinKapt)
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "com.twofasapp.persistence"
 
-    kapt {
-        arguments {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
     }
 }
 
@@ -26,5 +25,5 @@ dependencies {
 
     implementation(libs.bundles.room)
     implementation(libs.reLinker)
-    kapt(libs.roomCompiler)
+    ksp(libs.roomCompiler)
 }

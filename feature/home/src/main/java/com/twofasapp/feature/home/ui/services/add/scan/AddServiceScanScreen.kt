@@ -41,6 +41,7 @@ import com.twofasapp.designsystem.common.TwCenterTopAppBar
 import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.InfoDialog
+import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.designsystem.ktx.settingsIntent
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.feature.qrscan.QrScan
@@ -56,6 +57,7 @@ internal fun AddServiceScanScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    val backHandler = LocalBackDispatcher
     val singlePhotoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
         onResult = { uri -> uri?.let { viewModel.onLoadFromGallery(it) } }
@@ -153,6 +155,11 @@ internal fun AddServiceScanScreen(
                 PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
             )
         }
+
+        SettingsLink(
+            title = TwLocale.strings.addWithGuide,
+            icon = TwIcons.Guide
+        ) { backHandler.onBackPressed() }
 
         Spacer(modifier = Modifier.height(16.dp))
     }

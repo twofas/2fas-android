@@ -167,6 +167,7 @@ class Strings(c: Context) {
     val addDescription = c.getString(R.string.tokens__add_description)
     val addOtherMethods = c.getString(R.string.tokens__add_other_methods)
     val addEnterManual = c.getString(R.string.tokens__add_enter_manual)
+    val addWithGuide = c.getString(R.string.tokens__add_with_guide)
     val addFromGallery = c.getString(R.string.tokens__add_from_gallery)
     val addSuccessTitle = c.getString(R.string.tokens__add_success_title)
     val addSuccessDescription = c.getString(R.string.tokens__add_success_description)
