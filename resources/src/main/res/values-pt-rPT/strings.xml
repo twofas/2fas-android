@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Fri, 04 Aug 2023 12:29:35 -0700
+ Exported at: Wed, 16 Aug 2023 09:09:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -785,11 +785,16 @@
     <string name="fingerprint__biometric_invalidated">O desbloqueio por biometria está desativado devido a mudanças nas definições de impressão digital do sistema</string>
     <string name="tokens__last_pass_import">Importar tokens 2FA da aplicação LastPass</string>
     <string name="tokens__last_pass_import_subtitle">Este código QR permite importar tokens do LastPass</string>
-    <string name="tokens__add_with_guide">Guide me</string>
-    <string name="guides__select_title">Browse services</string>
-    <string name="guides__select_description">Select service to pair with the 2FAS app</string>
-    <string name="guides__select_provide_guide">Do you want to provide 2FA guides for your service?</string>
-    <string name="guides__select_provide_guide_cta">Apply now</string>
-    <string name="color__pink">Pink</string>
-    <string name="color__brown">Brown</string>
+    <string name="tokens__add_with_guide">Guia-me</string>
+    <string name="guides__select_title">Serviços do navegador</string>
+    <string name="guides__select_description">Seleciona o serviço para conectar à aplicação 2FAS</string>
+    <string name="guides__select_provide_guide">Queres fornecer guias de 2FA para o teu serviço?</string>
+    <string name="guides__select_provide_guide_cta">Inscreve-te agora</string>
+    <string name="color__pink">Rosa</string>
+    <string name="color__brown">Castanho</string>
+    <string name="tokens__other_methods_header">Outros métodos?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">A câmara está indisponível. Verifica a permissão da aplicação nas Definições de Sistema</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Definições de Sistema</string>
+    <string name="commons__text_short_title">The provided text is too short (min. %d chars)</string>
 </resources>

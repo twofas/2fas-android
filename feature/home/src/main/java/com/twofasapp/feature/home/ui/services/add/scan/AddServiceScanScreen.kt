@@ -156,10 +156,10 @@ internal fun AddServiceScanScreen(
             )
         }
 
-        SettingsLink(
-            title = TwLocale.strings.addWithGuide,
-            icon = TwIcons.Guide
-        ) { backHandler.onBackPressed() }
+//        SettingsLink(
+//            title = TwLocale.strings.addWithGuide,
+//            icon = TwIcons.Guide
+//        ) { backHandler.onBackPressed() }
 
         Spacer(modifier = Modifier.height(16.dp))
     }

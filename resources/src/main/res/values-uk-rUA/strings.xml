@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Fri, 04 Aug 2023 12:29:35 -0700
+ Exported at: Wed, 16 Aug 2023 09:09:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -796,6 +796,11 @@
     <string name="guides__select_description">Обрати сервіс для підключення до додатку 2FAS</string>
     <string name="guides__select_provide_guide">Чи хочете ви надати 2FA інструкції для вашого сервісу?</string>
     <string name="guides__select_provide_guide_cta">Застосувати зараз</string>
-    <string name="color__pink">Pink</string>
-    <string name="color__brown">Brown</string>
+    <string name="color__pink">Рожевий</string>
+    <string name="color__brown">Коричневий</string>
+    <string name="tokens__other_methods_header">Інші методи?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Камера недоступна. Будь ласка, перевірте дозволи додатку у системних налаштуваннях</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Системні налаштування</string>
+    <string name="commons__text_short_title">Наданий текст занадто короткий (мін. %d символів)</string>
 </resources>

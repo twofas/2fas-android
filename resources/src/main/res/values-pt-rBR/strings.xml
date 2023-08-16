@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Fri, 04 Aug 2023 12:29:35 -0700
+ Exported at: Wed, 16 Aug 2023 09:09:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -688,7 +688,7 @@
     <string name="import_backup_msg1_encrypted">Você importará um arquivo de backup criptografado.</string>
     <string name="externalimport__choose_json_cta">Escolher arquivo JSON</string>
     <string name="externalimport__aegis_msg">Exporte suas contas do Aegis para um arquivo JSON não criptografado e carregue-o utilizando o botão \"Escolher arquivo JSON\". Lembre-se de remover o arquivo após uma importação bem-sucedida.</string>
-    <string name="externalimport__raivo_msg">Usa a opção \"Exportar OTPs para arquivo ZIP\" nas configurações do Raivo, salve um arquivo ZIP, extraia-o e importe o arquivo JSON utilizando o botão \"Escolher arquivo JSON\".</string>
+    <string name="externalimport__raivo_msg">Use a opção \"Exportar OTPs para arquivo ZIP\" nas configurações do Raivo, salve um arquivo ZIP, extraia-o e importe o arquivo JSON utilizando o botão \"Escolher arquivo JSON\".</string>
     <string name="externalimport__no_tokens_msg">Contudo, não há nenhum serviço que possa ser importado.</string>
     <string name="commons__try_again">Tentar novamente</string>
     <string name="commons__proceed">Prosseguir</string>
@@ -790,6 +790,11 @@
     <string name="guides__select_description">Selecione um serviço para parear com o 2FAS app</string>
     <string name="guides__select_provide_guide">Você quer providenciar guias do 2FA para o seu serviço</string>
     <string name="guides__select_provide_guide_cta">Aplicar agora</string>
-    <string name="color__pink">Pink</string>
-    <string name="color__brown">Brown</string>
+    <string name="color__pink">Rosa</string>
+    <string name="color__brown">Marrom</string>
+    <string name="tokens__other_methods_header">Other methods?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Camera is unavailable. Check apps\' access permission in System Settings</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">System Settings</string>
+    <string name="commons__text_short_title">The provided text is too short (min. %d chars)</string>
 </resources>

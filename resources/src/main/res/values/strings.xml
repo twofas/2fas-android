@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Fri, 04 Aug 2023 12:29:35 -0700
+ Exported at: Wed, 16 Aug 2023 09:09:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -215,7 +215,7 @@
     <string name="tokens__check_app_permissions">Check if the app has proper permissions in the System Settings</string>
     <string name="tokens__no_qr_codes_found">No QR codes found</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-
+        
         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">There is no correct QR code in the selected image. Please try a different image.</string>
     <string name="tokens__select_service">Select Service</string>
@@ -792,4 +792,9 @@
     <string name="guides__select_provide_guide_cta">Apply now</string>
     <string name="color__pink">Pink</string>
     <string name="color__brown">Brown</string>
+    <string name="tokens__other_methods_header">Other methods?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Camera is unavailable. Check apps\' access permission in System Settings</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">System Settings</string>
+    <string name="commons__text_short_title">The provided text is too short (min. %d chars)</string>
 </resources>
