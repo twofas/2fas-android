@@ -6,4 +6,5 @@ data class BrowserExtensionRequestUiState(
     val browserName: String = "",
     val suggestedServices: List<Service> = emptyList(),
     val otherServices: List<Service> = emptyList(),
+    val saveMyChoice: Boolean = false,
 )

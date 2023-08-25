@@ -10,7 +10,6 @@ import com.twofasapp.services.domain.AssignServiceDomainCase
 import com.twofasapp.services.domain.GetServicesCase
 import com.twofasapp.services.domain.model.Service
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -23,8 +22,7 @@ internal class BrowserExtensionRequestViewModel(
     private val browserExtRepository: BrowserExtRepository,
 ) : BaseViewModel() {
 
-    private val _uiState = MutableStateFlow(BrowserExtensionRequestUiState())
-    val uiState = _uiState.asStateFlow()
+    val uiState = MutableStateFlow(BrowserExtensionRequestUiState())
 
     fun init(
         extensionId: String,
@@ -38,7 +36,7 @@ internal class BrowserExtensionRequestViewModel(
             val suggestedServices =
                 matchedServices.plus(DomainMatcher.findServicesSuggestedForDomain(services, domain).minus(matchedServices.toSet()))
 
-            _uiState.update { state ->
+            uiState.update { state ->
                 state.copy(
                     browserName = browsers.find { it.id == extensionId }?.name.orEmpty(),
                     suggestedServices = suggestedServices,
@@ -55,9 +53,15 @@ internal class BrowserExtensionRequestViewModel(
         onFinish: () -> Unit
     ) {
         viewModelScope.launch(dispatchers.io()) {
-            assignServiceDomainCase(service, domain)
+            if (uiState.value.saveMyChoice) {
+                assignServiceDomainCase(service, domain)
+            }
             browserExtRepository.deleteTokenRequest(requestId)
             onFinish.invoke()
         }
+    }
+
+    fun updateSaveMyChoice(checked: Boolean) {
+        uiState.update { it.copy(saveMyChoice = checked) }
     }
 }

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Sat, 19 Aug 2023 15:04:25 -0700
+ Exported at: Fri, 25 Aug 2023 14:42:13 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -805,7 +805,8 @@
     <string name="commons__text_short_title">Наданий текст занадто короткий (мін. %d символів)</string>
     <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
     <string name="tokens__add_manual_advanced_description_highlight">не рекомендовано</string>
-    <string name="guides__guide_init_title">2FAS guide</string>
-    <string name="guides__guide_title">2FAS for %s</string>
-    <string name="guides__guide_universal_title">Universal 2FA Guide</string>
+    <string name="guides__guide_init_title">Посібник 2FAS</string>
+    <string name="guides__guide_title">2FAS для %s</string>
+    <string name="guides__guide_universal_title">Універсальний посібник 2FA</string>
+    <string name="browser__save_choice">Зберегти мій вибір</string>
 </resources>

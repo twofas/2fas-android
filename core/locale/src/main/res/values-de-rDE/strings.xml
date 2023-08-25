@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sat, 19 Aug 2023 15:04:24 -0700
+ Exported at: Fri, 25 Aug 2023 14:42:13 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -802,4 +802,5 @@
     <string name="guides__guide_init_title">2FAS guide</string>
     <string name="guides__guide_title">2FAS for %s</string>
     <string name="guides__guide_universal_title">Universal 2FA Guide</string>
+    <string name="browser__save_choice">Save my choice</string>
 </resources>
