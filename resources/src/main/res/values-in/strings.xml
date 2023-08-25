@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: id-ID, Indonesian (Indonesia)
  Exported by: rafakob
- Exported at: Wed, 16 Aug 2023 09:09:19 -0700
+ Exported at: Sat, 19 Aug 2023 15:04:25 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -776,19 +776,24 @@
     <string name="externalimport__authenticatorpro_msg">Ekspor akun anda dari Authenticator Pro ke file teks tidak terenkripsi dan unggah menggunakan tombol \"Pilih file teks\". Ingatlah untuk menghapus file setelah impor berhasil.</string>
     <string name="externalimport__authenticatorpro">Autentikasi Pro</string>
     <string name="externalimport__choose_txt_cta">Pilih file teks</string>
-    <string name="fingerprint__biometric_invalidated">Biometric login is disabled due to changes in system fingerprint settings</string>
+    <string name="fingerprint__biometric_invalidated">Login biometrik dinonaktifkan karena perubahan dalam pengaturan sidik jari sistem</string>
     <string name="tokens__last_pass_import">Mengimpor token 2FA dari aplikasi LastPass</string>
     <string name="tokens__last_pass_import_subtitle">Kode QR ini memungkinkan mengimpor token dari LastPass</string>
-    <string name="tokens__add_with_guide">Guide me</string>
-    <string name="guides__select_title">Browse services</string>
-    <string name="guides__select_description">Select service to pair with the 2FAS app</string>
-    <string name="guides__select_provide_guide">Do you want to provide 2FA guides for your service?</string>
-    <string name="guides__select_provide_guide_cta">Apply now</string>
-    <string name="color__pink">Pink</string>
-    <string name="color__brown">Brown</string>
-    <string name="tokens__other_methods_header">Other methods?</string>
-    <string name="tokens__camera_is_unavailable_app_permission">Camera is unavailable. Check apps\' access permission in System Settings</string>
+    <string name="tokens__add_with_guide">Pandu saya</string>
+    <string name="guides__select_title">Jelajahi layanan</string>
+    <string name="guides__select_description">Pilih layanan untuk dipasangkan dengan aplikasi 2FAS\n</string>
+    <string name="guides__select_provide_guide">Apakah anda ingin memberikan panduan 2FA untuk layanan anda?</string>
+    <string name="guides__select_provide_guide_cta">Terapkan sekarang</string>
+    <string name="color__pink">Merah Muda</string>
+    <string name="color__brown">Cokelat</string>
+    <string name="tokens__other_methods_header">Metode lain?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Kamera tidak tersedia. Periksa izin akses aplikasi di Pengaturan Sistem</string>
     <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
-    <string name="tokens__camera_is_unavailable_app_permission_underline">System Settings</string>
-    <string name="commons__text_short_title">The provided text is too short (min. %d chars)</string>
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Pengaturan sistem</string>
+    <string name="commons__text_short_title">Teks yang diberikan terlalu pendek (min. %d karakter)\n</string>
+    <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
+    <string name="tokens__add_manual_advanced_description_highlight">Tidak dianjurkan</string>
+    <string name="guides__guide_init_title">2FAS guide</string>
+    <string name="guides__guide_title">2FAS for %s</string>
+    <string name="guides__guide_universal_title">Universal 2FA Guide</string>
 </resources>

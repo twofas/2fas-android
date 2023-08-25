@@ -49,7 +49,7 @@ fun DsServiceSimple(
 
         Column(Modifier.weight(1f)) {
             ServiceName(text = state.name)
-            ServiceInfo(text = state.info)
+            ServiceInfo(text = state.info, spacer = false)
         }
 
         content()

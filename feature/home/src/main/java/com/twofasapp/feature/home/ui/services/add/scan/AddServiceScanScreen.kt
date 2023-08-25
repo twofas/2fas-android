@@ -41,7 +41,6 @@ import com.twofasapp.designsystem.common.TwCenterTopAppBar
 import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.InfoDialog
-import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.designsystem.ktx.settingsIntent
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.feature.qrscan.QrScan
@@ -53,11 +52,11 @@ import org.koin.androidx.compose.koinViewModel
 internal fun AddServiceScanScreen(
     viewModel: AddServiceScanViewModel = koinViewModel(),
     openManual: () -> Unit,
+    openGuides: () -> Unit,
     onAddedSuccessfully: (RecentlyAddedService) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
-    val backHandler = LocalBackDispatcher
     val singlePhotoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
         onResult = { uri -> uri?.let { viewModel.onLoadFromGallery(it) } }
@@ -156,10 +155,10 @@ internal fun AddServiceScanScreen(
             )
         }
 
-//        SettingsLink(
-//            title = TwLocale.strings.addWithGuide,
-//            icon = TwIcons.Guide
-//        ) { backHandler.onBackPressed() }
+        SettingsLink(
+            title = TwLocale.strings.addWithGuide,
+            icon = TwIcons.Guide
+        ) { openGuides() }
 
         Spacer(modifier = Modifier.height(16.dp))
     }

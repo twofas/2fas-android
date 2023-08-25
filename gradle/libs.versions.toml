@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.31.6-rc"
-agp = "8.2.0-alpha15"
+agp = "8.2.0-alpha16"
 coil = "2.4.0"
 compose = "1.5.0"
 composeActivity = "1.7.2"
@@ -22,6 +22,7 @@ junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 appcompat = "1.6.1"
 material = "1.9.0"
+commonmark = "0.21.0"
 
 [libraries]
 appcompat = "androidx.appcompat:appcompat:1.6.1"
@@ -68,7 +69,7 @@ material = "com.google.android.material:material:1.9.0"
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 material3Window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
 mockk = "io.mockk:mockk:1.13.2"
-navigationCompose = "androidx.navigation:navigation-compose:2.7.0"
+navigationCompose = "androidx.navigation:navigation-compose:2.7.1"
 robolectric = "org.robolectric:robolectric:4.9"
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
@@ -124,6 +125,10 @@ junit-junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 androidx-appcompat-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 com-google-android-material-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+commonmarkCore = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
+commonmarkTables = { module = "org.commonmark:commonmark-ext-gfm-tables", version.ref = "commonmark" }
+commonmarkStrikethrough = { module = "org.commonmark:commonmark-ext-gfm-strikethrough", version.ref = "commonmark" }
+commonmarkLink = { module = "org.commonmark:commonmark-ext-autolink", version.ref = "commonmark" }
 
 [bundles]
 appCompat = [
@@ -214,6 +219,13 @@ playReview = [
 playUpdate = [
     "playUpdate",
     "playUpdateKtx",
+]
+
+commonmark = [
+    "commonmarkCore",
+    "commonmarkStrikethrough",
+    "commonmarkTables",
+    "commonmarkLink",
 ]
 
 [plugins]

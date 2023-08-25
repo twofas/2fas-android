@@ -1,6 +1,7 @@
 package com.twofasapp.feature.home.ui.services.add
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,9 +20,15 @@ internal object NavArg {
 
 @Composable
 fun AddServiceModal(
+    initRoute: String?,
+    openGuides: () -> Unit = {},
     onAddedSuccessfully: (RecentlyAddedService) -> Unit = {},
 ) {
     val navController = rememberNavController()
+
+    LaunchedEffect(Unit) {
+        initRoute?.let { navController.navigate(it) }
+    }
 
     Modal {
         NavHost(
@@ -34,6 +41,7 @@ fun AddServiceModal(
             composable(route = "main") {
                 AddServiceScanScreen(
                     openManual = { navController.navigate("manual") },
+                    openGuides = openGuides,
                     onAddedSuccessfully = {
                         onAddedSuccessfully(it)
                         navController.navigate("success/${it.serviceId}") { popUpTo(0) { inclusive = true } }

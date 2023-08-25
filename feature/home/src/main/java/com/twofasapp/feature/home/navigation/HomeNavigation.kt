@@ -14,7 +14,7 @@ object HomeGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "home"
 }
 
-internal sealed class HomeNode(override val path: String) : com.twofasapp.android.navigation.NavNode {
+sealed class HomeNode(override val path: String) : com.twofasapp.android.navigation.NavNode {
     override val graph: com.twofasapp.android.navigation.NavGraph = HomeGraph
 
     object Services : HomeNode("services")

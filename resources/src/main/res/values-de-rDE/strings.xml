@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Wed, 16 Aug 2023 09:09:19 -0700
+ Exported at: Sat, 19 Aug 2023 15:04:24 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -792,9 +792,14 @@
     <string name="guides__select_provide_guide_cta">Jetzt Bewerben</string>
     <string name="color__pink">Pink</string>
     <string name="color__brown">Braun</string>
-    <string name="tokens__other_methods_header">Other methods?</string>
-    <string name="tokens__camera_is_unavailable_app_permission">Camera is unavailable. Check apps\' access permission in System Settings</string>
+    <string name="tokens__other_methods_header">Sonstige Methoden?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Die Kamera ist nicht verfügbar. Überprüfe die Zugriffsberechtigung von Apps in den Systemeinstellungen</string>
     <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
-    <string name="tokens__camera_is_unavailable_app_permission_underline">System Settings</string>
-    <string name="commons__text_short_title">The provided text is too short (min. %d chars)</string>
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Systemeinstellungen</string>
+    <string name="commons__text_short_title">Der angegebene Text ist zu kurz (mind. %d Zeichen)</string>
+    <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
+    <string name="tokens__add_manual_advanced_description_highlight">wird nicht empfolen</string>
+    <string name="guides__guide_init_title">2FAS guide</string>
+    <string name="guides__guide_title">2FAS for %s</string>
+    <string name="guides__guide_universal_title">Universal 2FA Guide</string>
 </resources>

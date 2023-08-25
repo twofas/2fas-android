@@ -1,7 +1,10 @@
 package com.twofasapp.designsystem.internal
 
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
+import com.twofasapp.designsystem.TwTheme
 
 abstract class ThemeColors {
     abstract val background: Color
@@ -44,3 +47,6 @@ abstract class ThemeColors {
 val LocalThemeColors = staticCompositionLocalOf<ThemeColors> {
     ThemeColorsLight()
 }
+
+@Composable
+fun isDarkTheme() = TwTheme.color.background.luminance() < 0.5

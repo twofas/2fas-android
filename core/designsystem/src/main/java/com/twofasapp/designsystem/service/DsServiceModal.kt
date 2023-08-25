@@ -64,6 +64,7 @@ fun DsServiceModal(
         ServiceInfo(
             text = state.info,
             textStyles = ServiceTextDefaults.modal(),
+            style = ServiceStyle.Default,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
