@@ -1,6 +1,5 @@
 package com.twofasapp.widgets.configure
 
-import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.prefs.model.LockMethodEntity
 import com.twofasapp.prefs.model.ServiceDto
@@ -13,12 +12,10 @@ import io.reactivex.rxkotlin.subscribeBy
 
 class WidgetSettingsPresenter(
     private val view: WidgetSettingsContract.View,
-    private val navigator: ScopedNavigator,
     private val getServices: GetServices,
     private val getWidgetSettings: GetWidgetSettings,
     private val updateWidget: UpdateWidget,
     private val widgetBroadcaster: WidgetBroadcaster,
-    private val analyticsService: com.twofasapp.core.analytics.AnalyticsService,
     private val checkLockStatus: CheckLockStatus,
 ) : WidgetSettingsContract.Presenter() {
 
@@ -95,10 +92,8 @@ class WidgetSettingsPresenter(
                 isChecked = checkedServiceIds.contains(it.id),
                 switchAction = { entry, isChecked ->
                     if (isChecked) {
-                        analyticsService.captureEvent(com.twofasapp.core.analytics.AnalyticsEvent.WIDGET_ADD_SERVICE)
                         checkedServiceIds.add(entry.id)
                     } else {
-                        analyticsService.captureEvent(com.twofasapp.core.analytics.AnalyticsEvent.WIDGET_REMOVE_SERVICE)
                         checkedServiceIds.remove(entry.id)
                     }
 

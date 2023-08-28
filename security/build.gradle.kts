@@ -20,8 +20,7 @@ dependencies {
     implementation(project(":extensions"))
     implementation(project(":design"))
     implementation(project(":prefs"))
-    
-    implementation(project(":featuretoggle"))
+
     implementation(project(":security:domain"))
     implementation(project(":core:common"))
 

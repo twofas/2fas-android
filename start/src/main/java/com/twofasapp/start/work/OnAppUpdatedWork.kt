@@ -5,7 +5,6 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.common.environment.AppBuild
-import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.prefs.usecase.CurrentAppVersionPreference
 import com.twofasapp.start.domain.ClearObsoletePrefsCase
 import com.twofasapp.start.domain.MigrateBoxToRoomCase

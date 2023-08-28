@@ -4,7 +4,6 @@ import com.mikepenz.fastadapter.IItem
 import com.twofasapp.BuildConfig
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
-import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.design.settings.DividerItem
 import com.twofasapp.design.settings.HeaderEntry
@@ -39,7 +38,6 @@ internal class BackupStatusPresenter(
     private val signOutFromGoogle: SignOutFromGoogle,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
     private val remoteBackupKeyPreference: RemoteBackupKeyPreference,
-    private val analyticsService: AnalyticsService,
     private val observeSyncStatus: ObserveSyncStatus,
     private val syncBackupDispatcher: SyncBackupWorkDispatcher,
     private val getServices: GetServices,
@@ -113,7 +111,6 @@ internal class BackupStatusPresenter(
         when {
             isChecked.not() -> view.showTurnOffDialog {
                 signOutFromGoogle.execute().safelySubscribe { doNothing() }
-                analyticsService.captureEvent(com.twofasapp.core.analytics.AnalyticsEvent.BACKUP_OFF)
                 remoteBackupStatusPreference.put {
                     it.copy(state = RemoteBackupStatus.State.NOT_CONFIGURED, reference = null)
                 }

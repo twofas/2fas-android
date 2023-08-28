@@ -1,9 +1,6 @@
 package com.twofasapp.services.domain
 
 import com.twofasapp.common.time.TimeProvider
-import com.twofasapp.core.analytics.AnalyticsEvent
-import com.twofasapp.core.analytics.AnalyticsParam
-import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.usecase.FirstCodeAddedPreference
 import com.twofasapp.services.data.ServicesRepository
@@ -11,7 +8,6 @@ import com.twofasapp.services.domain.model.Service
 
 internal class AddServiceCaseImpl(
     private val repository: ServicesRepository,
-    private val analyticsService: AnalyticsService,
     private val timeProvider: TimeProvider,
     private val storeHotpServices: StoreHotpServices,
     private val firstCodeAddedPreference: FirstCodeAddedPreference,
@@ -34,9 +30,6 @@ internal class AddServiceCaseImpl(
 
         // Send icon analytics
         if (service.serviceTypeId.isNullOrBlank()) {
-            analyticsService.captureEvent(
-                AnalyticsEvent.MISSING_ICON, AnalyticsParam.TYPE to service.otp.issuer
-            )
         }
 
         // Store HOTP
@@ -46,16 +39,11 @@ internal class AddServiceCaseImpl(
 
         // Capture analytics
         if (trigger != AddServiceCase.Trigger.FromBackup) {
-            analyticsService.captureEvent(
-                AnalyticsEvent.CODE_TYPE_ADDED,
-                AnalyticsParam.TYPE to service.authType.name
-            )
         }
 
         // Handle first code
         if (firstCodeAddedPreference.get().not()) {
             firstCodeAddedPreference.put(true)
-            analyticsService.captureEvent(AnalyticsEvent.FIRST_CODE)
             showBackupNotice.save(true)
         }
 

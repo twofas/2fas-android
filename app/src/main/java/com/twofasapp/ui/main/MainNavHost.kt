@@ -33,6 +33,8 @@ import com.twofasapp.feature.about.navigation.AboutGraph
 import com.twofasapp.feature.about.navigation.aboutNavigation
 import com.twofasapp.feature.appsettings.navigation.AppSettingsGraph
 import com.twofasapp.feature.appsettings.navigation.appSettingsNavigation
+import com.twofasapp.feature.backup.navigation.BackupRoute
+import com.twofasapp.feature.backup.navigation.BackupSettingsRoute
 import com.twofasapp.feature.browserext.notification.BrowserExtGraph
 import com.twofasapp.feature.browserext.notification.browserExtNavigation
 import com.twofasapp.feature.externalimport.navigation.ExternalImportGraph
@@ -128,7 +130,11 @@ internal fun MainNavHost(
                         navController.navigate(SecurityGraph.route)
                     }
 
-                    override fun openBackup(activity: Activity) {
+                    override fun openBackup() {
+                        navController.navigate(Screen.Backup.route)
+                    }
+
+                    override fun openLegacyBackup(activity: Activity) {
                         activity.startActivity<BackupActivity>()
                     }
 
@@ -231,6 +237,14 @@ internal fun MainNavHost(
                         navController.navigate(Modal.AddService.routeWithArgs(NavArg.AddServiceInitRoute to "manual"))
                     },
                 )
+            }
+
+            composable(Screen.Backup.route) {
+                BackupRoute()
+            }
+
+            composable(Screen.BackupSettings.route) {
+                BackupSettingsRoute()
             }
         }
     }

@@ -5,8 +5,6 @@ import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
-import com.twofasapp.core.analytics.AnalyticsEvent
-import com.twofasapp.core.analytics.AnalyticsParam
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.entity.SyncBackupResult
 import com.twofasapp.extensions.doNothing
@@ -49,7 +47,6 @@ class SyncBackupServices(
     private val getServices: GetServices,
     private val storeGroups: StoreGroups,
     private val timeProvider: TimeProvider,
-    private val analyticsService: com.twofasapp.core.analytics.AnalyticsService,
     private val storeRecentlyDeleted: StoreRecentlyDeleted,
     private val observeSyncStatus: ObserveSyncStatus,
     private val appBuild: AppBuild,
@@ -93,7 +90,6 @@ class SyncBackupServices(
             val now = timeProvider.systemCurrentTime()
             val syncBackupStatus = when (params.syncBackupTrigger) {
                 SyncBackupTrigger.FIRST_CONNECT -> {
-                    analyticsService.captureEvent(AnalyticsEvent.BACKUP_ON)
                     sync(now, true, params.password, params.syncBackupTrigger)
                 }
 
@@ -121,18 +117,12 @@ class SyncBackupServices(
                         )
                     }
 
-                    analyticsService.captureEvent(AnalyticsEvent.DEV_BACKUP_SYNC_SUCCESS)
                     observeSyncStatus.publish(SyncStatus.Synced(trigger = params.syncBackupTrigger))
 
                     emitter.onSuccess(SyncBackupResult.Success())
                 }
 
                 is RemoteStatus.Error -> {
-                    analyticsService.captureEvent(
-                        AnalyticsEvent.DEV_BACKUP_SYNC_ERROR,
-                        AnalyticsParam.TYPE to "${syncBackupStatus.type.name}_${syncBackupStatus.operation.name}"
-                    )
-
                     when (syncBackupStatus.type) {
                         RemoteBackupErrorType.DECRYPT_NO_PASSWORD,
                         RemoteBackupErrorType.DECRYPT_WRONG_PASSWORD -> remoteBackupKeyPreference.delete()
@@ -272,7 +262,7 @@ class SyncBackupServices(
 
             when (updateResult) {
                 is UpdateRemoteBackupResult.Success -> {
-                      // Doesn't work as expected - commented out for now
+                    // Doesn't work as expected - commented out for now
 //                    // Update order on first connect
 //                    if (removeIfNotPresentOnRemote.not()) {
 //                        storeServicesOrder.saveOrder(

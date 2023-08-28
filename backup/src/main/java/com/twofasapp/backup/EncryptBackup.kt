@@ -13,7 +13,6 @@ import io.reactivex.Single
 
 class EncryptBackup(
     private val backupCipherService: BackupCipherService,
-    private val analyticsService: com.twofasapp.core.analytics.AnalyticsService,
     private val jsonSerializer: com.twofasapp.serialization.JsonSerializer,
 ) : UseCaseParameterized<EncryptBackup.Params, Single<EncryptBackup.Result>> {
 
@@ -65,9 +64,9 @@ class EncryptBackup(
                         )
                     )
                 }
+
                 is BackupCipherEncryptResult.Failure -> {
                     emitter.onSuccess(Result.Error(result.reason))
-                    analyticsService.captureException(result.reason)
                 }
             }
         }.subscribeOn(subscribeScheduler)

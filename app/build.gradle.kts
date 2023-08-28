@@ -40,8 +40,6 @@ dependencies {
     implementation(project(":backup"))
     implementation(project(":core"))
     implementation(project(":time"))
-    implementation(project(":featuretoggle"))
-    implementation(project(":developer"))
     implementation(project(":backup:domain"))
     implementation(project(":security"))
     implementation(project(":security:domain"))
@@ -67,6 +65,7 @@ dependencies {
     implementation(project(":feature:browserext"))
     implementation(project(":feature:appsettings"))
     implementation(project(":feature:qrscan"))
+    implementation(project(":feature:backup"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.rxJava)

@@ -21,7 +21,7 @@ class WidgetSettingsServiceItem(model: WidgetSettingsService) :
             name.text = model.serviceDto.name
             info.text = model.serviceDto.otpAccount
             info.makeGoneIfEmpty()
-            iconLayout.updateIcon(model.serviceDto)
+//            iconLayout.updateIcon(model.serviceDto)
             switchButton.isChecked = model.isChecked
             root.setOnClickListener { model.switchAction?.invoke(model, switchButton.isChecked.not()) }
         }

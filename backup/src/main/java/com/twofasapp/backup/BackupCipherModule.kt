@@ -15,6 +15,6 @@ val backupCipherModule = module {
     single<BackupCipherKeyGenerator> { BackupCipherKeyGeneratorPbkdf() }
     single<BackupCipherSaltGenerator> { BackupCipherSaltGeneratorRandom() }
 
-    single { EncryptBackup(get(), get(), get()) }
-    single { DecryptBackup(get(), get(), get()) }
+    single { EncryptBackup(get(), get()) }
+    single { DecryptBackup(get(), get()) }
 }

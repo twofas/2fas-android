@@ -28,7 +28,6 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
@@ -66,8 +65,14 @@ private fun SettingsScreen(
                 .padding(padding)
         ) {
             item {
+                SettingsLink(title = "Legacy Backup", icon = TwIcons.CloudUpload) {
+                    listener.openLegacyBackup(activity)
+                }
+            }
+
+            item {
                 SettingsLink(title = TwLocale.strings.settingsBackup, icon = TwIcons.CloudUpload) {
-                    listener.openBackup(activity)
+                    listener.openBackup()
                 }
             }
 

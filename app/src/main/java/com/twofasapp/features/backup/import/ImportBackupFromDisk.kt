@@ -21,7 +21,6 @@ class ImportBackupFromDisk(
     private val context: Context,
     private val getServices: GetServices,
     private val addService: AddService,
-    private val analyticsService: com.twofasapp.core.analytics.AnalyticsService,
     private val storeGroups: StoreGroups,
     private val decryptBackup: DecryptBackup,
     private val jsonSerializer: com.twofasapp.serialization.JsonSerializer,
@@ -104,7 +103,7 @@ class ImportBackupFromDisk(
 
                 DecryptBackup.Result.WrongPasswordError -> emitter.onSuccess(ImportBackup.Result.WrongPasswordError)
                 DecryptBackup.Result.UnknownError -> emitter.onSuccess(ImportBackup.Result.UnknownError)
-                is DecryptBackup.Result.NoPassword ->  emitter.onSuccess(ImportBackup.Result.WrongPasswordError)
+                is DecryptBackup.Result.NoPassword -> emitter.onSuccess(ImportBackup.Result.WrongPasswordError)
             }
         }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -133,7 +132,6 @@ class ImportBackupFromDisk(
                 )
             }
             .doOnError {
-                analyticsService.captureException(it)
                 Timber.e(it.printStackTrace().toString())
             }
 }

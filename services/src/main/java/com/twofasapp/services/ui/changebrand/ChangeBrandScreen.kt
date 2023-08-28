@@ -40,8 +40,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.twofasapp.core.analytics.AnalyticsEvent
-import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.design.compose.ToolbarWithSearch
 import com.twofasapp.design.compose.dialogs.ListDialog
 import com.twofasapp.design.compose.serviceIconBitmap
@@ -60,7 +58,6 @@ internal fun ChangeBrandScreen(
     onRequestIconClick: () -> Unit,
     viewModel: EditServiceViewModel = getViewModel(),
     brandViewModel: ChangeBrandViewModel = get(),
-    analyticsService: AnalyticsService = get(),
 ) {
     val service = viewModel.uiState.collectAsState().value.service
     val state = brandViewModel.uiState.collectAsState().value
@@ -119,7 +116,6 @@ internal fun ChangeBrandScreen(
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         Row(modifier = Modifier.clickable {
-                            analyticsService.captureEvent(AnalyticsEvent.REQUEST_ICON_CLICK)
                             showBrandingDialog.value = true
                         }) {
                             Text(
@@ -197,17 +193,18 @@ internal fun ChangeBrandScreen(
         if (showBrandingDialog.value) {
             ListDialog(
                 title = stringResource(id = R.string.tokens__order_menu_title),
-                items = listOf(stringResource(id = R.string.tokens__order_menu_option_user), stringResource(id = R.string.tokens__order_menu_option_company)),
+                items = listOf(
+                    stringResource(id = R.string.tokens__order_menu_option_user),
+                    stringResource(id = R.string.tokens__order_menu_option_company)
+                ),
                 onDismiss = { showBrandingDialog.value = false },
                 onSelected = { index, _ ->
                     when (index) {
                         0 -> {
-                            analyticsService.captureEvent(AnalyticsEvent.REQUEST_ICON_AS_USER_CLICK)
                             onRequestIconClick()
                         }
 
                         1 -> {
-                            analyticsService.captureEvent(AnalyticsEvent.REQUEST_ICON_AS_COMPANY_CLICK)
                             activity?.openBrowserApp(url = "https://2fas.com/your-branding/")
                         }
                     }

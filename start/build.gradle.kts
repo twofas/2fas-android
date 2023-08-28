@@ -18,8 +18,7 @@ dependencies {
     
     implementation(project(":design"))
     implementation(project(":prefs"))
-    
-    implementation(project(":featuretoggle"))
+
     implementation(project(":security:domain"))
     implementation(project(":services:domain"))
     implementation(project(":start:domain"))

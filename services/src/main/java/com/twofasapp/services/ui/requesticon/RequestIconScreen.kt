@@ -40,18 +40,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ShareCompat
-import com.twofasapp.core.analytics.AnalyticsEvent
-import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.extensions.openBrowserApp
 import com.twofasapp.resources.R
-import org.koin.androidx.compose.get
 
 @Composable
-internal fun RequestIconScreen(
-    analyticsService: AnalyticsService = get(),
-) {
+internal fun RequestIconScreen() {
     val activity = LocalContext.current as? Activity
     val shareText =
         stringResource(id = R.string.tokens__request_icon_provider_message)
@@ -88,7 +83,6 @@ internal fun RequestIconScreen(
             Row(modifier = Modifier
                 .align(CenterHorizontally)
                 .clickable {
-                    analyticsService.captureEvent(AnalyticsEvent.REQUEST_ICON_DISCORD_CLICK)
                     activity?.openBrowserApp(url = "https://discord.gg/q4cP6qh2g5")
                 }) {
                 Text(
@@ -188,7 +182,6 @@ internal fun RequestIconScreen(
                     )
                     IconButton(modifier = Modifier.align(CenterVertically),
                         onClick = {
-                            analyticsService.captureEvent(AnalyticsEvent.REQUEST_ICON_SHARE_CLICK)
                             ShareCompat.IntentBuilder(activity!!)
                                 .setType("text/plain")
                                 .setChooserTitle("2FAS Icon Request")

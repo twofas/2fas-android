@@ -8,17 +8,14 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.twofasapp.backup.BackupModule
+import com.twofasapp.backup.LegacyBackupModule
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.base.ActivityProvider
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.browserextension.BrowserExtensionModule
 import com.twofasapp.common.analytics.Analytics
-import com.twofasapp.core.log.FileLogger
-import com.twofasapp.developer.DeveloperModule
 import com.twofasapp.di.Modules
-import com.twofasapp.featuretoggle.FeatureToggleModule
 import com.twofasapp.parsers.ParsersModule
 import com.twofasapp.parsers.SupportedServices
 import com.twofasapp.permissions.PermissionsModule
@@ -37,7 +34,6 @@ import com.twofasapp.services.googleauth.googleAuthModule
 import com.twofasapp.start.StartModule
 import com.twofasapp.time.TimeModule
 import com.twofasapp.usecases.services.PinOptionsUseCase
-import io.reactivex.plugins.RxJavaPlugins
 import net.sqlcipher.database.SQLiteDatabase
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -89,20 +85,13 @@ class App : MultiDexApplication() {
                         PersistenceModule(),
                         QrScannerModule(),
                         ServicesModule(),
-                        BackupModule(),
-                        FeatureToggleModule(),
-                        DeveloperModule(),
+                        LegacyBackupModule(),
                         SecurityModule(),
                     )
                         .map { it.provide() }
                         .plus(Modules.provide())
                 )
             )
-        }
-
-        RxJavaPlugins.setErrorHandler {
-            Timber.e("RxJavaPlugins.setErrorHandler")
-            it.printStackTrace()
         }
 
         if (BuildConfig.DEBUG) {
@@ -133,8 +122,6 @@ class App : MultiDexApplication() {
         syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_START)
 
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
-
-        FileLogger.log("App start")
 
         try {
             SQLiteDatabase.loadLibs(this)

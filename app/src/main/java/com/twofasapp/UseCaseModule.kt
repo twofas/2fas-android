@@ -56,7 +56,7 @@ import javax.inject.Provider
 
 val useCaseModule = module {
     single { ParseOtpAuthLink() }
-    single { AddService(get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+    single { AddService(get(), get(), get(), get(), get(), get(), get(), get()) }
     single<GetServicesUseCase> { GetServices(get()) }
     single { GetServices(get()) }
     single { GetServicesIncludingTrashed(get()) }
@@ -75,13 +75,13 @@ val useCaseModule = module {
     single { AuthTracker(Provider { get() }) }
     single { GetAccountCredentials(androidContext()) }
     single { CheckConnectionStatus(androidContext()) }
-    single<MigrateBoxToRoomCase> { MigrateBoxToRoomCaseImpl(androidContext(), get(), get(), get(), get(), get()) }
+    single<MigrateBoxToRoomCase> { MigrateBoxToRoomCaseImpl(androidContext(), get(), get(), get(), get()) }
     single { ShowBackupNotice(get()) }
     single { FirstCodeAdded(get()) }
     single { StoreGroups(get(), get()) }
-    single { SyncBackupServices(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+    single { SyncBackupServices(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
     single<ExportBackup> { ExportBackupToDisk(androidContext(), get(), get(), get(), get(), get(), get(), get()) }
-    single<ImportBackup> { ImportBackupFromDisk(androidContext(), get(), get(), get(), get(), get(), get()) }
+    single<ImportBackup> { ImportBackupFromDisk(androidContext(), get(), get(), get(), get(), get()) }
     single { StoreHotpServices(get()) }
     single { PinOptionsUseCase(get()) }
     single { UpdateWidget(get()) }

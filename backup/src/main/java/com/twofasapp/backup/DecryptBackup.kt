@@ -14,7 +14,6 @@ import javax.crypto.AEADBadTagException
 
 class DecryptBackup(
     private val backupCipherService: BackupCipherService,
-    private val analyticsService: com.twofasapp.core.analytics.AnalyticsService,
     private val jsonSerializer: com.twofasapp.serialization.JsonSerializer,
 ) : UseCaseParameterized<DecryptBackup.Params, Single<DecryptBackup.Result>> {
 
@@ -65,13 +64,13 @@ class DecryptBackup(
                         )
                     )
                 }
+
                 is BackupCipherDecryptResult.Failure -> {
                     when (result.reason) {
                         is AEADBadTagException -> emitter.onSuccess(Result.WrongPasswordError)
                         else -> {
                             result.reason.printStackTrace()
                             emitter.onSuccess(Result.UnknownError)
-                            analyticsService.captureException(result.reason)
                         }
                     }
                 }

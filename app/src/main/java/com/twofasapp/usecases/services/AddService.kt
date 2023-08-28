@@ -2,8 +2,6 @@ package com.twofasapp.usecases.services
 
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.common.time.TimeProvider
-import com.twofasapp.core.analytics.AnalyticsEvent
-import com.twofasapp.core.analytics.AnalyticsService
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.data.ServicesRepository
@@ -20,7 +18,6 @@ class AddService(
     private val servicesRepository: ServicesRepository,
     private val deleteDuplicatedService: DeleteDuplicatedService,
     private val generateTotp: GenerateTotp,
-    private val analyticsService: AnalyticsService,
     private val storeServicesOrder: StoreServicesOrder,
     private val timeProvider: TimeProvider,
     private val firstCodeAdded: FirstCodeAdded,

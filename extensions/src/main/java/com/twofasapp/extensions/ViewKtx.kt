@@ -24,15 +24,3 @@ fun ImageView.setTint(@ColorInt color: Int) {
 fun View.setBackgroundTint(@ColorInt color: Int) {
     ViewCompat.setBackgroundTintList(this, ColorStateList.valueOf(color))
 }
-
-fun View.animateGone() {
-    if (visibility != View.GONE) {
-        animate().setDuration(150).alpha(0f).withEndAction { makeGone() }.start()
-    }
-}
-
-fun View.animateInvisible() {
-    if (visibility != View.GONE) {
-        animate().setDuration(150).alpha(0f).withEndAction { makeInvisible() }.start()
-    }
-}

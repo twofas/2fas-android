@@ -211,4 +211,7 @@ class Strings(c: Context) {
     val guideTitle = c.getString(R.string.guides__guide_title)
     val guideUniversalTitle = c.getString(R.string.guides__guide_universal_title)
 
+    val backupTitle = c.getString(R.string.backup__2fas_backup)
+    val backupSettingsTitle = c.getString(R.string.settings__backup_and_synchronization)
+
 }

@@ -2,7 +2,6 @@ package com.twofasapp.usecases.app
 
 import android.content.Context
 import com.twofasapp.common.time.TimeProvider
-import com.twofasapp.core.analytics.AnalyticsEvent
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.entity.MyObjectBox
 import com.twofasapp.entity.Service
@@ -18,7 +17,6 @@ class MigrateBoxToRoomCaseImpl(
     private val migratedToRoomPreference: MigratedToRoomPreference,
     private val storeServicesOrder: StoreServicesOrder,
     private val timeProvider: TimeProvider,
-    private val analyticsService: com.twofasapp.core.analytics.AnalyticsService,
 ) : MigrateBoxToRoomCase {
 
     private val boxService by lazy {
@@ -77,15 +75,8 @@ class MigrateBoxToRoomCaseImpl(
                 .containsAll(boxServices.map { it.secret.lowercase().trim() }.distinct())
             storeServicesOrder.saveOrder(storeServicesOrder.getOrder().copy(ids = ids))
             migratedToRoomPreference.put(isSuccess)
-
-            if (isSuccess.not()) {
-                analyticsService.captureException(BoxMigrationException("Migration failed! [boxCount=${boxServices.size}] [roomCount=${roomServices.size}]"))
-            } else {
-                analyticsService.captureEvent(AnalyticsEvent.BOX_MIGRATION)
-            }
-
         } catch (e: Exception) {
-            
+
         }
     }
 }

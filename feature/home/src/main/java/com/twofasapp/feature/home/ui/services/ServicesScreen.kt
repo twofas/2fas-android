@@ -104,7 +104,7 @@ internal fun ServicesRoute(
         onSortChange = { viewModel.updateSort(it) },
         onSearchQueryChange = { viewModel.search(it) },
         onSearchFocusChange = { viewModel.searchFocused(it) },
-        onOpenBackupClick = { listener.openBackup(activity) },
+        onOpenBackupClick = { listener.openLegacyBackup(activity) },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
         onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
         onRevealClick = { viewModel.reveal(it) }
