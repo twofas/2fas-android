@@ -58,7 +58,7 @@ internal fun GuideInitScreen(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.guideInitTitle) }
+        topBar = { TwTopAppBar(titleText = TwLocale.strings.guideTitle.format(guide.name)) }
     ) { padding ->
 
         guideJson?.let { guideJson ->

@@ -39,6 +39,7 @@ internal class ServicesRepositoryImpl(
 ) : ServicesRepository {
 
     private val isTickerEnabled = MutableStateFlow(true)
+    private var guideManualPrefill: String? = null
 
     override fun observeServices(): Flow<List<Service>> {
         return combine(
@@ -291,5 +292,13 @@ internal class ServicesRepositoryImpl(
         withContext(dispatchers.io) {
             local.revealService(id)
         }
+    }
+
+    override fun setManualGuideSelectedPrefill(prefill: String?) {
+        guideManualPrefill = prefill
+    }
+
+    override fun getManualGuideSelectedPrefill(): String? {
+        return guideManualPrefill
     }
 }

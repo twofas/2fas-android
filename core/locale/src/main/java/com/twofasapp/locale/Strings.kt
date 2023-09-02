@@ -208,7 +208,6 @@ class Strings(c: Context) {
     val guidesSelectDescription = c.getString(R.string.guides__select_description)
     val guidesSelectProvideGuide = c.getString(R.string.guides__select_provide_guide)
     val guidesSelectProvideGuideCta = c.getString(R.string.guides__select_provide_guide_cta)
-    val guideInitTitle = c.getString(R.string.guides__guide_init_title)
     val guideTitle = c.getString(R.string.guides__guide_title)
     val guideUniversalTitle = c.getString(R.string.guides__guide_universal_title)
 
