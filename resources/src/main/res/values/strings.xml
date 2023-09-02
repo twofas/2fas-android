@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Fri, 25 Aug 2023 14:42:13 -0700
+ Exported at: Sat, 02 Sep 2023 12:58:36 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -767,7 +767,7 @@
     <string name="social__social_media">Social media links</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
-    <string name="social__twitter">Twitter</string>
+    <string name="social__twitter">X (formerly Twitter)</string>
     <string name="social__github">GitHub</string>
     <string name="social__linkedin">LinkedIn</string>
     <string name="social__reddit">Reddit</string>

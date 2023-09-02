@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Fri, 25 Aug 2023 14:42:13 -0700
+ Exported at: Sat, 02 Sep 2023 12:58:36 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -799,8 +799,8 @@
     <string name="commons__text_short_title">Der angegebene Text ist zu kurz (mind. %d Zeichen)</string>
     <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
     <string name="tokens__add_manual_advanced_description_highlight">wird nicht empfolen</string>
-    <string name="guides__guide_init_title">2FAS guide</string>
-    <string name="guides__guide_title">2FAS for %s</string>
-    <string name="guides__guide_universal_title">Universal 2FA Guide</string>
-    <string name="browser__save_choice">Save my choice</string>
+    <string name="guides__guide_init_title">2FAS Hilfewerk</string>
+    <string name="guides__guide_title">2FAS für %s\n</string>
+    <string name="guides__guide_universal_title">Universelles 2FAS Hilfewerk\u0020</string>
+    <string name="browser__save_choice">Meine Wahl speichern\u0020</string>
 </resources>
