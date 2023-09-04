@@ -1,0 +1,62 @@
+{
+    "serviceName": "RockStar Games",
+    "serviceId": "deead8dd-c9e3-463a-8c73-1e75c5ec13cf",
+    "flow": {
+      "header": "Follow our guide to pair your RockStar Games account with 2FAS app.",
+      "menu": {
+        "title": "RockStar Games does not have a mobile application. Please select the method you use to open RockStar Games right now",
+        "items": [
+          {
+            "name": "Through browser",
+            "steps": [
+              {
+                "image": "web_url",
+                "content": "Go to **www.socialclub.rockstargames.com** and log into your account."
+              },
+              {
+                "image": "web_account_1",
+                "content": "Click account icon in the top right corner to expand the list of options. Then click **'SETTINGS'**."
+              },
+              {
+                "image": "gears",
+                "content": "Choose **'2-STEP VERIFICATION'** and tap **'Setup'**."
+              },
+              {
+                "image": "phone_qr",
+                "content": "Scan the QR code. Scanning the QR code will generate a token in the 2FAS app. Enter it and password. Then click **'Verify'**.",
+                "cta": {
+                  "name": "Scan QR code",
+                  "action": "open_scanner"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Desktop app",
+            "steps": [
+              {
+                "image": "account",
+                "content": "Open RockStar Games and log into your account." 
+              },
+              {
+               "image": "web_account_1",
+               "content": "Click account icon in the top right corner to expand the list of options. Then click **'MANAGE ACCOUNT'**. You will be taken to the **'SETTINGS'** tab on the RockStar Social Club website."
+              },
+              {
+               "image": "gears",
+                "content": "Choose **2-STEP VERIFICATION** and tap **'Setup'**."
+              },
+              {
+                "image": "phone_qr",
+                "content": "Scan the QR code. Scanning the QR code will generate a token in the 2FAS app. Enter it and password. Then click **'Verify'**.",
+                "cta": {
+                 "name": "Scan QR code",
+                 "action": "open_scanner"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+ }

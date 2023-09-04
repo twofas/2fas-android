@@ -1,0 +1,76 @@
+{
+  "serviceName": "LinkedIn",
+  "serviceId": "924f8361-2435-41fe-8070-b2f6b105b042",
+  "flow": {
+    "header": "Follow our guide to pair your LinkedIn account with the 2FAS app.",
+    "menu": {
+      "title": "Please select the method you use to open LinkedIn right now",
+      "items": [
+        {
+          "name": "Desktop computer or laptop",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "Go to **www.linkedin.com** and log into your account."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Click your avatar in the top bar and select **'Settings & Privacy'**. From the left-hand menu, select **'Sign in & security'**."
+            },
+            {
+              "image": "web_menu",
+              "content": "Then select the **'Two-step verification'** section on the right. Click **'Set up'**."
+            },
+            {
+              "image": "web_phone",
+              "content": "You may be asked to verify your account by entering a 6-digit code sent to your email."
+            },
+            {
+              "image": "2fas_type",
+              "content": "Select the **'Authenticator App'** and click **'Continue'**.\nYou may be asked to enter a password for security reasons. Enter your password and click **'Continue'**."
+            },
+            {
+              "image": "retype",
+              "content": "Use **'Add manually'** feature below to add LinkedIn to your 2FAS app and rewrite secret key from LinkedIn. Tap **'Continue'** on LinkedIn, retype generated token, tap **'Verify'**.",
+              "cta": {
+                "name": "Add manually",
+                "action": "open_manually",
+                "data": "LinkedIn"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile (app and website)",
+          "steps": [
+            {
+              "image": "account",
+              "content": "Open **LinkedIn**, then tap the avatar on the top left corner. Next click **'Settings'**."
+            },
+            {
+              "image": "gears",
+              "content": "Click **'Sign in & security'**. Then select the **'Two-step verification'**. Click **'Set up'**."
+            },
+            {
+              "image": "web_phone",
+              "content": "You may be asked to verify your account by entering a 6-digit code sent to your email."
+            },
+            {
+              "image": "2fas_type",
+              "content": "Choose the **'Authentication app'** and click **'Continue'**.\nYou may be asked to enter a password for security reasons. Enter your password and click **'Continue'**."
+            },
+            {
+              "image": "retype",
+              "content": "Copy secret key and use **'Add manually'** feature below to add LinkedIn to your 2FAS app. Tap **'Continue'** on LinkedIn, retype generated token, tap **'Verify'**.",
+              "cta": {
+                "name": "Add manually",
+                "action": "open_manually",
+                "data": "LinkedIn"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
