@@ -1,6 +1,5 @@
 package com.twofasapp.feature.home.ui.guidepager
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -37,6 +36,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwTopAppBar
@@ -54,6 +54,7 @@ import org.koin.compose.koinInject
 @Composable
 internal fun GuidePagerScreen(
     json: Json = koinInject(),
+    servicesRepository: ServicesRepository = koinInject(),
     guide: Guide,
     guideVariantIndex: Int,
     openAddScan: () -> Unit,
@@ -85,10 +86,12 @@ internal fun GuidePagerScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding),
-                guide = guide,
                 steps = guideJson.flow.menu.items[guideVariantIndex].steps,
                 openAddScan = openAddScan,
-                openAddManually = openAddManually,
+                openAddManually = {
+                    servicesRepository.setManualGuideSelectedPrefill(it)
+                    openAddManually()
+                },
             )
         }
     }
@@ -98,21 +101,15 @@ internal fun GuidePagerScreen(
 @Composable
 private fun Content(
     modifier: Modifier = Modifier,
-    guide: Guide,
     steps: List<GuideJson.Step>,
     openAddScan: () -> Unit = {},
-    openAddManually: () -> Unit = {},
+    openAddManually: (String?) -> Unit = {},
 ) {
 
     val scope = rememberCoroutineScope()
     val stepsCount = steps.size
     val pagerState = rememberPagerState(pageCount = { stepsCount })
-    val isFirstStep by remember { derivedStateOf { pagerState.currentPage == 0 } }
     val isLastStep by remember { derivedStateOf { pagerState.currentPage == stepsCount - 1 } }
-
-    BackHandler(enabled = isFirstStep.not()) {
-        scope.launch { pagerState.animateScrollToPage(pagerState.currentPage - 1) }
-    }
 
     Column(
         modifier = modifier,
@@ -204,7 +201,7 @@ private fun Content(
                 if (isLastStep) {
                     when (steps[pagerState.currentPage].cta?.action) {
                         "open_scanner" -> openAddScan()
-                        "open_manually" -> openAddManually()
+                        "open_manually" -> openAddManually(steps[pagerState.currentPage].cta?.data)
                         else -> Unit
                     }
                 } else {
@@ -222,7 +219,6 @@ private fun Preview() {
         modifier = Modifier
             .fillMaxSize()
             .background(TwTheme.color.background),
-        guide = Guide.Universal,
         steps = PreviewGuide.flow.menu.items.first().steps,
     )
 }

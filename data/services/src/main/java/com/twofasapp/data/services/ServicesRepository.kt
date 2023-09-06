@@ -30,5 +30,7 @@ interface ServicesRepository {
     suspend fun addService(service: Service): Long
     fun observeAddServiceAdvancedExpanded(): Flow<Boolean>
     fun pushAddServiceAdvancedExpanded(expanded: Boolean)
+    fun setManualGuideSelectedPrefill(prefill: String?)
+    fun getManualGuideSelectedPrefill(): String?
     suspend fun revealService(id: Long)
 }

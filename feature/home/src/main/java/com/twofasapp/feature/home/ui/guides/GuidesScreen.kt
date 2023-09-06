@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -69,37 +71,41 @@ private fun GuidesScreenContent(
     ) { padding ->
 
         Column(
-            Modifier
-                .fillMaxSize()
-                .padding(padding)
+            Modifier.fillMaxSize()
         ) {
-            Text(
-                text = TwLocale.strings.guidesSelectDescription,
-                style = TwTheme.typo.body1,
-                modifier = Modifier.padding(16.dp),
-                color = TwTheme.color.onSurfacePrimary,
-            )
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(padding)
+                    .verticalScroll(rememberScrollState())
+            ) {
+                Text(
+                    text = TwLocale.strings.guidesSelectDescription,
+                    style = TwTheme.typo.body1,
+                    modifier = Modifier.padding(16.dp),
+                    color = TwTheme.color.onSurfacePrimary,
+                )
 
-            guides.chunked(2).forEach { chunk ->
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    if (chunk.firstOrNull() != null) {
-                        GuideItem(guide = chunk.first(), modifier = Modifier.weight(1f), onClick = onGuideClick)
-                    }
+                guides.chunked(2).forEach { chunk ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        if (chunk.firstOrNull() != null) {
+                            GuideItem(guide = chunk.first(), modifier = Modifier.weight(1f), onClick = onGuideClick)
+                        }
 
-                    if (chunk.getOrNull(1) != null) {
-                        GuideItem(guide = chunk[1], modifier = Modifier.weight(1f), onClick = onGuideClick)
-                    } else {
-                        Spacer(modifier = Modifier.weight(1f))
+                        if (chunk.getOrNull(1) != null) {
+                            GuideItem(guide = chunk[1], modifier = Modifier.weight(1f), onClick = onGuideClick)
+                        } else {
+                            Spacer(modifier = Modifier.weight(1f))
+                        }
                     }
                 }
             }
-
-            Spacer(modifier = Modifier.weight(1f))
 
             Column(
                 modifier = Modifier
@@ -177,6 +183,10 @@ private fun GuideItem(
                     Guide.Twitter -> "Twitter"
                     Guide.Amazon -> "Amazon"
                     Guide.Universal -> "Universal Guide"
+                    Guide.LinkedIn -> "LinkedIn"
+                    Guide.EpicGames -> "Epic Games"
+                    Guide.RockstarGames -> "Rockstar Games"
+                    Guide.Discord -> "Discord"
                 },
                 style = TwTheme.typo.body3,
                 color = TwTheme.color.onSurfacePrimary,

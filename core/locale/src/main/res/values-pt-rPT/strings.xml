@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Fri, 25 Aug 2023 14:42:13 -0700
+ Exported at: Sat, 02 Sep 2023 12:58:36 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -796,11 +796,11 @@
     <string name="tokens__camera_is_unavailable_app_permission">A câmara está indisponível. Verifica a permissão da aplicação nas Definições de Sistema</string>
     <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
     <string name="tokens__camera_is_unavailable_app_permission_underline">Definições de Sistema</string>
-    <string name="commons__text_short_title">The provided text is too short (min. %d chars)</string>
+    <string name="commons__text_short_title">O texto fornecido é muito pequeno (min. %d car)</string>
     <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
-    <string name="tokens__add_manual_advanced_description_highlight">is not recommended</string>
-    <string name="guides__guide_init_title">2FAS guide</string>
-    <string name="guides__guide_title">2FAS for %s</string>
-    <string name="guides__guide_universal_title">Universal 2FA Guide</string>
-    <string name="browser__save_choice">Save my choice</string>
+    <string name="tokens__add_manual_advanced_description_highlight">não é recomendado</string>
+    <string name="guides__guide_init_title">Guia 2FAS</string>
+    <string name="guides__guide_title">2FAS para %s</string>
+    <string name="guides__guide_universal_title">Guia Universal 2FA</string>
+    <string name="browser__save_choice">Guardar a minha escolha</string>
 </resources>

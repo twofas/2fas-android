@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Fri, 25 Aug 2023 14:42:13 -0700
+ Exported at: Sat, 02 Sep 2023 12:58:36 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -15,7 +15,7 @@
     <string name="NSCameraUsageDescription">Wordt gebruikt om QR-codes te scannen</string>
     <string name="NSFaceIDUsageDescription">U kunt de applicatie ontgrendelen met Face ID</string>
     <!-- MARK: - App -->
-    <string name="app__name">2FAS-authenticator</string>
+    <string name="app__name">2FAS Authenticator</string>
     <string name="commons__2fas">2FA Authenticator (2FAS App)</string>
     <string name="commons__OK">Oke</string>
     <string name="commons__add">Toevoegen</string>
@@ -255,9 +255,9 @@
     <string name="tokens__advanced_settings_footer_title">Het wijzigen van de standaardtokeninstellingen wordt niet aanbevolen. Doe dit alleen wanneer uw 2FA-provider dit vereist en wanneer u duidelijke instructies heeft.</string>
     <string name="tokens__gallery_advice_title">Beste werkwijze</string>
     <!-- ADD A SPACE AT THE END -->
-    <string name="tokens__gallery_advice_content_first">Service succesvol toegevoegd. We raden u ten zeerste aan dat u</string>
+    <string name="tokens__gallery_advice_content_first">Service succesvol toegevoegd. We raden u ten zeerste aan dat u\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
-    <string name="tokens__gallery_advice_content_middle_bold">verwijder de QR-schermafbeelding van uw galerij.</string>
+    <string name="tokens__gallery_advice_content_middle_bold">verwijder de QR-schermafbeelding van uw galerij.\u0020</string>
     <string name="tokens__gallery_advice_content_last">Als iemand deze screenshot van de QR-code overneemt, kunnen ze uw 2FA-codes naar deze service sturen.</string>
     <string name="tokens__request_icon_page_title">Verzoek een icoon</string>
     <string name="tokens__request_icon_social_title">Laat het ons weten op Discord</string>
@@ -530,7 +530,7 @@
     <string name="externalimport_google_authenticator">Google Authenticator</string>
     <string name="externalimport_aegis">Aegis</string>
     <string name="externalimport_raivo">Raivo OTP</string>
-    <string name="android__app_name">2FAS-verificatie</string>
+    <string name="android__app_name">2FAS Auth</string>
     <string name="commons__yes">Ja</string>
     <string name="commons__no">Nee</string>
     <string name="commons__search">Zoeken</string>
@@ -543,7 +543,7 @@
     <string name="settings__biometrics">Biometrie</string>
     <string name="settings__support">2FAS-ondersteuning</string>
     <string name="settings__developer">Ontwikkkelaarsopties</string>
-    <string name="settings__option_fingerprint">Biometrische Vergrendeling</string>
+    <string name="settings__option_fingerprint">Biometrisch slot</string>
     <string name="settings__option_theme">Thema</string>
     <string name="settings__theme_option_auto">Automatisch</string>
     <string name="settings__theme_option_auto_system">Automatisch - systeeminstellingen</string>
@@ -597,7 +597,7 @@
     <string name="backup_settings_password_set_title">Wachtwoord instellen</string>
     <string name="backup_settings_delete_title">Back-upbestand verwijderen uit Google Drive</string>
     <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
-    <string name="backup_settings_delete_subtitle">Als u dit bestand uit uw Google Drive verwijdert, wordt synchronisatie op alle gesynchroniseerde apparaten uitgeschakeld en blijven tokens alleen op dit en andere apparaten via lokale opslag.</string>
+    <string name="backup_settings_delete_subtitle">Als u dit bestand uit uw Google Drive verwijdert, wordt synchronisatie op alle gesynchroniseerde apparaten uitgeschakeld en worden de tokens op alle apparaten lokaal opgeslagen.</string>
     <string name="browser__result_error_browser_paired">Uw 2FAS-app is al gekoppeld aan deze browser.</string>
     <!-- Scan QR code again -->
     <string name="browser__result_error_cta">Scan de QR-code opnieuw</string>
@@ -682,7 +682,7 @@
     <string name="backup__local_file_title">Lokaal bestand</string>
     <string name="backup__drive_title">Google Drive synchronisatie</string>
     <string name="backup__delete_file_title">Uw back-upbestand verwijderen uit Google Drive</string>
-    <string name="backup__delete_file_msg">Google Synchronisatie wordt uitgeschakeld. Uw tokens blijven lokaal bewaard, maar de 2FAS-app wordt uitgelogd van uw Google-account op al uw gesynchroniseerde andere apparaten, waaronder deze.</string>
+    <string name="backup__delete_file_msg">Google Synchronisatie wordt uitgeschakeld. Uw tokens blijven lokaal beschikbaar, maar de 2FAS-app wordt uitgelogd van uw Google-account op al uw gesynchroniseerde andere apparaten, waaronder deze.</string>
     <string name="backup__sync_status_waiting">Wachten voor synchroniseren...</string>
     <string name="backup__sync_status_progress">Synchroniseren...</string>
     <string name="import_backup_msg1_encrypted">U gaat een versleuteld back-upbestand importeren.</string>
@@ -725,7 +725,7 @@
     <string name="settings__enable_crashlytics_description">Anonieme crashrapporten versturen om 2FAS te helpen bij het identificeren en oplossen van problemen in de app (opnieuw opstarten van de app is vereist).</string>
     <string name="tokens__manage_list">Lijst beheren</string>
     <string name="settings__appearance">Uiterlijk</string>
-    <string name="settings__show_next_token_desc">Laat het volgende token zien wanneer de huidige bijna verlopen is</string>
+    <string name="settings__show_next_token_desc">Laat de volgende token zien wanneer de huidige token bijna is verlopen</string>
     <string name="settings__list_style">Stijl van de lijst</string>
     <string name="backup__reminder_msg">Google Drive niet gesynchroniseerd.</string>
     <string name="backup__reminder_cta">Ga naar back-up instellingen.</string>
@@ -735,7 +735,7 @@
     <string name="externalimport__lastpass_msg">Exporteer uw accounts van LastPass naar een niet-versleuteld JSON-bestand en upload het door de knop \"Kies JSON-bestand\" te gebruiken. Vergeet niet om na een succesvolle importatie het bestand te verwijderen.</string>
     <string name="settings__about_crash_optout_title">Crash Rapporten</string>
     <string name="externalimport__lastpass_title">2FA-tokens importeren uit de LastPass app</string>
-    <string name="externalimport__lastpass_success_msg">Dit JSON bestand maakt het mogelijk om LastPass tokens te importeren.</string>
+    <string name="externalimport__lastpass_success_msg">Dit JSON-bestand maakt het mogelijk om LastPass tokens te importeren.</string>
     <string name="externalimport__info_lastpass_title">Importeer tokens vanuit LastPass</string>
     <string name="externalimport__info_aegis_title">Importeer tokens vanuit Aegis</string>
     <string name="externalimport__info_raivo_title">Importeer tokens vanuit Raivo OTP</string>
@@ -773,7 +773,7 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Tokens verbergen</string>
-    <string name="settings__hide_tokens_description">Tokens worden onthuld nadat u heeft geklikt.</string>
+    <string name="settings__hide_tokens_description">Tokens worden onthuld als u erop klikt</string>
     <string name="browser__pair_manually_cta">Handmatig koppelen</string>
     <string name="browser__pair_manually_hint">Koppelingscode</string>
     <string name="externalimport__info_authenticatorpro_title">Importeer tokens vanuit Authenticator Pro</string>
@@ -792,15 +792,15 @@
     <string name="guides__select_provide_guide_cta">Nu toepassen</string>
     <string name="color__pink">Roze</string>
     <string name="color__brown">Bruin</string>
-    <string name="tokens__other_methods_header">Other methods?</string>
-    <string name="tokens__camera_is_unavailable_app_permission">Camera is unavailable. Check apps\' access permission in System Settings</string>
+    <string name="tokens__other_methods_header">Andere manieren?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Camera is niet beschikbaar. Controleer de app-rechten in Systeeminstellingen</string>
     <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
-    <string name="tokens__camera_is_unavailable_app_permission_underline">System Settings</string>
-    <string name="commons__text_short_title">The provided text is too short (min. %d chars)</string>
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Systeeminstellingen</string>
+    <string name="commons__text_short_title">The opgegeven tekst is te kort (minstens %d tekens)</string>
     <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
-    <string name="tokens__add_manual_advanced_description_highlight">is not recommended</string>
-    <string name="guides__guide_init_title">2FAS guide</string>
-    <string name="guides__guide_title">2FAS for %s</string>
-    <string name="guides__guide_universal_title">Universal 2FA Guide</string>
-    <string name="browser__save_choice">Save my choice</string>
+    <string name="tokens__add_manual_advanced_description_highlight">wordt afgeraden</string>
+    <string name="guides__guide_init_title">2FAS handleiding</string>
+    <string name="guides__guide_title">2FAS voor %s</string>
+    <string name="guides__guide_universal_title">Universele 2FA Handleiding</string>
+    <string name="browser__save_choice">Mijn keuze onthouden</string>
 </resources>
