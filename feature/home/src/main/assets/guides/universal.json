@@ -23,11 +23,11 @@
               },
               {
                 "image": "2fas_type",
-                "content": "You may be asked to enter a password for security reasons. Enter your password and click **'Continue'**."
+                "content": "You may be asked to enter a password for security reasons. Enter your password and click **Continue**."
               },
               {
                 "image": "phone_qr",
-                "content": "Select the **'Authentication app'** option and scan shown QR code or retype your secret key manually.\n\nScanning the QR code will generate a token in the 2FAS app. Retype it to finish up the 2FA setting.",
+                "content": "Select the **Authentication app** option and scan shown QR code or retype your secret key manually.\n\nScanning the QR code will generate a token in the 2FAS app. Retype it to finish up the 2FA setting.",
                 "cta": {
                   "name": "Scan QR code",
                   "action": "open_scanner"

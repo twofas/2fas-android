@@ -52,7 +52,7 @@ fun Guide.iconFile(): String {
 
 internal fun Context.getGuideJson(fileName: String): String {
     return try {
-        assets.open(fileName).bufferedReader().use { it.readText() }
+        assets.open("guides/$fileName").bufferedReader().use { it.readText() }
     } catch (ioException: IOException) {
         ioException.printStackTrace()
         ""
