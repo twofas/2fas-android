@@ -8,6 +8,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.twofasapp.designsystem.R
+import com.twofasapp.designsystem.TwTheme
 
 @Immutable
 @Stable

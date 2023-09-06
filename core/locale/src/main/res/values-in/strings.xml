@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android string resources
+ Project: 2FAS App
+ Release: Working copy
+ Locale: id-ID, Indonesian (Indonesia)
+ Exported by: rafakob
+ Exported at: Sat, 02 Sep 2023 12:58:36 -0700
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- InfoPlist.strings
+        TwoFAS
+        Created by Zbigniew Cisiński on 14/03/2020.
+        Copyright © 2020 The Code. All rights reserved. -->
+    <string name="NSCameraUsageDescription">Digunakan untuk memindai kode-QR</string>
+    <string name="NSFaceIDUsageDescription">Anda dapat membuka kunci aplikasi menggunakan Face ID</string>
+    <!-- MARK: - App -->
+    <string name="app__name">2FAS Authenticator\u0020</string>
+    <string name="commons__2fas">2FA Authenticator (2FAS App)</string>
+    <string name="commons__OK">OKE</string>
+    <string name="commons__add">Menambahkan</string>
+    <!-- MARK: - Commons -->
+    <string name="commons__cancel">Batalkan</string>
+    <string name="commons__notifications">Notifikasi</string>
+    <!-- A number replaces %d, for example, 4 of 5. -->
+    <string name="commons__page_of_page_title">%1$d dari %2$d</string>
+    <!-- notifications__service_already_removed_from_backup -->
+    <string name="notifications__service_already_removed_title">Layanan sudah dihapus dari Cadangan</string>
+    <!-- notifications__service_already_modified_in_backup -->
+    <string name="notifications__service_already_modified_title">Layanan sudah diubah di Cadangan</string>
+    <!-- backup__user_is_over_quota_on_icloud -->
+    <string name="backup__user_over_quota_icloud">Pengguna melebihi kuota di iCloud</string>
+    <!-- backup__icloud_is_not_available -->
+    <string name="backup__icloud_not_available">iCloud tidak tersedia</string>
+    <!-- backup__icloud_has_been_disabled_by_user -->
+    <string name="backup__icloud_disabled_title">iCloud telah dinonaktifkan oleh pengguna</string>
+    <!-- backup__turned_off_description_bold_part -->
+    <string name="backup__2fas_backup">Pencadangan 2FAS</string>
+    <string name="commons__close">Tutup</string>
+    <string name="commons__continue">Lanjutkan</string>
+    <string name="commons__copy">Salin</string>
+    <string name="commons__delete">Hapus</string>
+    <string name="commons__dismiss">Membatalkan</string>
+    <string name="commons__done">Selesai</string>
+    <string name="commons__edit">Sunting</string>
+    <string name="commons__enter_code_manually">Masukkan kode secara manual</string>
+    <string name="commons__error">Kesalahan</string>
+    <string name="commons__info">Info</string>
+    <string name="commons__next">Berikutnya</string>
+    <string name="commons__notice">Melihat</string>
+    <string name="commons__off">Mati</string>
+    <string name="commons__on">Hidup</string>
+    <!-- commons__point_your_camera_at_code_on_website -->
+    <string name="commons__camera_title">Arahkan kamera anda ke layar untuk menangkap kode QR</string>
+    <string name="commons__rename">Ganti nama</string>
+    <string name="commons__retry">Mencoba kembali</string>
+    <string name="commons__save">Menyimpan</string>
+    <string name="commons__scan_qr_code">Pindai Code QR</string>
+    <string name="commons__service">Layanan</string>
+    <string name="commons__set">Mengatur</string>
+    <string name="commons__skip">Melewati</string>
+    <string name="commons__tokens">Token</string>
+    <string name="commons__warning">Peringatan</string>
+    <string name="commons__no_results">Tidak ada hasil</string>
+    <string name="commons__customize">Sesuaikan</string>
+    <string name="commons__approve">Disetujui</string>
+    <string name="commons__deny">Ditolak</string>
+    <!-- max. %d chars = Maximum number of characters
+        commons__provided_text_too_long -->
+    <string name="commons__text_long_title">Teks yang diberikan terlalu panjang (maks. %d karakter)</string>
+    <string name="commons__got_it">Mengerti!</string>
+    <string name="fingerprint__verifying">Memverifikasi...</string>
+    <!-- fingerprint__setup_content -->
+    <string name="fingerprint__confirm_title">Konfirmasi sidik jari untuk melanjutkan.</string>
+    <!-- fingerprint__use_pin -->
+    <string name="fingerprint__use_pin_title">Gunakan PIN kali ini</string>
+    <!-- MARK: - Introduction -->
+    <string name="introduction__page_1_title">Kamu luar biasa!</string>
+    <string name="introduction__page_1_content">Ponsel anda baru saja menjadi kunci pribadi dan aman untuk layanan online anda berkat aplikasi 2FAS - dipercaya oleh lebih dari 3 juta pengguna di seluruh dunia.</string>
+    <string name="introduction__page_2_title">Simpel</string>
+    <string name="introduction__page_2_content">Pasangkan 2FAS dengan layanan online Anda. Aktifkan keamanan dua faktor dalam hitungan detik dengan kode QR anda.</string>
+    <string name="introduction__page_3_title">Pribadi</string>
+    <string name="introduction__page_3_content">2FAS menghormati dan melindungi privasi anda. Aplikasi ini tidak akan pernah mengumpulkan, memproses, atau menggunakan data pribadi anda.</string>
+    <string name="introduction__page_4_title">Aman</string>
+    <string name="introduction__page_4_content_ios">Token Anda disimpan secara offline melalui penyimpanan perangkat. Jadi ingatlah untuk mencadangkan layanan anda! Gunakan Sinkronisasi iCloud dan kata sandi PIN untuk melindungi dari akses tidak sah dan kerusakan perangkat.</string>
+    <!-- introduction__start_using -->
+    <string name="introduction__title">Mulailah menggunakan 2FAS</string>
+    <string name="introduction__tos">Persyaratan layanan</string>
+    <string name="introduction__description_title">Pasangkan akun layanan online anda dengan 2FAS atau impor token anda</string>
+    <string name="introduction__pair_new_service">Pasangkan layanan baru</string>
+    <!-- introduction__import_2fas -->
+    <string name="introduction__import_2fas_title">Impor file cadangan 2FAS</string>
+    <!-- introduction__import_ga -->
+    <string name="introduction__import_google_authenticator">Impor dari Google Authenticator</string>
+    <!-- introduction__not_sure -->
+    <string name="introduction__what_to_do">Tidak yakin apa yang harus dilakukan?</string>
+    <!-- introduction__ga_import_description -->
+    <string name="introduction__google_authenticator_import_process">Ekspor akun anda dari Google Authenticator ke kode QR menggunakan opsi \"Transfer Akun\".\u0020\u0020Kemudian menggunakan perangkat lain, ambil gambar kode QR yang diekspor, kirimkan ke perangkat anda (atau buat tangkapan layar jika memungkinkan), dan gunakan opsi \"Pilih kode QR\" di bawah. Jika anda mengimpor kode dari perangkat lain, gunakan tombol \"Pindai kode QR\".</string>
+    <!-- introduction__choose_qr -->
+    <string name="introduction__choose_qr_code">Pilih kode QR</string>
+    <!-- introduction__scan_qr -->
+    <string name="introduction__scan_qr_code">Pindai kode QR</string>
+    <!-- Original: Adding code -->
+    <string name="notifications__adding_code">Menambahkan kode baru</string>
+    <!-- notifications__private_key_copied -->
+    <string name="notifications__service_key_copied">Kunci rahasia disalin</string>
+    <!-- voiceover__token_is_already_on_the_list -->
+    <string name="notifications__token_already_added">Token ini sudah ada dalam daftar</string>
+    <string name="notifications__counter_copied">Penghitung disalin</string>
+    <string name="notifications__token_copied">Token Disalin</string>
+    <string name="notifications__next_token_copied">Token berikutnya disalin</string>
+    <!-- notifications__would_you_like_to_add_this_code -->
+    <string name="notifications__add_code_question_title">Apakah anda ingin menambahkan kode ini: %s?</string>
+    <!-- MARK: - Permissions -->
+    <string name="permissions__open_settings">Buka Pengaturan</string>
+    <string name="security__incorrect_PIN">PIN salah</string>
+    <string name="security__change_pin">Ganti PIN</string>
+    <string name="security__confirm_you_are_device_owner">Konfirmasikan bahwa anda adalah pemilik perangkat</string>
+    <!-- security__confirm_your_new_pin -->
+    <string name="security__confirm_new_pin">Harap konfirmasi PIN baru anda</string>
+    <string name="security__create_pin">Buat PIN</string>
+    <string name="security__enter_current_pin">Masukkan PIN anda saat ini</string>
+    <!-- security__enter_your_new_pin -->
+    <string name="security__enter_new_pin">Silahkan masukkan PIN baru anda</string>
+    <!-- security__enter_your_pin -->
+    <string name="security__enter_pin">Masukkan PIN anda</string>
+    <!-- MARK: - Security -->
+    <string name="security__too_many_attempts_try_again_after_formatter">Terlalu banyak upaya. Silakan coba lagi %s</string>
+    <string name="security__too_many_attempts_try_again_after">Terlalu banyak upaya.\u0020\u0020Silakan coba lagi setelah %s menit.</string>
+    <!-- security__too_many_attempts_try_again_later -->
+    <string name="security__too_many_attempts_error">Terlalu banyak upaya.\u0020\u0020Coba lagi nanti.</string>
+    <!-- security__too_many_attempts_try_again_after_one_minute -->
+    <string name="security__too_many_attempts_error_2">Terlalu banyak upaya.\u0020\u0020Silakan coba setelah satu menit</string>
+    <string name="settings__backup_and_synchronization">Pencadangan dan Sinkronisasi</string>
+    <string name="settings__choose_topic">Pilih topik</string>
+    <string name="settings__configure_mail_service_try_again">Konfigurasikan layanan email dan coba lagi</string>
+    <string name="settings__general">Umum</string>
+    <string name="settings__mail_services_not_available">Layanan mail tidak tersedia</string>
+    <string name="settings__problem">Masalah</string>
+    <string name="settings__security">Keamanan</string>
+    <string name="settings__select_pin_length">Pilih panjang PIN</string>
+    <string name="settings__settings">Pengaturan</string>
+    <!-- czy to dalej będzie w aplikacji? -->
+    <string name="settings__suggestion">Saran</string>
+    <string name="settings__advanced">Canggih</string>
+    <string name="settings__widgets">Widget</string>
+    <string name="settings__display_selected_services">Tampilkan layanan yang dipilih di Widget Layar Utama.</string>
+    <!-- settings__after_you_enable_widgets -->
+    <string name="settings__widgets_title">Setelah anda mengaktifkan widget, semua token anda dapat diakses tanpa kode PIN anda.\n\nApakah anda yakin ingin mengaktifkan widget?</string>
+    <string name="settings__show_next_token">Tampilkan token baru</string>
+    <string name="settings__see_incoming_tokens">Lihat token yang masuk pada daftar.</string>
+    <string name="settings__trash">Sampah</string>
+    <string name="settings__restore">Memulihkan</string>
+    <string name="settings__trash_is_empty">Sampah kosong</string>
+    <string name="settings__share_app">Bagikan aplikasi</string>
+    <!-- tokens__remove_from_list -->
+    <string name="tokens__delete_token">Anda yakin ingin menghapus token untuk:</string>
+    <string name="tokens__move_to_trash">Pindahkan ke sampah</string>
+    <string name="tokens__additional_info">informasi tambahan</string>
+    <string name="tokens__choose_method">Pilih metode</string>
+    <string name="tokens__duplicated_private_key">Kunci Rahasia Gandakan</string>
+    <!-- tokens__incorrect_private_key -->
+    <string name="tokens__incorrect_service_key">Kunci Rahasia salah (hanya angka 2 sampai 7, huruf), maks.\u0020\u0020Panjang 512 karakter</string>
+    <string name="tokens__try_again">Oke, mari kita coba lagi</string>
+    <!-- Original: To capture the QR code
+        tokens__point_right_2fa_code -->
+    <string name="tokens__scan_qr_code_title">Arahkan kamera anda ke layar untuk memindai Kode QR</string>
+    <!-- tokens__private_key -->
+    <string name="tokens__service_key">Kunci rahasia</string>
+    <string name="tokens__qr_code_leads_to_app_store">Kode QR ini membawa anda ke App Store</string>
+    <!-- tokens__remove_it_forever -->
+    <string name="tokens__remove_forever">Hapus token</string>
+    <!-- tokens__search_by_service_name_or_login -->
+    <string name="tokens__search_service_title">Layanan pencarian</string>
+    <!-- tokens__search_sorry_service_not_found -->
+    <string name="tokens__service_not_found_search">Maaf, layanan tidak ditemukan</string>
+    <!-- Original: Take another try with a different search term
+        tokens__search_take_another_try_different_search_term -->
+    <string name="tokens__try_different_search_term">Coba lagi dengan istilah pencarian yang berbeda</string>
+    <string name="tokens__service_key_to_short">Kunci terlalu pendek.\u0020\u0020Minimal 4 karakter</string>
+    <string name="tokens__service_name">Nama layanan</string>
+    <!-- tokens__this_private_key_exists_used_in -->
+    <string name="tokens__service_key_already_used_title">Kunci rahasia dari kode yang dipindai sudah digunakan di %s.\u0020\u0020anda mungkin memindai lagi</string>
+    <string name="tokens__this_qr_code_is_inavlid">Kode ini salah atau tidak didukung.\u0020\u0020Coba lagi.</string>
+    <string name="tokens__type_service_name">Ketik nama layanan</string>
+    <string name="tokens__enter_service_name">Masukkan nama layanan</string>
+    <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
+    <string name="tokens__service_name_unknown_title">Sayangnya, kami tidak tahu layanan itu.\u0020\u0020Bagaimana anda ingin menamainya?</string>
+    <!-- tokens__you_wont_be_able_to_restore -->
+    <string name="tokens__token_not_possible_to_restore">Anda tidak akan dapat memulihkan token ini lagi.</string>
+    <string name="tokens__badge_color">Warna lencana</string>
+    <string name="tokens__change_brand_icon">Ubah ikon merek</string>
+    <string name="tokens__change_label">Ubah label</string>
+    <string name="tokens__service_information">Informasi Layanan</string>
+    <string name="tokens__personalization">Personalisasi</string>
+    <string name="tokens__brand_icon">Ikon merek</string>
+    <string name="tokens__label">Label</string>
+    <!-- tokens__remove_the_service -->
+    <string name="tokens__remove_service_from_app">Hapus layanan ini dari aplikasi 2FAS</string>
+    <!-- tokens__label_one_or_two -->
+    <string name="tokens__label_characters_title">Label (1 atau 2 karakter):</string>
+    <string name="tokens__pick_background_color">Pilih warna latar belakang:</string>
+    <string name="tokens__num_added">%s ditambahkan</string>
+    <string name="tokens__next_token">Token Berikutnya: %s</string>
+    <string name="tokens__next_token_title">Nilai Token berikutnya</string>
+    <string name="tokens__my_tokens">Token saya</string>
+    <string name="tokens__removing_group">Menghapus Grup</string>
+    <!-- tokens__all_tokens_will_be_moved -->
+    <string name="tokens__all_tokens_moved_to_group_title">Semua token akan dipindahkan ke grup: \"Token saya\"</string>
+    <string name="tokens__add_group">Tambahkan grup</string>
+    <string name="tokens__group_name">Nama grup:</string>
+    <string name="tokens__select_from_gallery">Pilih dari Galeri</string>
+    <string name="tokens__camera_is_unavailable">Kamera tidak tersedia</string>
+    <!-- tokens__check_if_app_has_proper_permissions -->
+    <string name="tokens__check_app_permissions">Periksa apakah aplikasi memiliki izin yang tepat di Pengaturan Sistem</string>
+    <string name="tokens__no_qr_codes_found">Kode QR tidak ditemukan</string>
+    <!-- tokens__no_correct_qr_code_had_been_found
+        
+        No correct QR codes had been found in the selected image. Please try a different image. -->
+    <string name="tokens__no_correct_qr_code_found_title">Tidak ada kode QR yang benar pada gambar yang dipilih.\u0020\u0020Silakan coba gambar lain.</string>
+    <string name="tokens__select_service">Pilih Layanan</string>
+    <string name="tokens__adding_service_question_title">Layanan apa yang ingin anda tambahkan?</string>
+    <string name="tokens__retype_this_token">Ketik ulang token ini</string>
+    <!-- tokens__unlock_and_retype_this_token -->
+    <string name="tokens__unlock_and_retype_token_title">Buka kunci dan ketik ulang token ini</string>
+    <string name="tokens__group">Grup</string>
+    <string name="tokens__select_group">Pilih grup</string>
+    <string name="tokens__google_auth_import">Mengimpor token 2FA dari aplikasi Google Authenticator</string>
+    <string name="tokens__google_auth_import_subtitle">Kode QR ini memungkinkan mengimpor token dari Google Authenticator</string>
+    <!-- A number replaces %d  -->
+    <string name="tokens__google_auth_out_of_title">%1$d dari %2$d</string>
+    <string name="tokens__google_auth_import_subtitle_end">Token akan diimpor.</string>
+    <string name="tokens__sort_by">Sortir dengan</string>
+    <!-- tokens__sort_by_az -->
+    <string name="tokens__sort_by_a_to_z">A - Z</string>
+    <!-- tokens__sort_by_za -->
+    <string name="tokens__sort_by_z_to_a">Z - A</string>
+    <string name="tokens__sort_by_manual">Manual</string>
+    <string name="tokens__advanced">Canggih</string>
+    <!-- tokens__advanced_alert_title -->
+    <string name="tokens__advanced_alert">Peringatan</string>
+    <!-- tokens__advanced_alert_description -->
+    <string name="tokens__advanced_alert_description_title">Mengubah pengaturan lanjutan tidak disarankan. Lakukan hanya jika penyedia 2FA Anda memerlukannya dan jika anda memiliki instruksi yang jelas.</string>
+    <string name="tokens__token_settings">Pengaturan token</string>
+    <string name="tokens__otp_authentication">Otentikasi OTP</string>
+    <string name="tokens__algorithm">Algoritma</string>
+    <string name="tokens__refresh_time">Segarkan waktu</string>
+    <string name="tokens__number_of_digits">Jumlah digit</string>
+    <string name="tokens__counter">Penghitung</string>
+    <string name="tokens__initial_counter">Penghitung awal</string>
+    <!-- A number replaces %d -->
+    <string name="tokens__second">%d dtk</string>
+    <string name="tokens__hotp">HOTP</string>
+    <string name="tokens__totp">TOTP</string>
+    <string name="tokens__advanced_settings_footer_title">Mengubah pengaturan lanjutan tidak disarankan. Lakukan hanya jika penyedia 2FA anda memerlukannya dan jika anda memiliki instruksi yang jelas.</string>
+    <string name="tokens__gallery_advice_title">Praktek terbaik</string>
+    <!-- ADD A SPACE AT THE END -->
+    <string name="tokens__gallery_advice_content_first">Layanan berhasil ditambahkan. Kami sangat menyarankan anda\u0020</string>
+    <!-- ADD A SPACE AFTER COMA -->
+    <string name="tokens__gallery_advice_content_middle_bold">hapus tangkapan layar QR dari galeri anda.\u0020</string>
+    <string name="tokens__gallery_advice_content_last">Jika seseorang mengambil tangkapan layar kode QR ini, mereka akan dapat memasukkan kode 2FA anda ke layanan ini.</string>
+    <string name="tokens__request_icon_page_title">Minta ikon</string>
+    <string name="tokens__request_icon_social_title">Beri tahu kami di Discord</string>
+    <string name="tokens__request_icon_social_link">Masuk ke server discord kami</string>
+    <string name="tokens__request_icon_social_description">dan biarkan pengguna memilih ikon yang diminta.</string>
+    <string name="tokens__request_icon_middle">atau</string>
+    <string name="tokens__request_icon_provider_title">Beri tahu penyedia layanan</string>
+    <string name="tokens__request_icon_provider_description">Anda dapat menggunakan Media Sosial atau email dan membagikan teks ini dengan mereka:</string>
+    <string name="tokens__request_icon_provider_message">Hai!\u0020\u0020Saya menggunakan aplikasi 2FAS untuk masuk ke layanan anda dengan 2FA. Namun, ikon anda hilang!\u0020\u0020anda dapat mengirimkan ikon anda di sini: https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_footnote">Jangan lupa untuk menandai akun resmi perusahaan!</string>
+    <string name="tokens__order_icon_description">Tidak dapat menemukan ikon merek di aplikasi 2FAS?</string>
+    <string name="tokens__order_icon_link">Minta ikon merek</string>
+    <string name="tokens__order_icon_title">Minta ikon merek</string>
+    <string name="tokens__order_menu_title">Pilih metode permintaan</string>
+    <string name="tokens__order_menu_option_user">Minta ikon sebagai pengguna</string>
+    <string name="tokens__order_menu_option_company">Kirim ikon sebagai perusahaan</string>
+    <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
+    <string name="tokens__sign_in_not_possible_title">Anda tidak akan dapat masuk ke akun %1$s anda tanpa token ini, selama anda mengaktifkan autentikasi faktor kedua untuk %2$s.</string>
+    <string name="voiceover__show_service_key">Tampilkan Kunci Rahasia</string>
+    <string name="voiceover__copy_service_key">Salin Kunci Rahasia</string>
+    <!-- voiceover__seconds_left -->
+    <string name="voiceover__seconds_left_counter_title">Counter dengan detik tersisa untuk perubahan token</string>
+    <string name="voiceover__delete_button">tombol Hapus</string>
+    <string name="voiceover__service_deleted">Layanan dihapus</string>
+    <!-- voiceover__hidden_secret_key_use_show button -->
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Bidang ini berisi Kunci Rahasia tersembunyi. Untuk mengungkapkannya, gunakan tombol Show.\u0020\u0020Ini hanya akan berfungsi jika anda telah menyiapkan PIN aplikasi untuk layar kunci</string>
+    <string name="voiceover__service_name">Nama layanan: %s</string>
+    <string name="voiceover__additional_info">Informasi tambahan: %s</string>
+    <string name="voiceover__token_tap_to_copy">Token %s. Ketuk untuk menyalin</string>
+    <string name="voiceover__edit">Edit %s</string>
+    <string name="voiceover__service_label_with_name_and_color">Label layanan dengan nama %1$s dan warna %2$s</string>
+    <string name="voiceover__service_icon">%s ikon layanan</string>
+    <string name="voiceover__selected">Dipilih</string>
+    <string name="voiceover__not_selected">Tidak dipilih</string>
+    <string name="voiceover__badge_color">Warna lencana: %s</string>
+    <string name="voiceover__dismissing">Memberhentikan</string>
+    <string name="voiceover__secret_hint">Hanya angka 2 sampai 9, huruf.\u0020\u0020Minimal 4 karakter</string>
+    <string name="voiceover__add_service">Tambahkan Layanan</string>
+    <string name="voiceover__add_group">Tambahkan Grup</string>
+    <!-- voiceover__use_add_service_button -->
+    <string name="voiceover__use_add_service_button_title">Gunakan tombol Tambahkan Layanan untuk menambahkan layanan baru</string>
+    <string name="voiceover__no_search_results">Tidak ada hasil pencarian</string>
+    <!-- voiceover__sort_by -->
+    <string name="voiceover__sort_by_title">Gunakan Sort By untuk mengatur penyortiran layanan</string>
+    <string name="voiceover__spinner">Memuat konten</string>
+    <string name="backup__incorrect_secret">Tidak dapat mencadangkan token karena rahasia \"%s\" berisi karakter ilegal.\u0020\u0020Hapus dari daftar dan coba lagi</string>
+    <string name="backup__import">Import</string>
+    <string name="backup__export">Ekspor</string>
+    <string name="backup__backup_disabled_title">Pencadangan 2FAS akan dinonaktifkan untuk melindungi integritasnya</string>
+    <string name="backup__error_while_exporting_file">Kesalahan saat mengekspor file</string>
+    <string name="backup__import_completed_successfuly">Impor berhasil diselesaikan</string>
+    <!-- camera__video_device_in_use_by_another_app -->
+    <string name="camera__camera_used_by_other_app_title">Aplikasi lain menggunakan kamera. jika menutup aplikasi lain tidak membantu, mulai ulang perangkat anda</string>
+    <!-- camera__video_device_unavailable_due_to_system_overload  -->
+    <string name="camera__camera_unavailable_title">Kamera tidak tersedia karena sistem kelebihan beban.\u0020\u0020Coba reboot perangkat</string>
+    <string name="camera__cant_initialize_camera_general">Tidak dapat menginisialisasi kamera.\u0020\u0020Coba reboot perangkat</string>
+    <string name="camera__cant_initialize_camera_split_view">Tidak dapat menginisialisasi kamera dalam mode Tampilan Terpisah.\u0020\u0020Buka aplikasi dalam layar penuh dan coba lagi</string>
+    <string name="restore__how_to_restore">Bagaimana cara memulihkan aplikasi 2FAS?</string>
+    <string name="restore__application_restoration">Pemulihan aplikasi</string>
+    <!-- restore_if_you_forgotten -->
+    <string name="restore__reset_Pin_title">Jika anda lupa PIN atau ingin mengatur ulang aplikasi 2FAS, anda harus menginstal ulang aplikasi tersebut.</string>
+    <!-- restore_please_remember -->
+    <string name="restore__backup_advice">Harap diperhatikan bahwa jika anda tidak memiliki cadangan dan mengatur ulang aplikasi, anda akan kehilangan akses ke semua kode anda.\u0020\u0020Dan karenanya, akses ke semua akun aman 2FA anda.</string>
+    <!-- restore_if_you_have_backup -->
+    <string name="restore__backup_title">Jika anda memiliki cadangan, tenang saja, anda akan dapat memulihkan semua kode anda.</string>
+    <string name="backup__cloud_backup">Pencadangan cloud</string>
+    <string name="backup__icloud_sync">Sinkronisasi iCloud</string>
+    <string name="backup__section_description">DIREKOMENDASIKAN: Sinkronisasi iCloud menjaga token anda tetap aman di Apple iCloud jika terjadi kehilangan atau kerusakan pada perangkat anda.\u0020\u0020Biarkan tetap menyala.</string>
+    <string name="backup__file_backup">Pencadangan File</string>
+    <!-- backup__use_file_backup_for -->
+    <string name="backup__file_backup_offline_title">Gunakan Pencadangan File untuk pencadangan offline token anda</string>
+    <string name="backup__backup_removal">Penghapusan cadangan</string>
+    <string name="backup__delete_2fas_backup">Hapus Cadangan 2FAS</string>
+    <string name="backup__warning_introduction">Peringatan! Jika anda menghapus Cadangan 2FAS, anda juga akan menghapus semua token dari perangkat lain yang disinkronkan dengan akun ini. Untuk menyimpan token di perangkat lain, harap pastikan anda telah mematikan Cadangan 2FAS sebelum penghapusan</string>
+    <!-- backup__i_want_to_delete -->
+    <string name="backup__delete_title">Saya ingin menghapus Cadangan</string>
+    <string name="backup__export_to_backup_file">Ekspor cadangan ke file</string>
+    <!-- backup__you_can_import_exported_file -->
+    <string name="backup__import_file_title">Anda dapat mengimpor file yang diekspor di perangkat lain dengan aplikasi 2FAS</string>
+    <string name="backup__export_to_file">Ekspor ke file</string>
+    <string name="backup__verify_pin">Verifikasi PIN</string>
+    <string name="backup__save_file">Menyimpan file</string>
+    <string name="backup__import_backup_file">Impor file cadangan</string>
+    <!-- backup__youre_goint_to_import_backup -->
+    <string name="backup__import_other_devices">Anda akan mengimpor file cadangan yang berisi</string>
+    <string name="backup__import_file">Impor berkas</string>
+    <string name="backup__choose_antother_file">Pilih file lain</string>
+    <string name="backup__no_new_services">Tidak ada yang perlu diimpor</string>
+    <string name="backup__file_error">Kesalahan berkas!</string>
+    <!-- backup__services_form_file_will_be_merged -->
+    <string name="backup__services_merge_title">Layanan dari file akan digabungkan dengan yang ada di aplikasi anda</string>
+    <string name="backup__no_new_services_error">Entah file ini kosong, atau semua layanan di dalamnya sudah tersedia di aplikasi</string>
+    <string name="backup__update_required_to_import_title">Anda memerlukan versi baru aplikasi untuk mengimpor konten file ini. anda dapat menemukan versi terbaru di App Store</string>
+    <string name="backup__cant_read_file_error">Tidak dapat membaca file ini. Itu bisa rusak, atau ada kesalahan saat mencoba mengaksesnya. Silakan pilih yang lain</string>
+    <string name="backup__password">Kata sandi</string>
+    <string name="backup__repeat_password">Masukkan kata sandi kembali</string>
+    <string name="backup__incorrect_character_error">Karakter salah.\u0020\u0020Gunakan hanya huruf A-Z, a-z, angka dan karakter khusus: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__to_short_error">Frasa yang diberikan terlalu pendek (min. 3 karakter)</string>
+    <string name="backup__passwords_dont_match">Kata sandi tidak cocok</string>
+    <string name="backup__save_and_export">Simpan dan ekspor</string>
+    <string name="backup__set_password_title">Untuk meningkatkan perlindungan file cadangan anda, silakan setel kata sandi</string>
+    <string name="backup__enter_password_title">Ketik kata sandi untuk file cadangan ini untuk melanjutkan proses impor</string>
+    <string name="backup__backup_file_password_title">Tetapkan kata sandi untuk file cadangan ini</string>
+    <string name="backup__incorrect_password">Kata sandi Salah</string>
+    <!-- %d - number -->
+    <string name="backup__new_services">%d layanan baru</string>
+    <!-- %d - number -->
+    <string name="backup__services_imported_count">%d layanan diimpor dari file</string>
+    <!-- backup__user_has_icloud_problem -->
+    <string name="backup__icloud_problem">Ada masalah dengan iCloud.\u0020\u0020Periksa pengaturan sistem</string>
+    <!-- backup__newer_schema_unsupported -->
+    <string name="backup__newer_format_not_supported">File ini dalam versi format yang lebih baru daripada yang didukung aplikasi</string>
+    <!-- backup__encrypted_unsupported -->
+    <string name="backup__encrypted_files_not_supported">File ini dienkripsi. Kami hanya mendukung file yang tidak terenkripsi</string>
+    <string name="tokens__copy_token">Salin token</string>
+    <!-- tokens__i_want_to_delete_this_servie -->
+    <string name="tokens__i_want_to_delete_this_token">Ya, saya ingin menghapus layanan ini</string>
+    <string name="color__neutral">Netral</string>
+    <string name="color__light_blue">Biru muda</string>
+    <string name="color__indigo">Nila</string>
+    <string name="color__purple">Ungu</string>
+    <string name="color__turquoise">Pirus</string>
+    <string name="color__green">Hijau</string>
+    <string name="color__red">Merah</string>
+    <string name="color__orange">Oren</string>
+    <string name="color__yellow">Kuning</string>
+    <string name="settings__knowledge">Pengetahuan</string>
+    <string name="settings__support_and_share">Dukung dan Bagikan</string>
+    <string name="settings__tell_a_friend">Beritahu teman</string>
+    <string name="settings__write_a_review">Menulis review</string>
+    <string name="settings__about">Tentang</string>
+    <string name="settings__privacy_policy">Kebijakan pribadi</string>
+    <string name="settings__terms_of_service">Ketentuan Layanan</string>
+    <string name="settings__version">Versi aplikasi %s</string>
+    <string name="settings__no_limit">Tidak ada batas</string>
+    <string name="settings__pin_code">Kode PIN</string>
+    <string name="settings__app_security">Keamanan aplikasi</string>
+    <string name="settings__app_blocking">Pengaturan penguncian</string>
+    <string name="settings__face_id">ID Wajah</string>
+    <string name="settings__touch_id">Sentuh ID</string>
+    <!-- settings__how_many_attempts_header -->
+    <string name="settings__too_many_attempts_header">Blokir setelah X upaya gagal:</string>
+    <string name="settings__how_many_attempts_footer">Pilih jumlah maksimum percobaan yang gagal untuk memasukkan kode sandi sebelum mengunci aplikasi (waktu penguncian dapat diubah di bawah).</string>
+    <string name="settings__block_for">Waktu penguncian</string>
+    <string name="settings__3_minutes">3 menit</string>
+    <string name="settings__5_minutes">5 menit</string>
+    <string name="settings__10_minutes">10 menit</string>
+    <string name="settings__limit_of_trials">Upaya gagal maksimal</string>
+    <string name="settings__pin_4_digits">Kode 4 digit</string>
+    <string name="settings__pin_6_digits">Kode 6 digit</string>
+    <string name="settings__biometric_authentication">Otentikasi Biometrik</string>
+    <string name="settings__donations">Donasi</string>
+    <string name="settings__donate_twofas">Donasi ke 2FAS</string>
+    <string name="new_version__new_version_title">Versi baru</string>
+    <string name="new_version__new_version_message_ios">Versi baru 2FAS tersedia di AppStore.\u0020\u0020Memperbarui sekarang!</string>
+    <string name="new_version__update_action">Perbarui sekarang</string>
+    <!-- new_version__skip_action -->
+    <string name="new_version__skip_title">Lewati versi ini</string>
+    <!-- new_version__later_action -->
+    <string name="new_version__update_later">Perbarui nanti</string>
+    <string name="browser__browser_extension">Ekstensi Browser</string>
+    <string name="browser__info_title">Ekstensi Browser Web 2FAS</string>
+    <string name="browser__info_description_first">Instal ekstensi browser 2FAS di komputer desktop anda</string>
+    <string name="browser__info_description_second">Pasangkan dengan aplikasi 2FAS anda.</string>
+    <string name="browser__more_info">Info lebih lanjut:</string>
+    <string name="browser__more_info_link_title">2fas.com/be</string>
+    <string name="browser__pair_with_web_browser">Sandingkan dengan browser web</string>
+    <string name="browser__more_info_link">https://www.2fas.com/be</string>
+    <string name="browser__pairing_successful_title">Pemasangan berhasil!</string>
+    <string name="browser__pairing_successful_description">2FAS akan mengirimi anda Push Notification setiap kali anda masuk ke layanan online anda menggunakan browser web ini.\u0020\u0020anda tidak perlu lagi mengetik ulang token anda untuk setiap penggunaan.</string>
+    <string name="browser__pairing_failed_title">Penyandingan gagal :(</string>
+    <string name="browser__pairing_failed_description">Kode QR ini tidak dikenali, dan 2FAS tidak dapat memasangkan perangkat ini dengan ekstensi browser.\u0020\u0020Silakan coba lagi.</string>
+    <!-- browser__pairing_already_paired_title -->
+    <string name="browser__already_paired_title">Sudah berpasangan!</string>
+    <!-- browser__pairing_already_paired_description -->
+    <string name="browser__already_paired_description">Ekstensi Peramban ini sudah dipasangkan dengan perangkat ini.</string>
+    <string name="browser__contact_support">Hubungi dukungan</string>
+    <string name="browser__pairing_with_browser">Memasangkan dengan browser</string>
+    <!-- browser__paired_devices -->
+    <string name="browser__paired_devices_browser_title">Perangkat yang dipasangkan (browser web)</string>
+    <string name="browser__add_new">Tambah baru</string>
+    <!-- browser__this_device -->
+    <string name="browser__this_device_name">Nama panggilan perangkat</string>
+    <string name="browser__device_name">Nama panggilan perangkat</string>
+    <string name="browser__name">Nama</string>
+    <string name="browser__this_device_footer">Nama panggilan ini akan membantu anda mengidentifikasi perangkat ini di antara perangkat lain yang dipasangkan dengan ekstensi browser 2FAS</string>
+    <string name="browser__browser_extension_settings">Pengaturan Ekstensi Browser</string>
+    <string name="browser__unkown_name">&lt;NAMA_TIDAK DIKENAL]</string>
+    <string name="browser__request_source_description">%1$s meminta token 2FA untuk %2$s.\u0020\u0020Pilih layanan yang akan diotorisasi dan disimpan dengan domain ini.</string>
+    <string name="browser__request">Permintaan browser</string>
+    <!-- browser__code_success -->
+    <string name="browser__code_success_title">Token berhasil dikirim!</string>
+    <string name="browser__code_failure">Kesalahan saat mengirim kode.\u0020\u0020%s</string>
+    <string name="browser__deleting_paired_device_title">Menghapus Perangkat yang Disandingkan</string>
+    <string name="browser__deleting_paired_device_content">Anda yakin ingin menghapus perangkat yang dipasangkan?</string>
+    <string name="browser__pairing_date">Tanggal dipasangkan</string>
+    <string name="browser__forget_this_browser">Lupakan browser web ini</string>
+    <!-- browser__service_is_paired_list_description -->
+    <string name="browser__paired_domains_list_title">Daftar domain berpasangan.</string>
+    <string name="browser__deleting_extension_pairing_title">Hapus domain?</string>
+    <string name="browser__deleting_extension_pairing_content">Lain kali anda menggunakan ekstensi browser untuk login ke %s, Anda akan diminta untuk memasangkan kembali domain ini.</string>
+    <string name="browser__push_notifications_title">Pemberitahuan Dorong</string>
+    <string name="browser__push_notifications_content">Untuk mengakses fungsionalitas seperti aplikasi Browser Extension memerlukan akses ke Push Notifications. anda dapat mengubah pengaturan ini kapan saja di Pengaturan Sistem.</string>
+    <string name="browser__request_expired">Permintaan kedaluwarsa</string>
+    <string name="browser__2fa_token_request_title">Permintaan Token 2FA</string>
+    <string name="browser__2fa_token_request_content">Apakah anda ingin membagikan token 2FA untuk\u0020</string>
+    <string name="notifications__no_notifications">Tidak ada pemberitahuan</string>
+    <string name="CFBundleSpokenName">2 F A S</string>
+    <string name="commons__2fas_toolbar">2FAS</string>
+    <string name="backup__google_drive_not_available">Google Drive tidak tersedia</string>
+    <string name="backup__google_drive_disabled_title">Google Drive telah dinonaktifkan oleh pengguna</string>
+    <string name="backup__update_required_to_import_title_2">Anda memerlukan versi baru aplikasi untuk mengimpor konten file ini. Anda dapat menemukan versi terbaru di Google Store</string>
+    <string name="tokens__qr_code_leads_to_google_store">Kode QR ini membawa anda ke Google Store</string>
+    <string name="introduction__page_4_content_android">Token anda disimpan offline melalui penyimpanan perangkat, jadi ingatlah untuk mencadangkan layanan anda! Gunakan Sinkronisasi Google Drive dan kata sandi PIN untuk melindungi dari akses tidak sah dan kerusakan perangkat.</string>
+    <string name="new_version__new_version_message_android">Versi baru 2FAS tersedia di Google Store. Memperbarui sekarang!</string>
+    <string name="security_error_no_match">PIN tidak cocok! Silakan coba lagi.</string>
+    <string name="settings_developer_options">Opsi pengembang</string>
+    <string name="settings__external_import">Impor token</string>
+    <string name="settings__browser_extension_result_toolbar_title">Hasil pasangan</string>
+    <string name="tokens__caution">PERINGATAN</string>
+    <string name="tokens__qr_point_and_scan_again">Arahkan kamera anda ke Kode QR yang tepat dan pindai lagi.</string>
+    <string name="tokens__service_unsaved_changes">Apakah Anda ingin membuang perubahan anda?</string>
+    <string name="tokens__service_unsaved_changes_title">Perubahan belum disimpan</string>
+    <string name="tokens__service_key_invalid_format">Kunci memiliki format yang tidak valid</string>
+    <string name="intent_error_no_gallery_app">Sistem bermasalah! Tidak ada aplikasi galeri sistem.</string>
+    <string name="gdrive_permission_title">Izin Google Drive</string>
+    <string name="gdrive_permission_msg">Kami memerlukan izin Google Drive untuk menyimpan file cadangan di data aplikasi.</string>
+    <string name="gdrive_internet_title">Koneksi Internet Diperlukan</string>
+    <string name="gdrive_internet_msg">Untuk menyinkronkan dengan Google, anda harus mengaktifkan koneksi Internet.</string>
+    <string name="gdrive_wipe_internet_msg">Untuk mencabut akses ke Google Drive, anda harus mengaktifkan koneksi Internet.</string>
+    <string name="backup_explanation_msg">Simpan dan sinkronkan file cadangan anda secara otomatis di folder tersembunyi di Google Drive anda.\u0020\u0020Folder ini hanya dapat diakses oleh aplikasi 2FAS.</string>
+    <string name="backup_error_unknown">Terjadi kesalahan selama sinkronisasi pencadangan. Harap mulai ulang aplikasi setelah beberapa menit dan coba lagi.</string>
+    <string name="backup_error_encrypt_unknown">Terjadi kesalahan selama enkripsi pencadangan. Silahkan atur kata sandi anda lagi.</string>
+    <string name="backup_error_decrypt_unknown">Terjadi kesalahan selama dekripsi cadangan.\u0020\u0020Silakan atur kata sandi anda lagi.</string>
+    <string name="backup__google_drive_problem_title">Ada masalah dengan iCloud.\u0020\u0020Periksa pengaturan sistem</string>
+    <string name="backup_error_auth">Ada masalah dengan izin akun Google Drive anda.\u0020\u0020Cobalah untuk menghidupkan dan mematikan sinkronisasi.</string>
+    <string name="backup_error_no_password">Cadangan anda dilindungi kata sandi. Hidupkan dan masukkan kata sandi anda.</string>
+    <string name="backup_error_wrong_password">Cadangan anda dilindungi kata sandi tetapi kata sandi yang diberikan salah. Hidupkan dan masukkan kata sandi anda.</string>
+    <string name="customization_service_assignment">Penugasan Layanan</string>
+    <string name="customization_personalization">Personalisasi</string>
+    <string name="customization_change_brand">Ubah merek</string>
+    <string name="customization_advanced">Canggih</string>
+    <string name="customization_request_icon">Minta ikon</string>
+    <string name="customization_edit_label">Sunting label</string>
+    <string name="groups_delete_msg">Apakah anda yakin ingin menghapus grup ini?</string>
+    <string name="export_backup_title">File cadangan anda siap untuk diekspor</string>
+    <string name="export_backup_msg">Ekspor file ini agar token 2FAS anda tetap dicadangkan dengan aman.\u0020\u0020Anda dapat mengimpornya nanti ke perangkat ini atau perangkat lain menggunakan aplikasi 2FAS.</string>
+    <string name="export_backup_pass">Ekspor file tanpa kata sandi\n (tidak direkomendasikan)</string>
+    <string name="import_backup_msg2">File akan disinkronkan dengan daftar layanan aplikasi.</string>
+    <string name="backup_notice_later">Mungkin nanti</string>
+    <string name="backup_notice_cta">Menyalakan</string>
+    <string name="widgets_empty_msg">Tidak ada layanan yang ditambahkan</string>
+    <string name="backup__section_description_google">DIREKOMENDASIKAN: Sinkronisasi Google Drive menjaga keamanan token anda di Google Drive jika perangkat anda hilang atau rusak. Biarkan tetap menyala.</string>
+    <string name="backup_turn_off_title">Menonaktifkan Sinkronisasi Google Drive?</string>
+    <string name="backup_turn_off_msg1">Token 2FA akan tetap ada di perangkat ini dan di Google Drive anda, tetapi tidak akan disinkronkan. Anda juga akan keluar dari akun Google anda.</string>
+    <string name="backup_turn_off_msg2">Ingat, jika kehilangan atau kerusakan pada perangkat ini atau penghapusan aplikasi, anda mungkin tidak dapat memulihkan token anda, dan anda akan kehilangan akses ke akun online yang diamankan oleh 2FA.</string>
+    <string name="backup_settings_password_set_subtitle">Amankan file cadangan Google Drive dengan kata sandi khusus.</string>
+    <string name="backup_settings_password_remove_title">Hapus kata sandi</string>
+    <string name="backup_settings_password_remove_subtitle">Hapus kata sandi untuk file cadangan Google Drive anda.</string>
+    <string name="backup_settings_account_title">Akun Google</string>
+    <string name="backup_settings_sync_title">Sinkronisasi terakhir</string>
+    <string name="browser_extension_result_success_description">2FAS akan mengirimi anda pemberitahuan PUSH setiap kali anda masuk ke layanan online anda menggunakan browser web ini. Anda tidak perlu lagi mengetik ulang token Anda untuk setiap penggunaan.</string>
+    <string name="browser_extension_browser_dialog">Nama peramban</string>
+    <string name="biometric_dialog_auth_title">Otentikasi</string>
+    <string name="biometric_dialog_auth_subtitle">Gunakan kredensial biometrik Anda</string>
+    <string name="about_licenses">Lisensi sumber terbuka</string>
+    <string name="externalimport_description">Anda dapat mengimpor token anda ke 2FAS dari berbagai aplikasi. Pilih aplikasi dari daftar dan ikuti petunjuknya.</string>
+    <string name="externalimport_select_app">Pilih aplikasi</string>
+    <string name="externalimport_google_authenticator">Google Authenticator</string>
+    <string name="externalimport_aegis">Aegis</string>
+    <string name="externalimport_raivo">Raivo OTP</string>
+    <string name="android__app_name">2FAS Auth</string>
+    <string name="commons__yes">Ya</string>
+    <string name="commons__no">Tidak</string>
+    <string name="commons__search">Pencarian</string>
+    <string name="errors__no_app">Tidak ada aplikasi yang mendukung tautan ini</string>
+    <string name="permissions__camera_permission">Izin Kamera</string>
+    <string name="permissions__camera_permission_description">Izin kamera diperlukan untuk memindai Kode QR. Jika anda ingin menggunakan fitur ini, buka Informasi aplikasi dan izin dan Aktifkan Kamera.</string>
+    <string name="security__disable_pin">Nonaktifkan PIN</string>
+    <string name="security__enter_your_new_pin">Masukkan %s PIN baru anda</string>
+    <string name="security__pin_error_incorrect">PIN salah! Silakan coba lagi</string>
+    <string name="settings__biometrics">Biometrik</string>
+    <string name="settings__support">Dukungan 2FAS</string>
+    <string name="settings__developer">Opsi Pengembang</string>
+    <string name="settings__option_fingerprint">Kunci Biometrik</string>
+    <string name="settings__option_theme">Tema</string>
+    <string name="settings__theme_option_auto">Otomatis</string>
+    <string name="settings__theme_option_auto_system">Otomatis - Pengaturan Sistem</string>
+    <string name="settings__theme_option_dark">Gelap</string>
+    <string name="settings__theme_option_light">Terang</string>
+    <string name="tokens__copied_clipboard">Token disalin ke papan klip</string>
+    <string name="tokens__next_copied_clipboard">Token berikutnya disalin ke papan klip!</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Apakah Anda ingin menghapus 2FA ini secara permanen?</string>
+    <string name="tokens__fab_addmanually">Tambahkan secara manual</string>
+    <string name="tokens__qr_does_not_work">Kode QR ini tidak berfungsi!</string>
+    <!-- Could not read QR code from the image! -->
+    <string name="tokens__qr_read_image_failed">Tidak dapat membaca kode QR dari gambar!</string>
+    <string name="tokens__qr_read_image_try_again">Cobalah untuk memilih gambar yang berbeda.</string>
+    <string name="tokens__remove_it_forever">Hapus layanan selamanya</string>
+    <!-- Service could not be added, Service Key is invalid. Try again. -->
+    <string name="tokens__service_add_error">Layanan tidak dapat ditambahkan karena Kunci Layanan tidak valid. Coba lagi.</string>
+    <!-- A service with this Service Key already exists. Do you want to override it? -->
+    <string name="tokens__service_already_exists">Layanan dengan Kunci Layanan ini sudah ada. Apakah Anda ingin menimpanya?</string>
+    <string name="tokens__service_key_invalid_characters">Kunci berisi karakter yang tidak valid</string>
+    <string name="tokens__show_service_key">Tampilkan Kunci Layanan</string>
+    <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
+    <string name="tokens__show_service_key_setup_lock">Kunci Layanan anda dilindungi. Harap tambahkan PIN atau kunci Sidik Jari untuk melihatnya.</string>
+    <string name="tokens__tokens_list_is_empty">Daftar layanan kosong</string>
+    <string name="tokens__use_plus_button_to_add_tokens">Gunakan tombol \"+\" untuk menambahkan layanan baru</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Anda tidak akan dapat masuk ke akun %1$s anda tanpa token ini selama anda mengaktifkan autentikasi dua faktor untuk %2$s.\n\nAnda tidak akan dapat memulihkan token ini dari sampah 2FAS.</string>
+    <string name="import_ga_success">Layanan berhasil di impor!</string>
+    <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
+    <string name="backup_error_network">Anda memerlukan koneksi Internet aktif untuk menyinkronkan cadangan anda. Harap aktifkan koneksi jaringan anda dan coba lagi.</string>
+    <string name="update_app_title">Perbarui aplikasi</string>
+    <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
+    <string name="update_app_msg">Tolong perbarui 2FAS anda ke versi terbaru untuk mendapatkan semua fitur dan mempertahankan tingkat keamanan yang tinggi.</string>
+    <string name="delete_service_title">Anda menghapus</string>
+    <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
+    <string name="delete_service_msg">dari daftar layanan 2FAS Anda.\n\nIngat, selama Anda mengaktifkan autentikasi faktor kedua, Anda tidak akan masuk ke akun %s tanpa token ini.</string>
+    <string name="delete_service_cta">Menghapus</string>
+    <string name="export_backup_cta">Ekspor</string>
+    <string name="export_backup_share_cta">Bagikan</string>
+    <string name="import_backup_title">Impor cadangan dari file</string>
+    <string name="import_backup_msg1">Anda akan mengimpor file cadangan dengan</string>
+    <string name="import_backup_cta">Impor</string>
+    <string name="widgets_warning_msg">Token yang terlihat di widget tidak dilindungi oleh kode PIN Anda.\n\nApakah Anda yakin ingin menampilkan token Anda di widget?</string>
+    <string name="widgets_warning_title">PERINGATAN!</string>
+    <string name="widgets_warning_cta">Ya, saya yakin</string>
+    <string name="backup_notice_title">Pencadangan 2FAS</string>
+    <string name="backup_notice_msg">Aktifkan Pencadangan 2FAS. Jika ponsel Anda disetel ulang atau hilang, Anda akan dapat memulihkan semua token Anda.</string>
+    <string name="brand_empty_msg">Maaf, merek tidak ditemukan</string>
+    <!-- Select which services will be visible on widget: -->
+    <string name="widgets_select_msg">Pilih layanan mana yang akan terlihat di widget:</string>
+    <string name="backup_turn_off_cta">Nonaktifkan sinkronisasi</string>
+    <string name="backup_turn_off_cancel">Membatalkan</string>
+    <string name="backup_settings_password_set_title">Tetapkan kata sandi</string>
+    <string name="backup_settings_delete_title">Hapus file cadangan dari Google Drive</string>
+    <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
+    <string name="backup_settings_delete_subtitle">Jika Anda menghapus file ini dari Google Drive, sinkronisasi pada semua perangkat yang disinkronkan akan dinonaktifkan, dan token hanya akan tetap ada di perangkat ini dan perangkat lain melalui penyimpanan lokal.</string>
+    <string name="browser__result_error_browser_paired">Aplikasi 2FAS Anda sudah dipasangkan dengan browser ini.</string>
+    <!-- Scan QR code again -->
+    <string name="browser__result_error_cta">Pindai kode QR lagi</string>
+    <string name="browser__scan_error_dialog_title">Kesalahan</string>
+    <!-- Scanned QR code has unsupported format. Please try again. -->
+    <string name="browser__scan_error_dialog_msg_invalid_code">Kode QR yang dipindai memiliki format yang tidak didukung. Silakan coba lagi.</string>
+    <string name="browser__scan_error_dialog_msg_unknown">Kesalahan tidak diketahui saat memindai kode QR. Silakan coba lagi.</string>
+    <string name="biometric_dialog_auth_cancel">Gunakan PIN kali ini</string>
+    <string name="biometric_dialog_setup_title">Aktifkan autentikasi</string>
+    <string name="biometric_dialog_setup_cancel">Membatalkan</string>
+    <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
+    <string name="settings__option_fingerprint_description">Untuk mengaktifkan Kunci Biometrik, Anda perlu mengaktifkan dan mengatur Kode PIN.</string>
+    <string name="settings__block_for_footer">Pilih waktu untuk mengunci aplikasi.</string>
+    <string name="error__out_of_disk_space">Tampaknya Anda kehabisan ruang disk sekarang, atau peristiwa semacam itu di masa lalu merusak database</string>
+    <string name="error__cloud_backup_newer_version">Cadangan cloud telah dimigrasikan ke versi baru. Perbarui aplikasi</string>
+    <string name="error__cloud_backup_encrypted_not_supported">Cadangan cloud dienkripsi. Perbarui aplikasi untuk mendukung fitur ini</string>
+    <string name="extension__continue_to_app">Lanjutkan ke aplikasi</string>
+    <string name="extension__cancel">Membatalkan</string>
+    <string name="extension__authorize">Mengizinkan</string>
+    <string name="extension__dismiss">Membatalkan</string>
+    <string name="extension__request_sent">Permintaan terkirim</string>
+    <string name="extension__send_question_title">Kirim token?</string>
+    <string name="extension__send_question_content">%1$s meminta token 2FAS untuk %2$s</string>
+    <string name="extension__error_while_sending">Kesalahan saat mengirim token</string>
+    <string name="extension__not_paired_title">Situs web ini tidak dipasangkan</string>
+    <string name="extension__not_paired_content">Buka aplikasi dan pilih layanan untuk domain ini</string>
+    <string name="extension__error_open_the_app">Buka aplikasi dan periksa apakah Ekstensi Browser dipasangkan dengan benar</string>
+    <string name="extension__error_no_internet">Ada masalah koneksi</string>
+    <string name="extension__try_again">Silahkan coba lagi</string>
+    <string name="extension__error">Kesalahan</string>
+    <string name="extension__error_no_services">Agar Ekstensi Browser berfungsi, harap tambahkan layanan ke aplikasi 2FAS</string>
+    <string name="extension__approve">Disetujui</string>
+    <string name="extension__deny">Ditolak</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">Nyalakan kode PIN dan ID Wajah yang diotorisasi untuk mencegah akses tidak sah ke token Anda di perangkat ini</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Aktifkan kode PIN dan otorisasi Touch ID untuk mencegah akses tidak sah ke token Anda di perangkat ini</string>
+    <string name="settings__send_logs_error_not_exists">Kode yang diberikan salah. Harap periksa kembali</string>
+    <string name="settings__send_logs_error_expired">Kode yang diberikan telah kedaluwarsa. Silakan hubungi tim dukungan untuk mendapatkan yang baru</string>
+    <string name="settings__send_logs_error_no_internet">Tidak ada internet. Silakan periksa koneksi anda dan coba lagi</string>
+    <string name="settings__send_logs_error_server">Sepertinya ada masalah dengan server kami. Jika terus berlanjut, silakan hubungi tim dukungan kami</string>
+    <string name="settings__send_logs_error_title">Operasi gagal</string>
+    <string name="settings__send_logs_sent_title">Log dikirim</string>
+    <string name="settings__send_logs_sent_description">Kami akan memeriksanya, tetapi mungkin perlu waktu.</string>
+    <string name="commons__send">Kirim</string>
+    <string name="settings__send_logs_title">Mengirim log</string>
+    <string name="settings__send_logs_description_link">Kode yang diberikan oleh tim dukungan diisi otomatis.</string>
+    <string name="settings__send_logs_description_edit">Tolong masukkan atau tempel kode yang diberikan oleh tim dukungan kami</string>
+    <string name="settings__send_logs">Kirim log</string>
+    <string name="settings__recommendation">Lihat aplikasi otentikasi dua faktor yang luar biasa ini dari 2FAS: https://2fas.com</string>
+    <string name="settings__acknowledgements">Terima kasih</string>
+    <string name="introduction__import_external_app">Import dari aplikasi eksternal</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="other">beberapa waktu lalu</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="other">%d menit yang lalu</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="other">%d jam yang lalu</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="other">%d hari yang lalu</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="other">%d minggu lalu</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="other">%d bulan lalu</item>
+    </plurals>
+    <string name="commons__unknown_error">Terjadi kesalahan yang tidak diketahui! Coba lagi!</string>
+    <string name="backup__export_result_success">File berhasil disimpan!</string>
+    <string name="backup__share_result_failure">Tidak dapat membagikan file!</string>
+    <string name="backup__enter_password_dialog_title">Ketik kata sandi</string>
+    <string name="backup__remove_password_msg">Masukkan kata sandi cadangan untuk melanjutkan penghapusan.</string>
+    <string name="backup__revoke_google_access_msg">Masukkan kata sandi cadangan untuk melanjutkan pencabutan akses ke Google.</string>
+    <string name="backup__synchronization_settings">Pengaturan sinkronisasi</string>
+    <string name="backup__local_file_title">File lokal</string>
+    <string name="backup__drive_title">Sinkronisasi Google Drive</string>
+    <string name="backup__delete_file_title">Hapus file cadangan anda dari Google Drive?</string>
+    <string name="backup__delete_file_msg">Google Sync akan dinonaktifkan. Token anda akan tetap secara lokal, tetapi aplikasi 2FAS akan keluar dari Akun Google anda di perangkat ini dan perangkat lain yang disinkronkan.</string>
+    <string name="backup__sync_status_waiting">Menunggu sinkronisasi...</string>
+    <string name="backup__sync_status_progress">Menyinkronkan...</string>
+    <string name="import_backup_msg1_encrypted">Anda akan mengimpor file cadangan terenkripsi.</string>
+    <string name="externalimport__choose_json_cta">Pilih file JSON</string>
+    <string name="externalimport__aegis_msg">Ekspor akun Anda dari Aegis ke file JSON yang tidak terenkripsi dan unggah menggunakan tombol \"Pilih file JSON\". Ingatlah untuk menghapus file setelah berhasil mengimpor.</string>
+    <string name="externalimport__raivo_msg">Gunakan opsi \"Ekspor OTP ke arsip ZIP\" di Pengaturan Ravio, simpan file ZIP, ekstrak dan impor file JSON menggunakan tombol \"Pilih file JSON\".</string>
+    <string name="externalimport__no_tokens_msg">Namun, tidak ada layanan yang dapat diimpor.</string>
+    <string name="commons__try_again">Coba lagi</string>
+    <string name="commons__proceed">Melanjutkan</string>
+    <string name="externalimport__ga_title">Mengimpor token 2FA dari aplikasi Google Authenticator</string>
+    <string name="externalimport__aegis_title">Mengimpor token 2FA dari aplikasi Aegis</string>
+    <string name="externalimport__raivo_title">Mengimpor token 2FA dari aplikasi Ravio</string>
+    <string name="externalimport__ga_success_msg">Kode QR ini mengizinkan pengimporan token dari Google Authenticator.</string>
+    <string name="externalimport__aegis_success_msg">File JSON ini mengizinkan pengimporan token dari Aegis.</string>
+    <string name="externalimport__raivo_success_msg">File JSON ini mengizinkan pengimporan token dari Ravio.</string>
+    <string name="externalimport__read_error">Tidak dapat membaca token apa pun. Cobalah untuk memilih file yang berbeda.</string>
+    <string name="settings__gd_sync_info">Pengingat sinkronisasi Google Drive</string>
+    <string name="settings__gd_sync_disable_confirm">Apakah kamu yakin? Tanpa Sinkronisasi Google Drive, Anda tidak akan dapat memulihkan token jika kehilangan atau menyetel ulang ponsel!</string>
+    <string name="extension__code_sent_msg">Kode berhasil dikirim</string>
+    <string name="extension__code_sent_error_msg">Terjadi kesalahan saat mengirim kode</string>
+    <string name="tokens__add_service_title">Tambahkan layanan baru</string>
+    <string name="tokens__customize_service_title">Sesuaikan layanan</string>
+    <string name="extension__services_suggested_header">Disarankan</string>
+    <string name="extension__services_all_header">Semua layanan</string>
+    <string name="extension__services_other_header">Layanan lainnya</string>
+    <string name="settings__ssl_error_title">Kesalahan SSL</string>
+    <string name="settings__ssl_error_description">Terjadi kesalahan SSL dan sambungan aman ke server tidak dapat dilakukan. Pastikan Anda memiliki aplikasi versi terbaru atau coba ubah jaringan.</string>
+    <string name="backup__import_error_file_size">File yang Anda coba import terlalu besar. Batas ukuran file adalah 10 mb</string>
+    <string name="backup__import_error_file_invalid">File yang Anda coba import tidak valid atau rusak. Silahkan pilih file yang lain</string>
+    <string name="appearance__toggle_active_search">Pengaturan yang aktif</string>
+    <string name="appearance__active_search_description">Pencarian aktif saat dimulai</string>
+    <string name="widgets__expires_in">Kadaluarsa dalam:</string>
+    <string name="widgets__settings">Pengaturan widget</string>
+    <string name="errors__input_integer_number">Input harus berupa bilangan bulat</string>
+    <string name="errors__input_number">Input harus berupa sebuah angka</string>
+    <string name="errors__input_empty">Input tidak bisa kosong</string>
+    <string name="errors__input_too_long">Input terlalu panjang. Batas: %d</string>
+    <string name="commons__best_match">Kecocokan terbaik</string>
+    <string name="settings__enable_crashlytics">Kirim laporan kerusakan anonim</string>
+    <string name="settings__enable_crashlytics_description">Kirim laporan kerusakan anonim untuk membantu 2FAS mengidentifikasi dan menyelesaikan masalah di aplikasi (aplikasi dimulai ulang diperlukan).</string>
+    <string name="tokens__manage_list">Kelola Daftar</string>
+    <string name="settings__appearance">Tampilan</string>
+    <string name="settings__show_next_token_desc">Tampilkan token berikutnya saat token saat ini akan kedaluwarsa.</string>
+    <string name="settings__list_style">Gaya daftar</string>
+    <string name="backup__reminder_msg">Google Drive tidak disinkronkan.</string>
+    <string name="backup__reminder_cta">Buka pengaturan cadangan</string>
+    <string name="settings__list_style_option_default">Bawaan</string>
+    <string name="settings__list_style_option_compact">Kompak</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Ekspor akun Anda dari LastPass ke file JSON yang tidak terenkripsi dan unggah menggunakan tombol \"Pilih file JSON\". Ingatlah untuk menghapus file setelah impor berhasil.</string>
+    <string name="settings__about_crash_optout_title">Laporan Kerusakan</string>
+    <string name="externalimport__lastpass_title">Mengimpor token 2FA dari aplikasi LastPass</string>
+    <string name="externalimport__lastpass_success_msg">File JSON ini mengizinkan pengimporan token dari LastPass.</string>
+    <string name="externalimport__info_lastpass_title">Impor token dari LastPass</string>
+    <string name="externalimport__info_aegis_title">Impor token dari Aegis</string>
+    <string name="externalimport__info_raivo_title">Impor token dari Raivo OTP</string>
+    <string name="externalimport__info_google_authenticator_title">Impor token dari Google Authenticator</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">s</string>
+    <string name="tokens__add_title">Pasangkan layanan dengan 2FAS</string>
+    <string name="tokens__add_description">Arahkan kamera anda ke layar untuk menangkap kode QR.</string>
+    <string name="tokens__add_other_methods">Metode lain</string>
+    <string name="tokens__add_enter_manual">Masukkan kunci rahasia</string>
+    <string name="tokens__add_from_gallery">Unggah gambar dengan kode QR</string>
+    <string name="tokens__add_success_title">Hampir selesai!</string>
+    <string name="tokens__add_success_description">Untuk menyelesaikan pemasangan layanan, anda perlu mengetik ulang token ini.</string>
+    <string name="tokens__add_manual_title">Pasangkan layanan dengan 2FAS</string>
+    <string name="tokens__add_manual_description">Ketikkan nama layanan dan kunci rahasia.</string>
+    <string name="tokens__add_manual_service_name">Nama layanan (wajib)</string>
+    <string name="tokens__add_manual_service_key">Kunci Rahasia (wajib)</string>
+    <string name="tokens__add_manual_other">Pengaturan lainnya</string>
+    <string name="tokens__add_manual_other_optional">(opsional)</string>
+    <string name="tokens__add_manual_done_cta">Tambahkan layanan</string>
+    <string name="tokens__add_manual_help_cta">Tidak tahu harus berbuat apa?\u0020\u0020Ketuk untuk bantuan</string>
+    <string name="tokens__add_manual_advanced">Pengaturan token tingkat lanjut</string>
+    <string name="tokens__add_manual_additional_info">informasi tambahan</string>
+    <string name="tokens__add_manual_advanced_description">Mengubah pengaturan token default tidak disarankan. Lakukan hanya jika penyedia 2FA anda memerlukannya dan jika anda memiliki instruksi yang jelas.</string>
+    <string name="settings__option_screenshots_description">Izinkan tangkapan layar aplikasi selama 5 menit.</string>
+    <string name="settings__option_screenshots">Izinkan tangkapan layar</string>
+    <string name="settings__option_screenshots_confirm_title">Izinkan tangkapan layar aplikasi?</string>
+    <string name="settings__option_screenshots_confirm_description">Apa kamu yakin?\u0020\u0020Opsi ini memungkinkan anda untuk mengambil tangkapan layar dan merekam layar apa pun di dalam aplikasi.\u0020\u0020Namun, ini juga akan memungkinkan upaya eksternal untuk menangkap layar di aplikasi.\n Untuk alasan keamanan, opsi ini akan dimatikan secara otomatis setelah 5 menit.</string>
+    <string name="social__social_media">Media sosial</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">Twitter</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Sembunyikan token</string>
+    <string name="settings__hide_tokens_description">Token akan terungkap di ketukan</string>
+    <string name="browser__pair_manually_cta">Pasangkan secara manual</string>
+    <string name="browser__pair_manually_hint">Pasangkan kode</string>
+    <string name="externalimport__info_authenticatorpro_title">Impor token dari Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">File teks ini memungkinkan pengimporan token dari Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Mengimpor token 2FA dari aplikasi Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_msg">Ekspor akun anda dari Authenticator Pro ke file teks tidak terenkripsi dan unggah menggunakan tombol \"Pilih file teks\". Ingatlah untuk menghapus file setelah impor berhasil.</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">Pilih file teks</string>
+    <string name="fingerprint__biometric_invalidated">Login biometrik dinonaktifkan karena perubahan dalam pengaturan sidik jari sistem</string>
+    <string name="tokens__last_pass_import">Mengimpor token 2FA dari aplikasi LastPass</string>
+    <string name="tokens__last_pass_import_subtitle">Kode QR ini memungkinkan mengimpor token dari LastPass</string>
+    <string name="tokens__add_with_guide">Pandu saya</string>
+    <string name="guides__select_title">Jelajahi layanan</string>
+    <string name="guides__select_description">Pilih layanan untuk dipasangkan dengan aplikasi 2FAS\n</string>
+    <string name="guides__select_provide_guide">Apakah anda ingin memberikan panduan 2FA untuk layanan anda?</string>
+    <string name="guides__select_provide_guide_cta">Terapkan sekarang</string>
+    <string name="color__pink">Merah Muda</string>
+    <string name="color__brown">Cokelat</string>
+    <string name="tokens__other_methods_header">Metode lain?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Kamera tidak tersedia. Periksa izin akses aplikasi di Pengaturan Sistem</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Pengaturan sistem</string>
+    <string name="commons__text_short_title">Teks yang diberikan terlalu pendek (min. %d karakter)\n</string>
+    <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
+    <string name="tokens__add_manual_advanced_description_highlight">Tidak dianjurkan</string>
+    <string name="guides__guide_init_title">Panduan 2FAS</string>
+    <string name="guides__guide_title">2FAS untuk %s</string>
+    <string name="guides__guide_universal_title">Panduan 2FA Universal</string>
+    <string name="browser__save_choice">Menyimpan pilihan saya</string>
+</resources>

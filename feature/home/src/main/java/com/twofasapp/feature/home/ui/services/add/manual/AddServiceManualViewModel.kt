@@ -50,6 +50,9 @@ internal class AddServiceManualViewModel(
                 uiState.update { it.copy(advancedExpanded = expanded) }
             }
         }
+
+        servicesRepository.getManualGuideSelectedPrefill()?.let { updateName(it) }
+        servicesRepository.setManualGuideSelectedPrefill(null)
     }
 
     fun updateAuthType(authType: Service.AuthType) {

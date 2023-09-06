@@ -22,7 +22,7 @@ class FocusServiceViewModel(
     init {
         launchScoped {
             servicesRepository.observeServicesTicker()
-                .map { it.first { it.id == serviceId } }
+                .map { it.firstOrNull { it.id == serviceId } }
                 .collect { service ->
                     uiState.update { it.copy(service = service) }
                 }

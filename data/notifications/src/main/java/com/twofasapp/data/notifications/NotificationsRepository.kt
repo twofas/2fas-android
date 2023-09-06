@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface NotificationsRepository {
     suspend fun getNotifications(): List<Notification>
-    suspend fun fetchNotifications()
+    suspend fun fetchNotifications(sinceMillis: Long)
     suspend fun readAllNotifications()
     fun hasUnreadNotifications(): Flow<Boolean>
 }

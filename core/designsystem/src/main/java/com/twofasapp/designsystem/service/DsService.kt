@@ -140,6 +140,7 @@ fun DsService(
                 ServiceInfo(
                     text = state.info,
                     textStyles = textStyles,
+                    style = style,
                     modifier = Modifier.fillMaxWidth(),
                 )
 

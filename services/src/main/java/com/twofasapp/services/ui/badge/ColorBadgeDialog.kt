@@ -78,6 +78,8 @@ internal fun ColorBadgeDialog(
                                 Service.Tint.Red -> com.twofasapp.resources.R.string.color__red
                                 Service.Tint.Orange -> com.twofasapp.resources.R.string.color__orange
                                 Service.Tint.Yellow -> com.twofasapp.resources.R.string.color__yellow
+                                Service.Tint.Pink -> com.twofasapp.resources.R.string.color__pink
+                                Service.Tint.Brown -> com.twofasapp.resources.R.string.color__brown
                             }
                         ),
                         style = MaterialTheme.typography.bodyLarge.copy(color = TwTheme.color.onSurfacePrimary),

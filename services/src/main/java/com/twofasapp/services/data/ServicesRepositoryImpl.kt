@@ -80,6 +80,18 @@ internal class ServicesRepositoryImpl(
             return
         }
 
+        // Remove duplicates
+        val matchingServices = localData.selectAll().filter { it.assignedDomains.contains(domain.lowercase()) }
+
+        matchingServices.forEach { matched ->
+            localData.updateServiceSuspend(
+                matched.copy(
+                    assignedDomains = matched.assignedDomains.minus(domain.lowercase()),
+                    updatedAt = timeProvider.systemCurrentTime(),
+                )
+            )
+        }
+
         localData.updateServiceSuspend(
             service.copy(
                 assignedDomains = service.assignedDomains.plus(domain.lowercase()),

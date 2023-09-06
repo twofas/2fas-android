@@ -167,6 +167,7 @@ class Strings(c: Context) {
     val addDescription = c.getString(R.string.tokens__add_description)
     val addOtherMethods = c.getString(R.string.tokens__add_other_methods)
     val addEnterManual = c.getString(R.string.tokens__add_enter_manual)
+    val addWithGuide = c.getString(R.string.tokens__add_with_guide)
     val addFromGallery = c.getString(R.string.tokens__add_from_gallery)
     val addSuccessTitle = c.getString(R.string.tokens__add_success_title)
     val addSuccessDescription = c.getString(R.string.tokens__add_success_description)
@@ -203,6 +204,11 @@ class Strings(c: Context) {
     val addGalleryErrorBody = c.getString(R.string.tokens__qr_read_image_try_again)
     val addGalleryErrorPositiveCta = c.getString(R.string.tokens__try_again)
 
+    val guidesSelectTitle = c.getString(R.string.guides__select_title)
+    val guidesSelectDescription = c.getString(R.string.guides__select_description)
+    val guidesSelectProvideGuide = c.getString(R.string.guides__select_provide_guide)
+    val guidesSelectProvideGuideCta = c.getString(R.string.guides__select_provide_guide_cta)
+    val guideTitle = c.getString(R.string.guides__guide_title)
+    val guideUniversalTitle = c.getString(R.string.guides__guide_universal_title)
 
-//    val add = c.getString(R.string.tokens__add_)
 }

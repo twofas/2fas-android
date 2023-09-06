@@ -38,6 +38,10 @@ internal class MainViewModel(
 
     init {
         launchScoped {
+            sessionRepository.markAppInstalled()
+        }
+
+        launchScoped {
             val destination = when (sessionRepository.isOnboardingDisplayed()) {
                 true -> MainUiState.StartDestination.Home
                 false -> MainUiState.StartDestination.Onboarding
@@ -58,7 +62,7 @@ internal class MainViewModel(
         }
 
         launchScoped {
-            runSafely { notificationsRepository.fetchNotifications() }
+            runSafely { notificationsRepository.fetchNotifications(sessionRepository.getAppInstallTimestamp()) }
         }
 
         launchScoped {

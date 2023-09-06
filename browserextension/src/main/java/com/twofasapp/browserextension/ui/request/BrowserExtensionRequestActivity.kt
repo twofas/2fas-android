@@ -7,8 +7,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
@@ -16,6 +19,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -29,6 +33,7 @@ import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwSwitch
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.resources.R
 import com.twofasapp.services.domain.model.Service
@@ -85,10 +90,46 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
         }
 
         LazyColumn(modifier = modifier) {
-            item { HeaderItem(browserName = uiState.browserName, payload.domain, modifier = Modifier.animateItemPlacement()) }
+            item {
+                HeaderItem(
+                    browserName = uiState.browserName,
+                    domain = payload.domain,
+                    modifier = Modifier.animateItemPlacement()
+                )
+            }
+
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 12.dp)
+                        .clickable {
+                            viewModel.updateSaveMyChoice(uiState.saveMyChoice.not())
+                        }
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.browser__save_choice),
+                        color = TwTheme.color.onSurfacePrimary,
+                        style = TwTheme.typo.body1,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    TwSwitch(
+                        checked = uiState.saveMyChoice,
+                        onCheckedChange = { viewModel.updateSaveMyChoice(it) },
+                    )
+                }
+            }
 
             if (uiState.suggestedServices.isNotEmpty()) {
-                item { SectionItem(title = stringResource(id = R.string.extension__services_suggested_header), modifier = Modifier.animateItemPlacement()) }
+                item {
+                    SectionItem(
+                        title = stringResource(id = R.string.extension__services_suggested_header),
+                        modifier = Modifier.animateItemPlacement()
+                    )
+                }
                 items(uiState.suggestedServices, key = { it.id }) {
 
                     ServiceItem(
@@ -132,7 +173,7 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
             text = stringResource(id = R.string.browser__request_source_description).format(browserName, domain),
             modifier = modifier
                 .fillMaxWidth()
-                .padding(start = 72.dp, end = 16.dp, top = 24.dp, bottom = 24.dp),
+                .padding(16.dp),
             style = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfacePrimary)
         )
     }

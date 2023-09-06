@@ -1,11 +1,13 @@
 package com.twofasapp.feature.home.ui.services.add
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.common.Modal
 import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualScreen
@@ -18,19 +20,28 @@ internal object NavArg {
 
 @Composable
 fun AddServiceModal(
+    initRoute: String?,
+    openGuides: () -> Unit = {},
     onAddedSuccessfully: (RecentlyAddedService) -> Unit = {},
 ) {
     val navController = rememberNavController()
 
+    LaunchedEffect(Unit) {
+        initRoute?.let { navController.navigate(it) }
+    }
+
     Modal {
         NavHost(
             navController = navController,
-            startDestination = "main"
+            startDestination = "main",
+            enterTransition = NavAnimation.Enter,
+            exitTransition = NavAnimation.Exit,
         ) {
 
             composable(route = "main") {
                 AddServiceScanScreen(
                     openManual = { navController.navigate("manual") },
+                    openGuides = openGuides,
                     onAddedSuccessfully = {
                         onAddedSuccessfully(it)
                         navController.navigate("success/${it.serviceId}") { popUpTo(0) { inclusive = true } }

@@ -39,7 +39,7 @@
 
     <color name="simpleEntrySubtitle">#61000000</color>
     <color name="fabNeutral">#FFF</color>
-    <color name="fabNeutralIcon">#FF3F3F#F</color>
+    <color name="fabNeutralIcon">#FFF</color>
 
     <color name="surface">#F9F9F9</color>
     <color name="surfaceVariant">#EEEEEE</color>

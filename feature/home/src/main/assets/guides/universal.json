@@ -1,0 +1,41 @@
+{
+    "serviceName": "Universal 2FA Guide",
+    "serviceId": "89efcc2d-52f4-4ac3-988d-5d7f3b3cd0a7",
+    "flow": {
+      "header": "Follow our universal guide to pair your account with 2FAS app.",
+      "menu": {
+        "title": "Please be aware that this is an overall guide.",
+        "items": [
+          {
+            "name": "Start universal 2FA guide",
+            "steps": [
+              {
+                "image": "web_url",
+                "content": "Go to the service and **log into your account**."
+              },
+              {
+                "image": "web_account_1",
+                "content": "Click your avatar or menu icon and search for **settings**."
+              },
+              {
+                "image": "web_menu",
+                "content": "Go to **security** or **privacy settings** and find a **two-factor authentication** option. Click or enable it."
+              },
+              {
+                "image": "2fas_type",
+                "content": "You may be asked to enter a password for security reasons. Enter your password and click **Continue**."
+              },
+              {
+                "image": "phone_qr",
+                "content": "Select the **Authentication app** option and scan shown QR code or retype your secret key manually.\n\nScanning the QR code will generate a token in the 2FAS app. Retype it to finish up the 2FA setting.",
+                "cta": {
+                  "name": "Scan QR code",
+                  "action": "open_scanner"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }

@@ -52,8 +52,8 @@ fun ServiceIcon(
             ) {
                 Box(
                     modifier = Modifier
-                        .width(45.dp)
-                        .height(28.dp)
+                        .width(28.dp)
+                        .height(18.dp)
                         .clip(RoundedCornerShape(16.dp))
                         .background(TwTheme.color.background)
                         .align(Alignment.Center),
@@ -63,7 +63,7 @@ fun ServiceIcon(
                     text = service.labelText.orEmpty().uppercase(),
                     color = MaterialTheme.colorScheme.onSurface,
                     textAlign = TextAlign.Center,
-                    style = TwTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 22.dp), lineHeight = dpToSp(dp = 32.dp)),
+                    style = TwTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
@@ -128,39 +128,4 @@ fun ServiceCompact(
 fun Tint?.toColor(default: Tint = Tint.Default): Color {
     val tint = this ?: default
     return Color.parse(if (isNight()) tint.hexDark else tint.hex)
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun ServiceCompact() {
-    ServiceIcon(
-        service = Service(
-            id = 0,
-            name = "",
-            secret = "",
-            authType = Service.AuthType.TOTP,
-            otp = Service.Otp(
-                link = null,
-                label = "",
-                account = "",
-                issuer = null,
-                digits = 0,
-                period = 0,
-                hotpCounter = 0,
-                algorithm = Service.Algorithm.SHA1
-            ),
-            badge = null,
-            selectedImageType = Service.ImageType.IconCollection,
-            labelText = null,
-            labelBackgroundColor = Tint.Default,
-            iconCollectionId = "",
-            groupId = null,
-            assignedDomains = emptyList(),
-            isDeleted = false,
-            backupSyncStatus = BackupSyncStatus.SYNCED,
-            updatedAt = 0,
-            serviceTypeId = null,
-            source = Service.Source.Link,
-        )
-    )
 }

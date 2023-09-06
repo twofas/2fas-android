@@ -1,6 +1,7 @@
 package com.twofasapp.ui.main
 
 import android.app.Activity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material.ExperimentalMaterialApi
@@ -14,9 +15,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.navigation.material.bottomSheet
+import com.twofasapp.android.navigation.Modal
+import com.twofasapp.android.navigation.NavAnimation
+import com.twofasapp.android.navigation.NavArg
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.android.navigation.clearGraphBackStack
 import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.android.navigation.withArg
@@ -31,9 +37,15 @@ import com.twofasapp.feature.browserext.notification.BrowserExtGraph
 import com.twofasapp.feature.browserext.notification.browserExtNavigation
 import com.twofasapp.feature.externalimport.navigation.ExternalImportGraph
 import com.twofasapp.feature.externalimport.navigation.externalImportNavigation
+import com.twofasapp.feature.home.navigation.GuideInitRoute
+import com.twofasapp.feature.home.navigation.GuidePagerRoute
+import com.twofasapp.feature.home.navigation.GuidesRoute
 import com.twofasapp.feature.home.navigation.HomeGraph
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
+import com.twofasapp.feature.home.navigation.HomeNode
+import com.twofasapp.feature.home.navigation.NotificationsGraph
 import com.twofasapp.feature.home.navigation.homeNavigation
+import com.twofasapp.feature.home.navigation.notificationsNavigation
 import com.twofasapp.feature.home.ui.services.add.AddServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
@@ -70,6 +82,12 @@ internal fun MainNavHost(
 
     var recentlyAddedService by remember { mutableStateOf<RecentlyAddedService?>(null) }
 
+    BackHandler(enabled = bottomSheetNavigator.navigatorSheetState.isVisible) {
+        scope.launch {
+            navController.popBackStack()
+        }
+    }
+
     ModalBottomSheet(
         onDismissRequest = {
             if (recentlyAddedService != null) {
@@ -82,7 +100,9 @@ internal fun MainNavHost(
 
         NavHost(
             navController = navController,
-            startDestination = startDestination
+            startDestination = startDestination,
+            enterTransition = NavAnimation.Enter,
+            exitTransition = NavAnimation.Exit,
         ) {
 
             startupNavigation(
@@ -120,17 +140,21 @@ internal fun MainNavHost(
                         navController.navigate(TrashGraph.route)
                     }
 
+                    override fun openNotifications() {
+                        navController.navigate(NotificationsGraph.route)
+                    }
+
                     override fun openAbout() {
                         navController.navigate(AboutGraph.route)
                     }
 
                     override fun openAddServiceModal() {
                         recentlyAddedService = null
-                        navController.navigate(ModalNavigation.AddService.route)
+                        navController.navigate(Modal.AddService.route)
                     }
 
                     override fun openFocusServiceModal(id: Long) {
-                        navController.navigate(ModalNavigation.FocusService.route.replace("{id}", id.toString()))
+                        navController.navigate(Modal.FocusService.route.replace("{id}", id.toString()))
                     }
                 }
             )
@@ -151,23 +175,61 @@ internal fun MainNavHost(
             )
 
             appSettingsNavigation()
+            notificationsNavigation()
             trashNavigation(navController = navController)
             aboutNavigation(navController = navController)
             browserExtNavigation(navController = navController)
             securityNavigation(navController = navController)
 
-            bottomSheet(ModalNavigation.AddService.route) {
+            bottomSheet(Modal.AddService.route, listOf(NavArg.AddServiceInitRoute)) {
                 AddServiceModal(
-                    onAddedSuccessfully = { recentlyAddedService = it }
+                    initRoute = it.arguments?.getString(NavArg.AddServiceInitRoute.name),
+                    onAddedSuccessfully = { recentlyAddedService = it },
+                    openGuides = { navController.navigate(Screen.Guides.route) }
                 )
             }
 
-            bottomSheet(ModalNavigation.FocusService.route, listOf(FocusServiceModalNavArg.ServiceId)) {
+            bottomSheet(Modal.FocusService.route, listOf(FocusServiceModalNavArg.ServiceId)) {
                 FocusServiceModal(
                     openService = {
                         navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, it))
                         scope.launch { bottomSheetState.hide() }
                     }
+                )
+            }
+
+            composable(Screen.Guides.route) {
+                GuidesRoute(
+                    openGuide = { navController.navigate(Screen.GuideInit.routeWithArgs(NavArg.Guide to it.name)) }
+                )
+            }
+
+            composable(Screen.GuideInit.route, listOf(NavArg.Guide)) {
+                GuideInitRoute(
+                    guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!),
+                    openGuide = { guide, guideVariantIndex ->
+                        navController.navigate(
+                            Screen.GuidePager.routeWithArgs(
+                                NavArg.Guide to guide.name,
+                                NavArg.GuideVariantIndex to guideVariantIndex,
+                            )
+                        )
+                    }
+                )
+            }
+
+            composable(Screen.GuidePager.route, listOf(NavArg.Guide, NavArg.GuideVariantIndex)) {
+                GuidePagerRoute(
+                    guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!),
+                    guideVariantIndex = it.arguments!!.getInt(NavArg.GuideVariantIndex.name),
+                    openAddScan = {
+                        navController.popBackStack(HomeNode.Services.route, false)
+                        navController.navigate(Modal.AddService.route)
+                    },
+                    openAddManually = {
+                        navController.popBackStack(HomeNode.Services.route, false)
+                        navController.navigate(Modal.AddService.routeWithArgs(NavArg.AddServiceInitRoute to "manual"))
+                    },
                 )
             }
         }

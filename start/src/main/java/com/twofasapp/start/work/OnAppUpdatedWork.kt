@@ -22,7 +22,6 @@ class OnAppUpdatedWork(
 ) : CoroutineWorker(context, params), KoinComponent {
 
     private val dispatchers: Dispatchers by inject()
-    private val analyticsService: AnalyticsService by inject()
     private val appBuild: AppBuild by inject()
     private val currentAppVersionPreference: CurrentAppVersionPreference by inject()
     private val clearObsoletePrefsCase: ClearObsoletePrefsCase by inject()

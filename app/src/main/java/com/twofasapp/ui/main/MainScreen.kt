@@ -7,12 +7,14 @@ import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
@@ -25,6 +27,7 @@ import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.feature.home.navigation.HomeGraph
 import com.twofasapp.feature.startup.navigation.StartupGraph
 import org.koin.androidx.compose.koinViewModel
+import timber.log.Timber
 
 @OptIn(ExperimentalMaterialNavigationApi::class, ExperimentalMaterialApi::class)
 @Composable
@@ -55,6 +58,22 @@ internal fun MainScreen(
     val bottomSheetNavigator = remember { BottomSheetNavigator(sheetState) }
     val navController: NavHostController = rememberNavController(bottomSheetNavigator)
     val context = LocalContext.current
+
+    LaunchedEffect(Unit){
+        navController.addOnDestinationChangedListener { _, destination, arguments ->
+            val argumentsLog: String = if (destination.arguments.isEmpty()) {
+                ""
+            } else {
+               "args=" + destination.arguments.map {
+                    @Suppress("DEPRECATION")
+                    "${it.key}=${arguments?.get(it.key)}"
+                }.toString()
+            }
+
+            Timber.tag("NavController").d("route=${destination.route}  $argumentsLog")
+        }
+    }
+
     if (uiState.startDestination != null && uiState.selectedTheme != null) {
         CompositionLocalProvider(
             LocalAppTheme provides when (uiState.selectedTheme!!) {

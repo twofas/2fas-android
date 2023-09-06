@@ -1,0 +1,83 @@
+{
+    "serviceName": "Amazon",
+    "serviceId": "d50d085c-87a1-4c03-80aa-d2384971c6f3",
+    "flow": {
+      "header": "Follow our guide to pair your Amazon account with the 2FAS app.",
+      "menu": {
+        "title": "Please select the method you use to open Amazon now",
+        "items": [
+          {
+            "name": "Desktop browser",
+            "steps": [
+              {
+                "image": "web_url",
+                "content": "Go to **www.amazon.com** and log into your account."
+              },
+              {
+                "image": "web_account_1",
+                "content": "Find **Login & security** option.\n\n- On desktop in Account & Lists option.\n- On mobile click **Person** icon, then **See All** in Your Account."
+              },
+              {
+                "image": "web_button",
+                "content": "Find **2-step verification** and click **Turn on**."
+              },
+              {
+                "image": "web_phone",
+                "content": "Confirm the e-mail sent to verify your identity."
+              },
+              {
+                "image": "push_notification",
+                "content": "Click **Get Started** and then select **Authenticator App**."
+              },
+              {
+                "image": "phone_qr",
+                "content": "Scan the QR code and enter the generated code from the 2FAS app to Amazon account",
+                "cta": {
+                  "name": "Scan QR code",
+                  "action": "open_scanner"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Mobile app",
+            "steps": [
+              {
+                "image": "account",
+                "content": "In the Amazon app, tap the **Account icon** at the bottom of the page."
+              },
+              {
+                "image": "app_button",
+                "content": "Select **Your account** and then tap **Login & security** under **Account settings**."
+              },
+              {
+                "image": "web_button",
+                "content": "You may be asked for your password for security reasons"
+              },
+              {
+                "image": "web_button",
+                "content": "Find **2-step verification** and tap **Turn on**."
+              },
+              {
+                "image": "web_phone",
+                "content": "Confirm the e-mail sent to validate the action."
+              },
+              {
+                "image": "push_notification",
+                "content": "Tap **Get Started** and then select **Authenticator App**."
+              },
+              {
+                "image": "secret_key",
+                "content": "Follow the instructions in the Amazon App and copy the code from Step 3. When ready, proceed to the next step and paste the code in the **Secret Key** field.",
+                "cta": {
+                  "name": "Add manually",
+                  "action": "open_manually",
+                  "data": "Amazon"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }

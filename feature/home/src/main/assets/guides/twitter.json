@@ -1,0 +1,74 @@
+{
+    "serviceName": "Twitter",
+    "serviceId": "a2987ab4-ac5c-48ce-863c-d3d3d1220fdb",
+    "flow": {
+      "header": "Follow our guide to pair your Twitter account with the 2FAS app.",
+      "menu": {
+        "title": "Please select the method you use to open Twitter now",
+        "items": [
+          {
+            "name": "Desktop computer or laptop",
+            "steps": [
+              {
+                "image": "web_url",
+                "content": "Go to **www.twitter.com** and log into your account."
+              },
+              {
+                "image": "web_menu",
+                "content": "Click **More** in the left-hand menu, then click **Settings and Support** and select **Settings and privacy**."
+              },
+              {
+                "image": "gears",
+                "content": "Select **Security and account access**, then select **Security** and then click **Two-factor authenticator**."
+              },
+              {
+                "image": "web_phone",
+                "content": "Select **Authentication app**."
+              },
+              {
+                "image": "2fas_type",
+                "content": "You may be asked to enter your password for security reasons. Enter the password and click Confirm."
+              },
+              {
+                "image": "phone_qr",
+                "content": "Click **Get started**, scan the QR code and click **Next**. Scanning the QR code will generate a token in the the 2FAS app. Retype it again and click **Confirm**.\n\nRemeber to save your single-use backup code to recover your account if necessary.",
+                "cta": {
+                  "name": "Scan QR code",
+                  "action": "open_scanner"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Mobile (app or browser)",
+            "steps": [
+                {
+                    "image": "web_menu",
+                    "content": "Open Twitter, tap on your account icon in the top left corner to expand the side menu."
+                },
+                {
+                  "image": "gears",
+                  "content": "Expand **Settings and Support**, then tap **Settings and privacy**."
+                },
+                {
+                  "image": "web_phone",
+                  "content": "Select **Security and account access**, tap **Security**, and then select **Two-factor authentication** option.\n\nSelect **Authentication app** as the way to receive verification codes."
+                },
+                {
+                  "image": "2fas_type",
+                  "content": "You may be asked to enter your password for security reasons. Enter your password and tap **Confirm**.\n\nTap **Get started** and then select **Link on another device**."
+                },
+                {
+                    "image": "phone_qr",
+                    "content": "Scan the QR code **(take a screenshot and upload it during scanning)**, tap **Enter code** and retype generated token, tap **Confirm** and **Done**.\n\n Remeber to get your backup codes from Twitter!",
+                    "cta": {
+                        "name": "Scan QR code",
+                        "action": "open_scanner"
+                    }
+                }
+            ]
+          }
+        ]
+      }
+    }
+  }

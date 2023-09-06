@@ -1,0 +1,71 @@
+{
+    "serviceName": "Facebook",
+    "serviceId": "744e788d-3975-43ac-8166-0029c9a0871c",
+    "flow": {
+      "header": "Follow our guide to pair your Facebook account with the 2FAS app.",
+      "menu": {
+        "title": "Please select the method you use to open Facebook now",
+        "items": [
+          {
+            "name": "Desktop computer or laptop",
+            "steps": [
+              {
+                "image": "web_url",
+                "content": "Go to **www.facebook.com** and log into your account."
+              },
+              {
+                "image": "web_account_1",
+                "content": "Click your avatar in the top right corner and select **Settings and Privacy**. Then select **Settings**."
+              },
+              {
+                "image": "web_menu",
+                "content": "From the Account Centre in the left-hand menu, select **Password and security**. Then select the **Two-factor authentication** section on the right and then select your account."
+              },
+              {
+                "image": "2fas_type",
+                "content": "You may be asked to enter a password for security reasons. Enter your password and click **Continue**."
+              },
+              {
+                "image": "phone_qr",
+                "content": "Select the **Authentication app** and click **Next**. Scan the QR code and click **Next**. Scanning the QR code will generate a token in the 2FAS app. Retype it and click **Next**.",
+                "cta": {
+                  "name": "Scan QR code",
+                  "action": "open_scanner"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Mobile (app or browser)",
+            "steps": [
+                {
+                    "image": "web_account_1",
+                    "content": "Open Facebook app, then tap the menu/avatar icon on the right."
+                },
+                {
+                    "image": "gears",
+                    "content": "Scroll down to **Settings and Privacy**, expand it and select **Settings**."
+                },
+                {
+                    "image": "web_phone",
+                    "content": "In the Account Centre, select **Password and security**. Then tap **Two-factor authentication** and select your account."
+                },
+                {
+                    "image": "2fas_type",
+                    "content": "You may be asked to enter a password for security reasons. Enter your password and tap **Continue**.\n\nSelect **Authentication app** as the way to receive verification codes and tap **Next**."
+                },
+                {
+                    "image": "retype",
+                    "content": "Copy your secret key (use the **Copy key** option on Facebook) and use **Add manually** option below to add Facebook to your 2FAS app. Tap **Next** on Facebook, retype the generated token, and tap **Next** and **Done**.",
+                    "cta": {
+                        "name": "Add manually",
+                        "action": "open_manually",
+                        "data": "Facebook"
+                    }
+                }
+            ]
+          }
+        ]
+      }
+    }
+  }

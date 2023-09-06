@@ -46,14 +46,17 @@ data class Service(
     enum class Source { Link, Manual }
     enum class Tint {
         Default,
-        LightBlue,
-        Indigo,
-        Purple,
-        Turquoise,
-        Green,
         Red,
         Orange,
-        Yellow;
+        Yellow,
+        Green,
+        Turquoise,
+        LightBlue,
+        Indigo,
+        Pink,
+        Purple,
+        Brown,
+        ;
     }
 
     companion object {

@@ -142,6 +142,8 @@ internal fun ChangeLabelScreen(
                                     Service.Tint.Red -> R.string.color__red
                                     Service.Tint.Orange -> R.string.color__orange
                                     Service.Tint.Yellow -> R.string.color__yellow
+                                    Service.Tint.Pink -> R.string.color__pink
+                                    Service.Tint.Brown -> R.string.color__brown
                                 }
                             ),
                             style = MaterialTheme.typography.bodySmall.copy(color = TwTheme.color.onSurfacePrimary),

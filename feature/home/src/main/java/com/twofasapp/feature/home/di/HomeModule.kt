@@ -2,6 +2,7 @@ package com.twofasapp.feature.home.di
 
 import com.twofasapp.di.KoinModule
 import com.twofasapp.feature.home.ui.bottombar.BottomBarViewModel
+import com.twofasapp.feature.home.ui.guides.GuidesViewModel
 import com.twofasapp.feature.home.ui.notifications.NotificationsViewModel
 import com.twofasapp.feature.home.ui.services.ServicesViewModel
 import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualViewModel
@@ -23,5 +24,6 @@ class HomeModule : KoinModule {
         viewModelOf(::AddServiceScanViewModel)
         viewModelOf(::AddServiceSuccessViewModel)
         viewModelOf(::FocusServiceViewModel)
+        viewModelOf(::GuidesViewModel)
     }
 }

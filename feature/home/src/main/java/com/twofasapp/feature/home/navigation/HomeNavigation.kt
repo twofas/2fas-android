@@ -7,7 +7,6 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
-import com.twofasapp.feature.home.ui.notifications.NotificationsRoute
 import com.twofasapp.feature.home.ui.services.ServicesRoute
 import com.twofasapp.feature.home.ui.settings.SettingsRoute
 
@@ -15,12 +14,11 @@ object HomeGraph : com.twofasapp.android.navigation.NavGraph {
     override val route: String = "home"
 }
 
-internal sealed class HomeNode(override val path: String) : com.twofasapp.android.navigation.NavNode {
+sealed class HomeNode(override val path: String) : com.twofasapp.android.navigation.NavNode {
     override val graph: com.twofasapp.android.navigation.NavGraph = HomeGraph
 
     object Services : HomeNode("services")
     object Settings : HomeNode("settings")
-    object Notifications : HomeNode("notifications")
 }
 
 fun NavGraphBuilder.homeNavigation(
@@ -48,16 +46,6 @@ fun NavGraphBuilder.homeNavigation(
             }
 
         }
-
-        override fun openNotifications() {
-            navController.navigate(HomeNode.Notifications.route) {
-                popUpTo(navController.graph.findStartDestination().id) {
-                    saveState = true
-                }
-                launchSingleTop = true
-                restoreState = true
-            }
-        }
     }
 
     navigation(
@@ -74,10 +62,6 @@ fun NavGraphBuilder.homeNavigation(
         composable(HomeNode.Settings.route) {
             SettingsRoute(listener, bottomBarListener)
         }
-
-        composable(HomeNode.Notifications.route) {
-            NotificationsRoute(bottomBarListener)
-        }
     }
 }
 
@@ -89,6 +73,7 @@ interface HomeNavigationListener {
     fun openBackup(activity: Activity)
     fun openAppSettings()
     fun openTrash()
+    fun openNotifications()
     fun openAbout()
     fun openAddServiceModal()
     fun openFocusServiceModal(id: Long)

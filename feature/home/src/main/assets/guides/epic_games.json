@@ -1,0 +1,99 @@
+{
+  "serviceName": "Epic Games",
+  "serviceId": "21701630-a5d2-457c-a983-bfbf4efa801c",
+  "flow": {
+    "header": "Follow our guide to pair your Epic Games account with the 2FAS app.",
+    "menu": {
+      "title": "Please select the method you use to open Epic Games now",
+      "items": [
+        {
+          "name": "Desktop browser",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "Go to **www.epicgames.com** and log into your account."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Hover over your avatar icon to expand the list of options and click **ACCOUNT**."
+            },
+            {
+              "image": "web_menu",
+              "content": "Choose **PASSWORD & SECURITY** from the left-hand menu."
+            },
+            {
+              "image": "2fas_type",
+              "content": "Scroll down and find **Two-Factor Authentication** options. Choose **Two-factor Authenticator App** and click **SET UP**, then **CONTINUE**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the QR code. Scanning the QR code will generate a token in the 2FAS app. Retype it and click **Activate**.\n\nRemember to get your backup codes from Epic Games!",
+              "cta": {
+                "name": "Scan QR code",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Desktop application",
+          "steps": [
+            {
+              "image": "account",
+              "content": "Open Epic Games, hover over your avatar icon to expand the list of options."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Choose **Account**. You will be taken to the **ACCOUNT** click on the Epic Games website. Find and click **Enable Two-Factor Auth**."
+            },
+            {
+              "image": "web_menu",
+              "content": "Choose **PASSWORD & SECURITY** from left-hand menu."
+            },
+            {
+              "image": "gears",
+              "content": "Scroll down and find **Two-Factor Authentication** options. Choose **Two-factor Authenticator App** and click **SET UP**, then **CONTINUE**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the QR code. Scanning the QR code will generate a token in the 2FAS app. Retype it and click **Activate**.\n\nRemember to get your backup codes from Epic Games!",
+              "cta": {
+                "name": "Scan QR code",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Console (PlayStation, Xbox)",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "In the console, turn on internet browser application, go to **www.epicgames.com** and log in to your account."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Hover over your avatar icon to expand the list of options and click **ACCOUNT**."
+            },
+            {
+              "image": "web_menu",
+              "content": "Choose **PASSWORD & SECURITY** from left-hand menu."
+            },
+            {
+              "image": "gears",
+              "content": "Scroll down and find **Two-Factor Authentication** options. Choose **Two-factor Authenticator App**, click **SET UP** and click **CONTINUE**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the QR code. Scanning the QR code will generate a token in the 2FAS app. Retype it and click **Activate**.\n\nRemember to get your backup codes from Epic Games!",
+              "cta": {
+                "name": "Scan QR code",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

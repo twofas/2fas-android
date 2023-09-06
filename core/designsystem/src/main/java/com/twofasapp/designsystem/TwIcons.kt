@@ -64,4 +64,5 @@ object TwIcons {
     val Screenshot @Composable get() = painterResource(R.drawable.ic_screenshot)
     val Keyboard @Composable get() = painterResource(R.drawable.ic_keyboard)
     val Panorama @Composable get() = painterResource(R.drawable.ic_panorama)
+    val Guide @Composable get() = painterResource(R.drawable.ic_guide)
 }

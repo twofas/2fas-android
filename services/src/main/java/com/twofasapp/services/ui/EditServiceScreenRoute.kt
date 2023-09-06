@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.services.ui.advancedsettings.AdvancedSettingsScreen
 import com.twofasapp.services.ui.changebrand.ChangeBrandScreen
 import com.twofasapp.services.ui.changelabel.ChangeLabelScreen
@@ -40,7 +41,12 @@ internal fun EditServiceScreenRoute(
 ) {
     val navHostController = rememberNavController()
 
-    NavHost(navHostController, startDestination = ServiceInternalGraph.route) {
+    NavHost(
+        navHostController,
+        startDestination = ServiceInternalGraph.route,
+        enterTransition = NavAnimation.Enter,
+        exitTransition = NavAnimation.Exit,
+    ) {
         navigation(route = ServiceInternalGraph.route, startDestination = Node.Main.route) {
 
             composable(Node.Main.route) {

@@ -2,6 +2,7 @@ package com.twofasapp.feature.home.ui.services
 
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
@@ -22,6 +23,7 @@ internal class ServicesViewModel(
     private val groupsRepository: GroupsRepository,
     private val settingsRepository: SettingsRepository,
     private val sessionRepository: SessionRepository,
+    private val notificationsRepository: NotificationsRepository,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(ServicesUiState())
@@ -131,6 +133,12 @@ internal class ServicesViewModel(
                     publishEvent(ServicesStateEvent.ShowQrFromGalleryDialog)
                 }
                 publishEvent(ServicesStateEvent.ServiceAdded(recentlyAdded.serviceId))
+            }
+        }
+
+        launchScoped {
+            notificationsRepository.hasUnreadNotifications().collect { hasUnread ->
+                uiState.update { it.copy(hasUnreadNotifications = hasUnread) }
             }
         }
     }
