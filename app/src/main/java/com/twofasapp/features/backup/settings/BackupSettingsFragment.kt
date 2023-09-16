@@ -11,7 +11,7 @@ import com.afollestad.materialdialogs.customview.getCustomView
 import com.mikepenz.fastadapter.IItem
 import com.mikepenz.fastadapter.adapters.FastItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
-import com.twofasapp.backup.ui.export.ExportBackupPasswordDialog
+import com.twofasapp.backup.ui.ExportBackupPasswordDialog
 import com.twofasapp.base.BaseFragmentPresenter
 import com.twofasapp.databinding.FragmentBackupSettingsBinding
 import com.twofasapp.design.dialogs.InfoDialog

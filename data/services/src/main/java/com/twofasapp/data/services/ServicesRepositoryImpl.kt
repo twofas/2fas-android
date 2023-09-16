@@ -200,7 +200,6 @@ internal class ServicesRepositoryImpl(
 
     override suspend fun isServiceExists(secret: String): Boolean {
         return getServices()
-            .filter { it.isDeleted.not() }
             .map { it.secret.lowercase() }
             .contains(secret.lowercase())
     }

@@ -53,6 +53,7 @@ dependencies {
     implementation(project(":core:storage"))
     implementation(project(":core:network"))
     implementation(project(":core:locale"))
+    implementation(project(":core:cipher"))
     implementation(project(":data:notifications"))
     implementation(project(":data:session"))
     implementation(project(":data:services"))

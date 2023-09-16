@@ -13,6 +13,7 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:storage"))
     implementation(project(":core:otp"))
+    implementation(project(":core:cipher"))
 
     implementation(project(":parsers"))
     implementation(project(":widgets:domain"))

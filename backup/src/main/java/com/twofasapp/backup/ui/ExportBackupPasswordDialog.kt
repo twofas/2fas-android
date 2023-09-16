@@ -1,4 +1,4 @@
-package com.twofasapp.backup.ui.export
+package com.twofasapp.backup.ui
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -1,7 +1,5 @@
 package com.twofasapp
 
-import com.twofasapp.backup.domain.ExportBackupToDisk
-import com.twofasapp.backup.ui.export.ExportBackup
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.features.backup.import.ImportBackup
 import com.twofasapp.features.backup.import.ImportBackupFromDisk
@@ -80,7 +78,6 @@ val useCaseModule = module {
     single { FirstCodeAdded(get()) }
     single { StoreGroups(get(), get()) }
     single { SyncBackupServices(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
-    single<ExportBackup> { ExportBackupToDisk(androidContext(), get(), get(), get(), get(), get(), get(), get()) }
     single<ImportBackup> { ImportBackupFromDisk(androidContext(), get(), get(), get(), get(), get()) }
     single { StoreHotpServices(get()) }
     single { PinOptionsUseCase(get()) }

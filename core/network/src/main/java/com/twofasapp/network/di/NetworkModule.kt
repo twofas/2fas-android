@@ -19,7 +19,7 @@ import timber.log.Timber
 class NetworkModule : KoinModule {
     override fun provide() = module {
         single {
-            val isDebuggable = get<AppBuild>().isDebuggable
+            val isDebuggable = get<AppBuild>().debuggable
 
             HttpClient(OkHttp) {
                 expectSuccess = true

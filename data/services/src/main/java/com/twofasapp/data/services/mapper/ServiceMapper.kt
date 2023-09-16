@@ -1,5 +1,6 @@
 package com.twofasapp.data.services.mapper
 
+import com.twofasapp.data.services.domain.BackupService
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServiceEntity
@@ -7,6 +8,7 @@ import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
+import com.twofasapp.prefs.model.Tint
 
 internal fun ServiceEntity.asDomain(): Service {
     val iconCollectionId = iconCollectionId ?: ServiceIcons.defaultCollectionId
@@ -81,6 +83,42 @@ internal fun Service.asEntity(): ServiceEntity {
         assignedDomains = assignedDomains,
         revealTimestamp = revealTimestamp,
     )
+}
+
+internal fun List<Service>.asBackup(): List<BackupService> {
+    return mapIndexedNotNull { index, s ->
+        BackupService(
+            name = s.name,
+            secret = s.secret,
+            updatedAt = s.updatedAt,
+            serviceTypeId = s.serviceTypeId,
+            otp = BackupService.Otp(
+                link = s.link,
+                label = s.info,
+                account = s.info,
+                issuer = s.issuer,
+                digits = s.digits,
+                period = s.period,
+                algorithm = s.algorithm?.name,
+                counter = if (s.authType == Service.AuthType.HOTP) s.hotpCounter else null,
+                tokenType = s.authType.name,
+                source = s.source.name,
+            ),
+            order = BackupService.Order(position = index),
+            badge = s.badgeColor?.let { BackupService.Badge(it.name) },
+            icon = BackupService.Icon(
+                selected = when (s.imageType) {
+                    Service.ImageType.IconCollection -> BackupService.IconType.IconCollection
+                    Service.ImageType.Label -> BackupService.IconType.Label
+                },
+                brand = null,
+                label = s.labelText?.let { BackupService.Label(text = it, backgroundColor = s.labelColor?.name ?: Tint.LightBlue.name) },
+                iconCollection = BackupService.IconCollection(id = s.iconCollectionId)
+            ),
+            groupId = s.groupId
+
+        )
+    }
 }
 
 internal fun ServicesOrderEntity.asDomain() =

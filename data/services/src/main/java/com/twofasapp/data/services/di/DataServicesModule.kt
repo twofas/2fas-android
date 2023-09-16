@@ -1,5 +1,7 @@
 package com.twofasapp.data.services.di
 
+import com.twofasapp.data.services.BackupRepository
+import com.twofasapp.data.services.BackupRepositoryImpl
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.GroupsRepositoryImpl
 import com.twofasapp.data.services.ServicesRepository
@@ -20,5 +22,7 @@ class DataServicesModule : KoinModule {
 
         singleOf(::GroupsLocalSource)
         singleOf(::GroupsRepositoryImpl) { bind<GroupsRepository>() }
+
+        singleOf(::BackupRepositoryImpl) { bind<BackupRepository>() }
     }
 }

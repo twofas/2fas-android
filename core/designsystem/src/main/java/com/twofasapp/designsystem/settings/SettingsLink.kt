@@ -38,6 +38,7 @@ fun SettingsLink(
     endContent: (@Composable () -> Unit)? = null,
     showEmptySpaceWhenNoIcon: Boolean = true,
     external: Boolean = false,
+    enabled: Boolean = true,
     alignCenterIcon: Boolean = true,
     onClick: (() -> Unit)? = null
 ) {
@@ -45,8 +46,9 @@ fun SettingsLink(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(onClick != null) { onClick?.invoke() }
+            .clickable(onClick != null && enabled) { onClick?.invoke() }
             .heightIn(min = 56.dp)
+            .alpha(if (enabled) 1f else 0.3f)
             .padding(vertical = 16.dp)
             .padding(start = 24.dp, end = 16.dp),
         verticalArrangement = Arrangement.Center
@@ -82,7 +84,9 @@ fun SettingsLink(
                 TwIcon(
                     painter = TwIcons.ExternalLink,
                     tint = TwTheme.color.iconTint,
-                    modifier = Modifier.size(20.dp).alpha(0.7f)
+                    modifier = Modifier
+                        .size(20.dp)
+                        .alpha(0.7f)
                 )
             }
         }

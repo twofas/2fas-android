@@ -1,23 +1,23 @@
 [versions]
-accompanist = "0.31.6-rc"
-agp = "8.2.0-alpha16"
+accompanist = "0.32.0"
+agp = "8.2.0-beta04"
 coil = "2.4.0"
-compose = "1.5.0"
+compose = "1.5.1"
 composeActivity = "1.7.2"
-composeCompiler = "1.5.1"
-core = "1.10.1"
+composeCompiler = "1.5.3"
+core = "1.12.0"
 espresso = "3.5.1"
 koin = "3.4.3"
 koinAndroid = "3.4.6"
 kotest = "5.6.2"
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 kotlinCoroutines = "1.7.3"
-kotlinKsp = "1.9.0-1.0.13"
+kotlinKsp = "1.9.10-1.0.13"
 ktlint = "3.12.0"
 ktor = "2.3.3"
-material3 = "1.2.0-alpha05"
+material3 = "1.2.0-alpha07"
 room = "2.5.2"
-viewModel = "2.6.1"
+lifecycle = "2.7.0-alpha02"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 appcompat = "1.6.1"
@@ -69,7 +69,7 @@ material = "com.google.android.material:material:1.9.0"
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 material3Window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
 mockk = "io.mockk:mockk:1.13.2"
-navigationCompose = "androidx.navigation:navigation-compose:2.7.1"
+navigationCompose = "androidx.navigation:navigation-compose:2.7.2"
 robolectric = "org.robolectric:robolectric:4.9"
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
@@ -81,12 +81,12 @@ timber = "com.jakewharton.timber:timber:5.0.1"
 turbine = "app.cash.turbine:turbine:0.12.0"
 uiTestJunit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "viewModel" }
-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "viewModel" }
-viewModelComposeRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "viewModel" }
-viewModelLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "viewModel" }
-viewModelSavedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "viewModel" }
-webkit = "androidx.webkit:webkit:1.7.0"
+viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+viewModelComposeRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
+viewModelLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+viewModelSavedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
+webkit = "androidx.webkit:webkit:1.8.0"
 workManager = "androidx.work:work-runtime-ktx:2.8.1"
 playReview = "com.google.android.play:review:2.0.1"
 playReviewKtx = "com.google.android.play:review-ktx:2.0.1"

@@ -9,7 +9,7 @@ class PushLogger(
 ) {
 
     fun logMessage(remoteMessage: RemoteMessage) {
-        if (appBuild.isDebuggable) {
+        if (appBuild.debuggable) {
             try {
                 Timber.i("Data: ${remoteMessage.data}, notification.title=${remoteMessage.notification?.title}, notification.body=${remoteMessage.notification?.body}")
             } catch (e: Exception) {
@@ -19,7 +19,7 @@ class PushLogger(
     }
 
     fun logToken(token: String) {
-        if (appBuild.isDebuggable) {
+        if (appBuild.debuggable) {
             Timber.i("onNewToken")
             Timber.i(token)
         }

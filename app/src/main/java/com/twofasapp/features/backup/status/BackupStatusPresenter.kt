@@ -243,7 +243,7 @@ internal class BackupStatusPresenter(
         subtitleRes = R.string.backup__file_backup_offline_title,
         isEnabled = isServicesListNotEmpty,
         drawableRes = R.drawable.ic_export_file,
-        clickAction = { navigator.openExportBackup() },
+        clickAction = { },
     ).toItem()
 
     private fun createSyncErrorItem() = syncStatus.let { status ->

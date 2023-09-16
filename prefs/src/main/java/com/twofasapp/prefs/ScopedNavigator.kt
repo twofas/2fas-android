@@ -10,6 +10,5 @@ interface ScopedNavigator {
 
     fun openMain()
     fun openAuthenticate(canGoBack: Boolean = false, requestCode: Int? = null)
-    fun openExportBackup()
     fun openImportBackup()
 }

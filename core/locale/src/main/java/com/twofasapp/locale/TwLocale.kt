@@ -11,7 +11,7 @@ import kotlin.math.abs
 import kotlin.math.sign
 
 object TwLocale {
-    private val timeUnits = TimeUnit.values().reversed()
+    private val timeUnits = TimeUnit.entries.reversed()
 
     val strings: Strings
         @Composable

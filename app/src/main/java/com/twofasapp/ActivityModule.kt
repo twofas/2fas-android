@@ -1,8 +1,5 @@
 package com.twofasapp
 
-import com.twofasapp.backup.ui.export.ExportBackupActivity
-import com.twofasapp.backup.ui.export.ExportBackupContract
-import com.twofasapp.backup.ui.export.ExportBackupPresenter
 import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.features.backup.BackupContract
 import com.twofasapp.features.backup.BackupPresenter
@@ -34,9 +31,6 @@ val activityScopeModule = module {
 
     activityScope<BackupActivity> {
         scopedOf(::BackupPresenter) { bind<BackupContract.Presenter>() }
-    }
-    activityScope<ExportBackupActivity> {
-        scopedOf(::ExportBackupPresenter) { bind<ExportBackupContract.Presenter>() }
     }
     activityScope<ImportBackupActivity> {
         scopedOf(::ImportBackupPresenter) { bind<ImportBackupContract.Presenter>() }

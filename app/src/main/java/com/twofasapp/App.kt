@@ -8,7 +8,6 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.twofasapp.backup.LegacyBackupModule
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.base.ActivityProvider
@@ -85,7 +84,6 @@ class App : MultiDexApplication() {
                         PersistenceModule(),
                         QrScannerModule(),
                         ServicesModule(),
-                        LegacyBackupModule(),
                         SecurityModule(),
                     )
                         .map { it.provide() }

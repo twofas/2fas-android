@@ -146,10 +146,6 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".backup.ui.export.ExportBackupActivity"
-            android:label="Export Backup" />
-
-        <activity
             android:name=".features.backup.import.ImportBackupActivity"
             android:exported="true"
             android:label="Import Backup">

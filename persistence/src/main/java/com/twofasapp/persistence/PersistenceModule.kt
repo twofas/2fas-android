@@ -37,7 +37,7 @@ class PersistenceModule : KoinModule {
                 MIGRATION_11_12,
             )
 
-            if (get<AppBuild>().isDebuggable.not()) {
+            if (get<AppBuild>().debuggable.not()) {
                 val factory = SupportFactory(SQLiteDatabase.getBytes(get<GetDatabaseMasterKey>().execute().toCharArray()))
                 builder.openHelperFactory(factory)
             }

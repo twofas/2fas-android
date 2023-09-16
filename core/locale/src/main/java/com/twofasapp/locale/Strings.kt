@@ -211,7 +211,30 @@ class Strings(c: Context) {
     val guideTitle = c.getString(R.string.guides__guide_title)
     val guideUniversalTitle = c.getString(R.string.guides__guide_universal_title)
 
+    val password = c.getString(R.string.backup__password)
+    val passwordConfirm = c.getString(R.string.backup__repeat_password)
+
     val backupTitle = c.getString(R.string.backup__2fas_backup)
+    val backupDriveHeader = "Google Drive"
+    val backupLocalHeader = c.getString(R.string.backup__local_file_title)
+    val backupDebugHeader = "Debug"
+    val backupSyncSettings = c.getString(R.string.backup__synchronization_settings)
+    val backupImportFile = c.getString(R.string.backup__import_file)
+    val backupExportFile = c.getString(R.string.backup__export_to_file)
+    val backupExportFileDescription = c.getString(R.string.backup__file_backup_offline_title)
+    val backupSetPassword = c.getString(R.string.backup_settings_password_set_title)
+    val backupSetPasswordDescription = c.getString(R.string.backup__set_password_title)
+    val backupEnterPasswordDescription = c.getString(R.string.backup__enter_password_title)
+    val backupShareError = c.getString(R.string.backup__share_result_failure)
+    val backupDownloadError = c.getString(R.string.commons__unknown_error)
+    val backupDownloadSuccess = c.getString(R.string.backup__export_result_success)
+
     val backupSettingsTitle = c.getString(R.string.settings__backup_and_synchronization)
+
+    val backupExportShareCta = c.getString(R.string.export_backup_share_cta)
+    val backupExportCta = c.getString(R.string.export_backup_cta)
+    val backupExportHeader = c.getString(R.string.export_backup_title)
+    val backupExportMsg = c.getString(R.string.export_backup_msg)
+    val backupExportPassMsg = c.getString(R.string.export_backup_pass)
 
 }

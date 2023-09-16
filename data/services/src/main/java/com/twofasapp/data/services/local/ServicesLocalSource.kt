@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import timber.log.Timber
@@ -60,7 +59,7 @@ internal class ServicesLocalSource(
     }
 
     suspend fun getServices(): List<Service> {
-        return dao.select().map { it.asDomain() }
+        return dao.select().filter { it.isDeleted != true }.map { it.asDomain() }
     }
 
     fun observeService(id: Long): Flow<Service> {

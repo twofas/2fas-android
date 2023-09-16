@@ -1,5 +1,6 @@
 package com.twofasapp.di
 
+import com.twofasapp.cipher.di.CipherModule
 import com.twofasapp.common.di.CommonModule
 import com.twofasapp.data.browserext.di.DataBrowserExtModule
 import com.twofasapp.data.notifications.di.DataNotificationsModule
@@ -23,6 +24,7 @@ object Modules {
         CommonModule(),
         NetworkModule(),
         StorageModule(),
+        CipherModule(),
     )
 
     private val data = listOf(

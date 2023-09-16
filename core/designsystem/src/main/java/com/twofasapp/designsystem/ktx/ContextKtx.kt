@@ -1,5 +1,6 @@
 package com.twofasapp.designsystem.ktx
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.ClipboardManager
@@ -12,6 +13,7 @@ import android.os.PersistableBundle
 import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocal
 import androidx.compose.ui.platform.LocalDensity
@@ -19,6 +21,8 @@ import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.unit.Dp
 import androidx.core.app.ComponentActivity
 import com.twofasapp.locale.R
+import com.twofasapp.locale.Strings
+import com.twofasapp.locale.TwLocale
 
 val CompositionLocal<Context>.currentActivity: ComponentActivity
     @Composable
@@ -39,6 +43,10 @@ val Context.settingsIntent: Intent
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         return intent
     }
+
+val CompositionLocal<Context>.strings: Strings
+    @Composable
+    get() = TwLocale.strings
 
 val LocalBackDispatcher
     @Composable
@@ -86,3 +94,12 @@ fun UriHandler.openSafely(uri: String, context: Context? = null) {
         context?.let { Toast.makeText(it, it.getText(R.string.errors__no_app), Toast.LENGTH_SHORT).show() }
     }
 }
+
+fun Context.toast(message: String, duration: Int) = Toast.makeText(this, message, duration).show()
+fun Context.toast(@StringRes resId: Int, duration: Int) = Toast.makeText(this, this.resources.getText(resId), duration).show()
+
+fun Context.toastLong(message: String) = toast(message, Toast.LENGTH_LONG)
+fun Context.toastLong(@StringRes resId: Int) = toast(resId, Toast.LENGTH_LONG)
+
+fun Context.toastShort(message: String) = toast(message, Toast.LENGTH_SHORT)
+fun Context.toastShort(@StringRes resId: Int) = toast(resId, Toast.LENGTH_SHORT)

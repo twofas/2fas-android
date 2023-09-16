@@ -3,7 +3,6 @@ package com.twofasapp.features.navigator
 import android.app.Activity
 import android.content.Intent
 import androidx.core.os.bundleOf
-import com.twofasapp.backup.ui.export.ExportBackupActivity
 import com.twofasapp.core.RequestCodes
 import com.twofasapp.extensions.startActivity
 import com.twofasapp.extensions.startActivityForResult
@@ -56,10 +55,6 @@ class ActivityScopedNavigator(
                 requestCode ?: RequestCodes.AUTH_REQUEST_CODE, "canGoBack" to canGoBack
             )
         }
-    }
-
-    override fun openExportBackup() {
-        activity.startActivity<ExportBackupActivity>()
     }
 
     override fun openImportBackup() {
