@@ -1,6 +1,6 @@
 package com.twofasapp.feature.backup.ui.export
 
-import android.content.Context
+import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.environment.AppBuild
@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class BackupExportViewModel(
-    private val context: Context,
+    private val context: Application,
     private val appBuild: AppBuild,
     private val backupRepository: BackupRepository,
     private val sessionRepository: SessionRepository,

@@ -22,3 +22,12 @@ internal fun List<Group>.asBackup(): List<BackupGroup> {
         )
     }
 }
+
+internal fun BackupGroup.asDomain(): Group {
+    return Group(
+        id = id,
+        name = name,
+        isExpanded = isExpanded,
+        updatedAt = updatedAt,
+    )
+}

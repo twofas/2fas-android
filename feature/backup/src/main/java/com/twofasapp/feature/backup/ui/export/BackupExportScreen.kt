@@ -57,7 +57,7 @@ internal fun BackupExportScreen(
         uri?.let { viewModel.downloadBackup(it) }
     }
 
-    BackupExportScreenContent(
+    ScreenContent(
         uiState = uiState,
         onPasswordCheckedChange = { viewModel.togglePassword() },
         onPasswordConfirm = { viewModel.updatePassword(it) },
@@ -69,7 +69,7 @@ internal fun BackupExportScreen(
 }
 
 @Composable
-private fun BackupExportScreenContent(
+private fun ScreenContent(
     uiState: BackupExportUiState,
     onPasswordCheckedChange: () -> Unit = {},
     onPasswordConfirm: (String) -> Unit = {},
@@ -258,7 +258,7 @@ private enum class ExportMethod {
 @Preview
 @Composable
 private fun Preview() {
-    BackupExportScreenContent(
+    ScreenContent(
         uiState = BackupExportUiState(),
     )
 }

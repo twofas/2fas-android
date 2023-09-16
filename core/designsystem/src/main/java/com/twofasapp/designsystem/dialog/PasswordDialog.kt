@@ -16,7 +16,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.common.TwOutlinedTextField
 import com.twofasapp.designsystem.common.TwOutlinedTextFieldPassword
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.android.awaitFrame
@@ -36,6 +35,7 @@ fun PasswordDialog(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     minLength: Int = 3,
     maxLength: Int = Int.MAX_VALUE,
+    confirmRequired: Boolean = true,
 ) {
     var password by remember { mutableStateOf("") }
     var passwordConfirm by remember { mutableStateOf("") }
@@ -44,7 +44,7 @@ fun PasswordDialog(
         derivedStateOf {
             when {
                 password.trim().length !in minLength..maxLength -> false
-                password != passwordConfirm -> false
+                confirmRequired && password != passwordConfirm -> false
                 else -> validation?.invoke(password) ?: true
             }
         }
@@ -75,21 +75,24 @@ fun PasswordDialog(
             keyboardOptions = keyboardOptions,
             maxLines = 1,
             enabled = enabled,
+            supportingText = if (error.isNullOrBlank()) null else error,
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        if (confirmRequired) {
+            Spacer(modifier = Modifier.height(16.dp))
+            TwOutlinedTextFieldPassword(
+                value = passwordConfirm,
+                onValueChange = { passwordConfirm = it },
+                modifier = Modifier
+                    .padding(horizontal = DialogPadding),
+                labelText = TwLocale.strings.passwordConfirm,
+                isError = error.isNullOrBlank().not(),
+                keyboardOptions = keyboardOptions,
+                maxLines = 1,
+                enabled = enabled,
+            )
+        }
 
-        TwOutlinedTextFieldPassword(
-            value = passwordConfirm,
-            onValueChange = { passwordConfirm = it },
-            modifier = Modifier
-                .padding(horizontal = DialogPadding),
-            labelText = TwLocale.strings.passwordConfirm,
-            isError = error.isNullOrBlank().not(),
-            keyboardOptions = keyboardOptions,
-            maxLines = 1,
-            enabled = enabled,
-        )
     }
 
     LaunchedEffect(Unit) {

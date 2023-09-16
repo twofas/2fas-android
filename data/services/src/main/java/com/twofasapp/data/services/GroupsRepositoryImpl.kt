@@ -38,6 +38,13 @@ internal class GroupsRepositoryImpl(
         }
     }
 
+    override suspend fun addGroup(group: Group) {
+        withContext(dispatchers.io) {
+            local.addGroup(group)
+            localServices.cleanUpGroups(local.getGroups().ids)
+        }
+    }
+
     override suspend fun deleteGroup(id: String) {
         withContext(dispatchers.io) {
             local.deleteGroup(id)

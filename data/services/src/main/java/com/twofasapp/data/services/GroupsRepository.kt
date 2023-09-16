@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 interface GroupsRepository {
     fun observeGroups(): Flow<List<Group>>
     suspend fun addGroup(name: String)
+    suspend fun addGroup(group: Group)
     suspend fun deleteGroup(id: String)
     suspend fun editGroup(id: String, name: String)
     suspend fun moveUpGroup(id: String)

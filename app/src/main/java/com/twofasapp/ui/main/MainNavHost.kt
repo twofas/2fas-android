@@ -34,6 +34,7 @@ import com.twofasapp.feature.about.navigation.aboutNavigation
 import com.twofasapp.feature.appsettings.navigation.AppSettingsGraph
 import com.twofasapp.feature.appsettings.navigation.appSettingsNavigation
 import com.twofasapp.feature.backup.navigation.BackupExportRoute
+import com.twofasapp.feature.backup.navigation.BackupImportRoute
 import com.twofasapp.feature.backup.navigation.BackupRoute
 import com.twofasapp.feature.backup.navigation.BackupSettingsRoute
 import com.twofasapp.feature.browserext.notification.BrowserExtGraph
@@ -244,6 +245,7 @@ internal fun MainNavHost(
                 BackupRoute(
                     openSettings = { navController.navigate(Screen.BackupSettings.route) },
                     openExport = { navController.navigate(Screen.BackupExport.route) },
+                    openImport = { navController.navigate(Screen.BackupImport.route) },
                 )
             }
 
@@ -253,6 +255,12 @@ internal fun MainNavHost(
 
             composable(Screen.BackupExport.route) {
                 BackupExportRoute(
+                    goBack = { navController.popBackStack() }
+                )
+            }
+
+            composable(Screen.BackupImport.route) {
+                BackupImportRoute(
                     goBack = { navController.popBackStack() }
                 )
             }

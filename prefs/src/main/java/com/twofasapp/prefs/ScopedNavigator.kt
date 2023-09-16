@@ -8,7 +8,5 @@ interface ScopedNavigator {
     fun finish()
     fun finishResultOk(params: Map<String, Any> = emptyMap())
 
-    fun openMain()
     fun openAuthenticate(canGoBack: Boolean = false, requestCode: Int? = null)
-    fun openImportBackup()
 }

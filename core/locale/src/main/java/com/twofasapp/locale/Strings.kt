@@ -224,6 +224,7 @@ class Strings(c: Context) {
     val backupExportFileDescription = c.getString(R.string.backup__file_backup_offline_title)
     val backupSetPassword = c.getString(R.string.backup_settings_password_set_title)
     val backupSetPasswordDescription = c.getString(R.string.backup__set_password_title)
+    val backupEnterPassword = c.getString(R.string.backup__enter_password_dialog_title)
     val backupEnterPasswordDescription = c.getString(R.string.backup__enter_password_title)
     val backupShareError = c.getString(R.string.backup__share_result_failure)
     val backupDownloadError = c.getString(R.string.commons__unknown_error)
@@ -236,5 +237,18 @@ class Strings(c: Context) {
     val backupExportHeader = c.getString(R.string.export_backup_title)
     val backupExportMsg = c.getString(R.string.export_backup_msg)
     val backupExportPassMsg = c.getString(R.string.export_backup_pass)
+    val backupImportCta = c.getString(R.string.import_backup_cta)
+    val backupImportChooseAnotherFileCta = c.getString(R.string.backup__choose_antother_file)
+    val backupImportHeader = c.getString(R.string.import_backup_title)
+    val backupImportMsg1 = c.getString(R.string.import_backup_msg1)
+    val backupImportMsg2 = c.getString(R.string.import_backup_msg2)
+    val backupImportMsg1Encrypted = c.getString(R.string.import_backup_msg1_encrypted)
+    val backupImportErrorHeader = c.getString(R.string.backup__file_error)
+    val backupImportErrorMsg = c.getString(R.string.backup__import_error_file_invalid)
+    val backupImportErrorMsgSize = c.getString(R.string.backup__import_error_file_size)
+    val backupImportErrorWrongPassword = c.getString(R.string.backup__incorrect_password)
+    val backupImportErrorDecryptError = c.getString(R.string.backup_error_decrypt_unknown)
+    val backupImportSuccess = c.getString(R.string.import_ga_success)
+
 
 }

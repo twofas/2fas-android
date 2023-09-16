@@ -21,6 +21,7 @@ internal fun BackupScreen(
     viewModel: BackupViewModel = koinViewModel(),
     openSettings: () -> Unit,
     openExport: () -> Unit,
+    openImport: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -28,6 +29,7 @@ internal fun BackupScreen(
         uiState = uiState,
         onSettingsClick = openSettings,
         onExportClick = openExport,
+        onImportClick = openImport,
     )
 }
 
@@ -36,6 +38,7 @@ private fun BackupScreenContent(
     uiState: BackupUiState,
     onSettingsClick: () -> Unit = {},
     onExportClick: () -> Unit = {},
+    onImportClick: () -> Unit = {},
 ) {
     Scaffold(
         topBar = { TwTopAppBar(titleText = TwLocale.strings.backupTitle) }
@@ -61,7 +64,7 @@ private fun BackupScreenContent(
                 SettingsLink(
                     title = TwLocale.strings.backupImportFile,
                     icon = TwIcons.Import,
-                    onClick = {},
+                    onClick = onImportClick,
                 )
             }
 

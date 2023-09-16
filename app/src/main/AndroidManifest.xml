@@ -145,31 +145,32 @@
             android:label="@string/backup__2fas_backup"
             android:windowSoftInputMode="adjustResize" />
 
-        <activity
-            android:name=".features.backup.import.ImportBackupActivity"
-            android:exported="true"
-            android:label="Import Backup">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+<!--        TODO: Refactor-->
+<!--        <activity-->
+<!--            android:name=".features.backup.import.ImportBackupActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="Import Backup">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
 
-                <data android:scheme="file" />
-                <data android:scheme="content" />
-                <data android:mimeType="*/*" />
-                <data android:host="*" />
-                <data android:pathPattern=".*\\.2fas" />
-                <data android:pathPattern=".*\\..*\\.2fas" />
-                <data android:pathPattern=".*\\..*\\..*\\.2fas" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\.2fas" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.2fas" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.2fas" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />
+<!--                <data android:scheme="file" />-->
+<!--                <data android:scheme="content" />-->
+<!--                <data android:mimeType="*/*" />-->
+<!--                <data android:host="*" />-->
+<!--                <data android:pathPattern=".*\\.2fas" />-->
+<!--                <data android:pathPattern=".*\\..*\\.2fas" />-->
+<!--                <data android:pathPattern=".*\\..*\\..*\\.2fas" />-->
+<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\.2fas" />-->
+<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.2fas" />-->
+<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
+<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
+<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
 
-            </intent-filter>
-        </activity>
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
         <activity
             android:name=".widgets.configure.WidgetSettingsActivity"

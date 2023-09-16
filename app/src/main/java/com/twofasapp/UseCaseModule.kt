@@ -1,8 +1,6 @@
 package com.twofasapp
 
 import com.twofasapp.base.AuthTracker
-import com.twofasapp.features.backup.import.ImportBackup
-import com.twofasapp.features.backup.import.ImportBackupFromDisk
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.prefs.usecase.StoreGroups
 import com.twofasapp.services.domain.ConvertOtpLinkToService
@@ -78,7 +76,6 @@ val useCaseModule = module {
     single { FirstCodeAdded(get()) }
     single { StoreGroups(get(), get()) }
     single { SyncBackupServices(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
-    single<ImportBackup> { ImportBackupFromDisk(androidContext(), get(), get(), get(), get(), get()) }
     single { StoreHotpServices(get()) }
     single { PinOptionsUseCase(get()) }
     single { UpdateWidget(get()) }

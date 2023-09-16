@@ -235,7 +235,7 @@ internal class BackupStatusPresenter(
     private fun createImportItem() = SimpleEntry(
         titleRes = R.string.backup__import_file,
         drawableRes = R.drawable.ic_import_file_old,
-        clickAction = { navigator.openImportBackup() },
+        clickAction = { },
     ).toItem()
 
     private fun createExportItem() = SimpleEntry(

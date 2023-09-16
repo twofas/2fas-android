@@ -1,13 +1,13 @@
 package com.twofasapp.data.services.local
 
 import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.local.model.GroupEntity
 import com.twofasapp.data.services.local.model.GroupsEntity
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.util.Collections
@@ -51,6 +51,26 @@ internal class GroupsLocalSource(
                             id = UUID.randomUUID().toString(),
                             name = name,
                             isExpanded = true,
+                            updatedAt = timeProvider.systemCurrentTime(),
+                            backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                        )
+                    ).distinctBy { it.id }
+                )
+            )
+        )
+    }
+
+    fun addGroup(group: Group) {
+        val local = getGroups()
+
+        preferences.putString(
+            KeyGroups, json.encodeToString(
+                local.copy(
+                    list = local.list.plus(
+                        GroupEntity(
+                            id = group.id,
+                            name = group.name.orEmpty(),
+                            isExpanded = group.isExpanded,
                             updatedAt = timeProvider.systemCurrentTime(),
                             backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                         )

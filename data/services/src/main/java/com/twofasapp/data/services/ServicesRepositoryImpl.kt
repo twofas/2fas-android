@@ -260,7 +260,7 @@ internal class ServicesRepositoryImpl(
         }
     }
 
-    override suspend fun addService(service: Service): Long {
+    override suspend fun addService(service: Service, triggerSync: Boolean): Long {
         return withContext(dispatchers.io) {
             // Delete duplicate, if any
             val existingService = local.getServiceBySecret(service.secret)
@@ -273,10 +273,20 @@ internal class ServicesRepositoryImpl(
             val id = local.insertService(service)
             local.addServiceToOrder(id)
 
-            syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+            if (triggerSync) {
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+            }
 
             id
         }
+    }
+
+    override suspend fun addServices(services: List<Service>) {
+        services.forEach { service ->
+            addService(service, false)
+        }
+
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
     }
 
     override fun observeAddServiceAdvancedExpanded(): Flow<Boolean> {

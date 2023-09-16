@@ -121,6 +121,49 @@ internal fun List<Service>.asBackup(): List<BackupService> {
     }
 }
 
+internal fun BackupService.asDomain(
+    serviceTypeIdFromLegacy: String?,
+    iconCollectionIdFromLegacy: String?,
+): Service {
+    val iconCollectionId = icon?.iconCollection?.id ?: iconCollectionIdFromLegacy ?: ServiceIcons.defaultCollectionId
+
+    return Service(
+        id = 0L,
+        serviceTypeId = serviceTypeId ?: serviceTypeIdFromLegacy,
+        secret = secret,
+        name = name,
+        info = otp.label,
+        authType = otp.tokenType?.let { enumValueOf<Service.AuthType>(it) } ?: Service.AuthType.TOTP,
+        link = otp.link,
+        issuer = otp.issuer,
+        period = otp.period,
+        digits = otp.digits,
+        hotpCounter = otp.counter,
+        hotpCounterTimestamp = null,
+        algorithm = otp.algorithm?.let { enumValueOf<Service.Algorithm>(it) },
+        groupId = groupId,
+        imageType = when (icon?.selected) {
+            BackupService.IconType.Brand -> Service.ImageType.IconCollection
+            BackupService.IconType.Label -> Service.ImageType.Label
+            BackupService.IconType.IconCollection -> Service.ImageType.IconCollection
+            else -> Service.ImageType.IconCollection
+        },
+        iconCollectionId = iconCollectionId,
+        iconLight = ServiceIcons.getIcon(iconCollectionId, false),
+        iconDark = ServiceIcons.getIcon(iconCollectionId, true),
+        labelText = icon?.label?.text,
+        labelColor = icon?.label?.backgroundColor?.let { enumValueOf<Service.Tint>(it) },
+        badgeColor = badge?.color?.let { enumValueOf<Service.Tint>(it) },
+        isDeleted = false,
+        updatedAt = updatedAt,
+        source = otp.source?.let { enumValueOf<Service.Source>(it) } ?: Service.Source.Manual,
+        assignedDomains = listOf(),
+        backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+        tags = emptyList(),
+        revealTimestamp = null,
+    )
+}
+
 internal fun ServicesOrderEntity.asDomain() =
     ServicesOrder(
         ids = ids,

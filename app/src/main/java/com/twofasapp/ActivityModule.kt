@@ -3,9 +3,6 @@ package com.twofasapp
 import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.features.backup.BackupContract
 import com.twofasapp.features.backup.BackupPresenter
-import com.twofasapp.features.backup.import.ImportBackupActivity
-import com.twofasapp.features.backup.import.ImportBackupContract
-import com.twofasapp.features.backup.import.ImportBackupPresenter
 import com.twofasapp.features.navigator.ActivityScopedNavigator
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.widgets.configure.WidgetSettingsActivity
@@ -31,9 +28,6 @@ val activityScopeModule = module {
 
     activityScope<BackupActivity> {
         scopedOf(::BackupPresenter) { bind<BackupContract.Presenter>() }
-    }
-    activityScope<ImportBackupActivity> {
-        scopedOf(::ImportBackupPresenter) { bind<ImportBackupContract.Presenter>() }
     }
     activityScope<WidgetSettingsActivity> {
         scopedOf(::WidgetSettingsPresenter) { bind<WidgetSettingsContract.Presenter>() }

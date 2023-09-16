@@ -6,7 +6,6 @@ import androidx.core.os.bundleOf
 import com.twofasapp.core.RequestCodes
 import com.twofasapp.extensions.startActivity
 import com.twofasapp.extensions.startActivityForResult
-import com.twofasapp.features.backup.import.ImportBackupActivity
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.prefs.model.LockMethodEntity
@@ -44,10 +43,6 @@ class ActivityScopedNavigator(
         activity.finish()
     }
 
-    override fun openMain() {
-        activity.startActivity<MainActivity>()
-    }
-
     override fun openAuthenticate(canGoBack: Boolean, requestCode: Int?) {
         when (checkLockStatus.execute()) {
             LockMethodEntity.NO_LOCK -> Unit
@@ -55,9 +50,5 @@ class ActivityScopedNavigator(
                 requestCode ?: RequestCodes.AUTH_REQUEST_CODE, "canGoBack" to canGoBack
             )
         }
-    }
-
-    override fun openImportBackup() {
-        activity.startActivity<ImportBackupActivity>()
     }
 }

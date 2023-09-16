@@ -14,13 +14,13 @@ interface BackupCipher {
     fun decrypt(
         reference: DataEncrypted,
         services: DataEncrypted,
-        password: String?,
-        keyEncoded: String?,
+        password: String? = null,
+        keyEncoded: String? = null,
     ): BackupDecrypted
 
     fun decrypt(
         dataEncrypted: DataEncrypted,
-        password: String?,
-        keyEncoded: String?,
+        password: String? = null,
+        keyEncoded: String? = null,
     ): DataDecrypted
 }

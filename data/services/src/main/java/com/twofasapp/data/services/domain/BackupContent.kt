@@ -35,4 +35,7 @@ data class BackupContent(
         val Empty
             get() = BackupContent()
     }
+
+    val isEncrypted: Boolean
+        get() = reference.isNullOrBlank().not()
 }

@@ -27,7 +27,8 @@ interface ServicesRepository {
     fun isSecretValid(secret: String): Boolean
     fun isServiceValid(link: OtpAuthLink): Boolean
     suspend fun addService(link: OtpAuthLink): Long
-    suspend fun addService(service: Service): Long
+    suspend fun addService(service: Service, triggerSync: Boolean = true): Long
+    suspend fun addServices(services: List<Service>)
     fun observeAddServiceAdvancedExpanded(): Flow<Boolean>
     fun pushAddServiceAdvancedExpanded(expanded: Boolean)
     fun setManualGuideSelectedPrefill(prefill: String?)
