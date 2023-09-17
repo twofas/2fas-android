@@ -1,12 +1,13 @@
 package com.twofasapp.designsystem.ktx
 
-import android.app.Activity
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.PersistableBundle
@@ -103,3 +104,25 @@ fun Context.toastLong(@StringRes resId: Int) = toast(resId, Toast.LENGTH_LONG)
 
 fun Context.toastShort(message: String) = toast(message, Toast.LENGTH_SHORT)
 fun Context.toastShort(@StringRes resId: Int) = toast(resId, Toast.LENGTH_SHORT)
+
+sealed interface ConnectionState {
+    data object Available : ConnectionState
+    data object Unavailable : ConnectionState
+}
+
+val Context.currentConnectivityState: ConnectionState
+    get() {
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return getCurrentConnectivityState(connectivityManager)
+    }
+
+private fun getCurrentConnectivityState(connectivityManager: ConnectivityManager): ConnectionState {
+    val connected = connectivityManager.allNetworks.any { network ->
+        connectivityManager.getNetworkCapabilities(network)
+            ?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+            ?: false
+    }
+
+    return if (connected) ConnectionState.Available else ConnectionState.Unavailable
+}

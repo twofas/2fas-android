@@ -41,7 +41,7 @@ class RestoreService(
             }
             .doOnComplete {
                 if (remoteBackupStatusPreference.get().state == com.twofasapp.prefs.model.RemoteBackupStatusEntity.State.ACTIVE) {
-                    syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+                    syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
                 }
             }
             .subscribeOn(subscribeScheduler)

@@ -1,8 +1,5 @@
 package com.twofasapp
 
-import com.twofasapp.features.backup.BackupActivity
-import com.twofasapp.features.backup.BackupContract
-import com.twofasapp.features.backup.BackupPresenter
 import com.twofasapp.features.navigator.ActivityScopedNavigator
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.widgets.configure.WidgetSettingsActivity
@@ -26,9 +23,6 @@ val activityScopeModule = module {
 
     factory<ScopedNavigator> { ActivityScopedNavigator(get(), get()) }
 
-    activityScope<BackupActivity> {
-        scopedOf(::BackupPresenter) { bind<BackupContract.Presenter>() }
-    }
     activityScope<WidgetSettingsActivity> {
         scopedOf(::WidgetSettingsPresenter) { bind<WidgetSettingsContract.Presenter>() }
     }

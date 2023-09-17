@@ -9,26 +9,9 @@ internal fun BaseActivityPresenter<*>.logLifecycle(event: String, operation: Lif
     Timber.d("[${this.javaClass.simpleName}] ${getIndicator(operation)} $event")
 }
 
-internal fun BaseActivity<*>.logLifecycle(event: String, operation: LifecycleOperation) {
-    Timber.d("[${this.javaClass.simpleName}] ${getIndicator(operation)} $event")
-}
-
 internal fun BaseComponentActivity.logLifecycle(event: String, operation: LifecycleOperation) {
     Timber.d("[${this.javaClass.simpleName}] ${getIndicator(operation)} $event")
 }
-
-internal fun BaseFragmentPresenter<*>.logLifecycle(event: String, operation: LifecycleOperation) {
-    Timber.d("[${this.javaClass.simpleName}] ${getIndicator(operation)} $event")
-}
-
-internal fun BaseFragment.logLifecycle(event: String, operation: LifecycleOperation) {
-    Timber.d("[${this.javaClass.simpleName}] ${getIndicator(operation)} $event")
-}
-
-internal fun BaseBottomSheet<*>.logLifecycle(event: String, operation: LifecycleOperation) {
-    Timber.d("[${this.javaClass.simpleName}] ${getIndicator(operation)} $event")
-}
-
 
 internal fun PresenterLifecycle.logLifecycle(tag: String, presenterTag: String, event: String, operation: LifecycleOperation) {
     Timber.d("[$tag] ${getIndicator(operation)} $event $presenterTag")

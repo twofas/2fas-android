@@ -1,5 +1,8 @@
 package com.twofasapp.data.services.domain
 
+/**
+ * Describes status of CloudSyncJob
+ */
 sealed interface CloudSyncStatus {
     data object Default : CloudSyncStatus
 
@@ -10,6 +13,5 @@ sealed interface CloudSyncStatus {
     data class Error(val trigger: CloudSyncTrigger, val error: CloudSyncError) : CloudSyncStatus {
         fun shouldShowError() = trigger != CloudSyncTrigger.RemovePassword
                 && trigger != CloudSyncTrigger.SetPassword
-                && trigger != CloudSyncTrigger.WipeData
     }
 }

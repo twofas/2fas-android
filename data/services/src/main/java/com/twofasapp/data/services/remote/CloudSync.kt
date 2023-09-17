@@ -22,7 +22,7 @@ import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import timber.log.Timber
 import java.util.Locale
 
-class CloudSyncJob(
+class CloudSync(
     private val appBuild: AppBuild,
     private val timeProvider: TimeProvider,
     private val servicesRepository: ServicesRepository,
@@ -45,7 +45,7 @@ class CloudSyncJob(
         ) : RemoteStatus
     }
 
-    suspend fun execute(trigger: CloudSyncTrigger, password: String?): CloudSyncJobResult {
+    suspend fun execute(trigger: CloudSyncTrigger, password: String?): CloudSyncResult {
 
         backupRepository.publishCloudSyncStatus(CloudSyncStatus.Syncing)
 
@@ -65,7 +65,6 @@ class CloudSyncJob(
             CloudSyncTrigger.GroupsChanged,
             CloudSyncTrigger.AppBackground,
             CloudSyncTrigger.AppStart,
-            CloudSyncTrigger.WipeData,
             CloudSyncTrigger.SetPassword,
             CloudSyncTrigger.RemovePassword -> {
                 sync(now, false, password, trigger)
@@ -83,7 +82,7 @@ class CloudSyncJob(
 
                 backupRepository.publishCloudSyncStatus(CloudSyncStatus.Synced(trigger))
 
-                CloudSyncJobResult.Success
+                CloudSyncResult.Success
             }
 
             is RemoteStatus.Error -> {
@@ -101,7 +100,7 @@ class CloudSyncJob(
                     )
                 )
 
-                CloudSyncJobResult.Failure(trigger = trigger)
+                CloudSyncResult.Failure(trigger = trigger)
             }
         }
     }
@@ -221,11 +220,9 @@ class CloudSyncJob(
                 firstConnect = isFirstConnect,
                 updatedAt = now,
                 password = if (trigger == CloudSyncTrigger.RemovePassword) null else password,
-                keyEncoded = if (trigger == CloudSyncTrigger.RemovePassword) null else remoteKey.keyEncoded,
-                saltEncoded = if (trigger == CloudSyncTrigger.RemovePassword) null else remoteKey.saltEncoded,
+                keyEncoded = if (trigger == CloudSyncTrigger.RemovePassword) null else remoteKey.keyEncoded.ifEmpty { null },
+                saltEncoded = if (trigger == CloudSyncTrigger.RemovePassword) null else remoteKey.saltEncoded.ifEmpty { null },
             )
-
-
 
             when (updateResult) {
                 is CloudBackupUpdateResult.Success -> {

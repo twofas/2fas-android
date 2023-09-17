@@ -7,9 +7,12 @@ import com.twofasapp.data.cloud.googleauth.GoogleAuth
 import com.twofasapp.data.cloud.googleauth.SignInResult
 import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.CloudSyncError
+import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.session.SessionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.update
 
@@ -28,6 +31,60 @@ internal class BackupViewModel(
                 uiState.update { it.copy(exportEnabled = services.isNotEmpty()) }
             }
         }
+
+        launchScoped {
+            combine(
+                backupRepository.observeCloudBackupStatus(),
+                backupRepository.observeCloudSyncStatus(),
+            ) { a, b -> Pair(a, b) }.collect { (cloudBackupStatus, cloudSyncStatus) ->
+
+                uiState.update {
+                    it.copy(
+                        showSyncMsg = cloudBackupStatus.active.not(),
+                        cloudSyncStatus = cloudSyncStatus,
+                    )
+                }
+
+                when (cloudSyncStatus) {
+                    is CloudSyncStatus.Default,
+                    is CloudSyncStatus.Synced -> {
+                        uiState.update {
+                            it.copy(
+                                syncChecked = cloudBackupStatus.active,
+                                syncEnabled = true,
+                                showError = false,
+                                error = null,
+                            )
+                        }
+                    }
+
+                    is CloudSyncStatus.Syncing -> {
+                        uiState.update {
+                            it.copy(
+                                syncChecked = cloudBackupStatus.active,
+                                syncEnabled = false,
+                                showError = false,
+                                error = null,
+                            )
+                        }
+                    }
+
+                    is CloudSyncStatus.Error -> {
+                        val isPasswordError = cloudSyncStatus.error == CloudSyncError.DecryptWrongPassword ||
+                                cloudSyncStatus.error == CloudSyncError.DecryptNoPassword
+
+                        uiState.update {
+                            it.copy(
+                                syncChecked = cloudBackupStatus.active && isPasswordError.not(),
+                                syncEnabled = true,
+                                showError = true,
+                                error = cloudSyncStatus.error,
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 
     fun turnOnSync() {
@@ -41,26 +98,30 @@ internal class BackupViewModel(
             googleAuth.signOut()
             backupRepository.setCloudSyncNotConfigured()
             sessionRepository.resetBackupReminder()
-            uiState.update { it.copy(syncChecked = false) }
         }
     }
 
-    fun consumeEvent(event: BackupUiEvent) {
-        uiState.update { it.copy(events = it.events.minus(event)) }
-    }
+    fun enterPassword(password: String) {
+        launchScoped {
+            val isCorrect = backupRepository.checkCloudBackupPassword(password)
 
-    private fun publishEvent(event: BackupUiEvent) {
-        uiState.update { it.copy(events = it.events.plus(event)) }
+            if (isCorrect) {
+                backupRepository.dispatchCloudSync(
+                    trigger = (uiState.value.cloudSyncStatus as? CloudSyncStatus.Error)?.trigger ?: CloudSyncTrigger.FirstConnect,
+                    password = password,
+                )
+            } else {
+                publishEvent(BackupUiEvent.ShowPasswordDialogError)
+            }
+        }
     }
 
     fun handleSignInResult(result: ActivityResult) {
         launchScoped {
             when (val signInResult = googleAuth.handleSignInResult(result)) {
                 is SignInResult.Success -> {
-                    uiState.update { it.copy(syncChecked = true) }
-
                     backupRepository.setCloudSyncActive(signInResult.email)
-                    backupRepository.dispatchSync(CloudSyncTrigger.FirstConnect)
+                    backupRepository.dispatchCloudSync(CloudSyncTrigger.FirstConnect)
                 }
 
                 is SignInResult.Canceled -> {
@@ -74,5 +135,13 @@ internal class BackupViewModel(
                 is SignInResult.Failure -> publishEvent(BackupUiEvent.SignInUnknownError(signInResult.reason.message))
             }
         }
+    }
+
+    fun consumeEvent(event: BackupUiEvent) {
+        uiState.update { it.copy(events = it.events.minus(event)) }
+    }
+
+    private fun publishEvent(event: BackupUiEvent) {
+        uiState.update { it.copy(events = it.events.plus(event).distinct()) }
     }
 }

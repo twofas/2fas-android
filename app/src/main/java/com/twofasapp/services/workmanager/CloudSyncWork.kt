@@ -5,12 +5,12 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.twofasapp.common.ktx.enumValueOrNull
 import com.twofasapp.data.services.domain.CloudSyncTrigger
-import com.twofasapp.data.services.remote.CloudSyncJob
-import com.twofasapp.data.services.remote.CloudSyncJobResult
+import com.twofasapp.data.services.remote.CloudSync
+import com.twofasapp.data.services.remote.CloudSyncResult
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class SyncBackupWork(
+class CloudSyncWork(
     appContext: Context,
     workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams), KoinComponent {
@@ -20,21 +20,19 @@ class SyncBackupWork(
         const val ArgPassword = "password"
     }
 
-    private val cloudSyncJob: CloudSyncJob by inject()
+    private val cloudSync: CloudSync by inject()
 
     override suspend fun doWork(): Result {
-        val jobResult = cloudSyncJob.execute(
+        val jobResult = cloudSync.execute(
             trigger = enumValueOrNull(inputData.getString(ArgTrigger)) ?: CloudSyncTrigger.ServicesChanged,
             password = inputData.getString(ArgPassword)
         )
 
         return when (jobResult) {
-            is CloudSyncJobResult.Success -> Result.success()
-            is CloudSyncJobResult.Failure -> {
+            is CloudSyncResult.Success -> Result.success()
+            is CloudSyncResult.Failure -> {
                 when (jobResult.trigger) {
-                    CloudSyncTrigger.AppBackground,
-                    CloudSyncTrigger.WipeData -> Result.retry()
-
+                    CloudSyncTrigger.AppBackground -> Result.retry()
                     else -> Result.success()
                 }
             }

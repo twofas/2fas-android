@@ -63,7 +63,6 @@ class App : MultiDexApplication() {
                 listOf(
                     applicationModule,
                     activityScopeModule,
-                    fragmentScopeModule,
                     useCaseModule,
 
                     remoteBackupModule,
@@ -108,14 +107,14 @@ class App : MultiDexApplication() {
             fun onMoveToBackground() {
                 Timber.d("App :: onMoveToBackground")
                 authTracker.onMovingToBackground()
-                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_BACKGROUND)
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.AppBackground)
                 pinOptionsUseCase.tmpDigits = null
             }
         })
 
         registerActivityLifecycleCallbacks(activityProvider)
 
-        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_START)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.AppStart)
 
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
 

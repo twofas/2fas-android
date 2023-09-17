@@ -9,7 +9,8 @@ import com.twofasapp.data.services.ServicesRepositoryImpl
 import com.twofasapp.data.services.local.GroupsLocalSource
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
-import com.twofasapp.data.services.remote.CloudSyncJob
+import com.twofasapp.data.services.remote.CloudSync
+import com.twofasapp.data.services.remote.WipeGoogleDriveWorkDispatcher
 import com.twofasapp.di.KoinModule
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
@@ -26,6 +27,7 @@ class DataServicesModule : KoinModule {
 
         singleOf(::BackupRepositoryImpl) { bind<BackupRepository>() }
 
-        singleOf(::CloudSyncJob)
+        singleOf(::CloudSync)
+        singleOf(::WipeGoogleDriveWorkDispatcher)
     }
 }

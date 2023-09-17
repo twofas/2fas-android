@@ -96,7 +96,7 @@ internal class ServicesRepositoryImpl(
             local.deleteService(id)
 
             if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
-                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
             }
         }
     }
@@ -163,7 +163,7 @@ internal class ServicesRepositoryImpl(
                 )
 
                 if (triggerSync) {
-                    syncBackupDispatcher.tryDispatch(trigger = SyncBackupTrigger.SERVICES_CHANGED)
+                    syncBackupDispatcher.tryDispatch(trigger = SyncBackupTrigger.ServicesChanged)
                 }
             }
         }
@@ -187,7 +187,7 @@ internal class ServicesRepositoryImpl(
             widgetActions.onServiceChanged()
 
             if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
-                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
             }
         }
     }
@@ -290,7 +290,7 @@ internal class ServicesRepositoryImpl(
             local.addServiceToOrder(id)
 
             if (triggerSync) {
-                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
             }
 
             id
@@ -302,7 +302,7 @@ internal class ServicesRepositoryImpl(
             addService(service, false)
         }
 
-        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
     }
 
     override fun observeAddServiceAdvancedExpanded(): Flow<Boolean> {

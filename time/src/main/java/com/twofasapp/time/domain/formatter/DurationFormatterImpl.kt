@@ -11,7 +11,7 @@ internal class DurationFormatterImpl(
     private val timeProvider: TimeProvider,
 ) : DurationFormatter {
 
-    private val timeUnits = TimeUnit.values().reversed()
+    private val timeUnits = TimeUnit.entries.reversed()
 
     override fun formatFromNow(): String {
         return format(timeProvider.systemCurrentTime())

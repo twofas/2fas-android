@@ -79,7 +79,7 @@ private fun ScreenContent(
                 BackupImportUiEvent.ShowFilePicker -> onShowFilePicker()
                 BackupImportUiEvent.WrongPassword -> {
                     showPasswordDialog = true
-                    passwordDialogError = strings.backupImportErrorWrongPassword
+                    passwordDialogError = strings.backupIncorrectPassword
                 }
 
                 BackupImportUiEvent.DecryptError -> {

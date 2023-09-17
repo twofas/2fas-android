@@ -140,10 +140,6 @@
             android:label="Add service by scanning QR Code"
             android:launchMode="singleTask" />
 
-        <activity
-            android:name=".features.backup.BackupActivity"
-            android:label="@string/backup__2fas_backup"
-            android:windowSoftInputMode="adjustResize" />
 
 <!--        TODO: Refactor-->
 <!--        <activity-->

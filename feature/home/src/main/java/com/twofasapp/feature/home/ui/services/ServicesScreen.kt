@@ -83,7 +83,6 @@ internal fun ServicesRoute(
     bottomBarListener: BottomBarListener,
     viewModel: ServicesViewModel = koinViewModel()
 ) {
-    val activity = LocalContext.currentActivity
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     ServicesScreen(
@@ -104,7 +103,7 @@ internal fun ServicesRoute(
         onSortChange = { viewModel.updateSort(it) },
         onSearchQueryChange = { viewModel.search(it) },
         onSearchFocusChange = { viewModel.searchFocused(it) },
-        onOpenBackupClick = { listener.openLegacyBackup(activity) },
+        onOpenBackupClick = { listener.openBackup() },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
         onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
         onRevealClick = { viewModel.reveal(it) }

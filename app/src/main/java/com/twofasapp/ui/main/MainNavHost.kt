@@ -28,7 +28,6 @@ import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.android.navigation.withArg
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.common.ModalBottomSheet
-import com.twofasapp.extensions.startActivity
 import com.twofasapp.feature.about.navigation.AboutGraph
 import com.twofasapp.feature.about.navigation.aboutNavigation
 import com.twofasapp.feature.appsettings.navigation.AppSettingsGraph
@@ -56,7 +55,6 @@ import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
 import com.twofasapp.feature.startup.navigation.startupNavigation
 import com.twofasapp.feature.trash.navigation.TrashGraph
 import com.twofasapp.feature.trash.navigation.trashNavigation
-import com.twofasapp.features.backup.BackupActivity
 import com.twofasapp.security.navigation.SecurityGraph
 import com.twofasapp.security.navigation.securityNavigation
 import com.twofasapp.security.ui.lock.LockActivity
@@ -134,10 +132,6 @@ internal fun MainNavHost(
 
                     override fun openBackup() {
                         navController.navigate(Screen.Backup.route)
-                    }
-
-                    override fun openLegacyBackup(activity: Activity) {
-                        activity.startActivity<BackupActivity>()
                     }
 
                     override fun openAppSettings() {
@@ -250,7 +244,9 @@ internal fun MainNavHost(
             }
 
             composable(Screen.BackupSettings.route) {
-                BackupSettingsRoute()
+                BackupSettingsRoute(
+                    goBack = { navController.popBackStack() }
+                )
             }
 
             composable(Screen.BackupExport.route) {

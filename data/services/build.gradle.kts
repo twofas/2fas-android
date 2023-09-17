@@ -25,5 +25,6 @@ dependencies {
     implementation(libs.kotlinCoroutines)
     implementation(libs.kotlinSerialization)
     implementation(libs.timber)
+    implementation(libs.workManager)
     implementation(project(mapOf("path" to ":prefs")))
 }

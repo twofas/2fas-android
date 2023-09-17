@@ -4,6 +4,7 @@ import android.net.Uri
 import com.twofasapp.data.services.domain.BackupContent
 import com.twofasapp.data.services.domain.BackupContentCreateResult
 import com.twofasapp.data.services.domain.CloudBackupGetResult
+import com.twofasapp.data.services.domain.CloudBackupStatus
 import com.twofasapp.data.services.domain.CloudBackupUpdateResult
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
@@ -14,7 +15,12 @@ interface BackupRepository {
     /**
      * Dispatch worker which syncs local services with cloud.
      */
-    fun dispatchSync(trigger: CloudSyncTrigger, password: String? = null)
+    fun dispatchCloudSync(trigger: CloudSyncTrigger, password: String? = null)
+
+    /**
+     * Dispatch worker which wipes data from cloud and revoke access.
+     */
+    fun dispatchWipeData()
 
     /**
      * Create BackupContent from local database.
@@ -93,15 +99,15 @@ interface BackupRepository {
     ): CloudBackupUpdateResult
 
     /**
-     * Delete BackupContent from cloud provider.
-     */
-    suspend fun deleteCloudBackup()
-
-    /**
      * Check if cloud backup password is correct.
      * @return true if correct
      */
     suspend fun checkCloudBackupPassword(password: String?): Boolean
+
+    /**
+     * Observe cloud backup status
+     */
+    fun observeCloudBackupStatus(): Flow<CloudBackupStatus>
 
     /**
      * Observe cloud sync status

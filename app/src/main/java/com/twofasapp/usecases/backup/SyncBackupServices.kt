@@ -89,21 +89,20 @@ class SyncBackupServices(
 
             val now = timeProvider.systemCurrentTime()
             val syncBackupStatus = when (params.syncBackupTrigger) {
-                SyncBackupTrigger.FIRST_CONNECT -> {
+                SyncBackupTrigger.FirstConnect -> {
                     sync(now, true, params.password, params.syncBackupTrigger)
                 }
 
-                SyncBackupTrigger.ENTER_PASSWORD -> {
+                SyncBackupTrigger.EnterPassword -> {
                     sync(now, true, params.password, params.syncBackupTrigger)
                 }
 
-                SyncBackupTrigger.SERVICES_CHANGED,
-                SyncBackupTrigger.GROUPS_CHANGED,
-                SyncBackupTrigger.APP_BACKGROUND,
-                SyncBackupTrigger.APP_START,
-                SyncBackupTrigger.WIPE_DATA,
-                SyncBackupTrigger.SET_PASSWORD,
-                SyncBackupTrigger.REMOVE_PASSWORD -> {
+                SyncBackupTrigger.ServicesChanged,
+                SyncBackupTrigger.GroupsChanged,
+                SyncBackupTrigger.AppBackground,
+                SyncBackupTrigger.AppStart,
+                SyncBackupTrigger.SetPassword,
+                SyncBackupTrigger.RemovePassword -> {
                     sync(now, false, params.password, params.syncBackupTrigger)
                 }
             }
@@ -255,8 +254,8 @@ class SyncBackupServices(
                 UpdateRemoteBackup.Params(
                     isFirstConnect = isFirstConnect,
                     updatedAt = now,
-                    password = if (trigger == SyncBackupTrigger.REMOVE_PASSWORD) null else password,
-                    remoteBackupKey = if (trigger == SyncBackupTrigger.REMOVE_PASSWORD) null else remoteBackupKeyPreference.get(),
+                    password = if (trigger == SyncBackupTrigger.RemovePassword) null else password,
+                    remoteBackupKey = if (trigger == SyncBackupTrigger.RemovePassword) null else remoteBackupKeyPreference.get(),
                 )
             ).blockingGet()
 

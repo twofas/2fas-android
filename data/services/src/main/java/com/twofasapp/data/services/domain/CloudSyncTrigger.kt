@@ -9,5 +9,4 @@ enum class CloudSyncTrigger {
     EnterPassword,
     SetPassword,
     RemovePassword,
-    WipeData,
 }

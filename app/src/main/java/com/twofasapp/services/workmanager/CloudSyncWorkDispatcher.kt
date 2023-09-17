@@ -14,7 +14,7 @@ import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import timber.log.Timber
 
-class SyncBackupWorkDispatcherImpl(
+class CloudSyncWorkDispatcher(
     private val context: Context,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
 ) : SyncBackupWorkDispatcher {
@@ -24,10 +24,10 @@ class SyncBackupWorkDispatcherImpl(
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
 
-        val request = OneTimeWorkRequestBuilder<SyncBackupWork>()
+        val request = OneTimeWorkRequestBuilder<CloudSyncWork>()
             .setInputData(Data.Builder().apply {
-                putString(SyncBackupWork.ArgTrigger, trigger.name)
-                password?.let { putString(SyncBackupWork.ArgPassword, it) }
+                putString(CloudSyncWork.ArgTrigger, trigger.name)
+                password?.let { putString(CloudSyncWork.ArgPassword, it) }
             }.build())
             .setConstraints(constraints)
             .build()

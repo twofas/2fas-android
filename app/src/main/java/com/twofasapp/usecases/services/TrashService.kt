@@ -53,7 +53,7 @@ class TrashService(
                             timeProvider.systemCurrentTime()
                         )
                     )
-                    syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
+                    syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
                 }
             }
             .subscribeOn(subscribeScheduler)

@@ -14,6 +14,7 @@ import com.twofasapp.data.cloud.googledrive.GoogleDriveResult
 import com.twofasapp.data.services.domain.BackupContent
 import com.twofasapp.data.services.domain.BackupContentCreateResult
 import com.twofasapp.data.services.domain.CloudBackupGetResult
+import com.twofasapp.data.services.domain.CloudBackupStatus
 import com.twofasapp.data.services.domain.CloudBackupUpdateResult
 import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
@@ -23,6 +24,7 @@ import com.twofasapp.data.services.exceptions.DecryptWrongPassword
 import com.twofasapp.data.services.exceptions.FileTooBigException
 import com.twofasapp.data.services.mapper.asBackup
 import com.twofasapp.data.services.mapper.asDomain
+import com.twofasapp.data.services.remote.WipeGoogleDriveWorkDispatcher
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.model.RemoteBackupKey
@@ -30,9 +32,12 @@ import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.model.isSet
 import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -51,27 +56,36 @@ class BackupRepositoryImpl(
     private val syncBackupWorkDispatcher: SyncBackupWorkDispatcher,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
     private val remoteBackupKeyPreference: RemoteBackupKeyPreference,
+    private val wipeGoogleDriveWorkDispatcher: WipeGoogleDriveWorkDispatcher,
     private val googleDrive: GoogleDrive,
 ) : BackupRepository {
 
     private val cloudSyncStatusFlow = MutableStateFlow<CloudSyncStatus>(CloudSyncStatus.Default)
 
-
-    override fun dispatchSync(trigger: CloudSyncTrigger, password: String?) {
+    override fun dispatchCloudSync(trigger: CloudSyncTrigger, password: String?) {
         syncBackupWorkDispatcher.tryDispatch(
             trigger = when (trigger) {
-                CloudSyncTrigger.FirstConnect -> com.twofasapp.backup.domain.SyncBackupTrigger.FIRST_CONNECT
-                CloudSyncTrigger.ServicesChanged -> com.twofasapp.backup.domain.SyncBackupTrigger.SERVICES_CHANGED
-                CloudSyncTrigger.GroupsChanged -> com.twofasapp.backup.domain.SyncBackupTrigger.GROUPS_CHANGED
-                CloudSyncTrigger.AppStart -> com.twofasapp.backup.domain.SyncBackupTrigger.APP_START
-                CloudSyncTrigger.AppBackground -> com.twofasapp.backup.domain.SyncBackupTrigger.APP_BACKGROUND
-                CloudSyncTrigger.EnterPassword -> com.twofasapp.backup.domain.SyncBackupTrigger.ENTER_PASSWORD
-                CloudSyncTrigger.SetPassword -> com.twofasapp.backup.domain.SyncBackupTrigger.SET_PASSWORD
-                CloudSyncTrigger.RemovePassword -> com.twofasapp.backup.domain.SyncBackupTrigger.REMOVE_PASSWORD
-                CloudSyncTrigger.WipeData -> com.twofasapp.backup.domain.SyncBackupTrigger.WIPE_DATA
+                // TODO: Refactor - remove old enum
+                CloudSyncTrigger.FirstConnect -> com.twofasapp.backup.domain.SyncBackupTrigger.FirstConnect
+                CloudSyncTrigger.ServicesChanged -> com.twofasapp.backup.domain.SyncBackupTrigger.ServicesChanged
+                CloudSyncTrigger.GroupsChanged -> com.twofasapp.backup.domain.SyncBackupTrigger.GroupsChanged
+                CloudSyncTrigger.AppStart -> com.twofasapp.backup.domain.SyncBackupTrigger.AppStart
+                CloudSyncTrigger.AppBackground -> com.twofasapp.backup.domain.SyncBackupTrigger.AppBackground
+                CloudSyncTrigger.EnterPassword -> com.twofasapp.backup.domain.SyncBackupTrigger.EnterPassword
+                CloudSyncTrigger.SetPassword -> com.twofasapp.backup.domain.SyncBackupTrigger.SetPassword
+                CloudSyncTrigger.RemovePassword -> com.twofasapp.backup.domain.SyncBackupTrigger.RemovePassword
             },
             password = password,
         )
+    }
+
+    override fun dispatchWipeData() {
+        GlobalScope.launch {
+            remoteBackupStatusPreference.put(RemoteBackupStatusEntity(schemaVersion = BackupContent.CurrentSchema))
+            remoteBackupStatusPreference.delete()
+            remoteBackupKeyPreference.delete()
+            wipeGoogleDriveWorkDispatcher.dispatch()
+        }
     }
 
     override suspend fun createBackupContent(
@@ -338,13 +352,10 @@ class BackupRepositoryImpl(
                 }
 
             } catch (e: Exception) {
+                e.printStackTrace()
                 CloudBackupUpdateResult.Failure(error = CloudSyncError.EncryptUnknownFailure)
             }
         }
-    }
-
-    override suspend fun deleteCloudBackup() {
-        googleDrive.deleteBackupFile()
     }
 
     override suspend fun checkCloudBackupPassword(password: String?): Boolean {
@@ -373,6 +384,17 @@ class BackupRepositoryImpl(
         } catch (e: Exception) {
             e.printStackTrace()
             false
+        }
+    }
+
+    override fun observeCloudBackupStatus(): Flow<CloudBackupStatus> {
+        return remoteBackupStatusPreference.flow(emitOnSubscribe = true).map {
+            CloudBackupStatus(
+                active = it.state == RemoteBackupStatusEntity.State.ACTIVE,
+                account = it.account,
+                lastSyncMillis = it.lastSyncMillis,
+                reference = it.reference,
+            )
         }
     }
 

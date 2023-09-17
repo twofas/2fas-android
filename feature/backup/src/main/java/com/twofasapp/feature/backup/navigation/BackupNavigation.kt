@@ -21,8 +21,9 @@ fun BackupRoute(
 
 @Composable
 fun BackupSettingsRoute(
+    goBack: () -> Unit,
 ) {
-    BackupSettingsScreen()
+    BackupSettingsScreen(goBack = goBack)
 }
 
 @Composable

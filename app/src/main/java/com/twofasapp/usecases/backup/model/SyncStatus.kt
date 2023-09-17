@@ -15,8 +15,7 @@ sealed class SyncStatus {
         val trigger: SyncBackupTrigger,
     ) : SyncStatus() {
 
-        fun shouldShowError() = trigger != SyncBackupTrigger.REMOVE_PASSWORD
-                && trigger != SyncBackupTrigger.SET_PASSWORD
-                && trigger != SyncBackupTrigger.WIPE_DATA
+        fun shouldShowError() = trigger != SyncBackupTrigger.RemovePassword
+                && trigger != SyncBackupTrigger.SetPassword
     }
 }

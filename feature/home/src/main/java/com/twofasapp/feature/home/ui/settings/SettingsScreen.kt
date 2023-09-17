@@ -64,11 +64,6 @@ private fun SettingsScreen(
                 .background(TwTheme.color.background)
                 .padding(padding)
         ) {
-            item {
-                SettingsLink(title = "Legacy Backup", icon = TwIcons.CloudUpload) {
-                    listener.openLegacyBackup(activity)
-                }
-            }
 
             item {
                 SettingsLink(title = TwLocale.strings.settingsBackup, icon = TwIcons.CloudUpload) {
