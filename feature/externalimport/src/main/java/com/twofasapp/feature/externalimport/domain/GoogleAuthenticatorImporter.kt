@@ -2,9 +2,8 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.net.Uri
 import com.twofasapp.GoogleAuthenticatorProto.MigrationPayload
-import com.twofasapp.core.encoding.decodeBase64ToByteArray
+import com.twofasapp.common.ktx.decodeBase64ToByteArray
 import com.twofasapp.extensions.doNothing
-import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.domain.ConvertOtpLinkToService
 import org.apache.commons.codec.binary.Base32

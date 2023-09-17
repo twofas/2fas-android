@@ -1,5 +1,6 @@
 package com.twofasapp.feature.externalimport.ui.googleauthenticator
 
+import android.Manifest
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,34 +16,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.twofasapp.design.compose.dialogs.RationaleDialog
+import com.twofasapp.designsystem.common.RequestPermission
 import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.feature.externalimport.ui.common.ImportDescription
-import com.twofasapp.permissions.CameraPermissionRequestFlow
-import com.twofasapp.permissions.PermissionStatus
+import com.twofasapp.locale.TwLocale
 import com.twofasapp.resources.R
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.take
-import org.koin.androidx.compose.get
 
 @Composable
 internal fun GoogleAuthenticatorRoute(
     onScanClick: (Boolean) -> Unit,
-    cameraPermissionRequest: CameraPermissionRequestFlow = get(),
 ) {
-    var showRationaleDialog by remember { mutableStateOf(false) }
-    val coroutineScope = rememberCoroutineScope()
-
+    var askForPermission by remember { mutableStateOf(false) }
     Scaffold(
         topBar = { TwTopAppBar(stringResource(id = R.string.externalimport_google_authenticator)) }
     ) { padding ->
@@ -70,22 +62,12 @@ internal fun GoogleAuthenticatorRoute(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                ImportDescription(text = stringResource(id = R.string.introduction__google_authenticator_import_process),)
+                ImportDescription(text = stringResource(id = R.string.introduction__google_authenticator_import_process))
             }
 
             TwButton(
                 text = stringResource(id = R.string.commons__scan_qr_code),
-                onClick = {
-                    cameraPermissionRequest.execute()
-                        .take(1)
-                        .onEach {
-                            when (it) {
-                                PermissionStatus.GRANTED -> onScanClick(false)
-                                PermissionStatus.DENIED -> Unit
-                                PermissionStatus.DENIED_NEVER_ASK -> showRationaleDialog = true
-                            }
-                        }.launchIn(coroutineScope)
-                },
+                onClick = { askForPermission = true },
                 modifier = Modifier
                     .height(48.dp)
                     .align(CenterHorizontally)
@@ -93,17 +75,7 @@ internal fun GoogleAuthenticatorRoute(
 
             TwTextButton(
                 text = stringResource(id = R.string.introduction__choose_qr_code),
-                onClick = {
-                    cameraPermissionRequest.execute()
-                        .take(1)
-                        .onEach {
-                            when (it) {
-                                PermissionStatus.GRANTED -> onScanClick(true)
-                                PermissionStatus.DENIED -> Unit
-                                PermissionStatus.DENIED_NEVER_ASK -> showRationaleDialog = true
-                            }
-                        }.launchIn(coroutineScope)
-                },
+                onClick = { onScanClick(true) },
                 modifier = Modifier
                     .padding(bottom = 16.dp, top = 8.dp)
                     .height(48.dp)
@@ -111,11 +83,16 @@ internal fun GoogleAuthenticatorRoute(
             )
         }
 
-        if (showRationaleDialog) {
-            RationaleDialog(
-                title = stringResource(id = R.string.permissions__camera_permission),
-                text = stringResource(id = R.string.permissions__camera_permission_description),
-                onDismiss = { showRationaleDialog = false }
+        if (askForPermission) {
+            RequestPermission(
+                permission = Manifest.permission.CAMERA,
+                onGranted = {
+                    askForPermission = false
+                    onScanClick(false)
+                },
+                onDismissRequest = { askForPermission = false },
+                rationaleTitle = TwLocale.strings.permissionCameraTitle,
+                rationaleText = TwLocale.strings.permissionCameraBody,
             )
         }
     }

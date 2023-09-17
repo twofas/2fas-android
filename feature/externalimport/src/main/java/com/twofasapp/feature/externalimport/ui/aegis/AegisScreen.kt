@@ -3,7 +3,7 @@ package com.twofasapp.feature.externalimport.ui.aegis
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import com.twofasapp.core.encoding.encodeBase64ToString
+import com.twofasapp.common.ktx.encodeBase64ToString
 import com.twofasapp.feature.externalimport.ui.common.ImportDescription
 import com.twofasapp.feature.externalimport.ui.common.ImportFilePickerButton
 import com.twofasapp.feature.externalimport.ui.common.ImportFileScaffold

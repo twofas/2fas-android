@@ -1,9 +1,7 @@
 package com.twofasapp.di
 
-import com.twofasapp.analytics.AnalyticsCore
 import com.twofasapp.android.biometric.BiometricKeyProvider
 import com.twofasapp.biometric.BiometricKeyProviderImpl
-import com.twofasapp.common.analytics.Analytics
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.environment.AppBuildImpl
@@ -15,7 +13,6 @@ import org.koin.dsl.module
 
 class AppModule : KoinModule {
     override fun provide() = module {
-        singleOf(::AnalyticsCore) { bind<Analytics>() }
         single {
             Json {
                 ignoreUnknownKeys = true

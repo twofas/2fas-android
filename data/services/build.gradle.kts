@@ -18,7 +18,6 @@ dependencies {
 
     implementation(project(":parsers"))
     implementation(project(":widgets:domain"))
-    implementation(project(":backup:domain"))
     implementation(project(":time:domain"))
 
     implementation(libs.bundles.room)

@@ -1,10 +1,11 @@
 package com.twofasapp.widgets.configure
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.mikepenz.fastadapter.binding.ModelAbstractBindingItem
 import com.twofasapp.databinding.ItemWidgetSettingsServiceBinding
-import com.twofasapp.extensions.makeGoneIfEmpty
 import com.twofasapp.resources.R
 
 class WidgetSettingsServiceItem(model: WidgetSettingsService) :
@@ -26,4 +27,7 @@ class WidgetSettingsServiceItem(model: WidgetSettingsService) :
             root.setOnClickListener { model.switchAction?.invoke(model, switchButton.isChecked.not()) }
         }
     }
+
+    private fun TextView.makeGoneIfEmpty() = if (text.isEmpty()) visibility = View.GONE else visibility = View.VISIBLE
+
 }

@@ -3,7 +3,7 @@ package com.twofasapp.feature.externalimport.ui.scan
 import android.net.Uri
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
+import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.qrscanner.domain.ScanQr
 import com.twofasapp.resources.R
@@ -22,7 +22,7 @@ internal class ImportScanViewModel(
     val uiState = _uiState.asStateFlow()
 
     init {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
 
             scanQr.observeResultFlow().collect {
                 try {

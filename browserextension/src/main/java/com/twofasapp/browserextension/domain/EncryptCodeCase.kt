@@ -1,7 +1,7 @@
 package com.twofasapp.browserextension.domain
 
-import com.twofasapp.core.encoding.decodeBase64ToByteArray
-import com.twofasapp.core.encoding.encodeBase64ToString
+import com.twofasapp.common.ktx.decodeBase64ToByteArray
+import com.twofasapp.common.ktx.encodeBase64ToString
 import java.security.KeyFactory
 import java.security.spec.MGF1ParameterSpec
 import java.security.spec.X509EncodedKeySpec
@@ -23,7 +23,11 @@ class EncryptCodeCase {
         val cipher: Cipher = Cipher.getInstance("RSA/ECB/OAEPPadding")
             .apply {
                 // To use SHA-256 the main digest and SHA-1 as the MGF1 digest
-                init(Cipher.ENCRYPT_MODE, publicKey, OAEPParameterSpec("SHA-512", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT))
+                init(
+                    Cipher.ENCRYPT_MODE,
+                    publicKey,
+                    OAEPParameterSpec("SHA-512", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT)
+                )
                 // To use SHA-512 for both digests
                 // init(Cipher.ENCRYPT_MODE, publicKey, OAEPParameterSpec("SHA-510", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT))
             }

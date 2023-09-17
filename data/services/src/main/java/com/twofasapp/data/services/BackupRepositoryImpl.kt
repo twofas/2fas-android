@@ -2,7 +2,6 @@ package com.twofasapp.data.services
 
 import android.app.Application
 import android.net.Uri
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.cipher.backup.BackupCipher
 import com.twofasapp.cipher.backup.DataEncrypted
 import com.twofasapp.common.coroutines.Dispatchers
@@ -24,6 +23,7 @@ import com.twofasapp.data.services.exceptions.DecryptWrongPassword
 import com.twofasapp.data.services.exceptions.FileTooBigException
 import com.twofasapp.data.services.mapper.asBackup
 import com.twofasapp.data.services.mapper.asDomain
+import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.data.services.remote.WipeGoogleDriveWorkDispatcher
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
@@ -53,7 +53,7 @@ class BackupRepositoryImpl(
     private val servicesRepository: ServicesRepository,
     private val groupsRepository: GroupsRepository,
     private val backupCipher: BackupCipher,
-    private val syncBackupWorkDispatcher: SyncBackupWorkDispatcher,
+    private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
     private val remoteBackupKeyPreference: RemoteBackupKeyPreference,
     private val wipeGoogleDriveWorkDispatcher: WipeGoogleDriveWorkDispatcher,
@@ -63,18 +63,8 @@ class BackupRepositoryImpl(
     private val cloudSyncStatusFlow = MutableStateFlow<CloudSyncStatus>(CloudSyncStatus.Default)
 
     override fun dispatchCloudSync(trigger: CloudSyncTrigger, password: String?) {
-        syncBackupWorkDispatcher.tryDispatch(
-            trigger = when (trigger) {
-                // TODO: Refactor - remove old enum
-                CloudSyncTrigger.FirstConnect -> com.twofasapp.backup.domain.SyncBackupTrigger.FirstConnect
-                CloudSyncTrigger.ServicesChanged -> com.twofasapp.backup.domain.SyncBackupTrigger.ServicesChanged
-                CloudSyncTrigger.GroupsChanged -> com.twofasapp.backup.domain.SyncBackupTrigger.GroupsChanged
-                CloudSyncTrigger.AppStart -> com.twofasapp.backup.domain.SyncBackupTrigger.AppStart
-                CloudSyncTrigger.AppBackground -> com.twofasapp.backup.domain.SyncBackupTrigger.AppBackground
-                CloudSyncTrigger.EnterPassword -> com.twofasapp.backup.domain.SyncBackupTrigger.EnterPassword
-                CloudSyncTrigger.SetPassword -> com.twofasapp.backup.domain.SyncBackupTrigger.SetPassword
-                CloudSyncTrigger.RemovePassword -> com.twofasapp.backup.domain.SyncBackupTrigger.RemovePassword
-            },
+        cloudSyncWorkDispatcher.tryDispatch(
+            trigger = trigger,
             password = password,
         )
     }

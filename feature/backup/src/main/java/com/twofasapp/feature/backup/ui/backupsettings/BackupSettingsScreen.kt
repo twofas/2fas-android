@@ -227,7 +227,6 @@ private fun BackupSettingsScreenContent(
                     showSetPasswordDialog = false
                     showPasswordError = false
                 },
-                confirmRequired = false,
                 title = strings.backupSetCloudPasswordTitle,
                 body = strings.backupSetCloudPasswordMsg,
                 positive = strings.commonContinue,

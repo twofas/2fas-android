@@ -2,9 +2,9 @@ package com.twofasapp.browserextension.ui.pairing.progress
 
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.browserextension.domain.PairBrowserCase
 import com.twofasapp.browserextension.domain.RegisterMobileDeviceCase
+import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.data.browserext.remote.exception.BrowserAlreadyPairedException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,7 +22,7 @@ class PairingProgressViewModel(
     val uiState = _uiState.asStateFlow()
 
     fun pairBrowser(extensionId: String) {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             registerMobileDeviceCase()
 
             try {

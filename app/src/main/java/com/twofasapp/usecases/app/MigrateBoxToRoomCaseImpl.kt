@@ -9,7 +9,7 @@ import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.usecase.MigratedToRoomPreference
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.StoreServicesOrder
-import com.twofasapp.start.domain.MigrateBoxToRoomCase
+import com.twofasapp.usecases.MigrateBoxToRoomCase
 
 class MigrateBoxToRoomCaseImpl(
     private val context: Context,

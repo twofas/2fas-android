@@ -1,6 +1,7 @@
 package com.twofasapp.feature.backup.ui.backup
 
 import android.content.Intent
+import com.twofasapp.data.services.domain.CloudBackupStatus
 import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
 
@@ -11,6 +12,7 @@ internal data class BackupUiState(
     val showError: Boolean = false,
     val error: CloudSyncError? = null,
     val exportEnabled: Boolean = false,
+    val cloudBackupStatus: CloudBackupStatus? = null,
     val cloudSyncStatus: CloudSyncStatus = CloudSyncStatus.Default,
     val events: List<BackupUiEvent> = emptyList(),
 )

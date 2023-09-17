@@ -18,7 +18,6 @@ dependencies {
     implementation(project(":core:android"))
     implementation(project(":core:locale"))
     implementation(project(":core:designsystem"))
-    implementation(project(":backup:domain"))
     implementation(project(":feature:qrscan"))
     implementation(project(":parsers"))
     implementation(project(":resources"))

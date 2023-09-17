@@ -1,11 +1,11 @@
 package com.twofasapp.feature.externalimport.ui.result
 
 import androidx.lifecycle.viewModelScope
-import com.twofasapp.backup.domain.SyncBackupTrigger
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
-import com.twofasapp.core.encoding.decodeBase64
+import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.ktx.decodeBase64
+import com.twofasapp.data.services.domain.CloudSyncTrigger
+import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.feature.externalimport.domain.AegisImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
 import com.twofasapp.feature.externalimport.domain.ExternalImport
@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 internal class ImportResultViewModel(
     private val dispatchers: Dispatchers,
     private val addServiceCase: AddServiceCase,
-    private val syncBackupDispatcher: SyncBackupWorkDispatcher,
+    private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
     private val googleAuthenticatorImporter: GoogleAuthenticatorImporter,
     private val aegisImporter: AegisImporter,
     private val raivoImporter: RaivoImporter,
@@ -40,7 +40,7 @@ internal class ImportResultViewModel(
     val uiState = _uiState.asStateFlow()
 
     fun import(type: ImportType, content: String) {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             val result = when (type) {
                 ImportType.GoogleAuthenticator -> googleAuthenticatorImporter.read(content.decodeBase64())
                 ImportType.Aegis -> aegisImporter.read(content.decodeBase64())
@@ -85,11 +85,11 @@ internal class ImportResultViewModel(
     fun saveServices() {
         if (uiState.value.importResult is ExternalImport.Success) {
 
-            viewModelScope.launch(dispatchers.io()) {
+            viewModelScope.launch(dispatchers.io) {
                 (uiState.value.importResult as ExternalImport.Success).servicesToImport.asFlow()
                     .onEach { addServiceCase(it.toService()) }
                     .onCompletion {
-                        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
+                        cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
                         _uiState.update { it.copy(finishSuccess = true) }
                     }
                     .collect()

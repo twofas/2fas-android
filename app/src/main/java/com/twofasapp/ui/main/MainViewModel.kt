@@ -12,7 +12,7 @@ import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.services.domain.ConvertOtpLinkToService
-import com.twofasapp.start.domain.DeeplinkHandler
+import com.twofasapp.DeeplinkHandler
 import com.twofasapp.usecases.services.AddService
 import com.twofasapp.usecases.services.CheckServiceExists
 import com.twofasapp.usecases.totp.ParseOtpAuthLink

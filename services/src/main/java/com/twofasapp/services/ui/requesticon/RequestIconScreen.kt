@@ -35,6 +35,7 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -42,7 +43,6 @@ import androidx.compose.ui.unit.dp
 import androidx.core.app.ShareCompat
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.extensions.openBrowserApp
 import com.twofasapp.resources.R
 
 @Composable
@@ -50,6 +50,8 @@ internal fun RequestIconScreen() {
     val activity = LocalContext.current as? Activity
     val shareText =
         stringResource(id = R.string.tokens__request_icon_provider_message)
+
+    val uriHandler = LocalUriHandler.current
 
     Scaffold(
         topBar = { TwTopAppBar(titleText = stringResource(id = R.string.customization_request_icon)) }
@@ -83,7 +85,7 @@ internal fun RequestIconScreen() {
             Row(modifier = Modifier
                 .align(CenterHorizontally)
                 .clickable {
-                    activity?.openBrowserApp(url = "https://discord.gg/q4cP6qh2g5")
+                    uriHandler.openUri("https://discord.gg/q4cP6qh2g5")
                 }) {
                 Text(
                     text = stringResource(id = R.string.tokens__request_icon_social_link),

@@ -3,7 +3,7 @@ package com.twofasapp.security.ui.setuppin
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
+import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.EditPinCase
 import com.twofasapp.security.domain.EditPinOptionsCase
@@ -34,7 +34,7 @@ class SetupPinViewModel(
     private var enteredPin = ""
 
     init {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             combine(
                 observePinOptionsCase(),
                 tmpPinDigitsFlow,
@@ -49,7 +49,7 @@ class SetupPinViewModel(
         if (enteredPin.isBlank()) {
             enteredPin = pin
 
-            viewModelScope.launch(dispatchers.io()) {
+            viewModelScope.launch(dispatchers.io) {
                 delay(200)
                 _uiState.update { state ->
                     state.copy(
@@ -66,7 +66,7 @@ class SetupPinViewModel(
 
     private fun confirmPinEntered(pin: String) {
         if (pin == enteredPin) {
-            viewModelScope.launch(dispatchers.io()) {
+            viewModelScope.launch(dispatchers.io) {
                 _uiState.update { it.copy(pinScreenState = PinScreenState.Verifying) }
 
                 editPinCase.invoke(enteredPin)
@@ -85,7 +85,7 @@ class SetupPinViewModel(
             }
 
         } else {
-            viewModelScope.launch(dispatchers.io()) {
+            viewModelScope.launch(dispatchers.io) {
                 delay(200)
                 _uiState.update {
                     it.copy(

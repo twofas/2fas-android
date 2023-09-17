@@ -3,7 +3,7 @@ package com.twofasapp.browserextension.domain
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import com.twofasapp.common.environment.AppBuild
-import com.twofasapp.core.encoding.encodeBase64ToString
+import com.twofasapp.common.ktx.encodeBase64ToString
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.push.domain.GetFcmTokenCase

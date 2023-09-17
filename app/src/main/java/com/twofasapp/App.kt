@@ -8,16 +8,15 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.twofasapp.backup.domain.SyncBackupTrigger
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.base.ActivityProvider
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.browserextension.BrowserExtensionModule
-import com.twofasapp.common.analytics.Analytics
+import com.twofasapp.data.services.domain.CloudSyncTrigger
+import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.di.Modules
+import com.twofasapp.di.StartModule
 import com.twofasapp.parsers.ParsersModule
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.permissions.PermissionsModule
 import com.twofasapp.persistence.PersistenceModule
 import com.twofasapp.prefs.PreferencesEncryptedModule
 import com.twofasapp.prefs.PreferencesPlainModule
@@ -27,9 +26,6 @@ import com.twofasapp.qrscanner.QrScannerModule
 import com.twofasapp.security.SecurityModule
 import com.twofasapp.serialization.SerializationModule
 import com.twofasapp.services.ServicesModule
-import com.twofasapp.services.backup.remoteBackupModule
-import com.twofasapp.services.backupcipher.backupCipherModule
-import com.twofasapp.start.StartModule
 import com.twofasapp.time.TimeModule
 import com.twofasapp.usecases.services.PinOptionsUseCase
 import net.sqlcipher.database.SQLiteDatabase
@@ -41,11 +37,10 @@ import timber.log.Timber
 class App : MultiDexApplication() {
 
     private val authTracker: AuthTracker by inject()
-    private val syncBackupDispatcher: SyncBackupWorkDispatcher by inject()
+    private val syncBackupDispatcher: CloudSyncWorkDispatcher by inject()
     private val pinOptionsUseCase: PinOptionsUseCase by inject()
     private val activityProvider: ActivityProvider by inject()
     private val sendCrashLogsPreference: SendCrashLogsPreference by inject()
-    private val analytics: Analytics by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -53,7 +48,7 @@ class App : MultiDexApplication() {
         try {
             SupportedServices.load(this@App)
         } catch (e: Exception) {
-            analytics.captureException(e)
+            e.printStackTrace()
         }
 
         startKoin {
@@ -64,16 +59,12 @@ class App : MultiDexApplication() {
                     applicationModule,
                     activityScopeModule,
                     useCaseModule,
-
-                    remoteBackupModule,
-                    backupCipherModule,
                 ).plus(
                     listOf(
                         StartModule(),
                         SerializationModule(),
                         TimeModule(),
                         ParsersModule(),
-                        PermissionsModule(),
                         PreferencesPlainModule(),
                         PreferencesEncryptedModule(),
                         BrowserExtensionModule(),
@@ -107,14 +98,14 @@ class App : MultiDexApplication() {
             fun onMoveToBackground() {
                 Timber.d("App :: onMoveToBackground")
                 authTracker.onMovingToBackground()
-                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.AppBackground)
+                syncBackupDispatcher.tryDispatch(CloudSyncTrigger.AppBackground)
                 pinOptionsUseCase.tmpDigits = null
             }
         })
 
         registerActivityLifecycleCallbacks(activityProvider)
 
-        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.AppStart)
+        syncBackupDispatcher.tryDispatch(CloudSyncTrigger.AppStart)
 
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
 

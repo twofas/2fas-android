@@ -28,7 +28,6 @@ dependencies {
     implementation(project(":parsers"))
     implementation(project(":resources"))
     implementation(project(":design"))
-    implementation(project(":permissions"))
     implementation(project(":push"))
     implementation(project(":persistence"))
     implementation(project(":qrscanner"))
@@ -36,15 +35,10 @@ dependencies {
     implementation(project(":services"))
     implementation(project(":services:domain"))
     implementation(project(":widgets:domain"))
-    
-    implementation(project(":backup"))
-    implementation(project(":core"))
+
     implementation(project(":time"))
-    implementation(project(":backup:domain"))
     implementation(project(":security"))
     implementation(project(":security:domain"))
-    implementation(project(":start"))
-    implementation(project(":start:domain"))
     implementation(project(":time:domain"))
 
     implementation(project(":core:common"))

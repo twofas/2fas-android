@@ -14,10 +14,8 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:locale"))
-    implementation(project(":core"))
     implementation(project(":design"))
     implementation(project(":extensions"))
-    implementation(project(":permissions"))
     implementation(project(":prefs"))
     implementation(project(":resources"))
     implementation(project(":persistence"))
@@ -29,7 +27,6 @@ dependencies {
     implementation(project(":time:domain"))
     
     implementation(project(":parsers"))
-    implementation(project(":backup:domain"))
     implementation(project(":spanner"))
     implementation(project(":data:services"))
     implementation(project(":data:session"))

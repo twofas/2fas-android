@@ -2,9 +2,9 @@ package com.twofasapp.browserextension.ui.request
 
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
 import com.twofasapp.browserextension.notification.DomainMatcher
+import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.services.domain.AssignServiceDomainCase
 import com.twofasapp.services.domain.GetServicesCase
@@ -29,7 +29,7 @@ internal class BrowserExtensionRequestViewModel(
         domain: String?,
     ) {
 
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             val browsers = observePairedBrowsersCase().first()
             val services = getServicesCase()
             val matchedServices = domain?.let { DomainMatcher.findServicesMatchingDomain(services, domain) } ?: emptyList()
@@ -52,7 +52,7 @@ internal class BrowserExtensionRequestViewModel(
         domain: String,
         onFinish: () -> Unit
     ) {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             if (uiState.value.saveMyChoice) {
                 assignServiceDomainCase(service, domain)
             }

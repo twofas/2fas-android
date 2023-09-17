@@ -2,7 +2,7 @@ package com.twofasapp.security.ui.lock
 
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
+import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.EditInvalidPinStatusCase
@@ -33,7 +33,7 @@ internal class LockViewModel(
     val uiState = MutableStateFlow(LockUiState())
 
     init {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             combine(
                 observeLockMethodCase.invoke(),
                 observePinOptionsCase.invoke(),
@@ -53,7 +53,7 @@ internal class LockViewModel(
     }
 
     fun pinEntered(pin: String) {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             uiState.update { it.copy(pinScreenState = PinScreenState.Verifying) }
 
             if (pin == getPinCase()) {
@@ -78,7 +78,7 @@ internal class LockViewModel(
     }
 
     fun biometricsVerified() {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             editInvalidPinStatusCase.reset()
             uiState.update { it.postEvent(LockUiState.Event.Finish) }
         }
@@ -89,7 +89,7 @@ internal class LockViewModel(
     }
 
     fun refreshBlockTimeLeft() {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             uiState.update { it.copy(invalidPinStatus = observeInvalidPinStatusCase().first()) }
         }
     }

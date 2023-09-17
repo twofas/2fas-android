@@ -1,15 +1,15 @@
 package com.twofasapp.data.services
 
-import com.twofasapp.backup.domain.SyncBackupTrigger
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.tickerFlow
 import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
 import com.twofasapp.data.services.otp.ServiceParser
+import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.RecentlyDeleted
@@ -33,7 +33,7 @@ internal class ServicesRepositoryImpl(
     private val codeGenerator: ServiceCodeGenerator,
     private val local: ServicesLocalSource,
     private val widgetActions: WidgetActions,
-    private val syncBackupDispatcher: SyncBackupWorkDispatcher,
+    private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
     private val recentlyDeletedPreference: RecentlyDeletedPreference,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
     private val recalculateTimeDeltaCase: RecalculateTimeDeltaCase,
@@ -96,7 +96,7 @@ internal class ServicesRepositoryImpl(
             local.deleteService(id)
 
             if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
-                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
+                cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
             }
         }
     }
@@ -163,7 +163,7 @@ internal class ServicesRepositoryImpl(
                 )
 
                 if (triggerSync) {
-                    syncBackupDispatcher.tryDispatch(trigger = SyncBackupTrigger.ServicesChanged)
+                    cloudSyncWorkDispatcher.tryDispatch(trigger = CloudSyncTrigger.ServicesChanged)
                 }
             }
         }
@@ -187,7 +187,7 @@ internal class ServicesRepositoryImpl(
             widgetActions.onServiceChanged()
 
             if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
-                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
+                cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
             }
         }
     }
@@ -290,7 +290,7 @@ internal class ServicesRepositoryImpl(
             local.addServiceToOrder(id)
 
             if (triggerSync) {
-                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
+                cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
             }
 
             id
@@ -302,7 +302,7 @@ internal class ServicesRepositoryImpl(
             addService(service, false)
         }
 
-        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.ServicesChanged)
+        cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
     }
 
     override fun observeAddServiceAdvancedExpanded(): Flow<Boolean> {

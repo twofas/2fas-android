@@ -41,6 +41,7 @@ internal class BackupViewModel(
                 uiState.update {
                     it.copy(
                         showSyncMsg = cloudBackupStatus.active.not(),
+                        cloudBackupStatus = cloudBackupStatus,
                         cloudSyncStatus = cloudSyncStatus,
                     )
                 }

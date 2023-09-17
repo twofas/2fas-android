@@ -9,12 +9,10 @@ import com.twofasapp.services.domain.GetServicesUseCase
 import com.twofasapp.services.domain.ShowBackupNotice
 import com.twofasapp.services.domain.StoreHotpServices
 import com.twofasapp.services.domain.StoreServicesOrder
-import com.twofasapp.start.domain.MigrateBoxToRoomCase
+import com.twofasapp.usecases.MigrateBoxToRoomCase
 import com.twofasapp.usecases.app.CheckConnectionStatus
 import com.twofasapp.usecases.app.FirstCodeAdded
 import com.twofasapp.usecases.app.MigrateBoxToRoomCaseImpl
-import com.twofasapp.usecases.backup.ObserveSyncStatus
-import com.twofasapp.usecases.backup.SyncBackupServices
 import com.twofasapp.usecases.rateapp.RateAppCondition
 import com.twofasapp.usecases.rateapp.UpdateRateAppStatus
 import com.twofasapp.usecases.services.AddService
@@ -23,11 +21,7 @@ import com.twofasapp.usecases.services.DeleteDuplicatedService
 import com.twofasapp.usecases.services.GetServices
 import com.twofasapp.usecases.services.GetServicesIncludingTrashed
 import com.twofasapp.usecases.services.PinOptionsUseCase
-import com.twofasapp.usecases.services.RestoreService
 import com.twofasapp.usecases.services.ServicesModelMapper
-import com.twofasapp.usecases.services.StoreRecentlyDeleted
-import com.twofasapp.usecases.services.TrashService
-import com.twofasapp.usecases.services.UpdateServiceGroup
 import com.twofasapp.usecases.totp.ParseOtpAuthLink
 import com.twofasapp.usecases.widgets.DeactivateAllWidgets
 import com.twofasapp.usecases.widgets.DeleteServiceFromWidget
@@ -55,9 +49,6 @@ val useCaseModule = module {
     single<GetServicesUseCase> { GetServices(get()) }
     single { GetServices(get()) }
     single { GetServicesIncludingTrashed(get()) }
-    single { TrashService(get(), get(), get(), get(), get(), get(), get(), get()) }
-    single { RestoreService(get(), get(), get(), get(), get(), get(), get()) }
-    single { UpdateServiceGroup(get()) }
     single { DeleteDuplicatedService(get(), get()) }
     single { ConvertOtpLinkToService() }
     single { CheckServiceExists(get()) }
@@ -73,7 +64,6 @@ val useCaseModule = module {
     single { ShowBackupNotice(get()) }
     single { FirstCodeAdded(get()) }
     single { StoreGroups(get(), get()) }
-    single { SyncBackupServices(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
     single { StoreHotpServices(get()) }
     single { PinOptionsUseCase(get()) }
     single { UpdateWidget(get()) }
@@ -87,6 +77,4 @@ val useCaseModule = module {
     single<WidgetPresenterDelegate> { WidgetPresenterDelegateImpl(androidContext(), get()) }
     single<WidgetItemPresenterDelegate> { WidgetItemPresenterDelegateImpl(androidContext(), get()) }
     single<WidgetReceiverPresenterDelegate> { WidgetReceiverPresenterDelegateImpl(androidContext(), get(), get(), get(), get(), get()) }
-    single { StoreRecentlyDeleted(get()) }
-    single { ObserveSyncStatus() }
 }

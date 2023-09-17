@@ -9,7 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import com.twofasapp.core.encoding.encodeBase64ToString
+import com.twofasapp.common.ktx.encodeBase64ToString
 import com.twofasapp.design.dialogs.InfoDialog
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.qrscanner.ui.QrScannerScreen

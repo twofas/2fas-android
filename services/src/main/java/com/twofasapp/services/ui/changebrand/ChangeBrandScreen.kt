@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -45,7 +46,6 @@ import com.twofasapp.design.compose.dialogs.ListDialog
 import com.twofasapp.design.compose.serviceIconBitmap
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
-import com.twofasapp.extensions.openBrowserApp
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.EditServiceViewModel
 import kotlinx.coroutines.launch
@@ -66,6 +66,7 @@ internal fun ChangeBrandScreen(
     val activity = LocalContext.current as? Activity
     var showBrandingDialog = remember { mutableStateOf(false) }
     val backDispatcher = LocalBackDispatcher
+    val uriHandler = LocalUriHandler.current
 
     Scaffold(
         topBar = {
@@ -205,7 +206,7 @@ internal fun ChangeBrandScreen(
                         }
 
                         1 -> {
-                            activity?.openBrowserApp(url = "https://2fas.com/your-branding/")
+                            uriHandler.openUri("https://2fas.com/your-branding/")
                         }
                     }
                 }

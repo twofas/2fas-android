@@ -2,9 +2,9 @@ package com.twofasapp.browserextension.ui.browser
 
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
 import com.twofasapp.browserextension.domain.DeletePairedBrowserCase
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
+import com.twofasapp.common.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOn
@@ -21,8 +21,8 @@ class BrowserDetailsViewModel(
     val uiState = _uiState.asStateFlow()
 
     fun init(extensionId: String) {
-        viewModelScope.launch(dispatchers.io()) {
-            observePairedBrowsersCase().flowOn(dispatchers.io()).collect { list ->
+        viewModelScope.launch(dispatchers.io) {
+            observePairedBrowsersCase().flowOn(dispatchers.io).collect { list ->
                 val browser = list.find { it.id == extensionId }
 
                 if (browser != null) {
@@ -48,7 +48,7 @@ class BrowserDetailsViewModel(
     }
 
     fun forgetBrowser() {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             runSafely(catch = { postError() }) {
                 deletePairedBrowserCase(uiState.value.extensionId)
                 _uiState.update {

@@ -2,7 +2,7 @@ package com.twofasapp.security.ui.security
 
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
+import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.work.DisableScreenshotsWorkDispatcher
@@ -32,7 +32,7 @@ internal class SecurityViewModel(
     val uiState = MutableStateFlow(SecurityUiState())
 
     init {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             combine(
                 observeLockMethodCase.invoke(),
                 observePinOptionsCase.invoke()
@@ -65,7 +65,7 @@ internal class SecurityViewModel(
     }
 
     fun updateBiometricLock(isEnabled: Boolean) {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             val method = if (isEnabled) LockMethod.Biometrics else LockMethod.Pin
             editLockMethodCase(method)
         }
@@ -84,7 +84,7 @@ internal class SecurityViewModel(
     }
 
     private fun updatePinOptions(action: (PinOptions) -> PinOptions) {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             editPinOptionsCase(
                 action.invoke(
                     PinOptions(

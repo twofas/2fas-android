@@ -31,15 +31,12 @@ dependencies {
     implementation(project(":core:di"))
     implementation(project(":resources"))
     implementation(project(":extensions"))
-    implementation(project(":core"))
     implementation(project(":design"))
     
     implementation(project(":prefs"))
     implementation(project(":services:domain"))
     implementation(project(":services"))
     implementation(project(":qrscanner"))
-    implementation(project(":permissions"))
-    implementation(project(":backup:domain"))
     implementation(project(":serialization"))
 
     implementation(project(":core:common"))

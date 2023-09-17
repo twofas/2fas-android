@@ -3,7 +3,7 @@ package com.twofasapp.qrscanner.ui
 import android.net.Uri
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
+import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.qrscanner.domain.ReadQrFromImageCase
 import com.twofasapp.qrscanner.domain.ScanQr
 import kotlinx.coroutines.delay
@@ -39,7 +39,7 @@ class QrScannerViewModel(
     }
 
     fun onPhotoPicked(uri: Uri) {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             val result = readQrFromImageCase(uri)
 
             when (result) {

@@ -9,8 +9,8 @@ import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.theme.ThemeState
-import com.twofasapp.start.domain.DeeplinkHandler
-import com.twofasapp.start.domain.work.OnAppUpdatedWorkDispatcher
+import com.twofasapp.DeeplinkHandler
+import com.twofasapp.workmanager.OnAppUpdatedWorkDispatcher
 import com.twofasapp.time.domain.work.SyncTimeWorkDispatcher
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject

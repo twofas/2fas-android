@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.services.domain.CloudSyncError
+import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwSwitch
@@ -183,6 +184,7 @@ private fun ScreenContent(
                     title = strings.backupSyncSettings,
                     icon = TwIcons.Settings,
                     onClick = onSettingsClick,
+                    enabled = uiState.cloudBackupStatus?.active == true && uiState.cloudSyncStatus != CloudSyncStatus.Syncing,
                 )
             }
 

@@ -13,7 +13,6 @@ dependencies {
     implementation(project(":core:di"))
     implementation(project(":design"))
     implementation(project(":extensions"))
-    implementation(project(":permissions"))
     implementation(project(":prefs"))
     implementation(project(":persistence"))
     implementation(project(":push"))

@@ -2,7 +2,7 @@ package com.twofasapp.security.ui.changepin
 
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.base.dispatcher.Dispatchers
+import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.GetPinCase
 import com.twofasapp.security.domain.ObservePinOptionsCase
@@ -23,7 +23,7 @@ class ChangePinViewModel(
     val uiState = _uiState.asStateFlow()
 
     init {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             observePinOptionsCase().collect {
                 _uiState.update { state -> state.copy(digits = it.digits) }
             }
@@ -31,7 +31,7 @@ class ChangePinViewModel(
     }
 
     fun pinEntered(pin: String) {
-        viewModelScope.launch(dispatchers.io()) {
+        viewModelScope.launch(dispatchers.io) {
             _uiState.update { it.copy(pinScreenState = PinScreenState.Verifying) }
 
             if (pin == getPinCase()) {
