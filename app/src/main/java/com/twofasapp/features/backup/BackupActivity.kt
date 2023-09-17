@@ -1,6 +1,5 @@
 package com.twofasapp.features.backup
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
@@ -45,11 +44,6 @@ class BackupActivity : BaseActivityPresenter<ActivityBackupBinding>(), BackupCon
                 .replace(R.id.frame, BackupStatusFragment.newInstance(intent.getBooleanExtra(EXTRA_IS_OPENED_FROM_BACKUP_NOTICE, false)))
                 .commit()
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        presenter.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun toolbarBackClicks() = viewBinding.toolbar.navigationClicksThrottled()

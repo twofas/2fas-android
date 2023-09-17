@@ -8,6 +8,7 @@ import com.twofasapp.backup.domain.PlainData
 import com.twofasapp.backup.domain.SaltEncoded
 import com.twofasapp.base.usecase.UseCaseParameterized
 import com.twofasapp.extensions.ifNotBlank
+import com.twofasapp.prefs.model.RemoteBackup
 import io.reactivex.Scheduler
 import io.reactivex.Single
 
@@ -17,7 +18,7 @@ class EncryptBackup(
 ) : UseCaseParameterized<EncryptBackup.Params, Single<EncryptBackup.Result>> {
 
     data class Params(
-        val backup: com.twofasapp.prefs.model.RemoteBackup,
+        val backup: RemoteBackup,
         val password: String?,
         val saltEncoded: String?,
         val keyEncoded: String?,
@@ -25,7 +26,7 @@ class EncryptBackup(
 
     sealed class Result {
         data class Success(
-            val encryptedRemoteBackup: com.twofasapp.prefs.model.RemoteBackup,
+            val encryptedRemoteBackup: RemoteBackup,
             val saltEncoded: SaltEncoded?,
             val keyEncoded: KeyEncoded?,
         ) : Result()

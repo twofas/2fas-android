@@ -46,7 +46,7 @@ class TrashService(
                 widgetBroadcaster.sendServiceChanged()
             }
             .doOnComplete {
-                if (remoteBackupStatusPreference.get().state == com.twofasapp.prefs.model.RemoteBackupStatus.State.ACTIVE && params.shouldTriggerSync) {
+                if (remoteBackupStatusPreference.get().state == com.twofasapp.prefs.model.RemoteBackupStatusEntity.State.ACTIVE && params.shouldTriggerSync) {
                     storeRecentlyDeleted.add(
                         com.twofasapp.prefs.model.RecentlyDeletedService(
                             newService.secret,

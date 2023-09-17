@@ -58,6 +58,7 @@ dependencies {
     implementation(project(":data:session"))
     implementation(project(":data:services"))
     implementation(project(":data:browserext"))
+    implementation(project(":data:cloud"))
     implementation(project(":feature:startup"))
     implementation(project(":feature:home"))
     implementation(project(":feature:trash"))

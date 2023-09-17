@@ -10,11 +10,13 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.twofasapp.backup.domain.SyncBackupTrigger
 import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
+import com.twofasapp.prefs.model.RemoteBackupStatusEntity
+import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import timber.log.Timber
 
 class SyncBackupWorkDispatcherImpl(
     private val context: Context,
-    private val remoteBackupStatusPreference: com.twofasapp.prefs.usecase.RemoteBackupStatusPreference,
+    private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
 ) : SyncBackupWorkDispatcher {
 
     override fun tryDispatch(trigger: SyncBackupTrigger, password: String?) {
@@ -24,13 +26,13 @@ class SyncBackupWorkDispatcherImpl(
 
         val request = OneTimeWorkRequestBuilder<SyncBackupWork>()
             .setInputData(Data.Builder().apply {
-                putString(SyncBackupWork.ARG_TRIGGER, trigger.name)
-                password?.let { putString(SyncBackupWork.ARG_PASSWORD, it) }
+                putString(SyncBackupWork.ArgTrigger, trigger.name)
+                password?.let { putString(SyncBackupWork.ArgPassword, it) }
             }.build())
             .setConstraints(constraints)
             .build()
 
-        if (remoteBackupStatusPreference.get().state != com.twofasapp.prefs.model.RemoteBackupStatus.State.ACTIVE) {
+        if (remoteBackupStatusPreference.get().state != RemoteBackupStatusEntity.State.ACTIVE) {
             return
         }
 
@@ -47,10 +49,6 @@ class SyncBackupWorkDispatcherImpl(
             Timber.d("Append new SyncBackupWork by replacing retry work")
             WorkManager.getInstance(context).enqueueUniqueWork("SyncBackupWork", ExistingWorkPolicy.REPLACE, request)
         }
-    }
-
-    override suspend fun dispatch(trigger: SyncBackupTrigger, password: String?) {
-        tryDispatch(trigger, password)
     }
 
     private fun findEnqueuedWork() = WorkManager.getInstance(context).getWorkInfosForUniqueWork("SyncBackupWork").get()

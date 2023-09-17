@@ -40,7 +40,7 @@ class RestoreService(
                 widgetBroadcaster.sendServiceChanged()
             }
             .doOnComplete {
-                if (remoteBackupStatusPreference.get().state == com.twofasapp.prefs.model.RemoteBackupStatus.State.ACTIVE) {
+                if (remoteBackupStatusPreference.get().state == com.twofasapp.prefs.model.RemoteBackupStatusEntity.State.ACTIVE) {
                     syncBackupDispatcher.tryDispatch(SyncBackupTrigger.SERVICES_CHANGED)
                 }
             }

@@ -29,7 +29,6 @@ import com.twofasapp.serialization.SerializationModule
 import com.twofasapp.services.ServicesModule
 import com.twofasapp.services.backup.remoteBackupModule
 import com.twofasapp.services.backupcipher.backupCipherModule
-import com.twofasapp.services.googleauth.googleAuthModule
 import com.twofasapp.start.StartModule
 import com.twofasapp.time.TimeModule
 import com.twofasapp.usecases.services.PinOptionsUseCase
@@ -69,7 +68,6 @@ class App : MultiDexApplication() {
 
                     remoteBackupModule,
                     backupCipherModule,
-                    googleAuthModule,
                 ).plus(
                     listOf(
                         StartModule(),

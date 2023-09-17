@@ -2,14 +2,14 @@ package com.twofasapp.prefs.usecase
 
 import com.twofasapp.prefs.internals.PreferenceModel
 import com.twofasapp.prefs.model.RemoteBackup
-import com.twofasapp.prefs.model.RemoteBackupStatus
+import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.storage.Preferences
 
-class RemoteBackupStatusPreference(preferences: Preferences) : PreferenceModel<RemoteBackupStatus>(preferences) {
+class RemoteBackupStatusPreference(preferences: Preferences) : PreferenceModel<RemoteBackupStatusEntity>(preferences) {
 
     override val key: String = "remoteBackupStatus"
-    override val default: RemoteBackupStatus = RemoteBackupStatus(schemaVersion = RemoteBackup.CURRENT_SCHEMA)
+    override val default: RemoteBackupStatusEntity = RemoteBackupStatusEntity(schemaVersion = RemoteBackup.CURRENT_SCHEMA)
 
-    override val serialize: (RemoteBackupStatus) -> String = { jsonSerializer.serialize(it) }
-    override val deserialize: (String) -> RemoteBackupStatus = { jsonSerializer.deserialize(it) }
+    override val serialize: (RemoteBackupStatusEntity) -> String = { jsonSerializer.serialize(it) }
+    override val deserialize: (String) -> RemoteBackupStatusEntity = { jsonSerializer.deserialize(it) }
 }

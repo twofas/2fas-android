@@ -41,11 +41,6 @@ class BackupStatusFragment : BaseFragmentPresenter<FragmentBackupStatusBinding>(
             field = value
         }
 
-    private val confirmTurnOffDialog: MaterialDialog by lazy {
-        MaterialDialog(requireActivity())
-            .cancelable(true)
-            .customView(view = TurnOffBackupConfirmation(requireContext()), noVerticalPadding = true, scrollable = true)
-    }
     private val backupFileDialog: MaterialDialog by lazy {
         MaterialDialog(requireActivity())
             .cancelable(true)
@@ -75,16 +70,16 @@ class BackupStatusFragment : BaseFragmentPresenter<FragmentBackupStatusBinding>(
     }
 
     override fun showTurnOffDialog(confirmAction: () -> Unit) {
-        (confirmTurnOffDialog.getCustomView() as TurnOffBackupConfirmation).setup(
-            confirmAction = {
-                confirmAction.invoke()
-                confirmTurnOffDialog.dismiss()
-            },
-            cancelAction = confirmTurnOffDialog::dismiss,
-            closeAction = confirmTurnOffDialog::dismiss,
-        )
-
-        confirmTurnOffDialog.show()
+//        (confirmTurnOffDialog.getCustomView() as TurnOffBackupConfirmation).setup(
+//            confirmAction = {
+//                confirmAction.invoke()
+//                confirmTurnOffDialog.dismiss()
+//            },
+//            cancelAction = confirmTurnOffDialog::dismiss,
+//            closeAction = confirmTurnOffDialog::dismiss,
+//        )
+//
+//        confirmTurnOffDialog.show()
     }
 
     override fun showBackupFileDialog(text: String) {

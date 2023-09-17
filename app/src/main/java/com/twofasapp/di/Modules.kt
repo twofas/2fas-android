@@ -3,6 +3,7 @@ package com.twofasapp.di
 import com.twofasapp.cipher.di.CipherModule
 import com.twofasapp.common.di.CommonModule
 import com.twofasapp.data.browserext.di.DataBrowserExtModule
+import com.twofasapp.data.cloud.di.CloudModule
 import com.twofasapp.data.notifications.di.DataNotificationsModule
 import com.twofasapp.data.services.di.DataServicesModule
 import com.twofasapp.data.session.di.DataSessionModule
@@ -25,6 +26,7 @@ object Modules {
         NetworkModule(),
         StorageModule(),
         CipherModule(),
+        CloudModule(),
     )
 
     private val data = listOf(

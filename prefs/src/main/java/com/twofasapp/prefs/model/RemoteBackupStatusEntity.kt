@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RemoteBackupStatus(
+data class RemoteBackupStatusEntity(
     @SerialName("syncProvider")
     val syncProvider: SyncProvider = SyncProvider.GOOGLE_DRIVE,
     @SerialName("state")
@@ -24,9 +24,7 @@ data class RemoteBackupStatus(
 
     enum class State {
         NOT_CONFIGURED,
-
         NOT_ACTIVE,
-
         ACTIVE,
     }
 }

@@ -32,7 +32,7 @@ internal class BackupSettingsPresenter(
     private var syncStatus: SyncStatus = SyncStatus.Default
     private var backupPassword: String = ""
     private var isViewAttached = false
-    private val backupStatus: com.twofasapp.prefs.model.RemoteBackupStatus
+    private val backupStatus: com.twofasapp.prefs.model.RemoteBackupStatusEntity
         get() = remoteBackupStatusPreference.get()
 
     override fun onViewAttached() {

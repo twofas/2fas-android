@@ -27,6 +27,7 @@ class Strings(c: Context) {
     val commonSearch = c.getString(R.string.commons__search)
     val commonApprove = c.getString(R.string.commons__approve)
     val commonDeny = c.getString(R.string.commons__deny)
+    val commonError = c.getString(R.string.commons__error)
 
     val bottomBarTokens = c.getString(R.string.commons__tokens)
     val bottomBarSettings = c.getString(R.string.settings__settings)
@@ -218,6 +219,8 @@ class Strings(c: Context) {
     val backupDriveHeader = "Google Drive"
     val backupLocalHeader = c.getString(R.string.backup__local_file_title)
     val backupDebugHeader = "Debug"
+    val backupSync = c.getString(R.string.backup__drive_title)
+    val backupSyncDescription = c.getString(R.string.backup_explanation_msg)
     val backupSyncSettings = c.getString(R.string.backup__synchronization_settings)
     val backupImportFile = c.getString(R.string.backup__import_file)
     val backupExportFile = c.getString(R.string.backup__export_to_file)
@@ -230,7 +233,7 @@ class Strings(c: Context) {
     val backupDownloadError = c.getString(R.string.commons__unknown_error)
     val backupDownloadSuccess = c.getString(R.string.backup__export_result_success)
 
-    val backupSettingsTitle = c.getString(R.string.settings__backup_and_synchronization)
+    val backupSettingsTitle = c.getString(R.string.backup__synchronization_settings)
 
     val backupExportShareCta = c.getString(R.string.export_backup_share_cta)
     val backupExportCta = c.getString(R.string.export_backup_cta)
@@ -249,6 +252,15 @@ class Strings(c: Context) {
     val backupImportErrorWrongPassword = c.getString(R.string.backup__incorrect_password)
     val backupImportErrorDecryptError = c.getString(R.string.backup_error_decrypt_unknown)
     val backupImportSuccess = c.getString(R.string.import_ga_success)
+
+    val backupTurnOffTitle = c.getString(R.string.backup_turn_off_title)
+    val backupTurnOffMsg1 = c.getString(R.string.backup_turn_off_msg1)
+    val backupTurnOffMsg2 = c.getString(R.string.backup_turn_off_msg2)
+    val backupTurnOffCta = c.getString(R.string.backup_turn_off_cta)
+    val backupSignInPermissionErrorTitle = c.getString(R.string.gdrive_permission_title)
+    val backupSignInPermissionErrorMsg = c.getString(R.string.gdrive_permission_msg)
+    val backupSignInInternetErrorTitle = c.getString(R.string.gdrive_internet_title)
+    val backupSignInInternetErrorMsg = c.getString(R.string.gdrive_internet_msg)
 
 
 }

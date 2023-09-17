@@ -49,7 +49,7 @@ fun SettingsLink(
             .clickable(onClick != null && enabled) { onClick?.invoke() }
             .heightIn(min = 56.dp)
             .alpha(if (enabled) 1f else 0.3f)
-            .padding(vertical = 16.dp)
+            .padding(vertical = if (endContent == null) 16.dp else 8.dp)
             .padding(start = 24.dp, end = 16.dp),
         verticalArrangement = Arrangement.Center
     ) {

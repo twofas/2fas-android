@@ -2,19 +2,36 @@ package com.twofasapp.data.services
 
 import android.app.Application
 import android.net.Uri
+import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
 import com.twofasapp.cipher.backup.BackupCipher
 import com.twofasapp.cipher.backup.DataEncrypted
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.data.cloud.googledrive.GoogleDrive
+import com.twofasapp.data.cloud.googledrive.GoogleDriveFileResult
+import com.twofasapp.data.cloud.googledrive.GoogleDriveResult
 import com.twofasapp.data.services.domain.BackupContent
+import com.twofasapp.data.services.domain.BackupContentCreateResult
+import com.twofasapp.data.services.domain.CloudBackupGetResult
+import com.twofasapp.data.services.domain.CloudBackupUpdateResult
+import com.twofasapp.data.services.domain.CloudSyncError
+import com.twofasapp.data.services.domain.CloudSyncStatus
+import com.twofasapp.data.services.domain.CloudSyncTrigger
+import com.twofasapp.data.services.domain.asDomain
+import com.twofasapp.data.services.exceptions.DecryptWrongPassword
 import com.twofasapp.data.services.exceptions.FileTooBigException
-import com.twofasapp.data.services.exceptions.ImportNoPassword
-import com.twofasapp.data.services.exceptions.ImportWrongPassword
 import com.twofasapp.data.services.mapper.asBackup
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
+import com.twofasapp.prefs.model.RemoteBackupKey
+import com.twofasapp.prefs.model.RemoteBackupStatusEntity
+import com.twofasapp.prefs.model.isSet
+import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference
+import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
@@ -31,13 +48,38 @@ class BackupRepositoryImpl(
     private val servicesRepository: ServicesRepository,
     private val groupsRepository: GroupsRepository,
     private val backupCipher: BackupCipher,
+    private val syncBackupWorkDispatcher: SyncBackupWorkDispatcher,
+    private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
+    private val remoteBackupKeyPreference: RemoteBackupKeyPreference,
+    private val googleDrive: GoogleDrive,
 ) : BackupRepository {
+
+    private val cloudSyncStatusFlow = MutableStateFlow<CloudSyncStatus>(CloudSyncStatus.Default)
+
+
+    override fun dispatchSync(trigger: CloudSyncTrigger, password: String?) {
+        syncBackupWorkDispatcher.tryDispatch(
+            trigger = when (trigger) {
+                CloudSyncTrigger.FirstConnect -> com.twofasapp.backup.domain.SyncBackupTrigger.FIRST_CONNECT
+                CloudSyncTrigger.ServicesChanged -> com.twofasapp.backup.domain.SyncBackupTrigger.SERVICES_CHANGED
+                CloudSyncTrigger.GroupsChanged -> com.twofasapp.backup.domain.SyncBackupTrigger.GROUPS_CHANGED
+                CloudSyncTrigger.AppStart -> com.twofasapp.backup.domain.SyncBackupTrigger.APP_START
+                CloudSyncTrigger.AppBackground -> com.twofasapp.backup.domain.SyncBackupTrigger.APP_BACKGROUND
+                CloudSyncTrigger.EnterPassword -> com.twofasapp.backup.domain.SyncBackupTrigger.ENTER_PASSWORD
+                CloudSyncTrigger.SetPassword -> com.twofasapp.backup.domain.SyncBackupTrigger.SET_PASSWORD
+                CloudSyncTrigger.RemovePassword -> com.twofasapp.backup.domain.SyncBackupTrigger.REMOVE_PASSWORD
+                CloudSyncTrigger.WipeData -> com.twofasapp.backup.domain.SyncBackupTrigger.WIPE_DATA
+            },
+            password = password,
+        )
+    }
 
     override suspend fun createBackupContent(
         password: String?,
         keyEncoded: String?,
-        saltEncoded: String?
-    ): BackupContent {
+        saltEncoded: String?,
+        account: String?
+    ): BackupContentCreateResult {
         return withContext(dispatchers.io) {
             val groups = groupsRepository.observeGroups().first().asBackup()
             val services = servicesRepository.getServices().asBackup()
@@ -48,11 +90,11 @@ class BackupRepositoryImpl(
                 updatedAt = timeProvider.systemCurrentTime(),
                 appVersionCode = appBuild.versionCode,
                 appVersionName = appBuild.versionName,
-                account = null,
+                account = account,
             )
 
             if (password == null && keyEncoded == null) {
-                return@withContext backupContent
+                return@withContext BackupContentCreateResult(backupContent)
             }
 
             val dataEncrypted = backupCipher.encrypt(
@@ -63,10 +105,14 @@ class BackupRepositoryImpl(
                 saltEncoded = saltEncoded,
             )
 
-            backupContent.copy(
-                services = emptyList(),
-                servicesEncrypted = dataEncrypted.services.value,
-                reference = dataEncrypted.reference.value,
+            BackupContentCreateResult(
+                backupContent = backupContent.copy(
+                    services = emptyList(),
+                    servicesEncrypted = dataEncrypted.services.value,
+                    reference = dataEncrypted.reference.value,
+                ),
+                keyEncoded = dataEncrypted.keyEncoded,
+                saltEncoded = dataEncrypted.saltEncoded,
             )
         }
     }
@@ -74,14 +120,14 @@ class BackupRepositoryImpl(
     override suspend fun createBackupContentSerialized(
         password: String?,
         keyEncoded: String?,
-        saltEncoded: String?
+        saltEncoded: String?,
+        account: String?,
     ): String {
-        return json.encodeToString(createBackupContent(password, keyEncoded, saltEncoded))
+        return serializeBackupContent(createBackupContent(password, keyEncoded, saltEncoded, account).backupContent)
     }
 
     override suspend fun readBackupContent(
         fileUri: Uri,
-        password: String?,
     ): BackupContent {
         return withContext(dispatchers.io) {
             val size = context.contentResolver.openAssetFileDescriptor(fileUri, "r")!!.use { it.length }
@@ -92,55 +138,42 @@ class BackupRepositoryImpl(
             }
 
             // Deserialize content from file
-            val backupContent = context.contentResolver.openInputStream(fileUri)!!.use {
+            context.contentResolver.openInputStream(fileUri)!!.use {
                 val contentSerialized = it.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
                 json.decodeFromString<BackupContent>(contentSerialized)
             }
-
-            // If reference is null it means that backup is not encrypted, just return it
-            if (backupContent.isEncrypted.not()) {
-                return@withContext backupContent
-            }
-
-            // Backup is encrypted but there is no password provided
-            if (password.isNullOrBlank()) {
-                throw ImportNoPassword(backupContent)
-            }
-
-            decryptBackupContent(
-                backupContent = backupContent,
-                password = password,
-            )
         }
     }
 
     override suspend fun decryptBackupContent(
         backupContent: BackupContent,
-        password: String,
+        password: String?,
+        keyEncoded: String?,
     ): BackupContent {
         return withContext(dispatchers.io) {
-
-            // Decrypt reference and services
-            val decryptedContent = try {
-                backupCipher.decrypt(
+            try {
+                // Decrypt reference and services
+                val decryptedContent = backupCipher.decrypt(
                     reference = DataEncrypted(backupContent.reference!!),
                     services = DataEncrypted(backupContent.servicesEncrypted!!),
                     password = password,
+                    keyEncoded = keyEncoded,
                 )
+
+                // If success return backup content with replaced services to decrypted ones
+                backupContent.copy(
+                    services = json.decodeFromString(decryptedContent.services),
+                    servicesEncrypted = null,
+                    reference = null,
+                )
+
             } catch (e: Exception) {
                 if (e is AEADBadTagException) {
-                    throw ImportWrongPassword()
+                    throw DecryptWrongPassword()
                 } else {
                     throw e
                 }
             }
-
-            // If success return backup content with replaced services to decrypted ones
-            backupContent.copy(
-                services = json.decodeFromString(decryptedContent.services),
-                servicesEncrypted = null,
-                reference = null,
-            )
         }
     }
 
@@ -184,5 +217,174 @@ class BackupRepositoryImpl(
 
             servicesRepository.addServices(servicesToImport)
         }
+    }
+
+    override suspend fun setCloudSyncActive(email: String) {
+        remoteBackupStatusPreference.put(
+            RemoteBackupStatusEntity(
+                syncProvider = RemoteBackupStatusEntity.SyncProvider.GOOGLE_DRIVE,
+                state = RemoteBackupStatusEntity.State.ACTIVE,
+                account = email,
+                schemaVersion = BackupContent.CurrentSchema,
+            )
+        )
+    }
+
+    override suspend fun setCloudSyncNotConfigured() {
+        remoteBackupStatusPreference.put {
+            it.copy(state = RemoteBackupStatusEntity.State.NOT_CONFIGURED, reference = null)
+        }
+        remoteBackupKeyPreference.delete()
+    }
+
+    override suspend fun getCloudBackup(password: String?): CloudBackupGetResult {
+        return when (val result = googleDrive.getBackupFile()) {
+            is GoogleDriveFileResult.Success -> {
+                // File does not exists - create a new one
+                if (result.fileContent.isBlank()) {
+                    return CloudBackupGetResult.Success(BackupContent.Empty)
+                }
+
+                try {
+                    val backupContent = json.decodeFromString<BackupContent>(result.fileContent)
+                    remoteBackupStatusPreference.put { it.copy(reference = backupContent.reference) }
+
+                    // Decrypt backup
+                    if (backupContent.isEncrypted) {
+                        if (password.isNullOrEmpty() && remoteBackupKeyPreference.get().isSet().not()) {
+                            // No password provided
+                            CloudBackupGetResult.Failure(CloudSyncError.DecryptNoPassword)
+                        } else {
+
+                            try {
+                                CloudBackupGetResult.Success(
+                                    decryptBackupContent(
+                                        backupContent = backupContent,
+                                        password = password,
+                                        keyEncoded = remoteBackupKeyPreference.get().keyEncoded,
+                                    )
+                                )
+                            } catch (e: Exception) {
+                                // Handle decrypt error
+                                when (e) {
+                                    is DecryptWrongPassword -> CloudBackupGetResult.Failure(CloudSyncError.DecryptWrongPassword)
+                                    else -> CloudBackupGetResult.Failure(CloudSyncError.DecryptUnknownFailure)
+                                }
+                            }
+                        }
+                    } else {
+                        remoteBackupKeyPreference.delete()
+                        CloudBackupGetResult.Success(backupContent)
+                    }
+                } catch (e: Exception) {
+                    // Handle other errors (most likely serialization ones)
+                    CloudBackupGetResult.Failure(CloudSyncError.JsonParsingFailure)
+                }
+            }
+
+            is GoogleDriveFileResult.Failure -> {
+                CloudBackupGetResult.Failure(
+                    result.error.asDomain(),
+                )
+            }
+        }
+    }
+
+    override suspend fun updateCloudBackup(
+        password: String?,
+        keyEncoded: String?,
+        saltEncoded: String?,
+        firstConnect: Boolean,
+        updatedAt: Long
+    ): CloudBackupUpdateResult {
+        return withContext(dispatchers.io) {
+            try {
+                val backupContentCreateResult = createBackupContent(
+                    password = password,
+                    keyEncoded = keyEncoded,
+                    saltEncoded = saltEncoded,
+                    account = remoteBackupStatusPreference.get().account,
+                )
+
+                val backupContent = if (firstConnect) {
+                    backupContentCreateResult.backupContent.copy(
+                        services = backupContentCreateResult.backupContent.services.map { service -> service.copy(updatedAt = updatedAt) }
+                    )
+                } else {
+                    backupContentCreateResult.backupContent
+                }
+
+                if (backupContent.isEncrypted) {
+                    remoteBackupKeyPreference.put {
+                        it.copy(
+                            saltEncoded = backupContentCreateResult.saltEncoded.orEmpty(),
+                            keyEncoded = backupContentCreateResult.keyEncoded.orEmpty(),
+                        )
+                    }
+                    remoteBackupStatusPreference.put { it.copy(reference = backupContentCreateResult.backupContent.reference) }
+                } else {
+                    remoteBackupStatusPreference.put { it.copy(reference = null) }
+                    remoteBackupKeyPreference.delete()
+                }
+
+                when (val updateResult = googleDrive.updateBackupFile(serializeBackupContent(backupContent))) {
+                    is GoogleDriveResult.Success -> {
+                        CloudBackupUpdateResult.Success
+                    }
+
+                    is GoogleDriveResult.Failure -> {
+                        CloudBackupUpdateResult.Failure(error = updateResult.error.asDomain())
+                    }
+                }
+
+            } catch (e: Exception) {
+                CloudBackupUpdateResult.Failure(error = CloudSyncError.EncryptUnknownFailure)
+            }
+        }
+    }
+
+    override suspend fun deleteCloudBackup() {
+        googleDrive.deleteBackupFile()
+    }
+
+    override suspend fun checkCloudBackupPassword(password: String?): Boolean {
+        return try {
+            val referenceEncrypted = remoteBackupStatusPreference.get().reference!!
+            val result = backupCipher.decrypt(
+                dataEncrypted = DataEncrypted(referenceEncrypted),
+                password = password,
+                keyEncoded = null
+            )
+            val isCorrect = result.data == BackupContent.Reference
+
+            if (isCorrect) {
+                remoteBackupKeyPreference.put {
+                    RemoteBackupKey(
+                        saltEncoded = result.saltEncoded,
+                        keyEncoded = result.keyEncoded,
+                    )
+                }
+            } else {
+                remoteBackupKeyPreference.delete()
+            }
+
+            return isCorrect
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
+    }
+
+    override fun observeCloudSyncStatus(): Flow<CloudSyncStatus> {
+        return cloudSyncStatusFlow
+    }
+
+    override fun publishCloudSyncStatus(status: CloudSyncStatus) {
+        cloudSyncStatusFlow.tryEmit(status)
+    }
+
+    private fun serializeBackupContent(backupContent: BackupContent): String {
+        return json.encodeToString(backupContent)
     }
 }

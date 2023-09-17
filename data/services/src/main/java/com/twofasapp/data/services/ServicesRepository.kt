@@ -3,6 +3,7 @@ package com.twofasapp.data.services
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.Service
 import com.twofasapp.parsers.domain.OtpAuthLink
+import com.twofasapp.prefs.model.RecentlyDeleted
 import kotlinx.coroutines.flow.Flow
 
 interface ServicesRepository {
@@ -16,8 +17,9 @@ interface ServicesRepository {
     suspend fun getService(id: Long): Service
     suspend fun deleteService(id: Long)
     suspend fun updateService(service: Service)
+    suspend fun updateServicesFromCloud(services: List<Service>)
     suspend fun setServiceGroup(id: Long, groupId: String?)
-    suspend fun trashService(id: Long)
+    suspend fun trashService(id: Long, triggerSync: Boolean = true)
     suspend fun restoreService(id: Long)
     fun updateServicesOrder(ids: List<Long>)
     suspend fun incrementHotpCounter(service: Service)
@@ -34,4 +36,6 @@ interface ServicesRepository {
     fun setManualGuideSelectedPrefill(prefill: String?)
     fun getManualGuideSelectedPrefill(): String?
     suspend fun revealService(id: Long)
+    suspend fun getRecentlyDeletedServices(): RecentlyDeleted
+    suspend fun removeRecentlyDeleted(secret: String)
 }

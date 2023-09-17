@@ -17,6 +17,7 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":data:services"))
     implementation(project(":data:session"))
+    implementation(project(":data:cloud"))
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)

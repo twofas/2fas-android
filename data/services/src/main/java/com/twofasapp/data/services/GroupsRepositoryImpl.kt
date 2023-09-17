@@ -6,6 +6,7 @@ import com.twofasapp.data.services.local.GroupsLocalSource
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.mapper.asDomain
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
@@ -29,6 +30,10 @@ internal class GroupsRepositoryImpl(
                     .plus(groups.list.map { it.asDomain() })
                     .distinctBy { it.id }
             }
+    }
+
+    override suspend fun getGroups(): List<Group> {
+        return observeGroups().first()
     }
 
     override suspend fun addGroup(name: String) {
@@ -58,6 +63,12 @@ internal class GroupsRepositoryImpl(
         }
     }
 
+    override suspend fun editGroup(group: Group) {
+        withContext(dispatchers.io) {
+            local.editGroup(group)
+        }
+    }
+
     override suspend fun moveUpGroup(id: String) {
         withContext(dispatchers.io) {
             local.moveUpGroup(id)
@@ -73,6 +84,18 @@ internal class GroupsRepositoryImpl(
     override suspend fun moveDownGroup(id: String) {
         withContext(dispatchers.io) {
             local.moveDownGroup(id)
+        }
+    }
+
+    override suspend fun sortById(ids: List<String>) {
+        withContext(dispatchers.io) {
+            local.sortById(ids)
+        }
+    }
+
+    override suspend fun markAllAsSynced() {
+        withContext(dispatchers.io) {
+            local.markAllAsSynced()
         }
     }
 }

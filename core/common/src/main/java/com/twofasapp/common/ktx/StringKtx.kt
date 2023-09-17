@@ -22,3 +22,6 @@ fun String.camelCaseBeginLower(): String {
 fun String.camelCaseBeginUpper(): String {
     return camelCase().replaceFirstChar { it.uppercase() }
 }
+
+inline fun <reified T : Enum<*>> enumValueOrNull(name: String?): T? =
+    T::class.java.enumConstants?.firstOrNull { it.name == name }

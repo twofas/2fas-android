@@ -9,7 +9,6 @@ import com.twofasapp.services.domain.GetServicesUseCase
 import com.twofasapp.services.domain.ShowBackupNotice
 import com.twofasapp.services.domain.StoreHotpServices
 import com.twofasapp.services.domain.StoreServicesOrder
-import com.twofasapp.services.googleauth.usecases.GetAccountCredentials
 import com.twofasapp.start.domain.MigrateBoxToRoomCase
 import com.twofasapp.usecases.app.CheckConnectionStatus
 import com.twofasapp.usecases.app.FirstCodeAdded
@@ -69,7 +68,6 @@ val useCaseModule = module {
     single { UpdateRateAppStatus(get(), get()) }
     single { StoreServicesOrder(get()) }
     single { AuthTracker(Provider { get() }) }
-    single { GetAccountCredentials(androidContext()) }
     single { CheckConnectionStatus(androidContext()) }
     single<MigrateBoxToRoomCase> { MigrateBoxToRoomCaseImpl(androidContext(), get(), get(), get(), get()) }
     single { ShowBackupNotice(get()) }

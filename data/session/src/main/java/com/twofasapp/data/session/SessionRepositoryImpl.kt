@@ -4,7 +4,7 @@ import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.session.local.SessionLocalSource
-import com.twofasapp.prefs.model.RemoteBackupStatus
+import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import kotlinx.coroutines.flow.Flow
@@ -51,7 +51,7 @@ internal class SessionRepositoryImpl(
 
     override fun observeBackupEnabled(): Flow<Boolean> {
         return remoteBackupStatusPreference.flow(true).map {
-            it.state == RemoteBackupStatus.State.ACTIVE
+            it.state == RemoteBackupStatusEntity.State.ACTIVE
         }
     }
 

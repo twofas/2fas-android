@@ -7,9 +7,8 @@ import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.domain.BackupContent
+import com.twofasapp.data.services.exceptions.DecryptWrongPassword
 import com.twofasapp.data.services.exceptions.FileTooBigException
-import com.twofasapp.data.services.exceptions.ImportNoPassword
-import com.twofasapp.data.services.exceptions.ImportWrongPassword
 import com.twofasapp.data.session.SessionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -42,23 +41,25 @@ internal class BackupImportViewModel(
         launchScoped {
             runSafely { backupRepository.readBackupContent(fileUri) }
                 .onSuccess { backupContent ->
-                    uiState.update {
-                        it.copy(
-                            backupContent = backupContent,
-                            screenState = ScreenState.BackupRead(backupContent.services.size)
-                        )
-                    }
-                }
-                .onFailure { exception ->
-                    when (exception) {
-                        is FileTooBigException -> uiState.update { it.copy(screenState = ScreenState.ErrorInvalidFileSize) }
-                        is ImportNoPassword -> uiState.update {
+                    if (backupContent.isEncrypted) {
+                        uiState.update {
                             it.copy(
                                 screenState = ScreenState.BackupReadEncrypted,
-                                backupContent = exception.backupContent
+                                backupContent = backupContent
                             )
                         }
-
+                    } else {
+                        uiState.update {
+                            it.copy(
+                                backupContent = backupContent,
+                                screenState = ScreenState.BackupRead(backupContent.services.size)
+                            )
+                        }
+                    }
+                }
+                .onFailure { e ->
+                    when (e) {
+                        is FileTooBigException -> uiState.update { it.copy(screenState = ScreenState.ErrorInvalidFileSize) }
                         else -> uiState.update { it.copy(screenState = ScreenState.ErrorInvalidFile) }
                     }
                 }
@@ -84,13 +85,13 @@ internal class BackupImportViewModel(
                 runSafely {
                     backupRepository.decryptBackupContent(
                         backupContent = backupContent,
-                        password = password,
+                        password = password.ifEmpty { null },
                     )
                 }
                     .onSuccess { decrypted -> startImport(decrypted) }
                     .onFailure { exception ->
                         when (exception) {
-                            is ImportWrongPassword -> publishEvent(BackupImportUiEvent.WrongPassword)
+                            is DecryptWrongPassword -> publishEvent(BackupImportUiEvent.WrongPassword)
                             else -> publishEvent(BackupImportUiEvent.DecryptError)
                         }
                     }

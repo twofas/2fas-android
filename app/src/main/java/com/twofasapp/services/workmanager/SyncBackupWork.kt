@@ -1,45 +1,43 @@
 package com.twofasapp.services.workmanager
 
 import android.content.Context
-import androidx.work.RxWorker
+import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.twofasapp.backup.domain.SyncBackupTrigger
-import com.twofasapp.backup.domain.SyncBackupTrigger.SERVICES_CHANGED
-import com.twofasapp.entity.SyncBackupResult
-import com.twofasapp.usecases.backup.SyncBackupServices
-import io.reactivex.Single
+import com.twofasapp.common.ktx.enumValueOrNull
+import com.twofasapp.data.services.domain.CloudSyncTrigger
+import com.twofasapp.data.services.remote.CloudSyncJob
+import com.twofasapp.data.services.remote.CloudSyncJobResult
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class SyncBackupWork(
     appContext: Context,
     workerParams: WorkerParameters
-) : RxWorker(appContext, workerParams), KoinComponent {
+) : CoroutineWorker(appContext, workerParams), KoinComponent {
 
     companion object {
-        const val ARG_TRIGGER = "trigger"
-        const val ARG_PASSWORD = "password"
+        const val ArgTrigger = "trigger"
+        const val ArgPassword = "password"
     }
 
-    private val syncBackupServices: SyncBackupServices by inject()
+    private val cloudSyncJob: CloudSyncJob by inject()
 
-    override fun createWork(): Single<Result> {
-        return syncBackupServices.execute(
-            SyncBackupServices.Params(
-                syncBackupTrigger = SyncBackupTrigger.values().firstOrNull { it.name == inputData.getString(ARG_TRIGGER) } ?: SERVICES_CHANGED,
-                password = inputData.getString(ARG_PASSWORD)
-            )
+    override suspend fun doWork(): Result {
+        val jobResult = cloudSyncJob.execute(
+            trigger = enumValueOrNull(inputData.getString(ArgTrigger)) ?: CloudSyncTrigger.ServicesChanged,
+            password = inputData.getString(ArgPassword)
         )
-            .map {
-                when (it) {
-                    is SyncBackupResult.Success -> Result.success()
-                    is SyncBackupResult.Failure -> when (it.trigger) {
-                        SyncBackupTrigger.APP_BACKGROUND,
-                        SyncBackupTrigger.WIPE_DATA -> Result.retry()
-                        else -> Result.success()
-                    }
+
+        return when (jobResult) {
+            is CloudSyncJobResult.Success -> Result.success()
+            is CloudSyncJobResult.Failure -> {
+                when (jobResult.trigger) {
+                    CloudSyncTrigger.AppBackground,
+                    CloudSyncTrigger.WipeData -> Result.retry()
+
+                    else -> Result.success()
                 }
             }
-
+        }
     }
 }

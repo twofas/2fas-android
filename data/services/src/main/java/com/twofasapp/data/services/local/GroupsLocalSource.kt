@@ -116,6 +116,30 @@ internal class GroupsLocalSource(
         )
     }
 
+    fun editGroup(newGroup: Group) {
+        val local = getGroups()
+
+        preferences.putString(
+            KeyGroups, json.encodeToString(
+                local.copy(
+                    list = local.list.map { groupEntity ->
+                        if (groupEntity.id == newGroup.id) {
+                            GroupEntity(
+                                id = newGroup.id,
+                                name = newGroup.name.orEmpty(),
+                                isExpanded = newGroup.isExpanded,
+                                updatedAt = newGroup.updatedAt,
+                                backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                            )
+                        } else {
+                            groupEntity
+                        }
+                    }
+                )
+            )
+        )
+    }
+
     fun moveUpGroup(id: String) {
         val local = getGroups()
 
@@ -154,5 +178,30 @@ internal class GroupsLocalSource(
         }
 
         preferences.putString(KeyGroups, json.encodeToString(updated))
+    }
+
+    suspend fun sortById(ids: List<String>) {
+        val local = getGroups()
+        val sortedList = local.list.sortedBy { ids.indexOf(it.id) }
+
+        preferences.putString(
+            KeyGroups, json.encodeToString(
+                local.copy(
+                    list = sortedList,
+                )
+            )
+        )
+    }
+
+    suspend fun markAllAsSynced() {
+        val local = getGroups()
+
+        preferences.putString(
+            KeyGroups, json.encodeToString(
+                local.copy(
+                    list = local.list.map { group -> group.copy(backupSyncStatus = BackupSyncStatus.SYNCED) },
+                )
+            )
+        )
     }
 }

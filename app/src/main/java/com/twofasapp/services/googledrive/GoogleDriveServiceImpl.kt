@@ -13,9 +13,8 @@ import com.google.api.client.json.gson.GsonFactory
 import com.google.api.services.drive.Drive
 import com.google.api.services.drive.DriveScopes
 import com.google.api.services.drive.model.File
-import com.twofasapp.services.googleauth.models.AccountCredentials
-import com.twofasapp.services.googleauth.usecases.GetAccountCredentials
-import com.twofasapp.services.googledrive.models.DeleteGoogleDriveFileResult
+import com.twofasapp.data.cloud.googleauth.AccountCredentials
+import com.twofasapp.data.cloud.googleauth.GoogleAuth
 import com.twofasapp.services.googledrive.models.GetGoogleDriveFileResult
 import com.twofasapp.services.googledrive.models.GoogleDriveErrorType
 import com.twofasapp.services.googledrive.models.GoogleDriveErrorType.CREDENTIALS_NOT_FOUND
@@ -30,7 +29,7 @@ import java.util.Collections
 
 class GoogleDriveServiceImpl(
     private val context: Context,
-    private val getAccountCredentials: GetAccountCredentials,
+    private val googleAuth: GoogleAuth,
 ) : GoogleDriveService {
 
     companion object {
@@ -141,33 +140,6 @@ class GoogleDriveServiceImpl(
         }
     }
 
-    override fun deleteBackupFile(): Single<DeleteGoogleDriveFileResult> {
-        return Single.create { emitter ->
-            try {
-                val credentials = getAccountCredentials()
-                if (credentials == null) {
-                    emitter.onSuccess(DeleteGoogleDriveFileResult.Failure(type = CREDENTIALS_NOT_FOUND))
-                    return@create
-                }
-
-                val drive = getDrive(credentials)
-                val backupFileId = getFiles(drive)?.firstOrNull { it.name == backupVersions.first() }?.id
-                if (backupFileId.isNullOrBlank().not()) {
-                    drive.files().delete(backupFileId).execute()
-                    emitter.onSuccess(DeleteGoogleDriveFileResult.Success())
-                }
-            } catch (e: Exception) {
-                Timber.d("UpdateFile <- Error: $e")
-                emitter.onSuccess(
-                    DeleteGoogleDriveFileResult.Failure(
-                        type = mapExceptionToErrorType(e),
-                        throwable = e
-                    )
-                )
-            }
-        }
-    }
-
     private fun mapExceptionToErrorType(e: Exception): GoogleDriveErrorType {
         return when (e) {
             is GoogleJsonResponseException -> GoogleDriveErrorType.HTTP_API_FAILURE
@@ -187,7 +159,7 @@ class GoogleDriveServiceImpl(
             ?.files
             ?.sortedByDescending { it.name.replace("2fas-backup-v", "").replace(".json", "").toIntOrNull() }
 
-    private fun getAccountCredentials() = getAccountCredentials.execute()
+    private fun getAccountCredentials() = googleAuth.accountCredentials()
 
     private fun getDrive(accountCredentials: AccountCredentials): Drive {
         val googleAccountCredential = GoogleAccountCredential

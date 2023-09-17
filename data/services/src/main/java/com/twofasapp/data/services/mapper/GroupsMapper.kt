@@ -9,7 +9,7 @@ internal fun GroupEntity.asDomain() = Group(
     name = name,
     isExpanded = isExpanded,
     updatedAt = updatedAt,
-//    backupSyncStatus = backupSyncStatus, TODO: Refactor
+    backupSyncStatus = backupSyncStatus,
 )
 
 internal fun List<Group>.asBackup(): List<BackupGroup> {

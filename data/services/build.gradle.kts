@@ -14,6 +14,7 @@ dependencies {
     implementation(project(":core:storage"))
     implementation(project(":core:otp"))
     implementation(project(":core:cipher"))
+    implementation(project(":data:cloud"))
 
     implementation(project(":parsers"))
     implementation(project(":widgets:domain"))

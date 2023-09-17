@@ -1,4 +1,4 @@
-package com.twofasapp.services.googleauth.models
+package com.twofasapp.data.cloud.googleauth
 
 import android.accounts.Account
 
