@@ -15,7 +15,6 @@ dependencies {
     implementation(project(":serialization"))
     
     implementation(project(":time:domain"))
-    implementation(project(":extensions"))
 
     implementation(project(":core:storage"))
 

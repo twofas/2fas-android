@@ -10,7 +10,7 @@ import com.twofasapp.base.AuthTracker
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.designsystem.MainAppTheme
-import com.twofasapp.extensions.makeWindowSecure
+import com.twofasapp.designsystem.ktx.makeWindowSecure
 import com.twofasapp.resources.R
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject

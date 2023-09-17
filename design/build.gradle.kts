@@ -11,7 +11,6 @@ android {
 dependencies {
     implementation(project(":core:di"))
     implementation(project(":prefs"))
-    implementation(project(":extensions"))
     implementation(project(":resources"))
     implementation(project(":parsers"))
 

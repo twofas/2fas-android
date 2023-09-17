@@ -3,9 +3,12 @@ package com.twofasapp.widgets.configure
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DefaultItemAnimator
+import com.jakewharton.rxbinding3.appcompat.navigationClicks
+import com.jakewharton.rxbinding3.view.clicks
 import com.mikepenz.fastadapter.IItem
 import com.mikepenz.fastadapter.adapters.FastItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
@@ -15,15 +18,14 @@ import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.databinding.ActivityWidgetSettingsBinding
 import com.twofasapp.design.theme.ThemeState
-import com.twofasapp.extensions.clicksThrottled
-import com.twofasapp.extensions.makeGone
-import com.twofasapp.extensions.makeVisible
-import com.twofasapp.extensions.makeWindowSecure
-import com.twofasapp.extensions.navigationClicksThrottled
+import com.twofasapp.designsystem.ktx.makeWindowSecure
 import com.twofasapp.views.ModelDiffUtilCallback
 import com.twofasapp.widgets.broadcast.WidgetBroadcaster
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import java.util.concurrent.TimeUnit
 
 class WidgetSettingsActivity : BaseActivityPresenter<ActivityWidgetSettingsBinding>(), WidgetSettingsContract.View, AuthAware {
 
@@ -47,7 +49,8 @@ class WidgetSettingsActivity : BaseActivityPresenter<ActivityWidgetSettingsBindi
         setPresenter(presenter)
         viewBinding.recycler.adapter = fastAdapter
         viewBinding.recycler.itemAnimator = DefaultItemAnimator()
-        saveMenuButton = viewBinding.toolbar.menu.findItem(com.twofasapp.R.id.menu_save).actionView!!.findViewById(com.twofasapp.R.id.saveMenuButton)
+        saveMenuButton =
+            viewBinding.toolbar.menu.findItem(com.twofasapp.R.id.menu_save).actionView!!.findViewById(com.twofasapp.R.id.saveMenuButton)
         saveMenuButton?.isEnabled = true
     }
 
@@ -97,4 +100,23 @@ class WidgetSettingsActivity : BaseActivityPresenter<ActivityWidgetSettingsBindi
     }
 
     override fun onAuthenticated() = Unit
+
+    fun View.makeVisible() {
+        visibility = View.VISIBLE
+    }
+
+    fun View.makeGone() {
+        visibility = View.GONE
+    }
+
+    fun View.clicksThrottled(): Flowable<Unit> =
+        clicks().toFlowable(BackpressureStrategy.LATEST)
+            .throttleFirst(300, TimeUnit.MILLISECONDS)
+            .share()
+
+    fun androidx.appcompat.widget.Toolbar.navigationClicksThrottled(): Flowable<Unit> =
+        navigationClicks().toFlowable(BackpressureStrategy.LATEST)
+            .throttleFirst(300, TimeUnit.MILLISECONDS)
+            .share()
+
 }

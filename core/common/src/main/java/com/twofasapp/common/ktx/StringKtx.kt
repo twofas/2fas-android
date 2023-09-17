@@ -25,3 +25,11 @@ fun String.camelCaseBeginUpper(): String {
 
 inline fun <reified T : Enum<*>> enumValueOrNull(name: String?): T? =
     T::class.java.enumConstants?.firstOrNull { it.name == name }
+
+fun String.insert(insertAt: Int, string: String): String {
+    return this.substring(0, insertAt) + string + this.substring(insertAt, this.length)
+}
+
+fun String.removeWhiteCharacters(): String {
+    return replace(" ", "")
+}

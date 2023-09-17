@@ -15,7 +15,6 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:locale"))
     implementation(project(":design"))
-    implementation(project(":extensions"))
     implementation(project(":prefs"))
     implementation(project(":resources"))
     implementation(project(":persistence"))

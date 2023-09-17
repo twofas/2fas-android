@@ -14,7 +14,6 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":design"))
     implementation(project(":resources"))
-    implementation(project(":extensions"))
     
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.rxJava)

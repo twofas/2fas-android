@@ -1,7 +1,7 @@
 package com.twofasapp.usecases.services
 
 import com.twofasapp.base.usecase.UseCaseParameterized
-import com.twofasapp.extensions.removeWhiteCharacters
+import com.twofasapp.common.ktx.removeWhiteCharacters
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import java.util.Locale

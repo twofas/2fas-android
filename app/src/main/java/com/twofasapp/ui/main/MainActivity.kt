@@ -17,9 +17,8 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.theme.ThemeState
+import com.twofasapp.designsystem.ktx.makeWindowSecure
 import com.twofasapp.designsystem.ktx.toastLong
-import com.twofasapp.extensions.doNothing
-import com.twofasapp.extensions.makeWindowSecure
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -103,7 +102,6 @@ class MainActivity : AppCompatActivity(), AuthAware {
             }
 
         } catch (e: Exception) {
-            doNothing()
         }
     }
 

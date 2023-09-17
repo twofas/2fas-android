@@ -3,7 +3,6 @@ package com.twofasapp.feature.externalimport.domain
 import android.net.Uri
 import com.twofasapp.GoogleAuthenticatorProto.MigrationPayload
 import com.twofasapp.common.ktx.decodeBase64ToByteArray
-import com.twofasapp.extensions.doNothing
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.domain.ConvertOtpLinkToService
 import org.apache.commons.codec.binary.Base32
@@ -94,11 +93,11 @@ class GoogleAuthenticatorImporter(
         val params = mutableMapOf<String, String>()
 
         when (otpParameters.digits) {
-            MigrationPayload.DigitCount.DIGIT_COUNT_UNSPECIFIED -> doNothing()
+            MigrationPayload.DigitCount.DIGIT_COUNT_UNSPECIFIED -> Unit
             MigrationPayload.DigitCount.DIGIT_COUNT_SIX -> params[DIGITS] = "6"
             MigrationPayload.DigitCount.DIGIT_COUNT_EIGHT -> params[DIGITS] = "8"
-            MigrationPayload.DigitCount.UNRECOGNIZED -> doNothing()
-            else -> doNothing()
+            MigrationPayload.DigitCount.UNRECOGNIZED -> Unit
+            else -> Unit
         }
 
         when (otpParameters.algorithm) {
@@ -107,9 +106,9 @@ class GoogleAuthenticatorImporter(
             MigrationPayload.Algorithm.ALGORITHM_SHA512 -> params[ALGORITHM] = "SHA512"
             MigrationPayload.Algorithm.ALGORITHM_UNSPECIFIED,
             MigrationPayload.Algorithm.ALGORITHM_MD5,
-            MigrationPayload.Algorithm.UNRECOGNIZED -> doNothing()
+            MigrationPayload.Algorithm.UNRECOGNIZED -> Unit
 
-            else -> doNothing()
+            else -> Unit
         }
 
         return params

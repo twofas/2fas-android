@@ -7,7 +7,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import com.twofasapp.common.time.TimeProvider
-import com.twofasapp.extensions.doNothing
 import com.twofasapp.usecases.widgets.DeactivateAllWidgets
 import com.twofasapp.usecases.widgets.GetWidgetSettings
 import com.twofasapp.usecases.widgets.UpdateWidget
@@ -67,7 +66,7 @@ class WidgetReceiverPresenterDelegateImpl(
                     }
                 }
             }
-            else -> doNothing()
+            else -> Unit
         }
     }
 

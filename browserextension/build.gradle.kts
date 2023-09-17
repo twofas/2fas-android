@@ -15,7 +15,6 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:di"))
     implementation(project(":design"))
-    implementation(project(":extensions"))
     implementation(project(":prefs"))
     implementation(project(":persistence"))
     implementation(project(":push"))

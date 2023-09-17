@@ -1,6 +1,6 @@
 package com.twofasapp.entity
 
-import com.twofasapp.extensions.insert
+import com.twofasapp.common.ktx.insert
 import com.twofasapp.prefs.model.ServiceDto
 
 data class ServiceModel(

@@ -30,7 +30,6 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":core:di"))
     implementation(project(":resources"))
-    implementation(project(":extensions"))
     implementation(project(":design"))
     
     implementation(project(":prefs"))

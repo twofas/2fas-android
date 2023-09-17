@@ -1,7 +1,7 @@
 package com.twofasapp.services.data.converter
 
+import com.twofasapp.common.ktx.removeWhiteCharacters
 import com.twofasapp.di.BackupSyncStatus
-import com.twofasapp.extensions.removeWhiteCharacters
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.model.Tint

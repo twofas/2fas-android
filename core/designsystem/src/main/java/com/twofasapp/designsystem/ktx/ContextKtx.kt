@@ -1,5 +1,6 @@
 package com.twofasapp.designsystem.ktx
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.ClipboardManager
@@ -12,6 +13,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.PersistableBundle
 import android.provider.Settings
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.annotation.StringRes
@@ -125,4 +127,15 @@ private fun getCurrentConnectivityState(connectivityManager: ConnectivityManager
     }
 
     return if (connected) ConnectionState.Available else ConnectionState.Unavailable
+}
+
+fun Activity.makeWindowSecure(allow: Boolean) {
+    if (allow) {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+    } else {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        )
+    }
 }

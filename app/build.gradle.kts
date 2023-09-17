@@ -17,7 +17,6 @@ android {
 dependencies {
     implementation(project(":base"))
     implementation(project(":core:di"))
-    implementation(project(":extensions"))
     implementation(project(":prefs"))
     
     implementation(project(":serialization"))
