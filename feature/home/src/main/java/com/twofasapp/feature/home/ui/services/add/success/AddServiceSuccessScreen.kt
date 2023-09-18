@@ -25,7 +25,7 @@ import com.twofasapp.designsystem.common.TwCenterTopAppBar
 import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.service.DsServiceModal
 import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.feature.home.ui.services.asState
+import com.twofasapp.designsystem.service.asState
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 

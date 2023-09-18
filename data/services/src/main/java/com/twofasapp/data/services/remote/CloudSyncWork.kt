@@ -28,12 +28,7 @@ class CloudSyncWork(
 
         return when (jobResult) {
             is CloudSyncResult.Success -> Result.success()
-            is CloudSyncResult.Failure -> {
-                when (jobResult.trigger) {
-                    CloudSyncTrigger.AppBackground -> Result.retry()
-                    else -> Result.success()
-                }
-            }
+            is CloudSyncResult.Failure -> Result.success()
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.twofasapp.data.services.mapper
 
 import com.twofasapp.data.services.domain.BackupService
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.data.services.local.model.ServicesOrderEntity

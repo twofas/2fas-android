@@ -61,6 +61,7 @@ dependencies {
     implementation(project(":feature:appsettings"))
     implementation(project(":feature:qrscan"))
     implementation(project(":feature:backup"))
+    implementation(project(":feature:widget"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.rxJava)

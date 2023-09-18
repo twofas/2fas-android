@@ -23,6 +23,7 @@ androidx-test-ext-junit = "1.1.5"
 appcompat = "1.6.1"
 material = "1.9.0"
 commonmark = "0.21.0"
+glance = "1.0.0"
 
 [libraries]
 appcompat = "androidx.appcompat:appcompat:1.6.1"
@@ -129,6 +130,7 @@ commonmarkCore = { module = "org.commonmark:commonmark", version.ref = "commonma
 commonmarkTables = { module = "org.commonmark:commonmark-ext-gfm-tables", version.ref = "commonmark" }
 commonmarkStrikethrough = { module = "org.commonmark:commonmark-ext-gfm-strikethrough", version.ref = "commonmark" }
 commonmarkLink = { module = "org.commonmark:commonmark-ext-autolink", version.ref = "commonmark" }
+glanceWidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
 
 [bundles]
 appCompat = [
@@ -226,6 +228,10 @@ commonmark = [
     "commonmarkStrikethrough",
     "commonmarkTables",
     "commonmarkLink",
+]
+
+glance = [
+    "glanceWidget",
 ]
 
 [plugins]

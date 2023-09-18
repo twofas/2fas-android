@@ -39,12 +39,12 @@ class WidgetSettingsPresenter(
             .subscribeBy {
                 val existingWidget = getWidgetSettings.execute().getWidgetForId(view.getAppWidgetId())
                 updateWidget.execute(
-                    com.twofasapp.prefs.model.Widget(
+                    com.twofasapp.prefs.model.WidgetEntity(
                         appWidgetId = view.getAppWidgetId(),
                         lastInteractionTimestamp = existingWidget?.lastInteractionTimestamp
                             ?: 0,
                         services = checkedServiceIds.map { id ->
-                            com.twofasapp.prefs.model.Widget.Service(
+                            com.twofasapp.prefs.model.WidgetEntity.Service(
                                 id = id,
                                 isActive = existingWidget?.services?.find { it.id == id }?.isActive
                                     ?: false

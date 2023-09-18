@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.feature.home.ui.services.add.NavArg
 import kotlinx.coroutines.flow.MutableStateFlow

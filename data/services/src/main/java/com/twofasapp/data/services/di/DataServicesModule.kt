@@ -6,6 +6,8 @@ import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.GroupsRepositoryImpl
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.ServicesRepositoryImpl
+import com.twofasapp.data.services.WidgetsRepository
+import com.twofasapp.data.services.WidgetsRepositoryImpl
 import com.twofasapp.data.services.local.GroupsLocalSource
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
@@ -27,6 +29,8 @@ class DataServicesModule : KoinModule {
         singleOf(::GroupsRepositoryImpl) { bind<GroupsRepository>() }
 
         singleOf(::BackupRepositoryImpl) { bind<BackupRepository>() }
+
+        singleOf(::WidgetsRepositoryImpl) { bind<WidgetsRepository>() }
 
         singleOf(::CloudSync)
         singleOf(::WipeGoogleDriveWorkDispatcher)

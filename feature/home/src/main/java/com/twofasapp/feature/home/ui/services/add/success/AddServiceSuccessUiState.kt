@@ -1,6 +1,6 @@
 package com.twofasapp.feature.home.ui.services.add.success
 
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 
 internal data class AddServiceSuccessUiState(
     val service: Service? = null,

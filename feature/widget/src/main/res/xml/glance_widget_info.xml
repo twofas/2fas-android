@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/glance_default_loading_layout"
+    android:resizeMode="horizontal|vertical"
+    android:minWidth="250dp"
+    android:minHeight="40dp"
+    android:minResizeWidth="40dp"
+    android:minResizeHeight="40dp"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen"
+    android:targetCellWidth="3"
+    android:targetCellHeight="1"
+    android:configure="com.twofasapp.feature.widget.ui.configure.WidgetSetupActivity"
+    >
+</appwidget-provider>

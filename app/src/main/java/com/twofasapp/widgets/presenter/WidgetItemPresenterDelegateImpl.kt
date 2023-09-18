@@ -24,7 +24,7 @@ class WidgetItemPresenterDelegateImpl(
     override fun updateItemView(
         appWidgetId: Int,
         position: Int,
-        widgetService: com.twofasapp.prefs.model.Widget.Service,
+        widgetService: com.twofasapp.prefs.model.WidgetEntity.Service,
         model: ServiceModel
     ): RemoteViews {
         return RemoteViews(context.packageName, R.layout.layout_widget_service_item).apply {

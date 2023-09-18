@@ -42,7 +42,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -52,7 +51,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.design.compose.HeaderEntry
 import com.twofasapp.design.compose.InputEntry
 import com.twofasapp.design.compose.SimpleEntry
@@ -64,14 +63,11 @@ import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.dpToSp
 import com.twofasapp.designsystem.lazy.listItem
+import com.twofasapp.designsystem.service.asColor
 import com.twofasapp.locale.TwLocale
-import com.twofasapp.prefs.model.Tint
 import com.twofasapp.resources.R
-import com.twofasapp.services.domain.GenerateTotp
 import com.twofasapp.services.ui.badge.ColorBadgeDialog
-import com.twofasapp.services.view.toColor
 import kotlinx.coroutines.launch
-import org.koin.androidx.compose.get
 
 @Composable
 internal fun EditServiceScreen(
@@ -114,7 +110,7 @@ internal fun EditServiceScreen(
         }
     }
 
-    if(uiState.service.id != 0L) {
+    if (uiState.service.id != 0L) {
         Scaffold(topBar = {
             TwTopAppBar(
                 titleText = activity!!.getString(R.string.tokens__customize_service_title),
@@ -444,23 +440,5 @@ fun IconSelector(
                 )
             }
         }
-    }
-}
-
-@Composable
-fun Service.Tint?.asColor(): Color {
-    return when (this) {
-        Service.Tint.Default -> TwTheme.color.surfaceVariant
-        Service.Tint.LightBlue -> TwTheme.color.accentLightBlue
-        Service.Tint.Indigo -> TwTheme.color.accentIndigo
-        Service.Tint.Purple -> TwTheme.color.accentPurple
-        Service.Tint.Turquoise -> TwTheme.color.accentTurquoise
-        Service.Tint.Green -> TwTheme.color.accentGreen
-        Service.Tint.Red -> TwTheme.color.accentRed
-        Service.Tint.Orange -> TwTheme.color.accentOrange
-        Service.Tint.Yellow -> TwTheme.color.accentYellow
-        Service.Tint.Pink -> TwTheme.color.accentPink
-        Service.Tint.Brown -> TwTheme.color.accentBrown
-        null -> TwTheme.color.surfaceVariant
     }
 }

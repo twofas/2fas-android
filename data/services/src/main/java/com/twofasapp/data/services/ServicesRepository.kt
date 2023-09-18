@@ -1,13 +1,14 @@
 package com.twofasapp.data.services
 
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.RecentlyDeleted
 import kotlinx.coroutines.flow.Flow
 
 interface ServicesRepository {
     fun observeServices(): Flow<List<Service>>
+    fun observeServicesWithCode(): Flow<List<Service>>
     fun observeServicesTicker(): Flow<List<Service>>
     fun observeDeletedServices(): Flow<List<Service>>
     fun observeService(id: Long): Flow<Service>

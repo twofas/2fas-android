@@ -1,14 +1,14 @@
 package com.twofasapp.prefs.usecase
 
 import com.twofasapp.prefs.internals.PreferenceModel
-import com.twofasapp.prefs.model.WidgetSettings
+import com.twofasapp.prefs.model.WidgetSettingsEntity
 import com.twofasapp.storage.Preferences
 
-class WidgetSettingsPreference(preferences: Preferences) : PreferenceModel<WidgetSettings>(preferences) {
+class WidgetSettingsPreference(preferences: Preferences) : PreferenceModel<WidgetSettingsEntity>(preferences) {
 
     override val key: String = "widgetSettings"
-    override val default: WidgetSettings = WidgetSettings()
+    override val default: WidgetSettingsEntity = WidgetSettingsEntity()
 
-    override val serialize: (WidgetSettings) -> String = { jsonSerializer.serialize(it) }
-    override val deserialize: (String) -> WidgetSettings = { jsonSerializer.deserialize(it) }
+    override val serialize: (WidgetSettingsEntity) -> String = { jsonSerializer.serialize(it) }
+    override val deserialize: (String) -> WidgetSettingsEntity = { jsonSerializer.deserialize(it) }
 }

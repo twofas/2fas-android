@@ -4,10 +4,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class WidgetSettings(
+data class WidgetSettingsEntity(
     @SerialName("widgets")
-    val widgets: List<Widget> = emptyList(),
+    val widgets: List<WidgetEntity> = emptyList(),
 ) {
-    fun getWidgetForId(appWidgetId: Int): Widget? =
+    fun getWidgetForId(appWidgetId: Int): WidgetEntity? =
         widgets.find { it.appWidgetId == appWidgetId }
 }

@@ -36,14 +36,14 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.designsystem.ktx.dpToSp
+import com.twofasapp.designsystem.service.asColor
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.EditServiceViewModel
-import com.twofasapp.services.ui.asColor
 
 @Composable
 internal fun ChangeLabelScreen(

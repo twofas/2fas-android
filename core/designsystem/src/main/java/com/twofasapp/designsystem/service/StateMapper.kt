@@ -1,12 +1,9 @@
-package com.twofasapp.feature.home.ui.services
+package com.twofasapp.designsystem.service
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.service.ServiceAuthType
-import com.twofasapp.designsystem.service.ServiceImageType
-import com.twofasapp.designsystem.service.ServiceState
 
 @Composable
 fun Service.asState(): ServiceState {
@@ -30,14 +27,14 @@ fun Service.asState(): ServiceState {
         iconLight = iconLight,
         iconDark = iconDark,
         labelText = labelText,
-        labelColor = labelColor.asState(),
-        badgeColor = badgeColor.asState(),
+        labelColor = labelColor.asColor(),
+        badgeColor = badgeColor.asColor(),
         revealed = revealTimestamp?.let { it + 10000L > System.currentTimeMillis() } ?: false,
     )
 }
 
 @Composable
-private fun Service.Tint?.asState(): Color {
+fun Service.Tint?.asColor(): Color {
     return when (this) {
         Service.Tint.Default -> TwTheme.color.surfaceVariant
         Service.Tint.LightBlue -> TwTheme.color.accentLightBlue

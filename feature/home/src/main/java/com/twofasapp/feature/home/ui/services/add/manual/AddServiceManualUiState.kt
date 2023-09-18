@@ -1,7 +1,7 @@
 package com.twofasapp.feature.home.ui.services.add.manual
 
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 
 internal data class AddServiceManualUiState(
     val serviceName: String? = null,

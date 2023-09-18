@@ -18,7 +18,7 @@ class WidgetViewsDataCached(
     private val cachedServices: MutableList<ServiceModel> = mutableListOf()
     private var cachedTime: Long = 0
 
-    override fun getWidgetServices(appWidgetId: Int): List<com.twofasapp.prefs.model.Widget.Service> {
+    override fun getWidgetServices(appWidgetId: Int): List<com.twofasapp.prefs.model.WidgetEntity.Service> {
         return getWidgetSettings.execute().getWidgetForId(appWidgetId)?.services
             ?.filter { getServices.execute().blockingGet().map { dto -> dto.id }.contains(it.id) }
             ?: emptyList()

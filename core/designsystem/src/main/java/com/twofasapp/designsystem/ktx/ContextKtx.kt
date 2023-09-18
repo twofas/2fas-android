@@ -60,6 +60,7 @@ fun Context.copyToClipboard(
     label: String = "Text",
     toast: String = "Copied!",
     isSensitive: Boolean = false,
+    showToast: Boolean = true,
 ) {
     val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clipData = ClipData.newPlainText(label, text).apply {
@@ -82,7 +83,7 @@ fun Context.copyToClipboard(
             || manufacturer.contains("xiaomi")
             || manufacturer.contains("redmi")
 
-    if (shouldShowToast) {
+    if (shouldShowToast && showToast) {
         Toast.makeText(this, toast, Toast.LENGTH_SHORT).show()
     }
 }

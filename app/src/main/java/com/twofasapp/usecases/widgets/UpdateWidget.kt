@@ -5,9 +5,9 @@ import io.reactivex.Scheduler
 
 class UpdateWidget(
     private val widgetSettingsPreference: com.twofasapp.prefs.usecase.WidgetSettingsPreference,
-) : UseCaseParameterized<com.twofasapp.prefs.model.Widget, Unit> {
+) : UseCaseParameterized<com.twofasapp.prefs.model.WidgetEntity, Unit> {
 
-    override fun execute(params: com.twofasapp.prefs.model.Widget, subscribeScheduler: Scheduler, observeScheduler: Scheduler) {
+    override fun execute(params: com.twofasapp.prefs.model.WidgetEntity, subscribeScheduler: Scheduler, observeScheduler: Scheduler) {
         widgetSettingsPreference.get().let { widgetSettings ->
             widgetSettingsPreference.put(
                 widgetSettings.copy(

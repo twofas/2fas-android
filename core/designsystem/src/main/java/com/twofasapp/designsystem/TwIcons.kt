@@ -53,6 +53,8 @@ object TwIcons {
     val NextToken @Composable get() = painterResource(R.drawable.ic_next_token)
     val ChevronDown @Composable get() = painterResource(R.drawable.ic_chevron_down)
     val ChevronUp @Composable get() = painterResource(R.drawable.ic_chevron_up)
+    val ChevronRight @Composable get() = painterResource(R.drawable.ic_chevron_right)
+    val ChevronLeft @Composable get() = painterResource(R.drawable.ic_chevron_left)
     val ArrowUpward @Composable get() = painterResource(R.drawable.ic_arrow_upward)
     val ArrowDownward @Composable get() = painterResource(R.drawable.ic_arrow_downward)
     val Sort @Composable get() = painterResource(R.drawable.ic_sort)

@@ -1,4 +1,4 @@
-package com.twofasapp.data.services.domain
+package com.twofasapp.common.domain
 
 import com.twofasapp.di.BackupSyncStatus
 

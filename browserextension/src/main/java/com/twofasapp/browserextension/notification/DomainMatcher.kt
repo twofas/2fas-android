@@ -16,9 +16,9 @@ object DomainMatcher {
 
 
     fun findServicesMatchingDomainNew(
-        services: List<com.twofasapp.data.services.domain.Service>,
+        services: List<com.twofasapp.common.domain.Service>,
         domain: String
-    ): List<com.twofasapp.data.services.domain.Service> {
+    ): List<com.twofasapp.common.domain.Service> {
         return services.filter { it.assignedDomains.contains(domain) }
     }
 

@@ -12,7 +12,7 @@ import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.Group
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.parsers.LegacyTypeToId

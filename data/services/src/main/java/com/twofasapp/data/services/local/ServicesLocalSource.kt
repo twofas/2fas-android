@@ -2,7 +2,7 @@ package com.twofasapp.data.services.local
 
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.data.services.mapper.asDomain

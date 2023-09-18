@@ -287,5 +287,7 @@ class Strings(c: Context) {
     val backupSignInInternetErrorTitle = c.getString(R.string.gdrive_internet_title)
     val backupSignInInternetErrorMsg = c.getString(R.string.gdrive_internet_msg)
 
+    val widgetSetupTitle = c.getString(R.string.widgets__settings)
+    val widgetSelectMsg = c.getString(R.string.widgets_select_msg)
 
 }

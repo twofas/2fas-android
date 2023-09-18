@@ -3,11 +3,13 @@ package com.twofasapp.feature.home.ui.services
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.notifications.NotificationsRepository
+import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.domain.AppSettings
@@ -24,6 +26,7 @@ internal class ServicesViewModel(
     private val settingsRepository: SettingsRepository,
     private val sessionRepository: SessionRepository,
     private val notificationsRepository: NotificationsRepository,
+    private val backupRepository: BackupRepository,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(ServicesUiState())
@@ -42,6 +45,7 @@ internal class ServicesViewModel(
                 settingsRepository.observeAppSettings(),
                 sessionRepository.observeShowBackupReminder(),
                 sessionRepository.observeBackupEnabled(),
+                backupRepository.observeCloudSyncStatus(),
                 searchQuery,
             ) { array ->
                 CombinedResult(
@@ -51,12 +55,14 @@ internal class ServicesViewModel(
                     appSettings = array[3] as AppSettings,
                     showBackupReminder = array[4] as Boolean,
                     backupEnabled = array[5] as Boolean,
-                    searchQuery = array[6] as String,
+                    cloudSyncStatus = array[6] as CloudSyncStatus,
+                    searchQuery = array[7] as String,
                 )
             }.collect { result ->
 
                 val showSyncReminder = result.appSettings.showBackupNotice && result.showBackupReminder && result.backupEnabled.not()
-                val showSyncNoticeBar = result.appSettings.showBackupNotice && showSyncReminder.not() && result.backupEnabled.not()
+                val showSyncNoticeBar =
+                    result.appSettings.showBackupNotice && showSyncReminder.not() && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
 
                 val filteredServices = result.services
                     .sortedBy {
@@ -269,6 +275,7 @@ internal class ServicesViewModel(
         val appSettings: AppSettings,
         val showBackupReminder: Boolean,
         val backupEnabled: Boolean,
+        val cloudSyncStatus: CloudSyncStatus,
         val searchQuery: String,
     )
 }

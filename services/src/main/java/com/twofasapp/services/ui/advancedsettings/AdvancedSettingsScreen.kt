@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.design.compose.SimpleEntry
 import com.twofasapp.design.compose.SwitchEntry
 import com.twofasapp.design.compose.SwitchEntryType

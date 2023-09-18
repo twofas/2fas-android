@@ -42,7 +42,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.services.domain.Group
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwTheme
@@ -57,6 +57,7 @@ import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.lazy.listItem
 import com.twofasapp.designsystem.service.DsService
 import com.twofasapp.designsystem.service.ServiceStyle
+import com.twofasapp.designsystem.service.asState
 import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar

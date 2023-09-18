@@ -5,7 +5,7 @@ import com.twofasapp.common.ktx.tickerFlow
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
 import com.twofasapp.data.services.otp.ServiceParser
@@ -48,6 +48,12 @@ internal class ServicesRepositoryImpl(
             local.observeOrder(),
         ) { services, order ->
             services.sortedBy { order.ids.indexOf(it.id) }
+        }
+    }
+
+    override fun observeServicesWithCode(): Flow<List<Service>> {
+        return observeServices().map { services ->
+            services.map { codeGenerator.generate(it) }
         }
     }
 

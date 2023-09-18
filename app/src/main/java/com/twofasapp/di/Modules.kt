@@ -15,6 +15,7 @@ import com.twofasapp.feature.externalimport.di.ExternalImportModule
 import com.twofasapp.feature.home.di.HomeModule
 import com.twofasapp.feature.startup.di.StartupModule
 import com.twofasapp.feature.trash.di.TrashModule
+import com.twofasapp.feature.widget.di.WidgetModule
 import com.twofasapp.network.di.NetworkModule
 import com.twofasapp.storage.di.StorageModule
 import org.koin.core.module.Module
@@ -46,6 +47,7 @@ object Modules {
         AboutModule(),
         QrScanModule(),
         BackupModule(),
+        WidgetModule(),
     )
 
     fun provide(): List<Module> =

@@ -1,23 +1,23 @@
 package com.twofasapp.prefs.model
 
 import kotlinx.serialization.SerialName
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 
-@kotlinx.serialization.Serializable
-data class Widget(
+@Serializable
+data class WidgetEntity(
     @SerialName("appWidgetId")
     val appWidgetId: Int,
     @SerialName("lastInteractionTimestamp")
     val lastInteractionTimestamp: Long,
     @SerialName("services")
     val services: MutableList<Service> = mutableListOf(),
-) : Serializable {
+) {
 
-    @kotlinx.serialization.Serializable
+    @Serializable
     data class Service(
         @SerialName("id")
         val id: Long,
         @SerialName("isActive")
         val isActive: Boolean,
-    ) : Serializable
+    )
 }
