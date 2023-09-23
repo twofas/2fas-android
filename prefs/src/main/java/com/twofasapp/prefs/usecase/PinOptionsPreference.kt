@@ -3,6 +3,7 @@ package com.twofasapp.prefs.usecase
 import com.twofasapp.prefs.internals.PreferenceModel
 import com.twofasapp.prefs.model.PinOptionsEntity
 import com.twofasapp.storage.Preferences
+import kotlinx.serialization.encodeToString
 
 class PinOptionsPreference(preferences: Preferences) : PreferenceModel<PinOptionsEntity>(preferences) {
 
@@ -13,6 +14,6 @@ class PinOptionsPreference(preferences: Preferences) : PreferenceModel<PinOption
         timeout = 5 * 60 * 1000
     )
 
-    override val serialize: (PinOptionsEntity) -> String = { jsonSerializer.serialize(it) }
-    override val deserialize: (String) -> PinOptionsEntity = { jsonSerializer.deserialize(it) }
+    override val serialize: (PinOptionsEntity) -> String = { jsonSerializer.encodeToString(it) }
+    override val deserialize: (String) -> PinOptionsEntity = { jsonSerializer.decodeFromString(it) }
 }

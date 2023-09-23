@@ -12,11 +12,8 @@ android {
 dependencies {
     implementation(project(":core:di"))
     implementation(project(":core:common"))
-    implementation(project(":serialization"))
-    
-    implementation(project(":time:domain"))
-
     implementation(project(":core:storage"))
+    implementation(project(":time:domain"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.rxJava)
@@ -24,4 +21,5 @@ dependencies {
     implementation(libs.securityCrypto)
     implementation(libs.secureStorage)
     implementation(libs.kotlinCoroutines)
+    implementation(libs.kotlinSerialization)
 }

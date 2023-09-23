@@ -1,4 +1,4 @@
-package com.twofasapp.serialization.converter
+package com.twofasapp.prefs.internals
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer

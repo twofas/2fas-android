@@ -6,13 +6,13 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.parsers.domain.OtpAuthLink
-import com.twofasapp.serialization.JsonSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 
 internal class AegisImporter(
     private val context: Context,
-    private val jsonSerializer: JsonSerializer,
+    private val jsonSerializer: Json,
     private val servicesRepository: ServicesRepository,
 ) : ExternalImporter {
 
@@ -61,7 +61,7 @@ internal class AegisImporter(
 
             val inputStream = context.contentResolver.openInputStream(fileUri)!!
             val json = inputStream.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
-            val model = jsonSerializer.deserialize<Model>(json)
+            val model = jsonSerializer.decodeFromString<Model>(json)
 
             fileDescriptor?.close()
             inputStream.close()

@@ -18,9 +18,7 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":core:di"))
     implementation(project(":prefs"))
-    
-    implementation(project(":serialization"))
-    implementation(project(":spanner"))
+
     implementation(project(":truetime"))
     implementation(project(":truetime-rx"))
     implementation(project(":browserextension"))

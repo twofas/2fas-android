@@ -24,7 +24,6 @@ dependencies {
     implementation(project(":time:domain"))
     
     implementation(project(":parsers"))
-    implementation(project(":spanner"))
     implementation(project(":data:services"))
     implementation(project(":data:session"))
     implementation(project(":core:android"))

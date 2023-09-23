@@ -35,7 +35,6 @@ dependencies {
     implementation(project(":prefs"))
     implementation(project(":services"))
     implementation(project(":qrscanner"))
-    implementation(project(":serialization"))
 
     implementation(project(":core:common"))
     implementation(project(":core:android"))
@@ -49,6 +48,7 @@ dependencies {
     implementation(libs.bundles.viewModel)
     implementation(libs.bundles.accompanist)
     implementation(libs.kotlinCoroutines)
+    implementation(libs.kotlinSerialization)
     implementation(libs.webkit)
     implementation(libs.protobuf)
     implementation(libs.apacheCommonsCodec)

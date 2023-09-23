@@ -8,14 +8,15 @@ import androidx.work.Data
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.twofasapp.serialization.JsonSerializer
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class BrowserExtensionRequestReceiver : BroadcastReceiver(), KoinComponent {
 
     private val notificationManager: NotificationManager by inject()
-    private val jsonSerializer: JsonSerializer by inject()
+    private val json: Json by inject()
 
     companion object {
         const val ACTION = "BrowserExtensionRequest"
@@ -39,7 +40,7 @@ class BrowserExtensionRequestReceiver : BroadcastReceiver(), KoinComponent {
             val request = OneTimeWorkRequestBuilder<BrowserExtensionRequestWorker>()
                 .setInputData(
                     Data.Builder().apply {
-                        putString(BrowserExtensionRequestPayload.Key, jsonSerializer.serialize(payload))
+                        putString(BrowserExtensionRequestPayload.Key, json.encodeToString(payload))
                     }.build()
                 )
                 .build()

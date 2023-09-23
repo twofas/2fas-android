@@ -22,7 +22,6 @@ dependencies {
 
 
     implementation(project(":time:domain"))
-    implementation(project(":serialization"))
     implementation(project(":resources"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:locale"))
@@ -37,6 +36,7 @@ dependencies {
     implementation(libs.lottie)
     implementation(libs.timber)
     implementation(libs.kotlinCoroutines)
+    implementation(libs.kotlinSerialization)
     implementation(libs.workManager)
     implementation(libs.workManagerRx)
     implementation(libs.bundles.viewModel)

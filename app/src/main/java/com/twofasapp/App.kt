@@ -8,7 +8,6 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.twofasapp.base.ActivityProvider
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.browserextension.BrowserExtensionModule
 import com.twofasapp.data.services.domain.CloudSyncTrigger
@@ -24,7 +23,6 @@ import com.twofasapp.prefs.usecase.SendCrashLogsPreference
 import com.twofasapp.push.PushModule
 import com.twofasapp.qrscanner.QrScannerModule
 import com.twofasapp.security.SecurityModule
-import com.twofasapp.serialization.SerializationModule
 import com.twofasapp.services.ServicesModule
 import com.twofasapp.time.TimeModule
 import com.twofasapp.usecases.services.PinOptionsUseCase
@@ -39,7 +37,6 @@ class App : MultiDexApplication() {
     private val authTracker: AuthTracker by inject()
     private val syncBackupDispatcher: CloudSyncWorkDispatcher by inject()
     private val pinOptionsUseCase: PinOptionsUseCase by inject()
-    private val activityProvider: ActivityProvider by inject()
     private val sendCrashLogsPreference: SendCrashLogsPreference by inject()
 
     override fun onCreate() {
@@ -56,26 +53,20 @@ class App : MultiDexApplication() {
             androidContext(this@App)
             modules(
                 listOf(
-                    useCaseModule,
-                    activityScopeModule,
-                ).plus(
-                    listOf(
-                        StartModule(),
-                        SerializationModule(),
-                        TimeModule(),
-                        ParsersModule(),
-                        PreferencesPlainModule(),
-                        PreferencesEncryptedModule(),
-                        BrowserExtensionModule(),
-                        PushModule(),
-                        PersistenceModule(),
-                        QrScannerModule(),
-                        ServicesModule(),
-                        SecurityModule(),
-                    )
-                        .map { it.provide() }
-                        .plus(Modules.provide())
+                    StartModule(),
+                    TimeModule(),
+                    ParsersModule(),
+                    PreferencesPlainModule(),
+                    PreferencesEncryptedModule(),
+                    BrowserExtensionModule(),
+                    PushModule(),
+                    PersistenceModule(),
+                    QrScannerModule(),
+                    ServicesModule(),
+                    SecurityModule(),
                 )
+                    .map { it.provide() }
+                    .plus(Modules.provide())
             )
         }
 
@@ -101,8 +92,6 @@ class App : MultiDexApplication() {
                 pinOptionsUseCase.tmpDigits = null
             }
         })
-
-        registerActivityLifecycleCallbacks(activityProvider)
 
         syncBackupDispatcher.tryDispatch(CloudSyncTrigger.AppStart)
 

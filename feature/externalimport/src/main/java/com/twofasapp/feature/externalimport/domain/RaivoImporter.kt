@@ -5,13 +5,13 @@ import android.net.Uri
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.parsers.domain.OtpAuthLink
-import com.twofasapp.serialization.JsonSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 
 internal class RaivoImporter(
     private val context: Context,
-    private val jsonSerializer: JsonSerializer,
+    private val jsonSerializer: Json,
 ) : ExternalImporter {
 
     @Serializable
@@ -43,7 +43,7 @@ internal class RaivoImporter(
 
             val inputStream = context.contentResolver.openInputStream(fileUri)!!
             val json = inputStream.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
-            val model = jsonSerializer.deserialize<List<Entry>>(json)
+            val model = jsonSerializer.decodeFromString<List<Entry>>(json)
 
             fileDescriptor?.close()
             inputStream.close()

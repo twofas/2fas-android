@@ -20,12 +20,10 @@ dependencyResolutionManagement {
 rootProject.name = "2fas-android"
 include(":truetime")
 include(":truetime-rx")
-include(":spanner")
 include(":app")
 include(":browserextension")
 include(":base")
 include(":prefs")
-include(":serialization")
 include(":time")
 include(":parsers")
 include(":resources")

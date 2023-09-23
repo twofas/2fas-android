@@ -10,11 +10,11 @@ import com.twofasapp.browserextension.domain.ApproveLoginRequestCase
 import com.twofasapp.browserextension.domain.DenyLoginRequestCase
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.serialization.JsonSerializer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -27,14 +27,14 @@ class BrowserExtensionRequestWorker(
     private val approveLoginRequestCase: ApproveLoginRequestCase by inject()
     private val denyLoginRequestCase: DenyLoginRequestCase by inject()
     private val servicesRepository: ServicesRepository by inject()
-    private val jsonSerializer: JsonSerializer by inject()
+    private val json: Json by inject()
     private val browserExtRepository: BrowserExtRepository by inject()
 
     override suspend fun doWork(): Result {
         return withContext(Dispatchers.IO) {
 
             val payload = inputData.getString(BrowserExtensionRequestPayload.Key)!!.let {
-                jsonSerializer.deserialize<BrowserExtensionRequestPayload>(it)
+                json.decodeFromString<BrowserExtensionRequestPayload>(it)
             }
 
             launch {
