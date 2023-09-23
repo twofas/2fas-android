@@ -11,10 +11,10 @@ interface ServicesRepository {
     fun observeServicesWithCode(): Flow<List<Service>>
     fun observeServicesTicker(): Flow<List<Service>>
     fun observeDeletedServices(): Flow<List<Service>>
-    fun observeService(id: Long): Flow<Service>
     fun observeRecentlyAddedService(): Flow<RecentlyAddedService>
     fun setTickerEnabled(enabled: Boolean)
     suspend fun getServices(): List<Service>
+    suspend fun getServicesIncludingDeleted(): List<Service>
     suspend fun getService(id: Long): Service
     suspend fun deleteService(id: Long)
     suspend fun updateService(service: Service)

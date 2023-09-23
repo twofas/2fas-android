@@ -1,5 +1,6 @@
 package com.twofasapp.data.services.remote
 
+import com.twofasapp.common.domain.Service
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.BackupRepository
@@ -12,7 +13,6 @@ import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.Group
-import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.parsers.LegacyTypeToId
@@ -75,7 +75,7 @@ class CloudSync(
             is RemoteStatus.Success -> {
                 remoteBackupStatusPreference.put {
                     it.copy(
-                        lastSyncMillis = now,
+                        lastSyncMillis = syncBackupStatus.lastSyncTime,
                         schemaVersion = BackupContent.CurrentSchema
                     )
                 }

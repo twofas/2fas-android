@@ -1,11 +1,12 @@
 package com.twofasapp.data.services
 
 import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.domain.Service
+import com.twofasapp.common.domain.WidgetCallbacks
 import com.twofasapp.common.ktx.tickerFlow
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
 import com.twofasapp.data.services.otp.ServiceParser
@@ -18,7 +19,6 @@ import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.usecase.RecentlyDeletedPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import com.twofasapp.time.domain.RecalculateTimeDeltaCase
-import com.twofasapp.common.domain.WidgetCallbacks
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -73,10 +73,6 @@ internal class ServicesRepositoryImpl(
         return local.observeDeletedServices()
     }
 
-    override fun observeService(id: Long): Flow<Service> {
-        return local.observeService(id)
-    }
-
     override fun observeRecentlyAddedService(): Flow<RecentlyAddedService> {
         return local.observeRecentlyAddedService()
     }
@@ -88,6 +84,12 @@ internal class ServicesRepositoryImpl(
     override suspend fun getServices(): List<Service> {
         return withContext(dispatchers.io) {
             local.getServices()
+        }
+    }
+
+    override suspend fun getServicesIncludingDeleted(): List<Service> {
+        return withContext(dispatchers.io) {
+            local.getServicesIncludingDeleted()
         }
     }
 

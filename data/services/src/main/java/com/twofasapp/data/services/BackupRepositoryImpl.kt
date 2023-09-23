@@ -331,7 +331,13 @@ class BackupRepositoryImpl(
                     remoteBackupKeyPreference.delete()
                 }
 
-                when (val updateResult = googleDrive.updateBackupFile(serializeBackupContent(backupContent))) {
+                when (val updateResult = googleDrive.updateBackupFile(
+                    serializeBackupContent(
+                        backupContent.copy(
+                            updatedAt = updatedAt
+                        )
+                    )
+                )) {
                     is GoogleDriveResult.Success -> {
                         CloudBackupUpdateResult.Success
                     }
