@@ -11,18 +11,10 @@ import com.twofasapp.services.domain.AssignServiceDomainCase
 import com.twofasapp.services.domain.AssignServiceDomainCaseImpl
 import com.twofasapp.services.domain.ConvertOtpToServiceCase
 import com.twofasapp.services.domain.ConvertOtpToServiceCaseImpl
-import com.twofasapp.services.domain.DeleteServiceUseCase
-import com.twofasapp.services.domain.DeleteServiceUseCaseImpl
 import com.twofasapp.services.domain.EditServiceCase
 import com.twofasapp.services.domain.EditServiceCaseImpl
-import com.twofasapp.services.domain.EditServiceUseCase
-import com.twofasapp.services.domain.EditServiceUseCaseImpl
 import com.twofasapp.services.domain.GetServicesCase
 import com.twofasapp.services.domain.GetServicesCaseImpl
-import com.twofasapp.services.domain.ObserveServiceCase
-import com.twofasapp.services.domain.ObserveServiceCaseImpl
-import com.twofasapp.services.domain.ObserveServicesCase
-import com.twofasapp.services.domain.ObserveServicesCaseImpl
 import com.twofasapp.services.ui.EditServiceViewModel
 import com.twofasapp.services.ui.changebrand.ChangeBrandViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
@@ -39,12 +31,8 @@ class ServicesModule : KoinModule {
         singleOf(::ServicesLocalDataImpl) { bind<ServicesLocalData>() }
         singleOf(::ServicesRepositoryImpl) { bind<ServicesRepository>() }
 
-        singleOf(::EditServiceUseCaseImpl) { bind<EditServiceUseCase>() }
-        singleOf(::DeleteServiceUseCaseImpl) { bind<DeleteServiceUseCase>() }
 
         singleOf(::GetServicesCaseImpl) { bind<GetServicesCase>() }
-        singleOf(::ObserveServicesCaseImpl) { bind<ObserveServicesCase>() }
-        singleOf(::ObserveServiceCaseImpl) { bind<ObserveServiceCase>() }
         singleOf(::EditServiceCaseImpl) { bind<EditServiceCase>() }
         singleOf(::AssignServiceDomainCaseImpl) { bind<AssignServiceDomainCase>() }
         singleOf(::AddServiceCaseImpl) { bind<AddServiceCase>() }

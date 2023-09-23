@@ -2,6 +2,7 @@ package com.twofasapp.ui.main
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
+import com.twofasapp.DeeplinkHandler
 import com.twofasapp.browserextension.notification.DomainMatcher
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
@@ -12,11 +13,7 @@ import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.services.domain.ConvertOtpLinkToService
-import com.twofasapp.DeeplinkHandler
-import com.twofasapp.usecases.services.AddService
-import com.twofasapp.usecases.services.CheckServiceExists
 import com.twofasapp.usecases.totp.ParseOtpAuthLink
-import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.update
@@ -28,9 +25,7 @@ internal class MainViewModel(
     private val browserExtRepository: BrowserExtRepository,
     private val servicesRepository: ServicesRepository,
     private val parseOtpAuthLink: ParseOtpAuthLink,
-    private val checkServiceExists: CheckServiceExists,
     private val convertOtpToServiceCase: ConvertOtpLinkToService,
-    private val addService: AddService,
     private val deeplinkHandler: DeeplinkHandler,
 ) : ViewModel() {
 
@@ -105,21 +100,22 @@ internal class MainViewModel(
 
     @SuppressLint("CheckResult")
     fun handleIncomingData(incomingData: String?) {
-        if (incomingData != null) {
-            parseOtpAuthLink.execute(ParseOtpAuthLink.Params(incomingData))
-                .flatMap { checkServiceExists.execute(it.secret) }
-                .subscribeBy(
-                    onSuccess = { isExists ->
-                        if (isExists.not()) {
-                            parseOtpAuthLink.execute(ParseOtpAuthLink.Params(incomingData))
-                                .map { convertOtpToServiceCase.execute(it) }
-                                .flatMapCompletable { addService.execute(AddService.Params(it)) }
-                                .subscribe({ }, {})
-                        }
-                    },
-                    onError = {}
-                )
-        }
+        // TODO: Clean
+//        if (incomingData != null) {
+//            parseOtpAuthLink.execute(ParseOtpAuthLink.Params(incomingData))
+//                .flatMap { checkServiceExists.execute(it.secret) }
+//                .subscribeBy(
+//                    onSuccess = { isExists ->
+//                        if (isExists.not()) {
+//                            parseOtpAuthLink.execute(ParseOtpAuthLink.Params(incomingData))
+//                                .map { convertOtpToServiceCase.execute(it) }
+//                                .flatMapCompletable { addService.execute(AddService.Params(it)) }
+//                                .subscribe({ }, {})
+//                        }
+//                    },
+//                    onError = {}
+//                )
+//        }
     }
 
     fun browserExtRequestHandled(browserExtRequest: BrowserExtRequest) {

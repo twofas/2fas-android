@@ -10,19 +10,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface ServicesRepository {
     fun select(): Single<List<ServiceDto>>
-    fun observe(): Flowable<List<ServiceDto>>
     fun insertService(service: ServiceDto): Single<Long>
     fun updateService(vararg services: ServiceDto): Completable
     fun deleteService(vararg services: ServiceDto): Completable
-    fun deleteService(id: Long): Completable
 
     suspend fun insertService(service: Service): Long
     fun selectFlow(): Flow<List<Service>>
-    suspend fun select(serviceId: Long): Service
     fun observe(serviceId: Long): Flow<Service>
     suspend fun getServicesOrder(): ServicesOrder
     suspend fun updateServicesOrder(servicesOrder: ServicesOrder)
     suspend fun assignServiceDomain(service: Service, domain: String)
     suspend fun updateService(vararg services: Service)
-    suspend fun addToRecentlyDeleted(secret: String)
 }

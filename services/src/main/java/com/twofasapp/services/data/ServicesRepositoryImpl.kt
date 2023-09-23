@@ -1,14 +1,12 @@
 package com.twofasapp.services.data
 
 import com.twofasapp.common.time.TimeProvider
-import com.twofasapp.prefs.model.RecentlyDeletedService
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.prefs.model.ServicesOrder
 import com.twofasapp.prefs.usecase.RecentlyDeletedPreference
 import com.twofasapp.prefs.usecase.ServicesOrderPreference
 import com.twofasapp.services.domain.model.Service
 import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Single
 import kotlinx.coroutines.flow.Flow
 
@@ -39,16 +37,9 @@ internal class ServicesRepositoryImpl(
         return localData.selectFlow()
     }
 
-    override suspend fun select(serviceId: Long): Service {
-        return localData.selectAll().first { it.id == serviceId }
-    }
 
     override fun observe(serviceId: Long): Flow<Service> {
         return localData.observe(serviceId)
-    }
-
-    override fun observe(): Flowable<List<ServiceDto>> {
-        return localData.observe()
     }
 
     override fun insertService(service: ServiceDto): Single<Long> {
@@ -61,10 +52,6 @@ internal class ServicesRepositoryImpl(
 
     override fun deleteService(vararg services: ServiceDto): Completable {
         return localData.deleteService(*services)
-    }
-
-    override fun deleteService(id: Long): Completable {
-        return localData.deleteService(id)
     }
 
     override suspend fun getServicesOrder(): ServicesOrder {
@@ -102,11 +89,5 @@ internal class ServicesRepositoryImpl(
 
     override suspend fun updateService(vararg services: Service) {
         localData.updateServiceSuspend(*services)
-    }
-
-    override suspend fun addToRecentlyDeleted(secret: String) {
-        recentlyDeletedPreference.put {
-            it.copy(services = it.services.plus(RecentlyDeletedService(secret, deletedAt = timeProvider.systemCurrentTime())))
-        }
     }
 }
