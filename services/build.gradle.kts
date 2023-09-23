@@ -22,7 +22,6 @@ dependencies {
     implementation(project(":qrscanner"))
     
     implementation(project(":services:domain"))
-    implementation(project(":widgets:domain"))
     implementation(project(":time:domain"))
     
     implementation(project(":parsers"))

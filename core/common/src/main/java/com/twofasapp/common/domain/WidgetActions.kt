@@ -1,4 +1,4 @@
-package com.twofasapp.widgets.domain
+package com.twofasapp.common.domain
 
 interface WidgetActions {
     fun onServiceChanged()

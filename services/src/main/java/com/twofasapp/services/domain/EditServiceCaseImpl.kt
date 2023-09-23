@@ -4,7 +4,7 @@ import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.model.Service
-import com.twofasapp.widgets.domain.WidgetActions
+import com.twofasapp.common.domain.WidgetActions
 
 internal class EditServiceCaseImpl(
     private val servicesRepository: ServicesRepository,

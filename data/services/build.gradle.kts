@@ -17,7 +17,6 @@ dependencies {
     implementation(project(":data:cloud"))
 
     implementation(project(":parsers"))
-    implementation(project(":widgets:domain"))
     implementation(project(":time:domain"))
 
     implementation(libs.bundles.room)

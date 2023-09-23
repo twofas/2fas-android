@@ -18,7 +18,7 @@ import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.usecase.RecentlyDeletedPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import com.twofasapp.time.domain.RecalculateTimeDeltaCase
-import com.twofasapp.widgets.domain.WidgetActions
+import com.twofasapp.common.domain.WidgetActions
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine

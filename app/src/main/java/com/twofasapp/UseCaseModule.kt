@@ -1,6 +1,8 @@
 package com.twofasapp
 
+import com.twofasapp.base.ActivityProvider
 import com.twofasapp.base.AuthTracker
+import com.twofasapp.common.domain.WidgetActions
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.prefs.usecase.StoreGroups
 import com.twofasapp.services.domain.ConvertOtpLinkToService
@@ -23,27 +25,16 @@ import com.twofasapp.usecases.services.GetServicesIncludingTrashed
 import com.twofasapp.usecases.services.PinOptionsUseCase
 import com.twofasapp.usecases.services.ServicesModelMapper
 import com.twofasapp.usecases.totp.ParseOtpAuthLink
-import com.twofasapp.usecases.widgets.DeactivateAllWidgets
-import com.twofasapp.usecases.widgets.DeleteServiceFromWidget
-import com.twofasapp.usecases.widgets.DeleteWidget
-import com.twofasapp.usecases.widgets.GetWidgetSettings
-import com.twofasapp.usecases.widgets.UpdateWidget
-import com.twofasapp.widgets.adapter.WidgetViewsData
-import com.twofasapp.widgets.adapter.WidgetViewsDataCached
-import com.twofasapp.widgets.broadcast.WidgetBroadcaster
-import com.twofasapp.widgets.broadcast.WidgetBroadcasterImpl
-import com.twofasapp.widgets.presenter.WidgetItemPresenterDelegate
-import com.twofasapp.widgets.presenter.WidgetItemPresenterDelegateImpl
-import com.twofasapp.widgets.presenter.WidgetPresenter
-import com.twofasapp.widgets.presenter.WidgetPresenterDelegate
-import com.twofasapp.widgets.presenter.WidgetPresenterDelegateImpl
-import com.twofasapp.widgets.presenter.WidgetReceiverPresenterDelegate
-import com.twofasapp.widgets.presenter.WidgetReceiverPresenterDelegateImpl
+import com.twofasapp.widgets.WidgetActionsImpl
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import javax.inject.Provider
 
 val useCaseModule = module {
+    single { ActivityProvider() }
+    singleOf(::WidgetActionsImpl) { bind<WidgetActions>() }
     single { ParseOtpAuthLink() }
     single { AddService(get(), get(), get(), get(), get(), get(), get(), get()) }
     single<GetServicesUseCase> { GetServices(get()) }
@@ -66,15 +57,4 @@ val useCaseModule = module {
     single { StoreGroups(get(), get()) }
     single { StoreHotpServices(get()) }
     single { PinOptionsUseCase(get()) }
-    single { UpdateWidget(get()) }
-    single { DeleteWidget(get()) }
-    single { DeleteServiceFromWidget(get()) }
-    single { GetWidgetSettings(get()) }
-    single { DeactivateAllWidgets(get()) }
-    factory<WidgetViewsData> { WidgetViewsDataCached(get(), get(), get()) }
-    single<WidgetBroadcaster> { WidgetBroadcasterImpl(androidContext()) }
-    single { WidgetPresenter(get(), get(), get()) }
-    single<WidgetPresenterDelegate> { WidgetPresenterDelegateImpl(androidContext(), get()) }
-    single<WidgetItemPresenterDelegate> { WidgetItemPresenterDelegateImpl(androidContext(), get()) }
-    single<WidgetReceiverPresenterDelegate> { WidgetReceiverPresenterDelegateImpl(androidContext(), get(), get(), get(), get(), get()) }
 }

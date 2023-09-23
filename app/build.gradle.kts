@@ -30,10 +30,8 @@ dependencies {
     implementation(project(":push"))
     implementation(project(":persistence"))
     implementation(project(":qrscanner"))
-    implementation(project(":widgets"))
     implementation(project(":services"))
     implementation(project(":services:domain"))
-    implementation(project(":widgets:domain"))
 
     implementation(project(":time"))
     implementation(project(":security"))
@@ -76,6 +74,7 @@ dependencies {
     implementation(libs.bundles.accompanist)
     implementation(libs.bundles.playReview)
     implementation(libs.bundles.playUpdate)
+    implementation(libs.bundles.glance)
     implementation(libs.timber)
     implementation(libs.webkit)
     implementation(libs.securityCrypto)

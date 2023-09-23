@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.32.0"
-agp = "8.2.0-beta04"
+agp = "8.2.0-beta05"
 coil = "2.4.0"
 compose = "1.5.1"
 composeActivity = "1.7.2"
@@ -14,8 +14,8 @@ kotlin = "1.9.10"
 kotlinCoroutines = "1.7.3"
 kotlinKsp = "1.9.10-1.0.13"
 ktlint = "3.12.0"
-ktor = "2.3.3"
-material3 = "1.2.0-alpha07"
+ktor = "2.3.4"
+material3 = "1.2.0-alpha08"
 room = "2.5.2"
 lifecycle = "2.7.0-alpha02"
 junit = "4.13.2"
@@ -70,7 +70,7 @@ material = "com.google.android.material:material:1.9.0"
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 material3Window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
 mockk = "io.mockk:mockk:1.13.2"
-navigationCompose = "androidx.navigation:navigation-compose:2.7.2"
+navigationCompose = "androidx.navigation:navigation-compose:2.7.3"
 robolectric = "org.robolectric:robolectric:4.9"
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }

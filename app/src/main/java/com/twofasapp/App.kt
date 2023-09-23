@@ -56,9 +56,8 @@ class App : MultiDexApplication() {
             androidContext(this@App)
             modules(
                 listOf(
-                    applicationModule,
-                    activityScopeModule,
                     useCaseModule,
+                    activityScopeModule,
                 ).plus(
                     listOf(
                         StartModule(),

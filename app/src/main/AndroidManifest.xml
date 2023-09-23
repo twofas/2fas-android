@@ -87,7 +87,7 @@
 
         <receiver
             android:name=".widgets.WidgetProvider"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -97,16 +97,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_provider" />
-        </receiver>
-
-        <receiver
-            android:name=".widgets.WidgetTimerReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="WIDGET_TIMER" />
-            </intent-filter>
+                android:resource="@xml/widget_info" />
         </receiver>
 
         <!-- ACTIVITIES -->
@@ -141,41 +132,33 @@
             android:launchMode="singleTask" />
 
 
-<!--        TODO: Refactor-->
-<!--        <activity-->
-<!--            android:name=".features.backup.import.ImportBackupActivity"-->
-<!--            android:exported="true"-->
-<!--            android:label="Import Backup">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
+        <!--        TODO: Refactor-->
+        <!--        <activity-->
+        <!--            android:name=".features.backup.import.ImportBackupActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:label="Import Backup">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.VIEW" />-->
 
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--                <category android:name="android.intent.category.BROWSABLE" />-->
 
-<!--                <data android:scheme="file" />-->
-<!--                <data android:scheme="content" />-->
-<!--                <data android:mimeType="*/*" />-->
-<!--                <data android:host="*" />-->
-<!--                <data android:pathPattern=".*\\.2fas" />-->
-<!--                <data android:pathPattern=".*\\..*\\.2fas" />-->
-<!--                <data android:pathPattern=".*\\..*\\..*\\.2fas" />-->
-<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\.2fas" />-->
-<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.2fas" />-->
-<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
-<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
-<!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
+        <!--                <data android:scheme="file" />-->
+        <!--                <data android:scheme="content" />-->
+        <!--                <data android:mimeType="*/*" />-->
+        <!--                <data android:host="*" />-->
+        <!--                <data android:pathPattern=".*\\.2fas" />-->
+        <!--                <data android:pathPattern=".*\\..*\\.2fas" />-->
+        <!--                <data android:pathPattern=".*\\..*\\..*\\.2fas" />-->
+        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\.2fas" />-->
+        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.2fas" />-->
+        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
+        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
+        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
 
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
 
-        <activity
-            android:name=".widgets.configure.WidgetSettingsActivity"
-            android:exported="true"
-            android:label="Widget settings">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
 
     </application>
 </manifest>

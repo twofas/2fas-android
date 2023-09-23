@@ -2,7 +2,7 @@ package com.twofasapp.services.domain
 
 import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.services.data.ServicesRepository
-import com.twofasapp.widgets.domain.WidgetActions
+import com.twofasapp.common.domain.WidgetActions
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 
