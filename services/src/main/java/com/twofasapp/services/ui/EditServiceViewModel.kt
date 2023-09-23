@@ -10,7 +10,7 @@ import com.twofasapp.data.services.domain.Group
 import com.twofasapp.common.domain.Service
 import com.twofasapp.prefs.model.LockMethodEntity
 import com.twofasapp.prefs.usecase.LockMethodPreference
-import com.twofasapp.services.domain.model.BrandIcon
+import com.twofasapp.services.domain.BrandIcon
 import com.twofasapp.services.navigation.ServiceNavArg
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,41 +1,40 @@
 package com.twofasapp.usecases
 
+import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.domain.OtpAuthLink
-import com.twofasapp.services.domain.ConvertOtpToServiceCase
-import com.twofasapp.services.domain.EditServiceCase
-import com.twofasapp.services.domain.GetServicesCase
-import com.twofasapp.services.domain.model.Service
 
 class MigrateUnknownServicesCaseImpl(
-    private val getServicesCase: GetServicesCase,
-    private val editServiceCase: EditServiceCase,
-    private val convertOtpToServiceCase: ConvertOtpToServiceCase,
+    private val servicesRepository: ServicesRepository,
 ) : MigrateUnknownServicesCase {
 
     override suspend fun invoke() {
-        val servicesToMigrate = getServicesCase().filter { service ->
+        val servicesToMigrate = servicesRepository.getServices().filter { service ->
             service.serviceTypeId.isNullOrEmpty()
                     && service.iconCollectionId == ServiceIcons.defaultCollectionId
-                    && service.selectedImageType == Service.ImageType.IconCollection
+                    && service.imageType == Service.ImageType.IconCollection
         }
 
         val servicesMigrated = servicesToMigrate.map { migrateService(it) }
 
-        servicesMigrated.forEach { editServiceCase(it) }
+        servicesMigrated.forEach {
+            servicesRepository.updateService(it)
+        }
     }
 
     private fun migrateService(service: Service): Service {
         val otpLink = OtpAuthLink(
             type = service.authType.name,
-            label = service.otp.label,
-            issuer = service.otp.issuer,
+            label = service.info.orEmpty(),
+            issuer = service.issuer,
             secret = service.secret,
             params = emptyMap(),
-            link = service.otp.link,
+            link = service.link,
         )
 
-        val matchedService = convertOtpToServiceCase(otpLink)
+        val matchedService = ServiceParser.parseService(otpLink)
 
         return if (matchedService.serviceTypeId == null) {
             service

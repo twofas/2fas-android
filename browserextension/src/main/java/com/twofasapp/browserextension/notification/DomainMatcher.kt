@@ -1,7 +1,7 @@
 package com.twofasapp.browserextension.notification
 
 import android.net.Uri
-import com.twofasapp.services.domain.model.Service
+import com.twofasapp.common.domain.Service
 
 object DomainMatcher {
 

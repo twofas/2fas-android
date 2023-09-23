@@ -348,4 +348,30 @@ internal class ServicesRepositoryImpl(
             }
         }
     }
+
+    override suspend fun assignDomainToService(service: Service, domain: String) {
+        if (service.assignedDomains.contains(domain.lowercase())) {
+            return
+        }
+
+        // Remove duplicates
+        val matchingServices = local.getServicesIncludingDeleted()
+            .filter { it.assignedDomains.contains(domain.lowercase()) }
+
+        matchingServices.forEach { matched ->
+            updateService(
+                matched.copy(
+                    assignedDomains = matched.assignedDomains.minus(domain.lowercase()),
+                    updatedAt = timeProvider.systemCurrentTime(),
+                )
+            )
+        }
+
+        updateService(
+            service.copy(
+                assignedDomains = service.assignedDomains.plus(domain.lowercase()),
+                updatedAt = timeProvider.systemCurrentTime(),
+            )
+        )
+    }
 }

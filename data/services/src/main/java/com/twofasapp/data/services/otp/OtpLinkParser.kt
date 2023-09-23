@@ -13,7 +13,7 @@ object OtpLinkParser {
     private const val SECRET = "secret"
     private const val ISSUER = "issuer"
 
-    fun parseLegacy(link: String): OtpAuthLink? {
+    fun parse(link: String): OtpAuthLink? {
         try {
             Timber.d("Parse link: $link")
 

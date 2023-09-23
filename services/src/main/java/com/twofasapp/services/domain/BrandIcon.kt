@@ -1,4 +1,4 @@
-package com.twofasapp.services.domain.model
+package com.twofasapp.services.domain
 
 data class BrandIcon(
     val name: String,

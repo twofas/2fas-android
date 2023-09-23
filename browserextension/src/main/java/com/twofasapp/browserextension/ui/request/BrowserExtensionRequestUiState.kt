@@ -1,6 +1,6 @@
 package com.twofasapp.browserextension.ui.request
 
-import com.twofasapp.services.domain.model.Service
+import com.twofasapp.common.domain.Service
 
 data class BrowserExtensionRequestUiState(
     val browserName: String = "",

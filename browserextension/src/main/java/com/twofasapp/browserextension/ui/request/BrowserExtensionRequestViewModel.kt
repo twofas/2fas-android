@@ -1,24 +1,19 @@
 package com.twofasapp.browserextension.ui.request
 
-import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.browserextension.domain.ObservePairedBrowsersCase
 import com.twofasapp.browserextension.notification.DomainMatcher
-import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.domain.Service
+import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.browserext.BrowserExtRepository
-import com.twofasapp.services.domain.AssignServiceDomainCase
-import com.twofasapp.services.domain.GetServicesCase
-import com.twofasapp.services.domain.model.Service
+import com.twofasapp.data.services.ServicesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 internal class BrowserExtensionRequestViewModel(
-    private val dispatchers: Dispatchers,
+    private val servicesRepository: ServicesRepository,
     private val observePairedBrowsersCase: ObservePairedBrowsersCase,
-    private val getServicesCase: GetServicesCase,
-    private val assignServiceDomainCase: AssignServiceDomainCase,
     private val browserExtRepository: BrowserExtRepository,
 ) : BaseViewModel() {
 
@@ -29,9 +24,9 @@ internal class BrowserExtensionRequestViewModel(
         domain: String?,
     ) {
 
-        viewModelScope.launch(dispatchers.io) {
+        launchScoped {
             val browsers = observePairedBrowsersCase().first()
-            val services = getServicesCase()
+            val services = servicesRepository.getServices()
             val matchedServices = domain?.let { DomainMatcher.findServicesMatchingDomain(services, domain) } ?: emptyList()
             val suggestedServices =
                 matchedServices.plus(DomainMatcher.findServicesSuggestedForDomain(services, domain).minus(matchedServices.toSet()))
@@ -52,9 +47,9 @@ internal class BrowserExtensionRequestViewModel(
         domain: String,
         onFinish: () -> Unit
     ) {
-        viewModelScope.launch(dispatchers.io) {
+        launchScoped {
             if (uiState.value.saveMyChoice) {
-                assignServiceDomainCase(service, domain)
+                servicesRepository.assignDomainToService(service, domain)
             }
             browserExtRepository.deleteTokenRequest(requestId)
             onFinish.invoke()

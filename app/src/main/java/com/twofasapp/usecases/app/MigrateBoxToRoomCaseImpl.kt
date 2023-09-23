@@ -1,21 +1,20 @@
 package com.twofasapp.usecases.app
 
 import android.content.Context
+import com.twofasapp.common.ktx.enumValueOrNull
 import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.entity.MyObjectBox
 import com.twofasapp.entity.Service
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.usecase.MigratedToRoomPreference
-import com.twofasapp.services.data.ServicesRepository
-import com.twofasapp.services.domain.StoreServicesOrder
 import com.twofasapp.usecases.MigrateBoxToRoomCase
 
 class MigrateBoxToRoomCaseImpl(
     private val context: Context,
     private val servicesRepository: ServicesRepository,
     private val migratedToRoomPreference: MigratedToRoomPreference,
-    private val storeServicesOrder: StoreServicesOrder,
     private val timeProvider: TimeProvider,
 ) : MigrateBoxToRoomCase {
 
@@ -36,7 +35,7 @@ class MigrateBoxToRoomCaseImpl(
                 return
             }
 
-            val boxServices = boxService.all.sortedBy { model -> storeServicesOrder.getOrder().ids.indexOf(model.id) }
+            val boxServices = boxService.all
 
             if (boxServices.isEmpty()) {
                 migratedToRoomPreference.put(true)
@@ -46,37 +45,40 @@ class MigrateBoxToRoomCaseImpl(
             val ids = mutableListOf<Long>()
             val now = timeProvider.systemCurrentTime()
 
-            boxServices.forEach {
-                val id = servicesRepository.insertService(
-                    com.twofasapp.services.domain.model.Service(
+            servicesRepository.addServices(
+                boxServices.map {
+                    com.twofasapp.common.domain.Service(
                         id = 0,
                         name = it.name,
                         secret = it.secret,
-                        authType = com.twofasapp.services.domain.model.Service.AuthType.TOTP,
-                        otp = com.twofasapp.services.domain.model.Service.Otp(
-                            label = it.label.orEmpty(),
-                            account = it.account.orEmpty(),
-                            issuer = it.issuer,
-                        ),
+                        authType = com.twofasapp.common.domain.Service.AuthType.TOTP,
                         backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                         updatedAt = now,
                         assignedDomains = emptyList(),
                         serviceTypeId = null,
                         iconCollectionId = ServiceIcons.defaultCollectionId,
-                        source = com.twofasapp.services.domain.model.Service.Source.Manual,
+                        source = com.twofasapp.common.domain.Service.Source.Manual,
+                        info = it.label,
+                        link = null,
+                        issuer = it.issuer,
+                        period = it.period,
+                        digits = it.digits,
+                        algorithm = enumValueOrNull(it.algorithm),
+                        iconLight = "",
+                        iconDark = "",
+                        badgeColor = null,
+                        tags = listOf(),
+                        isDeleted = false,
                     )
-                )
+                }
+            )
 
-                ids.add(id)
-            }
-
-            val roomServices = servicesRepository.select().blockingGet()
+            val roomServices = servicesRepository.getServices()
             val isSuccess = roomServices.map { it.secret.lowercase().trim() }.distinct()
                 .containsAll(boxServices.map { it.secret.lowercase().trim() }.distinct())
-            storeServicesOrder.saveOrder(storeServicesOrder.getOrder().copy(ids = ids))
             migratedToRoomPreference.put(isSuccess)
         } catch (e: Exception) {
-
+            e.printStackTrace()
         }
     }
 }

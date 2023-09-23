@@ -4,8 +4,8 @@ import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.decodeBase64
-import com.twofasapp.data.services.domain.CloudSyncTrigger
-import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
+import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.externalimport.domain.AegisImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
 import com.twofasapp.feature.externalimport.domain.ExternalImport
@@ -14,21 +14,13 @@ import com.twofasapp.feature.externalimport.domain.LastPassImporter
 import com.twofasapp.feature.externalimport.domain.RaivoImporter
 import com.twofasapp.feature.externalimport.navigation.ImportType
 import com.twofasapp.resources.R
-import com.twofasapp.services.data.converter.toService
-import com.twofasapp.services.domain.AddServiceCase
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 internal class ImportResultViewModel(
     private val dispatchers: Dispatchers,
-    private val addServiceCase: AddServiceCase,
-    private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
+    private val servicesRepository: ServicesRepository,
     private val googleAuthenticatorImporter: GoogleAuthenticatorImporter,
     private val aegisImporter: AegisImporter,
     private val raivoImporter: RaivoImporter,
@@ -36,8 +28,7 @@ internal class ImportResultViewModel(
     private val authenticatorProImporter: AuthenticatorProImporter,
 ) : BaseViewModel() {
 
-    private val _uiState = MutableStateFlow(ImportResultUiState())
-    val uiState = _uiState.asStateFlow()
+    val uiState = MutableStateFlow(ImportResultUiState())
 
     fun import(type: ImportType, content: String) {
         viewModelScope.launch(dispatchers.io) {
@@ -51,7 +42,7 @@ internal class ImportResultViewModel(
 
             when (result) {
                 is ExternalImport.Success -> {
-                    _uiState.update {
+                    uiState.update {
                         ImportResultUiState(
                             importResult = result,
                             title = getTitle(type),
@@ -66,7 +57,7 @@ internal class ImportResultViewModel(
 
                 is ExternalImport.ParsingError,
                 ExternalImport.UnsupportedError -> {
-                    _uiState.update {
+                    uiState.update {
                         ImportResultUiState(
                             importResult = result,
                             title = getTitle(type),
@@ -85,14 +76,9 @@ internal class ImportResultViewModel(
     fun saveServices() {
         if (uiState.value.importResult is ExternalImport.Success) {
 
-            viewModelScope.launch(dispatchers.io) {
-                (uiState.value.importResult as ExternalImport.Success).servicesToImport.asFlow()
-                    .onEach { addServiceCase(it.toService()) }
-                    .onCompletion {
-                        cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
-                        _uiState.update { it.copy(finishSuccess = true) }
-                    }
-                    .collect()
+            launchScoped {
+                servicesRepository.addServices((uiState.value.importResult as ExternalImport.Success).servicesToImport)
+                uiState.update { it.copy(finishSuccess = true) }
             }
         }
     }

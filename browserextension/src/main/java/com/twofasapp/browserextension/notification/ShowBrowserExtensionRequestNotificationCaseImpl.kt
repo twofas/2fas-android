@@ -10,20 +10,20 @@ import com.twofasapp.browserextension.ui.request.BrowserExtensionRequestActivity
 import com.twofasapp.browserextension.ui.request.BrowserExtensionRequestApproveActivity
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
+import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.push.domain.ShowBrowserExtensionRequestNotificationCase
 import com.twofasapp.push.domain.model.Push
 import com.twofasapp.push.notification.NotificationChannelProvider
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.GetLockMethodCase
 import com.twofasapp.security.domain.model.LockMethod
-import com.twofasapp.services.domain.GetServicesCase
 
 class ShowBrowserExtensionRequestNotificationCaseImpl(
     private val context: Context,
     private val notificationManager: NotificationManager,
     private val notificationChannelProvider: NotificationChannelProvider,
     private val getLockMethodCase: GetLockMethodCase,
-    private val getServicesCase: GetServicesCase,
+    private val servicesRepository: ServicesRepository,
     private val browserExtRepository: BrowserExtRepository,
 ) : ShowBrowserExtensionRequestNotificationCase {
 
@@ -33,7 +33,7 @@ class ShowBrowserExtensionRequestNotificationCaseImpl(
         runSafely { browserExtRepository.fetchTokenRequests() }
 
         val domain = DomainMatcher.extractDomain(push.domain)
-        val matchedServices = DomainMatcher.findServicesMatchingDomain(getServicesCase(), domain)
+        val matchedServices = DomainMatcher.findServicesMatchingDomain(servicesRepository.getServices(), domain)
         val isOneDomainMatched = matchedServices.size == 1
         val notificationId = push.requestId.hashCode()
         val serviceId = if (matchedServices.size == 1) matchedServices.first().id else null
@@ -78,9 +78,17 @@ class ShowBrowserExtensionRequestNotificationCaseImpl(
                     )
 
                     val denyAction =
-                        NotificationCompat.Action.Builder(R.drawable.ic_action_deny, context.getString(R.string.extension__deny), denyIntent).build()
+                        NotificationCompat.Action.Builder(
+                            R.drawable.ic_action_deny,
+                            context.getString(R.string.extension__deny),
+                            denyIntent
+                        ).build()
                     val allowAction =
-                        NotificationCompat.Action.Builder(R.drawable.ic_action_allow, context.getString(R.string.extension__approve), allowIntent).build()
+                        NotificationCompat.Action.Builder(
+                            R.drawable.ic_action_allow,
+                            context.getString(R.string.extension__approve),
+                            allowIntent
+                        ).build()
 
                     addAction(denyAction)
                     addAction(allowAction)
@@ -156,14 +164,20 @@ class ShowBrowserExtensionRequestNotificationCaseImpl(
                 }
 
                 PendingIntent.getActivity(
-                    context, notificationId + action.hashCode(), contentIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                    context,
+                    notificationId + action.hashCode(),
+                    contentIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
                 )
             }
 
             else -> {
                 val notifyIntent = BrowserExtensionRequestReceiver.createIntent(context, payload)
                 PendingIntent.getBroadcast(
-                    context, notificationId + action.hashCode(), notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                    context,
+                    notificationId + action.hashCode(),
+                    notifyIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
                 )
             }
         }

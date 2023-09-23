@@ -33,7 +33,6 @@ dependencies {
     implementation(project(":design"))
     
     implementation(project(":prefs"))
-    implementation(project(":services:domain"))
     implementation(project(":services"))
     implementation(project(":qrscanner"))
     implementation(project(":serialization"))

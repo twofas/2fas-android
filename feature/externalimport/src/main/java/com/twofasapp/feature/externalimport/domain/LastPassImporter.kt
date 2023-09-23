@@ -2,18 +2,17 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.parsers.domain.OtpAuthLink
-import com.twofasapp.prefs.model.ServiceDto
 import com.twofasapp.serialization.JsonSerializer
-import com.twofasapp.services.domain.ConvertOtpLinkToService
 import kotlinx.serialization.Serializable
 import java.io.BufferedReader
 
 internal class LastPassImporter(
     private val context: Context,
     private val jsonSerializer: JsonSerializer,
-    private val convertOtpLinkToService: ConvertOtpLinkToService,
     private val servicesRepository: ServicesRepository,
 ) : ExternalImporter {
 
@@ -55,7 +54,7 @@ internal class LastPassImporter(
             inputStream.close()
 
             val totalServices = model.accounts.size
-            val servicesToImport = mutableListOf<ServiceDto>()
+            val servicesToImport = mutableListOf<Service?>()
 
             model
                 .accounts
@@ -73,7 +72,7 @@ internal class LastPassImporter(
                 }
 
             return ExternalImport.Success(
-                servicesToImport = servicesToImport,
+                servicesToImport = servicesToImport.filterNotNull(),
                 totalServicesCount = totalServices,
             )
         } catch (e: Exception) {
@@ -83,7 +82,7 @@ internal class LastPassImporter(
         }
     }
 
-    private fun parseService(account: Account): ServiceDto {
+    private fun parseService(account: Account): Service? {
         val otpLink = OtpAuthLink(
             type = "TOTP",
             label = account.userName,
@@ -93,9 +92,7 @@ internal class LastPassImporter(
             link = null,
         )
 
-        val parsed = convertOtpLinkToService.execute(otpLink)
-
-        return parsed.copy(otpAccount = account.userName)
+        return ServiceParser.parseService(otpLink)
     }
 
     private fun parseParams(account: Account): Map<String, String> {

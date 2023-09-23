@@ -3,7 +3,7 @@ package com.twofasapp.services.ui.changebrand
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.services.domain.model.BrandIcon
+import com.twofasapp.services.domain.BrandIcon
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

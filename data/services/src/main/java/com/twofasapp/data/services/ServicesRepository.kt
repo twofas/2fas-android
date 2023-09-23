@@ -1,7 +1,7 @@
 package com.twofasapp.data.services
 
-import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.RecentlyDeleted
 import kotlinx.coroutines.flow.Flow
@@ -39,4 +39,5 @@ interface ServicesRepository {
     suspend fun revealService(id: Long)
     suspend fun getRecentlyDeletedServices(): RecentlyDeleted
     suspend fun removeRecentlyDeleted(secret: String)
+    suspend fun assignDomainToService(service: Service, domain: String)
 }

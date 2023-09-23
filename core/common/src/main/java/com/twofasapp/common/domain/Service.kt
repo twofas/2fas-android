@@ -89,7 +89,6 @@ data class Service(
             source = Source.Link,
             assignedDomains = listOf(),
             backupSyncStatus = BackupSyncStatus.SYNCED,
-
-            )
+        )
     }
 }

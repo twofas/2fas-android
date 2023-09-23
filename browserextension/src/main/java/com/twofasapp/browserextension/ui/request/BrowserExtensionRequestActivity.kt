@@ -29,15 +29,16 @@ import androidx.core.app.NotificationManagerCompat
 import com.twofasapp.base.BaseComponentActivity
 import com.twofasapp.browserextension.notification.BrowserExtensionRequestPayload
 import com.twofasapp.browserextension.notification.BrowserExtensionRequestReceiver
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.design.theme.ThemeState
 import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwSwitch
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.service.DsServiceSimple
+import com.twofasapp.designsystem.service.asState
 import com.twofasapp.resources.R
-import com.twofasapp.services.domain.model.Service
-import com.twofasapp.services.view.ServiceCompact
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.get
 
@@ -211,9 +212,8 @@ class BrowserExtensionRequestActivity : BaseComponentActivity() {
     ) {
         val activity = (LocalContext.current as? Activity)
 
-        ServiceCompact(
-            service = service,
-            showDivider = true,
+        DsServiceSimple(
+            state = service.asState(),
             modifier = modifier
                 .fillMaxWidth()
                 .clickable {

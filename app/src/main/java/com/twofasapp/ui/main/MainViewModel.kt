@@ -12,8 +12,6 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
-import com.twofasapp.services.domain.ConvertOtpLinkToService
-import com.twofasapp.usecases.totp.ParseOtpAuthLink
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.update
@@ -24,8 +22,6 @@ internal class MainViewModel(
     private val notificationsRepository: NotificationsRepository,
     private val browserExtRepository: BrowserExtRepository,
     private val servicesRepository: ServicesRepository,
-    private val parseOtpAuthLink: ParseOtpAuthLink,
-    private val convertOtpToServiceCase: ConvertOtpLinkToService,
     private val deeplinkHandler: DeeplinkHandler,
 ) : ViewModel() {
 

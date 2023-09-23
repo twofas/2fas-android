@@ -2,14 +2,12 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.net.Uri
 import com.twofasapp.GoogleAuthenticatorProto.MigrationPayload
+import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.decodeBase64ToByteArray
-import com.twofasapp.prefs.model.ServiceDto
-import com.twofasapp.services.domain.ConvertOtpLinkToService
+import com.twofasapp.data.services.otp.ServiceParser
 import org.apache.commons.codec.binary.Base32
 
-class GoogleAuthenticatorImporter(
-    private val convertOtpLinkToService: ConvertOtpLinkToService,
-) : ExternalImporter {
+class GoogleAuthenticatorImporter : ExternalImporter {
 
     companion object {
         private const val SCHEMA = "otpauth-migration"
@@ -36,7 +34,7 @@ class GoogleAuthenticatorImporter(
 
             val proto = MigrationPayload.parseFrom(data)
             val totalServices = proto.otpParametersCount
-            val servicesToImport = mutableListOf<ServiceDto>()
+            val servicesToImport = mutableListOf<Service?>()
             proto.otpParametersList.forEach {
                 if (isTypeSupported(it)) {
                     servicesToImport.add(parseService(it))
@@ -44,7 +42,7 @@ class GoogleAuthenticatorImporter(
             }
 
             return ExternalImport.Success(
-                servicesToImport = servicesToImport,
+                servicesToImport = servicesToImport.filterNotNull(),
                 totalServicesCount = totalServices,
             )
         } catch (e: Exception) {
@@ -53,7 +51,7 @@ class GoogleAuthenticatorImporter(
         }
     }
 
-    private fun parseService(otpParameters: MigrationPayload.OtpParameters): ServiceDto {
+    private fun parseService(otpParameters: MigrationPayload.OtpParameters): Service {
         val label = if (otpParameters.name.contains(":")) otpParameters.name else "${otpParameters.name}:"
 
         val otpLink = com.twofasapp.parsers.domain.OtpAuthLink(
@@ -65,7 +63,7 @@ class GoogleAuthenticatorImporter(
             link = null,
         )
 
-        val parsed = convertOtpLinkToService.execute(otpLink)
+        val parsed = ServiceParser.parseService(otpLink)
 
         return if (parsed.name.isBlank()) parsed.copy(name = label.split(":")[0]) else parsed
     }

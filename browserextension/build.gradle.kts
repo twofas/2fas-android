@@ -20,8 +20,7 @@ dependencies {
     implementation(project(":push"))
     implementation(project(":qrscanner"))
 
-    
-    implementation(project(":services:domain"))
+
     implementation(project(":time:domain"))
     implementation(project(":serialization"))
     implementation(project(":resources"))
