@@ -12,9 +12,9 @@ internal class PushFactory {
         }
     }
 
-    private fun createBrowserExtension(remoteMessage: RemoteMessage): Push.BrowserExtensionRequest? {
+    private fun createBrowserExtension(remoteMessage: RemoteMessage): Push.BrowserExtRequest? {
         return try {
-            Push.BrowserExtensionRequest(
+            Push.BrowserExtRequest(
                 domain = remoteMessage.data["domain"]!!,
                 requestId = remoteMessage.data["request_id"]!!,
                 extensionId = remoteMessage.data["extension_id"]!!,

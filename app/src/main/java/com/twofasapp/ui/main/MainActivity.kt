@@ -16,7 +16,7 @@ import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
-import com.twofasapp.design.theme.ThemeState
+import com.twofasapp.designsystem.AppThemeState
 import com.twofasapp.designsystem.ktx.makeWindowSecure
 import com.twofasapp.designsystem.ktx.toastLong
 import kotlinx.coroutines.Job
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
     private var recalculateTimeJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        ThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
+        AppThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
             settingsRepository.observeAppSettings().collect {

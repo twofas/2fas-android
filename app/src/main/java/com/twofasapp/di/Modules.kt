@@ -10,6 +10,7 @@ import com.twofasapp.data.session.di.DataSessionModule
 import com.twofasapp.feature.about.di.AboutModule
 import com.twofasapp.feature.appsettings.di.AppSettingsModule
 import com.twofasapp.feature.backup.di.BackupModule
+import com.twofasapp.feature.browserext.di.BrowserExtModule
 import com.twofasapp.feature.di.QrScanModule
 import com.twofasapp.feature.externalimport.di.ExternalImportModule
 import com.twofasapp.feature.home.di.HomeModule
@@ -48,6 +49,7 @@ object Modules {
         QrScanModule(),
         BackupModule(),
         WidgetModule(),
+        BrowserExtModule(),
     )
 
     fun provide(): List<Module> =

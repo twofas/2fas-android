@@ -14,12 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
-import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.designsystem.AppTheme
 import com.twofasapp.designsystem.LocalAppTheme
 import com.twofasapp.designsystem.MainAppTheme

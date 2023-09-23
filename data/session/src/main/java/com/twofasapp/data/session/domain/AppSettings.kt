@@ -1,5 +1,7 @@
 package com.twofasapp.data.session.domain
 
+import com.twofasapp.common.domain.SelectedTheme
+
 data class AppSettings(
     val showNextCode: Boolean = false,
     val autoFocusSearch: Boolean = false,

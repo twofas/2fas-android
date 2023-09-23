@@ -36,8 +36,11 @@ import com.twofasapp.feature.backup.navigation.BackupExportRoute
 import com.twofasapp.feature.backup.navigation.BackupImportRoute
 import com.twofasapp.feature.backup.navigation.BackupRoute
 import com.twofasapp.feature.backup.navigation.BackupSettingsRoute
-import com.twofasapp.feature.browserext.notification.BrowserExtGraph
-import com.twofasapp.feature.browserext.notification.browserExtNavigation
+import com.twofasapp.feature.browserext.navigation.BrowserExtDetailsRoute
+import com.twofasapp.feature.browserext.navigation.BrowserExtPairingRoute
+import com.twofasapp.feature.browserext.navigation.BrowserExtPermissionRoute
+import com.twofasapp.feature.browserext.navigation.BrowserExtRoute
+import com.twofasapp.feature.browserext.navigation.BrowserExtScanRoute
 import com.twofasapp.feature.externalimport.navigation.ExternalImportGraph
 import com.twofasapp.feature.externalimport.navigation.externalImportNavigation
 import com.twofasapp.feature.home.navigation.GuideInitRoute
@@ -123,7 +126,7 @@ internal fun MainNavHost(
                     }
 
                     override fun openBrowserExt() {
-                        navController.navigate(BrowserExtGraph.route)
+                        navController.navigate(Screen.BrowserExt.route)
                     }
 
                     override fun openSecurity(activity: Activity) {
@@ -180,7 +183,6 @@ internal fun MainNavHost(
             notificationsNavigation()
             trashNavigation(navController = navController)
             aboutNavigation(navController = navController)
-            browserExtNavigation(navController = navController)
             securityNavigation(navController = navController)
 
             bottomSheet(Modal.AddService.route, listOf(NavArg.AddServiceInitRoute)) {
@@ -258,6 +260,45 @@ internal fun MainNavHost(
             composable(Screen.BackupImport.route) {
                 BackupImportRoute(
                     goBack = { navController.popBackStack() }
+                )
+            }
+
+            composable(Screen.BrowserExt.route) {
+                BrowserExtRoute(
+                    openScan = { navController.navigate(Screen.BrowserExtScan.route) },
+                    openDetails = { extensionId ->
+                        navController.navigate(Screen.BrowserExtDetails.routeWithArgs(NavArg.ExtensionId to extensionId))
+                    }
+                )
+            }
+
+            composable(Screen.BrowserExtPermission.route) {
+                BrowserExtPermissionRoute(
+                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) }
+                )
+            }
+
+            composable(Screen.BrowserExtScan.route) {
+                BrowserExtScanRoute(
+                    openProgress = { extensionId ->
+                        navController.navigate(Screen.BrowserExtPairing.routeWithArgs(NavArg.ExtensionId to extensionId)) {
+                            popUpTo(Screen.BrowserExt.route)
+                        }
+                    }
+                )
+            }
+
+            composable(Screen.BrowserExtPairing.route, listOf(NavArg.ExtensionId)) {
+                BrowserExtPairingRoute(
+                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
+                    openPermission = { navController.navigate(Screen.BrowserExtPermission.route) { popUpTo(Screen.BrowserExt.route) } },
+                    openScan = { navController.navigate(Screen.BrowserExtScan.route) { popUpTo(Screen.BrowserExt.route) } }
+                )
+            }
+
+            composable(Screen.BrowserExtDetails.route, listOf(NavArg.ExtensionId)) {
+                BrowserExtDetailsRoute(
+                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
                 )
             }
         }

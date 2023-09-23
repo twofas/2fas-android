@@ -90,5 +90,36 @@ data class Service(
             assignedDomains = listOf(),
             backupSyncStatus = BackupSyncStatus.SYNCED,
         )
+
+        val Preview = Service(
+            id = 0L,
+            serviceTypeId = null,
+            secret = "QWE",
+            code = Code(current = "123456", next = "456789", timer = 20, progress = 0.66666f),
+            name = "Test Service",
+            info = "test@mail.com",
+            authType = AuthType.TOTP,
+            link = null,
+            issuer = null,
+            period = 30,
+            digits = 6,
+            hotpCounter = null,
+            hotpCounterTimestamp = null,
+            algorithm = Algorithm.SHA1,
+            groupId = null,
+            imageType = ImageType.Label,
+            iconCollectionId = "a5b3fb65-4ec5-43e6-8ec1-49e24ca9e7ad",
+            iconLight = "38e26d32-3c76-4768-8e12-89a050676a07",
+            iconDark = "38e26d32-3c76-4768-8e12-89a050676a07",
+            labelText = "TS",
+            labelColor = Tint.LightBlue,
+            badgeColor = null,
+            tags = listOf(),
+            isDeleted = false,
+            updatedAt = 0L,
+            source = Source.Link,
+            assignedDomains = listOf(),
+            backupSyncStatus = BackupSyncStatus.SYNCED,
+        )
     }
 }

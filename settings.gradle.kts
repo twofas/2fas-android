@@ -21,7 +21,6 @@ rootProject.name = "2fas-android"
 include(":truetime")
 include(":truetime-rx")
 include(":app")
-include(":browserextension")
 include(":base")
 include(":prefs")
 include(":time")

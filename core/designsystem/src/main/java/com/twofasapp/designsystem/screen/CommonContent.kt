@@ -33,7 +33,10 @@ fun CommonContent(
     cta: @Composable (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
 
         Column(
             modifier = Modifier
@@ -69,7 +72,7 @@ fun CommonContent(
             TwButton(
                 text = ctaPrimaryText,
                 onClick = ctaPrimaryClick,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
             )
         }
 

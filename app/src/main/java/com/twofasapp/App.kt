@@ -9,7 +9,6 @@ import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.twofasapp.base.AuthTracker
-import com.twofasapp.browserextension.BrowserExtensionModule
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.di.Modules
@@ -58,7 +57,6 @@ class App : MultiDexApplication() {
                     ParsersModule(),
                     PreferencesPlainModule(),
                     PreferencesEncryptedModule(),
-                    BrowserExtensionModule(),
                     PushModule(),
                     PersistenceModule(),
                     QrScannerModule(),

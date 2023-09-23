@@ -6,4 +6,15 @@ data class MobileDevice(
     val fcmToken: String,
     val platform: String,
     val publicKey: String,
-)
+) {
+    companion object {
+        val Empty: MobileDevice
+            get() = MobileDevice(
+                id = "",
+                name = "",
+                fcmToken = "",
+                platform = "",
+                publicKey = ""
+            )
+    }
+}

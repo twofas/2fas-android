@@ -14,7 +14,6 @@ import org.koin.core.qualifier.Qualifier
 
 abstract class BaseComponentActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (BuildConfig.BUILD_TYPE.equals("release", true)) {

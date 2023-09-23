@@ -1,7 +1,7 @@
 package com.twofasapp.data.session
 
 import com.twofasapp.data.session.domain.AppSettings
-import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import kotlinx.coroutines.flow.Flow

@@ -5,8 +5,6 @@ import android.content.Context
 import com.twofasapp.di.KoinModule
 import com.twofasapp.push.data.PushLocalData
 import com.twofasapp.push.data.PushLocalDataImpl
-import com.twofasapp.push.domain.GetFcmTokenCase
-import com.twofasapp.push.domain.GetFcmTokenCaseImpl
 import com.twofasapp.push.domain.ObserveInAppPushesCase
 import com.twofasapp.push.domain.ObserveInAppPushesCaseImpl
 import com.twofasapp.push.domain.ObserveNotificationPushesCase
@@ -33,6 +31,5 @@ class PushModule : KoinModule {
         singleOf(::PushDispatchCaseImpl) { bind<PushDispatchCase>() }
         singleOf(::ObserveInAppPushesCaseImpl) { bind<ObserveInAppPushesCase>() }
         singleOf(::ObserveNotificationPushesCaseImpl) { bind<ObserveNotificationPushesCase>() }
-        singleOf(::GetFcmTokenCaseImpl) { bind<GetFcmTokenCase>() }
     }
 }

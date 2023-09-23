@@ -4,7 +4,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.twofasapp.push.domain.ObserveNotificationPushesCase
 import com.twofasapp.push.domain.PushDispatchCase
-import com.twofasapp.push.domain.ShowBrowserExtensionRequestNotificationCase
+import com.twofasapp.push.domain.ShowBrowserExtRequestNotificationCase
 import com.twofasapp.push.domain.model.Push
 import com.twofasapp.push.domain.repository.PushFactory
 import com.twofasapp.push.domain.repository.PushLogger
@@ -23,14 +23,14 @@ class FcmMessagingService : FirebaseMessagingService() {
     private val pushDispatchCase: PushDispatchCase by inject()
 
     private val observeNotificationPushesCase: ObserveNotificationPushesCase by inject()
-    private val showBrowserExtensionRequest: ShowBrowserExtensionRequestNotificationCase by inject()
+    private val showBrowserExtensionRequest: ShowBrowserExtRequestNotificationCase by inject()
 
     override fun onCreate() {
         super.onCreate()
         scope.launch(Dispatchers.IO) {
             observeNotificationPushesCase().flowOn(Dispatchers.IO).collect {
                 when (it) {
-                    is Push.BrowserExtensionRequest -> showBrowserExtensionRequest(it)
+                    is Push.BrowserExtRequest -> showBrowserExtensionRequest(it)
                 }
             }
         }

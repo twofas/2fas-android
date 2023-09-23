@@ -1,6 +1,6 @@
 package com.twofasapp.ui.main
 
-import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.common.domain.SelectedTheme
 
 internal data class MainUiState(
     val selectedTheme: SelectedTheme? = null,

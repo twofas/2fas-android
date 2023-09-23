@@ -5,7 +5,7 @@ import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.domain.model.PinOptions
 import kotlinx.coroutines.flow.Flow
 
-internal interface SecurityRepository {
+interface SecurityRepository {
     fun observePinOptions(): Flow<PinOptions>
     suspend fun editPinOptions(pinOptions: PinOptions)
 

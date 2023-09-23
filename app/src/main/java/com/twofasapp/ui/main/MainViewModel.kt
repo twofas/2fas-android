@@ -3,7 +3,7 @@ package com.twofasapp.ui.main
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import com.twofasapp.DeeplinkHandler
-import com.twofasapp.browserextension.notification.DomainMatcher
+import com.twofasapp.feature.browserext.notification.DomainMatcher
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
@@ -66,7 +66,7 @@ internal class MainViewModel(
                     state.copy(
                         browserExtRequests = requests.map { request ->
                             val domain = DomainMatcher.extractDomain(request.domain)
-                            val matchedServices = DomainMatcher.findServicesMatchingDomainNew(servicesRepository.getServices(), domain)
+                            val matchedServices = DomainMatcher.findMatchingDomain(servicesRepository.getServices(), domain)
 
                             BrowserExtRequest(
                                 request = request,

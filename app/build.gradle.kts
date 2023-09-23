@@ -21,7 +21,6 @@ dependencies {
 
     implementation(project(":truetime"))
     implementation(project(":truetime-rx"))
-    implementation(project(":browserextension"))
     implementation(project(":parsers"))
     implementation(project(":resources"))
     implementation(project(":design"))

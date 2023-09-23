@@ -1,6 +1,7 @@
 package com.twofasapp.designsystem.ktx
 
 import android.app.Activity
+import android.app.NotificationManager
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.ClipboardManager
@@ -20,6 +21,7 @@ import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocal
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.unit.Dp
 import androidx.core.app.ComponentActivity
@@ -36,8 +38,12 @@ val CompositionLocal<Context>.currentActivity: ComponentActivity
             if (context is ComponentActivity) return context
             context = context.baseContext
         }
-
-        error("No component activity")
+        if (LocalInspectionMode.current) {
+            // Dummy object in edit mode
+            return ComponentActivity()
+        } else {
+            error("No component activity")
+        }
     }
 
 val Context.settingsIntent: Intent
@@ -46,6 +52,9 @@ val Context.settingsIntent: Intent
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         return intent
     }
+
+val Context.notificationManager: NotificationManager
+    get() = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
 val CompositionLocal<Context>.strings: Strings
     @Composable

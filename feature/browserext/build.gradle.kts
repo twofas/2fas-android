@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     alias(libs.plugins.twofasCompose)
+    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.kotlinParcelize)
 }
 
 android {
@@ -15,10 +17,20 @@ dependencies {
     implementation(project(":core:locale"))
     implementation(project(":core:designsystem"))
 
-    implementation(project(":browserextension")) // TO BE REMOVED
-     // TO BE REMOVED
-0
+    implementation(project(":data:browserext"))
+    implementation(project(":data:session"))
+    implementation(project(":data:services"))
+
+    implementation(project(":feature:qrscan"))
+
+    implementation(project(":security"))
+    implementation(project(":security:domain"))
+    implementation(project(":push"))
+
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
     implementation(libs.bundles.accompanist)
+    implementation(libs.kotlinSerialization)
+    implementation(libs.lottie)
+    implementation(libs.workManager)
 }

@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.common.TwTopAppBar

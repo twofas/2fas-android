@@ -5,7 +5,7 @@ sealed class Push(
 ) {
     enum class Handler { InAppOnly, NotificationOnly, InAppOrNotification }
 
-    data class BrowserExtensionRequest(
+    data class BrowserExtRequest(
         val domain: String,
         val requestId: String,
         val extensionId: String,
