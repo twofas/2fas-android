@@ -24,10 +24,12 @@ class CloudSyncWorkDispatcher(
             .build()
 
         val request = OneTimeWorkRequestBuilder<CloudSyncWork>()
-            .setInputData(Data.Builder().apply {
-                putString(CloudSyncWork.ArgTrigger, trigger.name)
-                password?.let { putString(CloudSyncWork.ArgPassword, it) }
-            }.build())
+            .setInputData(
+                Data.Builder().apply {
+                    putString(CloudSyncWork.ArgTrigger, trigger.name)
+                    password?.let { putString(CloudSyncWork.ArgPassword, it) }
+                }.build()
+            )
             .setConstraints(constraints)
             .build()
 

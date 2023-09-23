@@ -1,4 +1,4 @@
-package com.twofasapp.feature.widget.ui.configure
+package com.twofasapp.feature.widget.ui.settings
 
 import android.app.Activity
 import android.appwidget.AppWidgetManager
@@ -8,7 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.twofasapp.designsystem.MainAppTheme
 
-class WidgetSetupActivity : ComponentActivity() {
+class WidgetSettingsActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +22,12 @@ class WidgetSetupActivity : ComponentActivity() {
 
         setContent {
             MainAppTheme {
-                WidgetSetupScreen(
-                    incoming = intent,
-                    onSuccess = {
-                        setResult(Activity.RESULT_OK, Intent().putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId))
-                        finish()
-                    }
-                )
+                WidgetSettingsScreen(
+                    appWidgetId = appWidgetId,
+                ) {
+                    setResult(Activity.RESULT_OK, Intent().putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId))
+                    finish()
+                }
             }
         }
     }

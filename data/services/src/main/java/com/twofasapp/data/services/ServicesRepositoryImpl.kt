@@ -18,7 +18,7 @@ import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.usecase.RecentlyDeletedPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import com.twofasapp.time.domain.RecalculateTimeDeltaCase
-import com.twofasapp.common.domain.WidgetActions
+import com.twofasapp.common.domain.WidgetCallbacks
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -32,7 +32,7 @@ internal class ServicesRepositoryImpl(
     private val timeProvider: TimeProvider,
     private val codeGenerator: ServiceCodeGenerator,
     private val local: ServicesLocalSource,
-    private val widgetActions: WidgetActions,
+    private val widgetCallbacks: WidgetCallbacks,
     private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
     private val recentlyDeletedPreference: RecentlyDeletedPreference,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
@@ -116,7 +116,7 @@ internal class ServicesRepositoryImpl(
                 )
             )
 
-            widgetActions.onServiceChanged()
+            widgetCallbacks.onServiceChanged()
         }
     }
 
@@ -128,7 +128,7 @@ internal class ServicesRepositoryImpl(
                 local.updateService(it)
             }
 
-            widgetActions.onServiceChanged()
+            widgetCallbacks.onServiceChanged()
 
         }
     }
@@ -153,7 +153,7 @@ internal class ServicesRepositoryImpl(
             )
 
             local.deleteServiceFromOrder(id)
-            widgetActions.onServiceDeleted(id)
+            widgetCallbacks.onServiceDeleted(id)
 
             if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
                 val recentlyDeleted = recentlyDeletedPreference.get()
@@ -190,7 +190,7 @@ internal class ServicesRepositoryImpl(
             )
 
             local.addServiceToOrder(id)
-            widgetActions.onServiceChanged()
+            widgetCallbacks.onServiceChanged()
 
             if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
                 cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)

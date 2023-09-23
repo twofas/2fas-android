@@ -10,7 +10,7 @@ data class WidgetEntity(
     @SerialName("lastInteractionTimestamp")
     val lastInteractionTimestamp: Long,
     @SerialName("services")
-    val services: MutableList<Service> = mutableListOf(),
+    val services: List<Service> = mutableListOf(),
 ) {
 
     @Serializable

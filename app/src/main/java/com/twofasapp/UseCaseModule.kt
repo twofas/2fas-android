@@ -2,7 +2,6 @@ package com.twofasapp
 
 import com.twofasapp.base.ActivityProvider
 import com.twofasapp.base.AuthTracker
-import com.twofasapp.common.domain.WidgetActions
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.prefs.usecase.StoreGroups
 import com.twofasapp.services.domain.ConvertOtpLinkToService
@@ -25,16 +24,12 @@ import com.twofasapp.usecases.services.GetServicesIncludingTrashed
 import com.twofasapp.usecases.services.PinOptionsUseCase
 import com.twofasapp.usecases.services.ServicesModelMapper
 import com.twofasapp.usecases.totp.ParseOtpAuthLink
-import com.twofasapp.widgets.WidgetActionsImpl
 import org.koin.android.ext.koin.androidContext
-import org.koin.core.module.dsl.bind
-import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import javax.inject.Provider
 
 val useCaseModule = module {
     single { ActivityProvider() }
-    singleOf(::WidgetActionsImpl) { bind<WidgetActions>() }
     single { ParseOtpAuthLink() }
     single { AddService(get(), get(), get(), get(), get(), get(), get(), get()) }
     single<GetServicesUseCase> { GetServices(get()) }

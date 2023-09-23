@@ -1,26 +1,28 @@
-package com.twofasapp.feature.widget.ui
+package com.twofasapp.feature.widget.ui.widget
 
+import android.appwidget.AppWidgetManager
 import android.content.Context
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.glance.ColorFilter
 import androidx.glance.GlanceModifier
 import androidx.glance.Image
 import androidx.glance.ImageProvider
 import androidx.glance.LocalContext
+import androidx.glance.action.ActionParameters
+import androidx.glance.action.actionParametersOf
 import androidx.glance.action.actionStartActivity
 import androidx.glance.action.clickable
 import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.cornerRadius
+import androidx.glance.appwidget.lazy.LazyColumn
+import androidx.glance.appwidget.lazy.items
 import androidx.glance.background
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Box
@@ -38,25 +40,22 @@ import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.WidgetsRepository
+import com.twofasapp.data.services.domain.Widget
 import com.twofasapp.designsystem.ktx.assetAsBitmap
 import com.twofasapp.designsystem.service.asColor
 import com.twofasapp.designsystem.service.atoms.formatCode
 import com.twofasapp.feature.widget.R
-import com.twofasapp.feature.widget.ui.configure.WidgetSetupActivity
-import kotlinx.coroutines.flow.Flow
-import java.time.Instant
+import com.twofasapp.feature.widget.ui.settings.WidgetSettingsActivity
 
 @Composable
 internal fun WidgetContent(
-    onToggleService: (Long) -> Unit = {},
+    appWidgetId: Int,
+    widgetsRepository: WidgetsRepository,
 ) {
     val context = LocalContext.current
-    val ts = rememberSaveable {
-        mutableStateOf(Instant.now().toString())
-    }
-
-    val num by Repo.currentWeather.collectAsState()
-
+    val isNight by remember { mutableStateOf(context.resources.getBoolean(R.bool.isNight)) }
+    val widget by widgetsRepository.observeWidget(appWidgetId).collectAsState(initial = Widget(appWidgetId = appWidgetId))
 
     Column(
         modifier = GlanceModifier
@@ -80,7 +79,13 @@ internal fun WidgetContent(
             Icon(
                 modifier = GlanceModifier
                     .size(26.dp)
-                    .clickable(actionRunCallback<RefreshAction>())
+                    .clickable(
+                        actionStartActivity<WidgetSettingsActivity>(
+                            actionParametersOf(
+                                ActionParameters.Key<Int>(AppWidgetManager.EXTRA_APPWIDGET_ID) to appWidgetId
+                            )
+                        )
+                    )
                     .padding(2.dp)
                     .cornerRadius(24.dp),
                 resId = com.twofasapp.designsystem.R.drawable.ic_settings,
@@ -89,26 +94,43 @@ internal fun WidgetContent(
 
         Divider()
 
-//        Text(text = preferences[intPreferencesKey("uid")].toString(), style = TextStyle(color = ColorProvider(Color.Red)))
-        Text(text = num.toString(),style = TextStyle(color = ColorProvider(Color.Red)))
+        LazyColumn {
+            if (widget.services.isEmpty()) {
+                item {
+                    Box(
+                        modifier = GlanceModifier.fillMaxWidth().padding(vertical = 12.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = context.getString(com.twofasapp.locale.R.string.widgets_empty_msg),
+                            style = TextStyle(
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Medium,
+                                color = context.getColorProvider(R.color.iconTint)
+                            ),
+                        )
+                    }
+                }
+            }
 
-//        LazyColumn {
-//            items(items = widget.services, itemId = { it.service.id }) { widgetService ->
-//                ServiceItem(
-//                    service = widgetService.service,
-//                    revealed = widgetService.revealed,
-//                    onClick = onToggleService,
-//                )
-//            }
-//        }
+            items(items = widget.services, itemId = { it.service.id }) { widgetService ->
+                ServiceItem(
+                    appWidgetId = appWidgetId,
+                    service = widgetService.service,
+                    revealed = widgetService.revealed,
+                    isNight = isNight,
+                )
+            }
+        }
     }
 }
 
 @Composable
 private fun ServiceItem(
+    appWidgetId: Int,
     service: Service,
     revealed: Boolean,
-    onClick: (Long) -> Unit,
+    isNight: Boolean,
 ) {
     val context = LocalContext.current
     val textColor = context.getColorProvider(R.color.onSurface)
@@ -118,7 +140,14 @@ private fun ServiceItem(
         modifier = GlanceModifier
             .fillMaxWidth()
             .height(52.dp)
-            .clickable { onClick(service.id) }
+            .clickable(
+                actionRunCallback<ToggleServiceAction>(
+                    ToggleServiceAction.params(
+                        appWidgetId = appWidgetId,
+                        serviceId = service.id
+                    )
+                )
+            )
             .padding(
                 start = if (revealed) 0.dp else 8.dp,
                 end = if (revealed) 8.dp else 4.dp
@@ -132,7 +161,10 @@ private fun ServiceItem(
             )
         }
 
-        ServiceImage(service = service)
+        ServiceImage(
+            service = service,
+            isNight = isNight,
+        )
 
         Spacer(GlanceModifier.width(8.dp))
 
@@ -165,7 +197,11 @@ private fun ServiceItem(
                         resId = com.twofasapp.designsystem.R.drawable.ic_increment_hotp,
                         modifier = GlanceModifier
                             .size(26.dp)
-                            .clickable(actionRunCallback<RefreshAction>())
+                            .clickable(
+                                actionRunCallback<HotpGenerateAction>(
+                                    HotpGenerateAction.params(service.id)
+                                )
+                            )
                             .padding(2.dp)
                             .cornerRadius(24.dp),
                         tint = R.color.primary,
@@ -204,13 +240,14 @@ private fun ServiceItem(
 @Composable
 private fun ServiceImage(
     service: Service,
+    isNight: Boolean,
 ) {
     val context = LocalContext.current
 
     when (service.imageType) {
         Service.ImageType.IconCollection -> {
             Image(
-                provider = ImageProvider(context.assetAsBitmap(service.iconLight)),
+                provider = ImageProvider(context.assetAsBitmap(if (isNight) service.iconDark else service.iconLight)),
                 contentDescription = null,
                 modifier = GlanceModifier.size(24.dp).padding(2.dp),
             )

@@ -1,6 +1,6 @@
 package com.twofasapp.common.domain
 
-interface WidgetActions {
+interface WidgetCallbacks {
     fun onServiceChanged()
     fun onServiceDeleted(serviceId: Long)
 }

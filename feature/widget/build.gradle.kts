@@ -20,4 +20,5 @@ dependencies {
     implementation(libs.bundles.glance)
     implementation(libs.bundles.compose)
     implementation(libs.workManager)
+    implementation(libs.timber)
 }

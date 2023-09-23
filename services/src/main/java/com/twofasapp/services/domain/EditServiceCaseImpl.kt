@@ -4,12 +4,12 @@ import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.di.BackupSyncStatus
 import com.twofasapp.services.data.ServicesRepository
 import com.twofasapp.services.domain.model.Service
-import com.twofasapp.common.domain.WidgetActions
+import com.twofasapp.common.domain.WidgetCallbacks
 
 internal class EditServiceCaseImpl(
     private val servicesRepository: ServicesRepository,
     private val timeProvider: TimeProvider,
-    private val widgetActions: WidgetActions,
+    private val widgetCallbacks: WidgetCallbacks,
 ) : EditServiceCase {
 
     override suspend fun invoke(service: Service) {
@@ -19,7 +19,7 @@ internal class EditServiceCaseImpl(
                 updatedAt = timeProvider.systemCurrentTime(),
             )
         ).also {
-            widgetActions.onServiceChanged()
+            widgetCallbacks.onServiceChanged()
         }
     }
 }

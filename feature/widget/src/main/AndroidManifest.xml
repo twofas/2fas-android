@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".ui.configure.WidgetSetupActivity"
+            android:name=".ui.settings.WidgetSettingsActivity"
             android:exported="true"
             android:label="Widget Setup">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.twofasapp.feature.widget.ui
+package com.twofasapp.feature.widget.ui.widget
 
 import android.content.Context
 import androidx.glance.GlanceId
@@ -7,7 +7,7 @@ import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.action.ActionCallback
 import com.twofasapp.designsystem.ktx.copyToClipboard
 
-internal class CopyToClipboardAction() : ActionCallback {
+internal class CopyToClipboardAction : ActionCallback {
     companion object {
         private val paramCode = ActionParameters.Key<String>("code")
 
