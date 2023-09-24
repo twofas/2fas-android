@@ -21,7 +21,6 @@ dependencies {
     implementation(project(":truetime"))
     implementation(project(":truetime-rx"))
     implementation(project(":parsers"))
-    implementation(project(":resources"))
     implementation(project(":push"))
     implementation(project(":persistence"))
     implementation(project(":services"))
@@ -55,8 +54,6 @@ dependencies {
     implementation(project(":feature:widget"))
 
     implementation(libs.bundles.appCompat)
-    implementation(libs.bundles.materialDialogs)
-    implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.barcodeScanner)
     implementation(libs.bundles.room)

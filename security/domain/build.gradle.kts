@@ -20,7 +20,6 @@ dependencies {
     implementation(project(":time:domain"))
     implementation(project(":core:locale"))
 
-    implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)
 }

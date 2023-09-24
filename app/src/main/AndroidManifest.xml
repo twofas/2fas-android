@@ -105,8 +105,7 @@
             android:exported="true"
             android:launchMode="singleTask"
             android:noHistory="false"
-            android:screenOrientation="locked"
-            android:theme="@style/Theme.App">
+            android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

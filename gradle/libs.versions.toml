@@ -93,14 +93,6 @@ playReview = "com.google.android.play:review:2.0.1"
 playReviewKtx = "com.google.android.play:review-ktx:2.0.1"
 playUpdate = "com.google.android.play:app-update:2.1.0"
 playUpdateKtx = "com.google.android.play:app-update-ktx:2.1.0"
-fastAdapter = "com.mikepenz:fastadapter:5.5.1"
-fastAdapterDrag = "com.mikepenz:fastadapter-extensions-drag:5.5.1"
-fastAdapterDiff = "com.mikepenz:fastadapter-extensions-diff:5.5.1"
-fastAdapterUtils = "com.mikepenz:fastadapter-extensions-utils:5.5.1"
-fastAdapterBinding = "com.mikepenz:fastadapter-extensions-binding:5.5.1"
-fastAdapterAnimators = "com.mikepenz:itemanimators:1.1.0"
-materialDialogs = "com.afollestad.material-dialogs:core:3.3.0"
-materialDialogsInput = "com.afollestad.material-dialogs:input:3.3.0"
 lottie = "com.airbnb.android:lottie-compose:5.0.3"
 protobuf = "com.google.protobuf:protobuf-kotlin-lite:3.19.1"
 biometric = "androidx.biometric:biometric:1.1.0"
@@ -128,18 +120,6 @@ appCompat = [
     "appcompat",
     "core",
     "material",
-]
-fastAdapter = [
-    "fastAdapter",
-    "fastAdapterDrag",
-    "fastAdapterDiff",
-    "fastAdapterUtils",
-    "fastAdapterBinding",
-    "fastAdapterAnimators",
-]
-materialDialogs = [
-    "materialDialogs",
-    "materialDialogsInput",
 ]
 barcodeScanner = [
     "barcodeScanning",

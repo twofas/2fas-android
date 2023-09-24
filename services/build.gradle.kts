@@ -24,9 +24,7 @@ dependencies {
     implementation(project(":data:session"))
     implementation(project(":core:android"))
 
-    implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.appCompat)
-    implementation(libs.bundles.materialDialogs)
     implementation(libs.timber)
     implementation(libs.lottie)
     implementation(libs.bundles.compose)
