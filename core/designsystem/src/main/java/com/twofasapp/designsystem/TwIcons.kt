@@ -69,4 +69,13 @@ object TwIcons {
     val Guide @Composable get() = painterResource(R.drawable.ic_guide)
     val Export @Composable get() = painterResource(R.drawable.ic_export)
     val Import @Composable get() = painterResource(R.drawable.ic_import)
+    val Backspace @Composable get() = painterResource(R.drawable.ic_backspace)
+    val PinCode @Composable get() = painterResource(R.drawable.ic_pin_code)
+    val Stop @Composable get() = painterResource(R.drawable.ic_stop)
+    val Change @Composable get() = painterResource(R.drawable.ic_change)
+    val Check @Composable get() = painterResource(R.drawable.ic_done)
+    val Circle @Composable get() = painterResource(R.drawable.ic_circle)
+    val CheckCircle @Composable get() = painterResource(R.drawable.ic_check_circle)
+    val ErrorCircle @Composable get() = painterResource(R.drawable.ic_error_circle)
+    val Stub @Composable get() = painterResource(R.drawable.ic_stub)
 }

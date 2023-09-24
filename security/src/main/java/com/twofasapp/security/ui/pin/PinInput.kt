@@ -23,8 +23,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 
 @Composable
 internal fun PinInput(
@@ -80,7 +81,7 @@ internal fun PinInput(
                     }
                 }, modifier = Modifier.align(Alignment.CenterEnd)) {
                     Icon(
-                        painterResource(id = R.drawable.ic_backspace_old), null,
+                        TwIcons.Backspace, null,
                         tint = if (enteredDigits == 0) {
                             Color(0x80606060)
                         } else {

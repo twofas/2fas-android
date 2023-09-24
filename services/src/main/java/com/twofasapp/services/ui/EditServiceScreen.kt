@@ -42,7 +42,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -51,6 +50,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ConfirmDialog
@@ -61,8 +61,8 @@ import com.twofasapp.designsystem.service.asColor
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsHeader
 import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
-import com.twofasapp.resources.R
 import com.twofasapp.services.ui.badge.ColorBadgeDialog
 import kotlinx.coroutines.launch
 
@@ -164,8 +164,7 @@ internal fun EditServiceScreen(
                                 }
                             }) {
                                 Icon(
-                                    painterResource(id = if (isSecretVisible) R.drawable.ic_visibility_off else R.drawable.ic_visibility),
-                                    null
+                                    painter = if (isSecretVisible) TwIcons.EyeSlash else TwIcons.Eye, null
                                 )
                             }
                         },
@@ -216,7 +215,7 @@ internal fun EditServiceScreen(
 
                 listItem(EditServiceListItem.BadgeColor) {
                     SettingsLink(title = stringResource(R.string.tokens__badge_color),
-                        icon = painterResource(id = R.drawable.vector_circle),
+                        icon = TwIcons.Circle,
                         iconTint = uiState.service.badgeColor.asColor(),
                         onClick = { showBadgeDialog.value = true })
                 }
@@ -365,7 +364,7 @@ fun IconSelector(
 
             if (isBrandSelected) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_check_circle_old),
+                    painter = TwIcons.CheckCircle,
                     contentDescription = null,
                     tint = TwTheme.color.primary,
                     modifier = Modifier
@@ -427,7 +426,7 @@ fun IconSelector(
 
             if (isLabelSelected) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_check_circle_old),
+                    painter = TwIcons.CheckCircle,
                     contentDescription = null,
                     tint = TwTheme.color.primary,
                     modifier = Modifier

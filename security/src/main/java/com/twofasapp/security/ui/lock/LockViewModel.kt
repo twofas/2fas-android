@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.launchScoped
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.security.domain.EditInvalidPinStatusCase
 import com.twofasapp.security.domain.EditLockMethodCase
 import com.twofasapp.security.domain.GetPinCase

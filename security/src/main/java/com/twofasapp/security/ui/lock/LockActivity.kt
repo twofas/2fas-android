@@ -11,7 +11,7 @@ import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.designsystem.AppThemeState
 import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.designsystem.ktx.makeWindowSecure
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -24,9 +24,6 @@ class LockActivity : AppCompatActivity() {
         AppThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
 
         overridePendingTransition(0, 0)
-        if (resources.getBoolean(R.bool.isPortraitOnly)) {
-            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        }
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
             settingsRepository.observeAppSettings().collect {

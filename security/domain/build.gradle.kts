@@ -13,12 +13,12 @@ dependencies {
     implementation(project(":prefs"))
     implementation(project(":persistence"))
     implementation(project(":push"))
-    
-    implementation(project(":resources"))
+
     implementation(project(":parsers"))
     implementation(project(":truetime"))
     implementation(project(":truetime-rx"))
     implementation(project(":time:domain"))
+    implementation(project(":core:locale"))
 
     implementation(libs.bundles.fastAdapter)
     implementation(libs.bundles.appCompat)

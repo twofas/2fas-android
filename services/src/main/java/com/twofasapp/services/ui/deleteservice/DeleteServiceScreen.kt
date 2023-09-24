@@ -27,7 +27,7 @@ import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.services.ui.EditServiceUiEvent
 import com.twofasapp.services.ui.EditServiceViewModel
 import kotlinx.coroutines.launch

@@ -60,14 +60,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.twofasapp.services.ui.serviceIconBitmap
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ListDialog
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.services.ui.EditServiceViewModel
+import com.twofasapp.services.ui.serviceIconBitmap
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.get
 import org.koin.androidx.compose.getViewModel
@@ -128,7 +128,11 @@ internal fun ChangeBrandScreen(
                         .fillMaxWidth()
                         .padding(24.dp)
                 ) {
-                    Image(painter = painterResource(id = R.drawable.order_icon_image), contentDescription = null, Modifier.height(80.dp))
+                    Image(
+                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.img_order_icon),
+                        contentDescription = null,
+                        Modifier.height(80.dp)
+                    )
 
                     Column(modifier = Modifier.padding(start = 24.dp)) {
                         Text(

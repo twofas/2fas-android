@@ -8,7 +8,7 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -11,7 +11,6 @@ android {
 dependencies {
     implementation(project(":core:common"))
     implementation(project(":prefs"))
-    implementation(project(":resources"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

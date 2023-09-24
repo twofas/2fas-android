@@ -41,9 +41,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ShareCompat
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 
 @Composable
 internal fun RequestIconScreen() {
@@ -66,7 +67,7 @@ internal fun RequestIconScreen() {
 
             Spacer(modifier = Modifier.height(24.dp))
             Image(
-                painter = painterResource(id = R.drawable.ic_message_old),
+                painter = painterResource(id = com.twofasapp.designsystem.R.drawable.img_order_icon_message),
                 contentDescription = null,
                 modifier = Modifier
                     .height(64.dp)
@@ -95,7 +96,7 @@ internal fun RequestIconScreen() {
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_open_new),
+                    painter = TwIcons.ExternalLink,
                     contentDescription = null,
                     tint = TwTheme.color.primary,
                     modifier = Modifier
@@ -134,7 +135,7 @@ internal fun RequestIconScreen() {
 
 
             Image(
-                painter = painterResource(id = R.drawable.image_icon_request),
+                painter = painterResource(id = com.twofasapp.designsystem.R.drawable.img_order_icon_share),
                 contentDescription = null,
                 modifier = Modifier
                     .height(64.dp)

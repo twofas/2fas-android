@@ -1,13 +1,11 @@
 package com.twofasapp.base
 
 import android.content.ComponentCallbacks
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
-import com.twofasapp.resources.R
 import org.koin.android.ext.android.get
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.Qualifier
@@ -18,10 +16,6 @@ abstract class BaseComponentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         if (BuildConfig.BUILD_TYPE.equals("release", true)) {
             window?.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
-        }
-
-        if (resources.getBoolean(R.bool.isPortraitOnly)) {
-            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
 
         logLifecycle("onCreate", LifecycleOperation.IN)

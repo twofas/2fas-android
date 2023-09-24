@@ -16,7 +16,7 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.locale.TwLocale
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.services.ui.EditServiceViewModel
 
 @Composable

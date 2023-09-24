@@ -42,7 +42,7 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.designsystem.ktx.dpToSp
 import com.twofasapp.designsystem.service.asColor
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.services.ui.EditServiceViewModel
 
 @Composable

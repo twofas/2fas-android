@@ -32,7 +32,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -43,8 +42,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 
 @Composable
 fun InputEntry(
@@ -86,7 +86,7 @@ fun InputEntry(
         var isValid by remember { mutableStateOf(allowEmpty) }
 
         Icon(
-            painter = icon ?: painterResource(com.twofasapp.resources.R.drawable.ic_placeholder_old),
+            painter = icon ?: TwIcons.Stub,
             contentDescription = null,
             tint = if (iconTint != Color.Unspecified) iconTint else TwTheme.color.primary,
             modifier = Modifier
@@ -252,7 +252,7 @@ fun TextFieldOutlined(
             leadingIcon = leadingIcon,
             trailingIcon = trailingIcon ?: {
                 if (error.isNotEmpty())
-                    Icon(painterResource(id = R.drawable.ic_error_old), "error", tint = TwTheme.color.error)
+                    Icon(TwIcons.ErrorCircle, "error", tint = TwTheme.color.error)
             },
             isError = isError,
             visualTransformation = visualTransformation,
@@ -293,7 +293,6 @@ enum class InputType {
 private fun PreviewInputEntryItem() {
     InputEntry(
         text = "Title",
-        icon = painterResource(id = R.drawable.ic_send_feedback),
         click = {}
     )
 }

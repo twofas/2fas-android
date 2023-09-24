@@ -3,7 +3,7 @@ package com.twofasapp.security.ui.changepin
 import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.common.coroutines.Dispatchers
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.security.domain.GetPinCase
 import com.twofasapp.security.domain.ObservePinOptionsCase
 import com.twofasapp.security.ui.pin.PinScreenState

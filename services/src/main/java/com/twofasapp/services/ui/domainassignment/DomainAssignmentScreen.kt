@@ -26,7 +26,7 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.services.ui.EditServiceViewModel
 
 @OptIn(ExperimentalFoundationApi::class)

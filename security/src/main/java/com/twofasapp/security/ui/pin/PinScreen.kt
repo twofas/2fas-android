@@ -32,7 +32,7 @@ import androidx.fragment.app.FragmentActivity
 import com.twofasapp.android.biometric.BiometricKeyProvider
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwCircularProgressIndicator
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.security.ui.biometric.BiometricDialog
 
 sealed interface PinScreenState {
@@ -84,7 +84,7 @@ internal fun PinScreen(
         ) {
             if (showLogo) {
                 Image(
-                    painter = painterResource(id = R.drawable.logo_2fas),
+                    painter = painterResource(id = com.twofasapp.designsystem.R.drawable.logo_2fas),
                     contentDescription = null,
                     modifier = Modifier
                         .padding(16.dp)

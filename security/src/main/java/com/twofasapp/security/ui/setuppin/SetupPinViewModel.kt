@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.BaseViewModel
 import com.twofasapp.common.coroutines.Dispatchers
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.security.domain.EditPinCase
 import com.twofasapp.security.domain.EditPinOptionsCase
 import com.twofasapp.security.domain.ObservePinOptionsCase

@@ -15,7 +15,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,7 +29,7 @@ import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsHeader
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.designsystem.settings.SettingsSwitch
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.domain.model.PinTimeout
 import com.twofasapp.security.domain.model.PinTrials
@@ -64,7 +63,7 @@ internal fun SecurityScreen(
                 item {
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__pin_code),
-                        icon = painterResource(id = R.drawable.ic_pin_code),
+                        icon = TwIcons.PinCode,
                         checked = false,
                         onCheckedChange = { openSetupPin() }
                     )
@@ -77,7 +76,7 @@ internal fun SecurityScreen(
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_fingerprint),
                         subtitle = stringResource(id = R.string.settings__option_fingerprint_description),
-                        icon = painterResource(id = R.drawable.ic_fingerprint_old),
+                        icon = TwIcons.Fingerprint,
                         checked = false,
                         enabled = false,
                         onCheckedChange = { isChecked -> }
@@ -109,7 +108,7 @@ internal fun SecurityScreen(
                 item {
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__pin_code),
-                        icon = painterResource(id = R.drawable.ic_pin_code),
+                        icon = TwIcons.PinCode,
                         checked = true,
                         onCheckedChange = { openDisablePin() }
                     )
@@ -118,7 +117,7 @@ internal fun SecurityScreen(
                 item {
                     SettingsLink(
                         title = stringResource(id = R.string.security__change_pin),
-                        icon = painterResource(id = R.drawable.ic_change_pin_old),
+                        icon = TwIcons.Change,
                         onClick = { openChangePin() }
                     )
                 }
@@ -129,7 +128,7 @@ internal fun SecurityScreen(
                 item {
                     SettingsLink(
                         title = stringResource(id = R.string.settings__limit_of_trials),
-                        icon = painterResource(id = R.drawable.ic_limit_trials_old),
+                        icon = TwIcons.Stop,
                         subtitleGravity = com.twofasapp.designsystem.settings.SubtitleGravity.End,
                         subtitle = if (uiState.pinTrials == PinTrials.NoLimit) {
                             stringResource(id = R.string.settings__no_limit)
@@ -151,7 +150,7 @@ internal fun SecurityScreen(
                 item {
                     SettingsLink(
                         title = stringResource(id = R.string.settings__block_for),
-                        icon = painterResource(id = R.drawable.ic_block_for_old),
+                        icon = TwIcons.Time,
                         subtitleGravity = com.twofasapp.designsystem.settings.SubtitleGravity.End,
                         subtitle = stringResource(id = uiState.pinTimeout.label),
                         enabled = uiState.pinTrials != PinTrials.NoLimit,
@@ -173,7 +172,7 @@ internal fun SecurityScreen(
                 item {
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_fingerprint),
-                        icon = painterResource(id = R.drawable.ic_fingerprint_old),
+                        icon = TwIcons.Fingerprint,
                         checked = uiState.lockMethod == LockMethod.Biometrics,
                         onCheckedChange = { isChecked ->
                             if (isChecked) {

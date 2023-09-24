@@ -20,8 +20,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 
 internal enum class Keys {
     Key1,
@@ -89,7 +90,7 @@ internal fun PinKeyboard(
             ) {
                 if (it == Keys.Biometrics) {
                     Icon(
-                        painterResource(id = R.drawable.key_fingerprint),
+                       TwIcons.Fingerprint,
                         null,
                         tint = TwTheme.color.onSurfacePrimary,
                         modifier = Modifier

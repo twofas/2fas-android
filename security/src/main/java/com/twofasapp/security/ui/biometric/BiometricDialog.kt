@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.twofasapp.android.biometric.BiometricKeyProvider
-import com.twofasapp.resources.R
+import com.twofasapp.locale.R
 import java.util.concurrent.Executor
 import javax.crypto.Cipher
 

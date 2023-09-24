@@ -68,17 +68,17 @@ internal fun ColorBadgeDialog(
                     Text(
                         stringResource(
                             id = when (it) {
-                                Service.Tint.Default -> com.twofasapp.resources.R.string.color__neutral
-                                Service.Tint.LightBlue -> com.twofasapp.resources.R.string.color__light_blue
-                                Service.Tint.Indigo -> com.twofasapp.resources.R.string.color__indigo
-                                Service.Tint.Purple -> com.twofasapp.resources.R.string.color__purple
-                                Service.Tint.Turquoise -> com.twofasapp.resources.R.string.color__turquoise
-                                Service.Tint.Green -> com.twofasapp.resources.R.string.color__green
-                                Service.Tint.Red -> com.twofasapp.resources.R.string.color__red
-                                Service.Tint.Orange -> com.twofasapp.resources.R.string.color__orange
-                                Service.Tint.Yellow -> com.twofasapp.resources.R.string.color__yellow
-                                Service.Tint.Pink -> com.twofasapp.resources.R.string.color__pink
-                                Service.Tint.Brown -> com.twofasapp.resources.R.string.color__brown
+                                Service.Tint.Default -> com.twofasapp.locale.R.string.color__neutral
+                                Service.Tint.LightBlue -> com.twofasapp.locale.R.string.color__light_blue
+                                Service.Tint.Indigo -> com.twofasapp.locale.R.string.color__indigo
+                                Service.Tint.Purple -> com.twofasapp.locale.R.string.color__purple
+                                Service.Tint.Turquoise -> com.twofasapp.locale.R.string.color__turquoise
+                                Service.Tint.Green -> com.twofasapp.locale.R.string.color__green
+                                Service.Tint.Red -> com.twofasapp.locale.R.string.color__red
+                                Service.Tint.Orange -> com.twofasapp.locale.R.string.color__orange
+                                Service.Tint.Yellow -> com.twofasapp.locale.R.string.color__yellow
+                                Service.Tint.Pink -> com.twofasapp.locale.R.string.color__pink
+                                Service.Tint.Brown -> com.twofasapp.locale.R.string.color__brown
                             }
                         ),
                         style = MaterialTheme.typography.bodyLarge.copy(color = TwTheme.color.onSurfacePrimary),

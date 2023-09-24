@@ -15,11 +15,9 @@ dependencies {
     implementation(project(":core:android"))
     implementation(project(":core:designsystem"))
     implementation(project(":data:session"))
-    implementation(project(":resources"))
-    implementation(project(":prefs"))
 
+    implementation(project(":prefs"))
     implementation(project(":security:domain"))
-    implementation(project(":core:common"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)
