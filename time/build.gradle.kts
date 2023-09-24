@@ -13,7 +13,6 @@ dependencies {
     implementation(project(":prefs"))
     implementation(project(":core:network"))
     implementation(project(":truetime"))
-    implementation(project(":truetime-rx"))
 
     implementation(libs.timber)
     implementation(libs.workManager)

@@ -45,6 +45,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -52,6 +53,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwOutlinedTextField
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.InfoDialog
@@ -128,32 +130,37 @@ internal fun EditServiceScreen(
                     SettingsHeader(title = stringResource(R.string.tokens__service_information))
                 }
 
-
                 listItem(EditServiceListItem.InputName) {
-                    InputEntry(
-                        text = service.name,
-                        hint = stringResource(R.string.tokens__service_name),
-                        maxChars = 30,
-                        allowEmpty = false,
-                        onValueChange = { isValid, text ->
+                    TwOutlinedTextField(
+                        value = service.name,
+                        labelText = stringResource(R.string.tokens__service_name),
+                        maxLength = 30,
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
+                        onValueChange = { text ->
                             if (text.isBlank()) {
                                 viewModel.updateName(text, false)
                             } else {
-                                viewModel.updateName(text, isValid)
+                                viewModel.updateName(text, true)
                             }
                         },
-                        keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
-                        focusRequester = focusRequester,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 72.dp, end = 16.dp)
+                            .padding(top = 8.dp, bottom = 4.dp)
                     )
                 }
 
                 listItem(EditServiceListItem.InputSecret) {
-
-                    InputEntry(
-                        text = service.secret,
-                        hint = stringResource(R.string.tokens__service_key),
+                    TwOutlinedTextField(
+                        value = service.secret,
+                        labelText = stringResource(R.string.tokens__service_key),
                         readOnly = true,
-                        inputType = InputType.Password,
+                        onValueChange = {},
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            keyboardType = KeyboardType.Password,
+                            capitalization = KeyboardCapitalization.None
+                        ),
                         visualTransformation = if (isSecretVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
                             IconButton(onClick = {
@@ -164,20 +171,30 @@ internal fun EditServiceScreen(
                                 }
                             }) {
                                 Icon(
-                                    painter = if (isSecretVisible) TwIcons.EyeSlash else TwIcons.Eye, null
+                                    painter = if (isSecretVisible) TwIcons.EyeSlash else TwIcons.Eye, null,
+                                    tint = TwTheme.color.iconTint,
                                 )
                             }
                         },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 72.dp, end = 16.dp)
+                            .padding(top = 8.dp, bottom = 4.dp)
                     )
                 }
 
+
                 listItem(EditServiceListItem.InputInfo) {
-                    InputEntry(
-                        text = service.info.orEmpty(),
-                        hint = stringResource(R.string.tokens__additional_info),
-                        maxChars = 50,
-                        onValueChange = { isValid, text -> viewModel.updateInfo(text, isValid) },
+                    TwOutlinedTextField(
+                        value = service.info.orEmpty(),
+                        labelText = stringResource(R.string.tokens__additional_info),
+                        maxLength = 50,
+                        onValueChange = { text -> viewModel.updateInfo(text, true) },
                         keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 72.dp, end = 16.dp)
+                            .padding(top = 8.dp, bottom = 4.dp)
                     )
                 }
 

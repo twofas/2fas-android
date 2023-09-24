@@ -44,7 +44,6 @@ composeMaterial2 = { module = "androidx.compose.material:material", version.ref 
 composeUi = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 composeUiUtil = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-composeConstraint = "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
 coreSplash = "androidx.core:core-splashscreen:1.0.1"
 dataStore = "androidx.datastore:datastore-preferences:1.0.0"
@@ -142,13 +141,11 @@ coil = [
 ]
 compose = [
     "composeActivity",
-    "composeMaterial2",
     "composeUi",
     "composeUiUtil",
     "composeUiTooling",
     "material3",
     "material3Window",
-    "composeConstraint",
     "navigationCompose",
 ]
 koin = [

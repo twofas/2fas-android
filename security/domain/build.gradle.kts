@@ -16,7 +16,6 @@ dependencies {
 
     implementation(project(":parsers"))
     implementation(project(":truetime"))
-    implementation(project(":truetime-rx"))
     implementation(project(":time:domain"))
     implementation(project(":core:locale"))
 

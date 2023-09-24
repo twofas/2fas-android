@@ -19,7 +19,6 @@ dependencies {
     implementation(project(":prefs"))
 
     implementation(project(":truetime"))
-    implementation(project(":truetime-rx"))
     implementation(project(":parsers"))
     implementation(project(":push"))
     implementation(project(":persistence"))
@@ -75,10 +74,6 @@ dependencies {
     implementation(libs.coreSplash)
 
     // Google
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    implementation("androidx.drawerlayout:drawerlayout:1.1.1")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.biometric:biometric:1.1.0")
 
@@ -104,9 +99,7 @@ dependencies {
     releaseImplementation("io.objectbox:objectbox-android:2.9.1")
     implementation("io.objectbox:objectbox-kotlin:2.9.1")
     kapt("io.objectbox:objectbox-processor:2.9.1")
-    implementation("org.apache.commons:commons-text:1.9")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.4.1")
 
     implementation(platform("com.google.firebase:firebase-bom:31.1.0"))
     implementation("com.google.firebase:firebase-messaging-ktx")

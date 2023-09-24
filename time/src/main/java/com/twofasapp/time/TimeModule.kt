@@ -15,8 +15,6 @@ class TimeModule : KoinModule {
 
     override fun provide() = module {
         singleOf(::SyncTimeWorkDispatcherImpl) { bind<SyncTimeWorkDispatcher>() }
-
-
         singleOf(::SyncTimeCaseImpl) { bind<SyncTimeCase>() }
         singleOf(::RecalculateTimeDeltaCaseImpl) { bind<RecalculateTimeDeltaCase>() }
     }
