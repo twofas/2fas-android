@@ -8,11 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -24,10 +22,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.twofasapp.design.compose.ButtonHeight
-import com.twofasapp.design.compose.ButtonShape
-import com.twofasapp.design.compose.ButtonTextColor
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwButton
+import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
@@ -74,7 +71,7 @@ internal fun DeleteServiceScreen(
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_delete_trash),
+                    painter = painterResource(id = com.twofasapp.designsystem.R.drawable.illustration_delete_confirm),
                     contentDescription = null,
                     modifier = Modifier.height(150.dp)
                 )
@@ -104,24 +101,17 @@ internal fun DeleteServiceScreen(
                 )
             }
 
-            Button(
+            TwButton(
+                text = stringResource(id = R.string.delete_service_cta),
                 onClick = { viewModel.delete() },
-                shape = ButtonShape(),
-                modifier = Modifier.height(ButtonHeight())
-
-            ) {
-                Text(text = stringResource(id = R.string.delete_service_cta), color = ButtonTextColor())
-            }
+            )
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            TextButton(
+            TwTextButton(
+                text = stringResource(id = R.string.commons__cancel),
                 onClick = { backDispatcher.onBackPressed() },
-                shape = ButtonShape(),
-                modifier = Modifier.height(ButtonHeight())
-            ) {
-                Text(text = stringResource(id = R.string.commons__cancel))
-            }
+            )
         }
     }
 }

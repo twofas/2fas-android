@@ -55,12 +55,12 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.design.compose.HeaderEntry
 import com.twofasapp.design.compose.InputEntry
 import com.twofasapp.design.compose.SimpleEntry
-import com.twofasapp.design.compose.dialogs.ConfirmDialog
 import com.twofasapp.design.compose.dialogs.InputType
 import com.twofasapp.design.compose.dialogs.SimpleDialog
 import com.twofasapp.design.compose.serviceIconBitmap
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.ktx.dpToSp
 import com.twofasapp.designsystem.lazy.listItem
 import com.twofasapp.designsystem.service.asColor
@@ -321,8 +321,8 @@ internal fun EditServiceScreen(
 
             if (showUnsavedChangesDialog.value) {
                 ConfirmDialog(title = stringResource(id = R.string.tokens__service_unsaved_changes_title),
-                    text = stringResource(id = R.string.tokens__service_unsaved_changes),
-                    onDismiss = { showUnsavedChangesDialog.value = false },
+                    body = stringResource(id = R.string.tokens__service_unsaved_changes),
+                    onDismissRequest = { showUnsavedChangesDialog.value = false },
                     onPositive = { onBackClick() })
             }
         }

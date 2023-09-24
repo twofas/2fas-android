@@ -20,9 +20,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.twofasapp.design.compose.SimpleEntry
-import com.twofasapp.design.compose.dialogs.ConfirmDialog
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.EditServiceViewModel
@@ -45,13 +45,13 @@ internal fun DomainAssignmentScreen(
         if (showConfirmDialog.value) {
             ConfirmDialog(
                 title = stringResource(id = R.string.browser__deleting_extension_pairing_title),
-                text = stringResource(id = R.string.browser__deleting_extension_pairing_content, clickedDomainName.value),
+                body = stringResource(id = R.string.browser__deleting_extension_pairing_content, clickedDomainName.value),
                 onPositive = {
                     showConfirmDialog.value = false
                     viewModel.deleteDomainAssignment(clickedDomainName.value)
                 },
                 onNegative = { showConfirmDialog.value = false },
-                onDismiss = { showConfirmDialog.value = false },
+                onDismissRequest = { showConfirmDialog.value = false },
             )
         }
 
