@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
+import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -28,6 +29,8 @@ fun CommonContent(
     descriptionText: String? = null,
     ctaPrimaryText: String? = null,
     ctaPrimaryClick: () -> Unit = {},
+    ctaSecondaryText: String? = null,
+    ctaSecondaryClick: () -> Unit = {},
     title: @Composable (() -> Unit)? = null,
     description: @Composable (() -> Unit)? = null,
     cta: @Composable (() -> Unit)? = null,
@@ -76,6 +79,14 @@ fun CommonContent(
             )
         }
 
+        if (ctaSecondaryText != null) {
+            TwTextButton(
+                text = ctaSecondaryText,
+                onClick = ctaSecondaryClick,
+                modifier = Modifier
+            )
+        }
+
         cta?.invoke()
     }
 }
@@ -115,6 +126,7 @@ private fun Preview() {
         titleText = TwLocale.strings.placeholder,
         descriptionText = TwLocale.strings.placeholderLong,
         ctaPrimaryText = TwLocale.strings.placeholder,
+        ctaSecondaryText = TwLocale.strings.placeholder,
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)

@@ -20,7 +20,6 @@ import com.twofasapp.prefs.PreferencesEncryptedModule
 import com.twofasapp.prefs.PreferencesPlainModule
 import com.twofasapp.prefs.usecase.SendCrashLogsPreference
 import com.twofasapp.push.PushModule
-import com.twofasapp.qrscanner.QrScannerModule
 import com.twofasapp.security.SecurityModule
 import com.twofasapp.services.ServicesModule
 import com.twofasapp.time.TimeModule
@@ -58,7 +57,6 @@ class App : MultiDexApplication() {
                     PreferencesEncryptedModule(),
                     PushModule(),
                     PersistenceModule(),
-                    QrScannerModule(),
                     ServicesModule(),
                     SecurityModule(),
                 )

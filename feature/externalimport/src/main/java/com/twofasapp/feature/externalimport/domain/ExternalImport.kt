@@ -12,5 +12,5 @@ sealed class ExternalImport {
         val reason: Exception
     ) : ExternalImport()
 
-    object UnsupportedError : ExternalImport()
+    data object UnsupportedError : ExternalImport()
 }

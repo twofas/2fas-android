@@ -23,7 +23,6 @@ import com.twofasapp.android.navigation.Modal
 import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.Screen
-import com.twofasapp.android.navigation.clearGraphBackStack
 import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.android.navigation.withArg
 import com.twofasapp.data.services.domain.RecentlyAddedService
@@ -41,8 +40,11 @@ import com.twofasapp.feature.browserext.navigation.BrowserExtPairingRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtPermissionRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtScanRoute
-import com.twofasapp.feature.externalimport.navigation.ExternalImportGraph
-import com.twofasapp.feature.externalimport.navigation.externalImportNavigation
+import com.twofasapp.feature.externalimport.domain.ImportType
+import com.twofasapp.feature.externalimport.navigation.ExternalImportResultRoute
+import com.twofasapp.feature.externalimport.navigation.ExternalImportRoute
+import com.twofasapp.feature.externalimport.navigation.ExternalImportScanRoute
+import com.twofasapp.feature.externalimport.navigation.ExternalImportSelectorRoute
 import com.twofasapp.feature.home.navigation.GuideInitRoute
 import com.twofasapp.feature.home.navigation.GuidePagerRoute
 import com.twofasapp.feature.home.navigation.GuidesRoute
@@ -122,7 +124,7 @@ internal fun MainNavHost(
                     }
 
                     override fun openExternalImport() {
-                        navController.navigate(ExternalImportGraph.route)
+                        navController.navigate(Screen.ExternalImportSelector.route)
                     }
 
                     override fun openBrowserExt() {
@@ -162,11 +164,6 @@ internal fun MainNavHost(
                         navController.navigate(Modal.FocusService.route.replace("{id}", id.toString()))
                     }
                 }
-            )
-
-            externalImportNavigation(
-                navController = navController,
-                onFinish = { navController.clearGraphBackStack() }
             )
 
             serviceNavigation(
@@ -299,6 +296,54 @@ internal fun MainNavHost(
             composable(Screen.BrowserExtDetails.route, listOf(NavArg.ExtensionId)) {
                 BrowserExtDetailsRoute(
                     openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
+                )
+            }
+
+            composable(Screen.ExternalImportSelector.route) {
+                ExternalImportSelectorRoute(
+                    openImport = { importType ->
+                        navController.navigate(Screen.ExternalImport.routeWithArgs(NavArg.ImportType to importType.name))
+                    }
+                )
+            }
+
+            composable(Screen.ExternalImport.route, listOf(NavArg.ImportType)) {
+                val importType = enumValueOf<ImportType>(it.arguments!!.getString(NavArg.ImportType.name)!!)
+
+                ExternalImportRoute(
+                    openScanner = {
+                        navController.navigate(Screen.ExternalImportScan.routeWithArgs(NavArg.ImportType to importType.name))
+                    },
+                    openResult = { encodedFileUri ->
+                        navController.navigate(
+                            Screen.ExternalImportResult.routeWithArgs(
+                                NavArg.ImportType to importType.name,
+                                NavArg.ImportFileUri to encodedFileUri,
+                            )
+                        )
+                    }
+                )
+            }
+
+            composable(Screen.ExternalImportScan.route, listOf(NavArg.ImportType)) {
+                val importType = enumValueOf<ImportType>(it.arguments!!.getString(NavArg.ImportType.name)!!)
+
+                ExternalImportScanRoute(
+                    openResult = { encodedFileContent ->
+                        navController.navigate(
+                            Screen.ExternalImportResult.routeWithArgs(
+                                NavArg.ImportType to importType.name,
+                                NavArg.ImportFileContent to encodedFileContent,
+                            )
+                        )
+                    }
+                )
+            }
+
+            composable(Screen.ExternalImportResult.route, listOf(NavArg.ImportType, NavArg.ImportFileUri)) {
+                ExternalImportResultRoute(
+                    openSettings = { navController.popBackStack(Screen.ExternalImportSelector.route, true) },
+                    openImport = { navController.popBackStack(Screen.ExternalImport.route, false) }
                 )
             }
         }

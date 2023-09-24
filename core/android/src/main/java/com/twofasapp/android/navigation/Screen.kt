@@ -14,6 +14,12 @@ sealed class Screen(val route: String) {
     data object BrowserExtPairing : Screen("browserext/pairing?extensionId={${NavArg.ExtensionId.name}}")
     data object BrowserExtDetails : Screen("browserext/details?extensionId={${NavArg.ExtensionId.name}}")
 
+    data object ExternalImportSelector : Screen("externalimport/selector")
+    data object ExternalImport : Screen("externalimport?importType={${NavArg.ImportType.name}}")
+    data object ExternalImportScan : Screen("externalimport/scan?importType={${NavArg.ImportType.name}}")
+    data object ExternalImportResult :
+        Screen("externalimport/result?importType={${NavArg.ImportType.name}}&importFileUri={${NavArg.ImportFileUri.name}}&importFileContent={${NavArg.ImportFileContent.name}}")
+
     data object Backup : Screen("backup")
     data object BackupSettings : Screen("backup/settings")
     data object BackupExport : Screen("backup/export")

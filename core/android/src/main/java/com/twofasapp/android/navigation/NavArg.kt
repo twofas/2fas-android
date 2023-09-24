@@ -8,4 +8,7 @@ object NavArg {
     val Guide = navArgument("Guide") { type = NavType.StringType; }
     val GuideVariantIndex = navArgument("GuideVariantIndex") { type = NavType.IntType; }
     val ExtensionId = navArgument("ExtensionId") { type = NavType.StringType }
+    val ImportType = navArgument("ImportType") { type = NavType.StringType }
+    val ImportFileUri = navArgument("ImportFileUri") { type = NavType.StringType; nullable = true; defaultValue = null }
+    val ImportFileContent = navArgument("ImportFileContent") { type = NavType.StringType; nullable = true; defaultValue = null }
 }

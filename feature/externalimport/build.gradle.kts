@@ -27,38 +27,22 @@ protobuf {
 
 
 dependencies {
-    implementation(project(":base"))
-    implementation(project(":resources"))
-    implementation(project(":design"))
-    
-    implementation(project(":prefs"))
-    implementation(project(":services"))
-    implementation(project(":qrscanner"))
-
     implementation(project(":core:common"))
     implementation(project(":core:android"))
     implementation(project(":core:locale"))
     implementation(project(":core:designsystem"))
+
     implementation(project(":data:services"))
+
+    implementation(project(":feature:qrscan"))
+
     implementation(project(":parsers"))
 
-    implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
     implementation(libs.bundles.accompanist)
     implementation(libs.kotlinCoroutines)
     implementation(libs.kotlinSerialization)
-    implementation(libs.webkit)
     implementation(libs.protobuf)
     implementation(libs.apacheCommonsCodec)
-
-    implementation("com.google.api-client:google-api-client-android:2.2.0") {
-        exclude("org.apache.httpcomponents", "guava-jdk5")
-        exclude("com.google.http-client","google-http-client")
-    }
-
-    implementation(platform("com.google.firebase:firebase-bom:31.1.0"))
-    implementation("com.google.firebase:firebase-messaging-ktx")
-    implementation("com.google.firebase:firebase-crashlytics")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1")
 }

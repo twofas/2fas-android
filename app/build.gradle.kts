@@ -25,7 +25,6 @@ dependencies {
     implementation(project(":design"))
     implementation(project(":push"))
     implementation(project(":persistence"))
-    implementation(project(":qrscanner"))
     implementation(project(":services"))
 
     implementation(project(":time"))

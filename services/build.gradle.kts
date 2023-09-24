@@ -18,7 +18,6 @@ dependencies {
     implementation(project(":resources"))
     implementation(project(":persistence"))
     implementation(project(":push"))
-    implementation(project(":qrscanner"))
 
     implementation(project(":time:domain"))
     

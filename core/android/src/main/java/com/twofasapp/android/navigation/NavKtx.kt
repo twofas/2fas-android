@@ -25,6 +25,10 @@ fun <T> SavedStateHandle.getOrThrow(key: String): T {
     return get<T>(key) ?: throw IllegalNavArgException(key)
 }
 
+fun <T> SavedStateHandle.getOrThrowNullable(key: String): T? {
+    return get<T>(key)
+}
+
 internal fun String.replaceArgsInRoute(vararg args: Pair<NamedNavArgument, Any>): String {
     var routeWithArgs = this
     args.forEach { arg -> routeWithArgs = routeWithArgs.withArg(arg.first, arg.second) }
