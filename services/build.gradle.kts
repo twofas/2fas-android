@@ -29,7 +29,6 @@ dependencies {
     implementation(project(":core:android"))
 
     implementation(libs.bundles.fastAdapter)
-    implementation(libs.bundles.rxJava)
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.materialDialogs)
     implementation(libs.timber)

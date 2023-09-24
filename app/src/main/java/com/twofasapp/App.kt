@@ -44,7 +44,6 @@ class App : MultiDexApplication() {
         try {
             SupportedServices.load(this@App)
         } catch (e: Exception) {
-            e.printStackTrace()
         }
 
         startKoin {

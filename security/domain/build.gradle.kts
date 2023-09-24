@@ -23,7 +23,6 @@ dependencies {
     implementation(project(":time:domain"))
 
     implementation(libs.bundles.fastAdapter)
-    implementation(libs.bundles.rxJava)
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)
 }

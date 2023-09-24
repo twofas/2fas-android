@@ -16,7 +16,6 @@ dependencies {
     implementation(project(":time:domain"))
 
     implementation(libs.bundles.appCompat)
-    implementation(libs.bundles.rxJava)
     implementation(libs.timber)
     implementation(libs.securityCrypto)
     implementation(libs.secureStorage)

@@ -19,5 +19,4 @@ dependencies {
 
     implementation(libs.timber)
     implementation(libs.workManager)
-    implementation(libs.coroutinesToRx)
 }

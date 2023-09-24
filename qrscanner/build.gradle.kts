@@ -16,7 +16,6 @@ dependencies {
     implementation(project(":resources"))
     
     implementation(libs.bundles.appCompat)
-    implementation(libs.bundles.rxJava)
     implementation(libs.bundles.barcodeScanner)
     implementation(libs.bundles.compose)
     implementation(libs.timber)

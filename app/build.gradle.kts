@@ -58,10 +58,8 @@ dependencies {
     implementation(project(":feature:widget"))
 
     implementation(libs.bundles.appCompat)
-    implementation(libs.bundles.rxJava)
     implementation(libs.bundles.materialDialogs)
     implementation(libs.bundles.fastAdapter)
-    implementation(libs.bundles.rxBinding)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.barcodeScanner)
     implementation(libs.bundles.room)
@@ -77,9 +75,7 @@ dependencies {
     implementation(libs.secureStorage)
     implementation(libs.lottie)
     implementation(libs.kotlinCoroutines)
-    implementation(libs.coroutinesToRx)
     implementation(libs.workManager)
-    implementation(libs.workManagerRx)
     implementation(libs.activityX)
 
     implementation(libs.coreSplash)
