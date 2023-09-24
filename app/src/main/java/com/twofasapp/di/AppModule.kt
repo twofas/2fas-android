@@ -3,6 +3,7 @@ package com.twofasapp.di
 import com.twofasapp.android.biometric.BiometricKeyProvider
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.biometric.BiometricKeyProviderImpl
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.environment.AppBuildImpl

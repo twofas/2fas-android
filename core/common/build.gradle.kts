@@ -8,6 +8,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
     implementation(libs.kotlinCoroutines)
+    api(libs.bundles.koin)
+    api(libs.javaxInject)
 }

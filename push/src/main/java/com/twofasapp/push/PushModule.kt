@@ -2,7 +2,7 @@ package com.twofasapp.push
 
 import android.app.NotificationManager
 import android.content.Context
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.push.data.PushLocalData
 import com.twofasapp.push.data.PushLocalDataImpl
 import com.twofasapp.push.domain.ObserveInAppPushesCase

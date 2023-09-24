@@ -14,7 +14,7 @@ import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.mapper.asDomain
-import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference

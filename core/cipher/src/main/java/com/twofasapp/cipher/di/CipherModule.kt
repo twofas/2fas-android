@@ -7,7 +7,7 @@ import com.twofasapp.cipher.backup.internal.BackupKeyGeneratorPbkdf
 import com.twofasapp.cipher.backup.internal.BackupSaltGenerator
 import com.twofasapp.cipher.backup.internal.BackupSaltGeneratorRandom
 import com.twofasapp.cipher.internal.CipherAes
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf

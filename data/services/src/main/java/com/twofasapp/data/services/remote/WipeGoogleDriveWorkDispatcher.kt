@@ -6,7 +6,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import com.twofasapp.di.WorkDispatcher
+import com.twofasapp.common.domain.WorkDispatcher
 import timber.log.Timber
 
 class WipeGoogleDriveWorkDispatcher(private val context: Context) : WorkDispatcher {

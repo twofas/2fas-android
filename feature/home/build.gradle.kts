@@ -10,7 +10,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
     implementation(project(":data:notifications"))
     implementation(project(":data:services"))
     implementation(project(":data:session"))

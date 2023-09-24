@@ -1,6 +1,6 @@
 package com.twofasapp.feature.home.di
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.feature.home.ui.bottombar.BottomBarViewModel
 import com.twofasapp.feature.home.ui.guides.GuidesViewModel
 import com.twofasapp.feature.home.ui.notifications.NotificationsViewModel

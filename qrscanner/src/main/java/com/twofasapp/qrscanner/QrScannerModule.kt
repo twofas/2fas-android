@@ -1,6 +1,6 @@
 package com.twofasapp.qrscanner
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.qrscanner.domain.ReadQrFromImageCase
 import com.twofasapp.qrscanner.domain.ScanQr
 import com.twofasapp.qrscanner.ui.QrScannerViewModel

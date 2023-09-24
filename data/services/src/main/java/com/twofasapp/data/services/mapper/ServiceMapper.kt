@@ -5,7 +5,7 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
-import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
 import com.twofasapp.prefs.model.Tint

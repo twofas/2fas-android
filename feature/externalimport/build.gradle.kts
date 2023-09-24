@@ -28,7 +28,6 @@ protobuf {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":core:di"))
     implementation(project(":resources"))
     implementation(project(":design"))
     

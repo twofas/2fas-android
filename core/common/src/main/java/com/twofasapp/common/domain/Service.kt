@@ -1,7 +1,5 @@
 package com.twofasapp.common.domain
 
-import com.twofasapp.di.BackupSyncStatus
-
 data class Service(
     val id: Long,
     val serviceTypeId: String?,

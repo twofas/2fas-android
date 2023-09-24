@@ -1,6 +1,6 @@
 package com.twofasapp.data.services.domain
 
-import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.common.domain.BackupSyncStatus
 
 data class Group(
     val id: String?,

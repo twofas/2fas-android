@@ -1,6 +1,6 @@
 package com.twofasapp.security
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.security.data.SecurityRepository
 import com.twofasapp.security.data.SecurityRepositoryImpl
 import com.twofasapp.security.domain.EditInvalidPinStatusCase

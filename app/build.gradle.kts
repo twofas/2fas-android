@@ -16,7 +16,6 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":core:di"))
     implementation(project(":prefs"))
 
     implementation(project(":truetime"))

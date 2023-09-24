@@ -1,6 +1,6 @@
 package com.twofasapp.services
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.services.ui.EditServiceViewModel
 import com.twofasapp.services.ui.changebrand.ChangeBrandViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf

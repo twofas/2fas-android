@@ -1,5 +1,7 @@
 package com.twofasapp.workmanager
 
-interface OnAppUpdatedWorkDispatcher : com.twofasapp.di.WorkDispatcher {
+import com.twofasapp.common.domain.WorkDispatcher
+
+interface OnAppUpdatedWorkDispatcher : WorkDispatcher {
     fun dispatch()
 }

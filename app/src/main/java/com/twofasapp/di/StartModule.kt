@@ -1,6 +1,7 @@
 package com.twofasapp.di
 
 import com.twofasapp.DeeplinkHandler
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.storage.EncryptedPreferences
 import com.twofasapp.storage.PlainPreferences
 import com.twofasapp.usecases.ClearObsoletePrefsCase

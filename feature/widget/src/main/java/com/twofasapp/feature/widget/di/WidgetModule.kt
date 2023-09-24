@@ -1,7 +1,7 @@
 package com.twofasapp.feature.widget.di
 
 import com.twofasapp.common.domain.WidgetCallbacks
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.feature.widget.sync.WidgetCallbacksImpl
 import com.twofasapp.feature.widget.ui.settings.WidgetSettingsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf

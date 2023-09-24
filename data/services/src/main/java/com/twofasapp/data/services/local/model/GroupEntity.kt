@@ -1,6 +1,6 @@
 package com.twofasapp.data.services.local.model
 
-import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.common.domain.BackupSyncStatus
 import kotlinx.serialization.Serializable
 
 @Serializable

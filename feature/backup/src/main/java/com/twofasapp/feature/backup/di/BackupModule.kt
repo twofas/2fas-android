@@ -1,6 +1,6 @@
 package com.twofasapp.feature.backup.di
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.feature.backup.ui.backup.BackupViewModel
 import com.twofasapp.feature.backup.ui.backupsettings.BackupSettingsViewModel
 import com.twofasapp.feature.backup.ui.export.BackupExportViewModel

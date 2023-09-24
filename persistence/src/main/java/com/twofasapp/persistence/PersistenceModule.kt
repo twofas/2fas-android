@@ -2,7 +2,7 @@ package com.twofasapp.persistence
 
 import androidx.room.Room
 import com.twofasapp.common.environment.AppBuild
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.persistence.cipher.DatabaseKeyGenerator
 import com.twofasapp.persistence.cipher.DatabaseKeyGeneratorRandom
 import com.twofasapp.persistence.cipher.GetDatabaseMasterKey

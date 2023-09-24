@@ -14,7 +14,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
     implementation(project(":prefs"))
     
     implementation(project(":parsers"))

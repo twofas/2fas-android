@@ -1,6 +1,6 @@
 package com.twofasapp.feature.browserext.di
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.feature.browserext.notification.ShowBrowserExtRequestNotificationCaseImpl
 import com.twofasapp.feature.browserext.ui.details.BrowserExtDetailsViewModel
 import com.twofasapp.feature.browserext.ui.main.BrowserExtViewModel

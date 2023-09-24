@@ -1,6 +1,6 @@
 package com.twofasapp.prefs.model
 
-import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.common.domain.BackupSyncStatus
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

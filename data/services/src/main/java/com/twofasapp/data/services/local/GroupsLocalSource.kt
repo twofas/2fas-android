@@ -4,7 +4,7 @@ import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.local.model.GroupEntity
 import com.twofasapp.data.services.local.model.GroupsEntity
-import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

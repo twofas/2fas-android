@@ -1,7 +1,7 @@
 package com.twofasapp.network.di
 
 import com.twofasapp.common.environment.AppBuild
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.DefaultRequest

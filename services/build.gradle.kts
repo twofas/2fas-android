@@ -10,7 +10,6 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":core:di"))
     implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:locale"))

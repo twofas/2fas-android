@@ -1,6 +1,6 @@
 package com.twofasapp.prefs
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
 import com.twofasapp.prefs.usecase.CurrentAppVersionPreference
 import com.twofasapp.prefs.usecase.FirstCodeAddedPreference

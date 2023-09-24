@@ -1,6 +1,6 @@
 package com.twofasapp.storage.di
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.storage.EncryptedPreferences
 import com.twofasapp.storage.EncryptedPreferencesImpl
 import com.twofasapp.storage.PlainPreferences
