@@ -22,7 +22,6 @@ dependencies {
     implementation(project(":truetime-rx"))
     implementation(project(":parsers"))
     implementation(project(":resources"))
-    implementation(project(":design"))
     implementation(project(":push"))
     implementation(project(":persistence"))
     implementation(project(":services"))

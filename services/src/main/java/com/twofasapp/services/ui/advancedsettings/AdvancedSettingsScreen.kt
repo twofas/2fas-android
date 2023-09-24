@@ -2,18 +2,19 @@ package com.twofasapp.services.ui.advancedsettings
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Divider
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.twofasapp.common.domain.Service
-import com.twofasapp.design.compose.SimpleEntry
-import com.twofasapp.design.compose.SwitchEntry
-import com.twofasapp.design.compose.SwitchEntryType
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.settings.SettingsDivider
+import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.locale.TwLocale
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.EditServiceViewModel
@@ -30,60 +31,83 @@ internal fun AdvancedSettingsScreen(
     ) { padding ->
 
         LazyColumn(modifier = Modifier.padding(padding)) {
+
             item {
-                SwitchEntry(
+                SettingsLink(
                     title = "TOTP",
-                    type = SwitchEntryType.Radio,
-                    isChecked = service.authType == Service.AuthType.TOTP,
-                    isEnabled = false,
-                )
-                SwitchEntry(
-                    title = "HOTP",
-                    type = SwitchEntryType.Radio,
-                    isChecked = service.authType == Service.AuthType.HOTP,
-                    isEnabled = false,
+                    enabled = false,
+                    endContent = {
+                        RadioButton(
+                            selected = service.authType == Service.AuthType.TOTP,
+                            enabled = false,
+                            onClick = {},
+                            colors = RadioButtonDefaults.colors(
+                                selectedColor = TwTheme.color.primary,
+                                unselectedColor = Color(0xFF585858),
+                            )
+                        )
+                    }
                 )
             }
 
-            item { Divider(color = TwTheme.color.divider) }
+            item {
+                SettingsLink(
+                    title = "HOTP",
+                    enabled = false,
+                    endContent = {
+                        RadioButton(
+                            selected = service.authType == Service.AuthType.HOTP,
+                            enabled = false,
+                            onClick = {},
+                            colors = RadioButtonDefaults.colors(
+                                selectedColor = TwTheme.color.primary,
+                                unselectedColor = Color(0xFF585858),
+                            )
+                        )
+                    }
+                )
+            }
+
+
+            item { SettingsDivider() }
 
             item {
-                SimpleEntry(
+                SettingsLink(
                     title = TwLocale.strings.addManualAlgorithm,
                     subtitle = service.algorithm?.name.orEmpty(),
-                    isEnabled = false,
+                    enabled = false,
                 )
             }
 
             if (service.authType == Service.AuthType.TOTP) {
                 item {
-                    SimpleEntry(
+                    SettingsLink(
                         title = TwLocale.strings.addManualRefreshTime,
                         subtitle = service.period.toString(),
-                        isEnabled = false,
+                        enabled = false,
                     )
                 }
             }
 
             if (service.authType == Service.AuthType.HOTP) {
                 item {
-                    SimpleEntry(
+                    SettingsLink(
                         title = stringResource(R.string.tokens__counter),
                         subtitle = (service.hotpCounter ?: 1).toString(),
-                        isEnabled = false,
+                        enabled = false,
                     )
                 }
             }
 
             item {
-                SimpleEntry(
+                SettingsLink(
                     title = TwLocale.strings.addManualDigits,
                     subtitle = service.digits.toString(),
-                    isEnabled = false,
+                    enabled = false,
                 )
             }
 
-            item { Divider(color = TwTheme.color.divider) }
+            item { SettingsDivider() }
         }
     }
 }

@@ -30,8 +30,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.FragmentActivity
 import com.twofasapp.android.biometric.BiometricKeyProvider
-import com.twofasapp.design.compose.ProgressBar
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwCircularProgressIndicator
 import com.twofasapp.resources.R
 import com.twofasapp.security.ui.biometric.BiometricDialog
 
@@ -66,7 +66,7 @@ internal fun PinScreen(
                 .fillMaxSize()
                 .background(TwTheme.color.background)
         ) {
-            ProgressBar(modifier = Modifier.align(Alignment.Center))
+            TwCircularProgressIndicator(Modifier.align(Alignment.Center))
         }
     }
 

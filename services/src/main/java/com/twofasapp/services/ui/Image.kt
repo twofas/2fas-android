@@ -1,4 +1,4 @@
-package com.twofasapp.design.compose
+package com.twofasapp.services.ui
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -6,8 +6,9 @@ import android.graphics.BitmapFactory
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
-import com.twofasapp.design.theme.isNight
+import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.parsers.ServiceIcons
 
 @Composable
@@ -31,3 +32,6 @@ fun getBitmapFromAssets(context: Context, fileName: String): Bitmap {
         Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
     }
 }
+
+@Composable
+fun isNight() = TwTheme.color.background.luminance() < 0.5

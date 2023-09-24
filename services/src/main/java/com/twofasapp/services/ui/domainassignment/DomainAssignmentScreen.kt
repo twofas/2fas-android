@@ -19,11 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.twofasapp.design.compose.SimpleEntry
+import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
+import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.EditServiceViewModel
 
@@ -76,16 +78,20 @@ internal fun DomainAssignmentScreen(
 
             items(service.assignedDomains, key = { it }) {
                 Column {
-                    SimpleEntry(
+                    SettingsLink(
                         modifier = Modifier.animateItemPlacement(),
                         title = it,
-                        iconVisibleWhenNotSet = true,
-                        iconEnd = painterResource(id = R.drawable.ic_remove_assigned_domain),
-                        iconEndTint = TwTheme.color.primary,
-                        iconEndClick = {
-                            clickedDomainName.value = it
-                            showConfirmDialog.value = true
-                        }
+                        showEmptySpaceWhenNoIcon = true,
+                        endContent = {
+                            TwIconButton(
+                                painter = TwIcons.Delete,
+                                tint = TwTheme.color.primary,
+                                onClick = {
+                                    clickedDomainName.value = it
+                                    showConfirmDialog.value = true
+                                }
+                            )
+                        },
                     )
 
                     Divider(color = TwTheme.color.divider)

@@ -18,7 +18,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Divider
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
@@ -52,18 +51,16 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
-import com.twofasapp.design.compose.HeaderEntry
-import com.twofasapp.design.compose.InputEntry
-import com.twofasapp.design.compose.SimpleEntry
-import com.twofasapp.design.compose.dialogs.InputType
-import com.twofasapp.design.compose.dialogs.SimpleDialog
-import com.twofasapp.design.compose.serviceIconBitmap
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ConfirmDialog
+import com.twofasapp.designsystem.dialog.InfoDialog
 import com.twofasapp.designsystem.ktx.dpToSp
 import com.twofasapp.designsystem.lazy.listItem
 import com.twofasapp.designsystem.service.asColor
+import com.twofasapp.designsystem.settings.SettingsDivider
+import com.twofasapp.designsystem.settings.SettingsHeader
+import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.locale.TwLocale
 import com.twofasapp.resources.R
 import com.twofasapp.services.ui.badge.ColorBadgeDialog
@@ -128,7 +125,7 @@ internal fun EditServiceScreen(
         ) { padding ->
             LazyColumn(modifier = Modifier.padding(top = padding.calculateTopPadding())) {
                 listItem(EditServiceListItem.HeaderInfo) {
-                    HeaderEntry(stringResource(R.string.tokens__service_information))
+                    SettingsHeader(title = stringResource(R.string.tokens__service_information))
                 }
 
 
@@ -186,12 +183,12 @@ internal fun EditServiceScreen(
                 }
 
                 listItem(EditServiceListItem.Advanced) {
-                    SimpleEntry(title = stringResource(R.string.customization_advanced), click = { onAdvanceClick() })
+                    SettingsLink(title = stringResource(R.string.customization_advanced), onClick = { onAdvanceClick() })
                 }
 
                 listItem(EditServiceListItem.HeaderPersonalization) {
-                    Divider(color = TwTheme.color.divider)
-                    HeaderEntry(stringResource(R.string.customization_personalization))
+                    SettingsDivider()
+                    SettingsHeader(title = stringResource(R.string.customization_personalization))
                 }
 
 
@@ -202,26 +199,26 @@ internal fun EditServiceScreen(
                 }
 
                 listItem(EditServiceListItem.ChangeBrand) {
-                    SimpleEntry(
+                    SettingsLink(
                         title = stringResource(R.string.customization_change_brand),
-                        isEnabled = isBrandSelected,
-                        click = { onChangeBrandClick() },
+                        enabled = isBrandSelected,
+                        onClick = { onChangeBrandClick() },
                     )
                 }
 
                 listItem(EditServiceListItem.EditLabel) {
-                    SimpleEntry(
+                    SettingsLink(
                         title = stringResource(R.string.customization_edit_label),
-                        isEnabled = isLabelSelected,
-                        click = { onChangeLabelClick() },
+                        enabled = isLabelSelected,
+                        onClick = { onChangeLabelClick() },
                     )
                 }
 
                 listItem(EditServiceListItem.BadgeColor) {
-                    SimpleEntry(title = stringResource(R.string.tokens__badge_color),
+                    SettingsLink(title = stringResource(R.string.tokens__badge_color),
                         icon = painterResource(id = R.drawable.vector_circle),
                         iconTint = uiState.service.badgeColor.asColor(),
-                        click = { showBadgeDialog.value = true })
+                        onClick = { showBadgeDialog.value = true })
                 }
 
                 if (uiState.groups.isNotEmpty()) {
@@ -278,21 +275,21 @@ internal fun EditServiceScreen(
                 }
 
                 listItem(EditServiceListItem.HeaderOther) {
-                    Divider(color = TwTheme.color.divider)
-                    HeaderEntry(stringResource(R.string.tokens__add_manual_other))
+                    SettingsDivider()
+                    SettingsHeader(title = stringResource(R.string.tokens__add_manual_other))
                 }
                 listItem(EditServiceListItem.BrowserExtension) {
-                    SimpleEntry(title = stringResource(R.string.browser__browser_extension),
-                        isEnabled = service.assignedDomains.isNotEmpty(),
-                        click = { onDomainAssignmentClick() })
+                    SettingsLink(title = stringResource(R.string.browser__browser_extension),
+                        enabled = service.assignedDomains.isNotEmpty(),
+                        onClick = { onDomainAssignmentClick() })
                 }
 
                 listItem(EditServiceListItem.Delete) {
-                    Divider(color = TwTheme.color.divider)
-                    SimpleEntry(
+                    SettingsDivider()
+                    SettingsLink(
                         title = stringResource(R.string.commons__delete),
-                        click = { onDeleteClick() },
-                        titleColor = TwTheme.color.primary
+                        onClick = { onDeleteClick() },
+                        textColor = TwTheme.color.primary
                     )
                 }
             }
@@ -309,11 +306,11 @@ internal fun EditServiceScreen(
             }
 
             if (showNoLockDialog.value) {
-                SimpleDialog(
+                InfoDialog(
+                    onDismissRequest = { showNoLockDialog.value = false },
                     title = stringResource(id = R.string.tokens__show_service_key),
-                    text = stringResource(id = R.string.tokens__show_service_key_setup_lock),
-                    positiveText = stringResource(id = R.string.commons__set),
-                    onDismiss = { showNoLockDialog.value = false },
+                    body = stringResource(id = R.string.tokens__show_service_key_setup_lock),
+                    positive = stringResource(id = R.string.commons__set),
                     onNegative = {},
                     onPositive = { onSecurityClick() },
                 )

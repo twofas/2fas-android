@@ -21,15 +21,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.FragmentActivity
 import com.twofasapp.android.biometric.BiometricKeyProvider
-import com.twofasapp.design.compose.HeaderEntry
-import com.twofasapp.design.compose.SimpleEntry
-import com.twofasapp.design.compose.SubtitleGravity
-import com.twofasapp.design.compose.SwitchEntry
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
+import com.twofasapp.designsystem.settings.SettingsDivider
+import com.twofasapp.designsystem.settings.SettingsHeader
+import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.designsystem.settings.SettingsSwitch
 import com.twofasapp.resources.R
 import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.domain.model.PinTimeout
@@ -62,37 +62,37 @@ internal fun SecurityScreen(
         LazyColumn(modifier = Modifier.padding(padding)) {
             if (uiState.lockMethod == LockMethod.NoLock) {
                 item {
-                    SwitchEntry(
+                    SettingsSwitch(
                         title = stringResource(id = R.string.settings__pin_code),
                         icon = painterResource(id = R.drawable.ic_pin_code),
-                        isChecked = false,
-                        switch = { openSetupPin() }
+                        checked = false,
+                        onCheckedChange = { openSetupPin() }
                     )
                 }
 
-                item { Divider(color = TwTheme.color.divider) }
-                item { HeaderEntry(text = stringResource(id = R.string.settings__biometrics)) }
+                item { SettingsDivider() }
+                item { SettingsHeader(title = stringResource(id = R.string.settings__biometrics)) }
 
                 item {
-                    SwitchEntry(
+                    SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_fingerprint),
                         subtitle = stringResource(id = R.string.settings__option_fingerprint_description),
                         icon = painterResource(id = R.drawable.ic_fingerprint_old),
-                        isChecked = false,
-                        isEnabled = false,
-                        switch = { isChecked -> }
+                        checked = false,
+                        enabled = false,
+                        onCheckedChange = { isChecked -> }
                     )
                 }
 
                 item { Divider(color = TwTheme.color.divider, modifier = Modifier.padding(vertical = 8.dp)) }
 
                 item {
-                    SwitchEntry(
+                    SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_screenshots),
                         subtitle = stringResource(id = R.string.settings__option_screenshots_description),
                         icon = TwIcons.Screenshot,
-                        isChecked = uiState.allowScreenshots,
-                        switch = { isChecked ->
+                        checked = uiState.allowScreenshots,
+                        onCheckedChange = { isChecked ->
                             if (isChecked) {
                                 showScreenshotsConfirmDialog = true
                             } else {
@@ -104,39 +104,39 @@ internal fun SecurityScreen(
 
             } else {
 
-                item { HeaderEntry(text = stringResource(id = R.string.settings__settings)) }
+                item { SettingsHeader(title = stringResource(id = R.string.settings__settings)) }
 
                 item {
-                    SwitchEntry(
+                    SettingsSwitch(
                         title = stringResource(id = R.string.settings__pin_code),
                         icon = painterResource(id = R.drawable.ic_pin_code),
-                        isChecked = true,
-                        switch = { openDisablePin() }
+                        checked = true,
+                        onCheckedChange = { openDisablePin() }
                     )
                 }
 
                 item {
-                    SimpleEntry(
+                    SettingsLink(
                         title = stringResource(id = R.string.security__change_pin),
                         icon = painterResource(id = R.drawable.ic_change_pin_old),
-                        click = { openChangePin() }
+                        onClick = { openChangePin() }
                     )
                 }
 
-                item { Divider(color = TwTheme.color.divider) }
-                item { HeaderEntry(text = stringResource(id = R.string.settings__app_blocking)) }
+                item { SettingsDivider() }
+                item { SettingsHeader(title = stringResource(id = R.string.settings__app_blocking)) }
 
                 item {
-                    SimpleEntry(
+                    SettingsLink(
                         title = stringResource(id = R.string.settings__limit_of_trials),
                         icon = painterResource(id = R.drawable.ic_limit_trials_old),
-                        subtitleGravity = SubtitleGravity.END,
+                        subtitleGravity = com.twofasapp.designsystem.settings.SubtitleGravity.End,
                         subtitle = if (uiState.pinTrials == PinTrials.NoLimit) {
                             stringResource(id = R.string.settings__no_limit)
                         } else {
                             uiState.pinTrials.label
                         },
-                        click = { showTrailsDialog = true }
+                        onClick = { showTrailsDialog = true }
                     )
                 }
 
@@ -149,13 +149,13 @@ internal fun SecurityScreen(
                 }
 
                 item {
-                    SimpleEntry(
+                    SettingsLink(
                         title = stringResource(id = R.string.settings__block_for),
                         icon = painterResource(id = R.drawable.ic_block_for_old),
-                        subtitleGravity = SubtitleGravity.END,
+                        subtitleGravity = com.twofasapp.designsystem.settings.SubtitleGravity.End,
                         subtitle = stringResource(id = uiState.pinTimeout.label),
-                        isEnabled = uiState.pinTrials != PinTrials.NoLimit,
-                        click = { showTimeoutDialog = true }
+                        enabled = uiState.pinTrials != PinTrials.NoLimit,
+                        onClick = { showTimeoutDialog = true }
                     )
                 }
 
@@ -167,15 +167,15 @@ internal fun SecurityScreen(
                     )
                 }
 
-                item { Divider(color = TwTheme.color.divider) }
-                item { HeaderEntry(text = stringResource(id = R.string.settings__biometrics)) }
+                item { SettingsDivider() }
+                item { SettingsHeader(title = stringResource(id = R.string.settings__biometrics)) }
 
                 item {
-                    SwitchEntry(
+                    SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_fingerprint),
                         icon = painterResource(id = R.drawable.ic_fingerprint_old),
-                        isChecked = uiState.lockMethod == LockMethod.Biometrics,
-                        switch = { isChecked ->
+                        checked = uiState.lockMethod == LockMethod.Biometrics,
+                        onCheckedChange = { isChecked ->
                             if (isChecked) {
                                 showBiometricDialog = true
                             } else {
@@ -188,12 +188,12 @@ internal fun SecurityScreen(
                 item { Divider(color = TwTheme.color.divider, modifier = Modifier.padding(vertical = 8.dp)) }
 
                 item {
-                    SwitchEntry(
+                    SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_screenshots),
                         subtitle = stringResource(id = R.string.settings__option_screenshots_description),
                         icon = TwIcons.Screenshot,
-                        isChecked = uiState.allowScreenshots,
-                        switch = { isChecked ->
+                        checked = uiState.allowScreenshots,
+                        onCheckedChange = { isChecked ->
                             if (isChecked) {
                                 showScreenshotsConfirmDialog = true
                             } else {
@@ -203,7 +203,7 @@ internal fun SecurityScreen(
                     )
                 }
 
-                item { Divider(color = TwTheme.color.divider) }
+                item { SettingsDivider() }
             }
         }
 

@@ -24,8 +24,8 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
-import com.twofasapp.design.compose.dialogs.internal.BaseDialog
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.dialog.BaseDialog
 import com.twofasapp.designsystem.service.asColor
 
 @Composable
@@ -35,8 +35,7 @@ internal fun ColorBadgeDialog(
     onSelected: (Service.Tint) -> Unit = {}
 ) {
     BaseDialog(
-        applyContentModifier = false,
-        onDismiss = onDismiss,
+        onDismissRequest = onDismiss,
     ) {
 
         LazyColumn {

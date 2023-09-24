@@ -14,6 +14,7 @@ import com.twofasapp.locale.TwLocale
 fun SettingsSwitch(
     title: String,
     checked: Boolean,
+    enabled: Boolean = true,
     modifier: Modifier = Modifier,
     onCheckedChange: ((Boolean) -> Unit)? = null,
     subtitle: String? = null,
@@ -30,12 +31,14 @@ fun SettingsSwitch(
         subtitle = subtitle,
         icon = icon,
         image = image,
+        enabled = enabled,
         textColor = textColor,
         textColorSecondary = textColorSecondary,
         endContent = {
             TwSwitch(
                 checked = checked,
                 onCheckedChange = onCheckedChange,
+                enabled = enabled,
             )
         },
         showEmptySpaceWhenNoIcon = showEmptySpaceWhenIconMissing,

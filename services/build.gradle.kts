@@ -13,7 +13,6 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:locale"))
-    implementation(project(":design"))
     implementation(project(":prefs"))
     implementation(project(":resources"))
     implementation(project(":persistence"))

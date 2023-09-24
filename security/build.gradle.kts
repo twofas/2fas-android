@@ -16,7 +16,6 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":data:session"))
     implementation(project(":resources"))
-    implementation(project(":design"))
     implementation(project(":prefs"))
 
     implementation(project(":security:domain"))

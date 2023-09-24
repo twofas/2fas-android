@@ -10,7 +10,6 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":design"))
     implementation(project(":prefs"))
     implementation(project(":persistence"))
     implementation(project(":push"))

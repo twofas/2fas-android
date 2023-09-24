@@ -1,6 +1,5 @@
 package com.twofasapp.services.ui.changelabel
 
-import TextFieldOutlined
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -38,6 +37,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TwOutlinedTextField
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.designsystem.ktx.dpToSp
@@ -95,10 +95,10 @@ internal fun ChangeLabelScreen(
             }
 
             Box(modifier = Modifier.padding(24.dp)) {
-                TextFieldOutlined(
+                TwOutlinedTextField(
                     value = labelText.value,
-                    label = { Text(text = stringResource(id = R.string.tokens__label_characters_title)) },
-                    maxChars = 2,
+                    labelText = stringResource(id = R.string.tokens__label_characters_title),
+                    maxLength = 2,
                     onValueChange = {
                         labelText.value = it.uppercase()
                         viewModel.updateLabel(labelText.value.uppercase(), labelTint.value)
