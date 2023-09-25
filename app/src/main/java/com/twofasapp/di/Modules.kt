@@ -5,6 +5,7 @@ import com.twofasapp.common.di.CommonModule
 import com.twofasapp.data.browserext.di.DataBrowserExtModule
 import com.twofasapp.data.cloud.di.CloudModule
 import com.twofasapp.data.notifications.di.DataNotificationsModule
+import com.twofasapp.data.push.di.DataPushModule
 import com.twofasapp.data.services.di.DataServicesModule
 import com.twofasapp.data.session.di.DataSessionModule
 import com.twofasapp.feature.about.di.AboutModule
@@ -36,6 +37,7 @@ object Modules {
         DataSessionModule(),
         DataServicesModule(),
         DataBrowserExtModule(),
+        DataPushModule(),
     )
 
     private val feature = listOf(

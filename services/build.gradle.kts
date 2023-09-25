@@ -15,7 +15,6 @@ dependencies {
     implementation(project(":core:locale"))
     implementation(project(":prefs"))
     implementation(project(":persistence"))
-    implementation(project(":push"))
 
     
     implementation(project(":parsers"))

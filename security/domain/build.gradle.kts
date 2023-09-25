@@ -12,10 +12,8 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":prefs"))
     implementation(project(":persistence"))
-    implementation(project(":push"))
 
     implementation(project(":parsers"))
-    implementation(project(":truetime"))
     implementation(project(":core:locale"))
 
     implementation(libs.bundles.appCompat)

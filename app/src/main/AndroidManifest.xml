@@ -52,7 +52,7 @@
         </provider>
 
         <service
-            android:name=".push.FcmMessagingService"
+            android:name=".data.push.FcmMessagingService"
             android:exported="false"
             android:stopWithTask="false">
             <intent-filter>

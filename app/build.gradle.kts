@@ -20,7 +20,6 @@ dependencies {
 
     implementation(project(":truetime"))
     implementation(project(":parsers"))
-    implementation(project(":push"))
     implementation(project(":persistence"))
     implementation(project(":services"))
 
@@ -39,6 +38,7 @@ dependencies {
     implementation(project(":data:services"))
     implementation(project(":data:browserext"))
     implementation(project(":data:cloud"))
+    implementation(project(":data:push"))
     implementation(project(":feature:startup"))
     implementation(project(":feature:home"))
     implementation(project(":feature:trash"))

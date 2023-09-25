@@ -24,7 +24,6 @@ dependencies {
 
     implementation(project(":security"))
     implementation(project(":security:domain"))
-    implementation(project(":push"))
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
