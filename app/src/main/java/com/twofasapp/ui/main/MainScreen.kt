@@ -18,13 +18,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.designsystem.AppTheme
 import com.twofasapp.designsystem.LocalAppTheme
 import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.feature.home.navigation.HomeGraph
-import com.twofasapp.feature.startup.navigation.StartupGraph
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
@@ -58,12 +58,12 @@ internal fun MainScreen(
     val navController: NavHostController = rememberNavController(bottomSheetNavigator)
     val context = LocalContext.current
 
-    LaunchedEffect(Unit){
+    LaunchedEffect(Unit) {
         navController.addOnDestinationChangedListener { _, destination, arguments ->
             val argumentsLog: String = if (destination.arguments.isEmpty()) {
                 ""
             } else {
-               "args=" + destination.arguments.map {
+                "args=" + destination.arguments.map {
                     @Suppress("DEPRECATION")
                     "${it.key}=${arguments?.get(it.key)}"
                 }.toString()
@@ -87,7 +87,7 @@ internal fun MainScreen(
                     color = TwTheme.color.background,
                 ) {
                     val startDestination = when (uiState.startDestination!!) {
-                        MainUiState.StartDestination.Onboarding -> StartupGraph.route
+                        MainUiState.StartDestination.Onboarding -> Screen.Startup.route
                         MainUiState.StartDestination.Home -> HomeGraph.route
                     }
 

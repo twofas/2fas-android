@@ -1,8 +1,8 @@
-package com.twofasapp.security.data
+package com.twofasapp.data.session
 
-import com.twofasapp.security.domain.model.InvalidPinStatus
-import com.twofasapp.security.domain.model.LockMethod
-import com.twofasapp.security.domain.model.PinOptions
+import com.twofasapp.data.session.domain.InvalidPinStatus
+import com.twofasapp.data.session.domain.LockMethod
+import com.twofasapp.data.session.domain.PinOptions
 import kotlinx.coroutines.flow.Flow
 
 interface SecurityRepository {

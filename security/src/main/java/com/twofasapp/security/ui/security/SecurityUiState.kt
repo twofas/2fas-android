@@ -1,9 +1,9 @@
 package com.twofasapp.security.ui.security
 
-import com.twofasapp.security.domain.model.LockMethod
-import com.twofasapp.security.domain.model.PinDigits
-import com.twofasapp.security.domain.model.PinTimeout
-import com.twofasapp.security.domain.model.PinTrials
+import com.twofasapp.data.session.domain.LockMethod
+import com.twofasapp.data.session.domain.PinDigits
+import com.twofasapp.data.session.domain.PinTimeout
+import com.twofasapp.data.session.domain.PinTrials
 
 internal data class SecurityUiState(
     val lockMethod: LockMethod = LockMethod.NoLock,

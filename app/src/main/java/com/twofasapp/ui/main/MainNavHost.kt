@@ -215,7 +215,7 @@ internal fun MainNavHost(
                 )
             }
 
-            composable(Screen.Dispose.route) {
+            composable(Screen.Dispose.route, listOf(NavArg.ServiceId)) {
                 DisposeRoute(
                     navigateBack = { navController.popBackStack() }
                 )

@@ -1,43 +1,32 @@
 package com.twofasapp.security.ui.lock
 
-import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.data.session.SecurityRepository
+import com.twofasapp.data.session.domain.InvalidPinStatus
+import com.twofasapp.data.session.domain.LockMethod
 import com.twofasapp.locale.R
-import com.twofasapp.security.domain.EditInvalidPinStatusCase
-import com.twofasapp.security.domain.EditLockMethodCase
-import com.twofasapp.security.domain.GetPinCase
-import com.twofasapp.security.domain.ObserveInvalidPinStatusCase
-import com.twofasapp.security.domain.ObserveLockMethodCase
-import com.twofasapp.security.domain.ObservePinOptionsCase
-import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.ui.pin.PinScreenState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 internal class LockViewModel(
-    private val dispatchers: Dispatchers,
-    private val observeLockMethodCase: ObserveLockMethodCase,
-    private val observePinOptionsCase: ObservePinOptionsCase,
-    private val observeInvalidPinStatusCase: ObserveInvalidPinStatusCase,
-    private val editInvalidPinStatusCase: EditInvalidPinStatusCase,
-    private val getPinCase: GetPinCase,
-    private val editLockMethodCase: EditLockMethodCase,
+    private val securityRepository: SecurityRepository,
+    private val timeProvider: TimeProvider,
 ) : BaseViewModel() {
 
     val uiState = MutableStateFlow(LockUiState())
 
     init {
-        viewModelScope.launch(dispatchers.io) {
+        launchScoped {
             combine(
-                observeLockMethodCase.invoke(),
-                observePinOptionsCase.invoke(),
-                observeInvalidPinStatusCase.invoke(),
+                securityRepository.observeLockMethod(),
+                securityRepository.observePinOptions(),
+                securityRepository.observeInvalidPinStatus(),
             ) { a, b, c -> Triple(a, b, c) }
                 .collect { (lockMethod, pinOptions, invalidPinStatus) ->
                     uiState.update { state ->
@@ -53,16 +42,24 @@ internal class LockViewModel(
     }
 
     fun pinEntered(pin: String) {
-        viewModelScope.launch(dispatchers.io) {
+        launchScoped {
             uiState.update { it.copy(pinScreenState = PinScreenState.Verifying) }
 
-            if (pin == getPinCase()) {
-                editInvalidPinStatusCase.reset()
+            if (pin == securityRepository.getPin()) {
+                securityRepository.editInvalidPinStatus(InvalidPinStatus.Default)
                 uiState.update { it.postEvent(LockUiState.Event.Finish) }
             } else {
                 delay(150)
 
-                editInvalidPinStatusCase.incrementAttempt()
+                // Increment attempt
+                with(securityRepository.observeInvalidPinStatus().first()) {
+                    securityRepository.editInvalidPinStatus(
+                        copy(
+                            attempts = attempts + 1,
+                            lastAttemptSinceBootMs = timeProvider.systemElapsedTime()
+                        )
+                    )
+                }
 
                 uiState.update {
                     it.copy(
@@ -78,8 +75,8 @@ internal class LockViewModel(
     }
 
     fun biometricsVerified() {
-        viewModelScope.launch(dispatchers.io) {
-            editInvalidPinStatusCase.reset()
+        launchScoped {
+            securityRepository.editInvalidPinStatus(InvalidPinStatus.Default)
             uiState.update { it.postEvent(LockUiState.Event.Finish) }
         }
     }
@@ -89,14 +86,14 @@ internal class LockViewModel(
     }
 
     fun refreshBlockTimeLeft() {
-        viewModelScope.launch(dispatchers.io) {
-            uiState.update { it.copy(invalidPinStatus = observeInvalidPinStatusCase().first()) }
+        launchScoped {
+            uiState.update { it.copy(invalidPinStatus = securityRepository.observeInvalidPinStatus().first()) }
         }
     }
 
     fun disableBiometric() {
         launchScoped {
-            editLockMethodCase.invoke(LockMethod.Pin)
+            securityRepository.editLockMethod(LockMethod.Pin)
             uiState.emit(uiState.value.copy(errorMessage = R.string.fingerprint__biometric_invalidated))
         }
     }

@@ -35,7 +35,7 @@ import com.twofasapp.designsystem.common.TwCircularProgressIndicator
 import com.twofasapp.locale.R
 import com.twofasapp.security.ui.biometric.BiometricDialog
 
-sealed interface PinScreenState {
+internal sealed interface PinScreenState {
     object Loading : PinScreenState
     object Default : PinScreenState
     object Verifying : PinScreenState

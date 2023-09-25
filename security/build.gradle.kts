@@ -17,7 +17,6 @@ dependencies {
     implementation(project(":data:session"))
 
     implementation(project(":prefs"))
-    implementation(project(":security:domain"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

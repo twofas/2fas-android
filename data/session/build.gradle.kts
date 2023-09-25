@@ -11,6 +11,7 @@ android {
 dependencies {
     implementation(project(":core:storage"))
     implementation(project(":core:common"))
+    implementation(project(":core:locale"))
     implementation(project(":prefs"))
 
     implementation(libs.kotlinCoroutines)

@@ -3,10 +3,10 @@ package com.twofasapp.security.ui.setuppin
 import com.twofasapp.base.UiEvent
 import com.twofasapp.base.UiState
 import com.twofasapp.locale.R
-import com.twofasapp.security.domain.model.PinDigits
+import com.twofasapp.data.session.domain.PinDigits
 import com.twofasapp.security.ui.pin.PinScreenState
 
-data class SetupPinUiState(
+internal data class SetupPinUiState(
     val digits: PinDigits = PinDigits.Code4,
     val showPinOptions: Boolean = true,
     val message: Int = R.string.security__enter_your_new_pin,

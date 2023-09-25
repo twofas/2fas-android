@@ -1,4 +1,4 @@
-package com.twofasapp.security.domain.model
+package com.twofasapp.data.session.domain
 
 data class PinOptions(
     val digits: PinDigits,

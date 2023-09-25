@@ -11,7 +11,7 @@ import com.twofasapp.locale.R
 import java.util.concurrent.Executor
 import javax.crypto.Cipher
 
-class BiometricDialog(
+internal class BiometricDialog(
     private val activity: FragmentActivity,
     private val fragment: Fragment? = null,
     private val titleRes: Int = R.string.biometric_dialog_auth_title,

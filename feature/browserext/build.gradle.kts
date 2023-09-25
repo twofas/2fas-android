@@ -22,9 +22,6 @@ dependencies {
 
     implementation(project(":feature:qrscan"))
 
-    implementation(project(":security"))
-    implementation(project(":security:domain"))
-
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
     implementation(libs.bundles.accompanist)

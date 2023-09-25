@@ -1,30 +1,20 @@
 package com.twofasapp.security.ui.security
 
-import androidx.lifecycle.viewModelScope
 import com.twofasapp.base.BaseViewModel
-import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.data.session.SecurityRepository
 import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.data.session.domain.LockMethod
+import com.twofasapp.data.session.domain.PinOptions
+import com.twofasapp.data.session.domain.PinTimeout
+import com.twofasapp.data.session.domain.PinTrials
 import com.twofasapp.data.session.work.DisableScreenshotsWorkDispatcher
-import com.twofasapp.security.domain.EditLockMethodCase
-import com.twofasapp.security.domain.EditPinOptionsCase
-import com.twofasapp.security.domain.ObserveLockMethodCase
-import com.twofasapp.security.domain.ObservePinOptionsCase
-import com.twofasapp.security.domain.model.LockMethod
-import com.twofasapp.security.domain.model.PinOptions
-import com.twofasapp.security.domain.model.PinTimeout
-import com.twofasapp.security.domain.model.PinTrials
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 internal class SecurityViewModel(
-    private val dispatchers: Dispatchers,
-    private val observeLockMethodCase: ObserveLockMethodCase,
-    private val observePinOptionsCase: ObservePinOptionsCase,
-    private val editPinOptionsCase: EditPinOptionsCase,
-    private val editLockMethodCase: EditLockMethodCase,
+    private val securityRepository: SecurityRepository,
     private val settingsRepository: SettingsRepository,
     private val disableScreenshotsWorkDispatcher: DisableScreenshotsWorkDispatcher,
 ) : BaseViewModel() {
@@ -32,10 +22,10 @@ internal class SecurityViewModel(
     val uiState = MutableStateFlow(SecurityUiState())
 
     init {
-        viewModelScope.launch(dispatchers.io) {
+        launchScoped {
             combine(
-                observeLockMethodCase.invoke(),
-                observePinOptionsCase.invoke()
+                securityRepository.observeLockMethod(),
+                securityRepository.observePinOptions(),
             ) { a, b -> Pair(a, b) }
                 .collect { (lockMethod, pinOptions) ->
                     uiState.update { state ->
@@ -65,9 +55,9 @@ internal class SecurityViewModel(
     }
 
     fun updateBiometricLock(isEnabled: Boolean) {
-        viewModelScope.launch(dispatchers.io) {
+        launchScoped {
             val method = if (isEnabled) LockMethod.Biometrics else LockMethod.Pin
-            editLockMethodCase(method)
+            securityRepository.editLockMethod(method)
         }
     }
 
@@ -84,8 +74,8 @@ internal class SecurityViewModel(
     }
 
     private fun updatePinOptions(action: (PinOptions) -> PinOptions) {
-        viewModelScope.launch(dispatchers.io) {
-            editPinOptionsCase(
+        launchScoped {
+            securityRepository.editPinOptions(
                 action.invoke(
                     PinOptions(
                         digits = uiState.value.pinDigits,

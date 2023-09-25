@@ -5,7 +5,6 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
@@ -13,15 +12,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.twofasapp.android.biometric.BiometricKeyProvider
+import com.twofasapp.data.session.domain.LockMethod
 import com.twofasapp.locale.R
-import com.twofasapp.security.domain.model.LockMethod
 import com.twofasapp.security.ui.pin.PinScreen
 import com.twofasapp.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.security.ui.pin.vibrateInvalidPin
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 internal fun LockScreen(
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,

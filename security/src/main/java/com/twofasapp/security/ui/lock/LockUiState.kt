@@ -2,9 +2,9 @@ package com.twofasapp.security.ui.lock
 
 import com.twofasapp.base.UiEvent
 import com.twofasapp.base.UiState
-import com.twofasapp.security.domain.model.InvalidPinStatus
-import com.twofasapp.security.domain.model.LockMethod
-import com.twofasapp.security.domain.model.PinDigits
+import com.twofasapp.data.session.domain.InvalidPinStatus
+import com.twofasapp.data.session.domain.LockMethod
+import com.twofasapp.data.session.domain.PinDigits
 import com.twofasapp.security.ui.pin.PinScreenState
 
 internal data class LockUiState(
@@ -17,9 +17,9 @@ internal data class LockUiState(
 ) : UiState<LockUiState, LockUiState.Event> {
 
     sealed class Event : UiEvent() {
-        object ClearCurrentPin : Event()
-        object NotifyInvalidPin : Event()
-        object Finish : Event()
+        data object ClearCurrentPin : Event()
+        data object NotifyInvalidPin : Event()
+        data object Finish : Event()
     }
 
     override fun copyStateWithNewEvents(events: List<Event>): LockUiState {

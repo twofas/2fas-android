@@ -21,7 +21,7 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.locale.R
-import com.twofasapp.security.domain.model.PinDigits
+import com.twofasapp.data.session.domain.PinDigits
 import com.twofasapp.security.ui.pin.PinScreen
 import com.twofasapp.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.security.ui.pin.vibrateInvalidPin

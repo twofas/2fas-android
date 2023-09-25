@@ -18,7 +18,7 @@ import com.twofasapp.parsers.SupportedServices
 import com.twofasapp.prefs.PreferencesEncryptedModule
 import com.twofasapp.prefs.PreferencesPlainModule
 import com.twofasapp.prefs.usecase.SendCrashLogsPreference
-import com.twofasapp.security.SecurityModule
+import com.twofasapp.security.di.SecurityModule
 import com.twofasapp.services.ServicesModule
 import net.sqlcipher.database.SQLiteDatabase
 import org.koin.android.ext.android.inject

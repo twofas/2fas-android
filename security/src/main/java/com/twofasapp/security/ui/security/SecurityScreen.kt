@@ -30,9 +30,9 @@ import com.twofasapp.designsystem.settings.SettingsHeader
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.designsystem.settings.SettingsSwitch
 import com.twofasapp.locale.R
-import com.twofasapp.security.domain.model.LockMethod
-import com.twofasapp.security.domain.model.PinTimeout
-import com.twofasapp.security.domain.model.PinTrials
+import com.twofasapp.data.session.domain.LockMethod
+import com.twofasapp.data.session.domain.PinTimeout
+import com.twofasapp.data.session.domain.PinTrials
 import com.twofasapp.security.ui.biometric.BiometricDialog
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject

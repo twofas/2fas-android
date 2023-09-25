@@ -51,7 +51,6 @@ dependencies {
     implementation(project(":parsers"))
     implementation(project(":services"))
     implementation(project(":security"))
-    implementation(project(":security:domain"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

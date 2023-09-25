@@ -1,15 +1,15 @@
-package com.twofasapp.security.data
+package com.twofasapp.data.session
 
 import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.data.session.domain.InvalidPinStatus
+import com.twofasapp.data.session.domain.LockMethod
+import com.twofasapp.data.session.domain.PinOptions
+import com.twofasapp.data.session.mapper.asDomain
+import com.twofasapp.data.session.mapper.asEntity
 import com.twofasapp.prefs.usecase.InvalidPinStatusPreference
 import com.twofasapp.prefs.usecase.LockMethodPreference
 import com.twofasapp.prefs.usecase.PinOptionsPreference
 import com.twofasapp.prefs.usecase.PinSecuredPreference
-import com.twofasapp.security.data.converter.toDomain
-import com.twofasapp.security.data.converter.toEntity
-import com.twofasapp.security.domain.model.InvalidPinStatus
-import com.twofasapp.security.domain.model.LockMethod
-import com.twofasapp.security.domain.model.PinOptions
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlin.math.ceil
@@ -23,11 +23,11 @@ internal class SecurityRepositoryImpl(
 ) : SecurityRepository {
 
     override fun observePinOptions(): Flow<PinOptions> {
-        return pinOptionsPreference.flow().map { it.toDomain() }
+        return pinOptionsPreference.flow().map { it.asDomain() }
     }
 
     override suspend fun editPinOptions(pinOptions: PinOptions) {
-        pinOptionsPreference.put(pinOptions.toEntity())
+        pinOptionsPreference.put(pinOptions.asEntity())
     }
 
     override suspend fun getPin(): String {
@@ -35,19 +35,31 @@ internal class SecurityRepositoryImpl(
     }
 
     override suspend fun editPin(pin: String) {
+        val lockMethod = getLockMethod()
         pinSecuredPreference.put(pin)
+
+        if (pin.isBlank()) {
+            editLockMethod(LockMethod.NoLock)
+        } else {
+            when (lockMethod) {
+                LockMethod.NoLock,
+                LockMethod.Pin -> editLockMethod(LockMethod.Pin)
+
+                LockMethod.Biometrics -> editLockMethod(LockMethod.Biometrics)
+            }
+        }
     }
 
     override fun observeLockMethod(): Flow<LockMethod> {
-        return lockMethodPreference.flow().map { it.toDomain() }
+        return lockMethodPreference.flow().map { it.asDomain() }
     }
 
     override fun getLockMethod(): LockMethod {
-        return lockMethodPreference.get().toDomain()
+        return lockMethodPreference.get().asDomain()
     }
 
     override suspend fun editLockMethod(lockMethod: LockMethod) {
-        lockMethodPreference.put(lockMethod.toEntity())
+        lockMethodPreference.put(lockMethod.asEntity())
     }
 
     override fun observeInvalidPinStatus(): Flow<InvalidPinStatus> {
@@ -73,6 +85,6 @@ internal class SecurityRepositoryImpl(
     }
 
     override suspend fun editInvalidPinStatus(invalidPinStatus: InvalidPinStatus) {
-        invalidPinStatusPreference.put(invalidPinStatus.toEntity())
+        invalidPinStatusPreference.put(invalidPinStatus.asEntity())
     }
 }

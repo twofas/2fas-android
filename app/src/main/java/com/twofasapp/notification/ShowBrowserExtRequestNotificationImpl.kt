@@ -18,8 +18,8 @@ import com.twofasapp.data.push.notification.NotificationChannelProvider
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
 import com.twofasapp.feature.browserext.notification.DomainMatcher
-import com.twofasapp.security.data.SecurityRepository
-import com.twofasapp.security.domain.model.LockMethod
+import com.twofasapp.data.session.SecurityRepository
+import com.twofasapp.data.session.domain.LockMethod
 
 class ShowBrowserExtRequestNotificationImpl(
     private val context: Context,
