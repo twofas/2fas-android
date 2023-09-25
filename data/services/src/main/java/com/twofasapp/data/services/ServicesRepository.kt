@@ -25,7 +25,6 @@ interface ServicesRepository {
     fun updateServicesOrder(ids: List<Long>)
     suspend fun incrementHotpCounter(service: Service)
     fun pushRecentlyAddedService(recentlyAddedService: RecentlyAddedService)
-    suspend fun recalculateTimeDelta()
     suspend fun isServiceExists(secret: String): Boolean
     fun isSecretValid(secret: String): Boolean
     fun isServiceValid(link: OtpAuthLink): Boolean

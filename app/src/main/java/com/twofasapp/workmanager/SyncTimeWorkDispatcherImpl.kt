@@ -1,4 +1,4 @@
-package com.twofasapp.time.domain.work
+package com.twofasapp.workmanager
 
 import android.content.Context
 import androidx.work.Constraints

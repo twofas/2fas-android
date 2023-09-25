@@ -1,4 +1,4 @@
-package com.twofasapp.time.domain.work
+package com.twofasapp.workmanager
 
 interface SyncTimeWorkDispatcher{
     fun dispatch()

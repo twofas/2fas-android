@@ -12,7 +12,6 @@ android {
 dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:storage"))
-    implementation(project(":time:domain"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.timber)

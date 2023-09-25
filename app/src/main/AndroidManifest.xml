@@ -60,11 +60,6 @@
             </intent-filter>
         </service>
 
-        <service
-            android:name=".widgets.adapter.WidgetViewsService"
-            android:exported="false"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
-
         <!--
             Prompt Google Play services to install the backported photo picker module
             https://developer.android.com/training/data-storage/shared/photopicker#device-availability

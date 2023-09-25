@@ -24,10 +24,8 @@ dependencies {
     implementation(project(":persistence"))
     implementation(project(":services"))
 
-    implementation(project(":time"))
     implementation(project(":security"))
     implementation(project(":security:domain"))
-    implementation(project(":time:domain"))
 
     implementation(project(":core:common"))
     implementation(project(":core:android"))

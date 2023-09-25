@@ -1,6 +1,7 @@
 package com.twofasapp.data.services
 
 import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.domain.WidgetCallbacks
 import com.twofasapp.common.ktx.tickerFlow
@@ -11,14 +12,12 @@ import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
 import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
-import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.parsers.domain.OtpAuthLink
 import com.twofasapp.prefs.model.RecentlyDeleted
 import com.twofasapp.prefs.model.RecentlyDeletedService
 import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.usecase.RecentlyDeletedPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
-import com.twofasapp.time.domain.RecalculateTimeDeltaCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -36,7 +35,6 @@ internal class ServicesRepositoryImpl(
     private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
     private val recentlyDeletedPreference: RecentlyDeletedPreference,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
-    private val recalculateTimeDeltaCase: RecalculateTimeDeltaCase,
 ) : ServicesRepository {
 
     private val isTickerEnabled = MutableStateFlow(true)
@@ -216,10 +214,6 @@ internal class ServicesRepositoryImpl(
 
     override fun pushRecentlyAddedService(recentlyAddedService: RecentlyAddedService) {
         local.pushRecentlyAddedService(recentlyAddedService)
-    }
-
-    override suspend fun recalculateTimeDelta() {
-        recalculateTimeDeltaCase.invoke()
     }
 
     override suspend fun isServiceExists(secret: String): Boolean {

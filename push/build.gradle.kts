@@ -10,8 +10,7 @@ android {
 dependencies {
     implementation(project(":base"))
     implementation(project(":prefs"))
-    
-    implementation(project(":time:domain"))
+
     implementation(project(":core:common"))
 
     implementation(libs.kotlinCoroutines)

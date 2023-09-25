@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
         servicesRepository.setTickerEnabled(true)
 
         recalculateTimeJob = lifecycleScope.launch {
-            servicesRepository.recalculateTimeDelta()
+            sessionRepository.recalculateTimeDelta()
         }
     }
 

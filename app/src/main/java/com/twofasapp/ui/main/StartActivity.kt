@@ -10,7 +10,7 @@ import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.designsystem.AppThemeState
-import com.twofasapp.time.domain.work.SyncTimeWorkDispatcher
+import com.twofasapp.workmanager.SyncTimeWorkDispatcher
 import com.twofasapp.workmanager.OnAppUpdatedWorkDispatcher
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject

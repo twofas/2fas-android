@@ -16,7 +16,6 @@ dependencies {
     implementation(project(":data:cloud"))
 
     implementation(project(":parsers"))
-    implementation(project(":time:domain"))
 
     implementation(libs.bundles.room)
     implementation(libs.kotlinCoroutines)

@@ -17,4 +17,5 @@ dependencies {
     implementation(libs.kotlinSerialization)
     implementation(libs.workManager)
     implementation(libs.timber)
+    implementation(project(":truetime"))
 }

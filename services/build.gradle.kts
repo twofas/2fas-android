@@ -17,7 +17,6 @@ dependencies {
     implementation(project(":persistence"))
     implementation(project(":push"))
 
-    implementation(project(":time:domain"))
     
     implementation(project(":parsers"))
     implementation(project(":data:services"))

@@ -1,5 +1,6 @@
 package com.twofasapp.data.session
 
+import com.instacart.library.truetime.TrueTime
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
@@ -7,9 +8,12 @@ import com.twofasapp.data.session.local.SessionLocalSource
 import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import com.twofasapp.prefs.usecase.TimeDeltaPreference
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import java.time.Duration
 
 internal class SessionRepositoryImpl(
@@ -18,7 +22,8 @@ internal class SessionRepositoryImpl(
     private val local: SessionLocalSource,
     private val timeProvider: TimeProvider,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
-    private val appUpdateLastCheckVersionPreference: AppUpdateLastCheckVersionPreference
+    private val appUpdateLastCheckVersionPreference: AppUpdateLastCheckVersionPreference,
+    private val timeDeltaPreference: TimeDeltaPreference,
 ) : SessionRepository {
 
     override suspend fun isOnboardingDisplayed(): Boolean {
@@ -73,5 +78,27 @@ internal class SessionRepositoryImpl(
 
     override suspend fun markAppInstalled() {
         local.markAppInstalled()
+    }
+
+    override suspend fun recalculateTimeDelta() {
+        var retries = 30
+
+        while (recalculate().not() && retries > 0) {
+            delay(2000)
+            retries--
+        }
+    }
+
+    private fun recalculate(): Boolean {
+        Timber.d("TrueTime: sync...")
+        return if (TrueTime.isInitialized()) {
+            Timber.d("TrueTime: synced - ${TrueTime.now()}")
+            val newDelta = TrueTime.now().time - System.currentTimeMillis()
+            timeDeltaPreference.put(newDelta)
+
+            true
+        } else {
+            false
+        }
     }
 }

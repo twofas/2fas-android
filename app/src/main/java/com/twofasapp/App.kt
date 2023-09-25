@@ -22,7 +22,6 @@ import com.twofasapp.prefs.usecase.SendCrashLogsPreference
 import com.twofasapp.push.PushModule
 import com.twofasapp.security.SecurityModule
 import com.twofasapp.services.ServicesModule
-import com.twofasapp.time.TimeModule
 import com.twofasapp.usecases.services.PinOptionsUseCase
 import net.sqlcipher.database.SQLiteDatabase
 import org.koin.android.ext.android.inject
@@ -51,7 +50,6 @@ class App : MultiDexApplication() {
             modules(
                 listOf(
                     StartModule(),
-                    TimeModule(),
                     ParsersModule(),
                     PreferencesPlainModule(),
                     PreferencesEncryptedModule(),
