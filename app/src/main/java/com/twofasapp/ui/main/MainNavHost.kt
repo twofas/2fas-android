@@ -27,10 +27,9 @@ import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.android.navigation.withArg
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.common.ModalBottomSheet
-import com.twofasapp.feature.about.navigation.AboutGraph
-import com.twofasapp.feature.about.navigation.aboutNavigation
-import com.twofasapp.feature.appsettings.navigation.AppSettingsGraph
-import com.twofasapp.feature.appsettings.navigation.appSettingsNavigation
+import com.twofasapp.feature.about.navigation.AboutLicensesRoute
+import com.twofasapp.feature.about.navigation.AboutRoute
+import com.twofasapp.feature.appsettings.navigation.AppSettingsRoute
 import com.twofasapp.feature.backup.navigation.BackupExportRoute
 import com.twofasapp.feature.backup.navigation.BackupImportRoute
 import com.twofasapp.feature.backup.navigation.BackupRoute
@@ -51,15 +50,14 @@ import com.twofasapp.feature.home.navigation.GuidesRoute
 import com.twofasapp.feature.home.navigation.HomeGraph
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.navigation.HomeNode
-import com.twofasapp.feature.home.navigation.NotificationsGraph
+import com.twofasapp.feature.home.navigation.NotificationsRoute
 import com.twofasapp.feature.home.navigation.homeNavigation
-import com.twofasapp.feature.home.navigation.notificationsNavigation
 import com.twofasapp.feature.home.ui.services.add.AddServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
-import com.twofasapp.feature.startup.navigation.startupNavigation
-import com.twofasapp.feature.trash.navigation.TrashGraph
-import com.twofasapp.feature.trash.navigation.trashNavigation
+import com.twofasapp.feature.startup.navigation.StartupRoute
+import com.twofasapp.feature.trash.navigation.DisposeRoute
+import com.twofasapp.feature.trash.navigation.TrashRoute
 import com.twofasapp.security.navigation.SecurityGraph
 import com.twofasapp.security.navigation.securityNavigation
 import com.twofasapp.security.ui.lock.LockActivity
@@ -112,9 +110,9 @@ internal fun MainNavHost(
             exitTransition = NavAnimation.Exit,
         ) {
 
-            startupNavigation(
-                openHome = { navController.navigate(HomeGraph.route) { popUpTo(0) } }
-            )
+            composable(Screen.Startup.route) {
+                StartupRoute(openHome = { navController.navigate(HomeGraph.route) { popUpTo(0) } })
+            }
 
             homeNavigation(
                 navController = navController,
@@ -140,19 +138,19 @@ internal fun MainNavHost(
                     }
 
                     override fun openAppSettings() {
-                        navController.navigate(AppSettingsGraph.route)
+                        navController.navigate(Screen.AppSettings.route)
                     }
 
                     override fun openTrash() {
-                        navController.navigate(TrashGraph.route)
+                        navController.navigate(Screen.Trash.route)
                     }
 
                     override fun openNotifications() {
-                        navController.navigate(NotificationsGraph.route)
+                        navController.navigate(Screen.Notifications.route)
                     }
 
                     override fun openAbout() {
-                        navController.navigate(AboutGraph.route)
+                        navController.navigate(Screen.About.route)
                     }
 
                     override fun openAddServiceModal() {
@@ -176,10 +174,6 @@ internal fun MainNavHost(
                 },
             )
 
-            appSettingsNavigation()
-            notificationsNavigation()
-            trashNavigation(navController = navController)
-            aboutNavigation(navController = navController)
             securityNavigation(navController = navController)
 
             bottomSheet(Modal.AddService.route, listOf(NavArg.AddServiceInitRoute)) {
@@ -196,6 +190,34 @@ internal fun MainNavHost(
                         navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, it))
                         scope.launch { bottomSheetState.hide() }
                     }
+                )
+            }
+
+            composable(Screen.AppSettings.route) {
+                AppSettingsRoute()
+            }
+
+            composable(Screen.About.route) {
+                AboutRoute(openLicenses = { navController.navigate(Screen.AboutLicenses.route) })
+            }
+
+            composable(Screen.AboutLicenses.route) {
+                AboutLicensesRoute()
+            }
+
+            composable(Screen.Notifications.route) {
+                NotificationsRoute()
+            }
+
+            composable(Screen.Trash.route) {
+                TrashRoute(
+                    openDispose = { navController.navigate(Screen.Dispose.routeWithArgs(NavArg.ServiceId to it)) }
+                )
+            }
+
+            composable(Screen.Dispose.route) {
+                DisposeRoute(
+                    navigateBack = { navController.popBackStack() }
                 )
             }
 

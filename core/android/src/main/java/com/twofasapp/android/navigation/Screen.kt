@@ -8,6 +8,16 @@ sealed class Screen(val route: String) {
         return route.replaceArgsInRoute(*args)
     }
 
+    data object Startup : Screen("startup")
+
+    data object AppSettings : Screen("appsettings")
+
+    data object About : Screen("about")
+    data object AboutLicenses : Screen("about/licenses")
+    data object Notifications : Screen("notifications")
+    data object Trash : Screen("trash")
+    data object Dispose : Screen("dispose/{${NavArg.ServiceId.name}}")
+
     data object BrowserExt : Screen("browserext")
     data object BrowserExtPermission : Screen("browserext/permission")
     data object BrowserExtScan : Screen("browserext/scan")

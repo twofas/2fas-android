@@ -36,19 +36,19 @@ import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun NotificationsRoute(
+internal fun NotificationsScreen(
     viewModel: NotificationsViewModel = koinViewModel(),
 ) {
     val notifications by viewModel.notificationsList.collectAsStateWithLifecycle()
 
-    NotificationsScreen(
+    ScreenContent(
         notifications = notifications,
         onNotificationClick = { viewModel.onNotificationClick(it) }
     )
 }
 
 @Composable
-private fun NotificationsScreen(
+private fun ScreenContent(
     notifications: List<Notification>,
     onNotificationClick: (Notification) -> Unit,
 ) {

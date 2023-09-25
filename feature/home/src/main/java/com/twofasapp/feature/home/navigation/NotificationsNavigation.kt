@@ -1,16 +1,9 @@
 package com.twofasapp.feature.home.navigation
 
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
-import com.twofasapp.android.navigation.NavGraph
-import com.twofasapp.feature.home.ui.notifications.NotificationsRoute
+import androidx.compose.runtime.Composable
+import com.twofasapp.feature.home.ui.notifications.NotificationsScreen
 
-object NotificationsGraph : NavGraph {
-    override val route: String = "notifications"
-}
-
-fun NavGraphBuilder.notificationsNavigation() {
-    composable(NotificationsGraph.route) {
-        NotificationsRoute()
-    }
+@Composable
+fun NotificationsRoute() {
+    NotificationsScreen()
 }

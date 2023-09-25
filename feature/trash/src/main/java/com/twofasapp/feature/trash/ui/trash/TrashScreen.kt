@@ -31,13 +31,13 @@ import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun TrashRoute(
-    openDispose: (Long) -> Unit,
-    viewModel: TrashViewModel = koinViewModel()
+internal fun TrashScreen(
+    viewModel: TrashViewModel = koinViewModel(),
+    openDispose: (Long) -> Unit
 ) {
     val services by viewModel.services.collectAsStateWithLifecycle()
 
-    TrashScreen(
+    ScreenContent(
         services = services,
         onRestoreClick = { viewModel.restoreService(it) },
         onDisposeClick = { openDispose(it) },
@@ -45,7 +45,7 @@ internal fun TrashRoute(
 }
 
 @Composable
-private fun TrashScreen(
+private fun ScreenContent(
     services: List<Service>,
     onRestoreClick: (Long) -> Unit,
     onDisposeClick: (Long) -> Unit,

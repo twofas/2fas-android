@@ -26,13 +26,13 @@ import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun AppSettingsRoute(
+internal fun AppSettingsScreen(
     viewModel: AppSettingsViewModel = koinViewModel()
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    AppSettingsScreen(
+    ScreenContent(
         uiState = uiState,
         onConsumeEvent = { viewModel.consumeEvent(it) },
         onSelectedThemeChange = { viewModel.setSelectedTheme(it) },
@@ -45,7 +45,7 @@ internal fun AppSettingsRoute(
 }
 
 @Composable
-private fun AppSettingsScreen(
+private fun ScreenContent(
     uiState: AppSettingsUiState,
     onConsumeEvent: (AppSettingsUiEvent) -> Unit,
     onSelectedThemeChange: (SelectedTheme) -> Unit,

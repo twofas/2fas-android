@@ -26,7 +26,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
@@ -40,11 +39,11 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun StartupRoute(
-    openHome: () -> Unit,
-    viewModel: StartupViewModel = koinViewModel()
+internal fun StartupScreen(
+    viewModel: StartupViewModel = koinViewModel(),
+    openHome: () -> Unit
 ) {
-    StartupScreen(
+    ScreenContent(
         onTermsClick = { viewModel.onTermsClicked() },
         onNextClick = { viewModel.onNextClicked(it) },
         onStartUsingClick = {
@@ -58,9 +57,8 @@ internal fun StartupRoute(
     )
 }
 
-@OptIn(ExperimentalPagerApi::class)
 @Composable
-internal fun StartupScreen(
+internal fun ScreenContent(
     onTermsClick: () -> Unit,
     onNextClick: (Int) -> Unit,
     onStartUsingClick: () -> Unit,
