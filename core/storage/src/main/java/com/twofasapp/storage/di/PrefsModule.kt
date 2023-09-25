@@ -11,7 +11,7 @@ import com.twofasapp.storage.internal.PreferencesDelegate
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-class StorageModule : KoinModule {
+class PrefsModule : KoinModule {
 
     override fun provide() = module {
         single<PlainPreferences> {

@@ -12,20 +12,13 @@ plugins {
 
 android {
     namespace = "com.twofasapp"
+
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
 }
 
 dependencies {
-    implementation(project(":base"))
-    implementation(project(":prefs"))
-
-    implementation(project(":truetime"))
-    implementation(project(":parsers"))
-    implementation(project(":persistence"))
-    implementation(project(":services"))
-
-    implementation(project(":security"))
-    implementation(project(":security:domain"))
-
     implementation(project(":core:common"))
     implementation(project(":core:android"))
     implementation(project(":core:designsystem"))
@@ -33,12 +26,14 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":core:locale"))
     implementation(project(":core:cipher"))
+
     implementation(project(":data:notifications"))
     implementation(project(":data:session"))
     implementation(project(":data:services"))
     implementation(project(":data:browserext"))
     implementation(project(":data:cloud"))
     implementation(project(":data:push"))
+
     implementation(project(":feature:startup"))
     implementation(project(":feature:home"))
     implementation(project(":feature:trash"))
@@ -50,10 +45,20 @@ dependencies {
     implementation(project(":feature:backup"))
     implementation(project(":feature:widget"))
 
+    implementation(project(":base"))
+    implementation(project(":prefs"))
+    implementation(project(":truetime"))
+    implementation(project(":parsers"))
+    implementation(project(":services"))
+    implementation(project(":security"))
+    implementation(project(":security:domain"))
+
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.barcodeScanner)
     implementation(libs.bundles.room)
+    implementation(libs.reLinker)
+    ksp(libs.roomCompiler)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
     implementation(libs.bundles.accompanist)
@@ -68,14 +73,13 @@ dependencies {
     implementation(libs.kotlinCoroutines)
     implementation(libs.workManager)
     implementation(libs.activityX)
-
     implementation(libs.coreSplash)
 
     // Google
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.biometric:biometric:1.1.0")
 
-    implementation("com.google.android.gms:play-services-auth:20.4.0"){
+    implementation("com.google.android.gms:play-services-auth:20.4.0") {
         exclude("com.google.http-client", "google-http-client")
         exclude("com.google.http-client", "google-http-client-jackson")
     }
@@ -84,11 +88,11 @@ dependencies {
 
     implementation("com.google.api-client:google-api-client-android:2.2.0") {
         exclude("org.apache.httpcomponents", "guava-jdk5")
-        exclude("com.google.http-client","google-http-client")
+        exclude("com.google.http-client", "google-http-client")
     }
     implementation("com.google.apis:google-api-services-drive:v3-rev197-1.25.0") {
         exclude("org.apache.httpcomponents", "guava-jdk5")
-        exclude("com.google.http-client","google-http-client")
+        exclude("com.google.http-client", "google-http-client")
 
     }
 

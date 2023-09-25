@@ -1,4 +1,4 @@
-package com.twofasapp.features.navigator
+package com.twofasapp.navigator
 
 import android.app.Activity
 import android.content.Context

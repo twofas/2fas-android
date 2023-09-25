@@ -1,4 +1,4 @@
-package com.twofasapp.domain.notification
+package com.twofasapp.notification
 
 import android.app.KeyguardManager
 import android.app.NotificationManager

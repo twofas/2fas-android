@@ -1,4 +1,4 @@
-package com.twofasapp.entity.converters
+package com.twofasapp.legacy.objectbox.converters
 
 import io.objectbox.converter.PropertyConverter
 import java.util.Locale

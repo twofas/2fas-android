@@ -11,7 +11,6 @@ android {
 dependencies {
     implementation(project(":base"))
     implementation(project(":prefs"))
-    implementation(project(":persistence"))
 
     implementation(project(":parsers"))
     implementation(project(":core:locale"))

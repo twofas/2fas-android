@@ -1,7 +1,7 @@
-package com.twofasapp.entity
+package com.twofasapp.legacy.objectbox
 
-import com.twofasapp.entity.converters.ServiceTypeConverter
-import com.twofasapp.entity.converters.SyncStatusConverter
+import com.twofasapp.legacy.objectbox.converters.ServiceTypeConverter
+import com.twofasapp.legacy.objectbox.converters.SyncStatusConverter
 import io.objectbox.annotation.Convert
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id

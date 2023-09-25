@@ -1,4 +1,4 @@
-package com.twofasapp.persistence.cipher
+package com.twofasapp.storage.cipher
 
 interface DatabaseKeyGenerator {
     fun generate(bytes: Int): String

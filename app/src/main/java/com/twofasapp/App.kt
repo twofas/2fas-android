@@ -15,7 +15,6 @@ import com.twofasapp.di.Modules
 import com.twofasapp.di.StartModule
 import com.twofasapp.parsers.ParsersModule
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.persistence.PersistenceModule
 import com.twofasapp.prefs.PreferencesEncryptedModule
 import com.twofasapp.prefs.PreferencesPlainModule
 import com.twofasapp.prefs.usecase.SendCrashLogsPreference
@@ -52,7 +51,6 @@ class App : MultiDexApplication() {
                     ParsersModule(),
                     PreferencesPlainModule(),
                     PreferencesEncryptedModule(),
-                    PersistenceModule(),
                     ServicesModule(),
                     SecurityModule(),
                 )

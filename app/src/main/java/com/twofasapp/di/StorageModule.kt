@@ -1,11 +1,21 @@
-package com.twofasapp.persistence
+package com.twofasapp.di
 
 import androidx.room.Room
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.di.KoinModule
-import com.twofasapp.persistence.cipher.DatabaseKeyGenerator
-import com.twofasapp.persistence.cipher.DatabaseKeyGeneratorRandom
-import com.twofasapp.persistence.cipher.GetDatabaseMasterKey
+import com.twofasapp.storage.AppDatabase
+import com.twofasapp.storage.MIGRATION_10_11
+import com.twofasapp.storage.MIGRATION_11_12
+import com.twofasapp.storage.MIGRATION_1_2
+import com.twofasapp.storage.MIGRATION_2_3
+import com.twofasapp.storage.MIGRATION_3_4
+import com.twofasapp.storage.MIGRATION_4_5
+import com.twofasapp.storage.MIGRATION_5_6
+import com.twofasapp.storage.MIGRATION_6_7
+import com.twofasapp.storage.MIGRATION_9_10
+import com.twofasapp.storage.cipher.DatabaseKeyGenerator
+import com.twofasapp.storage.cipher.DatabaseKeyGeneratorRandom
+import com.twofasapp.storage.cipher.GetDatabaseMasterKey
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 import org.koin.android.ext.koin.androidContext
@@ -13,7 +23,7 @@ import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
-class PersistenceModule : KoinModule {
+class StorageModule : KoinModule {
 
     override fun provide() = module {
         singleOf(::DatabaseKeyGeneratorRandom) { bind<DatabaseKeyGenerator>() }

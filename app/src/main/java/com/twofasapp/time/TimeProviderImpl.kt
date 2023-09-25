@@ -1,4 +1,4 @@
-package com.twofasapp.domain.time
+package com.twofasapp.time
 
 import android.os.SystemClock
 import com.twofasapp.common.time.TimeProvider

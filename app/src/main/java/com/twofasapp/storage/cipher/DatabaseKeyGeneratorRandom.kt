@@ -1,4 +1,4 @@
-package com.twofasapp.persistence.cipher
+package com.twofasapp.storage.cipher
 
 import java.math.BigInteger
 import java.security.SecureRandom

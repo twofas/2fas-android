@@ -1,4 +1,4 @@
-package com.twofasapp.persistence
+package com.twofasapp.storage
 
 import android.database.Cursor
 import androidx.core.database.getIntOrNull
@@ -17,7 +17,7 @@ import com.twofasapp.data.services.local.ServiceDao
 import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.persistence.converter.Converters
+import com.twofasapp.storage.converter.Converters
 import java.text.Normalizer
 
 @Database(

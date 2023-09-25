@@ -5,8 +5,8 @@ import com.twofasapp.common.ktx.enumValueOrNull
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.common.domain.BackupSyncStatus
-import com.twofasapp.entity.MyObjectBox
-import com.twofasapp.entity.Service
+import com.twofasapp.legacy.objectbox.MyObjectBox
+import com.twofasapp.legacy.objectbox.Service
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.usecase.MigratedToRoomPreference
 import com.twofasapp.usecases.MigrateBoxToRoomCase

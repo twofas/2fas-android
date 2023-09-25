@@ -1,4 +1,4 @@
-package com.twofasapp.entity
+package com.twofasapp.legacy.objectbox
 
 @Deprecated("No longer used")
 enum class SyncStatus {

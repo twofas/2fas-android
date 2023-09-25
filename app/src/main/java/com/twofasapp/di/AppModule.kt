@@ -9,10 +9,10 @@ import com.twofasapp.common.di.KoinModule
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.push.notification.ShowBrowserExtRequestNotification
-import com.twofasapp.domain.notification.ShowBrowserExtRequestNotificationImpl
-import com.twofasapp.domain.time.TimeProviderImpl
+import com.twofasapp.notification.ShowBrowserExtRequestNotificationImpl
+import com.twofasapp.time.TimeProviderImpl
 import com.twofasapp.environment.AppBuildImpl
-import com.twofasapp.features.navigator.ActivityScopedNavigator
+import com.twofasapp.navigator.ActivityScopedNavigator
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.usecases.MigrateBoxToRoomCase
