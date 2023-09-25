@@ -5,11 +5,11 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.migration.ClearObsoletePrefs
+import com.twofasapp.migration.MigrateBoxToRoom
+import com.twofasapp.migration.MigratePin
+import com.twofasapp.migration.MigrateUnknownServices
 import com.twofasapp.prefs.usecase.CurrentAppVersionPreference
-import com.twofasapp.usecases.ClearObsoletePrefsCase
-import com.twofasapp.usecases.MigrateBoxToRoomCase
-import com.twofasapp.usecases.MigratePinCase
-import com.twofasapp.usecases.MigrateUnknownServicesCase
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -23,10 +23,10 @@ class OnAppUpdatedWork(
     private val dispatchers: Dispatchers by inject()
     private val appBuild: AppBuild by inject()
     private val currentAppVersionPreference: CurrentAppVersionPreference by inject()
-    private val clearObsoletePrefsCase: ClearObsoletePrefsCase by inject()
-    private val migratePinCase: MigratePinCase by inject()
-    private val migrateUnknownServicesCase: MigrateUnknownServicesCase by inject()
-    private val migrateBoxToRoomCase: MigrateBoxToRoomCase by inject()
+    private val clearObsoletePrefs: ClearObsoletePrefs by inject()
+    private val migratePin: MigratePin by inject()
+    private val migrateUnknownServices: MigrateUnknownServices by inject()
+    private val migrateBoxToRoom: MigrateBoxToRoom by inject()
 
     override suspend fun doWork(): Result {
         return withContext(dispatchers.io) {
@@ -39,16 +39,16 @@ class OnAppUpdatedWork(
                 Timber.d("Start migration: ${appBuild.versionCode.toLong()} -> ${currentAppVersionPreference.get()}")
 
                 Timber.d("Migrate: Obsolete prefs")
-                clearObsoletePrefsCase.invoke()
+                clearObsoletePrefs.invoke()
 
                 Timber.d("Migrate: Box to Room")
-                migrateBoxToRoomCase.invoke()
+                migrateBoxToRoom.invoke()
 
                 Timber.d("Migrate: Unknown services")
-                migrateUnknownServicesCase.invoke()
+                migrateUnknownServices.invoke()
 
                 Timber.d("Migrate: Pin")
-                migratePinCase.invoke()
+                migratePin.invoke()
 
                 Timber.d("Migration done!")
                 currentAppVersionPreference.put(appBuild.versionCode.toLong())
@@ -56,7 +56,7 @@ class OnAppUpdatedWork(
                 Result.success()
             } catch (e: Exception) {
                 Timber.e(e)
-                
+
                 Result.failure()
             }
         }

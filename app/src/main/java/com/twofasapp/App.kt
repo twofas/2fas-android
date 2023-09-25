@@ -20,7 +20,6 @@ import com.twofasapp.prefs.PreferencesPlainModule
 import com.twofasapp.prefs.usecase.SendCrashLogsPreference
 import com.twofasapp.security.SecurityModule
 import com.twofasapp.services.ServicesModule
-import com.twofasapp.usecases.services.PinOptionsUseCase
 import net.sqlcipher.database.SQLiteDatabase
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -31,7 +30,6 @@ class App : MultiDexApplication() {
 
     private val authTracker: AuthTracker by inject()
     private val syncBackupDispatcher: CloudSyncWorkDispatcher by inject()
-    private val pinOptionsUseCase: PinOptionsUseCase by inject()
     private val sendCrashLogsPreference: SendCrashLogsPreference by inject()
 
     override fun onCreate() {
@@ -78,7 +76,6 @@ class App : MultiDexApplication() {
                 Timber.d("App :: onMoveToBackground")
                 authTracker.onMovingToBackground()
                 syncBackupDispatcher.tryDispatch(CloudSyncTrigger.AppBackground)
-                pinOptionsUseCase.tmpDigits = null
             }
         })
 

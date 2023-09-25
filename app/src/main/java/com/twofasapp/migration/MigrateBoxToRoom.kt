@@ -1,22 +1,21 @@
-package com.twofasapp.usecases.app
+package com.twofasapp.migration
 
 import android.content.Context
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.ktx.enumValueOrNull
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.legacy.objectbox.MyObjectBox
 import com.twofasapp.legacy.objectbox.Service
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.usecase.MigratedToRoomPreference
-import com.twofasapp.usecases.MigrateBoxToRoomCase
 
-class MigrateBoxToRoomCaseImpl(
+class MigrateBoxToRoom(
     private val context: Context,
     private val servicesRepository: ServicesRepository,
     private val migratedToRoomPreference: MigratedToRoomPreference,
     private val timeProvider: TimeProvider,
-) : MigrateBoxToRoomCase {
+) {
 
     private val boxService by lazy {
         MyObjectBox.builder().androidContext(context)
@@ -24,7 +23,7 @@ class MigrateBoxToRoomCaseImpl(
             .boxFor(Service::class.java)
     }
 
-    override suspend fun invoke() {
+    suspend fun invoke() {
         try {
             if (migratedToRoomPreference.get()) {
                 return

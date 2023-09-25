@@ -2,18 +2,11 @@ package com.twofasapp.di
 
 import com.twofasapp.DeeplinkHandler
 import com.twofasapp.common.di.KoinModule
+import com.twofasapp.migration.ClearObsoletePrefs
+import com.twofasapp.migration.MigratePin
+import com.twofasapp.migration.MigrateUnknownServices
 import com.twofasapp.storage.EncryptedPreferences
 import com.twofasapp.storage.PlainPreferences
-import com.twofasapp.usecases.ClearObsoletePrefsCase
-import com.twofasapp.usecases.ClearObsoletePrefsCaseImpl
-import com.twofasapp.usecases.EditShowOnboardingCase
-import com.twofasapp.usecases.EditShowOnboardingCaseImpl
-import com.twofasapp.usecases.GetShowOnboardingCase
-import com.twofasapp.usecases.GetShowOnboardingCaseImpl
-import com.twofasapp.usecases.MigratePinCase
-import com.twofasapp.usecases.MigratePinCaseImpl
-import com.twofasapp.usecases.MigrateUnknownServicesCase
-import com.twofasapp.usecases.MigrateUnknownServicesCaseImpl
 import com.twofasapp.workmanager.OnAppUpdatedWorkDispatcher
 import com.twofasapp.workmanager.OnAppUpdatedWorkDispatcherImpl
 import com.twofasapp.workmanager.SyncTimeWorkDispatcher
@@ -30,15 +23,13 @@ class StartModule : KoinModule {
         singleOf(::OnAppUpdatedWorkDispatcherImpl) { bind<OnAppUpdatedWorkDispatcher>() }
         singleOf(::SyncTimeWorkDispatcherImpl) { bind<SyncTimeWorkDispatcher>() }
 
-        single<ClearObsoletePrefsCase> {
-            ClearObsoletePrefsCaseImpl(
+        single {
+            ClearObsoletePrefs(
                 get<PlainPreferences>(),
                 get<EncryptedPreferences>(),
             )
         }
-        singleOf(::GetShowOnboardingCaseImpl) { bind<GetShowOnboardingCase>() }
-        singleOf(::EditShowOnboardingCaseImpl) { bind<EditShowOnboardingCase>() }
-        singleOf(::MigratePinCaseImpl) { bind<MigratePinCase>() }
-        singleOf(::MigrateUnknownServicesCaseImpl) { bind<MigrateUnknownServicesCase>() }
+        singleOf(::MigratePin)
+        singleOf(::MigrateUnknownServices)
     }
 }

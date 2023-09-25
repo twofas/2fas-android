@@ -1,4 +1,4 @@
-package com.twofasapp.usecases
+package com.twofasapp.migration
 
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
@@ -6,11 +6,11 @@ import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.domain.OtpAuthLink
 
-class MigrateUnknownServicesCaseImpl(
+class MigrateUnknownServices(
     private val servicesRepository: ServicesRepository,
-) : MigrateUnknownServicesCase {
+) {
 
-    override suspend fun invoke() {
+    suspend fun invoke() {
         val servicesToMigrate = servicesRepository.getServices().filter { service ->
             service.serviceTypeId.isNullOrEmpty()
                     && service.iconCollectionId == ServiceIcons.defaultCollectionId
