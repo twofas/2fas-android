@@ -1,6 +1,6 @@
 package com.twofasapp.di
 
-import com.twofasapp.DeeplinkHandler
+import com.twofasapp.android.navigation.DeeplinkHandler
 import com.twofasapp.common.di.KoinModule
 import com.twofasapp.migration.ClearObsoletePrefs
 import com.twofasapp.migration.MigratePin

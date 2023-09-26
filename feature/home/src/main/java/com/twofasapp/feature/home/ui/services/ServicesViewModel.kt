@@ -1,6 +1,8 @@
 package com.twofasapp.feature.home.ui.services
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
+import com.twofasapp.android.navigation.DeeplinkHandler
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.notifications.NotificationsRepository
@@ -10,6 +12,7 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.data.services.otp.OtpLinkParser
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.domain.AppSettings
@@ -27,6 +30,7 @@ internal class ServicesViewModel(
     private val sessionRepository: SessionRepository,
     private val notificationsRepository: NotificationsRepository,
     private val backupRepository: BackupRepository,
+    private val deeplinkHandler: DeeplinkHandler,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(ServicesUiState())
@@ -136,10 +140,10 @@ internal class ServicesViewModel(
         launchScoped {
             servicesRepository.observeRecentlyAddedService().collect { recentlyAdded ->
                 if (recentlyAdded.source == RecentlyAddedService.Source.QrGallery) {
-                    publishEvent(ServicesStateEvent.ShowQrFromGalleryDialog)
+                    publishEvent(ServicesUiEvent.ShowQrFromGalleryDialog)
                 }
 
-                publishEvent(ServicesStateEvent.ServiceAdded(recentlyAdded.serviceId))
+                publishEvent(ServicesUiEvent.ServiceAdded(recentlyAdded.serviceId))
             }
         }
 
@@ -148,13 +152,20 @@ internal class ServicesViewModel(
                 uiState.update { it.copy(hasUnreadNotifications = hasUnread) }
             }
         }
+
+        launchScoped {
+            deeplinkHandler.observeQueuedDeeplink().collect {
+                handleIncomingData(it)
+                deeplinkHandler.setQueuedDeeplink(null)
+            }
+        }
     }
 
     fun toggleEditMode() {
         isInEditMode.value = isInEditMode.value.not()
     }
 
-    fun consumeEvent(event: ServicesStateEvent) {
+    fun consumeEvent(event: ServicesUiEvent) {
         uiState.update { it.copy(events = it.events.minus(event)) }
     }
 
@@ -222,7 +233,7 @@ internal class ServicesViewModel(
         }
     }
 
-    private fun publishEvent(event: ServicesStateEvent) {
+    private fun publishEvent(event: ServicesUiEvent) {
         uiState.update { it.copy(events = it.events.plus(event)) }
     }
 
@@ -266,6 +277,34 @@ internal class ServicesViewModel(
             servicesRepository.revealService(
                 id = service.id,
             )
+        }
+    }
+
+    @SuppressLint("CheckResult")
+    fun handleIncomingData(incomingData: String?) {
+        if (incomingData == null) return
+        launchScoped {
+
+            if (incomingData.startsWith("content://") && incomingData.endsWith(".2fas")) {
+                // Import backup
+                publishEvent(ServicesUiEvent.OpenImport(incomingData))
+            }
+
+            if (incomingData.startsWith("otpauth")) {
+                val otpLink = OtpLinkParser.parse(incomingData)
+                otpLink?.let {
+                    if (servicesRepository.isServiceValid(otpLink).not()) {
+                        return@launchScoped
+                    }
+
+                    val id = servicesRepository.addService(otpLink)
+                    servicesRepository.pushRecentlyAddedService(
+                        RecentlyAddedService(
+                            serviceId = id, source = RecentlyAddedService.Source.Manually
+                        )
+                    )
+                }
+            }
         }
     }
 

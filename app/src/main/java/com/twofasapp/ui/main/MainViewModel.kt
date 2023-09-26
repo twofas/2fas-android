@@ -1,15 +1,12 @@
 package com.twofasapp.ui.main
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
-import com.twofasapp.DeeplinkHandler
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.data.services.otp.OtpLinkParser
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.feature.browserext.notification.DomainMatcher
@@ -23,7 +20,6 @@ internal class MainViewModel(
     private val notificationsRepository: NotificationsRepository,
     private val browserExtRepository: BrowserExtRepository,
     private val servicesRepository: ServicesRepository,
-    private val deeplinkHandler: DeeplinkHandler,
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<MainUiState> = MutableStateFlow(MainUiState())
@@ -82,46 +78,8 @@ internal class MainViewModel(
         }
 
         launchScoped {
-            deeplinkHandler.observeQueuedDeeplink().collect {
-                handleIncomingData(it)
-                deeplinkHandler.setQueuedDeeplink(null)
-            }
-        }
-
-        launchScoped {
             servicesRepository.observeAddServiceAdvancedExpanded().collect { expanded ->
                 uiState.update { it.copy(addServiceAdvancedExpanded = expanded) }
-            }
-        }
-    }
-
-    @SuppressLint("CheckResult")
-    fun handleIncomingData(incomingData: String?) {
-        if (incomingData == null) return
-        println("dupa: $incomingData")
-        launchScoped {
-
-            if (incomingData.startsWith("content://") && incomingData.endsWith(".2fas")) {
-                // Import backup
-                // dupa: content://com.metago.astro.filecontent/file/storage/emulated/0/Download/2fas-backup-20230926134738.2fas
-
-
-            }
-
-            if (incomingData.startsWith("otpauth")) {
-                val otpLink = OtpLinkParser.parse(incomingData)
-                otpLink?.let {
-                    if (servicesRepository.isServiceValid(otpLink).not()) {
-                        return@launchScoped
-                    }
-
-                    val id = servicesRepository.addService(otpLink)
-                    servicesRepository.pushRecentlyAddedService(
-                        RecentlyAddedService(
-                            serviceId = id, source = RecentlyAddedService.Source.Manually
-                        )
-                    )
-                }
             }
         }
     }
@@ -136,5 +94,14 @@ internal class MainViewModel(
 
     fun toggleAdvanceExpanded() {
         launchScoped { servicesRepository.pushAddServiceAdvancedExpanded(uiState.value.addServiceAdvancedExpanded.not()) }
+    }
+
+
+    fun consumeEvent(event: MainUiEvent) {
+        uiState.update { it.copy(events = it.events.minus(event)) }
+    }
+
+    private fun publishEvent(event: MainUiEvent) {
+        uiState.update { it.copy(events = it.events.plus(event)) }
     }
 }

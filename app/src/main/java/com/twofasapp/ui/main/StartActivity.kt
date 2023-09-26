@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.twofasapp.DeeplinkHandler
+import com.twofasapp.android.navigation.DeeplinkHandler
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
@@ -48,9 +48,9 @@ class StartActivity : AppCompatActivity(), AuthAware {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        intent?.data?.let {
-            deeplinkHandler.setQueuedDeeplink(incomingData = it.toString())
-        }
+//        intent?.data?.let {
+//            deeplinkHandler.setQueuedDeeplink(incomingData = it.toString())
+//        }
     }
 
     override fun onAuthenticated() {

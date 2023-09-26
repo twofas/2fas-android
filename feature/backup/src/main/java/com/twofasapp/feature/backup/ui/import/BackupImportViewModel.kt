@@ -3,6 +3,9 @@ package com.twofasapp.feature.backup.ui.import
 import android.net.Uri
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.twofasapp.android.navigation.NavArg
+import com.twofasapp.android.navigation.getOrThrowNullable
+import com.twofasapp.common.ktx.decodeBase64
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.services.BackupRepository
@@ -19,12 +22,15 @@ internal class BackupImportViewModel(
     private val sessionRepository: SessionRepository,
 ) : ViewModel() {
 
+    private val importFileUri = savedStateHandle.getOrThrowNullable<String>(NavArg.ImportFileUri.name)
     val uiState: MutableStateFlow<BackupImportUiState> = MutableStateFlow(BackupImportUiState())
 
     init {
-        // TODO: Refactor - handle incoming intent
-
-        publishEvent(BackupImportUiEvent.ShowFilePicker)
+        if (importFileUri == null) {
+            publishEvent(BackupImportUiEvent.ShowFilePicker)
+        } else {
+            fileOpened(Uri.parse(importFileUri.decodeBase64()))
+        }
     }
 
     fun consumeEvent(event: BackupImportUiEvent) {

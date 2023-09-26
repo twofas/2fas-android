@@ -4,7 +4,7 @@ import androidx.navigation.NamedNavArgument
 
 sealed class Screen(val route: String) {
 
-    fun routeWithArgs(vararg args: Pair<NamedNavArgument, Any>): String {
+    fun routeWithArgs(vararg args: Pair<NamedNavArgument, Any?>): String {
         return route.replaceArgsInRoute(*args)
     }
 
@@ -35,7 +35,7 @@ sealed class Screen(val route: String) {
     data object Backup : Screen("backup")
     data object BackupSettings : Screen("backup/settings")
     data object BackupExport : Screen("backup/export")
-    data object BackupImport : Screen("backup/import")
+    data object BackupImport : Screen("backup/import?{${NavArg.ImportFileUri.name}}")
 
     data object Security : Screen("security")
     data object SetupPin : Screen("pin/setup")

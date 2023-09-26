@@ -72,6 +72,13 @@ internal fun MainScreen(
         }
     }
 
+    uiState.events.firstOrNull()?.let {
+        LaunchedEffect(Unit) {
+        }
+
+        viewModel.consumeEvent(it)
+    }
+
     if (uiState.startDestination != null && uiState.selectedTheme != null) {
         CompositionLocalProvider(
             LocalAppTheme provides when (uiState.selectedTheme!!) {

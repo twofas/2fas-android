@@ -27,9 +27,11 @@ fun <T> SavedStateHandle.getOrThrowNullable(key: String): T? {
     return get<T>(key)
 }
 
-internal fun String.replaceArgsInRoute(vararg args: Pair<NamedNavArgument, Any>): String {
+internal fun String.replaceArgsInRoute(vararg args: Pair<NamedNavArgument, Any?>): String {
     var routeWithArgs = this
-    args.forEach { arg -> routeWithArgs = routeWithArgs.replace("{${arg.first.name}}", arg.second.toString()) }
+    args
+        .filter { it.second != null }
+        .forEach { arg -> routeWithArgs = routeWithArgs.replace("{${arg.first.name}}", arg.second.toString()) }
     return routeWithArgs
 }
 

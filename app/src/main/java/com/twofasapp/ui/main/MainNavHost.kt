@@ -24,6 +24,7 @@ import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.android.navigation.intentFor
+import com.twofasapp.common.ktx.encodeBase64ToString
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.common.ModalBottomSheet
 import com.twofasapp.feature.about.navigation.AboutLicensesRoute
@@ -151,6 +152,10 @@ internal fun MainNavHost(
                     override fun openFocusServiceModal(id: Long) {
                         navController.navigate(Modal.FocusService.route.replace("{id}", id.toString()))
                     }
+
+                    override fun openBackupImport(filePath: String?) {
+                        navController.navigate(Screen.BackupImport.routeWithArgs(NavArg.ImportFileUri to filePath?.encodeBase64ToString()))
+                    }
                 },
                 openEditServiceAuth = { onSuccess ->
                     authSuccessCallback = onSuccess
@@ -223,7 +228,7 @@ internal fun MainNavHost(
                 )
             }
 
-            composable(Screen.BackupImport.route) {
+            composable(Screen.BackupImport.route, listOf(NavArg.ImportFileUri)) {
                 BackupImportRoute(
                     goBack = { navController.popBackStack() }
                 )

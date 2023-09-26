@@ -41,8 +41,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.data.services.domain.Group
 import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwTheme
@@ -117,7 +117,7 @@ private fun ServicesScreen(
     uiState: ServicesUiState,
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
-    onEventConsumed: (ServicesStateEvent) -> Unit,
+    onEventConsumed: (ServicesUiEvent) -> Unit,
     onExternalImportClick: () -> Unit = {},
     onEditModeChange: () -> Unit = {},
     onToggleGroupExpand: (String?) -> Unit = {},
@@ -192,11 +192,11 @@ private fun ServicesScreen(
 
     uiState.events.firstOrNull()?.let {
         when (it) {
-            ServicesStateEvent.ShowQrFromGalleryDialog -> {
+            ServicesUiEvent.ShowQrFromGalleryDialog -> {
                 showQrFromGalleryDialog = true
             }
 
-            is ServicesStateEvent.ServiceAdded -> {
+            is ServicesUiEvent.ServiceAdded -> {
                 val serviceId = it.id
                 val service = uiState.services.firstOrNull { it.id == serviceId }
 
@@ -222,6 +222,8 @@ private fun ServicesScreen(
                     }
                 }
             }
+
+            is ServicesUiEvent.OpenImport -> listener.openBackupImport(it.filePath)
         }
 
         onEventConsumed(it)
