@@ -12,7 +12,7 @@ import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
 import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
-import com.twofasapp.parsers.domain.OtpAuthLink
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.prefs.model.RecentlyDeleted
 import com.twofasapp.prefs.model.RecentlyDeletedService
 import com.twofasapp.prefs.model.RemoteBackupStatusEntity

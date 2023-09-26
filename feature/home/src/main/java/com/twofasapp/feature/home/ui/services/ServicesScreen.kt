@@ -422,7 +422,7 @@ private fun ServicesScreen(
                                             Modifier.animateItemPlacement()
                                         }
                                     ),
-                            ) { isDragging ->
+                            ) { _ ->
                                 val state = service.asState()
 
                                 DsService(

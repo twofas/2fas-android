@@ -82,6 +82,10 @@ internal class BackupViewModel(
                                 error = cloudSyncStatus.error,
                             )
                         }
+
+                        if (isPasswordError && cloudSyncStatus.trigger == CloudSyncTrigger.FirstConnect) {
+                            publishEvent(BackupUiEvent.ShowPasswordDialog)
+                        }
                     }
                 }
             }

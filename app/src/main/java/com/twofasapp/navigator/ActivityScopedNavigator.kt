@@ -7,7 +7,7 @@ import androidx.core.os.bundleOf
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.prefs.model.LockMethodEntity
-import com.twofasapp.security.ui.lock.LockActivity
+import com.twofasapp.feature.security.ui.lock.LockActivity
 
 class ActivityScopedNavigator(
     private val activity: Activity,

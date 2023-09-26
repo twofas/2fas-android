@@ -12,9 +12,8 @@ dependencies {
 
     implementation(libs.kotlinCoroutines)
     implementation(libs.timber)
-
-    implementation(platform("com.google.firebase:firebase-bom:31.1.0"))
-    implementation("com.google.firebase:firebase-messaging-ktx")
-    implementation("com.google.firebase:firebase-crashlytics")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1")
+    implementation(platform(libs.firebaseBom))
+    implementation(libs.firebaseCrashlytics)
+    implementation(libs.firebaseMessaging)
+    implementation(libs.playServicesCorutines)
 }

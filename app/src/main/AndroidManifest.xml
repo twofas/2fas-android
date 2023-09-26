@@ -94,7 +94,6 @@
         </receiver>
 
         <!-- ACTIVITIES -->
-
         <activity
             android:name=".ui.main.StartActivity"
             android:exported="true"
@@ -116,41 +115,33 @@
                 <data android:scheme="otpauth" />
             </intent-filter>
 
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.2fas" />
+                <data android:pathPattern=".*\\..*\\.2fas" />
+                <data android:pathPattern=".*\\..*\\..*\\.2fas" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.2fas" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.2fas" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.2fas" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />
+
+            </intent-filter>
+
         </activity>
 
         <activity
             android:name=".ui.main.MainActivity"
             android:label="Add service by scanning QR Code"
             android:launchMode="singleTask" />
-
-
-        <!--        TODO: Refactor-->
-        <!--        <activity-->
-        <!--            android:name=".features.backup.import.ImportBackupActivity"-->
-        <!--            android:exported="true"-->
-        <!--            android:label="Import Backup">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.VIEW" />-->
-
-        <!--                <category android:name="android.intent.category.DEFAULT" />-->
-        <!--                <category android:name="android.intent.category.BROWSABLE" />-->
-
-        <!--                <data android:scheme="file" />-->
-        <!--                <data android:scheme="content" />-->
-        <!--                <data android:mimeType="*/*" />-->
-        <!--                <data android:host="*" />-->
-        <!--                <data android:pathPattern=".*\\.2fas" />-->
-        <!--                <data android:pathPattern=".*\\..*\\.2fas" />-->
-        <!--                <data android:pathPattern=".*\\..*\\..*\\.2fas" />-->
-        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\.2fas" />-->
-        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.2fas" />-->
-        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
-        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
-        <!--                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />-->
-
-        <!--            </intent-filter>-->
-        <!--        </activity>-->
-
 
     </application>
 </manifest>

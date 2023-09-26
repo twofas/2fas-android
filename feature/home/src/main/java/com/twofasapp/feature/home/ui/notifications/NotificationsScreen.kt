@@ -13,7 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -84,7 +84,7 @@ private fun ScreenContent(
                         .background(if (notification.isRead) TwTheme.color.surface else TwTheme.color.background)
                         .padding(16.dp)
                 )
-                Divider(color = TwTheme.color.divider)
+                HorizontalDivider(color = TwTheme.color.divider)
             }
         }
     }

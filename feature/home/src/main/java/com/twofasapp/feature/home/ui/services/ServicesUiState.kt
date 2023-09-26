@@ -26,6 +26,6 @@ data class ServicesUiState(
 }
 
 sealed interface ServicesStateEvent {
-    object ShowQrFromGalleryDialog : ServicesStateEvent
+    data object ShowQrFromGalleryDialog : ServicesStateEvent
     data class ServiceAdded(val id: Long) : ServicesStateEvent
 }

@@ -24,7 +24,6 @@ import com.twofasapp.designsystem.AppTheme
 import com.twofasapp.designsystem.LocalAppTheme
 import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.feature.home.navigation.HomeGraph
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
@@ -88,7 +87,7 @@ internal fun MainScreen(
                 ) {
                     val startDestination = when (uiState.startDestination!!) {
                         MainUiState.StartDestination.Onboarding -> Screen.Startup.route
-                        MainUiState.StartDestination.Home -> HomeGraph.route
+                        MainUiState.StartDestination.Home -> Screen.Services.route
                     }
 
                     MainNavHost(

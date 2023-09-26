@@ -2,6 +2,7 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.net.Uri
 import com.twofasapp.GoogleAuthenticatorProto.MigrationPayload
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.decodeBase64ToByteArray
 import com.twofasapp.data.services.otp.ServiceParser
@@ -54,7 +55,7 @@ class GoogleAuthenticatorImporter : ExternalImporter {
     private fun parseService(otpParameters: MigrationPayload.OtpParameters): Service {
         val label = if (otpParameters.name.contains(":")) otpParameters.name else "${otpParameters.name}:"
 
-        val otpLink = com.twofasapp.parsers.domain.OtpAuthLink(
+        val otpLink = OtpAuthLink(
             type = parseType(otpParameters.type),
             label = label,
             secret = Base32().encodeAsString(otpParameters.secret.toByteArray()),

@@ -138,6 +138,7 @@ class CloudSync(
 
         // Prepare database revisions (in our case it's timestamp)
         val backupStatus = remoteBackupStatusPreference.get()
+
         val localRevision = backupStatus.lastSyncMillis
         val remoteRevision = remoteStatus.lastSyncTime
 

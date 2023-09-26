@@ -4,7 +4,7 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.parsers.domain.OtpAuthLink
+import com.twofasapp.common.domain.OtpAuthLink
 
 class MigrateUnknownServices(
     private val servicesRepository: ServicesRepository,

@@ -35,7 +35,7 @@ data class SupportedService(
                 MatchRule.Matcher.StartsWith -> textToMatch.startsWith(rule.text, ignoreCase = rule.ignoreCase)
                 MatchRule.Matcher.EndsWith -> textToMatch.endsWith(rule.text, ignoreCase = rule.ignoreCase)
                 MatchRule.Matcher.Equals -> textToMatch.equals(rule.text, ignoreCase = rule.ignoreCase)
-                MatchRule.Matcher.Regex -> false // Match regex curently unsupported
+                MatchRule.Matcher.Regex -> false // Match regex currently unsupported
             }
 
             if (isMatcherFound) {

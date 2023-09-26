@@ -1,10 +1,9 @@
 package com.twofasapp.data.services.otp
 
 import android.net.Uri
-import com.twofasapp.parsers.domain.OtpAuthLink
+import com.twofasapp.common.domain.OtpAuthLink
 import timber.log.Timber
 
-// TODO: This object should replace ParseOtpAuthLink
 object OtpLinkParser {
 
     private const val OTPAUTH = "otpauth"
@@ -22,12 +21,10 @@ object OtpLinkParser {
 
             if (isUriValid(uri).not()) {
                 return null
-//                throw IllegalArgumentException("Link is not supported")
             }
 
             if (isAuthorityValid(uri).not()) {
                 return null
-//                throw IllegalArgumentException("Only TOTP and HOTP are supported")
             }
 
             val type = uri.authority!!
@@ -36,7 +33,7 @@ object OtpLinkParser {
             val issuer = uri.getQueryParameter(ISSUER)
             val queryParams = mapQueryParams(uri)
 
-            val otpAuthLink = OtpAuthLink(
+            return OtpAuthLink(
                 type = type,
                 label = label,
                 secret = secret,
@@ -44,8 +41,6 @@ object OtpLinkParser {
                 params = queryParams,
                 link = link,
             )
-
-            return otpAuthLink
 
 
         } catch (e: Exception) {
@@ -59,15 +54,11 @@ object OtpLinkParser {
     private fun isAuthorityValid(uri: Uri) =
         uri.authority?.lowercase() == TOTP || uri.authority?.lowercase() == HOTP
 
-    private fun mapQueryParams(uri: Uri) = uri.queryParameterNames.map { it to uri.getQueryParameter(it)!! }.toMap()
+    private fun mapQueryParams(uri: Uri) = uri.queryParameterNames.associateWith { uri.getQueryParameter(it)!! }
 
     private fun getPath(uri: Uri): String {
         if (uri.path == null) return ""
 
         return if (uri.path!!.startsWith("/")) uri.path!!.drop(1) else uri.path!!
     }
-
-    data class Params(
-        val link: String
-    )
 }

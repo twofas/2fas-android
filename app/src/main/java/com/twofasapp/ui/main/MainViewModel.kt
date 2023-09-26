@@ -3,15 +3,16 @@ package com.twofasapp.ui.main
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import com.twofasapp.DeeplinkHandler
-import com.twofasapp.feature.browserext.notification.DomainMatcher
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.data.services.otp.OtpLinkParser
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.feature.browserext.notification.DomainMatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.update
@@ -96,22 +97,33 @@ internal class MainViewModel(
 
     @SuppressLint("CheckResult")
     fun handleIncomingData(incomingData: String?) {
-        // TODO: Clean
-//        if (incomingData != null) {
-//            parseOtpAuthLink.execute(ParseOtpAuthLink.Params(incomingData))
-//                .flatMap { checkServiceExists.execute(it.secret) }
-//                .subscribeBy(
-//                    onSuccess = { isExists ->
-//                        if (isExists.not()) {
-//                            parseOtpAuthLink.execute(ParseOtpAuthLink.Params(incomingData))
-//                                .map { convertOtpToServiceCase.execute(it) }
-//                                .flatMapCompletable { addService.execute(AddService.Params(it)) }
-//                                .subscribe({ }, {})
-//                        }
-//                    },
-//                    onError = {}
-//                )
-//        }
+        if (incomingData == null) return
+        println("dupa: $incomingData")
+        launchScoped {
+
+            if (incomingData.startsWith("content://") && incomingData.endsWith(".2fas")) {
+                // Import backup
+                // dupa: content://com.metago.astro.filecontent/file/storage/emulated/0/Download/2fas-backup-20230926134738.2fas
+
+
+            }
+
+            if (incomingData.startsWith("otpauth")) {
+                val otpLink = OtpLinkParser.parse(incomingData)
+                otpLink?.let {
+                    if (servicesRepository.isServiceValid(otpLink).not()) {
+                        return@launchScoped
+                    }
+
+                    val id = servicesRepository.addService(otpLink)
+                    servicesRepository.pushRecentlyAddedService(
+                        RecentlyAddedService(
+                            serviceId = id, source = RecentlyAddedService.Source.Manually
+                        )
+                    )
+                }
+            }
+        }
     }
 
     fun browserExtRequestHandled(browserExtRequest: BrowserExtRequest) {

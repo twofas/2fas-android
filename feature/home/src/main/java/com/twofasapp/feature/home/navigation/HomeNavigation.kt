@@ -5,29 +5,22 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import androidx.navigation.navigation
+import com.twofasapp.android.navigation.NavArg
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
+import com.twofasapp.feature.home.ui.editservice.EditServiceScreenRoute
+import com.twofasapp.feature.home.ui.notifications.NotificationsScreen
 import com.twofasapp.feature.home.ui.services.ServicesRoute
 import com.twofasapp.feature.home.ui.settings.SettingsRoute
-
-object HomeGraph : com.twofasapp.android.navigation.NavGraph {
-    override val route: String = "home"
-}
-
-sealed class HomeNode(override val path: String) : com.twofasapp.android.navigation.NavNode {
-    override val graph: com.twofasapp.android.navigation.NavGraph = HomeGraph
-
-    object Services : HomeNode("services")
-    object Settings : HomeNode("settings")
-}
 
 fun NavGraphBuilder.homeNavigation(
     navController: NavController,
     listener: HomeNavigationListener,
+    openEditServiceAuth: (successCallback: () -> Unit) -> Unit,
 ) {
     val bottomBarListener = object : BottomBarListener {
         override fun openHome() {
-            navController.navigate(HomeNode.Services.route) {
+            navController.navigate(Screen.Services.route) {
                 popUpTo(navController.graph.findStartDestination().id) {
                     saveState = true
                 }
@@ -37,7 +30,7 @@ fun NavGraphBuilder.homeNavigation(
         }
 
         override fun openSettings() {
-            navController.navigate(HomeNode.Settings.route) {
+            navController.navigate(Screen.Settings.route) {
                 popUpTo(navController.graph.findStartDestination().id) {
                     saveState = true
                 }
@@ -48,20 +41,27 @@ fun NavGraphBuilder.homeNavigation(
         }
     }
 
-    navigation(
-        route = HomeGraph.route,
-        startDestination = HomeNode.Services.route
-    ) {
-        composable(HomeNode.Services.route) {
-            ServicesRoute(
-                listener = listener,
-                bottomBarListener = bottomBarListener,
-            )
-        }
+    composable(Screen.Services.route) {
+        ServicesRoute(
+            listener = listener,
+            bottomBarListener = bottomBarListener,
+        )
+    }
 
-        composable(HomeNode.Settings.route) {
-            SettingsRoute(listener, bottomBarListener)
-        }
+    composable(Screen.Settings.route) {
+        SettingsRoute(listener, bottomBarListener)
+    }
+
+    composable(Screen.Notifications.route) {
+        NotificationsScreen()
+    }
+
+    composable(Screen.EditService.route, listOf(NavArg.ServiceId)) {
+        EditServiceScreenRoute(
+            navController = navController,
+            openSecurity = { navController.navigate(Screen.Security.route) },
+            openAuth = openEditServiceAuth,
+        )
     }
 }
 

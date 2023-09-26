@@ -24,7 +24,6 @@ import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.android.navigation.intentFor
-import com.twofasapp.android.navigation.withArg
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.common.ModalBottomSheet
 import com.twofasapp.feature.about.navigation.AboutLicensesRoute
@@ -44,26 +43,17 @@ import com.twofasapp.feature.externalimport.navigation.ExternalImportResultRoute
 import com.twofasapp.feature.externalimport.navigation.ExternalImportRoute
 import com.twofasapp.feature.externalimport.navigation.ExternalImportScanRoute
 import com.twofasapp.feature.externalimport.navigation.ExternalImportSelectorRoute
-import com.twofasapp.feature.home.navigation.GuideInitRoute
-import com.twofasapp.feature.home.navigation.GuidePagerRoute
-import com.twofasapp.feature.home.navigation.GuidesRoute
-import com.twofasapp.feature.home.navigation.HomeGraph
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
-import com.twofasapp.feature.home.navigation.HomeNode
-import com.twofasapp.feature.home.navigation.NotificationsRoute
+import com.twofasapp.feature.home.navigation.guidesNavigation
 import com.twofasapp.feature.home.navigation.homeNavigation
 import com.twofasapp.feature.home.ui.services.add.AddServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
+import com.twofasapp.feature.security.navigation.securityNavigation
+import com.twofasapp.feature.security.ui.lock.LockActivity
 import com.twofasapp.feature.startup.navigation.StartupRoute
 import com.twofasapp.feature.trash.navigation.DisposeRoute
 import com.twofasapp.feature.trash.navigation.TrashRoute
-import com.twofasapp.security.navigation.SecurityGraph
-import com.twofasapp.security.navigation.securityNavigation
-import com.twofasapp.security.ui.lock.LockActivity
-import com.twofasapp.services.navigation.ServiceGraph
-import com.twofasapp.services.navigation.ServiceNavArg
-import com.twofasapp.services.navigation.serviceNavigation
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialNavigationApi::class, ExperimentalMaterialApi::class)
@@ -111,14 +101,14 @@ internal fun MainNavHost(
         ) {
 
             composable(Screen.Startup.route) {
-                StartupRoute(openHome = { navController.navigate(HomeGraph.route) { popUpTo(0) } })
+                StartupRoute(openHome = { navController.navigate(Screen.Services.route) { popUpTo(0) } })
             }
 
             homeNavigation(
                 navController = navController,
                 listener = object : HomeNavigationListener {
                     override fun openService(activity: Activity, serviceId: Long) {
-                        navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, serviceId))
+                        navController.navigate(Screen.EditService.routeWithArgs(NavArg.ServiceId to serviceId))
                     }
 
                     override fun openExternalImport() {
@@ -130,7 +120,7 @@ internal fun MainNavHost(
                     }
 
                     override fun openSecurity(activity: Activity) {
-                        navController.navigate(SecurityGraph.route)
+                        navController.navigate(Screen.Security.route)
                     }
 
                     override fun openBackup() {
@@ -161,20 +151,16 @@ internal fun MainNavHost(
                     override fun openFocusServiceModal(id: Long) {
                         navController.navigate(Modal.FocusService.route.replace("{id}", id.toString()))
                     }
-                }
-            )
-
-            serviceNavigation(
-                navController = navController,
-                openSecurity = { navController.navigate(SecurityGraph.route) },
-                openAuth = { onSuccess ->
+                },
+                openEditServiceAuth = { onSuccess ->
                     authSuccessCallback = onSuccess
 
                     startAuthForResult.launch(context.intentFor<LockActivity>("canGoBack" to true))
-                },
+                }
             )
 
             securityNavigation(navController = navController)
+            guidesNavigation(navController = navController)
 
             bottomSheet(Modal.AddService.route, listOf(NavArg.AddServiceInitRoute)) {
                 AddServiceModal(
@@ -187,7 +173,7 @@ internal fun MainNavHost(
             bottomSheet(Modal.FocusService.route, listOf(FocusServiceModalNavArg.ServiceId)) {
                 FocusServiceModal(
                     openService = {
-                        navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, it))
+                        navController.navigate(Screen.EditService.routeWithArgs(NavArg.ServiceId to it))
                         scope.launch { bottomSheetState.hide() }
                     }
                 )
@@ -205,10 +191,6 @@ internal fun MainNavHost(
                 AboutLicensesRoute()
             }
 
-            composable(Screen.Notifications.route) {
-                NotificationsRoute()
-            }
-
             composable(Screen.Trash.route) {
                 TrashRoute(
                     openDispose = { navController.navigate(Screen.Dispose.routeWithArgs(NavArg.ServiceId to it)) }
@@ -218,41 +200,6 @@ internal fun MainNavHost(
             composable(Screen.Dispose.route, listOf(NavArg.ServiceId)) {
                 DisposeRoute(
                     navigateBack = { navController.popBackStack() }
-                )
-            }
-
-            composable(Screen.Guides.route) {
-                GuidesRoute(
-                    openGuide = { navController.navigate(Screen.GuideInit.routeWithArgs(NavArg.Guide to it.name)) }
-                )
-            }
-
-            composable(Screen.GuideInit.route, listOf(NavArg.Guide)) {
-                GuideInitRoute(
-                    guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!),
-                    openGuide = { guide, guideVariantIndex ->
-                        navController.navigate(
-                            Screen.GuidePager.routeWithArgs(
-                                NavArg.Guide to guide.name,
-                                NavArg.GuideVariantIndex to guideVariantIndex,
-                            )
-                        )
-                    }
-                )
-            }
-
-            composable(Screen.GuidePager.route, listOf(NavArg.Guide, NavArg.GuideVariantIndex)) {
-                GuidePagerRoute(
-                    guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!),
-                    guideVariantIndex = it.arguments!!.getInt(NavArg.GuideVariantIndex.name),
-                    openAddScan = {
-                        navController.popBackStack(HomeNode.Services.route, false)
-                        navController.navigate(Modal.AddService.route)
-                    },
-                    openAddManually = {
-                        navController.popBackStack(HomeNode.Services.route, false)
-                        navController.navigate(Modal.AddService.routeWithArgs(NavArg.AddServiceInitRoute to "manual"))
-                    },
                 )
             }
 

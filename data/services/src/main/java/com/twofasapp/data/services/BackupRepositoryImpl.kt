@@ -251,7 +251,10 @@ class BackupRepositoryImpl(
 
                 try {
                     val backupContent = json.decodeFromString<BackupContent>(result.fileContent)
-                    remoteBackupStatusPreference.put { it.copy(reference = backupContent.reference) }
+                    remoteBackupStatusPreference.put { it.copy(
+                        reference = backupContent.reference,
+                        lastSyncMillis = backupContent.updatedAt,
+                    ) }
 
                     // Decrypt backup
                     if (backupContent.isEncrypted) {

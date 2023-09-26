@@ -1,13 +1,11 @@
 package com.twofasapp.feature.home.ui.bottombar
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModel
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.common.TwNavigationBar
 import com.twofasapp.designsystem.common.TwNavigationBarItem
-import com.twofasapp.feature.home.navigation.HomeNode
 import com.twofasapp.locale.TwLocale
-import org.koin.androidx.compose.koinViewModel
 
 private val bottomNavItems
     @Composable
@@ -16,13 +14,13 @@ private val bottomNavItems
             title = TwLocale.strings.bottomBarTokens,
             icon = TwIcons.Home,
             iconSelected = TwIcons.HomeFilled,
-            route = HomeNode.Services.route,
+            route = Screen.Services.route,
         ),
         BottomNavItem(
             title = TwLocale.strings.bottomBarSettings,
             icon = TwIcons.Settings,
             iconSelected = TwIcons.SettingsFilled,
-            route = HomeNode.Settings.route,
+            route = Screen.Settings.route,
         ),
     )
 
@@ -35,7 +33,6 @@ interface BottomBarListener {
 internal fun BottomBar(
     selectedIndex: Int,
     listener: BottomBarListener,
-    viewModel: BottomBarViewModel = koinViewModel(),
 ) {
     TwNavigationBar {
         bottomNavItems.forEachIndexed { index, item ->
@@ -54,5 +51,3 @@ internal fun BottomBar(
         }
     }
 }
-
-internal class BottomBarViewModel() : ViewModel()

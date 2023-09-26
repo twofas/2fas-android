@@ -109,6 +109,8 @@ private fun ScreenContent(
                     showPasswordDialog = true
                     showPasswordError = true
                 }
+
+                is BackupUiEvent.ShowPasswordDialog -> showPasswordDialog = true
             }
         }
 

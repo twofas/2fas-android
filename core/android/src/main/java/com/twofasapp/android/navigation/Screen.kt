@@ -9,9 +9,11 @@ sealed class Screen(val route: String) {
     }
 
     data object Startup : Screen("startup")
+    data object Services : Screen("services")
+    data object Settings : Screen("settings")
+    data object EditService : Screen("services/{${NavArg.ServiceId.name}}")
 
     data object AppSettings : Screen("appsettings")
-
     data object About : Screen("about")
     data object AboutLicenses : Screen("about/licenses")
     data object Notifications : Screen("notifications")
@@ -34,6 +36,11 @@ sealed class Screen(val route: String) {
     data object BackupSettings : Screen("backup/settings")
     data object BackupExport : Screen("backup/export")
     data object BackupImport : Screen("backup/import")
+
+    data object Security : Screen("security")
+    data object SetupPin : Screen("pin/setup")
+    data object DisablePin : Screen("pin/disable")
+    data object ChangePin : Screen("pin/change")
 
     data object Guides : Screen("guides")
     data object GuideInit : Screen("guides/init?guide={${NavArg.Guide.name}}")

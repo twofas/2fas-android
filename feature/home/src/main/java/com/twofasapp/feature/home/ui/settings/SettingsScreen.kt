@@ -32,13 +32,11 @@ import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.locale.TwLocale
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun SettingsRoute(
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
-    viewModel: SettingsViewModel = koinViewModel()
 ) {
     SettingsScreen(
         listener = listener,

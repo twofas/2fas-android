@@ -5,7 +5,7 @@ import android.net.Uri
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.otp.ServiceParser
-import com.twofasapp.parsers.domain.OtpAuthLink
+import com.twofasapp.common.domain.OtpAuthLink
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import java.io.BufferedReader

@@ -2,7 +2,7 @@ package com.twofasapp.di
 
 import android.app.NotificationManager
 import android.content.Context
-import com.twofasapp.android.biometric.BiometricKeyProvider
+import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.biometric.BiometricKeyProviderImpl
 import com.twofasapp.common.di.KoinModule

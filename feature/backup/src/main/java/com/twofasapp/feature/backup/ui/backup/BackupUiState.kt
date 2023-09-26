@@ -22,5 +22,6 @@ internal sealed interface BackupUiEvent {
     data object SignInPermissionError : BackupUiEvent
     data object SignInNetworkError : BackupUiEvent
     data class SignInUnknownError(val msg: String?) : BackupUiEvent
+    data object ShowPasswordDialog : BackupUiEvent
     data object ShowPasswordDialogError : BackupUiEvent
 }

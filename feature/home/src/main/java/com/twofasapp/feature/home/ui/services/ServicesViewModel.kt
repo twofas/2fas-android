@@ -1,6 +1,7 @@
 package com.twofasapp.feature.home.ui.services
 
 import androidx.lifecycle.ViewModel
+import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.services.BackupRepository
@@ -9,7 +10,6 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.common.domain.Service
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.domain.AppSettings
@@ -108,13 +108,13 @@ internal class ServicesViewModel(
 
                                 if (groupedServices.size > 1) {
                                     if (group.id != null || services.isNotEmpty() || result.searchQuery.isNotEmpty()) {
-                                        val group = result.groups.first { it.id == group.id }
+                                        val localGroup = result.groups.first { it.id == group.id }
                                         add(
                                             ServicesListItem.GroupItem(
                                                 if (result.searchQuery.isNotEmpty()) {
-                                                    group.copy(isExpanded = true)
+                                                    localGroup.copy(isExpanded = true)
                                                 } else {
-                                                    group
+                                                    localGroup
                                                 }
                                             )
                                         )
@@ -138,6 +138,7 @@ internal class ServicesViewModel(
                 if (recentlyAdded.source == RecentlyAddedService.Source.QrGallery) {
                     publishEvent(ServicesStateEvent.ShowQrFromGalleryDialog)
                 }
+
                 publishEvent(ServicesStateEvent.ServiceAdded(recentlyAdded.serviceId))
             }
         }

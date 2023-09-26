@@ -57,19 +57,19 @@ class AuthTracker(
         isAuthenticated = true
     }
 
-    fun shouldAuthenticate(): AutheticationStatus {
+    fun shouldAuthenticate(): AuthenticationStatus {
         return when {
             isNoLock() -> {
-                AutheticationStatus.VALID
+                AuthenticationStatus.Valid
             }
             isSessionStillAuthenticated() -> {
-                AutheticationStatus.VALID
+                AuthenticationStatus.Valid
             }
             isValidityTimeElapsed() -> {
-                AutheticationStatus.EXPIRED
+                AuthenticationStatus.Expired
             }
             else -> {
-                AutheticationStatus.VALID
+                AuthenticationStatus.Valid
             }
         }
     }

@@ -1,35 +1,26 @@
 package com.twofasapp
 
-import android.content.Context
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import android.app.Application
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
-import androidx.multidex.MultiDex
-import androidx.multidex.MultiDexApplication
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.di.Modules
-import com.twofasapp.di.StartModule
-import com.twofasapp.parsers.ParsersModule
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.prefs.PreferencesEncryptedModule
-import com.twofasapp.prefs.PreferencesPlainModule
 import com.twofasapp.prefs.usecase.SendCrashLogsPreference
-import com.twofasapp.security.di.SecurityModule
-import com.twofasapp.services.ServicesModule
 import net.sqlcipher.database.SQLiteDatabase
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-class App : MultiDexApplication() {
+class App : Application() {
 
     private val authTracker: AuthTracker by inject()
-    private val syncBackupDispatcher: CloudSyncWorkDispatcher by inject()
+    private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher by inject()
     private val sendCrashLogsPreference: SendCrashLogsPreference by inject()
 
     override fun onCreate() {
@@ -38,23 +29,13 @@ class App : MultiDexApplication() {
         try {
             SupportedServices.load(this@App)
         } catch (e: Exception) {
+            e.printStackTrace()
         }
 
         startKoin {
             // androidLogger(level = Level.DEBUG)
             androidContext(this@App)
-            modules(
-                listOf(
-                    StartModule(),
-                    ParsersModule(),
-                    PreferencesPlainModule(),
-                    PreferencesEncryptedModule(),
-                    ServicesModule(),
-                    SecurityModule(),
-                )
-                    .map { it.provide() }
-                    .plus(Modules.provide())
-            )
+            modules(Modules.provide())
         }
 
         if (BuildConfig.DEBUG) {
@@ -64,33 +45,29 @@ class App : MultiDexApplication() {
 
         authTracker.onAppCreate()
 
-        ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver {
-            @OnLifecycleEvent(Lifecycle.Event.ON_START)
-            fun onMoveToForeground() {
+        ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onStart(owner: LifecycleOwner) {
+                super.onStart(owner)
                 Timber.d("App :: onMoveToForeground")
                 authTracker.onMovingToForeground()
             }
 
-            @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-            fun onMoveToBackground() {
+            override fun onStop(owner: LifecycleOwner) {
+                super.onStop(owner)
                 Timber.d("App :: onMoveToBackground")
                 authTracker.onMovingToBackground()
-                syncBackupDispatcher.tryDispatch(CloudSyncTrigger.AppBackground)
+                cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.AppBackground)
             }
         })
 
-        syncBackupDispatcher.tryDispatch(CloudSyncTrigger.AppStart)
+        cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.AppStart)
 
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
 
         try {
             SQLiteDatabase.loadLibs(this)
         } catch (e: Exception) {
+            e.printStackTrace()
         }
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
     }
 }

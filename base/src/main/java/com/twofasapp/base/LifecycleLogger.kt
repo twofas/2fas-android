@@ -1,10 +1,11 @@
 package com.twofasapp.base
 
+import android.app.Activity
 import timber.log.Timber
 
 internal enum class LifecycleOperation { IN, OUT }
 
-internal fun BaseComponentActivity.logLifecycle(event: String, operation: LifecycleOperation) {
+internal fun Activity.logLifecycle(event: String, operation: LifecycleOperation) {
     Timber.d("[${this.javaClass.simpleName}] ${getIndicator(operation)} $event")
 }
 

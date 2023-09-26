@@ -15,15 +15,21 @@ import com.twofasapp.feature.browserext.di.BrowserExtModule
 import com.twofasapp.feature.di.QrScanModule
 import com.twofasapp.feature.externalimport.di.ExternalImportModule
 import com.twofasapp.feature.home.di.HomeModule
+import com.twofasapp.feature.security.di.SecurityModule
 import com.twofasapp.feature.startup.di.StartupModule
 import com.twofasapp.feature.trash.di.TrashModule
 import com.twofasapp.feature.widget.di.WidgetModule
 import com.twofasapp.network.di.NetworkModule
+import com.twofasapp.prefs.PreferencesEncryptedModule
+import com.twofasapp.prefs.PreferencesPlainModule
 import com.twofasapp.storage.di.PrefsModule
 import org.koin.core.module.Module
 
 object Modules {
     private val app = listOf(
+        StartModule(),
+        PreferencesPlainModule(),
+        PreferencesEncryptedModule(),
         AppModule(),
         CommonModule(),
         NetworkModule(),
@@ -53,6 +59,7 @@ object Modules {
         BackupModule(),
         WidgetModule(),
         BrowserExtModule(),
+        SecurityModule(),
     )
 
     fun provide(): List<Module> =
