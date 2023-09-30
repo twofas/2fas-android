@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Sat, 02 Sep 2023 12:58:36 -0700
+ Exported at: Sat, 30 Sep 2023 04:37:32 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -76,7 +76,7 @@
     <string name="fingerprint__use_pin_title">Tym razem użyj PINu</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">Jesteś niesamowity!</string>
-    <string name="introduction__page_1_content">Twój telefon stał się właśnie prywatnym i zabezpieczonym kluczem do Twoich serwisów internetowych dzięki aplikacji 2FAS - której zaufało ponad 3 miliony użytkowników na całym świecie.</string>
+    <string name="introduction__page_1_content">Twój telefon stał się właśnie prywatnym i zabezpieczonym kluczem do Twoich serwisów internetowych dzięki aplikacji 2FAS - której zaufało ponad 6 milionów użytkowników na całym świecie.</string>
     <string name="introduction__page_2_title">Prosty</string>
     <string name="introduction__page_2_content">Sparuj 2FAS z Twoimi serwisami internetowymi. Włącz dwustopniową weryfikację w kilka sekund za pomocą kodu QR.</string>
     <string name="introduction__page_3_title">Prywatny</string>
@@ -757,8 +757,8 @@
     <string name="tokens__add_success_description">Aby zakończyć parowanie serwisu, musisz wpisać ponownie ten token.</string>
     <string name="tokens__add_manual_title">Sparuj serwis z 2FAS</string>
     <string name="tokens__add_manual_description">Wpisz nazwę serwisu i tajny klucz.</string>
-    <string name="tokens__add_manual_service_name">Nazwa serwisu (wymagane)</string>
-    <string name="tokens__add_manual_service_key">Tajny klucz (wymagany)</string>
+    <string name="tokens__add_manual_service_name">Nazwa serwisu</string>
+    <string name="tokens__add_manual_service_key">Tajny klucz</string>
     <string name="tokens__add_manual_other">Inne ustawienia</string>
     <string name="tokens__add_manual_other_optional">(opcjonalne)</string>
     <string name="tokens__add_manual_done_cta">Dodaj serwis</string>
@@ -809,4 +809,9 @@
     <string name="guides__guide_title">2FAS dla %s</string>
     <string name="guides__guide_universal_title">Uniwersalny przewodnik 2FAS</string>
     <string name="browser__save_choice">Zapisz mój wybór</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">Import tokenów 2FA z aplikacji andOTP</string>
+    <string name="externalimport__andotp_success_msg">Ten plik JSON umożliwia import tokenów z andOTP.</string>
+    <string name="externalimport__info_andotp_title">Importuj tokeny z andOTP</string>
+    <string name="externalimport__andotp_msg">Wyeksportuj swoje konta z andOTP do niezaszyfrowanego pliku JSON i wgraj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, o usunięciu pliku po udanym imporcie.</string>
 </resources>

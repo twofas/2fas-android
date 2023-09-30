@@ -1,13 +1,13 @@
 package com.twofasapp.data.services.local
 
+import com.twofasapp.common.domain.Service
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.data.services.mapper.asEntity
-import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.BufferOverflow
@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import timber.log.Timber
@@ -49,7 +48,7 @@ internal class ServicesLocalSource(
 
     fun observeServices(): Flow<List<Service>> {
         return dao.observe().map { list ->
-            list.filter { it.isDeleted != true }.map { it.asDomain() }
+            list.filter { it.isDeleted == false }.map { it.asDomain() }
         }
     }
 
@@ -60,11 +59,11 @@ internal class ServicesLocalSource(
     }
 
     suspend fun getServices(): List<Service> {
-        return dao.select().map { it.asDomain() }
+        return dao.select().filter { it.isDeleted == false }.map { it.asDomain() }
     }
 
-    fun observeService(id: Long): Flow<Service> {
-        return dao.observe(id).map { it.asDomain() }
+    suspend fun getServicesIncludingDeleted(): List<Service> {
+        return dao.select().map { it.asDomain() }
     }
 
     fun observeRecentlyAddedService(): Flow<RecentlyAddedService> {

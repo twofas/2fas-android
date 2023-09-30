@@ -1,57 +1,27 @@
 package com.twofasapp
 
-import android.content.Context
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import android.app.Application
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
-import androidx.multidex.MultiDex
-import androidx.multidex.MultiDexApplication
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.twofasapp.backup.BackupModule
-import com.twofasapp.backup.domain.SyncBackupTrigger
-import com.twofasapp.backup.domain.SyncBackupWorkDispatcher
-import com.twofasapp.base.ActivityProvider
 import com.twofasapp.base.AuthTracker
-import com.twofasapp.browserextension.BrowserExtensionModule
-import com.twofasapp.common.analytics.Analytics
-import com.twofasapp.core.log.FileLogger
-import com.twofasapp.developer.DeveloperModule
+import com.twofasapp.data.services.domain.CloudSyncTrigger
+import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.di.Modules
-import com.twofasapp.featuretoggle.FeatureToggleModule
-import com.twofasapp.parsers.ParsersModule
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.permissions.PermissionsModule
-import com.twofasapp.persistence.PersistenceModule
-import com.twofasapp.prefs.PreferencesEncryptedModule
-import com.twofasapp.prefs.PreferencesPlainModule
 import com.twofasapp.prefs.usecase.SendCrashLogsPreference
-import com.twofasapp.push.PushModule
-import com.twofasapp.qrscanner.QrScannerModule
-import com.twofasapp.security.SecurityModule
-import com.twofasapp.serialization.SerializationModule
-import com.twofasapp.services.ServicesModule
-import com.twofasapp.services.backup.remoteBackupModule
-import com.twofasapp.services.backupcipher.backupCipherModule
-import com.twofasapp.services.googleauth.googleAuthModule
-import com.twofasapp.start.StartModule
-import com.twofasapp.time.TimeModule
-import com.twofasapp.usecases.services.PinOptionsUseCase
-import io.reactivex.plugins.RxJavaPlugins
 import net.sqlcipher.database.SQLiteDatabase
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-class App : MultiDexApplication() {
+class App : Application() {
 
     private val authTracker: AuthTracker by inject()
-    private val syncBackupDispatcher: SyncBackupWorkDispatcher by inject()
-    private val pinOptionsUseCase: PinOptionsUseCase by inject()
-    private val activityProvider: ActivityProvider by inject()
+    private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher by inject()
     private val sendCrashLogsPreference: SendCrashLogsPreference by inject()
-    private val analytics: Analytics by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -59,50 +29,13 @@ class App : MultiDexApplication() {
         try {
             SupportedServices.load(this@App)
         } catch (e: Exception) {
-            analytics.captureException(e)
+            e.printStackTrace()
         }
 
         startKoin {
             // androidLogger(level = Level.DEBUG)
             androidContext(this@App)
-            modules(
-                listOf(
-                    applicationModule,
-                    activityScopeModule,
-                    fragmentScopeModule,
-                    useCaseModule,
-
-                    remoteBackupModule,
-                    backupCipherModule,
-                    googleAuthModule,
-                ).plus(
-                    listOf(
-                        StartModule(),
-                        SerializationModule(),
-                        TimeModule(),
-                        ParsersModule(),
-                        PermissionsModule(),
-                        PreferencesPlainModule(),
-                        PreferencesEncryptedModule(),
-                        BrowserExtensionModule(),
-                        PushModule(),
-                        PersistenceModule(),
-                        QrScannerModule(),
-                        ServicesModule(),
-                        BackupModule(),
-                        FeatureToggleModule(),
-                        DeveloperModule(),
-                        SecurityModule(),
-                    )
-                        .map { it.provide() }
-                        .plus(Modules.provide())
-                )
-            )
-        }
-
-        RxJavaPlugins.setErrorHandler {
-            Timber.e("RxJavaPlugins.setErrorHandler")
-            it.printStackTrace()
+            modules(Modules.provide())
         }
 
         if (BuildConfig.DEBUG) {
@@ -112,38 +45,29 @@ class App : MultiDexApplication() {
 
         authTracker.onAppCreate()
 
-        ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver {
-            @OnLifecycleEvent(Lifecycle.Event.ON_START)
-            fun onMoveToForeground() {
+        ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onStart(owner: LifecycleOwner) {
+                super.onStart(owner)
                 Timber.d("App :: onMoveToForeground")
                 authTracker.onMovingToForeground()
             }
 
-            @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-            fun onMoveToBackground() {
+            override fun onStop(owner: LifecycleOwner) {
+                super.onStop(owner)
                 Timber.d("App :: onMoveToBackground")
                 authTracker.onMovingToBackground()
-                syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_BACKGROUND)
-                pinOptionsUseCase.tmpDigits = null
+                cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.AppBackground)
             }
         })
 
-        registerActivityLifecycleCallbacks(activityProvider)
-
-        syncBackupDispatcher.tryDispatch(SyncBackupTrigger.APP_START)
+        cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.AppStart)
 
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
-
-        FileLogger.log("App start")
 
         try {
             SQLiteDatabase.loadLibs(this)
         } catch (e: Exception) {
+            e.printStackTrace()
         }
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
     }
 }

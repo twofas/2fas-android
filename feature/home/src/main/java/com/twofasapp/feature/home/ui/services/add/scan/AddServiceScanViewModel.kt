@@ -2,13 +2,13 @@ package com.twofasapp.feature.home.ui.services.add.scan
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.data.services.otp.OtpLinkParser
 import com.twofasapp.feature.qrscan.ReadQrFromImage
-import com.twofasapp.parsers.OtpLinkParser
-import com.twofasapp.parsers.domain.OtpAuthLink
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -57,9 +57,9 @@ internal class AddServiceScanViewModel(
         launchScoped {
             uiState.update { it.copy(source = source) }
 
-            val link = try {
-                OtpLinkParser.parseOtpAuthLink(text)
-            } catch (e: Exception) {
+            val link = OtpLinkParser.parse(text)
+
+            if (link == null) {
                 uiState.update { it.copy(showInvalidQrDialog = true) }
                 return@launchScoped
             }
@@ -79,7 +79,7 @@ internal class AddServiceScanViewModel(
     }
 
     fun saveService(text: String, source: Source) {
-        saveService(OtpLinkParser.parseOtpAuthLink(text), source)
+        saveService(OtpLinkParser.parse(text)!!, source)
     }
 
     private fun saveService(link: OtpAuthLink, source: Source) {

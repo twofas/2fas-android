@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <application>
+        <activity android:name=".ui.request.BrowserExtRequestActivity" />
+        <activity android:name=".ui.requestapprove.BrowserExtRequestApproveActivity" />
+
+        <receiver
+            android:name=".notification.BrowserExtRequestReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="BrowserExtRequest" />
+            </intent-filter>
+        </receiver>
+    </application>
 </manifest>

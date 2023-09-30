@@ -1,7 +1,7 @@
 package com.twofasapp.feature.home.ui.services
 
 import com.twofasapp.data.services.domain.Group
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.designsystem.lazy.ListItem
 
 sealed class ServicesListItem(

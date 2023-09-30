@@ -1,6 +1,6 @@
 package com.twofasapp.prefs
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.prefs.usecase.DatabaseMasterKeyPreference
 import com.twofasapp.prefs.usecase.InvalidPinStatusPreference
 import com.twofasapp.prefs.usecase.PinOptionsPreference

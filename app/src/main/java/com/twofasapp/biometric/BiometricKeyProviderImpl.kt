@@ -3,7 +3,7 @@ package com.twofasapp.biometric
 import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import com.twofasapp.android.biometric.BiometricKeyProvider
+import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import java.security.KeyStore
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey

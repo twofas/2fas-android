@@ -41,8 +41,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.domain.Group
-import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwTheme
@@ -57,6 +57,7 @@ import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.lazy.listItem
 import com.twofasapp.designsystem.service.DsService
 import com.twofasapp.designsystem.service.ServiceStyle
+import com.twofasapp.designsystem.service.asState
 import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
@@ -83,7 +84,6 @@ internal fun ServicesRoute(
     bottomBarListener: BottomBarListener,
     viewModel: ServicesViewModel = koinViewModel()
 ) {
-    val activity = LocalContext.currentActivity
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     ServicesScreen(
@@ -104,20 +104,20 @@ internal fun ServicesRoute(
         onSortChange = { viewModel.updateSort(it) },
         onSearchQueryChange = { viewModel.search(it) },
         onSearchFocusChange = { viewModel.searchFocused(it) },
-        onOpenBackupClick = { listener.openBackup(activity) },
+        onOpenBackupClick = { listener.openBackup(it) },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
         onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
         onRevealClick = { viewModel.reveal(it) }
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ServicesScreen(
     uiState: ServicesUiState,
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
-    onEventConsumed: (ServicesStateEvent) -> Unit,
+    onEventConsumed: (ServicesUiEvent) -> Unit,
     onExternalImportClick: () -> Unit = {},
     onEditModeChange: () -> Unit = {},
     onToggleGroupExpand: (String?) -> Unit = {},
@@ -131,7 +131,7 @@ private fun ServicesScreen(
     onSortChange: (Int) -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
-    onOpenBackupClick: () -> Unit = {},
+    onOpenBackupClick: (Boolean) -> Unit = {},
     onDismissSyncReminderClick: () -> Unit = {},
     onIncrementHotpCounterClick: (Service) -> Unit = {},
     onRevealClick: (Service) -> Unit = {},
@@ -192,11 +192,11 @@ private fun ServicesScreen(
 
     uiState.events.firstOrNull()?.let {
         when (it) {
-            ServicesStateEvent.ShowQrFromGalleryDialog -> {
+            ServicesUiEvent.ShowQrFromGalleryDialog -> {
                 showQrFromGalleryDialog = true
             }
 
-            is ServicesStateEvent.ServiceAdded -> {
+            is ServicesUiEvent.ServiceAdded -> {
                 val serviceId = it.id
                 val service = uiState.services.firstOrNull { it.id == serviceId }
 
@@ -222,6 +222,8 @@ private fun ServicesScreen(
                     }
                 }
             }
+
+            is ServicesUiEvent.OpenImport -> listener.openBackupImport(it.filePath)
         }
 
         onEventConsumed(it)
@@ -354,7 +356,7 @@ private fun ServicesScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(vertical = 8.dp),
-                                onOpenBackupClick = onOpenBackupClick,
+                                onOpenBackupClick = { onOpenBackupClick(false) },
                             )
                         }
                     }
@@ -365,7 +367,7 @@ private fun ServicesScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(vertical = 16.dp),
-                                onOpenBackupClick = onOpenBackupClick,
+                                onOpenBackupClick = { onOpenBackupClick(true) },
                                 onDismissClick = onDismissSyncReminderClick,
                             )
                         }
@@ -422,7 +424,7 @@ private fun ServicesScreen(
                                             Modifier.animateItemPlacement()
                                         }
                                     ),
-                            ) { isDragging ->
+                            ) { _ ->
                                 val state = service.asState()
 
                                 DsService(

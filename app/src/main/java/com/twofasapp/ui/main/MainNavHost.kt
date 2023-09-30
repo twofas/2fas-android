@@ -23,42 +23,38 @@ import com.twofasapp.android.navigation.Modal
 import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.Screen
-import com.twofasapp.android.navigation.clearGraphBackStack
 import com.twofasapp.android.navigation.intentFor
-import com.twofasapp.android.navigation.withArg
+import com.twofasapp.common.ktx.encodeBase64ToString
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.common.ModalBottomSheet
-import com.twofasapp.extensions.startActivity
-import com.twofasapp.feature.about.navigation.AboutGraph
-import com.twofasapp.feature.about.navigation.aboutNavigation
-import com.twofasapp.feature.appsettings.navigation.AppSettingsGraph
-import com.twofasapp.feature.appsettings.navigation.appSettingsNavigation
-import com.twofasapp.feature.browserext.notification.BrowserExtGraph
-import com.twofasapp.feature.browserext.notification.browserExtNavigation
-import com.twofasapp.feature.externalimport.navigation.ExternalImportGraph
-import com.twofasapp.feature.externalimport.navigation.externalImportNavigation
-import com.twofasapp.feature.home.navigation.GuideInitRoute
-import com.twofasapp.feature.home.navigation.GuidePagerRoute
-import com.twofasapp.feature.home.navigation.GuidesRoute
-import com.twofasapp.feature.home.navigation.HomeGraph
+import com.twofasapp.feature.about.navigation.AboutLicensesRoute
+import com.twofasapp.feature.about.navigation.AboutRoute
+import com.twofasapp.feature.appsettings.navigation.AppSettingsRoute
+import com.twofasapp.feature.backup.navigation.BackupExportRoute
+import com.twofasapp.feature.backup.navigation.BackupImportRoute
+import com.twofasapp.feature.backup.navigation.BackupRoute
+import com.twofasapp.feature.backup.navigation.BackupSettingsRoute
+import com.twofasapp.feature.browserext.navigation.BrowserExtDetailsRoute
+import com.twofasapp.feature.browserext.navigation.BrowserExtPairingRoute
+import com.twofasapp.feature.browserext.navigation.BrowserExtPermissionRoute
+import com.twofasapp.feature.browserext.navigation.BrowserExtRoute
+import com.twofasapp.feature.browserext.navigation.BrowserExtScanRoute
+import com.twofasapp.feature.externalimport.domain.ImportType
+import com.twofasapp.feature.externalimport.navigation.ExternalImportResultRoute
+import com.twofasapp.feature.externalimport.navigation.ExternalImportRoute
+import com.twofasapp.feature.externalimport.navigation.ExternalImportScanRoute
+import com.twofasapp.feature.externalimport.navigation.ExternalImportSelectorRoute
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
-import com.twofasapp.feature.home.navigation.HomeNode
-import com.twofasapp.feature.home.navigation.NotificationsGraph
+import com.twofasapp.feature.home.navigation.guidesNavigation
 import com.twofasapp.feature.home.navigation.homeNavigation
-import com.twofasapp.feature.home.navigation.notificationsNavigation
 import com.twofasapp.feature.home.ui.services.add.AddServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
-import com.twofasapp.feature.startup.navigation.startupNavigation
-import com.twofasapp.feature.trash.navigation.TrashGraph
-import com.twofasapp.feature.trash.navigation.trashNavigation
-import com.twofasapp.features.backup.BackupActivity
-import com.twofasapp.security.navigation.SecurityGraph
-import com.twofasapp.security.navigation.securityNavigation
-import com.twofasapp.security.ui.lock.LockActivity
-import com.twofasapp.services.navigation.ServiceGraph
-import com.twofasapp.services.navigation.ServiceNavArg
-import com.twofasapp.services.navigation.serviceNavigation
+import com.twofasapp.feature.security.navigation.securityNavigation
+import com.twofasapp.feature.security.ui.lock.LockActivity
+import com.twofasapp.feature.startup.navigation.StartupRoute
+import com.twofasapp.feature.trash.navigation.DisposeRoute
+import com.twofasapp.feature.trash.navigation.TrashRoute
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialNavigationApi::class, ExperimentalMaterialApi::class)
@@ -105,47 +101,47 @@ internal fun MainNavHost(
             exitTransition = NavAnimation.Exit,
         ) {
 
-            startupNavigation(
-                openHome = { navController.navigate(HomeGraph.route) { popUpTo(0) } }
-            )
+            composable(Screen.Startup.route) {
+                StartupRoute(openHome = { navController.navigate(Screen.Services.route) { popUpTo(0) } })
+            }
 
             homeNavigation(
                 navController = navController,
                 listener = object : HomeNavigationListener {
                     override fun openService(activity: Activity, serviceId: Long) {
-                        navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, serviceId))
+                        navController.navigate(Screen.EditService.routeWithArgs(NavArg.ServiceId to serviceId))
                     }
 
                     override fun openExternalImport() {
-                        navController.navigate(ExternalImportGraph.route)
+                        navController.navigate(Screen.ExternalImportSelector.route)
                     }
 
                     override fun openBrowserExt() {
-                        navController.navigate(BrowserExtGraph.route)
+                        navController.navigate(Screen.BrowserExt.route)
                     }
 
                     override fun openSecurity(activity: Activity) {
-                        navController.navigate(SecurityGraph.route)
+                        navController.navigate(Screen.Security.route)
                     }
 
-                    override fun openBackup(activity: Activity) {
-                        activity.startActivity<BackupActivity>()
+                    override fun openBackup(turnOnBackup: Boolean) {
+                        navController.navigate(Screen.Backup.routeWithArgs(NavArg.TurnOnBackup to turnOnBackup))
                     }
 
                     override fun openAppSettings() {
-                        navController.navigate(AppSettingsGraph.route)
+                        navController.navigate(Screen.AppSettings.route)
                     }
 
                     override fun openTrash() {
-                        navController.navigate(TrashGraph.route)
+                        navController.navigate(Screen.Trash.route)
                     }
 
                     override fun openNotifications() {
-                        navController.navigate(NotificationsGraph.route)
+                        navController.navigate(Screen.Notifications.route)
                     }
 
                     override fun openAbout() {
-                        navController.navigate(AboutGraph.route)
+                        navController.navigate(Screen.About.route)
                     }
 
                     override fun openAddServiceModal() {
@@ -156,30 +152,20 @@ internal fun MainNavHost(
                     override fun openFocusServiceModal(id: Long) {
                         navController.navigate(Modal.FocusService.route.replace("{id}", id.toString()))
                     }
-                }
-            )
 
-            externalImportNavigation(
-                navController = navController,
-                onFinish = { navController.clearGraphBackStack() }
-            )
-
-            serviceNavigation(
-                navController = navController,
-                openSecurity = { navController.navigate(SecurityGraph.route) },
-                openAuth = { onSuccess ->
+                    override fun openBackupImport(filePath: String?) {
+                        navController.navigate(Screen.BackupImport.routeWithArgs(NavArg.ImportFileUri to filePath?.encodeBase64ToString()))
+                    }
+                },
+                openEditServiceAuth = { onSuccess ->
                     authSuccessCallback = onSuccess
 
                     startAuthForResult.launch(context.intentFor<LockActivity>("canGoBack" to true))
-                },
+                }
             )
 
-            appSettingsNavigation()
-            notificationsNavigation()
-            trashNavigation(navController = navController)
-            aboutNavigation(navController = navController)
-            browserExtNavigation(navController = navController)
             securityNavigation(navController = navController)
+            guidesNavigation(navController = navController)
 
             bottomSheet(Modal.AddService.route, listOf(NavArg.AddServiceInitRoute)) {
                 AddServiceModal(
@@ -192,44 +178,146 @@ internal fun MainNavHost(
             bottomSheet(Modal.FocusService.route, listOf(FocusServiceModalNavArg.ServiceId)) {
                 FocusServiceModal(
                     openService = {
-                        navController.navigate(ServiceGraph.route.withArg(ServiceNavArg.ServiceId, it))
+                        navController.navigate(Screen.EditService.routeWithArgs(NavArg.ServiceId to it))
                         scope.launch { bottomSheetState.hide() }
                     }
                 )
             }
 
-            composable(Screen.Guides.route) {
-                GuidesRoute(
-                    openGuide = { navController.navigate(Screen.GuideInit.routeWithArgs(NavArg.Guide to it.name)) }
+            composable(Screen.AppSettings.route) {
+                AppSettingsRoute()
+            }
+
+            composable(Screen.About.route) {
+                AboutRoute(openLicenses = { navController.navigate(Screen.AboutLicenses.route) })
+            }
+
+            composable(Screen.AboutLicenses.route) {
+                AboutLicensesRoute()
+            }
+
+            composable(Screen.Trash.route) {
+                TrashRoute(
+                    openDispose = { navController.navigate(Screen.Dispose.routeWithArgs(NavArg.ServiceId to it)) }
                 )
             }
 
-            composable(Screen.GuideInit.route, listOf(NavArg.Guide)) {
-                GuideInitRoute(
-                    guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!),
-                    openGuide = { guide, guideVariantIndex ->
+            composable(Screen.Dispose.route, listOf(NavArg.ServiceId)) {
+                DisposeRoute(
+                    navigateBack = { navController.popBackStack() }
+                )
+            }
+
+            composable(Screen.Backup.route, listOf(NavArg.TurnOnBackup)) {
+                BackupRoute(
+                    openSettings = { navController.navigate(Screen.BackupSettings.route) },
+                    openExport = { navController.navigate(Screen.BackupExport.route) },
+                    openImport = { navController.navigate(Screen.BackupImport.route) },
+                )
+            }
+
+            composable(Screen.BackupSettings.route) {
+                BackupSettingsRoute(
+                    goBack = { navController.popBackStack() }
+                )
+            }
+
+            composable(Screen.BackupExport.route) {
+                BackupExportRoute(
+                    goBack = { navController.popBackStack() }
+                )
+            }
+
+            composable(Screen.BackupImport.route, listOf(NavArg.ImportFileUri)) {
+                BackupImportRoute(
+                    goBack = { navController.popBackStack() }
+                )
+            }
+
+            composable(Screen.BrowserExt.route) {
+                BrowserExtRoute(
+                    openScan = { navController.navigate(Screen.BrowserExtScan.route) },
+                    openDetails = { extensionId ->
+                        navController.navigate(Screen.BrowserExtDetails.routeWithArgs(NavArg.ExtensionId to extensionId))
+                    }
+                )
+            }
+
+            composable(Screen.BrowserExtPermission.route) {
+                BrowserExtPermissionRoute(
+                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) }
+                )
+            }
+
+            composable(Screen.BrowserExtScan.route) {
+                BrowserExtScanRoute(
+                    openProgress = { extensionId ->
+                        navController.navigate(Screen.BrowserExtPairing.routeWithArgs(NavArg.ExtensionId to extensionId)) {
+                            popUpTo(Screen.BrowserExt.route)
+                        }
+                    }
+                )
+            }
+
+            composable(Screen.BrowserExtPairing.route, listOf(NavArg.ExtensionId)) {
+                BrowserExtPairingRoute(
+                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
+                    openPermission = { navController.navigate(Screen.BrowserExtPermission.route) { popUpTo(Screen.BrowserExt.route) } },
+                    openScan = { navController.navigate(Screen.BrowserExtScan.route) { popUpTo(Screen.BrowserExt.route) } }
+                )
+            }
+
+            composable(Screen.BrowserExtDetails.route, listOf(NavArg.ExtensionId)) {
+                BrowserExtDetailsRoute(
+                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
+                )
+            }
+
+            composable(Screen.ExternalImportSelector.route) {
+                ExternalImportSelectorRoute(
+                    openImport = { importType ->
+                        navController.navigate(Screen.ExternalImport.routeWithArgs(NavArg.ImportType to importType.name))
+                    }
+                )
+            }
+
+            composable(Screen.ExternalImport.route, listOf(NavArg.ImportType)) {
+                val importType = enumValueOf<ImportType>(it.arguments!!.getString(NavArg.ImportType.name)!!)
+
+                ExternalImportRoute(
+                    openScanner = {
+                        navController.navigate(Screen.ExternalImportScan.routeWithArgs(NavArg.ImportType to importType.name))
+                    },
+                    openResult = { encodedFileUri ->
                         navController.navigate(
-                            Screen.GuidePager.routeWithArgs(
-                                NavArg.Guide to guide.name,
-                                NavArg.GuideVariantIndex to guideVariantIndex,
+                            Screen.ExternalImportResult.routeWithArgs(
+                                NavArg.ImportType to importType.name,
+                                NavArg.ImportFileUri to encodedFileUri,
                             )
                         )
                     }
                 )
             }
 
-            composable(Screen.GuidePager.route, listOf(NavArg.Guide, NavArg.GuideVariantIndex)) {
-                GuidePagerRoute(
-                    guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!),
-                    guideVariantIndex = it.arguments!!.getInt(NavArg.GuideVariantIndex.name),
-                    openAddScan = {
-                        navController.popBackStack(HomeNode.Services.route, false)
-                        navController.navigate(Modal.AddService.route)
-                    },
-                    openAddManually = {
-                        navController.popBackStack(HomeNode.Services.route, false)
-                        navController.navigate(Modal.AddService.routeWithArgs(NavArg.AddServiceInitRoute to "manual"))
-                    },
+            composable(Screen.ExternalImportScan.route, listOf(NavArg.ImportType)) {
+                val importType = enumValueOf<ImportType>(it.arguments!!.getString(NavArg.ImportType.name)!!)
+
+                ExternalImportScanRoute(
+                    openResult = { encodedFileContent ->
+                        navController.navigate(
+                            Screen.ExternalImportResult.routeWithArgs(
+                                NavArg.ImportType to importType.name,
+                                NavArg.ImportFileContent to encodedFileContent,
+                            )
+                        )
+                    }
+                )
+            }
+
+            composable(Screen.ExternalImportResult.route, listOf(NavArg.ImportType, NavArg.ImportFileUri)) {
+                ExternalImportResultRoute(
+                    openSettings = { navController.popBackStack(Screen.ExternalImportSelector.route, true) },
+                    openImport = { navController.popBackStack(Screen.ExternalImport.route, false) }
                 )
             }
         }

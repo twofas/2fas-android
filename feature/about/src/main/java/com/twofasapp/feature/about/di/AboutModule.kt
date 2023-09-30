@@ -1,6 +1,6 @@
 package com.twofasapp.feature.about.di
 
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import com.twofasapp.feature.about.ui.about.AboutViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module

@@ -1,9 +1,5 @@
 package com.twofasapp.prefs.model
 
-import android.content.Context
-import android.graphics.Color
-import com.twofasapp.prefs.isNight
-
 enum class Tint(val hex: String, val hexDark: String = hex) {
     Default("#ebebeb", "#232428"),
     Red("#ED1C24"),
@@ -17,11 +13,4 @@ enum class Tint(val hex: String, val hexDark: String = hex) {
     Purple("#8C49DE"),
     Brown("#bd8857"),
     ;
-}
-
-fun Tint?.toColor(context: Context, default: Tint = Tint.Default): Int {
-    return Color.parseColor(
-        if (context.isNight()) (this ?: default).hexDark else (this
-            ?: default).hex
-    )
 }

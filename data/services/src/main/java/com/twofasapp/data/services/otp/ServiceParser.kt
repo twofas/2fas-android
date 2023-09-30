@@ -1,10 +1,10 @@
 package com.twofasapp.data.services.otp
 
-import com.twofasapp.data.services.domain.Service
-import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.common.domain.Service
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.parsers.domain.OtpAuthLink
+import com.twofasapp.common.domain.OtpAuthLink
 
 object ServiceParser {
 

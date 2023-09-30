@@ -10,18 +10,19 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
-    implementation(project(":data:notifications"))
-    implementation(project(":data:services"))
-    implementation(project(":data:session"))
     implementation(project(":core:common"))
     implementation(project(":core:android"))
     implementation(project(":core:locale"))
     implementation(project(":core:designsystem"))
-    implementation(project(":backup:domain"))
+
+    implementation(project(":data:notifications"))
+    implementation(project(":data:services"))
+    implementation(project(":data:session"))
+
     implementation(project(":feature:qrscan"))
+
     implementation(project(":parsers"))
-    implementation(project(":resources"))
+    implementation(project(":prefs"))
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)

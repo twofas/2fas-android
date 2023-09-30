@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="service_code_size">40dp</dimen>
-    <dimen name="service_item_size">150dp</dimen>
-
-    <dimen name="service_list_notice_padding_horizontal">40dp</dimen>
-
-</resources>

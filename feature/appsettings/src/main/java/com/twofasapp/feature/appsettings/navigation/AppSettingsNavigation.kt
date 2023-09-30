@@ -1,18 +1,9 @@
 package com.twofasapp.feature.appsettings.navigation
 
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
-import com.twofasapp.android.navigation.NavGraph
-import com.twofasapp.feature.appsettings.ui.AppSettingsRoute
+import androidx.compose.runtime.Composable
+import com.twofasapp.feature.appsettings.ui.AppSettingsScreen
 
-object AppSettingsGraph : com.twofasapp.android.navigation.NavGraph {
-    override val route: String = "appsettings"
-}
-
-fun NavGraphBuilder.appSettingsNavigation() {
-    composable(
-        AppSettingsGraph.route,
-    ) {
-        AppSettingsRoute()
-    }
+@Composable
+fun AppSettingsRoute() {
+    AppSettingsScreen()
 }

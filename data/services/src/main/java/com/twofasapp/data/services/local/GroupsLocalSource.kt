@@ -1,13 +1,13 @@
 package com.twofasapp.data.services.local
 
 import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.local.model.GroupEntity
 import com.twofasapp.data.services.local.model.GroupsEntity
-import com.twofasapp.di.BackupSyncStatus
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.util.Collections
@@ -60,6 +60,26 @@ internal class GroupsLocalSource(
         )
     }
 
+    fun addGroup(group: Group) {
+        val local = getGroups()
+
+        preferences.putString(
+            KeyGroups, json.encodeToString(
+                local.copy(
+                    list = local.list.plus(
+                        GroupEntity(
+                            id = group.id,
+                            name = group.name.orEmpty(),
+                            isExpanded = group.isExpanded,
+                            updatedAt = timeProvider.systemCurrentTime(),
+                            backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                        )
+                    ).distinctBy { it.id }
+                )
+            )
+        )
+    }
+
     fun deleteGroup(id: String) {
         val local = getGroups()
         val newList = local.list.filterNot { it.id == id }
@@ -89,6 +109,30 @@ internal class GroupsLocalSource(
                             )
                         } else {
                             group
+                        }
+                    }
+                )
+            )
+        )
+    }
+
+    fun editGroup(newGroup: Group) {
+        val local = getGroups()
+
+        preferences.putString(
+            KeyGroups, json.encodeToString(
+                local.copy(
+                    list = local.list.map { groupEntity ->
+                        if (groupEntity.id == newGroup.id) {
+                            GroupEntity(
+                                id = newGroup.id,
+                                name = newGroup.name.orEmpty(),
+                                isExpanded = newGroup.isExpanded,
+                                updatedAt = newGroup.updatedAt,
+                                backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                            )
+                        } else {
+                            groupEntity
                         }
                     }
                 )
@@ -134,5 +178,30 @@ internal class GroupsLocalSource(
         }
 
         preferences.putString(KeyGroups, json.encodeToString(updated))
+    }
+
+    suspend fun sortById(ids: List<String>) {
+        val local = getGroups()
+        val sortedList = local.list.sortedBy { ids.indexOf(it.id) }
+
+        preferences.putString(
+            KeyGroups, json.encodeToString(
+                local.copy(
+                    list = sortedList,
+                )
+            )
+        )
+    }
+
+    suspend fun markAllAsSynced() {
+        val local = getGroups()
+
+        preferences.putString(
+            KeyGroups, json.encodeToString(
+                local.copy(
+                    list = local.list.map { group -> group.copy(backupSyncStatus = BackupSyncStatus.SYNCED) },
+                )
+            )
+        )
     }
 }

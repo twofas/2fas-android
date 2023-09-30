@@ -1,10 +1,12 @@
 package com.twofasapp.data.services.local
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
+import androidx.room.Update
 import com.twofasapp.data.services.local.model.ServiceEntity
-import io.reactivex.Completable
-import io.reactivex.Flowable
-import io.reactivex.Single
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -51,38 +53,4 @@ interface ServiceDao {
             .map { it.copy(groupId = null) }
             .toTypedArray())
     }
-
-    // Legacy
-    @Query("SELECT * FROM local_services")
-    fun legacySelect(): Single<List<ServiceEntity>>
-
-    @Query("SELECT * FROM local_services")
-    suspend fun legacySelectAll(): List<ServiceEntity>
-
-    @Query("SELECT * FROM local_services")
-    fun legacySelectFlow(): Flow<List<ServiceEntity>>
-
-    @Query("SELECT * FROM local_services")
-    fun legacyObserve(): Flowable<List<ServiceEntity>>
-
-    @Query("SELECT * FROM local_services WHERE id=:serviceId")
-    fun legacyObserve(serviceId: Long): Flow<ServiceEntity>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun legacyInsert(serviceEntity: ServiceEntity): Single<Long>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun legacyInsertSuspend(serviceEntity: ServiceEntity): Long
-
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun legacyUpdate(vararg serviceEntity: ServiceEntity): Completable
-
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun legacyUpdateSuspend(vararg serviceEntity: ServiceEntity)
-
-    @Query("DELETE FROM local_services WHERE id IN (:ids)")
-    fun legacyDeleteById(ids: List<Long>): Completable
-
-    @Query("DELETE FROM local_services WHERE id == :id")
-    suspend fun legacyDeleteById(id: Long)
 }

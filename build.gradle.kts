@@ -2,8 +2,9 @@ buildscript {
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin.get()}")
         classpath("org.jetbrains.kotlin:kotlin-serialization:${libs.versions.kotlin.get()}")
-        classpath("com.google.gms:google-services:4.3.15")
-        classpath("com.google.firebase:firebase-crashlytics-gradle:2.9.4")
+        classpath("com.google.gms:google-services:4.4.0")
+        classpath("com.google.firebase:firebase-crashlytics-gradle:2.9.9")
+
     }
 }
 
@@ -16,6 +17,8 @@ plugins {
     alias(libs.plugins.kotlinSerialization) apply false
     alias(libs.plugins.kotlinParcelize) apply false
     alias(libs.plugins.kotlinKapt) apply false
+    alias(libs.plugins.gradleVersions)
+    alias(libs.plugins.versionCatalogUpdate)
 }
 
 

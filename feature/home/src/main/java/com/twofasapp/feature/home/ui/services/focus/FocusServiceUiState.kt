@@ -1,6 +1,6 @@
 package com.twofasapp.feature.home.ui.services.focus
 
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 
 internal data class FocusServiceUiState(
     val service: Service? = null,

@@ -3,7 +3,7 @@ package com.twofasapp.feature.appsettings.ui
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.session.SettingsRepository
-import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.data.session.domain.ServicesStyle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update

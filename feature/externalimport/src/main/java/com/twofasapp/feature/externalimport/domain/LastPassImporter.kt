@@ -2,18 +2,17 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.parsers.domain.OtpAuthLink
-import com.twofasapp.prefs.model.ServiceDto
-import com.twofasapp.serialization.JsonSerializer
-import com.twofasapp.services.domain.ConvertOtpLinkToService
+import com.twofasapp.data.services.otp.ServiceParser
+import com.twofasapp.common.domain.OtpAuthLink
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 
 internal class LastPassImporter(
     private val context: Context,
-    private val jsonSerializer: JsonSerializer,
-    private val convertOtpLinkToService: ConvertOtpLinkToService,
+    private val jsonSerializer: Json,
     private val servicesRepository: ServicesRepository,
 ) : ExternalImporter {
 
@@ -49,31 +48,25 @@ internal class LastPassImporter(
 
             val inputStream = context.contentResolver.openInputStream(fileUri)!!
             val json = inputStream.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
-            val model = jsonSerializer.deserialize<Model>(json)
+            val model = jsonSerializer.decodeFromString<Model>(json)
 
             fileDescriptor?.close()
             inputStream.close()
 
             val totalServices = model.accounts.size
-            val servicesToImport = mutableListOf<ServiceDto>()
+            val servicesToImport = mutableListOf<Service?>()
 
-            model
-                .accounts
-                .filter { it.digits == 6 || it.digits == 7 || it.digits == 8 }
-                .filter { it.timeStep == 30 || it.timeStep == 60 || it.timeStep == 90 }
-                .filter {
+            model.accounts.filter { it.digits == 6 || it.digits == 7 || it.digits == 8 }
+                .filter { it.timeStep == 30 || it.timeStep == 60 || it.timeStep == 90 }.filter {
                     it.algorithm.equals("SHA1", true) || it.algorithm.equals("SHA224", true) || it.algorithm.equals(
-                        "SHA256",
-                        true
+                        "SHA256", true
                     ) || it.algorithm.equals("SHA384", true) || it.algorithm.equals("SHA512", true)
-                }
-                .filter { servicesRepository.isSecretValid(it.secret) }
-                .forEach { entry ->
+                }.filter { servicesRepository.isSecretValid(it.secret) }.forEach { entry ->
                     servicesToImport.add(parseService(entry))
                 }
 
             return ExternalImport.Success(
-                servicesToImport = servicesToImport,
+                servicesToImport = servicesToImport.filterNotNull(),
                 totalServicesCount = totalServices,
             )
         } catch (e: Exception) {
@@ -83,7 +76,7 @@ internal class LastPassImporter(
         }
     }
 
-    private fun parseService(account: Account): ServiceDto {
+    private fun parseService(account: Account): Service? {
         val otpLink = OtpAuthLink(
             type = "TOTP",
             label = account.userName,
@@ -93,9 +86,7 @@ internal class LastPassImporter(
             link = null,
         )
 
-        val parsed = convertOtpLinkToService.execute(otpLink)
-
-        return parsed.copy(otpAccount = account.userName)
+        return ServiceParser.parseService(otpLink)
     }
 
     private fun parseParams(account: Account): Map<String, String> {

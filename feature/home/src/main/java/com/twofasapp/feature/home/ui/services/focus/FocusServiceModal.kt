@@ -19,7 +19,7 @@ import com.twofasapp.designsystem.service.ServiceImageType
 import com.twofasapp.designsystem.service.ServiceState
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.feature.home.ui.services.asState
+import com.twofasapp.designsystem.service.asState
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 

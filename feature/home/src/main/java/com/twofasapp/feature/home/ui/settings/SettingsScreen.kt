@@ -28,18 +28,15 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.locale.TwLocale
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun SettingsRoute(
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
-    viewModel: SettingsViewModel = koinViewModel()
 ) {
     SettingsScreen(
         listener = listener,
@@ -65,9 +62,10 @@ private fun SettingsScreen(
                 .background(TwTheme.color.background)
                 .padding(padding)
         ) {
+
             item {
                 SettingsLink(title = TwLocale.strings.settingsBackup, icon = TwIcons.CloudUpload) {
-                    listener.openBackup(activity)
+                    listener.openBackup(false)
                 }
             }
 

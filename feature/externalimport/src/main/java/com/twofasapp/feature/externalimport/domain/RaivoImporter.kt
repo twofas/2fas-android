@@ -2,16 +2,16 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
-import com.twofasapp.prefs.model.ServiceDto
-import com.twofasapp.serialization.JsonSerializer
-import com.twofasapp.services.domain.ConvertOtpLinkToService
+import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.otp.ServiceParser
+import com.twofasapp.common.domain.OtpAuthLink
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 
 internal class RaivoImporter(
     private val context: Context,
-    private val jsonSerializer: JsonSerializer,
-    private val convertOtpLinkToService: ConvertOtpLinkToService,
+    private val jsonSerializer: Json,
 ) : ExternalImporter {
 
     @Serializable
@@ -43,13 +43,13 @@ internal class RaivoImporter(
 
             val inputStream = context.contentResolver.openInputStream(fileUri)!!
             val json = inputStream.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
-            val model = jsonSerializer.deserialize<List<Entry>>(json)
+            val model = jsonSerializer.decodeFromString<List<Entry>>(json)
 
             fileDescriptor?.close()
             inputStream.close()
 
             val totalServices = model.size
-            val servicesToImport = mutableListOf<ServiceDto>()
+            val servicesToImport = mutableListOf<Service?>()
 
             model
                 .filter { it.kind.equals("totp", true) || it.kind.equals("hotp", true) }
@@ -66,7 +66,7 @@ internal class RaivoImporter(
                 }
 
             return ExternalImport.Success(
-                servicesToImport = servicesToImport,
+                servicesToImport = servicesToImport.filterNotNull(),
                 totalServicesCount = totalServices,
             )
         } catch (e: Exception) {
@@ -76,8 +76,8 @@ internal class RaivoImporter(
         }
     }
 
-    private fun parseService(entry: Entry): ServiceDto {
-        val otpLink = com.twofasapp.parsers.domain.OtpAuthLink(
+    private fun parseService(entry: Entry): Service {
+        val otpLink = OtpAuthLink(
             type = entry.kind.uppercase(),
             label = entry.account,
             secret = entry.secret,
@@ -86,18 +86,18 @@ internal class RaivoImporter(
             link = null,
         )
 
-        val parsed = convertOtpLinkToService.execute(otpLink)
+        val parsed = ServiceParser.parseService(otpLink)
 
-        return parsed.copy(otpAccount = entry.account)
+        return parsed.copy(info = entry.account)
     }
 
     private fun parseParams(entry: Entry): Map<String, String> {
         val params = mutableMapOf<String, String>()
 
-        entry.algorithm?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.ALGORITHM_PARAM] = it }
-        entry.timer?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.PERIOD_PARAM] = it }
-        entry.digits?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.DIGITS_PARAM] = it }
-        entry.counter?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.COUNTER] = it }
+        entry.algorithm?.let { params[OtpAuthLink.ALGORITHM_PARAM] = it }
+        entry.timer?.let { params[OtpAuthLink.PERIOD_PARAM] = it }
+        entry.digits?.let { params[OtpAuthLink.DIGITS_PARAM] = it }
+        entry.counter?.let { params[OtpAuthLink.COUNTER] = it }
 
         return params
     }

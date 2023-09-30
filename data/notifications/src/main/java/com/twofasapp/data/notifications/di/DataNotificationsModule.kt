@@ -4,7 +4,7 @@ import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.notifications.NotificationsRepositoryImpl
 import com.twofasapp.data.notifications.local.NotificationsLocalSource
 import com.twofasapp.data.notifications.remote.NotificationsRemoteSource
-import com.twofasapp.di.KoinModule
+import com.twofasapp.common.di.KoinModule
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module

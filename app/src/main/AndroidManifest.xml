@@ -5,9 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
@@ -54,18 +52,13 @@
         </provider>
 
         <service
-            android:name=".push.FcmMessagingService"
+            android:name=".data.push.FcmMessagingService"
             android:exported="false"
             android:stopWithTask="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-        <service
-            android:name=".widgets.adapter.WidgetViewsService"
-            android:exported="false"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <!--
             Prompt Google Play services to install the backported photo picker module
@@ -87,7 +80,7 @@
 
         <receiver
             android:name=".widgets.WidgetProvider"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -97,27 +90,16 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_provider" />
-        </receiver>
-
-        <receiver
-            android:name=".widgets.WidgetTimerReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="WIDGET_TIMER" />
-            </intent-filter>
+                android:resource="@xml/widget_info" />
         </receiver>
 
         <!-- ACTIVITIES -->
-
         <activity
             android:name=".ui.main.StartActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:noHistory="false"
-            android:screenOrientation="locked"
-            android:theme="@style/Theme.App">
+            android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -133,26 +115,6 @@
                 <data android:scheme="otpauth" />
             </intent-filter>
 
-        </activity>
-
-        <activity
-            android:name=".ui.main.MainActivity"
-            android:label="Add service by scanning QR Code"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name=".features.backup.BackupActivity"
-            android:label="@string/backup__2fas_backup"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name=".backup.ui.export.ExportBackupActivity"
-            android:label="Export Backup" />
-
-        <activity
-            android:name=".features.backup.import.ImportBackupActivity"
-            android:exported="true"
-            android:label="Import Backup">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -173,16 +135,13 @@
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.2fas" />
 
             </intent-filter>
+
         </activity>
 
         <activity
-            android:name=".widgets.configure.WidgetSettingsActivity"
-            android:exported="true"
-            android:label="Widget settings">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
+            android:name=".ui.main.MainActivity"
+            android:label="Add service by scanning QR Code"
+            android:launchMode="singleTask" />
 
     </application>
 </manifest>

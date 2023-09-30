@@ -35,7 +35,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.ResponsiveText
@@ -43,24 +42,18 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.assetAsBitmap
 import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.locale.TwLocale
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun GuidesScreen(
-    viewModel: GuidesViewModel = koinViewModel(),
     openGuide: (Guide) -> Unit,
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
     GuidesScreenContent(
-        uiState = uiState,
         onGuideClick = openGuide,
     )
 }
 
 @Composable
 private fun GuidesScreenContent(
-    uiState: GuidesUiState,
     onGuideClick: (Guide) -> Unit,
 ) {
     val uriHandler = LocalUriHandler.current
@@ -199,8 +192,5 @@ private fun GuideItem(
 @Preview
 @Composable
 fun Preview() {
-    GuidesScreenContent(
-        uiState = GuidesUiState(),
-        onGuideClick = {},
-    )
+    GuidesScreenContent {}
 }

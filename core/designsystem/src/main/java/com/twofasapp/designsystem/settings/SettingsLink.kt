@@ -26,6 +26,8 @@ import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwIcon
 import com.twofasapp.locale.TwLocale
 
+enum class SubtitleGravity { Bottom, End }
+
 @Composable
 fun SettingsLink(
     title: String,
@@ -33,11 +35,14 @@ fun SettingsLink(
     subtitle: String? = null,
     icon: Painter? = null,
     image: Painter? = null,
+    iconTint: Color? = null,
     textColor: Color = TwTheme.color.onSurfacePrimary,
     textColorSecondary: Color = TwTheme.color.onSurfaceSecondary,
     endContent: (@Composable () -> Unit)? = null,
     showEmptySpaceWhenNoIcon: Boolean = true,
     external: Boolean = false,
+    enabled: Boolean = true,
+    subtitleGravity: SubtitleGravity = SubtitleGravity.Bottom,
     alignCenterIcon: Boolean = true,
     onClick: (() -> Unit)? = null
 ) {
@@ -45,9 +50,10 @@ fun SettingsLink(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(onClick != null) { onClick?.invoke() }
+            .clickable(onClick != null && enabled) { onClick?.invoke() }
             .heightIn(min = 56.dp)
-            .padding(vertical = 16.dp)
+            .alpha(if (enabled) 1f else 0.3f)
+            .padding(vertical = if (endContent == null) 16.dp else 8.dp)
             .padding(start = 24.dp, end = 16.dp),
         verticalArrangement = Arrangement.Center
     ) {
@@ -55,7 +61,7 @@ fun SettingsLink(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(icon, image, showEmptySpaceWhenNoIcon)
+            Image(icon, image, iconTint, showEmptySpaceWhenNoIcon)
 
             Spacer(Modifier.size(24.dp))
 
@@ -66,7 +72,7 @@ fun SettingsLink(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                if (alignCenterIcon) {
+                if (alignCenterIcon && subtitleGravity == SubtitleGravity.Bottom) {
                     Subtitle(
                         subtitle = subtitle,
                         textColorSecondary = textColorSecondary,
@@ -82,12 +88,20 @@ fun SettingsLink(
                 TwIcon(
                     painter = TwIcons.ExternalLink,
                     tint = TwTheme.color.iconTint,
-                    modifier = Modifier.size(20.dp).alpha(0.7f)
+                    modifier = Modifier
+                        .size(20.dp)
+                        .alpha(0.7f)
+                )
+            } else if (subtitleGravity == SubtitleGravity.End) {
+                Subtitle(
+                    subtitle = subtitle,
+                    textColorSecondary = textColorSecondary,
+                    modifier = Modifier
                 )
             }
         }
 
-        if (alignCenterIcon.not()) {
+        if (alignCenterIcon.not() && subtitleGravity == SubtitleGravity.Bottom) {
             Subtitle(
                 subtitle = subtitle,
                 textColorSecondary = textColorSecondary,
@@ -103,10 +117,16 @@ fun SettingsLink(
 private fun Image(
     icon: Painter?,
     image: Painter?,
+    iconTint: Color?,
     showEmptySpaceWhenIconMissing: Boolean,
 ) {
     if (icon != null) {
-        Icon(painter = icon, contentDescription = null, modifier = Modifier.size(24.dp), tint = TwTheme.color.primary)
+        Icon(
+            painter = icon,
+            contentDescription = null,
+            modifier = Modifier.size(24.dp),
+            tint = if (iconTint != null) iconTint else TwTheme.color.primary
+        )
     } else if (image != null)
         Image(painter = image, contentDescription = null, modifier = Modifier.size(24.dp))
     else if (showEmptySpaceWhenIconMissing) {
@@ -172,6 +192,17 @@ private fun PreviewWithSubtitle() {
         title = TwLocale.strings.placeholder,
         subtitle = TwLocale.strings.placeholderMedium,
         icon = TwIcons.Placeholder,
+    )
+}
+
+@Preview
+@Composable
+private fun PreviewWithSubtitleEnd() {
+    SettingsLink(
+        title = TwLocale.strings.placeholder,
+        subtitle = TwLocale.strings.placeholder,
+        icon = TwIcons.Placeholder,
+        subtitleGravity = SubtitleGravity.End,
     )
 }
 

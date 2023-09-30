@@ -1,3 +1,4 @@
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
@@ -9,7 +10,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
     implementation(project(":data:session"))
     implementation(project(":core:android"))
     implementation(project(":core:common"))

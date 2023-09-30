@@ -1,10 +1,9 @@
 package com.twofasapp.prefs.internals
 
-import com.twofasapp.serialization.JsonSerializer
 import com.twofasapp.storage.Preferences
-import io.reactivex.Flowable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onSubscription
+import kotlinx.serialization.json.Json
 
 abstract class PreferenceModel<T>(
     private val preferences: Preferences
@@ -12,7 +11,12 @@ abstract class PreferenceModel<T>(
 
     protected abstract val serialize: (T) -> String
     protected abstract val deserialize: (String) -> T
-    protected val jsonSerializer: JsonSerializer = JsonSerializer()
+    protected val jsonSerializer: Json = Json {
+        ignoreUnknownKeys = true
+        encodeDefaults = true
+        explicitNulls = false
+        coerceInputValues = true
+    }
     protected open var useCache: Boolean = true
 
     override fun get(): T {
@@ -30,7 +34,6 @@ abstract class PreferenceModel<T>(
             if (useCache) {
                 cached = model
             }
-            processor.offer(model)
             flow.tryEmit(model)
         }
 
@@ -38,14 +41,6 @@ abstract class PreferenceModel<T>(
 
     override fun delete() = preferences.delete(key).also {
         cached = null
-    }
-
-    override fun observe(emitOnSubscribe: Boolean): Flowable<T> {
-        return if (emitOnSubscribe) {
-            processor.startWith(get())
-        } else {
-            processor
-        }
     }
 
     override fun flow(emitOnSubscribe: Boolean): Flow<T> {

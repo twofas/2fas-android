@@ -1,38 +1,39 @@
 package com.twofasapp.widgets
 
 import android.appwidget.AppWidgetManager
-import android.appwidget.AppWidgetProvider
 import android.content.Context
-import android.content.Intent
-import com.twofasapp.extensions.doNothing
-import com.twofasapp.widgets.presenter.WidgetPresenter
+import androidx.glance.appwidget.GlanceAppWidgetReceiver
+import com.twofasapp.feature.widget.GlanceWidget
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import timber.log.Timber
 
-class WidgetProvider : AppWidgetProvider(), KoinComponent {
+/**
+ * Never rename/move this class as it will cause widget to be removed.
+ * User would have to set it up again.
+ */
+class WidgetProvider : GlanceAppWidgetReceiver(), KoinComponent {
 
-    private val widgetPresenter: WidgetPresenter by inject()
+    override val glanceAppWidget: GlanceWidget = GlanceWidget()
 
-    companion object {
-        const val UPDATE_INTERVAL = 5_000L
-        const val INTERACTION_TIMEOUT = 60_000L
+    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
+        super.onUpdate(context, appWidgetManager, appWidgetIds)
+        Timber.d("onUpdate")
+        update(context)
+    }
+
+    override fun onEnabled(context: Context) {
+        super.onEnabled(context)
+        Timber.d("onEnabled")
+        update(context)
     }
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {
-        widgetPresenter.deleteWidget(appWidgetIds)
-        widgetPresenter.onDeleted()
+        super.onDeleted(context, appWidgetIds)
+        Timber.d("onDeleted: $appWidgetIds")
+        glanceAppWidget.deleteWidget(context, appWidgetIds.toList())
     }
 
-    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        widgetPresenter.updateWidget()
-    }
-
-    override fun onReceive(context: Context, intent: Intent) {
-        try {
-            super.onReceive(context, intent)
-            widgetPresenter.onReceive(intent)
-        } catch (e: Exception) {
-            doNothing()
-        }
+    private fun update(context: Context) {
+        glanceAppWidget.runUpdateWork(context)
     }
 }

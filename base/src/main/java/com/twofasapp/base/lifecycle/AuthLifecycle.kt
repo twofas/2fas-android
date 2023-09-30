@@ -4,7 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.twofasapp.base.AuthTracker
-import com.twofasapp.base.AutheticationStatus
+import com.twofasapp.base.AuthenticationStatus
 import com.twofasapp.prefs.ScopedNavigator
 
 class AuthLifecycle(
@@ -16,8 +16,8 @@ class AuthLifecycle(
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun onResume() {
         when (authTracker.shouldAuthenticate()) {
-            AutheticationStatus.VALID -> authAware?.onAuthenticated()
-            AutheticationStatus.EXPIRED -> navigator?.openAuthenticate()
+            AuthenticationStatus.Valid -> authAware?.onAuthenticated()
+            AuthenticationStatus.Expired -> navigator?.openAuthenticate()
         }
     }
 }

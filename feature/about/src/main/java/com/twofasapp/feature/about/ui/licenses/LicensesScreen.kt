@@ -13,12 +13,12 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.locale.TwLocale
 
 @Composable
-internal fun LicensesRoute() {
-    LicensesScreen()
+internal fun AboutLicensesScreen() {
+    ScreenContent()
 }
 
 @Composable
-internal fun LicensesScreen() {
+private fun ScreenContent() {
     val context = LocalContext.current
 
     Scaffold(

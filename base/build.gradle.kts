@@ -9,12 +9,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
+    implementation(project(":core:common"))
     implementation(project(":prefs"))
-    implementation(project(":resources"))
 
     implementation(libs.bundles.appCompat)
-    implementation(libs.bundles.rxJava)
     implementation(libs.bundles.compose)
 
     implementation(libs.kotlinCoroutines)

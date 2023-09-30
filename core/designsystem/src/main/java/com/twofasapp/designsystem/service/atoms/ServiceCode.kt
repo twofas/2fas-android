@@ -78,7 +78,7 @@ internal fun ServiceCode(
     }
 }
 
-internal fun String.formatCode(): String {
+fun String.formatCode(): String {
     if (isEmpty()) return ""
 
     return when (this.length) {

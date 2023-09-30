@@ -9,7 +9,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
+    implementation(project(":core:common"))
+
     implementation(libs.kotlinCoroutines)
     implementation(libs.kotlinSerialization)
     implementation(libs.securityCrypto)

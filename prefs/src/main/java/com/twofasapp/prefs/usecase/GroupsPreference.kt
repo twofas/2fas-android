@@ -3,6 +3,7 @@ package com.twofasapp.prefs.usecase
 import com.twofasapp.prefs.internals.PreferenceModel
 import com.twofasapp.prefs.model.Groups
 import com.twofasapp.storage.Preferences
+import kotlinx.serialization.encodeToString
 
 class GroupsPreference(preferences: Preferences) : PreferenceModel<Groups>(preferences) {
 
@@ -10,6 +11,6 @@ class GroupsPreference(preferences: Preferences) : PreferenceModel<Groups>(prefe
     override val default: Groups = Groups()
     override var useCache: Boolean = false
 
-    override val serialize: (Groups) -> String = { jsonSerializer.serialize(it) }
-    override val deserialize: (String) -> Groups = { jsonSerializer.deserialize(it) }
+    override val serialize: (Groups) -> String = { jsonSerializer.encodeToString(it) }
+    override val deserialize: (String) -> Groups = { jsonSerializer.decodeFromString(it) }
 }
