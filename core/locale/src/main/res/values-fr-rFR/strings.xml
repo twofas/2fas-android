@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sat, 02 Sep 2023 12:58:36 -0700
+ Exported at: Sat, 30 Sep 2023 04:37:32 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -76,7 +76,7 @@
     <string name="fingerprint__use_pin_title">Utiliser le code PIN cette fois-ci</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">Vous êtes génial !</string>
-    <string name="introduction__page_1_content">Votre téléphone vient de devenir une clé privée et sécurisée pour vos services en ligne grâce à l\'application 2FAS, utilisé par plus de 3 millions d\'utilisateurs dans le monde.</string>
+    <string name="introduction__page_1_content">Votre téléphone vient de devenir une clé privée et sécurisée pour vos services en ligne grâce à l\'application 2FAS, utilisé par plus de 6 millions d\'utilisateurs dans le monde.</string>
     <string name="introduction__page_2_title">Simple</string>
     <string name="introduction__page_2_content">Associez 2FAS à vos services en ligne. Activez la vérification en deux étapes en quelques secondes grâce au QR code.</string>
     <string name="introduction__page_3_title">Privée</string>
@@ -751,8 +751,8 @@
     <string name="tokens__add_success_description">Pour terminer l\'appairage du service, vous devez ressaisir ce token.</string>
     <string name="tokens__add_manual_title">Associer le service à 2FAS</string>
     <string name="tokens__add_manual_description">Saisissez le nom et la clé secrète.</string>
-    <string name="tokens__add_manual_service_name">Nom du service (obligatoire)</string>
-    <string name="tokens__add_manual_service_key">Clé secrète (obligatoire)</string>
+    <string name="tokens__add_manual_service_name">Nom du service</string>
+    <string name="tokens__add_manual_service_key">Clé secrète</string>
     <string name="tokens__add_manual_other">Autres paramètres</string>
     <string name="tokens__add_manual_other_optional">(facultatif)</string>
     <string name="tokens__add_manual_done_cta">Ajouter un service</string>
@@ -785,22 +785,27 @@
     <string name="fingerprint__biometric_invalidated">Les connexions biométriques ont été désactivées en raison de changements dans les paramètres biométriques du système.</string>
     <string name="tokens__last_pass_import">Importation de clés 2FA à partir de l\'application LastPass</string>
     <string name="tokens__last_pass_import_subtitle">Ce QR code autorise l\'importation de clés 2FA depuis LastPass</string>
-    <string name="tokens__add_with_guide">Guide me</string>
-    <string name="guides__select_title">Browse services</string>
-    <string name="guides__select_description">Select service to pair with the 2FAS app</string>
-    <string name="guides__select_provide_guide">Do you want to provide 2FA guides for your service?</string>
-    <string name="guides__select_provide_guide_cta">Apply now</string>
-    <string name="color__pink">Pink</string>
-    <string name="color__brown">Brown</string>
-    <string name="tokens__other_methods_header">Other methods?</string>
-    <string name="tokens__camera_is_unavailable_app_permission">Camera is unavailable. Check apps\' access permission in System Settings</string>
+    <string name="tokens__add_with_guide">Guidez moi</string>
+    <string name="guides__select_title">Parcourir les services</string>
+    <string name="guides__select_description">Sélectionner le service à appairer avec l\'appli 2FA</string>
+    <string name="guides__select_provide_guide">Voulez vous fournir des guides 2FA pour votre service ?</string>
+    <string name="guides__select_provide_guide_cta">Appliquer maintenant</string>
+    <string name="color__pink">Rose</string>
+    <string name="color__brown">Marron</string>
+    <string name="tokens__other_methods_header">Autres méthodes ?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">La caméra n\'est pas disponible. Vérifiez le droit d\'accès dans les réglages système</string>
     <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
-    <string name="tokens__camera_is_unavailable_app_permission_underline">System Settings</string>
-    <string name="commons__text_short_title">The provided text is too short (min. %d chars)</string>
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Réglages système</string>
+    <string name="commons__text_short_title">Le texte fourni est trop court (mini. %d carac)</string>
     <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
-    <string name="tokens__add_manual_advanced_description_highlight">is not recommended</string>
-    <string name="guides__guide_init_title">2FAS guide</string>
-    <string name="guides__guide_title">2FAS for %s</string>
-    <string name="guides__guide_universal_title">Universal 2FA Guide</string>
-    <string name="browser__save_choice">Save my choice</string>
+    <string name="tokens__add_manual_advanced_description_highlight">n\'est pas recommandé</string>
+    <string name="guides__guide_init_title">guide 2FA</string>
+    <string name="guides__guide_title">2FA pour %s</string>
+    <string name="guides__guide_universal_title">Guide 2FA universel</string>
+    <string name="browser__save_choice">Sauvegarder mon choix</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">Importation des clés 2FA depuis l\'application andOTP</string>
+    <string name="externalimport__andotp_success_msg">Ce fichier JSON permet d\'importer des clés depuis andOTP.</string>
+    <string name="externalimport__info_andotp_title">Importer les clés 2FA depuis andOTP</string>
+    <string name="externalimport__andotp_msg">Exportez vos comptes andOTP vers un fichier JSON non crypté et importez le en utilisant le bouton \"Choisir un fichier JSON\". N\'oubliez pas de supprimer le fichier après avoir réussie l\'importation.</string>
 </resources>

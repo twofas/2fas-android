@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: id-ID, Indonesian (Indonesia)
  Exported by: rafakob
- Exported at: Sat, 02 Sep 2023 12:58:36 -0700
+ Exported at: Sat, 30 Sep 2023 04:37:32 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -76,7 +76,7 @@
     <string name="fingerprint__use_pin_title">Gunakan PIN kali ini</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">Kamu luar biasa!</string>
-    <string name="introduction__page_1_content">Ponsel anda baru saja menjadi kunci pribadi dan aman untuk layanan online anda berkat aplikasi 2FAS - dipercaya oleh lebih dari 3 juta pengguna di seluruh dunia.</string>
+    <string name="introduction__page_1_content">Ponsel anda baru saja menjadi kunci pribadi dan aman untuk layanan online anda berkat aplikasi 2FAS - dipercaya oleh lebih dari 6 juta pengguna di seluruh dunia.</string>
     <string name="introduction__page_2_title">Simpel</string>
     <string name="introduction__page_2_content">Pasangkan 2FAS dengan layanan online Anda. Aktifkan keamanan dua faktor dalam hitungan detik dengan kode QR anda.</string>
     <string name="introduction__page_3_title">Pribadi</string>
@@ -745,8 +745,8 @@
     <string name="tokens__add_success_description">Untuk menyelesaikan pemasangan layanan, anda perlu mengetik ulang token ini.</string>
     <string name="tokens__add_manual_title">Pasangkan layanan dengan 2FAS</string>
     <string name="tokens__add_manual_description">Ketikkan nama layanan dan kunci rahasia.</string>
-    <string name="tokens__add_manual_service_name">Nama layanan (wajib)</string>
-    <string name="tokens__add_manual_service_key">Kunci Rahasia (wajib)</string>
+    <string name="tokens__add_manual_service_name">Nama layanan</string>
+    <string name="tokens__add_manual_service_key">Kunci Rahasia</string>
     <string name="tokens__add_manual_other">Pengaturan lainnya</string>
     <string name="tokens__add_manual_other_optional">(opsional)</string>
     <string name="tokens__add_manual_done_cta">Tambahkan layanan</string>
@@ -797,4 +797,9 @@
     <string name="guides__guide_title">2FAS untuk %s</string>
     <string name="guides__guide_universal_title">Panduan 2FA Universal</string>
     <string name="browser__save_choice">Menyimpan pilihan saya</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">Mengimpor token 2FA dari aplikasi andOTP</string>
+    <string name="externalimport__andotp_success_msg">File JSON ini mengizinkan pengimporan token dari andOTP.</string>
+    <string name="externalimport__info_andotp_title">Impor token dari andOTP</string>
+    <string name="externalimport__andotp_msg">Ekspor akun anda dari andOTP ke file JSON yang tidak terenkripsi dan unggah menggunakan tombol \"Pilih file JSON\". Ingatlah untuk menghapus file setelah impor berhasil.</string>
 </resources>
