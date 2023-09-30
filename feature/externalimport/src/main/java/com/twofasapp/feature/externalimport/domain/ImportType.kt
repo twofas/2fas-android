@@ -8,6 +8,7 @@ enum class ImportType {
     Raivo,
     LastPass,
     AuthenticatorPro,
+    AndOtp,
     ;
 }
 
@@ -18,4 +19,5 @@ val ImportType.image: Int
         ImportType.Raivo -> R.drawable.ic_import_raivo
         ImportType.LastPass -> R.drawable.ic_import_lastpass
         ImportType.AuthenticatorPro -> R.drawable.ic_import_authenticatorpro
+        ImportType.AndOtp -> R.drawable.ic_import_andotp
     }

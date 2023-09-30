@@ -4,12 +4,13 @@ import android.net.Uri
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.android.navigation.getOrNull
+import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.ktx.decodeBase64
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.externalimport.domain.AegisImporter
+import com.twofasapp.feature.externalimport.domain.AndOtpImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
 import com.twofasapp.feature.externalimport.domain.ExternalImport
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
@@ -29,6 +30,7 @@ internal class ExternalImportResultViewModel(
     private val raivoImporter: RaivoImporter,
     private val lastPassImporter: LastPassImporter,
     private val authenticatorProImporter: AuthenticatorProImporter,
+    private val andOtpImporter: AndOtpImporter,
 ) : ViewModel() {
 
     private val importType: ImportType = enumValueOf(savedStateHandle.getOrThrow(NavArg.ImportType.name))
@@ -66,6 +68,7 @@ internal class ExternalImportResultViewModel(
                 ImportType.Raivo -> raivoImporter.read(importFileUri.orEmpty().decodeBase64())
                 ImportType.LastPass -> lastPassImporter.read(importFileUri.orEmpty().decodeBase64())
                 ImportType.AuthenticatorPro -> authenticatorProImporter.read(importFileUri.orEmpty().decodeBase64())
+                ImportType.AndOtp -> andOtpImporter.read(importFileUri.orEmpty().decodeBase64())
             }
 
             uiState.update { state ->

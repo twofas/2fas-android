@@ -113,10 +113,10 @@ internal class AegisImporter(
     private fun parseParams(entry: Entry): Map<String, String> {
         val params = mutableMapOf<String, String>()
 
-        entry.info.algo?.let { params[OtpAuthLink.ALGORITHM_PARAM] = it }
-        entry.info.period?.let { params[OtpAuthLink.PERIOD_PARAM] = it.toString() }
-        entry.info.digits?.let { params[OtpAuthLink.DIGITS_PARAM] = it.toString() }
-        entry.info.counter?.let { params[OtpAuthLink.COUNTER] = it.toString() }
+        entry.info.algo?.let { params[OtpAuthLink.ParamAlgorithm] = it }
+        entry.info.period?.let { params[OtpAuthLink.ParamPeriod] = it.toString() }
+        entry.info.digits?.let { params[OtpAuthLink.ParamDigits] = it.toString() }
+        entry.info.counter?.let { params[OtpAuthLink.ParamCounter] = it.toString() }
 
         return params
     }

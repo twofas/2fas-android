@@ -64,6 +64,7 @@ private fun ScreenContent(
         ImportType.Raivo -> strings.externalImportRaivo
         ImportType.LastPass -> strings.externalImportLastPass
         ImportType.AuthenticatorPro -> strings.externalImportAuthenticatorPro
+        ImportType.AndOtp -> strings.externalImportAndOtp
     }
 
     val description = when (uiState.importType) {
@@ -72,6 +73,7 @@ private fun ScreenContent(
         ImportType.Raivo -> strings.externalImportRaivoMsg
         ImportType.LastPass -> strings.externalImportLastPassMsg
         ImportType.AuthenticatorPro -> strings.externalImportAuthenticatorProMsg
+        ImportType.AndOtp -> strings.externalImportAndOtpMsg
     }
 
     val ctaPrimary = when (uiState.importType) {
@@ -80,6 +82,7 @@ private fun ScreenContent(
         ImportType.Raivo -> strings.externalImportChooseJsonCta
         ImportType.LastPass -> strings.externalImportChooseJsonCta
         ImportType.AuthenticatorPro -> strings.externalImportChooseTxtCta
+        ImportType.AndOtp -> strings.externalImportChooseJsonCta
     }
 
     val ctaSecondary = when (uiState.importType) {
@@ -106,6 +109,7 @@ private fun ScreenContent(
                     ImportType.Raivo -> launcher.launch(arrayOf("application/json"))
                     ImportType.LastPass -> launcher.launch(arrayOf("application/json"))
                     ImportType.AuthenticatorPro -> launcher.launch(arrayOf("text/*"))
+                    ImportType.AndOtp -> launcher.launch(arrayOf("application/json"))
                 }
             },
             ctaSecondaryClick = {

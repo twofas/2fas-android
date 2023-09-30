@@ -94,10 +94,10 @@ internal class RaivoImporter(
     private fun parseParams(entry: Entry): Map<String, String> {
         val params = mutableMapOf<String, String>()
 
-        entry.algorithm?.let { params[OtpAuthLink.ALGORITHM_PARAM] = it }
-        entry.timer?.let { params[OtpAuthLink.PERIOD_PARAM] = it }
-        entry.digits?.let { params[OtpAuthLink.DIGITS_PARAM] = it }
-        entry.counter?.let { params[OtpAuthLink.COUNTER] = it }
+        entry.algorithm?.let { params[OtpAuthLink.ParamAlgorithm] = it }
+        entry.timer?.let { params[OtpAuthLink.ParamPeriod] = it }
+        entry.digits?.let { params[OtpAuthLink.ParamDigits] = it }
+        entry.counter?.let { params[OtpAuthLink.ParamCounter] = it }
 
         return params
     }

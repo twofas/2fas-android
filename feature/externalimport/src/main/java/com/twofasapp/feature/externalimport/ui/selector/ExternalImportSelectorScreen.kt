@@ -73,6 +73,14 @@ internal fun ExternalImportSelectorScreen(
             }
 
             item {
+                SettingsLink(
+                    title = TwLocale.strings.externalImportAndOtp,
+                    image = painterResource(id = R.drawable.logo_andotp),
+                    onClick = { onImportTypeSelected(ImportType.AndOtp) }
+                )
+            }
+
+            item {
                 SettingsDescription(text = TwLocale.strings.externalImportNotice)
             }
         }

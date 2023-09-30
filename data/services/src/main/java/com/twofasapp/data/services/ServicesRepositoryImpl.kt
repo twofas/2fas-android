@@ -228,9 +228,9 @@ internal class ServicesRepositoryImpl(
 
     override fun isServiceValid(link: OtpAuthLink): Boolean {
         return try {
-            val otpAlgorithm = link.params[OtpAuthLink.ALGORITHM_PARAM]
-            val otpDigits = link.params[OtpAuthLink.DIGITS_PARAM]?.toIntOrNull()
-            val otpPeriod = link.params[OtpAuthLink.PERIOD_PARAM]?.toIntOrNull()
+            val otpAlgorithm = link.params[OtpAuthLink.ParamAlgorithm]
+            val otpDigits = link.params[OtpAuthLink.ParamDigits]?.toIntOrNull()
+            val otpPeriod = link.params[OtpAuthLink.ParamPeriod]?.toIntOrNull()
 
             val algorithm = when {
                 otpAlgorithm == null -> Service.Algorithm.SHA1

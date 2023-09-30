@@ -28,25 +28,25 @@ object ServiceParser {
         }
 
         val digits = try {
-            link.params[OtpAuthLink.DIGITS_PARAM]?.toInt()
+            link.params[OtpAuthLink.ParamDigits]?.toInt()
         } catch (e: Exception) {
             null
         }
 
         val period = try {
-            link.params[OtpAuthLink.PERIOD_PARAM]?.toInt()
+            link.params[OtpAuthLink.ParamPeriod]?.toInt()
         } catch (e: Exception) {
             null
         }
 
         val algorithm = try {
-            link.params[OtpAuthLink.ALGORITHM_PARAM]
+            link.params[OtpAuthLink.ParamAlgorithm]
         } catch (e: Exception) {
             null
         }
 
         val counter = try {
-            link.params[OtpAuthLink.COUNTER]?.toInt()
+            link.params[OtpAuthLink.ParamCounter]?.toInt()
         } catch (e: Exception) {
             if (link.type.equals("hotp", true)) {
                 1

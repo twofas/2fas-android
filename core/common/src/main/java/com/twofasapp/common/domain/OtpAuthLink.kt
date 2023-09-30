@@ -9,9 +9,9 @@ data class OtpAuthLink(
     val link: String?,
 ) {
     companion object {
-        const val DIGITS_PARAM = "digits"
-        const val PERIOD_PARAM = "period"
-        const val ALGORITHM_PARAM = "algorithm"
-        const val COUNTER = "counter"
+        const val ParamDigits = "digits"
+        const val ParamPeriod = "period"
+        const val ParamAlgorithm = "algorithm"
+        const val ParamCounter = "counter"
     }
 }

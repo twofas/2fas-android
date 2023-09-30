@@ -115,6 +115,7 @@ private fun Result(
         ImportType.Raivo -> strings.externalImportResultRaivoTitle
         ImportType.LastPass -> strings.externalImportResultLastPassTitle
         ImportType.AuthenticatorPro -> strings.externalImportResultAuthenticatorProTitle
+        ImportType.AndOtp -> strings.externalImportResultAndOtpTitle
     }
 
     val description = when (readResult) {
@@ -125,6 +126,7 @@ private fun Result(
                 ImportType.Raivo -> strings.externalImportResultSuccessRaivoMsg
                 ImportType.LastPass -> strings.externalImportResultSuccessLastPassMsg
                 ImportType.AuthenticatorPro -> strings.externalImportResultSuccessAuthenticatorProMsg
+                ImportType.AndOtp -> strings.externalImportResultSuccessAndOtpMsg
             }
         }
 

@@ -2,33 +2,31 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.otp.ServiceParser
-import com.twofasapp.common.domain.OtpAuthLink
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 
-internal class LastPassImporter(
+internal class AndOtpImporter(
     private val context: Context,
     private val jsonSerializer: Json,
     private val servicesRepository: ServicesRepository,
 ) : ExternalImporter {
 
-    @Serializable
-    data class Model(
-        val accounts: List<Account>,
-    )
 
     @Serializable
-    data class Account(
-        val issuerName: String,
-        val userName: String,
+    data class Model(
         val secret: String,
-        val algorithm: String,
-        val timeStep: Int,
-        val digits: Int,
+        val issuer: String?,
+        val label: String?,
+        val digits: Int?,
+        val period: Int?,
+        val counter: Int?,
+        val type: String?,
+        val algorithm: String?,
     )
 
     override fun isSchemaSupported(content: String): Boolean {
@@ -48,20 +46,27 @@ internal class LastPassImporter(
 
             val inputStream = context.contentResolver.openInputStream(fileUri)!!
             val json = inputStream.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
-            val model = jsonSerializer.decodeFromString<Model>(json)
+            val models = jsonSerializer.decodeFromString<List<Model>>(json)
 
             fileDescriptor?.close()
             inputStream.close()
 
-            val totalServices = model.accounts.size
+            val totalServices = models.size
             val servicesToImport = mutableListOf<Service?>()
 
-            model.accounts.filter { it.digits == 6 || it.digits == 7 || it.digits == 8 }
-                .filter { it.timeStep == 30 || it.timeStep == 60 || it.timeStep == 90 }.filter {
-                    it.algorithm.equals("SHA1", true) || it.algorithm.equals("SHA224", true) || it.algorithm.equals(
-                        "SHA256", true
-                    ) || it.algorithm.equals("SHA384", true) || it.algorithm.equals("SHA512", true)
-                }.filter { servicesRepository.isSecretValid(it.secret) }.forEach { entry ->
+            models
+                .filter { it.digits == 6 || it.digits == 7 || it.digits == 8 || it.digits == null }
+                .filter { it.period == 30 || it.period == 60 || it.period == 90 || it.period == null }
+                .filter {
+                    it.algorithm.equals("SHA1", true) ||
+                            it.algorithm.equals("SHA224", true) ||
+                            it.algorithm.equals("SHA256", true) ||
+                            it.algorithm.equals("SHA384", true) ||
+                            it.algorithm.equals("SHA512", true) ||
+                            it.algorithm == null
+                }
+                .filter { servicesRepository.isSecretValid(it.secret) }
+                .forEach { entry ->
                     servicesToImport.add(parseService(entry))
                 }
 
@@ -76,24 +81,25 @@ internal class LastPassImporter(
         }
     }
 
-    private fun parseService(account: Account): Service? {
+    private fun parseService(model: Model): Service? {
         val otpLink = OtpAuthLink(
-            type = "TOTP",
-            label = account.userName,
-            secret = account.secret,
-            issuer = account.issuerName,
-            params = parseParams(account),
+            type = model.type ?: "TOTP",
+            label = model.label ?: "",
+            secret = model.secret,
+            issuer = model.issuer,
+            params = parseParams(model),
             link = null,
         )
 
         return ServiceParser.parseService(otpLink)
     }
 
-    private fun parseParams(account: Account): Map<String, String> {
+    private fun parseParams(model: Model): Map<String, String> {
         val params = mutableMapOf<String, String>()
-        account.algorithm.let { params[OtpAuthLink.ParamAlgorithm] = it }
-        account.timeStep.let { params[OtpAuthLink.ParamPeriod] = it.toString() }
-        account.digits.let { params[OtpAuthLink.ParamDigits] = it.toString() }
+        model.algorithm?.let { params[OtpAuthLink.ParamAlgorithm] = it }
+        model.counter?.let { params[OtpAuthLink.ParamPeriod] = it.toString() }
+        model.digits?.let { params[OtpAuthLink.ParamDigits] = it.toString() }
+        model.counter?.let { params[OtpAuthLink.ParamCounter] = it.toString() }
         return params
     }
 }
