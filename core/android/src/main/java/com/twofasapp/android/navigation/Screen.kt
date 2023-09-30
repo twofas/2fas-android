@@ -32,7 +32,7 @@ sealed class Screen(val route: String) {
     data object ExternalImportResult :
         Screen("externalimport/result?importType={${NavArg.ImportType.name}}&importFileUri={${NavArg.ImportFileUri.name}}&importFileContent={${NavArg.ImportFileContent.name}}")
 
-    data object Backup : Screen("backup")
+    data object Backup : Screen("backup?turnOnBackup={${NavArg.TurnOnBackup.name}}")
     data object BackupSettings : Screen("backup/settings")
     data object BackupExport : Screen("backup/export")
     data object BackupImport : Screen("backup/import?{${NavArg.ImportFileUri.name}}")

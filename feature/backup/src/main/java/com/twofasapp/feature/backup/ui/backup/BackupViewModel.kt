@@ -1,7 +1,10 @@
 package com.twofasapp.feature.backup.ui.backup
 
 import androidx.activity.result.ActivityResult
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.twofasapp.android.navigation.NavArg
+import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.cloud.googleauth.GoogleAuth
 import com.twofasapp.data.cloud.googleauth.SignInResult
@@ -17,11 +20,14 @@ import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.update
 
 internal class BackupViewModel(
+    savedStateHandle: SavedStateHandle,
     private val sessionRepository: SessionRepository,
     private val servicesRepository: ServicesRepository,
     private val backupRepository: BackupRepository,
     private val googleAuth: GoogleAuth,
 ) : ViewModel() {
+
+    private val autoTurnOnBackup: Boolean = savedStateHandle.getOrThrow(NavArg.TurnOnBackup.name)
 
     val uiState: MutableStateFlow<BackupUiState> = MutableStateFlow(BackupUiState())
 
@@ -89,6 +95,10 @@ internal class BackupViewModel(
                     }
                 }
             }
+        }
+
+        if (autoTurnOnBackup) {
+            turnOnSync()
         }
     }
 

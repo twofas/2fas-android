@@ -104,14 +104,14 @@ internal fun ServicesRoute(
         onSortChange = { viewModel.updateSort(it) },
         onSearchQueryChange = { viewModel.search(it) },
         onSearchFocusChange = { viewModel.searchFocused(it) },
-        onOpenBackupClick = { listener.openBackup() },
+        onOpenBackupClick = { listener.openBackup(it) },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
         onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
         onRevealClick = { viewModel.reveal(it) }
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ServicesScreen(
     uiState: ServicesUiState,
@@ -131,7 +131,7 @@ private fun ServicesScreen(
     onSortChange: (Int) -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
-    onOpenBackupClick: () -> Unit = {},
+    onOpenBackupClick: (Boolean) -> Unit = {},
     onDismissSyncReminderClick: () -> Unit = {},
     onIncrementHotpCounterClick: (Service) -> Unit = {},
     onRevealClick: (Service) -> Unit = {},
@@ -356,7 +356,7 @@ private fun ServicesScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(vertical = 8.dp),
-                                onOpenBackupClick = onOpenBackupClick,
+                                onOpenBackupClick = { onOpenBackupClick(false) },
                             )
                         }
                     }
@@ -367,7 +367,7 @@ private fun ServicesScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(vertical = 16.dp),
-                                onOpenBackupClick = onOpenBackupClick,
+                                onOpenBackupClick = { onOpenBackupClick(true) },
                                 onDismissClick = onDismissSyncReminderClick,
                             )
                         }

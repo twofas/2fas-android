@@ -5,7 +5,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.getOrThrow
-import com.twofasapp.android.navigation.getOrThrowNullable
+import com.twofasapp.android.navigation.getOrNull
 import com.twofasapp.common.ktx.decodeBase64
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
@@ -32,8 +32,8 @@ internal class ExternalImportResultViewModel(
 ) : ViewModel() {
 
     private val importType: ImportType = enumValueOf(savedStateHandle.getOrThrow(NavArg.ImportType.name))
-    private val importFileUri = savedStateHandle.getOrThrowNullable<String>(NavArg.ImportFileUri.name)
-    private val importFileContent = savedStateHandle.getOrThrowNullable<String>(NavArg.ImportFileContent.name)
+    private val importFileUri = savedStateHandle.getOrNull<String>(NavArg.ImportFileUri.name)
+    private val importFileContent = savedStateHandle.getOrNull<String>(NavArg.ImportFileContent.name)
 
     val uiState = MutableStateFlow(ExternalImportResultUiState())
 

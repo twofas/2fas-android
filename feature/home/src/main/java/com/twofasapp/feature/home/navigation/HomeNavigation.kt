@@ -70,7 +70,7 @@ interface HomeNavigationListener {
     fun openExternalImport()
     fun openBrowserExt()
     fun openSecurity(activity: Activity)
-    fun openBackup()
+    fun openBackup(turnOnBackup: Boolean)
     fun openAppSettings()
     fun openTrash()
     fun openNotifications()

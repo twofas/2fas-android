@@ -124,8 +124,8 @@ internal fun MainNavHost(
                         navController.navigate(Screen.Security.route)
                     }
 
-                    override fun openBackup() {
-                        navController.navigate(Screen.Backup.route)
+                    override fun openBackup(turnOnBackup: Boolean) {
+                        navController.navigate(Screen.Backup.routeWithArgs(NavArg.TurnOnBackup to turnOnBackup))
                     }
 
                     override fun openAppSettings() {
@@ -208,7 +208,7 @@ internal fun MainNavHost(
                 )
             }
 
-            composable(Screen.Backup.route) {
+            composable(Screen.Backup.route, listOf(NavArg.TurnOnBackup)) {
                 BackupRoute(
                     openSettings = { navController.navigate(Screen.BackupSettings.route) },
                     openExport = { navController.navigate(Screen.BackupExport.route) },

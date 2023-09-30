@@ -65,7 +65,7 @@ private fun SettingsScreen(
 
             item {
                 SettingsLink(title = TwLocale.strings.settingsBackup, icon = TwIcons.CloudUpload) {
-                    listener.openBackup()
+                    listener.openBackup(false)
                 }
             }
 

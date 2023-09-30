@@ -23,7 +23,7 @@ fun <T> SavedStateHandle.getOrThrow(key: String): T {
     return get<T>(key) ?: throw IllegalNavArgException(key)
 }
 
-fun <T> SavedStateHandle.getOrThrowNullable(key: String): T? {
+fun <T> SavedStateHandle.getOrNull(key: String): T? {
     return get<T>(key)
 }
 
