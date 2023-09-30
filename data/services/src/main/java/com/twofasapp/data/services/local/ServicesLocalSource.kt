@@ -48,7 +48,7 @@ internal class ServicesLocalSource(
 
     fun observeServices(): Flow<List<Service>> {
         return dao.observe().map { list ->
-            list.filter { it.isDeleted == false }.map { it.asDomain() }
+            list.filter { it.isDeleted != true }.map { it.asDomain() }
         }
     }
 
@@ -59,7 +59,7 @@ internal class ServicesLocalSource(
     }
 
     suspend fun getServices(): List<Service> {
-        return dao.select().filter { it.isDeleted == false }.map { it.asDomain() }
+        return dao.select().filter { it.isDeleted != true }.map { it.asDomain() }
     }
 
     suspend fun getServicesIncludingDeleted(): List<Service> {

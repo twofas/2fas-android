@@ -2,7 +2,6 @@ package com.twofasapp.feature.home.navigation
 
 import android.app.Activity
 import androidx.navigation.NavController
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.twofasapp.android.navigation.NavArg
@@ -20,24 +19,17 @@ fun NavGraphBuilder.homeNavigation(
 ) {
     val bottomBarListener = object : BottomBarListener {
         override fun openHome() {
-            navController.navigate(Screen.Services.route) {
-                popUpTo(navController.graph.findStartDestination().id) {
-                    saveState = true
-                }
-                launchSingleTop = true
-                restoreState = true
-            }
+            navController.popBackStack(
+                route = Screen.Services.route,
+                inclusive = false,
+                saveState = true
+            )
         }
 
         override fun openSettings() {
             navController.navigate(Screen.Settings.route) {
-                popUpTo(navController.graph.findStartDestination().id) {
-                    saveState = true
-                }
-                launchSingleTop = true
-                restoreState = true
+                popUpTo(Screen.Services.route) { inclusive = false }
             }
-
         }
     }
 

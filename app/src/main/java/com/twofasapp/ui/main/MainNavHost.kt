@@ -52,6 +52,7 @@ import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
 import com.twofasapp.feature.security.navigation.securityNavigation
 import com.twofasapp.feature.security.ui.lock.LockActivity
+import com.twofasapp.feature.startup.navigation.StartupBackupRoute
 import com.twofasapp.feature.startup.navigation.StartupRoute
 import com.twofasapp.feature.trash.navigation.DisposeRoute
 import com.twofasapp.feature.trash.navigation.TrashRoute
@@ -102,7 +103,18 @@ internal fun MainNavHost(
         ) {
 
             composable(Screen.Startup.route) {
-                StartupRoute(openHome = { navController.navigate(Screen.Services.route) { popUpTo(0) } })
+                StartupRoute(
+                    openStartupBackup = {
+                        navController.navigate(Screen.Services.route) { popUpTo(0) }
+                        navController.navigate(Screen.StartupBackup.route) { popUpTo(Screen.Services.route) }
+                    })
+            }
+
+            composable(Screen.StartupBackup.route) {
+                StartupBackupRoute(
+                    openHome = { navController.popBackStack()},
+                    openBackup = { navController.navigate(Screen.Backup.routeWithArgs(NavArg.TurnOnBackup to true)) { popUpTo(Screen.Services.route) } },
+                )
             }
 
             homeNavigation(
@@ -213,6 +225,7 @@ internal fun MainNavHost(
                     openSettings = { navController.navigate(Screen.BackupSettings.route) },
                     openExport = { navController.navigate(Screen.BackupExport.route) },
                     openImport = { navController.navigate(Screen.BackupImport.route) },
+                    goBack = { navController.popBackStack() }
                 )
             }
 

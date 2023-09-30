@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: id-ID, Indonesian (Indonesia)
  Exported by: rafakob
- Exported at: Sat, 30 Sep 2023 04:37:32 -0700
+ Exported at: Sat, 30 Sep 2023 08:15:01 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -802,4 +802,7 @@
     <string name="externalimport__andotp_success_msg">File JSON ini mengizinkan pengimporan token dari andOTP.</string>
     <string name="externalimport__info_andotp_title">Impor token dari andOTP</string>
     <string name="externalimport__andotp_msg">Ekspor akun anda dari andOTP ke file JSON yang tidak terenkripsi dan unggah menggunakan tombol \"Pilih file JSON\". Ingatlah untuk menghapus file setelah impor berhasil.</string>
+    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
+    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
+    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
 </resources>

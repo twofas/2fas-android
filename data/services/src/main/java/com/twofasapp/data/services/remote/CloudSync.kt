@@ -267,7 +267,7 @@ class CloudSync(
                     return RemoteStatus.Success(
                         services = emptyList(),
                         groups = emptyList(),
-                        lastSyncTime = 0,
+                        lastSyncTime = now,
                         schemaVersion = BackupContent.CurrentSchema,
                         appVersionCode = 0
                     )

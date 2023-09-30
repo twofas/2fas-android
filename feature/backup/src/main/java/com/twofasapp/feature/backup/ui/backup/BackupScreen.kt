@@ -32,7 +32,9 @@ import com.twofasapp.designsystem.common.TwSwitch
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.InfoDialog
 import com.twofasapp.designsystem.dialog.PasswordDialog
+import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.ktx.strings
+import com.twofasapp.designsystem.ktx.toastLong
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsHeader
 import com.twofasapp.designsystem.settings.SettingsLink
@@ -45,6 +47,7 @@ internal fun BackupScreen(
     openSettings: () -> Unit,
     openExport: () -> Unit,
     openImport: () -> Unit,
+    goBack: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -57,7 +60,8 @@ internal fun BackupScreen(
         onExportClick = openExport,
         onImportClick = openImport,
         onEventConsumed = { viewModel.consumeEvent(it) },
-        onSignInResult = { viewModel.handleSignInResult(it) }
+        onSignInResult = { viewModel.handleSignInResult(it) },
+        goBack = goBack,
     )
 }
 
@@ -72,7 +76,9 @@ private fun ScreenContent(
     onImportClick: () -> Unit = {},
     onEventConsumed: (BackupUiEvent) -> Unit = {},
     onSignInResult: (ActivityResult) -> Unit = {},
+    goBack: () -> Unit = {},
 ) {
+    val context = LocalContext.currentActivity
     val strings = LocalContext.strings
     var showPasswordDialog by remember { mutableStateOf(false) }
     var showPasswordError by remember { mutableStateOf(false) }
@@ -85,6 +91,8 @@ private fun ScreenContent(
 
     uiState.events.firstOrNull()?.let { event ->
         LaunchedEffect(Unit) {
+            onEventConsumed(event)
+
             when (event) {
                 is BackupUiEvent.SignInToGoogle -> signInLauncher.launch(event.signInIntent)
                 is BackupUiEvent.SignInPermissionError -> {
@@ -111,10 +119,12 @@ private fun ScreenContent(
                 }
 
                 is BackupUiEvent.ShowPasswordDialog -> showPasswordDialog = true
+                is BackupUiEvent.FinishSuccess -> {
+                    context.toastLong(R.string.introduction__backup_success)
+                    goBack()
+                }
             }
         }
-
-        onEventConsumed(event)
     }
 
     Scaffold(

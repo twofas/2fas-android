@@ -48,6 +48,9 @@ class Strings(c: Context) {
     val startupStepFourHeader = c.getString(R.string.introduction__page_4_title)
     val startupStepFourBody = c.getString(R.string.introduction__page_4_content_android)
     val startupStartCta = c.getString(R.string.introduction__title)
+    val startupBackupBody = c.getString(R.string.introduction__backup_description)
+    val startupBackupSuccessMsg = c.getString(R.string.introduction__backup_success)
+    val startupBackupCloseCta = c.getString(R.string.introduction__backup_take_risk_cta)
 
     val servicesEmptyBody = c.getString(R.string.introduction__description_title)
     val servicesEmptyImportCta = c.getString(R.string.introduction__import_external_app)

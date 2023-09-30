@@ -11,11 +11,13 @@ fun BackupRoute(
     openSettings: () -> Unit,
     openExport: () -> Unit,
     openImport: () -> Unit,
+    goBack: () -> Unit,
 ) {
     BackupScreen(
         openSettings = openSettings,
         openExport = openExport,
         openImport = openImport,
+        goBack = goBack,
     )
 }
 

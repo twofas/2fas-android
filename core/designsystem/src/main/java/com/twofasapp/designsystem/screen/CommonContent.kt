@@ -80,6 +80,7 @@ fun CommonContent(
         }
 
         if (ctaSecondaryText != null) {
+            Spacer(modifier = Modifier.height(4.dp))
             TwTextButton(
                 text = ctaSecondaryText,
                 onClick = ctaSecondaryClick,

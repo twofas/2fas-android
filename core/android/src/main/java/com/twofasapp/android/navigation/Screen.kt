@@ -9,6 +9,7 @@ sealed class Screen(val route: String) {
     }
 
     data object Startup : Screen("startup")
+    data object StartupBackup : Screen("startup/backup")
     data object Services : Screen("services")
     data object Settings : Screen("settings")
     data object EditService : Screen("services/{${NavArg.ServiceId.name}}")

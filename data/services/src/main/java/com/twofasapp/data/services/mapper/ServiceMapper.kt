@@ -132,7 +132,7 @@ internal fun BackupService.asDomain(
         serviceTypeId = serviceTypeId ?: serviceTypeIdFromLegacy,
         secret = secret,
         name = name,
-        info = otp.label,
+        info = otp.account ?: otp.label,
         authType = otp.tokenType?.let { enumValueOf<Service.AuthType>(it) } ?: Service.AuthType.TOTP,
         link = otp.link,
         issuer = otp.issuer,

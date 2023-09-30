@@ -1,5 +1,6 @@
-package com.twofasapp.feature.startup.ui
+package com.twofasapp.feature.startup.ui.startup
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,12 +29,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
-import com.google.accompanist.pager.rememberPagerState
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.feature.startup.R
 import com.twofasapp.locale.TwLocale
@@ -41,31 +41,23 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun StartupScreen(
     viewModel: StartupViewModel = koinViewModel(),
-    openHome: () -> Unit
+    openStartupBackup: () -> Unit
 ) {
     ScreenContent(
-        onTermsClick = { viewModel.onTermsClicked() },
-        onNextClick = { viewModel.onNextClicked(it) },
         onStartUsingClick = {
             viewModel.onStartUsingClicked()
-            openHome()
-        },
-        onSkipClick = {
-            viewModel.onSkipClicked()
-            openHome()
+            openStartupBackup()
         },
     )
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun ScreenContent(
-    onTermsClick: () -> Unit,
-    onNextClick: (Int) -> Unit,
     onStartUsingClick: () -> Unit,
-    onSkipClick: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(pageCount = { 4 })
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
 
@@ -82,7 +74,6 @@ internal fun ScreenContent(
         ) {
 
             HorizontalPager(
-                count = 4,
                 state = pagerState,
                 modifier = Modifier.weight(1f)
             ) { page ->
@@ -121,10 +112,7 @@ internal fun ScreenContent(
                     color = TwTheme.color.onSurfaceSecondary,
                     modifier = Modifier
                         .clip(TwTheme.shape.roundedDefault)
-                        .clickable {
-                            onTermsClick()
-                            uriHandler.openSafely(TwLocale.links.terms, context)
-                        }
+                        .clickable { uriHandler.openSafely(TwLocale.links.terms, context) }
                         .padding(4.dp)
                 )
             } else {
@@ -148,27 +136,14 @@ internal fun ScreenContent(
                 },
                 modifier = Modifier.padding(vertical = 24.dp),
                 onClick = {
-                    if (pagerState.currentPage == pagerState.pageCount - 1) {
+                    if (pagerState.canScrollForward.not()) {
                         onStartUsingClick()
-                    } else {
-                        onNextClick(pagerState.currentPage)
                     }
 
                     scope.launch {
                         pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                     }
                 }
-
-            )
-        }
-
-        if (pagerState.currentPage != 0) {
-            TwTextButton(
-                text = TwLocale.strings.commonSkip,
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(8.dp),
-                onClick = { onSkipClick() }
             )
         }
     }

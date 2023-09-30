@@ -63,6 +63,10 @@ internal class BackupViewModel(
                                 error = null,
                             )
                         }
+
+                        if (cloudBackupStatus.active && autoTurnOnBackup && cloudSyncStatus is CloudSyncStatus.Synced) {
+                            publishEvent(BackupUiEvent.FinishSuccess)
+                        }
                     }
 
                     is CloudSyncStatus.Syncing -> {

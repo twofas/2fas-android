@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Sat, 30 Sep 2023 04:37:32 -0700
+ Exported at: Sat, 30 Sep 2023 08:15:01 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -808,4 +808,7 @@
     <string name="externalimport__andotp_success_msg">Este arquivo JSON permite importar códigos do andOTP.</string>
     <string name="externalimport__info_andotp_title">Importar códigos do andOTP</string>
     <string name="externalimport__andotp_msg">Exporte suas contas do aplicativo andOTP para um arquivo JSON não criptografado e carregue-o utilizando o botão \"Escolher arquivo JSON\". Lembre-se de remover o arquivo após uma importação bem-sucedida.</string>
+    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
+    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
+    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
 </resources>

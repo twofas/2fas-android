@@ -24,7 +24,6 @@ room = "2.5.2"
 
 [libraries]
 accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
-accompanistPager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
 accompanistPagerIndicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
 accompanistPermissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 accompanistSystemUi = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
@@ -107,7 +106,6 @@ workManager = "androidx.work:work-runtime-ktx:2.8.1"
 [bundles]
 accompanist = [
     "accompanistNavigation",
-    "accompanistPager",
     "accompanistPagerIndicators",
     "accompanistPermissions",
     "accompanistSystemUi",
