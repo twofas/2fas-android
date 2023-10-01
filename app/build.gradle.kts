@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidApplication)
@@ -12,6 +14,16 @@ plugins {
 
 android {
     namespace = "com.twofasapp"
+
+    defaultConfig {
+        applicationId = "com.twofasapp"
+        versionName = "4.7.0"
+        versionCode = 5000000
+
+        val versionCodeOffset = 5000000
+
+        archivesName.set("TwoFas-$versionName-${versionCode!! - versionCodeOffset}")
+    }
 
     ksp {
         arg("room.schemaLocation", "$projectDir/schemas")

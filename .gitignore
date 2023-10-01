@@ -2,7 +2,11 @@
 /local.properties
 .DS_Store
 /build
+/artifacts
+/fastlane
 /captures
+Gemfile
+Gemfile.lock
 
 # Built application files
 /*/build/
@@ -31,6 +35,7 @@ local.properties
 .Trashes
 ehthumbs.db
 Thumbs.db
+
 
 scripts/json-to-kotlin/.idea/
 
