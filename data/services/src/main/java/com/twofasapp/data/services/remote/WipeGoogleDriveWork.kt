@@ -17,7 +17,7 @@ class WipeGoogleDriveWork(
     private val googleAuth: GoogleAuth by inject()
 
     override suspend fun doWork(): Result {
-        googleDrive.deleteBackupFile()
+        googleDrive.deleteBackupFiles()
         googleAuth.revokeAccess()
 
         return Result.success()

@@ -118,7 +118,7 @@ internal class GoogleDriveImpl(
         }
     }
 
-    override suspend fun deleteBackupFile(): GoogleDriveResult {
+    override suspend fun deleteBackupFiles(): GoogleDriveResult {
         return withContext(dispatchers.io) {
             try {
                 Timber.d("DeleteFile -> Starting...")
@@ -127,9 +127,12 @@ internal class GoogleDriveImpl(
                     ?: return@withContext GoogleDriveResult.Failure(error = GoogleDriveError.CredentialsNotFound)
 
                 val drive = getDrive(credentials)
-                val backupFileId = getFiles(drive)?.firstOrNull { it.name == backupVersions.first() }?.id
-                if (backupFileId.isNullOrBlank().not()) {
-                    drive.files().delete(backupFileId).execute()
+
+                getFiles(drive)?.forEach { file ->
+                    if (backupVersions.contains(file.name)) {
+                        Timber.d("DeleteFile -> ${file.name}")
+                        drive.files().delete(file.id).execute()
+                    }
                 }
 
                 Timber.d("DeleteFile <- Success")
@@ -154,12 +157,13 @@ internal class GoogleDriveImpl(
         }
     }
 
-    private fun getFiles(drive: Drive) =
-        drive.files().list()
+    private fun getFiles(drive: Drive): List<File>? {
+        return drive.files().list()
             .setSpaces("appDataFolder")
             .execute()
             ?.files
             ?.sortedByDescending { it.name.replace("2fas-backup-v", "").replace(".json", "").toIntOrNull() }
+    }
 
     private fun getDrive(accountCredentials: AccountCredentials): Drive {
         val googleAccountCredential = GoogleAccountCredential
