@@ -223,7 +223,7 @@ private fun Step(
             // Body
             Text(
                 text = bodyText,
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp),
