@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
+import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.feature.startup.R
 import com.twofasapp.locale.TwLocale
@@ -40,24 +41,36 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun StartupScreen(
+    openHome: () -> Unit = {},
+    openBackup: () -> Unit = {},
     viewModel: StartupViewModel = koinViewModel(),
-    openStartupBackup: () -> Unit
 ) {
+    val scope = rememberCoroutineScope()
+
     ScreenContent(
-        onStartUsingClick = {
-            viewModel.onStartUsingClicked()
-            openStartupBackup()
+        openHome = {
+            scope.launch {
+                viewModel.finishOnboarding()
+                openHome()
+            }
         },
+        openBackup = {
+            scope.launch {
+                viewModel.finishOnboarding()
+                openBackup()
+            }
+        }
     )
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun ScreenContent(
-    onStartUsingClick: () -> Unit,
+    openHome: () -> Unit = {},
+    openBackup: () -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
-    val pagerState = rememberPagerState(pageCount = { 4 })
+    val pagerState = rememberPagerState(pageCount = { 5 })
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
 
@@ -83,24 +96,36 @@ internal fun ScreenContent(
                         headerText = TwLocale.strings.startupStepOneHeader,
                         bodyText = TwLocale.strings.startupStepOneBody,
                         imageSize = 60.dp,
+                        openHome = openHome,
                     )
 
                     1 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_two),
                         headerText = TwLocale.strings.startupStepTwoHeader,
                         bodyText = TwLocale.strings.startupStepTwoBody,
+                        openHome = openHome,
                     )
 
                     2 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_three),
                         headerText = TwLocale.strings.startupStepThreeHeader,
                         bodyText = TwLocale.strings.startupStepThreeBody,
+                        openHome = openHome,
                     )
 
                     3 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_four),
                         headerText = TwLocale.strings.startupStepFourHeader,
                         bodyText = TwLocale.strings.startupStepFourBody,
+                        openHome = openHome,
+                    )
+
+                    4 -> Step(
+                        image = painterResource(id = com.twofasapp.designsystem.R.drawable.illustration_2fas_backup),
+                        headerText = null,
+                        bodyText = TwLocale.strings.startupBackupBody,
+                        showBackupSkip = true,
+                        openHome = openHome,
                     )
                 }
             }
@@ -125,19 +150,19 @@ internal fun ScreenContent(
                 )
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(36.dp))
 
             TwButton(
                 text = when (pagerState.currentPage) {
                     1 -> TwLocale.strings.commonNext
                     2 -> TwLocale.strings.commonNext
-                    3 -> TwLocale.strings.startupStartCta
+                    3 -> TwLocale.strings.commonNext
+                    4 -> TwLocale.strings.commonContinue
                     else -> TwLocale.strings.commonContinue
                 },
-                modifier = Modifier.padding(vertical = 24.dp),
                 onClick = {
                     if (pagerState.canScrollForward.not()) {
-                        onStartUsingClick()
+                        openBackup()
                     }
 
                     scope.launch {
@@ -145,6 +170,8 @@ internal fun ScreenContent(
                     }
                 }
             )
+
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
@@ -152,10 +179,12 @@ internal fun ScreenContent(
 @Composable
 private fun Step(
     image: Painter,
-    headerText: String,
+    headerText: String?,
     bodyText: String,
     modifier: Modifier = Modifier,
-    imageSize: Dp = 220.dp,
+    imageSize: Dp = 180.dp,
+    showBackupSkip: Boolean = false,
+    openHome: () -> Unit = {},
 ) {
     Column(
         modifier = modifier,
@@ -178,26 +207,37 @@ private fun Step(
             Spacer(modifier = Modifier.height(24.dp))
 
             // Header
-            Text(
-                text = headerText,
-                style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                textAlign = TextAlign.Center
-            )
+            if (headerText != null) {
+                Text(
+                    text = headerText,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    textAlign = TextAlign.Center
+                )
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Body
             Text(
                 text = bodyText,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp),
                 textAlign = TextAlign.Center
             )
+
+            if (showBackupSkip) {
+                Spacer(modifier = Modifier.height(16.dp))
+
+                TwTextButton(
+                    text = TwLocale.strings.startupBackupCloseCta,
+                    onClick = openHome,
+                )
+            }
         }
     }
 }
