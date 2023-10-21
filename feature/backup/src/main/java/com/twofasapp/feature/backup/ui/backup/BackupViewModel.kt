@@ -93,7 +93,7 @@ internal class BackupViewModel(
                             )
                         }
 
-                        if (isPasswordError && cloudSyncStatus.trigger == CloudSyncTrigger.FirstConnect) {
+                        if (isPasswordError && cloudSyncStatus.trigger == CloudSyncTrigger.FirstConnect && cloudBackupStatus.active) {
                             publishEvent(BackupUiEvent.ShowPasswordDialog)
                         }
                     }
@@ -116,7 +116,19 @@ internal class BackupViewModel(
         launchScoped {
             googleAuth.signOut()
             backupRepository.setCloudSyncNotConfigured()
+            backupRepository.publishCloudSyncStatus(CloudSyncStatus.Default)
             sessionRepository.resetBackupReminder()
+            uiState.update { state ->
+                state.copy(
+                    syncChecked = false,
+                    syncEnabled = true,
+                    showSyncMsg = true,
+                    showError = false,
+                    error = null,
+                    cloudBackupStatus = null,
+                    cloudSyncStatus = CloudSyncStatus.Default
+                )
+            }
         }
     }
 
