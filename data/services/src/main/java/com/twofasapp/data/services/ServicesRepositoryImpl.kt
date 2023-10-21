@@ -129,7 +129,6 @@ internal class ServicesRepositoryImpl(
             }
 
             widgetCallbacks.onServiceChanged()
-
         }
     }
 
