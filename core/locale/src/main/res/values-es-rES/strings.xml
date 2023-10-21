@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Sat, 30 Sep 2023 08:15:02 -0700
+ Exported at: Sat, 21 Oct 2023 11:46:26 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -398,7 +398,7 @@
     <string name="settings__app_security">Seguridad de la aplicación</string>
     <string name="settings__app_blocking">Configuración de bloqueo</string>
     <string name="settings__face_id">Face ID</string>
-    <string name="settings__touch_id">Identificación táctil</string>
+    <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Bloquear después de X intentos fallidos.</string>
     <string name="settings__how_many_attempts_footer">Establece el número máximo de intentos fallidos de introducir el código de acceso antes de bloquear la aplicación (el tiempo de bloqueo se puede cambiar más abajo).\n</string>
@@ -808,7 +808,7 @@
     <string name="externalimport__andotp_success_msg">Este archivo JSON permite importar tus códigos desde andOTP.</string>
     <string name="externalimport__info_andotp_title">Importar tokens desde andOTP</string>
     <string name="externalimport__andotp_msg">Exporta tus cuentas desde andOTP a un archivo JSON sin encriptar y súbelo utilizando el botón \"Elige un archivo JSON\". Recuerda eliminar el archivo después de que se haya importado correctamente.</string>
-    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
-    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
-    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
+    <string name="introduction__backup_description">En el siguiente paso, tendrás que elegir tu cuenta de Google Drive, donde los tokens de 2FAS serán almacenados de forma segura.</string>
+    <string name="introduction__backup_take_risk_cta">Acepto el riesgo, sin copia de seguridad</string>
+    <string name="introduction__backup_success">¡Sincronización de Google Drive activada correctamente!</string>
 </resources>

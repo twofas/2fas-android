@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Sat, 30 Sep 2023 08:15:01 -0700
+ Exported at: Sat, 21 Oct 2023 11:46:26 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -808,7 +808,7 @@
     <string name="externalimport__andotp_success_msg">Dit JSON-bestand maakt het mogelijk om andOTP tokens te importeren.</string>
     <string name="externalimport__info_andotp_title">Importeer tokens vanuit andOTP</string>
     <string name="externalimport__andotp_msg">Exporteer uw accounts van andOTP naar een niet-versleuteld JSON-bestand en upload het door de knop \"Kies JSON-bestand\" te gebruiken. Vergeet niet om na een succesvolle importatie het bestand te verwijderen.</string>
-    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
-    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
-    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
+    <string name="introduction__backup_description">In de volgende stap wordt u gevraagd om uw Google Drive-account, waar de 2FA-tokens veilig worden opgeslagen, te kiezen.</string>
+    <string name="introduction__backup_take_risk_cta">Ik aanvaard het risico, geen back-up</string>
+    <string name="introduction__backup_success">Google Drive-synchronisatie succesvol ingeschakeld!</string>
 </resources>
