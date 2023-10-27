@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Sat, 21 Oct 2023 11:46:26 -0700
+ Exported at: Fri, 27 Oct 2023 12:02:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -729,7 +729,7 @@
     <string name="settings__list_style">Stile dell\'elenco</string>
     <string name="backup__reminder_msg">Google Drive non è sincronizzato.</string>
     <string name="backup__reminder_cta">Vai alle impostazioni di backup</string>
-    <string name="settings__list_style_option_default">Predifinito</string>
+    <string name="settings__list_style_option_default">Predefinito</string>
     <string name="settings__list_style_option_compact">Compatto</string>
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Esporta i tuoi account da LastPass in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
