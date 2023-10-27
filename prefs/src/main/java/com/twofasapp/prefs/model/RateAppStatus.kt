@@ -1,8 +1,7 @@
-@file:UseSerializers(InstantSerializer::class)
+@file:UseSerializers(com.twofasapp.prefs.internals.InstantSerializer::class)
 
 package com.twofasapp.prefs.model
 
-import com.twofasapp.serialization.converter.InstantSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers

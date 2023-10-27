@@ -5,12 +5,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.window.DialogProperties
-import com.twofasapp.browserextension.notification.BrowserExtensionRequestPayload
-import com.twofasapp.browserextension.notification.BrowserExtensionRequestReceiver
-import com.twofasapp.browserextension.ui.request.BrowserExtensionRequestActivity
+import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
+import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
 import com.twofasapp.data.browserext.domain.TokenRequest
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.ktx.currentActivity
+import com.twofasapp.feature.browserext.ui.request.BrowserExtRequestActivity
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -34,8 +34,8 @@ internal fun BrowserExtRequestDialog(
 
             if (isOneDomainMatched) {
                 val payload =
-                    BrowserExtensionRequestPayload(
-                        action = BrowserExtensionRequestPayload.Action.Approve,
+                    BrowserExtRequestPayload(
+                        action = BrowserExtRequestPayload.Action.Approve,
                         notificationId = -1,
                         extensionId = browserExtRequest.request.extensionId,
                         requestId = browserExtRequest.request.requestId,
@@ -43,7 +43,7 @@ internal fun BrowserExtRequestDialog(
                         domain = browserExtRequest.domain,
                     )
                 activity.sendBroadcast(
-                    BrowserExtensionRequestReceiver.createIntent(activity, payload)
+                    BrowserExtRequestReceiver.createIntent(activity, payload)
                 )
 
                 onRequestHandled.invoke()
@@ -51,14 +51,14 @@ internal fun BrowserExtRequestDialog(
 
                 val contentIntent = Intent(
                     activity,
-                    BrowserExtensionRequestActivity::class.java
+                    BrowserExtRequestActivity::class.java
                 ).apply {
                     flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
 
                     putExtra(
-                        BrowserExtensionRequestPayload.Key,
-                        BrowserExtensionRequestPayload(
-                            action = BrowserExtensionRequestPayload.Action.Approve,
+                        BrowserExtRequestPayload.Key,
+                        BrowserExtRequestPayload(
+                            action = BrowserExtRequestPayload.Action.Approve,
                             notificationId = -1,
                             extensionId = browserExtRequest.request.extensionId,
                             requestId = browserExtRequest.request.requestId,
@@ -72,8 +72,8 @@ internal fun BrowserExtRequestDialog(
             }
         },
         onNegative = {
-            val payload = BrowserExtensionRequestPayload(
-                action = BrowserExtensionRequestPayload.Action.Deny,
+            val payload = BrowserExtRequestPayload(
+                action = BrowserExtRequestPayload.Action.Deny,
                 notificationId = -1,
                 extensionId = browserExtRequest.request.extensionId,
                 requestId = browserExtRequest.request.requestId,
@@ -82,7 +82,7 @@ internal fun BrowserExtRequestDialog(
             )
 
             activity.sendBroadcast(
-                BrowserExtensionRequestReceiver.createIntent(activity, payload)
+                BrowserExtRequestReceiver.createIntent(activity, payload)
             )
 
             onRequestHandled.invoke()

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Sat, 02 Sep 2023 12:58:36 -0700
+ Exported at: Fri, 27 Oct 2023 12:02:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -76,7 +76,7 @@
     <string name="fingerprint__use_pin_title">Usa il PIN questa volta</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">Sei incredibile!</string>
-    <string name="introduction__page_1_content">Il tuo telefono è appena diventato una chiave privata e protetta per i tuoi servizi online grazie all\'app 2FAS - scelta da oltre 3 milioni di utenti in tutto il mondo.</string>
+    <string name="introduction__page_1_content">Il tuo telefono è appena diventato una chiave privata e protetta per i tuoi servizi online grazie all\'app 2FAS - scelta da oltre 6 milioni di utenti in tutto il mondo.</string>
     <string name="introduction__page_2_title">Semplice</string>
     <string name="introduction__page_2_content">Associa 2FAS ai tuoi servizi online. Attiva la sicurezza a due fattori in pochi secondi con il tuo codice QR.</string>
     <string name="introduction__page_3_title">Privato</string>
@@ -729,7 +729,7 @@
     <string name="settings__list_style">Stile dell\'elenco</string>
     <string name="backup__reminder_msg">Google Drive non è sincronizzato.</string>
     <string name="backup__reminder_cta">Vai alle impostazioni di backup</string>
-    <string name="settings__list_style_option_default">Predifinito</string>
+    <string name="settings__list_style_option_default">Predefinito</string>
     <string name="settings__list_style_option_compact">Compatto</string>
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Esporta i tuoi account da LastPass in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
@@ -751,8 +751,8 @@
     <string name="tokens__add_success_description">Per terminare l\'accoppiamento con il servizio, devi digitare ancora questo token.</string>
     <string name="tokens__add_manual_title">Associa il servizio con 2FAS</string>
     <string name="tokens__add_manual_description">Digita il nome e la chiave segreta</string>
-    <string name="tokens__add_manual_service_name">Nome servizio (obbligatoria)</string>
-    <string name="tokens__add_manual_service_key">Chiave segreta (obbligatoria)</string>
+    <string name="tokens__add_manual_service_name">Nome servizio</string>
+    <string name="tokens__add_manual_service_key">Chiave segreta</string>
     <string name="tokens__add_manual_other">Altre impostazioni</string>
     <string name="tokens__add_manual_other_optional">(opzionale)</string>
     <string name="tokens__add_manual_done_cta">Aggiungi servizio</string>
@@ -802,5 +802,13 @@
     <string name="guides__guide_init_title">Guida a 2FAS</string>
     <string name="guides__guide_title">2FAS per %s</string>
     <string name="guides__guide_universal_title">Guida universale alla 2FA</string>
-    <string name="browser__save_choice">Save my choice</string>
+    <string name="browser__save_choice">Conferma la mia scelta</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">Importazione di token 2FA dall\'app andOTP</string>
+    <string name="externalimport__andotp_success_msg">Questo file JSON permette di importare i token da andOTP.</string>
+    <string name="externalimport__info_andotp_title">Importa token da andOTP</string>
+    <string name="externalimport__andotp_msg">Esporta i tuoi account da andOTP in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
+    <string name="introduction__backup_description">Nel prossimo step, ti verrà richiesto di scegliere il tuo account Google Drive, dove i token 2FA verrano salvati in sicurezza</string>
+    <string name="introduction__backup_take_risk_cta">Mi assumo il rischio, non eseguo il backup</string>
+    <string name="introduction__backup_success">Sincronizzazione con Google Drive abilitata correttamente!</string>
 </resources>

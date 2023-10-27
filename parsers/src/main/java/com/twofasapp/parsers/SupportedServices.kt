@@ -5,7 +5,6 @@ import com.twofasapp.parsers.domain.IconCollection
 import com.twofasapp.parsers.domain.MatchRule
 import com.twofasapp.parsers.domain.SupportedService
 import com.twofasapp.parsers.domain.SupportedServiceJson
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 object SupportedServices {

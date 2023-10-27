@@ -9,7 +9,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
     implementation(libs.bundles.compose)
     implementation(libs.bundles.accompanist)
     implementation(libs.bundles.viewModel)

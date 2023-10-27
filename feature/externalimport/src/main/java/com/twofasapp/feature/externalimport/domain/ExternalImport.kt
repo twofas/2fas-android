@@ -1,10 +1,10 @@
 package com.twofasapp.feature.externalimport.domain
 
-import com.twofasapp.prefs.model.ServiceDto
+import com.twofasapp.common.domain.Service
 
 sealed class ExternalImport {
     data class Success(
-        val servicesToImport: List<ServiceDto>,
+        val servicesToImport: List<Service>,
         val totalServicesCount: Int,
     ) : ExternalImport()
 
@@ -12,5 +12,5 @@ sealed class ExternalImport {
         val reason: Exception
     ) : ExternalImport()
 
-    object UnsupportedError : ExternalImport()
+    data object UnsupportedError : ExternalImport()
 }

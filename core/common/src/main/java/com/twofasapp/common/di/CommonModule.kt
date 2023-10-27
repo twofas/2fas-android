@@ -2,7 +2,6 @@ package com.twofasapp.common.di
 
 import com.twofasapp.common.coroutines.AppDispatchers
 import com.twofasapp.common.coroutines.Dispatchers
-import com.twofasapp.di.KoinModule
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf

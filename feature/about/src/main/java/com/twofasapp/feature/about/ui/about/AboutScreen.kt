@@ -34,14 +34,14 @@ import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun AboutRoute(
-    openLicenses: () -> Unit,
-    viewModel: AboutViewModel = koinViewModel()
+internal fun AboutScreen(
+    viewModel: AboutViewModel = koinViewModel(),
+    openLicenses: () -> Unit
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    AboutScreen(
+    ScreenContent(
         uiState = uiState,
         versionName = viewModel.versionName,
         onLicensesClick = openLicenses,
@@ -51,7 +51,7 @@ internal fun AboutRoute(
 }
 
 @Composable
-private fun AboutScreen(
+private fun ScreenContent(
     uiState: AboutUiState,
     versionName: String,
     onLicensesClick: () -> Unit,

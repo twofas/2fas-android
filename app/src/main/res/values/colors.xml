@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ed1c24</color>
+    <color name="colorPrimaryDark">#0d000000</color>
+    <color name="colorAccent">#ED1C24</color>
+    <color name="surface">#F9F9F9</color>
+    <color name="surfaceVariant">#EEEEEE</color>
+    <color name="onSurface">#000000</color>
+    <color name="windowBackground">#FFF</color>
+    <color name="statusbar">#FFF</color>
+</resources>

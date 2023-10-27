@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Sat, 02 Sep 2023 12:58:36 -0700
+ Exported at: Fri, 27 Oct 2023 12:02:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -76,7 +76,7 @@
     <string name="fingerprint__use_pin_title">Usar PIN esta vez</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">¡Eres increíble!</string>
-    <string name="introduction__page_1_content">Tu celular se ha vuelto una clave privada y segura a tus servicios online gracias a la aplicación 2FAS - Más de 3 millones de usuarios alrededor del mundo confían en 2FAS.</string>
+    <string name="introduction__page_1_content">Tu celular se ha vuelto una clave privada y segura a tus servicios online gracias a la aplicación 2FAS - Más de 6 millones de usuarios alrededor del mundo confían en 2FAS.</string>
     <string name="introduction__page_2_title">Simple</string>
     <string name="introduction__page_2_content">Empareje 2FAS con su cuenta de servicios en línea. Active la seguridad de autenticación de dos factores en segundos con su código QR.</string>
     <string name="introduction__page_3_title">Privado</string>
@@ -398,7 +398,7 @@
     <string name="settings__app_security">Seguridad de la aplicación</string>
     <string name="settings__app_blocking">Configuración de bloqueo</string>
     <string name="settings__face_id">Face ID</string>
-    <string name="settings__touch_id">Identificación táctil</string>
+    <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Bloquear después de X intentos fallidos.</string>
     <string name="settings__how_many_attempts_footer">Establece el número máximo de intentos fallidos de introducir el código de acceso antes de bloquear la aplicación (el tiempo de bloqueo se puede cambiar más abajo).\n</string>
@@ -751,8 +751,8 @@
     <string name="tokens__add_success_description">Para finalizar el emparejamiento con el servicio, debes escribir de nuevo este token.</string>
     <string name="tokens__add_manual_title">Emparejando servicio con 2FAS</string>
     <string name="tokens__add_manual_description">Escribe el nombre y clave secreta.</string>
-    <string name="tokens__add_manual_service_name">Nombre del servicio (obligatorio)</string>
-    <string name="tokens__add_manual_service_key">Clave Secreta (obligatorio)</string>
+    <string name="tokens__add_manual_service_name">Nombre del servicio</string>
+    <string name="tokens__add_manual_service_key">Clave Secreta</string>
     <string name="tokens__add_manual_other">Otros ajustes</string>
     <string name="tokens__add_manual_other_optional">(opcional)</string>
     <string name="tokens__add_manual_done_cta">Añadir servicio</string>
@@ -803,4 +803,12 @@
     <string name="guides__guide_title">2FAS para %s</string>
     <string name="guides__guide_universal_title">Guía universal de 2FA</string>
     <string name="browser__save_choice">Guardar mi elección</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">Importando códigos 2FA desde la app andOTP</string>
+    <string name="externalimport__andotp_success_msg">Este archivo JSON permite importar tus códigos desde andOTP.</string>
+    <string name="externalimport__info_andotp_title">Importar tokens desde andOTP</string>
+    <string name="externalimport__andotp_msg">Exporta tus cuentas desde andOTP a un archivo JSON sin encriptar y súbelo utilizando el botón \"Elige un archivo JSON\". Recuerda eliminar el archivo después de que se haya importado correctamente.</string>
+    <string name="introduction__backup_description">En el siguiente paso, tendrás que elegir tu cuenta de Google Drive, donde los tokens de 2FAS serán almacenados de forma segura.</string>
+    <string name="introduction__backup_take_risk_cta">Acepto el riesgo, sin copia de seguridad</string>
+    <string name="introduction__backup_success">¡Sincronización de Google Drive activada correctamente!</string>
 </resources>

@@ -9,6 +9,8 @@ interface BrowserExtRepository {
     fun observeMobileDevice(): Flow<MobileDevice>
     fun observePairedBrowsers(): Flow<List<PairedBrowser>>
     fun observeTokenRequests(): Flow<List<TokenRequest>>
+    suspend fun getMobileDevice(): MobileDevice
+    suspend fun getPairedBrowser(id: String): PairedBrowser
     suspend fun updateMobileDevice(mobileDevice: MobileDevice)
     suspend fun registerMobileDevice(deviceName: String, devicePublicKey: String, fcmToken: String): MobileDevice
     suspend fun pairBrowser(deviceId: String, extensionId: String, deviceName: String, devicePublicKey: String): PairedBrowser
@@ -21,7 +23,7 @@ interface BrowserExtRepository {
         deviceId: String,
         extensionId: String,
         requestId: String,
-        code: String
+        codeUnencrypted: String
     )
 
     suspend fun denyLoginRequest(
@@ -29,4 +31,5 @@ interface BrowserExtRepository {
         requestId: String,
     )
 
+    suspend fun getFcmToken(): String
 }

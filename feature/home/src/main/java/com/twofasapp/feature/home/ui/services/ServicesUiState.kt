@@ -1,7 +1,7 @@
 package com.twofasapp.feature.home.ui.services
 
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.domain.Group
-import com.twofasapp.data.services.domain.Service
 import com.twofasapp.data.session.domain.AppSettings
 
 data class ServicesUiState(
@@ -17,7 +17,7 @@ data class ServicesUiState(
     val showSyncReminder: Boolean = true,
     val hasUnreadNotifications: Boolean = false,
     val appSettings: AppSettings = AppSettings(),
-    val events: List<ServicesStateEvent> = listOf(),
+    val events: List<ServicesUiEvent> = listOf(),
     val items: List<ServicesListItem> = mutableListOf()
 ) {
     fun getService(id: Long): Service? {
@@ -25,7 +25,8 @@ data class ServicesUiState(
     }
 }
 
-sealed interface ServicesStateEvent {
-    object ShowQrFromGalleryDialog : ServicesStateEvent
-    data class ServiceAdded(val id: Long) : ServicesStateEvent
+sealed interface ServicesUiEvent {
+    data object ShowQrFromGalleryDialog : ServicesUiEvent
+    data class ServiceAdded(val id: Long) : ServicesUiEvent
+    data class OpenImport(val filePath: String) : ServicesUiEvent
 }

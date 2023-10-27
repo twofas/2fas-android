@@ -1,7 +1,7 @@
 package com.twofasapp.data.services.otp
 
 import com.twofasapp.common.time.TimeProvider
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.otp.OtpAuthenticator
 import com.twofasapp.otp.OtpData
 import timber.log.Timber

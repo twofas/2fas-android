@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Sat, 02 Sep 2023 12:58:36 -0700
+ Exported at: Fri, 27 Oct 2023 12:02:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -76,7 +76,7 @@
     <string name="fingerprint__use_pin_title">Gebruik deze keer een pincode</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">U bent geweldig!</string>
-    <string name="introduction__page_1_content">Uw telefoon is zojuist een persoonlijke en beveiligde sleutel tot uw online services geworden dankzij de 2FAS-app - vertrouwd door meer dan 3 miljoen gebruikers wereldwijd.</string>
+    <string name="introduction__page_1_content">Uw telefoon is zojuist een persoonlijke en beveiligde sleutel tot uw online services geworden dankzij de 2FAS-app - vertrouwd door meer dan 6 miljoen gebruikers wereldwijd.</string>
     <string name="introduction__page_2_title">Simpel</string>
     <string name="introduction__page_2_content">Koppel 2FAS met uw online services. Activeer binnen enkele seconden tweefactorauthenticatie met uw QR-code.</string>
     <string name="introduction__page_3_title">Privé</string>
@@ -751,8 +751,8 @@
     <string name="tokens__add_success_description">Om het koppelen van de service te voltooien, moet u deze token opnieuw invoeren.</string>
     <string name="tokens__add_manual_title">Koppel de service aan met 2FAS</string>
     <string name="tokens__add_manual_description">Typ de naam van de service en de geheime sleutel.</string>
-    <string name="tokens__add_manual_service_name">Servicenaam (vereist)</string>
-    <string name="tokens__add_manual_service_key">Geheime Sleutel (vereist)</string>
+    <string name="tokens__add_manual_service_name">Servicenaam</string>
+    <string name="tokens__add_manual_service_key">Geheime Sleutel</string>
     <string name="tokens__add_manual_other">Andere instellingen</string>
     <string name="tokens__add_manual_other_optional">(optioneel)</string>
     <string name="tokens__add_manual_done_cta">Service toevoegen</string>
@@ -803,4 +803,12 @@
     <string name="guides__guide_title">2FAS voor %s</string>
     <string name="guides__guide_universal_title">Universele 2FA Handleiding</string>
     <string name="browser__save_choice">Mijn keuze onthouden</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">2FA-tokens importeren van de andOTP app</string>
+    <string name="externalimport__andotp_success_msg">Dit JSON-bestand maakt het mogelijk om andOTP tokens te importeren.</string>
+    <string name="externalimport__info_andotp_title">Importeer tokens vanuit andOTP</string>
+    <string name="externalimport__andotp_msg">Exporteer uw accounts van andOTP naar een niet-versleuteld JSON-bestand en upload het door de knop \"Kies JSON-bestand\" te gebruiken. Vergeet niet om na een succesvolle importatie het bestand te verwijderen.</string>
+    <string name="introduction__backup_description">In de volgende stap wordt u gevraagd om uw Google Drive-account, waar de 2FA-tokens veilig worden opgeslagen, te kiezen.</string>
+    <string name="introduction__backup_take_risk_cta">Ik aanvaard het risico, geen back-up</string>
+    <string name="introduction__backup_success">Google Drive-synchronisatie succesvol ingeschakeld!</string>
 </resources>

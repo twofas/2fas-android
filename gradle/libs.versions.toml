@@ -1,162 +1,117 @@
 [versions]
-accompanist = "0.31.6-rc"
-agp = "8.2.0-alpha16"
+accompanist = "0.32.0"
+agp = "8.2.0-beta06"
+cameraX = "1.3.0"
 coil = "2.4.0"
-compose = "1.5.0"
-composeActivity = "1.7.2"
-composeCompiler = "1.5.1"
-core = "1.10.1"
-espresso = "3.5.1"
-koin = "3.4.3"
-koinAndroid = "3.4.6"
-kotest = "5.6.2"
-kotlin = "1.9.0"
-kotlinCoroutines = "1.7.3"
-kotlinKsp = "1.9.0-1.0.13"
-ktlint = "3.12.0"
-ktor = "2.3.3"
-material3 = "1.2.0-alpha05"
-room = "2.5.2"
-viewModel = "2.6.1"
-junit = "4.13.2"
-androidx-test-ext-junit = "1.1.5"
-appcompat = "1.6.1"
-material = "1.9.0"
 commonmark = "0.21.0"
+compose = "1.5.3"
+composeActivity = "1.8.0"
+composeCompiler = "1.5.3"
+core = "1.12.0"
+firebase = "32.3.1"
+glance = "1.0.0"
+junit = "4.13.2"
+koin = "3.5.0"
+koinAndroid = "3.5.0"
+kotlin = "1.9.10"
+kotlinCoroutines = "1.7.3"
+kotlinKsp = "1.9.10-1.0.13"
+ktor = "2.3.4"
+lifecycle = "2.7.0-alpha02"
+material3 = "1.2.0-alpha09"
+room = "2.5.2"
 
 [libraries]
-appcompat = "androidx.appcompat:appcompat:1.6.1"
-activityX = "androidx.activity:activity-ktx:1.7.2"
-accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
-accompanistPlaceholder = { module = "com.google.accompanist:accompanist-placeholder", version.ref = "accompanist" }
-accompanistSystemUi = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
-accompanistPager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
+accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
 accompanistPagerIndicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
 accompanistPermissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
-accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
+accompanistSystemUi = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
+activityX = { module = "androidx.activity:activity-ktx", version.ref = "composeActivity" }
+apacheCommonsCodec = "commons-codec:commons-codec:1.15"
+appcompat = "androidx.appcompat:appcompat:1.6.1"
+barcodeScanning = "com.google.mlkit:barcode-scanning:17.2.0"
+biometric = "androidx.biometric:biometric:1.1.0"
+camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraX" }
+camera2Lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraX" }
+camera2View = { module = "androidx.camera:camera-view", version.ref = "cameraX" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 coilCompose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+commonmarkCore = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
+commonmarkLink = { module = "org.commonmark:commonmark-ext-autolink", version.ref = "commonmark" }
+commonmarkStrikethrough = { module = "org.commonmark:commonmark-ext-gfm-strikethrough", version.ref = "commonmark" }
+commonmarkTables = { module = "org.commonmark:commonmark-ext-gfm-tables", version.ref = "commonmark" }
 composeActivity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
 composeAnimation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
 composeCompiler = { module = "androidx.compose.compiler:compiler", version.ref = "composeCompiler" }
 composeMaterial2 = { module = "androidx.compose.material:material", version.ref = "compose" }
+composeNavigation = "androidx.navigation:navigation-compose:2.7.4"
 composeUi = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-composeUiUtil = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-composeConstraint = "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
+composeUiUtil = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
 coreSplash = "androidx.core:core-splashscreen:1.0.1"
 dataStore = "androidx.datastore:datastore-preferences:1.0.0"
 desugar = "com.android.tools:desugar_jdk_libs:2.0.3"
-espressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
+firebaseCrashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
+firebaseMessaging = { module = "com.google.firebase:firebase-messaging-ktx" }
+glanceWidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
+googleApiClientAndroid = "com.google.api-client:google-api-client-android:2.2.0"
+googleApiClientGson = "com.github.rafakob.google-http-java-client:google-http-client-gson:1.43.0"
+googleAuth = "com.google.android.gms:play-services-auth:20.7.0"
+googleDrive = "com.google.apis:google-api-services-drive:v3-rev197-1.25.0"
 javaxInject = "javax.inject:javax.inject:1"
-junit = "junit:junit:4.13.2"
+junit = { module = "junit:junit", version.ref = "junit" }
+junit-junit = { module = "junit:junit", version.ref = "junit" }
 koinCompose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroid" }
 koinTest = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 koinTestJunit = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
-kotest = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotlinCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
-kotlinCoroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinCoroutines" }
-kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
-kotlinTestJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
 ktorAuth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 ktorContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktorCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktorKotlinSerialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktorLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktorOkhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
-material = "com.google.android.material:material:1.9.0"
+lifecycle = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycleCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+lifecycleComposeRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
+lifecycleLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycleProcess = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
+lifecycleSavedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
+lottie = "com.airbnb.android:lottie-compose:5.0.3"
+material2 = "com.google.android.material:material:1.10.0"
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 material3Window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
-mockk = "io.mockk:mockk:1.13.2"
-navigationCompose = "androidx.navigation:navigation-compose:2.7.1"
-robolectric = "org.robolectric:robolectric:4.9"
+playReview = "com.google.android.play:review:2.0.1"
+playReviewKtx = "com.google.android.play:review-ktx:2.0.1"
+playServicesCorutines = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3"
+playUpdate = "com.google.android.play:app-update:2.1.0"
+playUpdateKtx = "com.google.android.play:app-update-ktx:2.1.0"
+protobuf = "com.google.protobuf:protobuf-kotlin-lite:3.19.1"
+reLinker = "com.getkeepsafe.relinker:relinker:1.4.5"
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
-sharedPrefs = "androidx.preference:preference-ktx:1.2.1"
-socketIo = "io.socket:socket.io-client:2.1.0"
-testCore = "androidx.test:core:1.5.0"
-timber = "com.jakewharton.timber:timber:5.0.1"
-turbine = "app.cash.turbine:turbine:0.12.0"
-uiTestJunit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
-uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "viewModel" }
-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "viewModel" }
-viewModelComposeRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "viewModel" }
-viewModelLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "viewModel" }
-viewModelSavedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "viewModel" }
-webkit = "androidx.webkit:webkit:1.7.0"
-workManager = "androidx.work:work-runtime-ktx:2.8.1"
-playReview = "com.google.android.play:review:2.0.1"
-playReviewKtx = "com.google.android.play:review-ktx:2.0.1"
-playUpdate = "com.google.android.play:app-update:2.1.0"
-playUpdateKtx = "com.google.android.play:app-update-ktx:2.1.0"
-rxJava = "io.reactivex.rxjava2:rxjava:2.2.21"
-rxJavaAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
-rxJavaKotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
-fastAdapter = "com.mikepenz:fastadapter:5.5.1"
-fastAdapterDrag = "com.mikepenz:fastadapter-extensions-drag:5.5.1"
-fastAdapterDiff = "com.mikepenz:fastadapter-extensions-diff:5.5.1"
-fastAdapterUtils = "com.mikepenz:fastadapter-extensions-utils:5.5.1"
-fastAdapterBinding = "com.mikepenz:fastadapter-extensions-binding:5.5.1"
-fastAdapterAnimators = "com.mikepenz:itemanimators:1.1.0"
-materialDialogs = "com.afollestad.material-dialogs:core:3.3.0"
-materialDialogsInput = "com.afollestad.material-dialogs:input:3.3.0"
-rxBinding = "com.jakewharton.rxbinding3:rxbinding:3.1.0"
-rxBindingAppCompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:3.1.0"
-rxBindingMaterial = "com.jakewharton.rxbinding3:rxbinding-material:3.1.0"
-workManagerRx = "androidx.work:work-rxjava2:2.8.1"
-lottie = "com.airbnb.android:lottie-compose:5.0.3"
-protobuf = "com.google.protobuf:protobuf-kotlin-lite:3.19.1"
-biometric = "androidx.biometric:biometric:1.1.0"
-coroutinesToRx = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.6.4"
-barcodeScanning = "com.google.mlkit:barcode-scanning:17.2.0"
-camera2 = "androidx.camera:camera-camera2:1.2.3"
-camera2Lifecycle = "androidx.camera:camera-lifecycle:1.2.3"
-camera2View = "androidx.camera:camera-view:1.2.3"
-securityCrypto = "androidx.security:security-crypto:1.1.0-alpha05"
 secureStorage = "de.adorsys.android:securestoragelibrary:1.2.4"
-roomRx = { module = "androidx.room:room-rxjava2", version.ref = "room" }
+securityCrypto = "androidx.security:security-crypto:1.1.0-alpha05"
+sharedPrefs = "androidx.preference:preference-ktx:1.2.1"
 sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.4"
-reLinker = "com.getkeepsafe.relinker:relinker:1.4.5"
-apacheCommonsCodec = "commons-codec:commons-codec:1.15"
-junit-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
-androidx-appcompat-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-com-google-android-material-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-commonmarkCore = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
-commonmarkTables = { module = "org.commonmark:commonmark-ext-gfm-tables", version.ref = "commonmark" }
-commonmarkStrikethrough = { module = "org.commonmark:commonmark-ext-gfm-strikethrough", version.ref = "commonmark" }
-commonmarkLink = { module = "org.commonmark:commonmark-ext-autolink", version.ref = "commonmark" }
+timber = "com.jakewharton.timber:timber:5.0.1"
+webkit = "androidx.webkit:webkit:1.8.0"
+workManager = "androidx.work:work-runtime-ktx:2.8.1"
 
 [bundles]
+accompanist = [
+    "accompanistNavigation",
+    "accompanistPagerIndicators",
+    "accompanistPermissions",
+    "accompanistSystemUi",
+]
 appCompat = [
     "appcompat",
     "core",
-    "material",
-]
-rxJava = [
-    "rxJava",
-    "rxJavaAndroid",
-    "rxJavaKotlin",
-]
-rxBinding = [
-    "rxBinding",
-    "rxBindingAppCompat",
-    "rxBindingMaterial",
-]
-fastAdapter = [
-    "fastAdapter",
-    "fastAdapterDrag",
-    "fastAdapterDiff",
-    "fastAdapterUtils",
-    "fastAdapterBinding",
-    "fastAdapterAnimators",
-]
-materialDialogs = [
-    "materialDialogs",
-    "materialDialogsInput",
 ]
 barcodeScanner = [
     "barcodeScanning",
@@ -164,29 +119,29 @@ barcodeScanner = [
     "camera2Lifecycle",
     "camera2View",
 ]
-accompanist = [
-    "accompanistFlowLayout",
-    "accompanistPlaceholder",
-    "accompanistSystemUi",
-    "accompanistPager",
-    "accompanistPagerIndicators",
-    "accompanistPermissions",
-    "accompanistNavigation",
-]
 coil = [
     "coil",
     "coilCompose",
 ]
+commonmark = [
+    "commonmarkCore",
+    "commonmarkLink",
+    "commonmarkStrikethrough",
+    "commonmarkTables",
+]
 compose = [
     "composeActivity",
     "composeMaterial2",
+    "composeNavigation",
     "composeUi",
-    "composeUiUtil",
     "composeUiTooling",
+    "composeUiUtil",
+    "material2",
     "material3",
     "material3Window",
-    "composeConstraint",
-    "navigationCompose",
+]
+glance = [
+    "glanceWidget",
 ]
 koin = [
     "koinCompose",
@@ -199,19 +154,6 @@ ktor = [
     "ktorLogging",
     "ktorOkhttp",
 ]
-room = [
-    "roomKtx",
-    "roomRuntime",
-    "roomRx",
-    "sqlCipher",
-]
-viewModel = [
-    "viewModel",
-    "viewModelCompose",
-    "viewModelComposeRuntime",
-    "viewModelLifecycle",
-    "viewModelSavedstate",
-]
 playReview = [
     "playReview",
     "playReviewKtx",
@@ -220,26 +162,31 @@ playUpdate = [
     "playUpdate",
     "playUpdateKtx",
 ]
-
-commonmark = [
-    "commonmarkCore",
-    "commonmarkStrikethrough",
-    "commonmarkTables",
-    "commonmarkLink",
+room = [
+    "roomKtx",
+    "roomRuntime",
+    "sqlCipher",
+]
+viewModel = [
+    "lifecycle",
+    "lifecycleCompose",
+    "lifecycleComposeRuntime",
+    "lifecycleLifecycle",
+    "lifecycleProcess",
+    "lifecycleSavedstate",
 ]
 
 [plugins]
 agpApplication = { id = "com.android.application", version.ref = "agp" }
 agpLibrary = { id = "com.android.library", version.ref = "agp" }
-agpTest = { id = "com.android.test", version.ref = "agp" }
+gradleVersions = "com.github.ben-manes.versions:0.47.0"
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kotlinParcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlinParcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kotlinKsp" }
-ktlint = { id = "org.jmailen.kotlinter", version.ref = "ktlint" }
+protobuf = "com.google.protobuf:0.9.1"
 twofasAndroidApplication = "twofas.androidApplication:unspecified"
 twofasAndroidLibrary = "twofas.androidLibrary:unspecified"
 twofasCompose = "twofas.compose:unspecified"
-versionCatalogUpdate = "nl.littlerobots.version-catalog-update:0.7.0"
-protobuf = "com.google.protobuf:0.9.1"
+versionCatalogUpdate = "nl.littlerobots.version-catalog-update:0.8.1"

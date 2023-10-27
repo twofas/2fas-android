@@ -9,8 +9,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
+    implementation(project(":core:common"))
     implementation(project(":prefs"))
-    implementation(project(":serialization"))
     implementation(libs.timber)
+    implementation(libs.kotlinSerialization)
 }

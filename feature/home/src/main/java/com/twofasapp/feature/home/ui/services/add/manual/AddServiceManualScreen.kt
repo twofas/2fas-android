@@ -27,6 +27,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -37,7 +39,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
@@ -52,6 +54,7 @@ import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.designsystem.ktx.assetAsBitmap
 import com.twofasapp.designsystem.ktx.keyboardAsState
 import com.twofasapp.locale.TwLocale
+import kotlinx.coroutines.android.awaitFrame
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -72,6 +75,7 @@ internal fun AddServiceManualScreen(
     val borderColor = TwTheme.color.iconTint
     val scrollState = rememberScrollState()
     val isKeyboardExpanded = keyboardAsState()
+    val focusRequester = remember { FocusRequester() }
 
     LaunchedEffect(Unit) {
         viewModel.uiEvents.collect {
@@ -79,6 +83,11 @@ internal fun AddServiceManualScreen(
                 is AddServiceManualUiEvent.AddedSuccessfully -> onAddedSuccessfully(it.recentlyAddedService)
             }
         }
+    }
+
+    LaunchedEffect(Unit){
+        awaitFrame()
+        focusRequester.requestFocus()
     }
 
     Column(
@@ -97,7 +106,8 @@ internal fun AddServiceManualScreen(
             labelText = TwLocale.strings.addManualServiceName,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 4.dp),
+                .padding(horizontal = 24.dp, vertical = 4.dp)
+                .focusRequester(focusRequester),
             supportingText = uiState.serviceNameError?.let { context.getString(it) },
             isError = uiState.serviceName != null && uiState.serviceNameValid.not(),
             keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences, imeAction = ImeAction.Next),

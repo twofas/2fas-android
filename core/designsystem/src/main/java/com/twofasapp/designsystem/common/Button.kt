@@ -1,8 +1,12 @@
 package com.twofasapp.designsystem.common
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonDefaults.textButtonColors
@@ -32,6 +36,10 @@ fun TwButton(
     modifier: Modifier = Modifier,
     style: TextStyle = TwTheme.typo.body2,
     enabled: Boolean = true,
+    leadingIcon: Painter? = null,
+    leadingIconSize: Dp = 18.dp,
+    leadingIconTint: Color = Color.Unspecified,
+    leadingIconSpacer: Dp = 6.dp,
 ) {
     Button(
         onClick = onClick,
@@ -42,6 +50,24 @@ fun TwButton(
         enabled = enabled,
         modifier = modifier.height(height),
     ) {
+        if (leadingIcon != null) {
+            if (leadingIconTint == Color.Unspecified) {
+                Image(
+                    painter = leadingIcon,
+                    contentDescription = null,
+                    modifier = Modifier.size(leadingIconSize),
+                )
+            } else {
+                Icon(
+                    painter = leadingIcon,
+                    contentDescription = null,
+                    tint = leadingIconTint,
+                    modifier = Modifier.size(leadingIconSize),
+                )
+            }
+            Spacer(modifier = Modifier.width(leadingIconSpacer))
+        }
+
         Text(
             text = text,
             style = style,

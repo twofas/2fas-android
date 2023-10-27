@@ -14,4 +14,5 @@ interface SessionRepository {
     fun resetBackupReminder()
     suspend fun getAppInstallTimestamp(): Long
     suspend fun markAppInstalled()
+    suspend fun recalculateTimeDelta()
 }

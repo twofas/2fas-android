@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <bool name="isPortraitOnly">false</bool>
-    <bool name="isPhone">false</bool>
-    <bool name="isTablet">true</bool>
-    <bool name="isTabletLandscape">false</bool>
-</resources>

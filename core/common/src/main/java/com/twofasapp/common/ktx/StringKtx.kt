@@ -22,3 +22,14 @@ fun String.camelCaseBeginLower(): String {
 fun String.camelCaseBeginUpper(): String {
     return camelCase().replaceFirstChar { it.uppercase() }
 }
+
+inline fun <reified T : Enum<*>> enumValueOrNull(name: String?): T? =
+    T::class.java.enumConstants?.firstOrNull { it.name == name }
+
+fun String.insert(insertAt: Int, string: String): String {
+    return this.substring(0, insertAt) + string + this.substring(insertAt, this.length)
+}
+
+fun String.removeWhiteCharacters(): String {
+    return replace(" ", "")
+}

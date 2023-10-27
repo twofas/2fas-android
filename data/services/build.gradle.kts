@@ -9,19 +9,18 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
     implementation(project(":core:common"))
     implementation(project(":core:storage"))
     implementation(project(":core:otp"))
+    implementation(project(":core:cipher"))
+    implementation(project(":data:cloud"))
 
     implementation(project(":parsers"))
-    implementation(project(":widgets:domain"))
-    implementation(project(":backup:domain"))
-    implementation(project(":time:domain"))
 
     implementation(libs.bundles.room)
     implementation(libs.kotlinCoroutines)
     implementation(libs.kotlinSerialization)
     implementation(libs.timber)
+    implementation(libs.workManager)
     implementation(project(mapOf("path" to ":prefs")))
 }

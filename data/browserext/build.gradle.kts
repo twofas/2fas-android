@@ -9,7 +9,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:di"))
     implementation(project(":core:common"))
     implementation(project(":core:storage"))
     implementation(project(":core:network"))
@@ -18,4 +17,7 @@ dependencies {
     implementation(libs.kotlinCoroutines)
     implementation(libs.kotlinSerialization)
     implementation(libs.timber)
+    implementation(platform(libs.firebaseBom))
+    implementation(libs.firebaseCrashlytics)
+    implementation(libs.firebaseMessaging)
 }

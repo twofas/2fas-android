@@ -13,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -24,6 +25,7 @@ import androidx.compose.ui.window.DialogProperties
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.locale.TwLocale
+import kotlinx.coroutines.launch
 
 internal val DialogPadding = 24.dp
 private val IconPadding = PaddingValues(bottom = 16.dp)
@@ -51,6 +53,7 @@ fun BaseDialog(
     properties: DialogProperties = DialogProperties(),
     content: @Composable () -> Unit = {},
 ) {
+    val scope = rememberCoroutineScope()
     val showActions = positive != null || negative != null
 
     Dialog(
@@ -92,12 +95,16 @@ fun BaseDialog(
                         positive = positive,
                         negative = negative,
                         onPositiveClick = {
-                            onPositiveClick?.invoke()
-                            onDismissRequest()
+                            scope.launch {
+                                onPositiveClick?.invoke()
+                                onDismissRequest()
+                            }
                         },
                         onNegativeClick = {
-                            onNegativeClick?.invoke()
-                            onDismissRequest()
+                            scope.launch {
+                                onNegativeClick?.invoke()
+                                onDismissRequest()
+                            }
                         },
                         positiveEnabled = positiveEnabled,
                         negativeEnabled = negativeEnabled,

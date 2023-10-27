@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.data.session.domain.SelectedTheme
+import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.common.TwTopAppBar
@@ -26,13 +26,13 @@ import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun AppSettingsRoute(
+internal fun AppSettingsScreen(
     viewModel: AppSettingsViewModel = koinViewModel()
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    AppSettingsScreen(
+    ScreenContent(
         uiState = uiState,
         onConsumeEvent = { viewModel.consumeEvent(it) },
         onSelectedThemeChange = { viewModel.setSelectedTheme(it) },
@@ -45,7 +45,7 @@ internal fun AppSettingsRoute(
 }
 
 @Composable
-private fun AppSettingsScreen(
+private fun ScreenContent(
     uiState: AppSettingsUiState,
     onConsumeEvent: (AppSettingsUiEvent) -> Unit,
     onSelectedThemeChange: (SelectedTheme) -> Unit,

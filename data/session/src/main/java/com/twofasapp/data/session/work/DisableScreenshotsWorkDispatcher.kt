@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.twofasapp.di.WorkDispatcher
+import com.twofasapp.common.domain.WorkDispatcher
 import java.util.concurrent.TimeUnit
 
 class DisableScreenshotsWorkDispatcher(

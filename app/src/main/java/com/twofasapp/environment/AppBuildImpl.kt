@@ -10,7 +10,7 @@ import com.twofasapp.common.environment.BuildVariant.ReleaseLocal
 class AppBuildImpl : AppBuild {
     override val id: String = BuildConfig.APPLICATION_ID
 
-    override val isDebuggable: Boolean = BuildConfig.DEBUG
+    override val debuggable: Boolean = BuildConfig.DEBUG
 
     override val versionName: String = BuildConfig.VERSION_NAME
 

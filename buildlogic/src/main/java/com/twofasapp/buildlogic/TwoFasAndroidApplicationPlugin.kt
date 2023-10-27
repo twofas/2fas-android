@@ -7,7 +7,6 @@ import com.twofasapp.buildlogic.extension.applySigningConfigs
 import com.twofasapp.buildlogic.version.AppConfig
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.plugins.BasePluginExtension
 import org.gradle.kotlin.dsl.configure
 
 class TwoFasAndroidApplicationPlugin : Plugin<Project> {
@@ -18,10 +17,6 @@ class TwoFasAndroidApplicationPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.android")
             }
 
-            extensions.configure<BasePluginExtension> {
-                archivesName.set(AppConfig.apkName)
-            }
-            
             extensions.configure<ApplicationExtension> {
                 applyKotlinAndroid(this)
                 applySigningConfigs(this)
@@ -30,8 +25,6 @@ class TwoFasAndroidApplicationPlugin : Plugin<Project> {
                 defaultConfig {
                     multiDexEnabled = true
                     targetSdk = AppConfig.targetSdk
-                    versionCode = AppConfig.versionCode
-                    versionName = AppConfig.versionName
 
                     vectorDrawables.useSupportLibrary = true
                 }

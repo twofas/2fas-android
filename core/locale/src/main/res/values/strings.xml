@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Sat, 02 Sep 2023 12:58:36 -0700
+ Exported at: Fri, 27 Oct 2023 12:02:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -76,7 +76,7 @@
     <string name="fingerprint__use_pin_title">Use PIN this time</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">You are awesome!</string>
-    <string name="introduction__page_1_content">Your phone has just become a private and secured key to your online services thanks to the 2FAS app - trusted by over 3 million users worldwide.</string>
+    <string name="introduction__page_1_content">Your phone has just become a private and secured key to your online services thanks to the 2FAS app - trusted by over 6 million users worldwide.</string>
     <string name="introduction__page_2_title">Simple</string>
     <string name="introduction__page_2_content">Pair 2FAS with your online services. Activate two-factor security in seconds with your QR code.</string>
     <string name="introduction__page_3_title">Private</string>
@@ -745,14 +745,14 @@
     <string name="tokens__add_title">Pair the service with 2FAS</string>
     <string name="tokens__add_description">Point your camera at the screen to capture the QR code.</string>
     <string name="tokens__add_other_methods">Other methods</string>
-    <string name="tokens__add_enter_manual">Enter secret key</string>
-    <string name="tokens__add_from_gallery">Upload an image with the QR code</string>
+    <string name="tokens__add_enter_manual">Enter secret key manually</string>
+    <string name="tokens__add_from_gallery">Upload screen with QR code</string>
     <string name="tokens__add_success_title">Almost done!</string>
     <string name="tokens__add_success_description">To finish pairing the service, you need to retype this token.</string>
     <string name="tokens__add_manual_title">Pair the service with 2FAS</string>
     <string name="tokens__add_manual_description">Type in the service name and secret key.</string>
-    <string name="tokens__add_manual_service_name">Service name (required)</string>
-    <string name="tokens__add_manual_service_key">Secret Key (required)</string>
+    <string name="tokens__add_manual_service_name">Service name</string>
+    <string name="tokens__add_manual_service_key">Secret Key</string>
     <string name="tokens__add_manual_other">Other settings</string>
     <string name="tokens__add_manual_other_optional">(optional)</string>
     <string name="tokens__add_manual_done_cta">Add service</string>
@@ -803,4 +803,12 @@
     <string name="guides__guide_title">2FAS for %s</string>
     <string name="guides__guide_universal_title">Universal 2FA Guide</string>
     <string name="browser__save_choice">Save my choice</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">Importing 2FA tokens from andOTP app</string>
+    <string name="externalimport__andotp_success_msg">This JSON file allows importing tokens from andOTP.</string>
+    <string name="externalimport__info_andotp_title">Import tokens from andOTP</string>
+    <string name="externalimport__andotp_msg">Export your accounts from andOTP to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
+    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
+    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
 </resources>

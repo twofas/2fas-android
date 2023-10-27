@@ -2,17 +2,17 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
+import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.prefs.model.ServiceDto
-import com.twofasapp.serialization.JsonSerializer
-import com.twofasapp.services.domain.ConvertOtpLinkToService
+import com.twofasapp.data.services.otp.ServiceParser
+import com.twofasapp.common.domain.OtpAuthLink
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 
 internal class AegisImporter(
     private val context: Context,
-    private val jsonSerializer: JsonSerializer,
-    private val convertOtpLinkToService: ConvertOtpLinkToService,
+    private val jsonSerializer: Json,
     private val servicesRepository: ServicesRepository,
 ) : ExternalImporter {
 
@@ -61,15 +61,16 @@ internal class AegisImporter(
 
             val inputStream = context.contentResolver.openInputStream(fileUri)!!
             val json = inputStream.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
-            val model = jsonSerializer.deserialize<Model>(json)
+            val model = jsonSerializer.decodeFromString<Model>(json)
 
             fileDescriptor?.close()
             inputStream.close()
 
             val totalServices = model.db.entries.size
-            val servicesToImport = mutableListOf<ServiceDto>()
+            val servicesToImport = mutableListOf<Service?>()
 
             model.db.entries
+                .asSequence()
                 .filter { it.type.equals("totp", true) || it.type.equals("hotp", true) }
                 .filter { it.info.digits == 6 || it.info.digits == 7 || it.info.digits == 8 }
                 .filter { it.info.period == 30 || it.info.period == 60 || it.info.period == 90 }
@@ -80,12 +81,13 @@ internal class AegisImporter(
                     ) || it.info.algo.equals("SHA384", true) || it.info.algo.equals("SHA512", true)
                 }
                 .filter { servicesRepository.isSecretValid(it.info.secret) }
+                .toList()
                 .forEach { entry ->
                     servicesToImport.add(parseService(entry))
                 }
 
             return ExternalImport.Success(
-                servicesToImport = servicesToImport,
+                servicesToImport = servicesToImport.filterNotNull(),
                 totalServicesCount = totalServices,
             )
         } catch (e: Exception) {
@@ -95,28 +97,26 @@ internal class AegisImporter(
         }
     }
 
-    private fun parseService(entry: Entry): ServiceDto {
-        val otpLink = com.twofasapp.parsers.domain.OtpAuthLink(
-            type = entry.type.uppercase(),
-            label = if (entry.issuer.isNotBlank()) "${entry.name}:${entry.name}" else entry.name,
-            secret = entry.info.secret,
-            issuer = entry.issuer,
-            params = parseParams(entry),
-            link = null,
+    private fun parseService(entry: Entry): Service? {
+        return ServiceParser.parseService(
+            OtpAuthLink(
+                type = entry.type.uppercase(),
+                label = if (entry.issuer.isNotBlank()) "${entry.name}:${entry.name}" else entry.name,
+                secret = entry.info.secret,
+                issuer = entry.issuer,
+                link = null,
+                params = parseParams(entry),
+            )
         )
-
-        val parsed = convertOtpLinkToService.execute(otpLink)
-
-        return parsed
     }
 
     private fun parseParams(entry: Entry): Map<String, String> {
         val params = mutableMapOf<String, String>()
 
-        entry.info.algo?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.ALGORITHM_PARAM] = it }
-        entry.info.period?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.PERIOD_PARAM] = it.toString() }
-        entry.info.digits?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.DIGITS_PARAM] = it.toString() }
-        entry.info.counter?.let { params[com.twofasapp.parsers.domain.OtpAuthLink.COUNTER] = it.toString() }
+        entry.info.algo?.let { params[OtpAuthLink.ParamAlgorithm] = it }
+        entry.info.period?.let { params[OtpAuthLink.ParamPeriod] = it.toString() }
+        entry.info.digits?.let { params[OtpAuthLink.ParamDigits] = it.toString() }
+        entry.info.counter?.let { params[OtpAuthLink.ParamCounter] = it.toString() }
 
         return params
     }

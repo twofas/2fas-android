@@ -1,4 +1,3 @@
-
 package com.twofasapp.feature.trash.ui.trash
 
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,11 +11,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.data.services.domain.Service
+import com.twofasapp.common.domain.Service
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwDropdownMenu
@@ -27,18 +25,19 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.service.DsServiceSimple
 import com.twofasapp.designsystem.service.ServiceImageType
 import com.twofasapp.designsystem.service.ServiceState
+import com.twofasapp.designsystem.service.asColor
 import com.twofasapp.feature.trash.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun TrashRoute(
-    openDispose: (Long) -> Unit,
-    viewModel: TrashViewModel = koinViewModel()
+internal fun TrashScreen(
+    viewModel: TrashViewModel = koinViewModel(),
+    openDispose: (Long) -> Unit
 ) {
     val services by viewModel.services.collectAsStateWithLifecycle()
 
-    TrashScreen(
+    ScreenContent(
         services = services,
         onRestoreClick = { viewModel.restoreService(it) },
         onDisposeClick = { openDispose(it) },
@@ -46,7 +45,7 @@ internal fun TrashRoute(
 }
 
 @Composable
-private fun TrashScreen(
+private fun ScreenContent(
     services: List<Service>,
     onRestoreClick: (Long) -> Unit,
     onDisposeClick: (Long) -> Unit,
@@ -80,7 +79,7 @@ private fun TrashScreen(
                         iconLight = it.iconLight,
                         iconDark = it.iconDark,
                         labelText = it.labelText,
-                        labelColor = it.labelColor.asState(),
+                        labelColor = it.labelColor.asColor(),
                         revealed = true,
                     ),
                     modifier = Modifier
@@ -115,23 +114,5 @@ private fun TrashScreen(
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun Service.Tint?.asState(): Color {
-    return when (this) {
-        Service.Tint.Default -> TwTheme.color.surfaceVariant
-        Service.Tint.LightBlue -> TwTheme.color.accentLightBlue
-        Service.Tint.Indigo -> TwTheme.color.accentIndigo
-        Service.Tint.Purple -> TwTheme.color.accentPurple
-        Service.Tint.Turquoise -> TwTheme.color.accentTurquoise
-        Service.Tint.Green -> TwTheme.color.accentGreen
-        Service.Tint.Red -> TwTheme.color.accentRed
-        Service.Tint.Orange -> TwTheme.color.accentOrange
-        Service.Tint.Yellow -> TwTheme.color.accentYellow
-        Service.Tint.Pink -> TwTheme.color.accentPink
-        Service.Tint.Brown -> TwTheme.color.accentBrown
-        null -> TwTheme.color.surfaceVariant
     }
 }

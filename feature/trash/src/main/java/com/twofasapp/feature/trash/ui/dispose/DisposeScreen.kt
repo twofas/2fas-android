@@ -35,13 +35,13 @@ import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun DisposeRoute(
-    navigateBack: () -> Unit,
-    viewModel: DisposeViewModel = koinViewModel()
+internal fun DisposeScreen(
+    viewModel: DisposeViewModel = koinViewModel(),
+    navigateBack: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    DisposeScreen(
+    ScreenContent(
         uiState = uiState,
         onDeleteClick = {
             viewModel.delete()
@@ -52,7 +52,7 @@ internal fun DisposeRoute(
 }
 
 @Composable
-private fun DisposeScreen(
+private fun ScreenContent(
     uiState: DisposeUiState,
     onDeleteClick: () -> Unit = {},
     onFinish: () -> Unit = {},
@@ -94,7 +94,10 @@ private fun DisposeScreen(
                 )
 
                 Text(
-                    text = TwLocale.strings.disposeBody2 + "\n" + TwLocale.strings.disposeBody3.format(uiState.serviceName, uiState.serviceName),
+                    text = TwLocale.strings.disposeBody2 + "\n" + TwLocale.strings.disposeBody3.format(
+                        uiState.serviceName,
+                        uiState.serviceName
+                    ),
                     color = TwTheme.color.onSurfacePrimary,
                     style = TwTheme.typo.body3,
                     textAlign = TextAlign.Center,
@@ -142,7 +145,7 @@ private fun DisposeScreen(
 @Preview
 @Composable
 private fun Preview() {
-    DisposeScreen(
+    ScreenContent(
         DisposeUiState(
             serviceName = "ServiceName"
         )
