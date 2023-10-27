@@ -25,7 +25,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -299,7 +298,7 @@ private fun ServicesScreen(
                 .padding(padding)
                 .reorderable(reorderableState),
             contentPadding = PaddingValues(top = 8.dp, bottom = 48.dp),
-            userScrollEnabled = uiState.services.isNotEmpty(),
+            userScrollEnabled = uiState.services.isNotEmpty() || (uiState.searchQuery.isNotBlank() && uiState.groups.size > 1),
         ) {
             if (uiState.isLoading) {
                 listItem(ServicesListItem.Loader) {

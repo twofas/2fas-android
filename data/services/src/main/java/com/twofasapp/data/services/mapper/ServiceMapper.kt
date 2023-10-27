@@ -2,6 +2,7 @@ package com.twofasapp.data.services.mapper
 
 import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.domain.Service
+import com.twofasapp.common.ktx.enumValueOrNull
 import com.twofasapp.data.services.domain.BackupService
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServiceEntity
@@ -133,7 +134,7 @@ internal fun BackupService.asDomain(
         secret = secret,
         name = name,
         info = otp.account ?: otp.label,
-        authType = otp.tokenType?.let { enumValueOf<Service.AuthType>(it) } ?: Service.AuthType.TOTP,
+        authType = otp.tokenType?.let { enumValueOrNull<Service.AuthType>(it) } ?: Service.AuthType.TOTP,
         link = otp.link,
         issuer = otp.issuer,
         period = otp.period,
