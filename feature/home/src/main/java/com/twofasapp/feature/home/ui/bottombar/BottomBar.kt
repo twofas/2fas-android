@@ -33,6 +33,7 @@ interface BottomBarListener {
 internal fun BottomBar(
     selectedIndex: Int,
     listener: BottomBarListener,
+    onItemClick: () -> Unit = {},
 ) {
     TwNavigationBar {
         bottomNavItems.forEachIndexed { index, item ->
@@ -43,8 +44,14 @@ internal fun BottomBar(
                 showBadge = false,
                 onClick = {
                     when {
-                        index == 0 && selectedIndex != 0 -> listener.openHome()
-                        index == 1 && selectedIndex != 1 -> listener.openSettings()
+                        index == 0 && selectedIndex != 0 -> {
+                            onItemClick()
+                            listener.openHome()
+                        }
+                        index == 1 && selectedIndex != 1 -> {
+                            onItemClick()
+                            listener.openSettings()
+                        }
                     }
                 }
             )

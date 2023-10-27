@@ -262,7 +262,17 @@ private fun ServicesScreen(
     }
 
     Scaffold(
-        bottomBar = { BottomBar(0, bottomBarListener) },
+        bottomBar = {
+            BottomBar(
+                selectedIndex = 0,
+                listener = bottomBarListener,
+                onItemClick = {
+                    if (uiState.searchFocused) {
+                        onSearchFocusChange(false)
+                    }
+                }
+            )
+        },
         topBar = {
             ServicesAppBar(
                 query = uiState.searchQuery,
