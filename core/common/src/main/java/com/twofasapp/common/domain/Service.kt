@@ -58,6 +58,10 @@ data class Service(
     }
 
     companion object {
+        val DefaultAlgorithm = Algorithm.SHA1
+        const val DefaultPeriod = 30
+        const val DefaultDigits = 6
+
         val Empty = Service(
             id = 0L,
             serviceTypeId = null,

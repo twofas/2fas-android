@@ -1,10 +1,14 @@
 package com.twofasapp.data.services
 
 import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.local.GroupsLocalSource
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.mapper.asDomain
+import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
+import com.twofasapp.prefs.model.RemoteBackupStatusEntity
+import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -14,6 +18,8 @@ internal class GroupsRepositoryImpl(
     private val dispatchers: Dispatchers,
     private val local: GroupsLocalSource,
     private val localServices: ServicesLocalSource,
+    private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
+    private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
 ) : GroupsRepository {
 
     override fun observeGroups(): Flow<List<Group>> {
@@ -40,6 +46,10 @@ internal class GroupsRepositoryImpl(
         withContext(dispatchers.io) {
             local.addGroup(name)
             localServices.cleanUpGroups(local.getGroups().ids)
+        }
+
+        if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
+            cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.GroupsChanged)
         }
     }
 

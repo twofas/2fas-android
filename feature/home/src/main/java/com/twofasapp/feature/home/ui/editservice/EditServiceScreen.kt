@@ -154,6 +154,7 @@ internal fun EditServiceScreen(
                         value = service.secret,
                         labelText = stringResource(R.string.tokens__service_key),
                         readOnly = true,
+                        singleLine = true,
                         onValueChange = {},
                         keyboardOptions = KeyboardOptions.Default.copy(
                             keyboardType = KeyboardType.Password,
@@ -187,6 +188,7 @@ internal fun EditServiceScreen(
                         value = service.info.orEmpty(),
                         labelText = stringResource(R.string.tokens__additional_info),
                         maxLength = 50,
+                        singleLine = true,
                         onValueChange = { text -> viewModel.updateInfo(text, true) },
                         keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
                         modifier = Modifier

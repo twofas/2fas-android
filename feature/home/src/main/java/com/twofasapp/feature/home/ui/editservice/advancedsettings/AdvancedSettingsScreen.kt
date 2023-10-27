@@ -15,9 +15,8 @@ import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.locale.TwLocale
 import com.twofasapp.locale.R
-import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
+import com.twofasapp.locale.TwLocale
 
 @Composable
 internal fun AdvancedSettingsScreen(
@@ -74,7 +73,7 @@ internal fun AdvancedSettingsScreen(
             item {
                 SettingsLink(
                     title = TwLocale.strings.addManualAlgorithm,
-                    subtitle = service.algorithm?.name.orEmpty(),
+                    subtitle = service.algorithm?.name ?: Service.DefaultAlgorithm.name,
                     enabled = false,
                 )
             }
@@ -83,7 +82,7 @@ internal fun AdvancedSettingsScreen(
                 item {
                     SettingsLink(
                         title = TwLocale.strings.addManualRefreshTime,
-                        subtitle = service.period.toString(),
+                        subtitle = (service.period ?: Service.DefaultPeriod).toString(),
                         enabled = false,
                     )
                 }
@@ -102,7 +101,7 @@ internal fun AdvancedSettingsScreen(
             item {
                 SettingsLink(
                     title = TwLocale.strings.addManualDigits,
-                    subtitle = service.digits.toString(),
+                    subtitle = (service.digits ?: Service.DefaultDigits).toString(),
                     enabled = false,
                 )
             }

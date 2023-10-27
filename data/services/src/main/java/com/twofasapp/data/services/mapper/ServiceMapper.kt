@@ -2,6 +2,7 @@ package com.twofasapp.data.services.mapper
 
 import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.domain.Service
+import com.twofasapp.common.ktx.enumValueOrNull
 import com.twofasapp.data.services.domain.BackupService
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServiceEntity

@@ -16,6 +16,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.DialogProperties
 import com.twofasapp.designsystem.common.TwOutlinedTextFieldPassword
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.android.awaitFrame
@@ -36,6 +37,7 @@ fun PasswordDialog(
     minLength: Int = 3,
     maxLength: Int = Int.MAX_VALUE,
     confirmRequired: Boolean = true,
+    properties: DialogProperties = DialogProperties(),
 ) {
     var password by remember { mutableStateOf("") }
     var passwordConfirm by remember { mutableStateOf("") }
@@ -61,6 +63,7 @@ fun PasswordDialog(
         onNegativeClick = onNegative,
         positiveEnabled = positiveEnabledState,
         negativeEnabled = true,
+        properties = properties,
     ) {
         Spacer(modifier = Modifier.height(8.dp))
 

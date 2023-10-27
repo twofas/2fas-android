@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Sat, 30 Sep 2023 08:15:01 -0700
+ Exported at: Fri, 27 Oct 2023 12:02:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -729,7 +729,7 @@
     <string name="settings__list_style">Stile dell\'elenco</string>
     <string name="backup__reminder_msg">Google Drive non è sincronizzato.</string>
     <string name="backup__reminder_cta">Vai alle impostazioni di backup</string>
-    <string name="settings__list_style_option_default">Predifinito</string>
+    <string name="settings__list_style_option_default">Predefinito</string>
     <string name="settings__list_style_option_compact">Compatto</string>
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Esporta i tuoi account da LastPass in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
@@ -802,13 +802,13 @@
     <string name="guides__guide_init_title">Guida a 2FAS</string>
     <string name="guides__guide_title">2FAS per %s</string>
     <string name="guides__guide_universal_title">Guida universale alla 2FA</string>
-    <string name="browser__save_choice">Save my choice</string>
+    <string name="browser__save_choice">Conferma la mia scelta</string>
     <string name="externalimport_andotp">andOTP</string>
     <string name="externalimport__andotp_title">Importazione di token 2FA dall\'app andOTP</string>
     <string name="externalimport__andotp_success_msg">Questo file JSON permette di importare i token da andOTP.</string>
     <string name="externalimport__info_andotp_title">Importa token da andOTP</string>
     <string name="externalimport__andotp_msg">Esporta i tuoi account da andOTP in un file JSON non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
-    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
-    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
-    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
+    <string name="introduction__backup_description">Nel prossimo step, ti verrà richiesto di scegliere il tuo account Google Drive, dove i token 2FA verrano salvati in sicurezza</string>
+    <string name="introduction__backup_take_risk_cta">Mi assumo il rischio, non eseguo il backup</string>
+    <string name="introduction__backup_success">Sincronizzazione con Google Drive abilitata correttamente!</string>
 </resources>

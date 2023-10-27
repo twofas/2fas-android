@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Sat, 30 Sep 2023 08:15:03 -0700
+ Exported at: Fri, 27 Oct 2023 12:02:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -814,7 +814,7 @@
     <string name="externalimport__andotp_success_msg">Цей JSON файл дозволяє імпортувати токени з andOTP.</string>
     <string name="externalimport__info_andotp_title">Імпортувати токени з andOTP</string>
     <string name="externalimport__andotp_msg">Експортуйте акаунти із andOTP в незашифрований JSON файл й завантажте його використовуючи кнопку \"Обрати JSON файл\". Не забудьте видалити файл після успішного імпортування.</string>
-    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
-    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
-    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
+    <string name="introduction__backup_description">На наступному кроці вам буде запропоновано вибрати обліковий запис Google Drive, де безпечно зберігатимуться токени 2FA.</string>
+    <string name="introduction__backup_take_risk_cta">Не хочу вмикати резервне копіювання</string>
+    <string name="introduction__backup_success">Синхронізацію Google Drive ввімкнено успішно!</string>
 </resources>

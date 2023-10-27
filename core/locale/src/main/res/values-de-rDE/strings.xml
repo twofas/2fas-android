@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sat, 30 Sep 2023 08:15:01 -0700
+ Exported at: Fri, 27 Oct 2023 12:02:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -61,7 +61,7 @@
     <string name="commons__skip">Überspringen</string>
     <string name="commons__tokens">Tokens</string>
     <string name="commons__warning">Warnung</string>
-    <string name="commons__no_results">keine Ergebnisse</string>
+    <string name="commons__no_results">Keine Ergebnisse</string>
     <string name="commons__customize">Anpassen</string>
     <string name="commons__approve">Bestätigen</string>
     <string name="commons__deny">Ablehnen</string>
@@ -82,7 +82,7 @@
     <string name="introduction__page_3_title">Privat</string>
     <string name="introduction__page_3_content">2FAS respektiert und schützt deine Privatsphäre. Diese App wird niemals persönliche Daten von dir erheben, verarbeiten oder verwenden.</string>
     <string name="introduction__page_4_title">Sichern</string>
-    <string name="introduction__page_4_content_ios">Deine Tokens werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwenden iCloud Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
+    <string name="introduction__page_4_content_ios">Deine Tokens werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende iCloud Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">Verwendung von 2FAS beginnen</string>
     <string name="introduction__tos">Bedingungen für den Service</string>
@@ -161,7 +161,7 @@
     <string name="tokens__duplicated_private_key">Duplizierter Geheimschlüssel</string>
     <!-- tokens__incorrect_private_key -->
     <string name="tokens__incorrect_service_key">Falscher Geheimschlüssel (nur Zahlen von 2 bis 7, Buchstaben), max. 512 Zeichen lang</string>
-    <string name="tokens__try_again">OK, erneut versuchen</string>
+    <string name="tokens__try_again">OK, versuch es erneut</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Richte die Kamera auf den Bildschirm, um den QR-Code zu scannen</string>
@@ -257,11 +257,11 @@
     <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">Dienst erfolgreich hinzugefügt. Wir empfehlen dir sehr, dass du\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
-    <string name="tokens__gallery_advice_content_middle_bold">lösche den QR Screenshot aus deiner Galerie.\u0020</string>
+    <string name="tokens__gallery_advice_content_middle_bold">Lösche den QR Screenshot aus deiner Galerie.</string>
     <string name="tokens__gallery_advice_content_last">Wenn jemand diesen QR-Code übernimmt, ist es möglich deine 2FA Codes über diesem Dienst zu erhalten.</string>
     <string name="tokens__request_icon_page_title">Ein Logo anfragen</string>
-    <string name="tokens__request_icon_social_title">Uns über Discord kontaktieren</string>
-    <string name="tokens__request_icon_social_link">Unserem Discord Server beitreten</string>
+    <string name="tokens__request_icon_social_title">Lass es uns auf Discord wissen</string>
+    <string name="tokens__request_icon_social_link">Trete unserem Discord-Server bei</string>
     <string name="tokens__request_icon_social_description">und lass Nutzer für das gewünschte Logo abstimmen.</string>
     <string name="tokens__request_icon_middle">oder</string>
     <string name="tokens__request_icon_provider_title">Informiere den Dienstanbieter</string>
@@ -269,7 +269,7 @@
     <string name="tokens__request_icon_provider_message">Hey! Ich verwende die 2FAS App um mich mit 2FA in deinen Dienst einzuloggen. Allerdings fehlt dein Symbol! Du kannst dein Symbol einrichten unter: https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_footnote">Vergiss nicht den offiziellen Account des Unternehmens zu taggen!</string>
-    <string name="tokens__order_icon_description">Kein Markenlogo in der 2FAS App zu finden?</string>
+    <string name="tokens__order_icon_description">Du kannst ein Markenlogo in 2FAS nicht finden?</string>
     <string name="tokens__order_icon_link">Ein Markenlogo anfragen</string>
     <string name="tokens__order_icon_title">Ein Markenlogo anfragen</string>
     <string name="tokens__order_menu_title">Wähle die Methode der Anfrage</string>
@@ -340,14 +340,14 @@
     <string name="backup__import_file_title">Du kannst exportierte Dateien auf anderen Geräten mit der 2FAS Anwendung importieren</string>
     <string name="backup__export_to_file">Als Datei exportieren</string>
     <string name="backup__verify_pin">PIN überprüfen</string>
-    <string name="backup__save_file">Datei Speichern</string>
+    <string name="backup__save_file">Datei speichern</string>
     <string name="backup__import_backup_file">Sicherungsdatei importieren</string>
     <!-- backup__youre_goint_to_import_backup -->
     <string name="backup__import_other_devices">Du wirst eine Sicherungsdatei importieren, die Folgendes enthält</string>
     <string name="backup__import_file">Datei importieren</string>
     <string name="backup__choose_antother_file">Wähle eine andere Datei</string>
     <string name="backup__no_new_services">Nichts zu importieren</string>
-    <string name="backup__file_error">Datei fehler!</string>
+    <string name="backup__file_error">Dateifehler!</string>
     <!-- backup__services_form_file_will_be_merged -->
     <string name="backup__services_merge_title">Die Dienste aus der Datei werden mit den Diensten in deiner App zusammengeführt</string>
     <string name="backup__no_new_services_error">Entweder ist diese Datei leer, oder alle darin enthaltenen Dienste sind bereits in der App verfügbar</string>
@@ -389,16 +389,16 @@
     <string name="settings__support_and_share">Unterstützen und teilen</string>
     <string name="settings__tell_a_friend">Mit einem Freund teilen</string>
     <string name="settings__write_a_review">Schreibe eine Bewertung</string>
-    <string name="settings__about">Über Uns</string>
+    <string name="settings__about">Über uns</string>
     <string name="settings__privacy_policy">Datenschutzerklärung</string>
     <string name="settings__terms_of_service">Allgemeine Geschäftsbedingungen</string>
     <string name="settings__version">App-Version %s</string>
-    <string name="settings__no_limit">Kein limit</string>
+    <string name="settings__no_limit">Kein Limit</string>
     <string name="settings__pin_code">PIN Code</string>
     <string name="settings__app_security">App-Sicherheit</string>
     <string name="settings__app_blocking">Lockout Einstellungen</string>
     <string name="settings__face_id">Face ID</string>
-    <string name="settings__touch_id">Berührungserkennung</string>
+    <string name="settings__touch_id">Fingerabdruckerkennung</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Sperre nach X Fehlversuchen:</string>
     <string name="settings__how_many_attempts_footer">Wähle die maximale Anzahl der erfolglosen Passcode-Versuche, bevor die App gesperrt wird.</string>
@@ -441,26 +441,26 @@
     <string name="browser__paired_devices_browser_title">Gekoppelte Geräte (Webbrowser)</string>
     <string name="browser__add_new">Neu hinzufügen</string>
     <!-- browser__this_device -->
-    <string name="browser__this_device_name">Geräte Nickname</string>
-    <string name="browser__device_name">Geräte Nickname</string>
+    <string name="browser__this_device_name">Geräte-Bezeichnung</string>
+    <string name="browser__device_name">Geräte-Bezeichnung</string>
     <string name="browser__name">Name</string>
     <string name="browser__this_device_footer">Die Bezeichnung wird dir helfen das Gerät von anderen Geräten, die mit der Browser-Erweiterung gekoppelt sind, zu unterscheiden.</string>
     <string name="browser__browser_extension_settings">Einstellungen der Browsererweiterung</string>
     <string name="browser__unkown_name">&lt;UNKOWN_NAME&gt;</string>
     <string name="browser__request_source_description">%1$s hat ein 2FA-Token für %2$s angefordert. Wähle den Dienst, den du mit dieser Domäne autorisieren und speichern möchtest.</string>
-    <string name="browser__request">Browser anfrage</string>
+    <string name="browser__request">Browser Anfrage</string>
     <!-- browser__code_success -->
     <string name="browser__code_success_title">Token erfolgreich gesendet!</string>
     <string name="browser__code_failure">Fehler beim Senden des Codes. %s</string>
     <string name="browser__deleting_paired_device_title">Gekoppelte Gerät löschen</string>
     <string name="browser__deleting_paired_device_content">Möchtest du wirklich dieses gekoppelte Gerät löschen?</string>
-    <string name="browser__pairing_date">Datum der Kopplung</string>
+    <string name="browser__pairing_date">Datum verbunden</string>
     <string name="browser__forget_this_browser">Diesen Webbrowser vergessen</string>
     <!-- browser__service_is_paired_list_description -->
     <string name="browser__paired_domains_list_title">Liste von gekoppelten Domains.</string>
     <string name="browser__deleting_extension_pairing_title">Domain entfernen?</string>
     <string name="browser__deleting_extension_pairing_content">Wenn du die Browsererweiterung das nächste Mal verwendest, um dich bei %s anzumelden, wirst du erneut aufgefordert, diese Domain zu koppeln.</string>
-    <string name="browser__push_notifications_title">Mitteilungen</string>
+    <string name="browser__push_notifications_title">Push-Benachrichtigungen</string>
     <string name="browser__push_notifications_content">Um auf Funktionen wie die Browsererweiterung zugreifen zu können, benötigt die Anwendung Zugriff auf Push-Benachrichtigungen. Du kannst diese Einstellung jederzeit in den Systemeinstellungen vornehmen.</string>
     <string name="browser__request_expired">Anfrage abgelaufen</string>
     <string name="browser__2fa_token_request_title">2FA Token Anfrage</string>
@@ -534,12 +534,12 @@
     <string name="commons__yes">Ja</string>
     <string name="commons__no">Nein</string>
     <string name="commons__search">Suchen</string>
-    <string name="errors__no_app">Keine Anwendung, die diesen Link unterstützt</string>
+    <string name="errors__no_app">Keine Anwendung die diesen Link unterstützt</string>
     <string name="permissions__camera_permission">Kamera-Berechtigung</string>
     <string name="permissions__camera_permission_description">Zum Scannen von QR-Codes ist eine Kamerazulassung erforderlich. Wenn du diese Funktion verwenden möchtest, gehe zu Anwendungsinformationen und Berechtigungen und aktiviere die Kamera.</string>
     <string name="security__disable_pin">PIN deaktivieren</string>
     <string name="security__enter_your_new_pin">Bitte gebe deine neue %s PIN ein</string>
-    <string name="security__pin_error_incorrect">PIN falsch! Bitte versuche es erneut</string>
+    <string name="security__pin_error_incorrect">Falsche PIN! Bitte versuche es erneut</string>
     <string name="settings__biometrics">Biometrie</string>
     <string name="settings__support">2FAS Support</string>
     <string name="settings__developer">Entwickler Optionen</string>
@@ -624,7 +624,7 @@
     <string name="extension__error_while_sending">Fehler beim Senden des Tokens</string>
     <string name="extension__not_paired_title">Diese Website ist nicht gekoppelt</string>
     <string name="extension__not_paired_content">Öffne die App und wähle einen Dienst für diese Domain</string>
-    <string name="extension__error_open_the_app">Open the app and check if Browser Extension is properly paired</string>
+    <string name="extension__error_open_the_app">Öffne die App und überprüfe ob die Browsererweiterung gekoppelt ist</string>
     <string name="extension__error_no_internet">Es existiert ein Verbindungsproblem</string>
     <string name="extension__try_again">Bitte versuche es erneut</string>
     <string name="extension__error">Fehler</string>
@@ -639,14 +639,14 @@
     <string name="settings__send_logs_error_server">Es ist ein Fehler mit unseren Servern aufgetreten. Bitte melde dich bei unserem Support-Team, falls der Fehler weiterhin auftritt.</string>
     <string name="settings__send_logs_error_title">Vorgang fehlgeschlagen</string>
     <string name="settings__send_logs_sent_title">Protokolle gesendet</string>
-    <string name="settings__send_logs_sent_description">Wir werden es uns anschauen, bitte gebe uns ein wenig Zeit.</string>
+    <string name="settings__send_logs_sent_description">Danke für die Anfrage. Wir werden es uns anschauen, gebe uns ein wenig Zeit.</string>
     <string name="commons__send">Senden</string>
     <string name="settings__send_logs_title">Protokolle werden gesendet</string>
     <string name="settings__send_logs_description_link">Der von dem Support-Team bereitgestellte Code wurde automatisch ausgefüllt. Protokolle senden?</string>
     <string name="settings__send_logs_description_edit">Bitte gebe oder füge den von unserem Support-Team bereitgestellten Code ein</string>
     <string name="settings__send_logs">Protokolle senden</string>
     <string name="settings__recommendation">Sehe dir diese großartige Zwei-Faktor-Authentifizierungs-App von 2FAS an: https://2fas.com</string>
-    <string name="settings__acknowledgements">Danksagung</string>
+    <string name="settings__acknowledgements">Danksagungen</string>
     <string name="introduction__import_external_app">Aus externer Anwendung Importieren</string>
     <plurals name="past_duration_seconds">
         <item quantity="one">vor wenigen Augenblicken</item>
@@ -722,12 +722,12 @@
     <string name="errors__input_too_long">Eingabe ist zu lang. Limit: %d</string>
     <string name="commons__best_match">Bester Treffer</string>
     <string name="settings__enable_crashlytics">Anonyme Absturzberichte senden</string>
-    <string name="settings__enable_crashlytics_description">Sende anonyme Absturzberichte, um 2FAS beim Identifizieren und Lösen von Fehlern in der App zu helfen (App Neustart erforderlich).</string>
+    <string name="settings__enable_crashlytics_description">Sende anonyme Absturzberichte, um 2FAS beim Identifizieren und Lösen von Fehlern in der App zu helfen (App-Neustart erforderlich).</string>
     <string name="tokens__manage_list">Liste bearbeiten</string>
     <string name="settings__appearance">Erscheinungsbild</string>
-    <string name="settings__show_next_token_desc">Nächsten Token anzeigen, wenn der Alte abläuft</string>
+    <string name="settings__show_next_token_desc">Nächsten Token anzeigen, wenn der Jetzige demnächst abläuft</string>
     <string name="settings__list_style">Listenstil</string>
-    <string name="backup__reminder_msg">Google-Drive nicht synchronisiert</string>
+    <string name="backup__reminder_msg">Google Drive nicht synchronisiert</string>
     <string name="backup__reminder_cta">Zu den Backup-Einstellungen gehen</string>
     <string name="settings__list_style_option_default">Standard</string>
     <string name="settings__list_style_option_compact">Kompakt</string>
@@ -736,60 +736,60 @@
     <string name="settings__about_crash_optout_title">Absturzberichte</string>
     <string name="externalimport__lastpass_title">2FA Tokens aus LastPass importieren</string>
     <string name="externalimport__lastpass_success_msg">Diese JSON-Datei erlaubt es Tokens von LastPass zu importieren.</string>
-    <string name="externalimport__info_lastpass_title">Importiere tokens von LastPass</string>
-    <string name="externalimport__info_aegis_title">Importiere tokens von Aegis</string>
-    <string name="externalimport__info_raivo_title">Importiere tokens von Raivo OTP</string>
-    <string name="externalimport__info_google_authenticator_title">Importiere tokens von Google Authenticator</string>
+    <string name="externalimport__info_lastpass_title">Importiere Tokens von LastPass</string>
+    <string name="externalimport__info_aegis_title">Importiere Tokens von Aegis</string>
+    <string name="externalimport__info_raivo_title">Importiere Tokens von Raivo OTP</string>
+    <string name="externalimport__info_google_authenticator_title">Importiere Tokens von Google Authenticator</string>
     <!-- Counter eg.: "25s" -->
     <string name="time_unit_seconds_short">s</string>
     <string name="tokens__add_title">Verbinde den Dienst mit 2FAS</string>
-    <string name="tokens__add_description">Richte die Kamer auf den Bildschirm, um den QR-Code zu erfassen.</string>
+    <string name="tokens__add_description">Richte die Kamera auf den Bildschirm, um den QR-Code zu erfassen.</string>
     <string name="tokens__add_other_methods">Andere Methoden</string>
     <string name="tokens__add_enter_manual">Gebe den Geheimschlüssel ein</string>
     <string name="tokens__add_from_gallery">Bild mit dem QR-Code hochladen</string>
     <string name="tokens__add_success_title">Fast fertig!</string>
     <string name="tokens__add_success_description">Um die Verbindung des Dienstes abzuschließen, musst du den Token erneut eingeben.</string>
     <string name="tokens__add_manual_title">Verbinde den Dienst mit 2FAS</string>
-    <string name="tokens__add_manual_description">Gebe den Dienstnamen und den Geheimschlüssel ein.</string>
-    <string name="tokens__add_manual_service_name">Name des Dienstes</string>
+    <string name="tokens__add_manual_description">Gebe den Dienst und den Geheimschlüssel ein.</string>
+    <string name="tokens__add_manual_service_name">Dienstname</string>
     <string name="tokens__add_manual_service_key">Geheimschlüssel</string>
     <string name="tokens__add_manual_other">Andere Einstellungen</string>
     <string name="tokens__add_manual_other_optional">(optional)</string>
     <string name="tokens__add_manual_done_cta">Dienst hinzufügen</string>
-    <string name="tokens__add_manual_help_cta">Du weist nicht was du tun sollst? Tippen sie hier für Hilfe</string>
+    <string name="tokens__add_manual_help_cta">Du weißt nicht was du tun sollst? Tippe hier für Hilfe</string>
     <string name="tokens__add_manual_advanced">Erweiterte Token-Einstellungen</string>
     <string name="tokens__add_manual_additional_info">Zusätzliche Info</string>
-    <string name="tokens__add_manual_advanced_description">Das Ändern der Standard-Token-Einstellung wird nicht empfohlen. Du sollst dies nut tun, wenn der 2FA-Anbieter es verlangt und wenn du klare Anweisungen hast.</string>
+    <string name="tokens__add_manual_advanced_description">Das Ändern der Standard-Token-Einstellung wird nicht empfohlen. Du sollst dies nur tun, wenn der 2FA-Anbieter es verlangt und wenn du klare Anweisungen hast.</string>
     <string name="settings__option_screenshots_description">Screenshots in der App für 5 Minuten erlauben.</string>
     <string name="settings__option_screenshots">Screenshots erlauben</string>
     <string name="settings__option_screenshots_confirm_title">Willst du Screenshots innerhalb der App zulassen?</string>
-    <string name="settings__option_screenshots_confirm_description">Bist du dir sicher? Mit dieser Option kannst du Screenshots erstellen und jeden Bildschirm innerhalb der App aufzeichnen. Jedoch erlaubt dies auch alle externen Versuche, den Bildshirm innerhalb der App zu erfassen.\nAus Sicherheitsgründen wird diese Option automatisch nach 5 Minuten ausgeschaltet.</string>
+    <string name="settings__option_screenshots_confirm_description">Sicher? Mit dieser Option kannst du Screenshots erstellen und jeden Bildschirm innerhalb der App aufzeichnen. Jedoch erlaubt dies auch alle externen Versuche, den Bildshirm innerhalb der App zu erfassen.\nAus Sicherheitsgründen wird diese Option automatisch nach 5 Minuten ausgeschaltet.</string>
     <string name="social__social_media">Soziale Medien</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
-    <string name="social__twitter">Twitter</string>
+    <string name="social__twitter">X (ehemals Twitter)</string>
     <string name="social__github">GitHub</string>
     <string name="social__linkedin">LinkedIn</string>
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
-    <string name="settings__hide_tokens_title">Token ausblenden</string>
-    <string name="settings__hide_tokens_description">Token werden nach dem antippen enthüllt</string>
-    <string name="browser__pair_manually_cta">Manuell Koppeln</string>
+    <string name="settings__hide_tokens_title">Tokens ausblenden</string>
+    <string name="settings__hide_tokens_description">Tokens werden nach dem Antippen angezeigt</string>
+    <string name="browser__pair_manually_cta">Manuell koppeln</string>
     <string name="browser__pair_manually_hint">Pairing-Code</string>
     <string name="externalimport__info_authenticatorpro_title">Token aus Authenticator Pro importieren</string>
     <string name="externalimport__authenticatorpro_success_msg">Diese Textdatei ermöglicht den Import von Token aus Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_title">2FA-Tokens aus der Authenticator Pro App importieren</string>
-    <string name="externalimport__authenticatorpro_msg">Exportiere deine Konten von Authenticator Pro in eine unverschlüsselte Textdatei und lade diese über die \"Textdatei hochladen\" Schaltfläche hoch. Denke daran die Datei nach erfolgreichen Import zu löschen.</string>
+    <string name="externalimport__authenticatorpro_msg">Exportiere deine Konten von Authenticator Pro in eine unverschlüsselte Textdatei und lade diese über die \"Textdatei auswählen\" Schaltfläche hoch. Denke daran die Datei nach erfolgreichen Import zu löschen.</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
-    <string name="externalimport__choose_txt_cta">Text Datei Auswählen</string>
+    <string name="externalimport__choose_txt_cta">Textdatei auswählen</string>
     <string name="fingerprint__biometric_invalidated">Biometrische Anmeldungen wurden aufgrund von Änderungen der Systemsicherheits- und Datenschutzeinstellungen deaktiviert.</string>
-    <string name="tokens__last_pass_import">Importiere 2FA Tokens von der LastPass App</string>
-    <string name="tokens__last_pass_import_subtitle">Dieser QR-Code erlaubt es Ihnen Tokens von LastPass zu importieren</string>
+    <string name="tokens__last_pass_import">Importieren von 2FA Tokens von der LastPass App</string>
+    <string name="tokens__last_pass_import_subtitle">Dieser QR-Code erlaubt es dir Tokens von LastPass zu importieren</string>
     <string name="tokens__add_with_guide">Führe mich</string>
-    <string name="guides__select_title">Suche Service</string>
+    <string name="guides__select_title">Suche Dienste</string>
     <string name="guides__select_description">Wähle den Service den du mit der 2FAS App verknüpfen willst</string>
-    <string name="guides__select_provide_guide">Möchten sie 2FAS Führer für ihren dienst Bereitstellen?\u0020</string>
-    <string name="guides__select_provide_guide_cta">Jetzt Bewerben</string>
+    <string name="guides__select_provide_guide">Möchtest du 2FA-Anleitungen für den Dienst bereitstellen?\u0020</string>
+    <string name="guides__select_provide_guide_cta">Jetzt bewerben</string>
     <string name="color__pink">Pink</string>
     <string name="color__brown">Braun</string>
     <string name="tokens__other_methods_header">Sonstige Methoden?</string>
@@ -798,7 +798,7 @@
     <string name="tokens__camera_is_unavailable_app_permission_underline">Systemeinstellungen</string>
     <string name="commons__text_short_title">Der angegebene Text ist zu kurz (mind. %d Zeichen)</string>
     <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
-    <string name="tokens__add_manual_advanced_description_highlight">wird nicht empfolen</string>
+    <string name="tokens__add_manual_advanced_description_highlight">wird nicht empfohlen</string>
     <string name="guides__guide_init_title">2FAS Hilfewerk</string>
     <string name="guides__guide_title">2FAS für %s\n</string>
     <string name="guides__guide_universal_title">Universelles 2FAS Hilfewerk\u0020</string>
@@ -808,7 +808,7 @@
     <string name="externalimport__andotp_success_msg">Diese JSON-Datei erlaubt es Tokens von andOTP zu importieren.</string>
     <string name="externalimport__info_andotp_title">Importiere tokens von andOTP</string>
     <string name="externalimport__andotp_msg">Exportiere deine Konten von andOTP in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
-    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
-    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
-    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
+    <string name="introduction__backup_description">Im nächsten Schritt wirst du gefragt auf welchem Google Account du deine Tokens sichern willst.\u0020</string>
+    <string name="introduction__backup_take_risk_cta">Ich gehe das Risiko ein und erstelle kein Backup</string>
+    <string name="introduction__backup_success">Die Google Drive Synchronisation wurde erfolgreich aktiviert.</string>
 </resources>

@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
@@ -249,7 +250,9 @@ private fun ScreenContent(
                 body = strings.backupEnterCloudPasswordMsg,
                 error = if (showPasswordError) strings.backupIncorrectPassword else null,
                 positive = strings.commonContinue,
-                onPositive = { onEnterPassword(it) }
+                onPositive = { onEnterPassword(it) },
+                onNegative = { onTurnOffSync() },
+                properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false)
             )
         }
     }
