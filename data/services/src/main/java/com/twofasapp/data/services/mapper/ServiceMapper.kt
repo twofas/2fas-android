@@ -134,7 +134,7 @@ internal fun BackupService.asDomain(
         secret = secret,
         name = name,
         info = otp.account ?: otp.label,
-        authType = otp.tokenType?.let { enumValueOrNull<Service.AuthType>(it) } ?: Service.AuthType.TOTP,
+        authType = otp.tokenType?.let { enumValueOf<Service.AuthType>(it) } ?: Service.AuthType.TOTP,
         link = otp.link,
         issuer = otp.issuer,
         period = otp.period,

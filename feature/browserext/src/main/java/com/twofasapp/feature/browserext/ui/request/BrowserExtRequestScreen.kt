@@ -24,8 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
-import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
+import androidx.lifecycle.lifecycleScope
 import com.twofasapp.common.domain.Service
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwSwitch
@@ -33,7 +32,10 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.service.DsServiceSimple
 import com.twofasapp.designsystem.service.asState
+import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
+import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
 import com.twofasapp.locale.TwLocale
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -52,22 +54,24 @@ internal fun BrowserExtRequestScreen(
         uiState = uiState,
         onSaveMyChoiceToggle = { viewModel.toggleSaveMyChoice() },
         onServiceClick = { service ->
-            viewModel.assignDomain(service)
+            activity.lifecycleScope.launch {
+                viewModel.assignDomain(service)
 
-            // Clear notification
-            NotificationManagerCompat
-                .from(activity)
-                .cancel(null, payload.requestId.hashCode())
+                // Clear notification
+                NotificationManagerCompat
+                    .from(activity)
+                    .cancel(null, payload.requestId.hashCode())
 
-            // Launch broadcast
-            val intent = Intent(activity, BrowserExtRequestReceiver::class.java)
-                .apply {
-                    action = BrowserExtRequestReceiver.ACTION
-                    putExtra(BrowserExtRequestPayload.Key, payload.copy(serviceId = service.id))
-                }
+                // Launch broadcast
+                val intent = Intent(activity, BrowserExtRequestReceiver::class.java)
+                    .apply {
+                        action = BrowserExtRequestReceiver.ACTION
+                        putExtra(BrowserExtRequestPayload.Key, payload.copy(serviceId = service.id))
+                    }
 
-            activity.sendBroadcast(intent)
-            activity.finish()
+                activity.finish()
+                activity.sendBroadcast(intent)
+            }
         }
     )
 }

@@ -33,7 +33,6 @@ class OtpAuthenticator {
         private const val HmacSha384 = "HmacSHA384"
         private const val HmacSha512 = "HmacSHA512"
         private val keyModulus = mapOf(
-            5 to 10.0.pow(5.toDouble()).toLong(),
             6 to 10.0.pow(6.toDouble()).toLong(),
             7 to 10.0.pow(7.toDouble()).toLong(),
             8 to 10.0.pow(8.toDouble()).toLong(),
