@@ -9,11 +9,14 @@ android {
 }
 
 dependencies {
+    implementation(project(":base"))
+    implementation(project(":prefs"))
     implementation(project(":core:common"))
     implementation(project(":core:android"))
     implementation(project(":core:locale"))
     implementation(project(":core:designsystem"))
     implementation(project(":data:services"))
+    implementation(project(":data:session"))
 
     implementation(libs.bundles.viewModel)
     implementation(libs.bundles.glance)
