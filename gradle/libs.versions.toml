@@ -1,10 +1,10 @@
 [versions]
-accompanist = "0.33.2-alpha"
+accompanist = "0.32.0"
 agp = "8.2.0-rc02"
 cameraX = "1.3.0"
 coil = "2.4.0"
 commonmark = "0.21.0"
-compose = "1.6.0-alpha08"
+compose = "1.5.4"
 composeActivity = "1.8.0"
 composeCompiler = "1.5.3"
 core = "1.12.0"
@@ -18,7 +18,7 @@ kotlinCoroutines = "1.7.3"
 kotlinKsp = "1.9.10-1.0.13"
 ktor = "2.3.4"
 lifecycle = "2.7.0-beta01"
-material3 = "1.2.0-alpha10"
+material3 = "1.2.0-alpha08"
 room = "2.6.0"
 
 [libraries]

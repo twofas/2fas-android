@@ -113,7 +113,11 @@ internal class BrowserExtRepositoryImpl(
     }
 
     override suspend fun getFcmToken(): String {
-        return FirebaseMessaging.getInstance().token.await()
+        return try {
+            FirebaseMessaging.getInstance().token.await().orEmpty()
+        } catch (e: Exception) {
+            ""
+        }
     }
 
     override suspend fun deleteTokenRequest(requestId: String) {
