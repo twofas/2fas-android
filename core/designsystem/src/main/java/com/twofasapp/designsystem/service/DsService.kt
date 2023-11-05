@@ -159,7 +159,7 @@ fun DsService(
                                 ServiceStyle.Default -> NextCodeGravity.Below
                                 ServiceStyle.Compact -> NextCodeGravity.End
                             },
-                            animateColor = state.authType == ServiceAuthType.Totp,
+                            animateColor = state.authType == ServiceAuthType.Totp || state.authType == ServiceAuthType.Steam,
                             textStyles = textStyles,
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -183,6 +183,7 @@ fun DsService(
 
                 if (state.revealed || hideCodes.not() || state.authType == ServiceAuthType.Hotp) {
                     when (state.authType) {
+                        ServiceAuthType.Steam,
                         ServiceAuthType.Totp -> {
                             ServiceTimer(
                                 timer = state.timer,
@@ -202,7 +203,7 @@ fun DsService(
                         }
                     }
                 } else {
-                    if (state.authType == ServiceAuthType.Totp) {
+                    if (state.authType == ServiceAuthType.Totp || state.authType == ServiceAuthType.Steam) {
                         Box(
                             Modifier
                                 .padding(end = 7.dp)

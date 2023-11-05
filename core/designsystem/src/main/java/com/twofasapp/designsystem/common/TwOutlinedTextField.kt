@@ -69,7 +69,7 @@ fun TwOutlinedTextField(
     var textValue by remember { mutableStateOf(TextFieldValue(value, selection = TextRange(value.length))) }
 
     OutlinedTextField(
-        value = textValue,
+        value = textValue.copy(text = value),
         onValueChange = {
             if (it.text.length <= maxLength) {
                 textValue = it

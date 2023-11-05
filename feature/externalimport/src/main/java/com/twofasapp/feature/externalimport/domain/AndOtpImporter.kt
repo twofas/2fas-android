@@ -55,7 +55,7 @@ internal class AndOtpImporter(
             val servicesToImport = mutableListOf<Service?>()
 
             models
-                .filter { it.digits == 6 || it.digits == 7 || it.digits == 8 || it.digits == null }
+                .filter { it.digits == 5 || it.digits == 6 || it.digits == 7 || it.digits == 8 || it.digits == null }
                 .filter { it.period == 30 || it.period == 60 || it.period == 90 || it.period == null }
                 .filter {
                     it.algorithm.equals("SHA1", true) ||

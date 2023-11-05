@@ -43,7 +43,7 @@ data class ServiceState(
     }
 
     fun isNextCodeEnabled(showNextCode: Boolean): Boolean {
-        return timer <= ServiceExpireTransitionThreshold && showNextCode && authType == ServiceAuthType.Totp
+        return timer <= ServiceExpireTransitionThreshold && showNextCode && (authType == ServiceAuthType.Totp || authType == ServiceAuthType.Steam)
     }
 
     companion object {

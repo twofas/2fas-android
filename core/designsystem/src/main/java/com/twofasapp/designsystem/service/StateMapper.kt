@@ -23,6 +23,7 @@ fun Service.asState(): ServiceState {
         authType = when (authType) {
             Service.AuthType.TOTP -> ServiceAuthType.Totp
             Service.AuthType.HOTP -> ServiceAuthType.Hotp
+            Service.AuthType.STEAM -> ServiceAuthType.Steam
         },
         iconLight = iconLight,
         iconDark = iconDark,

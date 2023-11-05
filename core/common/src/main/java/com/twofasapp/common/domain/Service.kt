@@ -38,7 +38,7 @@ data class Service(
         val progress: Float,
     )
 
-    enum class AuthType { TOTP, HOTP }
+    enum class AuthType { TOTP, HOTP, STEAM }
     enum class Algorithm { SHA1, SHA224, SHA256, SHA384, SHA512 }
     enum class ImageType { IconCollection, Label }
     enum class Source { Link, Manual }
@@ -58,6 +58,7 @@ data class Service(
     }
 
     companion object {
+        val DefaultAuthType = AuthType.TOTP
         val DefaultAlgorithm = Algorithm.SHA1
         const val DefaultPeriod = 30
         const val DefaultDigits = 6

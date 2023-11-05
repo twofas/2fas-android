@@ -1,14 +1,14 @@
 package com.twofasapp.feature.home.ui.services.add.manual
 
 import androidx.lifecycle.ViewModel
+import com.twofasapp.common.domain.BackupSyncStatus
+import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.common.domain.Service
-import com.twofasapp.common.domain.BackupSyncStatus
+import com.twofasapp.locale.R
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.locale.R
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,8 +51,10 @@ internal class AddServiceManualViewModel(
             }
         }
 
-        servicesRepository.getManualGuideSelectedPrefill()?.let { updateName(it) }
-        servicesRepository.setManualGuideSelectedPrefill(null)
+        servicesRepository.getManualGuideSelectedPrefill()?.let {
+            updateName(it)
+            servicesRepository.setManualGuideSelectedPrefill(null)
+        }
     }
 
     fun updateAuthType(authType: Service.AuthType) {
@@ -61,6 +63,8 @@ internal class AddServiceManualViewModel(
                 it.copy(
                     authType = authType,
                     hotpCounter = 1,
+                    digits = Service.DefaultDigits,
+                    refreshTime = Service.DefaultPeriod,
                 )
             }
 
@@ -71,6 +75,20 @@ internal class AddServiceManualViewModel(
                 )
             }
 
+            Service.AuthType.STEAM -> {
+                uiState.update {
+                    it.copy(
+                        authType = authType,
+                        algorithm = Service.Algorithm.SHA1,
+                        digits = 5,
+                        refreshTime = Service.DefaultPeriod,
+                    )
+                }
+
+                if (uiState.value.serviceName.isNullOrEmpty()) {
+                    updateName("Steam")
+                }
+            }
         }
     }
 
@@ -162,7 +180,7 @@ internal class AddServiceManualViewModel(
                     info = state.additionalInfo,
                     authType = state.authType,
                     link = null,
-                    issuer = null,
+                    issuer = if (state.authType == Service.AuthType.STEAM) "Steam" else null,
                     period = state.refreshTime,
                     digits = state.digits,
                     hotpCounter = state.hotpCounter,

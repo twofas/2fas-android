@@ -242,6 +242,7 @@ internal class ServicesRepositoryImpl(
             }
 
             val digits = when {
+                otpDigits == 5 -> 5
                 otpDigits == 6 -> 6
                 otpDigits == 7 -> 7
                 otpDigits == 8 -> 8

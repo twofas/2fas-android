@@ -96,7 +96,7 @@ fun DsServiceModal(
                     nextCode = state.nextCode,
                     timer = state.timer,
                     nextCodeVisible = state.isNextCodeEnabled(showNextCode),
-                    animateColor = state.authType == ServiceAuthType.Totp,
+                    animateColor = state.authType == ServiceAuthType.Totp || state.authType == ServiceAuthType.Steam,
                     modifier = Modifier
                         .fillMaxWidth()
                         .alpha(if (state.revealed || hideCodes.not()) 1f else 0f),
@@ -115,6 +115,7 @@ fun DsServiceModal(
 
             if (state.revealed || hideCodes.not() || state.authType == ServiceAuthType.Hotp) {
                 when (state.authType) {
+                    ServiceAuthType.Steam,
                     ServiceAuthType.Totp -> {
                         ServiceTimer(
                             timer = state.timer,
@@ -132,7 +133,7 @@ fun DsServiceModal(
                     }
                 }
             } else {
-                if (state.authType == ServiceAuthType.Totp) {
+                if (state.authType == ServiceAuthType.Totp || state.authType == ServiceAuthType.Steam) {
                     Box(
                         Modifier
                             .size(56.dp)

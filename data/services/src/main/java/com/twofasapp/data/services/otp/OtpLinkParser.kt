@@ -9,6 +9,7 @@ object OtpLinkParser {
     private const val OTPAUTH = "otpauth"
     private const val TOTP = "totp"
     private const val HOTP = "hotp"
+    private const val STEAM = "steam"
     private const val SECRET = "secret"
     private const val ISSUER = "issuer"
 
@@ -52,7 +53,7 @@ object OtpLinkParser {
     private fun isUriValid(uri: Uri?) = uri?.scheme?.lowercase() == OTPAUTH
 
     private fun isAuthorityValid(uri: Uri) =
-        uri.authority?.lowercase() == TOTP || uri.authority?.lowercase() == HOTP
+        uri.authority?.lowercase() == TOTP || uri.authority?.lowercase() == HOTP || uri.authority?.lowercase() == STEAM
 
     private fun mapQueryParams(uri: Uri) = uri.queryParameterNames.associateWith { uri.getQueryParameter(it)!! }
 
