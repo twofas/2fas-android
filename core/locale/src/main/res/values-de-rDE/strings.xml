@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Fri, 27 Oct 2023 12:02:50 -0700
+ Exported at: Sat, 11 Nov 2023 03:59:02 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -85,7 +85,7 @@
     <string name="introduction__page_4_content_ios">Deine Tokens werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende iCloud Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">Verwendung von 2FAS beginnen</string>
-    <string name="introduction__tos">Bedingungen für den Service</string>
+    <string name="introduction__tos">Allgemeine Geschäftsbedingungen</string>
     <string name="introduction__description_title">Kopple dein Online-Service-Konto mit 2FAS oder importiere deine Tokens</string>
     <string name="introduction__pair_new_service">Neuen Dienst koppeln</string>
     <!-- introduction__import_2fas -->
@@ -119,11 +119,11 @@
     <!-- security__confirm_your_new_pin -->
     <string name="security__confirm_new_pin">Bitte bestätige deine neue PIN</string>
     <string name="security__create_pin">PIN erstellen</string>
-    <string name="security__enter_current_pin">Bitte gebe deine aktuelle PIN ein</string>
+    <string name="security__enter_current_pin">Bitte gib deine aktuelle PIN ein</string>
     <!-- security__enter_your_new_pin -->
-    <string name="security__enter_new_pin">Bitte gebe deine neue PIN ein</string>
+    <string name="security__enter_new_pin">Bitte gib deine neue PIN ein</string>
     <!-- security__enter_your_pin -->
-    <string name="security__enter_pin">Bitte gebe deine PIN ein</string>
+    <string name="security__enter_pin">Bitte gib deine PIN ein</string>
     <!-- MARK: - Security -->
     <string name="security__too_many_attempts_try_again_after_formatter">Zu viele Versuche. Bitte versuche es erneut %s</string>
     <string name="security__too_many_attempts_try_again_after">Zu viele Versuche. Bitte versuche es nach %s Minuten erneut.</string>
@@ -452,7 +452,7 @@
     <!-- browser__code_success -->
     <string name="browser__code_success_title">Token erfolgreich gesendet!</string>
     <string name="browser__code_failure">Fehler beim Senden des Codes. %s</string>
-    <string name="browser__deleting_paired_device_title">Gekoppelte Gerät löschen</string>
+    <string name="browser__deleting_paired_device_title">Gekoppeltes Gerät löschen</string>
     <string name="browser__deleting_paired_device_content">Möchtest du wirklich dieses gekoppelte Gerät löschen?</string>
     <string name="browser__pairing_date">Datum verbunden</string>
     <string name="browser__forget_this_browser">Diesen Webbrowser vergessen</string>
@@ -488,26 +488,26 @@
     <string name="gdrive_permission_msg">Wir benötigen die Google Drive-Berechtigung, um die Sicherungsdateien in den App-Daten zu speichern.</string>
     <string name="gdrive_internet_title">Internetverbindung benötigt</string>
     <string name="gdrive_internet_msg">Um mit Google Drive zu synchronisieren, musst du deine Internetverbindung aktivieren.</string>
-    <string name="gdrive_wipe_internet_msg">Um Zugriff auf Google Drive zu entfernen, musst du deine Internetverbindung aktivieren.</string>
+    <string name="gdrive_wipe_internet_msg">Um den Zugriff auf Google Drive zu entfernen, musst du deine Internetverbindung aktivieren.</string>
     <string name="backup_explanation_msg">Speichere und synchronisiere deine Sicherungsdatei automatisch in einem versteckten Ordner auf Google Drive. Dieser Ordner ist nur durch die 2FAS App zugänglich.</string>
     <string name="backup_error_unknown">Bei der Synchronisierung des Backups ist ein Fehler aufgetreten. Bitte starte die App nach ein paar Minuten neu und versuche es erneut.</string>
-    <string name="backup_error_encrypt_unknown">Bei der Verschlüsselung des Backups ist ein Fehler aufgetreten. Bitte gebe dein Passwort erneut ein.</string>
-    <string name="backup_error_decrypt_unknown">Bei der Entschlüsselung des Backups ist ein Fehler aufgetreten. Bitte gebe dein Passwort erneut ein.</string>
+    <string name="backup_error_encrypt_unknown">Bei der Verschlüsselung des Backups ist ein Fehler aufgetreten. Bitte gib dein Passwort erneut ein.</string>
+    <string name="backup_error_decrypt_unknown">Bei der Entschlüsselung des Backups ist ein Fehler aufgetreten. Bitte gib dein Passwort erneut ein.</string>
     <string name="backup__google_drive_problem_title">Es existiert ein Problem mit iCloud. Überprüfen die Systemeinstellungen</string>
     <string name="backup_error_auth">Es gab ein Problem mit den Berechtigungen deines Google Drive-Kontos. Versuche die Synchronisierung ein- und auszuschalten.</string>
-    <string name="backup_error_no_password">Dein Backup ist durch ein Passwort geschützt. Schalte es an und gebe dein Passwort ein.</string>
-    <string name="backup_error_wrong_password">Dein Backup ist durch ein Passwort geschützt aber ein falsches Passwort wurde verwendet. Schalte es wieder an und gebe dein Passwort ein.</string>
+    <string name="backup_error_no_password">Dein Backup ist passwortgeschützt. Schalte es ein und gib dein Passwort ein.</string>
+    <string name="backup_error_wrong_password">Dein Backup ist passwortgeschützt, aber das eingegebene Passwort ist falsch. Schalte es ein und gib dein Passwort ein.</string>
     <string name="customization_service_assignment">Dienstzuweisung</string>
     <string name="customization_personalization">Personalisierung</string>
     <string name="customization_change_brand">Marke ändern</string>
     <string name="customization_advanced">Erweitert</string>
     <string name="customization_request_icon">Icon beantragen</string>
     <string name="customization_edit_label">Kennzeichnung bearbeiten</string>
-    <string name="groups_delete_msg">Bist du dir sicher, das du diese Gruppe löschen möchtest?</string>
+    <string name="groups_delete_msg">Bist du dir sicher, dass du diese Gruppe löschen möchtest?</string>
     <string name="export_backup_title">Deine Sicherungsdatei ist zum Exportieren bereit</string>
     <string name="export_backup_msg">Exportiere diese Datei, um deine 2FAS-Tokens zu sichern. Du kannst die Datei später auf anderen Geräten mit der 2FAS Anwendung importieren.</string>
     <string name="export_backup_pass">Datei ohne Passwort exportieren\n(nicht empfohlen)</string>
-    <string name="import_backup_msg2">Die Datei wird mit der Dienstleiste der App synchronisiert.</string>
+    <string name="import_backup_msg2">Die Datei wird mit der Dienstliste der App synchronisiert.</string>
     <string name="backup_notice_later">Vielleicht später</string>
     <string name="backup_notice_cta">Einschalten</string>
     <string name="widgets_empty_msg">Keine Dienste hinzugefügt</string>
@@ -536,9 +536,9 @@
     <string name="commons__search">Suchen</string>
     <string name="errors__no_app">Keine Anwendung die diesen Link unterstützt</string>
     <string name="permissions__camera_permission">Kamera-Berechtigung</string>
-    <string name="permissions__camera_permission_description">Zum Scannen von QR-Codes ist eine Kamerazulassung erforderlich. Wenn du diese Funktion verwenden möchtest, gehe zu Anwendungsinformationen und Berechtigungen und aktiviere die Kamera.</string>
+    <string name="permissions__camera_permission_description">Zum Scannen von QR-Codes ist die Kamera-Berechtigung erforderlich. Wenn du diese Funktion verwenden möchtest, gehe zu Anwendungsinformationen und Berechtigungen und aktiviere die Kamera.</string>
     <string name="security__disable_pin">PIN deaktivieren</string>
-    <string name="security__enter_your_new_pin">Bitte gebe deine neue %s PIN ein</string>
+    <string name="security__enter_your_new_pin">Bitte gib deine neue %s PIN ein</string>
     <string name="security__pin_error_incorrect">Falsche PIN! Bitte versuche es erneut</string>
     <string name="settings__biometrics">Biometrie</string>
     <string name="settings__support">2FAS Support</string>
@@ -556,7 +556,7 @@
     <string name="tokens__qr_does_not_work">Dieser QR Code funktioniert nicht!</string>
     <!-- Could not read QR code from the image! -->
     <string name="tokens__qr_read_image_failed">Der QR-Code konnte nicht gelesen werden!</string>
-    <string name="tokens__qr_read_image_try_again">Versuche eine andere Sprache auszuwählen.</string>
+    <string name="tokens__qr_read_image_try_again">Versuche ein anderes Bild auszuwählen.</string>
     <string name="tokens__remove_it_forever">Dienst endgültig löschen</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
     <string name="tokens__service_add_error">Dienst konnte nicht hinzugefügt werden, denn der Geheimschlüssel ist ungültig. Bitte versuche es nochmal.</string>
@@ -575,7 +575,7 @@
     <string name="update_app_title">App aktualisieren</string>
     <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
     <string name="update_app_msg">Bitte aktualisiere auf die neuste 2FAS Version, um alle Funktionen zu erhalten und die Aufrechterhaltung eines hohen Sicherheitsniveaus zu gewährleisten</string>
-    <string name="delete_service_title">Du löscht gerade</string>
+    <string name="delete_service_title">Du löschst gerade</string>
     <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
     <string name="delete_service_msg">aus deiner 2FAS-Dienstenliste.\n\nDenke daran, solange du Zwei-Faktor-Authentifizierung aktiviert hast, kannst du dich ohne diesen Token nicht in %s Konto anmelden.</string>
     <string name="delete_service_cta">Löschen</string>
@@ -639,13 +639,13 @@
     <string name="settings__send_logs_error_server">Es ist ein Fehler mit unseren Servern aufgetreten. Bitte melde dich bei unserem Support-Team, falls der Fehler weiterhin auftritt.</string>
     <string name="settings__send_logs_error_title">Vorgang fehlgeschlagen</string>
     <string name="settings__send_logs_sent_title">Protokolle gesendet</string>
-    <string name="settings__send_logs_sent_description">Danke für die Anfrage. Wir werden es uns anschauen, gebe uns ein wenig Zeit.</string>
+    <string name="settings__send_logs_sent_description">Danke für die Anfrage. Wir werden es uns anschauen, gib uns ein wenig Zeit.</string>
     <string name="commons__send">Senden</string>
     <string name="settings__send_logs_title">Protokolle werden gesendet</string>
     <string name="settings__send_logs_description_link">Der von dem Support-Team bereitgestellte Code wurde automatisch ausgefüllt. Protokolle senden?</string>
-    <string name="settings__send_logs_description_edit">Bitte gebe oder füge den von unserem Support-Team bereitgestellten Code ein</string>
+    <string name="settings__send_logs_description_edit">Bitte gib oder füge den von unserem Support-Team bereitgestellten Code ein</string>
     <string name="settings__send_logs">Protokolle senden</string>
-    <string name="settings__recommendation">Sehe dir diese großartige Zwei-Faktor-Authentifizierungs-App von 2FAS an: https://2fas.com</string>
+    <string name="settings__recommendation">Sieh dir diese großartige Zwei-Faktor-Authentifizierungs-App von 2FAS an: https://2fas.com</string>
     <string name="settings__acknowledgements">Danksagungen</string>
     <string name="introduction__import_external_app">Aus externer Anwendung Importieren</string>
     <plurals name="past_duration_seconds">
@@ -745,12 +745,12 @@
     <string name="tokens__add_title">Verbinde den Dienst mit 2FAS</string>
     <string name="tokens__add_description">Richte die Kamera auf den Bildschirm, um den QR-Code zu erfassen.</string>
     <string name="tokens__add_other_methods">Andere Methoden</string>
-    <string name="tokens__add_enter_manual">Gebe den Geheimschlüssel ein</string>
+    <string name="tokens__add_enter_manual">Gib den Geheimschlüssel manuell ein</string>
     <string name="tokens__add_from_gallery">Bild mit dem QR-Code hochladen</string>
     <string name="tokens__add_success_title">Fast fertig!</string>
     <string name="tokens__add_success_description">Um die Verbindung des Dienstes abzuschließen, musst du den Token erneut eingeben.</string>
     <string name="tokens__add_manual_title">Verbinde den Dienst mit 2FAS</string>
-    <string name="tokens__add_manual_description">Gebe den Dienst und den Geheimschlüssel ein.</string>
+    <string name="tokens__add_manual_description">Gib den Dienst und Geheimschlüssel ein.</string>
     <string name="tokens__add_manual_service_name">Dienstname</string>
     <string name="tokens__add_manual_service_key">Geheimschlüssel</string>
     <string name="tokens__add_manual_other">Andere Einstellungen</string>
@@ -802,7 +802,7 @@
     <string name="guides__guide_init_title">2FAS Hilfewerk</string>
     <string name="guides__guide_title">2FAS für %s\n</string>
     <string name="guides__guide_universal_title">Universelles 2FAS Hilfewerk\u0020</string>
-    <string name="browser__save_choice">Meine Wahl speichern\u0020</string>
+    <string name="browser__save_choice">Meine Wahl speichern</string>
     <string name="externalimport_andotp">andOTP</string>
     <string name="externalimport__andotp_title">2FA Tokens aus andOTP importieren</string>
     <string name="externalimport__andotp_success_msg">Diese JSON-Datei erlaubt es Tokens von andOTP zu importieren.</string>
