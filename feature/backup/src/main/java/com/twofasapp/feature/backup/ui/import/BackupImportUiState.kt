@@ -23,5 +23,6 @@ internal sealed interface BackupImportUiEvent {
     data object WrongPassword : BackupImportUiEvent
     data object DecryptError : BackupImportUiEvent
     data object ImportSuccess : BackupImportUiEvent
+    data class InvalidSchemaError(val currentVersion: Int, val importingVersion: Int) : BackupImportUiEvent
     data class ImportError(val msg: String?) : BackupImportUiEvent
 }

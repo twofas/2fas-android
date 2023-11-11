@@ -32,9 +32,9 @@ import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwCircularProgressIndicator
 import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.InfoDialog
 import com.twofasapp.designsystem.dialog.PasswordDialog
 import com.twofasapp.designsystem.ktx.strings
-import com.twofasapp.designsystem.ktx.toastLong
 import com.twofasapp.designsystem.ktx.toastShort
 import org.koin.androidx.compose.koinViewModel
 
@@ -71,7 +71,9 @@ private fun ScreenContent(
     val context = LocalContext.current
     val strings = LocalContext.strings
     var showPasswordDialog by remember { mutableStateOf(false) }
-    var passwordDialogError by remember { mutableStateOf("") }
+    var passwordDialogMessage by remember { mutableStateOf("") }
+    var showErrorDialog by remember { mutableStateOf(false) }
+    var errorDialogMessage by remember { mutableStateOf("") }
 
     uiState.events.firstOrNull()?.let { event ->
         LaunchedEffect(Unit) {
@@ -79,12 +81,12 @@ private fun ScreenContent(
                 BackupImportUiEvent.ShowFilePicker -> onShowFilePicker()
                 BackupImportUiEvent.WrongPassword -> {
                     showPasswordDialog = true
-                    passwordDialogError = strings.backupIncorrectPassword
+                    passwordDialogMessage = strings.backupIncorrectPassword
                 }
 
                 BackupImportUiEvent.DecryptError -> {
                     showPasswordDialog = true
-                    passwordDialogError = strings.backupImportErrorDecryptError
+                    passwordDialogMessage = strings.backupImportErrorDecryptError
                 }
 
                 BackupImportUiEvent.ImportSuccess -> {
@@ -92,7 +94,15 @@ private fun ScreenContent(
                     onGoBack()
                 }
 
-                is BackupImportUiEvent.ImportError -> context.toastLong(event.msg.orEmpty())
+                is BackupImportUiEvent.InvalidSchemaError -> {
+                    showErrorDialog = true
+                    errorDialogMessage = strings.backupImportErrorInvalidSchema.format(event.currentVersion, event.importingVersion)
+                }
+
+                is BackupImportUiEvent.ImportError -> {
+                    showErrorDialog = true
+                    errorDialogMessage = event.msg.orEmpty()
+                }
             }
         }
 
@@ -241,9 +251,17 @@ private fun ScreenContent(
             title = strings.backupEnterPassword,
             body = strings.backupEnterPasswordDescription,
             positive = strings.commonContinue,
-            error = passwordDialogError,
+            error = passwordDialogMessage,
             confirmRequired = false,
             onPositive = { onPasswordConfirm(it) },
+        )
+    }
+
+    if (showErrorDialog) {
+        InfoDialog(
+            onDismissRequest = { showErrorDialog = false },
+            title = strings.commonError,
+            body = errorDialogMessage,
         )
     }
 }

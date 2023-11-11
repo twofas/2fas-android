@@ -219,6 +219,12 @@ class BackupRepositoryImpl(
                     )
                 }
 
+            servicesToImport.forEach { service ->
+                // Check if it's valid in order not to break the local db
+                // Throw if one of the services is invalid
+                servicesRepository.checkServiceValid(service)
+            }
+
             servicesRepository.addServices(servicesToImport)
         }
     }
