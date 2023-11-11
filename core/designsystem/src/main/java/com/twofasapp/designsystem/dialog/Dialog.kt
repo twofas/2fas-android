@@ -2,13 +2,18 @@ package com.twofasapp.designsystem.dialog
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -67,6 +72,7 @@ fun BaseDialog(
         ) {
             Column(
                 modifier = Modifier
+                    .height(IntrinsicSize.Min)
                     .sizeIn(minWidth = MinWidth, maxWidth = MaxWidth)
                     .padding(
                         top = DialogPadding,
@@ -130,7 +136,7 @@ private fun Title(
 }
 
 @Composable
-private fun Body(
+private fun ColumnScope.Body(
     text: String?,
     textAnnotated: AnnotatedString?,
 ) {
@@ -142,6 +148,8 @@ private fun Body(
             modifier = Modifier
                 .padding(horizontal = DialogPadding)
                 .padding(TitlePadding)
+                .verticalScroll(rememberScrollState())
+
         )
     } else if (textAnnotated != null) {
         Text(
