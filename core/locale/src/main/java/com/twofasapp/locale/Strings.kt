@@ -334,6 +334,7 @@ class Strings(c: Context) {
     val backupImportErrorMsg = c.getString(R.string.backup__import_error_file_invalid)
     val backupImportErrorMsgSize = c.getString(R.string.backup__import_error_file_size)
     val backupImportErrorDecryptError = c.getString(R.string.backup_error_decrypt_unknown)
+    val backupImportErrorInvalidSchema = c.getString(R.string.backup__import_invalid_version)
     val backupImportSuccess = c.getString(R.string.import_ga_success)
 
     val backupTurnOffTitle = c.getString(R.string.backup_turn_off_title)

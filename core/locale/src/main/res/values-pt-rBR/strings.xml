@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Fri, 27 Oct 2023 12:02:50 -0700
+ Exported at: Sat, 11 Nov 2023 08:12:03 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -811,4 +811,5 @@
     <string name="introduction__backup_description">Na próxima etapa, você será solicitado a escolher sua conta do Google Drive, onde os códigos 2FA serão armazenados com segurança.</string>
     <string name="introduction__backup_take_risk_cta">Vou correr o risco, sem backup</string>
     <string name="introduction__backup_success">Sincronização do Google Drive ativada com sucesso!</string>
+    <string name="backup__import_invalid_version">O arquivo que você tentou importar não é suportado nesta versão do aplicativo.\u0020\u0020A versão do esquema de backup atualmente suportada é 3 e o arquivo é 4.</string>
 </resources>

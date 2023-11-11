@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Fri, 27 Oct 2023 12:02:50 -0700
+ Exported at: Sat, 11 Nov 2023 08:12:03 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -745,8 +745,8 @@
     <string name="tokens__add_title">Pair the service with 2FAS</string>
     <string name="tokens__add_description">Point your camera at the screen to capture the QR code.</string>
     <string name="tokens__add_other_methods">Other methods</string>
-    <string name="tokens__add_enter_manual">Enter secret key manually</string>
-    <string name="tokens__add_from_gallery">Upload screen with QR code</string>
+    <string name="tokens__add_enter_manual">Enter the secret key manually</string>
+    <string name="tokens__add_from_gallery">Upload screenshot with the QR code</string>
     <string name="tokens__add_success_title">Almost done!</string>
     <string name="tokens__add_success_description">To finish pairing the service, you need to retype this token.</string>
     <string name="tokens__add_manual_title">Pair the service with 2FAS</string>
@@ -811,4 +811,5 @@
     <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
     <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
     <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
+    <string name="backup__import_invalid_version">The backup file you\'re attempting to import is not supported in this application version. The application only supports backup format versions up to %d, while the file you\'re importing is version %d.</string>
 </resources>

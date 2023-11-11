@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Fri, 27 Oct 2023 12:02:50 -0700
+ Exported at: Sat, 11 Nov 2023 08:12:03 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -811,4 +811,5 @@
     <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
     <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
     <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
+    <string name="backup__import_invalid_version">The backup file you\'re attempting to import is not supported in this application version. The application only supports backup format versions up to %d, while the file you\'re importing is version %d.</string>
 </resources>

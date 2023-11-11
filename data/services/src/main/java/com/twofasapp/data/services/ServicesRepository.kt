@@ -28,6 +28,7 @@ interface ServicesRepository {
     suspend fun isServiceExists(secret: String): Boolean
     fun isSecretValid(secret: String): Boolean
     fun isServiceValid(link: OtpAuthLink): Boolean
+    fun checkServiceValid(service: Service)
     suspend fun addService(link: OtpAuthLink): Long
     suspend fun addService(service: Service, triggerSync: Boolean = true): Long
     suspend fun addServices(services: List<Service>)

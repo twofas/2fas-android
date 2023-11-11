@@ -112,8 +112,19 @@ internal class BackupImportViewModel(
             runSafely { backupRepository.import(backupContent) }
                 .onSuccess { publishEvent(BackupImportUiEvent.ImportSuccess) }
                 .onFailure { e ->
+                    e.printStackTrace()
                     uiState.update { it.copy(importing = false) }
-                    publishEvent(BackupImportUiEvent.ImportError(e.message))
+
+                    if (backupContent.schemaVersion != BackupContent.CurrentSchema) {
+                        publishEvent(
+                            BackupImportUiEvent.InvalidSchemaError(
+                                currentVersion = BackupContent.CurrentSchema,
+                                importingVersion = backupContent.schemaVersion,
+                            )
+                        )
+                    } else {
+                        publishEvent(BackupImportUiEvent.ImportError(e.stackTraceToString()))
+                    }
                 }
         }
     }

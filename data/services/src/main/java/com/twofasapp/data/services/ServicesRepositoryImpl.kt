@@ -2,6 +2,7 @@ package com.twofasapp.data.services
 
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.domain.BackupSyncStatus
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.domain.WidgetCallbacks
 import com.twofasapp.common.ktx.tickerFlow
@@ -12,7 +13,6 @@ import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
 import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
-import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.prefs.model.RecentlyDeleted
 import com.twofasapp.prefs.model.RecentlyDeletedService
 import com.twofasapp.prefs.model.RemoteBackupStatusEntity
@@ -267,6 +267,10 @@ internal class ServicesRepositoryImpl(
             Timber.e(e)
             false
         }
+    }
+
+    override fun checkServiceValid(service: Service) {
+        codeGenerator.generate(service)
     }
 
     override suspend fun addService(link: OtpAuthLink): Long {
