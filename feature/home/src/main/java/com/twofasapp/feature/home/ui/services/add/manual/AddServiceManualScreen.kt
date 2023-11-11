@@ -87,7 +87,7 @@ internal fun AddServiceManualScreen(
 
     LaunchedEffect(Unit) {
         awaitFrame()
-//        focusRequester.requestFocus()
+        focusRequester.requestFocus()
     }
 
     Column(
