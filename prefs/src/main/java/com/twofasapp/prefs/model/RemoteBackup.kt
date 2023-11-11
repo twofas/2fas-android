@@ -27,8 +27,6 @@ data class RemoteBackup(
     val reference: String? = null,
 ) {
     companion object {
-        const val CURRENT_SCHEMA = 3
-
-        fun createEmpty() = RemoteBackup()
+        const val CURRENT_SCHEMA = 4
     }
 }
