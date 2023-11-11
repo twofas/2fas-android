@@ -1,10 +1,10 @@
 package com.twofasapp.data.services.local
 
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.local.model.GroupEntity
 import com.twofasapp.data.services.local.model.GroupsEntity
-import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -147,7 +147,23 @@ internal class GroupsLocalSource(
         if (index > 0) {
             Collections.swap(local.list, index, index - 1)
         }
-        preferences.putString(KeyGroups, json.encodeToString(local))
+        preferences.putString(
+            KeyGroups,
+            json.encodeToString(
+                local.copy(
+                    list = local.list.map { groupEntity ->
+                        if (groupEntity.id == id) {
+                            groupEntity.copy(
+                                updatedAt = timeProvider.systemCurrentTime(),
+                                backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                            )
+                        } else {
+                            groupEntity
+                        }
+                    }
+                )
+            )
+        )
     }
 
     fun moveDownGroup(id: String) {
@@ -157,7 +173,24 @@ internal class GroupsLocalSource(
         if (index < local.list.size - 1) {
             Collections.swap(local.list, index, index + 1)
         }
-        preferences.putString(KeyGroups, json.encodeToString(local))
+
+        preferences.putString(
+            KeyGroups,
+            json.encodeToString(
+                local.copy(
+                    list = local.list.map { groupEntity ->
+                        if (groupEntity.id == id) {
+                            groupEntity.copy(
+                                updatedAt = timeProvider.systemCurrentTime(),
+                                backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                            )
+                        } else {
+                            groupEntity
+                        }
+                    }
+                )
+            )
+        )
     }
 
     fun toggleGroup(id: String?) {
