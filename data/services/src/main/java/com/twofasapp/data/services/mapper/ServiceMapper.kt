@@ -117,7 +117,6 @@ internal fun List<Service>.asBackup(): List<BackupService> {
                 iconCollection = BackupService.IconCollection(id = s.iconCollectionId)
             ),
             groupId = s.groupId
-
         )
     }
 }
@@ -134,14 +133,14 @@ internal fun BackupService.asDomain(
         secret = secret,
         name = name,
         info = otp.account ?: otp.label,
-        authType = otp.tokenType?.let { enumValueOf<Service.AuthType>(it) } ?: Service.DefaultAuthType,
+        authType = otp.tokenType?.let { enumValueOrNull<Service.AuthType>(it) } ?: Service.AuthType.TOTP,
         link = otp.link,
         issuer = otp.issuer,
         period = otp.period,
         digits = otp.digits,
         hotpCounter = otp.counter,
         hotpCounterTimestamp = null,
-        algorithm = otp.algorithm?.let { enumValueOf<Service.Algorithm>(it) },
+        algorithm = otp.algorithm?.let { enumValueOrNull<Service.Algorithm>(it) },
         groupId = groupId,
         imageType = when (icon?.selected) {
             BackupService.IconType.Brand -> Service.ImageType.IconCollection
@@ -153,11 +152,15 @@ internal fun BackupService.asDomain(
         iconLight = ServiceIcons.getIcon(iconCollectionId, false),
         iconDark = ServiceIcons.getIcon(iconCollectionId, true),
         labelText = icon?.label?.text,
-        labelColor = icon?.label?.backgroundColor?.let { enumValueOf<Service.Tint>(it) },
-        badgeColor = badge?.color?.let { enumValueOf<Service.Tint>(it) },
+        labelColor = icon?.label?.backgroundColor?.let { enumValueOrNull<Service.Tint>(it) },
+        badgeColor = badge?.color?.let { enumValueOrNull<Service.Tint>(it) },
         isDeleted = false,
         updatedAt = updatedAt,
-        source = otp.source?.let { enumValueOf<Service.Source>(it) } ?: Service.Source.Manual,
+        source = when (otp.source?.lowercase()) {
+            "manual" -> Service.Source.Manual
+            "link" -> Service.Source.Link
+            else -> Service.Source.Manual
+        },
         assignedDomains = listOf(),
         backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
         tags = emptyList(),
