@@ -95,7 +95,7 @@ internal fun AdvancedSettingsScreen(
                 )
             }
 
-            if (service.authType == Service.AuthType.TOTP) {
+            if (service.authType == Service.AuthType.TOTP || service.authType == Service.AuthType.STEAM) {
                 item {
                     SettingsLink(
                         title = TwLocale.strings.addManualRefreshTime,
