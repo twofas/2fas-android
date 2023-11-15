@@ -72,7 +72,6 @@ fun BaseDialog(
         ) {
             Column(
                 modifier = Modifier
-                    .height(IntrinsicSize.Min)
                     .sizeIn(minWidth = MinWidth, maxWidth = MaxWidth)
                     .padding(
                         top = DialogPadding,
