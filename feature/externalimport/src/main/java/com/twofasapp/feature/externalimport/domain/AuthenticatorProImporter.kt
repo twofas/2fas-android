@@ -2,6 +2,7 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.otp.OtpLinkParser
@@ -39,7 +40,22 @@ internal class AuthenticatorProImporter(
             text.lines()
                 .filter { it.isNotBlank() }
                 .filter { it.startsWith("otpauth", ignoreCase = true) }
-                .mapNotNull { OtpLinkParser.parse(it) }
+                .mapNotNull { link ->
+                    // Detect steam link
+                    if (link.contains("issuer=steam", ignoreCase = true) || link.contains("&steam", ignoreCase = true)) {
+                        val otpLink = OtpLinkParser.parse(link)
+                        otpLink?.copy(
+                            type = "STEAM",
+                            params = mapOf(
+                                OtpAuthLink.ParamDigits to "5",
+                                OtpAuthLink.ParamPeriod to "30",
+                                OtpAuthLink.ParamAlgorithm to "SHA1",
+                            )
+                        )
+                    } else {
+                        OtpLinkParser.parse(link)
+                    }
+                }
                 .filter { servicesRepository.isServiceValid(it) }
                 .forEach { entry -> servicesToImport.add(ServiceParser.parseService(entry)) }
 

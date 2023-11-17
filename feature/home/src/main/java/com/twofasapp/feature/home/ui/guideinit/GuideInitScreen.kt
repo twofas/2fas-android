@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -107,41 +108,42 @@ private fun Content(
 
         Text(
             text = guideJson.flow.header,
-            style = TwTheme.typo.body3,
+            style = MaterialTheme.typography.bodyLarge,
             color = TwTheme.color.onSurfacePrimary,
             modifier = Modifier.padding(horizontal = 24.dp),
             textAlign = TextAlign.Center,
         )
 
-        Spacer(modifier = Modifier.height(48.dp))
+        Spacer(modifier = Modifier.weight(1f))
 
         TwDivider(modifier = Modifier.padding(vertical = 16.dp))
 
         Text(
             text = guideJson.flow.menu.title,
-            style = TwTheme.typo.body2,
-            color = TwTheme.color.onSurfacePrimary,
+            style = MaterialTheme.typography.bodyMedium,
+            color = TwTheme.color.onSurfacePrimary.copy(alpha = 0.7f),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 20.dp),
+                .padding(horizontal = 24.dp),
         )
         Spacer(modifier = Modifier.height(16.dp))
 
         guideJson.flow.menu.items.forEachIndexed { index, menuItem ->
             Text(
                 text = menuItem.name,
-                style = TwTheme.typo.body1,
+                style = MaterialTheme.typography.bodyLarge,
                 color = TwTheme.color.onSurfacePrimary,
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
                         openGuide(guide, index)
                     }
-                    .padding(horizontal = 20.dp, vertical = 20.dp),
+                    .padding(horizontal = 24.dp, vertical = 20.dp),
             )
         }
 
         TwDivider(modifier = Modifier.padding(vertical = 16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 

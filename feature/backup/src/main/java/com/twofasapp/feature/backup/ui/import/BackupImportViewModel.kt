@@ -115,7 +115,7 @@ internal class BackupImportViewModel(
                     e.printStackTrace()
                     uiState.update { it.copy(importing = false) }
 
-                    if (backupContent.schemaVersion != BackupContent.CurrentSchema) {
+                    if (BackupContent.CurrentSchema < backupContent.schemaVersion) {
                         publishEvent(
                             BackupImportUiEvent.InvalidSchemaError(
                                 currentVersion = BackupContent.CurrentSchema,

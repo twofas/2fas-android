@@ -1,15 +1,19 @@
 package com.twofasapp.data.services.otp
 
-import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.common.domain.Service
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.otp.OtpAuthenticator
 import com.twofasapp.otp.OtpData
 import timber.log.Timber
-import java.time.Instant
 
 class ServiceCodeGenerator(
     private val timeProvider: TimeProvider,
 ) {
+    companion object {
+        private const val SteamCharset = "23456789BCDFGHJKMNPQRTVWXY"
+        private const val SteamDigits = 5
+    }
+
     private val authenticator = OtpAuthenticator()
 
     fun check(secret: String): Boolean {
@@ -41,6 +45,7 @@ class ServiceCodeGenerator(
                         Service.Algorithm.SHA384 -> OtpData.Algorithm.SHA384
                         Service.Algorithm.SHA512 -> OtpData.Algorithm.SHA512
                     },
+                    calculateModule = true,
                 )
             )
             true
@@ -67,6 +72,7 @@ class ServiceCodeGenerator(
         var nextCounter = 0L
 
         when (service.authType) {
+            Service.AuthType.STEAM,
             Service.AuthType.TOTP -> {
                 currentCounter = timeProvider.realCurrentTime() / period.toMillis()
                 nextCounter = (timeProvider.realCurrentTime() + period.toMillis()) / period.toMillis()
@@ -85,28 +91,51 @@ class ServiceCodeGenerator(
             digits = digits,
             period = period,
             algorithm = algorithm,
+            calculateModule = when (service.authType) {
+                Service.AuthType.TOTP -> true
+                Service.AuthType.HOTP -> true
+                Service.AuthType.STEAM -> false
+            },
         )
 
         val timerLeftMillis = periodMillis - timeProvider.realCurrentTime() % periodMillis
         val timer = timerLeftMillis / 1000 + 1 // show 1 as the last number instead of 0, just for nicer UI
         val progress = timer / period.toFloat()
 
+        var currentCode = authenticator.generateOtpCode(otpData)
+        var nextCode = authenticator.generateOtpCode(otpData.copy(counter = nextCounter))
+
+        when (service.authType) {
+            Service.AuthType.TOTP -> Unit
+            Service.AuthType.HOTP -> Unit
+            Service.AuthType.STEAM -> {
+                currentCode = generateSteamCode(currentCode)
+                nextCode = generateSteamCode(nextCode)
+            }
+        }
+
         return service.copy(
             code = Service.Code(
-                current = authenticator.generateOtpCode(otpData),
-                next = authenticator.generateOtpCode(otpData.copy(counter = nextCounter)),
+                current = currentCode,
+                next = nextCode,
                 timer = timer.toInt(),
                 progress = progress,
             )
         )
     }
 
-    // To be removed
-    private fun calculateTimer(period: Int): Int {
-        return period - ((Instant.now().epochSecond + timeProvider.realTimeDelta() / 1000) % period).toInt()
-    }
-
     private fun Int.toMillis(): Long {
         return this * 1000L
+    }
+
+    private fun generateSteamCode(code: String): String {
+        var numericCode = code.toInt()
+
+        return buildString {
+            repeat(SteamDigits) {
+                append(SteamCharset[numericCode % SteamCharset.length])
+                numericCode /= SteamCharset.length
+            }
+        }
     }
 }

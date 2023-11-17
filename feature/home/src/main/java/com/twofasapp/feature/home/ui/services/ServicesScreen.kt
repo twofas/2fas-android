@@ -283,7 +283,10 @@ private fun ServicesScreen(
                 scrollBehavior = scrollBehavior,
                 onSortClick = { showSortDialog = true },
                 onAddGroupClick = { showAddGroupDialog = true },
-                onNotificationsClick = { listener.openNotifications() },
+                onNotificationsClick = {
+                    onSearchFocusChange(false)
+                    listener.openNotifications()
+                },
                 onSearchQueryChange = onSearchQueryChange,
                 onSearchFocusChange = onSearchFocusChange,
                 focusRequester = focusRequester,
@@ -294,7 +297,10 @@ private fun ServicesScreen(
                 isVisible = uiState.isLoading.not(),
                 isExtendedVisible = uiState.totalServices == 0,
                 isNormalVisible = reorderableState.listState.isScrollingUp(),
-                onClick = { listener.openAddServiceModal() },
+                onClick = {
+                    onSearchFocusChange(false)
+                    listener.openAddServiceModal()
+                },
             )
         },
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)

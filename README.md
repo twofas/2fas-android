@@ -20,6 +20,8 @@ Please note that the graphics used in this app are not part of the open source p
 
 We use GitHub for bug reports. Please visit the [2FAS for Android issues page](https://github.com/twofas/2fas-android/issues) to search for and report any bugs you may have found. Before adding a new issue, please search for existing issues to avoid duplicates.
 
+For reporting security issues only, please send a detailed description of the vulnerability to security@2fas.com. Do not use this address for general inquiries or bug reports unrelated to security concerns.
+
 ## Getting Started
 
 1. Download the app from the [releases page](https://2fas.com).

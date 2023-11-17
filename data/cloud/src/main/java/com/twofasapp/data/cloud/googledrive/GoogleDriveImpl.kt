@@ -31,6 +31,7 @@ internal class GoogleDriveImpl(
 
     companion object {
         private val backupVersions = listOf(
+            "2fas-backup-v4.json",
             "2fas-backup-v3.json",
             "2fas-backup-v2.json",
             "2fas-backup.json"
@@ -46,10 +47,11 @@ internal class GoogleDriveImpl(
                     ?: return@withContext GoogleDriveFileResult.Failure(error = GoogleDriveError.CredentialsNotFound)
 
                 val drive = getDrive(credentials)
-                val backupFileId = getFiles(drive)
+                val backupFile = getFiles(drive)
                     ?.filter { backupVersions.contains(it.name) }
                     ?.firstOrNull()
-                    ?.id
+
+                val backupFileId = backupFile?.id
 
                 if (backupFileId != null) {
                     val fileContent = drive.files()[backupFileId]?.executeMediaAsInputStream()?.use { inputStream ->
@@ -57,6 +59,7 @@ internal class GoogleDriveImpl(
                             reader.readText()
                         }
                     }
+                    Timber.d("GetFile <- ${backupFile.name}")
                     Timber.d("GetFile <- \"$fileContent\"")
                     Timber.d("GetFile <- Success")
 

@@ -2,9 +2,9 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.otp.ServiceParser
-import com.twofasapp.common.domain.OtpAuthLink
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import java.io.BufferedReader
@@ -53,7 +53,7 @@ internal class RaivoImporter(
 
             model
                 .filter { it.kind.equals("totp", true) || it.kind.equals("hotp", true) }
-                .filter { it.digits.equals("6") || it.digits.equals("7") || it.digits.equals("8") }
+                .filter { it.digits.equals("5") || it.digits.equals("6") || it.digits.equals("7") || it.digits.equals("8") }
                 .filter { it.timer.equals("30") || it.timer.equals("60") || it.timer.equals("90") }
                 .filter {
                     it.algorithm.equals("SHA1", true) || it.algorithm.equals("SHA224", true) || it.algorithm.equals(

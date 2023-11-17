@@ -67,6 +67,23 @@ internal fun AdvancedSettingsScreen(
                 )
             }
 
+            item {
+                SettingsLink(
+                    title = "STEAM",
+                    enabled = false,
+                    endContent = {
+                        RadioButton(
+                            selected = service.authType == Service.AuthType.STEAM,
+                            enabled = false,
+                            onClick = {},
+                            colors = RadioButtonDefaults.colors(
+                                selectedColor = TwTheme.color.primary,
+                                unselectedColor = Color(0xFF585858),
+                            )
+                        )
+                    }
+                )
+            }
 
             item { SettingsDivider() }
 
@@ -78,7 +95,7 @@ internal fun AdvancedSettingsScreen(
                 )
             }
 
-            if (service.authType == Service.AuthType.TOTP) {
+            if (service.authType == Service.AuthType.TOTP || service.authType == Service.AuthType.STEAM) {
                 item {
                     SettingsLink(
                         title = TwLocale.strings.addManualRefreshTime,

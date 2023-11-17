@@ -12,7 +12,6 @@ import androidx.compose.ui.unit.dp
 fun TwCircularProgressIndicator(
     modifier: Modifier = Modifier,
     color: Color = ProgressIndicatorDefaults.circularColor,
-
-    ) {
+) {
     CircularProgressIndicator(modifier.size(32.dp), color, 4.dp)
 }

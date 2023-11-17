@@ -22,7 +22,7 @@ internal fun ServiceEntity.asDomain(): Service {
         secret = secret,
         name = name,
         info = otpAccount,
-        authType = authType?.let { Service.AuthType.valueOf(it) } ?: Service.AuthType.TOTP,
+        authType = authType?.let { Service.AuthType.valueOf(it) } ?: Service.DefaultAuthType,
         period = otpPeriod,
         digits = otpDigits,
         algorithm = otpAlgorithm?.let { Service.Algorithm.valueOf(it) },

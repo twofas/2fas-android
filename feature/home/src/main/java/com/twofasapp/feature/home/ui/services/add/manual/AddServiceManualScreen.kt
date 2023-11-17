@@ -38,8 +38,8 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
@@ -47,7 +47,6 @@ import com.twofasapp.designsystem.common.TwDivider
 import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwOutlinedTextField
 import com.twofasapp.designsystem.common.TwOutlinedTextFieldPassword
-import com.twofasapp.designsystem.common.TwRadioButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.InputDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
@@ -64,6 +63,7 @@ internal fun AddServiceManualScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    var showAuthTypeDialog by remember { mutableStateOf(false) }
     var showAlgorithmDialog by remember { mutableStateOf(false) }
     var showRefreshTimeDialog by remember { mutableStateOf(false) }
     var showDigitsDialog by remember { mutableStateOf(false) }
@@ -85,7 +85,7 @@ internal fun AddServiceManualScreen(
         }
     }
 
-    LaunchedEffect(Unit){
+    LaunchedEffect(Unit) {
         awaitFrame()
         focusRequester.requestFocus()
     }
@@ -145,7 +145,6 @@ internal fun AddServiceManualScreen(
                         )
                     }
                 }
-
             }
         )
 
@@ -230,39 +229,27 @@ internal fun AddServiceManualScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { showAuthTypeDialog = true }
+                    .padding(horizontal = 24.dp, vertical = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(
-                        text = "TOTP",
-                        color = TwTheme.color.onSurfacePrimary,
-                        style = TwTheme.typo.body1,
-                        modifier = Modifier.padding(vertical = 4.dp),
-                    )
+                Text(
+                    text = "Type",
+                    color = TwTheme.color.onSurfacePrimary,
+                    style = TwTheme.typo.body1,
+                )
 
-                    TwRadioButton(
-                        selected = uiState.authType == Service.AuthType.TOTP,
-                        onClick = { viewModel.updateAuthType(Service.AuthType.TOTP) },
-                    )
-                }
-
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(
-                        text = "HOTP",
-                        color = TwTheme.color.onSurfacePrimary,
-                        style = TwTheme.typo.body1,
-                        modifier = Modifier.padding(vertical = 4.dp),
-                    )
-
-                    TwRadioButton(
-                        selected = uiState.authType == Service.AuthType.HOTP,
-                        onClick = { viewModel.updateAuthType(Service.AuthType.HOTP) },
-                    )
-                }
+                Text(
+                    text = uiState.authType.name,
+                    color = TwTheme.color.onSurfaceSecondary,
+                    style = TwTheme.typo.body3,
+                )
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
+            TwDivider()
 
             Row(
                 modifier = Modifier
@@ -276,7 +263,7 @@ internal fun AddServiceManualScreen(
             ) {
                 Text(
                     text = TwLocale.strings.addManualAlgorithm,
-                    color = TwTheme.color.onSurfacePrimary,
+                    color = if (uiState.authType == Service.AuthType.TOTP) TwTheme.color.onSurfacePrimary else TwTheme.color.onSurfaceSecondary,
                     style = TwTheme.typo.body1,
                 )
 
@@ -290,18 +277,21 @@ internal fun AddServiceManualScreen(
             TwDivider()
 
             when (uiState.authType) {
+                Service.AuthType.STEAM,
                 Service.AuthType.TOTP -> {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable { showRefreshTimeDialog = true }
+                            .clickable(
+                                uiState.authType == Service.AuthType.TOTP
+                            ) { showRefreshTimeDialog = true }
                             .padding(horizontal = 24.dp, vertical = 16.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
                         Text(
                             text = TwLocale.strings.addManualRefreshTime,
-                            color = TwTheme.color.onSurfacePrimary,
+                            color = if (uiState.authType == Service.AuthType.TOTP) TwTheme.color.onSurfacePrimary else TwTheme.color.onSurfaceSecondary,
                             style = TwTheme.typo.body1,
                         )
 
@@ -342,14 +332,14 @@ internal fun AddServiceManualScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { showDigitsDialog = true }
+                    .clickable(uiState.authType != Service.AuthType.STEAM) { showDigitsDialog = true }
                     .padding(horizontal = 24.dp, vertical = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
                     text = TwLocale.strings.addManualDigits,
-                    color = TwTheme.color.onSurfacePrimary,
+                    color = if (uiState.authType != Service.AuthType.STEAM) TwTheme.color.onSurfacePrimary else TwTheme.color.onSurfaceSecondary,
                     style = TwTheme.typo.body1,
                 )
 
@@ -380,24 +370,27 @@ internal fun AddServiceManualScreen(
                 .padding(horizontal = 24.dp, vertical = 4.dp)
         )
 
-        // Open guided here once done
         if (isKeyboardExpanded.value) {
             Spacer(modifier = Modifier.height(8.dp))
         } else {
             Spacer(modifier = Modifier.height(24.dp))
         }
-//        TwTextButton(
-//            text = TwLocale.strings.addManualHelpCta, onClick = { }, modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(horizontal = 24.dp, vertical = 4.dp)
-//        )
+
+        if (showAuthTypeDialog) {
+            ListRadioDialog(
+                onDismissRequest = { showAuthTypeDialog = false },
+                options = Service.AuthType.entries.map { it.name },
+                selectedIndex = Service.AuthType.entries.indexOf(uiState.authType),
+                onOptionSelected = { index, _ -> viewModel.updateAuthType(Service.AuthType.entries[index]) }
+            )
+        }
 
         if (showAlgorithmDialog) {
             ListRadioDialog(
                 onDismissRequest = { showAlgorithmDialog = false },
-                options = Service.Algorithm.values().map { it.name },
-                selectedIndex = Service.Algorithm.values().indexOf(uiState.algorithm),
-                onOptionSelected = { index, _ -> viewModel.updateAlgorithm(Service.Algorithm.values()[index]) }
+                options = Service.Algorithm.entries.map { it.name },
+                selectedIndex = Service.Algorithm.entries.indexOf(uiState.algorithm),
+                onOptionSelected = { index, _ -> viewModel.updateAlgorithm(Service.Algorithm.entries[index]) }
             )
         }
 
@@ -413,7 +406,7 @@ internal fun AddServiceManualScreen(
         if (showDigitsDialog) {
             ListRadioDialog(
                 onDismissRequest = { showDigitsDialog = false },
-                options = listOf("6", "7", "8"),
+                options = listOf("5", "6", "7", "8"),
                 selectedOption = uiState.digits.toString(),
                 onOptionSelected = { _, value -> viewModel.updateDigits(value.toInt()) }
             )

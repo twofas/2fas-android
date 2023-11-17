@@ -2,8 +2,6 @@ package com.twofasapp.buildlogic.extension
 
 import com.android.build.api.dsl.CommonExtension
 import com.twofasapp.buildlogic.version.AppConfig
-import com.twofasapp.buildlogic.version.AppConfig.compileSdk
-import com.twofasapp.buildlogic.version.AppConfig.minSdk
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
@@ -55,15 +53,17 @@ internal fun Project.applyKotlinAndroid(
         }
 
         packaging {
-            resources.excludes.add("META-INF/DEPENDENCIES")
-            resources.excludes.add("META-INF/LICENSE")
-            resources.excludes.add("META-INF/LICENSE.txt")
-            resources.excludes.add("META-INF/license.txt")
-            resources.excludes.add("META-INF/NOTICE")
-            resources.excludes.add("META-INF/NOTICE.txt")
-            resources.excludes.add("META-INF/notice.txt")
-            resources.excludes.add("META-INF/ASL2.0")
-            resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+            resources {
+                excludes += "META-INF/DEPENDENCIES"
+                excludes += "META-INF/LICENSE"
+                excludes += "META-INF/LICENSE.txt"
+                excludes += "META-INF/license.txt"
+                excludes += "META-INF/NOTICE"
+                excludes += "META-INF/NOTICE.txt"
+                excludes += "META-INF/notice.txt"
+                excludes += "META-INF/ASL2.0"
+                excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            }
         }
 
         testOptions {

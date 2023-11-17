@@ -6,6 +6,7 @@ data class OtpData(
     val digits: Int,
     val period: Int,
     val algorithm: Algorithm,
+    val calculateModule: Boolean, // Do not calculate for Steam codes
 ) {
     enum class Algorithm { SHA1, SHA224, SHA256, SHA384, SHA512 }
 }

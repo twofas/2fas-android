@@ -104,16 +104,22 @@ internal class BrowserExtRepositoryImpl(
 
     override suspend fun fetchTokenRequests() {
         return withContext(dispatchers.io) {
-            observeMobileDevice().firstOrNull()?.id?.let { deviceId ->
+            val deviceId = observeMobileDevice().firstOrNull()?.id
+
+            if (deviceId.isNullOrBlank().not()) {
                 localSource.updateTokenRequests(
-                    remoteSource.fetchTokenRequests(deviceId).map { it.asDomain() }
+                    remoteSource.fetchTokenRequests(deviceId!!).map { it.asDomain() }
                 )
             }
         }
     }
 
     override suspend fun getFcmToken(): String {
-        return FirebaseMessaging.getInstance().token.await()
+        return try {
+            FirebaseMessaging.getInstance().token.await().orEmpty()
+        } catch (e: Exception) {
+            ""
+        }
     }
 
     override suspend fun deleteTokenRequest(requestId: String) {

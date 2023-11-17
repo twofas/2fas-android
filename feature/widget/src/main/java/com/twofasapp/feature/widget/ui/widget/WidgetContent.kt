@@ -177,6 +177,7 @@ private fun ServiceItem(
             Spacer(GlanceModifier.defaultWeight())
 
             when (service.authType) {
+                Service.AuthType.STEAM,
                 Service.AuthType.TOTP -> {
                     Column(
                         horizontalAlignment = Alignment.Horizontal.CenterHorizontally,

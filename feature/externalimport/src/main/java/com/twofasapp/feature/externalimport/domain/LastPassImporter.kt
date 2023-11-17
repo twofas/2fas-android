@@ -56,7 +56,7 @@ internal class LastPassImporter(
             val totalServices = model.accounts.size
             val servicesToImport = mutableListOf<Service?>()
 
-            model.accounts.filter { it.digits == 6 || it.digits == 7 || it.digits == 8 }
+            model.accounts.filter { it.digits == 5 ||it.digits == 6 || it.digits == 7 || it.digits == 8 }
                 .filter { it.timeStep == 30 || it.timeStep == 60 || it.timeStep == 90 }.filter {
                     it.algorithm.equals("SHA1", true) || it.algorithm.equals("SHA224", true) || it.algorithm.equals(
                         "SHA256", true

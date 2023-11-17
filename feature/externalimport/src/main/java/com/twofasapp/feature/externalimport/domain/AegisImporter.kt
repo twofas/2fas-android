@@ -71,8 +71,8 @@ internal class AegisImporter(
 
             model.db.entries
                 .asSequence()
-                .filter { it.type.equals("totp", true) || it.type.equals("hotp", true) }
-                .filter { it.info.digits == 6 || it.info.digits == 7 || it.info.digits == 8 }
+                .filter { it.type.equals("totp", true) || it.type.equals("hotp", true) || it.type.equals("steam", true)}
+                .filter { it.info.digits == 5 ||it.info.digits == 6 || it.info.digits == 7 || it.info.digits == 8 }
                 .filter { it.info.period == 30 || it.info.period == 60 || it.info.period == 90 }
                 .filter {
                     it.info.algo.equals("SHA1", true) || it.info.algo.equals("SHA224", true) || it.info.algo.equals(

@@ -82,6 +82,7 @@ fun String.formatCode(): String {
     if (isEmpty()) return ""
 
     return when (this.length) {
+        5 -> if (this.toIntOrNull() == null) take(5) else "${take(3)} ${takeLast(2)}"
         6 -> "${take(3)} ${takeLast(3)}"
         7 -> "${take(4)} ${takeLast(3)}"
         8 -> "${take(4)} ${takeLast(4)}"

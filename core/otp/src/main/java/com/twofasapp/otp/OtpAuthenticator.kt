@@ -33,6 +33,7 @@ class OtpAuthenticator {
         private const val HmacSha384 = "HmacSHA384"
         private const val HmacSha512 = "HmacSHA512"
         private val keyModulus = mapOf(
+            5 to 10.0.pow(5.toDouble()).toLong(),
             6 to 10.0.pow(6.toDouble()).toLong(),
             7 to 10.0.pow(7.toDouble()).toLong(),
             8 to 10.0.pow(8.toDouble()).toLong(),
@@ -50,7 +51,8 @@ class OtpAuthenticator {
                 OtpData.Algorithm.SHA256 -> HmacSha256
                 OtpData.Algorithm.SHA384 -> HmacSha384
                 OtpData.Algorithm.SHA512 -> HmacSha512
-            }
+            },
+            calculateModule = otpData.calculateModule,
         )
 
         return String.format("%0${otpData.digits}d", code)
@@ -69,6 +71,7 @@ class OtpAuthenticator {
         counter: Long,
         digits: Int,
         algorithm: String,
+        calculateModule: Boolean,
     ): Int {
         // Converting the instant of time from the long representation to a  big-endian array of bytes (RFC4226, 5.2. Description).
         val bigEndianTimestamp = ByteArray(8)
@@ -104,10 +107,15 @@ class OtpAuthenticator {
             }
 
             // Clean bits higher than the 32nd (inclusive) and calculate the module with the maximum validation code value.
-            truncatedHash = truncatedHash and 0x7FFFFFFF
-            truncatedHash %= keyModulus[digits]!!
+            return if (calculateModule) {
+                truncatedHash = truncatedHash and 0x7FFFFFFF
+                truncatedHash %= keyModulus[digits]!!
+                truncatedHash.toInt()
+            } else {
+                truncatedHash = truncatedHash and 0x7FFFFFFF
+                truncatedHash.toInt()
+            }
 
-            return truncatedHash.toInt()
         } catch (e: NoSuchAlgorithmException) {
             throw OtpException("The operation cannot be performed now.", e)
         } catch (e: InvalidKeyException) {

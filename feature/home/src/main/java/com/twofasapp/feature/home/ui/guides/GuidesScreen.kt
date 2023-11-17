@@ -173,7 +173,7 @@ private fun GuideItem(
             ResponsiveText(
                 text = when (guide) {
                     Guide.Facebook -> "Facebook"
-                    Guide.Twitter -> "Twitter"
+                    Guide.Twitter -> "X"
                     Guide.Amazon -> "Amazon"
                     Guide.Universal -> "Universal Guide"
                     Guide.LinkedIn -> "LinkedIn"
