@@ -189,6 +189,7 @@ class Strings(c: Context) {
     val browserRequestSuggested = c.getString(R.string.extension__services_suggested_header)
     val browserRequestAll = c.getString(R.string.extension__services_all_header)
     val browserRequestOther = c.getString(R.string.extension__services_other_header)
+    val browserRequestEmpty = c.getString(R.string.tokens__service_not_found_search)
 
     val settingsTheme = c.getString(R.string.settings__option_theme)
     val settingsShowNextCode = c.getString(R.string.settings__show_next_token)
