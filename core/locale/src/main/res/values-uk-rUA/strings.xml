@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Thu, 16 Nov 2023 13:28:45 -0800
+ Exported at: Sat, 25 Nov 2023 08:22:33 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -818,4 +818,9 @@
     <string name="introduction__backup_take_risk_cta">Не хочу вмикати резервне копіювання</string>
     <string name="introduction__backup_success">Синхронізацію Google Drive ввімкнено успішно!</string>
     <string name="backup__import_invalid_version">Файл резервної копії, який ви намагаєтеся імпортувати, не підтримується цією версією програми. Програма підтримує лише версії формату резервної копії до %d, тоді як файл, який ви імпортуєте, має версію %d.</string>
+    <string name="commons__pair">Пара</string>
+    <string name="introduction__backup_icloud_title">Безпечна синхронізація та резервне копіювання</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS використовує iCloud для безпечного резервного копіювання та синхронізації ваших 2FA токенів. *Зашифровані* дані резервної копії зберігаються в iCloud, доступні *тільки за допомогою програми 2FAS*. Крім того, ця функція допомагає *відновлювати та синхронізувати* токени на пристроях iOS.\\n\\nЇЇ увімкнено за умовчанням і можна будь-коли вимкнути в налаштуваннях резервного копіювання програми.</string>
+    <string name="introduction__backup_icloud_cta">Дізнайтеся більше про резервне копіювання</string>
 </resources>

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Thu, 16 Nov 2023 13:28:44 -0800
+ Exported at: Sat, 25 Nov 2023 08:22:33 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -812,4 +812,9 @@
     <string name="introduction__backup_take_risk_cta">Acepto el riesgo, sin copia de seguridad</string>
     <string name="introduction__backup_success">¡Sincronización de Google Drive activada correctamente!</string>
     <string name="backup__import_invalid_version">El archivo de copia de seguridad que estás intentando importar no es compatible con esta versión de la aplicación. La aplicación solo soporta formatos de copia de seguridad hasta la versión %d, mientras que el archivo que estás importando es de la versión %d.</string>
+    <string name="commons__pair">Pair</string>
+    <string name="introduction__backup_icloud_title">Secure sync and backup</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__backup_icloud_cta">Learn more about backup</string>
 </resources>

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Thu, 16 Nov 2023 13:28:45 -0800
+ Exported at: Sat, 25 Nov 2023 08:22:33 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -812,4 +812,9 @@
     <string name="introduction__backup_take_risk_cta">Vou correr o risco, sem backup</string>
     <string name="introduction__backup_success">Sincronização do Google Drive ativada com sucesso!</string>
     <string name="backup__import_invalid_version">O arquivo que você tentou importar não é suportado nesta versão do aplicativo.\u0020\u0020A versão do esquema de backup atualmente suportada é 3 e o arquivo é 4.</string>
+    <string name="commons__pair">Parear</string>
+    <string name="introduction__backup_icloud_title">Sincronização segura e copia de segurança</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">\"**2Fas**\" usa o icloud para backup seguro</string>
+    <string name="introduction__backup_icloud_cta">Leia mais sobre a cópia de segurança\u0020</string>
 </resources>

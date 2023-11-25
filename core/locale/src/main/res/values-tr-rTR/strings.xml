@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android string resources
+ Project: 2FAS App
+ Release: Working copy
+ Locale: tr-TR, Turkish (Turkey)
+ Exported by: rafakob
+ Exported at: Sat, 25 Nov 2023 08:22:33 -0800
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- InfoPlist.strings
+        TwoFAS
+        Created by Zbigniew Cisiński on 14/03/2020.
+        Copyright © 2020 The Code. All rights reserved. -->
+    <string name="NSCameraUsageDescription">QR kodlarını taramak için kullanılır</string>
+    <string name="NSFaceIDUsageDescription">Uygulamanın kilidini Face ID\'nizi kullanarak açabilirsiniz</string>
+    <!-- MARK: - App -->
+    <string name="app__name">2FAS Authenticator</string>
+    <string name="commons__2fas">2AD Doğrulayıcısı (2FAS Uygulaması)</string>
+    <string name="commons__OK">Tamam</string>
+    <string name="commons__add">Ekle</string>
+    <!-- MARK: - Commons -->
+    <string name="commons__cancel">İptal</string>
+    <string name="commons__notifications">Bildirimler</string>
+    <!-- A number replaces %d, for example, 4 of 5. -->
+    <string name="commons__page_of_page_title">%1$d / %2$d</string>
+    <!-- notifications__service_already_removed_from_backup -->
+    <string name="notifications__service_already_removed_title">Hizmet, Yedekten zaten silindi</string>
+    <!-- notifications__service_already_modified_in_backup -->
+    <string name="notifications__service_already_modified_title">Hizmet, Yedekten zaten düzenlendi</string>
+    <!-- backup__user_is_over_quota_on_icloud -->
+    <string name="backup__user_over_quota_icloud">Kullanıcı, iCloud kotasının üzerinde</string>
+    <!-- backup__icloud_is_not_available -->
+    <string name="backup__icloud_not_available">iCloud\'a erişilemiyor</string>
+    <!-- backup__icloud_has_been_disabled_by_user -->
+    <string name="backup__icloud_disabled_title">iCloud kullanıcı tarafından devre dışı bırakıldı</string>
+    <!-- backup__turned_off_description_bold_part -->
+    <string name="backup__2fas_backup">2FAS Yedeklemesi</string>
+    <string name="commons__close">Kapat</string>
+    <string name="commons__continue">Devam et</string>
+    <string name="commons__copy">Kopyala</string>
+    <string name="commons__delete">Sil</string>
+    <string name="commons__dismiss">Reddet</string>
+    <string name="commons__done">Bitti</string>
+    <string name="commons__edit">Düzenle</string>
+    <string name="commons__enter_code_manually">Kodu elle girin</string>
+    <string name="commons__error">Hata</string>
+    <string name="commons__info">Bilgi</string>
+    <string name="commons__next">Sonraki</string>
+    <string name="commons__notice">Uyarı</string>
+    <string name="commons__off">Kapalı</string>
+    <string name="commons__on">Açık</string>
+    <!-- commons__point_your_camera_at_code_on_website -->
+    <string name="commons__camera_title">QR kodunu yakalamak için kameranızı ekrana doğrultun</string>
+    <string name="commons__rename">Yeniden adlandır</string>
+    <string name="commons__retry">Yeniden dene</string>
+    <string name="commons__save">Kaydet</string>
+    <string name="commons__scan_qr_code">QR Kodu Tara</string>
+    <string name="commons__service">Hizmet</string>
+    <string name="commons__set">Ayarla</string>
+    <string name="commons__skip">Atla</string>
+    <string name="commons__tokens">Jetonlar</string>
+    <string name="commons__warning">Uyarı</string>
+    <string name="commons__no_results">Sonuç yok</string>
+    <string name="commons__customize">Özelleştir</string>
+    <string name="commons__approve">Onayla</string>
+    <string name="commons__deny">Reddet</string>
+    <!-- max. %d chars = Maximum number of characters
+        commons__provided_text_too_long -->
+    <string name="commons__text_long_title">Girilen metin çok uzun (en fazla %d karakter)</string>
+    <string name="commons__got_it">Anlaşıldı!</string>
+    <string name="fingerprint__verifying">Doğrulanıyor…</string>
+    <!-- fingerprint__setup_content -->
+    <string name="fingerprint__confirm_title">Devam etmek için Parmak izini onayla.</string>
+    <!-- fingerprint__use_pin -->
+    <string name="fingerprint__use_pin_title">Bu sefer PIN kullan</string>
+    <!-- MARK: - Introduction -->
+    <string name="introduction__page_1_title">Harikasınız!</string>
+    <string name="introduction__page_1_content">Dünya çapında 6 milyondan fazla kullanıcının güvendiği 2FAS uygulaması sayesinde telefonunuz, çevrim içi hizmetleriniz için özel ve güvenli bir anahtar haline geldi.</string>
+    <string name="introduction__page_2_title">Basit</string>
+    <string name="introduction__page_2_content">2FAS\'ı çevrim içi hizmetlerinizle eşleştirin. İki faktörlü güvenliği QR kodunuzla saniyeler içinde etkinleştirin.</string>
+    <string name="introduction__page_3_title">Gizli</string>
+    <string name="introduction__page_3_content">2FAS gizliliğinize saygı duyar ve onu korur. Bu uygulama; kişisel verilerinizi asla toplamaz, işlemez veya kullanmaz.</string>
+    <string name="introduction__page_4_title">Güvenli</string>
+    <string name="introduction__page_4_content_ios">Jetonlarınız cihaz depolama alanı üzerinde çevrim dışı olarak saklanır, bu nedenle hizmetlerinizi yedeklemeyi unutmayın! Yetkisiz erişime ve cihaz hasarına karşı koruma sağlamak için iCloud Eşitlemesi ve PIN parolası kullanın.</string>
+    <!-- introduction__start_using -->
+    <string name="introduction__title">2FAS\'ı kullanmaya başla</string>
+    <string name="introduction__tos">Hizmet şartları</string>
+    <string name="introduction__description_title">Çevrim içi hizmet hesabınızı 2FAS ile eşleştirin veya jetonlarınızı içeri aktarın</string>
+    <string name="introduction__pair_new_service">Yeni hizmet eşleştir</string>
+    <!-- introduction__import_2fas -->
+    <string name="introduction__import_2fas_title">2FAS yedek dosyasını içeri aktar</string>
+    <!-- introduction__import_ga -->
+    <string name="introduction__import_google_authenticator">Google Authenticator\'dan içeri aktar</string>
+    <!-- introduction__not_sure -->
+    <string name="introduction__what_to_do">Ne yapacağınızdan emin değil misiniz?</string>
+    <!-- introduction__ga_import_description -->
+    <string name="introduction__google_authenticator_import_process">\"Hesapları Aktar\" seçeneğini kullanarak Google Authenticator\'daki hesaplarınızı QR koduna dışarı aktarın. Ardından başka bir cihaz kullanarak dışarı aktarılmış QR kodunun fotoğrafını çekin, cihazınıza fotoğrafı gönderin (veya mümkünse QR kodunun ekran görüntüsünü alın) ve aşağıdaki \"QR kodu seç\" seçeneğini kullanın. Eğer kodları başka bir cihazdan içeri aktarıyorsanız, onun yerine \"QR kodu tara\" düğmesini kullanın.</string>
+    <!-- introduction__choose_qr -->
+    <string name="introduction__choose_qr_code">QR kodu seç</string>
+    <!-- introduction__scan_qr -->
+    <string name="introduction__scan_qr_code">QR kodu tara</string>
+    <!-- Original: Adding code -->
+    <string name="notifications__adding_code">Yeni bir kod ekleniyor</string>
+    <!-- notifications__private_key_copied -->
+    <string name="notifications__service_key_copied">Gizli Anahtar Kopyalandı</string>
+    <!-- voiceover__token_is_already_on_the_list -->
+    <string name="notifications__token_already_added">Bu jeton, listede zaten mevcut</string>
+    <string name="notifications__counter_copied">Sayaç Kopyalandı</string>
+    <string name="notifications__token_copied">Jeton Kopyalandı</string>
+    <string name="notifications__next_token_copied">Sonraki Jeton Kopyalandı</string>
+    <!-- notifications__would_you_like_to_add_this_code -->
+    <string name="notifications__add_code_question_title">%s kodunu eklemek ister misiniz?</string>
+    <!-- MARK: - Permissions -->
+    <string name="permissions__open_settings">Ayarları Aç</string>
+    <string name="security__incorrect_PIN">Yanlış PIN</string>
+    <string name="security__change_pin">PIN\'i Değiştir</string>
+    <string name="security__confirm_you_are_device_owner">Lütfen cihazın sahibi olduğunuzu onaylayın</string>
+    <!-- security__confirm_your_new_pin -->
+    <string name="security__confirm_new_pin">Lütfen yeni PIN\'inizi onaylayın</string>
+    <string name="security__create_pin">PIN Oluştur</string>
+    <string name="security__enter_current_pin">Lütfen mevcut PIN\'inizi girin</string>
+    <!-- security__enter_your_new_pin -->
+    <string name="security__enter_new_pin">Lütfen yeni PIN\'inizi girin</string>
+    <!-- security__enter_your_pin -->
+    <string name="security__enter_pin">Lütfen PIN\'inizi girin</string>
+    <!-- MARK: - Security -->
+    <string name="security__too_many_attempts_try_again_after_formatter">Çok fazla girişim. Lütfen %s tekrar deneyin</string>
+    <string name="security__too_many_attempts_try_again_after">Çok fazla girişim. Lütfen %s dakika sonra tekrar deneyin.</string>
+    <!-- security__too_many_attempts_try_again_later -->
+    <string name="security__too_many_attempts_error">Çok fazla girişim. Lütfen daha sonra tekrar deneyin.</string>
+    <!-- security__too_many_attempts_try_again_after_one_minute -->
+    <string name="security__too_many_attempts_error_2">Çok fazla girişim. Lütfen bir dakika sonra tekrar deneyin</string>
+    <string name="settings__backup_and_synchronization">Yedekleme ve Eşitleme</string>
+    <string name="settings__choose_topic">Konu seç</string>
+    <string name="settings__configure_mail_service_try_again">Posta hizmetinizi yapılandırın ve tekrar deneyin</string>
+    <string name="settings__general">Genel</string>
+    <string name="settings__mail_services_not_available">Posta hizmetlerine erişilemiyor</string>
+    <string name="settings__problem">Sorun</string>
+    <string name="settings__security">Güvenlik</string>
+    <string name="settings__select_pin_length">PIN uzunluğu seç</string>
+    <string name="settings__settings">Ayarlar</string>
+    <!-- czy to dalej będzie w aplikacji? -->
+    <string name="settings__suggestion">Öneri</string>
+    <string name="settings__advanced">Gelişmiş</string>
+    <string name="settings__widgets">Widgetlar</string>
+    <string name="settings__display_selected_services">Ana Ekran Widgetlarında seçilen hizmetleri görüntüleyin.</string>
+    <!-- settings__after_you_enable_widgets -->
+    <string name="settings__widgets_title">Widgetları etkinleştirirseniz bütün jetonlarınıza PIN kodunuz olmadan erişilebilecek.\n\nWidgetları etkinleştirmek istediğinizden emin misiniz?</string>
+    <string name="settings__show_next_token">Sonraki jetonu göster</string>
+    <string name="settings__see_incoming_tokens">Listedeki gelen jetonları görün.</string>
+    <string name="settings__trash">Çöp Kutusu</string>
+    <string name="settings__restore">Geri yükle</string>
+    <string name="settings__trash_is_empty">Çöp Kutusu Boş</string>
+    <string name="settings__share_app">Uygulamayı paylaş</string>
+    <!-- tokens__remove_from_list -->
+    <string name="tokens__delete_token">Şunun için jetonu silmek istediğinizden emin misiniz:</string>
+    <string name="tokens__move_to_trash">Çöp Kutusuna taşı</string>
+    <string name="tokens__additional_info">Ek bilgi</string>
+    <string name="tokens__choose_method">Yöntem seç</string>
+    <string name="tokens__duplicated_private_key">Çoğaltılmış Gizli Anahtar</string>
+    <!-- tokens__incorrect_private_key -->
+    <string name="tokens__incorrect_service_key">Yanlış Gizli anahtar (sadece 2\'den 7\'ye kadar olan rakamlar, harfler), en fazla 512 karakter uzunluğunda</string>
+    <string name="tokens__try_again">Tamam, hadi tekrar deneyelim</string>
+    <!-- Original: To capture the QR code
+        tokens__point_right_2fa_code -->
+    <string name="tokens__scan_qr_code_title">QR kodunu taramak için kameranızı ekrana doğrultun</string>
+    <!-- tokens__private_key -->
+    <string name="tokens__service_key">Gizli Anahtar</string>
+    <string name="tokens__qr_code_leads_to_app_store">Bu QR kodu sizi App Store\'a götürür</string>
+    <!-- tokens__remove_it_forever -->
+    <string name="tokens__remove_forever">Jetonu sil</string>
+    <!-- tokens__search_by_service_name_or_login -->
+    <string name="tokens__search_service_title">Hizmet ara</string>
+    <!-- tokens__search_sorry_service_not_found -->
+    <string name="tokens__service_not_found_search">Üzgünüz, hizmet bulunamadı</string>
+    <!-- Original: Take another try with a different search term
+        tokens__search_take_another_try_different_search_term -->
+    <string name="tokens__try_different_search_term">Başka bir arama terimi ile tekrar deneyin</string>
+    <string name="tokens__service_key_to_short">Anahtar çok kısa. En az 4 karakter</string>
+    <string name="tokens__service_name">Hizmet Adı</string>
+    <!-- tokens__this_private_key_exists_used_in -->
+    <string name="tokens__service_key_already_used_title">Taranan kodun içindeki Gizli anahtar, %s üzerinde zaten kullanılıyor. Muhtemelen kodu tekrar tarıyorsunuz</string>
+    <string name="tokens__this_qr_code_is_inavlid">Bu kod yanlış veya desteklenmiyor. Tekrar deneyin.</string>
+    <string name="tokens__type_service_name">Hizmet Adı Yaz</string>
+    <string name="tokens__enter_service_name">Hizmet Adı Gir</string>
+    <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
+    <string name="tokens__service_name_unknown_title">Ne yazık ki bu hizmeti tanımıyoruz. Bu hizmete ne adı vermek istersiniz?</string>
+    <!-- tokens__you_wont_be_able_to_restore -->
+    <string name="tokens__token_not_possible_to_restore">Bu jetonu bir daha geri yükleyemeyeceksiniz.</string>
+    <string name="tokens__badge_color">Rozet rengi</string>
+    <string name="tokens__change_brand_icon">Marka simgesini değiştir</string>
+    <string name="tokens__change_label">Etiketi değiştir</string>
+    <string name="tokens__service_information">Hizmet Bilgisi</string>
+    <string name="tokens__personalization">Kişiselleştirme</string>
+    <string name="tokens__brand_icon">Marka simgesi</string>
+    <string name="tokens__label">Etiket</string>
+    <!-- tokens__remove_the_service -->
+    <string name="tokens__remove_service_from_app">Bu hizmeti 2FAS uygulamasından sil</string>
+    <!-- tokens__label_one_or_two -->
+    <string name="tokens__label_characters_title">Etiket (1 veya 2 karakter)</string>
+    <string name="tokens__pick_background_color">Arka plan rengi seç:</string>
+    <string name="tokens__num_added">%s eklendi</string>
+    <string name="tokens__next_token">Sonraki Jeton: %s</string>
+    <string name="tokens__next_token_title">Sonraki Jetonun değeri</string>
+    <string name="tokens__my_tokens">Jetonlarım</string>
+    <string name="tokens__removing_group">Grup siliniyor</string>
+    <!-- tokens__all_tokens_will_be_moved -->
+    <string name="tokens__all_tokens_moved_to_group_title">Bütün jetonlar şu gruba taşınacak: \"Jetonlarım\"</string>
+    <string name="tokens__add_group">Grup ekle</string>
+    <string name="tokens__group_name">Grup adı:</string>
+    <string name="tokens__select_from_gallery">Galeriden seç</string>
+    <string name="tokens__camera_is_unavailable">Kameraya erişilemiyor</string>
+    <!-- tokens__check_if_app_has_proper_permissions -->
+    <string name="tokens__check_app_permissions">Uygulamanın, Sistem Ayarlarında uygun izinlere sahip olup olmadığını kontrol edin</string>
+    <string name="tokens__no_qr_codes_found">QR kodu bulunamadı</string>
+    <!-- tokens__no_correct_qr_code_had_been_found
+        
+        No correct QR codes had been found in the selected image. Please try a different image. -->
+    <string name="tokens__no_correct_qr_code_found_title">Seçilen resmin içinde QR kodu yok. Lütfen başka bir resim deneyin.</string>
+    <string name="tokens__select_service">Hizmet seç</string>
+    <string name="tokens__adding_service_question_title">Ne hizmeti eklemek istiyorsunuz?</string>
+    <string name="tokens__retype_this_token">Bu jetonu tekrar girin</string>
+    <!-- tokens__unlock_and_retype_this_token -->
+    <string name="tokens__unlock_and_retype_token_title">Bu jetonun kilidini aç ve tekrar yaz</string>
+    <string name="tokens__group">Grup</string>
+    <string name="tokens__select_group">Grup seç</string>
+    <string name="tokens__google_auth_import">2AD jetonları Google Authenticator uygulamasından içeri aktarılıyor</string>
+    <string name="tokens__google_auth_import_subtitle">Bu QR kodu, jetonların Google Authenticator\'dan içeri aktarılmasına izin verir</string>
+    <!-- A number replaces %d  -->
+    <string name="tokens__google_auth_out_of_title">%1$d üzerinden %2$d</string>
+    <string name="tokens__google_auth_import_subtitle_end">Jetonlar içeri aktarılacak.</string>
+    <string name="tokens__sort_by">Sıralama ölçütü</string>
+    <!-- tokens__sort_by_az -->
+    <string name="tokens__sort_by_a_to_z">A\'dan Z\'ye</string>
+    <!-- tokens__sort_by_za -->
+    <string name="tokens__sort_by_z_to_a">Z\'den A\'ya</string>
+    <string name="tokens__sort_by_manual">Elle</string>
+    <string name="tokens__advanced">Gelişmiş</string>
+    <!-- tokens__advanced_alert_title -->
+    <string name="tokens__advanced_alert">Uyarı</string>
+    <!-- tokens__advanced_alert_description -->
+    <string name="tokens__advanced_alert_description_title">Gelişmiş ayarların değiştirilmesi önerilmez. Bunu yalnızca 2AD sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
+    <string name="tokens__token_settings">Jeton ayarları</string>
+    <string name="tokens__otp_authentication">OTP Doğrulaması</string>
+    <string name="tokens__algorithm">Algoritma</string>
+    <string name="tokens__refresh_time">Yenileme süresi</string>
+    <string name="tokens__number_of_digits">Basamak sayısı</string>
+    <string name="tokens__counter">Sayaç</string>
+    <string name="tokens__initial_counter">Başlangıç sayacı</string>
+    <!-- A number replaces %d -->
+    <string name="tokens__second">%d sn</string>
+    <string name="tokens__hotp">HOTP</string>
+    <string name="tokens__totp">TOTP</string>
+    <string name="tokens__advanced_settings_footer_title">Gelişmiş ayarların değiştirilmesi önerilmez. Bunu yalnızca 2AD sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
+    <string name="tokens__gallery_advice_title">En iyi yöntem</string>
+    <!-- ADD A SPACE AT THE END -->
+    <string name="tokens__gallery_advice_content_first">Hizmet başarıyla eklendi. Şunu şiddetle öneriyoruz ki\u0020</string>
+    <!-- ADD A SPACE AFTER COMA -->
+    <string name="tokens__gallery_advice_content_middle_bold">QR ekran görüntüsünü galerinizden silin.</string>
+    <string name="tokens__gallery_advice_content_last">Birisi bu QR kodunun ekran görüntüsünü ele geçirirse, bu hizmetin 2AD kodlarını alabilecektir.</string>
+    <string name="tokens__request_icon_page_title">Bir simge talep edin</string>
+    <string name="tokens__request_icon_social_title">Discord\'da bize ulaşın</string>
+    <string name="tokens__request_icon_social_link">Discord sunucumuza giriş yapın</string>
+    <string name="tokens__request_icon_social_description">ve kullanıcıların talep edilen simgeler için oy kullanmasına izin verin.</string>
+    <string name="tokens__request_icon_middle">veya</string>
+    <string name="tokens__request_icon_provider_title">Hizmet sağlayıcıyı bilgilendirin</string>
+    <string name="tokens__request_icon_provider_description">Sosyal Medyayı veya e-postayı kullanabilir ve bu metni onlarla paylaşabilirsiniz:</string>
+    <string name="tokens__request_icon_provider_message">Merhaba! Hizmetinize 2AD ile giriş yapmak için 2FAS uygulamasını kullanıyorum, ancak uygulamada simgeniz yok! Simgenizi şuraya gönderebilirsiniz: https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_footnote">Şirketin resmi hesabını etiketlemeyi unutmayın!</string>
+    <string name="tokens__order_icon_description">2FAS uygulamasında marka simgesini bulamıyor musunuz?</string>
+    <string name="tokens__order_icon_link">Bir marka simgesi talep edin</string>
+    <string name="tokens__order_icon_title">Bir marka simgesi talep edin</string>
+    <string name="tokens__order_menu_title">İstek yöntemi seç</string>
+    <string name="tokens__order_menu_option_user">Bir kullanıcı olarak simge talep edin</string>
+    <string name="tokens__order_menu_option_company">Bir şirket olarak simgeyi gönder</string>
+    <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
+    <string name="tokens__sign_in_not_possible_title">%1$s için iki faktörlü kimlik doğrulaması açık olduğu sürece bu jeton olmadan %2$s hesabınızda oturum açamazsınız.</string>
+    <string name="voiceover__show_service_key">Gizli Anahtarı Göster</string>
+    <string name="voiceover__copy_service_key">Gizli Anahtarı Kopyala</string>
+    <!-- voiceover__seconds_left -->
+    <string name="voiceover__seconds_left_counter_title">Jeton değişimine saniyeler kala sayaç</string>
+    <string name="voiceover__delete_button">Sil düğmesi</string>
+    <string name="voiceover__service_deleted">Hizmet silindi</string>
+    <!-- voiceover__hidden_secret_key_use_show button -->
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Bu alan gizli bir Güvenli Anahtar içerir. Bunu ortaya çıkarmak için Göster düğmesini kullanın. Bu yalnızca kilit ekranı için uygulama PIN\'ini ayarladıysanız çalışacaktır</string>
+    <string name="voiceover__service_name">Hizmet adı: %s</string>
+    <string name="voiceover__additional_info">Ek bilgi: %s</string>
+    <string name="voiceover__token_tap_to_copy">Jeton %s. Kopyalamak için basın</string>
+    <string name="voiceover__edit">%s ögesini düzenle</string>
+    <string name="voiceover__service_label_with_name_and_color">Adı %1$s ve rengi %2$s olan servis etiketi</string>
+    <string name="voiceover__service_icon">%s hizmet simgesi</string>
+    <string name="voiceover__selected">Seçildi</string>
+    <string name="voiceover__not_selected">Seçilmedi</string>
+    <string name="voiceover__badge_color">Rozet rengi: %s</string>
+    <string name="voiceover__dismissing">Reddediliyor</string>
+    <string name="voiceover__secret_hint">Sadece 2\'den 9\'a kadar olan rakamlar, harfler. En az 4 karakter</string>
+    <string name="voiceover__add_service">Hizmet Ekle</string>
+    <string name="voiceover__add_group">Grup Ekle</string>
+    <!-- voiceover__use_add_service_button -->
+    <string name="voiceover__use_add_service_button_title">Yeni bir hizmet eklemek için Hizmet Ekle düğmesini kullanın</string>
+    <string name="voiceover__no_search_results">Arama sonucu yok</string>
+    <!-- voiceover__sort_by -->
+    <string name="voiceover__sort_by_title">Hizmet sıralamasını ayarlamak için Sıralama Ölçütünü kullanın</string>
+    <string name="voiceover__spinner">İçerik yükleniyor</string>
+    <string name="backup__incorrect_secret">\"%s\" parolası geçersiz karakterler içerdiğinden jetonlar yedeklenemedi. Onu listeden kaldırın ve tekrar deneyin</string>
+    <string name="backup__import">İçeri aktar</string>
+    <string name="backup__export">Dışarı aktar</string>
+    <string name="backup__backup_disabled_title">2FAS Yedeklemesi, kendi bütünlüğünü korumak için devre dışı bırakılacak</string>
+    <string name="backup__error_while_exporting_file">Dosya dışarı aktarılırken hata oluştu</string>
+    <string name="backup__import_completed_successfuly">İçeri aktarma başarıyla tamamlandı</string>
+    <!-- camera__video_device_in_use_by_another_app -->
+    <string name="camera__camera_used_by_other_app_title">Başka bir uygulama kamerayı kullanıyor. Eğer diğer uygulamaları kapatmak işe yaramazsa cihazı yeniden başlatın</string>
+    <!-- camera__video_device_unavailable_due_to_system_overload  -->
+    <string name="camera__camera_unavailable_title">Sisteme aşırı yüklenildiğinden kameraya erişilemiyor. Cihazı yeniden başlatmayı deneyin</string>
+    <string name="camera__cant_initialize_camera_general">Kamera başlatılamıyor. Cihazı yeniden başlatmayı deneyin</string>
+    <string name="camera__cant_initialize_camera_split_view">Bölünmüş ekran görünümünde kamera başlatılamıyor. Uygulamayı tam ekranda açın ve tekrar deneyin</string>
+    <string name="restore__how_to_restore">2FAS uygulaması nasıl geri yüklenir?</string>
+    <string name="restore__application_restoration">Uygulama geri yüklemesi</string>
+    <!-- restore_if_you_forgotten -->
+    <string name="restore__reset_Pin_title">Eğer PIN\'inizi unuttuysanız veya 2FAS uygulamasını sıfırlamak istiyorsanız, uygulamayı yeniden yüklemeniz gerekiyor.</string>
+    <!-- restore_please_remember -->
+    <string name="restore__backup_advice">Bir yedeğiniz yoksa ve uygulamayı sıfırlarsanız, tüm kodlarınıza erişiminizi ve dolayısıyla 2AD ile korunan tüm hesaplarınıza erişiminizi kaybedeceğinizi unutmayın.</string>
+    <!-- restore_if_you_have_backup -->
+    <string name="restore__backup_title">Eğer bir yedeğiniz varsa içiniz rahat olsun, bütün kodlarınızı geri yükleyebileceksiniz.</string>
+    <string name="backup__cloud_backup">Bulut Yedeklemesi</string>
+    <string name="backup__icloud_sync">iCloud Eşitlemesi</string>
+    <string name="backup__section_description">ÖNERİLEN: iCloud Eşitlemesi, cihazını kaybetme veya bozma olasılığına karşı jetonlarınızı Apple iCloud\'da güvende tutar. iCloud Yedeklemesini açık bırakın.</string>
+    <string name="backup__file_backup">Dosya Yedeklemesi</string>
+    <!-- backup__use_file_backup_for -->
+    <string name="backup__file_backup_offline_title">Jetonlarınızı çevrim dışı yedeklemek için Dosya Yedeklemesini kullanın</string>
+    <string name="backup__backup_removal">Yedek kaldırma</string>
+    <string name="backup__delete_2fas_backup">2FAS Yedeklemesini sil</string>
+    <string name="backup__warning_introduction">Uyarı! 2FAS Yedeklemesini silerseniz, bu hesapla eşitlenen diğer cihazlardaki tüm jetonları da sileceksiniz. Diğer cihazlardaki jetonları korumak için lütfen 2FAS Yedeklemesini silmeden önce devre dışı bıraktığınızdan emin olun.</string>
+    <!-- backup__i_want_to_delete -->
+    <string name="backup__delete_title">Yedeği silmek istiyorum</string>
+    <string name="backup__export_to_backup_file">Yedeği dışarı dosya olarak aktar</string>
+    <!-- backup__you_can_import_exported_file -->
+    <string name="backup__import_file_title">2FAS uygulaması ile diğer cihazlardaki dışarıya aktarılan dosyaları içeri aktarabilirsiniz</string>
+    <string name="backup__export_to_file">Dosyayı dışa aktar</string>
+    <string name="backup__verify_pin">PIN\'i doğrula</string>
+    <string name="backup__save_file">Dosyayı kaydet</string>
+    <string name="backup__import_backup_file">Yedek dosyasını içeri aktar</string>
+    <!-- backup__youre_goint_to_import_backup -->
+    <string name="backup__import_other_devices">Şunları içeren bir yedek dosyasını içeri aktaracaksınız:</string>
+    <string name="backup__import_file">Dosyayı içeri aktar</string>
+    <string name="backup__choose_antother_file">Başka dosya seç</string>
+    <string name="backup__no_new_services">İçeri aktarılacak hiçbir şey yok</string>
+    <string name="backup__file_error">Dosya hatası!</string>
+    <!-- backup__services_form_file_will_be_merged -->
+    <string name="backup__services_merge_title">Dosyadaki hizmetler uygulamanızdaki hizmetlerle birleştirilecek</string>
+    <string name="backup__no_new_services_error">Ya bu dosya boştur ya da içindeki tüm hizmetler uygulamada zaten mevcuttur</string>
+    <string name="backup__update_required_to_import_title">Bu dosyadaki içerikleri içeri aktarmak için uygulamanın yeni sürümüne ihtiyacınız var. En yeni sürümü App Store\'da bulabilirsiniz</string>
+    <string name="backup__cant_read_file_error">Bu dosya okunamıyor. Dosya, bozulmuş veya erişilmeye çalışırken hata oluşmuş olabilir. Lütfen başka bir dosya seçin</string>
+    <string name="backup__password">Parola</string>
+    <string name="backup__repeat_password">Parolayı tekrarla</string>
+    <string name="backup__incorrect_character_error">Yanlış karakter. Sadece A\'dan Z\'ye ve a\'dan z\'ye harfleri (ğ, Ş gibi Türkçe harfler hariç), rakamları ve şu özel karakterleri kullanın: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__to_short_error">Girilen ifade çok kısa (en az 3 karakter)</string>
+    <string name="backup__passwords_dont_match">Parolalar eşleşmiyor</string>
+    <string name="backup__save_and_export">Kaydet ve dışa aktar</string>
+    <string name="backup__set_password_title">Yedek dosyanızın korumasını artırmak için lütfen parola ayarlayın</string>
+    <string name="backup__enter_password_title">İçeri aktarma işlemine devam etmek için bu yedek dosyası için bir parola girin</string>
+    <string name="backup__backup_file_password_title">Bu yedek dosyası için bir parola ayarla</string>
+    <string name="backup__incorrect_password">Yanlış Parola</string>
+    <!-- %d - number -->
+    <string name="backup__new_services">%d yeni hizmet</string>
+    <!-- %d - number -->
+    <string name="backup__services_imported_count">%d hizmet dosyadan içeri aktarıldı</string>
+    <!-- backup__user_has_icloud_problem -->
+    <string name="backup__icloud_problem">iCloud\'da bir sorun var. Sistem ayarlarını kontrol edin</string>
+    <!-- backup__newer_schema_unsupported -->
+    <string name="backup__newer_format_not_supported">Bu dosya, uygulamanın desteklediği biçim sürümünden daha yeni bir biçim sürümünde</string>
+    <!-- backup__encrypted_unsupported -->
+    <string name="backup__encrypted_files_not_supported">Bu dosya şifrelenmiş. Sadece şifrelenmemiş dosyaları destekliyoruz</string>
+    <string name="tokens__copy_token">Jetonu kopyala</string>
+    <!-- tokens__i_want_to_delete_this_servie -->
+    <string name="tokens__i_want_to_delete_this_token">Evet, bu hizmeti silmek istiyorum</string>
+    <string name="color__neutral">Nötr</string>
+    <string name="color__light_blue">Açık mavi</string>
+    <string name="color__indigo">Çivit mavisi</string>
+    <string name="color__purple">Mor</string>
+    <string name="color__turquoise">Turkuaz</string>
+    <string name="color__green">Yeşil</string>
+    <string name="color__red">Kırmızı</string>
+    <string name="color__orange">Turuncu</string>
+    <string name="color__yellow">Sarı</string>
+    <string name="settings__knowledge">Bilgi</string>
+    <string name="settings__support_and_share">Destekle ve Paylaş</string>
+    <string name="settings__tell_a_friend">Arkadaşına bahset</string>
+    <string name="settings__write_a_review">Bir değerlendirme yaz</string>
+    <string name="settings__about">Hakkında</string>
+    <string name="settings__privacy_policy">Gizlilik Politikası</string>
+    <string name="settings__terms_of_service">Kullanım Şartları</string>
+    <string name="settings__version">Uygulama sürümü %s</string>
+    <string name="settings__no_limit">Sınır yok</string>
+    <string name="settings__pin_code">PIN kodu</string>
+    <string name="settings__app_security">Uygulama güvenliği</string>
+    <string name="settings__app_blocking">Kilitlenme ayarları</string>
+    <string name="settings__face_id">Face ID</string>
+    <string name="settings__touch_id">Touch ID</string>
+    <!-- settings__how_many_attempts_header -->
+    <string name="settings__too_many_attempts_header">X başarısız girişimden sonra engelle:</string>
+    <string name="settings__how_many_attempts_footer">Uygulama kilitlenmeden önce, parolayı girmek üzere izin verilen en fazla başarısız girişim sayısını seçin (kilitlenme süresi aşağıdan değiştirilebilir).</string>
+    <string name="settings__block_for">Kilitlenme süresi</string>
+    <string name="settings__3_minutes">3 dakika</string>
+    <string name="settings__5_minutes">5 dakika</string>
+    <string name="settings__10_minutes">10 dakika</string>
+    <string name="settings__limit_of_trials">En fazla başarısız girişim</string>
+    <string name="settings__pin_4_digits">4 haneli kod</string>
+    <string name="settings__pin_6_digits">6 haneli kod</string>
+    <string name="settings__biometric_authentication">Biyometrik Doğrulama</string>
+    <string name="settings__donations">Bağışlar</string>
+    <string name="settings__donate_twofas">2FAS\'a bağış yap</string>
+    <string name="new_version__new_version_title">Yeni sürüm</string>
+    <string name="new_version__new_version_message_ios">2FAS\'ın yeni bir sürümü App Store\'da mevcut. Şimdi güncelle!</string>
+    <string name="new_version__update_action">Şimdi güncelle</string>
+    <!-- new_version__skip_action -->
+    <string name="new_version__skip_title">Bu sürümü atla</string>
+    <!-- new_version__later_action -->
+    <string name="new_version__update_later">Daha sonra güncelle</string>
+    <string name="browser__browser_extension">Tarayıcı uzantısı</string>
+    <string name="browser__info_title">2FAS Web Tarayıcısı uzantısı</string>
+    <string name="browser__info_description_first">2FAS tarayıcı uzantısını masaüstü bilgisayarınızda yükleyin</string>
+    <string name="browser__info_description_second">Onu 2FAS uygulamanızla eşleştirin</string>
+    <string name="browser__more_info">Daha fazla bilgi:</string>
+    <string name="browser__more_info_link_title">2fas.com/be</string>
+    <string name="browser__pair_with_web_browser">Web tarayıcısı ile eşleştir</string>
+    <string name="browser__more_info_link">https://www.2fas.com/be</string>
+    <string name="browser__pairing_successful_title">Eşleşme başarılı!</string>
+    <string name="browser__pairing_successful_description">Bu web tarayıcısını kullanarak çevrim içi hizmetlerinize giriş yapmaya çalıştığınızda 2FAS size anlık bildirim gönderecek. Her giriş için jetonlarınızı tekrar girmenize gerek kalmayacak.</string>
+    <string name="browser__pairing_failed_title">Eşleşme başarısız :(</string>
+    <string name="browser__pairing_failed_description">Bu QR kodu tanınmadı ve 2FAS bu cihazı tarayıcı uzantısıyla eşleştiremedi. Lütfen tekrar deneyin.</string>
+    <!-- browser__pairing_already_paired_title -->
+    <string name="browser__already_paired_title">Zaten eşleşmiş!</string>
+    <!-- browser__pairing_already_paired_description -->
+    <string name="browser__already_paired_description">Bu Tarayıcı Uzantısı, bu cihazla zaten eşleşmiş.</string>
+    <string name="browser__contact_support">Desteğe başvur</string>
+    <string name="browser__pairing_with_browser">Tarayıcı ile eşleşiliyor</string>
+    <!-- browser__paired_devices -->
+    <string name="browser__paired_devices_browser_title">Eşleşmiş cihazlar (web tarayıcıları)</string>
+    <string name="browser__add_new">Yeni ekle</string>
+    <!-- browser__this_device -->
+    <string name="browser__this_device_name">Cihaz takma adı</string>
+    <string name="browser__device_name">Cihaz takma adı</string>
+    <string name="browser__name">Ad</string>
+    <string name="browser__this_device_footer">Bu takma ad, 2FAS tarayıcı uzantısıyla eşleşen diğer cihazlar arasında bu cihazı belirlemenize yardımcı olur</string>
+    <string name="browser__browser_extension_settings">Tarayıcı Uzantıları ayarları</string>
+    <string name="browser__unkown_name">&lt;BİLİNMEYEN_AD&gt;</string>
+    <string name="browser__request_source_description">%1$s, %2$s için 2AD jetonu talep etti. Onaylamak ve bu alan adıyla kaydetmek için hizmeti seçin.</string>
+    <string name="browser__request">Tarayıcı isteği</string>
+    <!-- browser__code_success -->
+    <string name="browser__code_success_title">Jeton başarıyla gönderildi!</string>
+    <string name="browser__code_failure">Kod gönderilirken hata oluştu. %s</string>
+    <string name="browser__deleting_paired_device_title">Eşleşmiş Cihaz Siliniyor</string>
+    <string name="browser__deleting_paired_device_content">Eşleşmiş cihazı silmek istediğinizden emin misiniz?</string>
+    <string name="browser__pairing_date">Eşleşme tarihi</string>
+    <string name="browser__forget_this_browser">Bu web tarayıcısını unut</string>
+    <!-- browser__service_is_paired_list_description -->
+    <string name="browser__paired_domains_list_title">Eşleşmiş alan adlarının listesi.</string>
+    <string name="browser__deleting_extension_pairing_title">Alan adı silinsin mi?</string>
+    <string name="browser__deleting_extension_pairing_content">%s hesabına giriş yapmak için tarayıcı uzantısını bir sonraki kullanışınızda bu alan adını tekrar eşleştirmeniz istenecek.</string>
+    <string name="browser__push_notifications_title">Anlık Bildirimler</string>
+    <string name="browser__push_notifications_content">Tarayıcı Uzantısı gibi işlevselliklere erişebilmek için uygulamanın Anlık Bildirimlere erişmesi gerekiyor. Bu ayarı istediğiniz zaman Sistem Ayarlarında değiştirebilirsiniz.</string>
+    <string name="browser__request_expired">İsteğin süresi doldu</string>
+    <string name="browser__2fa_token_request_title">2AD Jetonu İsteği</string>
+    <string name="browser__2fa_token_request_content">Şunun için 2AD jetonunu paylaşmak ister misiniz:</string>
+    <string name="notifications__no_notifications">Bildirim yok</string>
+    <string name="CFBundleSpokenName">2 F A S</string>
+    <string name="commons__2fas_toolbar">2FAS</string>
+    <string name="backup__google_drive_not_available">Google Drive\'a erişilemiyor</string>
+    <string name="backup__google_drive_disabled_title">Google Drive kullanıcı tarafından devre dışı bırakıldı</string>
+    <string name="backup__update_required_to_import_title_2">Bu dosyanın içeriğini içeri aktarmak için uygulamanın yeni bir sürümüne ihtiyacınız olacak. En yeni sürümü Google Store\'da bulabilirsiniz</string>
+    <string name="tokens__qr_code_leads_to_google_store">Bu QR kodu sizi Google Store\'a götürür</string>
+    <string name="introduction__page_4_content_android">Jetonlarınız cihaz depolama alanı üzerinde çevrimdışı olarak saklanır, bu nedenle hizmetlerinizi yedeklemeyi unutmayın! Yetkisiz erişime ve cihaz hasarına karşı koruma sağlamak için Google Drive Eşitlemesi ve PIN parolası kullanın.</string>
+    <string name="new_version__new_version_message_android">2FAS\'ın yeni bir sürümü Google Store\'da mevcut. Şimdi güncelleyin!</string>
+    <string name="security_error_no_match">PIN eşleşmiyor! Lütfen tekrar deneyin.</string>
+    <string name="settings_developer_options">Geliştirici Seçenekleri</string>
+    <string name="settings__external_import">Jetonları içeri aktar</string>
+    <string name="settings__browser_extension_result_toolbar_title">Eşleşme sonucu</string>
+    <string name="tokens__caution">DİKKAT</string>
+    <string name="tokens__qr_point_and_scan_again">Kameranızı doğru QR koduna doğrultun ve tekrar tarayın.</string>
+    <string name="tokens__service_unsaved_changes">Değişiklikleri iptal etmek istiyor musunuz?</string>
+    <string name="tokens__service_unsaved_changes_title">Kaydedilmemiş değişiklikler</string>
+    <string name="tokens__service_key_invalid_format">Anahtar geçersiz bir biçime sahip</string>
+    <string name="intent_error_no_gallery_app">Sistem hatası! Sistem galeri uygulaması mevcut değil.</string>
+    <string name="gdrive_permission_title">Google Drive İzni</string>
+    <string name="gdrive_permission_msg">Yedek dosyalarını uygulama verilerine kaydetmek için Google Drive iznine ihtiyacımız var.</string>
+    <string name="gdrive_internet_title">İnternet Bağlantısı Gerekli</string>
+    <string name="gdrive_internet_msg">Google ile senkronize etmek için bir internet bağlantısını etkinleştirmeniz gerekir.</string>
+    <string name="gdrive_wipe_internet_msg">Google Drive\'a erişimi iptal etmek için internet bağlantısını etkinleştirmeniz gerekir.</string>
+    <string name="backup_explanation_msg">Yedek dosyanızı Google Drive\'ınızdaki gizli klasörün içinde otomatik olarak depolayın ve eşitleyin. Bu klasör sadece 2FAS uygulaması tarafından erişilebilir.</string>
+    <string name="backup_error_unknown">Yedeğin eşitlenmesinde bir sorun oluştu. Lütfen uygulamayı birkaç dakika sonra yeniden başlatın ve tekrar deneyin.</string>
+    <string name="backup_error_encrypt_unknown">Yedek şifrelenirken bir sorun oluştu. Lütfen parolanızı yeniden ayarlayın.</string>
+    <string name="backup_error_decrypt_unknown">Yedeğin şifresi çözülürken bir hata oluştu. Lütfen parolanızı yeniden ayarlayın.</string>
+    <string name="backup__google_drive_problem_title">iCloud\'da bir sorun var. Sistem ayarlarını kontrol edin</string>
+    <string name="backup_error_auth">Google Drive hesap izinlerinizle ilgili bir sorun var. Senkronizasyonu açıp kapatmayı deneyin.</string>
+    <string name="backup_error_no_password">Yedeğiniz parola korumalı. Onu etkinleştirin ve parolanızı girin.</string>
+    <string name="backup_error_wrong_password">Yedeğiniz parola korumalı ama girilen parola yanlış. Onu etkinleştirin ve parolanızı girin.</string>
+    <string name="customization_service_assignment">Hizmet Ataması</string>
+    <string name="customization_personalization">Kişiselleştirme</string>
+    <string name="customization_change_brand">Marka simgesini değiştir</string>
+    <string name="customization_advanced">Gelişmiş</string>
+    <string name="customization_request_icon">Bir simge talep edin</string>
+    <string name="customization_edit_label">Etiketi düzenle</string>
+    <string name="groups_delete_msg">Bu grubu silmek istediğinizden emin misiniz?</string>
+    <string name="export_backup_title">Yedek dosyanız dışarı aktarılmak için hazır</string>
+    <string name="export_backup_msg">2FAS jetonlarınızı güvenli bir şekilde yedeklemek için bu dosyayı dışarı aktarın. Daha sonra 2FAS uygulamasını kullanarak bu dosyayı bu cihazda veya diğer cihazlarda içeri aktarabilirsiniz.</string>
+    <string name="export_backup_pass">Dosyayı parola olmadan dışarı aktar (önerilmez)</string>
+    <string name="import_backup_msg2">Dosya, uygulamanın hizmet listesi ile senkronize edilecektir.</string>
+    <string name="backup_notice_later">Belki Daha Sonra</string>
+    <string name="backup_notice_cta">Etkinleştir</string>
+    <string name="widgets_empty_msg">Eklenmiş hizmet yok</string>
+    <string name="backup__section_description_google">ÖNERİLEN: Google Drive Eşitlemesi, cihazını kaybetme veya bozma olasılığına karşı jetonlarınızı Google Drive\'da güvende tutar. Google Drive Eşitlemesini açık bırakın.</string>
+    <string name="backup_turn_off_title">Google Drive Eşitlemesi kapatılsın mı?</string>
+    <string name="backup_turn_off_msg1">2AD jetonları bu cihazda ve Google Drive\'ınızda kalacak, ancak senkronize edilmeyecektir. Ayrıca Google Hesabınızdan çıkış yapmış olacaksınız.</string>
+    <string name="backup_turn_off_msg2">Bu cihazın kaybolması veya hasar görmesi ya da uygulamanın kaldırılması durumunda jetonlarınızı kurtaramayabileceğinizi ve 2AD ile güvence altına alınan çevrimiçi hesaplara erişiminizi kaybedeceğinizi unutmayın.</string>
+    <string name="backup_settings_password_set_subtitle">Google Drive yedek dosyasını özel bir parola ile koruyun.</string>
+    <string name="backup_settings_password_remove_title">Şifreyi kaldır</string>
+    <string name="backup_settings_password_remove_subtitle">Google Drive yedek dosyanız için parolayı kaldırın.</string>
+    <string name="backup_settings_account_title">Google hesabı</string>
+    <string name="backup_settings_sync_title">Son eşitleme</string>
+    <string name="browser_extension_result_success_description">Bu web tarayıcısını kullanarak çevrim içi hizmetlerinize giriş yapmaya çalıştığınızda 2FAS size ANLIK bildirim gönderecek. Her giriş için jetonlarınızı tekrar girmenize gerek kalmayacak.</string>
+    <string name="browser_extension_browser_dialog">Tarayıcı adı</string>
+    <string name="biometric_dialog_auth_title">Doğrula</string>
+    <string name="biometric_dialog_auth_subtitle">Biyometrik kimliğinizi kullanın</string>
+    <string name="about_licenses">Açık kaynak lisansları</string>
+    <string name="externalimport_description">Diğer uygulamalardaki jetonlarınızı 2FAS\'a içeri aktarabilirsiniz. Listeden bir uygulama seçin ve talimatları izleyin.</string>
+    <string name="externalimport_select_app">Uygulama seç</string>
+    <string name="externalimport_google_authenticator">Google Authenticator</string>
+    <string name="externalimport_aegis">Aegis</string>
+    <string name="externalimport_raivo">Raivo OTP</string>
+    <string name="android__app_name">2FAS Auth</string>
+    <string name="commons__yes">Evet</string>
+    <string name="commons__no">Hayır</string>
+    <string name="commons__search">Ara</string>
+    <string name="errors__no_app">Bu bağlantıyı destekleyen uygulama yok</string>
+    <string name="permissions__camera_permission">Kamera İzni</string>
+    <string name="permissions__camera_permission_description">QR Kodlarını taramak için kamera izni gerekiyor. Bu özelliği kullanmak istiyorsanız Uygulama Bilgisine, ardından İzinlere gidin ve Kamerayı etkinleştirin.</string>
+    <string name="security__disable_pin">PIN\'i devre dışı bırak</string>
+    <string name="security__enter_your_new_pin">Lütfen yeni %s PIN\'inizi girin</string>
+    <string name="security__pin_error_incorrect">PIN yanlış! Lütfen tekrar deneyin</string>
+    <string name="settings__biometrics">Biyometrikler</string>
+    <string name="settings__support">2FAS Desteği</string>
+    <string name="settings__developer">Geliştirici Seçenekleri</string>
+    <string name="settings__option_fingerprint">Biyometrik Kilit</string>
+    <string name="settings__option_theme">Tema</string>
+    <string name="settings__theme_option_auto">Otomatik</string>
+    <string name="settings__theme_option_auto_system">Otomatik - Sistem Ayarları</string>
+    <string name="settings__theme_option_dark">Koyu</string>
+    <string name="settings__theme_option_light">Açık</string>
+    <string name="tokens__copied_clipboard">Jeton panoya kopyalandı!</string>
+    <string name="tokens__next_copied_clipboard">Sonraki jeton panoya kopyalandı!</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Bu 2AD hizmetini kalıcı olarak silmek istiyor musunuz?</string>
+    <string name="tokens__fab_addmanually">Elle ekle</string>
+    <string name="tokens__qr_does_not_work">Bu QR Kodu çalışmıyor!</string>
+    <!-- Could not read QR code from the image! -->
+    <string name="tokens__qr_read_image_failed">QR kodu resimden okunamadı!</string>
+    <string name="tokens__qr_read_image_try_again">Başka bir resim seçmeyi deneyin.</string>
+    <string name="tokens__remove_it_forever">Hizmeti sonsuza dek sil</string>
+    <!-- Service could not be added, Service Key is invalid. Try again. -->
+    <string name="tokens__service_add_error">Hizmet, Gizli Anahtar geçersiz olduğu için eklenemedi. Tekrar deneyin.</string>
+    <!-- A service with this Service Key already exists. Do you want to override it? -->
+    <string name="tokens__service_already_exists">Bu Gizli Anahtarı içeren hizmet zaten mevcut. Üzerine yazmak istiyor musunuz?</string>
+    <string name="tokens__service_key_invalid_characters">Anahtar geçersiz karakterler içeriyor</string>
+    <string name="tokens__show_service_key">Gizli Anahtarı Göster</string>
+    <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
+    <string name="tokens__show_service_key_setup_lock">Gizli anahtarınız korunuyor. Gizli anahtarı görmek için lütfen bir PIN veya parmak izi kilidi ekleyin.</string>
+    <string name="tokens__tokens_list_is_empty">Hizmet listesi boş</string>
+    <string name="tokens__use_plus_button_to_add_tokens">Yeni bir hizmet eklemek için \"+\" düğmesini kullanın</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">%1$s hesabı için iki adımlı doğrulamayı etkinleştirdiğiniz sürece bu jeton olmadan %2$s hesabınıza giriş yapamayacaksınız.\n\nBu jetonu 2FAS çöp kutusundan geri yükleyemeyeceksiniz.</string>
+    <string name="import_ga_success">Hizmetler başarıyla içeri aktarıldı!</string>
+    <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
+    <string name="backup_error_network">Yedeğinizi eşitlemek için etkin bir internet bağlantısına ihtiyacınız var. Lütfen ağ bağlantınızı etkinleştirin ve tekrar deneyin.</string>
+    <string name="update_app_title">Uygulamayı güncelle</string>
+    <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
+    <string name="update_app_msg">Tüm özellikleri elde etmek ve yüksek bir güvenlik seviyesi sürdürmek için lütfen 2FAS\'ı en yeni sürüme güncelleyin.</string>
+    <string name="delete_service_title">Sileceğiniz öge:</string>
+    <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
+    <string name="delete_service_msg">2FAS hizmet listenizden.\n\nUnutmayın, iki faktörlü kimlik doğrulama açık olduğu sürece, bu jeton olmadan %s hesabına giriş yapamayacaksınız.</string>
+    <string name="delete_service_cta">Sil</string>
+    <string name="export_backup_cta">Dışarı aktar</string>
+    <string name="export_backup_share_cta">Paylaş</string>
+    <string name="import_backup_title">Yedeği dosyadan içeri aktar</string>
+    <string name="import_backup_msg1">Yedek dosyasını şununla içeri aktaracaksınız:</string>
+    <string name="import_backup_cta">İçeri aktar</string>
+    <string name="widgets_warning_msg">Widgetta görünen jetonlar PIN kodunuz tarafından korunmaz.\n\nJetonlarınızı widgetta görüntülemek istediğinizden emin misiniz?</string>
+    <string name="widgets_warning_title">UYARI!</string>
+    <string name="widgets_warning_cta">Evet, eminim</string>
+    <string name="backup_notice_title">2FAS Yedeklemesi</string>
+    <string name="backup_notice_msg">2FAS Yedeklemesini etkinleştirin. Telefonunuzun sıfırlanması veya kaybolması hâlinde tüm jetonlarınızı kurtarabileceksiniz.</string>
+    <string name="brand_empty_msg">Üzgünüz, marka bulunamadı</string>
+    <!-- Select which services will be visible on widget: -->
+    <string name="widgets_select_msg">Widget üzerinde görünecek hizmetleri seçin:</string>
+    <string name="backup_turn_off_cta">Eşitlemeyi devre dışı bırak</string>
+    <string name="backup_turn_off_cancel">İptal</string>
+    <string name="backup_settings_password_set_title">Parola Ayarla</string>
+    <string name="backup_settings_delete_title">Yedek dosyasını Google Drive\'dan sil</string>
+    <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
+    <string name="backup_settings_delete_subtitle">Bu dosyayı Google Drive\'ınızdan silerseniz, eşitlenmiş tüm cihazlarınızdaki eşitleme devre dışı bırakılacak ve jetonlarınız sadece bu ve diğer cihazların yerel depolama alanında kalacak.</string>
+    <string name="browser__result_error_browser_paired">2FAS uygulamanız bu tarayıcıyla zaten eşleşmiş.</string>
+    <!-- Scan QR code again -->
+    <string name="browser__result_error_cta">QR kodunu tekrar okutun</string>
+    <string name="browser__scan_error_dialog_title">Hata</string>
+    <!-- Scanned QR code has unsupported format. Please try again. -->
+    <string name="browser__scan_error_dialog_msg_invalid_code">Taranan QR kodu desteklenmeyen bir biçimde. Lütfen tekrar deneyin.</string>
+    <string name="browser__scan_error_dialog_msg_unknown">QR kodu taranırken bilinmeyen bir hata oluştu. Lütfen tekrar deneyin.</string>
+    <string name="biometric_dialog_auth_cancel">Bu seferlik PIN kullan</string>
+    <string name="biometric_dialog_setup_title">Doğrulamayı etkinleştir</string>
+    <string name="biometric_dialog_setup_cancel">İptal</string>
+    <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
+    <string name="settings__option_fingerprint_description">Biyometrik Kilidi etkinleştirmek için PIN Koduyla girişi etkinleştirip ayarlamanız gerekir.</string>
+    <string name="settings__block_for_footer">Uygulamanın kilitlenmesi için gereken süreyi seçin</string>
+    <string name="error__out_of_disk_space">Görünüşe göre ya şu anda disk alanınız tükenmiş ya da geçmişte böyle bir olay veri tabanına zarar vermiş</string>
+    <string name="error__cloud_backup_newer_version">Bulut yedeklemesi yeni sürüme taşındı. Uygulamayı güncelleyin</string>
+    <string name="error__cloud_backup_encrypted_not_supported">Bulut yedeklemesi şifrelenmiş. Bu özelliğin desteklenmesi için uygulamayı güncelleyin</string>
+    <string name="extension__continue_to_app">Uygulamaya devam et</string>
+    <string name="extension__cancel">İptal</string>
+    <string name="extension__authorize">Doğrula</string>
+    <string name="extension__dismiss">Reddet</string>
+    <string name="extension__request_sent">İstek gönderildi</string>
+    <string name="extension__send_question_title">Jeton gönderilsin mi?</string>
+    <string name="extension__send_question_content">%1$s, %2$s için 2FAS jetonu istedi</string>
+    <string name="extension__error_while_sending">Jeton gönderilirken hata oluştu</string>
+    <string name="extension__not_paired_title">Bu web sitesi eşleştirilmedi</string>
+    <string name="extension__not_paired_content">Uygulamayı açın ve bu alan adı için bir hizmet seçin</string>
+    <string name="extension__error_open_the_app">Uygulamayı açın ve Tarayıcı Uzantısının düzgün bir şekilde eşleşip eşleşmediğini kontrol edin</string>
+    <string name="extension__error_no_internet">Bağlantıda bir sorun var</string>
+    <string name="extension__try_again">Lütfen tekrar deneyin</string>
+    <string name="extension__error">Hata</string>
+    <string name="extension__error_no_services">Tarayıcı uzantısının çalışması için lütfen 2FAS uygulamasına hizmetleri ekleyin</string>
+    <string name="extension__approve">Onayla</string>
+    <string name="extension__deny">Reddet</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">Bu cihazdaki tokenlerinize yetkisiz erişimi önlemek için PIN kodu ve Face ID yetkilendirmesini açın.</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Bu cihazdaki tokenlarınıza yetkisiz erişimi önlemek için PIN kodu ve Touch ID yetkilendirmesini açın.</string>
+    <string name="settings__send_logs_error_not_exists">Girilen kod yanlış. Lütfen kodu iki kez kontrol edin</string>
+    <string name="settings__send_logs_error_expired">Girilen kodun süresi doldu. Yeni bir kod almak için lütfen destek ekibiyle iletişime geçin</string>
+    <string name="settings__send_logs_error_no_internet">İnternet bağlantısı yok. Lütfen bağlantıyı kontrol edin ve tekrar deneyin</string>
+    <string name="settings__send_logs_error_server">Sunucularımızda bir problem var gibi görünüyor. Sorun devam ederse lütfen destek ekibimize başvurun</string>
+    <string name="settings__send_logs_error_title">İşlem başarısız oldu</string>
+    <string name="settings__send_logs_sent_title">Günlükler gönderildi</string>
+    <string name="settings__send_logs_sent_description">Bize ulaştığınız için teşekkür ederiz. Gönderdiklerinizi en kısa zamanda analiz edeceğiz.</string>
+    <string name="commons__send">Gönder</string>
+    <string name="settings__send_logs_title">Günlükler gönderiliyor</string>
+    <string name="settings__send_logs_description_link">Destek ekibi tarafından sağlanan kod otomatik olarak dolduruldu. Günlükler gönderilsin mi?</string>
+    <string name="settings__send_logs_description_edit">Lütfen destek ekibimiz tarafından sağlanan kodu girin veya yapıştırın</string>
+    <string name="settings__send_logs">Günlükleri gönder</string>
+    <string name="settings__recommendation">2FAS\'ın bu harika iki faktörlü kimlik doğrulama uygulamasına göz atın: https://2fas.com</string>
+    <string name="settings__acknowledgements">Alındılar</string>
+    <string name="introduction__import_external_app">Harici uygulamadan içeri aktar</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="one">an önce</item>
+        <item quantity="other">az önce</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="one">%d dakika önce</item>
+        <item quantity="other">%d dakika önce</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="one">%d saat önce</item>
+        <item quantity="other">%d saat önce</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="one">%d gün önce</item>
+        <item quantity="other">%d gün önce</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="one">%d hafta önce</item>
+        <item quantity="other">%d hafta önce</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="one">%d ay önce</item>
+        <item quantity="other">%d ay önce</item>
+    </plurals>
+    <string name="commons__unknown_error">Bilinmeyen hata oluştu! Tekrar deneyin!</string>
+    <string name="backup__export_result_success">Dosya başarıyla kaydedildi!</string>
+    <string name="backup__share_result_failure">Dosya paylaşılamadı!</string>
+    <string name="backup__enter_password_dialog_title">Parolayı yazın</string>
+    <string name="backup__remove_password_msg">Kaldırma işlemine devam etmek için yedeğin parolasını girin.</string>
+    <string name="backup__revoke_google_access_msg">Google\'a erişimi iptal etme işlemine devam etmek için yedeğin parolasını girin.</string>
+    <string name="backup__synchronization_settings">Eşitleme ayarları</string>
+    <string name="backup__local_file_title">Yerel dosya</string>
+    <string name="backup__drive_title">Google Drive eşitlemesi</string>
+    <string name="backup__delete_file_title">Yedek dosyanız Google Drive\'dan silinsin mi?</string>
+    <string name="backup__delete_file_msg">Google Eşitlemesi devre dışı bırakılacak. Jetonlarınız yerel olarak kalacak; ancak 2FAS uygulaması bu ve diğer eşitlenmiş cihazlarınızdaki Google Hesabınızdan çıkış yapmış olacak.</string>
+    <string name="backup__sync_status_waiting">Eşitleme için bekleniyor...</string>
+    <string name="backup__sync_status_progress">Eşitleniyor...</string>
+    <string name="import_backup_msg1_encrypted">Şifrelenmiş bir yedek dosyasını içeri aktaracaksınız.</string>
+    <string name="externalimport__choose_json_cta">JSON dosyası seç</string>
+    <string name="externalimport__aegis_msg">Hesaplarınızı Aegis\'ten şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı kaldırmayı unutmayın.</string>
+    <string name="externalimport__raivo_msg">Raivo\'nun Ayarlarında \"OTP\'leri ZIP arşivine aktar\" seçeneğini kullanın, bir ZIP dosyası kaydedin, dosyaları çıkarın ve \"JSON dosyası seç\" düğmesini kullanarak JSON dosyasını içeri aktarın.</string>
+    <string name="externalimport__no_tokens_msg">Ancak içeri aktarılabilecek hiçbir hizmet yok.</string>
+    <string name="commons__try_again">Tekrar dene</string>
+    <string name="commons__proceed">İlerle</string>
+    <string name="externalimport__ga_title">2AD jetonları Google Authenticator uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__aegis_title">2AD jetonları Aegis uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__raivo_title">2AD jetonları Raivo uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__ga_success_msg">Bu QR kodu, jetonların Google Authenticator\'dan içeri aktarılmasına izin verir.</string>
+    <string name="externalimport__aegis_success_msg">Bu JSON dosyası, jetonların Aegis\'ten içeri aktarılmasına izin verir.</string>
+    <string name="externalimport__raivo_success_msg">Bu JSON dosyası, jetonların Raivo\'dan içeri aktarılmasına izin verir.</string>
+    <string name="externalimport__read_error">Hiçbir jeton okunamadı. Başka bir dosya seçmeyi deneyin.</string>
+    <string name="settings__gd_sync_info">Google Drive eşitlemesi hatırlatıcısı</string>
+    <string name="settings__gd_sync_disable_confirm">Emin misiniz? Google Drive eşitlemesi olmazsa, telefonunuzu kaybettiğinizde veya sıfırladığınızda jetonlarınızı geri yükleyemeyeceksiniz!</string>
+    <string name="extension__code_sent_msg">Kod başarıyla gönderildi</string>
+    <string name="extension__code_sent_error_msg">Kod gönderilirken hata oluştu</string>
+    <string name="tokens__add_service_title">Yeni hizmet ekle</string>
+    <string name="tokens__customize_service_title">Hizmeti özelleştir</string>
+    <string name="extension__services_suggested_header">Önerilen</string>
+    <string name="extension__services_all_header">Tüm hizmetler</string>
+    <string name="extension__services_other_header">Diğer hizmetler</string>
+    <string name="settings__ssl_error_title">SSL Hatası</string>
+    <string name="settings__ssl_error_description">Bir SSL hatası oluştu ve sunucuya güvenli bir bağlantı yapılamıyor. Uygulamanın en son sürümüne sahip olduğunuzdan emin olun veya bağlantı ağını değiştirmeyi deneyin.</string>
+    <string name="backup__import_error_file_size">İçeri aktarmaya çalıştığınız dosya çok büyük. Dosya sınırı 10 MB\'dir.</string>
+    <string name="backup__import_error_file_invalid">İçeri aktarmaya çalıştığınız dosya geçersiz veya bozuk. Lütfen başka bir dosya seçin.</string>
+    <string name="appearance__toggle_active_search">Etkin arama</string>
+    <string name="appearance__active_search_description">Başlangıçta etkin arama</string>
+    <string name="widgets__expires_in">Sona erme süresi:</string>
+    <string name="widgets__settings">Widget ayarları</string>
+    <string name="errors__input_integer_number">Giriş tamsayı olmalıdır</string>
+    <string name="errors__input_number">Giriş bir sayı olmalıdır</string>
+    <string name="errors__input_empty">Girdi boş olamaz</string>
+    <string name="errors__input_too_long">Girdi çok uzun. Sınır: %d</string>
+    <string name="commons__best_match">En iyi eşleşme</string>
+    <string name="settings__enable_crashlytics">Çökme raporlarını anonim olarak gönder</string>
+    <string name="settings__enable_crashlytics_description">Anonim çökme raporlarını 2FAS\'a göndererek uygulamadaki sorunları belirlememize ve çözmemize yardımcı olun (uygulamanın yeniden başlatılması gerekir).</string>
+    <string name="tokens__manage_list">Listeyi yönet</string>
+    <string name="settings__appearance">Görünüm</string>
+    <string name="settings__show_next_token_desc">Mevcut jeton dolmak üzereyken bir sonraki jetonu göster</string>
+    <string name="settings__list_style">Liste biçimi</string>
+    <string name="backup__reminder_msg">Google Drive eşitlenmedi.</string>
+    <string name="backup__reminder_cta">Yedekleme ayarlarına git</string>
+    <string name="settings__list_style_option_default">Varsayılan</string>
+    <string name="settings__list_style_option_compact">Kompakt</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Hesaplarınızı LastPass\'ten şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı kaldırmayı unutmayın.</string>
+    <string name="settings__about_crash_optout_title">Çökme Raporları</string>
+    <string name="externalimport__lastpass_title">2AD jetonları LastPass uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__lastpass_success_msg">Bu JSON dosyası, jetonların LastPass\'ten içeri aktarılmasına izin verir.</string>
+    <string name="externalimport__info_lastpass_title">Jetonları LastPass uygulamasından içeri aktar</string>
+    <string name="externalimport__info_aegis_title">Jetonları Aegis\'ten içeri aktar</string>
+    <string name="externalimport__info_raivo_title">Jetonları Raivo OTP\'den içeri aktar</string>
+    <string name="externalimport__info_google_authenticator_title">Jetonları Google Authenticator\'dan içeri aktar</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">sn</string>
+    <string name="tokens__add_title">Hizmeti 2FAS ile eşleştir</string>
+    <string name="tokens__add_description">QR kodunu yakalamak için kameranızı ekrana doğrultun.</string>
+    <string name="tokens__add_other_methods">Diğer yöntemler</string>
+    <string name="tokens__add_enter_manual">Gizli anahtar gir</string>
+    <string name="tokens__add_from_gallery">QR kodu içeren bir görsel yükle</string>
+    <string name="tokens__add_success_title">Neredeyse tamam!</string>
+    <string name="tokens__add_success_description">Hizmeti eşleştirmeyi tamamlamak için bu jetonu yeniden girmeniz gerekiyor.</string>
+    <string name="tokens__add_manual_title">Hizmeti 2FAS ile eşleştir</string>
+    <string name="tokens__add_manual_description">Hizmet adını ve gizli anahtarı yazın.</string>
+    <string name="tokens__add_manual_service_name">Hizmet adı</string>
+    <string name="tokens__add_manual_service_key">Gizli Anahtar</string>
+    <string name="tokens__add_manual_other">Diğer ayarlar</string>
+    <string name="tokens__add_manual_other_optional">(isteğe bağlı)</string>
+    <string name="tokens__add_manual_done_cta">Hizmet ekle</string>
+    <string name="tokens__add_manual_help_cta">Ne yapacağınızı bilmiyor musunuz? Yardım için basın</string>
+    <string name="tokens__add_manual_advanced">Gelişmiş jeton ayarları</string>
+    <string name="tokens__add_manual_additional_info">Ek bilgi</string>
+    <string name="tokens__add_manual_advanced_description">Varsayılan jeton ayarlarının değiştirilmesi önerilmez. Bunu yalnızca 2AD sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
+    <string name="settings__option_screenshots_description">Uygulamada ekran görüntülerine 5 dakika için izin ver.</string>
+    <string name="settings__option_screenshots">Ekran görüntülerine izin ver</string>
+    <string name="settings__option_screenshots_confirm_title">Uygulamada ekran görüntülerine izin verilsin mi?</string>
+    <string name="settings__option_screenshots_confirm_description">Emin misiniz? Bu seçeneğin etkinleştirilmesi, uygulamanın her yerinde ekran görüntüsü ve kaydı almanıza izin verir; ancak bu seçeneğin etkinleştirilmesi, tüm harici ekran kaydetme girişimlerine de izin verecek.\nGüvenlik sebepleri nedeniyle bu seçenek 5 dakika sonra otomatik olarak devre dışı bırakılacak.</string>
+    <string name="social__social_media">Sosyal medya bağlantıları</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">X (eski adıyla Twitter)</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Jetonları gizle</string>
+    <string name="settings__hide_tokens_description">Jetonlar, basıldığında ortaya çıkacak</string>
+    <string name="browser__pair_manually_cta">Elle eşleştir</string>
+    <string name="browser__pair_manually_hint">Eşleştirme kodu</string>
+    <string name="externalimport__info_authenticatorpro_title">Jetonları Authenticator Pro\'dan içeri aktar</string>
+    <string name="externalimport__authenticatorpro_success_msg">Bu metin dosyası, jetonların Authenticator Pro\'dan içeri aktarılmasına izin verir.</string>
+    <string name="externalimport__authenticatorpro_title">2AD jetonları Authenticator Pro uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__authenticatorpro_msg">Hesaplarınızı Authenticator Pro\'dan şifrelenmemiş bir metin dosyasına aktarın ve \"Metin dosyası seç\" düğmesini kullanarak yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı kaldırmayı unutmayın.</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">Metin belgesi seçin</string>
+    <string name="fingerprint__biometric_invalidated">Biyometrik giriş, sistemdeki parmak izi ayarları değişikliklerinden dolayı devre dışı bırakıldı</string>
+    <string name="tokens__last_pass_import">2AD jetonları LastPass uygulamasından içeri aktarılıyor</string>
+    <string name="tokens__last_pass_import_subtitle">Bu QR kodu, jetonların LastPass\'ten içeri aktarılmasına izin verir</string>
+    <string name="tokens__add_with_guide">Bana yol göster</string>
+    <string name="guides__select_title">Hizmetleri gözden geçir</string>
+    <string name="guides__select_description">2FAS uygulaması ile eşleştirilecek uygulamayı seçin</string>
+    <string name="guides__select_provide_guide">Hizmetiniz için 2AD kılavuzları sağlamak ister misiniz?</string>
+    <string name="guides__select_provide_guide_cta">Şimdi uygula</string>
+    <string name="color__pink">Pembe</string>
+    <string name="color__brown">Kahverengi</string>
+    <string name="tokens__other_methods_header">Diğer yöntemler?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Kameraya erişilemiyor. Sistem ayarlarından uygulamanın iznini kontrol edin</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Sistem Ayarları</string>
+    <string name="commons__text_short_title">Girilen metin çok kısa (en az %d karakter)</string>
+    <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
+    <string name="tokens__add_manual_advanced_description_highlight">önerilmez</string>
+    <string name="guides__guide_init_title">2FAS kılavuzu</string>
+    <string name="guides__guide_title">%s için 2FAS</string>
+    <string name="guides__guide_universal_title">Evrensel 2AD Kılavuzu</string>
+    <string name="browser__save_choice">Seçimimi kaydet</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">2AD jetonları andOTP uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__andotp_success_msg">Bu JSON dosyası, jetonların andOTP\'den içeri aktarılmasına izin verir.</string>
+    <string name="externalimport__info_andotp_title">Jetonları andOTP\'den içeri aktar</string>
+    <string name="externalimport__andotp_msg">Hesaplarınızı andOTP\'den şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı kaldırmayı unutmayın.</string>
+    <string name="introduction__backup_description">Bir sonraki adımda, 2FA jetonlarının güvenli bir şekilde saklanacağı Google Drive hesabınızı seçmeniz istenecektir.</string>
+    <string name="introduction__backup_take_risk_cta">Bu riski alacağım, yedekleme yok</string>
+    <string name="introduction__backup_success">Google Drive eşitlemesi başarıyla açıldı!</string>
+    <string name="backup__import_invalid_version">İçeri aktarmaya çalıştığınız yedek dosyası bu uygulama sürümünde desteklenmiyor. Uygulama yalnızca %d sürümüne kadar olan yedek biçimi sürümlerini desteklerken, içeri aktarmaya çalıştığınız dosya %d sürümündedir.</string>
+    <string name="commons__pair">Pair</string>
+    <string name="introduction__backup_icloud_title">Secure sync and backup</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__backup_icloud_cta">Learn more about backup</string>
+</resources>

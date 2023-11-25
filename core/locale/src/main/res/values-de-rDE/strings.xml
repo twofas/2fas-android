@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Thu, 16 Nov 2023 13:28:44 -0800
+ Exported at: Sat, 25 Nov 2023 08:22:33 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -534,7 +534,7 @@
     <string name="commons__yes">Ja</string>
     <string name="commons__no">Nein</string>
     <string name="commons__search">Suchen</string>
-    <string name="errors__no_app">Keine Anwendung die diesen Link unterstützt</string>
+    <string name="errors__no_app">Keine Anwendung, die diesen Link unterstützt</string>
     <string name="permissions__camera_permission">Kamera-Berechtigung</string>
     <string name="permissions__camera_permission_description">Zum Scannen von QR-Codes ist die Kamera-Berechtigung erforderlich. Wenn du diese Funktion verwenden möchtest, gehe zu Anwendungsinformationen und Berechtigungen und aktiviere die Kamera.</string>
     <string name="security__disable_pin">PIN deaktivieren</string>
@@ -632,7 +632,7 @@
     <string name="extension__approve">Genehmigen</string>
     <string name="extension__deny">Ablehnen</string>
     <string name="settings__turn_pin_code_to_enable_faceid">Aktiviere die PIN-Code- und Face ID-Autorisierung, um unbefugten Zugriff auf deine Token auf diesem Gerät zu verhindern.</string>
-    <string name="settings__turn_pin_code_to_enable_touchid">Schalte den PIN-Code und die Touch ID-Autorisierung ein, um unbefugten Zugriff auf deine Token auf diesem Gerät zu verhindern.</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Aktiviere die PIN-Code- und Touch ID-Autorisierung, um unbefugten Zugriff auf deine Token auf diesem Gerät zu verhindern.</string>
     <string name="settings__send_logs_error_not_exists">Der angegebene Code ist falsch. Bitte überprüfe ihn noch einmal</string>
     <string name="settings__send_logs_error_expired">Bereitgestellter Code abgelaufen. Um einen neuen Code zu erhalten, kontaktiere bitte das Support-Team.</string>
     <string name="settings__send_logs_error_no_internet">Keine Internetverbindung. Bitte überprüfe deine Verbindung und versuche es erneut.</string>
@@ -811,5 +811,10 @@
     <string name="introduction__backup_description">Im nächsten Schritt wirst du gefragt auf welchem Google Account du deine Tokens sichern willst.\u0020</string>
     <string name="introduction__backup_take_risk_cta">Ich gehe das Risiko ein und erstelle kein Backup</string>
     <string name="introduction__backup_success">Die Google Drive Synchronisation wurde erfolgreich aktiviert.</string>
-    <string name="backup__import_invalid_version">The backup file you\'re attempting to import is not supported in this application version. The application only supports backup format versions up to %d, while the file you\'re importing is version %d.</string>
+    <string name="backup__import_invalid_version">Die Backup-Datei, die du versuchst zu importieren, wird in dieser Version der App nicht unterstützt. Die App unterstützt nur Backup-Formate bis zu Version %d, während die Datei, die du importierst, die Version %d hat.</string>
+    <string name="commons__pair">Verbinden</string>
+    <string name="introduction__backup_icloud_title">Secure sync and backup</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__backup_icloud_cta">Learn more about backup</string>
 </resources>
