@@ -15,7 +15,7 @@
     <string name="NSCameraUsageDescription">Used for scanning QR-codes</string>
     <string name="NSFaceIDUsageDescription">You can unlock the application using Face ID</string>
     <!-- MARK: - App -->
-    <string name="app__name">2FAS Authenticator</string>
+    <string name="app__name" translatable="false">2FAS Authenticator</string>
     <string name="commons__2fas">2FA Authenticator (2FAS App)</string>
     <string name="commons__OK">OK</string>
     <string name="commons__add">Add</string>
