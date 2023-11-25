@@ -118,4 +118,12 @@ interface BackupRepository {
      * Publish clouds sync status
      */
     fun publishCloudSyncStatus(status: CloudSyncStatus)
+
+    /**
+     * Set password for cloud sync. The password is used to create local encryption key
+     * and used for cloud sync (once enabled).
+     */
+    fun setPasswordForCloudSync(password: String?)
+
+    fun observePasswordForCloudSync(): Flow<String?>
 }

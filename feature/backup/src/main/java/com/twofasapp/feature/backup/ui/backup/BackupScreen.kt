@@ -197,7 +197,6 @@ private fun ScreenContent(
                     title = strings.backupSyncSettings,
                     icon = TwIcons.Settings,
                     onClick = onSettingsClick,
-                    enabled = uiState.cloudBackupStatus?.active == true && uiState.cloudSyncStatus != CloudSyncStatus.Syncing,
                 )
             }
 

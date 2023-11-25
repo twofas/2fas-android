@@ -61,6 +61,7 @@ class BackupRepositoryImpl(
 ) : BackupRepository {
 
     private val cloudSyncStatusFlow = MutableStateFlow<CloudSyncStatus>(CloudSyncStatus.Default)
+    private val passwordForCloudSync = MutableStateFlow<String?>(null)
 
     override fun dispatchCloudSync(trigger: CloudSyncTrigger, password: String?) {
         cloudSyncWorkDispatcher.tryDispatch(
@@ -413,6 +414,14 @@ class BackupRepositoryImpl(
 
     override fun publishCloudSyncStatus(status: CloudSyncStatus) {
         cloudSyncStatusFlow.tryEmit(status)
+    }
+
+    override fun setPasswordForCloudSync(password: String?) {
+        passwordForCloudSync.tryEmit(password)
+    }
+
+    override fun observePasswordForCloudSync(): Flow<String?> {
+        return passwordForCloudSync
     }
 
     private fun serializeBackupContent(backupContent: BackupContent): String {

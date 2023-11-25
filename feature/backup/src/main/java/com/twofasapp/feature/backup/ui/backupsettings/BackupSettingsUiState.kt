@@ -9,6 +9,7 @@ internal data class BackupSettingsUiState(
     val account: String = "",
     val lastSyncMillis: Long = 0L,
     val events: List<BackupSettingsUiEvent> = emptyList(),
+    val pass: String? = null,
 )
 
 internal sealed interface BackupSettingsUiEvent {
