@@ -317,7 +317,8 @@ class Strings(c: Context) {
     val backupRemoveCloudPasswordTitle = c.getString(R.string.backup__enter_password_dialog_title)
     val backupRemoveCloudPasswordMsg = c.getString(R.string.backup__remove_password_msg)
     val backupEnterCloudPasswordTitle = c.getString(R.string.backup__enter_password_dialog_title)
-    val backupEnterCloudPasswordMsg = c.getString(R.string.backup__enter_password_title)
+    val backupEnterCloudPasswordMsg1 = c.getString(R.string.backup__enter_password_google_drive_msg1)
+    val backupEnterCloudPasswordMsg2 = c.getString(R.string.backup__enter_password_google_drive_msg2)
     val backupIncorrectPassword = c.getString(R.string.backup__incorrect_password)
 
     val backupExportShareCta = c.getString(R.string.export_backup_share_cta)

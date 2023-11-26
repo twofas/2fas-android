@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Sat, 25 Nov 2023 08:22:33 -0800
+ Exported at: Sun, 26 Nov 2023 03:22:29 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -817,4 +817,6 @@
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
     <string name="introduction__backup_icloud_description">\"**2Fas**\" usa o icloud para backup seguro</string>
     <string name="introduction__backup_icloud_cta">Leia mais sobre a cópia de segurança\u0020</string>
+    <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
+    <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
 </resources>
