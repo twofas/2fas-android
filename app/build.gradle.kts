@@ -17,8 +17,8 @@ android {
 
     defaultConfig {
         applicationId = "com.twofasapp"
-        versionName = "5.1.0"
-        versionCode = 5000009
+        versionName = "5.2.0"
+        versionCode = 5000010
 
         val versionCodeOffset = 5000000
 
