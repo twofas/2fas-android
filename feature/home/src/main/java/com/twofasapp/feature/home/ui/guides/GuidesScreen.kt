@@ -180,6 +180,10 @@ private fun GuideItem(
                     Guide.EpicGames -> "Epic Games"
                     Guide.RockstarGames -> "Rockstar Games"
                     Guide.Discord -> "Discord"
+                    Guide.Google -> "Google"
+                    Guide.Instagram -> "Instagram"
+                    Guide.PayPal -> "PayPal"
+                    Guide.Reddit -> "Reddit"
                 },
                 style = TwTheme.typo.body3,
                 color = TwTheme.color.onSurfacePrimary,

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Sun, 26 Nov 2023 03:22:29 -0800
+ Exported at: Mon, 27 Nov 2023 14:14:13 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -682,7 +682,7 @@
     <string name="backup__export_result_success">Plik zapisany pomyślnie!</string>
     <string name="backup__share_result_failure">Nie można udostępnić pliku!</string>
     <string name="backup__enter_password_dialog_title">Wpisz hasło</string>
-    <string name="backup__remove_password_msg">Wpisz hasło, aby potwierdzić usunięcie.</string>
+    <string name="backup__remove_password_msg">Wpisz hasło zapasowe, aby potwierdzić usunięcie.</string>
     <string name="backup__revoke_google_access_msg">Wprowadź hasło zapasowe, aby kontynuować odbieranie dostępu do Google.</string>
     <string name="backup__synchronization_settings">Ustawienia synchronizacji\u0020</string>
     <string name="backup__local_file_title">Plik lokalny</string>
@@ -817,12 +817,12 @@
     <string name="introduction__backup_description">W następnym kroku zostaniesz poproszony o wybranie konta Google Drive, na którym tokeny 2FA będą bezpiecznie przechowywane.</string>
     <string name="introduction__backup_take_risk_cta">Zaryzykuję, bez kopii zapasowej</string>
     <string name="introduction__backup_success">Synchronizacja z Dyskiem Google została pomyślnie włączona!</string>
-    <string name="backup__import_invalid_version">The backup file you\'re attempting to import is not supported in this application version. The application only supports backup format versions up to %d, while the file you\'re importing is version %d.</string>
+    <string name="backup__import_invalid_version">Plik kopii zapasowej który próbujesz zaimportować nie jest wspierany przez tą wersję aplikacji. Aplikacja obsługuje tylko pliki kopii zapasowej z wersji do %d, podczas gdy importowany plik jest z wersji %d.</string>
     <string name="commons__pair">Pair</string>
-    <string name="introduction__backup_icloud_title">Secure sync and backup</string>
+    <string name="introduction__backup_icloud_title">Bezpieczna synchronizacja i kopia zapasowa</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can disabled at any time in the app\'s backup settings.</string>
-    <string name="introduction__backup_icloud_cta">Learn more about backup</string>
-    <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
-    <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
+    <string name="introduction__backup_icloud_description">2FAS używa iCloud do bezpiecznego tworzenia kopii zapasowych i synchronizacji tokenów 2FA. **Zaszyfrowane** dane kopii zapasowej są przechowywane w iCloud, dostępne **wyłącznie za pośrednictwem aplikacji 2FAS**. Dodatkowo funkcja ta pomaga **odzyskać i zsynchronizować** tokeny na urządzeniach z systemem iOS.\n\nJest ona domyślnie włączona i można ją wyłączyć w dowolnym momencie w ustawieniach kopii zapasowej w aplikacji.</string>
+    <string name="introduction__backup_icloud_cta">Dowiedz się więcej na temat kopii zapasowej</string>
+    <string name="backup__enter_password_google_drive_msg1">Wygląda na to, że plik kopii zapasowej na Dysku Google jest chroniony hasłem. Wprowadź prawidłowe hasło, aby kontynuować. Jeśli chcesz wyczyścić plik kopii zapasowej Dysku Google,</string>
+    <string name="backup__enter_password_google_drive_msg2">dotknij tutaj aby zobaczyć jak</string>
 </resources>

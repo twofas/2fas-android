@@ -1,0 +1,92 @@
+{
+  "serviceName": "Instagram",
+  "serviceId": "588921bf-6df7-4d92-a881-9af92e15642b",
+  "flow": {
+    "header": "Follow our guide to pair your Instagram account with the 2FAS app.",
+    "menu": {
+      "title": "Please select the method you use to open Instagram now",
+      "items": [
+        {
+          "name": "Desktop computer or laptop",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "Go to **www.instagram.com** and log into your account."
+            },
+            {
+              "image": "web_menu",
+              "content": "From the left side menu, select **More** and in the expanded menu, select **Settings**.\n\nClick **Meta Accounts Center option**, and you will be transferred to the site Meta Accounts Center."
+            },
+            {
+              "image": "gears",
+              "content": "Choose **Password and security**, then from the right side menu, choose **Two-factor authenticator**.\n\nChoose your Instagram account.\nChoose **Authnetication app** and click **Next**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the displayed QR code to pair the service with the 2FAS app.\n\nYou can also do that by retyping or copying the key next to the QR code.",
+              "cta": {
+                "name": "Scan QR code",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile browser",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "Go to **www.instagram.com** and log into your account. Tap the icon account in the down right corner."
+            },
+            {
+              "image": "web_menu",
+              "content": "Tap the gear icon in the upper left corner. Choose **Account Center**. Choose **Password and security** from **Account settings**."
+            },
+            {
+              "image": "gears",
+              "content": "Tap **Two-factor authentication**. Then, choose your Instagram account.\n\nChoose **Authentication app** and tap **Next**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the displayed QR code to pair the service with the 2FAS app.\n\nYou can also do that by retyping or copying the key next to the QR code.",
+              "cta": {
+                "name": "Scan QR code",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile application",
+          "steps": [
+            {
+              "image": "account",
+              "content": "Open the Instagram app, then tap the icon account in the down right corner."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Tap the settings icon in the top right corner. Choose **Settings and privacy**. Then tap **Account Center**."
+            },
+            {
+              "image": "gears",
+              "content": "Tap **Password and security** from the **Account settings** section. Choose **Two-factor authenticator** and tap your Instagram account.\n\nChoose **Authenticator app** and click **Next**."
+            },
+            {
+              "image": "2fas_type",
+              "content": "You may be asked to enter your password for security reasons. Enter your password and tap **Continue**.\n\nSelect **Authentication app** as the way to receive verification codes and tap **Next**."
+            },
+            {
+              "image": "retype",
+              "content": "Copy your secret key (use the **Copy key** option on Instagram) and tap **Add manually** to add Instagram to your 2FAS app. Tap **Next** on Instagram, retype the generated token, and tap **Next** and **Done**.",
+              "cta": {
+                "name": "Add manually",
+                "action": "open_manually",
+                "data": "Instagram"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

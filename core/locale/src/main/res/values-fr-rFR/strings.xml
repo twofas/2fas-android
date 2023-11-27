@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sun, 26 Nov 2023 03:22:29 -0800
+ Exported at: Mon, 27 Nov 2023 14:14:13 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -812,11 +812,11 @@
     <string name="introduction__backup_take_risk_cta">J\'accepte le risque, pas de sauvegarde</string>
     <string name="introduction__backup_success">Synchronisation avec Google Drive activée avec succès!</string>
     <string name="backup__import_invalid_version">Le fichier de sauvegarde que vous tentez d\'importer n\'est pas pris en charge par cette version de l\'application. L\'application ne prend en charge que les versions de format de sauvegarde jusqu\'à %d, alors que le fichier que vous importez est de la version %d.</string>
-    <string name="commons__pair">Pair</string>
-    <string name="introduction__backup_icloud_title">Secure sync and backup</string>
+    <string name="commons__pair">Appairer</string>
+    <string name="introduction__backup_icloud_title">Sécuriser la synchronisation et la sauvegarde</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can disabled at any time in the app\'s backup settings.</string>
-    <string name="introduction__backup_icloud_cta">Learn more about backup</string>
-    <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
-    <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
+    <string name="introduction__backup_icloud_description">2FAS utilise iCloud pour sécuriser la sauvegarde et synchroniser vos jetons 2FA. Les données de sauvegardes **cryptées** sont enregistrées dans iCloud, accessibles **uniquement par l\'application 2FA**. De plus, cette fonction facilite l\'utilisation des jetons **de récupération et de synchronisation** entre les périphériques iOS.</string>
+    <string name="introduction__backup_icloud_cta">En apprendre plus sur la sauvegarde</string>
+    <string name="backup__enter_password_google_drive_msg1">On dirait que votre fichier de sauvegarde Google Drive est protégé par un mot de passe. Renseignez correctement le mot de passe pour poursuivre. Si vous souhaitez effacer votre fichier de sauvegarde Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">appuyez ici pour voir la manoeuvre</string>
 </resources>

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Sun, 26 Nov 2023 03:22:30 -0800
+ Exported at: Mon, 27 Nov 2023 14:14:13 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -16,7 +16,7 @@
     <string name="NSFaceIDUsageDescription">Uygulamanın kilidini Face ID\'nizi kullanarak açabilirsiniz</string>
     <!-- MARK: - App -->
     <string name="app__name">2FAS Authenticator</string>
-    <string name="commons__2fas">2AD Doğrulayıcısı (2FAS Uygulaması)</string>
+    <string name="commons__2fas">2FA Doğrulayıcısı (2FAS Uygulaması)</string>
     <string name="commons__OK">Tamam</string>
     <string name="commons__add">Ekle</string>
     <!-- MARK: - Commons -->
@@ -225,7 +225,7 @@
     <string name="tokens__unlock_and_retype_token_title">Bu jetonun kilidini aç ve tekrar yaz</string>
     <string name="tokens__group">Grup</string>
     <string name="tokens__select_group">Grup seç</string>
-    <string name="tokens__google_auth_import">2AD jetonları Google Authenticator uygulamasından içeri aktarılıyor</string>
+    <string name="tokens__google_auth_import">2FA jetonları Google Authenticator uygulamasından içeri aktarılıyor</string>
     <string name="tokens__google_auth_import_subtitle">Bu QR kodu, jetonların Google Authenticator\'dan içeri aktarılmasına izin verir</string>
     <!-- A number replaces %d  -->
     <string name="tokens__google_auth_out_of_title">%1$d üzerinden %2$d</string>
@@ -240,7 +240,7 @@
     <!-- tokens__advanced_alert_title -->
     <string name="tokens__advanced_alert">Uyarı</string>
     <!-- tokens__advanced_alert_description -->
-    <string name="tokens__advanced_alert_description_title">Gelişmiş ayarların değiştirilmesi önerilmez. Bunu yalnızca 2AD sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
+    <string name="tokens__advanced_alert_description_title">Gelişmiş ayarların değiştirilmesi önerilmez. Bunu yalnızca 2FA sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
     <string name="tokens__token_settings">Jeton ayarları</string>
     <string name="tokens__otp_authentication">OTP Doğrulaması</string>
     <string name="tokens__algorithm">Algoritma</string>
@@ -252,13 +252,13 @@
     <string name="tokens__second">%d sn</string>
     <string name="tokens__hotp">HOTP</string>
     <string name="tokens__totp">TOTP</string>
-    <string name="tokens__advanced_settings_footer_title">Gelişmiş ayarların değiştirilmesi önerilmez. Bunu yalnızca 2AD sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
+    <string name="tokens__advanced_settings_footer_title">Gelişmiş ayarların değiştirilmesi önerilmez. Bunu yalnızca 2FA sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
     <string name="tokens__gallery_advice_title">En iyi yöntem</string>
     <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">Hizmet başarıyla eklendi. Şunu şiddetle öneriyoruz ki\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
     <string name="tokens__gallery_advice_content_middle_bold">QR ekran görüntüsünü galerinizden silin.</string>
-    <string name="tokens__gallery_advice_content_last">Birisi bu QR kodunun ekran görüntüsünü ele geçirirse, bu hizmetin 2AD kodlarını alabilecektir.</string>
+    <string name="tokens__gallery_advice_content_last">Birisi bu QR kodunun ekran görüntüsünü ele geçirirse, bu hizmetin 2FA kodlarını alabilecektir.</string>
     <string name="tokens__request_icon_page_title">Bir simge talep edin</string>
     <string name="tokens__request_icon_social_title">Discord\'da bize ulaşın</string>
     <string name="tokens__request_icon_social_link">Discord sunucumuza giriş yapın</string>
@@ -266,7 +266,7 @@
     <string name="tokens__request_icon_middle">veya</string>
     <string name="tokens__request_icon_provider_title">Hizmet sağlayıcıyı bilgilendirin</string>
     <string name="tokens__request_icon_provider_description">Sosyal Medyayı veya e-postayı kullanabilir ve bu metni onlarla paylaşabilirsiniz:</string>
-    <string name="tokens__request_icon_provider_message">Merhaba! Hizmetinize 2AD ile giriş yapmak için 2FAS uygulamasını kullanıyorum, ancak uygulamada simgeniz yok! Simgenizi şuraya gönderebilirsiniz: https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message">Merhaba! Hizmetinize 2FA ile giriş yapmak için 2FAS uygulamasını kullanıyorum, ancak uygulamada simgeniz yok! Simgenizi şuraya gönderebilirsiniz: https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_footnote">Şirketin resmi hesabını etiketlemeyi unutmayın!</string>
     <string name="tokens__order_icon_description">2FAS uygulamasında marka simgesini bulamıyor musunuz?</string>
@@ -321,7 +321,7 @@
     <!-- restore_if_you_forgotten -->
     <string name="restore__reset_Pin_title">Eğer PIN\'inizi unuttuysanız veya 2FAS uygulamasını sıfırlamak istiyorsanız, uygulamayı yeniden yüklemeniz gerekiyor.</string>
     <!-- restore_please_remember -->
-    <string name="restore__backup_advice">Bir yedeğiniz yoksa ve uygulamayı sıfırlarsanız, tüm kodlarınıza erişiminizi ve dolayısıyla 2AD ile korunan tüm hesaplarınıza erişiminizi kaybedeceğinizi unutmayın.</string>
+    <string name="restore__backup_advice">Bir yedeğiniz yoksa ve uygulamayı sıfırlarsanız, tüm kodlarınıza erişiminizi ve dolayısıyla 2FA ile korunan tüm hesaplarınıza erişiminizi kaybedeceğinizi unutmayın.</string>
     <!-- restore_if_you_have_backup -->
     <string name="restore__backup_title">Eğer bir yedeğiniz varsa içiniz rahat olsun, bütün kodlarınızı geri yükleyebileceksiniz.</string>
     <string name="backup__cloud_backup">Bulut Yedeklemesi</string>
@@ -447,7 +447,7 @@
     <string name="browser__this_device_footer">Bu takma ad, 2FAS tarayıcı uzantısıyla eşleşen diğer cihazlar arasında bu cihazı belirlemenize yardımcı olur</string>
     <string name="browser__browser_extension_settings">Tarayıcı Uzantıları ayarları</string>
     <string name="browser__unkown_name">&lt;BİLİNMEYEN_AD&gt;</string>
-    <string name="browser__request_source_description">%1$s, %2$s için 2AD jetonu talep etti. Onaylamak ve bu alan adıyla kaydetmek için hizmeti seçin.</string>
+    <string name="browser__request_source_description">%1$s, %2$s için 2FA\u0020\u0020jetonu talep etti. Onaylamak ve bu alan adıyla kaydetmek için hizmeti seçin.</string>
     <string name="browser__request">Tarayıcı isteği</string>
     <!-- browser__code_success -->
     <string name="browser__code_success_title">Jeton başarıyla gönderildi!</string>
@@ -463,8 +463,8 @@
     <string name="browser__push_notifications_title">Anlık Bildirimler</string>
     <string name="browser__push_notifications_content">Tarayıcı Uzantısı gibi işlevselliklere erişebilmek için uygulamanın Anlık Bildirimlere erişmesi gerekiyor. Bu ayarı istediğiniz zaman Sistem Ayarlarında değiştirebilirsiniz.</string>
     <string name="browser__request_expired">İsteğin süresi doldu</string>
-    <string name="browser__2fa_token_request_title">2AD Jetonu İsteği</string>
-    <string name="browser__2fa_token_request_content">Şunun için 2AD jetonunu paylaşmak ister misiniz:</string>
+    <string name="browser__2fa_token_request_title">2FA Jetonu İsteği</string>
+    <string name="browser__2fa_token_request_content">Şunun için 2FA jetonunu paylaşmak ister misiniz\u0020</string>
     <string name="notifications__no_notifications">Bildirim yok</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
@@ -513,8 +513,8 @@
     <string name="widgets_empty_msg">Eklenmiş hizmet yok</string>
     <string name="backup__section_description_google">ÖNERİLEN: Google Drive Eşitlemesi, cihazını kaybetme veya bozma olasılığına karşı jetonlarınızı Google Drive\'da güvende tutar. Google Drive Eşitlemesini açık bırakın.</string>
     <string name="backup_turn_off_title">Google Drive Eşitlemesi kapatılsın mı?</string>
-    <string name="backup_turn_off_msg1">2AD jetonları bu cihazda ve Google Drive\'ınızda kalacak, ancak senkronize edilmeyecektir. Ayrıca Google Hesabınızdan çıkış yapmış olacaksınız.</string>
-    <string name="backup_turn_off_msg2">Bu cihazın kaybolması veya hasar görmesi ya da uygulamanın kaldırılması durumunda jetonlarınızı kurtaramayabileceğinizi ve 2AD ile güvence altına alınan çevrimiçi hesaplara erişiminizi kaybedeceğinizi unutmayın.</string>
+    <string name="backup_turn_off_msg1">2FA jetonları bu cihazda ve Google Drive\'ınızda kalacak, ancak senkronize edilmeyecektir. Ayrıca Google Hesabınızdan çıkış yapmış olacaksınız.</string>
+    <string name="backup_turn_off_msg2">Bu cihazın kaybolması veya hasar görmesi ya da uygulamanın kaldırılması durumunda jetonlarınızı kurtaramayabileceğinizi ve 2FA ile güvence altına alınan çevrimiçi hesaplara erişiminizi kaybedeceğinizi unutmayın.</string>
     <string name="backup_settings_password_set_subtitle">Google Drive yedek dosyasını özel bir parola ile koruyun.</string>
     <string name="backup_settings_password_remove_title">Şifreyi kaldır</string>
     <string name="backup_settings_password_remove_subtitle">Google Drive yedek dosyanız için parolayı kaldırın.</string>
@@ -551,7 +551,7 @@
     <string name="settings__theme_option_light">Açık</string>
     <string name="tokens__copied_clipboard">Jeton panoya kopyalandı!</string>
     <string name="tokens__next_copied_clipboard">Sonraki jeton panoya kopyalandı!</string>
-    <string name="tokens__do_you_really_want_to_remove_all_devices">Bu 2AD hizmetini kalıcı olarak silmek istiyor musunuz?</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Bu 2FA hizmetini kalıcı olarak silmek istiyor musunuz?</string>
     <string name="tokens__fab_addmanually">Elle ekle</string>
     <string name="tokens__qr_does_not_work">Bu QR Kodu çalışmıyor!</string>
     <!-- Could not read QR code from the image! -->
@@ -692,9 +692,9 @@
     <string name="externalimport__no_tokens_msg">Ancak içeri aktarılabilecek hiçbir hizmet yok.</string>
     <string name="commons__try_again">Tekrar dene</string>
     <string name="commons__proceed">İlerle</string>
-    <string name="externalimport__ga_title">2AD jetonları Google Authenticator uygulamasından içeri aktarılıyor</string>
-    <string name="externalimport__aegis_title">2AD jetonları Aegis uygulamasından içeri aktarılıyor</string>
-    <string name="externalimport__raivo_title">2AD jetonları Raivo uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__ga_title">2FA jetonları Google Authenticator uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__aegis_title">2FA\u0020\u0020jetonları Aegis uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__raivo_title">2FA jetonları Raivo uygulamasından içeri aktarılıyor</string>
     <string name="externalimport__ga_success_msg">Bu QR kodu, jetonların Google Authenticator\'dan içeri aktarılmasına izin verir.</string>
     <string name="externalimport__aegis_success_msg">Bu JSON dosyası, jetonların Aegis\'ten içeri aktarılmasına izin verir.</string>
     <string name="externalimport__raivo_success_msg">Bu JSON dosyası, jetonların Raivo\'dan içeri aktarılmasına izin verir.</string>
@@ -734,7 +734,7 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Hesaplarınızı LastPass\'ten şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı kaldırmayı unutmayın.</string>
     <string name="settings__about_crash_optout_title">Çökme Raporları</string>
-    <string name="externalimport__lastpass_title">2AD jetonları LastPass uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__lastpass_title">2FA jetonları LastPass uygulamasından içeri aktarılıyor</string>
     <string name="externalimport__lastpass_success_msg">Bu JSON dosyası, jetonların LastPass\'ten içeri aktarılmasına izin verir.</string>
     <string name="externalimport__info_lastpass_title">Jetonları LastPass uygulamasından içeri aktar</string>
     <string name="externalimport__info_aegis_title">Jetonları Aegis\'ten içeri aktar</string>
@@ -759,7 +759,7 @@
     <string name="tokens__add_manual_help_cta">Ne yapacağınızı bilmiyor musunuz? Yardım için basın</string>
     <string name="tokens__add_manual_advanced">Gelişmiş jeton ayarları</string>
     <string name="tokens__add_manual_additional_info">Ek bilgi</string>
-    <string name="tokens__add_manual_advanced_description">Varsayılan jeton ayarlarının değiştirilmesi önerilmez. Bunu yalnızca 2AD sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
+    <string name="tokens__add_manual_advanced_description">Varsayılan jeton ayarlarının değiştirilmesi önerilmez. Bunu yalnızca 2FA sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
     <string name="settings__option_screenshots_description">Uygulamada ekran görüntülerine 5 dakika için izin ver.</string>
     <string name="settings__option_screenshots">Ekran görüntülerine izin ver</string>
     <string name="settings__option_screenshots_confirm_title">Uygulamada ekran görüntülerine izin verilsin mi?</string>
@@ -778,17 +778,17 @@
     <string name="browser__pair_manually_hint">Eşleştirme kodu</string>
     <string name="externalimport__info_authenticatorpro_title">Jetonları Authenticator Pro\'dan içeri aktar</string>
     <string name="externalimport__authenticatorpro_success_msg">Bu metin dosyası, jetonların Authenticator Pro\'dan içeri aktarılmasına izin verir.</string>
-    <string name="externalimport__authenticatorpro_title">2AD jetonları Authenticator Pro uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__authenticatorpro_title">2FA jetonları Authenticator Pro uygulamasından içeri aktarılıyor</string>
     <string name="externalimport__authenticatorpro_msg">Hesaplarınızı Authenticator Pro\'dan şifrelenmemiş bir metin dosyasına aktarın ve \"Metin dosyası seç\" düğmesini kullanarak yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı kaldırmayı unutmayın.</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
     <string name="externalimport__choose_txt_cta">Metin belgesi seçin</string>
     <string name="fingerprint__biometric_invalidated">Biyometrik giriş, sistemdeki parmak izi ayarları değişikliklerinden dolayı devre dışı bırakıldı</string>
-    <string name="tokens__last_pass_import">2AD jetonları LastPass uygulamasından içeri aktarılıyor</string>
+    <string name="tokens__last_pass_import">2FA jetonları LastPass uygulamasından içeri aktarılıyor</string>
     <string name="tokens__last_pass_import_subtitle">Bu QR kodu, jetonların LastPass\'ten içeri aktarılmasına izin verir</string>
     <string name="tokens__add_with_guide">Bana yol göster</string>
     <string name="guides__select_title">Hizmetleri gözden geçir</string>
     <string name="guides__select_description">2FAS uygulaması ile eşleştirilecek uygulamayı seçin</string>
-    <string name="guides__select_provide_guide">Hizmetiniz için 2AD kılavuzları sağlamak ister misiniz?</string>
+    <string name="guides__select_provide_guide">Hizmetiniz için 2FA kılavuzları sağlamak ister misiniz?</string>
     <string name="guides__select_provide_guide_cta">Şimdi uygula</string>
     <string name="color__pink">Pembe</string>
     <string name="color__brown">Kahverengi</string>
@@ -801,10 +801,10 @@
     <string name="tokens__add_manual_advanced_description_highlight">önerilmez</string>
     <string name="guides__guide_init_title">2FAS kılavuzu</string>
     <string name="guides__guide_title">%s için 2FAS</string>
-    <string name="guides__guide_universal_title">Evrensel 2AD Kılavuzu</string>
+    <string name="guides__guide_universal_title">Evrensel 2FA Kılavuzu</string>
     <string name="browser__save_choice">Seçimimi kaydet</string>
     <string name="externalimport_andotp">andOTP</string>
-    <string name="externalimport__andotp_title">2AD jetonları andOTP uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__andotp_title">2FA jetonları andOTP uygulamasından içeri aktarılıyor</string>
     <string name="externalimport__andotp_success_msg">Bu JSON dosyası, jetonların andOTP\'den içeri aktarılmasına izin verir.</string>
     <string name="externalimport__info_andotp_title">Jetonları andOTP\'den içeri aktar</string>
     <string name="externalimport__andotp_msg">Hesaplarınızı andOTP\'den şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı kaldırmayı unutmayın.</string>
