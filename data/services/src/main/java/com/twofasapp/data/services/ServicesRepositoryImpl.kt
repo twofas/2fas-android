@@ -285,7 +285,9 @@ internal class ServicesRepositoryImpl(
     override suspend fun addService(service: Service, triggerSync: Boolean): Long {
         return withContext(dispatchers.io) {
             // Delete duplicate, if any
-            val existingService = local.getServiceBySecret(service.secret)
+            val existingService = local.getServices()
+                .find { s -> s.secret.lowercase() == service.secret.lowercase() }
+
             existingService?.let {
                 local.deleteService(it.secret)
                 local.deleteServiceFromOrder(it.id)
