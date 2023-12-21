@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Mon, 27 Nov 2023 14:14:13 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -709,7 +709,7 @@
     <string name="extension__services_all_header">Alle Tokens</string>
     <string name="extension__services_other_header">Andere Dienste</string>
     <string name="settings__ssl_error_title">SSL Fehler</string>
-    <string name="settings__ssl_error_description">Ein SSL-Fehler ist aufgetreten, wodurch eine sichere Verbindung zum Server nicht hergestellt werden kann. Stelle sicher, dass du die neueste App-Version hast oder versuche, das Netzwerk zu ändern.</string>
+    <string name="settings__ssl_error_description">Es ist ein SSL-Fehler aufgetreten und es kann keine sichere Verbindung zum Server hergestellt werden. Stelle sicher, dass du die neueste Version der App hast oder versuche, das Netzwerk zu ändern.</string>
     <string name="backup__import_error_file_size">Die Datei, die du versuchst zu importieren, ist zu groß. Die Größenbeschränkung beträgt 10 MB.</string>
     <string name="backup__import_error_file_invalid">Die Datei, die du versuchst zu importieren, ist ungültig oder beschädigt. Bitte wähle eine andere Datei.</string>
     <string name="appearance__toggle_active_search">Aktive Suche</string>
@@ -748,7 +748,7 @@
     <string name="tokens__add_enter_manual">Gib den Geheimschlüssel manuell ein</string>
     <string name="tokens__add_from_gallery">Bild mit dem QR-Code hochladen</string>
     <string name="tokens__add_success_title">Fast fertig!</string>
-    <string name="tokens__add_success_description">Um die Verbindung des Dienstes abzuschließen, musst du den Token erneut eingeben.</string>
+    <string name="tokens__add_success_description">Um die Verbindung, des Dienstes abzuschließen, musst du den Token erneut eingeben.</string>
     <string name="tokens__add_manual_title">Verbinde den Dienst mit 2FAS</string>
     <string name="tokens__add_manual_description">Gib den Dienst und Geheimschlüssel ein.</string>
     <string name="tokens__add_manual_service_name">Dienstname</string>
@@ -759,11 +759,11 @@
     <string name="tokens__add_manual_help_cta">Du weißt nicht was du tun sollst? Tippe hier für Hilfe</string>
     <string name="tokens__add_manual_advanced">Erweiterte Token-Einstellungen</string>
     <string name="tokens__add_manual_additional_info">Zusätzliche Info</string>
-    <string name="tokens__add_manual_advanced_description">Das Ändern der Standard-Token-Einstellung wird nicht empfohlen. Du sollst dies nur tun, wenn der 2FA-Anbieter es verlangt und wenn du klare Anweisungen hast.</string>
+    <string name="tokens__add_manual_advanced_description">Das ändern der Standard-Token-Einstellung wird nicht empfohlen. Du sollst dies nur tun, wenn der 2FA-Anbieter es verlangt und wenn du klare Anweisungen hast.</string>
     <string name="settings__option_screenshots_description">Screenshots in der App für 5 Minuten erlauben.</string>
     <string name="settings__option_screenshots">Screenshots erlauben</string>
     <string name="settings__option_screenshots_confirm_title">Willst du Screenshots innerhalb der App zulassen?</string>
-    <string name="settings__option_screenshots_confirm_description">Sicher? Mit dieser Option kannst du Screenshots erstellen und jeden Bildschirm innerhalb der App aufzeichnen. Jedoch erlaubt dies auch alle externen Versuche, den Bildshirm innerhalb der App zu erfassen.\nAus Sicherheitsgründen wird diese Option automatisch nach 5 Minuten ausgeschaltet.</string>
+    <string name="settings__option_screenshots_confirm_description">Bist du sicher? Diese Option ermöglicht es dir, Screenshots von jedem Bildschirm innerhalb der App aufzunehmen und aufzuzeichnen. Allerdings erlaubt dies auch externe Versuche, Bildschirme in der App zu erfassen. Aus Sicherheitsgründen wird diese Option automatisch nach 5 Minuten deaktiviert.</string>
     <string name="social__social_media">Soziale Medien</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -785,9 +785,9 @@
     <string name="fingerprint__biometric_invalidated">Biometrische Anmeldungen wurden aufgrund von Änderungen der Systemsicherheits- und Datenschutzeinstellungen deaktiviert.</string>
     <string name="tokens__last_pass_import">Importieren von 2FA Tokens von der LastPass App</string>
     <string name="tokens__last_pass_import_subtitle">Dieser QR-Code erlaubt es dir Tokens von LastPass zu importieren</string>
-    <string name="tokens__add_with_guide">Führe mich</string>
+    <string name="tokens__add_with_guide">Leite mich an.</string>
     <string name="guides__select_title">Suche Dienste</string>
-    <string name="guides__select_description">Wähle den Service den du mit der 2FAS App verknüpfen willst</string>
+    <string name="guides__select_description">Wähle den Service, den du mit der 2FAS App verknüpfen willst!</string>
     <string name="guides__select_provide_guide">Möchtest du 2FA-Anleitungen für den Dienst bereitstellen?\u0020</string>
     <string name="guides__select_provide_guide_cta">Jetzt bewerben</string>
     <string name="color__pink">Pink</string>
@@ -807,16 +807,21 @@
     <string name="externalimport__andotp_title">2FA Tokens aus andOTP importieren</string>
     <string name="externalimport__andotp_success_msg">Diese JSON-Datei erlaubt es Tokens von andOTP zu importieren.</string>
     <string name="externalimport__info_andotp_title">Importiere tokens von andOTP</string>
-    <string name="externalimport__andotp_msg">Exportiere deine Konten von andOTP in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
-    <string name="introduction__backup_description">Im nächsten Schritt wirst du gefragt auf welchem Google Account du deine Tokens sichern willst.\u0020</string>
+    <string name="externalimport__andotp_msg">Exportiere deine Konten von andOTP in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht, nach einem erfolgreichen Import die Datei zu entfernen.</string>
+    <string name="introduction__backup_description">Im nächsten Schritt wirst du gefragt, auf welchem Google Account du deine Tokens sichern willst.</string>
     <string name="introduction__backup_take_risk_cta">Ich gehe das Risiko ein und erstelle kein Backup</string>
     <string name="introduction__backup_success">Die Google Drive Synchronisation wurde erfolgreich aktiviert.</string>
     <string name="backup__import_invalid_version">Die Backup-Datei, die du versuchst zu importieren, wird in dieser Version der App nicht unterstützt. Die App unterstützt nur Backup-Formate bis zu Version %d, während die Datei, die du importierst, die Version %d hat.</string>
     <string name="commons__pair">Verbinden</string>
-    <string name="introduction__backup_icloud_title">Secure sync and backup</string>
+    <string name="introduction__backup_icloud_title">Sicherheit bei der Synchronisierung und Datensicherung</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can disabled at any time in the app\'s backup settings.</string>
-    <string name="introduction__backup_icloud_cta">Learn more about backup</string>
-    <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
-    <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
+    <string name="introduction__backup_icloud_description">2FAS verwendet iCloud für die sichere Sicherung und Synchronisierung deiner 2FA-Token. Die **verschlüsselten** Backup-Daten werden in iCloud gespeichert und sind nur über die 2FAS-App zugänglich. Darüber hinaus unterstützt diese Funktion die Wiederherstellung und Synchronisierung von Tokens auf iOS-Geräten.\n\nStandardmäßig ist dies aktiviert und kann in den Backup-Einstellungen der App jederzeit deaktiviert werden.</string>
+    <string name="introduction__backup_icloud_cta">Lerne mehr über die Datensicherung</string>
+    <string name="backup__enter_password_google_drive_msg1">Es scheint, als wäre deine Google Drive-Backup-Datei passwortgeschützt. Gib das richtige Passwort ein, um fortzufahren. Wenn du deine Google Drive-Backup-Datei löschen möchtest, ...</string>
+    <string name="backup__enter_password_google_drive_msg2">Tippe hier, um zu sehen, wie es funktioniert</string>
+    <string name="settings__preferences">Einstellungen</string>
+    <string name="settings__it_matters">Es zählt</string>
+    <string name="settings__manage_tokens">Token verwalten</string>
+    <string name="settings__info_footer">Deine Unterstützung ermöglicht uns die Entwicklung neuer Funktionen und Verbesserungen. Danke dir!</string>
+    <string name="settings__trash_option">Wiederherstellen aus dem Papierkorb</string>
 </resources>

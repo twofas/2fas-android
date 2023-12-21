@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Mon, 27 Nov 2023 14:14:13 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -808,15 +808,20 @@
     <string name="externalimport__andotp_success_msg">Este ficheiro JSON permite importar tokens da aplicação andOTP.</string>
     <string name="externalimport__info_andotp_title">Importa tokens do andOTP</string>
     <string name="externalimport__andotp_msg">Exporta as tuas contas da aplicação andOTP para um ficheiro JSON não encriptado e usa o botão \"Escolhe o ficheiro JSON\" para importá-lo. Lembra-te de remover o ficheiro após importares com sucesso.</string>
-    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
-    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
-    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
-    <string name="backup__import_invalid_version">The backup file you\'re attempting to import is not supported in this application version. The application only supports backup format versions up to %d, while the file you\'re importing is version %d.</string>
+    <string name="introduction__backup_description">No passo seguinte, ser-lhe-á pedido que escolha a sua conta Google Drive, onde os tokens 2FA serão guardados em segurança.</string>
+    <string name="introduction__backup_take_risk_cta">Eu corro o risco, sem cópia de segurança</string>
+    <string name="introduction__backup_success">A sincronização do Google Drive foi activada com êxito!</string>
+    <string name="backup__import_invalid_version">O ficheiro de cópia de segurança que está a tentar importar não é suportado nesta versão da aplicação. A aplicação apenas suporta versões de formato de cópia de segurança até %d, enquanto o ficheiro que está a importar é da versão %d.</string>
     <string name="commons__pair">Pair</string>
-    <string name="introduction__backup_icloud_title">Secure sync and backup</string>
+    <string name="introduction__backup_icloud_title">Sincronização e cópia de segurança seguras</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can disabled at any time in the app\'s backup settings.</string>
-    <string name="introduction__backup_icloud_cta">Learn more about backup</string>
-    <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
-    <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
+    <string name="introduction__backup_icloud_description">2FAS usa iCloud para backup seguro e sincronização de seus tokens 2FA. Os dados de backup **encriptados** são armazenados no iCloud, acessíveis **apenas pela aplicação 2FAS**. Além disso, este recurso ajuda na **recuperação e sincronização** de tokens em dispositivos iOS.\n\nEstá activada por predefinição e pode ser desactivada a qualquer momento nas definições de cópia de segurança da aplicação.</string>
+    <string name="introduction__backup_icloud_cta">Saiba mais sobre a cópia de segurança</string>
+    <string name="backup__enter_password_google_drive_msg1">Parece que o seu ficheiro de cópia de segurança do Google Drive está protegido por palavra-passe. Digite a senha correta para continuar. Se pretender limpar o ficheiro de cópia de segurança do Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">toque aqui para ver como</string>
+    <string name="settings__preferences">Preferences</string>
+    <string name="settings__it_matters">It matters</string>
+    <string name="settings__manage_tokens">Manage tokens</string>
+    <string name="settings__info_footer">Your support allows us to develop new features and\nimprovements. Thank you!</string>
+    <string name="settings__trash_option">Retrieve from trash</string>
 </resources>
