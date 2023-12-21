@@ -19,7 +19,7 @@
             },
             {
               "image": "web_menu",
-              "content": "Go to **Safety & Privacy**. In the **Advanced security** section, enable **Use two-factor authentication **."
+              "content": "Go to **Safety & Privacy**. In the **Advanced security** section, enable **Use two-factor authentication**."
             },
             {
               "image": "2fas_type",
@@ -43,7 +43,7 @@
               "content": "Go to **www.reddit.com** and log into your account."
             },
             {
-              "image": "web_account_2",
+              "image": "web_account_1",
               "content": "Tap the menu icon in the top right corner, select **Settings**, and choose **Account settings**."
             },
             {
