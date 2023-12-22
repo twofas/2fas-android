@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Thu, 16 Nov 2023 13:28:44 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -812,4 +812,16 @@
     <string name="introduction__backup_take_risk_cta">Acepto el riesgo, sin copia de seguridad</string>
     <string name="introduction__backup_success">¡Sincronización de Google Drive activada correctamente!</string>
     <string name="backup__import_invalid_version">El archivo de copia de seguridad que estás intentando importar no es compatible con esta versión de la aplicación. La aplicación solo soporta formatos de copia de seguridad hasta la versión %d, mientras que el archivo que estás importando es de la versión %d.</string>
+    <string name="commons__pair">Emparejar</string>
+    <string name="introduction__backup_icloud_title">Sincronización y respaldo seguros</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS usa iCloud para realizar respaldo y sincronizar de forma segura sus tokens 2FA. Los datos de respaldo **cifrados** se almacenan en iCloud, accesibles **solo mediante la aplicación 2FAS**. Además, esta función ayuda con la **recuperación y sincronización** de tokens entre dispositivos iOS.\n\nEstá habilitado de forma predeterminada y puede desactivarse en cualquier momento en la configuración de respaldo de la aplicación.</string>
+    <string name="introduction__backup_icloud_cta">Saber más sobre el respaldo</string>
+    <string name="backup__enter_password_google_drive_msg1">Parece que su archivo de respaldo de Google Drive está protegido con contraseña. Escriba la contraseña correcta para continuar. Si desea borrar su archivo de respaldo de Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">toca aquí para ver cómo</string>
+    <string name="settings__preferences">Preferencias</string>
+    <string name="settings__it_matters">Eso importa</string>
+    <string name="settings__manage_tokens">Gestionar tokens</string>
+    <string name="settings__info_footer">Tu apoyo nos permite desarrollar nuevas características y mejoras. ¡Gracias!</string>
+    <string name="settings__trash_option">Recuperar de la papelera</string>
 </resources>

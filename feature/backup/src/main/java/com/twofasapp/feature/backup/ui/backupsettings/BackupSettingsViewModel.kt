@@ -34,14 +34,33 @@ internal class BackupSettingsViewModel(
                 }
             }
         }
+
+        launchScoped {
+            backupRepository.observePasswordForCloudSync().collect { pass ->
+                uiState.update { it.copy(pass = pass) }
+            }
+        }
     }
 
     fun setPassword(password: String) {
-        backupRepository.dispatchCloudSync(CloudSyncTrigger.SetPassword, password)
+        if (uiState.value.syncActive) {
+            backupRepository.dispatchCloudSync(CloudSyncTrigger.SetPassword, password)
+        } else {
+            backupRepository.setPasswordForCloudSync(password)
+        }
     }
 
     fun removePassword(password: String) {
         launchScoped {
+            if (uiState.value.syncActive.not()) {
+                if (password == uiState.value.pass) {
+                    backupRepository.setPasswordForCloudSync(null)
+                } else {
+                    publishEvent(BackupSettingsUiEvent.ShowRemovePasswordDialogError)
+                }
+                return@launchScoped
+            }
+
             val isCorrect = backupRepository.checkCloudBackupPassword(password)
 
             if (isCorrect) {

@@ -3,16 +3,15 @@ package com.twofasapp.designsystem.dialog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -49,6 +48,7 @@ fun BaseDialog(
     bodyAnnotated: AnnotatedString? = null,
     positive: String? = null,
     negative: String? = null,
+    onBodyClick: ((Int) -> Unit)? = null,
     onPositiveClick: (() -> Unit)? = null,
     onNegativeClick: (() -> Unit)? = null,
     positiveEnabled: Boolean = true,
@@ -90,6 +90,7 @@ fun BaseDialog(
                     Body(
                         text = body,
                         textAnnotated = bodyAnnotated,
+                        onBodyClick = onBodyClick,
                     )
                 }
 
@@ -138,6 +139,7 @@ private fun Title(
 private fun ColumnScope.Body(
     text: String?,
     textAnnotated: AnnotatedString?,
+    onBodyClick: ((Int) -> Unit)? = null,
 ) {
     if (text != null) {
         Text(
@@ -151,14 +153,15 @@ private fun ColumnScope.Body(
 
         )
     } else if (textAnnotated != null) {
-        Text(
+        ClickableText(
             text = textAnnotated,
-            style = MaterialTheme.typography.bodyMedium,
-            color = TwTheme.color.onSurfaceTertiary,
+            onClick = { onBodyClick?.invoke(it) },
+            style = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfaceTertiary),
             modifier = Modifier
                 .padding(horizontal = DialogPadding)
-                .padding(TitlePadding)
-        )
+                .padding(TitlePadding),
+
+            )
     }
 }
 

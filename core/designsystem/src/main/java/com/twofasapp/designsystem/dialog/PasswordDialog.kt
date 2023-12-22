@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
@@ -26,10 +27,12 @@ fun PasswordDialog(
     onDismissRequest: () -> Unit,
     title: String? = null,
     body: String? = null,
+    bodyAnnotated: AnnotatedString? = null,
     error: String? = null,
     enabled: Boolean = true,
     positive: String? = TwLocale.strings.commonSave,
     negative: String? = TwLocale.strings.commonCancel,
+    onBodyClick: ((Int) -> Unit)? = null,
     onPositive: ((String) -> Unit)? = null,
     onNegative: (() -> Unit)? = null,
     validation: ((String) -> Boolean)? = null,
@@ -57,8 +60,10 @@ fun PasswordDialog(
         onDismissRequest = onDismissRequest,
         title = title,
         body = body,
+        bodyAnnotated = bodyAnnotated,
         positive = positive,
         negative = negative,
+        onBodyClick = onBodyClick,
         onPositiveClick = { onPositive?.invoke(password.trim()) },
         onNegativeClick = onNegative,
         positiveEnabled = positiveEnabledState,

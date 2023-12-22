@@ -48,6 +48,7 @@ import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwOutlinedTextField
 import com.twofasapp.designsystem.common.TwOutlinedTextFieldPassword
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.InputDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.designsystem.ktx.assetAsBitmap
@@ -361,7 +362,7 @@ internal fun AddServiceManualScreen(
             text = TwLocale.strings.addManualDoneCta,
             onClick = {
                 if (uiState.isFormValid) {
-                    viewModel.addService()
+                    viewModel.tryInsertService()
                 }
             },
             enabled = uiState.isFormValid,
@@ -425,6 +426,21 @@ internal fun AddServiceManualScreen(
                 ),
                 positiveEnabled = { it.toIntOrNull() != null },
                 onPositiveClick = { viewModel.updateHotpCounter(it.toIntOrNull() ?: 1) }
+            )
+        }
+
+        if (uiState.showServiceExistsDialog) {
+            ConfirmDialog(
+                onDismissRequest = { viewModel.dismissServiceExistsDialog() },
+                title = TwLocale.strings.addScanServiceExistsTitle,
+                body = TwLocale.strings.addScanServiceExistsBody,
+                positive = TwLocale.strings.addScanServiceExistsPositiveCta,
+                negative = TwLocale.strings.addScanServiceExistsNegativeCta,
+                onPositive = {
+                    viewModel.dismissServiceExistsDialog()
+                    viewModel.addService()
+                },
+                onNegative = { viewModel.dismissServiceExistsDialog() },
             )
         }
     }

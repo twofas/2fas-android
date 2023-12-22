@@ -20,13 +20,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.data.services.domain.CloudSyncError
-import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwSwitch
@@ -34,6 +37,7 @@ import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.InfoDialog
 import com.twofasapp.designsystem.dialog.PasswordDialog
 import com.twofasapp.designsystem.ktx.currentActivity
+import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.designsystem.ktx.strings
 import com.twofasapp.designsystem.ktx.toastLong
 import com.twofasapp.designsystem.settings.SettingsDivider
@@ -81,6 +85,7 @@ private fun ScreenContent(
 ) {
     val context = LocalContext.currentActivity
     val strings = LocalContext.strings
+    val uriHandler = LocalUriHandler.current
     var showPasswordDialog by remember { mutableStateOf(false) }
     var showPasswordError by remember { mutableStateOf(false) }
     var showErrorDialog by remember { mutableStateOf(false) }
@@ -197,7 +202,6 @@ private fun ScreenContent(
                     title = strings.backupSyncSettings,
                     icon = TwIcons.Settings,
                     onClick = onSettingsClick,
-                    enabled = uiState.cloudBackupStatus?.active == true && uiState.cloudSyncStatus != CloudSyncStatus.Syncing,
                 )
             }
 
@@ -240,6 +244,20 @@ private fun ScreenContent(
         }
 
         if (showPasswordDialog) {
+            val passText = buildAnnotatedString {
+                append("${strings.backupEnterCloudPasswordMsg1} ")
+
+                pushStringAnnotation(
+                    tag = "link",
+                    annotation = "https://2fas.com/support/2fas-mobile-app/how-to-wipe-remove-a-google-drive-backup-file/"
+                )
+                withStyle(style = SpanStyle(TwTheme.color.primary)) {
+                    append(strings.backupEnterCloudPasswordMsg2)
+                }
+                pop()
+                append(".")
+            }
+
             PasswordDialog(
                 onDismissRequest = {
                     showPasswordDialog = false
@@ -247,7 +265,13 @@ private fun ScreenContent(
                 },
                 confirmRequired = false,
                 title = strings.backupEnterCloudPasswordTitle,
-                body = strings.backupEnterCloudPasswordMsg,
+                bodyAnnotated = passText,
+                onBodyClick = { offset ->
+                    passText.getStringAnnotations(tag = "link", start = offset, end = offset).firstOrNull()?.let {
+                        uriHandler.openSafely(it.item)
+                        showPasswordDialog = false
+                    }
+                },
                 error = if (showPasswordError) strings.backupIncorrectPassword else null,
                 positive = strings.commonContinue,
                 onPositive = { onEnterPassword(it) },

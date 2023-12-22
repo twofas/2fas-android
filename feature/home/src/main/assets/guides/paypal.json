@@ -1,0 +1,99 @@
+{
+  "serviceName": "PayPal",
+  "serviceId": "5cf8be69-25f5-4d43-aa51-2d54930d247a",
+  "flow": {
+    "header": "Follow our guide to pair your PayPal account with the 2FAS app.",
+    "menu": {
+      "title": "Please select the method you use to open PayPal now",
+      "items": [
+        {
+          "name": "Desktop computer or laptop",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "Go to **www.paypal.com** and log into your account."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Click on the gear icon in the top right corner and go to the **Security** section."
+            },
+            {
+              "image": "web_menu",
+              "content": "Go to **2-step verification** and click **Set Up**."
+            },
+            {
+              "image": "gears",
+              "content": "Choose **Use an authentication  app** and click **Set It Up**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the displayed QR code to pair the service with the 2FAS app.\n\nYou can also do that by retyping the key under the QR code.",
+              "cta": {
+                "name": "Add service",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile browser",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "Go to **www.paypal.com** and log into your account."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Click on the menu icon in the top left corner, then tap on the gear icon in the upper right corner."
+            },
+            {
+              "image": "web_menu",
+              "content": "Go to the **Security** section and click **2-step verification**."
+            },
+            {
+              "image": "gears",
+              "content": "Choose **Use an authentication app** and click **Set It Up**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the displayed QR code to pair the service with the 2FAS app.\n\nYou can also do that by retyping the key under the QR code.",
+              "cta": {
+                "name": "Add service",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile application",
+          "steps": [
+            {
+              "image": "account",
+              "content": "Open the PayPal app, then tap the your avatar in the top left corner."
+            },
+            {
+              "image": "web_menu",
+              "content": "Tap **Login and security**, then choose **Skip extra approvals for faster payments**.\nClose the pop-up window."
+            },
+            {
+              "image": "gears",
+              "content": "In **Security** choose **2-step verification**."
+            },
+            {
+              "image": "web_button",
+              "content": "Choose **Use an authentication  app** and tap **Set It Up**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the displayed QR code to pair the service with the 2FAS app.\n\nYou can also do that by retyping the key under the QR code.",
+              "cta": {
+                "name": "Add service",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

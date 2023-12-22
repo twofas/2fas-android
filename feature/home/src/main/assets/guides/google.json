@@ -1,0 +1,102 @@
+{
+  "serviceName": "Google",
+  "serviceId": "fdb95870-569c-471f-84ce-0356d13da20e",
+  "flow": {
+    "header": "Follow our guide to pair your Google account with the 2FAS app.",
+    "menu": {
+      "title": "Please select the method you use to open Google now",
+      "items": [
+        {
+          "name": "Desktop and mobile browser",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "Go to **www.google.com** and log into your account."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Click on your avatar in the top right corner and select **Manage your Google Account**."
+            },
+            {
+              "image": "web_menu",
+              "content": "From the menu, choose **Security**. Go to **How you sign in to Google** section and click **2-Step Verification**.\n\nClick **Get started**."
+            },
+            {
+              "image": "2fas_type",
+              "content": "You may be asked to enter your password for security reasons. Enter it and sign in."
+            },
+            {
+              "image": "gears",
+              "content": "There will be a list of your devices that will get Google prompts. Click **CONTINUE**."
+            },
+            {
+              "image": "web_phone",
+              "content": "Type in your phone number and click **SEND** or choose **USE ANOTHER BACKUP OPTION** and follow the instructions on the website."
+            },
+            {
+              "image": "retype",
+              "content": "If you've chosen your phone number as the backup option, you will get a text message from Google with a verification code. Type it in and click **NEXT**.\n\nClick **TURN ON** to enable the second layer of verification."
+            },
+            {
+              "image": "gears",
+              "content": "From the section **Add more second steps to verify it's you**, choose **Authenticator app**.\n\nClick **Set up authenticator**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the displayed QR code to pair the service with the 2FAS app.\n\nYou can also do that by clicking **Can't scan it?** and retyping the key from point **2**.",
+              "cta": {
+                "name": "Add service",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile application",
+          "steps": [
+            {
+              "image": "web_account_1",
+              "content": "Open the Gmail app, then tap on your avatar in the top right corner and select **Manage your Google Account**."
+            },
+            {
+              "image": "web_menu",
+              "content": "Go to the **Security** tab and scroll down to the **How you sign in to Google** section."
+            },
+            {
+              "image": "web_phone",
+              "content": "Tap **2-Step Verification**. Sign in to your Google account and then tap **Get started**."
+            },
+            {
+              "image": "2fas_type",
+              "content": "You may be asked to enter a password for security reasons. Type it in and tap **Next**."
+            },
+            {
+              "image": "gears",
+              "content": "There will be a list of your devices that will get Google prompts. Tap **CONTINUE**."
+            },
+            {
+              "image": "web_phone",
+              "content": "Enter your phone number and tap **SEND** or choose **USE ANOTHER BACKUP OPTION** and follow the instructions on the website."
+            },
+            {
+              "image": "retype",
+              "content": "If you've chosen your phone number as the backup option, you will get a text message from Google with a verification code. Type it in and click **NEXT**.\n\nClick **TURN ON** to enable the second layer of verification."
+            },
+            {
+              "image": "gears",
+              "content": "Scroll down to **Add more second steps to verify it's you** and choose **Authenticator app**.\n\nTap **Set up authenticator**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the displayed QR code to pair the service with the 2FAS app.\n\nYou can also do that by clicking **Can't scan it?** and retyping the key from point **2**.",
+              "cta": {
+                "name": "Add service",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

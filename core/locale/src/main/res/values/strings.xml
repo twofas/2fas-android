@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Thu, 16 Nov 2023 13:28:44 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -812,4 +812,16 @@
     <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
     <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
     <string name="backup__import_invalid_version">The backup file you\'re attempting to import is not supported in this application version. The application only supports backup format versions up to %d, while the file you\'re importing is version %d.</string>
+    <string name="commons__pair">Pair</string>
+    <string name="introduction__backup_icloud_title">Secure sync and backup</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__backup_icloud_cta">Learn more about backup</string>
+    <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
+    <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
+    <string name="settings__preferences">Preferences</string>
+    <string name="settings__it_matters">It matters</string>
+    <string name="settings__manage_tokens">Manage tokens</string>
+    <string name="settings__info_footer">Your support allows us to develop new features and\nimprovements. Thank you!</string>
+    <string name="settings__trash_option">Retrieve from trash</string>
 </resources>

@@ -1,0 +1,70 @@
+{
+  "serviceName": "Reddit",
+  "serviceId": "15abc44c-e519-488b-98f2-3a75aaf270af",
+  "flow": {
+    "header": "Follow our guide to pair your Reddit account with the 2FAS app.",
+    "menu": {
+      "title": "Please select the method you use to open Reddit now",
+      "items": [
+        {
+          "name": "Desktop computer or laptop",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "Go to **www.reddit.com** and log into your account."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Click on the arrow in the top right corner and select **User Settings**."
+            },
+            {
+              "image": "web_menu",
+              "content": "Go to **Safety & Privacy**. In the **Advanced security** section, enable **Use two-factor authentication**."
+            },
+            {
+              "image": "2fas_type",
+              "content": "You may be asked to enter a password for security reasons. Enter your password and click **Confirm**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the displayed QR code to pair the service with the 2FAS app.\n\nYou can also do that by clicking **Get the token to enter manually** and retyping the key.",
+              "cta": {
+                "name": "Add service",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile browser",
+          "steps": [
+            {
+              "image": "web_url",
+              "content": "Go to **www.reddit.com** and log into your account."
+            },
+            {
+              "image": "web_account_1",
+              "content": "Tap the menu icon in the top right corner, select **Settings**, and choose **Account settings**."
+            },
+            {
+              "image": "web_button",
+              "content": "Go to **Safety & Privacy**. In **ADVANCED SECURITY** section, enable **Use two-factor authentication**."
+            },
+            {
+              "image": "2fas_type",
+              "content": "You may be asked to enter a password for security reasons. Enter your password and tap **Confirm**."
+            },
+            {
+              "image": "phone_qr",
+              "content": "Scan the displayed QR code to pair the service with the 2FAS app.\n\nYou can also do that by clicking **Get the token to enter manually** and retyping the key.",
+              "cta": {
+                "name": "Add service",
+                "action": "open_scanner"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

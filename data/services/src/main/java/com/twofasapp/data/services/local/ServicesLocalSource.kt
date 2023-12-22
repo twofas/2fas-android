@@ -1,5 +1,6 @@
 package com.twofasapp.data.services.local
 
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.RecentlyAddedService
@@ -7,7 +8,6 @@ import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.data.services.mapper.asEntity
-import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.BufferOverflow
@@ -76,10 +76,6 @@ internal class ServicesLocalSource(
 
     suspend fun getService(id: Long): Service {
         return dao.select(id).asDomain()
-    }
-
-    suspend fun getServiceBySecret(secret: String): Service? {
-        return dao.selectBySecret(secret)?.asDomain()
     }
 
     suspend fun deleteService(id: Long) {

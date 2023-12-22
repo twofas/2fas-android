@@ -189,6 +189,7 @@ class Strings(c: Context) {
     val browserRequestSuggested = c.getString(R.string.extension__services_suggested_header)
     val browserRequestAll = c.getString(R.string.extension__services_all_header)
     val browserRequestOther = c.getString(R.string.extension__services_other_header)
+    val browserRequestEmpty = c.getString(R.string.tokens__service_not_found_search)
 
     val settingsTheme = c.getString(R.string.settings__option_theme)
     val settingsShowNextCode = c.getString(R.string.settings__show_next_token)
@@ -316,7 +317,8 @@ class Strings(c: Context) {
     val backupRemoveCloudPasswordTitle = c.getString(R.string.backup__enter_password_dialog_title)
     val backupRemoveCloudPasswordMsg = c.getString(R.string.backup__remove_password_msg)
     val backupEnterCloudPasswordTitle = c.getString(R.string.backup__enter_password_dialog_title)
-    val backupEnterCloudPasswordMsg = c.getString(R.string.backup__enter_password_title)
+    val backupEnterCloudPasswordMsg1 = c.getString(R.string.backup__enter_password_google_drive_msg1)
+    val backupEnterCloudPasswordMsg2 = c.getString(R.string.backup__enter_password_google_drive_msg2)
     val backupIncorrectPassword = c.getString(R.string.backup__incorrect_password)
 
     val backupExportShareCta = c.getString(R.string.export_backup_share_cta)

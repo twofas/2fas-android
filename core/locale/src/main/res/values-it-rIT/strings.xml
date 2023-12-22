@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Thu, 16 Nov 2023 13:28:45 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -811,5 +811,17 @@
     <string name="introduction__backup_description">Nel prossimo step, ti verrà richiesto di scegliere il tuo account Google Drive, dove i token 2FA verrano salvati in sicurezza</string>
     <string name="introduction__backup_take_risk_cta">Mi assumo il rischio, non eseguo il backup</string>
     <string name="introduction__backup_success">Sincronizzazione con Google Drive abilitata correttamente!</string>
-    <string name="backup__import_invalid_version">The backup file you\'re attempting to import is not supported in this application version. The application only supports backup format versions up to %d, while the file you\'re importing is version %d.</string>
+    <string name="backup__import_invalid_version">Il file di backup che stai cercando di importare non è supportato dalla versione di questa applicazione. Questa applicazione supporta solamente i backup fino alla versione %d, mentre il file che stai importando è alla versione %d.</string>
+    <string name="commons__pair">Accoppia</string>
+    <string name="introduction__backup_icloud_title">Sincronizzazione e backup sicuri</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS utilizza iCloud per il backup e la sincronizzazione sicura dei tuoi token 2FA. Il backup **criptato** è salvato su iCloud e accessibile **solo dall\'app 2FAS**.\nIn più, questa funzione aiuta il **recupero e la sincronizzazione** dei token tra i dispositivi iOS.\n\nÈ abilitata di default e può essere disattivata in ogni momento nelle impostazioni di backup dell\'app.</string>
+    <string name="introduction__backup_icloud_cta">Scopri di più sul backup</string>
+    <string name="backup__enter_password_google_drive_msg1">Sembra che il tuo backup di Google Drive sia protetto da password. Inserisci la password corretta per procedere. Se vuoi eliminare il tuo backup di Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">clicca qui per sapere come</string>
+    <string name="settings__preferences">Preferenze</string>
+    <string name="settings__it_matters">È importante</string>
+    <string name="settings__manage_tokens">Gestisci i token</string>
+    <string name="settings__info_footer">Il tuo supporto ci permette di sviluppare nuove funzionalità e miglioramenti. Grazie!</string>
+    <string name="settings__trash_option">Ripristina dal cestino</string>
 </resources>

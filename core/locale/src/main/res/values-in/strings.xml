@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: id-ID, Indonesian (Indonesia)
  Exported by: rafakob
- Exported at: Thu, 16 Nov 2023 13:28:45 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -802,8 +802,20 @@
     <string name="externalimport__andotp_success_msg">File JSON ini mengizinkan pengimporan token dari andOTP.</string>
     <string name="externalimport__info_andotp_title">Impor token dari andOTP</string>
     <string name="externalimport__andotp_msg">Ekspor akun anda dari andOTP ke file JSON yang tidak terenkripsi dan unggah menggunakan tombol \"Pilih file JSON\". Ingatlah untuk menghapus file setelah impor berhasil.</string>
-    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
-    <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
-    <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
-    <string name="backup__import_invalid_version">The backup file you\'re attempting to import is not supported in this application version. The application only supports backup format versions up to %d, while the file you\'re importing is version %d.</string>
+    <string name="introduction__backup_description">Pada langkah selanjutnya, anda akan diminta untuk memilih akun Google Drive anda, tempat token 2FA akan disimpan dengan aman.</string>
+    <string name="introduction__backup_take_risk_cta">Saya akan mengambil risiko, tidak ada cadangan</string>
+    <string name="introduction__backup_success">Sinkronisasi Google Drive berhasil diaktifkan!</string>
+    <string name="backup__import_invalid_version">File cadangan yang anda coba impor tidak didukung dalam versi aplikasi ini. Aplikasi hanya mendukung versi format cadangan hingga %d, sedangkan file yang anda impor adalah versi %d.</string>
+    <string name="commons__pair">Pasangkan</string>
+    <string name="introduction__backup_icloud_title">Sinkronisasi dan pencadangan yang aman</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS menggunakan iCloud untuk pencadangan aman dan sinkronisasi token 2FA anda. Data cadangan **terenkripsi** disimpan di iCloud, dapat diakses **hanya melalui aplikasi 2FAS**. Selain itu, fitur ini membantu **pemulihan dan sinkronisasi** token di seluruh perangkat iOS. Ini diaktifkan secara default dan dapat dinonaktifkan kapan saja di pengaturan cadangan aplikasi.</string>
+    <string name="introduction__backup_icloud_cta">Pelajari lebih lanjut tentang pencadangan</string>
+    <string name="backup__enter_password_google_drive_msg1">Sepertinya file cadangan Google Drive Anda dilindungi kata sandi. Ketik kata sandi yang benar untuk melanjutkan. Jika Anda ingin menghapus file cadangan Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">ketuk di sini untuk melihat bagaimana</string>
+    <string name="settings__preferences">Preferensi</string>
+    <string name="settings__it_matters">Itu penting</string>
+    <string name="settings__manage_tokens">Mengelola token</string>
+    <string name="settings__info_footer">Dukungan Anda memungkinkan kami untuk mengembangkan fitur-fitur baru dan\nperbaikan. Terima kasih!</string>
+    <string name="settings__trash_option">Ambil dari tempat sampah</string>
 </resources>

@@ -3,10 +3,13 @@ package com.twofasapp.feature.browserext.ui.request
 import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationManagerCompat
@@ -27,13 +31,16 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.twofasapp.common.domain.Service
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.TopAppBarWithSearch
+import com.twofasapp.designsystem.common.TwDivider
 import com.twofasapp.designsystem.common.TwSwitch
-import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.service.DsServiceSimple
 import com.twofasapp.designsystem.service.asState
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
+import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -53,6 +60,7 @@ internal fun BrowserExtRequestScreen(
     ScreenContent(
         uiState = uiState,
         onSaveMyChoiceToggle = { viewModel.toggleSaveMyChoice() },
+        onSearchChanged = { viewModel.updateSearchQuery(it) },
         onServiceClick = { service ->
             activity.lifecycleScope.launch {
                 viewModel.assignDomain(service)
@@ -81,13 +89,29 @@ private fun ScreenContent(
     uiState: BrowserExtRequestUiState,
     onSaveMyChoiceToggle: () -> Unit = {},
     onServiceClick: (Service) -> Unit = {},
+    onSearchChanged: (String) -> Unit = {},
 ) {
     val strings = TwLocale.strings
+    val backDispatcher = LocalBackDispatcher
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = strings.browserRequestTitle) },
+        topBar = {
+            TopAppBarWithSearch(
+                title = strings.browserRequestTitle,
+                searchHint = stringResource(id = R.string.commons__search),
+                onSearchValueChanged = {
+                    onSearchChanged(it)
+                },
+            ) {
+                backDispatcher.onBackPressed()
+            }
+        }
     ) { padding ->
-        LazyColumn(modifier = Modifier.padding(padding)) {
+        LazyColumn(
+            modifier = Modifier
+                .padding(padding)
+                .imePadding()
+        ) {
             item {
                 Text(
                     text = strings.browserRequestInfo.format(uiState.browserName, uiState.domain),
@@ -146,6 +170,25 @@ private fun ScreenContent(
                     )
                 }
             }
+
+            if (uiState.suggestedServices.isEmpty() && uiState.otherServices.isEmpty()) {
+                item {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        TwDivider()
+                        Spacer(modifier = Modifier.height(24.dp))
+                        Text(
+                            text = strings.browserRequestEmpty,
+                            color = TwTheme.color.onSurfaceSecondary,
+                            style = TwTheme.typo.body2,
+                            modifier = Modifier,
+                        )
+                    }
+                }
+            }
         }
     }
 }
@@ -189,6 +232,19 @@ private fun Preview() {
             domain = "{domain}",
             suggestedServices = listOf(Service.Preview),
             otherServices = listOf(Service.Preview.copy(id = 1)),
+        ),
+    )
+}
+
+@Preview
+@Composable
+private fun Empty() {
+    ScreenContent(
+        uiState = BrowserExtRequestUiState(
+            browserName = "{browser}",
+            domain = "{domain}",
+            suggestedServices = emptyList(),
+            otherServices = emptyList(),
         ),
     )
 }

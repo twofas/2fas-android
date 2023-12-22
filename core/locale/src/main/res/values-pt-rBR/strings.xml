@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Thu, 16 Nov 2023 13:28:45 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -767,7 +767,7 @@
     <string name="social__social_media">Midias Sociais\u0020</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
-    <string name="social__twitter">X (antigo Twitter)</string>
+    <string name="social__twitter">X (anteriormente Twitter)</string>
     <string name="social__github">GitHub</string>
     <string name="social__linkedin">LinkedIn</string>
     <string name="social__reddit">Reddit</string>
@@ -785,20 +785,20 @@
     <string name="fingerprint__biometric_invalidated">O login biométrico está desativado, você pode mudar essa configuração nas configurações do sistema de biometria\u0020</string>
     <string name="tokens__last_pass_import">Importar código 2FA do aplicativo LastPass</string>
     <string name="tokens__last_pass_import_subtitle">Este código QR permite importar Códigos do LastPass</string>
-    <string name="tokens__add_with_guide">Guia me</string>
+    <string name="tokens__add_with_guide">Me guie</string>
     <string name="guides__select_title">Serviços do Navegador</string>
     <string name="guides__select_description">Selecione um serviço para parear com o 2FAS app</string>
-    <string name="guides__select_provide_guide">Você quer providenciar guias do 2FA para o seu serviço</string>
+    <string name="guides__select_provide_guide">Você quer providenciar guias do 2FA para o seu serviço?</string>
     <string name="guides__select_provide_guide_cta">Aplicar agora</string>
     <string name="color__pink">Rosa</string>
     <string name="color__brown">Marrom</string>
     <string name="tokens__other_methods_header">Outros métodos?\u0020</string>
-    <string name="tokens__camera_is_unavailable_app_permission">A câmera está indisponível. Verifique a permissão de acesso dos aplicativos nas Configurações do Sistema</string>
+    <string name="tokens__camera_is_unavailable_app_permission">A câmera está indisponível. Verifique a permissão de acesso do aplicativo nas Configurações do Sistema</string>
     <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
     <string name="tokens__camera_is_unavailable_app_permission_underline">\nConfigurações de Sistema</string>
     <string name="commons__text_short_title">O texto fornecido é muito curto (min. %d chars)</string>
     <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
-    <string name="tokens__add_manual_advanced_description_highlight">Não é recomendado</string>
+    <string name="tokens__add_manual_advanced_description_highlight">não é recomendado</string>
     <string name="guides__guide_init_title">Guia 2FAS</string>
     <string name="guides__guide_title">2FAS para %s</string>
     <string name="guides__guide_universal_title">Guia Universal 2FAS</string>
@@ -812,4 +812,16 @@
     <string name="introduction__backup_take_risk_cta">Vou correr o risco, sem backup</string>
     <string name="introduction__backup_success">Sincronização do Google Drive ativada com sucesso!</string>
     <string name="backup__import_invalid_version">O arquivo que você tentou importar não é suportado nesta versão do aplicativo.\u0020\u0020A versão do esquema de backup atualmente suportada é 3 e o arquivo é 4.</string>
+    <string name="commons__pair">Parear</string>
+    <string name="introduction__backup_icloud_title">Sincronização segura e copia de segurança</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">O 2FAS utiliza o iCloud para o backup seguro e sincronização de seus tokens 2FA. Os dados de backup **criptografados** são armazenados no iCloud, acessíveis **apenas pelo aplicativo 2FAS**. Além disso, essa funcionalidade auxilia na **recuperação e sincronização de tokens** entre dispositivos iOS.\n\nEssa opção é habilitada por padrão e pode ser desativada a qualquer momento nas configurações de backup do aplicativo.</string>
+    <string name="introduction__backup_icloud_cta">Leia mais sobre a cópia de segurança\u0020</string>
+    <string name="backup__enter_password_google_drive_msg1">Parece que o arquivo de backup do seu Google Drive está protegido por senha. Digite a senha correta para prosseguir. Se desejar apagar o arquivo de backup do Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">toque aqui para ver como</string>
+    <string name="settings__preferences">Preferências</string>
+    <string name="settings__it_matters">Isso importa</string>
+    <string name="settings__manage_tokens">Gerenciar tokens</string>
+    <string name="settings__info_footer">O seu apoio nos permite desenvolver novas funcionalidades e melhorias. Obrigado!\n\n\n\n\n\n</string>
+    <string name="settings__trash_option">Recuperar da lixeira</string>
 </resources>
