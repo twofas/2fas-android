@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Mon, 27 Nov 2023 14:14:13 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -819,4 +819,9 @@
     <string name="introduction__backup_icloud_cta">En apprendre plus sur la sauvegarde</string>
     <string name="backup__enter_password_google_drive_msg1">On dirait que votre fichier de sauvegarde Google Drive est protégé par un mot de passe. Renseignez correctement le mot de passe pour poursuivre. Si vous souhaitez effacer votre fichier de sauvegarde Google Drive,</string>
     <string name="backup__enter_password_google_drive_msg2">appuyez ici pour voir la manoeuvre</string>
+    <string name="settings__preferences">Préférences</string>
+    <string name="settings__it_matters">C\'est important</string>
+    <string name="settings__manage_tokens">Gérer les jetons</string>
+    <string name="settings__info_footer">Votre soutien nous permet de développer de nouvelles fonctionnalités et\naméliorations. Merci!</string>
+    <string name="settings__trash_option">Récupérer de la corbeille</string>
 </resources>

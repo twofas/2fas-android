@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Mon, 27 Nov 2023 14:14:13 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -823,6 +823,11 @@
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
     <string name="introduction__backup_icloud_description">2FAS використовує iCloud для безпечного резервного копіювання та синхронізації ваших 2FA токенів. *Зашифровані* дані резервної копії зберігаються в iCloud, доступні *тільки за допомогою програми 2FAS*. Крім того, ця функція допомагає *відновлювати та синхронізувати* токени на пристроях iOS.\\n\\nЇЇ увімкнено за умовчанням і можна будь-коли вимкнути в налаштуваннях резервного копіювання програми.</string>
     <string name="introduction__backup_icloud_cta">Дізнайтеся більше про резервне копіювання</string>
-    <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
-    <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
+    <string name="backup__enter_password_google_drive_msg1">Схоже, ваш файл резервної копії Google Drive захищено паролем. Щоб продовжити, введіть правильний пароль. Якщо ви хочете стерти файл резервної копії Google Диска,</string>
+    <string name="backup__enter_password_google_drive_msg2">натисніть тут, щоб побачити як</string>
+    <string name="settings__preferences">Preferences</string>
+    <string name="settings__it_matters">It matters</string>
+    <string name="settings__manage_tokens">Manage tokens</string>
+    <string name="settings__info_footer">Your support allows us to develop new features and\nimprovements. Thank you!</string>
+    <string name="settings__trash_option">Retrieve from trash</string>
 </resources>

@@ -166,6 +166,17 @@ internal class AddServiceManualViewModel(
         uiState.update { it.copy(digits = value) }
     }
 
+    fun tryInsertService() {
+        launchScoped {
+            if (servicesRepository.isServiceExists(uiState.value.serviceSecret.orEmpty())) {
+                uiState.update { it.copy(showServiceExistsDialog = true) }
+                return@launchScoped
+            }
+
+            addService()
+        }
+    }
+
     fun addService() {
         launchScoped {
             val state = uiState.value
@@ -214,5 +225,9 @@ internal class AddServiceManualViewModel(
     override fun onCleared() {
         servicesRepository.pushAddServiceAdvancedExpanded(false)
         super.onCleared()
+    }
+
+    fun dismissServiceExistsDialog() {
+        uiState.update { it.copy(showServiceExistsDialog = false) }
     }
 }

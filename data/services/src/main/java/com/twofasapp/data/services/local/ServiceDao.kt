@@ -21,9 +21,6 @@ interface ServiceDao {
     @Query("SELECT * FROM local_services WHERE id=:id")
     suspend fun select(id: Long): ServiceEntity
 
-    @Query("SELECT * FROM local_services WHERE secret=:secret")
-    suspend fun selectBySecret(secret: String): ServiceEntity?
-
     @Query("SELECT * FROM local_services WHERE id=:id")
     fun observe(id: Long): Flow<ServiceEntity>
 

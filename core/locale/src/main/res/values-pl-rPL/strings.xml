@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Mon, 27 Nov 2023 14:14:13 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -818,11 +818,16 @@
     <string name="introduction__backup_take_risk_cta">Zaryzykuję, bez kopii zapasowej</string>
     <string name="introduction__backup_success">Synchronizacja z Dyskiem Google została pomyślnie włączona!</string>
     <string name="backup__import_invalid_version">Plik kopii zapasowej który próbujesz zaimportować nie jest wspierany przez tą wersję aplikacji. Aplikacja obsługuje tylko pliki kopii zapasowej z wersji do %d, podczas gdy importowany plik jest z wersji %d.</string>
-    <string name="commons__pair">Pair</string>
+    <string name="commons__pair">Sparuj</string>
     <string name="introduction__backup_icloud_title">Bezpieczna synchronizacja i kopia zapasowa</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
     <string name="introduction__backup_icloud_description">2FAS używa iCloud do bezpiecznego tworzenia kopii zapasowych i synchronizacji tokenów 2FA. **Zaszyfrowane** dane kopii zapasowej są przechowywane w iCloud, dostępne **wyłącznie za pośrednictwem aplikacji 2FAS**. Dodatkowo funkcja ta pomaga **odzyskać i zsynchronizować** tokeny na urządzeniach z systemem iOS.\n\nJest ona domyślnie włączona i można ją wyłączyć w dowolnym momencie w ustawieniach kopii zapasowej w aplikacji.</string>
     <string name="introduction__backup_icloud_cta">Dowiedz się więcej na temat kopii zapasowej</string>
     <string name="backup__enter_password_google_drive_msg1">Wygląda na to, że plik kopii zapasowej na Dysku Google jest chroniony hasłem. Wprowadź prawidłowe hasło, aby kontynuować. Jeśli chcesz wyczyścić plik kopii zapasowej Dysku Google,</string>
     <string name="backup__enter_password_google_drive_msg2">dotknij tutaj aby zobaczyć jak</string>
+    <string name="settings__preferences">Preferencje</string>
+    <string name="settings__it_matters">To ważne</string>
+    <string name="settings__manage_tokens">Zarządzaj tokenami</string>
+    <string name="settings__info_footer">Twoje wsparcie pozwala nam rozwijać nowe funkcje i ulepszać aplikację. Dziękujemy!</string>
+    <string name="settings__trash_option">Przywróć z kosza</string>
 </resources>

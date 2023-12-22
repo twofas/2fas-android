@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: id-ID, Indonesian (Indonesia)
  Exported by: rafakob
- Exported at: Mon, 27 Nov 2023 14:14:13 -0800
+ Exported at: Thu, 21 Dec 2023 12:34:52 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -811,6 +811,11 @@
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
     <string name="introduction__backup_icloud_description">2FAS menggunakan iCloud untuk pencadangan aman dan sinkronisasi token 2FA anda. Data cadangan **terenkripsi** disimpan di iCloud, dapat diakses **hanya melalui aplikasi 2FAS**. Selain itu, fitur ini membantu **pemulihan dan sinkronisasi** token di seluruh perangkat iOS. Ini diaktifkan secara default dan dapat dinonaktifkan kapan saja di pengaturan cadangan aplikasi.</string>
     <string name="introduction__backup_icloud_cta">Pelajari lebih lanjut tentang pencadangan</string>
-    <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
-    <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
+    <string name="backup__enter_password_google_drive_msg1">Sepertinya file cadangan Google Drive Anda dilindungi kata sandi. Ketik kata sandi yang benar untuk melanjutkan. Jika Anda ingin menghapus file cadangan Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">ketuk di sini untuk melihat bagaimana</string>
+    <string name="settings__preferences">Preferensi</string>
+    <string name="settings__it_matters">Itu penting</string>
+    <string name="settings__manage_tokens">Mengelola token</string>
+    <string name="settings__info_footer">Dukungan Anda memungkinkan kami untuk mengembangkan fitur-fitur baru dan\nperbaikan. Terima kasih!</string>
+    <string name="settings__trash_option">Ambil dari tempat sampah</string>
 </resources>

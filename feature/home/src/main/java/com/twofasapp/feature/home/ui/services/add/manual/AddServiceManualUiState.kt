@@ -24,7 +24,8 @@ internal data class AddServiceManualUiState(
     val iconDark: String? = null,
     val brand: AddServiceManualViewModel.BrandIcon? = null,
 
-    val advancedExpanded: Boolean = false
+    val advancedExpanded: Boolean = false,
+    val showServiceExistsDialog: Boolean = false,
 ) {
     val isFormValid: Boolean
         get() = serviceNameValid && serviceSecretValid
