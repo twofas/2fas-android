@@ -23,16 +23,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.fragment.app.FragmentActivity
-import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwCircularProgressIndicator
+import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.feature.security.ui.biometric.BiometricDialog
+import com.twofasapp.locale.R
 
 internal sealed interface PinScreenState {
     object Loading : PinScreenState
@@ -132,19 +132,21 @@ internal fun PinScreen(
 
     if (showBiometricDialog && showBiometrics && biometricKeyProvider != null) {
         BiometricDialog(
-            activity = LocalContext.current as FragmentActivity,
+            title = stringResource(id = R.string.biometric_dialog_auth_title),
+            subtitle = stringResource(id = R.string.biometric_dialog_auth_subtitle),
+            negative = stringResource(id = R.string.biometric_dialog_auth_cancel),
             onSuccess = {
                 onBiometricsVerified.invoke()
                 showBiometricDialog = false
             },
-            onFailed = { showBiometricDialog = false },
-            onError = { showBiometricDialog = false },
-            onDismiss = { showBiometricDialog = false },
+            onDismiss = {
+                showBiometricDialog = false
+            },
             onBiometricInvalidated = { onBiometricsInvalidated() },
-            biometricKeyProvider = biometricKeyProvider,
-        ).show()
+            requireKeyValidation = true,
+            biometricKeyProvider = biometricKeyProvider
+        )
     }
-
 }
 
 @Stable

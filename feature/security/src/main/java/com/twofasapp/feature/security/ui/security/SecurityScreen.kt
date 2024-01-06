@@ -18,8 +18,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.FragmentActivity
-import com.twofasapp.feature.security.biometric.BiometricKeyProvider
+import com.twofasapp.data.session.domain.LockMethod
+import com.twofasapp.data.session.domain.PinTimeout
+import com.twofasapp.data.session.domain.PinTrials
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwTopAppBar
@@ -29,11 +30,9 @@ import com.twofasapp.designsystem.settings.SettingsDivider
 import com.twofasapp.designsystem.settings.SettingsHeader
 import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.designsystem.settings.SettingsSwitch
-import com.twofasapp.locale.R
-import com.twofasapp.data.session.domain.LockMethod
-import com.twofasapp.data.session.domain.PinTimeout
-import com.twofasapp.data.session.domain.PinTrials
+import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.feature.security.ui.biometric.BiometricDialog
+import com.twofasapp.locale.R
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 
@@ -232,19 +231,19 @@ internal fun SecurityScreen(
 
         if (showBiometricDialog) {
             BiometricDialog(
-                activity = activity!! as FragmentActivity,
-                titleRes = R.string.biometric_dialog_setup_title,
-                cancelRes = R.string.biometric_dialog_setup_cancel,
+                title = stringResource(id = R.string.biometric_dialog_setup_title),
+                subtitle = stringResource(id = R.string.biometric_dialog_auth_subtitle),
+                negative = stringResource(id = R.string.biometric_dialog_setup_cancel),
                 onSuccess = {
                     viewModel.updateBiometricLock(true)
                     showBiometricDialog = false
                 },
-                onFailed = { showBiometricDialog = false },
-                onError = { showBiometricDialog = false },
-                onDismiss = { showBiometricDialog = false },
-                onBiometricInvalidated = {},
-                biometricKeyProvider = biometricKeyProvider,
-            ).show()
+                onDismiss = {
+                    showBiometricDialog = false
+                },
+                requireKeyValidation = false,
+                biometricKeyProvider = biometricKeyProvider
+            )
         }
 
         if (showScreenshotsConfirmDialog) {
