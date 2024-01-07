@@ -4,7 +4,7 @@ import com.twofasapp.data.notifications.domain.Notification
 import com.twofasapp.data.notifications.local.model.NotificationEntity
 import com.twofasapp.data.notifications.remote.model.NotificationJson
 
-internal fun Notification.asEntity() = NotificationEntity(
+internal fun Notification.asEntity(periodicType: String? = null) = NotificationEntity(
     id = id,
     category = category.name,
     link = link,
@@ -13,6 +13,8 @@ internal fun Notification.asEntity() = NotificationEntity(
     push = push,
     platform = platform,
     isRead = isRead,
+    periodicType = periodicType,
+    internalRoute = internalRoute,
 )
 
 internal fun NotificationEntity.asDomain() = Notification(
@@ -24,6 +26,7 @@ internal fun NotificationEntity.asDomain() = Notification(
     push = push,
     platform = platform,
     isRead = isRead,
+    internalRoute = internalRoute,
 )
 
 internal fun NotificationJson.asDomain() = Notification(
@@ -35,4 +38,5 @@ internal fun NotificationJson.asDomain() = Notification(
     push = push,
     platform = platform,
     isRead = false,
+    internalRoute = null,
 )

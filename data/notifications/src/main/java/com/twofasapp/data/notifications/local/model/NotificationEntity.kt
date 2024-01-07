@@ -13,4 +13,6 @@ data class NotificationEntity(
     val push: Boolean,
     val platform: String,
     val isRead: Boolean,
+    val periodicType: String?,
+    val internalRoute: String?,
 )
