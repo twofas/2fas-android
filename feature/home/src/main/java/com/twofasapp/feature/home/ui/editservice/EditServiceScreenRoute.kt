@@ -82,6 +82,7 @@ internal fun EditServiceScreenRoute(
 
             composable(EditServiceScreen.ChangeBrand.route) {
                 ChangeBrandScreen(
+                    close = { navHostController.popBackStack() },
                     onRequestIconClick = { navHostController.navigate(EditServiceScreen.RequestIcon.route) },
                     viewModel = serviceViewModel,
                 )
