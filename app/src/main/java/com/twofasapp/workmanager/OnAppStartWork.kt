@@ -94,7 +94,7 @@ class OnAppStartWork(
                 notificationsRepository.insertPeriodicNotification(
                     type = type,
                     notification = createPeriodicNotification(
-                        category = Notification.Category.Youtube,
+                        category = Notification.Category.Tips,
                         message = context.getString(com.twofasapp.locale.R.string.periodic_notification_tips),
                         link = "https://2fas.com/2fasauth-tutorial",
                     )

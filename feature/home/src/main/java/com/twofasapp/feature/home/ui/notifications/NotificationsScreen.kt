@@ -120,6 +120,7 @@ private fun Notification(
                     Notification.Category.News -> R.drawable.notif_category_news
                     Notification.Category.Features -> R.drawable.notif_category_feature
                     Notification.Category.Youtube -> R.drawable.notif_category_video
+                    Notification.Category.Tips -> R.drawable.notif_category_tips
                 }
             ),
             contentDescription = null,

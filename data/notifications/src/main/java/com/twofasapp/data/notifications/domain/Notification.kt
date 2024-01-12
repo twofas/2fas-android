@@ -16,5 +16,6 @@ data class Notification(
         News("news"),
         Features("features"),
         Youtube("youtube"),
+        Tips("idea"),
     }
 }
