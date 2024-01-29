@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: en, English
  Exported by: rafakob
- Exported at: Sun, 07 Jan 2024 11:57:56 -0800
+ Exported at: Mon, 29 Jan 2024 01:31:21 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -828,4 +828,6 @@
     <string name="periodic_notification_backup">Enable 2FAS Backup &amp; Sync to ensure you never get locked out, even if you lose your phone - your peace of mind in one tap! 🔐📱</string>
     <string name="periodic_notification_browser_extension">Speed up your logins with the 2FAS Browser Extension! 🚀 Download now for a faster, more convenient authentication. 🌐✨</string>
     <string name="periodic_notification_donate">We\'re grateful for your support of 2FAS! 🌟 If you find our app helpful, consider making a donation to help us keep your digital world secure. Every bit helps! 🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
 </resources>
