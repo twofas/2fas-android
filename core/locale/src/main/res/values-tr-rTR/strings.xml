@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Mon, 29 Jan 2024 01:31:21 -0800
+ Exported at: Wed, 31 Jan 2024 06:46:21 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -822,7 +822,7 @@
     <string name="settings__preferences">Tercihler</string>
     <string name="settings__it_matters">Önemli olan</string>
     <string name="settings__manage_tokens">Jetonları yönetin</string>
-    <string name="settings__info_footer">Desteğiniz yeni özellikler ve geliştirmeler üzerinde\nçalışmamızı mümkün kılar. Teşekkür ederiz!</string>
+    <string name="settings__info_footer">Desteğiniz yeni özellikler ve geliştirmeler üzerinde çalışmamızı mümkün kılar. Teşekkür ederiz!</string>
     <string name="settings__trash_option">Çöp kutusundan geri yükle</string>
     <string name="periodic_notification_tips">2FAS üzerinde bizimle olduğunuzdan memnunuz! 🌟 Gelişmiş güvenlik 🔒için uygulamada yararlı İpuçları ve Püf Noktalarını 🛠️ keşfetmeye bir dakikanızı ayırın.\n</string>
     <string name="periodic_notification_backup">Telefonunuzu kaybetseniz dahi hesaplarınıza erişiminizi kaybetmemek için 2FAS Yedeklemesini ve Eşitlemesini etkinleştirin - tek dokunuşla dert mert kalmasın! 🔐📱</string>

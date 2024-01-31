@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Mon, 29 Jan 2024 01:31:21 -0800
+ Exported at: Wed, 31 Jan 2024 06:46:21 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -822,7 +822,7 @@
     <string name="settings__preferences">Voorkeuren</string>
     <string name="settings__it_matters">Het is belangrijk</string>
     <string name="settings__manage_tokens">Tokens beheren</string>
-    <string name="settings__info_footer">Dankzij uw steun kunnen we nieuwe functies en\nverbeteringen. Hartelijk dank!</string>
+    <string name="settings__info_footer">Dankzij uw steun kunnen we nieuwe functies en verbeteringen. Hartelijk dank!</string>
     <string name="settings__trash_option">Ophalen uit prullenbak</string>
     <string name="periodic_notification_tips">Fijn dat je bij ons op 2FAS bent! 🌟 Neem even de tijd om nuttige Tips &amp; Tricks 🛠️ in de app te ontdekken voor meer veiligheid 🔒.</string>
     <string name="periodic_notification_backup">Schakel 2FAS Backup &amp; Sync in om ervoor te zorgen dat u nooit wordt buitengesloten, zelfs als u uw telefoon verliest - uw gemoedsrust in één tik! 🔐📱</string>

@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: id-ID, Indonesian (Indonesia)
  Exported by: rafakob
- Exported at: Mon, 29 Jan 2024 01:31:21 -0800
+ Exported at: Wed, 31 Jan 2024 06:46:21 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -816,7 +816,7 @@
     <string name="settings__preferences">Preferensi</string>
     <string name="settings__it_matters">Itu penting</string>
     <string name="settings__manage_tokens">Mengelola token</string>
-    <string name="settings__info_footer">Dukungan Anda memungkinkan kami untuk mengembangkan fitur-fitur baru dan\nperbaikan. Terima kasih!</string>
+    <string name="settings__info_footer">Dukungan Anda memungkinkan kami untuk mengembangkan fitur-fitur baru dan perbaikan. Terima kasih!</string>
     <string name="settings__trash_option">Ambil dari tempat sampah</string>
     <string name="periodic_notification_tips">Glad you\'re with us at 2FAS! 🌟 Take a moment to discover helpful Tips &amp; Tricks 🛠️ in the app for enhanced security 🔒.</string>
     <string name="periodic_notification_backup">Aktifkan 2FAS Backup &amp; Sync untuk memastikan Anda tidak akan pernah terkunci, bahkan jika Anda kehilangan ponsel Anda - ketenangan pikiran Anda dalam satu ketukan! 🔐📱</string>

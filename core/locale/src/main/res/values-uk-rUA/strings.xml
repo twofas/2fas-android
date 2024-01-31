@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Mon, 29 Jan 2024 01:31:21 -0800
+ Exported at: Wed, 31 Jan 2024 06:46:21 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -828,7 +828,7 @@
     <string name="settings__preferences">Налаштування</string>
     <string name="settings__it_matters">Це важливо</string>
     <string name="settings__manage_tokens">Управління токенами</string>
-    <string name="settings__info_footer">Ваша підтримка допомагає нам розробляти нові функції і\nпокращення. Дякуємо вам!</string>
+    <string name="settings__info_footer">Ваша підтримка допомагає нам розробляти нові функції і покращення. Дякуємо вам!</string>
     <string name="settings__trash_option">Відновити з кошика</string>
     <string name="periodic_notification_tips">Раді, що ви з нами в 2FAS! 🌟 Знайдіть хвилинку, щоб подивитися корисні поради та підказки 🛠️ у додатку для покращеної безпеки 🔒.</string>
     <string name="periodic_notification_backup">Увімкніть 2FAS Backup &amp; Sync, щоб ніколи не втратити доступ, навіть якщо ви загубите свій телефон – ваш спокій чекає за одним дотиком! 🔐📱</string>
