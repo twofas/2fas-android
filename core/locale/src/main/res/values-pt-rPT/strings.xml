@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Sun, 07 Jan 2024 11:57:56 -0800
+ Exported at: Wed, 31 Jan 2024 06:46:20 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -819,13 +819,15 @@
     <string name="introduction__backup_icloud_cta">Saiba mais sobre a cópia de segurança</string>
     <string name="backup__enter_password_google_drive_msg1">Parece que o seu ficheiro de cópia de segurança do Google Drive está protegido por palavra-passe. Digite a senha correta para continuar. Se pretender limpar o ficheiro de cópia de segurança do Google Drive,</string>
     <string name="backup__enter_password_google_drive_msg2">toque aqui para ver como</string>
-    <string name="settings__preferences">Preferences</string>
-    <string name="settings__it_matters">It matters</string>
-    <string name="settings__manage_tokens">Manage tokens</string>
-    <string name="settings__info_footer">Your support allows us to develop new features and\nimprovements. Thank you!</string>
-    <string name="settings__trash_option">Retrieve from trash</string>
-    <string name="periodic_notification_tips">Glad you\'re with us at 2FAS! 🌟 Take a moment to discover helpful Tips &amp; Tricks 🛠️ in the app for enhanced security 🔒.</string>
-    <string name="periodic_notification_backup">Enable 2FAS Backup &amp; Sync to ensure you never get locked out, even if you lose your phone - your peace of mind in one tap! 🔐📱</string>
-    <string name="periodic_notification_browser_extension">Speed up your logins with the 2FAS Browser Extension! 🚀 Download now for a faster, more convenient authentication. 🌐✨</string>
-    <string name="periodic_notification_donate">We\'re grateful for your support of 2FAS! 🌟 If you find our app helpful, consider making a donation to help us keep your digital world secure. Every bit helps! 🙏💙</string>
+    <string name="settings__preferences">Preferências</string>
+    <string name="settings__it_matters">É importante</string>
+    <string name="settings__manage_tokens">Gerenciar tokens</string>
+    <string name="settings__info_footer">O seu apoio nos permite desenvolver novas funcionalidades e melhorias. Obrigado!</string>
+    <string name="settings__trash_option">Recuperar da lixeira</string>
+    <string name="periodic_notification_tips">Que bom que você está conosco na 2FAS! 🌟 Tire um momento para descobrir Dicas e Truques úteis 🛠️ no aplicativo para uma segurança aprimorada 🔒.</string>
+    <string name="periodic_notification_backup">Ative o Backup e Sincronização do 2FAS para garantir que você nunca seja bloqueado, mesmo se perder seu telefone - sua tranquilidade em um toque! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Acelere seus acessos com a Extensão do Navegador 2FAS! 🚀 Faça o download agora para uma autenticação mais rápida e conveniente. 🌐✨</string>
+    <string name="periodic_notification_donate">Estamos gratos pelo seu apoio ao 2FAS! 🌟 Se você achar nosso aplicativo útil, considere fazer uma doação para nos ajudar a manter seu mundo digital seguro. Cada contribuição é valiosa! 🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
 </resources>

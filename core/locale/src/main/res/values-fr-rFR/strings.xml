@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sun, 07 Jan 2024 11:57:56 -0800
+ Exported at: Wed, 31 Jan 2024 06:46:20 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -822,10 +822,12 @@
     <string name="settings__preferences">Préférences</string>
     <string name="settings__it_matters">C\'est important</string>
     <string name="settings__manage_tokens">Gérer les jetons</string>
-    <string name="settings__info_footer">Votre soutien nous permet de développer de nouvelles fonctionnalités et\naméliorations. Merci!</string>
+    <string name="settings__info_footer">Votre soutien nous permet de développer de nouvelles fonctionnalités et améliorations. Merci!</string>
     <string name="settings__trash_option">Récupérer de la corbeille</string>
-    <string name="periodic_notification_tips">Glad you\'re with us at 2FAS! 🌟 Take a moment to discover helpful Tips &amp; Tricks 🛠️ in the app for enhanced security 🔒.</string>
-    <string name="periodic_notification_backup">Enable 2FAS Backup &amp; Sync to ensure you never get locked out, even if you lose your phone - your peace of mind in one tap! 🔐📱</string>
-    <string name="periodic_notification_browser_extension">Speed up your logins with the 2FAS Browser Extension! 🚀 Download now for a faster, more convenient authentication. 🌐✨</string>
-    <string name="periodic_notification_donate">We\'re grateful for your support of 2FAS! 🌟 If you find our app helpful, consider making a donation to help us keep your digital world secure. Every bit helps! 🙏💙</string>
+    <string name="periodic_notification_tips">Heureux que vous soyez parmi nous à la 2FAS ! 🌟 Prenez un moment pour découvrir des conseils et des astuces pratiques 🛠️ dans l\'application pour une sécurité améliorée 🔒.</string>
+    <string name="periodic_notification_backup">Activez la sauvegarde &amp; la synchronisation 2FAS pour vous assurer que vous ne soyez jamais bloqué, même si vous perdez votre téléphone -\u0020\u0020votre tranquillité d\'esprit en un seul geste!\u0020\u0020🔐📱</string>
+    <string name="periodic_notification_browser_extension">Accélérez vos authentifications avec l\'extension pour naviguateur 2FAS! 🚀 Téléchargez la dès maintenant pour des authentifications plus rapides, plus pratiques. 🌐✨</string>
+    <string name="periodic_notification_donate">Nous vous sommes reconnaisant pour votre aide à 2FAS! 🌟 Si vous trouvez que notre application vous a aidé, considérez que nous faire un don nous aidera à garder notre monde digital sécurisé. Chaque petit bout aide! 🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
 </resources>
