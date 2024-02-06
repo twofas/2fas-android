@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Thu, 21 Dec 2023 12:34:52 -0800
+ Exported at: Wed, 31 Jan 2024 06:46:20 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -830,4 +830,10 @@
     <string name="settings__manage_tokens">Zarządzaj tokenami</string>
     <string name="settings__info_footer">Twoje wsparcie pozwala nam rozwijać nowe funkcje i ulepszać aplikację. Dziękujemy!</string>
     <string name="settings__trash_option">Przywróć z kosza</string>
+    <string name="periodic_notification_tips">Cieszymy się, że jesteś z nami w 2FAS! 🌟 Poświęć chwilę, aby odkryć przydatne porady i wskazówki 🛠️ w aplikacji dla większego bezpieczeństwa 🔒.</string>
+    <string name="periodic_notification_backup">Włącz funkcję kopii zapasowej i synchronizacji 2FAS, aby upewnić się że nigdy nie stracisz dostępu do kont, nawet jeśli zgubisz telefon - spokój ducha za jednym dotknięciem! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Przyśpiesz proces logowania z Rozszerzeniem Przeglądarki 2FAS! 🚀 Pobierz teraz, aby uzyskać szybsze i wygodniejsze uwierzytelnianie. 🌐✨</string>
+    <string name="periodic_notification_donate">Dziękujemy za wspieranie 2FAS! 🌟Jeśli uważasz naszą aplikację za pomocną, rozważ przekazanie darowizny, aby pomóc nam w chronieniu Twojego cyfrowego świata. Każda złotówka pomaga! 🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
 </resources>

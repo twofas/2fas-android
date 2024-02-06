@@ -1,6 +1,11 @@
 package com.twofasapp.data.notifications.local
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
+import androidx.room.Update
 import com.twofasapp.data.notifications.local.model.NotificationEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -44,6 +49,9 @@ interface NotificationsDao {
     @Query("DELETE FROM notifications WHERE id IN (:ids)")
     fun delete(ids: List<String>)
 
-    @Query("DELETE FROM notifications")
+    @Query("DELETE FROM notifications WHERE periodicType IS NOT NULL")
+    fun deleteAllPeriodic()
+
+    @Query("DELETE FROM notifications WHERE periodicType IS NULL")
     fun deleteAll()
 }

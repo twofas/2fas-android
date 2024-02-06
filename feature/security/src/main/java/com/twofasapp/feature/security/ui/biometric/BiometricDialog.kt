@@ -1,82 +1,106 @@
 package com.twofasapp.feature.security.ui.biometric
 
 import android.security.keystore.KeyPermanentlyInvalidatedException
-import android.widget.Toast
 import androidx.biometric.BiometricPrompt
+import androidx.biometric.BiometricPrompt.PromptInfo
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.twofasapp.designsystem.ktx.currentActivity
+import com.twofasapp.designsystem.ktx.toastLong
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
-import com.twofasapp.locale.R
-import java.util.concurrent.Executor
 import javax.crypto.Cipher
+import javax.crypto.SecretKey
 
-internal class BiometricDialog(
-    private val activity: FragmentActivity,
-    private val fragment: Fragment? = null,
-    private val titleRes: Int = R.string.biometric_dialog_auth_title,
-    private val subtitleRes: Int = R.string.biometric_dialog_auth_subtitle,
-    private val cancelRes: Int = R.string.biometric_dialog_auth_cancel,
-    private val onSuccess: () -> Unit,
-    private val onFailed: () -> Unit,
-    private val onError: () -> Unit,
-    private val onDismiss: () -> Unit = {},
-    private val onBiometricInvalidated: () -> Unit = {},
-    private val biometricKeyProvider: BiometricKeyProvider,
+@Composable
+fun BiometricDialog(
+    title: String,
+    subtitle: String,
+    negative: String,
+    requireKeyValidation: Boolean,
+    onSuccess: () -> Unit,
+    onDismiss: () -> Unit,
+    onBiometricInvalidated: () -> Unit = {},
+    biometricKeyProvider: BiometricKeyProvider,
 ) {
+    val context = LocalContext.current
+    val activity = LocalContext.currentActivity as? FragmentActivity
 
-    private lateinit var executor: Executor
-    private lateinit var biometricPrompt: BiometricPrompt
-    private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    if (activity == null) {
+        context.toastLong("Could not find FragmentActivity. Restart the app and try again.")
+        onDismiss()
+        return
+    }
 
-    fun show() {
-        executor = ContextCompat.getMainExecutor(activity)
+    val executor = ContextCompat.getMainExecutor(activity)
 
-        val callback: BiometricPrompt.AuthenticationCallback = object : BiometricPrompt.AuthenticationCallback() {
-            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                super.onAuthenticationSucceeded(result)
-                onSuccess.invoke()
-            }
+    val promptInfo = PromptInfo.Builder()
+        .setTitle(title)
+        .setSubtitle(subtitle)
+        .setNegativeButtonText(negative)
+        .build()
 
-            override fun onAuthenticationFailed() {
-                super.onAuthenticationFailed()
-                onFailed.invoke()
-            }
-
-            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                super.onAuthenticationError(errorCode, errString)
-                if (errorCode == 13 || errorCode == 10) {
-                    // Cancel action
-                    onDismiss.invoke()
-                    return
-                }
-
-                onError.invoke()
-                Toast.makeText(activity, "$errString", Toast.LENGTH_SHORT).show()
-            }
+    val callback = object : BiometricPrompt.AuthenticationCallback() {
+        override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+            super.onAuthenticationSucceeded(result)
+            onSuccess()
         }
 
-        biometricPrompt = if (fragment != null) {
-            BiometricPrompt(fragment, executor, callback)
-        } else {
-            BiometricPrompt(activity, executor, callback)
+        override fun onAuthenticationFailed() {
+            super.onAuthenticationFailed()
+            // Failed eg. due to wrong fingerprint
+            onDismiss()
         }
 
-        promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle(activity.getString(titleRes))
-            .setSubtitle(activity.getString(subtitleRes))
-            .setNegativeButtonText(activity.getString(cancelRes))
-            .build()
-
-        try {
-            val cipher = Cipher.getInstance(BiometricKeyProvider.TRANSFORMATION)
-            cipher.init(Cipher.ENCRYPT_MODE, biometricKeyProvider.getSecretKey())
-            biometricPrompt.authenticate(promptInfo, BiometricPrompt.CryptoObject(cipher))
-        } catch (e: KeyPermanentlyInvalidatedException) {
-            onBiometricInvalidated()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            onError()
+        override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+            super.onAuthenticationError(errorCode, errString)
+            if (errorCode == 13 || errorCode == 10) {
+                // Cancel action
+                onDismiss()
+                return
+            }
+            context.toastLong("Error: $errString")
+            onDismiss()
         }
     }
+
+    val biometricPrompt = BiometricPrompt(activity, executor, callback)
+
+    LaunchedEffect(Unit) {
+        try {
+            authenticate(
+                biometricPrompt = biometricPrompt,
+                promptInfo = promptInfo,
+                secretKey = biometricKeyProvider.getSecretKey()
+            )
+        } catch (e: KeyPermanentlyInvalidatedException) {
+            if (requireKeyValidation) {
+                onBiometricInvalidated()
+            } else {
+                biometricKeyProvider.deleteSecretKey()
+
+                authenticate(
+                    biometricPrompt = biometricPrompt,
+                    promptInfo = promptInfo,
+                    secretKey = biometricKeyProvider.getSecretKey()
+                )
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            context.toastLong("Error: ${e.message}")
+            onDismiss()
+        }
+    }
+}
+
+private fun authenticate(
+    biometricPrompt: BiometricPrompt,
+    promptInfo: PromptInfo,
+    secretKey: SecretKey,
+) {
+    val cipher = Cipher.getInstance(BiometricKeyProvider.TRANSFORMATION)
+    cipher.init(Cipher.ENCRYPT_MODE, secretKey)
+    biometricPrompt.authenticate(promptInfo, BiometricPrompt.CryptoObject(cipher))
 }

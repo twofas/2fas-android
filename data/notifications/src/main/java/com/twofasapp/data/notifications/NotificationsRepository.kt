@@ -1,6 +1,7 @@
 package com.twofasapp.data.notifications
 
 import com.twofasapp.data.notifications.domain.Notification
+import com.twofasapp.data.notifications.domain.PeriodicNotificationType
 import kotlinx.coroutines.flow.Flow
 
 interface NotificationsRepository {
@@ -8,4 +9,10 @@ interface NotificationsRepository {
     suspend fun fetchNotifications(sinceMillis: Long)
     suspend fun readAllNotifications()
     fun hasUnreadNotifications(): Flow<Boolean>
+    suspend fun getPeriodicNotificationCounter(): Int
+    suspend fun setPeriodicNotificationCounter(counter: Int)
+    suspend fun getPeriodicNotificationTimestamp(): Long
+    suspend fun setPeriodicNotificationTimestamp(timestamp: Long)
+    suspend fun clearPeriodicNotifications()
+    suspend fun insertPeriodicNotification(type: PeriodicNotificationType, notification: Notification)
 }

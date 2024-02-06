@@ -1,25 +1,25 @@
 [versions]
-accompanist = "0.32.0"
-agp = "8.2.0-rc03"
-cameraX = "1.3.0"
-coil = "2.4.0"
+accompanist = "0.33.2-alpha"
+agp = "8.3.0-beta02"
+cameraX = "1.3.1"
+coil = "2.5.0"
 commonmark = "0.21.0"
-compose = "1.5.4"
-composeActivity = "1.8.0"
-composeCompiler = "1.5.3"
+compose = "1.6.0-beta03"
+composeActivity = "1.8.2"
+composeCompiler = "1.5.7"
 core = "1.12.0"
-firebase = "32.6.0"
+firebase = "32.7.0"
 glance = "1.0.0"
 junit = "4.13.2"
-koin = "3.5.0"
-koinAndroid = "3.5.0"
-kotlin = "1.9.10"
+koin = "3.5.3"
+koinAndroid = "3.5.3"
+kotlin = "1.9.21"
 kotlinCoroutines = "1.7.3"
-kotlinKsp = "1.9.10-1.0.13"
+kotlinKsp = "1.9.21-1.0.16"
 ktor = "2.3.4"
-lifecycle = "2.7.0-rc01"
-material3 = "1.2.0-alpha08"
-room = "2.6.0"
+lifecycle = "2.7.0-rc02"
+material3 = "1.2.0-beta01"
+room = "2.6.1"
 
 [libraries]
 accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
@@ -27,10 +27,10 @@ accompanistPagerIndicators = { module = "com.google.accompanist:accompanist-page
 accompanistPermissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 accompanistSystemUi = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 activityX = { module = "androidx.activity:activity-ktx", version.ref = "composeActivity" }
-apacheCommonsCodec = "commons-codec:commons-codec:1.15"
+apacheCommonsCodec = "commons-codec:commons-codec:1.16.0"
 appcompat = "androidx.appcompat:appcompat:1.6.1"
 barcodeScanning = "com.google.mlkit:barcode-scanning:17.2.0"
-biometric = "androidx.biometric:biometric:1.1.0"
+biometric = "androidx.biometric:biometric-ktx:1.2.0-alpha05"
 camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraX" }
 camera2Lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraX" }
 camera2View = { module = "androidx.camera:camera-view", version.ref = "cameraX" }
@@ -44,7 +44,7 @@ composeActivity = { module = "androidx.activity:activity-compose", version.ref =
 composeAnimation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
 composeCompiler = { module = "androidx.compose.compiler:compiler", version.ref = "composeCompiler" }
 composeMaterial2 = { module = "androidx.compose.material:material", version.ref = "compose" }
-composeNavigation = "androidx.navigation:navigation-compose:2.7.5"
+composeNavigation = "androidx.navigation:navigation-compose:2.7.6"
 composeUi = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 composeUiUtil = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
@@ -67,7 +67,7 @@ koinCompose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "
 koinTest = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 koinTestJunit = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
 kotlinCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
-kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
+kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2"
 ktorAuth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 ktorContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktorCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
@@ -81,7 +81,7 @@ lifecycleLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", vers
 lifecycleProcess = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
 lifecycleSavedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
 lottie = "com.airbnb.android:lottie-compose:5.0.3"
-material2 = "com.google.android.material:material:1.10.0"
+material2 = "com.google.android.material:material:1.11.0"
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 material3Window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
 playReview = "com.google.android.play:review:2.0.1"
@@ -95,12 +95,12 @@ roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 secureStorage = "de.adorsys.android:securestoragelibrary:1.2.4"
-securityCrypto = "androidx.security:security-crypto:1.1.0-alpha05"
+securityCrypto = "androidx.security:security-crypto:1.1.0-alpha06"
 sharedPrefs = "androidx.preference:preference-ktx:1.2.1"
 sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.4"
 timber = "com.jakewharton.timber:timber:5.0.1"
-webkit = "androidx.webkit:webkit:1.8.0"
-workManager = "androidx.work:work-runtime-ktx:2.8.1"
+webkit = "androidx.webkit:webkit:1.9.0"
+workManager = "androidx.work:work-runtime-ktx:2.9.0"
 
 [bundles]
 accompanist = [
@@ -179,7 +179,7 @@ viewModel = [
 [plugins]
 agpApplication = { id = "com.android.application", version.ref = "agp" }
 agpLibrary = { id = "com.android.library", version.ref = "agp" }
-gradleVersions = "com.github.ben-manes.versions:0.47.0"
+gradleVersions = "com.github.ben-manes.versions:0.50.0"
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlinParcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
@@ -189,4 +189,4 @@ protobuf = "com.google.protobuf:0.9.1"
 twofasAndroidApplication = "twofas.androidApplication:unspecified"
 twofasAndroidLibrary = "twofas.androidLibrary:unspecified"
 twofasCompose = "twofas.compose:unspecified"
-versionCatalogUpdate = "nl.littlerobots.version-catalog-update:0.8.1"
+versionCatalogUpdate = "nl.littlerobots.version-catalog-update:0.8.3"

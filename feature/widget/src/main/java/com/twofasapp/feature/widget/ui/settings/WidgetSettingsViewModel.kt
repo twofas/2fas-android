@@ -7,12 +7,16 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.WidgetsRepository
 import com.twofasapp.data.services.domain.Widget
 import com.twofasapp.data.services.domain.WidgetService
+import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.data.session.domain.ServicesSort
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 
 class WidgetSettingsViewModel(
     private val widgetsRepository: WidgetsRepository,
     private val servicesRepository: ServicesRepository,
+    private val settingsRepository: SettingsRepository,
     private val timeProvider: TimeProvider,
 ) : ViewModel() {
 
@@ -21,11 +25,16 @@ class WidgetSettingsViewModel(
 
     init {
         launchScoped {
-            servicesRepository.observeServices().collect { services ->
+            combine(servicesRepository.observeServices(), settingsRepository.observeAppSettings()) { services, appSettings -> services to appSettings }.collect { (services, appSettings) ->
                 uiState.update {
                     it.copy(
                         loading = false,
-                        services = services,
+                        services = services.sortedBy { service ->
+                            when (appSettings.servicesSort) {
+                                ServicesSort.Alphabetical -> service.name.lowercase()
+                                ServicesSort.Manual -> null
+                            }
+                        },
                     )
                 }
             }
@@ -59,12 +68,13 @@ class WidgetSettingsViewModel(
             widgetsRepository.saveWidget(
                 widget.copy(
                     lastInteraction = timeProvider.systemCurrentTime(),
-                    services = uiState.value.selected.map { serviceId ->
-                        WidgetService(
-                            service = uiState.value.services.first { it.id == serviceId },
-                            revealed = false,
-                        )
-                    }
+                    services = uiState.value.services.filter { uiState.value.selected.contains(it.id) }
+                        .map { service ->
+                            WidgetService(
+                                service = service,
+                                revealed = false,
+                            )
+                        },
                 )
             )
         }

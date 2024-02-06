@@ -38,12 +38,14 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun NotificationsScreen(
     viewModel: NotificationsViewModel = koinViewModel(),
+    openInternalRoute: (String) -> Unit,
 ) {
     val notifications by viewModel.notificationsList.collectAsStateWithLifecycle()
 
     ScreenContent(
         notifications = notifications,
-        onNotificationClick = { viewModel.onNotificationClick(it) }
+        onNotificationClick = { viewModel.onNotificationClick(it) },
+        onInternalRouteClick = openInternalRoute,
     )
 }
 
@@ -51,6 +53,7 @@ internal fun NotificationsScreen(
 private fun ScreenContent(
     notifications: List<Notification>,
     onNotificationClick: (Notification) -> Unit,
+    onInternalRouteClick: (String) -> Unit,
 ) {
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
@@ -77,9 +80,23 @@ private fun ScreenContent(
                 Notification(
                     notification = notification,
                     modifier = Modifier
-                        .clickable {
+                        .clickable(
+                            notification.link.isNotBlank() || notification.internalRoute
+                                .isNullOrBlank()
+                                .not()
+                        ) {
                             onNotificationClick(notification)
-                            uriHandler.openSafely(notification.link, context)
+
+                            if (notification.link.isNotBlank()) {
+                                uriHandler.openSafely(notification.link, context)
+                            }
+
+                            if (notification.internalRoute
+                                    .isNullOrBlank()
+                                    .not()
+                            ) {
+                                onInternalRouteClick(notification.internalRoute.orEmpty())
+                            }
                         }
                         .background(if (notification.isRead) TwTheme.color.surface else TwTheme.color.background)
                         .padding(16.dp)
@@ -103,6 +120,7 @@ private fun Notification(
                     Notification.Category.News -> R.drawable.notif_category_news
                     Notification.Category.Features -> R.drawable.notif_category_feature
                     Notification.Category.Youtube -> R.drawable.notif_category_video
+                    Notification.Category.Tips -> R.drawable.notif_category_tips
                 }
             ),
             contentDescription = null,
@@ -133,6 +151,8 @@ private fun Notification(
 
         Spacer(modifier = Modifier.width(24.dp))
 
-        Icon(painter = TwIcons.ExternalLink, contentDescription = null, tint = TwTheme.color.iconTint)
+        if (notification.link.isNotBlank()) {
+            Icon(painter = TwIcons.ExternalLink, contentDescription = null, tint = TwTheme.color.iconTint)
+        }
     }
 }

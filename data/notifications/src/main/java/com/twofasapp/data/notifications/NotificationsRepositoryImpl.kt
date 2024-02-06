@@ -2,6 +2,7 @@ package com.twofasapp.data.notifications
 
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.data.notifications.domain.Notification
+import com.twofasapp.data.notifications.domain.PeriodicNotificationType
 import com.twofasapp.data.notifications.local.NotificationsLocalSource
 import com.twofasapp.data.notifications.mappper.asDomain
 import com.twofasapp.data.notifications.remote.NotificationsRemoteSource
@@ -46,5 +47,41 @@ internal class NotificationsRepositoryImpl(
 
     private fun List<Notification>.sortedByTime(): List<Notification> {
         return sortedWith(compareBy({ it.isRead }, { it.publishTime.unaryMinus() }))
+    }
+
+    override suspend fun getPeriodicNotificationCounter(): Int {
+        return withContext(dispatchers.io) {
+            local.getPeriodicNotificationCounter()
+        }
+    }
+
+    override suspend fun setPeriodicNotificationCounter(counter: Int) {
+        withContext(dispatchers.io) {
+            local.setPeriodicNotificationCounter(counter)
+        }
+    }
+
+    override suspend fun getPeriodicNotificationTimestamp(): Long {
+        return withContext(dispatchers.io) {
+            local.getPeriodicNotificationTimestamp()
+        }
+    }
+
+    override suspend fun setPeriodicNotificationTimestamp(timestamp: Long) {
+        withContext(dispatchers.io) {
+            local.setPeriodicNotificationTimestamp(timestamp)
+        }
+    }
+
+    override suspend fun clearPeriodicNotifications() {
+        withContext(dispatchers.io) {
+            local.clearPeriodicNotifications()
+        }
+    }
+
+    override suspend fun insertPeriodicNotification(type: PeriodicNotificationType, notification: Notification) {
+        withContext(dispatchers.io) {
+            local.insertPeriodicNotification(type, notification)
+        }
     }
 }

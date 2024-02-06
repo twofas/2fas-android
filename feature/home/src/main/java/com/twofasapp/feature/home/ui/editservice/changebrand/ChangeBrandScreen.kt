@@ -24,9 +24,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -52,6 +54,7 @@ import timber.log.Timber
 
 @Composable
 internal fun ChangeBrandScreen(
+    close: () -> Unit,
     onRequestIconClick: () -> Unit,
     viewModel: EditServiceViewModel = getViewModel(),
     brandViewModel: ChangeBrandViewModel = koinViewModel(),
@@ -59,10 +62,18 @@ internal fun ChangeBrandScreen(
     val service = viewModel.uiState.collectAsState().value.service
     val state = brandViewModel.uiState.collectAsState().value
     val listState = rememberLazyListState()
-    val coroutineScope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
     var showBrandingDialog = remember { mutableStateOf(false) }
+    var finish by remember { mutableStateOf(false) }
     val backDispatcher = LocalBackDispatcher
     val uriHandler = LocalUriHandler.current
+
+
+    LaunchedEffect(finish) {
+        if (finish) {
+            close()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -165,7 +176,7 @@ internal fun ChangeBrandScreen(
                                         .clip(CircleShape)
                                         .clickable {
                                             viewModel.updateBrand(it)
-                                            backDispatcher.onBackPressed()
+                                            finish = true
                                         }
                                         .padding(16.dp)
                                 )
@@ -211,7 +222,7 @@ internal fun ChangeBrandScreen(
         LaunchedEffect(Unit) {
             if (state.scrollTo.not()) return@LaunchedEffect
 
-            coroutineScope.launch {
+            scope.launch {
 
                 var selectedIndex = -1
                 var i = 0

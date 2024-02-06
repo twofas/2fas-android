@@ -45,7 +45,19 @@ fun NavGraphBuilder.homeNavigation(
     }
 
     composable(Screen.Notifications.route) {
-        NotificationsScreen()
+        NotificationsScreen(
+            openInternalRoute = { route ->
+                when (route) {
+                    Screen.Backup.route -> {
+                        navController.navigate(Screen.Backup.routeWithArgs(NavArg.TurnOnBackup to true))
+                    }
+
+                    else -> {
+                        navController.navigate(route)
+                    }
+                }
+            }
+        )
     }
 
     composable(Screen.EditService.route, listOf(NavArg.ServiceId)) {

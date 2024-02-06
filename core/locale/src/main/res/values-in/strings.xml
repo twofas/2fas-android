@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: id-ID, Indonesian (Indonesia)
  Exported by: rafakob
- Exported at: Thu, 21 Dec 2023 12:34:52 -0800
+ Exported at: Wed, 31 Jan 2024 06:46:21 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -816,6 +816,12 @@
     <string name="settings__preferences">Preferensi</string>
     <string name="settings__it_matters">Itu penting</string>
     <string name="settings__manage_tokens">Mengelola token</string>
-    <string name="settings__info_footer">Dukungan Anda memungkinkan kami untuk mengembangkan fitur-fitur baru dan\nperbaikan. Terima kasih!</string>
+    <string name="settings__info_footer">Dukungan Anda memungkinkan kami untuk mengembangkan fitur-fitur baru dan perbaikan. Terima kasih!</string>
     <string name="settings__trash_option">Ambil dari tempat sampah</string>
+    <string name="periodic_notification_tips">Glad you\'re with us at 2FAS! 🌟 Take a moment to discover helpful Tips &amp; Tricks 🛠️ in the app for enhanced security 🔒.</string>
+    <string name="periodic_notification_backup">Aktifkan 2FAS Backup &amp; Sync untuk memastikan Anda tidak akan pernah terkunci, bahkan jika Anda kehilangan ponsel Anda - ketenangan pikiran Anda dalam satu ketukan! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Percepat login Anda dengan Ekstensi Peramban 2FAS! 🚀 Unduh sekarang untuk autentikasi yang lebih cepat dan nyaman. 🌐✨</string>
+    <string name="periodic_notification_donate">Kami berterima kasih atas dukungan Anda terhadap 2FAS! 🌟 Jika Anda merasa aplikasi kami bermanfaat, pertimbangkan untuk memberikan donasi untuk membantu kami menjaga keamanan dunia digital Anda. Setiap bantuan akan sangat membantu! 🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
 </resources>

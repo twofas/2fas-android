@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Thu, 21 Dec 2023 12:34:52 -0800
+ Exported at: Wed, 31 Jan 2024 06:46:21 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -825,9 +825,15 @@
     <string name="introduction__backup_icloud_cta">Дізнайтеся більше про резервне копіювання</string>
     <string name="backup__enter_password_google_drive_msg1">Схоже, ваш файл резервної копії Google Drive захищено паролем. Щоб продовжити, введіть правильний пароль. Якщо ви хочете стерти файл резервної копії Google Диска,</string>
     <string name="backup__enter_password_google_drive_msg2">натисніть тут, щоб побачити як</string>
-    <string name="settings__preferences">Preferences</string>
-    <string name="settings__it_matters">It matters</string>
-    <string name="settings__manage_tokens">Manage tokens</string>
-    <string name="settings__info_footer">Your support allows us to develop new features and\nimprovements. Thank you!</string>
-    <string name="settings__trash_option">Retrieve from trash</string>
+    <string name="settings__preferences">Налаштування</string>
+    <string name="settings__it_matters">Це важливо</string>
+    <string name="settings__manage_tokens">Управління токенами</string>
+    <string name="settings__info_footer">Ваша підтримка допомагає нам розробляти нові функції і покращення. Дякуємо вам!</string>
+    <string name="settings__trash_option">Відновити з кошика</string>
+    <string name="periodic_notification_tips">Раді, що ви з нами в 2FAS! 🌟 Знайдіть хвилинку, щоб подивитися корисні поради та підказки 🛠️ у додатку для покращеної безпеки 🔒.</string>
+    <string name="periodic_notification_backup">Увімкніть 2FAS Backup &amp; Sync, щоб ніколи не втратити доступ, навіть якщо ви загубите свій телефон – ваш спокій чекає за одним дотиком! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Прискорьте ваш вхід за допомогою розширення для браузера 2FAS! 🚀 Завантажте зараз для швидшої та зручнішої автентифікації. 🌐✨</string>
+    <string name="periodic_notification_donate">Ми вдячні за вашу підтримку 2FAS! 🌟 Якщо ви вважаєте наш додаток корисним, зробіть пожертву, щоб допомогти нам захистити ваш цифровий світ. Кожна пожертва допомагає! 🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
 </resources>

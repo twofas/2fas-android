@@ -10,8 +10,9 @@ import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.designsystem.AppThemeState
-import com.twofasapp.workmanager.SyncTimeWorkDispatcher
+import com.twofasapp.workmanager.OnAppStartWork
 import com.twofasapp.workmanager.OnAppUpdatedWorkDispatcher
+import com.twofasapp.workmanager.SyncTimeWorkDispatcher
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -32,6 +33,7 @@ class StartActivity : AppCompatActivity(), AuthAware {
 
         onAppUpdatedWorkDispatcher.dispatch()
         syncTimeWorkDispatcher.dispatch()
+        OnAppStartWork.dispatch(this)
 
         if (savedInstanceState == null) {
             authTracker.onSplashScreen()

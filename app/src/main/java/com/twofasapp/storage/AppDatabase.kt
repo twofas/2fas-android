@@ -31,12 +31,13 @@ import java.text.Normalizer
     autoMigrations = [
         AutoMigration(from = 7, to = 8),
         AutoMigration(from = 8, to = 9),
+        AutoMigration(from = 12, to = 13),
     ]
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
-        const val DB_VERSION = 12
+        const val DB_VERSION = 13
     }
 
     abstract fun serviceDao(): ServiceDao
