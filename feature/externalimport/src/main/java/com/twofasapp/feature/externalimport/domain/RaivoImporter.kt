@@ -54,7 +54,7 @@ internal class RaivoImporter(
             model
                 .filter { it.kind.equals("totp", true) || it.kind.equals("hotp", true) }
                 .filter { it.digits.equals("5") || it.digits.equals("6") || it.digits.equals("7") || it.digits.equals("8") }
-                .filter { it.timer.equals("30") || it.timer.equals("60") || it.timer.equals("90") }
+                .filter { it.timer.equals("10") || it.timer.equals("30") || it.timer.equals("60") || it.timer.equals("90") }
                 .filter {
                     it.algorithm.equals("SHA1", true) || it.algorithm.equals("SHA224", true) || it.algorithm.equals(
                         "SHA256",

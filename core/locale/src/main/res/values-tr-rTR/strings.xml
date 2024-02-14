@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Wed, 31 Jan 2024 06:46:21 -0800
+ Exported at: Wed, 14 Feb 2024 00:33:50 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -16,7 +16,7 @@
     <string name="NSFaceIDUsageDescription">Uygulamanın kilidini Face ID\'nizi kullanarak açabilirsiniz</string>
     <!-- MARK: - App -->
     <string name="app__name">2FAS Authenticator</string>
-    <string name="commons__2fas">2AD Doğrulayıcısı (2FAS Uygulaması)</string>
+    <string name="commons__2fas">2AD Doğrulayıcı (2FAS Uygulaması)</string>
     <string name="commons__OK">Tamam</string>
     <string name="commons__add">Ekle</string>
     <!-- MARK: - Commons -->
@@ -80,7 +80,7 @@
     <string name="introduction__page_2_title">Basit</string>
     <string name="introduction__page_2_content">2FAS\'ı çevrim içi hizmetlerinizle eşleştirin. İki faktörlü güvenliği QR kodunuzla saniyeler içinde etkinleştirin.</string>
     <string name="introduction__page_3_title">Gizli</string>
-    <string name="introduction__page_3_content">2FAS gizliliğinize saygı duyar ve onu korur. Bu uygulama; kişisel verilerinizi asla toplamaz, işlemez veya kullanmaz.</string>
+    <string name="introduction__page_3_content">2FAS gizliliğinize saygı duyar ve gizliliğinizi korur. Bu uygulama asla kişisel verilerinizi toplamaz, işlemez veya kullanmaz.</string>
     <string name="introduction__page_4_title">Güvenli</string>
     <string name="introduction__page_4_content_ios">Jetonlarınız cihaz depolama alanı üzerinde çevrim dışı olarak saklanır, bu nedenle hizmetlerinizi yedeklemeyi unutmayın! Yetkisiz erişime ve cihaz hasarına karşı koruma sağlamak için iCloud Eşitlemesi ve PIN parolası kullanın.</string>
     <!-- introduction__start_using -->
@@ -422,7 +422,7 @@
     <string name="browser__browser_extension">Tarayıcı uzantısı</string>
     <string name="browser__info_title">2FAS Web Tarayıcısı uzantısı</string>
     <string name="browser__info_description_first">2FAS tarayıcı uzantısını masaüstü bilgisayarınızda yükleyin</string>
-    <string name="browser__info_description_second">Onu 2FAS uygulamanızla eşleştirin</string>
+    <string name="browser__info_description_second">Uzantıyı bu uygulamayla eşleştirin</string>
     <string name="browser__more_info">Daha fazla bilgi:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
     <string name="browser__pair_with_web_browser">Web tarayıcısı ile eşleştir</string>
@@ -485,11 +485,11 @@
     <string name="tokens__service_key_invalid_format">Anahtar geçersiz bir biçime sahip</string>
     <string name="intent_error_no_gallery_app">Sistem hatası! Sistem galeri uygulaması mevcut değil.</string>
     <string name="gdrive_permission_title">Google Drive İzni</string>
-    <string name="gdrive_permission_msg">Yedek dosyalarını uygulama verilerine kaydetmek için Google Drive iznine ihtiyacımız var.</string>
+    <string name="gdrive_permission_msg">Yedek dosyalarını uygulama verisine kaydetmek için Google Drive iznine ihtiyacımız var.</string>
     <string name="gdrive_internet_title">İnternet Bağlantısı Gerekli</string>
     <string name="gdrive_internet_msg">Google ile senkronize etmek için bir internet bağlantısını etkinleştirmeniz gerekir.</string>
     <string name="gdrive_wipe_internet_msg">Google Drive\'a erişimi iptal etmek için internet bağlantısını etkinleştirmeniz gerekir.</string>
-    <string name="backup_explanation_msg">Otomatik olarak yedek dosyanızı Google Drive\'ınızdaki gizli klasörün içinde depolayın ve eşitleyin. Bu klasöre sadece 2FAS uygulaması erişebilir.</string>
+    <string name="backup_explanation_msg">Yedek dosyanızı Google Drive\'ınızdaki gizli klasörde otomatikman depolayın ve eşitleyin. Bu klasöre sadece 2FAS uygulaması erişebilir.</string>
     <string name="backup_error_unknown">Yedeğin eşitlenmesinde bir sorun oluştu. Lütfen uygulamayı birkaç dakika sonra yeniden başlatın ve tekrar deneyin.</string>
     <string name="backup_error_encrypt_unknown">Yedek şifrelenirken bir sorun oluştu. Lütfen parolanızı yeniden ayarlayın.</string>
     <string name="backup_error_decrypt_unknown">Yedeğin şifresi çözülürken bir hata oluştu. Lütfen parolanızı yeniden ayarlayın.</string>
@@ -609,7 +609,7 @@
     <string name="biometric_dialog_setup_title">Doğrulamayı etkinleştir</string>
     <string name="biometric_dialog_setup_cancel">İptal</string>
     <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
-    <string name="settings__option_fingerprint_description">Biyometrik Kilidi etkinleştirmek için PIN Koduyla girişi etkinleştirip ayarlamanız gerekir.</string>
+    <string name="settings__option_fingerprint_description">Biyometrik Kilidi etkinleştirmek için PIN Kodunu etkinleştirip ayarlamanız gerekir.</string>
     <string name="settings__block_for_footer">Uygulamanın kilitlenmesi için gereken süreyi seçin</string>
     <string name="error__out_of_disk_space">Görünüşe göre ya şu anda disk alanınız tükenmiş ya da geçmişte böyle bir olay veri tabanına zarar vermiş</string>
     <string name="error__cloud_backup_newer_version">Bulut yedeklemesi yeni sürüme taşındı. Uygulamayı güncelleyin</string>
@@ -642,7 +642,7 @@
     <string name="settings__send_logs_sent_description">Bize ulaştığınız için teşekkür ederiz. Gönderdiklerinizi en kısa zamanda analiz edeceğiz.</string>
     <string name="commons__send">Gönder</string>
     <string name="settings__send_logs_title">Günlükler gönderiliyor</string>
-    <string name="settings__send_logs_description_link">Destek ekibi tarafından sağlanan kod otomatik olarak dolduruldu. Günlükler gönderilsin mi?</string>
+    <string name="settings__send_logs_description_link">Destek ekibi tarafından sağlanan kod otomatikman dolduruldu. Günlükler gönderilsin mi?</string>
     <string name="settings__send_logs_description_edit">Lütfen destek ekibimiz tarafından sağlanan kodu girin veya yapıştırın</string>
     <string name="settings__send_logs">Günlükleri gönder</string>
     <string name="settings__recommendation">2FAS\'ın bu harika iki faktörlü kimlik doğrulama uygulamasına göz atın: https://2fas.com</string>
@@ -763,7 +763,7 @@
     <string name="settings__option_screenshots_description">Uygulamada ekran görüntülerine 5 dakika için izin ver.</string>
     <string name="settings__option_screenshots">Ekran görüntülerine izin ver</string>
     <string name="settings__option_screenshots_confirm_title">Uygulamada ekran görüntülerine izin verilsin mi?</string>
-    <string name="settings__option_screenshots_confirm_description">Emin misiniz? Bu seçeneğin etkinleştirilmesi, uygulamanın her yerinde ekran görüntüsü ve kaydı almanıza izin verir; ancak bu, tüm dıştan gelen ekran kaydetme girişimlerine de izin verecek.\nGüvenlik sebepleri nedeniyle bu seçenek 5 dakika sonra otomatik olarak devre dışı bırakılacak.</string>
+    <string name="settings__option_screenshots_confirm_description">Emin misiniz? Bu seçeneğin etkinleştirilmesi, uygulamanın her yerinde ekran görüntüsü ve kaydı almanıza izin verir; ancak bu, dıştan gelen tüm ekran kaydı girişimlerine aralık bırakır.\nGüvenlik sebepleri nedeniyle bu seçenek 5 dakika sonra otomatikman devre dışı bırakılacak.</string>
     <string name="social__social_media">Sosyal medya bağlantıları</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -824,9 +824,9 @@
     <string name="settings__manage_tokens">Jetonları yönetin</string>
     <string name="settings__info_footer">Desteğiniz yeni özellikler ve geliştirmeler üzerinde çalışmamızı mümkün kılar. Teşekkür ederiz!</string>
     <string name="settings__trash_option">Çöp kutusundan geri yükle</string>
-    <string name="periodic_notification_tips">2FAS üzerinde bizimle olduğunuzdan memnunuz! 🌟 Gelişmiş güvenlik 🔒için uygulamada yararlı İpuçları ve Püf Noktalarını 🛠️ keşfetmeye bir dakikanızı ayırın.\n</string>
+    <string name="periodic_notification_tips">2FAS\'te bizimle olduğunuza sevindik! 🌟 Artırılmış güvenlik 🔒 adına uygulamadaki yararlı İpuçlarını ve Püf Noktalarını 🛠️ keşfetmek için bir dakikanızı ayırın.</string>
     <string name="periodic_notification_backup">Telefonunuzu kaybetseniz dahi hesaplarınıza erişiminizi kaybetmemek için 2FAS Yedeklemesini ve Eşitlemesini etkinleştirin - tek dokunuşla dert mert kalmasın! 🔐📱</string>
-    <string name="periodic_notification_browser_extension">Girişlerinizi 2FAS Tarayıcı Uzantısı ile hızlandırın! 🚀 Daha hızlı, daha rahat bir doğrulama için şimdi indirin. 🌐✨</string>
+    <string name="periodic_notification_browser_extension">Girişlerinizi 2FAS Tarayıcı Uzantısı ile hızlandırın! 🚀 Daha hızlı ve daha rahat bir doğrulama için şimdi indirin. 🌐✨</string>
     <string name="periodic_notification_donate">2FAS\'ı desteklediğiniz için minnettarız! 🌟 Eğer uygulamamızı yararlı bulduysanız, dijital dünyanızı güvende tutmamıza yardım etmek için bağış yapmayı düşünebilirsiniz. Her kuruş değer! 🙏</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
