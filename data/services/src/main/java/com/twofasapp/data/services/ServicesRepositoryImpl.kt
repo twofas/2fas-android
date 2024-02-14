@@ -251,6 +251,7 @@ internal class ServicesRepositoryImpl(
             }
 
             val period = when {
+                otpPeriod == 10 -> 10
                 otpPeriod == 30 -> 30
                 otpPeriod == 60 -> 60
                 otpPeriod == 90 -> 90
