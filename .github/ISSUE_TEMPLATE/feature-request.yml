@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        # search link is fragile
+# search link is fragile
         Before creating a feature request, please ensure that it is not a duplicate of an existing feature requestbug reports [here](https://github.com/twofas/2fas-android/labels/enhancement).
   - type: textarea
     attributes:
