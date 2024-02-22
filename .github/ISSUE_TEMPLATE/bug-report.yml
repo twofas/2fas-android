@@ -1,7 +1,6 @@
 name: 🐞 Bug report
 description: Report a bug or an issue.
 title: 'bug: '
-# label name needs to change if the label type is renamed
 labels: ['bug']
 body:
   - type: markdown
@@ -9,7 +8,6 @@ body:
       value: |
         Before creating a bug report, please keep the following in mind:
 
-        # search link is fragile
         - Do not submit a duplicate bug report. You can review existing bug reports [here](https://github.com/twofas/2fas-android/labels/bug).
         - Security vulnerabilities should be reported to security@2fas.com.
   - type: dropdown
