@@ -1,5 +1,5 @@
 name: 🐞 Bug report
-description: Report a bug or an issue.
+description: Report a bug or issue.
 title: 'bug: '
 labels: ['bug']
 body:
