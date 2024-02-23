@@ -61,7 +61,7 @@ body:
           required: true
         - label: I understand that security vulnerabilities should be reported to security@2fas.com instead of on GitHub.
           required: true
-        - label: I have chosen a clear and concise title.
+        - label: I have chosen an appropriate title.
           required: true
         - label: All requested information has been provided properly.
           required: true
