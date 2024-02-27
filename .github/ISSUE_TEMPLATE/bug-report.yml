@@ -1,14 +1,14 @@
 name: 🐞 Bug report
 description: Report a bug or issue.
 title: 'bug: '
-labels: ['bug']
+labels: ['Bug']
 body:
   - type: markdown
     attributes:
       value: |
         Before creating a bug report, please keep the following in mind:
 
-        - Do not submit a duplicate bug report. You can review existing bug reports [here](https://github.com/twofas/2fas-android/labels/bug).
+        - Do not submit a duplicate bug report. You can review existing bug reports [here](https://github.com/twofas/2fas-android/labels/Bug).
         - Security vulnerabilities should be reported to security@2fas.com.
   - type: dropdown
     attributes:
