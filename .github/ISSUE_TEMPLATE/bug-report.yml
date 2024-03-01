@@ -1,0 +1,68 @@
+name: 🐞 Bug report
+description: Report a bug or issue.
+title: 'bug: '
+labels: ['Bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before creating a bug report, please keep the following in mind:
+
+        - Do not submit a duplicate bug report. You can review existing bug reports [here](https://github.com/twofas/2fas-android/labels/Bug).
+        - Security vulnerabilities should be reported to security@2fas.com.
+  - type: dropdown
+    attributes:
+      label: Bug type
+      options:
+        - Error at runtime
+        - Cosmetic
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: App version
+      description: Write down the app version in which the issue occurs.
+      placeholder: e.g. 5.3.5
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Device environment
+      description: Write down the Android version and model of your device.
+      placeholder: e.g. Android 14. Samsung S24
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Bug description
+      description: |
+        - Describe your bug in detail
+        - Add steps to reproduce the bug if possible (Step 1. ... Step 2. ...)
+        - Add images or videos if necessary (Enable screen capturing by going to Settings > Security > Allow screenshots, On)
+        - Add error logs in backticks if necessary
+    validations:
+        required: true
+  - type: textarea
+    attributes:
+      label: Solution
+      description: If applicable, add a possible solution to the bug.
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add additional context here if necessary.
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      description: Your bug report will be closed if you don't follow the checklist below.
+      options:
+        - label: This issue is not a duplicate of an existing bug report.
+          required: true
+        - label: I understand that security vulnerabilities should be reported to security@2fas.com instead of on GitHub.
+          required: true
+        - label: I have chosen an appropriate title.
+          required: true
+        - label: All requested information has been provided properly.
+          required: true
+  

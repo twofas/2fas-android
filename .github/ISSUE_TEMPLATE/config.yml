@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Help center
+    url: https://2fas.com/help-center/
+    about: Check out our extensive FaQ and video guides!
+  - name: Discord
+    url: https://discord.gg/q4cP6qh2g5
+    about: Need support or have a question? Our Discord members are there to help!
+  - name: Reddit
+    url: https://www.reddit.com/r/2fas_com/
+    about: Get support and discuss 2FAS with our Reddit community!
