@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: id-ID, Indonesian (Indonesia)
  Exported by: rafakob
- Exported at: Wed, 14 Feb 2024 00:33:50 -0800
+ Exported at: Mon, 11 Mar 2024 07:13:48 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -329,10 +329,10 @@
     <string name="backup__section_description">DIREKOMENDASIKAN: Sinkronisasi iCloud menjaga token anda tetap aman di Apple iCloud jika terjadi kehilangan atau kerusakan pada perangkat anda.\u0020\u0020Biarkan tetap menyala.</string>
     <string name="backup__file_backup">Pencadangan File</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Gunakan Pencadangan File untuk pencadangan offline token anda</string>
+    <string name="backup__file_backup_offline_title">Gunakan Pencadangan File untuk pencadangan offline token anda.</string>
     <string name="backup__backup_removal">Penghapusan cadangan</string>
     <string name="backup__delete_2fas_backup">Hapus Cadangan 2FAS</string>
-    <string name="backup__warning_introduction">Peringatan! Jika anda menghapus Cadangan 2FAS, anda juga akan menghapus semua token dari perangkat lain yang disinkronkan dengan akun ini. Untuk menyimpan token di perangkat lain, harap pastikan anda telah mematikan Cadangan 2FAS sebelum penghapusan</string>
+    <string name="backup__warning_introduction">Peringatan! Jika anda menghapus Cadangan 2FAS, anda juga akan menghapus semua token dari perangkat lain yang disinkronkan dengan akun ini. Untuk menyimpan token di perangkat lain, harap pastikan anda telah mematikan Cadangan 2FAS sebelum penghapusan.</string>
     <!-- backup__i_want_to_delete -->
     <string name="backup__delete_title">Saya ingin menghapus Cadangan</string>
     <string name="backup__export_to_backup_file">Ekspor cadangan ke file</string>
@@ -421,7 +421,7 @@
     <string name="new_version__update_later">Perbarui nanti</string>
     <string name="browser__browser_extension">Ekstensi Browser</string>
     <string name="browser__info_title">Ekstensi Browser Web 2FAS</string>
-    <string name="browser__info_description_first">Instal ekstensi browser 2FAS di komputer desktop anda</string>
+    <string name="browser__info_description_first">Instal ekstensi browser 2FAS di komputer desktop anda.</string>
     <string name="browser__info_description_second">Pasangkan dengan aplikasi 2FAS anda.</string>
     <string name="browser__more_info">Info lebih lanjut:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
@@ -707,7 +707,7 @@
     <string name="backup__import_error_file_size">File yang Anda coba import terlalu besar. Batas ukuran file adalah 10 mb</string>
     <string name="backup__import_error_file_invalid">File yang Anda coba import tidak valid atau rusak. Silahkan pilih file yang lain</string>
     <string name="appearance__toggle_active_search">Pengaturan yang aktif</string>
-    <string name="appearance__active_search_description">Pencarian aktif saat dimulai</string>
+    <string name="appearance__active_search_description">Pencarian aktif saat dimulai.</string>
     <string name="widgets__expires_in">Kadaluarsa dalam:</string>
     <string name="widgets__settings">Pengaturan widget</string>
     <string name="errors__input_integer_number">Input harus berupa bilangan bulat</string>
@@ -767,7 +767,7 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Sembunyikan token</string>
-    <string name="settings__hide_tokens_description">Token akan terungkap di ketukan</string>
+    <string name="settings__hide_tokens_description">Token akan terungkap di ketukan.</string>
     <string name="browser__pair_manually_cta">Pasangkan secara manual</string>
     <string name="browser__pair_manually_hint">Pasangkan kode</string>
     <string name="externalimport__info_authenticatorpro_title">Impor token dari Authenticator Pro</string>
@@ -824,4 +824,14 @@
     <string name="periodic_notification_donate">Kami berterima kasih atas dukungan Anda terhadap 2FAS! 🌟 Jika Anda merasa aplikasi kami bermanfaat, pertimbangkan untuk memberikan donasi untuk membantu kami menjaga keamanan dunia digital Anda. Setiap bantuan akan sangat membantu! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Placeholder</string>
+    <string name="widget__size_not_supported">This size is not supported yet</string>
+    <string name="widget__settings_description">Select which Services you would like to display on the Widget. If no Services are available, make sure that you\'ve enabled Widgets in app Settings section</string>
+    <string name="widget__service_icon">Service icon</string>
+    <string name="widget__not_enabled">Widget functionality is not enabled in 2FAS Settings section</string>
+    <string name="widget__not_enabled_no_services">Widget functionality is not enabled in 2FAS Settings section and there are no services in the app available for selection</string>
+    <string name="widget__no_services">There are no services in the app available for selection</string>
+    <string name="widget__select_service_intent_description">Select Service you want to show on your 2FAS Widget</string>
+    <string name="widget__my_secured_account">My secured account</string>
+    <string name="widget__token">Token</string>
 </resources>

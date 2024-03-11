@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Wed, 14 Feb 2024 00:33:50 -0800
+ Exported at: Mon, 11 Mar 2024 07:13:48 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -329,10 +329,10 @@
     <string name="backup__section_description">AANBEVOLEN: iCloud Synchronisatie houdt uw tokens veilig in Apple iCloud in geval van verlies of schade aan uw apparaat. Houd het ingeschakeld.</string>
     <string name="backup__file_backup">Bestandsback-up</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Gebruik Bestandsback-up voor een offline back-up van uw tokens</string>
+    <string name="backup__file_backup_offline_title">Gebruik Bestandsback-up voor een offline back-up van uw tokens.</string>
     <string name="backup__backup_removal">Back-up verwijderen</string>
     <string name="backup__delete_2fas_backup">Verwijder 2FAS Backup</string>
-    <string name="backup__warning_introduction">Waarschuwing! Als u 2FAS Back-up verwijdert, wist u ook alle tokens van andere apparaten die met dit account zijn gesynchroniseerd. Om de tokens op andere apparaten te behouden, moet u ervoor zorgen dat u de 2FAS back-up heeft uitgeschakeld voordat u de tokens verwijdert</string>
+    <string name="backup__warning_introduction">Waarschuwing! Als u 2FAS Back-up verwijdert, wist u ook alle tokens van andere apparaten die met dit account zijn gesynchroniseerd. Om de tokens op andere apparaten te behouden, moet u ervoor zorgen dat u de 2FAS back-up heeft uitgeschakeld voordat u de tokens verwijdert.</string>
     <!-- backup__i_want_to_delete -->
     <string name="backup__delete_title">Ik wil de back-up verwijderen</string>
     <string name="backup__export_to_backup_file">Back-up exporteren naar bestand</string>
@@ -421,7 +421,7 @@
     <string name="new_version__update_later">Later updaten</string>
     <string name="browser__browser_extension">Browserextensie</string>
     <string name="browser__info_title">2FAS Webbrowser extensie</string>
-    <string name="browser__info_description_first">Installeer de 2FAS browser extensie op uw desktopcomputer</string>
+    <string name="browser__info_description_first">Installeer de 2FAS browser extensie op uw desktopcomputer.</string>
     <string name="browser__info_description_second">Het koppelen met uw 2FAS-app.</string>
     <string name="browser__more_info">Meer info:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
@@ -713,7 +713,7 @@
     <string name="backup__import_error_file_size">Het bestand dat u probeert te importeren is te groot. Limiet is 10 MB.</string>
     <string name="backup__import_error_file_invalid">bestand is ongeldig</string>
     <string name="appearance__toggle_active_search">Actief zoeken</string>
-    <string name="appearance__active_search_description">Actief zoeken bij opstarten</string>
+    <string name="appearance__active_search_description">Actief zoeken bij opstarten.</string>
     <string name="widgets__expires_in">verloopt in:</string>
     <string name="widgets__settings">Widget-instellingen</string>
     <string name="errors__input_integer_number">geheel getal invullen</string>
@@ -773,7 +773,7 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Tokens verbergen</string>
-    <string name="settings__hide_tokens_description">Tokens worden onthuld als u erop klikt</string>
+    <string name="settings__hide_tokens_description">Tokens worden onthuld als u erop klikt.</string>
     <string name="browser__pair_manually_cta">Handmatig koppelen</string>
     <string name="browser__pair_manually_hint">Koppelingscode</string>
     <string name="externalimport__info_authenticatorpro_title">Importeer tokens vanuit Authenticator Pro</string>
@@ -830,4 +830,14 @@
     <string name="periodic_notification_donate">We zijn dankbaar voor je steun aan 2FAS! 🌟 Als je onze app nuttig vindt, overweeg dan een donatie om ons te helpen jouw digitale wereld veilig te houden. Alle beetjes helpen! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Placeholder</string>
+    <string name="widget__size_not_supported">This size is not supported yet</string>
+    <string name="widget__settings_description">Select which Services you would like to display on the Widget. If no Services are available, make sure that you\'ve enabled Widgets in app Settings section</string>
+    <string name="widget__service_icon">Service icon</string>
+    <string name="widget__not_enabled">Widget functionality is not enabled in 2FAS Settings section</string>
+    <string name="widget__not_enabled_no_services">Widget functionality is not enabled in 2FAS Settings section and there are no services in the app available for selection</string>
+    <string name="widget__no_services">There are no services in the app available for selection</string>
+    <string name="widget__select_service_intent_description">Select Service you want to show on your 2FAS Widget</string>
+    <string name="widget__my_secured_account">My secured account</string>
+    <string name="widget__token">Token</string>
 </resources>

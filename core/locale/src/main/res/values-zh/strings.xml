@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android string resources
+ Project: 2FAS App
+ Release: Working copy
+ Locale: zh-Hans, Simplified Chinese
+ Exported by: rafakob
+ Exported at: Mon, 11 Mar 2024 07:13:48 -0700
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- InfoPlist.strings
+        TwoFAS
+        Created by Zbigniew Cisiński on 14/03/2020.
+        Copyright © 2020 The Code. All rights reserved. -->
+    <string name="NSCameraUsageDescription">用于扫描二维码</string>
+    <string name="NSFaceIDUsageDescription">您可以使用面容 ID 解锁应用程序</string>
+    <!-- MARK: - App -->
+    <string name="app__name">2FAS 身份验证器</string>
+    <string name="commons__2fas">2FA 身份验证器（2FAS 应用）</string>
+    <string name="commons__OK">好的</string>
+    <string name="commons__add">添加</string>
+    <!-- MARK: - Commons -->
+    <string name="commons__cancel">取消</string>
+    <string name="commons__notifications">通知</string>
+    <!-- A number replaces %d, for example, 4 of 5. -->
+    <string name="commons__page_of_page_title">第 %1$d 个 （共 %2$d 个）</string>
+    <!-- notifications__service_already_removed_from_backup -->
+    <string name="notifications__service_already_removed_title">已从备份中删除的服务</string>
+    <!-- notifications__service_already_modified_in_backup -->
+    <string name="notifications__service_already_modified_title">备份中已修改的服务</string>
+    <!-- backup__user_is_over_quota_on_icloud -->
+    <string name="backup__user_over_quota_icloud">用户在 iCloud 上的配额已满</string>
+    <!-- backup__icloud_is_not_available -->
+    <string name="backup__icloud_not_available">iCloud 不可用</string>
+    <!-- backup__icloud_has_been_disabled_by_user -->
+    <string name="backup__icloud_disabled_title">用户已禁用 iCloud</string>
+    <!-- backup__turned_off_description_bold_part -->
+    <string name="backup__2fas_backup">2FAS 备份</string>
+    <string name="commons__close">关闭</string>
+    <string name="commons__continue">继续</string>
+    <string name="commons__copy">复制</string>
+    <string name="commons__delete">删除</string>
+    <string name="commons__dismiss">取消/忽略/撤销？</string>
+    <string name="commons__done">已完成</string>
+    <string name="commons__edit">编辑</string>
+    <string name="commons__enter_code_manually">手动输入验证码code？</string>
+    <string name="commons__error">错误</string>
+    <string name="commons__info">信息</string>
+    <string name="commons__next">下一步</string>
+    <string name="commons__notice">通知</string>
+    <string name="commons__off">关闭</string>
+    <string name="commons__on">开启</string>
+    <!-- commons__point_your_camera_at_code_on_website -->
+    <string name="commons__camera_title">将相机对准屏幕捕捉二维码</string>
+    <string name="commons__rename">重命名</string>
+    <string name="commons__retry">重试</string>
+    <string name="commons__save">保存</string>
+    <string name="commons__scan_qr_code">扫描二维码</string>
+    <string name="commons__service">服务</string>
+    <string name="commons__set">设置</string>
+    <string name="commons__skip">跳过</string>
+    <string name="commons__tokens">令牌</string>
+    <string name="commons__warning">警告</string>
+    <string name="commons__no_results">无结果</string>
+    <string name="commons__customize">个性化</string>
+    <string name="commons__approve">同意</string>
+    <string name="commons__deny">拒绝</string>
+    <!-- max. %d chars = Maximum number of characters
+        commons__provided_text_too_long -->
+    <string name="commons__text_long_title">提供的文本过长（最多 %d 字符）</string>
+    <string name="commons__got_it">明白了！</string>
+    <string name="fingerprint__verifying">验证...</string>
+    <!-- fingerprint__setup_content -->
+    <string name="fingerprint__confirm_title">确认指纹以继续。</string>
+    <!-- fingerprint__use_pin -->
+    <string name="fingerprint__use_pin_title">这次使用 PIN 码</string>
+    <!-- MARK: - Introduction -->
+    <string name="introduction__page_1_title">你真棒！</string>
+    <string name="introduction__page_1_content">有了 2FAS 应用，您的手机就成了您在线服务的私人安全密钥。2FAS 应用 - 深受全球 600 多万用户的信赖。</string>
+    <string name="introduction__page_2_title">简单</string>
+    <string name="introduction__page_2_content">将 2FAS 与您的在线服务配对。使用二维码在几秒钟内激活双重认证。</string>
+    <string name="introduction__page_3_title">隐私</string>
+    <string name="introduction__page_3_content">2FAS 尊重并保护您的隐私。此应用程序绝不会收集、处理或使用您的任何个人数据。</string>
+    <string name="introduction__page_4_title">安全</string>
+    <string name="introduction__page_4_content_ios">您的令牌通过设备离线存储，所以记得备份你的服务！使用 iCloud 同步和 PIN 码来防止未经授权的访问和设备损坏。</string>
+    <!-- introduction__start_using -->
+    <string name="introduction__title">开始使用 2FAS</string>
+    <string name="introduction__tos">服务条款</string>
+    <string name="introduction__description_title">将您的在线服务账户与2FAS配对或导入您的令牌</string>
+    <string name="introduction__pair_new_service">配对新服务</string>
+    <!-- introduction__import_2fas -->
+    <string name="introduction__import_2fas_title">导入 2FAS 备份文件</string>
+    <!-- introduction__import_ga -->
+    <string name="introduction__import_google_authenticator">从 Google Authenticator 导入</string>
+    <!-- introduction__not_sure -->
+    <string name="introduction__what_to_do">不知道该怎么做？</string>
+    <!-- introduction__ga_import_description -->
+    <string name="introduction__google_authenticator_import_process">使用“转移账号”选项将您的账户从 Google Authenticator 导出为二维码。然后使用另一台设备拍下导出的二维码照片，发送到您的设备（尽可能截图），并使用下面的“选择二维码”选项。如果您正在从另一台设备导入代码，请使用“扫描二维码”按钮。</string>
+    <!-- introduction__choose_qr -->
+    <string name="introduction__choose_qr_code">选择二维码</string>
+    <!-- introduction__scan_qr -->
+    <string name="introduction__scan_qr_code">扫描二维码</string>
+    <!-- Original: Adding code -->
+    <string name="notifications__adding_code">添加新代码</string>
+    <!-- notifications__private_key_copied -->
+    <string name="notifications__service_key_copied">密钥已复制</string>
+    <!-- voiceover__token_is_already_on_the_list -->
+    <string name="notifications__token_already_added">此令牌已经在列表中。</string>
+    <string name="notifications__counter_copied">倒计时已复制</string>
+    <string name="notifications__token_copied">令牌已复制</string>
+    <string name="notifications__next_token_copied">下一个令牌已复制</string>
+    <!-- notifications__would_you_like_to_add_this_code -->
+    <string name="notifications__add_code_question_title">您想添加以下代码吗？%s?</string>
+    <!-- MARK: - Permissions -->
+    <string name="permissions__open_settings">打开设置</string>
+    <string name="security__incorrect_PIN">PIN 码错误</string>
+    <string name="security__change_pin">更改 PIN 码</string>
+    <string name="security__confirm_you_are_device_owner">请确认您是设备所有者</string>
+    <!-- security__confirm_your_new_pin -->
+    <string name="security__confirm_new_pin">请确认您的新 PIN 码</string>
+    <string name="security__create_pin">创建 PIN 码</string>
+    <string name="security__enter_current_pin">请输入您当前的 PIN 码</string>
+    <!-- security__enter_your_new_pin -->
+    <string name="security__enter_new_pin">请输入您的新 PIN 码</string>
+    <!-- security__enter_your_pin -->
+    <string name="security__enter_pin">请输入您的 PIN 码</string>
+    <!-- MARK: - Security -->
+    <string name="security__too_many_attempts_try_again_after_formatter">尝试次数过多。请重试 %s</string>
+    <string name="security__too_many_attempts_try_again_after">尝试次数过多。请在 %s 分钟后重试。</string>
+    <!-- security__too_many_attempts_try_again_later -->
+    <string name="security__too_many_attempts_error">尝试次数过多。请稍后再试。</string>
+    <!-- security__too_many_attempts_try_again_after_one_minute -->
+    <string name="security__too_many_attempts_error_2">尝试次数过多。请一分钟后再试</string>
+    <string name="settings__backup_and_synchronization">备份与同步</string>
+    <string name="settings__choose_topic">选择主题</string>
+    <string name="settings__configure_mail_service_try_again">配置邮件服务并重试</string>
+    <string name="settings__general">一般</string>
+    <string name="settings__mail_services_not_available">未提供邮件服务</string>
+    <string name="settings__problem">问题</string>
+    <string name="settings__security">安全性</string>
+    <string name="settings__select_pin_length">选择 PIN 码长度</string>
+    <string name="settings__settings">设置</string>
+    <!-- czy to dalej będzie w aplikacji? -->
+    <string name="settings__suggestion">建议</string>
+    <string name="settings__advanced">高级</string>
+    <string name="settings__widgets">小组件</string>
+    <string name="settings__display_selected_services">在主屏幕小组件上显示已选择的服务</string>
+    <!-- settings__after_you_enable_widgets -->
+    <string name="settings__widgets_title">启用小组件后，无需 PIN 码即可访问您的所有令牌。\n\n您确定要启用小组件吗？</string>
+    <string name="settings__show_next_token">显示下一个令牌</string>
+    <string name="settings__see_incoming_tokens">在列表上查看接收到的令牌</string>
+    <string name="settings__trash">回收站</string>
+    <string name="settings__restore">恢复</string>
+    <string name="settings__trash_is_empty">回收站是空的</string>
+    <string name="settings__share_app">分享应用</string>
+    <!-- tokens__remove_from_list -->
+    <string name="tokens__delete_token">您确定要删除以下令牌吗：</string>
+    <string name="tokens__move_to_trash">移至回收站</string>
+    <string name="tokens__additional_info">其他信息</string>
+    <string name="tokens__choose_method">选择方法</string>
+    <string name="tokens__duplicated_private_key">密钥重复</string>
+    <!-- tokens__incorrect_private_key -->
+    <string name="tokens__incorrect_service_key">密钥错误，仅允许使用数字2到7和字母，最多512个字符长。</string>
+    <string name="tokens__try_again">好吧，让我们再试一次</string>
+    <!-- Original: To capture the QR code
+        tokens__point_right_2fa_code -->
+    <string name="tokens__scan_qr_code_title">将相机对准屏幕扫描二维码</string>
+    <!-- tokens__private_key -->
+    <string name="tokens__service_key">密钥</string>
+    <string name="tokens__qr_code_leads_to_app_store">此二维码将带您前往 App Store</string>
+    <!-- tokens__remove_it_forever -->
+    <string name="tokens__remove_forever">删除令牌\u0020</string>
+    <!-- tokens__search_by_service_name_or_login -->
+    <string name="tokens__search_service_title">搜索服务</string>
+    <!-- tokens__search_sorry_service_not_found -->
+    <string name="tokens__service_not_found_search">对不起，未找到服务</string>
+    <!-- Original: Take another try with a different search term
+        tokens__search_take_another_try_different_search_term -->
+    <string name="tokens__try_different_search_term">换个搜索词再试一次</string>
+    <string name="tokens__service_key_to_short">密钥太短。最少 4 个字符</string>
+    <string name="tokens__service_name">服务名称</string>
+    <!-- tokens__this_private_key_exists_used_in -->
+    <string name="tokens__service_key_already_used_title">扫描二维码中的密钥已在 %s 中使用。您可能正在再次扫描它</string>
+    <string name="tokens__this_qr_code_is_inavlid">此代码不正确或不受支持。请重试。</string>
+    <string name="tokens__type_service_name">输入服务名称</string>
+    <string name="tokens__enter_service_name">输入服务名称</string>
+    <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
+    <string name="tokens__service_name_unknown_title">很遗憾，我们不知道这项服务。您想如何命名？</string>
+    <!-- tokens__you_wont_be_able_to_restore -->
+    <string name="tokens__token_not_possible_to_restore">您将无法再恢复此令牌。</string>
+    <string name="tokens__badge_color">徽章颜色</string>
+    <string name="tokens__change_brand_icon">更改品牌图标</string>
+    <string name="tokens__change_label">更改标签</string>
+    <string name="tokens__service_information">服务信息</string>
+    <string name="tokens__personalization">个性化</string>
+    <string name="tokens__brand_icon">品牌图标</string>
+    <string name="tokens__label">标签</string>
+    <!-- tokens__remove_the_service -->
+    <string name="tokens__remove_service_from_app">从 2FAS 应用中移除此服务</string>
+    <!-- tokens__label_one_or_two -->
+    <string name="tokens__label_characters_title">标签（1 至 2 个字符）：</string>
+    <string name="tokens__pick_background_color">选择背景颜色：</string>
+    <string name="tokens__num_added">%s 已添加</string>
+    <string name="tokens__next_token">下一个令牌： %s</string>
+    <string name="tokens__next_token_title">下一个令牌的值</string>
+    <string name="tokens__my_tokens">我的令牌</string>
+    <string name="tokens__removing_group">删除组</string>
+    <!-- tokens__all_tokens_will_be_moved -->
+    <string name="tokens__all_tokens_moved_to_group_title">所有令牌将被移动到分组：“我的令牌”。</string>
+    <string name="tokens__add_group">添加组</string>
+    <string name="tokens__group_name">组名：</string>
+    <string name="tokens__select_from_gallery">从图库中选择</string>
+    <string name="tokens__camera_is_unavailable">相机不可用</string>
+    <!-- tokens__check_if_app_has_proper_permissions -->
+    <string name="tokens__check_app_permissions">请检查应用在系统设置中是否具有权限</string>
+    <string name="tokens__no_qr_codes_found">未找到二维码</string>
+    <!-- tokens__no_correct_qr_code_had_been_found
+        
+        No correct QR codes had been found in the selected image. Please try a different image. -->
+    <string name="tokens__no_correct_qr_code_found_title">所选图片中没有正确的二维码。请尝试其他图片。</string>
+    <string name="tokens__select_service">选择服务</string>
+    <string name="tokens__adding_service_question_title">您想添加什么服务？</string>
+    <string name="tokens__retype_this_token">重新输入此令牌</string>
+    <!-- tokens__unlock_and_retype_this_token -->
+    <string name="tokens__unlock_and_retype_token_title">解锁并重新输入此令牌</string>
+    <string name="tokens__group">组</string>
+    <string name="tokens__select_group">选择组</string>
+    <string name="tokens__google_auth_import">从 Google Authenticator 应用导入 2FA 令牌</string>
+    <string name="tokens__google_auth_import_subtitle">此二维码允许从 Google Authenticator 导入令牌</string>
+    <!-- A number replaces %d  -->
+    <string name="tokens__google_auth_out_of_title">%1$d 中的 %2$d</string>
+    <string name="tokens__google_auth_import_subtitle_end">令牌将被导入。</string>
+    <string name="tokens__sort_by">排序方式</string>
+    <!-- tokens__sort_by_az -->
+    <string name="tokens__sort_by_a_to_z">A - Z</string>
+    <!-- tokens__sort_by_za -->
+    <string name="tokens__sort_by_z_to_a">Z - A</string>
+    <string name="tokens__sort_by_manual">手动</string>
+    <string name="tokens__advanced">高级</string>
+    <!-- tokens__advanced_alert_title -->
+    <string name="tokens__advanced_alert">提醒</string>
+    <!-- tokens__advanced_alert_description -->
+    <string name="tokens__advanced_alert_description_title">不建议更改高级设置。只有在您的 2FA 提供商有要求且您有明确指示的情况下才可进行更改。\n</string>
+    <string name="tokens__token_settings">令牌设置</string>
+    <string name="tokens__otp_authentication">OTP 身份验证</string>
+    <string name="tokens__algorithm">算法</string>
+    <string name="tokens__refresh_time">刷新时间</string>
+    <string name="tokens__number_of_digits">位数</string>
+    <string name="tokens__counter">倒计时</string>
+    <string name="tokens__initial_counter">初始计数器</string>
+    <!-- A number replaces %d -->
+    <string name="tokens__second">%d 秒</string>
+    <string name="tokens__hotp">HOTP</string>
+    <string name="tokens__totp">TOTP</string>
+    <string name="tokens__advanced_settings_footer_title">不建议更改高级设置。只有在您的 2FA 提供商有要求且您有明确指示的情况下才可进行更改。\n</string>
+    <string name="tokens__gallery_advice_title">最佳范例</string>
+    <!-- ADD A SPACE AT THE END -->
+    <string name="tokens__gallery_advice_content_first">服务已成功添加。我们强烈建议您...</string>
+    <!-- ADD A SPACE AFTER COMA -->
+    <string name="tokens__gallery_advice_content_middle_bold">从图库中删除二维码截图。</string>
+    <string name="tokens__gallery_advice_content_last">如果有人截取了这张二维码截图，他们就能获取您的 2FA 代码来使用这项服务。</string>
+    <string name="tokens__request_icon_page_title">申请图标</string>
+    <string name="tokens__request_icon_social_title">在 Discord 上通知我们</string>
+    <string name="tokens__request_icon_social_link">登录我们的 Discord 服务器</string>
+    <string name="tokens__request_icon_social_description">并让用户为所请求的图标投票。</string>
+    <string name="tokens__request_icon_middle">或</string>
+    <string name="tokens__request_icon_provider_title">请通知服务提供商</string>
+    <string name="tokens__request_icon_provider_description">你可以使用社交媒体或电子邮件与他们分享以下内容：</string>
+    <string name="tokens__request_icon_provider_message">嘿！我正在使用 2FAS 应用通过 2FA 登录您的服务。但是，您的图标不见了！您可以在这里提交您的图标：https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_footnote">不要忘记标记公司的官方账户！</string>
+    <string name="tokens__order_icon_description">在 2FAS 应用中找不到品牌图标？</string>
+    <string name="tokens__order_icon_link">申请品牌图标</string>
+    <string name="tokens__order_icon_title">申请品牌图标</string>
+    <string name="tokens__order_menu_title">选择请求方法</string>
+    <string name="tokens__order_menu_option_user">以用户身份申请图标</string>
+    <string name="tokens__order_menu_option_company">以公司身份提交图标</string>
+    <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
+    <string name="tokens__sign_in_not_possible_title">只要开启了 %1$s 的双重认证，没有此令牌，您将无法登录 %2$s 账户。</string>
+    <string name="voiceover__show_service_key">显示密钥</string>
+    <string name="voiceover__copy_service_key">复制密钥</string>
+    <!-- voiceover__seconds_left -->
+    <string name="voiceover__seconds_left_counter_title">倒计时，距离令牌更改还剩几秒</string>
+    <string name="voiceover__delete_button">删除按钮</string>
+    <string name="voiceover__service_deleted">删除服务</string>
+    <!-- voiceover__hidden_secret_key_use_show button -->
+    <string name="voiceover__reveal_hidden_secret_key_button_title">此字段包含一个隐藏的密钥。要显示它，请使用显示按钮。只有在为锁屏设置了应用 PIN 码时，它才会起作用</string>
+    <string name="voiceover__service_name">服务名称： %s</string>
+    <string name="voiceover__additional_info">其他信息： %s</string>
+    <string name="voiceover__token_tap_to_copy">令牌 %s。点击复制</string>
+    <string name="voiceover__edit">编辑 %s</string>
+    <string name="voiceover__service_label_with_name_and_color">带有名称 %1$s 和颜色 %2$s 的服务标签</string>
+    <string name="voiceover__service_icon">%s 服务图标</string>
+    <string name="voiceover__selected">已选</string>
+    <string name="voiceover__not_selected">未选择</string>
+    <string name="voiceover__badge_color">徽章颜色：%s</string>
+    <string name="voiceover__dismissing">取消中..</string>
+    <string name="voiceover__secret_hint">仅限数字2到9和字母。至少4个字符。</string>
+    <string name="voiceover__add_service">添加服务</string>
+    <string name="voiceover__add_group">添加组</string>
+    <!-- voiceover__use_add_service_button -->
+    <string name="voiceover__use_add_service_button_title">使用 添加服务 按钮添加新服务</string>
+    <string name="voiceover__no_search_results">没有搜索结果</string>
+    <!-- voiceover__sort_by -->
+    <string name="voiceover__sort_by_title">使用 排序方式 设置服务排序</string>
+    <string name="voiceover__spinner">正在加载内容</string>
+    <string name="backup__incorrect_secret">无法备份令牌，因为秘钥“%s”包含非法字符。从列表中删除它然后重试</string>
+    <string name="backup__import">导入</string>
+    <string name="backup__export">导出</string>
+    <string name="backup__backup_disabled_title">2FAS备份将被禁用以保护其完整性</string>
+    <string name="backup__error_while_exporting_file">导出文件时出错</string>
+    <string name="backup__import_completed_successfuly">导入成功</string>
+    <!-- camera__video_device_in_use_by_another_app -->
+    <string name="camera__camera_used_by_other_app_title">另一个应用正在使用相机。如果关闭其他应用无效，请重新启动设备</string>
+    <!-- camera__video_device_unavailable_due_to_system_overload  -->
+    <string name="camera__camera_unavailable_title">由于系统过载，相机不可用。请尝试重新启动设备。</string>
+    <string name="camera__cant_initialize_camera_general">无法初始化相机。尝试重启设备</string>
+    <string name="camera__cant_initialize_camera_split_view">无法在分屏模式下初始化相机。请在全屏模式下打开应用并重试</string>
+    <string name="restore__how_to_restore">如何恢复 2FAS 应用？</string>
+    <string name="restore__application_restoration">应用程序恢复</string>
+    <!-- restore_if_you_forgotten -->
+    <string name="restore__reset_Pin_title">如果您忘记了 PIN 码或想要重置 2FAS 应用，则必须重新安装该应用。</string>
+    <!-- restore_please_remember -->
+    <string name="restore__backup_advice">请注意，如果您没有备份就重置应用，您将失去对所有代码的访问权限。因此，也将失去对所有受2FA保护的账户的访问权限。</string>
+    <!-- restore_if_you_have_backup -->
+    <string name="restore__backup_title">如果您有备份，请不要着急，您可以尝试恢复所有代码。</string>
+    <string name="backup__cloud_backup">云备份</string>
+    <string name="backup__icloud_sync">iCloud 同步</string>
+    <string name="backup__section_description">推荐：iCloud 同步可以在设备丢失或损坏的情况下将您的令牌安全地存储在苹果iCloud中。请保持其开启。</string>
+    <string name="backup__file_backup">文件备份</string>
+    <!-- backup__use_file_backup_for -->
+    <string name="backup__file_backup_offline_title">使用文件备份离线备份令牌.</string>
+    <string name="backup__backup_removal">删除备份</string>
+    <string name="backup__delete_2fas_backup">删除 2FAS 备份</string>
+    <string name="backup__warning_introduction">警告！如果删除 2FAS 备份，您也将删除与此帐户同步的其他设备上的所有令牌。为保留其他设备上的令牌，请确保在删除前已关闭 2FAS 备份。</string>
+    <!-- backup__i_want_to_delete -->
+    <string name="backup__delete_title">我要删除备份</string>
+    <string name="backup__export_to_backup_file">将备份导出到文件</string>
+    <!-- backup__you_can_import_exported_file -->
+    <string name="backup__import_file_title">您可以使用 2FAS 应用程序在其他设备上导入导出的文件</string>
+    <string name="backup__export_to_file">导出到文件</string>
+    <string name="backup__verify_pin">验证 PIN 码</string>
+    <string name="backup__save_file">保存文件</string>
+    <string name="backup__import_backup_file">导入备份文件</string>
+    <!-- backup__youre_goint_to_import_backup -->
+    <string name="backup__import_other_devices">您将导入一个备份文件，其中包括</string>
+    <string name="backup__import_file">导入文件</string>
+    <string name="backup__choose_antother_file">选择其他文件</string>
+    <string name="backup__no_new_services">没有可导入的内容</string>
+    <string name="backup__file_error">文件错误！</string>
+    <!-- backup__services_form_file_will_be_merged -->
+    <string name="backup__services_merge_title">文件中的服务将与您应用中的服务合并</string>
+    <string name="backup__no_new_services_error">要么此文件为空，要么其中的所有服务都已在应用中可用</string>
+    <string name="backup__update_required_to_import_title">您需要新版本的应用来导入此文件的内容。您可以在 App Store 中找到最新版本</string>
+    <string name="backup__cant_read_file_error">无法读取此文件。可能已损坏，或在尝试访问时出现错误。请选择另一个</string>
+    <string name="backup__password">密码</string>
+    <string name="backup__repeat_password">重复密码</string>
+    <string name="backup__incorrect_character_error">包含不正确的字符。只能使用字母 A-Z、a-z、数字和特殊字符：-_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__to_short_error">提供的短语过于短（最少3个字符）</string>
+    <string name="backup__passwords_dont_match">密码不一致</string>
+    <string name="backup__save_and_export">保存并导出</string>
+    <string name="backup__set_password_title">为加强对备份文件的保护，请设置密码</string>
+    <string name="backup__enter_password_title">输入密码以继续导入过程</string>
+    <string name="backup__backup_file_password_title">为备份文件设置密码</string>
+    <string name="backup__incorrect_password">密码错误</string>
+    <!-- %d - number -->
+    <string name="backup__new_services">%d 新服务</string>
+    <!-- %d - number -->
+    <string name="backup__services_imported_count">从文件导入了 %d 个服务</string>
+    <!-- backup__user_has_icloud_problem -->
+    <string name="backup__icloud_problem">\niCloud 出现问题。请检查系统设置。</string>
+    <!-- backup__newer_schema_unsupported -->
+    <string name="backup__newer_format_not_supported">此文件的格式版本比应用程序支持的版本更新</string>
+    <!-- backup__encrypted_unsupported -->
+    <string name="backup__encrypted_files_not_supported">此文件已加密。我们仅支持未加密的文件</string>
+    <string name="tokens__copy_token">复制令牌</string>
+    <!-- tokens__i_want_to_delete_this_servie -->
+    <string name="tokens__i_want_to_delete_this_token">是，我想删除此服务</string>
+    <string name="color__neutral">无色</string>
+    <string name="color__light_blue">浅蓝</string>
+    <string name="color__indigo">靛蓝</string>
+    <string name="color__purple">紫色</string>
+    <string name="color__turquoise">绿松</string>
+    <string name="color__green">绿色</string>
+    <string name="color__red">红色</string>
+    <string name="color__orange">橙色</string>
+    <string name="color__yellow">黄色</string>
+    <string name="settings__knowledge">了解/知识</string>
+    <string name="settings__support_and_share">支持与分享</string>
+    <string name="settings__tell_a_friend">推荐给朋友</string>
+    <string name="settings__write_a_review">编写评论</string>
+    <string name="settings__about">关于</string>
+    <string name="settings__privacy_policy">隐私政策</string>
+    <string name="settings__terms_of_service">服务条款</string>
+    <string name="settings__version">应用版本 %s</string>
+    <string name="settings__no_limit">无限制</string>
+    <string name="settings__pin_code">PIN 码</string>
+    <string name="settings__app_security">应用安全</string>
+    <string name="settings__app_blocking">锁定设置</string>
+    <string name="settings__face_id">面容 ID</string>
+    <string name="settings__touch_id">触控 ID</string>
+    <!-- settings__how_many_attempts_header -->
+    <string name="settings__too_many_attempts_header">在尝试 X 次失败后阻止访问：</string>
+    <string name="settings__how_many_attempts_footer">在应用被锁定之前，选择最大允许的连续失败尝试次数（锁定时间可在下方更改）。\n</string>
+    <string name="settings__block_for">锁定时间</string>
+    <string name="settings__3_minutes">3分钟</string>
+    <string name="settings__5_minutes">5分钟</string>
+    <string name="settings__10_minutes">10分钟</string>
+    <string name="settings__limit_of_trials">最大失败尝试次数</string>
+    <string name="settings__pin_4_digits">4位数字</string>
+    <string name="settings__pin_6_digits">6位数字</string>
+    <string name="settings__biometric_authentication">生物识别认证</string>
+    <string name="settings__donations">捐赠</string>
+    <string name="settings__donate_twofas">捐赠 2FAS</string>
+    <string name="new_version__new_version_title">新版本</string>
+    <string name="new_version__new_version_message_ios">新版 2FAS 已在 App Store 上架。立即更新！</string>
+    <string name="new_version__update_action">立即更新</string>
+    <!-- new_version__skip_action -->
+    <string name="new_version__skip_title">跳过此版本</string>
+    <!-- new_version__later_action -->
+    <string name="new_version__update_later">稍后更新</string>
+    <string name="browser__browser_extension">浏览器扩展</string>
+    <string name="browser__info_title">2FAS 网络浏览器扩展</string>
+    <string name="browser__info_description_first">在计算机上安装 2FAS 浏览器扩展</string>
+    <string name="browser__info_description_second">与 2FAS 应用配对</string>
+    <string name="browser__more_info">更多信息：</string>
+    <string name="browser__more_info_link_title">2fas.com/be</string>
+    <string name="browser__pair_with_web_browser">与网络浏览器配对</string>
+    <string name="browser__more_info_link">https://www.2fas.com/be</string>
+    <string name="browser__pairing_successful_title">配对成功！</string>
+    <string name="browser__pairing_successful_description">每当您使用此浏览器登录您的在线服务时，2FAS都会向您推送通知。您将不再需要在每次使用时重新输入令牌。</string>
+    <string name="browser__pairing_failed_title">配对失败 :(</string>
+    <string name="browser__pairing_failed_description">此二维码无法识别，2FAS无法将此设备与浏览器扩展配对。请重试。</string>
+    <!-- browser__pairing_already_paired_title -->
+    <string name="browser__already_paired_title">已配对！</string>
+    <!-- browser__pairing_already_paired_description -->
+    <string name="browser__already_paired_description">此浏览器扩展已与此设备配对。</string>
+    <string name="browser__contact_support">联系支持</string>
+    <string name="browser__pairing_with_browser">与浏览器配对</string>
+    <!-- browser__paired_devices -->
+    <string name="browser__paired_devices_browser_title">配对设备（网络浏览器）</string>
+    <string name="browser__add_new">添加新内容</string>
+    <!-- browser__this_device -->
+    <string name="browser__this_device_name">设备昵称</string>
+    <string name="browser__device_name">设备昵称</string>
+    <string name="browser__name">名称</string>
+    <string name="browser__this_device_footer">此昵称将帮助您在与2FAS浏览器扩展配对的其他设备中识别此设备</string>
+    <string name="browser__browser_extension_settings">浏览器扩展设置</string>
+    <string name="browser__unkown_name">&lt;UNKOWN_NAME&gt;</string>
+    <string name="browser__request_source_description">%1$s 为 %2$s 申请了一个2FA令牌。选择要授权并保存到此域名的服务。</string>
+    <string name="browser__request">浏览器请求</string>
+    <!-- browser__code_success -->
+    <string name="browser__code_success_title">令牌已成功发送！</string>
+    <string name="browser__code_failure">发送代码时出错 %s</string>
+    <string name="browser__deleting_paired_device_title">删除已配对设备</string>
+    <string name="browser__deleting_paired_device_content">您确定要删除已配对的设备吗？</string>
+    <string name="browser__pairing_date">配对日期</string>
+    <string name="browser__forget_this_browser">忽略这个网络浏览器</string>
+    <!-- browser__service_is_paired_list_description -->
+    <string name="browser__paired_domains_list_title">配对域名列表。</string>
+    <string name="browser__deleting_extension_pairing_title">删除域名？</string>
+    <string name="browser__deleting_extension_pairing_content">下次使用浏览器扩展登录 %s 时，会再次请求您配对此域名。</string>
+    <string name="browser__push_notifications_title">消息推送通知</string>
+    <string name="browser__push_notifications_content">要访问浏览器扩展等功能，应用程序需要访问推送通知。您可以随时在系统设置中更改此设置。</string>
+    <string name="browser__request_expired">申请已过期</string>
+    <string name="browser__2fa_token_request_title">2FA 令牌申请</string>
+    <string name="browser__2fa_token_request_content">您想分享 2FA 令牌给</string>
+    <string name="notifications__no_notifications">无通知</string>
+    <string name="CFBundleSpokenName">2 F A S</string>
+    <string name="commons__2fas_toolbar">2FAS</string>
+    <string name="backup__google_drive_not_available">无法使用 Google Drive</string>
+    <string name="backup__google_drive_disabled_title">用户已禁用 Google Drive</string>
+    <string name="backup__update_required_to_import_title_2">您需要新版本的应用来导入此文件的内容。您可以在 Google Store 中找到最新版本</string>
+    <string name="tokens__qr_code_leads_to_google_store">此二维码将带您前往 Google Store</string>
+    <string name="introduction__page_4_content_android">您的令牌通过设备离线存储，所以记得备份你的服务！使用Google Drive同步和 PIN 码来防止未经授权的访问和设备损坏。</string>
+    <string name="new_version__new_version_message_android">新版 2FAS 已在 Google Store 上架。立即更新！</string>
+    <string name="security_error_no_match">PIN 码不一致！请重试。</string>
+    <string name="settings_developer_options">开发者选项</string>
+    <string name="settings__external_import">导入令牌</string>
+    <string name="settings__browser_extension_result_toolbar_title">配对结果</string>
+    <string name="tokens__caution">注意</string>
+    <string name="tokens__qr_point_and_scan_again">将相机对准正确的二维码并再次扫描。</string>
+    <string name="tokens__service_unsaved_changes">您想放弃更改吗？</string>
+    <string name="tokens__service_unsaved_changes_title">未保存的更改</string>
+    <string name="tokens__service_key_invalid_format">密钥格式无效</string>
+    <string name="intent_error_no_gallery_app">系统错误！没有系统图库应用。</string>
+    <string name="gdrive_permission_title">Google Drive 权限</string>
+    <string name="gdrive_permission_msg">我们需要 Google Drive 权限才能将备份文件保存在应用数据中。</string>
+    <string name="gdrive_internet_title">需要互联网连接</string>
+    <string name="gdrive_internet_msg">如果要与 Google 同步，需要启用互联网连接。</string>
+    <string name="gdrive_wipe_internet_msg">要撤销对 Google Drive 的访问，需要启用互联网连接。</string>
+    <string name="backup_explanation_msg">自动将您的备份文件存储并同步到您的Google Drive的隐藏文件夹中。只有 2FAS 应用才能访问该文件夹。</string>
+    <string name="backup_error_unknown">备份同步期间发生错误。请在几分钟后重新启动应用并重试。</string>
+    <string name="backup_error_encrypt_unknown">备份加密时出错。请重新设置密码。</string>
+    <string name="backup_error_decrypt_unknown">备份解密时出错。请重新设置密码。</string>
+    <string name="backup__google_drive_problem_title">iCloud 出现问题。请检查系统设置。</string>
+    <string name="backup_error_auth">您的 Google Drive 账户权限有问题。请尝试打开或关闭同步。</string>
+    <string name="backup_error_no_password">您的备份已受密码保护。请打开并输入密码。</string>
+    <string name="backup_error_wrong_password">您的备份受密码保护，但提供的密码不正确。请打开它并输入您的密码。</string>
+    <string name="customization_service_assignment">服务分配</string>
+    <string name="customization_personalization">个性化</string>
+    <string name="customization_change_brand">更改品牌</string>
+    <string name="customization_advanced">高级</string>
+    <string name="customization_request_icon">申请图标</string>
+    <string name="customization_edit_label">编辑标签</string>
+    <string name="groups_delete_msg">您确定要删除该类别吗？</string>
+    <string name="export_backup_title">您的备份文件可随时导出</string>
+    <string name="export_backup_msg">导出此文件以安全备份您的2FAS令牌。您可以稍后使用2FAS应用将其导入此设备或其他设备。</string>
+    <string name="export_backup_pass">导出不带密码的文件\n(不推荐）</string>
+    <string name="import_backup_msg2">该文件将与应用的服务列表同步。</string>
+    <string name="backup_notice_later">以后再说</string>
+    <string name="backup_notice_cta">开启</string>
+    <string name="widgets_empty_msg">未添加服务</string>
+    <string name="backup__section_description_google">建议：Google Drive 同步可以在设备丢失或损坏的情况下将您的令牌安全地存储在 Google Drive 中。请保持其开启。</string>
+    <string name="backup_turn_off_title">关闭 Google Drive 同步功能？</string>
+    <string name="backup_turn_off_msg1">2FA 令牌将保留在此设备和 Google Drive 上，但不会同步。您也将从 Google 账户中注销。</string>
+    <string name="backup_turn_off_msg2">请记住，如果此设备丢失或损坏，或者应用被删除，您可能无法恢复令牌，也无法访问由 2FA 保护的在线账户。</string>
+    <string name="backup_settings_password_set_subtitle">使用自定义密码保护 Google Drive 备份文件。</string>
+    <string name="backup_settings_password_remove_title">删除密码</string>
+    <string name="backup_settings_password_remove_subtitle">删除 Google Drive 备份文件的密码</string>
+    <string name="backup_settings_account_title">Google 账户</string>
+    <string name="backup_settings_sync_title">最近一次同步</string>
+    <string name="browser_extension_result_success_description">每当您使用此浏览器登录您的在线服务时，2FAS都会向您推送通知。您将不再需要在每次使用时重新输入令牌。</string>
+    <string name="browser_extension_browser_dialog">浏览器名称</string>
+    <string name="biometric_dialog_auth_title">验证？认证？</string>
+    <string name="biometric_dialog_auth_subtitle">使用您的生物识别</string>
+    <string name="about_licenses">开源许可证</string>
+    <string name="externalimport_description">您可以从不同的应用将令牌导入 2FAS。从列表中选择一个应用并按照说明进行操作。</string>
+    <string name="externalimport_select_app">选择应用</string>
+    <string name="externalimport_google_authenticator">Google Authenticator</string>
+    <string name="externalimport_aegis">Aegis</string>
+    <string name="externalimport_raivo">Raivo OTP</string>
+    <string name="android__app_name">2FAS 授权</string>
+    <string name="commons__yes">是</string>
+    <string name="commons__no">不是</string>
+    <string name="commons__search">搜索</string>
+    <string name="errors__no_app">没有支持此链接的应用程序</string>
+    <string name="permissions__camera_permission">相机权限</string>
+    <string name="permissions__camera_permission_description">需要相机权限才能扫描二维码。如果您想使用此功能，请前往应用信息和权限，并启用相机权限。</string>
+    <string name="security__disable_pin">禁用 PIN 码</string>
+    <string name="security__enter_your_new_pin">请设置您的新 %s PIN码</string>
+    <string name="security__pin_error_incorrect">PIN 码不正确！请重试。</string>
+    <string name="settings__biometrics">生物识别</string>
+    <string name="settings__support">2FAS 支持</string>
+    <string name="settings__developer">开发者选项</string>
+    <string name="settings__option_fingerprint">生物识别锁定</string>
+    <string name="settings__option_theme">主题</string>
+    <string name="settings__theme_option_auto">自动</string>
+    <string name="settings__theme_option_auto_system">自动 - 系统设置</string>
+    <string name="settings__theme_option_dark">深色</string>
+    <string name="settings__theme_option_light">浅色</string>
+    <string name="tokens__copied_clipboard">令牌已复制到剪贴板！</string>
+    <string name="tokens__next_copied_clipboard">下一个令牌已复制到剪贴板！</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">您想永久删除此 2FA 服务吗？</string>
+    <string name="tokens__fab_addmanually">手动添加</string>
+    <string name="tokens__qr_does_not_work">此二维码无效！</string>
+    <!-- Could not read QR code from the image! -->
+    <string name="tokens__qr_read_image_failed">无法读取图片中的二维码！</string>
+    <string name="tokens__qr_read_image_try_again">尝试选择不同的图片。</string>
+    <string name="tokens__remove_it_forever">永久删除服务</string>
+    <!-- Service could not be added, Service Key is invalid. Try again. -->
+    <string name="tokens__service_add_error">由于密钥无效，无法添加服务。请重试。</string>
+    <!-- A service with this Service Key already exists. Do you want to override it? -->
+    <string name="tokens__service_already_exists">使用此密钥的服务已存在。你想覆盖它吗？</string>
+    <string name="tokens__service_key_invalid_characters">密钥包含无效字符</string>
+    <string name="tokens__show_service_key">显示密钥</string>
+    <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
+    <string name="tokens__show_service_key_setup_lock">您的密钥已受到保护。请添加 PIN 码或指纹锁以查看它。</string>
+    <string name="tokens__tokens_list_is_empty">服务列表为空</string>
+    <string name="tokens__use_plus_button_to_add_tokens">使用“+”按钮添加新服务</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">只要启用了 %1$s 的双重认证，没有此令牌就无法登录 %2$s 账户。\n\n您将无法从 2FAS 回收站中恢复此令牌。</string>
+    <string name="import_ga_success">已成功导入服务！</string>
+    <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
+    <string name="backup_error_network">您需要激活网络连接才能同步备份。请打开网络连接并重试。</string>
+    <string name="update_app_title">更新应用</string>
+    <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
+    <string name="update_app_msg">请更新到最新的 2FAS 版本，以获得所有功能并保持较高的安全级别。</string>
+    <string name="delete_service_title">您正在删除</string>
+    <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
+    <string name="delete_service_msg">从 2FAS 服务列表中删除。\n\n请记住，只要您开启了双重认证，没有此令牌就无法登录 %s 账户。</string>
+    <string name="delete_service_cta">删除</string>
+    <string name="export_backup_cta">导出</string>
+    <string name="export_backup_share_cta">分享</string>
+    <string name="import_backup_title">从文件导入备份</string>
+    <string name="import_backup_msg1">您将通过以下命令导入备份文件</string>
+    <string name="import_backup_cta">导入</string>
+    <string name="widgets_warning_msg">在小组件中可见的令牌不受您的 PIN 码保护。\n\n您确定要在小组件中显示您的令牌吗？</string>
+    <string name="widgets_warning_title">警告！</string>
+    <string name="widgets_warning_cta">是的，我确定</string>
+    <string name="backup_notice_title">2FAS 备份</string>
+    <string name="backup_notice_msg">启用 2FAS 备份。在重置或丢失手机的情况下，您可以恢复所有令牌。</string>
+    <string name="brand_empty_msg">抱歉，未找到品牌</string>
+    <!-- Select which services will be visible on widget: -->
+    <string name="widgets_select_msg">选择在小组件上可见的服务：</string>
+    <string name="backup_turn_off_cta">禁用同步</string>
+    <string name="backup_turn_off_cancel">取消</string>
+    <string name="backup_settings_password_set_title">设置密码</string>
+    <string name="backup_settings_delete_title">从 Google Drive 删除备份文件</string>
+    <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
+    <string name="backup_settings_delete_subtitle">如果从 Google Drive 中删除此文件，所有同步设备上的同步将被禁用，令牌只能通过本地存储保留在本设备和其他设备上。</string>
+    <string name="browser__result_error_browser_paired">您的2FAS应用已与此浏览器配对。</string>
+    <!-- Scan QR code again -->
+    <string name="browser__result_error_cta">再次扫描二维码</string>
+    <string name="browser__scan_error_dialog_title">错误</string>
+    <!-- Scanned QR code has unsupported format. Please try again. -->
+    <string name="browser__scan_error_dialog_msg_invalid_code">扫描的二维码格式不受支持。请重试。</string>
+    <string name="browser__scan_error_dialog_msg_unknown">扫描二维码时出现未知错误，请重试。</string>
+    <string name="biometric_dialog_auth_cancel">这次使用 PIN 码</string>
+    <string name="biometric_dialog_setup_title">启用身份验证</string>
+    <string name="biometric_dialog_setup_cancel">取消</string>
+    <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
+    <string name="settings__option_fingerprint_description">要启用生物识别锁定，您需要启用并设置 PIN 码。</string>
+    <string name="settings__block_for_footer">选择锁定应用的时间。</string>
+    <string name="error__out_of_disk_space">看起来您的磁盘空间已经用尽，或者过去发生的类似事件损坏了数据库</string>
+    <string name="error__cloud_backup_newer_version">云备份已迁移至新版本。更新应用</string>
+    <string name="error__cloud_backup_encrypted_not_supported">云备份已加密。更新应用以支持此功能</string>
+    <string name="extension__continue_to_app">继续前往应用程序</string>
+    <string name="extension__cancel">取消</string>
+    <string name="extension__authorize">授权</string>
+    <string name="extension__dismiss">取消/忽略/撤销？</string>
+    <string name="extension__request_sent">请求已发送</string>
+    <string name="extension__send_question_title">发送令牌？</string>
+    <string name="extension__send_question_content">%1$s 为 %2$s 申请了 2FAS 令牌</string>
+    <string name="extension__error_while_sending">发送令牌时出错</string>
+    <string name="extension__not_paired_title">本网站未配对</string>
+    <string name="extension__not_paired_content">打开应用并为此域名选择一项服务</string>
+    <string name="extension__error_open_the_app">打开应用并检查浏览器扩展是否正确配对</string>
+    <string name="extension__error_no_internet">连接出现问题</string>
+    <string name="extension__try_again">请重新尝试</string>
+    <string name="extension__error">错误</string>
+    <string name="extension__error_no_services">为了使浏览器扩展正常工作，请将服务添加到2FAS应用中。</string>
+    <string name="extension__approve">同意</string>
+    <string name="extension__deny">拒绝</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">启用 PIN 码和面容 ID授权，以防止未经授权访问此设备上的令牌。</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">启用 PIN 码和触控 ID授权，以防止未经授权访问此设备上的令牌。</string>
+    <string name="settings__send_logs_error_not_exists">提供的代码不正确。请仔细检查</string>
+    <string name="settings__send_logs_error_expired">提供的代码已过期。请联系官方团队获取新代码</string>
+    <string name="settings__send_logs_error_no_internet">网络未连接。请检查连接并重试。</string>
+    <string name="settings__send_logs_error_server">我们的服务器似乎出现了问题。如果问题仍然存在，请联系我们的支持团队</string>
+    <string name="settings__send_logs_error_title">操作失败</string>
+    <string name="settings__send_logs_sent_title">已发送的日志</string>
+    <string name="settings__send_logs_sent_description">感谢您的反馈。我们会尽快进行分析。</string>
+    <string name="commons__send">发送</string>
+    <string name="settings__send_logs_title">发送日志</string>
+    <string name="settings__send_logs_description_link">由官方团队提供的代码已自动填充。是否发送日志？\n</string>
+    <string name="settings__send_logs_description_edit">请输入或粘贴由我们的官方团队提供的代码。</string>
+    <string name="settings__send_logs">发送日志</string>
+    <string name="settings__recommendation">来看看这款来自2FAS的超棒的双重认证应用吧！https://2fas.com</string>
+    <string name="settings__acknowledgements">致谢</string>
+    <string name="introduction__import_external_app">从外部应用导入</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="other">刚刚</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="other">%d 分钟前</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="other">%d 小时前</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="other">%d 天前</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="other">%d 周前</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="other">%d 个月前</item>
+    </plurals>
+    <string name="commons__unknown_error">出现未知错误！请重试！</string>
+    <string name="backup__export_result_success">文件已成功保存！</string>
+    <string name="backup__share_result_failure">无法分享文件！</string>
+    <string name="backup__enter_password_dialog_title">请输入密码</string>
+    <string name="backup__remove_password_msg">请输入备份密码以继续执行移除操作。</string>
+    <string name="backup__revoke_google_access_msg">请输入备份密码以继续撤销对 Google 的访问权限。</string>
+    <string name="backup__synchronization_settings">同步设置</string>
+    <string name="backup__local_file_title">本地文件</string>
+    <string name="backup__drive_title">Google Drive 同步</string>
+    <string name="backup__delete_file_title">从 Google Drive 删除备份文件？</string>
+    <string name="backup__delete_file_msg">Google 同步将被禁用。您的令牌将保留在本地，但 2FAS 应用将从您在本设备和其他同步设备上的 Google 账户中注销。</string>
+    <string name="backup__sync_status_waiting">等待同步...</string>
+    <string name="backup__sync_status_progress">同步中...</string>
+    <string name="import_backup_msg1_encrypted">您将导入一个加密备份文件。</string>
+    <string name="externalimport__choose_json_cta">选择 JSON 文件</string>
+    <string name="externalimport__aegis_msg">将您的帐户从 Aegis 导出到未加密的 JSON 文件并使用“选择 JSON 文件”按钮上传。请记住在成功导入后删除该文件。</string>
+    <string name="externalimport__raivo_msg">使用 Raivo 设置中的 \"将 OTP 导出到 ZIP 存档 \"选项，保存 ZIP 文件，解压缩并使用 \"选择 JSON 文件 \"按钮导入 JSON 文件。</string>
+    <string name="externalimport__no_tokens_msg">然而，没有可以导入的服务。</string>
+    <string name="commons__try_again">请重试</string>
+    <string name="commons__proceed">继续</string>
+    <string name="externalimport__ga_title">从 Google Authenticator 应用导入 2FA 令牌</string>
+    <string name="externalimport__aegis_title">从 Aegis 应用导入 2FA 令牌</string>
+    <string name="externalimport__raivo_title">从 Raivo 应用导入 2FA 令牌</string>
+    <string name="externalimport__ga_success_msg">此二维码允许从 Google Authenticator 导入令牌。</string>
+    <string name="externalimport__aegis_success_msg">此 JSON 文件允许从 Aegis 导入令牌。</string>
+    <string name="externalimport__raivo_success_msg">此 JSON 文件允许从 Raivo 导入令牌</string>
+    <string name="externalimport__read_error">无法读取任何令牌。尝试选择不同的文件。</string>
+    <string name="settings__gd_sync_info">Google Drive 同步提醒</string>
+    <string name="settings__gd_sync_disable_confirm">您确定吗？如果没有 Google Drive 同步，丢失或重置手机后将无法恢复令牌！</string>
+    <string name="extension__code_sent_msg">代码发送成功</string>
+    <string name="extension__code_sent_error_msg">发送验证码时发生错误。</string>
+    <string name="tokens__add_service_title">添加新服务</string>
+    <string name="tokens__customize_service_title">自定义服务</string>
+    <string name="extension__services_suggested_header">建议</string>
+    <string name="extension__services_all_header">所有服务</string>
+    <string name="extension__services_other_header">其他服务</string>
+    <string name="settings__ssl_error_title">SSL 错误</string>
+    <string name="settings__ssl_error_description">出现 SSL 错误，无法与服务器建立安全连接。请确保您使用的是最新版本的应用或尝试更改网络。</string>
+    <string name="backup__import_error_file_size">您要导入的文件太大。大小限制为 10 MB。</string>
+    <string name="backup__import_error_file_invalid">您尝试导入的文件无效或已损坏。请选择其他文件。</string>
+    <string name="appearance__toggle_active_search">主动搜索</string>
+    <string name="appearance__active_search_description">启动时打开搜索框</string>
+    <string name="widgets__expires_in">有效期：</string>
+    <string name="widgets__settings">小组件设置</string>
+    <string name="errors__input_integer_number">只能输入整数</string>
+    <string name="errors__input_number">只能输入数字</string>
+    <string name="errors__input_empty">请输入内容</string>
+    <string name="errors__input_too_long">输入的长度过长。限制：%d</string>
+    <string name="commons__best_match">最佳匹配</string>
+    <string name="settings__enable_crashlytics">发送匿名崩溃报告</string>
+    <string name="settings__enable_crashlytics_description">发送匿名崩溃报告以帮助2FAS识别和解决应用中的问题（需要重新启动应用）。</string>
+    <string name="tokens__manage_list">列表管理</string>
+    <string name="settings__appearance">外观</string>
+    <string name="settings__show_next_token_desc">在当前令牌即将过期时显示下一个令牌。</string>
+    <string name="settings__list_style">列表布局</string>
+    <string name="backup__reminder_msg">Google Drive 未同步</string>
+    <string name="backup__reminder_cta">前往备份设置</string>
+    <string name="settings__list_style_option_default">默认</string>
+    <string name="settings__list_style_option_compact">紧凑</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">将您的帐户从 LastPass 导出到未加密的 JSON 文件并使用“选择 JSON 文件”按钮上传。请记住在成功导入后删除该文件。</string>
+    <string name="settings__about_crash_optout_title">崩溃报告</string>
+    <string name="externalimport__lastpass_title">从 LastPass 应用导入 2FA 令牌</string>
+    <string name="externalimport__lastpass_success_msg">此 JSON 文件允许从 LastPass 导入令牌。</string>
+    <string name="externalimport__info_lastpass_title">从 LastPass 导入令牌</string>
+    <string name="externalimport__info_aegis_title">从 Aegis 导入令牌</string>
+    <string name="externalimport__info_raivo_title">从 Raivo OTP 导入令牌</string>
+    <string name="externalimport__info_google_authenticator_title">从 Google Authenticator 导入令牌</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">秒</string>
+    <string name="tokens__add_title">将服务与 2FAS 配对</string>
+    <string name="tokens__add_description">将相机对准屏幕捕捉二维码。</string>
+    <string name="tokens__add_other_methods">其他方法</string>
+    <string name="tokens__add_enter_manual">手动输入密钥</string>
+    <string name="tokens__add_from_gallery">上传带有二维码的截图</string>
+    <string name="tokens__add_success_title">即将完成！</string>
+    <string name="tokens__add_success_description">要完成与服务的配对，您需要重新输入此令牌。</string>
+    <string name="tokens__add_manual_title">将服务与 2FAS 配对</string>
+    <string name="tokens__add_manual_description">输入服务名称和密钥。</string>
+    <string name="tokens__add_manual_service_name">服务名称</string>
+    <string name="tokens__add_manual_service_key">密钥</string>
+    <string name="tokens__add_manual_other">其他设置</string>
+    <string name="tokens__add_manual_other_optional">（可选项）</string>
+    <string name="tokens__add_manual_done_cta">添加服务</string>
+    <string name="tokens__add_manual_help_cta">不知道该怎么办？点击寻求帮助</string>
+    <string name="tokens__add_manual_advanced">高级令牌设置</string>
+    <string name="tokens__add_manual_additional_info">其他信息</string>
+    <string name="tokens__add_manual_advanced_description">不建议更改默认令牌设置。只有在您的 2FA 提供商有要求且您有明确指示的情况下才可进行更改。</string>
+    <string name="settings__option_screenshots_description">允许应用截图5分钟。</string>
+    <string name="settings__option_screenshots">允许截图</string>
+    <string name="settings__option_screenshots_confirm_title">允许应用截图？</string>
+    <string name="settings__option_screenshots_confirm_description">你确定吗？此选项允许您截图和录制应用内的任何屏幕。不过，这也会允许任何外部尝试捕捉应用中的屏幕。\n出于安全考虑，此选项将在 5 分钟后自动关闭。</string>
+    <string name="social__social_media">社交媒体链接</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">X (曾经的 Twitter)</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">隐藏令牌</string>
+    <string name="settings__hide_tokens_description">轻触即可显示令牌</string>
+    <string name="browser__pair_manually_cta">手动配对</string>
+    <string name="browser__pair_manually_hint">配对代码</string>
+    <string name="externalimport__info_authenticatorpro_title">从 Authenticator Pro 导入令牌</string>
+    <string name="externalimport__authenticatorpro_success_msg">此文本文件允许从 Authenticator Pro 导入令牌。</string>
+    <string name="externalimport__authenticatorpro_title">从 Authenticator Pro 应用导入 2FA 令牌</string>
+    <string name="externalimport__authenticatorpro_msg">将您的帐户从 Authenticator Pro 导出到未加密的文本文件，并使用“选择文本文件”按钮上传。请记住在成功导入后删除该文件。</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">选择文本文件</string>
+    <string name="fingerprint__biometric_invalidated">由于系统指纹设置更改，生物识别登录被禁用</string>
+    <string name="tokens__last_pass_import">从 LastPass 应用导入 2FA 令牌</string>
+    <string name="tokens__last_pass_import_subtitle">此二维码允许从 LastPass 导入令牌</string>
+    <string name="tokens__add_with_guide">引导我</string>
+    <string name="guides__select_title">浏览器服务</string>
+    <string name="guides__select_description">选择要与 2FAS 应用配对的服务</string>
+    <string name="guides__select_provide_guide">您是否希望为您的服务提供 2FA 指南？</string>
+    <string name="guides__select_provide_guide_cta">立即申请</string>
+    <string name="color__pink">粉色</string>
+    <string name="color__brown">棕色</string>
+    <string name="tokens__other_methods_header">其他方法？</string>
+    <string name="tokens__camera_is_unavailable_app_permission">相机不可用。在系统设置中检查应用的访问权限</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">系统设置</string>
+    <string name="commons__text_short_title">提供的文本过短（最少 %d 字符）</string>
+    <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
+    <string name="tokens__add_manual_advanced_description_highlight">不建议</string>
+    <string name="guides__guide_init_title">2FAS 指南</string>
+    <string name="guides__guide_title">%s 的 2FAS</string>
+    <string name="guides__guide_universal_title">通用 2FA 指南</string>
+    <string name="browser__save_choice">保存我的选择</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">从 andOTP 应用导入 2FA 令牌</string>
+    <string name="externalimport__andotp_success_msg">此 JSON 文件允许从 andOTP 导入令牌。</string>
+    <string name="externalimport__info_andotp_title">从 andOTP 导入令牌</string>
+    <string name="externalimport__andotp_msg">将您的帐户从 andOTP 导出到未加密的 JSON 文件并使用“选择 JSON 文件”按钮上传。请记住在成功导入后删除该文件。</string>
+    <string name="introduction__backup_description">下一步，系统会要求你选择 Google Drive 账户，2FA 令牌将安全地保存在该账户中。</string>
+    <string name="introduction__backup_take_risk_cta">我愿意承担风险，并不备份</string>
+    <string name="introduction__backup_success">Google Drive 同步已成功打开！</string>
+    <string name="backup__import_invalid_version">此应用程序版本不支持您要导入的备份文件。应用程序只支持 %d 以下的备份格式版本，而您要导入的文件是 %d 版本。</string>
+    <string name="commons__pair">配对</string>
+    <string name="introduction__backup_icloud_title">安全同步和备份</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS 使用 iCloud 对您的2FA令牌进行安全备份和同步。**加密**备份数据存储在 iCloud 中，**只有 2FAS 应用**才能访问。此外，该功能还有助于在 iOS 设备间**恢复和同步**令牌。\n\n该功能默认启用，可随时在应用的备份设置中禁用。</string>
+    <string name="introduction__backup_icloud_cta">了解有关备份的更多信息</string>
+    <string name="backup__enter_password_google_drive_msg1">看来您的 Google Drive 备份文件受密码保护。请输入正确的密码解锁。如果您想删除 Google Drive 备份文件,</string>
+    <string name="backup__enter_password_google_drive_msg2">点击此处了解</string>
+    <string name="settings__preferences">首选项</string>
+    <string name="settings__it_matters">重要提示/这很重要</string>
+    <string name="settings__manage_tokens">管理令牌</string>
+    <string name="settings__info_footer">有了您的支持，我们才能开发新功能并不断改进。谢谢您的支持！</string>
+    <string name="settings__trash_option">从回收站中找回</string>
+    <string name="periodic_notification_tips">很高兴您加入我们 2FAS！🌟 花点时间在应用中发现有用的提示和技巧 🛠️以增强安全性🔒。</string>
+    <string name="periodic_notification_backup">启用 2FAS 备份和同步功能，确保即使丢失手机也不会被锁定--只需轻轻一点就可以安心！🔐📱</string>
+    <string name="periodic_notification_browser_extension">使用2FAS浏览器扩展加快您的登录速度！🚀立即下载以获得更快、更方便的身份验证。 🌐✨</string>
+    <string name="periodic_notification_donate">感谢您对 2FAS 的支持！🌟 如果您觉得我们的应用对您有帮助，请考虑捐款帮助我们保护您的数字世界安全。一点一滴都有帮助!🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">占位符\n</string>
+    <string name="widget__size_not_supported">不支援该尺寸</string>
+    <string name="widget__settings_description">选择您想要在小组件上显示的服务。如果没有可用的服务，请确保您已在应用设定部分启用小组件\n</string>
+    <string name="widget__service_icon">服务图标\n</string>
+    <string name="widget__not_enabled">2FAS 设定部分中未启用小组件功能\u0020</string>
+    <string name="widget__not_enabled_no_services">2FAS 设定部分中未启用小组件功能，且应用中没有可供选择的服务</string>
+    <string name="widget__no_services">应用程式中没有可供选择的服务\n</string>
+    <string name="widget__select_service_intent_description">选择您想要在 2FAS 小组件上显示的服务</string>
+    <string name="widget__my_secured_account">我的安全帐户</string>
+    <string name="widget__token">令牌</string>
+</resources>

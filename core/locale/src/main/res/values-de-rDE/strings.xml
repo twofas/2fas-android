@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Wed, 14 Feb 2024 00:33:50 -0800
+ Exported at: Mon, 11 Mar 2024 07:13:48 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -55,7 +55,7 @@
     <string name="commons__rename">Umbenennen</string>
     <string name="commons__retry">Erneut versuchen</string>
     <string name="commons__save">Speichern</string>
-    <string name="commons__scan_qr_code">QR Code scannen</string>
+    <string name="commons__scan_qr_code">QR-Code scannen</string>
     <string name="commons__service">Dienst</string>
     <string name="commons__set">Festlegen</string>
     <string name="commons__skip">Überspringen</string>
@@ -97,9 +97,9 @@
     <!-- introduction__ga_import_description -->
     <string name="introduction__google_authenticator_import_process">Exportiere deine Konten aus Google Authenticator in einen QR-Code, indem du die Option \"Konten übertragen\" verwendst. Mach einen Screenshot und verwende unten die Schaltfläche \"QR-Code auswählen\". Wenn du Codes von einem anderen Gerät importierst, verwende stattdessen die Schaltfläche \"QR-Code scannen\".</string>
     <!-- introduction__choose_qr -->
-    <string name="introduction__choose_qr_code">QR Code auswählen</string>
+    <string name="introduction__choose_qr_code">QR-Code auswählen</string>
     <!-- introduction__scan_qr -->
-    <string name="introduction__scan_qr_code">QR Code scannen</string>
+    <string name="introduction__scan_qr_code">QR-Code scannen</string>
     <!-- Original: Adding code -->
     <string name="notifications__adding_code">Hinzufügen eines neuen Codes</string>
     <!-- notifications__private_key_copied -->
@@ -146,7 +146,7 @@
     <string name="settings__widgets">Widgets</string>
     <string name="settings__display_selected_services">Zeige ausgewählte Dienste im Widget des Startbildschirms....</string>
     <!-- settings__after_you_enable_widgets -->
-    <string name="settings__widgets_title">Nachdem du Widgets aktiviert hast, können auf alle deine Tokens ohne deine PIN zugegriffen werden. Bist du dir sicher, Widgets zu aktivieren?</string>
+    <string name="settings__widgets_title">Nachdem du Widgets aktiviert hast, kann auf alle deine Tokens ohne deinen PIN-Code zugegriffen werden. Bist du dir sicher, dass du Widgets aktivieren möchtest?</string>
     <string name="settings__show_next_token">Nächsten Token anzeigen</string>
     <string name="settings__see_incoming_tokens">Siehe eingehende Tokens in der Liste.</string>
     <string name="settings__trash">Papierkorb</string>
@@ -213,7 +213,7 @@
     <string name="tokens__camera_is_unavailable">Kamera nicht verfügbar</string>
     <!-- tokens__check_if_app_has_proper_permissions -->
     <string name="tokens__check_app_permissions">Überprüfe, ob die App die richtigen Berechtigungen besitzt</string>
-    <string name="tokens__no_qr_codes_found">Keine QR Codes gefunden</string>
+    <string name="tokens__no_qr_codes_found">Keine QR-Codes gefunden</string>
     <!-- tokens__no_correct_qr_code_had_been_found
         
         No correct QR codes had been found in the selected image. Please try a different image. -->
@@ -241,7 +241,7 @@
     <string name="tokens__advanced_alert">Alarm</string>
     <!-- tokens__advanced_alert_description -->
     <string name="tokens__advanced_alert_description_title">Das Ändern der erweiterten Einstellungen ist nicht empfohlen. Dies sollte nur getan werden, wenn dein 2FA-Anbieter es benötigt und du genaue Anweisungen hast.</string>
-    <string name="tokens__token_settings">Token Einstellungen</string>
+    <string name="tokens__token_settings">Token-Einstellungen</string>
     <string name="tokens__otp_authentication">OTP Authentifizierung\u0020</string>
     <string name="tokens__algorithm">Algorithmus</string>
     <string name="tokens__refresh_time">Aktualisierungszeit</string>
@@ -257,7 +257,7 @@
     <!-- ADD A SPACE AT THE END -->
     <string name="tokens__gallery_advice_content_first">Dienst erfolgreich hinzugefügt. Wir empfehlen dir sehr, dass du\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
-    <string name="tokens__gallery_advice_content_middle_bold">Lösche den QR Screenshot aus deiner Galerie.</string>
+    <string name="tokens__gallery_advice_content_middle_bold">Lösche den QR-Screenshot aus deiner Galerie.</string>
     <string name="tokens__gallery_advice_content_last">Wenn jemand diesen QR-Code übernimmt, ist es möglich deine 2FA Codes über diesem Dienst zu erhalten.</string>
     <string name="tokens__request_icon_page_title">Ein Logo anfragen</string>
     <string name="tokens__request_icon_social_title">Lass es uns auf Discord wissen</string>
@@ -329,7 +329,7 @@
     <string name="backup__section_description">EMPFOHLEN: iCloud Sync bewahrt deine Token sicher in Apple iCloud auf, für den Fall, dass dein Gerät verloren geht oder beschädigt wird. Lasse es eingeschaltet.</string>
     <string name="backup__file_backup">Datei-Backup</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Verwende Datei-Sicherung für die Offline-Sicherung deiner Tokens</string>
+    <string name="backup__file_backup_offline_title">Verwende Datei-Sicherung für die Offline-Sicherung deiner Tokens.</string>
     <string name="backup__backup_removal">Backup entfernen</string>
     <string name="backup__delete_2fas_backup">2FAS Backup löschen</string>
     <string name="backup__warning_introduction">Warnung! Wenn du die 2FAS Sicherung löschst, werden zudem alle Tokens von anderen Geräten, die mit diesem Konto synchronisiert sind, gelöscht. Um die Tokens auf anderen Geräten zu erhalten, stelle bitte sicher, dass du die 2FAS Sicherung vor dem Löschen ausgeschaltet hast.</string>
@@ -394,14 +394,14 @@
     <string name="settings__terms_of_service">Allgemeine Geschäftsbedingungen</string>
     <string name="settings__version">App-Version %s</string>
     <string name="settings__no_limit">Kein Limit</string>
-    <string name="settings__pin_code">PIN Code</string>
+    <string name="settings__pin_code">PIN-Code</string>
     <string name="settings__app_security">App-Sicherheit</string>
-    <string name="settings__app_blocking">Lockout Einstellungen</string>
+    <string name="settings__app_blocking">Sperr-Einstellungen</string>
     <string name="settings__face_id">Face ID</string>
-    <string name="settings__touch_id">Fingerabdruckerkennung</string>
+    <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Sperre nach X Fehlversuchen:</string>
-    <string name="settings__how_many_attempts_footer">Wähle die maximale Anzahl der erfolglosen Passcode-Versuche, bevor die App gesperrt wird.</string>
+    <string name="settings__how_many_attempts_footer">Wähle die maximale Anzahl von Fehlversuchen bei der Eingabe des Passworts, bevor die Anwendung gesperrt wird (Die Sperrzeit kann darunter geändert werden).</string>
     <string name="settings__block_for">Sperrzeit</string>
     <string name="settings__3_minutes">3 Minuten</string>
     <string name="settings__5_minutes">5 Minuten</string>
@@ -421,7 +421,7 @@
     <string name="new_version__update_later">Später aktualisieren</string>
     <string name="browser__browser_extension">Browser Erweiterung\u0020</string>
     <string name="browser__info_title">2FAS Webbrowser-Erweiterung</string>
-    <string name="browser__info_description_first">Installiere die 2FAS Browsererweiterung auf deinem Computer</string>
+    <string name="browser__info_description_first">Installiere die 2FAS Browsererweiterung auf deinem Computer.</string>
     <string name="browser__info_description_second">Kopple es mit deiner 2FAS App.</string>
     <string name="browser__more_info">Mehr Info:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
@@ -471,7 +471,7 @@
     <string name="backup__google_drive_not_available">Google Drive ist nicht verfügbar</string>
     <string name="backup__google_drive_disabled_title">Google Drive wurde vom Benutzer deaktiviert</string>
     <string name="backup__update_required_to_import_title_2">Du benötigst eine neue Version der App, um den Inhalt dieser Datei zu importieren. Die neueste Version findest du im Google Store</string>
-    <string name="tokens__qr_code_leads_to_google_store">Dieser QR Code bringt dich zum Google Store</string>
+    <string name="tokens__qr_code_leads_to_google_store">Dieser QR-Code bringt dich zum Google Store</string>
     <string name="introduction__page_4_content_android">Deine Tokens werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende Google Drive Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
     <string name="new_version__new_version_message_android">Eine neue Version von 2FAS ist im Google Store verfügbar. Jetzt aktualisieren!</string>
     <string name="security_error_no_match">PIN stimmt nicht überein! Bitte erneut versuchen.</string>
@@ -553,7 +553,7 @@
     <string name="tokens__next_copied_clipboard">Nächstes Token in die Zwischenablage kopiert!</string>
     <string name="tokens__do_you_really_want_to_remove_all_devices">Möchtest du diesen 2FA Dienst endgültig löschen?</string>
     <string name="tokens__fab_addmanually">Manuell hinzufügen</string>
-    <string name="tokens__qr_does_not_work">Dieser QR Code funktioniert nicht!</string>
+    <string name="tokens__qr_does_not_work">Dieser QR-Code funktioniert nicht!</string>
     <!-- Could not read QR code from the image! -->
     <string name="tokens__qr_read_image_failed">Der QR-Code konnte nicht gelesen werden!</string>
     <string name="tokens__qr_read_image_try_again">Versuche ein anderes Bild auszuwählen.</string>
@@ -584,7 +584,7 @@
     <string name="import_backup_title">Importiere Backup von der Datei</string>
     <string name="import_backup_msg1">Du wirst die Backup-Datei mit folgendem importieren</string>
     <string name="import_backup_cta">Importieren</string>
-    <string name="widgets_warning_msg">Die im Widget sichtbaren Token sind nicht durch deinen PIN-Code geschützt. Bist du sicher, dass du deine Tokens im Widget anzeigen lassen möchtest?</string>
+    <string name="widgets_warning_msg">Die im Widget sichtbaren Tokens sind nicht durch deinen PIN-Code geschützt. Bist du sicher, dass du deine Tokens im Widget anzeigen lassen möchtest?</string>
     <string name="widgets_warning_title">ACHTUNG!</string>
     <string name="widgets_warning_cta">Ja, ich bin mir sicher</string>
     <string name="backup_notice_title">2FAS Backup</string>
@@ -600,7 +600,7 @@
     <string name="backup_settings_delete_subtitle">Wenn du diese Datei aus deinem Google Drive löschst, wird die Synchronisierung auf allen synchronisierten Geräten deaktiviert und die Token bleiben nur auf diesem und anderen Geräten über den lokalen Speicher erhalten.</string>
     <string name="browser__result_error_browser_paired">Deine 2FAS-App ist bereits mit diesem Browser gekoppelt.</string>
     <!-- Scan QR code again -->
-    <string name="browser__result_error_cta">Scanne den QR Code erneut</string>
+    <string name="browser__result_error_cta">Scanne den QR-Code erneut</string>
     <string name="browser__scan_error_dialog_title">Fehler</string>
     <!-- Scanned QR code has unsupported format. Please try again. -->
     <string name="browser__scan_error_dialog_msg_invalid_code">Der gescannte QR-Code hat ein nicht unterstütztes Format. Bitte versuche es erneut.</string>
@@ -713,7 +713,7 @@
     <string name="backup__import_error_file_size">Die Datei, die du versuchst zu importieren, ist zu groß. Die Größenbeschränkung beträgt 10 MB.</string>
     <string name="backup__import_error_file_invalid">Die Datei, die du versuchst zu importieren, ist ungültig oder beschädigt. Bitte wähle eine andere Datei.</string>
     <string name="appearance__toggle_active_search">Aktive Suche</string>
-    <string name="appearance__active_search_description">Aktive Suche beim Starten</string>
+    <string name="appearance__active_search_description">Aktive Suche beim Starten.</string>
     <string name="widgets__expires_in">Läuft ab in:</string>
     <string name="widgets__settings">Widget-Einstellungen</string>
     <string name="errors__input_integer_number">Eingabe muss eine Integer-Nummer sein</string>
@@ -773,7 +773,7 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Tokens ausblenden</string>
-    <string name="settings__hide_tokens_description">Tokens werden nach dem Antippen angezeigt</string>
+    <string name="settings__hide_tokens_description">Tokens werden nach dem Antippen angezeigt.</string>
     <string name="browser__pair_manually_cta">Manuell koppeln</string>
     <string name="browser__pair_manually_hint">Pairing-Code</string>
     <string name="externalimport__info_authenticatorpro_title">Token aus Authenticator Pro importieren</string>
@@ -830,4 +830,14 @@
     <string name="periodic_notification_donate">Wir sind dankbar für deine Unterstützung von 2FAS! 🌟 Wenn du unsere App hilfreich findest, ziehe eine Spende in Betracht, um uns zu helfen, deine digitale Welt sicher zu halten. Jedes bisschen hilft! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Platzhalter</string>
+    <string name="widget__size_not_supported">Diese Größe wird noch nicht unterstützt</string>
+    <string name="widget__settings_description">Wähle die Dienste aus, die du auf dem Widget anzeigen möchtest. Wenn keine Dienste verfügbar sind, vergewissere dich, dass du die Widgets in den Einstellungen der App aktiviert hast.</string>
+    <string name="widget__service_icon">Dienst-Symbol</string>
+    <string name="widget__not_enabled">Die Widget-Funktionalität ist in den 2FAS-Einstellungen nicht aktiviert</string>
+    <string name="widget__not_enabled_no_services">Die Widget-Funktionalität ist in den 2FAS-Einstellungen nicht aktiviert und es stehen keine Dienste in der App zur Auswahl</string>
+    <string name="widget__no_services">Es sind keine Dienste in der App zur Auswahl verfügbar</string>
+    <string name="widget__select_service_intent_description">Wähle den Dienst, den du in deinem 2FAS-Widget anzeigen möchtest</string>
+    <string name="widget__my_secured_account">Mein gesichertes Konto</string>
+    <string name="widget__token">Token</string>
 </resources>
