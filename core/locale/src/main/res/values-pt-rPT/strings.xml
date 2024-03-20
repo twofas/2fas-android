@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Wed, 14 Feb 2024 00:33:50 -0800
+ Exported at: Mon, 11 Mar 2024 07:13:48 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -329,10 +329,10 @@
     <string name="backup__section_description">RECOMENDAÇÃO: A sincronização através do iCloud mantém os teus tokens seguros em caso de perca ou dano do teu dispositivo. Deixa-a ligada.</string>
     <string name="backup__file_backup">Ficheiro de Cópia de Segurança</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Usa o Ficheiro de Cópia de Segurança para teres acesso offline dos teus tokens</string>
+    <string name="backup__file_backup_offline_title">Usa o Ficheiro de Cópia de Segurança para teres acesso offline dos teus tokens.</string>
     <string name="backup__backup_removal">Remoção da Cópia de Segurança</string>
     <string name="backup__delete_2fas_backup">Eliminar cópia de segurança 2FAS</string>
-    <string name="backup__warning_introduction">Atenção! Se eliminares a Cópia de Segurança 2FAS, irás apagar também todos os tokens de outros dispositivos sincronizados com esta conta. Para preservar os tokens noutros dispositivos, verifica que desativaste a cópia de segurança 2FAS antes da eliminação</string>
+    <string name="backup__warning_introduction">Atenção! Se eliminares a Cópia de Segurança 2FAS, irás apagar também todos os tokens de outros dispositivos sincronizados com esta conta. Para preservar os tokens noutros dispositivos, verifica que desativaste a cópia de segurança 2FAS antes da eliminação.</string>
     <!-- backup__i_want_to_delete -->
     <string name="backup__delete_title">Eu quero eliminar esta Cópia de Segurança</string>
     <string name="backup__export_to_backup_file">Exportar cópia de segurança para ficheiro</string>
@@ -421,8 +421,8 @@
     <string name="new_version__update_later">Atualizar depois</string>
     <string name="browser__browser_extension">Extensão de Navegador</string>
     <string name="browser__info_title">Extensão de Navegador 2FAS</string>
-    <string name="browser__info_description_first">Instala a extensão de navegador 2FAS no teu computador</string>
-    <string name="browser__info_description_second">Conecta-a com a aplicação 2FAS</string>
+    <string name="browser__info_description_first">Instala a extensão de navegador 2FAS no teu computador.</string>
+    <string name="browser__info_description_second">Conecta-a com a aplicação 2FAS.</string>
     <string name="browser__more_info">Mais informação:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
     <string name="browser__pair_with_web_browser">Conecta com o navegador de Internet</string>
@@ -713,7 +713,7 @@
     <string name="backup__import_error_file_size">O ficheiro que estás a tentar importar é muito grande. O limite de tamanho é 10 MB.</string>
     <string name="backup__import_error_file_invalid">O ficheiro que estás a tentar importar é inválido ou está danificado. Por favor, escolhe outro ficheiro.</string>
     <string name="appearance__toggle_active_search">Pesquisa ativa</string>
-    <string name="appearance__active_search_description">Pesquisa ativa ao iniciar</string>
+    <string name="appearance__active_search_description">Pesquisa ativa ao iniciar.</string>
     <string name="widgets__expires_in">Expira em:</string>
     <string name="widgets__settings">Definições do Widget</string>
     <string name="errors__input_integer_number">O valor tem de ser um número inteiro</string>
@@ -773,7 +773,7 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Esconder tokens</string>
-    <string name="settings__hide_tokens_description">Os tokens serão revelados ao tocar</string>
+    <string name="settings__hide_tokens_description">Os tokens serão revelados ao tocar.</string>
     <string name="browser__pair_manually_cta">Conectar manualmente</string>
     <string name="browser__pair_manually_hint">Código de conexão</string>
     <string name="externalimport__info_authenticatorpro_title">Importa tokens do Authenticator Pro</string>
@@ -830,4 +830,14 @@
     <string name="periodic_notification_donate">Estamos gratos pelo seu apoio ao 2FAS! 🌟 Se você achar nosso aplicativo útil, considere fazer uma doação para nos ajudar a manter seu mundo digital seguro. Cada contribuição é valiosa! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Placeholder</string>
+    <string name="widget__size_not_supported">This size is not supported yet</string>
+    <string name="widget__settings_description">Select which Services you would like to display on the Widget. If no Services are available, make sure that you\'ve enabled Widgets in app Settings section</string>
+    <string name="widget__service_icon">Service icon</string>
+    <string name="widget__not_enabled">Widget functionality is not enabled in 2FAS Settings section</string>
+    <string name="widget__not_enabled_no_services">Widget functionality is not enabled in 2FAS Settings section and there are no services in the app available for selection</string>
+    <string name="widget__no_services">There are no services in the app available for selection</string>
+    <string name="widget__select_service_intent_description">Select Service you want to show on your 2FAS Widget</string>
+    <string name="widget__my_secured_account">My secured account</string>
+    <string name="widget__token">Token</string>
 </resources>

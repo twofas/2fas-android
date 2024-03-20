@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Wed, 14 Feb 2024 00:33:50 -0800
+ Exported at: Mon, 11 Mar 2024 07:13:48 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -329,7 +329,7 @@
     <string name="backup__section_description">ZALECANE: Synchronizacja z iCloud chroni Twoje tokeny w Apple iCloud w przypadku utraty lub uszkodzenia urządzenia. Zachęcamy do jej włączenia.</string>
     <string name="backup__file_backup">Lokalna kopia zapasowa</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Zabezpiecz swoje tokeny tworząc lokalny plik kopii zapasowej</string>
+    <string name="backup__file_backup_offline_title">Zabezpiecz swoje tokeny tworząc lokalny plik kopii zapasowej.</string>
     <string name="backup__backup_removal">Usunięcie kopii zapasowej</string>
     <string name="backup__delete_2fas_backup">Usuń kopię zapasową 2FAS</string>
     <string name="backup__warning_introduction">OSTRZEŻENIE! Jeśli usuniesz kopię zapasową 2FAS, usuniesz również wszystkie tokeny z innych urządzeń zsynchronizowanych z tym kontem. Aby zachować tokeny na innych urządzeniach, upewnij się, że wyłączyłeś kopię zapasową 2FAS przed usunięciem.</string>
@@ -421,7 +421,7 @@
     <string name="new_version__update_later">Zaktualizuj później</string>
     <string name="browser__browser_extension">Rozszerzenie przeglądarki</string>
     <string name="browser__info_title">Rozszerzenie przeglądarki 2FAS</string>
-    <string name="browser__info_description_first">Zainstaluj rozszerzenie przeglądarki 2FAS na komputerze stacjonarnym</string>
+    <string name="browser__info_description_first">Zainstaluj rozszerzenie przeglądarki 2FAS na komputerze stacjonarnym.</string>
     <string name="browser__info_description_second">Sparuj z aplikacją 2FAS.</string>
     <string name="browser__more_info">Więcej informacji:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
@@ -719,7 +719,7 @@
     <string name="backup__import_error_file_size">Plik, który próbujesz zaimportować jest zbyt duży. Maksymalny rozmiar wynosi 10 MB.</string>
     <string name="backup__import_error_file_invalid">Plik, który próbujesz zaimportować jest nieprawidłowy lub uszkodzony. Wybierz inny plik.</string>
     <string name="appearance__toggle_active_search">Aktywna wyszukiwarka</string>
-    <string name="appearance__active_search_description">Aktywna wyszukiwarka serwisów od razu po uruchomieniu aplikacji</string>
+    <string name="appearance__active_search_description">Aktywna wyszukiwarka serwisów od razu po uruchomieniu aplikacji.</string>
     <string name="widgets__expires_in">Wygasa za:</string>
     <string name="widgets__settings">Ustawienia widgetów</string>
     <string name="errors__input_integer_number">Wprowadzony tekst musi składać się z liczb całkowitych</string>
@@ -779,7 +779,7 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Schowaj tokeny</string>
-    <string name="settings__hide_tokens_description">Pokaż token po kliknięciu</string>
+    <string name="settings__hide_tokens_description">Pokaż token po kliknięciu.</string>
     <string name="browser__pair_manually_cta">Sparuj ręcznie</string>
     <string name="browser__pair_manually_hint">Parowanie kodu</string>
     <string name="externalimport__info_authenticatorpro_title">Importuj tokeny z Authenticator Pro</string>
@@ -836,4 +836,14 @@
     <string name="periodic_notification_donate">Dziękujemy za wspieranie 2FAS! 🌟Jeśli uważasz naszą aplikację za pomocną, rozważ przekazanie darowizny, aby pomóc nam w chronieniu Twojego cyfrowego świata. Każda złotówka pomaga! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Symbol zastępczy</string>
+    <string name="widget__size_not_supported">Ten rozmiar nie jest jeszcze wspierany</string>
+    <string name="widget__settings_description">Wybierz usługi, które chcesz wyświetlać na widżecie. Jeśli żadne usługi nie są dostępne, upewnij się, że włączyłeś Widgety w Ustawieniach aplikacji</string>
+    <string name="widget__service_icon">Ikonka serwisu</string>
+    <string name="widget__not_enabled">Funkcja widgetów nie jest włączona w Ustawieniach 2FAS</string>
+    <string name="widget__not_enabled_no_services">Funkcja widgetów nie jest włączona w Ustawieniach 2FAS i nie ma żadnych usług dostępnych do wyboru w aplikacji.</string>
+    <string name="widget__no_services">W aplikacji nie ma dostępnych usług do wyboru</string>
+    <string name="widget__select_service_intent_description">Wybierz usługę, którą chcesz wyświetlać w widżecie 2FAS.</string>
+    <string name="widget__my_secured_account">Moje zabezpieczone konto</string>
+    <string name="widget__token">Token</string>
 </resources>

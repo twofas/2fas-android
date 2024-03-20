@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Wed, 14 Feb 2024 00:33:50 -0800
+ Exported at: Mon, 11 Mar 2024 07:13:48 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -329,7 +329,7 @@
     <string name="backup__section_description">ÖNERİLEN: iCloud Eşitlemesi, cihazını kaybetme veya bozma olasılığına karşı jetonlarınızı Apple iCloud\'da güvende tutar. iCloud Yedeklemesini açık bırakın.</string>
     <string name="backup__file_backup">Dosya Yedeklemesi</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Jetonlarınızı çevrim dışı yedeklemek için Dosya Yedeklemesini kullanın</string>
+    <string name="backup__file_backup_offline_title">Jetonlarınızı çevrim dışı yedeklemek için Dosya Yedeklemesini kullanın.</string>
     <string name="backup__backup_removal">Yedek kaldırma</string>
     <string name="backup__delete_2fas_backup">2FAS Yedeklemesini sil</string>
     <string name="backup__warning_introduction">Uyarı! 2FAS Yedeklemesini silerseniz, bu hesapla eşitlenen diğer cihazlardaki tüm jetonları da sileceksiniz. Diğer cihazlardaki jetonları korumak için lütfen 2FAS Yedeklemesini silmeden önce devre dışı bıraktığınızdan emin olun.</string>
@@ -407,8 +407,8 @@
     <string name="settings__5_minutes">5 dakika</string>
     <string name="settings__10_minutes">10 dakika</string>
     <string name="settings__limit_of_trials">En fazla başarısız girişim</string>
-    <string name="settings__pin_4_digits">4 haneli kod</string>
-    <string name="settings__pin_6_digits">6 haneli kod</string>
+    <string name="settings__pin_4_digits">4 haneli</string>
+    <string name="settings__pin_6_digits">6 haneli</string>
     <string name="settings__biometric_authentication">Biyometrik Doğrulama</string>
     <string name="settings__donations">Bağışlar</string>
     <string name="settings__donate_twofas">2FAS\'a bağış yap</string>
@@ -421,8 +421,8 @@
     <string name="new_version__update_later">Daha sonra güncelle</string>
     <string name="browser__browser_extension">Tarayıcı uzantısı</string>
     <string name="browser__info_title">2FAS Web Tarayıcısı uzantısı</string>
-    <string name="browser__info_description_first">2FAS tarayıcı uzantısını masaüstü bilgisayarınızda yükleyin</string>
-    <string name="browser__info_description_second">Uzantıyı bu uygulamayla eşleştirin</string>
+    <string name="browser__info_description_first">2FAS tarayıcı uzantısını masaüstü bilgisayarınıza yükleyin.</string>
+    <string name="browser__info_description_second">Uzantıyı bu uygulamayla eşleştirin.</string>
     <string name="browser__more_info">Daha fazla bilgi:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
     <string name="browser__pair_with_web_browser">Web tarayıcısı ile eşleştir</string>
@@ -536,7 +536,7 @@
     <string name="commons__search">Ara</string>
     <string name="errors__no_app">Bu bağlantıyı destekleyen uygulama yok</string>
     <string name="permissions__camera_permission">Kamera İzni</string>
-    <string name="permissions__camera_permission_description">QR Kodlarını taramak için kamera izni gerekiyor. Bu özelliği kullanmak istiyorsanız Uygulama Bilgisine, ardından İzinlere gidin ve Kamerayı etkinleştirin.</string>
+    <string name="permissions__camera_permission_description">QR Kodlarını taramak için kamera izni gerekiyor. Bu özelliği kullanmak istiyorsanız Uygulama Bilgisine, ardından İzinlere gidin ve Kamera izni verin.</string>
     <string name="security__disable_pin">PIN\'i devre dışı bırak</string>
     <string name="security__enter_your_new_pin">Lütfen yeni %s PIN\'inizi girin</string>
     <string name="security__pin_error_incorrect">PIN yanlış! Lütfen tekrar deneyin</string>
@@ -689,7 +689,7 @@
     <string name="externalimport__choose_json_cta">JSON dosyası seç</string>
     <string name="externalimport__aegis_msg">Hesaplarınızı Aegis\'ten şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı kaldırmayı unutmayın.</string>
     <string name="externalimport__raivo_msg">Raivo\'nun Ayarlarında \"OTP\'leri ZIP arşivine aktar\" seçeneğini kullanın, bir ZIP dosyası kaydedin, dosyaları çıkarın ve \"JSON dosyası seç\" düğmesini kullanarak JSON dosyasını içeri aktarın.</string>
-    <string name="externalimport__no_tokens_msg">Ancak içeri aktarılabilecek hiçbir hizmet yok.</string>
+    <string name="externalimport__no_tokens_msg">Ancak içeri aktarılabilecek hiçbir hizmet bulunmuyor.</string>
     <string name="commons__try_again">Tekrar dene</string>
     <string name="commons__proceed">İlerle</string>
     <string name="externalimport__ga_title">2AD jetonları Google Authenticator uygulamasından içeri aktarılıyor</string>
@@ -713,7 +713,7 @@
     <string name="backup__import_error_file_size">İçeri aktarmaya çalıştığınız dosya çok büyük. Dosya sınırı 10 MB\'dir.</string>
     <string name="backup__import_error_file_invalid">İçeri aktarmaya çalıştığınız dosya geçersiz veya bozuk. Lütfen başka bir dosya seçin.</string>
     <string name="appearance__toggle_active_search">Etkin arama</string>
-    <string name="appearance__active_search_description">Başlangıçta etkin arama</string>
+    <string name="appearance__active_search_description">Başlangıçta etkin arama.</string>
     <string name="widgets__expires_in">Sona erme süresi:</string>
     <string name="widgets__settings">Widget ayarları</string>
     <string name="errors__input_integer_number">Giriş tamsayı olmalıdır</string>
@@ -773,7 +773,7 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Jetonları gizle</string>
-    <string name="settings__hide_tokens_description">Jetonlar, basıldığında ortaya çıkacak</string>
+    <string name="settings__hide_tokens_description">Jetonlar, basıldığında ortaya çıkacak.</string>
     <string name="browser__pair_manually_cta">Elle eşleştir</string>
     <string name="browser__pair_manually_hint">Eşleştirme kodu</string>
     <string name="externalimport__info_authenticatorpro_title">Jetonları Authenticator Pro\'dan içeri aktar</string>
@@ -786,10 +786,10 @@
     <string name="tokens__last_pass_import">2AD jetonları LastPass uygulamasından içeri aktarılıyor</string>
     <string name="tokens__last_pass_import_subtitle">Bu QR kodu, jetonların LastPass\'ten içeri aktarılmasına izin verir</string>
     <string name="tokens__add_with_guide">Bana yol göster</string>
-    <string name="guides__select_title">Hizmetleri gözden geçir</string>
+    <string name="guides__select_title">Hizmetlere göz at</string>
     <string name="guides__select_description">2FAS uygulaması ile eşleştirilecek uygulamayı seçin</string>
-    <string name="guides__select_provide_guide">Hizmetiniz için 2AD kılavuzları sağlamak ister misiniz?</string>
-    <string name="guides__select_provide_guide_cta">Şimdi uygula</string>
+    <string name="guides__select_provide_guide">Hizmetiniz için 2AD kılavuzu sağlamak ister misiniz?</string>
+    <string name="guides__select_provide_guide_cta">Şimdi başvur</string>
     <string name="color__pink">Pembe</string>
     <string name="color__brown">Kahverengi</string>
     <string name="tokens__other_methods_header">Diğer yöntemler?</string>
@@ -830,4 +830,14 @@
     <string name="periodic_notification_donate">2FAS\'ı desteklediğiniz için minnettarız! 🌟 Eğer uygulamamızı yararlı bulduysanız, dijital dünyanızı güvende tutmamıza yardım etmek için bağış yapmayı düşünebilirsiniz. Her kuruş değer! 🙏</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Yer tutucu</string>
+    <string name="widget__size_not_supported">Bu boyut henüz desteklenmiyor</string>
+    <string name="widget__settings_description">Widgetta gösterilmesini istediğiniz Hizmetleri seçin. Eğer hiçbir Hizmet bulunmuyorsa, uygulama Ayarlarından Widgetları etkinleştirdiğinizden emin olun</string>
+    <string name="widget__service_icon">Hizmet simgesi</string>
+    <string name="widget__not_enabled">Widget işlevselliği 2FAS Ayarlarında etkinleştirilmedi</string>
+    <string name="widget__not_enabled_no_services">Widget işlevselliği 2FAS Ayarlarında etkinleştirilmedi ve bu uygulamada seçilebilmesi için hiçbir hizmet bulunmuyor</string>
+    <string name="widget__no_services">Bu uygulamada seçilebilmesi için hiçbir hizmet bulunmuyor</string>
+    <string name="widget__select_service_intent_description">2FAS Widgetında gösterilmesini istediğiniz Hizmeti seçin</string>
+    <string name="widget__my_secured_account">Güvenceye alınmış hesabım</string>
+    <string name="widget__token">Jeton</string>
 </resources>

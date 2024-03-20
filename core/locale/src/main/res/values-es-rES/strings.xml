@@ -5,7 +5,7 @@
  Release: Working copy
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Wed, 14 Feb 2024 00:33:50 -0800
+ Exported at: Mon, 11 Mar 2024 07:13:48 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -329,7 +329,7 @@
     <string name="backup__section_description">RECOMENDADO: En el caso de los daños o pérdida de tu dispositivo con\u0020\u0020sincronización de\u0020\u0020iCloud podrás mantener tus códigos seguro en Apple iCloud. Manténgalo encendido.</string>
     <string name="backup__file_backup">Copia de seguridad de archivos</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Usa copia de seguridad de archivo para realizar copias de seguridad sin conexión de sus códigos</string>
+    <string name="backup__file_backup_offline_title">Usa copia de seguridad de archivo para realizar copias de seguridad sin conexión de sus códigos.</string>
     <string name="backup__backup_removal">Eliminación de copia de seguridad</string>
     <string name="backup__delete_2fas_backup">Eliminar copia de seguridad de 2FAS</string>
     <string name="backup__warning_introduction">¡Atención! Si eliminas la copia de seguridad de 2FAS, también eliminarás todos los códigos de otros dispositivos sincronizados con esta cuenta. Para conservar los códigos en otros dispositivos, por favor, asegúrate de que has desactivado la copia de seguridad de 2FAS antes de la eliminación.</string>
@@ -421,7 +421,7 @@
     <string name="new_version__update_later">Posponer la actualización</string>
     <string name="browser__browser_extension">Extensión del navegador</string>
     <string name="browser__info_title">Extensión del navegador 2FAS</string>
-    <string name="browser__info_description_first">Añadir extensión 2FAS a un navegador</string>
+    <string name="browser__info_description_first">Añadir extensión 2FAS a un navegador.</string>
     <string name="browser__info_description_second">Emparejar con tu aplicación 2FAS.</string>
     <string name="browser__more_info">Más información:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
@@ -713,7 +713,7 @@
     <string name="backup__import_error_file_size">El archivo que intenta importar es demasiado grande. El límite es 10 MB.</string>
     <string name="backup__import_error_file_invalid">El archivo que está intentando importar no es válido o está dañado. Por favor seleccione otro archivo.</string>
     <string name="appearance__toggle_active_search">Búsqueda activa</string>
-    <string name="appearance__active_search_description">Búsqueda activa al inicio</string>
+    <string name="appearance__active_search_description">Búsqueda activa al inicio.</string>
     <string name="widgets__expires_in">Expira en:</string>
     <string name="widgets__settings">Ajustes del Widget</string>
     <string name="errors__input_integer_number">La entrada debe ser un número entero</string>
@@ -773,7 +773,7 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Ocultar los tokens</string>
-    <string name="settings__hide_tokens_description">Los tokens se revelarán al tacto</string>
+    <string name="settings__hide_tokens_description">Los tokens se revelarán al tacto.</string>
     <string name="browser__pair_manually_cta">Emparejar manualmente</string>
     <string name="browser__pair_manually_hint">Código de emparejamiento</string>
     <string name="externalimport__info_authenticatorpro_title">Importar tokens desde Authenticator Pro</string>
@@ -830,4 +830,14 @@
     <string name="periodic_notification_donate">¡Te agradecemos tu apoyo a 2FAS! 🌟 Si nuestra aplicación te resulta útil, considera hacer una donación para ayudarnos a mantener tu mundo digital seguro. ¡Cada granito de arena ayuda! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Placeholder</string>
+    <string name="widget__size_not_supported">This size is not supported yet</string>
+    <string name="widget__settings_description">Select which Services you would like to display on the Widget. If no Services are available, make sure that you\'ve enabled Widgets in app Settings section</string>
+    <string name="widget__service_icon">Service icon</string>
+    <string name="widget__not_enabled">Widget functionality is not enabled in 2FAS Settings section</string>
+    <string name="widget__not_enabled_no_services">Widget functionality is not enabled in 2FAS Settings section and there are no services in the app available for selection</string>
+    <string name="widget__no_services">There are no services in the app available for selection</string>
+    <string name="widget__select_service_intent_description">Select Service you want to show on your 2FAS Widget</string>
+    <string name="widget__my_secured_account">My secured account</string>
+    <string name="widget__token">Token</string>
 </resources>
