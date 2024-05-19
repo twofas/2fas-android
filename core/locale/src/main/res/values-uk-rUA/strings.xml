@@ -2,10 +2,9 @@
 <!--
  Loco xml export: Android string resources
  Project: 2FAS App
- Release: Working copy
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Mon, 11 Mar 2024 07:13:48 -0700
+ Exported at: Sun, 19 May 2024 05:33:28 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -846,4 +845,11 @@
     <string name="widget__select_service_intent_description">Оберіть сервіс, який ви хочете відобразити у своєму віджеті 2FAS</string>
     <string name="widget__my_secured_account">Мій захищений акаунт</string>
     <string name="widget__token">Токен</string>
+    <string name="watch__intro">Додаток 2FAS watchOS є супутнім додатком для програми 2FAS iOS. Він представлятиме сервіси, резервні копії яких створені за допомогою синхронізації iCloud.\n\nДля швидкого доступу додайте їх до улюблених сервісів.\n\nБудь ласка, не забудьте зробити пожертву, щоб ми могли ще більше вдосконалювати платформу 2FAS!</string>
+    <string name="tokens__hotp_not_supported">Сервіси HOTP ще не підтримуються</string>
+    <string name="tokens__favorite_services">Улюблені сервіси</string>
+    <string name="security__enter_new_pin_short">Введіть новий ПІН-код</string>
+    <string name="security__repeat_new_pin_short">Повторіть новий ПІН-код</string>
+    <string name="commons__success">Успіх</string>
+    <string name="security__enter_pin_short">Введіть ПІН-код</string>
 </resources>

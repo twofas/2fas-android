@@ -2,10 +2,9 @@
 <!--
  Loco xml export: Android string resources
  Project: 2FAS App
- Release: Working copy
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Mon, 11 Mar 2024 07:13:48 -0700
+ Exported at: Sun, 19 May 2024 05:33:28 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -840,4 +839,11 @@
     <string name="widget__select_service_intent_description">Select Service you want to show on your 2FAS Widget</string>
     <string name="widget__my_secured_account">My secured account</string>
     <string name="widget__token">Token</string>
+    <string name="watch__intro">2FAS watchOS app is a companion app for the 2FAS iOS application. It will present services backed up using iCloud sync.\n\nFor quick access, add them to Favorite Services.\n\nPlease remember to donate so we can further improve the 2FAS platform!</string>
+    <string name="tokens__hotp_not_supported">HOTP services aren\'t supported yet</string>
+    <string name="tokens__favorite_services">Favorite Services</string>
+    <string name="security__enter_new_pin_short">Enter new PIN</string>
+    <string name="security__repeat_new_pin_short">Repeat new PIN</string>
+    <string name="commons__success">Success</string>
+    <string name="security__enter_pin_short">Enter PIN</string>
 </resources>

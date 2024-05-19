@@ -2,10 +2,9 @@
 <!--
  Loco xml export: Android string resources
  Project: 2FAS App
- Release: Working copy
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Mon, 11 Mar 2024 07:13:48 -0700
+ Exported at: Sun, 19 May 2024 05:33:28 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -840,4 +839,11 @@
     <string name="widget__select_service_intent_description">Wähle den Dienst, den du in deinem 2FAS-Widget anzeigen möchtest</string>
     <string name="widget__my_secured_account">Mein gesichertes Konto</string>
     <string name="widget__token">Token</string>
+    <string name="watch__intro">Die 2FAS watchOS-App ist eine Begleit-App für die 2FAS iOS-Anwendung. Sie zeigt die Dienste an, die mit der iCloud-Synchronisierung gesichert wurden.\n\nFür schnellen Zugriff füge sie zu deinen bevorzugten Diensten hinzu.\n\nBitte denke daran zu spenden, damit wir die 2FAS-Plattform weiter verbessern können!</string>
+    <string name="tokens__hotp_not_supported">HOTP-Dienste werden noch nicht unterstützt</string>
+    <string name="tokens__favorite_services">Bevorzugte Dienste</string>
+    <string name="security__enter_new_pin_short">Neuen PIN eingeben</string>
+    <string name="security__repeat_new_pin_short">Neuen PIN wiederholen</string>
+    <string name="commons__success">Erfolgreich</string>
+    <string name="security__enter_pin_short">PIN eingeben</string>
 </resources>

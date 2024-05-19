@@ -2,10 +2,9 @@
 <!--
  Loco xml export: Android string resources
  Project: 2FAS App
- Release: Working copy
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Mon, 11 Mar 2024 07:13:48 -0700
+ Exported at: Sun, 19 May 2024 05:33:28 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -840,4 +839,11 @@
     <string name="widget__select_service_intent_description">2FAS Widgetında gösterilmesini istediğiniz Hizmeti seçin</string>
     <string name="widget__my_secured_account">Güvenceye alınmış hesabım</string>
     <string name="widget__token">Jeton</string>
+    <string name="watch__intro">2FAS watchOS uygulaması, 2FAS iOS uygulaması için bir eşlikçi uygulamadır. Bu uygulama iCloud eşitlemesiyle yedeklenen hizmetleri gösterir.\n\nHızlı erişim için hizmetlerinizi Favori Hizmetler\'e ekleyin.</string>
+    <string name="tokens__hotp_not_supported">HOTP hizmetleri henüz desteklenmiyor</string>
+    <string name="tokens__favorite_services">Favori Hizmetler</string>
+    <string name="security__enter_new_pin_short">Yeni PIN\'i girin</string>
+    <string name="security__repeat_new_pin_short">Yeni PIN\'i tekrar girin</string>
+    <string name="commons__success">Başarılı</string>
+    <string name="security__enter_pin_short">PIN\'i girin</string>
 </resources>
