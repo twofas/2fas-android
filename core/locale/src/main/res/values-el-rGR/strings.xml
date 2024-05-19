@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android string resources
+ Project: 2FAS App
+ Locale: el-GR, Greek (Greece)
+ Exported by: rafakob
+ Exported at: Sun, 19 May 2024 05:33:28 -0700
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- InfoPlist.strings
+        TwoFAS
+        Created by Zbigniew Cisiński on 14/03/2020.
+        Copyright © 2020 The Code. All rights reserved. -->
+    <string name="NSCameraUsageDescription">Χρησιμοποιείται για τη σάρωση των QR κωδικών.</string>
+    <string name="NSFaceIDUsageDescription">Μπορείτε να ξεκλειδώσετε την εφαρμογή χρησιμοποιώντας το Face ID</string>
+    <!-- MARK: - App -->
+    <string name="app__name">2FAS Authenticator\n</string>
+    <string name="commons__2fas">2FA Authenticator (2FAS App)</string>
+    <string name="commons__OK">ΟΚ</string>
+    <string name="commons__add">Προσθήκη</string>
+    <!-- MARK: - Commons -->
+    <string name="commons__cancel">Ακύρωση</string>
+    <string name="commons__notifications">Ειδοποιήσεις</string>
+    <!-- A number replaces %d, for example, 4 of 5. -->
+    <string name="commons__page_of_page_title">%1$d απο %2$d</string>
+    <!-- notifications__service_already_removed_from_backup -->
+    <string name="notifications__service_already_removed_title">Η υπηρεσία έχει ήδη καταργηθεί από το Backup</string>
+    <!-- notifications__service_already_modified_in_backup -->
+    <string name="notifications__service_already_modified_title">Η υπηρεσία έχει ήδη τροποποιηθεί στο Backup</string>
+    <!-- backup__user_is_over_quota_on_icloud -->
+    <string name="backup__user_over_quota_icloud">Ο χρήστης έχει υπερβεί το όριο στο iCloud</string>
+    <!-- backup__icloud_is_not_available -->
+    <string name="backup__icloud_not_available">Το iCloud δεν είναι διαθέσιμο</string>
+    <!-- backup__icloud_has_been_disabled_by_user -->
+    <string name="backup__icloud_disabled_title">Το iCloud έχει απενεργοποιηθεί από τον χρήστη</string>
+    <!-- backup__turned_off_description_bold_part -->
+    <string name="backup__2fas_backup">2FAS Backup</string>
+    <string name="commons__close">Κλείσε</string>
+    <string name="commons__continue">Συνέχεια</string>
+    <string name="commons__copy">Αντιγραφή</string>
+    <string name="commons__delete">Διαγραφή</string>
+    <string name="commons__dismiss">Απόρριψη</string>
+    <string name="commons__done">Ολοκληρώθηκε</string>
+    <string name="commons__edit">Επεξεργασία</string>
+    <string name="commons__enter_code_manually">Εισαγάγετε τον κωδικό χειροκίνητα</string>
+    <string name="commons__error">Σφάλμα</string>
+    <string name="commons__info">Πληροφορίες</string>
+    <string name="commons__next">Επόμενο</string>
+    <string name="commons__notice">Ειδοποίηση</string>
+    <string name="commons__off">Απενεργοποίηση</string>
+    <string name="commons__on">Ενεργοποίηση</string>
+    <!-- commons__point_your_camera_at_code_on_website -->
+    <string name="commons__camera_title">Κατευθύνετε την κάμερά σας προς την οθόνη για να τραβήξετε τον QR κώδικα.</string>
+    <string name="commons__rename">Μετονομασία</string>
+    <string name="commons__retry">Ξαναδοκιμάσετε</string>
+    <string name="commons__save">Αποθήκευση</string>
+    <string name="commons__scan_qr_code">Σάρωση QR κώδικα</string>
+    <string name="commons__service">Υπηρεσία</string>
+    <string name="commons__set">Ορισμός</string>
+    <string name="commons__skip">Παράκαμψη</string>
+    <string name="commons__tokens">Tokens</string>
+    <string name="commons__warning">Προειδοποίηση</string>
+    <string name="commons__no_results">Δεν υπάρχουν αποτελέσματα</string>
+    <string name="commons__customize">Προσαρμογή</string>
+    <string name="commons__approve">Έγκριση</string>
+    <string name="commons__deny">Άρνηση</string>
+    <!-- max. %d chars = Maximum number of characters
+        commons__provided_text_too_long -->
+    <string name="commons__text_long_title">Το παρεχόμενο κέιμενο είναι πολύ μεγάλο (max. %d chars)</string>
+    <string name="commons__got_it">Το έπιασα!</string>
+    <string name="fingerprint__verifying">Επαλήθευση…</string>
+    <!-- fingerprint__setup_content -->
+    <string name="fingerprint__confirm_title">Επιβεβαιώστε το δακτυλικό αποτύπωμα για να συνεχίσετε.</string>
+    <!-- fingerprint__use_pin -->
+    <string name="fingerprint__use_pin_title">Χρησιμοποιήστε το PIN αυτή τη φορά</string>
+    <!-- MARK: - Introduction -->
+    <string name="introduction__page_1_title">Είσαι απίθανος!</string>
+    <string name="introduction__page_1_content">Το τηλέφωνό σας μόλις έγινε ένα ιδιωτικό και ασφαλές κλειδί για τις online υπηρεσίες σας, χάρη στην εφαρμογή 2FAS - εμπιστευμένη από πάνω από 6 εκατομμύρια χρήστες παγκοσμίως.</string>
+    <string name="introduction__page_2_title">Απλό</string>
+    <string name="introduction__page_2_content">Συνδέστε το 2FAS με τις online υπηρεσίες σας. Ενεργοποιήστε την διπλή ασφάλεια σε λίγα δευτερόλεπτα με τον QR κώδικά σας.</string>
+    <string name="introduction__page_3_title">Ιδιωτικό</string>
+    <string name="introduction__page_3_content">Η 2FAS σέβεται και προστατεύει το απόρρητό σας. Αυτή η εφαρμογή δεν θα συλλέξει, δεν θα επεξεργαστεί ή θα χρησιμοποιήσει ποτέ κανένα από τα προσωπικά σας δεδομένα.</string>
+    <string name="introduction__page_4_title">Ασφαλές</string>
+    <string name="introduction__page_4_content_ios">Τα tokens σας αποθηκεύονται εκτός σύνδεσης μέσω του αποθηκευτικού χώρου της συσκευής, επομένως θυμηθείτε να δημιουργήσετε αντίγραφα ασφαλείας των υπηρεσιών σας! Χρησιμοποιήστε το iCloud Sync και έναν κωδικό PIN για προστασία από μη εξουσιοδοτημένη πρόσβαση και ζημιά στη συσκευή.</string>
+    <!-- introduction__start_using -->
+    <string name="introduction__title">Ξεκινήστε να χρησιμοποιείτε το 2FAS.</string>
+    <string name="introduction__tos">Όροι Υπηρεσίας</string>
+    <string name="introduction__description_title">Συνδέστε το λογαριασμό της online υπηρεσίας σας με το 2FAS\u0020\u0020ή εισαγάγετε τα tokens σας</string>
+    <string name="introduction__pair_new_service">Σύζευξη νέας υπηρεσίας</string>
+    <!-- introduction__import_2fas -->
+    <string name="introduction__import_2fas_title">Εισαγωγή αρχείου αντιγράφου ασφαλείας 2FAS</string>
+    <!-- introduction__import_ga -->
+    <string name="introduction__import_google_authenticator">Εισαγωγή από το Google Authenticator</string>
+    <!-- introduction__not_sure -->
+    <string name="introduction__what_to_do">Δεν είστε σίγουρος τι πρέπει να κάνετε;</string>
+    <!-- introduction__ga_import_description -->
+    <string name="introduction__google_authenticator_import_process">Εξαγάγετε τους λογαριασμούς σας από το Google Authenticator σε έναν κωδικό QR χρησιμοποιώντας την επιλογή \"Μεταφορά λογαριασμών\". Στη συνέχεια, χρησιμοποιήστε ένα άλλο συσκευή, τραβήξτε μια φωτογραφία του εξαγόμενου κωδικού QR, στείλτε τον στη συσκευή σας (ή κάντε ένα στιγμιότυπο οθόνης εάν είναι δυνατόν), και χρησιμοποιήστε την επιλογή \"Επιλογή κωδικού QR\" παρακάτω. Εάν εισάγετε κωδικούς από άλλη συσκευή, χρησιμοποιήστε το κουμπί \"Σάρωση κωδικού QR\" αντί για αυτό.</string>
+    <!-- introduction__choose_qr -->
+    <string name="introduction__choose_qr_code">Επιλέξτε τον κωδικό QR.</string>
+    <!-- introduction__scan_qr -->
+    <string name="introduction__scan_qr_code">Σάρωση κωδικού QR</string>
+    <!-- Original: Adding code -->
+    <string name="notifications__adding_code">Προσθήκη νέου κωδικού</string>
+    <!-- notifications__private_key_copied -->
+    <string name="notifications__service_key_copied">Αντιγράφηκε το μυστικό κλειδί</string>
+    <!-- voiceover__token_is_already_on_the_list -->
+    <string name="notifications__token_already_added">Αυτό το token υπάρχει ήδη στη λίστα.</string>
+    <string name="notifications__counter_copied">Ο μετρητής αντιγράφηκε</string>
+    <string name="notifications__token_copied">Token Αντιγράφηκε</string>
+    <string name="notifications__next_token_copied">Το επόμενο token αντιγράφηκε</string>
+    <!-- notifications__would_you_like_to_add_this_code -->
+    <string name="notifications__add_code_question_title">Θα θέλατε να προσθέσετε αυτόν τον κωδικό: %s;</string>
+    <!-- MARK: - Permissions -->
+    <string name="permissions__open_settings">Ανοίξτε τις ρυθμίσεις.</string>
+    <string name="security__incorrect_PIN">Λάθος PIN.</string>
+    <string name="security__change_pin">Αλλαγή PIN.</string>
+    <string name="security__confirm_you_are_device_owner">Παρακαλώ επιβεβαιώστε ότι είστε ο ιδιοκτήτης της συσκευής.</string>
+    <!-- security__confirm_your_new_pin -->
+    <string name="security__confirm_new_pin">Παρακαλώ επιβεβαιώστε τον νέο PIN σας.</string>
+    <string name="security__create_pin">Δημιουργία PIN.</string>
+    <string name="security__enter_current_pin">Παρακαλώ εισάγετε το τρέχον PIN σας.</string>
+    <!-- security__enter_your_new_pin -->
+    <string name="security__enter_new_pin">Παρακαλώ εισάγετε τον νέο σας PIN.</string>
+    <!-- security__enter_your_pin -->
+    <string name="security__enter_pin">Εισαγάγετε το PIN σας</string>
+    <!-- MARK: - Security -->
+    <string name="security__too_many_attempts_try_again_after_formatter">Πάρα πολλές προσπάθειες. ΠΑΡΑΚΑΛΩ προσπαθησε ξανα %s</string>
+    <string name="security__too_many_attempts_try_again_after">Πάρα πολλές προσπάθειες. Δοκιμάστε ξανά μετά από %s λεπτά.</string>
+    <!-- security__too_many_attempts_try_again_later -->
+    <string name="security__too_many_attempts_error">Πάρα πολλές προσπάθειες. Παρακαλώ δοκιμάστε ξανά αργότερα.</string>
+    <!-- security__too_many_attempts_try_again_after_one_minute -->
+    <string name="security__too_many_attempts_error_2">Πάρα πολλές προσπάθειες. Δοκιμάστε μετά από ένα λεπτό</string>
+    <string name="settings__backup_and_synchronization">Δημιουργία αντιγράφων ασφαλείας και συγχρονισμός</string>
+    <string name="settings__choose_topic">Επιλέξτε θέμα</string>
+    <string name="settings__configure_mail_service_try_again">Διαμορφώστε την υπηρεσία αλληλογραφίας\u0020\u0020και δοκιμάστε ξανά</string>
+    <string name="settings__general">Γενικά</string>
+    <string name="settings__mail_services_not_available">Οι υπηρεσίες αλληλογραφίας δεν είναι διαθέσιμες</string>
+    <string name="settings__problem">Πρόβλημα</string>
+    <string name="settings__security">Ασφάλεια</string>
+    <string name="settings__select_pin_length">Επιλέξτε μήκος PIN</string>
+    <string name="settings__settings">Ρυθμίσεις</string>
+    <!-- czy to dalej będzie w aplikacji? -->
+    <string name="settings__suggestion">Πρόταση</string>
+    <string name="settings__advanced">Προχωρημένος</string>
+    <string name="settings__widgets">Widgets</string>
+    <string name="settings__display_selected_services">Εμφάνιση επιλεγμένων υπηρεσιών στα γραφικά στοιχεία της αρχικής οθόνης.</string>
+    <!-- settings__after_you_enable_widgets -->
+    <string name="settings__widgets_title">Αφού ενεργοποιήσετε τα γραφικά στοιχεία, μπορείτε να έχετε πρόσβαση σε όλα τα διακριτικά σας χωρίς τον κωδικό PIN σας.\n\nΕίστε βέβαιοι ότι θέλετε να ενεργοποιήσετε τα γραφικά στοιχεία;</string>
+    <string name="settings__show_next_token">Εμφάνιση του επόμενου token</string>
+    <string name="settings__see_incoming_tokens">Δείτε τα εισερχόμενα token στη λίστα.</string>
+    <string name="settings__trash">Κάδος</string>
+    <string name="settings__restore">Ανάκτηση</string>
+    <string name="settings__trash_is_empty">Ο κάδος είναι άδειος</string>
+    <string name="settings__share_app">Μοιραστείτε την εφαρμογή</string>
+    <!-- tokens__remove_from_list -->
+    <string name="tokens__delete_token">Είστε βέβαιοι ότι θέλετε να διαγράψετε το token για:</string>
+    <string name="tokens__move_to_trash">Μετακίνηση στον Κάδο</string>
+    <string name="tokens__additional_info">πρόσθετες πληροφορίες</string>
+    <string name="tokens__choose_method">Επιλέξτε μέθοδο</string>
+    <string name="tokens__duplicated_private_key">Διπλότυπο μυστικό κλειδί</string>
+    <!-- tokens__incorrect_private_key -->
+    <string name="tokens__incorrect_service_key">Λανθασμένο μυστικό κλειδί (μόνο αριθμοί 2 έως 7, γράμματα), μέγ. Μήκος 512 χαρακτήρες</string>
+    <string name="tokens__try_again">Εντάξει, ας προσπαθήσουμε ξανά</string>
+    <!-- Original: To capture the QR code
+        tokens__point_right_2fa_code -->
+    <string name="tokens__scan_qr_code_title">Δείξτε την κάμερά σας στην οθόνη για να σκανάρετε τον κωδικό QR.</string>
+    <!-- tokens__private_key -->
+    <string name="tokens__service_key">Μυστικό κλειδί</string>
+    <string name="tokens__qr_code_leads_to_app_store">Αυτός ο κωδικός QR σας κατευθύνει στο App Store.</string>
+    <!-- tokens__remove_it_forever -->
+    <string name="tokens__remove_forever">Διαγραφή token</string>
+    <!-- tokens__search_by_service_name_or_login -->
+    <string name="tokens__search_service_title">Υπηρεσία αναζήτησης</string>
+    <!-- tokens__search_sorry_service_not_found -->
+    <string name="tokens__service_not_found_search">Λυπούμαστε, η υπηρεσία δεν βρέθηκε</string>
+    <!-- Original: Take another try with a different search term
+        tokens__search_take_another_try_different_search_term -->
+    <string name="tokens__try_different_search_term">Κάντε άλλη μια δοκιμή με διαφορετικό όρο αναζήτησης</string>
+    <string name="tokens__service_key_to_short">Το κλειδί είναι πολύ μικρό. Τουλάχιστον 4 χαρακτήρες</string>
+    <string name="tokens__service_name">Όνομα Υπηρεσίας</string>
+    <!-- tokens__this_private_key_exists_used_in -->
+    <string name="tokens__service_key_already_used_title">Το μυστικό κλειδί από τον σαρωμένο κώδικα χρησιμοποιείται ήδη στο %s. Μάλλον το σαρώνεις ξανά</string>
+    <string name="tokens__this_qr_code_is_inavlid">Ο κωδικός αυτός είναι λάθος ή δεν υποστηρίζεται. Δοκιμάστε ξανά.</string>
+    <string name="tokens__type_service_name">Πληκτρολογήστε Όνομα υπηρεσίας</string>
+    <string name="tokens__enter_service_name">Εισαγάγετε Όνομα υπηρεσίας</string>
+    <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
+    <string name="tokens__service_name_unknown_title">Δυστυχώς, δεν γνωρίζουμε αυτήν την υπηρεσία. Πώς θα θέλατε να το ονομάσετε;</string>
+    <!-- tokens__you_wont_be_able_to_restore -->
+    <string name="tokens__token_not_possible_to_restore">Δεν θα μπορείτε πλέον να επαναφέρετε αυτό το token.</string>
+    <string name="tokens__badge_color">Χρώμα σήματος</string>
+    <string name="tokens__change_brand_icon">Αλλαγή εικονιδίου επωνυμίας</string>
+    <string name="tokens__change_label">Αλλαγή ετικέτας</string>
+    <string name="tokens__service_information">Πληροφορίες υπηρεσίας</string>
+    <string name="tokens__personalization">Προσωπικοποίηση</string>
+    <string name="tokens__brand_icon">Εικονίδιο μάρκας</string>
+    <string name="tokens__label">Ετικέτα</string>
+    <!-- tokens__remove_the_service -->
+    <string name="tokens__remove_service_from_app">Καταργήστε αυτήν την υπηρεσία από την εφαρμογή 2FAS</string>
+    <!-- tokens__label_one_or_two -->
+    <string name="tokens__label_characters_title">Ετικέτα (1 ή 2 χαρακτήρες):</string>
+    <string name="tokens__pick_background_color">Επιλέξτε χρώμα φόντου:</string>
+    <string name="tokens__num_added">%s προστέθηκε</string>
+    <string name="tokens__next_token">Επόμενο token: %s</string>
+    <string name="tokens__next_token_title">Επόμενη τιμή Token</string>
+    <string name="tokens__my_tokens">Τα Tokens μου</string>
+    <string name="tokens__removing_group">Κατάργηση Ομάδας</string>
+    <!-- tokens__all_tokens_will_be_moved -->
+    <string name="tokens__all_tokens_moved_to_group_title">Όλα τα tokens θα μεταφερθούν στην ομάδα: \"Τα tokens μου\"</string>
+    <string name="tokens__add_group">Προσθήκη ομάδας</string>
+    <string name="tokens__group_name">Όνομα Ομάδας:</string>
+    <string name="tokens__select_from_gallery">Επιλέξτε από τη Συλλογή</string>
+    <string name="tokens__camera_is_unavailable">Η κάμερα δεν είναι διαθέσιμη.</string>
+    <!-- tokens__check_if_app_has_proper_permissions -->
+    <string name="tokens__check_app_permissions">Ελέγξτε αν η εφαρμογή έχει τις κατάλληλες άδειες στις ρυθμίσεις του συστήματος.</string>
+    <string name="tokens__no_qr_codes_found">Δεν βρέθηκαν κωδικοί QR.</string>
+    <!-- tokens__no_correct_qr_code_had_been_found
+        
+        No correct QR codes had been found in the selected image. Please try a different image. -->
+    <string name="tokens__no_correct_qr_code_found_title">Δεν υπάρχει σωστός κωδικός QR στην επιλεγμένη εικόνα. Παρακαλώ δοκιμάστε μια διαφορετική εικόνα.</string>
+    <string name="tokens__select_service">Επιλέξτε υπηρεσία</string>
+    <string name="tokens__adding_service_question_title">Ποια υπηρεσία θέλετε να προσθέσετε;</string>
+    <string name="tokens__retype_this_token">Ξαναπληκτρολογήστε αυτό το token</string>
+    <!-- tokens__unlock_and_retype_this_token -->
+    <string name="tokens__unlock_and_retype_token_title">Ξεκλειδώστε και πληκτρολογήστε ξανά αυτό το token</string>
+    <string name="tokens__group">Ομάδα</string>
+    <string name="tokens__select_group">Επιλέξτε ομάδα</string>
+    <string name="tokens__google_auth_import">Εισαγωγή 2FA tokens από την εφαρμογή Google Authenticator.</string>
+    <string name="tokens__google_auth_import_subtitle">Αυτός ο κωδικός QR επιτρέπει την εισαγωγή των tokens από το Google Authenticator.</string>
+    <!-- A number replaces %d  -->
+    <string name="tokens__google_auth_out_of_title">%1$d out of %2$d</string>
+    <string name="tokens__google_auth_import_subtitle_end">Τα tokens θα εισαχθούν.</string>
+    <string name="tokens__sort_by">Ταξινόμηση κατά</string>
+    <!-- tokens__sort_by_az -->
+    <string name="tokens__sort_by_a_to_z">Α - Ω</string>
+    <!-- tokens__sort_by_za -->
+    <string name="tokens__sort_by_z_to_a">Ω - Α</string>
+    <string name="tokens__sort_by_manual">Χειροκίνητα</string>
+    <string name="tokens__advanced">Προχωρημένος</string>
+    <!-- tokens__advanced_alert_title -->
+    <string name="tokens__advanced_alert">Ειδοποίηση</string>
+    <!-- tokens__advanced_alert_description -->
+    <string name="tokens__advanced_alert_description_title">Η αλλαγή προηγμένων ρυθμίσεων δεν συνιστάται. Κάντε το μόνο όταν ο πάροχος 2FA το απαιτεί και όταν έχετε σαφείς οδηγίες.</string>
+    <string name="tokens__token_settings">Ρυθμίσεις Token</string>
+    <string name="tokens__otp_authentication">Έλεγχος ταυτότητας OTP</string>
+    <string name="tokens__algorithm">Αλγόριθμος</string>
+    <string name="tokens__refresh_time">Χρόνος ανανέωσης</string>
+    <string name="tokens__number_of_digits">Αριθμός ψηφίων</string>
+    <string name="tokens__counter">Μετρητής</string>
+    <string name="tokens__initial_counter">Αρχικός μετρητής</string>
+    <!-- A number replaces %d -->
+    <string name="tokens__second">%d sec</string>
+    <string name="tokens__hotp">HOTP</string>
+    <string name="tokens__totp">TOTP</string>
+    <string name="tokens__advanced_settings_footer_title">Δεν συνιστάται η αλλαγή σύνθετων ρυθμίσεων. Κάντε το μόνο όταν το απαιτεί ο πάροχος 2FA και όταν έχετε σαφείς οδηγίες.</string>
+    <string name="tokens__gallery_advice_title">Η καλύτερη εξάσκηση</string>
+    <!-- ADD A SPACE AT THE END -->
+    <string name="tokens__gallery_advice_content_first">Η υπηρεσία προστέθηκε με επιτυχία. Σας συνιστούμε ανεπιφύλακτα</string>
+    <!-- ADD A SPACE AFTER COMA -->
+    <string name="tokens__gallery_advice_content_middle_bold">διαγράψτε το στιγμιότυπο οθόνης QR από τη συλλογή σας.</string>
+    <string name="tokens__gallery_advice_content_last">Εάν κάποιος αναλάβει αυτό το στιγμιότυπο οθόνης με τον κωδικό QR, θα μπορεί να λάβει τους κωδικούς σας 2FA σε αυτήν την υπηρεσία.</string>
+    <string name="tokens__request_icon_page_title">Ζητήστε ένα εικονίδιο</string>
+    <string name="tokens__request_icon_social_title">Ενημερώστε μας στο Discord</string>
+    <string name="tokens__request_icon_social_link">Συνδεθείτε στον διακομιστή μας στο Discord</string>
+    <string name="tokens__request_icon_social_description">και αφήστε τους χρήστες να ψηφίσουν για εικονίδια που ζητήθηκαν.</string>
+    <string name="tokens__request_icon_middle">ή</string>
+    <string name="tokens__request_icon_provider_title">Ενημερώστε τον πάροχο υπηρεσιών</string>
+    <string name="tokens__request_icon_provider_description">Μπορείτε να χρησιμοποιήσετε τα μέσα κοινωνικής δικτύωσης ή email και να μοιραστείτε αυτό το κείμενο μαζί τους:</string>
+    <string name="tokens__request_icon_provider_message">Γεια σου! Χρησιμοποιώ την εφαρμογή 2FAS για να συνδεθώ στην υπηρεσία σας με το 2FA. Ωστόσο, το εικονίδιο σας λείπει! Μπορείτε να υποβάλετε το εικονίδιο σας εδώ: https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_footnote">Μην ξεχάσετε να κάνετε tag τον επίσημο λογαριασμό της εταιρείας!</string>
+    <string name="tokens__order_icon_description">Δεν μπορείτε να βρείτε ένα εικονίδιο επωνυμίας στην εφαρμογή 2FAS;</string>
+    <string name="tokens__order_icon_link">Ζητήστε ένα εικονίδιο επωνυμίας</string>
+    <string name="tokens__order_icon_title">Ζητήστε ένα εικονίδιο επωνυμίας</string>
+    <string name="tokens__order_menu_title">Επιλέξτε τη μέθοδο αιτήματος</string>
+    <string name="tokens__order_menu_option_user">Εικονίδιο αιτήματος ως χρήστης</string>
+    <string name="tokens__order_menu_option_company">Υποβολή εικονιδίου ως εταιρεία</string>
+    <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
+    <string name="tokens__sign_in_not_possible_title">Δεν θα μπορείτε να συνδεθείτε στον λογαριασμό σας %1$s χωρίς αυτό το token, εφόσον έχετε ενεργοποιημένο τον έλεγχο ταυτότητας δεύτερου παράγοντα για το %2$s.</string>
+    <string name="voiceover__show_service_key">Εμφάνιση μυστικού κλειδιού</string>
+    <string name="voiceover__copy_service_key">Αντιγραφή μυστικού κλειδιού</string>
+    <!-- voiceover__seconds_left -->
+    <string name="voiceover__seconds_left_counter_title">Μετρητής με δευτερόλεπτα που απομένουν για την αλλαγή token</string>
+    <string name="voiceover__delete_button">Κουμπί διαγραφής</string>
+    <string name="voiceover__service_deleted">Η υπηρεσία διαγράφηκε</string>
+    <!-- voiceover__hidden_secret_key_use_show button -->
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Αυτό το πεδίο περιέχει έναν κρυφό Μυστικό Κλειδί. Για να το αποκαλύψετε, χρησιμοποιήστε το κουμπί Εμφάνιση. Θα λειτουργήσει μόνο εάν έχετε ρυθμίσει τον Προσωπικό Κωδικό για την οθόνη κλειδώματος των εφαρμογών.</string>
+    <string name="voiceover__service_name">Ονομα Υπηρεσίας: %s</string>
+    <string name="voiceover__additional_info">πρόσθετες πληροφορίες: %s</string>
+    <string name="voiceover__token_tap_to_copy">Token %s. Πατήστε για αντιγραφή</string>
+    <string name="voiceover__edit">Επεξεργασία %s</string>
+    <string name="voiceover__service_label_with_name_and_color">Ετικέτα υπηρεσίας με όνομα %1$s και χρώμα %2$s</string>
+    <string name="voiceover__service_icon">εικονίδιο υπηρεσίας %s</string>
+    <string name="voiceover__selected">Επιλεγμένο</string>
+    <string name="voiceover__not_selected">Μη επιλεγμένο</string>
+    <string name="voiceover__badge_color">Χρώμα σήματος: %s</string>
+    <string name="voiceover__dismissing">Απόρριψη</string>
+    <string name="voiceover__secret_hint">Μόνο αριθμοί 2 έως 9, γράμματα. Τουλάχιστον 4 χαρακτήρες</string>
+    <string name="voiceover__add_service">Προσθήκη υπηρεσίας</string>
+    <string name="voiceover__add_group">Προσθήκη ομάδας</string>
+    <!-- voiceover__use_add_service_button -->
+    <string name="voiceover__use_add_service_button_title">Χρησιμοποιήστε το κουμπί Προσθήκη υπηρεσίας για να προσθέσετε μια νέα υπηρεσία</string>
+    <string name="voiceover__no_search_results">Δεν υπάρχουν αποτελέσματα αναζήτησης</string>
+    <!-- voiceover__sort_by -->
+    <string name="voiceover__sort_by_title">Χρησιμοποιήστε την ταξινόμηση κατά για να ορίσετε την ταξινόμηση υπηρεσιών</string>
+    <string name="voiceover__spinner">Φόρτωση περιεχομένου</string>
+    <string name="backup__incorrect_secret">Δεν ήταν δυνατή η δημιουργία αντιγράφων ασφαλείας των διακριτικών επειδή το μυστικό \"%s\" περιέχει παράνομους χαρακτήρες. Αφαιρέστε το από τη λίστα και δοκιμάστε ξανά</string>
+    <string name="backup__import">Εισαγωγή</string>
+    <string name="backup__export">Εξαγωγή</string>
+    <string name="backup__backup_disabled_title">Το 2FAS Backup θα απενεργοποιηθεί για την προστασία της ακεραιότητάς του</string>
+    <string name="backup__error_while_exporting_file">Σφάλμα κατά την εξαγωγή του αρχείου</string>
+    <string name="backup__import_completed_successfuly">Η εισαγωγή ολοκληρώθηκε με επιτυχία</string>
+    <!-- camera__video_device_in_use_by_another_app -->
+    <string name="camera__camera_used_by_other_app_title">Μια άλλη εφαρμογή χρησιμοποιεί την κάμερα. Εάν το κλείσιμο άλλων εφαρμογών δεν βοηθά, τότε επανεκκινήστε τη συσκευή</string>
+    <!-- camera__video_device_unavailable_due_to_system_overload  -->
+    <string name="camera__camera_unavailable_title">Η κάμερα δεν είναι διαθέσιμη λόγω υπερφόρτωσης του συστήματος. Δοκιμάστε να επανεκκινήσετε τη συσκευή.</string>
+    <string name="camera__cant_initialize_camera_general">Δεν είναι δυνατή η προετοιμασία της κάμερας. Δοκιμάστε να επανεκκινήσετε τη συσκευή</string>
+    <string name="camera__cant_initialize_camera_split_view">Δεν είναι δυνατή η προετοιμασία της κάμερας σε λειτουργία Split View. Ανοίξτε την εφαρμογή σε πλήρη οθόνη και δοκιμάστε ξανά</string>
+    <string name="restore__how_to_restore">Πώς να επαναφέρετε την εφαρμογή 2FAS;</string>
+    <string name="restore__application_restoration">Αποκατάσταση εφαρμογής</string>
+    <!-- restore_if_you_forgotten -->
+    <string name="restore__reset_Pin_title">Εάν έχετε ξεχάσει το PIN ή θέλετε να επαναφέρετε την εφαρμογή 2FAS, πρέπει να εγκαταστήσετε ξανά την εφαρμογή.</string>
+    <!-- restore_please_remember -->
+    <string name="restore__backup_advice">Λάβετε υπόψη ότι εάν δεν έχετε αντίγραφο ασφαλείας και επαναφέρετε την εφαρμογή, θα χάσετε την πρόσβαση σε όλους τους κωδικούς σας. Και επομένως, πρόσβαση σε όλους τους λογαριασμούς σας που είναι ασφαλισμένοι με 2FA.</string>
+    <!-- restore_if_you_have_backup -->
+    <string name="restore__backup_title">Εάν έχετε αντίγραφο ασφαλείας, χαλαρώστε, θα μπορείτε να επαναφέρετε όλους τους κωδικούς σας.</string>
+    <string name="backup__cloud_backup">Cloud Backup</string>
+    <string name="backup__icloud_sync">iCloud Sync</string>
+    <string name="backup__section_description">ΣΥΝΙΣΤΑΤΑΙ: Το iCloud Sync διατηρεί τα token σας ασφαλή στο Apple iCloud σε περίπτωση απώλειας ή βλάβης της συσκευής σας. Κρατήστε το ενεργοποιημένο.</string>
+    <string name="backup__file_backup">Δημιουργία αντιγράφων ασφαλείας αρχείων</string>
+    <!-- backup__use_file_backup_for -->
+    <string name="backup__file_backup_offline_title">Χρησιμοποιήστε το File Backup για δημιουργία αντιγράφων ασφαλείας εκτός σύνδεσης των token σας.</string>
+    <string name="backup__backup_removal">Αφαίρεση αντιγράφων ασφαλείας</string>
+    <string name="backup__delete_2fas_backup">Διαγραφή αντιγράφων ασφαλείας 2FAS</string>
+    <string name="backup__warning_introduction">Προειδοποίηση! Εάν διαγράψετε το 2FAS Backup, θα διαγράψετε επίσης όλα τα διακριτικά από άλλες συσκευές που έχουν συγχρονιστεί με αυτόν τον λογαριασμό. Για να διατηρήσετε τα διακριτικά σε άλλες συσκευές, βεβαιωθείτε ότι έχετε απενεργοποιήσει το 2FAS Backup πριν από τη διαγραφή.</string>
+    <!-- backup__i_want_to_delete -->
+    <string name="backup__delete_title">Θέλω να διαγράψω το Backup</string>
+    <string name="backup__export_to_backup_file">Εξαγωγή αντιγράφων ασφαλείας σε αρχείο</string>
+    <!-- backup__you_can_import_exported_file -->
+    <string name="backup__import_file_title">Μπορείτε να εισάγετε εξαγόμενα αρχεία σε άλλες συσκευές με την εφαρμογή 2FAS</string>
+    <string name="backup__export_to_file">Εξαγωγή σε αρχείο</string>
+    <string name="backup__verify_pin">Επαλήθευση PIN</string>
+    <string name="backup__save_file">Αποθηκεύσετε το αρχείο</string>
+    <string name="backup__import_backup_file">Εισαγωγή αρχείου αντιγράφου ασφαλείας</string>
+    <!-- backup__youre_goint_to_import_backup -->
+    <string name="backup__import_other_devices">Πρόκειται να εισαγάγετε ένα αρχείο αντιγράφου ασφαλείας που περιέχει</string>
+    <string name="backup__import_file">Εισαγωγή αρχείου</string>
+    <string name="backup__choose_antother_file">Επιλέξτε άλλο αρχείο</string>
+    <string name="backup__no_new_services">Δεν υπάρχει τίποτα για εισαγωγή</string>
+    <string name="backup__file_error">Σφάλμα αρχείου!</string>
+    <!-- backup__services_form_file_will_be_merged -->
+    <string name="backup__services_merge_title">Οι υπηρεσίες από το αρχείο θα συγχωνευθούν με αυτές της εφαρμογής σας</string>
+    <string name="backup__no_new_services_error">Είτε αυτό το αρχείο είναι κενό είτε όλες οι υπηρεσίες εντός είναι ήδη διαθέσιμες στην εφαρμογή</string>
+    <string name="backup__update_required_to_import_title">Θα χρειαστείτε μια νέα έκδοση της εφαρμογής για να εισαγάγετε τα περιεχόμενα αυτού του αρχείου. Μπορείτε να βρείτε την πιο πρόσφατη έκδοση στο App Store</string>
+    <string name="backup__cant_read_file_error">Δεν είναι δυνατή η ανάγνωση αυτού του αρχείου. Μπορεί να καταστραφεί ή παρουσιάστηκε σφάλμα κατά την προσπάθεια πρόσβασης σε αυτό. Επιλέξτε ένα άλλο</string>
+    <string name="backup__password">Κωδικός πρόσβασης</string>
+    <string name="backup__repeat_password">Επαναλάβετε τον κωδικό πρόσβασης</string>
+    <string name="backup__incorrect_character_error">Λανθασμένος χαρακτήρας. Χρησιμοποιήστε μόνο γράμματα A-Z, a-z, ψηφία και ειδικούς χαρακτήρες: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__to_short_error">Η παρεχόμενη φράση είναι πολύ σύντομη (ελάχ. 3 χαρακτήρες)</string>
+    <string name="backup__passwords_dont_match">Οι κωδικοί πρόσβασης δεν ταιριάζουν</string>
+    <string name="backup__save_and_export">Αποθήκευση και εξαγωγή</string>
+    <string name="backup__set_password_title">Για να αυξήσετε την προστασία του αρχείου αντιγράφου ασφαλείας, ορίστε τον κωδικό πρόσβασης</string>
+    <string name="backup__enter_password_title">Πληκτρολογήστε έναν κωδικό πρόσβασης για αυτό το αρχείο αντιγράφου ασφαλείας για να προχωρήσετε στη διαδικασία εισαγωγής</string>
+    <string name="backup__backup_file_password_title">Ορίστε έναν κωδικό πρόσβασης για αυτό το αρχείο αντιγράφου ασφαλείας</string>
+    <string name="backup__incorrect_password">Λάθος κωδικός</string>
+    <!-- %d - number -->
+    <string name="backup__new_services">%d νέες υπηρεσίες</string>
+    <!-- %d - number -->
+    <string name="backup__services_imported_count">%d υπηρεσίες εισήχθησαν από αρχείο</string>
+    <!-- backup__user_has_icloud_problem -->
+    <string name="backup__icloud_problem">Υπάρχει πρόβλημα με το iCloud. Ελέγξτε τις ρυθμίσεις του συστήματος.</string>
+    <!-- backup__newer_schema_unsupported -->
+    <string name="backup__newer_format_not_supported">Αυτό το αρχείο είναι σε μια νεότερη έκδοση μορφής από αυτή που υποστηρίζει η εφαρμογή.</string>
+    <!-- backup__encrypted_unsupported -->
+    <string name="backup__encrypted_files_not_supported">Αυτό το αρχείο είναι κρυπτογραφημένο. Υποστηρίζουμε μόνο μη κρυπτογραφημένα αρχεία.</string>
+    <string name="tokens__copy_token">Αντιγραφή token\n</string>
+    <!-- tokens__i_want_to_delete_this_servie -->
+    <string name="tokens__i_want_to_delete_this_token">Ναι, θέλω να διαγράψω αυτήν την υπηρεσία</string>
+    <string name="color__neutral">Ουδέτερο</string>
+    <string name="color__light_blue">Γαλάζιο</string>
+    <string name="color__indigo">Indigo</string>
+    <string name="color__purple">Μωβ</string>
+    <string name="color__turquoise">Τυρκουάζ</string>
+    <string name="color__green">Πράσινο</string>
+    <string name="color__red">Κόκκινο</string>
+    <string name="color__orange">Πορτοκάλι</string>
+    <string name="color__yellow">Κίτρινο</string>
+    <string name="settings__knowledge">Γνώση</string>
+    <string name="settings__support_and_share">Υποστήριξη και Κοινοποίηση</string>
+    <string name="settings__tell_a_friend">Πες σε έναν φίλο</string>
+    <string name="settings__write_a_review">Γράψτε μια κριτική</string>
+    <string name="settings__about">Σχετικά με</string>
+    <string name="settings__privacy_policy">Πολιτική Απορρήτου</string>
+    <string name="settings__terms_of_service">Όροι Χρήσης</string>
+    <string name="settings__version">Έκδοση εφαρμογής %s</string>
+    <string name="settings__no_limit">Κανένα όριο</string>
+    <string name="settings__pin_code">Κωδικός PIN</string>
+    <string name="settings__app_security">Ασφάλεια εφαρμογών</string>
+    <string name="settings__app_blocking">Ρυθμίσεις κλειδώματος</string>
+    <string name="settings__face_id">Face ID</string>
+    <string name="settings__touch_id">Touch ID</string>
+    <!-- settings__how_many_attempts_header -->
+    <string name="settings__too_many_attempts_header">Αποκλεισμός μετά από X αποτυχημένες προσπάθειες:</string>
+    <string name="settings__how_many_attempts_footer">Επιλέξτε τον μέγιστο αριθμό ανεπιτυχών προσπαθειών εισαγωγής του κωδικού πρόσβασης πριν κλειδώσετε την εφαρμογή (ο χρόνος κλειδώματος μπορεί να αλλάξει παρακάτω).</string>
+    <string name="settings__block_for">Ώρα κλειδώματος</string>
+    <string name="settings__3_minutes">3 λεπτά</string>
+    <string name="settings__5_minutes">5 λεπτά</string>
+    <string name="settings__10_minutes">10 λεπτά</string>
+    <string name="settings__limit_of_trials">Max αποτυχημένες προσπάθειες</string>
+    <string name="settings__pin_4_digits">4ψήφιος κωδικός</string>
+    <string name="settings__pin_6_digits">6ψήφιος κωδικός</string>
+    <string name="settings__biometric_authentication">Βιομετρικός έλεγχος ταυτότητας</string>
+    <string name="settings__donations">Δωρεές</string>
+    <string name="settings__donate_twofas">Κάντε δωρεά στο 2FAS</string>
+    <string name="new_version__new_version_title">Νέα έκδοση</string>
+    <string name="new_version__new_version_message_ios">Μια νέα έκδοση του 2FAS είναι διαθέσιμη στο AppStore. Κάντε ενημέρωση τώρα!</string>
+    <string name="new_version__update_action">Ενημέρωση τώρα</string>
+    <!-- new_version__skip_action -->
+    <string name="new_version__skip_title">Παράλειψε αυτή την εκδοχή</string>
+    <!-- new_version__later_action -->
+    <string name="new_version__update_later">Ενημέρωση αργότερα</string>
+    <string name="browser__browser_extension">Επέκταση προγράμματος περιήγησης</string>
+    <string name="browser__info_title">2FAS Web Browser extension</string>
+    <string name="browser__info_description_first">Εγκαταστήστε την επέκταση προγράμματος περιήγησης 2FAS στον υπολογιστή σας.</string>
+    <string name="browser__info_description_second">Συνδυάστε το με την εφαρμογή 2FAS.</string>
+    <string name="browser__more_info">Περισσότερες πληροφορίες:</string>
+    <string name="browser__more_info_link_title">2fas.com/be</string>
+    <string name="browser__pair_with_web_browser">Σύζευξη με πρόγραμμα περιήγησης ιστού</string>
+    <string name="browser__more_info_link">https://www.2fas.com/be</string>
+    <string name="browser__pairing_successful_title">Επιτυχής σύζευξη!</string>
+    <string name="browser__pairing_successful_description">Το 2FAS θα σας στέλνει μια ειδοποίηση Push κάθε φορά που συνδέεστε στις ηλεκτρονικές υπηρεσίες σας χρησιμοποιώντας αυτό το πρόγραμμα περιήγησης ιστού. Δεν θα χρειάζεται πλέον να πληκτρολογείτε ξανά τα διακριτικά σας για κάθε χρήση.</string>
+    <string name="browser__pairing_failed_title">Η σύζευξη απέτυχε :(</string>
+    <string name="browser__pairing_failed_description">Αυτός ο κωδικός QR δεν αναγνωρίστηκε, και το 2FAS δεν μπόρεσε να συνδέσει αυτήν τη συσκευή με την επέκταση περιήγησης. Παρακαλώ δοκιμάστε ξανά.</string>
+    <!-- browser__pairing_already_paired_title -->
+    <string name="browser__already_paired_title">Ήδη ζευγαρωμένο!</string>
+    <!-- browser__pairing_already_paired_description -->
+    <string name="browser__already_paired_description">Αυτή η Επέκταση Περιήγησης είναι ήδη συνδεδεμένη με αυτήν τη συσκευή.</string>
+    <string name="browser__contact_support">Επικοινωνήστε με την υποστήριξη</string>
+    <string name="browser__pairing_with_browser">Σύζευξη με πρόγραμμα περιήγησης</string>
+    <!-- browser__paired_devices -->
+    <string name="browser__paired_devices_browser_title">Συζευγμένες συσκευές (προγράμματα περιήγησης ιστού)</string>
+    <string name="browser__add_new">Προσθεσε νεο</string>
+    <!-- browser__this_device -->
+    <string name="browser__this_device_name">Ψευδώνυμο συσκευής</string>
+    <string name="browser__device_name">Ψευδώνυμο συσκευής</string>
+    <string name="browser__name">Ονομα</string>
+    <string name="browser__this_device_footer">Αυτό το ψευδώνυμο θα σας βοηθήσει να αναγνωρίσετε αυτήν τη συσκευή μεταξύ άλλων συσκευών που έχουν συνδεθεί με την επέκταση περιήγησης του 2FAS.</string>
+    <string name="browser__browser_extension_settings">Ρυθμίσεις επεκτάσεων προγράμματος περιήγησης</string>
+    <string name="browser__unkown_name">&lt;UNKOWN_NAME&gt;</string>
+    <string name="browser__request_source_description">Ο %1$s ζήτησε ένα token 2FA για το %2$s. Επιλέξτε την υπηρεσία για εξουσιοδότηση και αποθήκευση με αυτόν τον τομέα.\n</string>
+    <string name="browser__request">Αίτημα προγράμματος περιήγησης</string>
+    <!-- browser__code_success -->
+    <string name="browser__code_success_title">Το token στάλθηκε με επιτυχία!</string>
+    <string name="browser__code_failure">Σφάλμα κατά την αποστολή του κωδικού. %s</string>
+    <string name="browser__deleting_paired_device_title">Διαγραφή συζευγμένης συσκευής</string>
+    <string name="browser__deleting_paired_device_content">Είστε βέβαιοι ότι θέλετε να διαγράψετε τη συζευγμένη συσκευή;</string>
+    <string name="browser__pairing_date">Ημερομηνία ζευγαρώματος</string>
+    <string name="browser__forget_this_browser">Ξεχάστε αυτό το πρόγραμμα περιήγησης ιστού</string>
+    <!-- browser__service_is_paired_list_description -->
+    <string name="browser__paired_domains_list_title">Λίστα ζευγοποιημένων τομέων.</string>
+    <string name="browser__deleting_extension_pairing_title">Κατάργηση τομέα;</string>
+    <string name="browser__deleting_extension_pairing_content">Την επόμενη φορά που θα χρησιμοποιήσετε την επέκταση περιήγησης για να συνδεθείτε στο %s, θα σας ζητηθεί να συνδέσετε ξανά αυτόν τον τομέα.</string>
+    <string name="browser__push_notifications_title">Push Notifications</string>
+    <string name="browser__push_notifications_content">Για πρόσβαση σε λειτουργίες όπως η εφαρμογή Επέκταση προγράμματος περιήγησης χρειάζεται πρόσβαση στις Ειδοποιήσεις Push. Μπορείτε να αλλάξετε αυτήν τη ρύθμιση ανά πάσα στιγμή στις Ρυθμίσεις συστήματος.</string>
+    <string name="browser__request_expired">Το αίτημα έληξε</string>
+    <string name="browser__2fa_token_request_title">2FA Token Request</string>
+    <string name="browser__2fa_token_request_content">Θέλετε να μοιραστείτε το token 2FA για</string>
+    <string name="notifications__no_notifications">Δεν υπάρχουν ειδοποιήσεις</string>
+    <string name="CFBundleSpokenName">2 F A S</string>
+    <string name="commons__2fas_toolbar">2FAS</string>
+    <string name="backup__google_drive_not_available">Το Google Drive δεν είναι διαθέσιμο</string>
+    <string name="backup__google_drive_disabled_title">Το Google Drive έχει απενεργοποιηθεί από τον χρήστη</string>
+    <string name="backup__update_required_to_import_title_2">Θα χρειαστείτε μια νέα έκδοση της εφαρμογής για να εισάγετε τα περιεχόμενα αυτού του αρχείου. Μπορείτε να βρείτε την πιο πρόσφατη έκδοση στο Google Store.</string>
+    <string name="tokens__qr_code_leads_to_google_store">Αυτός ο κωδικός QR σας κατευθύνει στο Google Play Store.</string>
+    <string name="introduction__page_4_content_android">Τα token σας αποθηκεύονται εκτός σύνδεσης μέσω του αποθηκευτικού χώρου της συσκευής, επομένως θυμηθείτε να δημιουργήσετε αντίγραφα ασφαλείας των υπηρεσιών σας! Χρησιμοποιήστε τον κωδικό πρόσβασης Google Drive Sync και PIN για προστασία από μη εξουσιοδοτημένη πρόσβαση και ζημιά στη συσκευή.</string>
+    <string name="new_version__new_version_message_android">Μια νέα έκδοση του 2FAS είναι διαθέσιμη στο Google Store. Κάντε ενημέρωση τώρα!</string>
+    <string name="security_error_no_match">Ο Κωδικός PIN δεν ταιριάζει! Παρακαλώ δοκιμάστε ξανά.</string>
+    <string name="settings_developer_options">Επιλογές προγραμματιστή</string>
+    <string name="settings__external_import">Εισαγωγή tokens</string>
+    <string name="settings__browser_extension_result_toolbar_title">Αποτέλεσμα σύζευξης</string>
+    <string name="tokens__caution">ΠΡΟΣΟΧΗ</string>
+    <string name="tokens__qr_point_and_scan_again">Κατευθύνετε την κάμερά σας προς τον σωστό QR κώδικα και σαρώστε ξανά.</string>
+    <string name="tokens__service_unsaved_changes">Θέλετε να απορρίψετε τις αλλαγές σας;</string>
+    <string name="tokens__service_unsaved_changes_title">Μη αποθηκευμένες αλλαγές</string>
+    <string name="tokens__service_key_invalid_format">Το κλειδί έχει μη έγκυρη μορφή</string>
+    <string name="intent_error_no_gallery_app">Σφάλμα συστήματος! Δεν υπάρχει εφαρμογή gallery συστήματος.</string>
+    <string name="gdrive_permission_title">Άδεια Google Drive</string>
+    <string name="gdrive_permission_msg">Χρειαζόμαστε άδεια από το Google Drive για να αποθηκεύσουμε τα αντίγραφα ασφαλείας στα δεδομένα της εφαρμογής.</string>
+    <string name="gdrive_internet_title">Απαιτείται σύνδεση στο διαδίκτυο</string>
+    <string name="gdrive_internet_msg">Για να συγχρονιστείτε με το Google, πρέπει συνδεθείτε στο διαδίκτυο.</string>
+    <string name="gdrive_wipe_internet_msg">Για να ανακληθεί η πρόσβαση στο Google Drive, πρέπει συνδεθείτε στο διαδίκτυο.</string>
+    <string name="backup_explanation_msg">Αποθηκεύστε και συγχρονίστε αυτόματα το αντίγραφο ασφαλείας σας στον κρυφό φάκελο του Google Drive σας. Αυτός ο φάκελος είναι προσβάσιμος μόνο από την εφαρμογή 2FAS.</string>
+    <string name="backup_error_unknown">Συνέβη ένα σφάλμα κατά τον συγχρονισμό του αντιγράφου ασφαλείας. Παρακαλώ επανεκκινήστε την εφαρμογή μετά από λίγα λεπτά και δοκιμάστε ξανά.</string>
+    <string name="backup_error_encrypt_unknown">Συνέβη ένα σφάλμα κατά την κρυπτογράφηση του αντιγράφου ασφαλείας. Καθορίστε ξανά τον κωδικό πρόσβασης σας.</string>
+    <string name="backup_error_decrypt_unknown">Παρουσιάστηκε σφάλμα κατά την αποκρυπτογράφηση αντιγράφων ασφαλείας. Ορίστε ξανά τον κωδικό πρόσβασής σας.</string>
+    <string name="backup__google_drive_problem_title">Υπάρχει πρόβλημα με το iCloud. Ελέγξτε τις ρυθμίσεις του συστήματος.</string>
+    <string name="backup_error_auth">Υπήρξε πρόβλημα με τα δικαιώματα λογαριασμού Google Drive σας. Δοκιμάστε να ενεργοποιήσετε και να απενεργοποιήσετε τον συγχρονισμό.</string>
+    <string name="backup_error_no_password">Το αντίγραφο ασφαλείας σας προστατεύεται με κωδικό πρόσβασης. Ενεργοποιήστε το και πληκτρολογήστε τον κωδικό πρόσβασής σας.</string>
+    <string name="backup_error_wrong_password">Το αντίγραφο ασφαλείας σας προστατεύεται με κωδικό πρόσβασης, αλλά ο παρεχόμενος κωδικός πρόσβασης είναι λάθος. Ενεργοποιήστε το και πληκτρολογήστε τον κωδικό πρόσβασής σας.</string>
+    <string name="customization_service_assignment">Ανάθεση υπηρεσίας</string>
+    <string name="customization_personalization">Προσωποποίηση</string>
+    <string name="customization_change_brand">Αλλαγή σήμανσης</string>
+    <string name="customization_advanced">Προχωρημένος</string>
+    <string name="customization_request_icon">Ζητήστε ένα εικονίδιο</string>
+    <string name="customization_edit_label">Επεξεργασία ετικέτας</string>
+    <string name="groups_delete_msg">Είστε σίγουρος ότι θέλετε να διαγράψετε αυτήν την ομάδα;</string>
+    <string name="export_backup_title">Το αρχείο αντιγράφου ασφαλείας σας είναι έτοιμο για εξαγωγή.</string>
+    <string name="export_backup_msg">Εξαγάγετε αυτό το αρχείο για να διατηρήσετε ασφαλώς τα 2FAS tokens σας. Μπορείτε να το εισαγάγετε αργότερα σε αυτήν ή άλλες συσκευές χρησιμοποιώντας την εφαρμογή 2FAS.</string>
+    <string name="export_backup_pass">Εξαγωγή αρχείου χωρίς κωδικό πρόσβασης\n(δεν προτείνεται)</string>
+    <string name="import_backup_msg2">Το αρχείο θα συγχρονιστεί με τη λίστα υπηρεσιών της εφαρμογής.</string>
+    <string name="backup_notice_later">Ίσως αργότερα</string>
+    <string name="backup_notice_cta">Ενεργοποίηση</string>
+    <string name="widgets_empty_msg">Δεν έχουν προστεθεί υπηρεσίες.</string>
+    <string name="backup__section_description_google">ΣΥΝΙΣΤΑΤΑΙ: Το Google Drive Sync διατηρεί τα διακριτικά σας ασφαλή στο Google Drive σε περίπτωση απώλειας ή βλάβης της συσκευής σας. Κρατήστε το ενεργοποιημένο.</string>
+    <string name="backup_turn_off_title">Απενεργοποίηση συγχρονισμού με το Google Drive;</string>
+    <string name="backup_turn_off_msg1">Τα Tokens 2FA θα παραμείνουν σε αυτήν τη συσκευή και στο Google Drive σας, αλλά δεν θα συγχρονιστούν. Θα αποσυνδεθείτε επίσης από τον Λογαριασμό σας Google.</string>
+    <string name="backup_turn_off_msg2">Να θυμάστε, σε περίπτωση απώλειας ή βλάβης αυτής της συσκευής ή αφαίρεσης της εφαρμογής, ενδέχεται να μην μπορείτε να ανακτήσετε τα tokens σας, και θα χάσετε την πρόσβαση στους online λογαριασμούς που προστατεύονται από το 2FA.</string>
+    <string name="backup_settings_password_set_subtitle">Ασφαλίστε ένα αρχείο αντιγράφου ασφαλείας στο Google Drive με έναν προσαρμοσμένο κωδικό πρόσβασης.</string>
+    <string name="backup_settings_password_remove_title">Κατάργηση του κωδικού πρόσβασης</string>
+    <string name="backup_settings_password_remove_subtitle">Κατάργηση του κωδικού πρόσβασης για το αρχείο αντιγράφου ασφαλείας στο Google Drive σας.</string>
+    <string name="backup_settings_account_title">Λογαριασμός Google</string>
+    <string name="backup_settings_sync_title">Τελευταίος συγχρονισμός</string>
+    <string name="browser_extension_result_success_description">Το 2FAS θα σας στέλνει ειδοποιήσεις PUSH κάθε φορά που συνδέεστε στις υπηρεσίες σας στο διαδίκτυο χρησιμοποιώντας αυτόν τον περιηγητή. Δεν θα χρειάζεται πλέον να ξαναπληκτρολογείτε τα tokens σας για κάθε χρήση.</string>
+    <string name="browser_extension_browser_dialog">Όνομα περιηγητή</string>
+    <string name="biometric_dialog_auth_title">Πιστοποίηση</string>
+    <string name="biometric_dialog_auth_subtitle">Χρησιμοποιήστε τo βιομετρικό πιστοποιητικό\n σας.</string>
+    <string name="about_licenses">Άδειες ανοικτού κώδικα</string>
+    <string name="externalimport_description">Μπορείτε να εισάγετε τα tokens σας στο 2FAS από διάφορες εφαρμογές. Επιλέξτε μια εφαρμογή από τη λίστα και ακολουθήστε τις οδηγίες.</string>
+    <string name="externalimport_select_app">Επιλέξτε εφαρμογή</string>
+    <string name="externalimport_google_authenticator">Google Authenticator</string>
+    <string name="externalimport_aegis">Aegis</string>
+    <string name="externalimport_raivo">Raivo OTP</string>
+    <string name="android__app_name">2FAS Auth</string>
+    <string name="commons__yes">Ναι</string>
+    <string name="commons__no">Όχι</string>
+    <string name="commons__search">Αναζήτηση</string>
+    <string name="errors__no_app">Δεν υπάρχει εφαρμογή που υποστηρίζει αυτόν τον σύνδεσμο.</string>
+    <string name="permissions__camera_permission">Άδεια Κάμερας</string>
+    <string name="permissions__camera_permission_description">Απαιτείται άδεια για την κάμερα για τη σάρωση των QR Codes. Αν θέλετε να χρησιμοποιήσετε αυτή τη δυνατότητα, πηγαίνετε στις Πληροφορίες Εφαρμογής και άδειες και ενεργοποιήστε την Κάμερα.</string>
+    <string name="security__disable_pin">Απενεργοποίηση του Κωδικού PIN</string>
+    <string name="security__enter_your_new_pin">Παρακαλώ εισάγετε τον νέο σας PIN για το %s</string>
+    <string name="security__pin_error_incorrect">Ο Κωδικός PIN είναι εσφαλμένος! Παρακαλώ δοκιμάστε ξανά.</string>
+    <string name="settings__biometrics">Βιομετρικά</string>
+    <string name="settings__support">Υποστήριξη 2FAS</string>
+    <string name="settings__developer">Επιλογές Προγραμματιστή</string>
+    <string name="settings__option_fingerprint">Κλείδωμα βιομετρικών στοιχείων</string>
+    <string name="settings__option_theme">Θέμα</string>
+    <string name="settings__theme_option_auto">Αυτόματο</string>
+    <string name="settings__theme_option_auto_system">Αυτόματο - Ρυθμίσεις Συστήματος</string>
+    <string name="settings__theme_option_dark">Σκοτεινό θέμα</string>
+    <string name="settings__theme_option_light">Φωτεινό θέμα</string>
+    <string name="tokens__copied_clipboard">Το token αντιγράφηκε στο πρόχειρο!</string>
+    <string name="tokens__next_copied_clipboard">Το επόμενο token αντιγράφτηκε στο πρόχειρο!</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Θέλετε να διαγράψετε οριστικά αυτήν την υπηρεσία 2FA;</string>
+    <string name="tokens__fab_addmanually">Προσθήκη χειροκίνητα</string>
+    <string name="tokens__qr_does_not_work">Αυτός ο κωδικός QR δεν λειτουργεί!</string>
+    <!-- Could not read QR code from the image! -->
+    <string name="tokens__qr_read_image_failed">Δεν ήταν δυνατή η ανάγνωση του QR κώδικα από την εικόνα!</string>
+    <string name="tokens__qr_read_image_try_again">Δοκιμάστε να επιλέξετε μια διαφορετική εικόνα.</string>
+    <string name="tokens__remove_it_forever">Διαγραφή υπηρεσίας για πάντα</string>
+    <!-- Service could not be added, Service Key is invalid. Try again. -->
+    <string name="tokens__service_add_error">Η υπηρεσία δεν μπορεί να προστεθεί επειδή το Κρυφό Κλειδί δεν είναι έγκυρο. Δοκιμάστε ξανά.</string>
+    <!-- A service with this Service Key already exists. Do you want to override it? -->
+    <string name="tokens__service_already_exists">Υπάρχει ήδη μια υπηρεσία με αυτό το Κρυφό Κλειδί. Θέλετε να το αντικαταστήσετε;</string>
+    <string name="tokens__service_key_invalid_characters">Το κλειδί περιέχει μη έγκυρους χαρακτήρες.</string>
+    <string name="tokens__show_service_key">Εμφάνιση μυστικού κλειδιού</string>
+    <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
+    <string name="tokens__show_service_key_setup_lock">Το κλειδί σας είναι προστατευμένο. Προσθέστε έναν κωδικό PIN ή κλείδωμα αποτυπωμάτων για να το δείτε.</string>
+    <string name="tokens__tokens_list_is_empty">Η λίστα υπηρεσιών είναι κενή.</string>
+    <string name="tokens__use_plus_button_to_add_tokens">Χρησιμοποιήστε το κουμπί \"+\" για να προσθέσετε μια νέα υπηρεσία.</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Θα είναι αδύνατο να συνδεθείτε στον λογαριασμό σας %1$s χωρίς αυτό το token, όσο έχετε ενεργοποιημένη τη διπλή πιστοποίηση για %2$s.\n\nΔεν θα μπορείτε να επαναφέρετε αυτό το token από τον κάδο απορριμμάτων 2FAS.</string>
+    <string name="import_ga_success">Οι υπηρεσίες εισήχθησαν με επιτυχία!</string>
+    <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
+    <string name="backup_error_network">Χρειάζεστε μια ενεργή σύνδεση στο διαδίκτυο για να συγχρονίσετε το αντίγραφο ασφαλείας σας. Παρακαλώ \nενεργοποιήστε τη σύνδεση δικτύου και δοκιμάστε ξανά.</string>
+    <string name="update_app_title">Ενημερώστε την εφαρμογή.</string>
+    <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
+    <string name="update_app_msg">Παρακαλώ ενημερώστε στην πιο πρόσφατη έκδοση του 2FAS για να έχετε όλες τις λειτουργίες και να διατηρήσετε ένα υψηλό επίπεδο ασφαλείας.</string>
+    <string name="delete_service_title">Διαγράφετε</string>
+    <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
+    <string name="delete_service_msg">από τη λίστα υπηρεσιών του 2FAS.\n\nΘυμηθείτε, όσο έχετε ενεργοποιημένο τον δεύτερο παράγοντα ελέγχου, δεν θα συνδεθείτε στον λογαριασμό %s χωρίς αυτό το token.</string>
+    <string name="delete_service_cta">Διαγραφή</string>
+    <string name="export_backup_cta">Εξαγωγή</string>
+    <string name="export_backup_share_cta">Κοινοποίηση</string>
+    <string name="import_backup_title">Εισαγωγή αντιγράφου ασφαλείας από το αρχείο</string>
+    <string name="import_backup_msg1">Πρόκειται να εισάγετε αρχείο αντιγράφου ασφαλείας με</string>
+    <string name="import_backup_cta">Εισαγωγή</string>
+    <string name="widgets_warning_msg">Τα tokens που είναι ορατά στο widget δεν προστατεύονται από τον κωδικό PIN σας.\n\nΕίστε σίγουρος/η ότι θέλετε να εμφανίσετε τα tokens σας στο widget;</string>
+    <string name="widgets_warning_title">ΠΡΟΕΙΔΟΠΟΙΗΣΗ!</string>
+    <string name="widgets_warning_cta">Ναι, είμαι σίγουρος/η</string>
+    <string name="backup_notice_title">2FAS Backup</string>
+    <string name="backup_notice_msg">Ενεργοποιήστε το Αντίγραφο Ασφαλείας του 2FAS. Σε περίπτωση επαναφοράς ή απώλειας του τηλεφώνου σας, θα μπορείτε να ανακτήσετε όλα τα tokens σας.</string>
+    <string name="brand_empty_msg">Συγγνώμη, η μάρκα δεν βρέθηκε.</string>
+    <!-- Select which services will be visible on widget: -->
+    <string name="widgets_select_msg">Επιλέξτε ποιες υπηρεσίες θα είναι ορατές στο widget:</string>
+    <string name="backup_turn_off_cta">Απενεργοποίηση Συγχρονισμού</string>
+    <string name="backup_turn_off_cancel">Ακύρωση</string>
+    <string name="backup_settings_password_set_title">Ορισμός κωδικού πρόσβασης</string>
+    <string name="backup_settings_delete_title">Διαγραφή αρχείου αντιγράφου ασφαλείας από το Google Drive</string>
+    <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
+    <string name="backup_settings_delete_subtitle">Εάν διαγράψετε αυτό το αρχείο από το Google Drive σας, ο συγχρονισμός σε όλες τις συγχρονισμένες συσκευές θα απενεργοποιηθεί και τα tokens θα παραμείνουν μόνο σε αυτήν και σε άλλες συσκευές μέσω τοπικού αποθηκευτικού χώρου.</string>
+    <string name="browser__result_error_browser_paired">Η εφαρμογή 2FAS σας είναι ήδη συνδεδεμένη με αυτόν τον περιηγητή.</string>
+    <!-- Scan QR code again -->
+    <string name="browser__result_error_cta">Σαρώστε ξανά τον κωδικό QR.</string>
+    <string name="browser__scan_error_dialog_title">Σφάλμα</string>
+    <!-- Scanned QR code has unsupported format. Please try again. -->
+    <string name="browser__scan_error_dialog_msg_invalid_code">Ο σαρωμένος κωδικός QR έχει μη υποστηριζόμενη μορφή. Παρακαλώ προσπαθήστε ξανά.</string>
+    <string name="browser__scan_error_dialog_msg_unknown">Άγνωστο σφάλμα κατά τη σάρωση του QR κώδικα. Παρακαλώ δοκιμάστε ξανά.</string>
+    <string name="biometric_dialog_auth_cancel">Χρησιμοποιήστε τον Κωδικό PIN αυτή τη φορά</string>
+    <string name="biometric_dialog_setup_title">Ενεργοποίηση πιστοποίησης</string>
+    <string name="biometric_dialog_setup_cancel">Ακύρωση</string>
+    <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
+    <string name="settings__option_fingerprint_description">Για να ενεργοποιήσετε το Biometric Lock, πρέπει να ενεργοποιήσετε και να ορίσετε έναν Κωδικό PIN.</string>
+    <string name="settings__block_for_footer">Επιλέξτε το χρονικό διάστημα για το οποίο η εφαρμογή θα είναι κλειδωμένη.</string>
+    <string name="error__out_of_disk_space">Φαίνεται ότι είτε έχετε εξαντλήσει τον χώρο στον δίσκο τώρα, είτε μια τέτοια περίπτωση στο παρελθόν έβλαψε τη βάση δεδομένων.</string>
+    <string name="error__cloud_backup_newer_version">Ο συγχρονισμός στον cloud έχει μεταφερθεί στη νέα έκδοση. Ενημερώστε την εφαρμογή.</string>
+    <string name="error__cloud_backup_encrypted_not_supported">Η δημιουργία αντιγράφων ασφαλείας στο cloud είναι κρυπτογραφημένη. Ενημερώστε την εφαρμογή για να υποστηρίξει αυτήν τη δυνατότητα</string>
+    <string name="extension__continue_to_app">Συνέχεια στην εφαρμογή</string>
+    <string name="extension__cancel">Ακύρωση</string>
+    <string name="extension__authorize">Εξουσιοδότηση</string>
+    <string name="extension__dismiss">Απόρριψη</string>
+    <string name="extension__request_sent">Η αίτηση στάλθηκε.</string>
+    <string name="extension__send_question_title">Να σταλεί το token;</string>
+    <string name="extension__send_question_content">%1$s Ζητήθηκε 2FAS token για %2$s</string>
+    <string name="extension__error_while_sending">Σφάλμα κατά την αποστολή του token.</string>
+    <string name="extension__not_paired_title">Αυτός ο ιστότοπος δεν έχει συνδεθεί.</string>
+    <string name="extension__not_paired_content">Ανοίξτε την εφαρμογή και επιλέξτε μια υπηρεσία για αυτόν τον τομέα.</string>
+    <string name="extension__error_open_the_app">Ανοίξτε την εφαρμογή και ελέγξτε αν η Επέκταση Περιήγησης είναι σωστά συνδεδεμένη.</string>
+    <string name="extension__error_no_internet">Υπάρχει πρόβλημα σύνδεσης.</string>
+    <string name="extension__try_again">Παρακαλώ δοκιμάστε ξανά.</string>
+    <string name="extension__error">Σφάλμα</string>
+    <string name="extension__error_no_services">Για να λειτουργήσει η Επέκταση Περιήγησης, προσθέστε υπηρεσίες στην εφαρμογή 2FAS.</string>
+    <string name="extension__approve">Έγκριση</string>
+    <string name="extension__deny">Άρνηση</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">Ενεργοποιήστε τον κωδικό PIN και την εξουσιοδότηση Face ID για να αποτρέψετε μη εξουσιοδοτημένη πρόσβαση στα tokens σας σε αυτήν τη συσκευή.</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Ενεργοποιήστε τον κωδικό PIN και την εξουσιοδότηση Touch ID για να αποτρέψετε μη εξουσιοδοτημένη πρόσβαση στα tokens σας σε αυτήν τη συσκευή.</string>
+    <string name="settings__send_logs_error_not_exists">Ο παρεχόμενος κωδικός είναι λάθος. Παρακαλώ ελέγξτε τον διπλά.</string>
+    <string name="settings__send_logs_error_expired">Ο παρεχόμενος κωδικός έχει λήξει. Παρακαλώ επικοινωνήστε με την ομάδα υποστήριξης για να λάβετε έναν νέο.</string>
+    <string name="settings__send_logs_error_no_internet">Δεν υπάρχει σύνδεση στο internet. Παρακαλώ ελέγξτε τη σύνδεση και δοκιμάστε ξανά.</string>
+    <string name="settings__send_logs_error_server">Φαίνεται ότι υπάρχει πρόβλημα με τον διακομιστή μας. Αν συνεχίζεται, παρακαλώ επικοινωνήστε με την ομάδα υποστήριξης μας.</string>
+    <string name="settings__send_logs_error_title">Η λειτουργία απέτυχε.</string>
+    <string name="settings__send_logs_sent_title">Τα αρχεία καταγραφής στάλθηκαν.</string>
+    <string name="settings__send_logs_sent_description">Ευχαριστώ που επικοινώνησες. Θα τις αναλύσουμε το συντομότερο δυνατό.</string>
+    <string name="commons__send">Στείλε</string>
+    <string name="settings__send_logs_title">Αποστολή καταγραφών</string>
+    <string name="settings__send_logs_description_link">Ο κωδικός που παρέχεται από την ομάδα υποστήριξης συμπληρώθηκε αυτόματα. Θέλετε να στείλω τα αρχεία καταγραφής;</string>
+    <string name="settings__send_logs_description_edit">Παρακαλώ εισάγετε ή επικολλήστε τον κωδικό που παρέχεται από την ομάδα υποστήριξης μας.</string>
+    <string name="settings__send_logs">Στείλτε τα αρχεία καταγραφής.</string>
+    <string name="settings__recommendation">Ρίξε μια ματιά σε αυτήν τη φανταστική εφαρμογή διπλού παράγοντα πιστοποίησης από το 2FAS: https://2fas.com</string>
+    <string name="settings__acknowledgements">Αναγνωρίσεις</string>
+    <string name="introduction__import_external_app">Εισαγωγή από εξωτερική εφαρμογή.</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="one">Πριν από λίγο.</item>
+        <item quantity="other">Πριν από λίγα λεπτά.</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="one">Πριν από %d λεπτό\n</item>
+        <item quantity="other">Πριν από %d λεπτά</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="one">Πριν από %d ώρα</item>
+        <item quantity="other">Πριν από %d ώρες</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="one">Πριν από %d ημέρα</item>
+        <item quantity="other">Πριν από %d ημέρες</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="one">Πριν από %d εβδομάδα</item>
+        <item quantity="other">Πριν από %d εβδομάδες</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="one">Πριν από %d μήνα</item>
+        <item quantity="other">Πριν από %d μήνες</item>
+    </plurals>
+    <string name="commons__unknown_error">Παρουσιάστηκε άγνωστο σφάλμα! Προσπάθησε ξανά!</string>
+    <string name="backup__export_result_success">Το αρχείο αποθηκεύτηκε με επιτυχία!</string>
+    <string name="backup__share_result_failure">Δεν ήταν δυνατή η κοινή χρήση του αρχείου!</string>
+    <string name="backup__enter_password_dialog_title">Πληκτρολογήστε τον κωδικό πρόσβασης</string>
+    <string name="backup__remove_password_msg">Εισαγάγετε τον εφεδρικό κωδικό πρόσβασης για να προχωρήσετε στην αφαίρεση.</string>
+    <string name="backup__revoke_google_access_msg">Εισαγάγετε τον κωδικό αντιγράφου ασφαλείας για να συνεχίσετε με την ανάκληση της πρόσβασης στο Google.</string>
+    <string name="backup__synchronization_settings">Ρυθμίσεις συγχρονισμού.</string>
+    <string name="backup__local_file_title">Τοπικό αρχείο.</string>
+    <string name="backup__drive_title">Συγχρονισμός με το Google Drive.</string>
+    <string name="backup__delete_file_title">Να διαγραφεί το αρχείο αντιγράφου ασφαλείας από το Google Drive;</string>
+    <string name="backup__delete_file_msg">Ο Συγχρονισμός Google θα απενεργοποιηθεί. Τα διακριτικά σας θα παραμείνουν τοπικά, αλλά η εφαρμογή 2FAS θα αποσυνδεθεί από τον Λογαριασμό σας Google σε αυτήν και σε άλλες συγχρονισμένες συσκευές σας.</string>
+    <string name="backup__sync_status_waiting">Αναμονή για συγχρονισμό</string>
+    <string name="backup__sync_status_progress">Συγχρονισμός...</string>
+    <string name="import_backup_msg1_encrypted">Πρόκειται να εισαγάγετε ένα κρυπτογραφημένο αρχείο αντιγράφου ασφαλείας.</string>
+    <string name="externalimport__choose_json_cta">Επιλέξτε το αρχείο JSON.</string>
+    <string name="externalimport__aegis_msg">Εξαγάγετε τους λογαριασμούς σας από το Aegis σε ένα ανακρυπτογραφημένο αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί \"Επιλογή αρχείου JSON\". Θυμηθείτε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="externalimport__raivo_msg">Χρησιμοποιήστε την επιλογή \"Εξαγωγή OTPs σε αρχείο ZIP\" στις Ρυθμίσεις του Raivo, αποθηκεύστε ένα αρχείο ZIP, αποσυμπιέστε το και εισαγάγετε το αρχείο JSON χρησιμοποιώντας το κουμπί \"Επιλογή αρχείου JSON\".</string>
+    <string name="externalimport__no_tokens_msg">Ωστόσο, δεν υπάρχουν υπηρεσίες που μπορούν να εισαχθούν.</string>
+    <string name="commons__try_again">Προσπάθησε ξανά</string>
+    <string name="commons__proceed">Συνεχίστε</string>
+    <string name="externalimport__ga_title">Εισαγωγή 2FA tokens από την εφαρμογή Google Authenticator.</string>
+    <string name="externalimport__aegis_title">Εισαγωγή 2FA tokens από την εφαρμογή Aegis.</string>
+    <string name="externalimport__raivo_title">Εισαγωγή 2FA tokens από την εφαρμογή Raivo.</string>
+    <string name="externalimport__ga_success_msg">Αυτός ο κωδικός QR επιτρέπει την εισαγωγή των tokens από την εφαρμογή Google Authenticator.</string>
+    <string name="externalimport__aegis_success_msg">Αυτό το αρχείο JSON επιτρέπει την εισαγωγή tokens από το Aegis.</string>
+    <string name="externalimport__raivo_success_msg">Αυτό το αρχείο JSON επιτρέπει την εισαγωγή tokens από το Raivo.</string>
+    <string name="externalimport__read_error">Δεν ήταν δυνατή η ανάγνωση οποιουδήποτε token. Δοκιμάστε να επιλέξετε ένα διαφορετικό αρχείο.</string>
+    <string name="settings__gd_sync_info">Υπενθύμιση συγχρονισμού Google Drive</string>
+    <string name="settings__gd_sync_disable_confirm">Είσαι σίγουρος? Χωρίς τον συγχρονισμό του Google Drive, δεν θα μπορείτε να επαναφέρετε τα tokens σας εάν χάσετε ή επαναφέρετε το τηλέφωνό σας!</string>
+    <string name="extension__code_sent_msg">Ο κωδικός στάλθηκε με επιτυχία</string>
+    <string name="extension__code_sent_error_msg">Παρουσιάστηκε σφάλμα κατά την αποστολή του κωδικού</string>
+    <string name="tokens__add_service_title">Προσθήκη νέας υπηρεσίας</string>
+    <string name="tokens__customize_service_title">Προσαρμόστε την υπηρεσία</string>
+    <string name="extension__services_suggested_header">Προτεινόμενα</string>
+    <string name="extension__services_all_header">Όλες οι υπηρεσίες</string>
+    <string name="extension__services_other_header">Αλλες υπηρεσίες</string>
+    <string name="settings__ssl_error_title">Σφάλμα SSL</string>
+    <string name="settings__ssl_error_description">Παρουσιάστηκε ένα σφάλμα SSL και δεν είναι δυνατή η ασφαλής σύνδεση με τον διακομιστή. Βεβαιωθείτε ότι έχετε την τελευταία έκδοση της εφαρμογής ή δοκιμάστε να αλλάξετε το δίκτυο.</string>
+    <string name="backup__import_error_file_size">Το αρχείο που προσπαθείτε να εισαγάγετε είναι πολύ μεγάλο. Το όριο μεγέθους είναι 10 MB.</string>
+    <string name="backup__import_error_file_invalid">Το αρχείο που προσπαθείτε να εισαγάγετε είναι άκυρο ή κατεστραμμένο. Επιλέξτε ένα άλλο αρχείο.</string>
+    <string name="appearance__toggle_active_search">Ενεργή αναζήτηση.</string>
+    <string name="appearance__active_search_description">Ενεργή αναζήτηση κατά την εκκίνηση.</string>
+    <string name="widgets__expires_in">Λήγει σε:</string>
+    <string name="widgets__settings">Ρυθμίσεις widget.</string>
+    <string name="errors__input_integer_number">Η είσοδος πρέπει να είναι ακέραιος αριθμός.</string>
+    <string name="errors__input_number">Η είσοδος πρέπει να είναι ένας αριθμός.</string>
+    <string name="errors__input_empty">Η είσοδος δεν μπορεί να είναι κενή.</string>
+    <string name="errors__input_too_long">Η είσοδος είναι πολύ μεγάλη. Limit: %d\n\n\n\n\n</string>
+    <string name="commons__best_match">Καλύτερη αντιστοιχία.</string>
+    <string name="settings__enable_crashlytics">Στείλτε ανώνυμες αναφορές κρασαρίσματος.</string>
+    <string name="settings__enable_crashlytics_description">Στείλτε ανώνυμες αναφορές κρασαρίσματος για να βοηθήσετε το 2FAS να εντοπίσει και να λύσει προβλήματα στην εφαρμογή (απαιτείται επανεκκίνηση της εφαρμογής).</string>
+    <string name="tokens__manage_list">Διαχείριση λίστας.</string>
+    <string name="settings__appearance">Εμφάνιση.</string>
+    <string name="settings__show_next_token_desc">Εμφανίστε το επόμενο token όταν το τρέχον είναι έτοιμο να λήξει.</string>
+    <string name="settings__list_style">Στυλ λίστας.</string>
+    <string name="backup__reminder_msg">Δεν έχει πραγματοποιηθεί συγχρονισμός με το Google Drive.</string>
+    <string name="backup__reminder_cta">Πηγαίνετε στις ρυθμίσεις αντιγράφου ασφαλείας.</string>
+    <string name="settings__list_style_option_default">Προεπιλογή.</string>
+    <string name="settings__list_style_option_compact">Συμπαγές.</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Εξαγάγετε τους λογαριασμούς σας από το LastPass σε ένα ανακρυπτογραφημένο αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί \"Επιλογή αρχείου JSON\". Θυμηθείτε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="settings__about_crash_optout_title">Αναφορές κρασαρίσματος.</string>
+    <string name="externalimport__lastpass_title">Εισαγωγή 2FA tokens από την εφαρμογή LastPass.</string>
+    <string name="externalimport__lastpass_success_msg">Αυτό το αρχείο JSON επιτρέπει την εισαγωγή των tokens από το LastPass.</string>
+    <string name="externalimport__info_lastpass_title">Εισαγάγετε τα tokens από το LastPass.</string>
+    <string name="externalimport__info_aegis_title">Εισαγάγετε τα tokens από το Aegis.</string>
+    <string name="externalimport__info_raivo_title">Εισαγάγετε τα tokens από το Raivo OTP.</string>
+    <string name="externalimport__info_google_authenticator_title">Εισαγάγετε τα tokens από το Google Authenticator.</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">s</string>
+    <string name="tokens__add_title">Συνδέστε την υπηρεσία με το 2FAS.</string>
+    <string name="tokens__add_description">Κατευθύνετε την κάμερά σας προς την οθόνη για να τραβήξετε τον κωδικό QR.</string>
+    <string name="tokens__add_other_methods">Άλλες μέθοδοι.</string>
+    <string name="tokens__add_enter_manual">Εισαγάγετε το μυστικό κλειδί χειροκίνητα.</string>
+    <string name="tokens__add_from_gallery">Μεταφορτώστε το στιγμιότυπο με τον κωδικό QR.</string>
+    <string name="tokens__add_success_title">Σχεδόν έτοιμο!</string>
+    <string name="tokens__add_success_description">Για να ολοκληρώσετε τον συνδυασμό της υπηρεσίας, πρέπει να ξαναπληκτρολογήσετε αυτό το token.</string>
+    <string name="tokens__add_manual_title">Συνδέστε την υπηρεσία με το 2FAS.</string>
+    <string name="tokens__add_manual_description">Πληκτρολογήστε το όνομα της υπηρεσίας και το μυστικό κλειδί.</string>
+    <string name="tokens__add_manual_service_name">Όνομα υπηρεσίας</string>
+    <string name="tokens__add_manual_service_key">Μυστικό Κλειδί</string>
+    <string name="tokens__add_manual_other">Άλλες ρυθμίσεις.</string>
+    <string name="tokens__add_manual_other_optional">(προαιρετικό)</string>
+    <string name="tokens__add_manual_done_cta">Προσθέστε υπηρεσία.Προσθήκη υπηρεσίας</string>
+    <string name="tokens__add_manual_help_cta">Δεν ξέρετε τι να κάνετε; Πατήστε για βοήθεια.</string>
+    <string name="tokens__add_manual_advanced">Προχωρημένες ρυθμίσεις τόκεν.</string>
+    <string name="tokens__add_manual_additional_info">Επιπλέον πληροφορίες</string>
+    <string name="tokens__add_manual_advanced_description">Η αλλαγή των προεπιλεγμένων ρυθμίσεων των τόκεν δεν συνιστάται. Κάντε το μόνο εάν ο πάροχος 2FA το απαιτεί και όταν έχετε σαφείς οδηγίες.</string>
+    <string name="settings__option_screenshots_description">Επιτρέπετε τα screenshots στην εφαρμογή για 5 λεπτά.</string>
+    <string name="settings__option_screenshots">Να επιτραπούν τα screenshot</string>
+    <string name="settings__option_screenshots_confirm_title">Να επιτραπούν τα screenshot στην εφαρμογή;</string>
+    <string name="settings__option_screenshots_confirm_description">\nΕίσαι σίγουρος; Αυτή η επιλογή σας επιτρέπει να τραβήξετε στιγμιότυπο οθόνης και να καταγράψετε οποιαδήποτε οθόνη μέσα στην εφαρμογή. Ωστόσο, αυτό θα επιτρέψει επίσης οποιαδήποτε εξωτερική προσπάθεια καταγραφής οθόνης στην εφαρμογή.\nΓια λόγους ασφαλείας, αυτή η επιλογή θα απενεργοποιηθεί αυτόματα μετά από 5 λεπτά.</string>
+    <string name="social__social_media">Σύνδεσμοι social media.\n\n\n\n</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">X (formerly Twitter)</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Κρύψτε τα tokens.</string>
+    <string name="settings__hide_tokens_description">Τα tokens θα αποκαλυφθούν με ένα άγγιγμα.</string>
+    <string name="browser__pair_manually_cta">Συνδέστε χειροκίνητα.</string>
+    <string name="browser__pair_manually_hint">Κωδικός σύζευξης.</string>
+    <string name="externalimport__info_authenticatorpro_title">Εισαγωγή token από το Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_success_msg">Αυτό το αρχείο κειμένου επιτρέπει την εισαγωγή token από το Authenticator Pro.\"</string>
+    <string name="externalimport__authenticatorpro_title">Εισαγωγή token 2FA από την εφαρμογή Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_msg">Εξαγάγετε τους λογαριασμούς σας από το Authenticator Pro σε ένα μη κρυπτογραφημένο αρχείο κειμένου και ανεβάστε το χρησιμοποιώντας το κουμπί \'Επιλογή αρχείου κειμένου\'. Μην ξεχάσετε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">Επιλέξτε αρχείο κειμένου</string>
+    <string name="fingerprint__biometric_invalidated">Η σύνδεση με βιομετρικών στοιχείων απενεργοποιήθηκε λόγω αλλαγών στις ρυθμίσεις αποτυπώματος του συστήματος</string>
+    <string name="tokens__last_pass_import">Εισαγωγή tokens 2FA από την εφαρμογή LastPass.</string>
+    <string name="tokens__last_pass_import_subtitle">Αυτός ο κωδικός QR επιτρέπει την εισαγωγή tokens από το LastPass.</string>
+    <string name="tokens__add_with_guide">Οδήγησε με</string>
+    <string name="guides__select_title">Περιηγηθείτε στις υπηρεσίες</string>
+    <string name="guides__select_description">Επιλέξτε υπηρεσία για σύνδεση με την εφαρμογή 2FAS</string>
+    <string name="guides__select_provide_guide">Θέλετε να παρέχετε οδηγούς για τη διπλή ταυτοποίηση (2FA) για την υπηρεσία σας;</string>
+    <string name="guides__select_provide_guide_cta">Υποβολή τώρα</string>
+    <string name="color__pink">Ροζ</string>
+    <string name="color__brown">Καφέ</string>
+    <string name="tokens__other_methods_header">Άλλες μεθόδοι;</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Η κάμερα δεν είναι διαθέσιμη. Ελέγξτε τα δικαιώματα πρόσβασης των εφαρμογών στις Ρυθμίσεις του Συστήματος.</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Ρυθμίσεις συστήματος</string>
+    <string name="commons__text_short_title">Το παρεχόμενο κείμενο είναι πολύ μικρό\u0020\u0020\u0020(min. %d chars)</string>
+    <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
+    <string name="tokens__add_manual_advanced_description_highlight">Δεν προτείνετε</string>
+    <string name="guides__guide_init_title">Οδηγός 2FAS</string>
+    <string name="guides__guide_title">2FAS for %s</string>
+    <string name="guides__guide_universal_title">Universal 2FA Guide</string>
+    <string name="browser__save_choice">Αποθήκευση της επιλογής μου.</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">Εισαγωγή των token του 2FA από την εφαρμογή andOTP.</string>
+    <string name="externalimport__andotp_success_msg">Αυτό το αρχείο JSON επιτρέπει την εισαγωγή των tokens σας από το andOTP.</string>
+    <string name="externalimport__info_andotp_title">Εισαγάγετε τα tokens σας από το andOTP.</string>
+    <string name="externalimport__andotp_msg">Εξαγάγετε τους λογαριασμούς σας από το andOTP σε ένα μη κρυπτογραφημένο αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί \"Επιλογή αρχείου JSON\". Μην ξεχάσετε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="introduction__backup_description">Στο επόμενο βήμα, θα σας ζητηθεί να επιλέξετε τον λογαριασμό σας στο Google Drive, όπου τα tokens του 2FA θα αποθηκευτούν με ασφάλεια.</string>
+    <string name="introduction__backup_take_risk_cta">Θα πάρω το ρίσκο, να μην δημιουργηθεί αντίγραφω ασφαλείας</string>
+    <string name="introduction__backup_success">Ο συγχρονισμός του Google Drive ενεργοποιήθηκε με επιτυχία!</string>
+    <string name="backup__import_invalid_version">Το αρχείο αντιγράφου ασφαλείας που προσπαθείτε να εισαγάγετε δεν υποστηρίζεται σε αυτήν την έκδοση της εφαρμογής. Η εφαρμογή υποστηρίζει μόνο εκδόσεις εφεδρικής μορφής έως και %d, ενώ το αρχείο που εισάγετε είναι η έκδοση %d.</string>
+    <string name="commons__pair">Σύνδεση</string>
+    <string name="introduction__backup_icloud_title">Ασφαλής συγχρονισμός και δημιουργία αντιγράφων ασφαλείας</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">Το 2FAS χρησιμοποιεί το iCloud για ασφαλή δημιουργία αντιγράφων ασφαλείας και συγχρονισμό των κουπονιών σας 2FA. Τα **κρυπτογραφημένα** εφεδρικά δεδομένα αποθηκεύονται στο iCloud, προσβάσιμα **μόνο από την εφαρμογή 2FAS**. Επιπλέον, αυτή η λειτουργία βοηθά με το διακριτικό **ανάκτηση και συγχρονισμό** σε συσκευές iOS.\n\nΕίναι ενεργοποιημένο από προεπιλογή και μπορεί να απενεργοποιηθεί ανά πάσα στιγμή στις ρυθμίσεις δημιουργίας αντιγράφων ασφαλείας της εφαρμογής.</string>
+    <string name="introduction__backup_icloud_cta">Μάθετε περισσότερα σχετικά με τη δημιουργία αντιγράφων ασφαλείας</string>
+    <string name="backup__enter_password_google_drive_msg1">Φαίνεται ότι το αρχείο αντιγράφου ασφαλείας του Google Drive προστατεύεται με κωδικό πρόσβασης. Πληκτρολογήστε τον σωστό κωδικό πρόσβασης για να συνεχίσετε. Εάν θέλετε να εκκαθαρίσετε το αντίγραφο ασφαλείας του Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">πατήστε εδώ για να δείτε πώς</string>
+    <string name="settings__preferences">Προτιμήσεις</string>
+    <string name="settings__it_matters">Διαφέρει</string>
+    <string name="settings__manage_tokens">Διαχείριση tokens</string>
+    <string name="settings__info_footer">Η υποστήριξή σας μας επιτρέπει να αναπτύξουμε νέες δυνατότητες και\nβελτιώσεις. Ευχαριστούμε!</string>
+    <string name="settings__trash_option">Ανάκτηση από τον κάδο</string>
+    <string name="periodic_notification_tips">Χαίρομαστε που είσαι μαζί μας στο 2FAS! 🌟 Αφιερώστε ένα λεπτό για να ανακαλύψετε χρήσιμες Συμβουλές &amp; Κόλπα 🛠️ στην εφαρμογή για ενισχυμένη ασφάλεια 🔒.</string>
+    <string name="periodic_notification_backup">\nΕνεργοποιήστε το 2FAS Backup &amp; Sync για να εξασφαλίσετε ότι ποτέ δεν θα μείνετε κλειδωμένοι έξω, ακόμα και αν χάσετε το τηλέφωνό σας - η ηρεμία σας με ένα άγγιγμα! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Επιταχύνετε τις συνδέσεις σας με το 2FAS Browser Extension! 🚀 Κατεβάστε το τώρα για πιο γρήγορη και βολική πιστοποίηση. 🌐✨</string>
+    <string name="periodic_notification_donate">Είμαστε ευγνώμοι για την υποστήριξή σας στο 2FAS! 🌟 Αν θεωρείτε την εφαρμογή μας χρήσιμη, σκεφτείτε τη δυνατότητα να κάνετε μια δωρεά για να μας βοηθήσετε να διατηρήσουμε τον ψηφιακό σας κόσμο ασφαλή. Κάθε μικρό βοήθημα μετράει! 🙏</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Προσωρινή θέση</string>
+    <string name="widget__size_not_supported">Αυτό το μέγεθος δεν υποστηρίζεται ακόμα</string>
+    <string name="widget__settings_description">Επιλέξτε ποιες Υπηρεσίες θέλετε να εμφανίζονται στο Widget. Εάν δεν υπάρχουν διαθέσιμες υπηρεσίες, βεβαιωθείτε ότι έχετε ενεργοποιήσει τα Widgets στην ενότητα Ρυθμίσεις εφαρμογής</string>
+    <string name="widget__service_icon">Εικονίδιο υπηρεσίας</string>
+    <string name="widget__not_enabled">Η λειτουργία widget δεν είναι ενεργοποιημένη στην ενότητα 2FAS Settings</string>
+    <string name="widget__not_enabled_no_services">Η λειτουργία widget δεν είναι ενεργοποιημένη στην ενότητα 2FAS Settings και δεν υπάρχουν διαθέσιμες υπηρεσίες στην εφαρμογή για επιλογή</string>
+    <string name="widget__no_services">Δεν υπάρχουν διαθέσιμες υπηρεσίες στην εφαρμογή για επιλογή</string>
+    <string name="widget__select_service_intent_description">Επιλέξτε Υπηρεσία που θέλετε να εμφανίζεται στο widget 2FAS</string>
+    <string name="widget__my_secured_account">Ο ασφαλής λογαριασμός μου</string>
+    <string name="widget__token">Token</string>
+    <string name="watch__intro">Η εφαρμογή 2FAS watchOS είναι μια συνοδευτική εφαρμογή για την εφαρμογή 2FAS iOS. Θα παρουσιάζει υπηρεσίες που έχουν δημιουργηθεί αντίγραφα ασφαλείας με χρήση του συγχρονισμού iCloud.\n\nΓια γρήγορη πρόσβαση, προσθέστε τα στις Αγαπημένες υπηρεσίες.\n\nΘυμηθείτε να κάνετε δωρεά για να βελτιώσουμε περαιτέρω την πλατφόρμα 2FAS!</string>
+    <string name="tokens__hotp_not_supported">Οι υπηρεσίες HOTP δεν υποστηρίζονται ακόμη</string>
+    <string name="tokens__favorite_services">Αγαπημένες Υπηρεσίες</string>
+    <string name="security__enter_new_pin_short">Εισαγάγετε νέο PIN</string>
+    <string name="security__repeat_new_pin_short">Επαναλάβετε το νέο PIN</string>
+    <string name="commons__success">Επιτυχία</string>
+    <string name="security__enter_pin_short">Εισαγάγετε το PIN</string>
+</resources>
