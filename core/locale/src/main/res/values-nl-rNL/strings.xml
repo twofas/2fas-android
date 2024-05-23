@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Sun, 19 May 2024 05:33:28 -0700
+ Exported at: Thu, 23 May 2024 05:55:41 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -482,7 +482,7 @@
     <string name="tokens__service_unsaved_changes">Wilt u de wijzigingen verwerpen?</string>
     <string name="tokens__service_unsaved_changes_title">Niet-opgeslagen wijzigingen</string>
     <string name="tokens__service_key_invalid_format">Sleutel heeft een ongeldige indeling</string>
-    <string name="intent_error_no_gallery_app">Systeemerror! Er is geen systeemgalerij-app.</string>
+    <string name="intent_error_no_gallery_app">Systeemfout! Er is geen systeemgalerij-app.</string>
     <string name="gdrive_permission_title">Google Drive-toestemming</string>
     <string name="gdrive_permission_msg">We hebben Google Drive-machtiging nodig om de back-upbestanden in app-gegevens op te slaan.</string>
     <string name="gdrive_internet_title">Internet connectie vereist</string>
@@ -785,9 +785,9 @@
     <string name="tokens__last_pass_import">2FA tokens importeren van LastPass app</string>
     <string name="tokens__last_pass_import_subtitle">Met deze QR-code kunnen tokens worden geïmporteerd uit LastPass</string>
     <string name="tokens__add_with_guide">Begeleid me</string>
-    <string name="guides__select_title">Door diensten bladeren</string>
+    <string name="guides__select_title">Door services bladeren</string>
     <string name="guides__select_description">Selecteer een service om te koppelen met de 2FAS-app</string>
-    <string name="guides__select_provide_guide">Wilt u 2FA-handleidingen aanbieden voor uw dienst?</string>
+    <string name="guides__select_provide_guide">Wilt u 2FA-handleidingen aanbieden voor uw service?</string>
     <string name="guides__select_provide_guide_cta">Nu toepassen</string>
     <string name="color__pink">Roze</string>
     <string name="color__brown">Bruin</string>
@@ -830,20 +830,20 @@
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
     <string name="widget__placeholder">Placeholder</string>
-    <string name="widget__size_not_supported">This size is not supported yet</string>
-    <string name="widget__settings_description">Select which Services you would like to display on the Widget. If no Services are available, make sure that you\'ve enabled Widgets in app Settings section</string>
-    <string name="widget__service_icon">Service icon</string>
-    <string name="widget__not_enabled">Widget functionality is not enabled in 2FAS Settings section</string>
-    <string name="widget__not_enabled_no_services">Widget functionality is not enabled in 2FAS Settings section and there are no services in the app available for selection</string>
-    <string name="widget__no_services">There are no services in the app available for selection</string>
-    <string name="widget__select_service_intent_description">Select Service you want to show on your 2FAS Widget</string>
-    <string name="widget__my_secured_account">My secured account</string>
+    <string name="widget__size_not_supported">Deze grootte wordt nog niet ondersteund</string>
+    <string name="widget__settings_description">Selecteer welke services u graag wilt tonen op de widget. Als er geen services beschikbaar zijn, controleer dan of u Widgets heeft ingeschakeld in de sectie app-instellingen</string>
+    <string name="widget__service_icon">Service-icoon</string>
+    <string name="widget__not_enabled">De widget functionaliteit is niet ingeschakeld in de sectie 2FAS-instellingen</string>
+    <string name="widget__not_enabled_no_services">De widget functionaliteit is niet ingeschakeld in de sectie 2FAS-instellingen en er zijn geen services in de app waaruit u kunt kiezen</string>
+    <string name="widget__no_services">Er zijn geen services in de app waaruit u kunt kiezen</string>
+    <string name="widget__select_service_intent_description">Selecteer de service die u wilt tonen op uw 2FAS-widget.</string>
+    <string name="widget__my_secured_account">Mijn beveiligde account</string>
     <string name="widget__token">Token</string>
-    <string name="watch__intro">2FAS watchOS app is a companion app for the 2FAS iOS application. It will present services backed up using iCloud sync.\n\nFor quick access, add them to Favorite Services.\n\nPlease remember to donate so we can further improve the 2FAS platform!</string>
-    <string name="tokens__hotp_not_supported">HOTP services aren\'t supported yet</string>
-    <string name="tokens__favorite_services">Favorite Services</string>
-    <string name="security__enter_new_pin_short">Enter new PIN</string>
-    <string name="security__repeat_new_pin_short">Repeat new PIN</string>
+    <string name="watch__intro">2FAS watchOS-app is een companie app voor de 2FAS iOS-applicatie. Het zal services tonen die worden geback-upt door iCloud sync.\n\nVoeg ze toe aan Favoriete services voor snelle toegang.\n\nVergeet niet te doneren, zodat we het 2FAS-platform verder kunnen verbeteren!</string>
+    <string name="tokens__hotp_not_supported">HOTP-services worden nog niet ondersteund</string>
+    <string name="tokens__favorite_services">Favoriete services</string>
+    <string name="security__enter_new_pin_short">Voer nieuwe pincode in</string>
+    <string name="security__repeat_new_pin_short">Herhaal nieuwe pincode</string>
     <string name="commons__success">Success</string>
-    <string name="security__enter_pin_short">Enter PIN</string>
+    <string name="security__enter_pin_short">Voer pincode in</string>
 </resources>
