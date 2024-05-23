@@ -2,10 +2,9 @@
 <!--
  Loco xml export: Android string resources
  Project: 2FAS App
- Release: Working copy
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Mon, 11 Mar 2024 07:13:48 -0700
+ Exported at: Thu, 23 May 2024 09:50:25 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -519,7 +518,7 @@
     <string name="backup_settings_password_remove_title">Usuń hasło</string>
     <string name="backup_settings_password_remove_subtitle">Usuń hasło zabezpieczające plik kopii zapasowej na Dysku Google.</string>
     <string name="backup_settings_account_title">Konto Google</string>
-    <string name="backup_settings_sync_title">Ostatnia synchronizacja\u0020</string>
+    <string name="backup_settings_sync_title">Ostatnia synchronizacja</string>
     <string name="browser_extension_result_success_description">2FAS wyśle Ci powiadomienia PUSH za każdym razem, gdy zalogujesz się do swoich serwisów internetowych za pomocą tej przeglądarki. Nie będziesz już musiał wpisywać swoich tokenów przy każdym użyciu.</string>
     <string name="browser_extension_browser_dialog">Nazwa przeglądarki</string>
     <string name="biometric_dialog_auth_title">Weryfikacja</string>
@@ -846,4 +845,11 @@
     <string name="widget__select_service_intent_description">Wybierz usługę, którą chcesz wyświetlać w widżecie 2FAS.</string>
     <string name="widget__my_secured_account">Moje zabezpieczone konto</string>
     <string name="widget__token">Token</string>
+    <string name="watch__intro">Aplikacja 2FAS watchOS jest aplikacją towarzyszącą dla aplikacji 2FAS iOS. Będzie ona prezentować usługi zarchiwizowane przy użyciu synchronizacji iCloud.\n\nAby uzyskać szybki dostęp, dodaj je do ulubionych usług.\n\nPamiętaj, aby przekazać darowiznę, abyśmy mogli nadal ulepszać platformę 2FAS!</string>
+    <string name="tokens__hotp_not_supported">Usługi HOTP nie są jeszcze obsługiwane</string>
+    <string name="tokens__favorite_services">Ulubione Serwisy</string>
+    <string name="security__enter_new_pin_short">Wprowadź nowy PIN</string>
+    <string name="security__repeat_new_pin_short">Powtórz nowy PIN</string>
+    <string name="commons__success">Sukces</string>
+    <string name="security__enter_pin_short">Wprowadź PIN</string>
 </resources>

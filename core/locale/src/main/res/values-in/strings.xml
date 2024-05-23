@@ -2,10 +2,9 @@
 <!--
  Loco xml export: Android string resources
  Project: 2FAS App
- Release: Working copy
  Locale: id-ID, Indonesian (Indonesia)
  Exported by: rafakob
- Exported at: Mon, 11 Mar 2024 07:13:48 -0700
+ Exported at: Sun, 19 May 2024 05:33:28 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -818,20 +817,27 @@
     <string name="settings__manage_tokens">Mengelola token</string>
     <string name="settings__info_footer">Dukungan Anda memungkinkan kami untuk mengembangkan fitur-fitur baru dan perbaikan. Terima kasih!</string>
     <string name="settings__trash_option">Ambil dari tempat sampah</string>
-    <string name="periodic_notification_tips">Glad you\'re with us at 2FAS! 🌟 Take a moment to discover helpful Tips &amp; Tricks 🛠️ in the app for enhanced security 🔒.</string>
+    <string name="periodic_notification_tips">Senang anda bersama kami di 2FAS! 🌟 Luangkan waktu sejenak untuk menemukan Tips &amp; Trik bermanfaat 🛠️ di aplikasi untuk meningkatkan keamanan 🔒.</string>
     <string name="periodic_notification_backup">Aktifkan 2FAS Backup &amp; Sync untuk memastikan Anda tidak akan pernah terkunci, bahkan jika Anda kehilangan ponsel Anda - ketenangan pikiran Anda dalam satu ketukan! 🔐📱</string>
     <string name="periodic_notification_browser_extension">Percepat login Anda dengan Ekstensi Peramban 2FAS! 🚀 Unduh sekarang untuk autentikasi yang lebih cepat dan nyaman. 🌐✨</string>
     <string name="periodic_notification_donate">Kami berterima kasih atas dukungan Anda terhadap 2FAS! 🌟 Jika Anda merasa aplikasi kami bermanfaat, pertimbangkan untuk memberikan donasi untuk membantu kami menjaga keamanan dunia digital Anda. Setiap bantuan akan sangat membantu! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
     <string name="widget__placeholder">Placeholder</string>
-    <string name="widget__size_not_supported">This size is not supported yet</string>
-    <string name="widget__settings_description">Select which Services you would like to display on the Widget. If no Services are available, make sure that you\'ve enabled Widgets in app Settings section</string>
-    <string name="widget__service_icon">Service icon</string>
-    <string name="widget__not_enabled">Widget functionality is not enabled in 2FAS Settings section</string>
-    <string name="widget__not_enabled_no_services">Widget functionality is not enabled in 2FAS Settings section and there are no services in the app available for selection</string>
-    <string name="widget__no_services">There are no services in the app available for selection</string>
-    <string name="widget__select_service_intent_description">Select Service you want to show on your 2FAS Widget</string>
-    <string name="widget__my_secured_account">My secured account</string>
+    <string name="widget__size_not_supported">Ukuran ini belum didukung</string>
+    <string name="widget__settings_description">Pilih Layanan mana yang ingin anda tampilkan widget. Jika tidak ada Layanan yang tersedia, pastikan anda telah mengaktifkan widget di bagian pengaturan aplikasi</string>
+    <string name="widget__service_icon">Ikon layanan</string>
+    <string name="widget__not_enabled">Fungsionalitas widget tidak diaktifkan di bagian Pengaturan 2FAS</string>
+    <string name="widget__not_enabled_no_services">Fungsionalitas widget tidak diaktifkan di bagian Pengaturan 2FAS dan tidak ada layanan di aplikasi yang tersedia untuk dipilih</string>
+    <string name="widget__no_services">Tidak ada layanan di aplikasi yang tersedia untuk dipilih</string>
+    <string name="widget__select_service_intent_description">Pilih layanan yang ingin anda tampilkan di Widget 2FAS anda</string>
+    <string name="widget__my_secured_account">Akun saya yang aman</string>
     <string name="widget__token">Token</string>
+    <string name="watch__intro">Aplikasi 2FAS watchOS adalah aplikasi pendamping untuk aplikasi 2FAS iOS. Ini akan menyajikan layanan yang dicadangkan menggunakan sinkronisasi iCloud.\n\nUntuk akses cepat, tambahkan mereka ke Layanan Favorit.\n\nHarap ingat untuk berdonasi\u0020</string>
+    <string name="tokens__hotp_not_supported">Layanan HOTP belum didukung</string>
+    <string name="tokens__favorite_services">Layanan favorit</string>
+    <string name="security__enter_new_pin_short">Masukkan PIN baru</string>
+    <string name="security__repeat_new_pin_short">Ulangi PIN baru</string>
+    <string name="commons__success">Sukses</string>
+    <string name="security__enter_pin_short">Masukkan PIN</string>
 </resources>

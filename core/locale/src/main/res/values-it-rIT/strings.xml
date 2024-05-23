@@ -2,10 +2,9 @@
 <!--
  Loco xml export: Android string resources
  Project: 2FAS App
- Release: Working copy
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Mon, 11 Mar 2024 07:13:48 -0700
+ Exported at: Thu, 23 May 2024 09:50:25 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -830,14 +829,21 @@
     <string name="periodic_notification_donate">Siamo grati per il tuo supporto a 2FAS! 🌟 Se ritieni che la nostra app sia utile, considera l\'idea di fare una donazione per aiutarci a mantenere sicuro il tuo mondo digitale. Ogni piccolo contributo è utile! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
-    <string name="widget__placeholder">Placeholder</string>
-    <string name="widget__size_not_supported">This size is not supported yet</string>
-    <string name="widget__settings_description">Select which Services you would like to display on the Widget. If no Services are available, make sure that you\'ve enabled Widgets in app Settings section</string>
-    <string name="widget__service_icon">Service icon</string>
-    <string name="widget__not_enabled">Widget functionality is not enabled in 2FAS Settings section</string>
-    <string name="widget__not_enabled_no_services">Widget functionality is not enabled in 2FAS Settings section and there are no services in the app available for selection</string>
-    <string name="widget__no_services">There are no services in the app available for selection</string>
-    <string name="widget__select_service_intent_description">Select Service you want to show on your 2FAS Widget</string>
-    <string name="widget__my_secured_account">My secured account</string>
+    <string name="widget__placeholder">Segnaposto</string>
+    <string name="widget__size_not_supported">Questa dimensione non è ancora supportata</string>
+    <string name="widget__settings_description">Seleziona quali servizi vuoi mostrare nel widget. Se non ci sono servizi disponibili, assicurati che hai attivato i Widget nella sezione Impostazioni dell\'app</string>
+    <string name="widget__service_icon">Icona servizio</string>
+    <string name="widget__not_enabled">La funzionalità Widget non è attivata nella sezione Impostazioni di 2FAS</string>
+    <string name="widget__not_enabled_no_services">La funzionalità Widget non è attivata nella sezione Impostazioni di 2FAS e non ci sono servizi da selezionare disponibili nell\'app</string>
+    <string name="widget__no_services">Non ci sono servizi da selezionare disponibili nell\'app</string>
+    <string name="widget__select_service_intent_description">Seleziona il servizio che vuoi mostrare nel tuo widget 2FAS</string>
+    <string name="widget__my_secured_account">Il mio account sicuro</string>
     <string name="widget__token">Token</string>
+    <string name="watch__intro">L\'applicazione 2FAS per watchOS è un\'applicazione di accompagnamento per l\'applicazione 2FAS per iOS. Presenta i servizi di cui è stato effettuato il backup tramite la sincronizzazione iCloud.\n\nPer un accesso rapido, aggiungeteli ai Servizi preferiti.\n\nRicordatevi di fare una donazione per migliorare ulteriormente la piattaforma 2FAS!</string>
+    <string name="tokens__hotp_not_supported">I servizi HOTP non sono ancora supportati</string>
+    <string name="tokens__favorite_services">Servizi preferiti</string>
+    <string name="security__enter_new_pin_short">Inserisci nuovo PIN</string>
+    <string name="security__repeat_new_pin_short">Ripeti il nuovo PIN</string>
+    <string name="commons__success">Successo</string>
+    <string name="security__enter_pin_short">Inserisci PIN</string>
 </resources>

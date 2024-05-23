@@ -2,10 +2,9 @@
 <!--
  Loco xml export: Android string resources
  Project: 2FAS App
- Release: Working copy
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Mon, 11 Mar 2024 07:13:48 -0700
+ Exported at: Thu, 23 May 2024 09:50:25 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -82,7 +81,7 @@
     <string name="introduction__page_3_title">Gizli</string>
     <string name="introduction__page_3_content">2FAS gizliliğinize saygı duyar ve gizliliğinizi korur. Bu uygulama asla kişisel verilerinizi toplamaz, işlemez veya kullanmaz.</string>
     <string name="introduction__page_4_title">Güvenli</string>
-    <string name="introduction__page_4_content_ios">Jetonlarınız cihaz depolama alanı üzerinde çevrim dışı olarak saklanır, bu nedenle hizmetlerinizi yedeklemeyi unutmayın! Yetkisiz erişime ve cihaz hasarına karşı koruma sağlamak için iCloud Eşitlemesi ve PIN parolası kullanın.</string>
+    <string name="introduction__page_4_content_ios">Jetonlarınız cihaz depolama alanı üzerinde çevrim dışı saklanır, bu nedenle hizmetlerinizi yedeklemeyi unutmayın! Yetkisiz erişime ve cihaz hasarına karşı koruma sağlamak için iCloud Eşitlemesi ve PIN parolası kullanın.</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">2FAS\'ı kullanmaya başla</string>
     <string name="introduction__tos">Hizmet şartları</string>
@@ -95,7 +94,7 @@
     <!-- introduction__not_sure -->
     <string name="introduction__what_to_do">Ne yapacağınızdan emin değil misiniz?</string>
     <!-- introduction__ga_import_description -->
-    <string name="introduction__google_authenticator_import_process">\"Hesapları Aktar\" seçeneğini kullanarak Google Authenticator\'daki hesaplarınızı QR koduna dışarı aktarın. Ardından başka bir cihaz kullanarak dışarı aktarılmış QR kodunun fotoğrafını çekin, cihazınıza fotoğrafı gönderin (veya mümkünse QR kodunun ekran görüntüsünü alın) ve aşağıdaki \"QR kodu seç\" seçeneğini kullanın. Eğer kodları başka bir cihazdan içeri aktarıyorsanız, onun yerine \"QR kodu tara\" düğmesini kullanın.</string>
+    <string name="introduction__google_authenticator_import_process">\"Hesapları Aktar\" seçeneğini kullanarak Google Authenticator\'daki hesaplarınızı QR koduna dışarı aktarın. Ardından başka bir cihaz kullanarak dışarı aktarılmış QR kodunun fotoğrafını çekin, bu cihaza fotoğrafı gönderin (veya mümkünse QR kodunun ekran görüntüsünü alın) ve aşağıdaki \"QR kodu seç\" seçeneğini kullanın. Eğer kodları başka bir cihazdan içeri aktarıyorsanız \"QR kodu tara\" düğmesini kullanın.</string>
     <!-- introduction__choose_qr -->
     <string name="introduction__choose_qr_code">QR kodu seç</string>
     <!-- introduction__scan_qr -->
@@ -107,8 +106,8 @@
     <!-- voiceover__token_is_already_on_the_list -->
     <string name="notifications__token_already_added">Bu jeton, listede zaten mevcut</string>
     <string name="notifications__counter_copied">Sayaç Kopyalandı</string>
-    <string name="notifications__token_copied">Jeton Kopyalandı</string>
-    <string name="notifications__next_token_copied">Sonraki Jeton Kopyalandı</string>
+    <string name="notifications__token_copied">Jeton kopyalandı</string>
+    <string name="notifications__next_token_copied">Sonraki jeton kopyalandı</string>
     <!-- notifications__would_you_like_to_add_this_code -->
     <string name="notifications__add_code_question_title">%s kodunu eklemek ister misiniz?</string>
     <!-- MARK: - Permissions -->
@@ -149,13 +148,13 @@
     <string name="settings__widgets_title">Widgetları etkinleştirirseniz bütün jetonlarınıza PIN kodunuz olmadan erişilebilecek.\n\nWidgetları etkinleştirmek istediğinizden emin misiniz?</string>
     <string name="settings__show_next_token">Sonraki jetonu göster</string>
     <string name="settings__see_incoming_tokens">Listedeki gelen jetonları görün.</string>
-    <string name="settings__trash">Çöp Kutusu</string>
+    <string name="settings__trash">Çöp kutusu</string>
     <string name="settings__restore">Geri yükle</string>
-    <string name="settings__trash_is_empty">Çöp Kutusu Boş</string>
+    <string name="settings__trash_is_empty">Çöp kutusu boş</string>
     <string name="settings__share_app">Uygulamayı paylaş</string>
     <!-- tokens__remove_from_list -->
     <string name="tokens__delete_token">Şunun için jetonu silmek istediğinizden emin misiniz:</string>
-    <string name="tokens__move_to_trash">Çöp Kutusuna taşı</string>
+    <string name="tokens__move_to_trash">Çöp kutusuna taşı</string>
     <string name="tokens__additional_info">Ek bilgi</string>
     <string name="tokens__choose_method">Yöntem seç</string>
     <string name="tokens__duplicated_private_key">Çoğaltılmış Gizli Anahtar</string>
@@ -242,7 +241,7 @@
     <!-- tokens__advanced_alert_description -->
     <string name="tokens__advanced_alert_description_title">Gelişmiş ayarların değiştirilmesi önerilmez. Bunu yalnızca 2AD sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
     <string name="tokens__token_settings">Jeton ayarları</string>
-    <string name="tokens__otp_authentication">OTP Doğrulaması</string>
+    <string name="tokens__otp_authentication">OTP doğrulaması</string>
     <string name="tokens__algorithm">Algoritma</string>
     <string name="tokens__refresh_time">Yenileme süresi</string>
     <string name="tokens__number_of_digits">Basamak sayısı</string>
@@ -273,7 +272,7 @@
     <string name="tokens__order_icon_link">Bir marka simgesi talep edin</string>
     <string name="tokens__order_icon_title">Bir marka simgesi talep edin</string>
     <string name="tokens__order_menu_title">İstek yöntemi seç</string>
-    <string name="tokens__order_menu_option_user">Bir kullanıcı olarak simge talep edin</string>
+    <string name="tokens__order_menu_option_user">Bir kullanıcı olarak simge talep et</string>
     <string name="tokens__order_menu_option_company">Bir şirket olarak simgeyi gönder</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
     <string name="tokens__sign_in_not_possible_title">%1$s için iki faktörlü kimlik doğrulaması açık olduğu sürece bu jeton olmadan %2$s hesabınızda oturum açamazsınız.</string>
@@ -319,14 +318,14 @@
     <string name="restore__how_to_restore">2FAS uygulaması nasıl geri yüklenir?</string>
     <string name="restore__application_restoration">Uygulama geri yüklemesi</string>
     <!-- restore_if_you_forgotten -->
-    <string name="restore__reset_Pin_title">Eğer PIN\'inizi unuttuysanız veya 2FAS uygulamasını sıfırlamak istiyorsanız, uygulamayı yeniden yüklemeniz gerekiyor.</string>
+    <string name="restore__reset_Pin_title">Eğer PIN\'inizi unuttuysanız veya 2FAS uygulamasını sıfırlamak istiyorsanız uygulamayı yeniden yüklemeniz gerekiyor.</string>
     <!-- restore_please_remember -->
-    <string name="restore__backup_advice">Bir yedeğiniz yoksa ve uygulamayı sıfırlarsanız, tüm kodlarınıza erişiminizi ve dolayısıyla 2AD ile korunan tüm hesaplarınıza erişiminizi kaybedeceğinizi unutmayın.</string>
+    <string name="restore__backup_advice">Bir yedeğiniz yoksa ve uygulamayı sıfırlarsanız tüm kodlarınıza ve dolayısıyla 2AD ile korunan tüm hesaplarınıza erişiminizi kaybedeceğinizi unutmayın.</string>
     <!-- restore_if_you_have_backup -->
     <string name="restore__backup_title">Eğer bir yedeğiniz varsa içiniz rahat olsun, bütün kodlarınızı geri yükleyebileceksiniz.</string>
     <string name="backup__cloud_backup">Bulut Yedeklemesi</string>
     <string name="backup__icloud_sync">iCloud Eşitlemesi</string>
-    <string name="backup__section_description">ÖNERİLEN: iCloud Eşitlemesi, cihazını kaybetme veya bozma olasılığına karşı jetonlarınızı Apple iCloud\'da güvende tutar. iCloud Yedeklemesini açık bırakın.</string>
+    <string name="backup__section_description">ÖNERİLEN: iCloud Eşitlemesi, cihazını kaybetme veya bozma olasılığına karşı jetonlarınızı iCloud\'da güvende tutar. iCloud Yedeklemesini açık bırakın.</string>
     <string name="backup__file_backup">Dosya Yedeklemesi</string>
     <!-- backup__use_file_backup_for -->
     <string name="backup__file_backup_offline_title">Jetonlarınızı çevrim dışı yedeklemek için Dosya Yedeklemesini kullanın.</string>
@@ -407,8 +406,8 @@
     <string name="settings__5_minutes">5 dakika</string>
     <string name="settings__10_minutes">10 dakika</string>
     <string name="settings__limit_of_trials">En fazla başarısız girişim</string>
-    <string name="settings__pin_4_digits">4 haneli</string>
-    <string name="settings__pin_6_digits">6 haneli</string>
+    <string name="settings__pin_4_digits">4 basamak</string>
+    <string name="settings__pin_6_digits">6 basamak</string>
     <string name="settings__biometric_authentication">Biyometrik Doğrulama</string>
     <string name="settings__donations">Bağışlar</string>
     <string name="settings__donate_twofas">2FAS\'a bağış yap</string>
@@ -472,7 +471,7 @@
     <string name="backup__google_drive_disabled_title">Google Drive kullanıcı tarafından devre dışı bırakıldı</string>
     <string name="backup__update_required_to_import_title_2">Bu dosyanın içeriğini içeri aktarmak için uygulamanın yeni bir sürümüne ihtiyacınız olacak. En yeni sürümü Google Store\'da bulabilirsiniz</string>
     <string name="tokens__qr_code_leads_to_google_store">Bu QR kodu sizi Google Store\'a götürür</string>
-    <string name="introduction__page_4_content_android">Jetonlarınız cihaz depolama alanı üzerinde çevrim dışı olarak saklanır, bu nedenle hizmetlerinizi yedeklemeyi unutmayın! Yetkisiz erişime ve cihaz hasarına karşı koruma sağlamak için Google Drive Eşitlemesi ve PIN parolası kullanın.</string>
+    <string name="introduction__page_4_content_android">Jetonlarınız cihaz depolama alanı üzerinde çevrim dışı saklanır, bu nedenle hizmetlerinizi yedeklemeyi unutmayın! Yetkisiz erişime ve cihaz hasarına karşı koruma sağlamak için Google Drive Eşitlemesi ve PIN parolası kullanın.</string>
     <string name="new_version__new_version_message_android">2FAS\'ın yeni bir sürümü Google Store\'da mevcut. Şimdi güncelleyin!</string>
     <string name="security_error_no_match">PIN eşleşmiyor! Lütfen tekrar deneyin.</string>
     <string name="settings_developer_options">Geliştirici Seçenekleri</string>
@@ -694,7 +693,7 @@
     <string name="commons__proceed">İlerle</string>
     <string name="externalimport__ga_title">2AD jetonları Google Authenticator uygulamasından içeri aktarılıyor</string>
     <string name="externalimport__aegis_title">2AD jetonları Aegis uygulamasından içeri aktarılıyor</string>
-    <string name="externalimport__raivo_title">2AD jetonları Raivo uygulamasından içeri aktarılıyor</string>
+    <string name="externalimport__raivo_title">2AD jetonları Raivo OTP uygulamasından içeri aktarılıyor</string>
     <string name="externalimport__ga_success_msg">Bu QR kodu, jetonların Google Authenticator\'dan içeri aktarılmasına izin verir.</string>
     <string name="externalimport__aegis_success_msg">Bu JSON dosyası, jetonların Aegis\'ten içeri aktarılmasına izin verir.</string>
     <string name="externalimport__raivo_success_msg">Bu JSON dosyası, jetonların Raivo\'dan içeri aktarılmasına izin verir.</string>
@@ -824,10 +823,10 @@
     <string name="settings__manage_tokens">Jetonları yönetin</string>
     <string name="settings__info_footer">Desteğiniz yeni özellikler ve geliştirmeler üzerinde çalışmamızı mümkün kılar. Teşekkür ederiz!</string>
     <string name="settings__trash_option">Çöp kutusundan geri yükle</string>
-    <string name="periodic_notification_tips">2FAS\'te bizimle olduğunuza sevindik! 🌟 Artırılmış güvenlik 🔒 adına uygulamadaki yararlı İpuçlarını ve Püf Noktalarını 🛠️ keşfetmek için bir dakikanızı ayırın.</string>
-    <string name="periodic_notification_backup">Telefonunuzu kaybetseniz dahi hesaplarınıza erişiminizi kaybetmemek için 2FAS Yedeklemesini ve Eşitlemesini etkinleştirin - tek dokunuşla dert mert kalmasın! 🔐📱</string>
-    <string name="periodic_notification_browser_extension">Girişlerinizi 2FAS Tarayıcı Uzantısı ile hızlandırın! 🚀 Daha hızlı ve daha rahat bir doğrulama için şimdi indirin. 🌐✨</string>
-    <string name="periodic_notification_donate">2FAS\'ı desteklediğiniz için minnettarız! 🌟 Eğer uygulamamızı yararlı bulduysanız, dijital dünyanızı güvende tutmamıza yardım etmek için bağış yapmayı düşünebilirsiniz. Her kuruş değer! 🙏</string>
+    <string name="periodic_notification_tips">2FAS\'ta bizimle olduğunuza sevindik! 🌟 Artırılmış güvenlik 🔒 için uygulamadaki yararlı ipuçlarını ve püf noktalarını 🛠️ keşfetmeye bir dakikanızı ayırın.</string>
+    <string name="periodic_notification_backup">Telefonunuzu kaybetseniz dahi hesaplarınıza erişiminizi kaybetmemek için 2FAS Yedeklemesini ve Eşitlemesini etkinleştirin - tek dokunuşla içiniz rahat olsun! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Girişlerinizi 2FAS Tarayıcı Uzantısı ile hızlandırın! 🚀 Daha hızlı ve pratik bir doğrulama için şimdi indirin. 🌐✨</string>
+    <string name="periodic_notification_donate">2FAS\'ı desteklediğiniz için minnettarız! 🌟 Eğer uygulamamızı yararlı bulduysanız dijital dünyanızı güvende tutmamıza yardım etmek için bağış yapmayı düşünebilirsiniz. Her kuruş değer! 🙏</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
     <string name="widget__placeholder">Yer tutucu</string>
@@ -840,4 +839,11 @@
     <string name="widget__select_service_intent_description">2FAS Widgetında gösterilmesini istediğiniz Hizmeti seçin</string>
     <string name="widget__my_secured_account">Güvenceye alınmış hesabım</string>
     <string name="widget__token">Jeton</string>
+    <string name="watch__intro">2FAS watchOS uygulaması, 2FAS iOS uygulaması için bir eşlikçi uygulamadır. Bu uygulama iCloud eşitlemesiyle yedeklenen hizmetleri gösterir.\n\nHızlı erişim için hizmetlerinizi Favori Hizmetler\'e ekleyin.</string>
+    <string name="tokens__hotp_not_supported">HOTP hizmetleri henüz desteklenmiyor</string>
+    <string name="tokens__favorite_services">Favori Hizmetler</string>
+    <string name="security__enter_new_pin_short">Yeni PIN\'i girin</string>
+    <string name="security__repeat_new_pin_short">Yeni PIN\'i tekrar girin</string>
+    <string name="commons__success">Başarılı</string>
+    <string name="security__enter_pin_short">PIN\'i girin</string>
 </resources>
