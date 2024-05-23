@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 05:55:41 -0700
+ Exported at: Thu, 23 May 2024 09:50:25 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -372,7 +372,7 @@
     <string name="backup__newer_format_not_supported">Αυτό το αρχείο είναι σε μια νεότερη έκδοση μορφής από αυτή που υποστηρίζει η εφαρμογή.</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Αυτό το αρχείο είναι κρυπτογραφημένο. Υποστηρίζουμε μόνο μη κρυπτογραφημένα αρχεία.</string>
-    <string name="tokens__copy_token">Αντιγραφή token\n</string>
+    <string name="tokens__copy_token">Αντιγραφή token</string>
     <!-- tokens__i_want_to_delete_this_servie -->
     <string name="tokens__i_want_to_delete_this_token">Ναι, θέλω να διαγράψω αυτήν την υπηρεσία</string>
     <string name="color__neutral">Ουδέτερο</string>
