@@ -2,6 +2,7 @@ package com.twofasapp.designsystem.settings
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,6 +40,7 @@ fun SettingsSwitch(
                 checked = checked,
                 onCheckedChange = onCheckedChange,
                 enabled = enabled,
+                modifier = Modifier.alpha(if (enabled) 1f else 0.4f)
             )
         },
         showEmptySpaceWhenNoIcon = showEmptySpaceWhenIconMissing,
