@@ -98,7 +98,7 @@ private fun ScreenContent(
                                 onInternalRouteClick(notification.internalRoute.orEmpty())
                             }
                         }
-                        .background(if (notification.isRead) TwTheme.color.surface else TwTheme.color.background)
+                        .background(if (notification.isRead) TwTheme.color.background else TwTheme.color.surface)
                         .padding(16.dp)
                 )
                 HorizontalDivider(color = TwTheme.color.divider)

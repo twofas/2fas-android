@@ -46,7 +46,7 @@ internal class NotificationsRepositoryImpl(
     }
 
     private fun List<Notification>.sortedByTime(): List<Notification> {
-        return sortedWith(compareBy({ it.isRead }, { it.publishTime.unaryMinus() }))
+        return sortedByDescending { it.publishTime }
     }
 
     override suspend fun getPeriodicNotificationCounter(): Int {
