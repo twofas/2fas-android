@@ -5,7 +5,8 @@
         <activity
             android:name=".ui.settings.WidgetSettingsActivity"
             android:exported="true"
-            android:label="Widget Setup">
+            android:label="Widget Setup"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
