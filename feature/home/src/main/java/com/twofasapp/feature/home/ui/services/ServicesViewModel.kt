@@ -111,18 +111,13 @@ internal class ServicesViewModel(
                             groupedServices.forEach { (group, services) ->
 
                                 if (groupedServices.size > 1) {
-                                    if (group.id != null || services.isNotEmpty() || result.searchQuery.isNotEmpty()) {
-                                        val localGroup = result.groups.first { it.id == group.id }
-                                        add(
-                                            ServicesListItem.GroupItem(
-                                                if (result.searchQuery.isNotEmpty()) {
-                                                    localGroup.copy(isExpanded = true)
-                                                } else {
-                                                    localGroup
-                                                }
+                                    add(
+                                        ServicesListItem.GroupItem(
+                                            group = group.copy(
+                                                isExpanded = if (result.searchQuery.isNotEmpty()) true else group.isExpanded
                                             )
                                         )
-                                    }
+                                    )
                                 }
 
                                 if (group.isExpanded || result.isInEditMode || groupedServices.size == 1 || result.searchQuery.isNotEmpty()) {
