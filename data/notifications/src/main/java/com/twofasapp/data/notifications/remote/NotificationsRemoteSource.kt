@@ -13,7 +13,7 @@ internal class NotificationsRemoteSource(
 ) {
 
     suspend fun fetchNotifications(publishedAfter: OffsetDateTime? = null): List<NotificationJson> {
-        return client.get("/mobile/notifications") {
+        return client.get("https://notifications.2fas.com/mobile/notifications") {
             parameter("platform", "android")
             if (publishedAfter != null) {
                 parameter("published_after", publishedAfter.format(DateTimeFormatter.ISO_INSTANT))
