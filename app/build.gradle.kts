@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidApplication)
@@ -14,15 +12,19 @@ plugins {
 
 android {
     namespace = "com.twofasapp"
+    val versionCodeOffset = 5000000
 
     defaultConfig {
         applicationId = "com.twofasapp"
         versionName = "5.4.5"
         versionCode = 5000022
+    }
 
-        val versionCodeOffset = 5000000
-
-        archivesName.set("TwoFas-$versionName-${versionCode!! - versionCodeOffset}")
+    applicationVariants.all {
+        outputs.all {
+            val output = this as? com.android.build.gradle.internal.api.BaseVariantOutputImpl
+            output?.outputFileName = "TwoFas-$versionName-${versionCode - versionCodeOffset}.apk"
+        }
     }
 
     ksp {

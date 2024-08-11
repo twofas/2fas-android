@@ -7,6 +7,7 @@
 /captures
 Gemfile
 Gemfile.lock
+.kotlin/*
 
 # Built application files
 /*/build/

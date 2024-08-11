@@ -1,21 +1,20 @@
 [versions]
 accompanist = "0.34.0"
-agp = "8.4.0"
-cameraX = "1.3.1"
-coil = "2.5.0"
+agp = "8.5.1"
+cameraX = "1.3.4"
+coil = "2.6.0"
 commonmark = "0.21.0"
-compose = "1.6.4"
-composeActivity = "1.8.2"
-composeCompiler = "1.5.11"
-core = "1.12.0"
-firebase = "32.7.2"
-glance = "1.0.0"
+compose = "1.6.8"
+composeActivity = "1.9.0"
+core = "1.13.1"
+firebase = "33.1.2"
+glance = "1.1.0"
 junit = "4.13.2"
 koin = "3.5.3"
 koinAndroid = "3.5.3"
-kotlin = "1.9.23"
-kotlinCoroutines = "1.8.0"
-kotlinKsp = "1.9.23-1.0.19"
+kotlin = "2.0.0"
+kotlinCoroutines = "1.9.0-RC"
+kotlinKsp = "2.0.0-1.0.22"
 ktor = "2.3.7"
 lifecycle = "2.7.0"
 material3 = "1.2.1"
@@ -42,7 +41,6 @@ commonmarkStrikethrough = { module = "org.commonmark:commonmark-ext-gfm-striketh
 commonmarkTables = { module = "org.commonmark:commonmark-ext-gfm-tables", version.ref = "commonmark" }
 composeActivity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
 composeAnimation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
-composeCompiler = { module = "androidx.compose.compiler:compiler", version.ref = "composeCompiler" }
 composeMaterial2 = { module = "androidx.compose.material:material", version.ref = "compose" }
 composeNavigation = "androidx.navigation:navigation-compose:2.7.7"
 composeUi = { module = "androidx.compose.ui:ui", version.ref = "compose" }
@@ -50,7 +48,7 @@ composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "c
 composeUiUtil = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
 coreSplash = "androidx.core:core-splashscreen:1.0.1"
-dataStore = "androidx.datastore:datastore-preferences:1.0.0"
+dataStore = "androidx.datastore:datastore-preferences:1.1.1"
 desugar = "com.android.tools:desugar_jdk_libs:2.0.4"
 firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
 firebaseCrashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
@@ -59,7 +57,7 @@ glanceWidget = { module = "androidx.glance:glance-appwidget", version.ref = "gla
 googleApiClientAndroid = "com.google.api-client:google-api-client-android:2.4.0"
 #googleApiClientGson = "com.github.rafakob.google-http-java-client:google-http-client-gson:1.43.0"
 googleApiClientGson = "com.google.http-client:google-http-client:1.44.1"
-googleAuth = "com.google.android.gms:play-services-auth:21.0.0"
+googleAuth = "com.google.android.gms:play-services-auth:21.2.0"
 googleDrive = "com.google.apis:google-api-services-drive:v3-rev20240123-2.0.0"
 javaxInject = "javax.inject:javax.inject:1"
 junit = { module = "junit:junit", version.ref = "junit" }
@@ -68,7 +66,7 @@ koinCompose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "
 koinTest = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 koinTestJunit = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
 kotlinCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
-kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2"
+kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0"
 ktorAuth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 ktorContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktorCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
@@ -87,7 +85,7 @@ material3 = { module = "androidx.compose.material3:material3", version.ref = "ma
 material3Window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
 playReview = "com.google.android.play:review:2.0.1"
 playReviewKtx = "com.google.android.play:review-ktx:2.0.1"
-playServicesCorutines = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.0"
+playServicesCorutines = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1"
 playUpdate = "com.google.android.play:app-update:2.1.0"
 playUpdateKtx = "com.google.android.play:app-update-ktx:2.1.0"
 protobuf = "com.google.protobuf:protobuf-kotlin-lite:3.19.1"
@@ -100,8 +98,8 @@ securityCrypto = "androidx.security:security-crypto:1.1.0-alpha06"
 sharedPrefs = "androidx.preference:preference-ktx:1.2.1"
 sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.4"
 timber = "com.jakewharton.timber:timber:5.0.1"
-webkit = "androidx.webkit:webkit:1.10.0"
-workManager = "androidx.work:work-runtime-ktx:2.9.0"
+webkit = "androidx.webkit:webkit:1.11.0"
+workManager = "androidx.work:work-runtime-ktx:2.9.1"
 
 [bundles]
 accompanist = [
@@ -185,6 +183,7 @@ kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlinParcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinComposeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kotlinKsp" }
 protobuf = "com.google.protobuf:0.9.1"
 twofasAndroidApplication = "twofas.androidApplication:unspecified"
