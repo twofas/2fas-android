@@ -10,6 +10,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.locale.TwLocale
@@ -29,8 +30,8 @@ internal fun ServicesFab(
                 onClick = onClick,
                 icon = { Icon(TwIcons.Add, null) },
                 text = { Text(text = TwLocale.strings.servicesEmptyPairServiceCta) },
-                containerColor = TwTheme.color.button,
-                contentColor = TwTheme.color.onButton,
+                containerColor = TwTheme.color.primary,
+                contentColor = Color.White,
             )
         } else {
             AnimatedVisibility(
@@ -41,8 +42,8 @@ internal fun ServicesFab(
                 FloatingActionButton(
                     onClick = onClick,
                     content = { Icon(TwIcons.Add, null) },
-                    containerColor = TwTheme.color.button,
-                    contentColor = TwTheme.color.onButton,
+                    containerColor = TwTheme.color.primary,
+                    contentColor = Color.White,
                 )
             }
         }
