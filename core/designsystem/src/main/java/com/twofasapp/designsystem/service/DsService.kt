@@ -141,6 +141,7 @@ fun DsService(
                     text = state.info,
                     textStyles = textStyles,
                     style = style,
+                    spacer = editMode.not(),
                     modifier = Modifier.fillMaxWidth(),
                 )
 
@@ -154,7 +155,7 @@ fun DsService(
                             code = state.code,
                             nextCode = state.nextCode,
                             timer = state.timer,
-                            nextCodeVisible = state.isNextCodeEnabled(showNextCode) && state.revealed,
+                            nextCodeVisible = state.isNextCodeEnabled(showNextCode) && state.revealed && editMode.not(),
                             nextCodeGravity = when (style) {
                                 ServiceStyle.Default -> NextCodeGravity.Below
                                 ServiceStyle.Compact -> NextCodeGravity.End
