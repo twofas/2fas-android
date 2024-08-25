@@ -56,9 +56,9 @@ firebaseMessaging = { module = "com.google.firebase:firebase-messaging-ktx" }
 glanceWidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
 googleApiClientAndroid = "com.google.api-client:google-api-client-android:2.4.0"
 #googleApiClientGson = "com.github.rafakob.google-http-java-client:google-http-client-gson:1.43.0"
-googleApiClientGson = "com.google.http-client:google-http-client:1.44.1"
+googleApiClientGson = "com.github.cryptomator:google-http-java-client:1.44.2-dev.0001"
 googleAuth = "com.google.android.gms:play-services-auth:21.2.0"
-googleDrive = "com.google.apis:google-api-services-drive:v3-rev20240123-2.0.0"
+googleDrive = "com.google.apis:google-api-services-drive:v3-rev20240809-2.0.0"
 javaxInject = "javax.inject:javax.inject:1"
 junit = { module = "junit:junit", version.ref = "junit" }
 junit-junit = { module = "junit:junit", version.ref = "junit" }
