@@ -12,18 +12,17 @@ plugins {
 
 android {
     namespace = "com.twofasapp"
-    val versionCodeOffset = 5000000
 
     defaultConfig {
         applicationId = "com.twofasapp"
-        versionName = "5.4.5"
-        versionCode = 5000022
+        versionName = "5.4.6"
+        versionCode = 5000023
     }
 
     applicationVariants.all {
         outputs.all {
             val output = this as? com.android.build.gradle.internal.api.BaseVariantOutputImpl
-            output?.outputFileName = "TwoFas-$versionName-${versionCode - versionCodeOffset}.apk"
+            output?.outputFileName = "TwoFas-$versionName-${versionCode - 5000000}.apk"
         }
     }
 
