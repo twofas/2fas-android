@@ -155,7 +155,7 @@ fun DsService(
                             code = state.code,
                             nextCode = state.nextCode,
                             timer = state.timer,
-                            nextCodeVisible = state.isNextCodeEnabled(showNextCode) && state.revealed && editMode.not(),
+                            nextCodeVisible = state.isNextCodeEnabled(showNextCode) && editMode.not() && (state.revealed || hideCodes.not()),
                             nextCodeGravity = when (style) {
                                 ServiceStyle.Default -> NextCodeGravity.Below
                                 ServiceStyle.Compact -> NextCodeGravity.End
