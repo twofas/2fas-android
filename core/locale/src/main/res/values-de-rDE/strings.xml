@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 09:50:25 -0700
+ Exported at: Tue, 03 Sep 2024 14:27:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -368,8 +368,6 @@
     <string name="backup__services_imported_count">%d Dienste aus Datei importiert</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Es existiert ein Problem mit iCloud. Überprüfe die Systemeinstellungen</string>
-    <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">Diese Datei ist in einer neueren Format-Version als diese, die die App unterstützt</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Diese Datei ist verschlüsselt. Wir unterstützen nur unverschlüsselte Dateien</string>
     <string name="tokens__copy_token">Token kopieren</string>
@@ -453,7 +451,7 @@
     <string name="browser__code_failure">Fehler beim Senden des Codes. %s</string>
     <string name="browser__deleting_paired_device_title">Gekoppeltes Gerät löschen</string>
     <string name="browser__deleting_paired_device_content">Möchtest du wirklich dieses gekoppelte Gerät löschen?</string>
-    <string name="browser__pairing_date">Datum verbunden</string>
+    <string name="browser__pairing_date">Verbindungsdatum</string>
     <string name="browser__forget_this_browser">Diesen Webbrowser vergessen</string>
     <!-- browser__service_is_paired_list_description -->
     <string name="browser__paired_domains_list_title">Liste von gekoppelten Domains.</string>
@@ -846,4 +844,11 @@
     <string name="security__repeat_new_pin_short">Neuen PIN wiederholen</string>
     <string name="commons__success">Erfolgreich</string>
     <string name="security__enter_pin_short">PIN eingeben</string>
+    <string name="settings__sort_tokens">Token sortieren</string>
+    <string name="appleWatch__installation_info_title">2FAS Apple Watch-App Installation</string>
+    <string name="appleWatch__installation_first_step">2FAS Auth über die Watch-App installieren</string>
+    <string name="appleWatch__installation_first_step_link">Watch-App öffnen</string>
+    <string name="appleWatch__installation_second_step">Stelle sicher, dass die iCloud-Synchronisierung aktiviert ist</string>
+    <string name="appleWatch__installation_second_step_link">Gehe zu den 2FAS-Backup-Einstellungen</string>
+    <string name="settings__apple_watch">Apple Watch</string>
 </resources>

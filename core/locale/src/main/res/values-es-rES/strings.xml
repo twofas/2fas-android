@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 09:50:25 -0700
+ Exported at: Tue, 03 Sep 2024 14:27:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -368,8 +368,6 @@
     <string name="backup__services_imported_count">%d servicios importados desde el archivo</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Hay un problema con iCloud. Revisa la configuración del sistema</string>
-    <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">Este archivo está en una versión de formato más reciente de la cual soportamos</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Este archivo está encriptado. Solo admitimos archivos sin cifrar</string>
     <string name="tokens__copy_token">Copiar código</string>
@@ -846,4 +844,11 @@
     <string name="security__repeat_new_pin_short">Repite el PIN ingresado</string>
     <string name="commons__success">Éxito</string>
     <string name="security__enter_pin_short">Introduzca el PIN</string>
+    <string name="settings__sort_tokens">\nOrdenar códigos\u0020</string>
+    <string name="appleWatch__installation_info_title">Instalación de la aplicación 2FAS Apple Watch</string>
+    <string name="appleWatch__installation_first_step">Instalar 2FAS Auth a través de la aplicación Watch</string>
+    <string name="appleWatch__installation_first_step_link">Abrir la aplicación Watch</string>
+    <string name="appleWatch__installation_second_step">Asegúrate de que iCloud Sync está activado</string>
+    <string name="appleWatch__installation_second_step_link">Ir a los ajustes de copia de seguridad 2FAS</string>
+    <string name="settings__apple_watch">Apple Watch</string>
 </resources>

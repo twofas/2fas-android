@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 09:50:25 -0700
+ Exported at: Tue, 03 Sep 2024 14:27:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -54,7 +54,7 @@
     <string name="commons__rename">Μετονομασία</string>
     <string name="commons__retry">Ξαναδοκιμάσετε</string>
     <string name="commons__save">Αποθήκευση</string>
-    <string name="commons__scan_qr_code">Σάρωση QR κώδικα</string>
+    <string name="commons__scan_qr_code">Σάρωση κωδικού QR</string>
     <string name="commons__service">Υπηρεσία</string>
     <string name="commons__set">Ορισμός</string>
     <string name="commons__skip">Παράκαμψη</string>
@@ -94,9 +94,9 @@
     <!-- introduction__not_sure -->
     <string name="introduction__what_to_do">Δεν είστε σίγουρος τι πρέπει να κάνετε;</string>
     <!-- introduction__ga_import_description -->
-    <string name="introduction__google_authenticator_import_process">Εξαγάγετε τους λογαριασμούς σας από το Google Authenticator σε έναν κωδικό QR χρησιμοποιώντας την επιλογή \"Μεταφορά λογαριασμών\". Στη συνέχεια, χρησιμοποιήστε μια άλλη συσκευή, τραβήξτε μια φωτογραφία του εξαγόμενου κωδικού QR, στείλτε τον στη συσκευή σας (ή κάντε ένα στιγμιότυπο οθόνης εάν είναι δυνατόν), και χρησιμοποιήστε την επιλογή \"Επιλογή κωδικού QR\" παρακάτω. Εάν εισάγετε κωδικούς από άλλη συσκευή, χρησιμοποιήστε το κουμπί \"Σάρωση κωδικού QR\" αντί για αυτό.</string>
+    <string name="introduction__google_authenticator_import_process">Εξαγάγετε τους λογαριασμούς σας από το Google Authenticator σε έναν κωδικό QR χρησιμοποιώντας την επιλογή \"Μεταφορά λογαριασμών\". Στη συνέχεια, χρησιμοποιήστε μια άλλη συσκευή, τραβήξτε μια φωτογραφία του εξαγόμενου κωδικού QR, στείλτε τον στη συσκευή σας (ή κάντε ένα στιγμιότυπο οθόνης εάν είναι δυνατόν), και χρησιμοποιήστε την επιλογή \"Επιλέξτε κωδικό QR\" παρακάτω. Εάν εισάγετε κωδικούς από άλλη συσκευή, χρησιμοποιήστε το κουμπί \"Σάρωση κωδικού QR\" αντί για αυτό.</string>
     <!-- introduction__choose_qr -->
-    <string name="introduction__choose_qr_code">Επιλέξτε τον κωδικό QR.</string>
+    <string name="introduction__choose_qr_code">Επιλέξτε κωδικό QR</string>
     <!-- introduction__scan_qr -->
     <string name="introduction__scan_qr_code">Σάρωση κωδικού QR</string>
     <!-- Original: Adding code -->
@@ -113,7 +113,7 @@
     <!-- MARK: - Permissions -->
     <string name="permissions__open_settings">Ανοίξτε τις ρυθμίσεις.</string>
     <string name="security__incorrect_PIN">Λάθος PIN.</string>
-    <string name="security__change_pin">Αλλαγή PIN.</string>
+    <string name="security__change_pin">Αλλαγή PIN</string>
     <string name="security__confirm_you_are_device_owner">Παρακαλώ επιβεβαιώστε ότι είστε ο ιδιοκτήτης της συσκευής.</string>
     <!-- security__confirm_your_new_pin -->
     <string name="security__confirm_new_pin">Παρακαλώ επιβεβαιώστε τον νέο PIN σας.</string>
@@ -254,9 +254,9 @@
     <string name="tokens__advanced_settings_footer_title">Δεν συνιστάται η αλλαγή σύνθετων ρυθμίσεων. Κάντε το μόνο όταν το απαιτεί ο πάροχος 2FA και όταν έχετε σαφείς οδηγίες.</string>
     <string name="tokens__gallery_advice_title">Η καλύτερη εξάσκηση</string>
     <!-- ADD A SPACE AT THE END -->
-    <string name="tokens__gallery_advice_content_first">Η υπηρεσία προστέθηκε με επιτυχία. Σας συνιστούμε ανεπιφύλακτα</string>
+    <string name="tokens__gallery_advice_content_first">Η υπηρεσία προστέθηκε με επιτυχία. Σας συνιστούμε ανεπιφύλακτα\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
-    <string name="tokens__gallery_advice_content_middle_bold">διαγράψτε το στιγμιότυπο οθόνης QR από τη συλλογή σας.</string>
+    <string name="tokens__gallery_advice_content_middle_bold">διαγράψτε το στιγμιότυπο οθόνης QR από τη συλλογή σας.\u0020</string>
     <string name="tokens__gallery_advice_content_last">Εάν κάποιος αναλάβει αυτό το στιγμιότυπο οθόνης με τον κωδικό QR, θα μπορεί να λάβει τους κωδικούς σας 2FA σε αυτήν την υπηρεσία.</string>
     <string name="tokens__request_icon_page_title">Ζητήστε ένα εικονίδιο</string>
     <string name="tokens__request_icon_social_title">Ενημερώστε μας στο Discord</string>
@@ -315,7 +315,7 @@
     <string name="camera__camera_unavailable_title">Η κάμερα δεν είναι διαθέσιμη λόγω υπερφόρτωσης του συστήματος. Δοκιμάστε να επανεκκινήσετε τη συσκευή.</string>
     <string name="camera__cant_initialize_camera_general">Δεν είναι δυνατή η εκκίνηση της κάμερας. Δοκιμάστε να επανεκκινήσετε τη συσκευή</string>
     <string name="camera__cant_initialize_camera_split_view">Δεν είναι δυνατή η προετοιμασία της κάμερας σε λειτουργία Split View. Ανοίξτε την εφαρμογή σε πλήρη οθόνη και δοκιμάστε ξανά</string>
-    <string name="restore__how_to_restore">Πώς να επαναφέρετε την εφαρμογή 2FAS;</string>
+    <string name="restore__how_to_restore">Πώς να επαναφέρετε την εφαρμογή 2FAS?</string>
     <string name="restore__application_restoration">Αποκατάσταση εφαρμογής</string>
     <!-- restore_if_you_forgotten -->
     <string name="restore__reset_Pin_title">Εάν έχετε ξεχάσει το PIN ή θέλετε να επαναφέρετε την εφαρμογή 2FAS, πρέπει να εγκαταστήσετε ξανά την εφαρμογή.</string>
@@ -368,8 +368,6 @@
     <string name="backup__services_imported_count">%d υπηρεσίες εισήχθησαν από αρχείο</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Υπάρχει πρόβλημα με το iCloud. Ελέγξτε τις ρυθμίσεις του συστήματος.</string>
-    <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">Αυτό το αρχείο είναι σε μια νεότερη έκδοση μορφής από αυτή που υποστηρίζει η εφαρμογή.</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Αυτό το αρχείο είναι κρυπτογραφημένο. Υποστηρίζουμε μόνο μη κρυπτογραφημένα αρχεία.</string>
     <string name="tokens__copy_token">Αντιγραφή token</string>
@@ -463,7 +461,7 @@
     <string name="browser__push_notifications_content">Για πρόσβαση σε λειτουργίες όπως η εφαρμογή Επέκταση προγράμματος περιήγησης χρειάζεται πρόσβαση στις Ειδοποιήσεις Push. Μπορείτε να αλλάξετε αυτήν τη ρύθμιση ανά πάσα στιγμή στις Ρυθμίσεις συστήματος.</string>
     <string name="browser__request_expired">Το αίτημα έληξε</string>
     <string name="browser__2fa_token_request_title">2FA Token Request</string>
-    <string name="browser__2fa_token_request_content">Θέλετε να μοιραστείτε το token 2FA για</string>
+    <string name="browser__2fa_token_request_content">Θέλετε να μοιραστείτε το token 2FA για\u0020</string>
     <string name="notifications__no_notifications">Δεν υπάρχουν ειδοποιήσεις</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
@@ -685,9 +683,9 @@
     <string name="backup__sync_status_waiting">Αναμονή για συγχρονισμό</string>
     <string name="backup__sync_status_progress">Συγχρονισμός...</string>
     <string name="import_backup_msg1_encrypted">Πρόκειται να εισαγάγετε ένα κρυπτογραφημένο αρχείο αντιγράφου ασφαλείας.</string>
-    <string name="externalimport__choose_json_cta">Επιλέξτε το αρχείο JSON.</string>
-    <string name="externalimport__aegis_msg">Εξαγάγετε τους λογαριασμούς σας από το Aegis σε ένα ανακρυπτογραφημένο αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί \"Επιλογή αρχείου JSON\". Θυμηθείτε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
-    <string name="externalimport__raivo_msg">Χρησιμοποιήστε την επιλογή \"Εξαγωγή OTPs σε αρχείο ZIP\" στις Ρυθμίσεις του Raivo, αποθηκεύστε ένα αρχείο ZIP, αποσυμπιέστε το και εισαγάγετε το αρχείο JSON χρησιμοποιώντας το κουμπί \"Επιλογή αρχείου JSON\".</string>
+    <string name="externalimport__choose_json_cta">Επιλέξτε αρχείο JSON</string>
+    <string name="externalimport__aegis_msg">Εξαγάγετε τους λογαριασμούς σας από το Aegis σε ένα ανακρυπτογραφημένο αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί \"Επιλέξτε αρχείο JSON\". Θυμηθείτε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="externalimport__raivo_msg">Χρησιμοποιήστε την επιλογή \"Εξαγωγή OTPs σε αρχείο ZIP\" στις Ρυθμίσεις του Raivo, αποθηκεύστε ένα αρχείο ZIP, αποσυμπιέστε το και εισαγάγετε το αρχείο JSON χρησιμοποιώντας το κουμπί \"Επιλέξτε αρχείο JSON\".</string>
     <string name="externalimport__no_tokens_msg">Ωστόσο, δεν υπάρχουν υπηρεσίες που μπορούν να εισαχθούν.</string>
     <string name="commons__try_again">Προσπάθησε ξανά</string>
     <string name="commons__proceed">Συνεχίστε</string>
@@ -711,7 +709,7 @@
     <string name="settings__ssl_error_description">Παρουσιάστηκε ένα σφάλμα SSL και δεν είναι δυνατή η ασφαλής σύνδεση με τον διακομιστή. Βεβαιωθείτε ότι έχετε την τελευταία έκδοση της εφαρμογής ή δοκιμάστε να αλλάξετε το δίκτυο.</string>
     <string name="backup__import_error_file_size">Το αρχείο που προσπαθείτε να εισαγάγετε είναι πολύ μεγάλο. Το όριο μεγέθους είναι 10 MB.</string>
     <string name="backup__import_error_file_invalid">Το αρχείο που προσπαθείτε να εισαγάγετε είναι άκυρο ή κατεστραμμένο. Επιλέξτε ένα άλλο αρχείο.</string>
-    <string name="appearance__toggle_active_search">Ενεργή αναζήτηση.</string>
+    <string name="appearance__toggle_active_search">Ενεργή αναζήτηση</string>
     <string name="appearance__active_search_description">Ενεργή αναζήτηση κατά την εκκίνηση.</string>
     <string name="widgets__expires_in">Λήγει σε:</string>
     <string name="widgets__settings">Ρυθμίσεις widget.</string>
@@ -728,10 +726,10 @@
     <string name="settings__list_style">Στυλ λίστας.</string>
     <string name="backup__reminder_msg">Δεν έχει πραγματοποιηθεί συγχρονισμός με το Google Drive.</string>
     <string name="backup__reminder_cta">Πηγαίνετε στις ρυθμίσεις αντιγράφου ασφαλείας.</string>
-    <string name="settings__list_style_option_default">Προεπιλογή.</string>
-    <string name="settings__list_style_option_compact">Συμπαγές.</string>
+    <string name="settings__list_style_option_default">Προεπιλογή</string>
+    <string name="settings__list_style_option_compact">Συμπαγές</string>
     <string name="externalimport_lastpass">LastPass</string>
-    <string name="externalimport__lastpass_msg">Εξαγάγετε τους λογαριασμούς σας από το LastPass σε ένα ανακρυπτογραφημένο αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί \"Επιλογή αρχείου JSON\". Θυμηθείτε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="externalimport__lastpass_msg">Εξαγάγετε τους λογαριασμούς σας από το LastPass σε ένα ανακρυπτογραφημένο αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί \"Επιλέξτε αρχείο JSON\". Θυμηθείτε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
     <string name="settings__about_crash_optout_title">Αναφορές κρασαρίσματος.</string>
     <string name="externalimport__lastpass_title">Εισαγωγή 2FA tokens από την εφαρμογή LastPass.</string>
     <string name="externalimport__lastpass_success_msg">Αυτό το αρχείο JSON επιτρέπει την εισαγωγή των tokens από το LastPass.</string>
@@ -771,14 +769,14 @@
     <string name="social__linkedin">LinkedIn</string>
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
-    <string name="settings__hide_tokens_title">Κρύψτε τα tokens.</string>
+    <string name="settings__hide_tokens_title">Κρύψτε τα tokens</string>
     <string name="settings__hide_tokens_description">Τα tokens θα αποκαλυφθούν με ένα άγγιγμα.</string>
     <string name="browser__pair_manually_cta">Συνδέστε χειροκίνητα.</string>
     <string name="browser__pair_manually_hint">Κωδικός σύζευξης.</string>
     <string name="externalimport__info_authenticatorpro_title">Εισαγωγή token από το Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_success_msg">Αυτό το αρχείο κειμένου επιτρέπει την εισαγωγή token από το Authenticator Pro.\"</string>
     <string name="externalimport__authenticatorpro_title">Εισαγωγή token 2FA από την εφαρμογή Authenticator Pro.</string>
-    <string name="externalimport__authenticatorpro_msg">Εξάγετε τους λογαριασμούς σας από το Authenticator Pro σε ένα μη κρυπτογραφημένο αρχείο κειμένου και ανεβάστε το χρησιμοποιώντας το κουμπί \'Επιλογή αρχείου κειμένου\'. Μην ξεχάσετε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="externalimport__authenticatorpro_msg">Εξάγετε τους λογαριασμούς σας από το Authenticator Pro σε ένα μη κρυπτογραφημένο αρχείο κειμένου και ανεβάστε το χρησιμοποιώντας το κουμπί \'Επιλέξτε αρχείο κειμένου\'. Μην ξεχάσετε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
     <string name="externalimport__choose_txt_cta">Επιλέξτε αρχείο κειμένου</string>
     <string name="fingerprint__biometric_invalidated">Η σύνδεση με βιομετρικών στοιχείων απενεργοποιήθηκε λόγω αλλαγών στις ρυθμίσεις αποτυπώματος του συστήματος</string>
@@ -806,7 +804,7 @@
     <string name="externalimport__andotp_title">Εισαγωγή των token του 2FA από την εφαρμογή andOTP.</string>
     <string name="externalimport__andotp_success_msg">Αυτό το αρχείο JSON επιτρέπει την εισαγωγή των tokens σας από το andOTP.</string>
     <string name="externalimport__info_andotp_title">Εισάγετε τα tokens σας από το andOTP.</string>
-    <string name="externalimport__andotp_msg">Εξάγετε τους λογαριασμούς σας από το andOTP σε ένα μη κρυπτογραφημένο αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί \"Επιλογή αρχείου JSON\". Μην ξεχάσετε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="externalimport__andotp_msg">Εξάγετε τους λογαριασμούς σας από το andOTP σε ένα μη κρυπτογραφημένο αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί \"Επιλέξτε αρχείο JSON\". Μην ξεχάσετε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
     <string name="introduction__backup_description">Στο επόμενο βήμα, θα σας ζητηθεί να επιλέξετε τον λογαριασμό σας στο Google Drive, όπου τα tokens του 2FA θα αποθηκευτούν με ασφάλεια.</string>
     <string name="introduction__backup_take_risk_cta">Θα πάρω το ρίσκο, να μην δημιουργηθεί αντίγραφω ασφαλείας</string>
     <string name="introduction__backup_success">Ο συγχρονισμός του Google Drive ενεργοποιήθηκε με επιτυχία!</string>
@@ -846,4 +844,11 @@
     <string name="security__repeat_new_pin_short">Επαναλάβετε το νέο PIN</string>
     <string name="commons__success">Επιτυχία</string>
     <string name="security__enter_pin_short">Εισάγετε το PIN</string>
+    <string name="settings__sort_tokens">Ταξινόμηση tokens</string>
+    <string name="appleWatch__installation_info_title">Εγκατάσταση εφαρμογής 2FAS Apple Watch</string>
+    <string name="appleWatch__installation_first_step">Εγκαταστήστε το 2FAS Auth μέσω της εφαρμογής Watch</string>
+    <string name="appleWatch__installation_first_step_link">Ανοίξτε την εφαρμογή Watch</string>
+    <string name="appleWatch__installation_second_step">Βεβαιωθείτε ότι το iCloud Sync σας είναι ενεργοποιημένο</string>
+    <string name="appleWatch__installation_second_step_link">Μεταβείτε στις ρυθμίσεις αντιγράφων ασφαλείας 2FAS</string>
+    <string name="settings__apple_watch">Apple Watch</string>
 </resources>

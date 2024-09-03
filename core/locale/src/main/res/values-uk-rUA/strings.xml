@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 09:50:25 -0700
+ Exported at: Tue, 03 Sep 2024 14:27:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -92,7 +92,7 @@
     <!-- introduction__import_ga -->
     <string name="introduction__import_google_authenticator">Імпортувати з Google Authenticator</string>
     <!-- introduction__not_sure -->
-    <string name="introduction__what_to_do">Ви не впевнені в тому, що роботи?</string>
+    <string name="introduction__what_to_do">Ви не впевнені в тому, що робити?</string>
     <!-- introduction__ga_import_description -->
     <string name="introduction__google_authenticator_import_process">Експортуйте свої облікові записи з Google Authenticator до QR-коду за допомогою опції «Перенести облікові записи». Потім використовуючи інший пристрій, сфотографуйте експортований QR-код, надішліть його на свій пристрій (або зробіть знімок екрана, якщо можливо) та використайте параметр \"Обрати QR-код\" нижче. Якщо ви імпортуєте коди з іншого пристрою, замість цього скористайтеся кнопкою \"Сканувати QR-код\".</string>
     <!-- introduction__choose_qr -->
@@ -368,8 +368,6 @@
     <string name="backup__services_imported_count">%d сервісів імпортовано з файлу</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Виникла проблема з iCloud. Перевірте налаштування системи</string>
-    <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">Цей файл має новішу версію формату, ніж та, котру підтримує додаток</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Цей файл зашифровано. Ми підтримуємо лише незашифровані файли</string>
     <string name="tokens__copy_token">Копіювати токен</string>
@@ -400,7 +398,7 @@
     <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Заблокувати після X невдалих спроб:</string>
-    <string name="settings__how_many_attempts_footer">Виберіть максимальну кількість невдалих спроб введення пароля, перед блокуванням програми (час блокування можна змінити нижче).</string>
+    <string name="settings__how_many_attempts_footer">Виберіть максимальну кількість невдалих спроб введення пароля, перед блокуванням додатку (час блокування можна змінити нижче).</string>
     <string name="settings__block_for">Час блокування</string>
     <string name="settings__3_minutes">3 хвилини</string>
     <string name="settings__5_minutes">5 хвилин</string>
@@ -513,7 +511,7 @@
     <string name="backup__section_description_google">РЕКОМЕНДОВАНО: Синхронізація Google Drive зберігає ваші токени на Google Drive в безпеці у разі втрати або пошкодження вашого пристрою. Тримайте його ввімкненим.</string>
     <string name="backup_turn_off_title">Вимкнути синхронізацію Google Drive?</string>
     <string name="backup_turn_off_msg1">Ваші токени залишаться на цьому пристрої та у вашому Google Drive, але не будуть синхронізовані. Також ви вийдете зі свого облікового запису Google.</string>
-    <string name="backup_turn_off_msg2">Пам’ятай, що у разі втрати або пошкодження цього пристрою чи видалення програми, можливо, не зможеш відновити свої токени, і втратиш доступ до онлайн-акаунтів, захищених двоетапною авторизацією.</string>
+    <string name="backup_turn_off_msg2">Пам’ятай, що у разі втрати або пошкодження цього пристрою чи видалення додатку ти, можливо, не зможеш відновити свої токени, і втратиш доступ до онлайн-акаунтів, захищених двоетапною авторизацією.</string>
     <string name="backup_settings_password_set_subtitle">Захистіть файл резервної копії Google Drive за допомогою спеціального пароля.</string>
     <string name="backup_settings_password_remove_title">Видалити пароль</string>
     <string name="backup_settings_password_remove_subtitle">Видалити пароль для файлу резервної копії Google Drive.</string>
@@ -816,11 +814,11 @@
     <string name="introduction__backup_description">На наступному кроці вам буде запропоновано вибрати обліковий запис Google Drive, де безпечно зберігатимуться токени 2FA.</string>
     <string name="introduction__backup_take_risk_cta">Не хочу вмикати резервне копіювання</string>
     <string name="introduction__backup_success">Синхронізацію Google Drive ввімкнено успішно!</string>
-    <string name="backup__import_invalid_version">Файл резервної копії, який ви намагаєтеся імпортувати, не підтримується цією версією програми. Програма підтримує лише версії формату резервної копії до %d, тоді як файл, який ви імпортуєте, має версію %d.</string>
+    <string name="backup__import_invalid_version">Файл резервної копії, який ви намагаєтеся імпортувати, не підтримується цією версією додатку. Додатоку підтримує лише версії формату резервної копії до %d, тоді як файл, який ви імпортуєте, має версію %d.</string>
     <string name="commons__pair">Пара</string>
     <string name="introduction__backup_icloud_title">Безпечна синхронізація та резервне копіювання</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS використовує iCloud для безпечного резервного копіювання та синхронізації ваших 2FA токенів. *Зашифровані* дані резервної копії зберігаються в iCloud, доступні *тільки за допомогою програми 2FAS*. Крім того, ця функція допомагає *відновлювати та синхронізувати* токени на пристроях iOS.\\n\\nЇЇ увімкнено за умовчанням і можна будь-коли вимкнути в налаштуваннях резервного копіювання програми.</string>
+    <string name="introduction__backup_icloud_description">2FAS використовує iCloud для безпечного резервного копіювання та синхронізації ваших 2FA токенів. *Зашифровані* дані резервної копії зберігаються в iCloud, доступні *тільки за допомогою додатку 2FAS*. Крім того, ця функція допомагає *відновлювати та синхронізувати* токени на пристроях iOS.\\n\\nЇЇ увімкнено за умовчанням і можна будь-коли вимкнути в налаштуваннях резервного копіювання додатку.</string>
     <string name="introduction__backup_icloud_cta">Дізнайтеся більше про резервне копіювання</string>
     <string name="backup__enter_password_google_drive_msg1">Схоже, ваш файл резервної копії Google Drive захищено паролем. Щоб продовжити, введіть правильний пароль. Якщо ви хочете стерти файл резервної копії Google Диска,</string>
     <string name="backup__enter_password_google_drive_msg2">натисніть тут, щоб побачити як</string>
@@ -837,19 +835,26 @@
     <string name="tokens__steam">STEAM</string>
     <string name="widget__placeholder">Заповнювач</string>
     <string name="widget__size_not_supported">Цей розмір ще не підтримується</string>
-    <string name="widget__settings_description">Виберіть, які сервіси ви хочете відобразити у віджеті. Якщо сервіси недоступні, переконайтеся, що ви ввімкнули віджети в розділі налаштувань програми</string>
+    <string name="widget__settings_description">Виберіть, які сервіси ви хочете відобразити у віджеті. Якщо сервіси недоступні, переконайтеся, що ви ввімкнули віджети в розділі налаштувань додатку</string>
     <string name="widget__service_icon">Значок сервісу</string>
     <string name="widget__not_enabled">Функціональність віджетів не ввімкнена в розділі налаштувань 2FAS</string>
-    <string name="widget__not_enabled_no_services">Функціональність віджетів не ввімкнена в розділі налаштувань 2FAS, і в програмі немає доступних для вибору сервісів</string>
+    <string name="widget__not_enabled_no_services">Функціональність віджетів не ввімкнена в розділі налаштувань 2FAS, і в додатку немає доступних для вибору сервісів</string>
     <string name="widget__no_services">У додатку немає доступних для вибору сервісів</string>
     <string name="widget__select_service_intent_description">Оберіть сервіс, який ви хочете відобразити у своєму віджеті 2FAS</string>
     <string name="widget__my_secured_account">Мій захищений акаунт</string>
     <string name="widget__token">Токен</string>
-    <string name="watch__intro">Додаток 2FAS watchOS є супутнім додатком для програми 2FAS iOS. Він представлятиме сервіси, резервні копії яких створені за допомогою синхронізації iCloud.\n\nДля швидкого доступу додайте їх до улюблених сервісів.\n\nБудь ласка, не забудьте зробити пожертву, щоб ми могли ще більше вдосконалювати платформу 2FAS!</string>
+    <string name="watch__intro">Додаток 2FAS watchOS є супутнім для додатку 2FAS iOS. Він представлятиме сервіси, резервні копії яких створені за допомогою синхронізації iCloud.\n\nДля швидкого доступу додайте їх до улюблених сервісів.\n\nБудь ласка, не забудьте зробити пожертву, щоб ми могли ще більше вдосконалювати платформу 2FAS!</string>
     <string name="tokens__hotp_not_supported">Сервіси HOTP ще не підтримуються</string>
     <string name="tokens__favorite_services">Улюблені сервіси</string>
     <string name="security__enter_new_pin_short">Введіть новий ПІН-код</string>
     <string name="security__repeat_new_pin_short">Повторіть новий ПІН-код</string>
     <string name="commons__success">Успіх</string>
     <string name="security__enter_pin_short">Введіть ПІН-код</string>
+    <string name="settings__sort_tokens">Сортувати токени</string>
+    <string name="appleWatch__installation_info_title">Встановлення додатку 2FAS Apple Watch</string>
+    <string name="appleWatch__installation_first_step">Встановити 2FAS Auth через додаток Watch</string>
+    <string name="appleWatch__installation_first_step_link">Відкрити додаток Watch</string>
+    <string name="appleWatch__installation_second_step">Переконайтеся, що iCloud Sync увімкнено</string>
+    <string name="appleWatch__installation_second_step_link">Перейти до налаштувань 2FAS Backup</string>
+    <string name="settings__apple_watch">Apple Watch</string>
 </resources>

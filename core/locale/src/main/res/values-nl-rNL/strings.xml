@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 09:50:25 -0700
+ Exported at: Tue, 03 Sep 2024 14:27:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -368,8 +368,6 @@
     <string name="backup__services_imported_count">%d services geïmporteerd uit bestand</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Er is een probleem met iCloud. Controleer de systeeminstellingen</string>
-    <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">Dit bestand heeft een nieuwere indeling dan degene die de app ondersteunt</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Dit bestand is versleuteld. Wij ondersteunen enkel onversleutelde bestanden</string>
     <string name="tokens__copy_token">Kopieer token</string>
@@ -394,7 +392,7 @@
     <string name="settings__version">App versie %s</string>
     <string name="settings__no_limit">Geen limiet</string>
     <string name="settings__pin_code">Pincode</string>
-    <string name="settings__app_security">App beveiliging %s</string>
+    <string name="settings__app_security">App beveiliging</string>
     <string name="settings__app_blocking">Vergendelingsinstellingen</string>
     <string name="settings__face_id">Face ID</string>
     <string name="settings__touch_id">Touch ID</string>
@@ -846,4 +844,11 @@
     <string name="security__repeat_new_pin_short">Herhaal nieuwe pincode</string>
     <string name="commons__success">Success</string>
     <string name="security__enter_pin_short">Voer pincode in</string>
+    <string name="settings__sort_tokens">Token sorteren</string>
+    <string name="appleWatch__installation_info_title">2FAS Apple Watch-app installeren</string>
+    <string name="appleWatch__installation_first_step">Installeer 2FAS Auth via de Watch app</string>
+    <string name="appleWatch__installation_first_step_link">Open de Watch app</string>
+    <string name="appleWatch__installation_second_step">Zorg ervoor dat iCloud Sync is ingeschakeld</string>
+    <string name="appleWatch__installation_second_step_link">Ga naar 2FAS Backup instellingen</string>
+    <string name="settings__apple_watch">Apple Watch</string>
 </resources>
