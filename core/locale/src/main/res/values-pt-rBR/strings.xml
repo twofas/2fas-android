@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 09:50:25 -0700
+ Exported at: Tue, 03 Sep 2024 14:27:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -58,7 +58,7 @@
     <string name="commons__service">Serviço</string>
     <string name="commons__set">Definir</string>
     <string name="commons__skip">Pular</string>
-    <string name="commons__tokens">Tokens</string>
+    <string name="commons__tokens">Códigos</string>
     <string name="commons__warning">Atenção</string>
     <string name="commons__no_results">Sem resultados</string>
     <string name="commons__customize">Customizar</string>
@@ -81,7 +81,7 @@
     <string name="introduction__page_3_title">Privado</string>
     <string name="introduction__page_3_content">O 2FAS respeita e protege a sua privacidade. Este aplicativo nunca irá coletar, processar, ou usar quaisquer dados pessoais.</string>
     <string name="introduction__page_4_title">Seguro</string>
-    <string name="introduction__page_4_content_ios">Os seus códigos estão armazenados offline no dispositivo, por isso lembre-se de realizar o backup dos seus serviços! Utilize a sincronização através do iCloud e uma senha PIN para protegê-los de acesso não autorizado e danos ao dispositivo.</string>
+    <string name="introduction__page_4_content_ios">Os seus códigos estão armazenados offline no dispositivo, por isso lembre-se de realizar o backup dos seus serviços! Utilize a sincronização via iCloud e uma senha PIN para protegê-los de acesso não autorizado e danos ao dispositivo.</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">Começar usar o 2FAS</string>
     <string name="introduction__tos">Termos de serviço</string>
@@ -113,7 +113,7 @@
     <!-- MARK: - Permissions -->
     <string name="permissions__open_settings">Abrir configurações</string>
     <string name="security__incorrect_PIN">PIN inválido</string>
-    <string name="security__change_pin">Mudar o PIN</string>
+    <string name="security__change_pin">Alterar PIN</string>
     <string name="security__confirm_you_are_device_owner">Por favor, confirme que é o dono deste dispositivo</string>
     <!-- security__confirm_your_new_pin -->
     <string name="security__confirm_new_pin">Por favor, confirma o seu novo PIN</string>
@@ -122,7 +122,7 @@
     <!-- security__enter_your_new_pin -->
     <string name="security__enter_new_pin">Por favor, digite o seu novo PIN</string>
     <!-- security__enter_your_pin -->
-    <string name="security__enter_pin">Por favor, digita o seu PIN</string>
+    <string name="security__enter_pin">Por favor, digite seu PIN</string>
     <!-- MARK: - Security -->
     <string name="security__too_many_attempts_try_again_after_formatter">Muitas tentativas. Por favor, tente novamente %s</string>
     <string name="security__too_many_attempts_try_again_after">Muitas tentativas. Por favor, tente novamente em %s minutos.</string>
@@ -146,21 +146,21 @@
     <string name="settings__display_selected_services">Mostrar os serviços selecionados nos Widgets da Página Inicial</string>
     <!-- settings__after_you_enable_widgets -->
     <string name="settings__widgets_title">Depois de ativar os widgets, todos os seus códigos irão ser acessíveis sem precisar de código PIN.\n\nTem certeza que quer ativar os widgets?</string>
-    <string name="settings__show_next_token">Mostrar token seguinte</string>
+    <string name="settings__show_next_token">Mostrar próximo código</string>
     <string name="settings__see_incoming_tokens">Mostrar os código recebidos na lista.</string>
-    <string name="settings__trash">Lixo</string>
+    <string name="settings__trash">Lixeira</string>
     <string name="settings__restore">Restaurar</string>
-    <string name="settings__trash_is_empty">O lixo está vazio</string>
+    <string name="settings__trash_is_empty">Lixeira Vazia</string>
     <string name="settings__share_app">Compartilhar o aplicativo</string>
     <!-- tokens__remove_from_list -->
-    <string name="tokens__delete_token">Tens a certeza que queres eliminar o token de:</string>
-    <string name="tokens__move_to_trash">Mover para o lixo</string>
+    <string name="tokens__delete_token">Tem certeza que deseja eliminar o código para:</string>
+    <string name="tokens__move_to_trash">Mover para a Lixeira</string>
     <string name="tokens__additional_info">Informação adicional</string>
     <string name="tokens__choose_method">Escolher método</string>
     <string name="tokens__duplicated_private_key">Chave Secreta duplicada</string>
     <!-- tokens__incorrect_private_key -->
     <string name="tokens__incorrect_service_key">Chave Secreta incorreta (apenas números 2 a 7, letras), máx. 512 caracteres</string>
-    <string name="tokens__try_again">Ok, vamos tentar novamente</string>
+    <string name="tokens__try_again">OK, vamos tentar novamente</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Aponte sua câmera para a tela para ler o código QR</string>
@@ -170,26 +170,26 @@
     <!-- tokens__remove_it_forever -->
     <string name="tokens__remove_forever">Deletar Código\u0020</string>
     <!-- tokens__search_by_service_name_or_login -->
-    <string name="tokens__search_service_title">Buscar serviço</string>
+    <string name="tokens__search_service_title">Pesquisar serviço</string>
     <!-- tokens__search_sorry_service_not_found -->
-    <string name="tokens__service_not_found_search">Desculpa, o serviço não foi encontrado</string>
+    <string name="tokens__service_not_found_search">Desculpe, serviço não encontrado</string>
     <!-- Original: Take another try with a different search term
         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Tenta novamente com um termo de pesquisa diferente</string>
-    <string name="tokens__service_key_to_short">A chave é muito pequena. Mínimo 4 caracteres</string>
+    <string name="tokens__service_key_to_short">A chave é muito curta. Mínimo de 4 caracteres</string>
     <string name="tokens__service_name">Nome do Serviço</string>
     <!-- tokens__this_private_key_exists_used_in -->
-    <string name="tokens__service_key_already_used_title">A chave secreta do código lido já é utilizada em %s. Você provavelmente está lendo-o de novo</string>
+    <string name="tokens__service_key_already_used_title">A chave secreta do código lido já é utilizada em %s. Você provavelmente está lendo-o novamente</string>
     <string name="tokens__this_qr_code_is_inavlid">Este código está incorreto ou não é suportado. Tenta novamente.</string>
-    <string name="tokens__type_service_name">Tipo de Nome do Serviço</string>
-    <string name="tokens__enter_service_name">Digite o Nome do Serviço</string>
+    <string name="tokens__type_service_name">Digite o Nome do Serviço</string>
+    <string name="tokens__enter_service_name">Insira o Nome do Serviço</string>
     <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
-    <string name="tokens__service_name_unknown_title">Infelizmente, não sabemos esse serviço. Como queres nomeá-lo?</string>
+    <string name="tokens__service_name_unknown_title">Infelizmente, não conhecemos esse serviço. Como deseja nomeá-lo?</string>
     <!-- tokens__you_wont_be_able_to_restore -->
-    <string name="tokens__token_not_possible_to_restore">Você não irá poder mais restaurar este código mais.</string>
+    <string name="tokens__token_not_possible_to_restore">Você não poderá mais restaurar este código.</string>
     <string name="tokens__badge_color">Cor do emblema</string>
-    <string name="tokens__change_brand_icon">Mudar ícone da marca</string>
-    <string name="tokens__change_label">Mudar nome</string>
+    <string name="tokens__change_brand_icon">Alterar ícone da marca</string>
+    <string name="tokens__change_label">Alterar rótulo</string>
     <string name="tokens__service_information">Informação do Serviço</string>
     <string name="tokens__personalization">Personalização</string>
     <string name="tokens__brand_icon">Ícone da marca</string>
@@ -199,27 +199,27 @@
     <!-- tokens__label_one_or_two -->
     <string name="tokens__label_characters_title">Nome (1 ou 2 caracteres):</string>
     <string name="tokens__pick_background_color">Escolher cor do fundo:</string>
-    <string name="tokens__num_added">%s foi adicionado</string>
+    <string name="tokens__num_added">%s adicionado</string>
     <string name="tokens__next_token">Próximo Código: %s</string>
     <string name="tokens__next_token_title">Valor do Código seguinte</string>
-    <string name="tokens__my_tokens">Os meus Tokens</string>
+    <string name="tokens__my_tokens">Meus Códigos</string>
     <string name="tokens__removing_group">Removendo o grupo</string>
     <!-- tokens__all_tokens_will_be_moved -->
-    <string name="tokens__all_tokens_moved_to_group_title">Todos os codigos irão ser movidos para o grupo: \"Os meus códigos\"</string>
+    <string name="tokens__all_tokens_moved_to_group_title">Todos os códigos serão movidos para o grupo: \"Meus Códigos\"</string>
     <string name="tokens__add_group">Adicionar grupo</string>
     <string name="tokens__group_name">Nome do grupo:</string>
     <string name="tokens__select_from_gallery">Selecionar da Galeria</string>
-    <string name="tokens__camera_is_unavailable">A câmara está indisponível</string>
+    <string name="tokens__camera_is_unavailable">A câmera está indisponível</string>
     <!-- tokens__check_if_app_has_proper_permissions -->
-    <string name="tokens__check_app_permissions">Verifique se o aplicativo possuí as permissões necessárias nas configurações do seu dispositivo</string>
+    <string name="tokens__check_app_permissions">Verifique se o aplicativo possui as permissões necessárias nas Configurações do Sistema</string>
     <string name="tokens__no_qr_codes_found">Não foram encontrados códigos QR</string>
     <!-- tokens__no_correct_qr_code_had_been_found
         
         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Não existe um código QR correto na imagem selecionada. Por favor tenta uma imagem diferente.</string>
-    <string name="tokens__select_service">Selecionar serviço</string>
+    <string name="tokens__select_service">Selecionar Serviço</string>
     <string name="tokens__adding_service_question_title">Qual é o serviço que você quer adicionar?</string>
-    <string name="tokens__retype_this_token">Digita este token novamente</string>
+    <string name="tokens__retype_this_token">Digite este código novamente</string>
     <!-- tokens__unlock_and_retype_this_token -->
     <string name="tokens__unlock_and_retype_token_title">Desbloqueie e digite este código novamente</string>
     <string name="tokens__group">Grupo</string>
@@ -228,7 +228,7 @@
     <string name="tokens__google_auth_import_subtitle">Este código QR permite importar Códigos do Google Authenticator</string>
     <!-- A number replaces %d  -->
     <string name="tokens__google_auth_out_of_title">%1$d de %2$d</string>
-    <string name="tokens__google_auth_import_subtitle_end">Os tokens irão ser importados.</string>
+    <string name="tokens__google_auth_import_subtitle_end">Os códigos serão importados.</string>
     <string name="tokens__sort_by">Ordenar por</string>
     <!-- tokens__sort_by_az -->
     <string name="tokens__sort_by_a_to_z">A - Z</string>
@@ -254,10 +254,10 @@
     <string name="tokens__advanced_settings_footer_title">Mudar as configurações avançadas não é recomendado. Somente faça-o apenas quando o fornecedor do 2FA pedir e quando tiver instruções claras.</string>
     <string name="tokens__gallery_advice_title">Melhor prática</string>
     <!-- ADD A SPACE AT THE END -->
-    <string name="tokens__gallery_advice_content_first">O serviço foi adicionado com sucesso. Nós recomendamos fortemente que você\u0020</string>
+    <string name="tokens__gallery_advice_content_first">Serviço adicionado com sucesso. Nós recomendamos fortemente que você\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
-    <string name="tokens__gallery_advice_content_middle_bold">deletar o código QR da sua galeria.\u0020</string>
-    <string name="tokens__gallery_advice_content_last">Se alguém tiver acesso a este código QR, irão poder usar os códigos 2FA para este serviço.</string>
+    <string name="tokens__gallery_advice_content_middle_bold">exclua a captura do código QR da sua galeria.</string>
+    <string name="tokens__gallery_advice_content_last">\nSe alguém tiver acesso a este código QR, poderão obter seus códigos 2FA para este serviço.</string>
     <string name="tokens__request_icon_page_title">Solicitar um ícone</string>
     <string name="tokens__request_icon_social_title">Avise-nos no Discord</string>
     <string name="tokens__request_icon_social_link">Entre no nosso servidor de Discord</string>
@@ -368,8 +368,6 @@
     <string name="backup__services_imported_count">%d serviço(s) importado(s) de arquivo</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Existe um problema com o iCloud. Verifique as configurações do sistema</string>
-    <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">Este arquivo está numa versão de formato mais recente do que o aplicativo suporta</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Este arquivo está criptografado. Nós suportamos apenas arquivos descriptografados.</string>
     <string name="tokens__copy_token">Copiar Código\u0020</string>
@@ -400,7 +398,7 @@
     <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">Bloquear após X tentativas incorretas:</string>
-    <string name="settings__how_many_attempts_footer">Selecione o número máximo de tentativas malsucedidas de inserção da senha antes de bloquear o aplicativo (o tempo de bloqueio pode ser mudado abaixo).</string>
+    <string name="settings__how_many_attempts_footer">Selecione o número máximo de tentativas de inserção de senha fracassadas antes de bloquear o aplicativo (o tempo de bloqueio pode ser alterado abaixo).</string>
     <string name="settings__block_for">Tempo de bloqueio</string>
     <string name="settings__3_minutes">3 minutos</string>
     <string name="settings__5_minutes">5 minutos</string>
@@ -502,7 +500,7 @@
     <string name="customization_advanced">Avançado</string>
     <string name="customization_request_icon">Solicitar um ícone</string>
     <string name="customization_edit_label">Editar rótulo</string>
-    <string name="groups_delete_msg">Tem a certeza que quer deletar este grupo?</string>
+    <string name="groups_delete_msg">Tem a certeza que deseja excluir este grupo?</string>
     <string name="export_backup_title">Seu arquivo de backup está pronto para exportação</string>
     <string name="export_backup_msg">Exporte este arquivo para manter os seus códigos 2FAS em um backup seguro. Você pode importá-lo depois para este ou outros dispositivos com o aplicativo 2FAS.</string>
     <string name="export_backup_pass">Exportar arquivo sem senha (não recomendado)</string>
@@ -532,7 +530,7 @@
     <string name="android__app_name">2FAS Auth</string>
     <string name="commons__yes">Sim</string>
     <string name="commons__no">Não</string>
-    <string name="commons__search">Buscar</string>
+    <string name="commons__search">Pesquisar</string>
     <string name="errors__no_app">Nenhum aplicativo que suporte este link</string>
     <string name="permissions__camera_permission">Permissão de Câmera</string>
     <string name="permissions__camera_permission_description">A permissão da câmera é necessária para ler códigos QR. Se quiser usar esta função, vá para Informações do Aplicativo e Permissões e habilite a câmera.</string>
@@ -567,7 +565,7 @@
     <string name="tokens__show_service_key_setup_lock">A sua Chave Secreta está protegida. Por favor, adicione um PIN ou bloqueio por biometria para visualizá-la.</string>
     <string name="tokens__tokens_list_is_empty">A lista de serviços está vazia</string>
     <string name="tokens__use_plus_button_to_add_tokens">Use o botão \"+\" para adicionar um novo serviço</string>
-    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Você não poderá entrar na sua conta %1$s sem este código enquanto possuir a autenticação de dois fatores ativada para a conta %2$s.\n\nVocê não poderá restaurar este código da lixeira do 2FAS.</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Você não poderá entrar na sua conta %1$s sem este código enquanto a autenticação de dois fatores estiver ativa para %2$s.\n\nVocê não poderá restaurar este código da lixeira do 2FAS.</string>
     <string name="import_ga_success">Serviços importados com sucesso!</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
     <string name="backup_error_network">Você precisa de uma conexão de Internet ativa para sincronizar seu backup. Por favor, conecte-se à sua rede e tente novamente.</string>
@@ -758,8 +756,8 @@
     <string name="tokens__add_manual_help_cta">Não sabe o que fazer? Toque para ajuda</string>
     <string name="tokens__add_manual_advanced">Configurações avançadas do código</string>
     <string name="tokens__add_manual_additional_info">Informações adicionais</string>
-    <string name="tokens__add_manual_advanced_description">Alterar a configuração padrão do código não é recomendado. Faça isso somente quando seu provedor 2FA exigir e quando houverem instruções claras.</string>
-    <string name="settings__option_screenshots_description">Permitir capturas de tela do aplicativo por 5 minutos.</string>
+    <string name="tokens__add_manual_advanced_description">Alterar a configuração padrão dos códigos não é recomendado. Faça isso somente quando seu provedor 2FA exigir e quando houverem instruções claras.</string>
+    <string name="settings__option_screenshots_description">Permita capturas de tela do aplicativo por 5 minutos.</string>
     <string name="settings__option_screenshots">Permitir capturas de tela</string>
     <string name="settings__option_screenshots_confirm_title">Permitir capturas de tela desse aplicativo?</string>
     <string name="settings__option_screenshots_confirm_description">Tem certeza? Esta opção permite capturar e gravar qualquer tela dentro do aplicativo. No entanto, isso também permitirá que terceiros capturem telas no aplicativo.\nPor motivos de segurança, essa opção será desabilitada automaticamente após 5 minutos.</string>
@@ -772,19 +770,19 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Esconder codigos</string>
-    <string name="settings__hide_tokens_description">Os Codigos serão revelados ao tocar.</string>
+    <string name="settings__hide_tokens_description">Os códigos serão revelados ao tocar.</string>
     <string name="browser__pair_manually_cta">Emparelhar manualmente</string>
     <string name="browser__pair_manually_hint">Código de emparelhamento</string>
-    <string name="externalimport__info_authenticatorpro_title">Importar tokens do Authenticator Pro</string>
-    <string name="externalimport__authenticatorpro_success_msg">Este arquivo de texto permite importar tokens do Authenticator Pro.</string>
-    <string name="externalimport__authenticatorpro_title">Importando tokens 2FA do aplicativo Authenticator Pro</string>
+    <string name="externalimport__info_authenticatorpro_title">Importar códigos do Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">Este arquivo de texto permite importar códigos do Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Importando códigos 2FA do aplicativo Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_msg">Exporte suas contas do Authenticator Pro para um arquivo de texto não criptografado e carregue-o usando o botão \"Escolher arquivo de texto\". Lembre-se de remover o arquivo após uma importação bem-sucedida.</string>
     <string name="externalimport__authenticatorpro">Autenticador Pro</string>
     <string name="externalimport__choose_txt_cta">Escolha o arquivo de texto</string>
     <string name="fingerprint__biometric_invalidated">O login biométrico está desativado, você pode mudar essa configuração nas configurações do sistema de biometria\u0020</string>
-    <string name="tokens__last_pass_import">Importar código 2FA do aplicativo LastPass</string>
+    <string name="tokens__last_pass_import">Importando códigos 2FA do aplicativo LastPass</string>
     <string name="tokens__last_pass_import_subtitle">Este código QR permite importar Códigos do LastPass</string>
-    <string name="tokens__add_with_guide">Me guie</string>
+    <string name="tokens__add_with_guide">Guie-me</string>
     <string name="guides__select_title">Serviços do Navegador</string>
     <string name="guides__select_description">Selecione um serviço para parear com o 2FAS app</string>
     <string name="guides__select_provide_guide">Você quer providenciar guias do 2FA para o seu serviço?</string>
@@ -814,13 +812,13 @@
     <string name="commons__pair">Parear</string>
     <string name="introduction__backup_icloud_title">Sincronização segura e copia de segurança</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">O 2FAS utiliza o iCloud para o backup seguro e sincronização de seus tokens 2FA. Os dados de backup **criptografados** são armazenados no iCloud, acessíveis **apenas pelo aplicativo 2FAS**. Além disso, essa funcionalidade auxilia na **recuperação e sincronização de tokens** entre dispositivos iOS.\n\nEssa opção é habilitada por padrão e pode ser desativada a qualquer momento nas configurações de backup do aplicativo.</string>
+    <string name="introduction__backup_icloud_description">O 2FAS utiliza o iCloud para o backup seguro e sincronização dos seus códigos 2FA. Os dados de backup **criptografados** são armazenados no iCloud, acessíveis **apenas pelo aplicativo 2FAS**. Além disso, essa funcionalidade auxilia na **recuperação e sincronização** de códigos entre dispositivos iOS.\n\nEssa opção é habilitada por padrão e pode ser desativada a qualquer momento nas configurações de backup do aplicativo.</string>
     <string name="introduction__backup_icloud_cta">Leia mais sobre a cópia de segurança\u0020</string>
     <string name="backup__enter_password_google_drive_msg1">Parece que o arquivo de backup do seu Google Drive está protegido por senha. Digite a senha correta para prosseguir. Se desejar apagar o arquivo de backup do Google Drive,</string>
     <string name="backup__enter_password_google_drive_msg2">toque aqui para ver como</string>
     <string name="settings__preferences">Preferências</string>
     <string name="settings__it_matters">Isso importa</string>
-    <string name="settings__manage_tokens">Gerenciar tokens</string>
+    <string name="settings__manage_tokens">Gerenciar códigos</string>
     <string name="settings__info_footer">O seu apoio nos permite desenvolver novas funcionalidades e melhorias. Obrigado!\n\n\n\n\n\n</string>
     <string name="settings__trash_option">Recuperar da lixeira</string>
     <string name="periodic_notification_tips">Que bom que você está conosco na 2FAS! 🌟 Tire um momento para descobrir Dicas e Truques úteis 🛠️ no aplicativo para uma segurança aprimorada 🔒.</string>
@@ -830,20 +828,27 @@
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
     <string name="widget__placeholder">Espaço reservado</string>
-    <string name="widget__size_not_supported">Este tamanho ainda não é suportável.\u0020</string>
+    <string name="widget__size_not_supported">Este tamanho ainda não é suportado</string>
     <string name="widget__settings_description">Selecione quais serviços você gostaria de exibir no widget. Se nenhum serviço estiver disponível, certifique-se de ter habilitado os Widgets na seção Configurações do aplicativo</string>
     <string name="widget__service_icon">Serviço do icone</string>
     <string name="widget__not_enabled">A funcionalidade do widget não está habilitada na seção de configurações do 2FAS</string>
     <string name="widget__not_enabled_no_services">A funcionalidade do widget não está habilitada na seção de Configurações do 2FAS e não há serviços no aplicativo disponíveis para seleção</string>
-    <string name="widget__no_services">Não há serviço disponível no app para está seleção\u0020</string>
+    <string name="widget__no_services">Não há serviço disponível no aplicativo para esta seleção</string>
     <string name="widget__select_service_intent_description">Selecione o Serviço que você quer que apareça no Widget 2FAS</string>
     <string name="widget__my_secured_account">Minha conta segura</string>
-    <string name="widget__token">Token</string>
-    <string name="watch__intro">O aplicativo 2FAS watchOS é um aplicativo complementar para o aplicativo 2FAS iOS. Ele apresentará serviços de backup usando a sincronização do iCloud.\n\nPara acesso rápido, adicione-os aos Serviços Favoritos.\n\nLembre-se de doar para que possamos melhorar ainda mais a plataforma 2FAS!</string>
-    <string name="tokens__hotp_not_supported">Os serviços HOTP ainda não são suportados.</string>
-    <string name="tokens__favorite_services">Serviços Favoritos.</string>
-    <string name="security__enter_new_pin_short">Entre com o novo Código.</string>
-    <string name="security__repeat_new_pin_short">Repita o novo Código.</string>
-    <string name="commons__success">Sucesso.</string>
-    <string name="security__enter_pin_short">Coloque o Código.</string>
+    <string name="widget__token">token</string>
+    <string name="watch__intro">O aplicativo 2FAS watchOS é um aplicativo complementar para o aplicativo 2FAS para iOS. Ele apresentará serviços de backup usando a sincronização do iCloud.\n\nPara acesso rápido, adicione-os aos Serviços Favoritos.\n\nLembre-se de doar para que possamos melhorar ainda mais a plataforma 2FAS!</string>
+    <string name="tokens__hotp_not_supported">Os serviços HOTP ainda não são suportados</string>
+    <string name="tokens__favorite_services">Serviços Favoritos</string>
+    <string name="security__enter_new_pin_short">Insira o novo PIN</string>
+    <string name="security__repeat_new_pin_short">Repita o novo PIN</string>
+    <string name="commons__success">Sucesso</string>
+    <string name="security__enter_pin_short">Insira o PIN</string>
+    <string name="settings__sort_tokens">Ordenar tokens</string>
+    <string name="appleWatch__installation_info_title">Instalação do aplicativo 2FAS do Apple Watch</string>
+    <string name="appleWatch__installation_first_step">Instalar o 2FAS Auth via aplicativo do Relógio</string>
+    <string name="appleWatch__installation_first_step_link">Abrir aplicativo do Relógio</string>
+    <string name="appleWatch__installation_second_step">Certifique que a sincronização do iCloud está ativada</string>
+    <string name="appleWatch__installation_second_step_link">Vá para as configurações de Backup do 2FAS</string>
+    <string name="settings__apple_watch">Apple Watch</string>
 </resources>

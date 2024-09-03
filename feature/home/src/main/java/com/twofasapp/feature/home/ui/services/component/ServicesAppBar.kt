@@ -152,11 +152,11 @@ private fun SearchBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        AnimatedVisibility(visible = focused.not()) {
+        AnimatedVisibility(visible = focused.not() && query.isEmpty()) {
             TwImage(painter = painterResource(id = com.twofasapp.designsystem.R.drawable.logo_2fas), modifier = Modifier.size(24.dp))
         }
 
-        AnimatedVisibility(visible = focused) {
+        AnimatedVisibility(visible = focused || query.isNotEmpty()) {
             TwIcon(painter = TwIcons.Search, modifier = Modifier.size(24.dp))
         }
 

@@ -326,6 +326,20 @@ private fun ServicesScreen(
                 }
                 return@LazyColumn
             }
+            if (uiState.services.isEmpty() && uiState.totalGroups == 1 && uiState.searchQuery.isNotEmpty()) {
+                listItem(ServicesListItem.EmptySearch) {
+                    TwEmptyScreen(
+                        title = TwLocale.strings.servicesEmptySearch,
+                        body = TwLocale.strings.servicesEmptySearchBody,
+                        image = painterResource(id = R.drawable.img_services_empty_search),
+                        modifier = Modifier
+                            .fillParentMaxSize()
+                            .animateItemPlacement(),
+                    )
+                }
+
+                return@LazyColumn
+            }
 
             if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
                 listItem(ServicesListItem.Empty) {
@@ -341,21 +355,6 @@ private fun ServicesScreen(
                         modifier = Modifier
                             .fillParentMaxSize()
                             .animateItemPlacement()
-                    )
-                }
-
-                return@LazyColumn
-            }
-
-            if (uiState.totalServices > 0 && uiState.totalGroups == 1 && uiState.services.isEmpty()) {
-                listItem(ServicesListItem.EmptySearch) {
-                    TwEmptyScreen(
-                        title = TwLocale.strings.servicesEmptySearch,
-                        body = TwLocale.strings.servicesEmptySearchBody,
-                        image = painterResource(id = R.drawable.img_services_empty_search),
-                        modifier = Modifier
-                            .fillParentMaxSize()
-                            .animateItemPlacement(),
                     )
                 }
 

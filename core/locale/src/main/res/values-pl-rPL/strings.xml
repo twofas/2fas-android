@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 09:50:25 -0700
+ Exported at: Tue, 03 Sep 2024 14:27:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -303,7 +303,7 @@
     <!-- voiceover__sort_by -->
     <string name="voiceover__sort_by_title">Użyj Sortuj według, aby ustawić sortowanie serwisów</string>
     <string name="voiceover__spinner">Ładowanie treści</string>
-    <string name="backup__incorrect_secret">Nie można wykonać kopii zapasowej tokenów, ponieważ \"%s\" secret zawiera nielegalne znaki. Usuń je z listy i spróbuj ponownie</string>
+    <string name="backup__incorrect_secret">Nie można wykonać kopii zapasowej tokenów, ponieważ \"%s\" secret zawiera niedozwolone znaki. Usuń je z listy i spróbuj ponownie</string>
     <string name="backup__import">Import</string>
     <string name="backup__export">Eksport</string>
     <string name="backup__backup_disabled_title">2FAS Backup zostanie wyłączony, aby chronić jego integralność</string>
@@ -368,8 +368,6 @@
     <string name="backup__services_imported_count">%d serwisów zaimportowanych z pliku</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Wystąpił problem z usługą iCloud. Sprawdź ustawienia systemowe</string>
-    <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">Ten plik jest w nowszej wersji formatu niż ta obsługiwana przez aplikację</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">Ten plik jest zaszyfrowany. Obsługujemy tylko niezaszyfrowane pliki</string>
     <string name="tokens__copy_token">Skopiuj token</string>
@@ -852,4 +850,11 @@
     <string name="security__repeat_new_pin_short">Powtórz nowy PIN</string>
     <string name="commons__success">Sukces</string>
     <string name="security__enter_pin_short">Wprowadź PIN</string>
+    <string name="settings__sort_tokens">Sortowanie tokenów</string>
+    <string name="appleWatch__installation_info_title">Instalacja aplikacji 2FAS na Apple Watch</string>
+    <string name="appleWatch__installation_first_step">Zainstaluj 2FAS Auth poprzez aplikację Watch</string>
+    <string name="appleWatch__installation_first_step_link">Otwórz aplikację Watch</string>
+    <string name="appleWatch__installation_second_step">Upewnij się, że synchronizacja iCloud jest włączona</string>
+    <string name="appleWatch__installation_second_step_link">Przejdź do ustawień kopii zapasowej 2FAS</string>
+    <string name="settings__apple_watch">Apple Watch</string>
 </resources>

@@ -79,7 +79,10 @@ internal class EditServiceViewModel(
         updateService {
             it.copy(
                 imageType = imageType,
-                labelText = labelText,
+                labelText = when (imageType) {
+                    Service.ImageType.IconCollection -> labelText
+                    Service.ImageType.Label -> labelText ?: uiState.value.service.name.take(2).uppercase()
+                },
                 labelColor = labelBackgroundColor,
             )
         }

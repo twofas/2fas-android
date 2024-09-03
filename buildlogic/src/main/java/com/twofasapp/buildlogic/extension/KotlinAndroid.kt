@@ -63,7 +63,7 @@ internal fun Project.applyKotlinAndroid(
                 excludes += "META-INF/NOTICE"
                 excludes += "META-INF/NOTICE.txt"
                 excludes += "META-INF/notice.txt"
-                excludes += "META-INF/ASL2.0"
+                excludes += "META-INF/INDEX.LIST"
                 excludes += "/META-INF/{AL2.0,LGPL2.1}"
             }
         }

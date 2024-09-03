@@ -9,13 +9,11 @@ import org.gradle.api.Project
 class TwoFasComposePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+            pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
+
             getBuildExtension()?.apply {
                 buildFeatures {
                     compose = true
-                }
-
-                composeOptions {
-                    kotlinCompilerExtensionVersion = libs.findVersionString("composeCompiler")
                 }
             }
         }

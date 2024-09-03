@@ -1,5 +1,6 @@
 package com.twofasapp.feature.widget.ui.settings
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,6 +27,7 @@ import com.twofasapp.designsystem.common.TwCircularProgressIndicator
 import com.twofasapp.designsystem.common.TwSwitch
 import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.designsystem.service.DsServiceSimple
 import com.twofasapp.designsystem.service.asState
 import com.twofasapp.feature.widget.GlanceWidget
@@ -40,8 +42,12 @@ internal fun WidgetSettingsScreen(
     onSuccess: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val context = LocalContext.current
+    val activity = LocalContext.currentActivity
     val scope = rememberCoroutineScope()
+
+    BackHandler {
+        activity.finishAndRemoveTask()
+    }
 
     LaunchedEffect(Unit) {
         viewModel.updateAppWidgetId(appWidgetId)
@@ -52,7 +58,7 @@ internal fun WidgetSettingsScreen(
         onToggleService = { viewModel.toggleService(it) },
         onSave = {
             scope.launch {
-                GlanceWidget().updateAll(context)
+                GlanceWidget().updateAll(activity)
                 viewModel.save()
                 onSuccess()
             }

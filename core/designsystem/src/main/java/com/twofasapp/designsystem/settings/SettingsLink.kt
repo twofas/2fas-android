@@ -52,7 +52,6 @@ fun SettingsLink(
             .fillMaxWidth()
             .clickable(onClick != null && enabled) { onClick?.invoke() }
             .heightIn(min = 56.dp)
-            .alpha(if (enabled) 1f else 0.3f)
             .padding(vertical = if (endContent == null) 16.dp else 8.dp)
             .padding(start = 24.dp, end = 16.dp),
         verticalArrangement = Arrangement.Center
@@ -61,7 +60,10 @@ fun SettingsLink(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(icon, image, iconTint, showEmptySpaceWhenNoIcon)
+            Image(
+                icon, image, iconTint, showEmptySpaceWhenNoIcon,
+                modifier = Modifier.alpha(if (enabled) 1f else 0.3f)
+            )
 
             Spacer(Modifier.size(24.dp))
 
@@ -69,14 +71,18 @@ fun SettingsLink(
                 Title(
                     title = title,
                     textColor = textColor,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .alpha(if (enabled) 1f else 0.4f)
                 )
 
                 if (alignCenterIcon && subtitleGravity == SubtitleGravity.Bottom) {
                     Subtitle(
                         subtitle = subtitle,
                         textColorSecondary = textColorSecondary,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .alpha(if (enabled) 1f else 0.9f)
                     )
                 }
             }
@@ -119,12 +125,13 @@ private fun Image(
     image: Painter?,
     iconTint: Color?,
     showEmptySpaceWhenIconMissing: Boolean,
+    modifier: Modifier = Modifier,
 ) {
     if (icon != null) {
         Icon(
             painter = icon,
             contentDescription = null,
-            modifier = Modifier.size(24.dp),
+            modifier = modifier.size(24.dp),
             tint = if (iconTint != null) iconTint else TwTheme.color.primary
         )
     } else if (image != null)

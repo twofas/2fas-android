@@ -44,8 +44,8 @@ fun TwButton(
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = TwTheme.color.button,
-            contentColor = TwTheme.color.onButton,
+            containerColor = TwTheme.color.primary,
+            contentColor = Color.White,
         ),
         enabled = enabled,
         modifier = modifier.height(height),

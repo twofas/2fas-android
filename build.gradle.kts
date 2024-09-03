@@ -17,6 +17,7 @@ plugins {
     alias(libs.plugins.kotlinSerialization) apply false
     alias(libs.plugins.kotlinParcelize) apply false
     alias(libs.plugins.kotlinKapt) apply false
+    alias(libs.plugins.kotlinComposeCompiler) apply false
     alias(libs.plugins.gradleVersions)
     alias(libs.plugins.versionCatalogUpdate)
 }

@@ -48,13 +48,6 @@ class StartActivity : AppCompatActivity(), AuthAware {
         )
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-//        intent?.data?.let {
-//            deeplinkHandler.setQueuedDeeplink(incomingData = it.toString())
-//        }
-    }
-
     override fun onAuthenticated() {
         intent?.data?.let {
             deeplinkHandler.setQueuedDeeplink(incomingData = it.toString())

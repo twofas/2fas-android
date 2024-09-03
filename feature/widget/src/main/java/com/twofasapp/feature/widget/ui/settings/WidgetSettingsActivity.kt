@@ -33,9 +33,6 @@ class WidgetSettingsActivity : ComponentActivity(), AuthAware {
             AppWidgetManager.INVALID_APPWIDGET_ID
         ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
 
-        val resultValue = Intent().putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        setResult(Activity.RESULT_CANCELED, resultValue)
-
         authTracker.onWidgetSettingsScreen()
 
         lifecycle.addObserver(
@@ -52,7 +49,7 @@ class WidgetSettingsActivity : ComponentActivity(), AuthAware {
                     appWidgetId = appWidgetId,
                 ) {
                     setResult(Activity.RESULT_OK, Intent().putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId))
-                    finish()
+                    finishAndRemoveTask()
                 }
             }
         }

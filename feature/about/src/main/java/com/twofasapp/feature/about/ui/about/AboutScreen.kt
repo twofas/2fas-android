@@ -111,20 +111,6 @@ private fun ScreenContent(
 
                 item { SettingsDivider() }
 
-                item { SettingsHeader(title = TwLocale.strings.aboutSendCrashes) }
-
-                item {
-                    SettingsSwitch(
-                        title = TwLocale.strings.settingsSendCrashes,
-                        subtitle = TwLocale.strings.settingsSendCrashesBody,
-                        icon = TwIcons.Settings,
-                        checked = uiState.appSettings.sendCrashLogs,
-                        onCheckedChange = { onSendCrashLogsToggle() }
-                    )
-                }
-
-                item { SettingsDivider() }
-
                 item { SettingsHeader(title = TwLocale.strings.aboutSocialMedia) }
 
                 item {
@@ -195,6 +181,20 @@ private fun ScreenContent(
                     ) {
                         uriHandler.openSafely(TwLocale.links.facebook, activity)
                     }
+                }
+
+                item { SettingsDivider() }
+
+                item { SettingsHeader(title = TwLocale.strings.aboutSendCrashes) }
+
+                item {
+                    SettingsSwitch(
+                        title = TwLocale.strings.settingsSendCrashes,
+                        subtitle = TwLocale.strings.settingsSendCrashesBody,
+                        icon = TwIcons.Settings,
+                        checked = uiState.appSettings.sendCrashLogs,
+                        onCheckedChange = { onSendCrashLogsToggle() }
+                    )
                 }
 
                 item { SettingsDivider() }
