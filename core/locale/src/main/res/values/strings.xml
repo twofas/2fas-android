@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 09:50:25 -0700
+ Exported at: Tue, 03 Sep 2024 14:27:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -303,7 +303,7 @@
     <!-- voiceover__sort_by -->
     <string name="voiceover__sort_by_title">Use Sort By to set service sorting</string>
     <string name="voiceover__spinner">Loading content</string>
-    <string name="backup__incorrect_secret">Couldn\'t backup tokens because \"%s\" secret contains illegal characters. Remove it from list and try again</string>
+    <string name="backup__incorrect_secret">Couldn\'t backup tokens because \"%s\" secret contains invalid characters. Remove it from list and try again</string>
     <string name="backup__import">Import</string>
     <string name="backup__export">Export</string>
     <string name="backup__backup_disabled_title">2FAS Backup will be disabled to protect its integrity</string>
@@ -368,8 +368,6 @@
     <string name="backup__services_imported_count">%d services imported from file</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">There\'s a problem with iCloud. Check system settings</string>
-    <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">This file is in a newer format version than the one the app supports</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">This file is encrypted. We support only unencrypted files</string>
     <string name="tokens__copy_token">Copy token</string>
@@ -412,7 +410,7 @@
     <string name="settings__donations">Donations</string>
     <string name="settings__donate_twofas">Donate to 2FAS</string>
     <string name="new_version__new_version_title">New version</string>
-    <string name="new_version__new_version_message_ios">A new version of 2FAS is available on AppStore. Update now!</string>
+    <string name="new_version__new_version_message_ios">A new version of 2FAS is available on App Store. Update now!</string>
     <string name="new_version__update_action">Update now</string>
     <!-- new_version__skip_action -->
     <string name="new_version__skip_title">Skip this version</string>
@@ -814,7 +812,7 @@
     <string name="commons__pair">Pair</string>
     <string name="introduction__backup_icloud_title">Secure sync and backup</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
     <string name="introduction__backup_icloud_cta">Learn more about backup</string>
     <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
     <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
@@ -846,4 +844,11 @@
     <string name="security__repeat_new_pin_short">Repeat new PIN</string>
     <string name="commons__success">Success</string>
     <string name="security__enter_pin_short">Enter PIN</string>
+    <string name="settings__sort_tokens">Sort tokens</string>
+    <string name="appleWatch__installation_info_title">2FAS Apple Watch app installation</string>
+    <string name="appleWatch__installation_first_step">Install 2FAS Auth via Watch app</string>
+    <string name="appleWatch__installation_first_step_link">Open Watch app</string>
+    <string name="appleWatch__installation_second_step">Ensure your iCloud Sync is enabled</string>
+    <string name="appleWatch__installation_second_step_link">Go to 2FAS Backup settings</string>
+    <string name="settings__apple_watch">Apple Watch</string>
 </resources>

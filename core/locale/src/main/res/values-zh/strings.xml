@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hans, Simplified Chinese
  Exported by: rafakob
- Exported at: Thu, 23 May 2024 09:50:25 -0700
+ Exported at: Tue, 03 Sep 2024 14:27:02 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -368,8 +368,6 @@
     <string name="backup__services_imported_count">从文件导入了 %d 个服务</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">\niCloud 出现问题。请检查系统设置。</string>
-    <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">此文件的格式版本比应用程序支持的版本更新</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">此文件已加密。我们仅支持未加密的文件</string>
     <string name="tokens__copy_token">复制令牌</string>
@@ -840,4 +838,11 @@
     <string name="security__repeat_new_pin_short">重复输入新的 PIN</string>
     <string name="commons__success">成功</string>
     <string name="security__enter_pin_short">请输入 PIN 码</string>
+    <string name="settings__sort_tokens">令牌排序</string>
+    <string name="appleWatch__installation_info_title">2FAS Apple Watch应用程序安装</string>
+    <string name="appleWatch__installation_first_step">通过Watch应用程序安装2FAS身份验证</string>
+    <string name="appleWatch__installation_first_step_link">打开Watch应用程序</string>
+    <string name="appleWatch__installation_second_step">确保您的iCloud同步已启用</string>
+    <string name="appleWatch__installation_second_step_link">转到2FAS备份设置</string>
+    <string name="settings__apple_watch">Apple Watch</string>
 </resources>
