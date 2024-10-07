@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Wed, 04 Sep 2024 15:11:39 -0700
+ Exported at: Mon, 07 Oct 2024 09:37:26 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -56,7 +56,7 @@
     <string name="commons__save">保存</string>
     <string name="commons__scan_qr_code">QRコードをスキャン</string>
     <string name="commons__service">サービス</string>
-    <string name="commons__set">セット</string>
+    <string name="commons__set">設定</string>
     <string name="commons__skip">スキップ</string>
     <string name="commons__tokens">認証コード</string>
     <string name="commons__warning">注意</string>
@@ -75,7 +75,7 @@
     <string name="fingerprint__use_pin_title">今回はPINを使用</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">すばらしい！</string>
-    <string name="introduction__page_1_content">2FASアプリにより、あなたのスマートフォンがオンラインサービスへの安全な認証鍵となりました。世界中で600万人以上のユーザーに信頼されています。</string>
+    <string name="introduction__page_1_content">2FASにより、あなたのスマートフォンがオンラインサービスへの安全な認証鍵となりました。世界中で600万人以上のユーザーに信頼されています。</string>
     <string name="introduction__page_2_title">シンプル</string>
     <string name="introduction__page_2_content">2FAS をオンラインサービスとペアリングしてください。QRコードを使って数秒で2要素認証を有効にできます。</string>
     <string name="introduction__page_3_title">プライバシー</string>
@@ -109,7 +109,7 @@
     <string name="notifications__token_copied">認証コードをコピーしました</string>
     <string name="notifications__next_token_copied">次の認証コードをコピーしました</string>
     <!-- notifications__would_you_like_to_add_this_code -->
-    <string name="notifications__add_code_question_title">このコードを追加しますか: %s?</string>
+    <string name="notifications__add_code_question_title">このコードを追加しますか: %s</string>
     <!-- MARK: - Permissions -->
     <string name="permissions__open_settings">設定を開きます</string>
     <string name="security__incorrect_PIN">PINが間違っています</string>
@@ -147,7 +147,7 @@
     <!-- settings__after_you_enable_widgets -->
     <string name="settings__widgets_title">ウィジェットを有効にすると、PIN コードなしですべての認証コードにアクセスできるようになります。\n\nウィジェットを有効にしてもよろしいですか?</string>
     <string name="settings__show_next_token">次の認証コードを表示</string>
-    <string name="settings__see_incoming_tokens">リストの新着コードを確認する</string>
+    <string name="settings__see_incoming_tokens">一覧に次の認証コードを表示する</string>
     <string name="settings__trash">ゴミ箱</string>
     <string name="settings__restore">元に戻す</string>
     <string name="settings__trash_is_empty">ゴミ箱は空です</string>
@@ -180,7 +180,7 @@
     <string name="tokens__service_name">サービス名</string>
     <!-- tokens__this_private_key_exists_used_in -->
     <string name="tokens__service_key_already_used_title">スキャンしたコードの秘密鍵は %s ですでに使用されています。おそらくまたスキャンしているのでしょう。</string>
-    <string name="tokens__this_qr_code_is_inavlid">このコードは正しくないか、サポートしていない形式です。もう一度やり直してください。</string>
+    <string name="tokens__this_qr_code_is_inavlid">このコードは正しくないか、サポートしていない形式です。やり直してください。</string>
     <string name="tokens__type_service_name">サービス名を入力</string>
     <string name="tokens__enter_service_name">サービス名を入力</string>
     <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
@@ -195,13 +195,13 @@
     <string name="tokens__brand_icon">ブランドアイコン</string>
     <string name="tokens__label">ラベル</string>
     <!-- tokens__remove_the_service -->
-    <string name="tokens__remove_service_from_app">このサービスを２FASアプリから削除</string>
+    <string name="tokens__remove_service_from_app">このサービスを2FASから削除</string>
     <!-- tokens__label_one_or_two -->
     <string name="tokens__label_characters_title">ラベル（1文字または2文字）:</string>
     <string name="tokens__pick_background_color">背景色を選択:</string>
     <string name="tokens__num_added">％@ を追加しました</string>
     <string name="tokens__next_token">次の認証コード: %s</string>
-    <string name="tokens__next_token_title">次の認証コード値</string>
+    <string name="tokens__next_token_title">次の認証コード</string>
     <string name="tokens__my_tokens">マイトークン</string>
     <string name="tokens__removing_group">グループ削除</string>
     <!-- tokens__all_tokens_will_be_moved -->
@@ -224,7 +224,7 @@
     <string name="tokens__unlock_and_retype_token_title">ロックを解除して認証コードを再入力してください</string>
     <string name="tokens__group">グループ</string>
     <string name="tokens__select_group">グループ選択</string>
-    <string name="tokens__google_auth_import">Google Authenticatorアプリから認証コードをインポートします</string>
+    <string name="tokens__google_auth_import">Google Authenticatorから認証コードをインポートします</string>
     <string name="tokens__google_auth_import_subtitle">このQRコードを使用すると、Google Authenticatorから認証コードをインポートできます</string>
     <!-- A number replaces %d  -->
     <string name="tokens__google_auth_out_of_title">%1$d 件中 %2$d 件</string>
@@ -265,17 +265,17 @@
     <string name="tokens__request_icon_middle">か</string>
     <string name="tokens__request_icon_provider_title">サービスプロバイダーに知らせる</string>
     <string name="tokens__request_icon_provider_description">ソーシャル メディアやメールを使用して、このテキストを共有できます。</string>
-    <string name="tokens__request_icon_provider_message">こんにちは！2FASアプリを使用して、2要素認証であなたのサービスにログインしています。しかし、サービスのアイコンが表示されていません。こちらのリンクからアイコンを登録できます：https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message">こんにちは！2FASを使用して、2要素認証であなたのサービスにログインしています。しかし、サービスのアイコンが表示されていません。こちらのリンクからアイコンを登録できます：https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_footnote">企業の公式アカウントへのタグ付けもお忘れなく！</string>
-    <string name="tokens__order_icon_description">2FAS アプリでブランド アイコンが見つかりませんか?</string>
+    <string name="tokens__order_icon_description">2FASでブランド アイコンが見つかりませんか？</string>
     <string name="tokens__order_icon_link">ブランドアイコンをリクエスト</string>
     <string name="tokens__order_icon_title">ブランドアイコンをリクエスト</string>
     <string name="tokens__order_menu_title">リクエストの方法を選んでください</string>
     <string name="tokens__order_menu_option_user">ユーザーとしてアイコンをリクエスト</string>
     <string name="tokens__order_menu_option_company">会社としてアイコンを送信</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
-    <string name="tokens__sign_in_not_possible_title">%1$s の 2 要素認証が有効になっている限り、この認証コードがないと %2$s アカウントにサインインすることはできません。</string>
+    <string name="tokens__sign_in_not_possible_title">%1$s の2要素認証をオンにしている限り、この認証コードがなければ%2$sのアカウントにサインインすることができなくなります。</string>
     <string name="voiceover__show_service_key">秘密鍵を表示</string>
     <string name="voiceover__copy_service_key">秘密鍵をコピー</string>
     <!-- voiceover__seconds_left -->
@@ -315,28 +315,28 @@
     <string name="camera__camera_unavailable_title">システムの過負荷のため、カメラが使用できません。デバイスを再起動してみてください</string>
     <string name="camera__cant_initialize_camera_general">カメラを初期化できません。デバイスを再起動してみてください</string>
     <string name="camera__cant_initialize_camera_split_view">Split Viewモードではカメラを初期化できません。アプリを全画面で開いて再試行してください</string>
-    <string name="restore__how_to_restore">2FASアプリを復元するにはどうすればよいですか？</string>
+    <string name="restore__how_to_restore">2FASを復元するにはどうすればよいですか？</string>
     <string name="restore__application_restoration">アプリケーションの復元</string>
     <!-- restore_if_you_forgotten -->
-    <string name="restore__reset_Pin_title">PINを忘れた場合、または2FASアプリをリセットしたい場合は、アプリを再インストールする必要があります。</string>
+    <string name="restore__reset_Pin_title">PINを忘れた場合、または2FASをリセットしたい場合は、アプリを再インストールする必要があります。</string>
     <!-- restore_please_remember -->
     <string name="restore__backup_advice">バックアップせずにアプリをリセットすると、すべてのコードにアクセスできなくなりますのでご注意ください。つまり、2要素認証で保護されたすべてのアカウントにアクセスできなくなります。</string>
     <!-- restore_if_you_have_backup -->
     <string name="restore__backup_title">バックアップがあれば、すべての認証コードを復元することができます。</string>
     <string name="backup__cloud_backup">クラウドバックアップ</string>
     <string name="backup__icloud_sync">iCloud同期</string>
-    <string name="backup__section_description">推奨: iCloud同期は、デバイスの紛失または破損の場合に備えて、認証コードをApple iCloudに安全に保管します。オンにしておいてください。</string>
+    <string name="backup__section_description">推奨: iCloud同期は、デバイスを紛失または破損した場合に備えて、認証コードをApple iCloudに安全に保管します。オンにしておいてください。</string>
     <string name="backup__file_backup">ファイルバックアップ</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">認証コードのオフラインバックアップにはファイルバックアップを使用します。</string>
+    <string name="backup__file_backup_offline_title">ファイルバックアップは、認証コードをオフラインでバックアップするために使用します。</string>
     <string name="backup__backup_removal">バックアップの削除</string>
     <string name="backup__delete_2fas_backup">2FASバックアップを削除</string>
-    <string name="backup__warning_introduction">警告！ 2FASバックアップを削除すると、このアカウントと同期されている他のデバイスからすべての認証コードが消去されます。他のデバイスに認証コードを保存するには、削除する前に2FASバックアップがオフになっていることを確認してください。</string>
+    <string name="backup__warning_introduction">警告！2FASバックアップを削除すると、このアカウントと同期している他のデバイスからもすべての認証コードが消去されます。\n他のデバイス上の認証コードを保持したい場合は、削除する前に2FASバックアップをオフにしていることを確認してください。</string>
     <!-- backup__i_want_to_delete -->
     <string name="backup__delete_title">バックアップを削除する</string>
     <string name="backup__export_to_backup_file">バックアップをファイルにエクスポート</string>
     <!-- backup__you_can_import_exported_file -->
-    <string name="backup__import_file_title">2FASアプリを使って、エクスポートしたファイルを他のデバイスにインポートできます</string>
+    <string name="backup__import_file_title">2FASを使って、エクスポートしたファイルを他のデバイスにインポートできます</string>
     <string name="backup__export_to_file">ファイルにエクスポートする</string>
     <string name="backup__verify_pin">PINを確認</string>
     <string name="backup__save_file">保存</string>
@@ -373,7 +373,7 @@
     <string name="tokens__copy_token">認証コードをコピー</string>
     <!-- tokens__i_want_to_delete_this_servie -->
     <string name="tokens__i_want_to_delete_this_token">はい、このサービスを削除します</string>
-    <string name="color__neutral">中間</string>
+    <string name="color__neutral">なし</string>
     <string name="color__light_blue">水色</string>
     <string name="color__indigo">藍色</string>
     <string name="color__purple">紫</string>
@@ -399,7 +399,7 @@
     <!-- settings__how_many_attempts_header -->
     <string name="settings__too_many_attempts_header">X 回の失敗後にブロック:</string>
     <string name="settings__how_many_attempts_footer">アプリをロックするまでのパスコード入力の最大試行回数を選択 (ロックアウト時間は以下で変更できます)。</string>
-    <string name="settings__block_for">ロックアウト時刻</string>
+    <string name="settings__block_for">ロックアウト時間</string>
     <string name="settings__3_minutes">3分</string>
     <string name="settings__5_minutes">5分</string>
     <string name="settings__10_minutes">10分</string>
@@ -418,8 +418,8 @@
     <string name="new_version__update_later">後で更新</string>
     <string name="browser__browser_extension">ブラウザ拡張機能</string>
     <string name="browser__info_title">2FAS Webブラウザ拡張機能</string>
-    <string name="browser__info_description_first">デスクトップコンピュータに2FASブラウザ拡張機能をインストール</string>
-    <string name="browser__info_description_second">2FASのアプリとペアリングする</string>
+    <string name="browser__info_description_first">コンピューターに2FASブラウザ拡張機能をインストール</string>
+    <string name="browser__info_description_second">2FASとペアリングする</string>
     <string name="browser__more_info">詳細はこちら：</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
     <string name="browser__pair_with_web_browser">Webブラウザとペアリングする</string>
@@ -447,7 +447,7 @@
     <string name="browser__request_source_description">%1$s が %2$s の認証コードを要求しました。このドメインで承認して保存するサービスを選択してください。</string>
     <string name="browser__request">ブラウザリクエスト</string>
     <!-- browser__code_success -->
-    <string name="browser__code_success_title">認証コードが正常に送信されました!</string>
+    <string name="browser__code_success_title">認証コードを送信しました！</string>
     <string name="browser__code_failure">コードの送信中にエラーが発生しました。%s</string>
     <string name="browser__deleting_paired_device_title">ペアリング済みデバイスの削除</string>
     <string name="browser__deleting_paired_device_content">ペアリング済みデバイスを削除してもよろしいですか?</string>
@@ -461,7 +461,7 @@
     <string name="browser__push_notifications_content">ブラウザ拡張機能などの機能にアクセスするには、アプリケーションがプッシュ通知にアクセスする必要があります。この設定は、システム設定でいつでも変更できます。</string>
     <string name="browser__request_expired">リクエスト有効期限切れ</string>
     <string name="browser__2fa_token_request_title">認証コードのリクエスト</string>
-    <string name="browser__2fa_token_request_content">このサービスに認証コードを入力しますか？</string>
+    <string name="browser__2fa_token_request_content">次のサービスの認証コードを入力しますか：</string>
     <string name="notifications__no_notifications">通知はありません</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
@@ -478,14 +478,14 @@
     <string name="tokens__caution">注意</string>
     <string name="tokens__qr_point_and_scan_again">カメラを正しいQRコードに向けて、もう一度スキャンしてください。</string>
     <string name="tokens__service_unsaved_changes">変更内容を破棄しますか?</string>
-    <string name="tokens__service_unsaved_changes_title">保存されていない変更</string>
+    <string name="tokens__service_unsaved_changes_title">変更が保存されていません</string>
     <string name="tokens__service_key_invalid_format">キーの形式が不正です</string>
     <string name="intent_error_no_gallery_app">システムエラー！システムのギャラリーアプリが見つかりません。</string>
     <string name="gdrive_permission_title">Googleドライブ権限</string>
     <string name="gdrive_permission_msg">アプリデータにバックアップファイルを保存するには、Google ドライブの権限が必要です。</string>
     <string name="gdrive_internet_title">インターネット接続必須</string>
-    <string name="gdrive_internet_msg">Google と同期するには、インターネットが必要です。</string>
-    <string name="gdrive_wipe_internet_msg">Google ドライブへのアクセスを取り消すには、インターネットが必要です。</string>
+    <string name="gdrive_internet_msg">Google と同期するには、インターネット接続が必要です。</string>
+    <string name="gdrive_wipe_internet_msg">Google ドライブへのアクセスを取り消すには、インターネット接続が必要です。</string>
     <string name="backup_explanation_msg">バックアップ ファイルを Google ドライブの隠しフォルダに自動的に保存して同期します。このフォルダにアクセスできるのは 2FAS アプリのみです。</string>
     <string name="backup_error_unknown">バックアップの同期中にエラーが発生しました。数分後にアプリを再起動してもう一度お試しください。</string>
     <string name="backup_error_encrypt_unknown">バックアップの暗号化中にエラーが発生しました。パスワードを再設定してください。</string>
@@ -508,7 +508,7 @@
     <string name="backup_notice_later">後で</string>
     <string name="backup_notice_cta">オンにする</string>
     <string name="widgets_empty_msg">サービスは追加されていません</string>
-    <string name="backup__section_description_google">推奨: Googleドライブ同期は、デバイスの紛失または破損の場合に備えて、認証コードをGoogleドライブに安全に保管します。オンにしておいてください。</string>
+    <string name="backup__section_description_google">推奨: Googleドライブ同期は、デバイスを紛失または破損した場合に備えて、認証コードをGoogleドライブに安全に保管します。オンにしておいてください。</string>
     <string name="backup_turn_off_title">Google ドライブの同期をオフにしますか?</string>
     <string name="backup_turn_off_msg1">認証コードはこのデバイスと Google ドライブに残りますが、同期されません。また、Google アカウントからもログアウトされます。</string>
     <string name="backup_turn_off_msg2">注意：このデバイスの紛失や破損、またはアプリを削除した場合、認証コードを復元できなくなる可能性があります。その結果、二要素認証で保護されているオンラインアカウントにアクセスできなくなる恐れがあります。</string>
@@ -519,8 +519,8 @@
     <string name="backup_settings_sync_title">最終同期</string>
     <string name="browser_extension_result_success_description">2FASは、このWebブラウザを使用してオンラインサービスにログインするたびにプッシュ通知を送信します。認証コードの再入力は必要ありません。</string>
     <string name="browser_extension_browser_dialog">ブラウザ名</string>
-    <string name="biometric_dialog_auth_title">認証</string>
-    <string name="biometric_dialog_auth_subtitle">生体認証を使用する</string>
+    <string name="biometric_dialog_auth_title">ロック解除</string>
+    <string name="biometric_dialog_auth_subtitle">生体認証を行ってください</string>
     <string name="about_licenses">オープンソースライセンス</string>
     <string name="externalimport_description">他の2段階認証アプリから2FASに認証コードをインポートできます。リストから移行元のアプリを選び、表示される手順に従ってください。</string>
     <string name="externalimport_select_app">アプリ選択</string>
@@ -540,13 +540,13 @@
     <string name="settings__biometrics">生体認証</string>
     <string name="settings__support">2FAS サポート</string>
     <string name="settings__developer">開発者向けオプション</string>
-    <string name="settings__option_fingerprint">生体認証でロック解除</string>
+    <string name="settings__option_fingerprint">生体認証ロック</string>
     <string name="settings__option_theme">テーマ</string>
     <string name="settings__theme_option_auto">自動</string>
     <string name="settings__theme_option_auto_system">自動 - システムのデフォルト</string>
     <string name="settings__theme_option_dark">ダーク</string>
     <string name="settings__theme_option_light">ライト</string>
-    <string name="tokens__copied_clipboard">認証コードがクリップボードにコピーされました!</string>
+    <string name="tokens__copied_clipboard">認証コードをクリップボードにコピーしました！</string>
     <string name="tokens__next_copied_clipboard">次の認証コードがクリップボードにコピーされました。</string>
     <string name="tokens__do_you_really_want_to_remove_all_devices">この2要素認証サービスを完全に削除しますか？</string>
     <string name="tokens__fab_addmanually">手動で追加\n</string>
@@ -564,17 +564,17 @@
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
     <string name="tokens__show_service_key_setup_lock">あなたの秘密鍵は保護されています。表示するには、PINまたは指紋ロックを追加してください。</string>
     <string name="tokens__tokens_list_is_empty">サービスリストは空です</string>
-    <string name="tokens__use_plus_button_to_add_tokens">「+」ボタンを使用して新しいサービスを追加します\n</string>
-    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">%1$s の 2要素認証が有効になっている限り、この認証コードがないと %2$s アカウントにサインインできません。\n\nこの認証コードを 2FAS ゴミ箱から復元することはできません。</string>
+    <string name="tokens__use_plus_button_to_add_tokens">「+」ボタンで新しいサービスを追加します</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">%1$s の2要素認証をオンにしている限り、この認証コードがなければ%2$sのアカウントにサインインすることができなくなります。\n\nこの認証コードを2FASのゴミ箱から復元することはできません。</string>
     <string name="import_ga_success">サービスは正常にインポートされました！</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
-    <string name="backup_error_network">バックアップを同期するには、インターネット接続が必要です。ネットワーク接続をオンにして、もう一度お試しください。</string>
+    <string name="backup_error_network">バックアップを同期するには、インターネット接続が必要です。ネットワークに接続して、もう一度お試しください。</string>
     <string name="update_app_title">アプリ更新</string>
     <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
     <string name="update_app_msg">すべての機能を利用し、高いセキュリティ レベルを維持するために、2FASを最新バージョンにアップデートしてください。</string>
-    <string name="delete_service_title">削除中です</string>
+    <string name="delete_service_title">削除します</string>
     <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
-    <string name="delete_service_msg">2FASのサービス リストから選択してください。\n\n2要素認証がオンになっている限り、この認証コードがないと %s アカウントにログインできないことに注意してください。</string>
+    <string name="delete_service_msg">2FASのサービス リストから選択\n\nご注意ください:%sの2要素認証をオンにしている限り、この認証コードがないとアカウントにログインできなくなります。</string>
     <string name="delete_service_cta">削除</string>
     <string name="export_backup_cta">エクスポート</string>
     <string name="export_backup_share_cta">共有</string>
@@ -595,7 +595,7 @@
     <string name="backup_settings_delete_title">バックアップファイルをGoogleドライブから削除する</string>
     <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
     <string name="backup_settings_delete_subtitle">このファイルをGoogleドライブから削除すると、同期されたすべてのデバイスで同期が無効になり、認証コードはローカルストレージを介してこのデバイスと他のデバイスにのみ残ります。</string>
-    <string name="browser__result_error_browser_paired">2FASアプリはすでにこのブラウザとペアリングされています。</string>
+    <string name="browser__result_error_browser_paired">2FASはすでにこのブラウザとペアリングされています。</string>
     <!-- Scan QR code again -->
     <string name="browser__result_error_cta">もう一度QRコードをスキャンする</string>
     <string name="browser__scan_error_dialog_title">エラー</string>
@@ -625,7 +625,7 @@
     <string name="extension__error_no_internet">接続に問題があります</string>
     <string name="extension__try_again">もう一度お試しください</string>
     <string name="extension__error">エラー</string>
-    <string name="extension__error_no_services">ブラウザ拡張機能を使うには、2FASアプリにサービスを追加してください</string>
+    <string name="extension__error_no_services">ブラウザ拡張機能を使うには、2FASにサービスを追加してください</string>
     <string name="extension__approve">承認</string>
     <string name="extension__deny">拒否</string>
     <string name="settings__turn_pin_code_to_enable_faceid">PINコードとFace ID認証をオンにして、このデバイス上の認証コードへの不正アクセスを防ぎます。</string>
@@ -678,8 +678,8 @@
     <string name="backup__sync_status_progress">同期中…</string>
     <string name="import_backup_msg1_encrypted">暗号化されたバックアップファイルをインポートしようとしています。</string>
     <string name="externalimport__choose_json_cta">JSONファイルを選択</string>
-    <string name="externalimport__aegis_msg">Aegisから、暗号化されていないJSONファイルにアカウント情報をエクスポートして「JSONファイルを選択」ボタンからアップロードしてください。インポートに成功したら、忘れずにファイルを削除してください。</string>
-    <string name="externalimport__raivo_msg">Raivoの設定の「Export OTPs to ZIP archive」機能で保存したZIPファイルを解凍し、「JSONファイルを選択」ボタンを使用してJSONファイルをインポートできます。</string>
+    <string name="externalimport__aegis_msg">Aegisで暗号化されていないJSONファイルにアカウント情報をエクスポートし、「JSONファイルを選択」ボタンからアップロードしてください。\nインポートに成功したら、忘れずにファイルを削除してください。</string>
+    <string name="externalimport__raivo_msg">Raivoの設定の「Export OTPs to ZIP archive」機能で保存したZIPファイルを展開し、「JSONファイルを選択」ボタンを使用してJSONファイルをインポートできます。</string>
     <string name="externalimport__no_tokens_msg">しかし、インポートできるサービスはありません。</string>
     <string name="commons__try_again">再試行してください</string>
     <string name="commons__proceed">続行</string>
@@ -704,7 +704,7 @@
     <string name="backup__import_error_file_size">インポートしようとしているファイルが大きすぎます。サイズの制限は10MBです。</string>
     <string name="backup__import_error_file_invalid">インポートしようとしているファイルは無効、もしくは壊れています。他のファイルを選択してください。</string>
     <string name="appearance__toggle_active_search">すぐに検索</string>
-    <string name="appearance__active_search_description">起動時に検索を始める</string>
+    <string name="appearance__active_search_description">起動時に検索を始めます。</string>
     <string name="widgets__expires_in">有効期限:\u0020</string>
     <string name="widgets__settings">ウィジェットの設定</string>
     <string name="errors__input_integer_number">入力は整数でなければなりません</string>
@@ -716,14 +716,14 @@
     <string name="settings__enable_crashlytics_description">2FASがアプリの問題を特定、解決するのを手伝うため、匿名のクラッシュレポートを送信する(アプリの再起動が必要です)。</string>
     <string name="tokens__manage_list">リストを管理</string>
     <string name="settings__appearance">外観</string>
-    <string name="settings__show_next_token_desc">現在の認証コードの有効期限が近づくと、次の認証コードを表示する</string>
+    <string name="settings__show_next_token_desc">認証コードの期限切れ前に、次のコードを表示します。</string>
     <string name="settings__list_style">表示スタイル</string>
     <string name="backup__reminder_msg">Googleドライブは同期していません。</string>
     <string name="backup__reminder_cta">バックアップの設定へ</string>
     <string name="settings__list_style_option_default">デフォルト</string>
     <string name="settings__list_style_option_compact">コンパクト</string>
     <string name="externalimport_lastpass">LastPass</string>
-    <string name="externalimport__lastpass_msg">LastPassから、暗号化されていないJSONファイルにアカウント情報をエクスポートして「JSONファイルを選択」ボタンからアップロードしてください。インポートに成功したら、忘れずにファイルを削除してください。</string>
+    <string name="externalimport__lastpass_msg">LastPassから、暗号化されていないJSONファイルにアカウント情報をエクスポートして「JSONファイルを選択」ボタンからアップロードしてください。\nインポートに成功したら、忘れずにファイルを削除してください。</string>
     <string name="settings__about_crash_optout_title">クラッシュレポート</string>
     <string name="externalimport__lastpass_title">LastPassから認証コードをインポートしています</string>
     <string name="externalimport__lastpass_success_msg">このJSONファイルを使うと、LastPassから認証コードをインポートできます。</string>
@@ -733,11 +733,11 @@
     <string name="externalimport__info_google_authenticator_title">Google Authenticatorから認証コードをインポートする</string>
     <!-- Counter eg.: "25s" -->
     <string name="time_unit_seconds_short">秒</string>
-    <string name="tokens__add_title">2FASでサービスをペアリング</string>
-    <string name="tokens__add_description">QRコードが画面に写るようにカメラを向けてください。</string>
+    <string name="tokens__add_title">2FASとサービスをペアリング</string>
+    <string name="tokens__add_description">カメラをQRコードに向けてください</string>
     <string name="tokens__add_other_methods">\u0020他の方法</string>
     <string name="tokens__add_enter_manual">手動で秘密鍵を入力</string>
-    <string name="tokens__add_from_gallery">QRコードを含むスクリーンショットをアップロード</string>
+    <string name="tokens__add_from_gallery">QRコードのスクリーンショットをアップロード</string>
     <string name="tokens__add_success_title">もうすぐ終わりです！</string>
     <string name="tokens__add_success_description">サービスのペアリングを完了するには、この認証コードを再入力する必要があります。</string>
     <string name="tokens__add_manual_title">2FASでサービスをペアリング</string>
@@ -764,41 +764,41 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">認証コードを隠す</string>
-    <string name="settings__hide_tokens_description">タップすると認証コードが表示されます</string>
+    <string name="settings__hide_tokens_description">タップすると認証コードが表示されます。</string>
     <string name="browser__pair_manually_cta">手動でペアリング</string>
     <string name="browser__pair_manually_hint">ペアリングコード</string>
     <string name="externalimport__info_authenticatorpro_title">Authenticator Proから認証コードをインポートする</string>
     <string name="externalimport__authenticatorpro_success_msg">このテキストファイルで、Authenticator Proから認証コードをインポートできます。</string>
     <string name="externalimport__authenticatorpro_title">Authenticator Proから認証コードをインポートする</string>
-    <string name="externalimport__authenticatorpro_msg">Authenticator Proから、暗号化されていないテキストファイルにアカウント情報をエクスポートして「テキストファイルを選択」ボタンからアップロードしてください。インポートに成功したら、忘れずにファイルを削除してください。</string>
+    <string name="externalimport__authenticatorpro_msg">Authenticator Proから、暗号化されていないテキストファイルにアカウント情報をエクスポートして「テキストファイルを選択」ボタンからアップロードしてください。\nインポートに成功したら、忘れずにファイルを削除してください。</string>
     <string name="externalimport__authenticatorpro">Authenticator Pro</string>
     <string name="externalimport__choose_txt_cta">テキストファイルを選択</string>
     <string name="fingerprint__biometric_invalidated">システムの指紋設定が変更されたため、生体認証ログインは無効になっています</string>
     <string name="tokens__last_pass_import">LastPassから認証コードをインポートしています</string>
     <string name="tokens__last_pass_import_subtitle">このQRコードにより、LastPassから認証コードをインポートすることができます</string>
-    <string name="tokens__add_with_guide">ガイドしてください</string>
+    <string name="tokens__add_with_guide">登録ガイド</string>
     <string name="guides__select_title">サービスを見る</string>
-    <string name="guides__select_description">2FASアプリとペアリングするサービスを選択</string>
-    <string name="guides__select_provide_guide">あなたのサービスで2要素認証ガイドを提供したいですか？</string>
-    <string name="guides__select_provide_guide_cta">\u0020今すぐ適用</string>
+    <string name="guides__select_description">2FASとペアリングするサービスを選択</string>
+    <string name="guides__select_provide_guide">あなたのサービスを2要素認証ガイドに提供しませんか？</string>
+    <string name="guides__select_provide_guide_cta">申し込む</string>
     <string name="color__pink">\u0020ピンク</string>
     <string name="color__brown">茶色</string>
     <string name="tokens__other_methods_header">他の方法は？</string>
-    <string name="tokens__camera_is_unavailable_app_permission">カメラが使用できません。システム設定のアプリ権限を確認してください</string>
+    <string name="tokens__camera_is_unavailable_app_permission">カメラが使用できません。システム設定でアプリ権限を確認してください</string>
     <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
     <string name="tokens__camera_is_unavailable_app_permission_underline">システム設定</string>
     <string name="commons__text_short_title">テキストが短すぎます(最小%d文字)</string>
     <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
     <string name="tokens__add_manual_advanced_description_highlight">は非推奨です</string>
     <string name="guides__guide_init_title">2FASガイド</string>
-    <string name="guides__guide_title">%sのための2FAS</string>
+    <string name="guides__guide_title">%sを2FASに登録する</string>
     <string name="guides__guide_universal_title">一般的な2要素認証ガイド</string>
     <string name="browser__save_choice">選択を保存する</string>
     <string name="externalimport_andotp">andOTP</string>
     <string name="externalimport__andotp_title">andOTPアプリから認証コードをインポート</string>
     <string name="externalimport__andotp_success_msg">このJSONファイルで、andOTPから認証コードをインポートできます。</string>
     <string name="externalimport__info_andotp_title">andOTPから認証コードをインポートする</string>
-    <string name="externalimport__andotp_msg">andOTPから、暗号化されていないJSONファイルにアカウント情報をエクスポートして「JSONファイルを選択」ボタンからアップロードしてください。 インポートに成功したら、忘れずにファイルを削除してください。</string>
+    <string name="externalimport__andotp_msg">andOTPから、暗号化されていないJSONファイルにアカウント情報をエクスポートして「JSONファイルを選択」ボタンからアップロードしてください。 \nインポートに成功したら、忘れずにファイルを削除してください。</string>
     <string name="introduction__backup_description">次のステップでは、2要素認証コードが安全に保存されるGoogleドライブのアカウントを選択するように求められます。</string>
     <string name="introduction__backup_take_risk_cta">リスクを取り、バックアップしない</string>
     <string name="introduction__backup_success">Googleドライブの同期が有効になりました！</string>
@@ -839,9 +839,9 @@
     <string name="commons__success">成功</string>
     <string name="security__enter_pin_short">PIN入力</string>
     <string name="settings__sort_tokens">認証コード並び替え</string>
-    <string name="appleWatch__installation_info_title">2FASのApple Watch Appをインストール中</string>
+    <string name="appleWatch__installation_info_title">Apple Watch Appに2FASをインストール</string>
     <string name="appleWatch__installation_first_step">Apple Watch Appで2FAS Authをインストールしてください</string>
-    <string name="appleWatch__installation_first_step_link">Apple Watch Appを開いてください</string>
+    <string name="appleWatch__installation_first_step_link">Apple Watch Appを開く</string>
     <string name="appleWatch__installation_second_step">iCloud同期が有効になっていることを確認してください</string>
     <string name="appleWatch__installation_second_step_link">2FASのバックアップ設定に移動します</string>
     <string name="settings__apple_watch">Apple Watch</string>
