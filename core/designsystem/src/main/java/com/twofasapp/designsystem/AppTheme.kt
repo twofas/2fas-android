@@ -34,8 +34,10 @@ enum class AppTheme {
 fun MainAppTheme(
     content: @Composable () -> Unit
 ) {
-    LockScreenOrientation(orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-
+    if (!isTablet()) {
+        LockScreenOrientation(orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+    }
+    
     val view = LocalView.current
     val systemUiController = rememberSystemUiController()
 
@@ -97,6 +99,12 @@ fun MainAppTheme(
             content = content,
         )
     }
+}
+
+@Composable
+fun isTablet(): Boolean {
+    val configuration = LocalContext.currentActivity.resources.configuration
+    return (configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE
 }
 
 @Composable
