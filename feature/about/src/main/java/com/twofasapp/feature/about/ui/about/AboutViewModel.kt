@@ -29,14 +29,17 @@ internal class AboutViewModel(
                     uiState.update { it.copy(appSettings = appSettings) }
                 }
         }
-    }
 
-    val versionName =
-        if (appBuild.buildVariant != BuildVariant.Release) {
-            "${appBuild.versionName} (${appBuild.buildVariant.name.camelCaseBeginLower()})"
-        } else {
-            appBuild.versionName
+        uiState.update {
+            it.copy(
+                versionName = if (appBuild.buildVariant != BuildVariant.Release) {
+                    "${appBuild.versionName} (${appBuild.buildVariant.name.camelCaseBeginLower()})"
+                } else {
+                    appBuild.versionName
+                }
+            )
         }
+    }
 
     fun reviewDone() {
         viewModelScope.launch(dispatchers.io) {

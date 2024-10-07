@@ -43,7 +43,6 @@ internal fun AboutScreen(
 
     ScreenContent(
         uiState = uiState,
-        versionName = viewModel.versionName,
         onLicensesClick = openLicenses,
         onReviewClick = { viewModel.reviewDone() },
         onSendCrashLogsToggle = { viewModel.toggleSendCrashLogs() }
@@ -53,7 +52,6 @@ internal fun AboutScreen(
 @Composable
 private fun ScreenContent(
     uiState: AboutUiState,
-    versionName: String,
     onLicensesClick: () -> Unit,
     onReviewClick: () -> Unit,
     onSendCrashLogsToggle: () -> Unit,
@@ -207,7 +205,7 @@ private fun ScreenContent(
                             .padding(start = 24.dp, end = 16.dp)
                     ) {
                         Text(
-                            text = stringResource(id = R.string.settings__version, versionName),
+                            text = stringResource(id = R.string.settings__version, uiState.versionName),
                             color = TwTheme.color.onSurfaceSecondary,
                             style = TwTheme.typo.body3
                         )
