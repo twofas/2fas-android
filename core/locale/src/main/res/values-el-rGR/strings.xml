@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Tue, 03 Sep 2024 14:27:02 -0700
+ Exported at: Mon, 07 Oct 2024 09:37:26 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -721,7 +721,7 @@
     <string name="settings__enable_crashlytics">Στείλτε ανώνυμες αναφορές κρασαρίσματος.</string>
     <string name="settings__enable_crashlytics_description">Στείλτε ανώνυμες αναφορές κρασαρίσματος για να βοηθήσετε το 2FAS να εντοπίσει και να λύσει προβλήματα στην εφαρμογή (απαιτείται επανεκκίνηση της εφαρμογής).</string>
     <string name="tokens__manage_list">Διαχείριση λίστας.</string>
-    <string name="settings__appearance">Εμφάνιση.</string>
+    <string name="settings__appearance">Εμφάνιση</string>
     <string name="settings__show_next_token_desc">Εμφανίστε το επόμενο token όταν το τρέχον είναι έτοιμο να λήξει.</string>
     <string name="settings__list_style">Στυλ λίστας.</string>
     <string name="backup__reminder_msg">Δεν έχει πραγματοποιηθεί συγχρονισμός με το Google Drive.</string>
