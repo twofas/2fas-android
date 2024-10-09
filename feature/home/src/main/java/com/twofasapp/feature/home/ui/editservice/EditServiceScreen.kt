@@ -158,7 +158,8 @@ internal fun EditServiceScreen(
                         onValueChange = {},
                         keyboardOptions = KeyboardOptions.Default.copy(
                             keyboardType = KeyboardType.Password,
-                            capitalization = KeyboardCapitalization.None
+                            capitalization = KeyboardCapitalization.None,
+                            autoCorrect = false
                         ),
                         visualTransformation = if (isSecretVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
