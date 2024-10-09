@@ -15,8 +15,8 @@ android {
 
     defaultConfig {
         applicationId = "com.twofasapp"
-        versionName = "5.4.7"
-        versionCode = 5000028
+        versionName = "5.4.8"
+        versionCode = 5000029
     }
 
     applicationVariants.all {
