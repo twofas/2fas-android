@@ -93,9 +93,7 @@ reLinker = "com.getkeepsafe.relinker:relinker:1.4.5"
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
-secureStorage = "de.adorsys.android:securestoragelibrary:1.2.4"
 securityCrypto = "androidx.security:security-crypto:1.1.0-alpha06"
-sharedPrefs = "androidx.preference:preference-ktx:1.2.1"
 sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.4"
 timber = "com.jakewharton.timber:timber:5.0.1"
 webkit = "androidx.webkit:webkit:1.11.0"
