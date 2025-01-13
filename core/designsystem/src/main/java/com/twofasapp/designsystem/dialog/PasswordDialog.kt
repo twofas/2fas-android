@@ -109,6 +109,7 @@ fun PasswordDialog(
     }
 }
 
+val ExportPasswordRegex = Regex("([A-Za-z0-9_\\\\/!#\\\$%&\\+\\*~@\\?=^\\.,'\\(\\)\\{\\}\\[\\]:;<>\\|-]+)")
 
 @Preview
 @Composable

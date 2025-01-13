@@ -37,6 +37,7 @@ import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwSwitch
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.ExportPasswordRegex
 import com.twofasapp.designsystem.dialog.PasswordDialog
 import com.twofasapp.designsystem.ktx.strings
 import com.twofasapp.designsystem.ktx.toastShort
@@ -202,6 +203,7 @@ private fun ScreenContent(
                     onDismissRequest = { showPasswordDialog = false },
                     title = TwLocale.strings.backupSetPassword,
                     body = TwLocale.strings.backupSetPasswordDescription,
+                    validation = { text -> ExportPasswordRegex.matches(text) },
                     onPositive = {
                         onPasswordConfirm(it)
 
