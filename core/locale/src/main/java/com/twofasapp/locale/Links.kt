@@ -10,7 +10,7 @@ class Links {
     val terms = "https://2fas.com/terms-of-service"
     val privacyPolicy = "https://2fas.com/privacy-policy"
     val donate = "https://2fas.com/donate"
-    val support = "https://support.2fas.com"
+    val support = "https://2fas.com/help-center"
     val browserExt = "https://2fas.com/be"
     val youtube = "https://www.youtube.com/@2fas"
     val twitter = "https://twitter.com/2FAS_com"
