@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Mon, 07 Oct 2024 09:37:26 -0700
+ Exported at: Mon, 13 Jan 2025 14:09:32 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -845,4 +845,7 @@
     <string name="appleWatch__installation_second_step">iCloud同期が有効になっていることを確認してください</string>
     <string name="appleWatch__installation_second_step_link">2FASのバックアップ設定に移動します</string>
     <string name="settings__apple_watch">Apple Watch</string>
+    <string name="widget__no_selected_services">ウィジェットを有効化するには、サービスを長押しして選択してください...</string>
+    <string name="widget__reveal_tokens_long_message">2FASのトークンを60秒間表示</string>
+    <string name="widget__reveal_tokens_short_message">60秒間表示</string>
 </resources>

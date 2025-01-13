@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Mon, 07 Oct 2024 09:37:26 -0700
+ Exported at: Mon, 13 Jan 2025 14:09:32 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -81,7 +81,7 @@
     <string name="introduction__page_3_title">Prywatny</string>
     <string name="introduction__page_3_content">2FAS szanuje i chroni Twoją prywatność. Ta aplikacja nigdy nie będzie zbierać, przetwarzać ani wykorzystywać żadnych Twoich danych osobowych.</string>
     <string name="introduction__page_4_title">Bezpieczny</string>
-    <string name="introduction__page_4_content_ios">Twoje tokeny są przechowywane w trybie offline za pośrednictwem pamięci masowej urządzenia, więc pamiętaj o tworzeniu kopii zapasowych swoich usług! Użyj iCloud Sync i hasła PIN, aby zabezpieczyć się przed nieautoryzowanym dostępem i uszkodzeniem urządzenia.</string>
+    <string name="introduction__page_4_content_ios">Twoje tokeny są przechowywane w trybie offline za pośrednictwem pamięci masowej urządzenia, więc pamiętaj o tworzeniu kopii zapasowych swoich serwisów! Użyj iCloud Sync i hasła PIN, aby zabezpieczyć się przed nieautoryzowanym dostępem i uszkodzeniem urządzenia.</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">Zacznij używać 2FAS</string>
     <string name="introduction__tos">Regulamin</string>
@@ -143,7 +143,7 @@
     <string name="settings__suggestion">Propozycja</string>
     <string name="settings__advanced">Zaawansowane</string>
     <string name="settings__widgets">Widżety</string>
-    <string name="settings__display_selected_services">Wyświetlanie wybranych usług na widżetach ekranu głównego.</string>
+    <string name="settings__display_selected_services">Wyświetlanie wybranych serwisów na widżetach ekranu głównego.</string>
     <!-- settings__after_you_enable_widgets -->
     <string name="settings__widgets_title">Po włączeniu widżetów, wszystkie Twoje tokeny mogą być dostępne bez kodu PIN.\n\nCzy na pewno chcesz włączyć widżety?</string>
     <string name="settings__show_next_token">Pokaż następny token</string>
@@ -254,10 +254,10 @@
     <string name="tokens__advanced_settings_footer_title">Zmiana ustawień zaawansowanych nie jest zalecana. Zrób to tylko wtedy, gdy wymaga tego Twój dostawca 2FA i gdy masz jasne instrukcje.</string>
     <string name="tokens__gallery_advice_title">Najlepsza praktyka</string>
     <!-- ADD A SPACE AT THE END -->
-    <string name="tokens__gallery_advice_content_first">Usługa została dodana pomyślnie. Zdecydowanie zalecamy\u0020</string>
+    <string name="tokens__gallery_advice_content_first">Serwis został dodany pomyślnie. Zdecydowanie zalecamy\u0020</string>
     <!-- ADD A SPACE AFTER COMA -->
     <string name="tokens__gallery_advice_content_middle_bold">usunięcie zrzutu ekranu QR ze swojej galerii.\u0020</string>
-    <string name="tokens__gallery_advice_content_last">Jeśli ktoś przejmie ten zrzut ekranu z kodem QR, będzie mógł uzyskać twoje kody 2FA do tej usługi.</string>
+    <string name="tokens__gallery_advice_content_last">Jeśli ktoś przejmie ten zrzut ekranu z kodem QR, będzie mógł uzyskać twoje kody 2FA do tego serwisu.</string>
     <string name="tokens__request_icon_page_title">Poproś o ikonę</string>
     <string name="tokens__request_icon_social_title">Daj nam znać na Discordzie</string>
     <string name="tokens__request_icon_social_link">Zaloguj się na nasz serwer Discord\u0020</string>
@@ -425,7 +425,7 @@
     <string name="browser__pair_with_web_browser">Sparuj z rozszerzeniem przeglądarki</string>
     <string name="browser__more_info_link">https://www.2fas.com/be</string>
     <string name="browser__pairing_successful_title">Parowanie udane!</string>
-    <string name="browser__pairing_successful_description">2FAS wyśle Ci powiadomienie Push za każdym razem, gdy zalogujesz się do swoich usług online za pomocą tej przeglądarki internetowej. Nie będziesz już musiał ponownie wpisywać tokenów przy każdym użyciu.</string>
+    <string name="browser__pairing_successful_description">2FAS wyśle Ci powiadomienie Push za każdym razem, gdy zalogujesz się do swoich serwisów online za pomocą tej przeglądarki internetowej. Nie będziesz już musiał ponownie wpisywać tokenów przy każdym użyciu.</string>
     <string name="browser__pairing_failed_title">Parowanie nieudane :(</string>
     <string name="browser__pairing_failed_description">Ten kod QR nie został rozpoznany i 2FAS nie mógł sparować tego urządzenia z rozszerzeniem przeglądarki. Spróbuj ponownie.</string>
     <!-- browser__pairing_already_paired_title -->
@@ -444,7 +444,7 @@
     <string name="browser__this_device_footer">Ta nazwa pomoże zidentyfikować to urządzenie pośród innych urządzeń sparowanych z rozszerzeniem przeglądarki 2FAS</string>
     <string name="browser__browser_extension_settings">Ustawienia rozszerzenia przeglądarki</string>
     <string name="browser__unkown_name">&lt;NIEZNANA_NAZWA&gt;</string>
-    <string name="browser__request_source_description">%1$s zażądał tokena 2FA dla %2$s. Wybierz usługę do weryfikacji i zapisz w tej domenie.</string>
+    <string name="browser__request_source_description">%1$s zażądał tokena 2FA dla %2$s. Wybierz serwis do weryfikacji i zapisz w tej domenie.</string>
     <string name="browser__request">Żądanie przeglądarki</string>
     <!-- browser__code_success -->
     <string name="browser__code_success_title">Token wysłany pomyślnie!</string>
@@ -469,7 +469,7 @@
     <string name="backup__google_drive_disabled_title">Dysk Google został wyłączony przez użytkownika</string>
     <string name="backup__update_required_to_import_title_2">Aby zaimportować zawartość tego pliku, będziesz potrzebował nowej wersji aplikacji. Najnowszą wersję znajdziesz w Sklepie Google</string>
     <string name="tokens__qr_code_leads_to_google_store">Ten kod QR przeniesie Cię do Sklepu Google</string>
-    <string name="introduction__page_4_content_android">Twoje tokeny są przechowywane w trybie offline za pośrednictwem pamięci masowej urządzenia, więc pamiętaj o utworzeniu kopii zapasowej swoich usług! Użyj Synchronizacji Dysku Google i hasła PIN, aby zabezpieczyć się przed nieautoryzowanym dostępem i uszkodzeniem urządzenia.</string>
+    <string name="introduction__page_4_content_android">Twoje tokeny są przechowywane w trybie offline za pośrednictwem pamięci masowej urządzenia, więc pamiętaj o utworzeniu kopii zapasowej swoich serwisów! Użyj Synchronizacji Dysku Google i hasła PIN, aby zabezpieczyć się przed nieautoryzowanym dostępem i uszkodzeniem urządzenia.</string>
     <string name="new_version__new_version_message_android">W Sklepie Google dostępna jest nowa wersja programu 2FAS. Zaktualizuj teraz!</string>
     <string name="security_error_no_match">PIN nie pasuje! Proszę spróbować ponownie.</string>
     <string name="settings_developer_options">Opcje Dewelopera</string>
@@ -835,15 +835,15 @@
     <string name="tokens__steam">STEAM</string>
     <string name="widget__placeholder">Symbol zastępczy</string>
     <string name="widget__size_not_supported">Ten rozmiar nie jest jeszcze wspierany</string>
-    <string name="widget__settings_description">Wybierz usługi, które chcesz wyświetlać na widżecie. Jeśli żadne usługi nie są dostępne, upewnij się, że włączyłeś Widgety w Ustawieniach aplikacji</string>
+    <string name="widget__settings_description">Wybierz serwisy, które chcesz wyświetlać na widżecie. Jeśli żadne serwisy nie są dostępne, upewnij się, że włączyłeś Widgety w Ustawieniach aplikacji</string>
     <string name="widget__service_icon">Ikonka serwisu</string>
     <string name="widget__not_enabled">Funkcja widgetów nie jest włączona w Ustawieniach 2FAS</string>
-    <string name="widget__not_enabled_no_services">Funkcja widgetów nie jest włączona w Ustawieniach 2FAS i nie ma żadnych usług dostępnych do wyboru w aplikacji.</string>
-    <string name="widget__no_services">W aplikacji nie ma dostępnych usług do wyboru</string>
-    <string name="widget__select_service_intent_description">Wybierz usługę, którą chcesz wyświetlać w widżecie 2FAS.</string>
+    <string name="widget__not_enabled_no_services">Funkcja widgetów nie jest włączona w Ustawieniach 2FAS i nie ma żadnych serwisów dostępnych do wyboru w aplikacji.</string>
+    <string name="widget__no_services">W aplikacji nie ma dostępnych serwisów do wyboru</string>
+    <string name="widget__select_service_intent_description">Wybierz serwis, którą chcesz wyświetlać w widżecie 2FAS.</string>
     <string name="widget__my_secured_account">Moje zabezpieczone konto</string>
     <string name="widget__token">Token</string>
-    <string name="watch__intro">Aplikacja 2FAS watchOS jest aplikacją towarzyszącą dla aplikacji 2FAS iOS. Będzie ona prezentować usługi zarchiwizowane przy użyciu synchronizacji iCloud.\n\nAby uzyskać szybki dostęp, dodaj je do ulubionych usług.\n\nPamiętaj, aby przekazać darowiznę, abyśmy mogli nadal ulepszać platformę 2FAS!</string>
+    <string name="watch__intro">Aplikacja 2FAS watchOS jest aplikacją towarzyszącą aplikacji 2FAS iOS. Będzie ona prezentować serwisy zarchiwizowane przy użyciu synchronizacji iCloud.\n\nAby uzyskać szybki dostęp, dodaj je do Ulubionych.\n\nPamiętaj, aby przekazać darowiznę, abyśmy mogli nadal ulepszać platformę 2FAS!</string>
     <string name="tokens__hotp_not_supported">Usługi HOTP nie są jeszcze obsługiwane</string>
     <string name="tokens__favorite_services">Ulubione Serwisy</string>
     <string name="security__enter_new_pin_short">Wprowadź nowy PIN</string>
@@ -857,4 +857,7 @@
     <string name="appleWatch__installation_second_step">Upewnij się, że synchronizacja iCloud jest włączona</string>
     <string name="appleWatch__installation_second_step_link">Przejdź do ustawień kopii zapasowej 2FAS</string>
     <string name="settings__apple_watch">Apple Watch</string>
+    <string name="widget__no_selected_services">Przytrzymaj i wybierz serwis, aby aktywować widget...</string>
+    <string name="widget__reveal_tokens_long_message">Odsłoń swoje tokeny 2FAS na 60 sekund</string>
+    <string name="widget__reveal_tokens_short_message">Odsłoń na 60 sekund</string>
 </resources>
