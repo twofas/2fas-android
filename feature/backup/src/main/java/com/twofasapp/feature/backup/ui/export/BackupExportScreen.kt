@@ -145,7 +145,7 @@ private fun ScreenContent(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     TwSwitch(
-                        checked = uiState.passwordChecked.not(),
+                        checked = uiState.passwordChecked,
                         onCheckedChange = { onPasswordCheckedChange() },
                     )
 
