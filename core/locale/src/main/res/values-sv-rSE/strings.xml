@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android string resources
+ Project: 2FAS App
+ Locale: sv-SE, Swedish (Sweden)
+ Exported by: rafakob
+ Exported at: Thu, 16 Jan 2025 06:08:00 -0800
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- InfoPlist.strings
+        TwoFAS
+        Created by Zbigniew Cisiński on 14/03/2020.
+        Copyright © 2020 The Code. All rights reserved. -->
+    <string name="NSCameraUsageDescription">Används för att skanna QR-koder</string>
+    <string name="NSFaceIDUsageDescription">Låter dig låsa upp appen med Face ID</string>
+    <!-- MARK: - App -->
+    <string name="app__name">2FAS Authenticator</string>
+    <string name="commons__2fas">2FA Authenticator (2FAS)</string>
+    <string name="commons__OK">OK</string>
+    <string name="commons__add">Lägg till</string>
+    <!-- MARK: - Commons -->
+    <string name="commons__cancel">Avbryt</string>
+    <string name="commons__notifications">Notiser</string>
+    <!-- A number replaces %d, for example, 4 of 5. -->
+    <string name="commons__page_of_page_title">%1$d av %2$d</string>
+    <!-- notifications__service_already_removed_from_backup -->
+    <string name="notifications__service_already_removed_title">Kontot har redan tagits bort från säkerhetskopian</string>
+    <!-- notifications__service_already_modified_in_backup -->
+    <string name="notifications__service_already_modified_title">Kontot har redan ändrats i säkerhetskopian</string>
+    <!-- backup__user_is_over_quota_on_icloud -->
+    <string name="backup__user_over_quota_icloud">Slut på utrymme på iCloud</string>
+    <!-- backup__icloud_is_not_available -->
+    <string name="backup__icloud_not_available">iCloud är inte tillgängligt</string>
+    <!-- backup__icloud_has_been_disabled_by_user -->
+    <string name="backup__icloud_disabled_title">iCloud-synkning är avstängd</string>
+    <!-- backup__turned_off_description_bold_part -->
+    <string name="backup__2fas_backup">Säkerhetskopiering</string>
+    <string name="commons__close">Stäng</string>
+    <string name="commons__continue">Fortsätt</string>
+    <string name="commons__copy">Kopiera</string>
+    <string name="commons__delete">Radera</string>
+    <string name="commons__dismiss">Stäng</string>
+    <string name="commons__done">Klar</string>
+    <string name="commons__edit">Redigera</string>
+    <string name="commons__enter_code_manually">Ange kod manuellt</string>
+    <string name="commons__error">Fel</string>
+    <string name="commons__info">Info</string>
+    <string name="commons__next">Nästa</string>
+    <string name="commons__notice">Meddelande</string>
+    <string name="commons__off">Av</string>
+    <string name="commons__on">På</string>
+    <!-- commons__point_your_camera_at_code_on_website -->
+    <string name="commons__camera_title">Rikta kameran mot skärmen och skanna QR-koden</string>
+    <string name="commons__rename">Byt namn</string>
+    <string name="commons__retry">Försök igen</string>
+    <string name="commons__save">Spara</string>
+    <string name="commons__scan_qr_code">Skanna QR-kod</string>
+    <string name="commons__service">Konto</string>
+    <string name="commons__set">Ställ in</string>
+    <string name="commons__skip">Hoppa över</string>
+    <string name="commons__tokens">Koder</string>
+    <string name="commons__warning">Varning</string>
+    <string name="commons__no_results">Inga resultat</string>
+    <string name="commons__customize">Anpassa</string>
+    <string name="commons__approve">Godkänn</string>
+    <string name="commons__deny">Neka</string>
+    <!-- max. %d chars = Maximum number of characters
+        commons__provided_text_too_long -->
+    <string name="commons__text_long_title">Texten är för lång (får vara högst %d tecken)</string>
+    <string name="commons__got_it">Jag förstår!</string>
+    <string name="fingerprint__verifying">Verifierar...</string>
+    <!-- fingerprint__setup_content -->
+    <string name="fingerprint__confirm_title">Använd fingeravtryck för att fortsätta.</string>
+    <!-- fingerprint__use_pin -->
+    <string name="fingerprint__use_pin_title">Använd PIN-kod</string>
+    <!-- MARK: - Introduction -->
+    <string name="introduction__page_1_title">Du är fantastisk!</string>
+    <string name="introduction__page_1_content">Din mobil har precis blivit en privat och säker nyckel till dina online-konton tack vare 2FAS-appen som används av över 6 miljoner användare världen över.</string>
+    <string name="introduction__page_2_title">Enkel</string>
+    <string name="introduction__page_2_content">Koppla 2FAS till dina online-konton. Aktivera tvåfaktorsautentisering på några sekunder med en QR-kod.</string>
+    <string name="introduction__page_3_title">Privat</string>
+    <string name="introduction__page_3_content">2FAS respekterar och skyddar din integritet. Appen kommer aldrig att samla in, hantera eller använda några av dina personuppgifter.</string>
+    <string name="introduction__page_4_title">Säker</string>
+    <string name="introduction__page_4_content_ios">Dina koder lagras offline på enheten, så kom ihåg att säkerhetskopiera! Använd iCloud-synkronisering och en PIN-kod för att skydda mot att enheten går sönder eller hamnar i fel händer.</string>
+    <!-- introduction__start_using -->
+    <string name="introduction__title">Börja använda 2FAS</string>
+    <string name="introduction__tos">Användarvillkor</string>
+    <string name="introduction__description_title">Koppla dina online-konton till 2FAS eller importera dina konton</string>
+    <string name="introduction__pair_new_service">Lägg till konto</string>
+    <!-- introduction__import_2fas -->
+    <string name="introduction__import_2fas_title">Importera 2FAS-säkerhetskopia</string>
+    <!-- introduction__import_ga -->
+    <string name="introduction__import_google_authenticator">Importera från Google Authenticator</string>
+    <!-- introduction__not_sure -->
+    <string name="introduction__what_to_do">Osäker på hur du ska göra?</string>
+    <!-- introduction__ga_import_description -->
+    <string name="introduction__google_authenticator_import_process">Exportera dina konton från Google Authenticator till en QR-kod genom att välja ”Överför konton” i menyn. Om Google Authenticator körs på en annan enhet, tryck på \"Skanna QR-kod\". Om Google Authenticator körs på den här enheten, ta en skärmdump av QR-koden och tryck på \"Välj QR-kod\".</string>
+    <!-- introduction__choose_qr -->
+    <string name="introduction__choose_qr_code">Välj QR-kod</string>
+    <!-- introduction__scan_qr -->
+    <string name="introduction__scan_qr_code">Skanna QR-kod</string>
+    <!-- Original: Adding code -->
+    <string name="notifications__adding_code">Lägger till ny kod</string>
+    <!-- notifications__private_key_copied -->
+    <string name="notifications__service_key_copied">Hemlig nyckel kopierad</string>
+    <!-- voiceover__token_is_already_on_the_list -->
+    <string name="notifications__token_already_added">Det här kontot finns redan i listan</string>
+    <string name="notifications__counter_copied">Räknare kopierad</string>
+    <string name="notifications__token_copied">Kod kopierad</string>
+    <string name="notifications__next_token_copied">Nästa kod kopierad</string>
+    <!-- notifications__would_you_like_to_add_this_code -->
+    <string name="notifications__add_code_question_title">Vill du lägga till %s?</string>
+    <!-- MARK: - Permissions -->
+    <string name="permissions__open_settings">Öppna inställningar</string>
+    <string name="security__incorrect_PIN">Felaktig PIN-kod</string>
+    <string name="security__change_pin">Ändra PIN-kod</string>
+    <string name="security__confirm_you_are_device_owner">Verifiera din identitet</string>
+    <!-- security__confirm_your_new_pin -->
+    <string name="security__confirm_new_pin">Upprepa ny PIN-kod</string>
+    <string name="security__create_pin">Välj PIN-kod</string>
+    <string name="security__enter_current_pin">Ange nuvarande PIN-kod</string>
+    <!-- security__enter_your_new_pin -->
+    <string name="security__enter_new_pin">Välj PIN-kod</string>
+    <!-- security__enter_your_pin -->
+    <string name="security__enter_pin">Ange PIN-kod</string>
+    <!-- MARK: - Security -->
+    <string name="security__too_many_attempts_try_again_after_formatter">För många försök har gjorts. Försök igen %s.</string>
+    <string name="security__too_many_attempts_try_again_after">För många försök har gjorts. Försök igen om %s minuter.</string>
+    <!-- security__too_many_attempts_try_again_later -->
+    <string name="security__too_many_attempts_error">För många försök har gjorts. Försök igen senare.</string>
+    <!-- security__too_many_attempts_try_again_after_one_minute -->
+    <string name="security__too_many_attempts_error_2">För många försök har gjorts. Försök igen om en minut.</string>
+    <string name="settings__backup_and_synchronization">Säkerhetskopiering och synkronisering</string>
+    <string name="settings__choose_topic">Välj ämne</string>
+    <string name="settings__configure_mail_service_try_again">Konfigurera e-posttjänst och försök igen</string>
+    <string name="settings__general">Allmänt</string>
+    <string name="settings__mail_services_not_available">E-posttjänst inte tillgänglig</string>
+    <string name="settings__problem">Problem</string>
+    <string name="settings__security">Säkerhet</string>
+    <string name="settings__select_pin_length">Välj längd på PIN-kod</string>
+    <string name="settings__settings">Inställningar</string>
+    <!-- czy to dalej będzie w aplikacji? -->
+    <string name="settings__suggestion">Förslag</string>
+    <string name="settings__advanced">Avancerat</string>
+    <string name="settings__widgets">Widgetar</string>
+    <string name="settings__display_selected_services">Visa valda konton i widgetar på hemskärmen.</string>
+    <!-- settings__after_you_enable_widgets -->
+    <string name="settings__widgets_title">Koder som syns i widgetar är inte skyddade av din PIN-kod.\n\nÄr du säker på att du vill aktivera widgetar?</string>
+    <string name="settings__show_next_token">Visa nästa kod</string>
+    <string name="settings__see_incoming_tokens">Se kommande koder i listan.</string>
+    <string name="settings__trash">Papperskorg</string>
+    <string name="settings__restore">Återställ</string>
+    <string name="settings__trash_is_empty">Papperskorgen är tom</string>
+    <string name="settings__share_app">Dela appen</string>
+    <!-- tokens__remove_from_list -->
+    <string name="tokens__delete_token">Är du säker på att du vill radera</string>
+    <string name="tokens__move_to_trash">Flytta till papperskorgen</string>
+    <string name="tokens__additional_info">Kommentar</string>
+    <string name="tokens__choose_method">Välj metod</string>
+    <string name="tokens__duplicated_private_key">Dubblett av hemlig nyckel</string>
+    <!-- tokens__incorrect_private_key -->
+    <string name="tokens__incorrect_service_key">Ogiltig hemlig nyckel (endast siffror mellan 2 och 7, bokstäver, max 512 tecken)</string>
+    <string name="tokens__try_again">Okej, försök igen</string>
+    <!-- Original: To capture the QR code
+        tokens__point_right_2fa_code -->
+    <string name="tokens__scan_qr_code_title">Rikta kameran mot skärmen och skanna QR-koden</string>
+    <!-- tokens__private_key -->
+    <string name="tokens__service_key">Hemlig nyckel</string>
+    <string name="tokens__qr_code_leads_to_app_store">Den här QR-koden leder till App Store</string>
+    <!-- tokens__remove_it_forever -->
+    <string name="tokens__remove_forever">Radera konto</string>
+    <!-- tokens__search_by_service_name_or_login -->
+    <string name="tokens__search_service_title">Sök konto</string>
+    <!-- tokens__search_sorry_service_not_found -->
+    <string name="tokens__service_not_found_search">Inget matchande konto hittades</string>
+    <!-- Original: Take another try with a different search term
+        tokens__search_take_another_try_different_search_term -->
+    <string name="tokens__try_different_search_term">Prova att söka efter något annat</string>
+    <string name="tokens__service_key_to_short">Nyckeln är för kort. Minst 4 tecken.</string>
+    <string name="tokens__service_name">Namn</string>
+    <!-- tokens__this_private_key_exists_used_in -->
+    <string name="tokens__service_key_already_used_title">Den hemliga nyckeln i den skannade QR-koden används redan för %s. Du har troligen redan skannat den förut.</string>
+    <string name="tokens__this_qr_code_is_inavlid">QR-koden är ogiltig eller stöds inte. Försök igen.</string>
+    <string name="tokens__type_service_name">Ange namn</string>
+    <string name="tokens__enter_service_name">Ange namn</string>
+    <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
+    <string name="tokens__service_name_unknown_title">Tyvärr känner vi inte igen det här kontot. Vad vill du att det ska heta?</string>
+    <!-- tokens__you_wont_be_able_to_restore -->
+    <string name="tokens__token_not_possible_to_restore">Du kommer inte att kunna återställa det här kontot.</string>
+    <string name="tokens__badge_color">Färg på etikett</string>
+    <string name="tokens__change_brand_icon">Ändra ikon</string>
+    <string name="tokens__change_label">Ändra etikett</string>
+    <string name="tokens__service_information">Kontoinformation</string>
+    <string name="tokens__personalization">Anpassning</string>
+    <string name="tokens__brand_icon">Ikon</string>
+    <string name="tokens__label">Etikett</string>
+    <!-- tokens__remove_the_service -->
+    <string name="tokens__remove_service_from_app">Radera kontot från 2FAS-appen</string>
+    <!-- tokens__label_one_or_two -->
+    <string name="tokens__label_characters_title">Etikett (1 eller 2 tecken)</string>
+    <string name="tokens__pick_background_color">Välj bakgrundsfärg:</string>
+    <string name="tokens__num_added">%s har lagts till</string>
+    <string name="tokens__next_token">Nästa kod: %s</string>
+    <string name="tokens__next_token_title">Nästa kod</string>
+    <string name="tokens__my_tokens">Mina konton</string>
+    <string name="tokens__removing_group">Tar bort grupp</string>
+    <!-- tokens__all_tokens_will_be_moved -->
+    <string name="tokens__all_tokens_moved_to_group_title">Alla konton flyttas till gruppen \"Mina konton\"</string>
+    <string name="tokens__add_group">Lägg till grupp</string>
+    <string name="tokens__group_name">Gruppnamn:</string>
+    <string name="tokens__select_from_gallery">Välj från galleri</string>
+    <string name="tokens__camera_is_unavailable">Kameran är otillgänglig</string>
+    <!-- tokens__check_if_app_has_proper_permissions -->
+    <string name="tokens__check_app_permissions">Kontrollera om appen har rätt behörigheter i systeminställningarna</string>
+    <string name="tokens__no_qr_codes_found">Ingen QR-kod hittades</string>
+    <!-- tokens__no_correct_qr_code_had_been_found
+        
+        No correct QR codes had been found in the selected image. Please try a different image. -->
+    <string name="tokens__no_correct_qr_code_found_title">Det finns ingen giltig QR-kod i den valda bilden. Prova att välja en annan bild.</string>
+    <string name="tokens__select_service">Välj konto</string>
+    <string name="tokens__adding_service_question_title">Vilket konto vill du lägga till?</string>
+    <string name="tokens__retype_this_token">Ange koden på nytt</string>
+    <!-- tokens__unlock_and_retype_this_token -->
+    <string name="tokens__unlock_and_retype_token_title">Lås upp och ange den här koden</string>
+    <string name="tokens__group">Grupp</string>
+    <string name="tokens__select_group">Välj grupp</string>
+    <string name="tokens__google_auth_import">Importerar konton från Google Authenticator</string>
+    <string name="tokens__google_auth_import_subtitle">Den här QR-koden låter dig importera konton från Google Authenticator.</string>
+    <!-- A number replaces %d  -->
+    <string name="tokens__google_auth_out_of_title">%1$d av %2$d</string>
+    <string name="tokens__google_auth_import_subtitle_end">konton kommer att importeras.</string>
+    <string name="tokens__sort_by">Sortera</string>
+    <!-- tokens__sort_by_az -->
+    <string name="tokens__sort_by_a_to_z">A - Ö</string>
+    <!-- tokens__sort_by_za -->
+    <string name="tokens__sort_by_z_to_a">Ö - A</string>
+    <string name="tokens__sort_by_manual">Anpassad ordning</string>
+    <string name="tokens__advanced">Avancerat</string>
+    <!-- tokens__advanced_alert_title -->
+    <string name="tokens__advanced_alert">Varning</string>
+    <!-- tokens__advanced_alert_description -->
+    <string name="tokens__advanced_alert_description_title">Det rekommenderas inte att ändra de avancerade inställningarna. Gör det bara om ditt konto kräver det och du har fått tydliga instruktioner.</string>
+    <string name="tokens__token_settings">Kodinställningar</string>
+    <string name="tokens__otp_authentication">OTP-autentisering</string>
+    <string name="tokens__algorithm">Algoritm</string>
+    <string name="tokens__refresh_time">Tidsperiod</string>
+    <string name="tokens__number_of_digits">Antal siffror</string>
+    <string name="tokens__counter">Räknare</string>
+    <string name="tokens__initial_counter">Startvärde för räknare</string>
+    <!-- A number replaces %d -->
+    <string name="tokens__second">%d s</string>
+    <string name="tokens__hotp">HOTP</string>
+    <string name="tokens__totp">TOTP</string>
+    <string name="tokens__advanced_settings_footer_title">Det rekommenderas inte att ändra de avancerade inställningarna. Gör det bara om ditt konto kräver det och du har fått tydliga instruktioner.</string>
+    <string name="tokens__gallery_advice_title">Bästa praxis</string>
+    <!-- ADD A SPACE AT THE END -->
+    <string name="tokens__gallery_advice_content_first">Kontot har lagts till. Vi rekommenderar starkt att du\u0020</string>
+    <!-- ADD A SPACE AFTER COMA -->
+    <string name="tokens__gallery_advice_content_middle_bold">raderar bilden av QR-koden från ditt galleri.\u0020</string>
+    <string name="tokens__gallery_advice_content_last">\nOm någon kommer åt QR-koden kan hen få 2FA-koderna till det här kontot.</string>
+    <string name="tokens__request_icon_page_title">Begär en ikon</string>
+    <string name="tokens__request_icon_social_title">Berätta för oss på Discord</string>
+    <string name="tokens__request_icon_social_link">Gå med i vår Discord-server</string>
+    <string name="tokens__request_icon_social_description">och låt användarna rösta bland begärda ikoner.</string>
+    <string name="tokens__request_icon_middle">eller</string>
+    <string name="tokens__request_icon_provider_title">Berätta för tjänsteleverantören</string>
+    <string name="tokens__request_icon_provider_description">Du kan skicka den här texten via sociala medier eller e-post:</string>
+    <string name="tokens__request_icon_provider_message">Hej! Jag använder 2FAS-appen för att logga in på er tjänst med 2FA. Er logotyp saknas dock i appen. Ni kan skicka in er logotyp här: https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_footnote">Glöm inte att tagga företagets officiella konto!</string>
+    <string name="tokens__order_icon_description">Hittar du inte ikonen i 2FAS-appen?</string>
+    <string name="tokens__order_icon_link">Begär en ikon</string>
+    <string name="tokens__order_icon_title">Begär en ikon</string>
+    <string name="tokens__order_menu_title">Välj hur du vill begära</string>
+    <string name="tokens__order_menu_option_user">Begär ikon som användare</string>
+    <string name="tokens__order_menu_option_company">Skicka in ikon som företag</string>
+    <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
+    <string name="tokens__sign_in_not_possible_title">Du kommer inte att kunna logga in på ditt %1$s-konto utan koden så länge tvåfaktorsautentisering är aktiverat på %2$s.</string>
+    <string name="voiceover__show_service_key">Visa hemlig nyckel</string>
+    <string name="voiceover__copy_service_key">Kopiera hemlig nyckel</string>
+    <!-- voiceover__seconds_left -->
+    <string name="voiceover__seconds_left_counter_title">Antal sekunder innan koden ändras</string>
+    <string name="voiceover__delete_button">Radera, knapp</string>
+    <string name="voiceover__service_deleted">Konto raderat</string>
+    <!-- voiceover__hidden_secret_key_use_show button -->
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Detta fält innehåller en hemlig nyckel. För att visa den, använd knappen \"Visa\". Den fungerar bara om du har ställt in en PIN-kod i appen.</string>
+    <string name="voiceover__service_name">Namn: %s</string>
+    <string name="voiceover__additional_info">Kommentar: %s</string>
+    <string name="voiceover__token_tap_to_copy">Kod %s. Tryck för att kopiera.</string>
+    <string name="voiceover__edit">Redigera %s</string>
+    <string name="voiceover__service_label_with_name_and_color">Etikett för konto med namnet %1$s och %2$s färg</string>
+    <string name="voiceover__service_icon">Ikon för %s</string>
+    <string name="voiceover__selected">Markerad</string>
+    <string name="voiceover__not_selected">Inte markerad</string>
+    <string name="voiceover__badge_color">Färg på etikett: %s</string>
+    <string name="voiceover__dismissing">Stänger</string>
+    <string name="voiceover__secret_hint">Endast siffror mellan 2 och 9, bokstäver. Minst 4 tecken.</string>
+    <string name="voiceover__add_service">Lägg till konto</string>
+    <string name="voiceover__add_group">Lägg till grupp</string>
+    <!-- voiceover__use_add_service_button -->
+    <string name="voiceover__use_add_service_button_title">Använd knappen \"Lägg till konto\" för att lägga till ett konto</string>
+    <string name="voiceover__no_search_results">Inga sökresultat</string>
+    <!-- voiceover__sort_by -->
+    <string name="voiceover__sort_by_title">Använd \"Sortera\" för att ändra ordning på konton</string>
+    <string name="voiceover__spinner">Läser in</string>
+    <string name="backup__incorrect_secret">Det gick inte att säkerhetskopiera eftersom ”%s”-hemligheten innehåller otillåtna tecken. Ta bort den från listan och försök igen.</string>
+    <string name="backup__import">Importera</string>
+    <string name="backup__export">Exportera</string>
+    <string name="backup__backup_disabled_title">2FAS-säkerhetskopiering stängs av för att skydda säkerhetskopian</string>
+    <string name="backup__error_while_exporting_file">Fel vid export</string>
+    <string name="backup__import_completed_successfuly">Import slutförd!</string>
+    <!-- camera__video_device_in_use_by_another_app -->
+    <string name="camera__camera_used_by_other_app_title">Kameran används av en annan app. Stäng andra appar, eller om det inte hjälper, starta om enheten.</string>
+    <!-- camera__video_device_unavailable_due_to_system_overload  -->
+    <string name="camera__camera_unavailable_title">Kameran är otillgänglig eftersom enheten är upptagen. Prova att starta om enheten.</string>
+    <string name="camera__cant_initialize_camera_general">Kunde inte starta kameran. Prova att starta om enheten.</string>
+    <string name="camera__cant_initialize_camera_split_view">Kunde inte starta kameran i delad vy. Öppna appen i helskärm och försök igen.</string>
+    <string name="restore__how_to_restore">Hur återställer jag 2FAS-appen?</string>
+    <string name="restore__application_restoration">Återställning av appen</string>
+    <!-- restore_if_you_forgotten -->
+    <string name="restore__reset_Pin_title">Om du har glömt PIN-koden eller vill rensa 2FAS-appen behöver du installera om appen.</string>
+    <!-- restore_please_remember -->
+    <string name="restore__backup_advice">Observera att om du rensar appen utan att ha en säkerhetskopia så kommer du förlora dina koder. Därmed kan du bli utelåst från alla dina konton som är säkrade med tvåfaktorsautentisering.</string>
+    <!-- restore_if_you_have_backup -->
+    <string name="restore__backup_title">Om du har en säkerhetskopia kan du ta det lugnt, för du kommer att kunna få tillbaka dina koder.</string>
+    <string name="backup__cloud_backup">Säkerhetskopiering i molnet</string>
+    <string name="backup__icloud_sync">Synka med iCloud</string>
+    <string name="backup__section_description">REKOMMENDERAS: iCloud-synkronisering håller dina koder säkra på iCloud ifall att din enhet skulle tappas bort eller skadas. Låt det vara påslaget.</string>
+    <string name="backup__file_backup">Säkerhetskopia på fil</string>
+    <!-- backup__use_file_backup_for -->
+    <string name="backup__file_backup_offline_title">Använd detta för att säkerhetskopiera dina koder offline.</string>
+    <string name="backup__backup_removal">Radering av säkerhetskopia</string>
+    <string name="backup__delete_2fas_backup">Radera 2FAS-säkerhetskopia</string>
+    <string name="backup__warning_introduction">Varning! Om du raderar säkerhetskopian raderar du också alla koder från andra enheter som synkroniseras med det här kontot. För att behålla koderna på andra enheter, se till att du har stängt av 2FAS-säkerhetskopiering innan du raderar.</string>
+    <!-- backup__i_want_to_delete -->
+    <string name="backup__delete_title">Radera säkerhetskopia</string>
+    <string name="backup__export_to_backup_file">Exportera säkerhetskopia till fil</string>
+    <!-- backup__you_can_import_exported_file -->
+    <string name="backup__import_file_title">Du kan importera dessa filer på andra enheter med 2FAS-appen.</string>
+    <string name="backup__export_to_file">Exportera till fil</string>
+    <string name="backup__verify_pin">Verifiera PIN-kod</string>
+    <string name="backup__save_file">Spara fil</string>
+    <string name="backup__import_backup_file">Importera säkerhetskopia från fil</string>
+    <!-- backup__youre_goint_to_import_backup -->
+    <string name="backup__import_other_devices">Du är på väg att importera en säkerhetskopia som innehåller</string>
+    <string name="backup__import_file">Importera från fil</string>
+    <string name="backup__choose_antother_file">Välj en annan fil</string>
+    <string name="backup__no_new_services">Inget att importera</string>
+    <string name="backup__file_error">Fel i filen!</string>
+    <!-- backup__services_form_file_will_be_merged -->
+    <string name="backup__services_merge_title">Kontona i filen kommer att slås ihop med dem i appen</string>
+    <string name="backup__no_new_services_error">Antingen är filen tom eller så finns redan alla konton i appen</string>
+    <string name="backup__update_required_to_import_title">Du behöver uppdatera appen för att importera den här filen. Du hittar den senaste versionen på App Store.</string>
+    <string name="backup__cant_read_file_error">Kunde inte läsa filen. Den kan vara skadad eller så uppstod ett fel när den skulle öppnas. Vänligen välj en annan fil.</string>
+    <string name="backup__password">Lösenord</string>
+    <string name="backup__repeat_password">Upprepa lösenord</string>
+    <string name="backup__incorrect_character_error">Otillåtet tecken. Använd endast bokstäver A-Z, a-z, siffror och symboler: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__to_short_error">Lösenordet är för kort (minst 3 tecken)</string>
+    <string name="backup__passwords_dont_match">Lösenorden stämmer inte överens</string>
+    <string name="backup__save_and_export">Spara och exportera</string>
+    <string name="backup__set_password_title">För bättre säkerhet, välj ett lösenord för säkerhetskopian</string>
+    <string name="backup__enter_password_title">Ange lösenordet till den här filen för att fortsätta</string>
+    <string name="backup__backup_file_password_title">Välj ett lösenord för den här säkerhetskopian</string>
+    <string name="backup__incorrect_password">Felaktigt lösenord</string>
+    <!-- %d - number -->
+    <string name="backup__new_services">%d nya konton</string>
+    <!-- %d - number -->
+    <string name="backup__services_imported_count">%d konton importerades från filen</string>
+    <!-- backup__user_has_icloud_problem -->
+    <string name="backup__icloud_problem">Det finns ett problem med iCloud. Kontrollera systeminställningarna.</string>
+    <!-- backup__encrypted_unsupported -->
+    <string name="backup__encrypted_files_not_supported">Den här filen är krypterad. 2FAS fungerar endast med icke-krypterade filer.</string>
+    <string name="tokens__copy_token">Kopiera kod</string>
+    <!-- tokens__i_want_to_delete_this_servie -->
+    <string name="tokens__i_want_to_delete_this_token">Ja, jag vill radera kontot</string>
+    <string name="color__neutral">Neutral</string>
+    <string name="color__light_blue">Ljusblå</string>
+    <string name="color__indigo">Indigo</string>
+    <string name="color__purple">Lila</string>
+    <string name="color__turquoise">Turkos</string>
+    <string name="color__green">Grön</string>
+    <string name="color__red">Röd</string>
+    <string name="color__orange">Orange</string>
+    <string name="color__yellow">Gul</string>
+    <string name="settings__knowledge">Kunskapsbas</string>
+    <string name="settings__support_and_share">Stöd och dela</string>
+    <string name="settings__tell_a_friend">Berätta för en vän</string>
+    <string name="settings__write_a_review">Skriv en recension</string>
+    <string name="settings__about">Om appen</string>
+    <string name="settings__privacy_policy">Integritetspolicy</string>
+    <string name="settings__terms_of_service">Användarvillkor</string>
+    <string name="settings__version">Appversion %s</string>
+    <string name="settings__no_limit">Obegränsad</string>
+    <string name="settings__pin_code">PIN-kod</string>
+    <string name="settings__app_security">Appsäkerhet</string>
+    <string name="settings__app_blocking">Inställningar för nedlåsning</string>
+    <string name="settings__face_id">Face ID</string>
+    <string name="settings__touch_id">Touch ID</string>
+    <!-- settings__how_many_attempts_header -->
+    <string name="settings__too_many_attempts_header">Lås ned efter X misslyckade försök:</string>
+    <string name="settings__how_many_attempts_footer">Välj hur många misslyckade försök att ange PIN-koden som ska krävas innan appen låses ned (tidslängden kan ändras nedan).</string>
+    <string name="settings__block_for">Tid för nedlåsning</string>
+    <string name="settings__3_minutes">3 minuter</string>
+    <string name="settings__5_minutes">5 minuter</string>
+    <string name="settings__10_minutes">10 minuter</string>
+    <string name="settings__limit_of_trials">Antal misslyckade försök</string>
+    <string name="settings__pin_4_digits">4-siffrig</string>
+    <string name="settings__pin_6_digits">6-siffrig</string>
+    <string name="settings__biometric_authentication">Biometri</string>
+    <string name="settings__donations">Donationer</string>
+    <string name="settings__donate_twofas">Donera till 2FAS</string>
+    <string name="new_version__new_version_title">Ny version</string>
+    <string name="new_version__new_version_message_ios">En ny version av 2FAS finns på App Store. Uppdatera nu!</string>
+    <string name="new_version__update_action">Uppdatera nu</string>
+    <!-- new_version__skip_action -->
+    <string name="new_version__skip_title">Hoppa över den här versionen</string>
+    <!-- new_version__later_action -->
+    <string name="new_version__update_later">Uppdatera senare</string>
+    <string name="browser__browser_extension">Webbläsartillägg</string>
+    <string name="browser__info_title">2FAS webbläsartillägg</string>
+    <string name="browser__info_description_first">Installera 2FAS webbläsartillägg på din dator</string>
+    <string name="browser__info_description_second">Parkoppla med 2FAS-appen.</string>
+    <string name="browser__more_info">Mer info:</string>
+    <string name="browser__more_info_link_title">2fas.com/be</string>
+    <string name="browser__pair_with_web_browser">Parkoppla med webbläsare</string>
+    <string name="browser__more_info_link">https://www.2fas.com/be</string>
+    <string name="browser__pairing_successful_title">Parkoppling slutförd!</string>
+    <string name="browser__pairing_successful_description">2FAS kommer att skicka en notis till din mobil när du loggar in på ett konto i den här webbläsaren. Du behöver inte längre skriva koden varje gång.</string>
+    <string name="browser__pairing_failed_title">Parkoppling misslyckades :(</string>
+    <string name="browser__pairing_failed_description">2FAS kunde inte parkoppla med webbläsaren. Vänligen försök igen.</string>
+    <!-- browser__pairing_already_paired_title -->
+    <string name="browser__already_paired_title">Redan parkopplad!</string>
+    <!-- browser__pairing_already_paired_description -->
+    <string name="browser__already_paired_description">Den här webbläsaren är redan parkopplad med den här enheten.</string>
+    <string name="browser__contact_support">Kontakta support</string>
+    <string name="browser__pairing_with_browser">Parkopplar med webbläsaren</string>
+    <!-- browser__paired_devices -->
+    <string name="browser__paired_devices_browser_title">Parkopplade webbläsare</string>
+    <string name="browser__add_new">Lägg till</string>
+    <!-- browser__this_device -->
+    <string name="browser__this_device_name">Nanm på enhet</string>
+    <string name="browser__device_name">Enhetens namn</string>
+    <string name="browser__name">Namn</string>
+    <string name="browser__this_device_footer">Namnet hjälper dig att särskilja den här enheten från andra parkopplade enheter</string>
+    <string name="browser__browser_extension_settings">Inställningar för tillägg</string>
+    <string name="browser__unkown_name">&lt;UNKOWN_NAME&gt;</string>
+    <string name="browser__request_source_description">%1$s har begärt en kod för %2$s. Välj vilket konto som ska delas och kopplas till den här domänen.</string>
+    <string name="browser__request">Förfrågan från webbläsare</string>
+    <!-- browser__code_success -->
+    <string name="browser__code_success_title">Kod skickad!</string>
+    <string name="browser__code_failure">Kunde inte skicka koden. %s</string>
+    <string name="browser__deleting_paired_device_title">Ta bort parkopplad enhet?</string>
+    <string name="browser__deleting_paired_device_content">Är du säker på att du vill koppla ifrån enheten?</string>
+    <string name="browser__pairing_date">Parkopplades</string>
+    <string name="browser__forget_this_browser">Glöm webbläsare</string>
+    <!-- browser__service_is_paired_list_description -->
+    <string name="browser__paired_domains_list_title">Kopplade domäner</string>
+    <string name="browser__deleting_extension_pairing_title">Ta bort domän?</string>
+    <string name="browser__deleting_extension_pairing_content">Nästa gång du använder webbläsartillägget för att logga in på %s kommer du bli ombedd att koppla domänen igen.</string>
+    <string name="browser__push_notifications_title">Notiser</string>
+    <string name="browser__push_notifications_content">För att kunna använda webbläsartillägget behöver appen åtkomst till att skicka notiser. Du kan ändra detta när som helst i systeminställningarna.</string>
+    <string name="browser__request_expired">Förfrågan har löpt ut</string>
+    <string name="browser__2fa_token_request_title">Förfrågan om 2FA-kod</string>
+    <string name="browser__2fa_token_request_content">Vill du dela koden för\u0020</string>
+    <string name="notifications__no_notifications">Inga notiser</string>
+    <string name="CFBundleSpokenName">2 F A S</string>
+    <string name="commons__2fas_toolbar">2FAS</string>
+    <string name="backup__google_drive_not_available">Google Drive är inte tillgängligt</string>
+    <string name="backup__google_drive_disabled_title">Google Drive-synkning är avstängd</string>
+    <string name="backup__update_required_to_import_title_2">Du behöver uppdatera appen för att importera den här filen. Du hittar den senaste versionen på Google Play.</string>
+    <string name="tokens__qr_code_leads_to_google_store">Den här QR-koden leder till Google Play</string>
+    <string name="introduction__page_4_content_android">Dina koder lagras offline på enheten, så kom ihåg att säkerhetskopiera! Använd Google Drive-synkronisering och en PIN-kod för att skydda mot att enheten går sönder eller hamnar i fel händer.</string>
+    <string name="new_version__new_version_message_android">En ny version av 2FAS finns på Google Play. Uppdatera nu!</string>
+    <string name="security_error_no_match">PIN-koderna stämmer inte överens! Vänligen försök igen.</string>
+    <string name="settings_developer_options">Utvecklaralternativ</string>
+    <string name="settings__external_import">Importera konton</string>
+    <string name="settings__browser_extension_result_toolbar_title">Resultat av parkoppling</string>
+    <string name="tokens__caution">VARNING</string>
+    <string name="tokens__qr_point_and_scan_again">Rikta kameran mot den rätta QR-koden och skanna igen.</string>
+    <string name="tokens__service_unsaved_changes">Vill du slänga dina ändringar?</string>
+    <string name="tokens__service_unsaved_changes_title">Osparade ändringar</string>
+    <string name="tokens__service_key_invalid_format">Nyckeln har ett ogiltigt format</string>
+    <string name="intent_error_no_gallery_app">Systemfel! Det finns ingen förvald galleri-app.</string>
+    <string name="gdrive_permission_title">Åtkomst till Google Drive</string>
+    <string name="gdrive_permission_msg">Vi behöver åtkomst till Google Drive för att kunna spara säkerhetskopian där.</string>
+    <string name="gdrive_internet_title">Internetuppkoppling krävs</string>
+    <string name="gdrive_internet_msg">För att synkronisera med Google Drive behöver du ansluta till internet.</string>
+    <string name="gdrive_wipe_internet_msg">För att koppla från Google Drive behöver du ansluta till internet.</string>
+    <string name="backup_explanation_msg">Lagra och synkronisera automatiskt din säkerhetskopia i en dold mapp på din Google Drive. Denna mapp är endast tillgänglig för 2FAS-appen.</string>
+    <string name="backup_error_unknown">Ett fel uppstod när säkerhetskopian skulle synkroniseras. Starta om appen och försök igen om några minuter.</string>
+    <string name="backup_error_encrypt_unknown">Ett fel uppstod när säkerhetskopian skulle krypteras. Vänligen ange lösenordet igen.</string>
+    <string name="backup_error_decrypt_unknown">Ett fel uppstod när säkerhetskopian skulle dekrypteras. Vänligen ange lösenordet igen.</string>
+    <string name="backup__google_drive_problem_title">Det finns ett problem med iCloud. Kontrollera systeminställningarna.</string>
+    <string name="backup_error_auth">Åtkomst till ditt Google Drive-konto nekades. Prova att slå på och av synkroniseringen.</string>
+    <string name="backup_error_no_password">Din säkerhetskopia är lösenordsskyddad. Aktivera och ange lösenordet.</string>
+    <string name="backup_error_wrong_password">Din säkerhetskopia är lösenordsskyddad men lösenordet du angav är felaktigt. Aktivera och ange lösenordet.</string>
+    <string name="customization_service_assignment">Koppling av konto</string>
+    <string name="customization_personalization">Anpassning</string>
+    <string name="customization_change_brand">Ändra ikon</string>
+    <string name="customization_advanced">Avancerat</string>
+    <string name="customization_request_icon">Begär en ikon</string>
+    <string name="customization_edit_label">Redigera etikett</string>
+    <string name="groups_delete_msg">Är du säker på att du vill radera den här gruppen?</string>
+    <string name="export_backup_title">Säkerhetskopian är redo att exporteras</string>
+    <string name="export_backup_msg">Exportera en fil för att säkra dina koder. Du kan senare importera filen i 2FAS-appen på den här enheten eller en annan enhet.</string>
+    <string name="export_backup_pass">Exportera fil utan lösenord\n(rekommenderas inte)</string>
+    <string name="import_backup_msg2">Kontona i filen kommer att slås ihop med dem i appen.</string>
+    <string name="backup_notice_later">Kanske senare</string>
+    <string name="backup_notice_cta">Aktivera</string>
+    <string name="widgets_empty_msg">Inga konton har lagts till</string>
+    <string name="backup__section_description_google">REKOMMENDERAS: Google Drive-synkronisering håller dina koder säkra på Google Drive ifall att din enhet skulle tappas bort eller skadas. Låt det vara påslaget.</string>
+    <string name="backup_turn_off_title">Stäng av Google Drive-synkronisering?</string>
+    <string name="backup_turn_off_msg1">Dina koder kommer att finnas kvar på den här enheten och på Google Drive, men kommer inte att synkroniseras. Du kommer också att loggas ut från ditt Google-konto.</string>
+    <string name="backup_turn_off_msg2">Om du skulle förlora eller skada enheten eller om appen avinstalleras kommer du kanske inte att kunna få tillbaka dina koder. Du kan då bli utelåst från konton som skyddas av tvåfaktorsautentisering.</string>
+    <string name="backup_settings_password_set_subtitle">Skydda säkerhetskopian på Google Drive med ett lösenord.</string>
+    <string name="backup_settings_password_remove_title">Ta bort lösenord</string>
+    <string name="backup_settings_password_remove_subtitle">Ta bort lösenordet för säkerhetskopian på Google Drive</string>
+    <string name="backup_settings_account_title">Google-konto</string>
+    <string name="backup_settings_sync_title">Senaste synkronisering</string>
+    <string name="browser_extension_result_success_description">2FAS kommer att skicka en notis till din mobil när du loggar in på ett konto i den här webbläsaren. Du behöver inte längre skriva koden varje gång.</string>
+    <string name="browser_extension_browser_dialog">Namn på webbläsare</string>
+    <string name="biometric_dialog_auth_title">Verifiera din identitet</string>
+    <string name="biometric_dialog_auth_subtitle">Bekräfta med fingeravtryck eller ansiktsigenkänning</string>
+    <string name="about_licenses">Licenser för öppen källkod</string>
+    <string name="externalimport_description">Du kan importera dina konton till 2FAS från andra appar. Välj en app från listan och följ instruktionerna.</string>
+    <string name="externalimport_select_app">Välj app</string>
+    <string name="externalimport_google_authenticator">Google Authenticator</string>
+    <string name="externalimport_aegis">Aegis</string>
+    <string name="externalimport_raivo">Raivo OTP</string>
+    <string name="android__app_name">2FAS Auth</string>
+    <string name="commons__yes">Ja</string>
+    <string name="commons__no">Nej</string>
+    <string name="commons__search">Sök</string>
+    <string name="errors__no_app">Det finns ingen app som stöder den här länken</string>
+    <string name="permissions__camera_permission">Åtkomst till kamera</string>
+    <string name="permissions__camera_permission_description">Åtkomst till kameran behövs för att skanna QR-koder. Om du vill använda den här funktionen går du till \"Appinfo\", sedan \"Behörigheter\" och aktiverar kameran.</string>
+    <string name="security__disable_pin">Inaktivera PIN-kod</string>
+    <string name="security__enter_your_new_pin">Välj en %s PIN-kod</string>
+    <string name="security__pin_error_incorrect">Felaktig PIN-kod! Vänligen försök igen.</string>
+    <string name="settings__biometrics">Biometri</string>
+    <string name="settings__support">2FAS support</string>
+    <string name="settings__developer">Utvecklaralternativ</string>
+    <string name="settings__option_fingerprint">Biometrisk låsning</string>
+    <string name="settings__option_theme">Tema</string>
+    <string name="settings__theme_option_auto">Automatiskt</string>
+    <string name="settings__theme_option_auto_system">Automatiskt – följ systemet</string>
+    <string name="settings__theme_option_dark">Mörkt</string>
+    <string name="settings__theme_option_light">Ljust</string>
+    <string name="tokens__copied_clipboard">Kod kopierad!</string>
+    <string name="tokens__next_copied_clipboard">Nästa kod kopierad!</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Vill du radera det här kontot permanent?</string>
+    <string name="tokens__fab_addmanually">Lägg till manuellt</string>
+    <string name="tokens__qr_does_not_work">Den här QR-koden fungerade inte</string>
+    <!-- Could not read QR code from the image! -->
+    <string name="tokens__qr_read_image_failed">Kunde inte läsa QR-koden i bilden!</string>
+    <string name="tokens__qr_read_image_try_again">Prova att välja en annan bild.</string>
+    <string name="tokens__remove_it_forever">Radera kontot för alltid</string>
+    <!-- Service could not be added, Service Key is invalid. Try again. -->
+    <string name="tokens__service_add_error">Kunde inte lägga till kontot eftersom den hemliga nyckeln är ogiltig. Försök igen.</string>
+    <!-- A service with this Service Key already exists. Do you want to override it? -->
+    <string name="tokens__service_already_exists">Det finns redan ett konto med den här hemliga nyckeln. Vill du ersätta det?</string>
+    <string name="tokens__service_key_invalid_characters">Nyckeln innehåller otillåtna tecken</string>
+    <string name="tokens__show_service_key">Visa hemlig nyckel</string>
+    <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
+    <string name="tokens__show_service_key_setup_lock">Den hemliga nyckeln är skyddad. Aktivera låsning med PIN-kod eller fingeravtryck för att se den.</string>
+    <string name="tokens__tokens_list_is_empty">Det finns inga konton i listan</string>
+    <string name="tokens__use_plus_button_to_add_tokens">Tryck på \"+\"-knappen för att lägga till ett konto</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Du kommer inte att kunna logga in på ditt %1$s-konto utan koden så länge tvåfaktorsautentisering är aktiverat på %2$s.\n\nDu kommer inte att kunna återställa kontot från papperskorgen.</string>
+    <string name="import_ga_success">Kontona har importerats!</string>
+    <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
+    <string name="backup_error_network">Du behöver vara ansluten till internet för att synkronisera säkerhetskopian. Kontrollera din nätverksanslutning och försök igen.</string>
+    <string name="update_app_title">Uppdatera appen</string>
+    <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
+    <string name="update_app_msg">Uppdatera 2FAS till den senaste versionen för att få alla funktioner och en hög säkerhetsnivå.</string>
+    <string name="delete_service_title">Du är på väg att radera</string>
+    <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
+    <string name="delete_service_msg">från 2FAS-appen.\n\nObservera: Så länge tvåfaktorsautentisering är aktiverat på kontot så kan du inte logga in utan koden.</string>
+    <string name="delete_service_cta">Radera</string>
+    <string name="export_backup_cta">Exportera</string>
+    <string name="export_backup_share_cta">Dela</string>
+    <string name="import_backup_title">Importera säkerhetskopia från filen</string>
+    <string name="import_backup_msg1">Du är på väg att importera en säkerhetskopia med</string>
+    <string name="import_backup_cta">Importera</string>
+    <string name="widgets_warning_msg">Koder som syns i widgeten är inte skyddade av din PIN-kod.\n\nÄr du säker på att du vill visa dina koder i widgeten?</string>
+    <string name="widgets_warning_title">VARNING!</string>
+    <string name="widgets_warning_cta">Ja, jag är säker</string>
+    <string name="backup_notice_title">2FAS-säkerhetskopiering</string>
+    <string name="backup_notice_msg">Aktivera 2FAS-säkerhetskopiering. Om du tappar bort eller återställer din enhet så låter detta dig få tillbaka dina koder.</string>
+    <string name="brand_empty_msg">Inga matchande ikoner hittades</string>
+    <!-- Select which services will be visible on widget: -->
+    <string name="widgets_select_msg">Välj vilka konton du vill se i widgeten:</string>
+    <string name="backup_turn_off_cta">Stäng av synkronisering</string>
+    <string name="backup_turn_off_cancel">Behåll synkronisering</string>
+    <string name="backup_settings_password_set_title">Välj lösenord</string>
+    <string name="backup_settings_delete_title">Radera säkerhetskopia från Google Drive</string>
+    <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
+    <string name="backup_settings_delete_subtitle">Om du raderar säkerhetskopian från Google Drive kommer synkroniseringen stängas av på alla kopplade enheter. Dina koder kommer endast att finnas kvar på enheterna.</string>
+    <string name="browser__result_error_browser_paired">Din 2FAS-app är redan parkopplad med den här webbläsaren.</string>
+    <!-- Scan QR code again -->
+    <string name="browser__result_error_cta">Skanna QR-koden igen</string>
+    <string name="browser__scan_error_dialog_title">Fel</string>
+    <!-- Scanned QR code has unsupported format. Please try again. -->
+    <string name="browser__scan_error_dialog_msg_invalid_code">QR-koden du skannade är ogiltig. Vänligen försök igen.</string>
+    <string name="browser__scan_error_dialog_msg_unknown">Ett okänt fel inträffade när QR-koden skannades. Vänligen försök igen.</string>
+    <string name="biometric_dialog_auth_cancel">Använd PIN-kod</string>
+    <string name="biometric_dialog_setup_title">Aktivera biometri</string>
+    <string name="biometric_dialog_setup_cancel">Avbryt</string>
+    <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
+    <string name="settings__option_fingerprint_description">För att aktive biometri behöver du först aktivera PIN-kod.</string>
+    <string name="settings__block_for_footer">Välj hur länge appen ska vara nedlåst.</string>
+    <string name="error__out_of_disk_space">Antingen har du slut på lagringsutrymme eller så har filen skadats</string>
+    <string name="error__cloud_backup_newer_version">Säkerhetskopian i molnet har uppdaterats till en ny version. Uppdatera appen för att använda den.</string>
+    <string name="error__cloud_backup_encrypted_not_supported">Säkerhetskopian i molnet är krypterad. Uppdatera appen för att använda den.</string>
+    <string name="extension__continue_to_app">Fortsätt till appen</string>
+    <string name="extension__cancel">Avbryt</string>
+    <string name="extension__authorize">Godkänn</string>
+    <string name="extension__dismiss">Stäng</string>
+    <string name="extension__request_sent">Förfrågan skickad</string>
+    <string name="extension__send_question_title">Skicka kod?</string>
+    <string name="extension__send_question_content">%1$s har begärt en kod för %2$s</string>
+    <string name="extension__error_while_sending">Ett fel uppstod när koden skickades</string>
+    <string name="extension__not_paired_title">Den här webbsidan är inte kopplad</string>
+    <string name="extension__not_paired_content">Öppna appen och välj ett konto för den här domänen</string>
+    <string name="extension__error_open_the_app">Öppna appen och kontrollera att webbläsaren är parkopplad</string>
+    <string name="extension__error_no_internet">Det är problem med anslutningen</string>
+    <string name="extension__try_again">Vänligen försök igen</string>
+    <string name="extension__error">Fel</string>
+    <string name="extension__error_no_services">För att använda webbläsartillägget, lägg till konton i 2FAS-appen</string>
+    <string name="extension__approve">Godkänn</string>
+    <string name="extension__deny">Neka</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">Aktivera PIN-kod och Face ID för att skydda koderna på den här enheten.</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Aktivera PIN-kod och Touch ID för att skydda koderna på den här enheten.</string>
+    <string name="settings__send_logs_error_not_exists">Den angivna koden är ogiltig. Vänligen kontrollera att du angivit den korrekt.</string>
+    <string name="settings__send_logs_error_expired">Den angivna koden har löpt ut. Vänligen kontakta supportteamet för att få en ny.</string>
+    <string name="settings__send_logs_error_no_internet">Det finns ingen internetuppkoppling. Vänligen kontrollera anslutningen och försök igen.</string>
+    <string name="settings__send_logs_error_server">Vår server verkar ha drabbats av ett problem. Om det kvarstår, vänligen kontakta vårt supportteam.</string>
+    <string name="settings__send_logs_error_title">Ett fel uppstod</string>
+    <string name="settings__send_logs_sent_title">Loggfiler skickade</string>
+    <string name="settings__send_logs_sent_description">Tack för att du hör av dig. Vi kommer att gå igenom dem så snart vi kan.</string>
+    <string name="commons__send">Skicka</string>
+    <string name="settings__send_logs_title">Skickar loggfiler</string>
+    <string name="settings__send_logs_description_link">Koden från support fylldes i automatiskt. Vill du skicka loggfiler?</string>
+    <string name="settings__send_logs_description_edit">Ange koden som du fått av vårt supportteam</string>
+    <string name="settings__send_logs">Skicka loggfiler</string>
+    <string name="settings__recommendation">Prova den här riktigt bra authenticator-appen från 2FAS: https://2fas.com</string>
+    <string name="settings__acknowledgements">Erkännanden</string>
+    <string name="introduction__import_external_app">Importera från en annan app</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="one">nyss</item>
+        <item quantity="other">nyss</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="one">%d minut sedan</item>
+        <item quantity="other">%d minuter sedan</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="one">%d timme sedan</item>
+        <item quantity="other">%d timmar sedan</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="one">%d dag sedan</item>
+        <item quantity="other">%d dagar sedan</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="one">%d vecka sedan</item>
+        <item quantity="other">%d veckor sedan</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="one">%d månad sedan</item>
+        <item quantity="other">%d månader sedan</item>
+    </plurals>
+    <string name="commons__unknown_error">Ett okänt fel inträffade. Försök igen.</string>
+    <string name="backup__export_result_success">Filen har sparats!</string>
+    <string name="backup__share_result_failure">Kunde inte dela filen!</string>
+    <string name="backup__enter_password_dialog_title">Ange lösenord</string>
+    <string name="backup__remove_password_msg">Ange lösenordet till säkerhetskopian för att radera.</string>
+    <string name="backup__revoke_google_access_msg">Ange lösenordet till säkerhetskopian för att koppla från Google-kontot.</string>
+    <string name="backup__synchronization_settings">Inställningar för säkerhetskopiering</string>
+    <string name="backup__local_file_title">Fil på enheten</string>
+    <string name="backup__drive_title">Synka med Google Drive</string>
+    <string name="backup__delete_file_title">Radera säkerhetskopia från Google Drive?</string>
+    <string name="backup__delete_file_msg">Synkronisering med Google Drive stängs av. Dina koder kommer finnas kvar på den här enheten, men 2FAS-appen kommer loggas ut från ditt Google-konto på alla synkroniserade enheter.</string>
+    <string name="backup__sync_status_waiting">Väntar på synkronisering...</string>
+    <string name="backup__sync_status_progress">Synkroniserar...</string>
+    <string name="import_backup_msg1_encrypted">Du är på väg att importera en krypterad säkerhetskopia.</string>
+    <string name="externalimport__choose_json_cta">Välj JSON-fil</string>
+    <string name="externalimport__aegis_msg">Exportera dina konton från Aegis till en okrypterad JSON-fil och tryck sedan på ”Välj JSON-fil”. Kom ihåg att radera filen efter att importen är klar.</string>
+    <string name="externalimport__raivo_msg">Använd alternativet ”Exportera OTP:er till ZIP-arkiv” i Raivos inställningar. Spara en ZIP-fil, extrahera den och importera JSON-filen genom att trycka på ”Välj JSON-fil”.</string>
+    <string name="externalimport__no_tokens_msg">Det fanns inga konton att importera.</string>
+    <string name="commons__try_again">Försök igen</string>
+    <string name="commons__proceed">Fortsätt</string>
+    <string name="externalimport__ga_title">Importera konton från Google Authenticator</string>
+    <string name="externalimport__aegis_title">Importera konton från Aegis</string>
+    <string name="externalimport__raivo_title">Importera konton från Raivo OTP</string>
+    <string name="externalimport__ga_success_msg">Den här QR-koden låter dig importera konton från Google Authenticator.</string>
+    <string name="externalimport__aegis_success_msg">Den här JSON-filen låter dig importera konton från Aegis.</string>
+    <string name="externalimport__raivo_success_msg">Den här JSON-filen låter dig importera konton från Raivo OTP.</string>
+    <string name="externalimport__read_error">Hittade inga konton. Prova att välja en annan fil.</string>
+    <string name="settings__gd_sync_info">Påminnelse om Google Drive-synkronisering</string>
+    <string name="settings__gd_sync_disable_confirm">Är du säker? Utan Google Drive-säkerhetskopiering kommer du kanske inte kunna få tillbaka dina koder om du förlorar eller återställer din mobil!</string>
+    <string name="extension__code_sent_msg">Kod skickad</string>
+    <string name="extension__code_sent_error_msg">Ett fel inträffade när koden skickades</string>
+    <string name="tokens__add_service_title">Lägg till konto</string>
+    <string name="tokens__customize_service_title">Anpassa konto</string>
+    <string name="extension__services_suggested_header">Förslag</string>
+    <string name="extension__services_all_header">Alla konton</string>
+    <string name="extension__services_other_header">Andra konton</string>
+    <string name="settings__ssl_error_title">SSL-fel</string>
+    <string name="settings__ssl_error_description">Ett SSL-fel har uppstått och en säker anslutning till servern kan inte upprättas. Se till att du har den senaste versionen av appen eller prova att byta nätverk.</string>
+    <string name="backup__import_error_file_size">Filen som du försöker importera är för stor. Den får vara högst 10 MB.</string>
+    <string name="backup__import_error_file_invalid">Filen som du försöker importera är ogiltig eller skadad. Vänligen välj en annan fil.</string>
+    <string name="appearance__toggle_active_search">Sök vid start</string>
+    <string name="appearance__active_search_description">Aktivera sökfältet när appen startar</string>
+    <string name="widgets__expires_in">Går ut om:</string>
+    <string name="widgets__settings">Widget-inställningar</string>
+    <string name="errors__input_integer_number">Måste vara ett heltal</string>
+    <string name="errors__input_number">Måste vara ett tal</string>
+    <string name="errors__input_empty">Fältet får inte vara tomt</string>
+    <string name="errors__input_too_long">För långt (får vara högst %d tecken)</string>
+    <string name="commons__best_match">Bästa matchning</string>
+    <string name="settings__enable_crashlytics">Skicka anonyma kraschrapporter</string>
+    <string name="settings__enable_crashlytics_description">Skicka anonyma kraschrapporter för att hjälpa 2FAS att hitta och lösa problem i appen (omstart av appen krävs).</string>
+    <string name="tokens__manage_list">Hantera lista</string>
+    <string name="settings__appearance">Utseende</string>
+    <string name="settings__show_next_token_desc">Visa nästa kod när den nuvarande håller på att gå ut.</string>
+    <string name="settings__list_style">Stil på lista</string>
+    <string name="backup__reminder_msg">Google Drive är inte synkroniserad.</string>
+    <string name="backup__reminder_cta">Gå till inställningar</string>
+    <string name="settings__list_style_option_default">Standard</string>
+    <string name="settings__list_style_option_compact">Kompakt</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Exportera dina konton från LastPass till en okrypterad JSON-fil och tryck sedan på ”Välj JSON-fil”. Kom ihåg att radera filen efter att importen är klar.</string>
+    <string name="settings__about_crash_optout_title">Kraschrapporter</string>
+    <string name="externalimport__lastpass_title">Importerar konton från LastPass</string>
+    <string name="externalimport__lastpass_success_msg">Den här JSON-filen låter dig importera konton från LastPass.</string>
+    <string name="externalimport__info_lastpass_title">Importera konton från LastPass</string>
+    <string name="externalimport__info_aegis_title">Importera konton från Aegis</string>
+    <string name="externalimport__info_raivo_title">Importera konton från Raivo OTP</string>
+    <string name="externalimport__info_google_authenticator_title">Importera konton från Google Authenticator</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">s</string>
+    <string name="tokens__add_title">Koppla ett konto till 2FAS</string>
+    <string name="tokens__add_description">Rikta kameran mot skärmen och skanna QR-koden.</string>
+    <string name="tokens__add_other_methods">Andra metoder</string>
+    <string name="tokens__add_enter_manual">Ange din hemliga nyckel manuellt</string>
+    <string name="tokens__add_from_gallery">Välj skärmdump av QR-kod</string>
+    <string name="tokens__add_success_title">Nästan klar!</string>
+    <string name="tokens__add_success_description">För att slutföra kopplingen, ange den här koden.</string>
+    <string name="tokens__add_manual_title">Koppla ett konto till 2FAS</string>
+    <string name="tokens__add_manual_description">Ange kontots namn och hemlig nyckel.</string>
+    <string name="tokens__add_manual_service_name">Namn</string>
+    <string name="tokens__add_manual_service_key">Hemlig nyckel</string>
+    <string name="tokens__add_manual_other">Fler inställningar</string>
+    <string name="tokens__add_manual_other_optional">(valfritt)</string>
+    <string name="tokens__add_manual_done_cta">Lägg till konto</string>
+    <string name="tokens__add_manual_help_cta">Vet du inte hur du ska göra? Tryck för att få hjälp.</string>
+    <string name="tokens__add_manual_advanced">Avancerade kontoinställningar</string>
+    <string name="tokens__add_manual_additional_info">Ytterligare info</string>
+    <string name="tokens__add_manual_advanced_description">Det rekommenderas inte att ändra standardinställningarna. Gör det bara om ditt konto kräver det och du har fått tydliga instruktioner.</string>
+    <string name="settings__option_screenshots_description">Tillåt skärmdumpar av appen i 5 minuter.</string>
+    <string name="settings__option_screenshots">Tillåt skärmdumpar</string>
+    <string name="settings__option_screenshots_confirm_title">Tillåt skärmdumpar av appen?</string>
+    <string name="settings__option_screenshots_confirm_description">Är du säker? Detta gör det möjligt att ta skärmdumpar eller spela in allt i appen. Det gör det också möjligt för andra appar att försöka se innehållet.\nAv säkerhetsskäl stängs den här inställningen av automatiskt efter 5 minuter.</string>
+    <string name="social__social_media">Länkar till sociala medier</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">X (tidigare Twitter)</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Dölj koder</string>
+    <string name="settings__hide_tokens_description">Koderna visas när du trycker på dem.</string>
+    <string name="browser__pair_manually_cta">Parkoppla manuellt</string>
+    <string name="browser__pair_manually_hint">Parkopplingskod</string>
+    <string name="externalimport__info_authenticatorpro_title">Importera konton från Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">Den här textfilen låter dig importera konton från Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Importerar konton från Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_msg">Exportera dina konton från Authenticator Pro till en okrypterad textfil och tryck sedan på ”Välj textfil”. Kom ihåg att radera filen efter att importen är klar.</string>
+    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__choose_txt_cta">Välj textfil</string>
+    <string name="fingerprint__biometric_invalidated">Biometri har stängts av eftersom fingeravtryck har ändrats i systeminställningarna</string>
+    <string name="tokens__last_pass_import">Importerar konton från LastPass</string>
+    <string name="tokens__last_pass_import_subtitle">Den här QR-koden låter dig importera konton från LastPass.</string>
+    <string name="tokens__add_with_guide">Vägled mig</string>
+    <string name="guides__select_title">Bläddra bland tjänster</string>
+    <string name="guides__select_description">Välj ett konto att lägga till i 2FAS-appen</string>
+    <string name="guides__select_provide_guide">Vill du tillhandahålla 2FA-guider för din tjänst?</string>
+    <string name="guides__select_provide_guide_cta">Ansök nu</string>
+    <string name="color__pink">Rosa</string>
+    <string name="color__brown">Brun</string>
+    <string name="tokens__other_methods_header">Andra metoder?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Kameran är otillgänglig. Kontrollera appens behörigheter i systeminställningarna.</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">systeminställningarna.</string>
+    <string name="commons__text_short_title">Texten är för kort (minst %d tecken)</string>
+    <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
+    <string name="tokens__add_manual_advanced_description_highlight">rekommenderas inte</string>
+    <string name="guides__guide_init_title">2FAS-guide</string>
+    <string name="guides__guide_title">2FAS för %s</string>
+    <string name="guides__guide_universal_title">Universell 2FA-guide</string>
+    <string name="browser__save_choice">Spara mitt val</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">Importerar konton från andOTP</string>
+    <string name="externalimport__andotp_success_msg">Den här JSON-filen låter dig importera konton från andOTP.</string>
+    <string name="externalimport__info_andotp_title">Importera konton från andOTP</string>
+    <string name="externalimport__andotp_msg">Exportera dina konton från andOTP till en okrypterad JSON-fil och ladda upp den med \" Välj JSON-fil\". Kom ihåg att radera filen efter att importen är klar.</string>
+    <string name="introduction__backup_description">I nästa steg, du kommer att bli frågad att välja vilket Google Drive konto, vart dina 2FA konton kommer att bli lagrade säkert</string>
+    <string name="introduction__backup_take_risk_cta">Jag tar risken utan säkerhetskopiering</string>
+    <string name="introduction__backup_success">Google Drive-synkronisering påslagen!</string>
+    <string name="backup__import_invalid_version">Säkerhetskopian som du försöker importera stöds inte i den här versionen av appen. Appen stöder versioner upp till %d, medan filen har version %d.</string>
+    <string name="commons__pair">Parkoppla</string>
+    <string name="introduction__backup_icloud_title">Säker synkronisering och säkerhetskopiering</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">2FAS använder iCloud för säker säkerhetskopiering och synkronisering av dina koder. De **krypterade** säkerhetskopiorna lagras i iCloud och **kan bara läsas av 2FAS-appen**. Dessutom hjälper den här funktionen dig att **återställa och synkronisera** koder mellan iOS-enheter.\n\nDen är aktiverad som standard och kan stängas av när som helst i appens inställningar.</string>
+    <string name="introduction__backup_icloud_cta">Läs mer om säkerhetskopiering</string>
+    <string name="backup__enter_password_google_drive_msg1">Säkerhetskopian på Google Drive är lösenordsskyddad. Ange lösenordet för att fortsätta. Om du vill radera säkerhetskopian från Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">tryck här för att läsa mer</string>
+    <string name="settings__preferences">Inställningar</string>
+    <string name="settings__it_matters">Det spelar roll</string>
+    <string name="settings__manage_tokens">Hantera konton</string>
+    <string name="settings__info_footer">Ditt stöd låter oss utveckla nya funktioner och förbättringar. Tack!</string>
+    <string name="settings__trash_option">Återställ från papperskorgen</string>
+    <string name="periodic_notification_tips">Kul att du är ombord med oss på 2FAS! 🌟 Ta en stund att upptäcka de användbara tipsen 🛠️ i appen för att stärka din säkerhet 🔒.</string>
+    <string name="periodic_notification_backup">Aktivera 2FAS-säkerhetskopiering så att du inte blir utelåst även om du tappar bort din mobil – få sinnesro med ett tryck! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Snabba upp dina inloggningar med 2FAS webbläsartillägg! 🚀 Ladda ner den nu för snabbare och bekvämare autentisering. 🌐✨</string>
+    <string name="periodic_notification_donate">Vi uppskattar ditt intresse och stöd för 2FAS! 🌟 Om du har nytta av vår app, överväg gärna att donera för att hjälpa oss att hålla din digitala värld säker. Varje krona hjälper! 🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Exempel</string>
+    <string name="widget__size_not_supported">Widgeten fungerar inte i den här storleken</string>
+    <string name="widget__settings_description">Välj vilka konton du vill se i widgeten. Om inga konton syns, se till att Widget-funktionen är påslagen i 2FAS inställningar.</string>
+    <string name="widget__service_icon">Ikon för konto</string>
+    <string name="widget__not_enabled">Widget-funktionen är avstängd i 2FAS inställningar</string>
+    <string name="widget__not_enabled_no_services">Widget-funktionen är avstängd i 2FAS inställningar och det finns inga konton i appen</string>
+    <string name="widget__no_services">Det finns inga konton i appen</string>
+    <string name="widget__select_service_intent_description">Välj vilka konton du vill se i 2FAS-widgeten</string>
+    <string name="widget__my_secured_account">Mitt säkrade konto</string>
+    <string name="widget__token">Token</string>
+    <string name="watch__intro">2FAS app för watchOS är ett komplement till iOS-appen. Den visar alla konton som har säkerhetskopierats på iCloud.\n\nFör snabb åtkomst kan du markera konton som favoriter.\n\nDonera gärna för att hjälpa oss att utveckla 2FAS-plattformen!</string>
+    <string name="tokens__hotp_not_supported">HOTP-tjänster stöds inte än</string>
+    <string name="tokens__favorite_services">Favoritkonton</string>
+    <string name="security__enter_new_pin_short">Ange ny PIN-kod</string>
+    <string name="security__repeat_new_pin_short">Upprepa ny PIN-kod</string>
+    <string name="commons__success">Lyckades</string>
+    <string name="security__enter_pin_short">Ange PIN-kod</string>
+    <string name="settings__sort_tokens">Sortera Token</string>
+    <string name="appleWatch__installation_info_title">Installation av 2FAS på klockan</string>
+    <string name="appleWatch__installation_first_step">Installera 2FAS på klockan</string>
+    <string name="appleWatch__installation_first_step_link">Öppna appen på klockan</string>
+    <string name="appleWatch__installation_second_step">Se till att iCloud-synkronisering är aktiverad</string>
+    <string name="appleWatch__installation_second_step_link">Gå till 2FAS backup inställningar</string>
+    <string name="settings__apple_watch">Apple Watch</string>
+    <string name="widget__no_selected_services">Markera och välj tjänst för att aktivera widgeten…</string>
+    <string name="widget__reveal_tokens_long_message">Visa din 2FAS kod</string>
+    <string name="widget__reveal_tokens_short_message">Visa i 60 sekunder.</string>
+    <string name="settings__show_error_details">Show error details</string>
+    <string name="tokens__show_qr_code">Service QR Code</string>
+    <string name="tokens__show_service_qr_setup_lock">Your service is protected. Please add a PIN or Fingerprint lock to see QR code.</string>
+    <string name="tokens__copy_uri">Copy URI</string>
+</resources>
