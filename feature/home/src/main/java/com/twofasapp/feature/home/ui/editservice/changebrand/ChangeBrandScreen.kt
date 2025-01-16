@@ -103,7 +103,7 @@ internal fun ChangeBrandScreen(
             state = listState, modifier = Modifier
                 .fillMaxWidth()
                 .imePadding()
-                .padding(top = padding.calculateTopPadding())
+                .padding(padding)
         ) {
             // Icon order
             item(key = "icon_order") { SectionHeader(header = stringResource(id = R.string.tokens__order_icon_title)) }
@@ -125,6 +125,7 @@ internal fun ChangeBrandScreen(
                         Text(
                             text = stringResource(id = R.string.tokens__order_icon_description),
                             style = MaterialTheme.typography.bodyLarge,
+                            color = TwTheme.color.onSurfacePrimary,
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         Row(modifier = Modifier.clickable {
@@ -254,6 +255,7 @@ fun SectionHeader(header: String) {
     Text(
         text = header,
         style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+        color = TwTheme.color.onSurfacePrimary,
         modifier = Modifier
             .fillMaxWidth()
             .background(color = TwTheme.color.divider)

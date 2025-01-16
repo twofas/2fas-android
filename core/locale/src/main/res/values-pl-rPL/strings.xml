@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Tue, 14 Jan 2025 04:37:31 -0800
+ Exported at: Thu, 16 Jan 2025 04:52:12 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -860,5 +860,8 @@
     <string name="widget__no_selected_services">Przytrzymaj i wybierz serwis, aby aktywować widget...</string>
     <string name="widget__reveal_tokens_long_message">Odsłoń swoje tokeny 2FAS na 60 sekund</string>
     <string name="widget__reveal_tokens_short_message">Odsłoń na 60 sekund</string>
-    <string name="settings__show_error_details">Show error details</string>
+    <string name="settings__show_error_details">Pokaż szczegóły błędu</string>
+    <string name="tokens__show_qr_code">Kod QR serwisu</string>
+    <string name="tokens__show_service_qr_setup_lock">Twój serwis jest chroniony. Dodaj kod PIN lub odcisk palca, aby zobaczyć kod QR.</string>
+    <string name="tokens__copy_uri">Copy URI</string>
 </resources>

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Tue, 14 Jan 2025 04:37:31 -0800
+ Exported at: Thu, 16 Jan 2025 04:52:12 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -848,5 +848,8 @@
     <string name="widget__no_selected_services">ウィジェットを有効化するには、サービスを長押しして選択してください...</string>
     <string name="widget__reveal_tokens_long_message">2FASのトークンを60秒間表示</string>
     <string name="widget__reveal_tokens_short_message">60秒間表示</string>
-    <string name="settings__show_error_details">Show error details</string>
+    <string name="settings__show_error_details">エラーの詳細を表示</string>
+    <string name="tokens__show_qr_code">QRコードの表示</string>
+    <string name="tokens__show_service_qr_setup_lock">サービスは保護されています。QRコードを表示するにはPINまたは指紋認証のロックを設定してください。</string>
+    <string name="tokens__copy_uri">Copy URI</string>
 </resources>

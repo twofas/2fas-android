@@ -78,6 +78,7 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_social_title),
                 style = MaterialTheme.typography.titleMedium,
+                color = TwTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -108,6 +109,7 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_social_description),
                 style = MaterialTheme.typography.bodyMedium,
+                color = TwTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -146,6 +148,7 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_title),
                 style = MaterialTheme.typography.titleMedium,
+                color = TwTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -155,6 +158,7 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_description),
                 style = MaterialTheme.typography.bodyMedium,
+                color = TwTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -174,6 +178,7 @@ internal fun RequestIconScreen() {
                     Text(
                         text = shareText,
                         style = MaterialTheme.typography.bodySmall,
+                        color = TwTheme.color.onSurfacePrimary,
                         modifier = Modifier
                             .weight(1f)
                             .padding(12.dp)

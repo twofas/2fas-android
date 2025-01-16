@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Tue, 14 Jan 2025 04:37:30 -0800
+ Exported at: Thu, 16 Jan 2025 04:52:12 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -854,5 +854,8 @@
     <string name="widget__no_selected_services">Maintenir et sélectionner le service pour activer le widget...</string>
     <string name="widget__reveal_tokens_long_message">Révéler les jetons 2FAS pendant 60 secondes</string>
     <string name="widget__reveal_tokens_short_message">Révéler pendant 60 secondes</string>
-    <string name="settings__show_error_details">Show error details</string>
+    <string name="settings__show_error_details">Afficher les détails de l\'erreur</string>
+    <string name="tokens__show_qr_code">QR Code du service</string>
+    <string name="tokens__show_service_qr_setup_lock">Le service est protégé. Merci de configurer la protection par PIN ou empreinte pour afficher le QR code.</string>
+    <string name="tokens__copy_uri">Copy URI</string>
 </resources>

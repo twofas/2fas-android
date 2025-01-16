@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.designsystem.TwTheme
 
 @Composable
 fun ListDialog(
@@ -38,6 +39,7 @@ fun ListDialog(
                     Text(
                         text = text,
                         style = MaterialTheme.typography.bodyLarge,
+                        color = TwTheme.color.onSurfacePrimary,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = DialogPadding)

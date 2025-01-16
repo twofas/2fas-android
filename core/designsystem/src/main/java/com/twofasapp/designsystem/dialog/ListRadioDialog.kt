@@ -66,6 +66,7 @@ fun ListRadioDialog(
                     )
                     Text(
                         text = text,
+                        color = TwTheme.color.onSurfacePrimary,
                         style = MaterialTheme.typography.bodyLarge,
                         modifier = Modifier.padding(start = 16.dp)
                     )

@@ -63,6 +63,11 @@ internal fun EditServiceScreenRoute(
                                 serviceViewModel.secretAuthenticated()
                             }
                         },
+                        onAuthenticateQrCodeClick = {
+                            openAuth {
+                                serviceViewModel.qrAuthenticated()
+                            }
+                        },
                         viewModel = serviceViewModel,
                     )
                 }

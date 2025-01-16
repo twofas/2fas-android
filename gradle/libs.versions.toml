@@ -98,6 +98,7 @@ sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.4"
 timber = "com.jakewharton.timber:timber:5.0.1"
 webkit = "androidx.webkit:webkit:1.11.0"
 workManager = "androidx.work:work-runtime-ktx:2.9.1"
+zxing = "com.google.zxing:core:3.5.3"
 
 [bundles]
 accompanist = [

@@ -10,6 +10,7 @@ internal data class EditServiceUiState(
     val hasLock: Boolean = false,
     val isAuthenticated: Boolean = false,
     val isSecretVisible: Boolean = false,
+    val isQrVisible: Boolean = false,
     val hasChanges: Boolean = false,
     val groups: List<Group> = emptyList(),
     val isInputNameValid: Boolean = true,
@@ -17,5 +18,5 @@ internal data class EditServiceUiState(
 )
 
 internal sealed interface EditServiceUiEvent {
-    object Finish : EditServiceUiEvent
+    data object Finish : EditServiceUiEvent
 }
