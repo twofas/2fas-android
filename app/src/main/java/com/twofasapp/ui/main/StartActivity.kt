@@ -1,13 +1,20 @@
 package com.twofasapp.ui.main
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.twofasapp.android.navigation.DeeplinkHandler
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
+import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.designsystem.AppThemeState
 import com.twofasapp.workmanager.OnAppStartWork
@@ -26,7 +33,32 @@ class StartActivity : AppCompatActivity(), AuthAware {
     private val syncTimeWorkDispatcher: SyncTimeWorkDispatcher by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AppThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
+        val selectedTheme = settingsRepository.getAppSettings().selectedTheme
+        AppThemeState.applyTheme(selectedTheme)
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(
+                lightScrim = Color.Transparent.toArgb(),
+                darkScrim = Color.Transparent.toArgb(),
+                detectDarkMode = {
+                    when (selectedTheme) {
+                        SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+                        SelectedTheme.Light -> false
+                        SelectedTheme.Dark -> true
+                    }
+                }
+            ),
+            navigationBarStyle = SystemBarStyle.auto(
+                lightScrim = Color.Transparent.toArgb(),
+                darkScrim = Color.Transparent.toArgb(),
+                detectDarkMode = {
+                    when (selectedTheme) {
+                        SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+                        SelectedTheme.Light -> false
+                        SelectedTheme.Dark -> true
+                    }
+                }
+            ),
+        )
         super.onCreate(savedInstanceState)
 
         installSplashScreen()

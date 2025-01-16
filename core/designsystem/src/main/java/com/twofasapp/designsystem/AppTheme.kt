@@ -1,6 +1,5 @@
 package com.twofasapp.designsystem
 
-import android.app.Activity
 import android.content.pm.ActivityInfo
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
@@ -10,14 +9,8 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.WindowCompat
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.twofasapp.designsystem.internal.LocalThemeColors
 import com.twofasapp.designsystem.internal.ThemeColors
 import com.twofasapp.designsystem.internal.ThemeColorsDark
@@ -35,20 +28,6 @@ fun MainAppTheme(
     content: @Composable () -> Unit
 ) {
     LockScreenOrientation(orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-
-    val view = LocalView.current
-    val systemUiController = rememberSystemUiController()
-
-    if (view.isInEditMode.not()) {
-        SideEffect {
-            with((view.context as Activity).window) {
-                statusBarColor = Color.Transparent.toArgb()
-                navigationBarColor = Color.Transparent.toArgb()
-
-                WindowCompat.setDecorFitsSystemWindows(this, false)
-            }
-        }
-    }
 
     val isInDarkTheme = when (LocalAppTheme.current) {
         AppTheme.Auto -> isSystemInDarkTheme()
@@ -83,10 +62,6 @@ fun MainAppTheme(
             surfaceVariant = colors.surface,
             onSurfaceVariant = colors.onSurfacePrimary,
         )
-    }
-
-    SideEffect {
-        systemUiController.setSystemBarsColor(color = colors.background)
     }
 
     CompositionLocalProvider(

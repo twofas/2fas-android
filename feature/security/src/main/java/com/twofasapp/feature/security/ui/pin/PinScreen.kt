@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -64,6 +65,7 @@ internal fun PinScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(TwTheme.color.background)
+                .safeContentPadding()
         ) {
             TwCircularProgressIndicator(Modifier.align(Alignment.Center))
         }
@@ -77,7 +79,8 @@ internal fun PinScreen(
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .background(TwTheme.color.background),
+                .background(TwTheme.color.background)
+                .safeContentPadding(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

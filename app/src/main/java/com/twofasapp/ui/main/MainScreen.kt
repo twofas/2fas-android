@@ -1,16 +1,14 @@
 package com.twofasapp.ui.main
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material.Surface
 import androidx.compose.material.rememberModalBottomSheetState
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -22,7 +20,6 @@ import com.twofasapp.android.navigation.Screen
 import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.designsystem.AppTheme
 import com.twofasapp.designsystem.LocalAppTheme
-import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.designsystem.TwTheme
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
@@ -87,35 +84,32 @@ internal fun MainScreen(
                 SelectedTheme.Dark -> AppTheme.Dark
             },
         ) {
-            MainAppTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = TwTheme.color.background,
-                ) {
-                    val startDestination = when (uiState.startDestination!!) {
-                        MainUiState.StartDestination.Onboarding -> Screen.Startup.route
-                        MainUiState.StartDestination.Home -> Screen.Services.route
-                    }
+            val startDestination = when (uiState.startDestination!!) {
+                MainUiState.StartDestination.Onboarding -> Screen.Startup.route
+                MainUiState.StartDestination.Home -> Screen.Services.route
+            }
 
-                    MainNavHost(
-                        navController = navController,
-                        bottomSheetNavigator = bottomSheetNavigator,
-                        bottomSheetState = sheetState,
-                        startDestination = startDestination,
-                        onServiceAddedSuccessfully = { viewModel.serviceAdded(it) },
-                    )
+            Surface(
+                color = TwTheme.color.background,
+            ) {
+                MainNavHost(
+                    navController = navController,
+                    bottomSheetNavigator = bottomSheetNavigator,
+                    bottomSheetState = sheetState,
+                    startDestination = startDestination,
+                    onServiceAddedSuccessfully = { viewModel.serviceAdded(it) },
+                )
+            }
 
-                    if (uiState.browserExtRequests.isNotEmpty()) {
-                        val browserExtRequest = uiState.browserExtRequests.first()
-                        BrowserExtRequestDialog(
-                            browserExtRequest = browserExtRequest,
-                            onRequestHandled = {
-                                viewModel.browserExtRequestHandled(browserExtRequest)
-                                NotificationManagerCompat.from(context).cancel(null, browserExtRequest.request.requestId.hashCode())
-                            }
-                        )
+            if (uiState.browserExtRequests.isNotEmpty()) {
+                val browserExtRequest = uiState.browserExtRequests.first()
+                BrowserExtRequestDialog(
+                    browserExtRequest = browserExtRequest,
+                    onRequestHandled = {
+                        viewModel.browserExtRequestHandled(browserExtRequest)
+                        NotificationManagerCompat.from(context).cancel(null, browserExtRequest.request.requestId.hashCode())
                     }
-                }
+                )
             }
         }
     }

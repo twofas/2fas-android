@@ -183,13 +183,17 @@ fun TwLargeTopAppBar(
 }
 
 @Composable
-internal fun BackButton(onBackClick: (() -> Unit)? = null) {
+fun BackButton(
+    onBackClick: (() -> Unit)? = null,
+    tint: Color = TwTheme.color.onSurfacePrimary,
+) {
     val onBackDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
 
     IconButton(onClick = { onBackClick?.invoke() ?: onBackDispatcher?.onBackPressed() }) {
         Icon(
             painter = TwIcons.ArrowBack,
-            contentDescription = null
+            contentDescription = null,
+            tint = tint,
         )
     }
 }

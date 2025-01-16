@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,7 +38,6 @@ import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.RequestPermission
-import com.twofasapp.designsystem.common.TwCenterTopAppBar
 import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.InfoDialog
@@ -78,11 +78,22 @@ internal fun AddServiceScanScreen(
             .fillMaxWidth()
             .verticalScroll(rememberScrollState()),
     ) {
-        TwCenterTopAppBar(
-            titleText = TwLocale.strings.addTitle,
-            containerColor = Color.Transparent,
-            showBackButton = false,
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(64.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = TwLocale.strings.addTitle,
+                style = TwTheme.typo.title,
+                color = TwTheme.color.onSurfacePrimary,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                textAlign = TextAlign.Center,
+            )
+        }
 
         Text(
             text = TwLocale.strings.addDescription,

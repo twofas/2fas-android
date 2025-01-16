@@ -29,25 +29,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.designsystem.common.BackButton
 import com.twofasapp.designsystem.common.TwButton
 import com.twofasapp.designsystem.common.TwDivider
 import com.twofasapp.designsystem.common.TwIconButton
 import com.twofasapp.designsystem.common.TwOutlinedTextField
 import com.twofasapp.designsystem.common.TwOutlinedTextFieldPassword
-import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.InputDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
@@ -96,10 +97,24 @@ internal fun AddServiceManualScreen(
             .background(TwTheme.color.surface)
             .verticalScroll(scrollState)
     ) {
-        TwTopAppBar(
-            titleText = TwLocale.strings.addTitle,
-            containerColor = Color.Transparent
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(64.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            BackButton()
+
+            Text(
+                text = TwLocale.strings.addTitle,
+                style = TwTheme.typo.title,
+                color = TwTheme.color.onSurfacePrimary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.padding(end = 16.dp),
+                textAlign = TextAlign.Center,
+            )
+        }
 
         TwOutlinedTextField(
             value = uiState.serviceName.orEmpty(),
