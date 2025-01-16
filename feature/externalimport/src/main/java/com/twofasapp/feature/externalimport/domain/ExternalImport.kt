@@ -12,5 +12,11 @@ sealed class ExternalImport {
         val reason: Exception
     ) : ExternalImport()
 
-    data object UnsupportedError : ExternalImport()
+    data class UnsupportedError(
+        val reason: String
+    ) : ExternalImport()
+
+    data class FileReadError(
+        val reason: String
+    ) : ExternalImport()
 }

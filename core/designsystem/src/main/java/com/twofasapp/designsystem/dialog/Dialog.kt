@@ -2,7 +2,6 @@ package com.twofasapp.designsystem.dialog
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -55,6 +54,7 @@ fun BaseDialog(
     negativeEnabled: Boolean = true,
     shape: Shape = TwTheme.shape.dialog,
     containerColor: Color = TwTheme.color.surface,
+    contentScrollable: Boolean = true,
     properties: DialogProperties = DialogProperties(),
     content: @Composable () -> Unit = {},
 ) {
@@ -87,14 +87,24 @@ fun BaseDialog(
                 }
 
                 if (body != null || bodyAnnotated != null) {
-                    Body(
-                        text = body,
-                        textAnnotated = bodyAnnotated,
-                        onBodyClick = onBodyClick,
-                    )
-                }
+                    if (contentScrollable) {
+                        Column(
+                            modifier = Modifier
+                                .verticalScroll(rememberScrollState())
+                                .weight(weight = 1f, fill = false),
+                        ) {
+                            Body(text = body, textAnnotated = bodyAnnotated, onBodyClick = onBodyClick)
 
-                content()
+                            content()
+                        }
+                    } else {
+                        Body(text = body, textAnnotated = bodyAnnotated, onBodyClick = onBodyClick)
+
+                        content()
+                    }
+                } else {
+                    content()
+                }
 
                 if (showActions) {
                     Actions(
@@ -136,7 +146,7 @@ private fun Title(
 }
 
 @Composable
-private fun ColumnScope.Body(
+private fun Body(
     text: String?,
     textAnnotated: AnnotatedString?,
     onBodyClick: ((Int) -> Unit)? = null,
@@ -149,8 +159,6 @@ private fun ColumnScope.Body(
             modifier = Modifier
                 .padding(horizontal = DialogPadding)
                 .padding(TitlePadding)
-                .verticalScroll(rememberScrollState())
-
         )
     } else if (textAnnotated != null) {
         ClickableText(

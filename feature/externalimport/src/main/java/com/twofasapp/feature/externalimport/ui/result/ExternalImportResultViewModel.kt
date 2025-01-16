@@ -9,6 +9,7 @@ import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.ktx.decodeBase64
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.designsystem.dialog.formatErrorDetails
 import com.twofasapp.feature.externalimport.domain.AegisImporter
 import com.twofasapp.feature.externalimport.domain.AndOtpImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
@@ -57,10 +58,10 @@ internal class ExternalImportResultViewModel(
                         if (readQrResult.isSuccess) {
                             googleAuthenticatorImporter.read(readQrResult.getOrNull().orEmpty())
                         } else {
-                            ExternalImport.UnsupportedError
+                            ExternalImport.FileReadError("Could not read Google Authenticator QR code")
                         }
                     } else {
-                        ExternalImport.UnsupportedError
+                        ExternalImport.FileReadError("Could not read Google Authenticator content")
                     }
                 }
 
@@ -81,8 +82,9 @@ internal class ExternalImportResultViewModel(
                             countTotalServices = result.totalServicesCount
                         )
 
-                        is ExternalImport.ParsingError -> ReadResult.Failure
-                        ExternalImport.UnsupportedError -> ReadResult.Failure
+                        is ExternalImport.ParsingError -> ReadResult.Failure(reason = result.reason.formatErrorDetails())
+                        is ExternalImport.UnsupportedError -> ReadResult.Failure(reason = result.reason)
+                        is ExternalImport.FileReadError -> ReadResult.Failure(reason = result.reason)
                     }
                 )
             }

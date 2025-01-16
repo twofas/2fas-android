@@ -22,6 +22,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwCircularProgressIndicator
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.StackTraceDetails
 import com.twofasapp.designsystem.ktx.toastShort
 import com.twofasapp.designsystem.screen.CommonContent
 import com.twofasapp.feature.externalimport.domain.ImportType
@@ -130,7 +131,7 @@ private fun Result(
             }
         }
 
-        ReadResult.Failure -> strings.externalImportResultErrorMsg
+        is ReadResult.Failure -> strings.externalImportResultErrorMsg
     }
 
     val additionalDescription: @Composable (() -> Unit)? = when (readResult) {
@@ -161,17 +162,25 @@ private fun Result(
             }
         }
 
-        ReadResult.Failure -> null
+        is ReadResult.Failure -> {
+            {
+                StackTraceDetails(
+                    modifier = Modifier.padding(vertical = 16.dp),
+                    title = strings.showErrorDetails,
+                    content = readResult.reason,
+                )
+            }
+        }
     }
 
     val cta = when (readResult) {
         is ReadResult.Success -> strings.commonProceed
-        ReadResult.Failure -> strings.commonTryAgain
+        is ReadResult.Failure -> strings.commonTryAgain
     }
 
     val ctaAction = when (readResult) {
         is ReadResult.Success -> onImport
-        ReadResult.Failure -> onTryAgain
+        is ReadResult.Failure -> onTryAgain
     }
 
     CommonContent(
@@ -202,7 +211,7 @@ private fun PreviewFailure() {
     ScreenContent(
         uiState = ExternalImportResultUiState(
             loading = false,
-            readResult = ReadResult.Failure
+            readResult = ReadResult.Failure("")
         )
     )
 }

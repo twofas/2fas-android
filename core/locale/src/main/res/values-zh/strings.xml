@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hans, Simplified Chinese
  Exported by: rafakob
- Exported at: Mon, 13 Jan 2025 14:09:32 -0800
+ Exported at: Tue, 14 Jan 2025 04:37:31 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -848,4 +848,5 @@
     <string name="widget__no_selected_services">请按住并选择服务以激活小部件...</string>
     <string name="widget__reveal_tokens_long_message">显示您的 2FAS 令牌 60 秒</string>
     <string name="widget__reveal_tokens_short_message">显示 60 秒</string>
+    <string name="settings__show_error_details">Show error details</string>
 </resources>

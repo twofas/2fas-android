@@ -13,6 +13,7 @@ import com.twofasapp.data.services.domain.BackupContent
 import com.twofasapp.data.services.exceptions.DecryptWrongPassword
 import com.twofasapp.data.services.exceptions.FileTooBigException
 import com.twofasapp.data.session.SessionRepository
+import com.twofasapp.designsystem.dialog.formatErrorDetails
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
@@ -66,7 +67,7 @@ internal class BackupImportViewModel(
                 .onFailure { e ->
                     when (e) {
                         is FileTooBigException -> uiState.update { it.copy(screenState = ScreenState.ErrorInvalidFileSize) }
-                        else -> uiState.update { it.copy(screenState = ScreenState.ErrorInvalidFile) }
+                        else -> uiState.update { it.copy(screenState = ScreenState.ErrorInvalidFile(reason = e.formatErrorDetails())) }
                     }
                 }
         }

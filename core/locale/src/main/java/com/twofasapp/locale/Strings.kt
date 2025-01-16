@@ -111,6 +111,7 @@ class Strings(c: Context) {
     val externalImportResultTokensMsg = c.getString(R.string.tokens__google_auth_import_subtitle_end)
     val externalImportResultErrorMsg = c.getString(R.string.externalimport__read_error)
     val externalImportSuccessToast = c.getString(R.string.backup__import_completed_successfuly)
+    val showErrorDetails = c.getString(R.string.settings__show_error_details)
 
     val trashTitle = c.getString(R.string.settings__trash)
     val trashEmpty = c.getString(R.string.settings__trash_is_empty)

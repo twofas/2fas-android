@@ -27,10 +27,10 @@ class GoogleAuthenticatorImporter : ExternalImporter {
             val uri = Uri.parse(content)
 
             if (uri.host.equals(HOST, true).not()) {
-                return ExternalImport.UnsupportedError
+                return ExternalImport.UnsupportedError("Unsupported host: ${uri.host}")
             }
 
-            val dataEncoded = uri.getQueryParameter(DATA) ?: return ExternalImport.UnsupportedError
+            val dataEncoded = uri.getQueryParameter(DATA) ?: return ExternalImport.UnsupportedError("Missing $DATA parameter")
             val data = dataEncoded.decodeBase64ToByteArray()
 
             val proto = MigrationPayload.parseFrom(data)
