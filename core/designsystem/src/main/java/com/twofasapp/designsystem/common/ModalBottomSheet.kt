@@ -1,6 +1,7 @@
 package com.twofasapp.designsystem.common
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,15 +10,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetDefaults
-import androidx.compose.material.ModalBottomSheetLayout
-import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
@@ -45,49 +42,7 @@ fun ModalBottomSheet(
 
     com.google.accompanist.navigation.material.ModalBottomSheetLayout(
         bottomSheetNavigator = bottomSheetNavigator,
-        modifier = Modifier.fillMaxWidth().statusBarsPadding().navigationBarsPadding(),
-        sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
-        sheetElevation = 2.dp,
-        sheetBackgroundColor = TwTheme.color.surface,
-        sheetContentColor = TwTheme.color.onSurfacePrimary,
-        scrimColor = ModalBottomSheetDefaults.scrimColor,
-        content = content,
-    )
-}
-
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun ModalBottomSheet(
-    onDismissRequest: () -> Unit = {},
-    sheetState: ModalBottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden),
-    sheetContent: @Composable () -> Unit,
-    content: @Composable () -> Unit
-) {
-    if (sheetState.currentValue != ModalBottomSheetValue.Hidden) {
-        DisposableEffect(Unit) {
-            onDispose {
-                onDismissRequest()
-            }
-        }
-    }
-    ModalBottomSheetLayout(
-        modifier = Modifier.animateContentSize(),
-        sheetState = sheetState,
-        sheetContent = {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .navigationBarsPadding()
-                    .animateContentSize()
-            ) {
-                SlideHandle(
-                    modifier = Modifier
-                        .padding(top = 12.dp)
-                        .align(CenterHorizontally)
-                )
-                sheetContent()
-            }
-        },
+        modifier = Modifier.fillMaxWidth(),
         sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
         sheetElevation = 2.dp,
         sheetBackgroundColor = TwTheme.color.surface,
@@ -106,6 +61,7 @@ fun Modal(
         Modifier
             .fillMaxWidth()
             .imePadding()
+            .navigationBarsPadding()
             .animateContentSize()
     ) {
         if (showHandle) {

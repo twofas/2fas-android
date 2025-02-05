@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Mon, 07 Oct 2024 09:37:26 -0700
+ Exported at: Thu, 16 Jan 2025 06:07:59 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -851,4 +851,11 @@
     <string name="appleWatch__installation_second_step">Ensure your iCloud Sync is enabled</string>
     <string name="appleWatch__installation_second_step_link">Go to 2FAS Backup settings</string>
     <string name="settings__apple_watch">Apple Watch</string>
+    <string name="widget__no_selected_services">Hold and select service to activate widget...</string>
+    <string name="widget__reveal_tokens_long_message">Reveal your 2FAS tokens for 60 seconds</string>
+    <string name="widget__reveal_tokens_short_message">Reveal for 60 seconds</string>
+    <string name="settings__show_error_details">Show error details</string>
+    <string name="tokens__show_qr_code">Service QR Code</string>
+    <string name="tokens__show_service_qr_setup_lock">Your service is protected. Please add a PIN or Fingerprint lock to see QR code.</string>
+    <string name="tokens__copy_uri">Copy URI</string>
 </resources>

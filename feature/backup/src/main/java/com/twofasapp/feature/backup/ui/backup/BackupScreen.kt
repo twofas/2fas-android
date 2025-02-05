@@ -220,7 +220,6 @@ private fun ScreenContent(
             item {
                 SettingsLink(
                     title = strings.backupExportFile,
-                    subtitle = strings.backupExportFileDescription,
                     icon = TwIcons.Export,
                     enabled = uiState.exportEnabled,
                     onClick = onExportClick,

@@ -111,6 +111,7 @@ class Strings(c: Context) {
     val externalImportResultTokensMsg = c.getString(R.string.tokens__google_auth_import_subtitle_end)
     val externalImportResultErrorMsg = c.getString(R.string.externalimport__read_error)
     val externalImportSuccessToast = c.getString(R.string.backup__import_completed_successfuly)
+    val showErrorDetails = c.getString(R.string.settings__show_error_details)
 
     val trashTitle = c.getString(R.string.settings__trash)
     val trashEmpty = c.getString(R.string.settings__trash_is_empty)
@@ -278,13 +279,13 @@ class Strings(c: Context) {
 
     val backupTitle = c.getString(R.string.backup__2fas_backup)
     val backupDriveHeader = "Google Drive"
-    val backupLocalHeader = c.getString(R.string.backup__local_file_title)
+    val backupLocalHeader = c.getString(R.string.backup__file_backup)
     val backupDebugHeader = "Debug"
     val backupSync = c.getString(R.string.backup__drive_title)
     val backupSyncDescription = c.getString(R.string.backup_explanation_msg)
     val backupSyncSettings = c.getString(R.string.backup__synchronization_settings)
-    val backupImportFile = c.getString(R.string.backup__import_file)
-    val backupExportFile = c.getString(R.string.backup__export_to_file)
+    val backupImportFile = c.getString(R.string.backup__import)
+    val backupExportFile = c.getString(R.string.backup__export)
     val backupExportFileDescription = c.getString(R.string.backup__file_backup_offline_title)
     val backupSetPassword = c.getString(R.string.backup_settings_password_set_title)
     val backupSetPasswordDescription = c.getString(R.string.backup__set_password_title)
@@ -325,7 +326,7 @@ class Strings(c: Context) {
     val backupExportCta = c.getString(R.string.export_backup_cta)
     val backupExportHeader = c.getString(R.string.export_backup_title)
     val backupExportMsg = c.getString(R.string.export_backup_msg)
-    val backupExportPassMsg = c.getString(R.string.export_backup_pass)
+    val backupExportPassMsg = c.getString(R.string.backup__backup_file_password_title)
     val backupImportCta = c.getString(R.string.import_backup_cta)
     val backupImportChooseAnotherFileCta = c.getString(R.string.backup__choose_antother_file)
     val backupImportHeader = c.getString(R.string.import_backup_title)

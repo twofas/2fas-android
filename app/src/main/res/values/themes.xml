@@ -9,8 +9,6 @@
         <item name="colorSurfaceVariant">@color/surfaceVariant</item>
         <item name="colorOnPrimary">@color/onSurface</item>
         <item name="android:windowBackground">@color/windowBackground</item>
-        <item name="android:statusBarColor">@color/statusbar</item>
-        <item name="android:windowLightStatusBar">@bool/isLightStatusBar</item>
     </style>
 </resources>
 

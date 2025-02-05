@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Mon, 07 Oct 2024 09:37:26 -0700
+ Exported at: Thu, 16 Jan 2025 06:07:59 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -461,7 +461,7 @@
     <string name="browser__push_notifications_content">Per accedere a funzionalità come l\'estensione browser è necessario l\'accesso alle notifiche push. Puoi modificare questa impostazione in qualsiasi momento nelle impostazioni di sistema.</string>
     <string name="browser__request_expired">Richiesta scaduta</string>
     <string name="browser__2fa_token_request_title">Richiesta di token 2FA</string>
-    <string name="browser__2fa_token_request_content">Vuoi condividere il token 2FA per</string>
+    <string name="browser__2fa_token_request_content">Vuoi condividere il token 2FA per\u0020</string>
     <string name="notifications__no_notifications">Nessuna notifica</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
@@ -851,4 +851,11 @@
     <string name="appleWatch__installation_second_step">Assicurati che la Sincronizzazione iCloud sia abilitata</string>
     <string name="appleWatch__installation_second_step_link">Vai nelle impostazioni di Backup di 2FAS</string>
     <string name="settings__apple_watch">Apple Watch</string>
+    <string name="widget__no_selected_services">Tieni premuto e seleziona un servizio per attivare il widget...</string>
+    <string name="widget__reveal_tokens_long_message">Mostra il tuo token 2FAS per 60 secondi</string>
+    <string name="widget__reveal_tokens_short_message">Mostra per 60 secondi</string>
+    <string name="settings__show_error_details">Show error details</string>
+    <string name="tokens__show_qr_code">Service QR Code</string>
+    <string name="tokens__show_service_qr_setup_lock">Your service is protected. Please add a PIN or Fingerprint lock to see QR code.</string>
+    <string name="tokens__copy_uri">Copy URI</string>
 </resources>

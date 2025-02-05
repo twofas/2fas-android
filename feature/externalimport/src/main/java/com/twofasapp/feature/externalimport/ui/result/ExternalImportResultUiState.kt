@@ -6,7 +6,7 @@ import com.twofasapp.feature.externalimport.domain.ImportType
 internal data class ExternalImportResultUiState(
     val importType: ImportType = ImportType.GoogleAuthenticator,
     val loading: Boolean = true,
-    val readResult: ReadResult = ReadResult.Failure,
+    val readResult: ReadResult = ReadResult.Failure(""),
     val finishSuccess: Boolean = false,
 )
 
@@ -17,5 +17,5 @@ internal sealed interface ReadResult {
         val countTotalServices: Int,
     ) : ReadResult
 
-    data object Failure : ReadResult
+    data class Failure(val reason: String) : ReadResult
 }

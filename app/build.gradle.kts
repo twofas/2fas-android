@@ -15,8 +15,8 @@ android {
 
     defaultConfig {
         applicationId = "com.twofasapp"
-        versionName = "5.4.8"
-        versionCode = 5000029
+        versionName = "5.4.9"
+        versionCode = 5000030
     }
 
     applicationVariants.all {
@@ -62,6 +62,7 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":prefs"))
     implementation(project(":truetime"))
+    implementation(project(":secure-storage"))
     implementation(project(":parsers"))
 
     implementation(libs.bundles.appCompat)
@@ -80,7 +81,6 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.webkit)
     implementation(libs.securityCrypto)
-    implementation(libs.secureStorage)
     implementation(libs.lottie)
     implementation(libs.kotlinCoroutines)
     implementation(libs.workManager)

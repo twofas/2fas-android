@@ -63,7 +63,7 @@ private fun ScreenContent(
     Scaffold(
         topBar = { TwTopAppBar(titleText = TwLocale.strings.aboutTitle) }
     ) { padding ->
-        Column(modifier = Modifier.padding(top = padding.calculateTopPadding())) {
+        Column(modifier = Modifier.padding(padding)) {
 
             LazyColumn(modifier = Modifier.weight(1f)) {
 

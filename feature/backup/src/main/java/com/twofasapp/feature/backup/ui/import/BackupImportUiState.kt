@@ -14,7 +14,7 @@ internal data class BackupImportUiState(
 internal sealed interface ScreenState {
     data class BackupRead(val servicesToImport: Int) : ScreenState
     data object BackupReadEncrypted : ScreenState
-    data object ErrorInvalidFile : ScreenState
+    data class ErrorInvalidFile(val reason: String?) : ScreenState
     data object ErrorInvalidFileSize : ScreenState
 }
 

@@ -137,8 +137,21 @@ internal class EditServiceViewModel(
         }
     }
 
+    fun qrAuthenticated() {
+        uiState.update {
+            it.copy(
+                isAuthenticated = true,
+                isQrVisible = true,
+            )
+        }
+    }
+
     fun toggleSecretVisibility() {
         uiState.update { it.copy(isSecretVisible = uiState.value.isSecretVisible.not()) }
+    }
+
+    fun toggleQrVisibility() {
+        uiState.update { it.copy(isQrVisible = uiState.value.isQrVisible.not()) }
     }
 
     fun saveService() {

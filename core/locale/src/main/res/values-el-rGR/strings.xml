@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Mon, 07 Oct 2024 09:37:26 -0700
+ Exported at: Thu, 16 Jan 2025 06:08:00 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -851,4 +851,11 @@
     <string name="appleWatch__installation_second_step">Βεβαιωθείτε ότι το iCloud Sync σας είναι ενεργοποιημένο</string>
     <string name="appleWatch__installation_second_step_link">Μεταβείτε στις ρυθμίσεις αντιγράφων ασφαλείας 2FAS</string>
     <string name="settings__apple_watch">Apple Watch</string>
+    <string name="widget__no_selected_services">Κρατήστε πατημένο και επιλέξτε service για να ενεργοποιήσετε το widget...</string>
+    <string name="widget__reveal_tokens_long_message">Αποκαλύψτε τις μάρκες 2FAS για 60 δευτερόλεπτα</string>
+    <string name="widget__reveal_tokens_short_message">Αποκάλυψη για 60 δευτερόλεπτα</string>
+    <string name="settings__show_error_details">Εμφάνιση λεπτομερειών σφάλματος</string>
+    <string name="tokens__show_qr_code">Κωδικός QR Υπηρεσίας</string>
+    <string name="tokens__show_service_qr_setup_lock">Η υπηρεσία σας είναι προστατευμένη. Παρακαλώ προσθέστε ένα PIN ή κλείδωμα με δακτυλικό αποτύπωμα για να δείτε τον κωδικό QR.</string>
+    <string name="tokens__copy_uri">Copy URI</string>
 </resources>

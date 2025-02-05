@@ -214,7 +214,8 @@ private fun Step(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    color = TwTheme.color.onSurfacePrimary,
                 )
             }
 
@@ -227,7 +228,8 @@ private fun Step(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = TwTheme.color.onSurfacePrimary,
             )
 
             if (showBackupSkip) {

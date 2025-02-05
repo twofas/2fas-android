@@ -1,5 +1,7 @@
 package com.twofasapp.common.domain
 
+import android.net.Uri
+
 data class Service(
     val id: Long,
     val serviceTypeId: String?,
@@ -124,5 +126,45 @@ data class Service(
             assignedDomains = listOf(),
             backupSyncStatus = BackupSyncStatus.SYNCED,
         )
+    }
+
+    fun toUri(): String {
+        return Uri.Builder()
+            .apply {
+
+                scheme("otpauth")
+
+                authority(authType.name.lowercase())
+
+                if (info.isNullOrBlank().not()) {
+                    appendEncodedPath("$name:$info")
+                } else {
+                    appendEncodedPath(name)
+                }
+
+                appendQueryParameter("secret", secret)
+
+                if (issuer.isNullOrBlank().not()) {
+                    appendQueryParameter("issuer", issuer)
+                }
+
+                if (digits != null && digits != DefaultDigits) {
+                    appendQueryParameter("digits", digits.toString())
+                }
+
+                if (period != null && period != DefaultPeriod) {
+                    appendQueryParameter("period", period.toString())
+                }
+
+                if (hotpCounter != null && authType == AuthType.HOTP) {
+                    appendQueryParameter("counter", hotpCounter.toString())
+                }
+
+                if (algorithm != null && algorithm != DefaultAlgorithm) {
+                    appendQueryParameter("algorithm", algorithm.name)
+                }
+
+            }
+            .toString()
     }
 }

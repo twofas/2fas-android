@@ -1,9 +1,15 @@
 package com.twofasapp.ui.main
 
 import android.content.Intent
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -13,10 +19,12 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
+import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.designsystem.AppThemeState
+import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.designsystem.ktx.makeWindowSecure
 import com.twofasapp.designsystem.ktx.toastLong
 import kotlinx.coroutines.Job
@@ -45,7 +53,33 @@ class MainActivity : AppCompatActivity(), AuthAware {
     private var recalculateTimeJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AppThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
+        val selectedTheme = settingsRepository.getAppSettings().selectedTheme
+        AppThemeState.applyTheme(selectedTheme)
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(
+                lightScrim = Color.Transparent.toArgb(),
+                darkScrim = Color.Transparent.toArgb(),
+                detectDarkMode = {
+                    when (selectedTheme) {
+                        SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+                        SelectedTheme.Light -> false
+                        SelectedTheme.Dark -> true
+                    }
+                }
+            ),
+            navigationBarStyle = SystemBarStyle.auto(
+                lightScrim = Color.Transparent.toArgb(),
+                darkScrim = Color.Transparent.toArgb(),
+                detectDarkMode = {
+                    when (selectedTheme) {
+                        SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+                        SelectedTheme.Light -> false
+                        SelectedTheme.Dark -> true
+                    }
+                }
+            ),
+        )
+
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
             settingsRepository.observeAppSettings().collect {
@@ -53,7 +87,15 @@ class MainActivity : AppCompatActivity(), AuthAware {
             }
         }
 
-        setContent { MainScreen() }
+        setContent {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                window.isNavigationBarContrastEnforced = false
+            }
+
+            MainAppTheme {
+                MainScreen()
+            }
+        }
 
         attachAuthLifecycleObserver()
         checkAppVersionUpdate()

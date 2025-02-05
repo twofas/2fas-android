@@ -64,13 +64,14 @@ private fun GuidesScreenContent(
     ) { padding ->
 
         Column(
-            Modifier.fillMaxSize()
+            Modifier
+                .fillMaxSize()
+                .padding(top = padding.calculateTopPadding())
         ) {
             Column(
                 Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .padding(padding)
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
@@ -105,7 +106,7 @@ private fun GuidesScreenContent(
                     .fillMaxWidth()
                     .background(TwTheme.color.surface)
                     .padding(horizontal = 16.dp)
-                    .padding(top = 24.dp, bottom = 8.dp),
+                    .padding(top = 24.dp, bottom = padding.calculateBottomPadding()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(

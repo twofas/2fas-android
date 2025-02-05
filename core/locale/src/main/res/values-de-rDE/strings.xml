@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Mon, 07 Oct 2024 09:37:26 -0700
+ Exported at: Thu, 16 Jan 2025 06:07:59 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -782,7 +782,7 @@
     <string name="fingerprint__biometric_invalidated">Biometrische Anmeldungen wurden aufgrund von Änderungen der Systemsicherheits- und Datenschutzeinstellungen deaktiviert.</string>
     <string name="tokens__last_pass_import">Importieren von 2FA Tokens von der LastPass App</string>
     <string name="tokens__last_pass_import_subtitle">Dieser QR-Code erlaubt es dir Tokens von LastPass zu importieren</string>
-    <string name="tokens__add_with_guide">Leite mich an.</string>
+    <string name="tokens__add_with_guide">Leite mich an</string>
     <string name="guides__select_title">Suche Dienste</string>
     <string name="guides__select_description">Wähle den Service, den du mit der 2FAS App verknüpfen willst!</string>
     <string name="guides__select_provide_guide">Möchtest du 2FA-Anleitungen für den Dienst bereitstellen?\u0020</string>
@@ -803,16 +803,16 @@
     <string name="externalimport_andotp">andOTP</string>
     <string name="externalimport__andotp_title">2FA Tokens aus andOTP importieren</string>
     <string name="externalimport__andotp_success_msg">Diese JSON-Datei erlaubt es Tokens von andOTP zu importieren.</string>
-    <string name="externalimport__info_andotp_title">Importiere tokens von andOTP</string>
+    <string name="externalimport__info_andotp_title">Importiere Tokens von andOTP</string>
     <string name="externalimport__andotp_msg">Exportiere deine Konten von andOTP in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht, nach einem erfolgreichen Import die Datei zu entfernen.</string>
-    <string name="introduction__backup_description">Im nächsten Schritt wirst du gefragt, auf welchem Google Account du deine Tokens sichern willst.</string>
+    <string name="introduction__backup_description">Im nächsten Schritt wirst du aufgefordert, dein Google Drive-Konto auszuwählen, in welchem die 2FA-Token sicher gespeichert werden sollen.</string>
     <string name="introduction__backup_take_risk_cta">Ich gehe das Risiko ein und erstelle kein Backup</string>
     <string name="introduction__backup_success">Die Google Drive Synchronisation wurde erfolgreich aktiviert.</string>
     <string name="backup__import_invalid_version">Die Backup-Datei, die du versuchst zu importieren, wird in dieser Version der App nicht unterstützt. Die App unterstützt nur Backup-Formate bis zu Version %d, während die Datei, die du importierst, die Version %d hat.</string>
     <string name="commons__pair">Verbinden</string>
     <string name="introduction__backup_icloud_title">Sicherheit bei der Synchronisierung und Datensicherung</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS verwendet iCloud für die sichere Sicherung und Synchronisierung deiner 2FA-Token. Die **verschlüsselten** Backup-Daten werden in iCloud gespeichert und sind nur über die 2FAS-App zugänglich. Darüber hinaus unterstützt diese Funktion die Wiederherstellung und Synchronisierung von Tokens auf iOS-Geräten.\n\nStandardmäßig ist dies aktiviert und kann in den Backup-Einstellungen der App jederzeit deaktiviert werden.</string>
+    <string name="introduction__backup_icloud_description">2FAS verwendet iCloud für ein sicheres Backup und die Synchronisierung deiner 2FA-Token. Die **verschlüsselten** Backup-Daten werden in iCloud gespeichert und sind **nur über die 2FAS-App** zugänglich. Außerdem hilft diese Funktion bei der **Wiederherstellung und Synchronisierung** von Token zwischen iOS-Geräten.\n\nStandardmäßig ist dies aktiviert und kann in den Backup-Einstellungen der App jederzeit deaktiviert werden.</string>
     <string name="introduction__backup_icloud_cta">Lerne mehr über die Datensicherung</string>
     <string name="backup__enter_password_google_drive_msg1">Es scheint, als wäre deine Google Drive-Backup-Datei passwortgeschützt. Gib das richtige Passwort ein, um fortzufahren. Wenn du deine Google Drive-Backup-Datei löschen möchtest, ...</string>
     <string name="backup__enter_password_google_drive_msg2">Tippe hier, um zu sehen, wie es funktioniert</string>
@@ -851,4 +851,11 @@
     <string name="appleWatch__installation_second_step">Stelle sicher, dass die iCloud-Synchronisierung aktiviert ist</string>
     <string name="appleWatch__installation_second_step_link">Gehe zu den 2FAS-Backup-Einstellungen</string>
     <string name="settings__apple_watch">Apple Watch</string>
+    <string name="widget__no_selected_services">Gedrückt halten und Service auswählen, um das Widget zu aktivieren...</string>
+    <string name="widget__reveal_tokens_long_message">Decke deine 2FAS-Token für 60 Sekunden auf</string>
+    <string name="widget__reveal_tokens_short_message">Aufdecken für 60 Sekunden</string>
+    <string name="settings__show_error_details">Fehlerdetails anzeigen</string>
+    <string name="tokens__show_qr_code">Zeige Dienst-QR</string>
+    <string name="tokens__show_service_qr_setup_lock">Dein Dienst ist geschützt. Bitte füge eine PIN oder Fingerabdrucksperre hinzu, um den QR-Code zu sehen.</string>
+    <string name="tokens__copy_uri">Copy URI</string>
 </resources>

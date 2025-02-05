@@ -34,6 +34,7 @@ import com.twofasapp.designsystem.common.TwTextButton
 import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.designsystem.dialog.InfoDialog
 import com.twofasapp.designsystem.dialog.PasswordDialog
+import com.twofasapp.designsystem.dialog.StackTraceDetails
 import com.twofasapp.designsystem.ktx.strings
 import com.twofasapp.designsystem.ktx.toastShort
 import org.koin.androidx.compose.koinViewModel
@@ -190,7 +191,13 @@ private fun ScreenContent(
                             )
                         }
 
-                        is ScreenState.ErrorInvalidFile -> Unit
+                        is ScreenState.ErrorInvalidFile -> {
+                            StackTraceDetails(
+                                title = strings.showErrorDetails,
+                                content = uiState.screenState.reason,
+                            )
+                        }
+
                         is ScreenState.ErrorInvalidFileSize -> Unit
                     }
 

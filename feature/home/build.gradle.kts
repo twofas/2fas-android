@@ -30,4 +30,5 @@ dependencies {
     implementation(libs.bundles.commonmark)
     implementation(libs.timber)
     implementation(libs.kotlinSerialization)
+    implementation(libs.zxing)
 }

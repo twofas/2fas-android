@@ -62,7 +62,7 @@ private fun ScreenContent(
         topBar = { TwTopAppBar(titleText = TwLocale.strings.notificationsTitle) },
     ) { padding ->
 
-        LazyColumn(Modifier.padding(top = padding.calculateTopPadding())) {
+        LazyColumn(Modifier.padding(padding)) {
 
             if (notifications.isEmpty()) {
                 item {

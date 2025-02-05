@@ -22,7 +22,6 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -40,6 +39,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -54,8 +54,10 @@ import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwOutlinedTextField
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.dialog.BaseDialog
 import com.twofasapp.designsystem.dialog.ConfirmDialog
 import com.twofasapp.designsystem.dialog.InfoDialog
+import com.twofasapp.designsystem.ktx.copyToClipboard
 import com.twofasapp.designsystem.ktx.dpToSp
 import com.twofasapp.designsystem.lazy.listItem
 import com.twofasapp.designsystem.service.asColor
@@ -77,6 +79,7 @@ internal fun EditServiceScreen(
     onDeleteClick: () -> Unit,
     onSecurityClick: () -> Unit,
     onAuthenticateSecretClick: () -> Unit,
+    onAuthenticateQrCodeClick: () -> Unit,
     viewModel: EditServiceViewModel,
 ) {
     val uiState = viewModel.uiState.collectAsState().value
@@ -85,7 +88,8 @@ internal fun EditServiceScreen(
     val scope = rememberCoroutineScope()
     val isSecretVisible = uiState.isSecretVisible
     val showBadgeDialog = remember { mutableStateOf(false) }
-    val showNoLockDialog = remember { mutableStateOf(false) }
+    val showSecretNoLockDialog = remember { mutableStateOf(false) }
+    val showQrNoLockDialog = remember { mutableStateOf(false) }
     val showUnsavedChangesDialog = remember { mutableStateOf(false) }
 
     val isBrandSelected = service.imageType == Service.ImageType.IconCollection
@@ -122,8 +126,8 @@ internal fun EditServiceScreen(
                 }
             )
         }
-        ) { padding ->
-            LazyColumn(modifier = Modifier.padding(top = padding.calculateTopPadding())) {
+        ) { innerPadding ->
+            LazyColumn(modifier = Modifier.padding(innerPadding)) {
                 listItem(EditServiceListItem.HeaderInfo) {
                     SettingsHeader(title = stringResource(R.string.tokens__service_information))
                 }
@@ -163,16 +167,44 @@ internal fun EditServiceScreen(
                         ),
                         visualTransformation = if (isSecretVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
-                            IconButton(onClick = {
-                                when {
-                                    service.id == 0L || uiState.isAuthenticated -> viewModel.toggleSecretVisibility()
-                                    uiState.hasLock -> onAuthenticateSecretClick()
-                                    uiState.hasLock.not() -> showNoLockDialog.value = true
-                                }
-                            }) {
+                            Row(
+                                modifier = Modifier.padding(start = 4.dp, end = 8.dp)
+                            ) {
+
                                 Icon(
-                                    painter = if (isSecretVisible) TwIcons.EyeSlash else TwIcons.Eye, null,
+                                    painter = TwIcons.Qr,
+                                    contentDescription = null,
                                     tint = TwTheme.color.iconTint,
+                                    modifier = Modifier
+                                        .size(36.dp)
+                                        .clip(CircleShape)
+                                        .clickable {
+                                            when {
+                                                uiState.isAuthenticated -> viewModel.toggleQrVisibility()
+                                                uiState.hasLock -> onAuthenticateQrCodeClick()
+                                                uiState.hasLock.not() -> showQrNoLockDialog.value = true
+                                            }
+                                        }
+                                        .padding(6.dp)
+                                )
+
+                                Spacer(Modifier.width(4.dp))
+
+                                Icon(
+                                    painter = if (isSecretVisible) TwIcons.EyeSlash else TwIcons.Eye,
+                                    contentDescription = null,
+                                    tint = TwTheme.color.iconTint,
+                                    modifier = Modifier
+                                        .size(36.dp)
+                                        .clip(CircleShape)
+                                        .clickable {
+                                            when {
+                                                service.id == 0L || uiState.isAuthenticated -> viewModel.toggleSecretVisibility()
+                                                uiState.hasLock -> onAuthenticateSecretClick()
+                                                uiState.hasLock.not() -> showSecretNoLockDialog.value = true
+                                            }
+                                        }
+                                        .padding(6.dp)
                                 )
                             }
                         },
@@ -322,11 +354,22 @@ internal fun EditServiceScreen(
                 )
             }
 
-            if (showNoLockDialog.value) {
+            if (showSecretNoLockDialog.value) {
                 InfoDialog(
-                    onDismissRequest = { showNoLockDialog.value = false },
+                    onDismissRequest = { showSecretNoLockDialog.value = false },
                     title = stringResource(id = R.string.tokens__show_service_key),
                     body = stringResource(id = R.string.tokens__show_service_key_setup_lock),
+                    positive = stringResource(id = R.string.commons__set),
+                    onNegative = {},
+                    onPositive = { onSecurityClick() },
+                )
+            }
+
+            if (showQrNoLockDialog.value) {
+                InfoDialog(
+                    onDismissRequest = { showQrNoLockDialog.value = false },
+                    title = stringResource(id = R.string.tokens__show_qr_code),
+                    body = stringResource(id = R.string.tokens__show_service_qr_setup_lock),
                     positive = stringResource(id = R.string.commons__set),
                     onNegative = {},
                     onPositive = { onSecurityClick() },
@@ -338,6 +381,33 @@ internal fun EditServiceScreen(
                     body = stringResource(id = R.string.tokens__service_unsaved_changes),
                     onDismissRequest = { showUnsavedChangesDialog.value = false },
                     onPositive = { onBackClick() })
+            }
+
+            if (uiState.isQrVisible) {
+                BaseDialog(
+                    onDismissRequest = { viewModel.toggleQrVisibility() },
+                    title = stringResource(id = R.string.tokens__show_qr_code),
+                    positive = stringResource(id = R.string.commons__OK),
+                    negative = stringResource(id = R.string.tokens__copy_uri),
+                    onNegativeClick = { activity?.copyToClipboard(service.toUri(), isSensitive = true) }
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(24.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Image(
+                            bitmap = QrGenerator
+                                .generateBitmap(service.toUri())
+                                .asImageBitmap(),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(200.dp)
+                                .clip(RoundedCornerShape(12.dp)),
+                        )
+                    }
+                }
             }
         }
     }

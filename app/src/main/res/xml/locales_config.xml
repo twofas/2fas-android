@@ -15,4 +15,5 @@
     <locale android:name="zh" />
     <locale android:name="el" />
     <locale android:name="ja" />
+    <locale android:name="sv" />
 </locale-config>

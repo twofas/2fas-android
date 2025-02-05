@@ -12,11 +12,11 @@ android {
 dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:storage"))
+    implementation(project(":secure-storage"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.timber)
     implementation(libs.securityCrypto)
-    implementation(libs.secureStorage)
     implementation(libs.kotlinCoroutines)
     implementation(libs.kotlinSerialization)
 }

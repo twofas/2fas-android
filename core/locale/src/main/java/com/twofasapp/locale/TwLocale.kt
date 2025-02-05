@@ -54,7 +54,7 @@ object TwLocale {
 
     private fun format(context: Context, quantity: Long, sign: Int, timeUnit: TimeUnit): String {
         return context.resources.getQuantityString(
-            if (sign > 0) timeUnit.pastStringRes else timeUnit.pastStringRes, // Handle future values
+            if (sign > 0) timeUnit.pastStringRes else timeUnit.pastStringRes, // Handle future values-pl-rPL-pl-rPL
             quantity.toInt(),
             quantity.toInt(),
         )

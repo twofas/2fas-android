@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hans, Simplified Chinese
  Exported by: rafakob
- Exported at: Mon, 07 Oct 2024 09:37:26 -0700
+ Exported at: Thu, 16 Jan 2025 06:08:00 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -461,7 +461,7 @@
     <string name="browser__push_notifications_content">要访问浏览器扩展等功能，应用程序需要访问推送通知。您可以随时在系统设置中更改此设置。</string>
     <string name="browser__request_expired">申请已过期</string>
     <string name="browser__2fa_token_request_title">2FA 令牌申请</string>
-    <string name="browser__2fa_token_request_content">您想分享 2FA 令牌给</string>
+    <string name="browser__2fa_token_request_content">您想分享 2FA 令牌给\u0020</string>
     <string name="notifications__no_notifications">无通知</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
@@ -845,4 +845,11 @@
     <string name="appleWatch__installation_second_step">确保您的iCloud同步已启用</string>
     <string name="appleWatch__installation_second_step_link">转到2FAS备份设置</string>
     <string name="settings__apple_watch">Apple Watch</string>
+    <string name="widget__no_selected_services">请按住并选择服务以激活小部件...</string>
+    <string name="widget__reveal_tokens_long_message">显示您的 2FAS 令牌 60 秒</string>
+    <string name="widget__reveal_tokens_short_message">显示 60 秒</string>
+    <string name="settings__show_error_details">Show error details</string>
+    <string name="tokens__show_qr_code">Service QR Code</string>
+    <string name="tokens__show_service_qr_setup_lock">Your service is protected. Please add a PIN or Fingerprint lock to see QR code.</string>
+    <string name="tokens__copy_uri">Copy URI</string>
 </resources>
