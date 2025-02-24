@@ -6,7 +6,6 @@ import androidx.glance.action.ActionParameters
 import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.action.ActionCallback
 import com.twofasapp.designsystem.ktx.copyToClipboard
-import com.twofasapp.feature.widget.GlanceWidget
 
 internal class CopyAndToggleAction : ActionCallback {
 
@@ -36,15 +35,8 @@ internal class CopyAndToggleAction : ActionCallback {
             showToast = false
         )
 
-        // Toggle the service
-        with(GlanceWidget()) {
-            toggleService(
-                appWidgetId = parameters[paramAppWidgetId] ?: 0,
-                serviceId = parameters[paramServiceId] ?: 0L
-            )
+        // Call ToggleServiceAction to avoid duplicate code
+        ToggleServiceAction().onAction(context, glanceId, parameters)
 
-            update(context, glanceId)
-            startPeriodicRefresh(context)
-        }
     }
 }
