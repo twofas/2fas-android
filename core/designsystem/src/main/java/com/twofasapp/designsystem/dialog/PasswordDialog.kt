@@ -22,6 +22,13 @@ import com.twofasapp.designsystem.common.TwOutlinedTextFieldPassword
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.android.awaitFrame
 
+sealed class ValidationState {
+    object Valid : ValidationState()
+    data class LengthError(val message: String) : ValidationState()
+    data class ConfirmError(val message: String) : ValidationState()
+    data class ValidationError(val message: String) : ValidationState()
+}
+
 @Composable
 fun PasswordDialog(
     onDismissRequest: () -> Unit,
@@ -36,6 +43,7 @@ fun PasswordDialog(
     onPositive: ((String) -> Unit)? = null,
     onNegative: (() -> Unit)? = null,
     validation: ((String) -> Boolean)? = null,
+    validationHint: String? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     minLength: Int = 3,
     maxLength: Int = Int.MAX_VALUE,
@@ -44,6 +52,24 @@ fun PasswordDialog(
 ) {
     var password by remember { mutableStateOf("") }
     var passwordConfirm by remember { mutableStateOf("") }
+
+    val validationState by remember {
+        derivedStateOf {
+            when {
+                password.trim().length !in minLength..maxLength ->
+                    ValidationState.LengthError(
+                        TwLocale.strings.backupPasswordLengthError.format(minLength, maxLength)
+                    )
+                confirmRequired && password != passwordConfirm ->
+                    ValidationState.ConfirmError(TwLocale.strings.backupPasswordConfirmError)
+                validation != null && !validation.invoke(password) ->
+                    ValidationState.ValidationError(
+                        validationHint ?: TwLocale.strings.backupPasswordValidationError
+                    )
+                else -> ValidationState.Valid
+            }
+        }
+    }
 
     val positiveEnabledState by remember {
         derivedStateOf {
@@ -79,11 +105,16 @@ fun PasswordDialog(
                 .padding(horizontal = DialogPadding)
                 .focusRequester(focusRequester),
             labelText = TwLocale.strings.password,
-            isError = error.isNullOrBlank().not(),
+            isError = validationState !is ValidationState.Valid,
             keyboardOptions = keyboardOptions,
             maxLines = 1,
             enabled = enabled,
-            supportingText = if (error.isNullOrBlank()) null else error,
+            supportingText = when (validationState) {
+                is ValidationState.LengthError -> validationState.message
+                is ValidationState.ValidationError -> validationState.message
+                ValidationState.Valid -> null
+                else -> null
+            },
         )
 
         if (confirmRequired) {
@@ -94,10 +125,14 @@ fun PasswordDialog(
                 modifier = Modifier
                     .padding(horizontal = DialogPadding),
                 labelText = TwLocale.strings.passwordConfirm,
-                isError = error.isNullOrBlank().not(),
+                isError = validationState is ValidationState.ConfirmError,
                 keyboardOptions = keyboardOptions,
                 maxLines = 1,
                 enabled = enabled,
+                supportingText = when (validationState) {
+                    is ValidationState.ConfirmError -> validationState.message
+                    else -> null
+                },
             )
         }
 
