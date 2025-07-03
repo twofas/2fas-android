@@ -361,6 +361,11 @@
     <string name="backup__set_password_title">Para aumentar la protección de su archivo de copia de seguridad, establezca una contraseña.</string>
     <string name="backup__enter_password_title">Escriba una contraseña para este archivo de copia de seguridad para continuar con el proceso de importación</string>
     <string name="backup__backup_file_password_title">Establecer una contraseña para este archivo de copia de seguridad</string>
+    <!-- Password validation errors -->
+    <string name="backup__password_length_error">La contraseña debe tener entre %1$d y %2$d caracteres</string>
+    <string name="backup__password_confirm_error">Las contraseñas no coinciden</string>
+    <string name="backup__password_validation_error">La contraseña contiene caracteres no válidos</string>
+    <string name="backup__password_validation_hint">La contraseña solo puede contener letras, números y estos símbolos: _/!#$%&amp;+*~@?=^.,(){}[]&lt;&gt;|-</string>
     <string name="backup__incorrect_password">Contraseña incorrecta</string>
     <!-- %d - number -->
     <string name="backup__new_services">%d nuevos servicios</string>
