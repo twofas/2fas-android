@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:07:59 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -461,6 +461,7 @@
     <string name="browser__push_notifications_content">Щоб отримати доступ до таких функцій, як розширення для браузера, додатку потрібен доступ до Push-повідомлень. Ви завжди можете змінити доступ в системних налаштуваннях.</string>
     <string name="browser__request_expired">Термін дії запиту минув</string>
     <string name="browser__2fa_token_request_title">Запит на токен</string>
+    <!-- ADD A SPACE AT THE END! -->
     <string name="browser__2fa_token_request_content">Хочете поділитися токеном із\u0020</string>
     <string name="notifications__no_notifications">Немає сповіщень</string>
     <string name="CFBundleSpokenName">2 F A S</string>
@@ -783,7 +784,7 @@
     <string name="externalimport__authenticatorpro_success_msg">Цей текстовий файл дозволяє імпорт токенів з Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_title">Імпорт 2ФА токенів з додатку Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_msg">Експортуйте ваші акаунти з Authenticator Pro в незашифрований текстовий файл і завантажте його, використовуючи кнопку \"Обрати текстовий файл\". Не забудьте видалити файл після успішного імпорту.</string>
-    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Оберіть текстовий файл</string>
     <string name="fingerprint__biometric_invalidated">Біометричний вхід вимкнено через зміни системних налаштувань відбитків пальців</string>
     <string name="tokens__last_pass_import">Імпортувати токени із додатку LastPass</string>
@@ -860,8 +861,63 @@
     <string name="widget__no_selected_services">Утримуйте та оберіть послугу, щоб активувати віджет...</string>
     <string name="widget__reveal_tokens_long_message">Розкрийте свої токени 2FAS на 60 секунд</string>
     <string name="widget__reveal_tokens_short_message">Розкрийте на 60 секунд</string>
-    <string name="settings__show_error_details">Show error details</string>
-    <string name="tokens__show_qr_code">Service QR Code</string>
-    <string name="tokens__show_service_qr_setup_lock">Your service is protected. Please add a PIN or Fingerprint lock to see QR code.</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="settings__show_error_details">Показати деталі помилки</string>
+    <string name="tokens__show_qr_code">QR-код сервісу</string>
+    <string name="tokens__show_service_qr_setup_lock">Ваш сервіс захищений. Щоб побачити QR-код, додайте PIN-код або блокування відбитком пальця.</string>
+    <string name="tokens__copy_uri">Копіювати URI</string>
+    <string name="backup__cloud_encrypted_user">iCloud зашифровано за допомогою спеціального пароля. Введіть пароль і ввімкніть синхронізацію.</string>
+    <string name="backup__cloud_encrypted_system">iCloud зашифровано за допомогою Ключа Системи. Переконайтеся, що ви ввімкнули зв\'язку ключів iCloud.</string>
+    <string name="backup__synced">Синхронізовано</string>
+    <string name="backup__checking">Перевірка...</string>
+    <string name="backup__sync_disabled">Синхронізацію вимкнено.</string>
+    <string name="backup__sync_not_available">Синхронізація недоступна: %s.</string>
+    <string name="backup__watch_pairing_title">Створення пари з Apple Watch</string>
+    <string name="backup__watch_pairing_description">Хочете зв\'язати годинник Apple з резервною копією iCloud? Введіть ім\'я свого пристрою:</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
+    <string name="backup__watch_pairing_action">Підключити пристрій</string>
+    <string name="backup__watch_pairing_error">Не вдається підключитися до годинника. Переконайтеся, що резервне копіювання в хмарі ввімкнено та синхронізовано за допомогою пароля.</string>
+    <string name="backup__cloud_error_title">Помилка резервного копіювання в хмарі</string>
+    <string name="backup__cloud_error_missing_system_key_content">Не вдається розшифрувати хмарну резервну копію, оскільки немає Ключа Системи. Перевірте, чи увімкнено синхронізацію iCloud Keychain\u0020\u0020і чи працює вона коректно.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Не вдається розшифрувати хмарну резервну копію, оскільки вона зашифрована за допомогою Ключа Системи, а ви використовуєте спеціальний пароль. Бажаєте змінити пароль?</string>
+    <string name="backup__cloud_error_new_version_content">Не вдається синхронізувати з хмарною резервною копією, оскільки її було перенесено до новішої версії програми. Оновіть програму, щоб продовжити використовувати хмарне сховище.</string>
+    <string name="backup__enter_cloud_backup_password_title">Введіть пароль до резервної копії у хмарі</string>
+    <string name="backup__enter_password_description">Резервна копія iCloud зашифрована вашим паролем. Введіть його, щоб увімкнути синхронізацію.</string>
+    <string name="backup__enter_password_failure">Не вдалось! %s</string>
+    <string name="backup__enter_password_wrong_password">Неправильний пароль! Будь ласка, спробуйте ще раз</string>
+    <string name="backup__migration_title">Переміщення хмарного резервного копіювання</string>
+    <string name="backup__migration_subtitle">Не вимикайте застосунок!</string>
+    <string name="backup__migration_description">Ваша резервна копія зашифрована за допомогою Ключа Системи. Цей ключ буде спільним для ваших програм, які використовують iCloud Keychain. Не забудьте увімкнути цю опцію. Якщо ви хочете використовувати свій пароль, ви можете зробити це в налаштуваннях резервного копіювання у хмарі після переміщення.</string>
+    <string name="commons__success_ex">Успішно!</string>
+    <string name="backup__encryption_type">Тип шифрування</string>
+    <string name="backup__encryption_select">Оберіть тип шифрування</string>
+    <string name="backup__encryption_enter_password">Введіть пароль</string>
+    <string name="backup__encryption_change_password">Змінити пароль</string>
+    <string name="backup__encryption_password_description">Пароль використовується для шифрування ваших даних. Якщо ви втратите його, ви не зможете відновити дані з резервної копії у Хмарі</string>
+    <string name="backup__encryption_change_title">Змінити тип шифрування</string>
+    <string name="backup__encryption_method_footer">Виберіть Пароль системи або Власний Пароль</string>
+    <string name="backup__manage_paired_watches_title">Керувати приєднаними годинниками Apple</string>
+    <string name="backup__manage_paired_watches_footer">Додавайте, видаляйте або перейменовуйтегодинники\u0020\u0020Apple із доступом до цієї резервної копії в хмарі.</string>
+    <string name="backup__manage_paired_watches_rename_title">Перейменуйте годинник</string>
+    <string name="backup__manage_paired_watches_rename_description">Введіть нове ім\'я пристрою</string>
+    <string name="backup__manage_paired_watches_rename_action">Перейменувати</string>
+    <string name="backup__manage_paired_watches_title_short">Керувати годинниками</string>
+    <string name="backup__manage_paired_watches_empty_list">Список порожній. З\'єднати годинник за допомогою кнопки +</string>
+    <string name="backup__manage_paired_watches_syncing">Хмарне резервне копіювання синхронізується...</string>
+    <string name="backup__watch_pair_title">Створіть пару з Apple Watch</string>
+    <string name="backup__watch_pair_description">Перейдіть до налаштувань резервного копіювання 2FAS у 2FAS Auth на вашому iPhone/iPad і перейдіть до пункту «Керування спареними Apple Watch». Ця опція буде видима, якщо резервна копія синхронізована. Відскануйте QR-код звідти.</string>
+    <string name="backup__watch_pair_qr_error">Помилка при генеруванні QR-коду</string>
+    <string name="backup__cloud_switch_system_key">Переключитися до Ключа системи</string>
+    <string name="backup__cloud_turn_backup_off">Вимкнути хмарне резервне копіювання</string>
+    <string name="commons__apply">Застосувати</string>
+    <string name="backup__state">Стан:</string>
+    <string name="backup__check_password">Перевірте пароль</string>
+    <string name="backup__missing_system_key">Відсутній ключ системи</string>
+    <string name="backup__system_key">Ключ системи</string>
+    <string name="backup__custom_password">Власний пароль</string>
+    <string name="commons__options_title">Options</string>
+    <string name="tokens__copy_secret">Copy Secret Key</string>
+    <string name="tokens__copy_link">Copy OTP Auth link</string>
+    <string name="notifications__link_copied">Link Copied</string>
+    <string name="tokens__qr_code_show">Show service QR Code</string>
+    <string name="tokens__qr_code_share">Share service QR Code</string>
 </resources>

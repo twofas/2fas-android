@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:07:59 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -193,11 +193,11 @@
     <string name="tokens__service_information">Informação do Serviço</string>
     <string name="tokens__personalization">Personalização</string>
     <string name="tokens__brand_icon">Ícone da marca</string>
-    <string name="tokens__label">Nome</string>
+    <string name="tokens__label">Rótulo</string>
     <!-- tokens__remove_the_service -->
     <string name="tokens__remove_service_from_app">Remover este serviço do aplicativo 2FAS</string>
     <!-- tokens__label_one_or_two -->
-    <string name="tokens__label_characters_title">Nome (1 ou 2 caracteres):</string>
+    <string name="tokens__label_characters_title">Rótulo (1 ou 2 caracteres):</string>
     <string name="tokens__pick_background_color">Escolher cor do fundo:</string>
     <string name="tokens__num_added">%s adicionado</string>
     <string name="tokens__next_token">Próximo Código: %s</string>
@@ -288,7 +288,7 @@
     <string name="voiceover__additional_info">Informação adicional: %s</string>
     <string name="voiceover__token_tap_to_copy">Código %s. Toque para copiar</string>
     <string name="voiceover__edit">Editar %s</string>
-    <string name="voiceover__service_label_with_name_and_color">Etiqueta do serviço com o nome %1$s e cor %2$s</string>
+    <string name="voiceover__service_label_with_name_and_color">Rótulo do serviço com o nome %1$s e cor %2$s</string>
     <string name="voiceover__service_icon">Ícone do serviço %s</string>
     <string name="voiceover__selected">Selecionado</string>
     <string name="voiceover__not_selected">Não selecionado</string>
@@ -348,13 +348,13 @@
     <string name="backup__no_new_services">Nada para importar</string>
     <string name="backup__file_error">Erro de arquivo!</string>
     <!-- backup__services_form_file_will_be_merged -->
-    <string name="backup__services_merge_title">Os serviços do arquivo irão ser fundidos com os do seu aplicativo</string>
+    <string name="backup__services_merge_title">Os serviços do arquivo serão mesclados com os do seu aplicativo</string>
     <string name="backup__no_new_services_error">Ou este arquivo está vazio, ou todos os serviços dentro dele já se encontram disponíveis no aplicativo</string>
     <string name="backup__update_required_to_import_title">Você precisa de uma versão mais recente do aplicativo para importar o conteúdo do arquivo. Pode encontrar a versão mais recente na App Store</string>
     <string name="backup__cant_read_file_error">Não foi possível ler este arquivo. Pode esta danificado, ou ocorreu um erro ao tentar acessá-lo. Por favor escolha outro</string>
     <string name="backup__password">Senha</string>
     <string name="backup__repeat_password">Repetir senha</string>
-    <string name="backup__incorrect_character_error">Caráter incorreto. Use somente letras de A-Z, dígitos e caracteres especiais: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__incorrect_character_error">Caractere incorreto. Use somente letras de A-Z, dígitos e caracteres especiais: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
     <string name="backup__to_short_error">A frase fornecida é muito curta (mín. 3 caracteres)</string>
     <string name="backup__passwords_dont_match">As senhas não coincidem</string>
     <string name="backup__save_and_export">Salvar e exportar</string>
@@ -461,6 +461,7 @@
     <string name="browser__push_notifications_content">Para ter acesso a funções como a extensão do navegador, o aplicativo precisa de permissão para enviar Notificações Push. Você pode alterar esta configuração nas Configurações do Sistema a qualquer momento.</string>
     <string name="browser__request_expired">Solicitação expirada</string>
     <string name="browser__2fa_token_request_title">Solicitação de Código 2FA</string>
+    <!-- ADD A SPACE AT THE END! -->
     <string name="browser__2fa_token_request_content">Você deseja compartilhar o código 2FA para\u0020</string>
     <string name="notifications__no_notifications">Sem notificações</string>
     <string name="CFBundleSpokenName">2 F A S</string>
@@ -764,7 +765,7 @@
     <string name="social__social_media">Midias Sociais\u0020</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
-    <string name="social__twitter">X (anteriormente Twitter)</string>
+    <string name="social__twitter">X (antigo Twitter)</string>
     <string name="social__github">GitHub</string>
     <string name="social__linkedin">LinkedIn</string>
     <string name="social__reddit">Reddit</string>
@@ -777,7 +778,7 @@
     <string name="externalimport__authenticatorpro_success_msg">Este arquivo de texto permite importar códigos do Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_title">Importando códigos 2FA do aplicativo Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_msg">Exporte suas contas do Authenticator Pro para um arquivo de texto não criptografado e carregue-o usando o botão \"Escolher arquivo de texto\". Lembre-se de remover o arquivo após uma importação bem-sucedida.</string>
-    <string name="externalimport__authenticatorpro">Autenticador Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Escolha o arquivo de texto</string>
     <string name="fingerprint__biometric_invalidated">O login biométrico está desativado, você pode mudar essa configuração nas configurações do sistema de biometria\u0020</string>
     <string name="tokens__last_pass_import">Importando códigos 2FA do aplicativo LastPass</string>
@@ -857,5 +858,60 @@
     <string name="settings__show_error_details">Mostrar detalhes do erro</string>
     <string name="tokens__show_qr_code">Mostrar serviço do QR code</string>
     <string name="tokens__show_service_qr_setup_lock">Seu serviço está protegido. Adicione um PIN ou bloqueio de impressão digital para ver o código QR.</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="tokens__copy_uri">Copiar URI</string>
+    <string name="backup__cloud_encrypted_user">O iCloud está criptografado com uma senha personalizada. Insira a senha e habilite a sincronização.</string>
+    <string name="backup__cloud_encrypted_system">O iCloud está criptografado com uma Chave de Sistema. Certifique que você habilitou as Chaves do iCloud.</string>
+    <string name="backup__synced">Sincronizado</string>
+    <string name="backup__checking">Verificando...</string>
+    <string name="backup__sync_disabled">Sincronização desabilitada.</string>
+    <string name="backup__sync_not_available">Sincronização indisponível: %s</string>
+    <string name="backup__watch_pairing_title">Pareando com o Apple Watch</string>
+    <string name="backup__watch_pairing_description">Deseja parear um Apple Watch com seu backup do iCloud? Insira um nome para seu dispositivo:</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
+    <string name="backup__watch_pairing_action">Parear dispositivo</string>
+    <string name="backup__watch_pairing_error">Não é possível parear com o relógio agora. Certifique que o backup em nuvem está habilitado e sincronizado utilizando uma senha.</string>
+    <string name="backup__cloud_error_title">Erro no backup em nuvem</string>
+    <string name="backup__cloud_error_missing_system_key_content">Não é possível descriptografar o backup em nuvem porque não há Chave de Sistema. Verifique se a sincronização com as Chaves do iCloud está habilitada e funcionando corretamente.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Não é possível descriptografar o backup em nuvem porque ele está criptografado com uma Chave de Sistema, e você está utilizando uma senha personalizada. Gostaria de alterar?</string>
+    <string name="backup__cloud_error_new_version_content">Não é possível sincronizar com o backup em nuvem porque ele foi migrado para uma versão mais recente do aplicativo. Atualize para continuar utilizando o backup em nuvem.</string>
+    <string name="backup__enter_cloud_backup_password_title">Insira a senha de backup em nuvem</string>
+    <string name="backup__enter_password_description">O backup do iCloud é criptografado com sua senha. Insira-a para habilitar a sincronização.</string>
+    <string name="backup__enter_password_failure">Falha! %s</string>
+    <string name="backup__enter_password_wrong_password">Senha incorreta! Por favor, tente novamente</string>
+    <string name="backup__migration_title">Migrando backup em nuvem</string>
+    <string name="backup__migration_subtitle">Não saia do aplicativo!</string>
+    <string name="backup__migration_description">Seu backup é criptografado com uma chave de Sistema. Essa chave será compartilhada entre os aplicativos que utilizam suas Chaves do iCloud. Lembre-se de manter essa opção habilitada. Se desejar utilizar sua senha, é possível fazer isso nas configurações de backup em nuvem após a migração.</string>
+    <string name="commons__success_ex">Sucesso!</string>
+    <string name="backup__encryption_type">Tipo de criptografia</string>
+    <string name="backup__encryption_select">Selecionar tipo de criptografia</string>
+    <string name="backup__encryption_enter_password">Inserir senha</string>
+    <string name="backup__encryption_change_password">Alterar senha</string>
+    <string name="backup__encryption_password_description">A senha é utilizada para criptografar seus dados. Caso a perca, não será possível resgatar os dados do backup na nuvem.</string>
+    <string name="backup__encryption_change_title">Alterar tipo de criptografia</string>
+    <string name="backup__encryption_method_footer">Selecionar senha de Sistema ou Personalizada</string>
+    <string name="backup__manage_paired_watches_title">Gerenciar Apple Watches pareados</string>
+    <string name="backup__manage_paired_watches_footer">Adicione, remova ou renomeie Apple Watches com acesso a este backup em nuvem.</string>
+    <string name="backup__manage_paired_watches_rename_title">Renomear Relógio</string>
+    <string name="backup__manage_paired_watches_rename_description">Introduza o nome do novo dispositivo</string>
+    <string name="backup__manage_paired_watches_rename_action">Renomear</string>
+    <string name="backup__manage_paired_watches_title_short">Gerenciar Relógios</string>
+    <string name="backup__manage_paired_watches_empty_list">Lista vazia. Pareie o relógio usando o botão +</string>
+    <string name="backup__manage_paired_watches_syncing">Backup em nuvem está sincronizando...</string>
+    <string name="backup__watch_pair_title">Pareie seu Apple Watch</string>
+    <string name="backup__watch_pair_description">Vá às configurações de Backup no 2FAS auth em seu iPhone/iPad e navegue até \"Gerenciar Apple Watches Pareados\". Essa opção ficará visível se o backup estiver sincronizado. Escaneie o código QR de lá.</string>
+    <string name="backup__watch_pair_qr_error">Erro ao gerar Código QR</string>
+    <string name="backup__cloud_switch_system_key">Alternar para Chave de Sistema</string>
+    <string name="backup__cloud_turn_backup_off">Desabilitar backup em nuvem</string>
+    <string name="commons__apply">Aplicar</string>
+    <string name="backup__state">Estado:</string>
+    <string name="backup__check_password">Verificar senha</string>
+    <string name="backup__missing_system_key">Chave de Sistema Ausente</string>
+    <string name="backup__system_key">Chave de Sistema</string>
+    <string name="backup__custom_password">Senha personalizada</string>
+    <string name="commons__options_title">Opções</string>
+    <string name="tokens__copy_secret">Copiar Chave Secreta.</string>
+    <string name="tokens__copy_link">Copiar link de autenticação OTP</string>
+    <string name="notifications__link_copied">Link Copied</string>
+    <string name="tokens__qr_code_show">Show service QR Code</string>
+    <string name="tokens__qr_code_share">Share service QR Code</string>
 </resources>

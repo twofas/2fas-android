@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:07:59 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -461,6 +461,7 @@
     <string name="browser__push_notifications_content">Om toegang te krijgen tot functies zoals de Browserextensie heeft de applicatie toegang nodig tot Pushmeldingen. U kunt deze instelling op elk moment wijzigen in de Systeeminstellingen.</string>
     <string name="browser__request_expired">Aanvraag verlopen\n</string>
     <string name="browser__2fa_token_request_title">2FA-tokenverzoek</string>
+    <!-- ADD A SPACE AT THE END! -->
     <string name="browser__2fa_token_request_content">Wilt u de 2FA-token delen voor\u0020</string>
     <string name="notifications__no_notifications">Geen notificaties</string>
     <string name="CFBundleSpokenName">2 F A S</string>
@@ -770,14 +771,14 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Tokens verbergen</string>
-    <string name="settings__hide_tokens_description">Tokens worden onthuld als u erop klikt.</string>
+    <string name="settings__hide_tokens_description">Tokens worden zichtbaar als u erop klikt.</string>
     <string name="browser__pair_manually_cta">Handmatig koppelen</string>
     <string name="browser__pair_manually_hint">Koppelingscode</string>
     <string name="externalimport__info_authenticatorpro_title">Importeer tokens vanuit Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_success_msg">Met dit tekstbestand kunt u tokens vanuit Authenticator Pro importeren.</string>
     <string name="externalimport__authenticatorpro_title">Importeer 2FA tokens vanuit de Authenticator Pro app</string>
     <string name="externalimport__authenticatorpro_msg">Exporteer uw accounts van Authenticator Pro naar een onbeveiligd tekstbestand en upload deze met de \"Kies tekstbestand\" knop. Vergeet niet om het bestand te verwijderen na een succesvolle import.</string>
-    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Tekstbestand kiezen</string>
     <string name="fingerprint__biometric_invalidated">Biometrische aanmelding is uitgeschakeld vanwege wijzigingen in de vingerafdrukinstellingen van het systeem</string>
     <string name="tokens__last_pass_import">2FA tokens importeren van LastPass app</string>
@@ -850,12 +851,67 @@
     <string name="appleWatch__installation_first_step_link">Open de Watch app</string>
     <string name="appleWatch__installation_second_step">Zorg ervoor dat iCloud Sync is ingeschakeld</string>
     <string name="appleWatch__installation_second_step_link">Ga naar 2FAS Backup instellingen</string>
-    <string name="settings__apple_watch">Apple Watch</string>
+    <string name="settings__apple_watch">Apple Watch / horloge</string>
     <string name="widget__no_selected_services">Houd de service ingedrukt en selecteer deze om de widget te activeren...</string>
     <string name="widget__reveal_tokens_long_message">Uw 2FAS tokens voor 60 seconden onthullen</string>
     <string name="widget__reveal_tokens_short_message">60 seconden onthullen</string>
-    <string name="settings__show_error_details">Show error details</string>
-    <string name="tokens__show_qr_code">Service QR Code</string>
-    <string name="tokens__show_service_qr_setup_lock">Your service is protected. Please add a PIN or Fingerprint lock to see QR code.</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="settings__show_error_details">Foutdetails weergeven</string>
+    <string name="tokens__show_qr_code">Toon service QR-code</string>
+    <string name="tokens__show_service_qr_setup_lock">Uw service is beveiligd. Voeg een pincode of vingerafdruk toe om de QR-code te zien.</string>
+    <string name="tokens__copy_uri">URI kopiëren</string>
+    <string name="backup__cloud_encrypted_user">iCloud is versleuteld met een eigen wachtwoord. Voer dit wachtwoord in en activeer synchronisatie.</string>
+    <string name="backup__cloud_encrypted_system">iCloud is versleuteld met een systeemsleutel. Controleer of de iCloud Keychain is ingeschakeld.</string>
+    <string name="backup__synced">Gesynchroniseerd\u0020</string>
+    <string name="backup__checking">Controleren...</string>
+    <string name="backup__sync_disabled">Synchronisatie uitgeschakeld.</string>
+    <string name="backup__sync_not_available">Synchronisatie niet beschikbaar: %s</string>
+    <string name="backup__watch_pairing_title">Verbinden met Apple Watch / horloge</string>
+    <string name="backup__watch_pairing_description">Wil je een Apple Watch / horloge verbinden met je iCloud backup? Voer de naam in voor je toestel:</string>
+    <string name="backup__watch_pairing_default_name">Apple Horloge</string>
+    <string name="backup__watch_pairing_action">Apparaat verbinden</string>
+    <string name="backup__watch_pairing_error">Kan niet met watch / horloge verbinden op dit moment. Verzeker dat cloud backup is ingeschakeld en synchroniseert met een wachtwoord.</string>
+    <string name="backup__cloud_error_title">Cloud backup fout</string>
+    <string name="backup__cloud_error_missing_system_key_content">Kan cloud backup niet ontsleutelen omdat er geen systeemsleutel is. Controleer of de iCloud Keychain synchronisatie is ingeschakeld en correct wrkt.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Kan cloud backup niet ontsleutelen omdat deze is versleuteld met een systeemsleutel, en je gebruikmaakt van een eigen wachtwoord. Wil je dit omwisselen?</string>
+    <string name="backup__cloud_error_new_version_content">Kan niet synchroniseren met cloud backup omdat deze gemigreerd is naar een nieuwere versie van de app. Werk de app bij om cloud backup verder te gebruiken.</string>
+    <string name="backup__enter_cloud_backup_password_title">Cloud backup wachtwoord ingeven</string>
+    <string name="backup__enter_password_description">iCloud backup is versleuteld met jouw wachtwoord. Voer dit in om synchronisatie in te schakelen.</string>
+    <string name="backup__enter_password_failure">Fout %s</string>
+    <string name="backup__enter_password_wrong_password">Foutief wachtwoord! Probeer opnieuw</string>
+    <string name="backup__migration_title">Cloud backup aan het migreren</string>
+    <string name="backup__migration_subtitle">De app niet sluiten!</string>
+    <string name="backup__migration_description">Je backup is versleuteld met een systeemsleutel. Deze seleutel zal worden gedeeld met je apps die gebruikmaken van de iCloud Keychain. Onthoud dat je deze optie aan diet te hebben staan. Als je jouw wachtwoordt wilt gebruiken, kan je dit in de Cloud backup instellingen doen na de migratie.</string>
+    <string name="commons__success_ex">Success!</string>
+    <string name="backup__encryption_type">Encryptie type</string>
+    <string name="backup__encryption_select">Selecteer encryptie type</string>
+    <string name="backup__encryption_enter_password">Wachtwoord ingeven</string>
+    <string name="backup__encryption_change_password">Wachtwoord veranderen</string>
+    <string name="backup__encryption_password_description">Wachtwoord wordt gebruikt om je data te versleutelen. Als je het verliest, is het onmogelijk om je data te recupereren uit de cloud backup.</string>
+    <string name="backup__encryption_change_title">Verander encryptie type</string>
+    <string name="backup__encryption_method_footer">Kies systeemsleutel of eigen wachtwoord</string>
+    <string name="backup__manage_paired_watches_title">Beheer verbonden Apple Watches</string>
+    <string name="backup__manage_paired_watches_footer">Voeg toe, verwijder, of hernoem Apple Watches met toegant tot deze Cloud backup</string>
+    <string name="backup__manage_paired_watches_rename_title">Hernoem watch / horloge</string>
+    <string name="backup__manage_paired_watches_rename_description">Voer een nieuwe toestelnaam in</string>
+    <string name="backup__manage_paired_watches_rename_action">Hernoemen</string>
+    <string name="backup__manage_paired_watches_title_short">Beheer watches / Horloges</string>
+    <string name="backup__manage_paired_watches_empty_list">Lijst is leeg. Watch / horloge verbinden met de + knop</string>
+    <string name="backup__manage_paired_watches_syncing">Cloud backup is aan het synchroniseren...</string>
+    <string name="backup__watch_pair_title">Verbind je Apple Watch / horloge</string>
+    <string name="backup__watch_pair_description">Ga naar 2FAS Backup instellingen in 2FAS Auth op je iPhone/iPad en navigeer naar \"Beheer verbonden Apple Watches\". Deze optie wordt zichtbaar als de backup is gesynchroniseerd. Scan daar de QR code.</string>
+    <string name="backup__watch_pair_qr_error">Fout bij het genereren van de QR Code</string>
+    <string name="backup__cloud_switch_system_key">Wissel naar systeemsleutel</string>
+    <string name="backup__cloud_turn_backup_off">Cloud backup uitschakelen</string>
+    <string name="commons__apply">Toepassen</string>
+    <string name="backup__state">Status:</string>
+    <string name="backup__check_password">Controleer wachtwoord</string>
+    <string name="backup__missing_system_key">Missende systeemsleutel</string>
+    <string name="backup__system_key">Systeemsleutel</string>
+    <string name="backup__custom_password">Eigen wachtwoord</string>
+    <string name="commons__options_title">Options</string>
+    <string name="tokens__copy_secret">Copy Secret Key</string>
+    <string name="tokens__copy_link">Copy OTP Auth link</string>
+    <string name="notifications__link_copied">Link Copied</string>
+    <string name="tokens__qr_code_show">Show service QR Code</string>
+    <string name="tokens__qr_code_share">Share service QR Code</string>
 </resources>

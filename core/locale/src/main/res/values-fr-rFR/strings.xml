@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:07:59 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -275,9 +275,9 @@
     <string name="tokens__order_menu_option_user">Demander une icône en tant qu\'utilisateur</string>
     <string name="tokens__order_menu_option_company">Soumettre l\'icône en tant qu\'entreprise</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
-    <string name="tokens__sign_in_not_possible_title">Il vous sera impossible de vous connecter à votre compte %1$s sans ce code, tant que la vérification en deux étapes\u0020\u0020%2$s est activée.</string>
+    <string name="tokens__sign_in_not_possible_title">Il vous sera impossible de vous connecter à votre compte %1$s sans ce code, tant que la vérification en deux étapes %2$s est activée.</string>
     <string name="voiceover__show_service_key">Afficher la clé secrète</string>
-    <string name="voiceover__copy_service_key">Copie de la clé secrète</string>
+    <string name="voiceover__copy_service_key">Copier la clé secrète</string>
     <!-- voiceover__seconds_left -->
     <string name="voiceover__seconds_left_counter_title">Compteur avec les secondes restantes pour le changement de clé 2FA</string>
     <string name="voiceover__delete_button">Bouton supprimer</string>
@@ -461,6 +461,7 @@
     <string name="browser__push_notifications_content">Pour accéder à des fonctionnalités telles que l\'extension web, l\'application doit avoir accès aux notifications push. Vous pouvez modifier ce paramètre à tout moment dans les paramètres de votre appareil.</string>
     <string name="browser__request_expired">Demande expirée</string>
     <string name="browser__2fa_token_request_title">Demande de clé 2FA</string>
+    <!-- ADD A SPACE AT THE END! -->
     <string name="browser__2fa_token_request_content">Voulez-vous partager la clé 2FA de\u0020</string>
     <string name="notifications__no_notifications">Pas de notifications</string>
     <string name="CFBundleSpokenName">2 F A S</string>
@@ -777,7 +778,7 @@
     <string name="externalimport__authenticatorpro_success_msg">Ce fichier texte vous permet d\'importer les clés depuis Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_title">Importer les clés 2FA depuis l\'application Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_msg">Exportez vos comptes depuis Authenticator Pro vers un fichier texte non chiffré et importez le via le bouton « Choisir un fichier texte ». N\'oubliez pas de supprimer ce fichier une fois importé avec succès.</string>
-    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Choisir un fichier texte</string>
     <string name="fingerprint__biometric_invalidated">Les connexions biométriques ont été désactivées en raison de changements dans les paramètres biométriques du système.</string>
     <string name="tokens__last_pass_import">Importation de clés 2FA à partir de l\'application LastPass</string>
@@ -819,7 +820,7 @@
     <string name="settings__preferences">Préférences</string>
     <string name="settings__it_matters">C\'est important</string>
     <string name="settings__manage_tokens">Gérer les jetons</string>
-    <string name="settings__info_footer">Votre soutien nous permet de développer de nouvelles fonctionnalités et améliorations. Merci!</string>
+    <string name="settings__info_footer">Votre soutien nous permet de développer de nouvelles fonctionnalités et améliorations. Merci !</string>
     <string name="settings__trash_option">Récupérer de la corbeille</string>
     <string name="periodic_notification_tips">Heureux que vous soyez parmi nous à 2FAS ! 🌟 Prenez un moment pour découvrir des conseils et des astuces pratiques 🛠️ dans l\'application pour une sécurité améliorée 🔒.</string>
     <string name="periodic_notification_backup">Activez la sauvegarde et la synchronisation 2FAS pour vous assurer que vous ne soyez jamais bloqué(e), même si vous perdez votre téléphone — votre tranquillité d\'esprit en un seul geste ! 🔐📱</string>
@@ -857,5 +858,60 @@
     <string name="settings__show_error_details">Afficher les détails de l\'erreur</string>
     <string name="tokens__show_qr_code">QR Code du service</string>
     <string name="tokens__show_service_qr_setup_lock">Le service est protégé. Merci de configurer la protection par PIN ou empreinte pour afficher le QR code.</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="tokens__copy_uri">Copier URI</string>
+    <string name="backup__cloud_encrypted_user">iCloud est chiffré avec un mot de passe personnalisé. Veuillez le saisir et activer la synchronisation.</string>
+    <string name="backup__cloud_encrypted_system">iCloud est chiffré avec la Clé Système. Assurez-vous d\'avoir activé le trousseau iCloud.</string>
+    <string name="backup__synced">Synchronisation réussie</string>
+    <string name="backup__checking">Vérification en cours...</string>
+    <string name="backup__sync_disabled">La synchronisation est désactivée.</string>
+    <string name="backup__sync_not_available">Synchronisation indisponible : %s</string>
+    <string name="backup__watch_pairing_title">Appairage avec l\'Apple Watch</string>
+    <string name="backup__watch_pairing_description">Souhaitez-vous appairer une Apple Watch avec votre iCloud ? Veuillez donner un nom à cet appareil :</string>
+    <string name="backup__watch_pairing_default_name">Montre Apple Watch</string>
+    <string name="backup__watch_pairing_action">Associer un appareil</string>
+    <string name="backup__watch_pairing_error">Impossible d\'appairer avec la montre pour le moment. Vérifiez que la sauvegarde dans le nuage soit bien activée et synchronisée avec votre mot de passe.</string>
+    <string name="backup__cloud_error_title">Erreur de sauvegarde dans le nuage</string>
+    <string name="backup__cloud_error_missing_system_key_content">Impossible de déchiffrer la sauvegarde dans le nuage en l\'absence de Clé Système. Veuillez vous assurer que la synchronisation du trousseau iCloud soit bien activée et fonctionnelle.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Impossible de déchiffrer la sauvegarde dans le nuage car celle-ci est chiffrée avec votre Clé Système, et vous utilisez un mot de passe personnalisé. Souhaitez-vous changer de méthode ?</string>
+    <string name="backup__cloud_error_new_version_content">Impossible de synchroniser la sauvegarde avec le nuage car celle-ci a été migrée vers une nouvelle version de l\'application. Merci de mettre à jour l\'appli afin de poursuivre l\'opération.</string>
+    <string name="backup__enter_cloud_backup_password_title">Saisir le mdp de sauvegarde dans le nuage</string>
+    <string name="backup__enter_password_description">La sauvegarde iCloud est chiffrée avec votre mot de passe. Veuillez le saisir pour activer la synchronisation.</string>
+    <string name="backup__enter_password_failure">Échec ! %s</string>
+    <string name="backup__enter_password_wrong_password">Mauvais mot de passe ! Veuillez ressayer</string>
+    <string name="backup__migration_title">Migration de la sauvegarde dans le nuage</string>
+    <string name="backup__migration_subtitle">Ne fermez pas l\'appli !</string>
+    <string name="backup__migration_description">Votre sauvegarde est chiffrée avec votre Clé Système. Cette clé sera partagée parmi les applications qui utilisent votre trousseau iCloud. Souvenez-vous d\'activer cette option. Si vous utilisez votre mot de passe, il est possible de le faire à partir des paramètres de sauvegarde dans le nuage après la migration.</string>
+    <string name="commons__success_ex">L\'opération s\'est terminée avec succès !</string>
+    <string name="backup__encryption_type">Type de chiffrement</string>
+    <string name="backup__encryption_select">Sélectionner le type de chiffrement</string>
+    <string name="backup__encryption_enter_password">Saisir mot de passe</string>
+    <string name="backup__encryption_change_password">Changer mot de passe</string>
+    <string name="backup__encryption_password_description">Le mot de passe est utilisé pour chiffrer vos données. Si vous le perdez, vous ne serez pas en mesure de récupérer les données depuis la sauvegarde dans le nuage.</string>
+    <string name="backup__encryption_change_title">Changer le type de chiffrement</string>
+    <string name="backup__encryption_method_footer">Sélectionner Système ou Mot de passe personnalisé</string>
+    <string name="backup__manage_paired_watches_title">Gérer les montres Apple Watch associées</string>
+    <string name="backup__manage_paired_watches_footer">Ajouter, retirer ou renommer les montres Apple Watch avec accès à cette sauvegarde dans le nuage.</string>
+    <string name="backup__manage_paired_watches_rename_title">Renommer le/les titre(s)</string>
+    <string name="backup__manage_paired_watches_rename_description">Renommer la/les descritption(s)</string>
+    <string name="backup__manage_paired_watches_rename_action">Renommer la/les sauvegarde(s)</string>
+    <string name="backup__manage_paired_watches_title_short">Titre court - Gestion des montres appairées</string>
+    <string name="backup__manage_paired_watches_empty_list">Gestion des sauvegardes/appairages montre - liste vide</string>
+    <string name="backup__manage_paired_watches_syncing">Gestion des sauvegarde/appairages de la montre - synchronisation</string>
+    <string name="backup__watch_pair_title">Titre sauvegarde/appairage montre</string>
+    <string name="backup__watch_pair_description">Description de la sauvegarde/appairage de la montre</string>
+    <string name="backup__watch_pair_qr_error">Erreur de sauvegarde/appairage montre QR code</string>
+    <string name="backup__cloud_switch_system_key">sauvegarde dans le cloud - changer la clé du système</string>
+    <string name="backup__cloud_turn_backup_off">sauvegarde dans le cloud - désactiver la sauvegarde</string>
+    <string name="commons__apply">Appliquer</string>
+    <string name="backup__state">État de la sauvegarde</string>
+    <string name="backup__check_password">Vérification de la sauvegarde de la clé du système</string>
+    <string name="backup__missing_system_key">Sauvegarde manquante de la clé du système</string>
+    <string name="backup__system_key">Sauvegarde de la clé du système</string>
+    <string name="backup__custom_password">Sauvegarde du mot de passe personnalisé</string>
+    <string name="commons__options_title">Options</string>
+    <string name="tokens__copy_secret">Copier la clé secrète</string>
+    <string name="tokens__copy_link">Copier le lien</string>
+    <string name="notifications__link_copied">Link Copied</string>
+    <string name="tokens__qr_code_show">Show service QR Code</string>
+    <string name="tokens__qr_code_share">Share service QR Code</string>
 </resources>

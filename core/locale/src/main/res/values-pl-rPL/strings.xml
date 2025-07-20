@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:07:59 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -461,6 +461,7 @@
     <string name="browser__push_notifications_content">Aby uzyskać dostęp do funkcji, takich jak rozszerzenie przeglądarki, aplikacja potrzebuje dostępu do powiadomień push. Ustawienie to można zmienić w dowolnym momencie w Ustawieniach systemowych.</string>
     <string name="browser__request_expired">Zgłoszenie wygasło</string>
     <string name="browser__2fa_token_request_title">Żądanie tokena 2FA</string>
+    <!-- ADD A SPACE AT THE END! -->
     <string name="browser__2fa_token_request_content">Czy chcesz udostępnić token 2FA dla\u0020</string>
     <string name="notifications__no_notifications">Brak powiadomień</string>
     <string name="CFBundleSpokenName">2 F A S</string>
@@ -783,7 +784,7 @@
     <string name="externalimport__authenticatorpro_success_msg">Ten plik tekstowy pozawala na importowanie tokenów z Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_title">Importowanie tokenów 2FA z aplikacji Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_msg">Wyeksportuj swoje konta z Authenticator Pro do niezaszyfrowanego pliku tekstowego i wgraj go za pomocą przycisku \"Wybierz plik tekstowy\". Pamiętaj, o usunięciu pliku po udanym imporcie.</string>
-    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Wybierz plik tekstowy</string>
     <string name="fingerprint__biometric_invalidated">Logowanie biometryczne zostało wyłączone z powodu zmian w systemowych ustawieniach bezpieczeństwa i prywatności.</string>
     <string name="tokens__last_pass_import">Import tokenów 2FA z aplikacji LastPass</string>
@@ -863,5 +864,60 @@
     <string name="settings__show_error_details">Pokaż szczegóły błędu</string>
     <string name="tokens__show_qr_code">Kod QR serwisu</string>
     <string name="tokens__show_service_qr_setup_lock">Twój serwis jest chroniony. Dodaj kod PIN lub odcisk palca, aby zobaczyć kod QR.</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="tokens__copy_uri">Skopiuj URI</string>
+    <string name="backup__cloud_encrypted_user">iCloud jest zaszyfrowany przy użyciu własnego hasła. Wprowadź je i włącz synchronizację.</string>
+    <string name="backup__cloud_encrypted_system">iCloud jest zaszyfrowany przy użyciu Klucza Systemowego. Upewnij się że pęk kluczy iCloud został włączony.</string>
+    <string name="backup__synced">Zsynchronizowany</string>
+    <string name="backup__checking">Sprawdzanie...</string>
+    <string name="backup__sync_disabled">Synchronizacja jest wyłączona</string>
+    <string name="backup__sync_not_available">Synchronizacja jest niedostępna: %s</string>
+    <string name="backup__watch_pairing_title">Parowanie z Apple Watch</string>
+    <string name="backup__watch_pairing_description">Czy chcesz sparować zegarek Apple Watch z kopią zapasową iCloud? Wprowadź nazwę urządzenia:</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
+    <string name="backup__watch_pairing_action">Sparuj urządzenie</string>
+    <string name="backup__watch_pairing_error">Nie można sparować z Apple Watch. Upewnij się że kopia zapasowa iCloud jest włączona i zsynchronizowana przy użyciu hasła.</string>
+    <string name="backup__cloud_error_title">Błąd kopii zapasowej iCloud</string>
+    <string name="backup__cloud_error_missing_system_key_content">Nie można odszyfrować kopii zapasowej iCloud z powodu braku Klucza Systemowego. Sprawdz czy pęk kluczy iCloud jest włączony i działa poprawnie.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Nie można odszyfrować kopii zapasowej iCloud ponieważ jest zaszyfrowana Kluczem Systemowym, a używasz własnego hasła. Czy chcesz przełączyć na Klucz Systemowy?</string>
+    <string name="backup__cloud_error_new_version_content">Nie można zsynchronizować z kopią zapasową iCloud ponieważ została ona przeniesiona do nowej wersji aplikacji. Zaktualizuj aplikację, aby nadal korzystać z kopii zapasowej iCloud.</string>
+    <string name="backup__enter_cloud_backup_password_title">Wprowadź hasło kopii zapasowej iCloud</string>
+    <string name="backup__enter_password_description">Kopia zapasowa iCloud jest zaszyfrowana twoim hasłem. Wprowadź je, aby włączyć synchronizację.</string>
+    <string name="backup__enter_password_failure">Błąd! %s</string>
+    <string name="backup__enter_password_wrong_password">Niepoprawne hasło! Proszę spróbować podobnie</string>
+    <string name="backup__migration_title">Migracja kopii zapasowej iCloud</string>
+    <string name="backup__migration_subtitle">Nie wyłączaj aplikacji!</string>
+    <string name="backup__migration_description">Kopia zapasowa jest zaszyfrowana Kluczem Systemowym. Ten klucz będzie udostępniony wszystkim aplikacjom korzystającym z pęku kluczy iCloud. Pamiętaj, aby włączyć tę opcję. Jeśli chcesz użyć własnego hasła, możesz to zrobić w ustawieniach kopii zapasowej iCloud po migracji.</string>
+    <string name="commons__success_ex">Sukces!</string>
+    <string name="backup__encryption_type">Rodzaj szyfrowania</string>
+    <string name="backup__encryption_select">Wybierz rodzaj szyfrowania</string>
+    <string name="backup__encryption_enter_password">Wprowadź hasło</string>
+    <string name="backup__encryption_change_password">Zmień hasło</string>
+    <string name="backup__encryption_password_description">Hasło służy do szyfrowania twoich danych. Jeśli je utracisz, nie będziesz w stanie odzyskać danych z kopii zapasowej iCloud.</string>
+    <string name="backup__encryption_change_title">Zmień rodzaj szyfrowania</string>
+    <string name="backup__encryption_method_footer">Wybierz szyfrowanie Systemowe lub Użytkownika</string>
+    <string name="backup__manage_paired_watches_title">Zarządzaj sparowanymi Apple Watch</string>
+    <string name="backup__manage_paired_watches_footer">Dodawaj, usuwaj lub zmieniaj nazwy zegarków Apple Watch z dostępem do tej kopii zapasowej w chmurze.</string>
+    <string name="backup__manage_paired_watches_rename_title">Zmień nazwę Watcha</string>
+    <string name="backup__manage_paired_watches_rename_description">Wprowadź nową nazwę urządzenia</string>
+    <string name="backup__manage_paired_watches_rename_action">Zmień nazwę</string>
+    <string name="backup__manage_paired_watches_title_short">Zarządzaj Watchami</string>
+    <string name="backup__manage_paired_watches_empty_list">Lista jest pusta. Sparuj z Apple Watch przyciskiem +</string>
+    <string name="backup__manage_paired_watches_syncing">Synchronizacja kopii zapasowej iCloud...</string>
+    <string name="backup__watch_pair_title">Sparuj twój Apple Watch</string>
+    <string name="backup__watch_pair_description">Przejdź do ustawień 2FAS Backup w 2FAS Auth na iPhonie/iPadzie i do „Zarządzane sparowane Apple Watche”. Ta opcja będzie widoczna, jeśli kopia zapasowa jest zsynchronizowana. Zeskanuj stamtąd kod QR.</string>
+    <string name="backup__watch_pair_qr_error">Błąd przy generowaniu kodu QR</string>
+    <string name="backup__cloud_switch_system_key">Przełącz na Klucz Systemowy</string>
+    <string name="backup__cloud_turn_backup_off">Wyłącz kopię zapasową iCloud</string>
+    <string name="commons__apply">Zastosuj</string>
+    <string name="backup__state">Stan:</string>
+    <string name="backup__check_password">Sprawdź hasło</string>
+    <string name="backup__missing_system_key">Brakujący Klucz Systemowy</string>
+    <string name="backup__system_key">Klucz Systemowy</string>
+    <string name="backup__custom_password">Własne hasło</string>
+    <string name="commons__options_title">Opcje</string>
+    <string name="tokens__copy_secret">Kopiuj Tajny klucz</string>
+    <string name="tokens__copy_link">Kopiuj link OTP Auth</string>
+    <string name="notifications__link_copied">Link skopiowany</string>
+    <string name="tokens__qr_code_show">Pokaż kod QR serwisu</string>
+    <string name="tokens__qr_code_share">Udostępnij kod QR serwisu</string>
 </resources>

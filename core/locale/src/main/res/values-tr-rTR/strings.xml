@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:08:00 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -461,6 +461,7 @@
     <string name="browser__push_notifications_content">Tarayıcı uzantısı gibi işlevselliklere erişebilmek için uygulamanın anlık bildirimlere erişmesi gerekiyor. Bu ayarı istediğiniz zaman sistem ayarlarında değiştirebilirsiniz.</string>
     <string name="browser__request_expired">İsteğin süresi doldu</string>
     <string name="browser__2fa_token_request_title">2AD jetonu isteği</string>
+    <!-- ADD A SPACE AT THE END! -->
     <string name="browser__2fa_token_request_content">Şu 2AD jetonunu paylaşmak ister misiniz:\u0020</string>
     <string name="notifications__no_notifications">Bildirim yok</string>
     <string name="CFBundleSpokenName">2 F A S</string>
@@ -777,7 +778,7 @@
     <string name="externalimport__authenticatorpro_success_msg">Bu metin belgesi, jetonların Authenticator Pro\'dan içeri aktarılmasına izin verir.</string>
     <string name="externalimport__authenticatorpro_title">2AD jetonları Authenticator Pro\'dan içeri aktarılıyor</string>
     <string name="externalimport__authenticatorpro_msg">Hesaplarınızı Authenticator Pro\'dan şifrelenmemiş bir metin belgesine aktarın ve \"Metin belgesi seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
-    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Metin belgesi seç</string>
     <string name="fingerprint__biometric_invalidated">Biyometrik giriş, sistemdeki parmak izi ayarları değişikliklerinden dolayı devre dışı bırakıldı</string>
     <string name="tokens__last_pass_import">2AD jetonları LastPass\'tan içeri aktarılıyor</string>
@@ -852,10 +853,65 @@
     <string name="appleWatch__installation_second_step_link">2FAS yedeklemesi ayarlarına git</string>
     <string name="settings__apple_watch">Apple Watch</string>
     <string name="widget__no_selected_services">Widget\'ı etkinleştirmek için basılı tutun ve servisi seçin...</string>
-    <string name="widget__reveal_tokens_long_message">2FAS jetonları 60 saniye boyunca gösterin</string>
+    <string name="widget__reveal_tokens_long_message">2FAS jetonlarınızı 60 saniye boyunca gösterin</string>
     <string name="widget__reveal_tokens_short_message">60 saniye boyunca göster</string>
-    <string name="settings__show_error_details">Show error details</string>
-    <string name="tokens__show_qr_code">Service QR Code</string>
-    <string name="tokens__show_service_qr_setup_lock">Your service is protected. Please add a PIN or Fingerprint lock to see QR code.</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="settings__show_error_details">Hata ayrıntılarını göster</string>
+    <string name="tokens__show_qr_code">Hizmet QR Kodu</string>
+    <string name="tokens__show_service_qr_setup_lock">Hizmetiniz korumalı. QR kodunu görmek için lütfen bir PIN veya parmak izi kilidi ekleyin.</string>
+    <string name="tokens__copy_uri">URI\'yı kopyala</string>
+    <string name="backup__cloud_encrypted_user">iCloud özel bir parola ile şifreli. Parolayı girin ve eşitlemeyi etkinleştirin.</string>
+    <string name="backup__cloud_encrypted_system">iCloud bir Sistem anahtarı ile şifreli. iCloud Anahtar Zincirini etkileştirdiğinizden emin olun.</string>
+    <string name="backup__synced">Eşitlenmiş</string>
+    <string name="backup__checking">Denetleniyor...</string>
+    <string name="backup__sync_disabled">Eşitleme devre dışı.</string>
+    <string name="backup__sync_not_available">Eşitleme mevcut değil: %s</string>
+    <string name="backup__watch_pairing_title">Apple Watch ile eşleşiliyor</string>
+    <string name="backup__watch_pairing_description">iCloud yedeklemenizle bir Apple Watch\'ı eşleştirmek istiyor musunuz? Cihazınızın adını girin:</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
+    <string name="backup__watch_pairing_action">Cihaz eşleştir</string>
+    <string name="backup__watch_pairing_error">Şu anda saat ile eşleştirilemiyor. Bulut yedeklemesinin etkinleştirilmiş ve bir parola ile eşitlenmiş olduğundan emin olun.</string>
+    <string name="backup__cloud_error_title">Bulut yedekleme hatası</string>
+    <string name="backup__cloud_error_missing_system_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü Sistem Anahtarı yok. iCloud Anahtar Zincirinin etkinleştirilmiş olduğu ve doğru çalıştığını denetleyin.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü Sistem Anahtarı kullanılarak şifrelenmiş ve şu anda özel bir parola kullanıyorsunuz. Geçiş yapmak ister misiniz?</string>
+    <string name="backup__cloud_error_new_version_content">Bulut yedeklemesi ile eşitlenemiyor çünkü uygulamanın daha güncel bir sürümüne taşınmıştı. Bulut yedeklemesini kullanmaya devam etmek için uygulamayı güncelleyin.</string>
+    <string name="backup__enter_cloud_backup_password_title">Bulut yedeklemesi parolası girin</string>
+    <string name="backup__enter_password_description">iCloud yedeği parolanızla şifrelenmiştir. Eşitlemeyi etkinleştirmek için parolanızı girin.</string>
+    <string name="backup__enter_password_failure">Başarısız! %s</string>
+    <string name="backup__enter_password_wrong_password">Yanlış parola! Lütfen tekrar deneyin</string>
+    <string name="backup__migration_title">Bulut yedeği taşınıyor</string>
+    <string name="backup__migration_subtitle">Uygulamayı kapatmayın!</string>
+    <string name="backup__migration_description">Yedeğiniz bir Sistem anahtarı ile şifreli. Bu anahtar, iCloud Anahtar Zincirini kullanan diğer uygulamalar arasında paylaştırılacak. Bu seçeneğin açık olduğundan emin olun Eğer kendi parolanızı kullanmak isterseniz, taşıma işleminden sonra Bulut yedeği ayarlarından ayarlayabilirsiniz.</string>
+    <string name="commons__success_ex">Başarılı!</string>
+    <string name="backup__encryption_type">Şifreleme türü</string>
+    <string name="backup__encryption_select">Şifreleme türü seçin</string>
+    <string name="backup__encryption_enter_password">Parolayı gir</string>
+    <string name="backup__encryption_change_password">Parolayı değiştir</string>
+    <string name="backup__encryption_password_description">Parola verilerinizi şifrelemek için kullanılır. Eğer parolanızı kaybederseniz verilerinizi Bulut yedeklemesinden kurtaramazsınız.</string>
+    <string name="backup__encryption_change_title">Şifreleme türünü değiştirin</string>
+    <string name="backup__encryption_method_footer">Sistem veya Özel parola seçin</string>
+    <string name="backup__manage_paired_watches_title">Eşleşmiş Apple Watch\'ları yönet</string>
+    <string name="backup__manage_paired_watches_footer">Bu bulut yedeğine erişimi olan Apple Watch\'ları ekleyin, kaldırın veya yeniden adlandırın.</string>
+    <string name="backup__manage_paired_watches_rename_title">Saati yeniden adlandır</string>
+    <string name="backup__manage_paired_watches_rename_description">Yeni cihaz adı gir</string>
+    <string name="backup__manage_paired_watches_rename_action">Yeniden adlandır</string>
+    <string name="backup__manage_paired_watches_title_short">Saatleri yönet</string>
+    <string name="backup__manage_paired_watches_empty_list">Liste boş. + düğmesini kullanarak Saati eşleştirin</string>
+    <string name="backup__manage_paired_watches_syncing">Bulut yedeklemesi eşitleniyor...</string>
+    <string name="backup__watch_pair_title">Apple Watch\'ınızı eşleştirin</string>
+    <string name="backup__watch_pair_description">iPhone/iPad\'inizde 2FAS Yedeklemesi ayarına gidin ve \"Eşleşmiş Apple Watch\'ları yönet\" seçeneğini bulun. Bu seçenek, eğer yedekleme eşitlenmişse görünür olacak. QR kodunu oradan okutun.</string>
+    <string name="backup__watch_pair_qr_error">QR Kodu üretilirken hata oluştu</string>
+    <string name="backup__cloud_switch_system_key">Sistem Anahtarına geç</string>
+    <string name="backup__cloud_turn_backup_off">Bulut yedeklemesini devre dışı bırak</string>
+    <string name="commons__apply">Uygula</string>
+    <string name="backup__state">Durum:</string>
+    <string name="backup__check_password">Parolayı denetle</string>
+    <string name="backup__missing_system_key">Eksik Sistem Anahtarı</string>
+    <string name="backup__system_key">Sistem Anahtarı</string>
+    <string name="backup__custom_password">Özel parola</string>
+    <string name="commons__options_title">Options</string>
+    <string name="tokens__copy_secret">Copy Secret Key</string>
+    <string name="tokens__copy_link">Copy OTP Auth link</string>
+    <string name="notifications__link_copied">Link Copied</string>
+    <string name="tokens__qr_code_show">Show service QR Code</string>
+    <string name="tokens__qr_code_share">Share service QR Code</string>
 </resources>

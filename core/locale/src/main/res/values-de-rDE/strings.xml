@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:07:59 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -241,7 +241,7 @@
     <!-- tokens__advanced_alert_description -->
     <string name="tokens__advanced_alert_description_title">Das Ändern der erweiterten Einstellungen ist nicht empfohlen. Dies sollte nur getan werden, wenn dein 2FA-Anbieter es benötigt und du genaue Anweisungen hast.</string>
     <string name="tokens__token_settings">Token-Einstellungen</string>
-    <string name="tokens__otp_authentication">OTP Authentifizierung\u0020</string>
+    <string name="tokens__otp_authentication">OTP Authentifizierung</string>
     <string name="tokens__algorithm">Algorithmus</string>
     <string name="tokens__refresh_time">Aktualisierungszeit</string>
     <string name="tokens__number_of_digits">Anzahl der Ziffern</string>
@@ -260,7 +260,7 @@
     <string name="tokens__gallery_advice_content_last">Wenn jemand diesen QR-Code übernimmt, ist es möglich deine 2FA Codes über diesem Dienst zu erhalten.</string>
     <string name="tokens__request_icon_page_title">Ein Logo anfragen</string>
     <string name="tokens__request_icon_social_title">Lass es uns auf Discord wissen</string>
-    <string name="tokens__request_icon_social_link">Trete unserem Discord-Server bei</string>
+    <string name="tokens__request_icon_social_link">Tritt unserem Discord-Server bei</string>
     <string name="tokens__request_icon_social_description">und lass Nutzer für das gewünschte Logo abstimmen.</string>
     <string name="tokens__request_icon_middle">oder</string>
     <string name="tokens__request_icon_provider_title">Informiere den Dienstanbieter</string>
@@ -461,6 +461,7 @@
     <string name="browser__push_notifications_content">Um auf Funktionen wie die Browsererweiterung zugreifen zu können, benötigt die Anwendung Zugriff auf Push-Benachrichtigungen. Du kannst diese Einstellung jederzeit in den Systemeinstellungen vornehmen.</string>
     <string name="browser__request_expired">Anfrage abgelaufen</string>
     <string name="browser__2fa_token_request_title">2FA Token Anfrage</string>
+    <!-- ADD A SPACE AT THE END! -->
     <string name="browser__2fa_token_request_content">Möchtest du diesen 2FA Token teilen mit\u0020</string>
     <string name="notifications__no_notifications">Keine Benachrichtigungen</string>
     <string name="CFBundleSpokenName">2 F A S</string>
@@ -777,7 +778,7 @@
     <string name="externalimport__authenticatorpro_success_msg">Diese Textdatei ermöglicht den Import von Token aus Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_title">2FA-Tokens aus der Authenticator Pro App importieren</string>
     <string name="externalimport__authenticatorpro_msg">Exportiere deine Konten von Authenticator Pro in eine unverschlüsselte Textdatei und lade diese über die \"Textdatei auswählen\" Schaltfläche hoch. Denke daran die Datei nach erfolgreichen Import zu löschen.</string>
-    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Textdatei auswählen</string>
     <string name="fingerprint__biometric_invalidated">Biometrische Anmeldungen wurden aufgrund von Änderungen der Systemsicherheits- und Datenschutzeinstellungen deaktiviert.</string>
     <string name="tokens__last_pass_import">Importieren von 2FA Tokens von der LastPass App</string>
@@ -851,11 +852,66 @@
     <string name="appleWatch__installation_second_step">Stelle sicher, dass die iCloud-Synchronisierung aktiviert ist</string>
     <string name="appleWatch__installation_second_step_link">Gehe zu den 2FAS-Backup-Einstellungen</string>
     <string name="settings__apple_watch">Apple Watch</string>
-    <string name="widget__no_selected_services">Gedrückt halten und Service auswählen, um das Widget zu aktivieren...</string>
+    <string name="widget__no_selected_services">Gedrückt halten und Dienst auswählen, um das Widget zu aktivieren...</string>
     <string name="widget__reveal_tokens_long_message">Decke deine 2FAS-Token für 60 Sekunden auf</string>
     <string name="widget__reveal_tokens_short_message">Aufdecken für 60 Sekunden</string>
     <string name="settings__show_error_details">Fehlerdetails anzeigen</string>
-    <string name="tokens__show_qr_code">Zeige Dienst-QR</string>
+    <string name="tokens__show_qr_code">Dienst QR-Code</string>
     <string name="tokens__show_service_qr_setup_lock">Dein Dienst ist geschützt. Bitte füge eine PIN oder Fingerabdrucksperre hinzu, um den QR-Code zu sehen.</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="tokens__copy_uri">URI kopieren</string>
+    <string name="backup__cloud_encrypted_user">iCloud ist mit einem benutzerdefinierten Passwort verschlüsselt. Gib das Passwort ein und aktiviere die Synchronisierung.</string>
+    <string name="backup__cloud_encrypted_system">iCloud wird mit einem Systemschlüssel verschlüsselt. Stelle sicher, dass du den iCloud-Schlüsselbund aktiviert hast.</string>
+    <string name="backup__synced">Synchronisiert</string>
+    <string name="backup__checking">Überprüfe...</string>
+    <string name="backup__sync_disabled">Die Synchronisierung ist deaktiviert.</string>
+    <string name="backup__sync_not_available">Synchronisierung nicht verfügbar: %s</string>
+    <string name="backup__watch_pairing_title">Kopplung mit Apple Watch</string>
+    <string name="backup__watch_pairing_description">Möchtest du eine Apple Watch mit deinem iCloud-Backup koppeln? Gib den Namen für dein Gerät ein:</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
+    <string name="backup__watch_pairing_action">Gerät koppeln</string>
+    <string name="backup__watch_pairing_error">Kann nicht mit der Watch gekoppelt werden. Stelle sicher, dass das Cloud-Backup aktiviert ist und mit einem Passwort synchronisiert wird.</string>
+    <string name="backup__cloud_error_title">Fehler bei der Cloud-Sicherung</string>
+    <string name="backup__cloud_error_missing_system_key_content">Das Cloud-Backup kann nicht entschlüsselt werden, weil es keinen Systemschlüssel gibt. Prüfe, ob die iCloud-Schlüsselbund-Synchronisierung aktiviert ist und richtig funktioniert.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Die Cloud-Sicherung kann nicht entschlüsselt werden, da sie mit dem Systemschlüssel verschlüsselt ist und du ein benutzerdefiniertes Passwort verwendest. Möchtest du wechseln?</string>
+    <string name="backup__cloud_error_new_version_content">Die Synchronisierung mit dem Cloud-Backup ist nicht möglich, da es auf eine neuere Version der App migriert wurde. Aktualisiere die App, um Cloud-Backup weiterhin zu verwenden.</string>
+    <string name="backup__enter_cloud_backup_password_title">Cloud-Backup-Passwort eingeben</string>
+    <string name="backup__enter_password_description">Die iCloud-Sicherung ist mit deinem Passwort verschlüsselt. Gib es ein, um die Synchronisierung zu aktivieren.</string>
+    <string name="backup__enter_password_failure">Misserfolg! %s</string>
+    <string name="backup__enter_password_wrong_password">Falsches Passwort! Bitte versuche es erneut</string>
+    <string name="backup__migration_title">Migration der Cloud-Sicherung</string>
+    <string name="backup__migration_subtitle">Schalte die App nicht aus!</string>
+    <string name="backup__migration_description">Deine Sicherung wird mit einem Systemschlüssel verschlüsselt. Dieser Schlüssel wird von deinen Apps, die iCloud-Schlüsselbund verwenden, gemeinsam genutzt. Denke daran, diese Option zu aktivieren. Wenn du dein Passwort verwenden möchtest, kannst du dies nach der Migration in den Einstellungen für die Cloud-Sicherung tun.</string>
+    <string name="commons__success_ex">Erfolg!</string>
+    <string name="backup__encryption_type">Verschlüsselungsart</string>
+    <string name="backup__encryption_select">Verschlüsselungsart auswählen</string>
+    <string name="backup__encryption_enter_password">Passwort eingeben</string>
+    <string name="backup__encryption_change_password">Passwort ändern</string>
+    <string name="backup__encryption_password_description">Das Passwort wird zur Verschlüsselung deiner Daten verwendet. Wenn du es verlierst, wirst du nicht in der Lage sein, die Daten aus der Cloud-Sicherung wiederherzustellen.</string>
+    <string name="backup__encryption_change_title">Verschlüsselungsart ändern</string>
+    <string name="backup__encryption_method_footer">Wähle ein System- oder benutzerdefiniertes Passwort</string>
+    <string name="backup__manage_paired_watches_title">Gekoppelte Apple Watches verwalten</string>
+    <string name="backup__manage_paired_watches_footer">Hinzufügen, Entfernen oder Umbenennen von Apple Watches mit Zugriff auf dieses Cloud-Backup.</string>
+    <string name="backup__manage_paired_watches_rename_title">Watch umbenennen</string>
+    <string name="backup__manage_paired_watches_rename_description">Neuen Gerätenamen eingeben</string>
+    <string name="backup__manage_paired_watches_rename_action">Umbenennen</string>
+    <string name="backup__manage_paired_watches_title_short">Watches verwalten</string>
+    <string name="backup__manage_paired_watches_empty_list">Die Liste ist leer. Watch mit der Taste + koppeln</string>
+    <string name="backup__manage_paired_watches_syncing">Die Cloud-Sicherung synchronisiert...</string>
+    <string name="backup__watch_pair_title">Kopple deine Apple Watch</string>
+    <string name="backup__watch_pair_description">Gehe zu den 2FAS Backup-Einstellungen in 2FAS Auth auf deinem iPhone/iPad und navigiere zu „Verwaltete gekoppelte Apple Watches“. Diese Option wird sichtbar sein, wenn das Backup synchronisiert ist. Scanne den QR-Code von dort aus.</string>
+    <string name="backup__watch_pair_qr_error">Fehler beim Generieren des QR-Codes</string>
+    <string name="backup__cloud_switch_system_key">Zum Systemschlüssel wechseln</string>
+    <string name="backup__cloud_turn_backup_off">Cloud-Backup deaktivieren</string>
+    <string name="commons__apply">Übernehmen</string>
+    <string name="backup__state">Status:</string>
+    <string name="backup__check_password">Überprüfe Passwort</string>
+    <string name="backup__missing_system_key">Fehlender Systemschlüssel</string>
+    <string name="backup__system_key">Systemschlüssel</string>
+    <string name="backup__custom_password">Benutzerdefiniertes Passwort</string>
+    <string name="commons__options_title">Optionen</string>
+    <string name="tokens__copy_secret">Geheimschlüssel kopieren</string>
+    <string name="tokens__copy_link">OTP Authentifizierungs-Link kopieren</string>
+    <string name="notifications__link_copied">Link kopiert</string>
+    <string name="tokens__qr_code_show">Zeige den Dienst QR-Code</string>
+    <string name="tokens__qr_code_share">Teile den Dienst QR-Code</string>
 </resources>
