@@ -89,13 +89,14 @@ playReviewKtx = "com.google.android.play:review-ktx:2.0.1"
 playServicesCorutines = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1"
 playUpdate = "com.google.android.play:app-update:2.1.0"
 playUpdateKtx = "com.google.android.play:app-update-ktx:2.1.0"
+playFeatureDelivery = "com.google.android.play:feature-delivery-ktx:2.1.0"
 protobuf = "com.google.protobuf:protobuf-kotlin-lite:3.19.1"
 reLinker = "com.getkeepsafe.relinker:relinker:1.4.5"
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 securityCrypto = "androidx.security:security-crypto:1.1.0-alpha06"
-sqlCipher = "net.zetetic:android-database-sqlcipher:4.5.4"
+sqlCipher = "net.zetetic:sqlcipher-android:4.9.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
 webkit = "androidx.webkit:webkit:1.11.0"
 workManager = "androidx.work:work-runtime-ktx:2.9.1"

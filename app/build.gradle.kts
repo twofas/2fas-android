@@ -90,6 +90,7 @@ dependencies {
     implementation(libs.firebaseCrashlytics)
     implementation(libs.firebaseMessaging)
     implementation(libs.playServicesCorutines)
+    implementation(libs.playFeatureDelivery)
     implementation(libs.googleApiClientGson)
     implementation(libs.googleApiClientAndroid) {
         exclude("org.apache.httpcomponents", "guava-jdk5")
