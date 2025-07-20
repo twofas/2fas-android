@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -11,6 +12,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalContext
+import androidx.window.core.layout.WindowWidthSizeClass
 import com.twofasapp.designsystem.internal.LocalThemeColors
 import com.twofasapp.designsystem.internal.ThemeColors
 import com.twofasapp.designsystem.internal.ThemeColorsDark
@@ -77,12 +79,16 @@ fun MainAppTheme(
 @Composable
 fun LockScreenOrientation(orientation: Int) {
     val activity = LocalContext.currentActivity
+    val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
+    val isPhone = windowSizeClass.windowWidthSizeClass == WindowWidthSizeClass.COMPACT
 
-    DisposableEffect(Unit) {
-        val originalOrientation = activity.requestedOrientation
-        activity.requestedOrientation = orientation
-        onDispose {
-            activity.requestedOrientation = originalOrientation
+    if (isPhone) {
+        DisposableEffect(Unit) {
+            val originalOrientation = activity.requestedOrientation
+            activity.requestedOrientation = orientation
+            onDispose {
+                activity.requestedOrientation = originalOrientation
+            }
         }
     }
 }
