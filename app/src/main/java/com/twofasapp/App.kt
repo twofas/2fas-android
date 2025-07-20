@@ -11,7 +11,6 @@ import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.di.Modules
 import com.twofasapp.parsers.SupportedServices
 import com.twofasapp.prefs.usecase.SendCrashLogsPreference
-import net.sqlcipher.database.SQLiteDatabase
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -62,12 +61,7 @@ class App : Application() {
 
         cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.AppStart)
 
-        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
-
-        try {
-            SQLiteDatabase.loadLibs(this)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        FirebaseCrashlytics.getInstance()
+            .setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
     }
 }

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:08:00 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -461,6 +461,7 @@
     <string name="browser__push_notifications_content">Για πρόσβαση σε λειτουργίες όπως η εφαρμογή Επέκταση προγράμματος περιήγησης χρειάζεται πρόσβαση στις Ειδοποιήσεις Push. Μπορείτε να αλλάξετε αυτήν τη ρύθμιση ανά πάσα στιγμή στις Ρυθμίσεις συστήματος.</string>
     <string name="browser__request_expired">Το αίτημα έληξε</string>
     <string name="browser__2fa_token_request_title">2FA Token Request</string>
+    <!-- ADD A SPACE AT THE END! -->
     <string name="browser__2fa_token_request_content">Θέλετε να μοιραστείτε το token 2FA για\u0020</string>
     <string name="notifications__no_notifications">Δεν υπάρχουν ειδοποιήσεις</string>
     <string name="CFBundleSpokenName">2 F A S</string>
@@ -777,7 +778,7 @@
     <string name="externalimport__authenticatorpro_success_msg">Αυτό το αρχείο κειμένου επιτρέπει την εισαγωγή token από το Authenticator Pro.\"</string>
     <string name="externalimport__authenticatorpro_title">Εισαγωγή token 2FA από την εφαρμογή Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_msg">Εξάγετε τους λογαριασμούς σας από το Authenticator Pro σε ένα μη κρυπτογραφημένο αρχείο κειμένου και ανεβάστε το χρησιμοποιώντας το κουμπί \'Επιλέξτε αρχείο κειμένου\'. Μην ξεχάσετε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
-    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Επιλέξτε αρχείο κειμένου</string>
     <string name="fingerprint__biometric_invalidated">Η σύνδεση με βιομετρικών στοιχείων απενεργοποιήθηκε λόγω αλλαγών στις ρυθμίσεις αποτυπώματος του συστήματος</string>
     <string name="tokens__last_pass_import">Εισαγωγή tokens 2FA από την εφαρμογή LastPass.</string>
@@ -857,5 +858,60 @@
     <string name="settings__show_error_details">Εμφάνιση λεπτομερειών σφάλματος</string>
     <string name="tokens__show_qr_code">Κωδικός QR Υπηρεσίας</string>
     <string name="tokens__show_service_qr_setup_lock">Η υπηρεσία σας είναι προστατευμένη. Παρακαλώ προσθέστε ένα PIN ή κλείδωμα με δακτυλικό αποτύπωμα για να δείτε τον κωδικό QR.</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="tokens__copy_uri">Αντιγραφή URI</string>
+    <string name="backup__cloud_encrypted_user">Το iCloud είναι κρυπτογραφημένο με προσαρμοσμένο κωδικό. Εισαγάγετε τον κωδικό και ενεργοποιήστε τον συγχρονισμό.</string>
+    <string name="backup__cloud_encrypted_system">Το iCloud είναι κρυπτογραφημένο με Κλειδί Συστήματος. Βεβαιωθείτε ότι έχετε ενεργοποιήσει το iCloud Keychain.</string>
+    <string name="backup__synced">Συγχρονίστηκε</string>
+    <string name="backup__checking">Έλεγχος...</string>
+    <string name="backup__sync_disabled">Ο συγχρονισμός είναι απενεργοποιημένος.</string>
+    <string name="backup__sync_not_available">Ο συγχρονισμός δεν είναι διαθέσιμος: %s</string>
+    <string name="backup__watch_pairing_title">Ζεύξη με Apple Watch</string>
+    <string name="backup__watch_pairing_description">Θέλετε να συνδέσετε ένα Apple Watch με το αντίγραφο ασφαλείας του iCloud; Εισάγετε το όνομα για τη συσκευή σας</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
+    <string name="backup__watch_pairing_action">Ζεύξη συσκευής</string>
+    <string name="backup__watch_pairing_error">Δεν μπορεί να γίνει ζεύξη με το ρολόι τώρα. Βεβαιωθείτε ότι το αντίγραφο ασφαλείας στο Cloud είναι ενεργοποιημένο και συγχρονισμένο χρησιμοποιώντας κωδικό.</string>
+    <string name="backup__cloud_error_title">\u0020Σφάλμα αντιγράφου ασφαλείας στο Cloud</string>
+    <string name="backup__cloud_error_missing_system_key_content">\u0020Δεν μπορεί να αποκρυπτογραφηθεί το αντίγραφο ασφαλείας στο Cloud επειδή δεν υπάρχει Κλειδί Συστήματος. Ελέγξτε αν ο συγχρονισμός του iCloud Keychain είναι ενεργοποιημένος και λειτουργεί σωστά.</string>
+    <string name="backup__cloud_error_mismatch_key_content">\u0020Δεν μπορεί να αποκρυπτογραφηθεί το αντίγραφο ασφαλείας στο Cloud επειδή είναι κρυπτογραφημένο με Κλειδί Συστήματος και χρησιμοποιείτε προσαρμοσμένο κωδικό. Θέλετε να κάνετε εναλλαγή;</string>
+    <string name="backup__cloud_error_new_version_content">Δεν μπορεί να συγχρονιστεί με το αντίγραφο ασφαλείας στο Cloud επειδή έχει μεταφερθεί σε νεότερη έκδοση της εφαρμογής. Ενημερώστε την εφαρμογή για να συνεχίσετε να χρησιμοποιείτε το αντίγραφο ασφαλείας στο Cloud.</string>
+    <string name="backup__enter_cloud_backup_password_title">Εισάγετε τον κωδικό αντιγράφου ασφαλείας του Cloud</string>
+    <string name="backup__enter_password_description">\u0020Το αντίγραφο ασφαλείας στο iCloud είναι κρυπτογραφημένο με τον κωδικό σας. Εισάγετε\u0020\u0020τον για να ενεργοποιήσετε τον συγχρονισμό.</string>
+    <string name="backup__enter_password_failure">Αποτυχία! %s</string>
+    <string name="backup__enter_password_wrong_password">\u0020Λάθος κωδικός! Παρακαλώ προσπαθήστε ξανά</string>
+    <string name="backup__migration_title">\u0020Μεταφορά αντιγράφου ασφαλείας στο Cloud</string>
+    <string name="backup__migration_subtitle">\u0020Μην κλείσετε την εφαρμογή!</string>
+    <string name="backup__migration_description">Το αντίγραφο ασφαλείας σας είναι κρυπτογραφημένο με ένα Κλειδί Συστήματος. Αυτό το κλειδί θα κοινοποιηθεί στις εφαρμογές σας που χρησιμοποιούν το iCloud Keychain. Θυμηθείτε να έχετε ενεργοποιημένη αυτήν την επιλογή. Αν θέλετε να χρησιμοποιήσετε τον κωδικό σας, μπορείτε να το κάνετε στις ρυθμίσεις αντιγράφου ασφαλείας στο Cloud μετά τη μετανάστευση.</string>
+    <string name="commons__success_ex">Επιτυχία!</string>
+    <string name="backup__encryption_type">Τύπος κρυπτογράφησης</string>
+    <string name="backup__encryption_select">Επιλέξτε τύπο κρυπτογράφησης</string>
+    <string name="backup__encryption_enter_password">Εισάγετε\u0020\u0020κωδικό</string>
+    <string name="backup__encryption_change_password">Αλλαγή κωδικού</string>
+    <string name="backup__encryption_password_description">\u0020Ο κωδικός χρησιμοποιείται για την κρυπτογράφηση των δεδομένων σας. Εάν τον χάσετε, δεν θα μπορείτε να ανακτήσετε τα δεδομένα από το αντίγραφο ασφαλείας στο Cloud.</string>
+    <string name="backup__encryption_change_title">Αλλαγή τύπου κρυπτογράφησης</string>
+    <string name="backup__encryption_method_footer">Επιλέξτε Κωδικό Συστήματος ή Προσαρμοσμένο Κωδικό</string>
+    <string name="backup__manage_paired_watches_title">Διαχείριση Συνδεδεμένων Apple Watches</string>
+    <string name="backup__manage_paired_watches_footer">Προσθέστε, αφαιρέστε ή μετονομάστε τα Apple Watches με πρόσβαση σε αυτό το αντίγραφο ασφαλείας στο Cloud.</string>
+    <string name="backup__manage_paired_watches_rename_title">Μετονομασία Ρολογιού</string>
+    <string name="backup__manage_paired_watches_rename_description">Εισαγάγετε νέο όνομα συσκευής</string>
+    <string name="backup__manage_paired_watches_rename_action">Μετονομασία</string>
+    <string name="backup__manage_paired_watches_title_short">Διαχείριση Ρολογιών</string>
+    <string name="backup__manage_paired_watches_empty_list">Η λίστα είναι κενή. Συνδέστε το ρολόι χρησιμοποιώντας το κουμπί +</string>
+    <string name="backup__manage_paired_watches_syncing">Το αντίγραφο ασφαλείας στο Cloud συγχρονίζεται...</string>
+    <string name="backup__watch_pair_title">Συνδέστε το Apple Watch σας</string>
+    <string name="backup__watch_pair_description">Μεταβείτε στις Ρυθμίσεις Αντιγράφου Ασφαλείας 2FAS στο 2FAS Auth στο iPhone/iPad σας και πλοηγηθείτε στην επιλογή \"Διαχειριζόμενα Συνδεδεμένα Apple Watches\". Αυτή η επιλογή θα είναι ορατή αν το αντίγραφο ασφαλείας έχει συγχρονιστεί. Σαρώστε τον QR Code από εκεί.</string>
+    <string name="backup__watch_pair_qr_error">Σφάλμα κατά τη δημιουργία του QR Code</string>
+    <string name="backup__cloud_switch_system_key">Εναλλαγή σε Κλειδί Συστήματος</string>
+    <string name="backup__cloud_turn_backup_off">Απενεργοποίηση αντιγράφου ασφαλείας στο Cloud</string>
+    <string name="commons__apply">Εφαρμογή</string>
+    <string name="backup__state">Κατάσταση:</string>
+    <string name="backup__check_password">Έλεγχος κωδικού πρόσβασης</string>
+    <string name="backup__missing_system_key">Λείπει το Κλειδί συστήματος</string>
+    <string name="backup__system_key">Κλειδί συστήματος</string>
+    <string name="backup__custom_password">Προσαρμοσμένος κωδικός πρόσβασης</string>
+    <string name="commons__options_title">Options</string>
+    <string name="tokens__copy_secret">Copy Secret Key</string>
+    <string name="tokens__copy_link">Copy OTP Auth link</string>
+    <string name="notifications__link_copied">Link Copied</string>
+    <string name="tokens__qr_code_show">Show service QR Code</string>
+    <string name="tokens__qr_code_share">Share service QR Code</string>
 </resources>

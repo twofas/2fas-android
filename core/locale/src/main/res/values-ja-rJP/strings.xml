@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:08:00 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -241,7 +241,7 @@
     <!-- tokens__advanced_alert_description -->
     <string name="tokens__advanced_alert_description_title">詳細設定の変更は推奨されません。2要素認証プロバイダーが必要とし、明確な指示がある場合にのみ変更してください。</string>
     <string name="tokens__token_settings">認証コード設定</string>
-    <string name="tokens__otp_authentication">OTP認証</string>
+    <string name="tokens__otp_authentication">ワンタイムパスワード(OTP)認証</string>
     <string name="tokens__algorithm">アルゴリズム</string>
     <string name="tokens__refresh_time">更新時間</string>
     <string name="tokens__number_of_digits">桁数</string>
@@ -458,10 +458,11 @@
     <string name="browser__deleting_extension_pairing_title">ドメインを削除しますか？</string>
     <string name="browser__deleting_extension_pairing_content">次にブラウザ拡張機能を使用し %s にログインするときに、このドメインを再度ペアリングするように求められます。</string>
     <string name="browser__push_notifications_title">プッシュ通知</string>
-    <string name="browser__push_notifications_content">ブラウザ拡張機能などの機能にアクセスするには、アプリケーションがプッシュ通知にアクセスする必要があります。この設定は、システム設定でいつでも変更できます。</string>
+    <string name="browser__push_notifications_content">ブラウザ拡張機能などの機能にアクセスするには、アプリがプッシュ通知にアクセスする必要があります。この設定は、システム設定でいつでも変更できます。</string>
     <string name="browser__request_expired">リクエスト有効期限切れ</string>
     <string name="browser__2fa_token_request_title">認証コードのリクエスト</string>
-    <string name="browser__2fa_token_request_content">次のサービスの認証コードを入力しますか：</string>
+    <!-- ADD A SPACE AT THE END! -->
+    <string name="browser__2fa_token_request_content">認証コードを入力:\u0020</string>
     <string name="notifications__no_notifications">通知はありません</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
@@ -702,7 +703,7 @@
     <string name="settings__ssl_error_title">SSLエラー</string>
     <string name="settings__ssl_error_description">SSLエラーにより、サーバーと安全に接続できませんでした。アプリが最新であることを確認するか、ネットワークを変更してください。</string>
     <string name="backup__import_error_file_size">インポートしようとしているファイルが大きすぎます。サイズの制限は10MBです。</string>
-    <string name="backup__import_error_file_invalid">インポートしようとしているファイルは無効、もしくは壊れています。他のファイルを選択してください。</string>
+    <string name="backup__import_error_file_invalid">インポートしようとしたファイルは不正か壊れています。他のファイルを選択してください。</string>
     <string name="appearance__toggle_active_search">すぐに検索</string>
     <string name="appearance__active_search_description">起動時に検索を始めます。</string>
     <string name="widgets__expires_in">有効期限:\u0020</string>
@@ -710,7 +711,7 @@
     <string name="errors__input_integer_number">入力は整数でなければなりません</string>
     <string name="errors__input_number">入力は数字でなければなりません</string>
     <string name="errors__input_empty">入力欄が埋まっていません</string>
-    <string name="errors__input_too_long">入力が長すぎます。%d文字まで</string>
+    <string name="errors__input_too_long">入力が長すぎます。(%d文字まで)</string>
     <string name="commons__best_match">ベストマッチ</string>
     <string name="settings__enable_crashlytics">匿名のクラッシュレポートを送信する</string>
     <string name="settings__enable_crashlytics_description">2FASがアプリの問題を特定、解決するのを手伝うため、匿名のクラッシュレポートを送信する(アプリの再起動が必要です)。</string>
@@ -771,7 +772,7 @@
     <string name="externalimport__authenticatorpro_success_msg">このテキストファイルで、Authenticator Proから認証コードをインポートできます。</string>
     <string name="externalimport__authenticatorpro_title">Authenticator Proから認証コードをインポートする</string>
     <string name="externalimport__authenticatorpro_msg">Authenticator Proから、暗号化されていないテキストファイルにアカウント情報をエクスポートして「テキストファイルを選択」ボタンからアップロードしてください。\nインポートに成功したら、忘れずにファイルを削除してください。</string>
-    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">テキストファイルを選択</string>
     <string name="fingerprint__biometric_invalidated">システムの指紋設定が変更されたため、生体認証ログインは無効になっています</string>
     <string name="tokens__last_pass_import">LastPassから認証コードをインポートしています</string>
@@ -849,7 +850,62 @@
     <string name="widget__reveal_tokens_long_message">2FASのトークンを60秒間表示</string>
     <string name="widget__reveal_tokens_short_message">60秒間表示</string>
     <string name="settings__show_error_details">エラーの詳細を表示</string>
-    <string name="tokens__show_qr_code">QRコードの表示</string>
-    <string name="tokens__show_service_qr_setup_lock">サービスは保護されています。QRコードを表示するにはPINまたは指紋認証のロックを設定してください。</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="tokens__show_qr_code">サービスのQRコード</string>
+    <string name="tokens__show_service_qr_setup_lock">サービスは保護されています。QRコードを表示するには、PINまたは指紋認証ロックを設定してください。</string>
+    <string name="tokens__copy_uri">URIをコピー</string>
+    <string name="backup__cloud_encrypted_user">iCloudはカスタムパスワードで暗号化されています。パスワードを入力して、同期を有効にします。</string>
+    <string name="backup__cloud_encrypted_system">iCloudはシステムキーで暗号化されています。 iCloudキーチェーンが有効であることを確認してください。</string>
+    <string name="backup__synced">同期済み</string>
+    <string name="backup__checking">チェック中...</string>
+    <string name="backup__sync_disabled">同期は無効です</string>
+    <string name="backup__sync_not_available">同期は利用できません: %s</string>
+    <string name="backup__watch_pairing_title">Apple Watchとペアリング</string>
+    <string name="backup__watch_pairing_description">Apple WatchをiCloudバックアップとペアリングしますか？ デバイスの名前を入力してください:</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
+    <string name="backup__watch_pairing_action">デバイスをペアリング</string>
+    <string name="backup__watch_pairing_error">Apple Watchとペアリングできません。クラウドバックアップが有効で、パスワードを使って同期されていることを確認してください。</string>
+    <string name="backup__cloud_error_title">クラウドバックアップエラー</string>
+    <string name="backup__cloud_error_missing_system_key_content">クラウドバックアップはシステムキーがないため復号できません。 iCloudキーチェーン同期が有効で、正しく構成されているか確認してください。</string>
+    <string name="backup__cloud_error_mismatch_key_content">クラウドバックアップはシステムキーを使って暗号化されていますが、現在はカスタムパスワードを使っているため復号できません。切り替えますか？</string>
+    <string name="backup__cloud_error_new_version_content">アプリが新しいバージョンになったためクラウドバックアップが同期できません。クラウドバックアップを使い続けるためにアプリをアップデートしてください。</string>
+    <string name="backup__enter_cloud_backup_password_title">クラウドバックアップのパスワードを入力</string>
+    <string name="backup__enter_password_description">iCloudバックアップはパスワードで暗号化されています。同期を有効にするにはパスワードを入力してください。</string>
+    <string name="backup__enter_password_failure">失敗しました: %s</string>
+    <string name="backup__enter_password_wrong_password">パスワードが間違っています！やり直してください</string>
+    <string name="backup__migration_title">クラウドバックアップに移行</string>
+    <string name="backup__migration_subtitle">アプリを終了しないでください！</string>
+    <string name="backup__migration_description">バックアップはシステムキーで暗号化されています。このキーはiCloudキーチェーンを使うアプリ間で共有されます。このオプションをオンにすることを忘れないでください。パスワードを使用する場合は、移行後にクラウドバックアップの設定で行うことができます。</string>
+    <string name="commons__success_ex">成功！</string>
+    <string name="backup__encryption_type">暗号化種別</string>
+    <string name="backup__encryption_select">暗号化種別を選択</string>
+    <string name="backup__encryption_enter_password">パスワードを入力</string>
+    <string name="backup__encryption_change_password">パスワードを変更</string>
+    <string name="backup__encryption_password_description">パスワードはデータを暗号化するために使います。忘れた場合、クラウドバックアップからデータを回復できなくなります。</string>
+    <string name="backup__encryption_change_title">暗号化種別を変更</string>
+    <string name="backup__encryption_method_footer">システムキーまたはカスタムパスワードを選択</string>
+    <string name="backup__manage_paired_watches_title">ペアリング済みのApple Watchを管理</string>
+    <string name="backup__manage_paired_watches_footer">クラウドバックアップにアクセスして、Apple Watchの追加、削除、名称変更をします。</string>
+    <string name="backup__manage_paired_watches_rename_title">Watchの名称変更</string>
+    <string name="backup__manage_paired_watches_rename_description">新しいデバイス名を入力</string>
+    <string name="backup__manage_paired_watches_rename_action">名称変更</string>
+    <string name="backup__manage_paired_watches_title_short">Watchを管理</string>
+    <string name="backup__manage_paired_watches_empty_list">リストは空です。Apple Watchとペアリングするには + ボタンを押してください</string>
+    <string name="backup__manage_paired_watches_syncing">クラウドバックアップ同期中...</string>
+    <string name="backup__watch_pair_title">Apple Watchとペアリング</string>
+    <string name="backup__watch_pair_description">iPhone/iPadの2FAS Authで2FASバックアップ設定に移動し、「ペアリング済みApple Watchを管理」に移動します。このオプションは、バックアップが同期されている場合に表示されます。そこからQRコードをスキャンします。</string>
+    <string name="backup__watch_pair_qr_error">QRコード生成エラー</string>
+    <string name="backup__cloud_switch_system_key">システムキーに切り替え</string>
+    <string name="backup__cloud_turn_backup_off">クラウドバックアップ無効</string>
+    <string name="commons__apply">適用</string>
+    <string name="backup__state">状態:</string>
+    <string name="backup__check_password">パスワードを確認</string>
+    <string name="backup__missing_system_key">システムキーがありません</string>
+    <string name="backup__system_key">システムキー</string>
+    <string name="backup__custom_password">カスタムパスワード</string>
+    <string name="commons__options_title">オプション</string>
+    <string name="tokens__copy_secret">秘密鍵をコピー</string>
+    <string name="tokens__copy_link">ワンタイムパスワード(OTP)認証リンクをコピー</string>
+    <string name="notifications__link_copied">リンクをコピーしました</string>
+    <string name="tokens__qr_code_show">サービスのQRコードを表示</string>
+    <string name="tokens__qr_code_share">サービスのQRコードを共有</string>
 </resources>

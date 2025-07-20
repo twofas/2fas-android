@@ -15,8 +15,8 @@ android {
 
     defaultConfig {
         applicationId = "com.twofasapp"
-        versionName = "5.4.9"
-        versionCode = 5000030
+        versionName = "5.5.0"
+        versionCode = 5000031
     }
 
     applicationVariants.all {
@@ -90,6 +90,7 @@ dependencies {
     implementation(libs.firebaseCrashlytics)
     implementation(libs.firebaseMessaging)
     implementation(libs.playServicesCorutines)
+    implementation(libs.playFeatureDelivery)
     implementation(libs.googleApiClientGson)
     implementation(libs.googleApiClientAndroid) {
         exclude("org.apache.httpcomponents", "guava-jdk5")
@@ -105,8 +106,8 @@ dependencies {
     }
 
     // ObjectBox - legacy
-    debugImplementation("io.objectbox:objectbox-android-objectbrowser:2.9.1")
-    releaseImplementation("io.objectbox:objectbox-android:2.9.1")
-    implementation("io.objectbox:objectbox-kotlin:2.9.1")
-    kapt("io.objectbox:objectbox-processor:2.9.1")
+    debugImplementation("io.objectbox:objectbox-android-objectbrowser:4.3.0")
+    releaseImplementation("io.objectbox:objectbox-android:4.3.0")
+    implementation("io.objectbox:objectbox-kotlin:4.3.0")
+    kapt("io.objectbox:objectbox-processor:4.3.0")
 }

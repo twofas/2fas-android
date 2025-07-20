@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Thu, 16 Jan 2025 06:07:59 -0800
+ Exported at: Sun, 20 Jul 2025 03:30:40 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -283,7 +283,7 @@
     <string name="voiceover__delete_button">Botón Borrar</string>
     <string name="voiceover__service_deleted">Servicio borrado</string>
     <!-- voiceover__hidden_secret_key_use_show button -->
-    <string name="voiceover__reveal_hidden_secret_key_button_title">Este campo contiene una clave secreta oculta. Para revelarla, utiliza el botón Mostrar. Sólo funcionará si has configurado el código PIN de la aplicación para la pantalla de bloqueo.</string>
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Este campo contiene una clave secreta oculta. Para mostrar, utiliza el botón Mostrar. Sólo funcionará si has configurado el código PIN de la aplicación para la pantalla de bloqueo.</string>
     <string name="voiceover__service_name">Nombre del servicio: % s</string>
     <string name="voiceover__additional_info">Información adicional: % s</string>
     <string name="voiceover__token_tap_to_copy">Código %s. Toca para copiar</string>
@@ -461,6 +461,7 @@
     <string name="browser__push_notifications_content">Para acceder a funciones como la aplicación Extensión del navegador necesita acceso a notificaciones push. Puede cambiarla en cualquier momento desde la Configuración del sistema.</string>
     <string name="browser__request_expired">Solicitud expirada</string>
     <string name="browser__2fa_token_request_title">Solicitud de token de autenticación</string>
+    <!-- ADD A SPACE AT THE END! -->
     <string name="browser__2fa_token_request_content">Deseas compartir el token de autenticación de dos factores (2FA) para\u0020</string>
     <string name="notifications__no_notifications">Sin notificaciones</string>
     <string name="CFBundleSpokenName">2 F A S</string>
@@ -770,14 +771,14 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">Ocultar los tokens</string>
-    <string name="settings__hide_tokens_description">Los tokens se revelarán al tacto.</string>
+    <string name="settings__hide_tokens_description">Los tokens se mostrarán al tacto.</string>
     <string name="browser__pair_manually_cta">Emparejar manualmente</string>
     <string name="browser__pair_manually_hint">Código de emparejamiento</string>
     <string name="externalimport__info_authenticatorpro_title">Importar tokens desde Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_success_msg">Este archivo de texto permite importar tokens desde Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_title">Importando tokens desde la aplicación Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_msg">Exporta tus cuentas desde Authenticator Pro a un archivo de texto no encriptado y subirlo usando el botón \"Elegir archivo de texto\". Recuerda eliminar este archivo después de importarlo correctamente.</string>
-    <string name="externalimport__authenticatorpro">Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Elegir archivo de texto</string>
     <string name="fingerprint__biometric_invalidated">El inicio de sesión biométrico está deshabilitado debido a los cambios en la configuración de huellas dactilares del sistema</string>
     <string name="tokens__last_pass_import">Importando tokens 2FA del LastPass</string>
@@ -852,10 +853,65 @@
     <string name="appleWatch__installation_second_step_link">Ir a los ajustes de copia de seguridad 2FAS</string>
     <string name="settings__apple_watch">Apple Watch</string>
     <string name="widget__no_selected_services">Mantén pulsado y selecciona servicio para activar el widget...</string>
-    <string name="widget__reveal_tokens_long_message">Revela tus fichas 2FAS durante 60 segundos</string>
-    <string name="widget__reveal_tokens_short_message">Revela durante 60 segundos</string>
-    <string name="settings__show_error_details">Show error details</string>
-    <string name="tokens__show_qr_code">Service QR Code</string>
-    <string name="tokens__show_service_qr_setup_lock">Your service is protected. Please add a PIN or Fingerprint lock to see QR code.</string>
-    <string name="tokens__copy_uri">Copy URI</string>
+    <string name="widget__reveal_tokens_long_message">Muestra tus tokens de 2FAS durante 60 segundos</string>
+    <string name="widget__reveal_tokens_short_message">Mostrar durante 60 segundos</string>
+    <string name="settings__show_error_details">Mostrar detalles del error</string>
+    <string name="tokens__show_qr_code">Código QR del servicio</string>
+    <string name="tokens__show_service_qr_setup_lock">Su servicio está protegido. Añade un PIN o huella dactilar para ver el código QR.</string>
+    <string name="tokens__copy_uri">Copiar URI</string>
+    <string name="backup__cloud_encrypted_user">iCloud está cifrado con una contraseña personalizada. Introduce la contraseña y habilita la sincronización.</string>
+    <string name="backup__cloud_encrypted_system">iCloud está cifrado con una clave de sistema. Asegúrate de que has habilitado iCloud Keychain.</string>
+    <string name="backup__synced">Sincronizado</string>
+    <string name="backup__checking">Comprobando...</string>
+    <string name="backup__sync_disabled">La sincronización está deshabilitada.</string>
+    <string name="backup__sync_not_available">Sincronización no disponible: %s</string>
+    <string name="backup__watch_pairing_title">Emparejando con el Apple Watch</string>
+    <string name="backup__watch_pairing_description">¿Quieres emparejar un Apple Watch con tu respaldo de iCloud? Introduce el nombre para tu dispositivo:</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
+    <string name="backup__watch_pairing_action">Emparejar dispositivo</string>
+    <string name="backup__watch_pairing_error">No se puede emparejar el reloj inteligente ahora. Asegúrate de que el respaldo en la nube esté habilitado y sincronizado usando una contraseña.</string>
+    <string name="backup__cloud_error_title">Error del respaldo en la nube</string>
+    <string name="backup__cloud_error_missing_system_key_content">No se puede descifrar el respaldo en la nube porque no existe una clave del sistema. Comprueba que la sincronización de iCloud Keychain esté habilitada y funcione correctamente.</string>
+    <string name="backup__cloud_error_mismatch_key_content">No se puede descifrar el respaldo en la nube porque está cifrado usando la clave del sistema, y estás usando una contraseña personalizada ¿Quieres cambiar?</string>
+    <string name="backup__cloud_error_new_version_content">No se puede sincronizar con el respaldo en la nube porque ha sido migrada a una nueva versión de la app. Actualiza la app para continuar usando el respaldo en la nube.</string>
+    <string name="backup__enter_cloud_backup_password_title">Introduce la contraseña del respaldo en la nube</string>
+    <string name="backup__enter_password_description">La copia de respaldo de iCloud está cifrada con tu contraseña. Introdúcela para habilitar la sincronización.</string>
+    <string name="backup__enter_password_failure">¡Error! %s</string>
+    <string name="backup__enter_password_wrong_password">¡Contraseña incorrecta! Por favor, inténtalo de nuevo</string>
+    <string name="backup__migration_title">Migrando respaldo en la nube</string>
+    <string name="backup__migration_subtitle">¡No cierres la app!</string>
+    <string name="backup__migration_description">Tu respaldo está cifrado con la clave del sistema. Esta contraseña será compartida entre tus apps que usen iCloud Keychain. Recuerda tener esta opción activada. Si quieres usar tu contraseña, puedes hacerlo desde los ajustes de respaldo en la nube después de la migración</string>
+    <string name="commons__success_ex">¡Correcto!</string>
+    <string name="backup__encryption_type">Tipo de cifrado</string>
+    <string name="backup__encryption_select">Seleccionar tipo de cifrado</string>
+    <string name="backup__encryption_enter_password">Introducir contraseña</string>
+    <string name="backup__encryption_change_password">Cambiar contraseña</string>
+    <string name="backup__encryption_password_description">La contraseña se usa para cifrar tus datos. Si la pierdes, no podrás recuperar los datos desde el respaldo en la nube.</string>
+    <string name="backup__encryption_change_title">Cambiar tipo de cifrado</string>
+    <string name="backup__encryption_method_footer">Seleccionar contraseña del sistema o personalizada</string>
+    <string name="backup__manage_paired_watches_title">Gestonar Apple Watches emparejados</string>
+    <string name="backup__manage_paired_watches_footer">Añade, elimina o renombra Apple Watches con el acceso a este respaldo en la nube</string>
+    <string name="backup__manage_paired_watches_rename_title">Cambiar nombre del reloj inteligente</string>
+    <string name="backup__manage_paired_watches_rename_description">Introduce un nuevo nombre de dispositivo</string>
+    <string name="backup__manage_paired_watches_rename_action">Cambiar nombre</string>
+    <string name="backup__manage_paired_watches_title_short">Gestionar relojes inteligentes</string>
+    <string name="backup__manage_paired_watches_empty_list">La lista está vacía. Empareja un reloj inteligente usando el botón +</string>
+    <string name="backup__manage_paired_watches_syncing">Respaldo en la nube sincronizándose...</string>
+    <string name="backup__watch_pair_title">Empareja tu Apple Watch</string>
+    <string name="backup__watch_pair_description">Ve a los ajustes de Respaldo 2FAS en tu iPhone/iPad y navega a \"Apple Watches Emparejados\". Esta opción será visible si el respaldo está sincronizado. Escanea el código QR desde aquí.</string>
+    <string name="backup__watch_pair_qr_error">Error al generar el código QR</string>
+    <string name="backup__cloud_switch_system_key">Cambiar a Clave de Sistema</string>
+    <string name="backup__cloud_turn_backup_off">Deshabilitar respaldo en la nube</string>
+    <string name="commons__apply">Aplicar</string>
+    <string name="backup__state">Estado:</string>
+    <string name="backup__check_password">Verificar contraseña</string>
+    <string name="backup__missing_system_key">Falta Clave de Sistema</string>
+    <string name="backup__system_key">Clave de Sistema</string>
+    <string name="backup__custom_password">Contraseña personalizada</string>
+    <string name="commons__options_title">Options</string>
+    <string name="tokens__copy_secret">Copy Secret Key</string>
+    <string name="tokens__copy_link">Copy OTP Auth link</string>
+    <string name="notifications__link_copied">Link Copied</string>
+    <string name="tokens__qr_code_show">Show service QR Code</string>
+    <string name="tokens__qr_code_share">Share service QR Code</string>
 </resources>

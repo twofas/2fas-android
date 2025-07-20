@@ -1,7 +1,7 @@
 package com.twofasapp.di
 
 import androidx.room.Room
-import com.twofasapp.common.environment.AppBuild
+import com.google.android.play.core.splitinstall.SplitInstallHelper
 import com.twofasapp.common.di.KoinModule
 import com.twofasapp.storage.AppDatabase
 import com.twofasapp.storage.MIGRATION_10_11
@@ -16,8 +16,7 @@ import com.twofasapp.storage.MIGRATION_9_10
 import com.twofasapp.storage.cipher.DatabaseKeyGenerator
 import com.twofasapp.storage.cipher.DatabaseKeyGeneratorRandom
 import com.twofasapp.storage.cipher.GetDatabaseMasterKey
-import net.sqlcipher.database.SQLiteDatabase
-import net.sqlcipher.database.SupportFactory
+import net.zetetic.database.sqlcipher.SupportOpenHelperFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
@@ -31,6 +30,13 @@ class StorageModule : KoinModule {
 
         single<AppDatabase> {
             val context = androidContext()
+
+            try {
+                SplitInstallHelper.loadLibrary(context, "sqlcipher")
+            } catch (e: Exception) {
+                System.loadLibrary("sqlcipher")
+                e.printStackTrace()
+            }
 
             val builder = Room.databaseBuilder(
                 context,
@@ -47,10 +53,9 @@ class StorageModule : KoinModule {
                 MIGRATION_11_12,
             )
 
-            if (get<AppBuild>().debuggable.not()) {
-                val factory = SupportFactory(SQLiteDatabase.getBytes(get<GetDatabaseMasterKey>().execute().toCharArray()))
-                builder.openHelperFactory(factory)
-            }
+            val sqlCipherPassphrase = get<GetDatabaseMasterKey>().execute().toByteArray()
+            val sqlCipherOpenerFactory = SupportOpenHelperFactory(sqlCipherPassphrase)
+            builder.openHelperFactory(sqlCipherOpenerFactory)
 
             builder.build()
         }
