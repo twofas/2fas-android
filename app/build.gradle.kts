@@ -106,8 +106,8 @@ dependencies {
     }
 
     // ObjectBox - legacy
-    debugImplementation("io.objectbox:objectbox-android-objectbrowser:2.9.1")
-    releaseImplementation("io.objectbox:objectbox-android:2.9.1")
-    implementation("io.objectbox:objectbox-kotlin:2.9.1")
-    kapt("io.objectbox:objectbox-processor:2.9.1")
+    debugImplementation("io.objectbox:objectbox-android-objectbrowser:4.3.0")
+    releaseImplementation("io.objectbox:objectbox-android:4.3.0")
+    implementation("io.objectbox:objectbox-kotlin:4.3.0")
+    kapt("io.objectbox:objectbox-processor:4.3.0")
 }
