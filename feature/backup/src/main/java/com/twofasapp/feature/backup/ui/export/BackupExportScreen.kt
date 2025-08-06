@@ -204,6 +204,7 @@ private fun ScreenContent(
                     title = TwLocale.strings.backupSetPassword,
                     body = TwLocale.strings.backupSetPasswordDescription,
                     validation = { text -> ExportPasswordRegex.matches(text) },
+                    validationHint = TwLocale.strings.backupPasswordValidationHint,
                     onPositive = {
                         onPasswordConfirm(it)
 

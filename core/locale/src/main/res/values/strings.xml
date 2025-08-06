@@ -361,6 +361,11 @@
     <string name="backup__set_password_title">To increase the protection of your backup file, please set the password</string>
     <string name="backup__enter_password_title">Type in a password for this backup file to proceed with the import process</string>
     <string name="backup__backup_file_password_title">Set a password for this backup file</string>
+    <!-- Password validation errors -->
+    <string name="backup__password_length_error">Password must be between %1$d and %2$d characters</string>
+    <string name="backup__password_confirm_error">Passwords don\'t match</string>
+    <string name="backup__password_validation_error">Password contains invalid characters</string>
+    <string name="backup__password_validation_hint">Password can only contain letters, numbers, and these symbols: _/!#$%&amp;+*~@?=^.,(){}[]&lt;&gt;|-</string>
     <string name="backup__incorrect_password">Incorrect Password</string>
     <!-- %d - number -->
     <string name="backup__new_services">%d new services</string>
