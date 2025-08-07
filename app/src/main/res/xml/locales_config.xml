@@ -13,6 +13,7 @@
     <locale android:name="nl" />
     <locale android:name="tr" />
     <locale android:name="zh" />
+    <locale android:name="zh-rCN" />
     <locale android:name="el" />
     <locale android:name="ja" />
     <locale android:name="sv" />
