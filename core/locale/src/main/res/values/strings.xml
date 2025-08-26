@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -81,11 +81,11 @@
     <string name="introduction__page_3_title">Private</string>
     <string name="introduction__page_3_content">2FAS respects and protects your privacy. This app will never collect, process, or use any of your personal data.</string>
     <string name="introduction__page_4_title">Secure</string>
-    <string name="introduction__page_4_content_ios">Your tokens are stored offline via the device storage, so remember to back up your services! Use iCloud Sync and a PIN password to protect against unauthorized access and device damage.</string>
+    <string name="introduction__page_4_content_ios">Your Tokens are stored offline via the device storage, so remember to back up your services! Use iCloud Sync and a PIN password to protect against unauthorized access and device damage.</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">Start using 2FAS</string>
     <string name="introduction__tos">Terms of service</string>
-    <string name="introduction__description_title">Pair your online service account with 2FAS or import your tokens</string>
+    <string name="introduction__description_title">Pair your online service account with 2FAS or import your Tokens</string>
     <string name="introduction__pair_new_service">Pair new service</string>
     <!-- introduction__import_2fas -->
     <string name="introduction__import_2fas_title">Import 2FAS backup file</string>
@@ -104,7 +104,7 @@
     <!-- notifications__private_key_copied -->
     <string name="notifications__service_key_copied">Secret Key Copied</string>
     <!-- voiceover__token_is_already_on_the_list -->
-    <string name="notifications__token_already_added">This token is already present on the list</string>
+    <string name="notifications__token_already_added">This Token is already present on the list</string>
     <string name="notifications__counter_copied">Counter Copied</string>
     <string name="notifications__token_copied">Token Copied</string>
     <string name="notifications__next_token_copied">Next Token Copied</string>
@@ -145,21 +145,21 @@
     <string name="settings__widgets">Widgets</string>
     <string name="settings__display_selected_services">Display selected services on the Home Screen Widgets.</string>
     <!-- settings__after_you_enable_widgets -->
-    <string name="settings__widgets_title">After you enable widgets, all your tokens can be accessed without your PIN code.\n\nAre you sure you want to enable widgets?</string>
-    <string name="settings__show_next_token">Show next token</string>
+    <string name="settings__widgets_title">After you enable widgets, all your Tokens can be accessed without your PIN code.\n\nAre you sure you want to enable widgets?</string>
+    <string name="settings__show_next_token">Show next Token</string>
     <string name="settings__see_incoming_tokens">See incoming tokens on the list.</string>
     <string name="settings__trash">Trash</string>
     <string name="settings__restore">Restore</string>
     <string name="settings__trash_is_empty">Trash is Empty</string>
     <string name="settings__share_app">Share the app</string>
     <!-- tokens__remove_from_list -->
-    <string name="tokens__delete_token">Are you sure you want to delete the token for:</string>
+    <string name="tokens__delete_token">Are you sure you want to delete the Token for:</string>
     <string name="tokens__move_to_trash">Move to Trash</string>
     <string name="tokens__additional_info">Additional info</string>
     <string name="tokens__choose_method">Choose method</string>
     <string name="tokens__duplicated_private_key">Duplicated Secret Key</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">Incorrect Secret key (only numbers 2 to 7, letters), max. 512 chars long</string>
+    <string name="tokens__incorrect_service_key">Incorrect Secret Key (only numbers 2 to 7, letters), max. 512 chars long</string>
     <string name="tokens__try_again">OK, let\'s try again</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
@@ -176,17 +176,17 @@
     <!-- Original: Take another try with a different search term
         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Take another try with a different search term</string>
-    <string name="tokens__service_key_to_short">Key is too short. Minimum 4 characters</string>
+    <string name="tokens__service_key_to_short">Secret Key is too short. Minimum 4 characters</string>
     <string name="tokens__service_name">Service Name</string>
     <!-- tokens__this_private_key_exists_used_in -->
-    <string name="tokens__service_key_already_used_title">Secret key from scanned code is already used in %s. You\'re probably scanning it again</string>
-    <string name="tokens__this_qr_code_is_inavlid">This code is incorrect or not supported. Try again.</string>
+    <string name="tokens__service_key_already_used_title">Secret Key from scanned code is already used in %s. You\'re probably scanning it again</string>
+    <string name="tokens__this_qr_code_is_inavlid">This QR code is incorrect or not supported. Try again.</string>
     <string name="tokens__type_service_name">Type Service Name</string>
     <string name="tokens__enter_service_name">Enter Service Name</string>
     <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
     <string name="tokens__service_name_unknown_title">Unfortunately, we don\'t know that service. How would you like to name it?</string>
     <!-- tokens__you_wont_be_able_to_restore -->
-    <string name="tokens__token_not_possible_to_restore">You won\'t be able to restore this token anymore.</string>
+    <string name="tokens__token_not_possible_to_restore">You won\'t be able to restore this Token anymore.</string>
     <string name="tokens__badge_color">Badge color</string>
     <string name="tokens__change_brand_icon">Change brand icon</string>
     <string name="tokens__change_label">Change label</string>
@@ -219,16 +219,16 @@
     <string name="tokens__no_correct_qr_code_found_title">There is no correct QR code in the selected image. Please try a different image.</string>
     <string name="tokens__select_service">Select Service</string>
     <string name="tokens__adding_service_question_title">What service do you want to add?</string>
-    <string name="tokens__retype_this_token">Retype this token</string>
+    <string name="tokens__retype_this_token">Retype this Token</string>
     <!-- tokens__unlock_and_retype_this_token -->
-    <string name="tokens__unlock_and_retype_token_title">Unlock and retype this token</string>
+    <string name="tokens__unlock_and_retype_token_title">Unlock and retype this Token</string>
     <string name="tokens__group">Group</string>
     <string name="tokens__select_group">Select group</string>
-    <string name="tokens__google_auth_import">Importing 2FA tokens from the Google Authenticator app</string>
-    <string name="tokens__google_auth_import_subtitle">This QR code allows importing tokens from Google Authenticator</string>
+    <string name="tokens__google_auth_import">Importing 2FA Tokens from the Google Authenticator app</string>
+    <string name="tokens__google_auth_import_subtitle">This QR code allows you to import Tokens from Google Authenticator</string>
     <!-- A number replaces %d  -->
     <string name="tokens__google_auth_out_of_title">%1$d out of %2$d</string>
-    <string name="tokens__google_auth_import_subtitle_end">Tokens will be imported.</string>
+    <string name="tokens__google_auth_import_subtitle_end">Importing Tokens</string>
     <string name="tokens__sort_by">Sort by</string>
     <!-- tokens__sort_by_az -->
     <string name="tokens__sort_by_a_to_z">A - Z</string>
@@ -275,11 +275,11 @@
     <string name="tokens__order_menu_option_user">Request icon as a user</string>
     <string name="tokens__order_menu_option_company">Submit icon as a company</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
-    <string name="tokens__sign_in_not_possible_title">You will not be able to sign in to your %1$s account without this token, as long as you have second factor authentication for %2$s turned on.</string>
+    <string name="tokens__sign_in_not_possible_title">You will not be able to sign in to your %1$s account without this Token, as long as you have second factor authentication for %2$s turned on.</string>
     <string name="voiceover__show_service_key">Show Secret Key</string>
     <string name="voiceover__copy_service_key">Copy Secret Key</string>
     <!-- voiceover__seconds_left -->
-    <string name="voiceover__seconds_left_counter_title">Counter with seconds left to token change</string>
+    <string name="voiceover__seconds_left_counter_title">Counter with seconds left to Token change</string>
     <string name="voiceover__delete_button">Delete button</string>
     <string name="voiceover__service_deleted">Service deleted</string>
     <!-- voiceover__hidden_secret_key_use_show button -->
@@ -303,7 +303,7 @@
     <!-- voiceover__sort_by -->
     <string name="voiceover__sort_by_title">Use Sort By to set service sorting</string>
     <string name="voiceover__spinner">Loading content</string>
-    <string name="backup__incorrect_secret">Couldn\'t backup tokens because \"%s\" secret contains invalid characters. Remove it from list and try again</string>
+    <string name="backup__incorrect_secret">Couldn\'t backup Tokens because \"%s\" secret contains invalid characters. Remove it from list and try again</string>
     <string name="backup__import">Import</string>
     <string name="backup__export">Export</string>
     <string name="backup__backup_disabled_title">2FAS Backup will be disabled to protect its integrity</string>
@@ -325,7 +325,7 @@
     <string name="restore__backup_title">If you have a backup, take it easy, you\'ll be able to restore all your codes.</string>
     <string name="backup__cloud_backup">Cloud backup</string>
     <string name="backup__icloud_sync">iCloud Sync</string>
-    <string name="backup__section_description">RECOMMENDED: iCloud Sync keeps your tokens secure in Apple iCloud in case of loss or damage to your device. Keep it turned on.</string>
+    <string name="backup__section_description">RECOMMENDED: iCloud Sync keeps your Tokens secure in Apple iCloud in case of loss or damage to your device. Keep it turned on.</string>
     <string name="backup__file_backup">File Backup</string>
     <!-- backup__use_file_backup_for -->
     <string name="backup__file_backup_offline_title">Use File Backup for offline backup of your tokens.</string>
@@ -365,12 +365,12 @@
     <!-- %d - number -->
     <string name="backup__new_services">%d new services</string>
     <!-- %d - number -->
-    <string name="backup__services_imported_count">%d services imported from file</string>
+    <string name="backup__services_imported_count">%d Services imported.</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">There\'s a problem with iCloud. Check system settings</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">This file is encrypted. We support only unencrypted files</string>
-    <string name="tokens__copy_token">Copy token</string>
+    <string name="tokens__copy_token">Copy Token</string>
     <!-- tokens__i_want_to_delete_this_servie -->
     <string name="tokens__i_want_to_delete_this_token">Yes, I want to delete this service</string>
     <string name="color__neutral">Neutral</string>
@@ -441,10 +441,10 @@
     <string name="browser__this_device_name">Device nickname</string>
     <string name="browser__device_name">Device nickname</string>
     <string name="browser__name">Name</string>
-    <string name="browser__this_device_footer">This nickname will help you identify this device among other devices paired with the 2FAS browser extension</string>
+    <string name="browser__this_device_footer">This nickname will help you identify this device among other devices paired with the 2FAS Auth Browser Extension</string>
     <string name="browser__browser_extension_settings">Browser Extensions settings</string>
     <string name="browser__unkown_name">&lt;UNKOWN_NAME&gt;</string>
-    <string name="browser__request_source_description">%1$s requested a 2FA token for %2$s. Select the service to authorize and save with this domain.</string>
+    <string name="browser__request_source_description">%1$s requested a 2FA Token for %2$s. Select the service to authorize and save with this domain.</string>
     <string name="browser__request">Browser request</string>
     <!-- browser__code_success -->
     <string name="browser__code_success_title">Token sent successfully!</string>
@@ -462,7 +462,7 @@
     <string name="browser__request_expired">Request expired</string>
     <string name="browser__2fa_token_request_title">2FA Token Request</string>
     <!-- ADD A SPACE AT THE END! -->
-    <string name="browser__2fa_token_request_content">Do you want to share the 2FA token for\u0020</string>
+    <string name="browser__2fa_token_request_content">Do you want to share the 2FA Token for\u0020</string>
     <string name="notifications__no_notifications">No notifications</string>
     <string name="CFBundleSpokenName">2 F A S</string>
     <string name="commons__2fas_toolbar">2FAS</string>
@@ -470,17 +470,17 @@
     <string name="backup__google_drive_disabled_title">Google Drive has been disabled by the user</string>
     <string name="backup__update_required_to_import_title_2">You\'ll need a new version of the app to import the contents of this file. You can find the newest version in the Google Store</string>
     <string name="tokens__qr_code_leads_to_google_store">This QR Code takes you to the Google Store</string>
-    <string name="introduction__page_4_content_android">Your tokens are stored offline via the device storage, so remember to back up your services! Use Google Drive Sync and PIN password to protect against unauthorized access and device damage.</string>
+    <string name="introduction__page_4_content_android">Your Tokens are stored offline via the device storage, so remember to back up your services! Use Google Drive Sync and PIN password to protect against unauthorized access and device damage.</string>
     <string name="new_version__new_version_message_android">A new version of 2FAS is available on Google Store. Update now!</string>
     <string name="security_error_no_match">PIN does not match! Please try again.</string>
     <string name="settings_developer_options">Developer Options</string>
-    <string name="settings__external_import">Import tokens</string>
+    <string name="settings__external_import">Import Tokens</string>
     <string name="settings__browser_extension_result_toolbar_title">Pairing result</string>
     <string name="tokens__caution">CAUTION</string>
     <string name="tokens__qr_point_and_scan_again">Point your camera to the right QR Code and scan again.</string>
     <string name="tokens__service_unsaved_changes">Do you want to discard your changes?</string>
     <string name="tokens__service_unsaved_changes_title">Unsaved changes</string>
-    <string name="tokens__service_key_invalid_format">Key has an invalid format</string>
+    <string name="tokens__service_key_invalid_format">Secret Key has an invalid format</string>
     <string name="intent_error_no_gallery_app">System error! There is no system gallery app.</string>
     <string name="gdrive_permission_title">Google Drive Permission</string>
     <string name="gdrive_permission_msg">We need Google Drive permission in order to save the backup files in app data.</string>
@@ -503,16 +503,16 @@
     <string name="customization_edit_label">Edit label</string>
     <string name="groups_delete_msg">Are you sure you want to delete this group?</string>
     <string name="export_backup_title">Your backup file is ready for export</string>
-    <string name="export_backup_msg">Export this file to keep your 2FAS tokens securely backed up. You can import it later to this or other devices using the 2FAS app.</string>
+    <string name="export_backup_msg">Export this file to keep your 2FAS Tokens securely backed up. You can import it later to this or other devices using the 2FAS app.</string>
     <string name="export_backup_pass">Export file without password\n(not recommended)</string>
     <string name="import_backup_msg2">The file will be synchronised with the app\'s service list.</string>
     <string name="backup_notice_later">Maybe Later</string>
     <string name="backup_notice_cta">Turn On</string>
     <string name="widgets_empty_msg">No services added</string>
-    <string name="backup__section_description_google">RECOMMENDED: Google Drive Sync keeps your tokens secure in Google Drive in case of loss or damage to your device. Keep it turned on.</string>
+    <string name="backup__section_description_google">RECOMMENDED: Google Drive Sync keeps your Tokens secure in Google Drive in case of loss or damage to your device. Keep it turned on.</string>
     <string name="backup_turn_off_title">Turning Google Drive Sync off?</string>
-    <string name="backup_turn_off_msg1">2FA tokens will remain on this device and on your Google Drive, but will not be synced. You will also be logged out from your Google Account.</string>
-    <string name="backup_turn_off_msg2">Remember, in case of loss or damage to this device or app removal, you may not be able to recover your tokens, and you will lose access to online accounts secured by 2FA.</string>
+    <string name="backup_turn_off_msg1">2FA Tokens will remain on this device and on your Google Drive, but will not be synced. You will also be logged out from your Google Account.</string>
+    <string name="backup_turn_off_msg2">Remember, in case of loss or damage to this device or app removal, you may not be able to recover your Tokens, and you will lose access to online accounts secured by 2FA.</string>
     <string name="backup_settings_password_set_subtitle">Secure a Google Drive backup file with a custom password.</string>
     <string name="backup_settings_password_remove_title">Remove password</string>
     <string name="backup_settings_password_remove_subtitle">Remove the password for your Google Drive backup file.</string>
@@ -523,7 +523,7 @@
     <string name="biometric_dialog_auth_title">Authenticate</string>
     <string name="biometric_dialog_auth_subtitle">Use your biometric credential</string>
     <string name="about_licenses">Open source licenses</string>
-    <string name="externalimport_description">You can import your tokens to 2FAS from different apps. Choose an app from the list and follow the instructions.</string>
+    <string name="externalimport_description">You can import your Tokens to 2FAS from different apps. Choose an app from the list and follow the instructions.</string>
     <string name="externalimport_select_app">Select app</string>
     <string name="externalimport_google_authenticator">Google Authenticator</string>
     <string name="externalimport_aegis">Aegis</string>
@@ -548,7 +548,7 @@
     <string name="settings__theme_option_dark">Dark</string>
     <string name="settings__theme_option_light">Light</string>
     <string name="tokens__copied_clipboard">Token copied to clipboard!</string>
-    <string name="tokens__next_copied_clipboard">Next token copied to clipboard!</string>
+    <string name="tokens__next_copied_clipboard">Next Token copied to clipboard!</string>
     <string name="tokens__do_you_really_want_to_remove_all_devices">Do you want to permanently delete this 2FA service?</string>
     <string name="tokens__fab_addmanually">Add manually</string>
     <string name="tokens__qr_does_not_work">This QR Code does not work!</string>
@@ -563,10 +563,10 @@
     <string name="tokens__service_key_invalid_characters">Key contains invalid characters</string>
     <string name="tokens__show_service_key">Show Secret Key</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
-    <string name="tokens__show_service_key_setup_lock">Your Secret key is protected. Please add a PIN or Fingerprint lock to see it.</string>
+    <string name="tokens__show_service_key_setup_lock">Your Secret Key is protected. Please add a PIN or Biometry lock to see it.</string>
     <string name="tokens__tokens_list_is_empty">Services list is empty</string>
     <string name="tokens__use_plus_button_to_add_tokens">Use the \"+\" button to add a new service</string>
-    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">You will be unable to sign in to your %1$s account without this token as long as you have two-factor authentication for %2$s enabled.\n\nYou will be unable to restore this token from 2FAS trash.</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">You will be unable to sign in to your %1$s account without this Token as long as you have two-factor authentication for %2$s enabled.\n\nYou will be unable to restore this Token from 2FAS trash.</string>
     <string name="import_ga_success">Services successfully imported!</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
     <string name="backup_error_network">You need an active Internet connection to sync your backup. Please turn on your network connection and try again.</string>
@@ -582,11 +582,11 @@
     <string name="import_backup_title">Import backup from the file</string>
     <string name="import_backup_msg1">You are going to import backup file with</string>
     <string name="import_backup_cta">Import</string>
-    <string name="widgets_warning_msg">Tokens visible in the widget are not protected by your PIN code.\n\nAre you sure you want to display your tokens in the widget?</string>
+    <string name="widgets_warning_msg">Tokens visible in the widget are not protected by your PIN code.\n\nAre you sure you want to display your Tokens in the widget?</string>
     <string name="widgets_warning_title">WARNING!</string>
     <string name="widgets_warning_cta">Yes, I am sure</string>
     <string name="backup_notice_title">2FAS Backup</string>
-    <string name="backup_notice_msg">Enable 2FAS Backup. In the event of a reset or loss of your phone, you will be able to restore all your tokens.</string>
+    <string name="backup_notice_msg">Enable 2FAS Backup. In the event of a reset or loss of your phone, you will be able to restore all your Tokens.</string>
     <string name="brand_empty_msg">Sorry, brand not found</string>
     <!-- Select which services will be visible on widget: -->
     <string name="widgets_select_msg">Select which services will be visible on the widget:</string>
@@ -595,7 +595,7 @@
     <string name="backup_settings_password_set_title">Set password</string>
     <string name="backup_settings_delete_title">Delete backup file from Google Drive</string>
     <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
-    <string name="backup_settings_delete_subtitle">If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled, and tokens will remain only on this and other devices via local storage.</string>
+    <string name="backup_settings_delete_subtitle">If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled, and Tokens will remain only on this and other devices via local storage.</string>
     <string name="browser__result_error_browser_paired">Your 2FAS app is already paired with this browser.</string>
     <!-- Scan QR code again -->
     <string name="browser__result_error_cta">Scan the QR code again</string>
@@ -617,9 +617,9 @@
     <string name="extension__authorize">Authorize</string>
     <string name="extension__dismiss">Dismiss</string>
     <string name="extension__request_sent">Request sent</string>
-    <string name="extension__send_question_title">Send token?</string>
-    <string name="extension__send_question_content">%1$s requested 2FAS token for %2$s</string>
-    <string name="extension__error_while_sending">Error while sending token</string>
+    <string name="extension__send_question_title">Send Token?</string>
+    <string name="extension__send_question_content">%1$s requested 2FAS Token for %2$s</string>
+    <string name="extension__error_while_sending">Error while sending the Token</string>
     <string name="extension__not_paired_title">This website is not paired</string>
     <string name="extension__not_paired_content">Open the app and select a service for this domain</string>
     <string name="extension__error_open_the_app">Open the app and check if Browser Extension is properly paired</string>
@@ -629,8 +629,8 @@
     <string name="extension__error_no_services">For Browser Extension to work, please add services to the 2FAS app</string>
     <string name="extension__approve">Approve</string>
     <string name="extension__deny">Deny</string>
-    <string name="settings__turn_pin_code_to_enable_faceid">Turn on the PIN code and Face ID authorization to prevent unauthorized access to your tokens on this device.</string>
-    <string name="settings__turn_pin_code_to_enable_touchid">Turn on the PIN code and Touch ID authorization to prevent unauthorized access to your tokens on this device.</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">Turn on the PIN code and Face ID authorization to prevent unauthorized access to your Tokens on this device.</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Turn on the PIN code and Touch ID authorization to prevent unauthorized access to your Tokens on this device.</string>
     <string name="settings__send_logs_error_not_exists">Provided code is incorrect. Please double check it</string>
     <string name="settings__send_logs_error_expired">Provided code has expired. Please contact support team to obtain a new one</string>
     <string name="settings__send_logs_error_no_internet">There\'s no internet. Please check the connection and try again</string>
@@ -680,7 +680,7 @@
     <string name="backup__local_file_title">Local file</string>
     <string name="backup__drive_title">Google Drive sync</string>
     <string name="backup__delete_file_title">Delete your backup file from Google Drive?</string>
-    <string name="backup__delete_file_msg">Google Sync will be disabled. Your tokens will remain locally, but the 2FAS app will be logged out from your Google Account on this and your synced other devices.</string>
+    <string name="backup__delete_file_msg">Google Sync will be disabled. Your Tokens will remain saved locally, but the 2FAS app will be logged out from your Google Account on this and your other synced devices.</string>
     <string name="backup__sync_status_waiting">Waiting for sync…</string>
     <string name="backup__sync_status_progress">Syncing…</string>
     <string name="import_backup_msg1_encrypted">You are going to import an encrypted backup file.</string>
@@ -690,15 +690,15 @@
     <string name="externalimport__no_tokens_msg">However, there are no services that could be imported.</string>
     <string name="commons__try_again">Try again</string>
     <string name="commons__proceed">Proceed</string>
-    <string name="externalimport__ga_title">Importing 2FA tokens from Google Authenticator app</string>
-    <string name="externalimport__aegis_title">Importing 2FA tokens from Aegis app</string>
-    <string name="externalimport__raivo_title">Importing 2FA tokens from Raivo app</string>
-    <string name="externalimport__ga_success_msg">This QR code allows importing tokens from Google Authenticator.</string>
-    <string name="externalimport__aegis_success_msg">This JSON file allows importing tokens from Aegis.</string>
-    <string name="externalimport__raivo_success_msg">This JSON file allows importing tokens from Raivo.</string>
-    <string name="externalimport__read_error">Could not read any tokens. Try to select a different file.</string>
+    <string name="externalimport__ga_title">Importing 2FA Tokens from Google Authenticator app</string>
+    <string name="externalimport__aegis_title">Importing 2FA Tokens from Aegis app</string>
+    <string name="externalimport__raivo_title">Importing 2FA Tokens from Raivo app</string>
+    <string name="externalimport__ga_success_msg">This QR code allows importing Tokens from Google Authenticator.</string>
+    <string name="externalimport__aegis_success_msg">This JSON file allows you to import Tokens from Aegis.</string>
+    <string name="externalimport__raivo_success_msg">This JSON file allows importing Tokens from Raivo.</string>
+    <string name="externalimport__read_error">Could not read any Tokens. Try to select a different file.</string>
     <string name="settings__gd_sync_info">Google Drive sync reminder</string>
-    <string name="settings__gd_sync_disable_confirm">Are you sure? Without Google Drive sync, you won\'t be able to restore your tokens if you lose or reset your phone!</string>
+    <string name="settings__gd_sync_disable_confirm">Are you sure? Without Google Drive sync, you won\'t be able to restore your Tokens if you lose or reset your phone!</string>
     <string name="extension__code_sent_msg">Code sent successfully</string>
     <string name="extension__code_sent_error_msg">Error occurred when sending code</string>
     <string name="tokens__add_service_title">Add new service</string>
@@ -723,7 +723,7 @@
     <string name="settings__enable_crashlytics_description">Send anonymous crash reports to help 2FAS identify and solve issues in the app (app restart required).</string>
     <string name="tokens__manage_list">Manage list</string>
     <string name="settings__appearance">Appearance</string>
-    <string name="settings__show_next_token_desc">Show next token when current one is about to expire.</string>
+    <string name="settings__show_next_token_desc">Show the next Token when the current one is about to expire.</string>
     <string name="settings__list_style">List style</string>
     <string name="backup__reminder_msg">Google Drive not synced.</string>
     <string name="backup__reminder_cta">Go to backup settings</string>
@@ -732,32 +732,32 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Export your accounts from LastPass to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
     <string name="settings__about_crash_optout_title">Crash Reports</string>
-    <string name="externalimport__lastpass_title">Importing 2FA tokens from LastPass app</string>
-    <string name="externalimport__lastpass_success_msg">This JSON file allows importing tokens from LastPass.</string>
-    <string name="externalimport__info_lastpass_title">Import tokens from LastPass</string>
-    <string name="externalimport__info_aegis_title">Import tokens from Aegis</string>
-    <string name="externalimport__info_raivo_title">Import tokens from Raivo OTP</string>
-    <string name="externalimport__info_google_authenticator_title">Import tokens from Google Authenticator</string>
+    <string name="externalimport__lastpass_title">Importing 2FA Tokens from LastPass app</string>
+    <string name="externalimport__lastpass_success_msg">This JSON file allows you to import Tokens from LastPass.</string>
+    <string name="externalimport__info_lastpass_title">Import Tokens from LastPass</string>
+    <string name="externalimport__info_aegis_title">Import Tokens from Aegis</string>
+    <string name="externalimport__info_raivo_title">Import Tokens from Raivo OTP</string>
+    <string name="externalimport__info_google_authenticator_title">Import Tokens from Google Authenticator</string>
     <!-- Counter eg.: "25s" -->
     <string name="time_unit_seconds_short">s</string>
     <string name="tokens__add_title">Pair the service with 2FAS</string>
     <string name="tokens__add_description">Point your camera at the screen to capture the QR code.</string>
     <string name="tokens__add_other_methods">Other methods</string>
-    <string name="tokens__add_enter_manual">Enter the secret key manually</string>
+    <string name="tokens__add_enter_manual">Enter the Secret Key manually</string>
     <string name="tokens__add_from_gallery">Upload screenshot with the QR code</string>
     <string name="tokens__add_success_title">Almost done!</string>
-    <string name="tokens__add_success_description">To finish pairing the service, you need to retype this token.</string>
+    <string name="tokens__add_success_description">To finish pairing the service, you need to retype this Token.</string>
     <string name="tokens__add_manual_title">Pair the service with 2FAS</string>
-    <string name="tokens__add_manual_description">Type in the service name and secret key.</string>
+    <string name="tokens__add_manual_description">Type in the service name and Secret Key.</string>
     <string name="tokens__add_manual_service_name">Service name</string>
     <string name="tokens__add_manual_service_key">Secret Key</string>
     <string name="tokens__add_manual_other">Other settings</string>
     <string name="tokens__add_manual_other_optional">(optional)</string>
     <string name="tokens__add_manual_done_cta">Add service</string>
     <string name="tokens__add_manual_help_cta">Don’t know what to do? Tap for help</string>
-    <string name="tokens__add_manual_advanced">Advanced token settings</string>
+    <string name="tokens__add_manual_advanced">Advanced Token settings</string>
     <string name="tokens__add_manual_additional_info">Additional info</string>
-    <string name="tokens__add_manual_advanced_description">Changing default token settings is not recommended. Do so only when your 2FA provider requires it and when you have clear instructions.</string>
+    <string name="tokens__add_manual_advanced_description">Changing default Token settings is not recommended. Do so only when your 2FA provider requires it and when you have clear instructions.</string>
     <string name="settings__option_screenshots_description">Allow screenshots of the app for 5 minutes.</string>
     <string name="settings__option_screenshots">Allow screenshots</string>
     <string name="settings__option_screenshots_confirm_title">Allow screenshots of the app?</string>
@@ -770,19 +770,19 @@
     <string name="social__linkedin">LinkedIn</string>
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
-    <string name="settings__hide_tokens_title">Hide tokens</string>
+    <string name="settings__hide_tokens_title">Hide Tokens</string>
     <string name="settings__hide_tokens_description">Tokens will be revealed on tap.</string>
     <string name="browser__pair_manually_cta">Pair manually</string>
     <string name="browser__pair_manually_hint">Pairing code</string>
-    <string name="externalimport__info_authenticatorpro_title">Import tokens from Authenticator Pro</string>
-    <string name="externalimport__authenticatorpro_success_msg">This text file allows importing tokens from Authenticator Pro.</string>
-    <string name="externalimport__authenticatorpro_title">Importing 2FA tokens from Authenticator Pro app</string>
+    <string name="externalimport__info_authenticatorpro_title">Import Tokens from Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">This text file allows you to import Tokens from Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Importing 2FA Tokens from Authenticator Pro app</string>
     <string name="externalimport__authenticatorpro_msg">Export your accounts from Authenticator Pro to an unencrypted text file and upload it using the \"Choose text file\" button. Remember to remove the file after a successful import.</string>
     <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Choose text file</string>
     <string name="fingerprint__biometric_invalidated">Biometric login is disabled due to changes in system fingerprint settings</string>
-    <string name="tokens__last_pass_import">Importing 2FA tokens from the LastPass app</string>
-    <string name="tokens__last_pass_import_subtitle">This QR code allows importing tokens from LastPass</string>
+    <string name="tokens__last_pass_import">Importing 2FA Tokens from the LastPass app</string>
+    <string name="tokens__last_pass_import_subtitle">This QR code allows you to import Tokens from LastPass</string>
     <string name="tokens__add_with_guide">Guide me</string>
     <string name="guides__select_title">Browse services</string>
     <string name="guides__select_description">Select service to pair with the 2FAS app</string>
@@ -802,24 +802,24 @@
     <string name="guides__guide_universal_title">Universal 2FA Guide</string>
     <string name="browser__save_choice">Save my choice</string>
     <string name="externalimport_andotp">andOTP</string>
-    <string name="externalimport__andotp_title">Importing 2FA tokens from andOTP app</string>
-    <string name="externalimport__andotp_success_msg">This JSON file allows importing tokens from andOTP.</string>
-    <string name="externalimport__info_andotp_title">Import tokens from andOTP</string>
+    <string name="externalimport__andotp_title">Importing 2FA Tokens from andOTP app</string>
+    <string name="externalimport__andotp_success_msg">This JSON file allows you to import Tokens from andOTP.</string>
+    <string name="externalimport__info_andotp_title">Import Tokens from andOTP</string>
     <string name="externalimport__andotp_msg">Export your accounts from andOTP to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA tokens will be stored safely.</string>
+    <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA Tokens will be stored safely.</string>
     <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
     <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
     <string name="backup__import_invalid_version">The backup file you\'re attempting to import is not supported in this application version. The application only supports backup format versions up to %d, while the file you\'re importing is version %d.</string>
     <string name="commons__pair">Pair</string>
     <string name="introduction__backup_icloud_title">Secure sync and backup</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA Tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with Token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
     <string name="introduction__backup_icloud_cta">Learn more about backup</string>
     <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
     <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
     <string name="settings__preferences">Preferences</string>
     <string name="settings__it_matters">It matters</string>
-    <string name="settings__manage_tokens">Manage tokens</string>
+    <string name="settings__manage_tokens">Manage Tokens</string>
     <string name="settings__info_footer">Your support allows us to develop new features and improvements. Thank you!</string>
     <string name="settings__trash_option">Retrieve from trash</string>
     <string name="periodic_notification_tips">Glad you\'re with us at 2FAS! 🌟 Take a moment to discover helpful Tips &amp; Tricks 🛠️ in the app for enhanced security 🔒.</string>
@@ -845,7 +845,7 @@
     <string name="security__repeat_new_pin_short">Repeat new PIN</string>
     <string name="commons__success">Success</string>
     <string name="security__enter_pin_short">Enter PIN</string>
-    <string name="settings__sort_tokens">Sort tokens</string>
+    <string name="settings__sort_tokens">Sort Tokens</string>
     <string name="appleWatch__installation_info_title">2FAS Apple Watch app installation</string>
     <string name="appleWatch__installation_first_step">Install 2FAS Auth via Watch app</string>
     <string name="appleWatch__installation_first_step_link">Open Watch app</string>
@@ -853,7 +853,7 @@
     <string name="appleWatch__installation_second_step_link">Go to 2FAS Backup settings</string>
     <string name="settings__apple_watch">Apple Watch</string>
     <string name="widget__no_selected_services">Hold and select service to activate widget...</string>
-    <string name="widget__reveal_tokens_long_message">Reveal your 2FAS tokens for 60 seconds</string>
+    <string name="widget__reveal_tokens_long_message">Reveal your 2FAS Tokens for 60 seconds</string>
     <string name="widget__reveal_tokens_short_message">Reveal for 60 seconds</string>
     <string name="settings__show_error_details">Show error details</string>
     <string name="tokens__show_qr_code">Service QR Code</string>
@@ -914,4 +914,31 @@
     <string name="notifications__link_copied">Link Copied</string>
     <string name="tokens__qr_code_show">Show service QR Code</string>
     <string name="tokens__qr_code_share">Share service QR Code</string>
+    <string name="settings_open_twofass_appstore">Get 2FAS Pass</string>
+    <string name="settings_open_twofass">Open 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">Manage Passwords</string>
+    <string name="quick_setup_drive_sync_title">Vault Sync</string>
+    <string name="quick_setup_drive_sync_description">Securely sync your data using Google Drive in case this device gets lost or damaged.</string>
+    <string name="commons__file_creation_error">File creation failed</string>
+    <string name="settings__export_pin_needed">Your Secret Keys are protected. Please add a PIN or Biometry lock to export them.</string>
+    <string name="settings__export_title_tokens">Export Tokens</string>
+    <string name="settings__export_title_qr_codes">Export QR codes</string>
+    <string name="settings__export_title_options">Export Options</string>
+    <string name="settings__export_options_copy_clipboard">Copy to clipboard</string>
+    <string name="settings__export_options_save_file">Save OTPAuth file</string>
+    <string name="settings__export_options_export_qr_codes">Export QR codes</string>
+    <string name="settings__export_options_footer">Choose how you would like to export your Tokens. You can copy them to clipboard, save as an OTPAuth file, or export as QR codes.</string>
+    <string name="settings__import_otpauth_title">OTPAuth links</string>
+    <string name="settings__import_from_file">Import from file</string>
+    <string name="settings__import_read_from_clipboard">Import from clipboard</string>
+    <string name="settings__import_otpauth_footer">Import Tokens from the OTPAuth text file or the OTPAuth clipboard</string>
+    <string name="settings__import_from_text_file">Import Tokens from text file</string>
+    <string name="settings__import_from_clipboard">Import Tokens from clipboard</string>
+    <string name="settings__import_from_text_file_description">Text file should contain a list of links starting with \'otpauth://\'.</string>
+    <string name="settings__import_from_clipboard_description">Clipboard should contain a list of links starting with \'otpauth://\'.</string>
+    <string name="settings__import_contents_file">Importing Tokens from text file</string>
+    <string name="settings__import_contents_clipboard">Importing Tokens from clipboard</string>
+    <string name="settings__import_clipboard_empty">Clipboard is empty or doesn\'t contain a supported link format.</string>
+    <string name="widget__open_app">Open 2FAS Auth</string>
+    <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
 </resources>

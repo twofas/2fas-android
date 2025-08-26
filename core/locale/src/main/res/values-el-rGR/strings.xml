@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -908,10 +908,37 @@
     <string name="backup__missing_system_key">Λείπει το Κλειδί συστήματος</string>
     <string name="backup__system_key">Κλειδί συστήματος</string>
     <string name="backup__custom_password">Προσαρμοσμένος κωδικός πρόσβασης</string>
-    <string name="commons__options_title">Options</string>
-    <string name="tokens__copy_secret">Copy Secret Key</string>
-    <string name="tokens__copy_link">Copy OTP Auth link</string>
-    <string name="notifications__link_copied">Link Copied</string>
-    <string name="tokens__qr_code_show">Show service QR Code</string>
-    <string name="tokens__qr_code_share">Share service QR Code</string>
+    <string name="commons__options_title">Επιλογές</string>
+    <string name="tokens__copy_secret">Αντιγραφή Μυστικού Κλειδιού</string>
+    <string name="tokens__copy_link">Αντιγραφή συνδέσμου ελέγχου ταυτότητας OTP\u0020</string>
+    <string name="notifications__link_copied">Ο σύνδεσμος αντιγράφηκε</string>
+    <string name="tokens__qr_code_show">Προβολή QR κωδικού υπηρεσίας</string>
+    <string name="tokens__qr_code_share">Κοινοποίησε τον QR κωδικό υπηρεσίας</string>
+    <string name="settings_open_twofass_appstore">Λήψη 2FAS Pass</string>
+    <string name="settings_open_twofass">Άνοιγμα του 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">Διαχείριση Κωδικών Πρόσβασης</string>
+    <string name="quick_setup_drive_sync_title">Συγχρονισμός Θησαυροφυλακίου</string>
+    <string name="quick_setup_drive_sync_description">Συγχρονίστε με ασφάλεια τα δεδομένα σας χρησιμοποιώντας το Google Drive σε περίπτωση που αυτή η συσκευή χαθεί ή υποστεί ζημιά.</string>
+    <string name="commons__file_creation_error">Η δημιουργία αρχείου απέτυχε</string>
+    <string name="settings__export_pin_needed">Τα Μυστικά Κλειδιά σας είναι προστατευμένα. Παρακαλώ προσθέστε PIN ή βιομετρικό κλείδωμα για να τα εξάγετε.</string>
+    <string name="settings__export_title_tokens">Εξαγωγή διακριτικών</string>
+    <string name="settings__export_title_qr_codes">Εξαγωγή QR κωδικών</string>
+    <string name="settings__export_title_options">Επιλογές εξαγωγής</string>
+    <string name="settings__export_options_copy_clipboard">Αντιγραφή στο πρόχειρο</string>
+    <string name="settings__export_options_save_file">Αποθήκευση αρχείου OTPAuth</string>
+    <string name="settings__export_options_export_qr_codes">Εξαγωγή QR κωδικών</string>
+    <string name="settings__export_options_footer">Επίλεξε πώς θέλεις να εξάγεις τα διακριτικά σου. Μπορείς να τα αντιγράψεις στο πρόχειρο, να τα αποθηκεύσεις ως αρχείο OTPAuth ή να τα εξάγεις ως QR κωδικούς.</string>
+    <string name="settings__import_otpauth_title">Σύνδεσμοι OTPAuth</string>
+    <string name="settings__import_from_file">Εισαγωγή από αρχείο</string>
+    <string name="settings__import_read_from_clipboard">Εισαγωγή από το πρόχειρο</string>
+    <string name="settings__import_otpauth_footer">Εισαγωγή διακριτικών από το αρχείο κειμένου OTPAuth ή από το πρόχειρο OTPAuth</string>
+    <string name="settings__import_from_text_file">Εισαγωγή διακριτικών από αρχείο κειμένου</string>
+    <string name="settings__import_from_clipboard">Εισαγωγή διακριτικών από το πρόχειρο</string>
+    <string name="settings__import_from_text_file_description">Το αρχείο κειμένου πρέπει να περιέχει μια λίστα συνδέσμων που ξεκινούν με \'otpauth://\'.</string>
+    <string name="settings__import_from_clipboard_description">Το πρόχειρο πρέπει να περιέχει μια λίστα συνδέσμων που ξεκινούν με \'otpauth://\'.</string>
+    <string name="settings__import_contents_file">Τα περιεχόμενα αυτού του αρχείου θα εισαχθούν.</string>
+    <string name="settings__import_contents_clipboard">Τα περιεχόμενα του προχείρου θα εισαχθούν.</string>
+    <string name="settings__import_clipboard_empty">Το πρόχειρο είναι άδειο ή δεν περιέχει έναν υποστηριζόμενο τύπο συνδέσμου.</string>
+    <string name="widget__open_app">Open 2FAS Auth</string>
+    <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
 </resources>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -908,10 +908,37 @@
     <string name="backup__missing_system_key">Falta Clave de Sistema</string>
     <string name="backup__system_key">Clave de Sistema</string>
     <string name="backup__custom_password">Contraseña personalizada</string>
-    <string name="commons__options_title">Options</string>
-    <string name="tokens__copy_secret">Copy Secret Key</string>
-    <string name="tokens__copy_link">Copy OTP Auth link</string>
-    <string name="notifications__link_copied">Link Copied</string>
-    <string name="tokens__qr_code_show">Show service QR Code</string>
-    <string name="tokens__qr_code_share">Share service QR Code</string>
+    <string name="commons__options_title">Opciones</string>
+    <string name="tokens__copy_secret">Copiar Llave Secreta</string>
+    <string name="tokens__copy_link">Copiar enlace OTP Auth</string>
+    <string name="notifications__link_copied">Enlace Copiado</string>
+    <string name="tokens__qr_code_show">Mostrar servicio de código QR</string>
+    <string name="tokens__qr_code_share">Código QR para compartir servicio</string>
+    <string name="settings_open_twofass_appstore">Obtener 2FAS Pass</string>
+    <string name="settings_open_twofass">Abrir 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">Gestionar Contraseñas</string>
+    <string name="quick_setup_drive_sync_title">Sincronización de bóveda</string>
+    <string name="quick_setup_drive_sync_description">Sincroniza de forma segura tus datos usando Google Drive en caso de que este dispositivo se pierda o se dañe.</string>
+    <string name="commons__file_creation_error">Error al crear el archivo</string>
+    <string name="settings__export_pin_needed">Tus claves secretas están protegidas. Añade un PIN o bloqueo biométrico para exportarlas.</string>
+    <string name="settings__export_title_tokens">Exportar tokens</string>
+    <string name="settings__export_title_qr_codes">Exportar códigos QR</string>
+    <string name="settings__export_title_options">Exportar Opciones</string>
+    <string name="settings__export_options_copy_clipboard">Copiar al portapapeles</string>
+    <string name="settings__export_options_save_file">Guardar archivo OTPAuth</string>
+    <string name="settings__export_options_export_qr_codes">Exportar códigos QR</string>
+    <string name="settings__export_options_footer">Elige cómo te gustaría exportar tus tokens. Puedes copiarlos al portapapeles, guardarlos como un archivo OTPAuth o exportarlos como códigos QR.</string>
+    <string name="settings__import_otpauth_title">Enlaces OTPAuth</string>
+    <string name="settings__import_from_file">Importar desde archivo</string>
+    <string name="settings__import_read_from_clipboard">Importar desde el portapapeles</string>
+    <string name="settings__import_otpauth_footer">Importar tokens desde el archivo de texto OTPAuth o desde el portapapeles OTPAuth</string>
+    <string name="settings__import_from_text_file">Importar tokens desde un archivo de texto</string>
+    <string name="settings__import_from_clipboard">Importar tokens desde el portapapeles</string>
+    <string name="settings__import_from_text_file_description">El archivo de texto debe contener una lista de enlaces que comiencen con \'otpauth://\'.</string>
+    <string name="settings__import_from_clipboard_description">El portapapeles debe contener una lista de enlaces que comiencen con \'otpauth://\'.</string>
+    <string name="settings__import_contents_file">Importando tokens desde un archivo de texto</string>
+    <string name="settings__import_contents_clipboard">Importando tokens desde el portapapeles</string>
+    <string name="settings__import_clipboard_empty">El portapapeles está vacío o no contiene un enlace en un formato compatible.</string>
+    <string name="widget__open_app">Abrir 2FAS Auth</string>
+    <string name="widget__open_app_description">Acceso rápido a 2FAS Auth</string>
 </resources>

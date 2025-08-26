@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -85,16 +85,16 @@
     <!-- introduction__start_using -->
     <string name="introduction__title">2FAS\'ı kullanmaya başla</string>
     <string name="introduction__tos">Hizmet şartları</string>
-    <string name="introduction__description_title">Çevrim içi hizmetlerinizi 2FAS ile eşleştirin veya jetonlarınızı içeri aktarın</string>
+    <string name="introduction__description_title">Çevrim içi hizmetlerinizi 2FAS ile eşleştirin veya jetonlarınızı içe aktarın</string>
     <string name="introduction__pair_new_service">Yeni hizmet eşleştir</string>
     <!-- introduction__import_2fas -->
-    <string name="introduction__import_2fas_title">2FAS yedek dosyasını içeri aktar</string>
+    <string name="introduction__import_2fas_title">2FAS yedek dosyasını içe aktar</string>
     <!-- introduction__import_ga -->
-    <string name="introduction__import_google_authenticator">Google Authenticator\'dan içeri aktar</string>
+    <string name="introduction__import_google_authenticator">Google Authenticator\'dan içe aktar</string>
     <!-- introduction__not_sure -->
     <string name="introduction__what_to_do">Ne yapacağınızdan emin değil misiniz?</string>
     <!-- introduction__ga_import_description -->
-    <string name="introduction__google_authenticator_import_process">\"Hesapları Aktar\" seçeneğini kullanarak Google Authenticator\'daki hesaplarınızı QR koduna dışarı aktarın. Ardından başka bir cihaz kullanarak dışarı aktarılmış QR kodunun fotoğrafını çekin, bu cihaza fotoğrafı gönderin (veya mümkünse QR kodunun ekran görüntüsünü alın) ve aşağıdaki \"QR kodu seç\" seçeneğini kullanın. Eğer kodları başka bir cihazdan içeri aktarıyorsanız \"QR kodu tara\" düğmesini kullanın.</string>
+    <string name="introduction__google_authenticator_import_process">\"Hesapları Aktar\" seçeneğini kullanarak Google Authenticator\'daki hesaplarınızı QR koduna dışa aktarın. Ardından başka bir cihaz kullanarak dışa aktarılmış QR kodunun fotoğrafını çekin, bu cihaza fotoğrafı gönderin (veya mümkünse QR kodunun ekran görüntüsünü alın) ve aşağıdaki \"QR kodu seç\" seçeneğini kullanın. Eğer kodları başka bir cihazdan içe aktarıyorsanız \"QR kodu tara\" düğmesini kullanın.</string>
     <!-- introduction__choose_qr -->
     <string name="introduction__choose_qr_code">QR kodu seç</string>
     <!-- introduction__scan_qr -->
@@ -224,8 +224,8 @@
     <string name="tokens__unlock_and_retype_token_title">Bu jetonun kilidini açın ve tekrar yazın</string>
     <string name="tokens__group">Grup</string>
     <string name="tokens__select_group">Grup seç</string>
-    <string name="tokens__google_auth_import">2AD jetonları Google Authenticator\'dan içeri aktarılıyor</string>
-    <string name="tokens__google_auth_import_subtitle">Bu QR kodu, jetonların Google Authenticator\'dan içeri aktarılmasına izin verir.</string>
+    <string name="tokens__google_auth_import">2AD jetonları Google Authenticator\'dan içe aktarılıyor</string>
+    <string name="tokens__google_auth_import_subtitle">Bu QR kodu, jetonların Google Authenticator\'dan içe aktarılmasına izin verir.</string>
     <!-- A number replaces %d  -->
     <string name="tokens__google_auth_out_of_title">%1$d aktarılan, %2$d toplam</string>
     <string name="tokens__google_auth_import_subtitle_end">jeton dosyadan bulundu.</string>
@@ -305,9 +305,9 @@
     <string name="voiceover__spinner">İçerik yükleniyor</string>
     <string name="backup__incorrect_secret">\"%s\" gizli anahtarı geçersiz karakterler içerdiğinden jetonlar yedeklenemedi. Onu listeden silin ve tekrar deneyin</string>
     <string name="backup__import">İçeri aktar</string>
-    <string name="backup__export">Dışarı aktar</string>
+    <string name="backup__export">Dışa aktar</string>
     <string name="backup__backup_disabled_title">2FAS yedeklemesi, kendi bütünlüğünü korumak için devre dışı bırakılacak</string>
-    <string name="backup__error_while_exporting_file">Dosya dışarı aktarılırken hata oluştu</string>
+    <string name="backup__error_while_exporting_file">Dosya dışa aktarılırken hata oluştu</string>
     <string name="backup__import_completed_successfuly">İçeri aktarma başarıyla tamamlandı</string>
     <!-- camera__video_device_in_use_by_another_app -->
     <string name="camera__camera_used_by_other_app_title">Başka bir uygulama kamerayı kullanıyor. Eğer diğer uygulamaları kapatmak işe yaramazsa cihazı yeniden başlatın</string>
@@ -334,30 +334,30 @@
     <string name="backup__warning_introduction">Uyarı! 2FAS yedeklemesini silerseniz, bu hesap ile eşitlenen diğer cihazlardaki jetonların tümü silinir. Diğer cihazlarınızdaki jetonları korumak için lütfen 2FAS yedeklemesini devre dışı bıraktığınızdan emin olun.</string>
     <!-- backup__i_want_to_delete -->
     <string name="backup__delete_title">Yedeklemeyi silmek istiyorum</string>
-    <string name="backup__export_to_backup_file">Yedeği dosyaya dışarı aktar</string>
+    <string name="backup__export_to_backup_file">Yedeği dosyaya dışa aktar</string>
     <!-- backup__you_can_import_exported_file -->
-    <string name="backup__import_file_title">Dışarı aktarılan dosyayı diğer cihazlarda 2FAS uygulamasına içeri aktarabilirsiniz.</string>
-    <string name="backup__export_to_file">Dosyayı dışarı aktar</string>
+    <string name="backup__import_file_title">Dışa aktarılan dosyayı diğer cihazlarda 2FAS uygulamasına içe aktarabilirsiniz.</string>
+    <string name="backup__export_to_file">Dosyaya dışa aktar</string>
     <string name="backup__verify_pin">PIN\'i doğrula</string>
     <string name="backup__save_file">Dosyayı kaydet</string>
-    <string name="backup__import_backup_file">Yedek dosyasını içeri aktar</string>
+    <string name="backup__import_backup_file">Yedek dosyasını içe aktar</string>
     <!-- backup__youre_goint_to_import_backup -->
-    <string name="backup__import_other_devices">Şunları içeren bir yedek dosyasını içeri aktaracaksınız:</string>
-    <string name="backup__import_file">Dosyayı içeri aktar</string>
+    <string name="backup__import_other_devices">Şunları içeren bir yedek dosyasını içe aktaracaksınız:</string>
+    <string name="backup__import_file">Dosyayı içe aktar</string>
     <string name="backup__choose_antother_file">Başka bir dosya seç</string>
     <string name="backup__no_new_services">İçeri aktarılacak hiçbir şey yok</string>
     <string name="backup__file_error">Dosya hatası!</string>
     <!-- backup__services_form_file_will_be_merged -->
     <string name="backup__services_merge_title">Dosyadaki hizmetler, uygulamanızdaki hizmetlerle birleştirilecek</string>
     <string name="backup__no_new_services_error">Ya bu dosya boş ya da içindeki tüm hizmetler uygulamada zaten var</string>
-    <string name="backup__update_required_to_import_title">Bu dosyanın içeriğini içeri aktarmak için uygulamanın yeni bir sürümüne ihtiyacınız var. En yeni sürümü App Store\'da bulabilirsiniz</string>
+    <string name="backup__update_required_to_import_title">Bu dosyanın içeriğini içe aktarmak için uygulamanın yeni bir sürümüne ihtiyacınız var. En yeni sürümü App Store\'da bulabilirsiniz</string>
     <string name="backup__cant_read_file_error">Bu dosya okunamıyor. Dosya bozulmuş veya dosyaya erişmeye çalışırken hata oluşmuş olabilir. Lütfen başka bir dosya seçin</string>
     <string name="backup__password">Parola</string>
     <string name="backup__repeat_password">Parolayı tekrarla</string>
     <string name="backup__incorrect_character_error">Yanlış karakter. Sadece A\'dan Z\'ye ve a\'dan z\'ye harfleri (ğ, Ş gibi Türkçe harfler hariç), rakamları ve şu özel karakterleri kullanın: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
     <string name="backup__to_short_error">Girdi çok kısa (en az 3 karakter)</string>
     <string name="backup__passwords_dont_match">Parolalar eşleşmiyor</string>
-    <string name="backup__save_and_export">Kaydet ve dışarı aktar</string>
+    <string name="backup__save_and_export">Kaydet ve dışa aktar</string>
     <string name="backup__set_password_title">Yedek dosyanızın korunmasını artırmak için lütfen bir parola ayarlayın</string>
     <string name="backup__enter_password_title">İçeri aktarma işlemine devam etmek için bu yedek dosyası için bir parola girin</string>
     <string name="backup__backup_file_password_title">Bu yedek dosyası için bir parola ayarla</string>
@@ -365,7 +365,7 @@
     <!-- %d - number -->
     <string name="backup__new_services">%d yeni hizmet</string>
     <!-- %d - number -->
-    <string name="backup__services_imported_count">%d hizmet dosyadan içeri aktarıldı</string>
+    <string name="backup__services_imported_count">%d hizmet dosyadan içe aktarıldı</string>
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">iCloud\'da bir sorun var. Sistem ayarlarını kontrol edin</string>
     <!-- backup__encrypted_unsupported -->
@@ -468,13 +468,13 @@
     <string name="commons__2fas_toolbar">2FAS</string>
     <string name="backup__google_drive_not_available">Google Drive\'a erişilemiyor</string>
     <string name="backup__google_drive_disabled_title">Google Drive kullanıcı tarafından devre dışı bırakıldı</string>
-    <string name="backup__update_required_to_import_title_2">Bu dosyanın içeriğini içeri aktarmak için uygulamanın yeni bir sürümüne ihtiyacınız var. En yeni sürümü Google Play\'de bulabilirsiniz</string>
+    <string name="backup__update_required_to_import_title_2">Bu dosyanın içeriğini içe aktarmak için uygulamanın yeni bir sürümüne ihtiyacınız var. En yeni sürümü Google Play\'de bulabilirsiniz</string>
     <string name="tokens__qr_code_leads_to_google_store">Bu QR kodu sizi Google Play\'e götürür</string>
     <string name="introduction__page_4_content_android">Jetonlarınız depolama alanı üzerinde çevrim dışı olarak saklanır, bu nedenle hizmetlerinizi yedeklemeyi unutmayın! Yetkisiz erişime ve cihaz hasarına karşı korunmak için Google Drive eşitlemesi ve PIN parolası kullanın.</string>
     <string name="new_version__new_version_message_android">2FAS\'ın yeni bir sürümü Google Play\'de mevcut. Şimdi güncelleyin!</string>
     <string name="security_error_no_match">PIN eşleşmiyor! Lütfen tekrar deneyin.</string>
     <string name="settings_developer_options">Geliştirici seçenekleri</string>
-    <string name="settings__external_import">Jetonları içeri aktar</string>
+    <string name="settings__external_import">Jetonları içe aktar</string>
     <string name="settings__browser_extension_result_toolbar_title">Eşleşme sonucu</string>
     <string name="tokens__caution">DİKKAT</string>
     <string name="tokens__qr_point_and_scan_again">Kameranızı doğru QR koduna doğrultun ve tekrar tarayın.</string>
@@ -502,9 +502,9 @@
     <string name="customization_request_icon">Simge talep et</string>
     <string name="customization_edit_label">Etiketi düzenle</string>
     <string name="groups_delete_msg">Bu grubu silmek istediğinizden emin misiniz?</string>
-    <string name="export_backup_title">Yedek dosyanız dışarı aktarılmak için hazır</string>
-    <string name="export_backup_msg">2FAS jetonlarınızı güvenli bir şekilde yedeklemek için bu dosyayı dışarı aktarın. Daha sonra 2FAS uygulamasını kullanarak bu dosyayı bu veya diğer cihazlarınızda içeri aktarabilirsiniz.</string>
-    <string name="export_backup_pass">Dosyayı parola olmadan dışarı aktar\n(önerilmez)</string>
+    <string name="export_backup_title">Yedek dosyanız dışa aktarılmak için hazır</string>
+    <string name="export_backup_msg">2FAS jetonlarınızı güvenli bir şekilde yedeklemek için bu dosyayı dışa aktarın. Daha sonra bu dosyayı 2FAS uygulamasını kullanarak bu veya diğer cihazlarınızda içe aktarabilirsiniz.</string>
+    <string name="export_backup_pass">Dosyayı parola olmadan dışa aktar\n(önerilmez)</string>
     <string name="import_backup_msg2">Dosya, uygulamanın hizmet listesi ile eşitlenecek.</string>
     <string name="backup_notice_later">Belki daha sonra</string>
     <string name="backup_notice_cta">Etkinleştir</string>
@@ -523,7 +523,7 @@
     <string name="biometric_dialog_auth_title">Doğrula</string>
     <string name="biometric_dialog_auth_subtitle">Biyometrik kimliğinizi kullanın</string>
     <string name="about_licenses">Açık kaynak lisansları</string>
-    <string name="externalimport_description">Diğer uygulamalardaki jetonlarınızı 2FAS\'a içeri aktarabilirsiniz. Listeden bir uygulama seçin ve talimatları izleyin.</string>
+    <string name="externalimport_description">Diğer uygulamalardaki jetonlarınızı 2FAS\'a içe aktarabilirsiniz. Listeden bir uygulama seçin ve talimatları izleyin.</string>
     <string name="externalimport_select_app">Uygulama seç</string>
     <string name="externalimport_google_authenticator">Google Authenticator</string>
     <string name="externalimport_aegis">Aegis</string>
@@ -567,7 +567,7 @@
     <string name="tokens__tokens_list_is_empty">Hizmet listesi boş</string>
     <string name="tokens__use_plus_button_to_add_tokens">Yeni bir hizmet eklemek için \"+\" düğmesini kullanın</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">%1$s hesabı için iki adımlı doğrulamayı etkinleştirdiğiniz sürece bu jeton olmadan %2$s hesabınıza giriş yapamayacaksınız.\n\nBu jetonu 2FAS çöp kutusundan kurtaramayacaksınız.</string>
-    <string name="import_ga_success">Hizmetler başarıyla içeri aktarıldı!</string>
+    <string name="import_ga_success">Hizmetler başarıyla içe aktarıldı!</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
     <string name="backup_error_network">Yedeğinizi eşitlemek için etkin bir internet bağlantısına ihtiyacınız var. Lütfen ağ bağlantınızı etkinleştirin ve tekrar deneyin.</string>
     <string name="update_app_title">Uygulamayı güncelle</string>
@@ -577,10 +577,10 @@
     <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
     <string name="delete_service_msg">kaynak: 2FAS hizmet listeniz\n\nİki adımlı kimlik doğrulama açık olduğu sürece bu jeton olmadan %s hesabına giriş yapamayacağınızı unutmayın.</string>
     <string name="delete_service_cta">Sil</string>
-    <string name="export_backup_cta">Dışarı aktar</string>
+    <string name="export_backup_cta">Dışa aktar</string>
     <string name="export_backup_share_cta">Paylaş</string>
-    <string name="import_backup_title">Yedeği dosyadan içeri aktar</string>
-    <string name="import_backup_msg1">Yedek dosyasını şununla içeri aktaracaksınız:</string>
+    <string name="import_backup_title">Yedeği dosyadan içe aktar</string>
+    <string name="import_backup_msg1">Yedek dosyasını şununla içe aktaracaksınız:</string>
     <string name="import_backup_cta">İçeri aktar</string>
     <string name="widgets_warning_msg">Widget\'ta görünen jetonlar PIN kodunuz tarafından korunamaz.\n\nJetonlarınızı widget\'ta görüntülemek istediğinizden emin misiniz?</string>
     <string name="widgets_warning_title">UYARI!</string>
@@ -645,7 +645,7 @@
     <string name="settings__send_logs">Günlükleri gönder</string>
     <string name="settings__recommendation">2FAS\'ın bu harika iki adımlı kimlik doğrulama uygulamasına göz atın: https://2fas.com</string>
     <string name="settings__acknowledgements">Katkıda bulunanlar</string>
-    <string name="introduction__import_external_app">Harici uygulamadan içeri aktar</string>
+    <string name="introduction__import_external_app">Harici uygulamadan içe aktar</string>
     <plurals name="past_duration_seconds">
         <item quantity="one">biraz önce</item>
         <item quantity="other">biraz önce</item>
@@ -683,19 +683,19 @@
     <string name="backup__delete_file_msg">Google eşitlemesi devre dışı bırakılacak. Jetonlarınız depolama alanında kalacak; ancak 2FAS uygulaması, eşitlenen bu ve diğer cihazlarınızdaki Google Hesabınızdan çıkış yapacak.</string>
     <string name="backup__sync_status_waiting">Eşitleme için bekleniyor...</string>
     <string name="backup__sync_status_progress">Eşitleniyor...</string>
-    <string name="import_backup_msg1_encrypted">Şifrelenmiş bir yedek dosyasını içeri aktaracaksınız.</string>
+    <string name="import_backup_msg1_encrypted">Şifrelenmiş bir yedek dosyasını içe aktaracaksınız.</string>
     <string name="externalimport__choose_json_cta">JSON dosyası seç</string>
-    <string name="externalimport__aegis_msg">Hesaplarınızı Aegis\'ten şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
-    <string name="externalimport__raivo_msg">Raivo OTP ayarlarında \"Export OTPs to ZIP archive\" seçeneğini kullanarak jetonları ZIP arşivine dışarı aktarın, arşivi ayıklayın ve \"JSON dosyası seç\" düğmesini kullanarak ayıklanan JSON dosyasını buraya içeri aktarın.</string>
-    <string name="externalimport__no_tokens_msg">Ancak içeri aktarılabilecek hiçbir hizmet yok.</string>
+    <string name="externalimport__aegis_msg">Hesaplarınızı Aegis\'ten şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içe aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
+    <string name="externalimport__raivo_msg">Raivo OTP ayarlarında \"Export OTPs to ZIP archive\" seçeneğini kullanarak jetonları ZIP arşivine dışa aktarın, arşivi ayıklayın ve \"JSON dosyası seç\" düğmesini kullanarak ayıklanan JSON dosyasını buraya içe aktarın.</string>
+    <string name="externalimport__no_tokens_msg">Ancak içe aktarılabilecek hiçbir hizmet yok.</string>
     <string name="commons__try_again">Tekrar dene</string>
     <string name="commons__proceed">İlerle</string>
-    <string name="externalimport__ga_title">2AD jetonları Google Authenticator\'dan içeri aktarılıyor</string>
-    <string name="externalimport__aegis_title">2AD jetonları Aegis\'ten içeri aktarılıyor</string>
-    <string name="externalimport__raivo_title">2AD jetonları Raivo OTP\'den içeri aktarılıyor</string>
-    <string name="externalimport__ga_success_msg">Bu QR kodu, jetonların Google Authenticator\'dan içeri aktarılmasına izin verir.</string>
-    <string name="externalimport__aegis_success_msg">Bu JSON dosyası, jetonların Aegis\'ten içeri aktarılmasına izin verir.</string>
-    <string name="externalimport__raivo_success_msg">Bu JSON dosyası, jetonların Raivo\'dan içeri aktarılmasına izin verir.</string>
+    <string name="externalimport__ga_title">2AD jetonları Google Authenticator\'dan içe aktarılıyor</string>
+    <string name="externalimport__aegis_title">2AD jetonları Aegis\'ten içe aktarılıyor</string>
+    <string name="externalimport__raivo_title">2AD jetonları Raivo OTP\'den içe aktarılıyor</string>
+    <string name="externalimport__ga_success_msg">Bu QR kodu, jetonların Google Authenticator\'dan içe aktarılmasına izin verir.</string>
+    <string name="externalimport__aegis_success_msg">Bu JSON dosyası, jetonların Aegis\'ten içe aktarılmasına izin verir.</string>
+    <string name="externalimport__raivo_success_msg">Bu JSON dosyası, jetonların Raivo\'dan içe aktarılmasına izin verir.</string>
     <string name="externalimport__read_error">Hiçbir jeton okunamadı. Başka bir dosya seçmeyi deneyin.</string>
     <string name="settings__gd_sync_info">Google Drive eşitlemesi hatırlatıcısı</string>
     <string name="settings__gd_sync_disable_confirm">Emin misiniz? Telefonunuzu kaybettiğinizde veya sıfırladığınızda Google Drive eşitlemesi olmadan jetonlarınızı geri yükleyemeyeceksiniz!</string>
@@ -730,14 +730,14 @@
     <string name="settings__list_style_option_default">Varsayılan</string>
     <string name="settings__list_style_option_compact">Kompakt</string>
     <string name="externalimport_lastpass">LastPass</string>
-    <string name="externalimport__lastpass_msg">Hesaplarınızı LastPass\'tan şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
+    <string name="externalimport__lastpass_msg">Hesaplarınızı LastPass\'tan şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içe aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
     <string name="settings__about_crash_optout_title">Çökme raporları</string>
-    <string name="externalimport__lastpass_title">2AD jetonları LastPass\'tan içeri aktarılıyor</string>
-    <string name="externalimport__lastpass_success_msg">Bu JSON dosyası, jetonların LastPass\'tan içeri aktarılmasına izin verir.</string>
-    <string name="externalimport__info_lastpass_title">Jetonları LastPass\'tan içeri aktar</string>
-    <string name="externalimport__info_aegis_title">Jetonları Aegis\'ten içeri aktar</string>
-    <string name="externalimport__info_raivo_title">Jetonları Raivo OTP\'den içeri aktar</string>
-    <string name="externalimport__info_google_authenticator_title">Jetonları Google Authenticator\'dan içeri aktar</string>
+    <string name="externalimport__lastpass_title">2AD jetonları LastPass\'tan içe aktarılıyor</string>
+    <string name="externalimport__lastpass_success_msg">Bu JSON dosyası, jetonların LastPass\'tan içe aktarılmasına izin verir.</string>
+    <string name="externalimport__info_lastpass_title">Jetonları LastPass\'tan içe aktar</string>
+    <string name="externalimport__info_aegis_title">Jetonları Aegis\'ten içe aktar</string>
+    <string name="externalimport__info_raivo_title">Jetonları Raivo OTP\'den içe aktar</string>
+    <string name="externalimport__info_google_authenticator_title">Jetonları Google Authenticator\'dan içe aktar</string>
     <!-- Counter eg.: "25s" -->
     <string name="time_unit_seconds_short">sn</string>
     <string name="tokens__add_title">Hizmeti 2FAS ile eşleştir</string>
@@ -774,15 +774,15 @@
     <string name="settings__hide_tokens_description">Jetonlar üzerlerine basıldığında ortaya çıkacak.</string>
     <string name="browser__pair_manually_cta">Elle eşleştir</string>
     <string name="browser__pair_manually_hint">Eşleştirme kodu</string>
-    <string name="externalimport__info_authenticatorpro_title">Jetonları Authenticator Pro\'dan içeri aktar</string>
-    <string name="externalimport__authenticatorpro_success_msg">Bu metin belgesi, jetonların Authenticator Pro\'dan içeri aktarılmasına izin verir.</string>
-    <string name="externalimport__authenticatorpro_title">2AD jetonları Authenticator Pro\'dan içeri aktarılıyor</string>
-    <string name="externalimport__authenticatorpro_msg">Hesaplarınızı Authenticator Pro\'dan şifrelenmemiş bir metin belgesine aktarın ve \"Metin belgesi seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
+    <string name="externalimport__info_authenticatorpro_title">Jetonları Authenticator Pro\'dan içe aktar</string>
+    <string name="externalimport__authenticatorpro_success_msg">Bu metin belgesi, jetonların Authenticator Pro\'dan içe aktarılmasına izin verir.</string>
+    <string name="externalimport__authenticatorpro_title">2AD jetonları Authenticator Pro\'dan içe aktarılıyor</string>
+    <string name="externalimport__authenticatorpro_msg">Hesaplarınızı Authenticator Pro\'dan şifrelenmemiş bir metin belgesine aktarın ve \"Metin belgesi seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içe aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
     <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Metin belgesi seç</string>
     <string name="fingerprint__biometric_invalidated">Biyometrik giriş, sistemdeki parmak izi ayarları değişikliklerinden dolayı devre dışı bırakıldı</string>
-    <string name="tokens__last_pass_import">2AD jetonları LastPass\'tan içeri aktarılıyor</string>
-    <string name="tokens__last_pass_import_subtitle">Bu QR kodu, jetonların LastPass\'tan içeri aktarılmasına izin verir.</string>
+    <string name="tokens__last_pass_import">2AD jetonları LastPass\'tan içe aktarılıyor</string>
+    <string name="tokens__last_pass_import_subtitle">Bu QR kodu, jetonların LastPass\'tan içe aktarılmasına izin verir.</string>
     <string name="tokens__add_with_guide">Uygulama kılavuzları</string>
     <string name="guides__select_title">Hizmetlere göz at</string>
     <string name="guides__select_description">2FAS uygulaması ile eşleştirilecek uygulamayı seçin</string>
@@ -802,14 +802,14 @@
     <string name="guides__guide_universal_title">Evrensel 2AD kılavuzu</string>
     <string name="browser__save_choice">Seçimimi kaydet</string>
     <string name="externalimport_andotp">andOTP</string>
-    <string name="externalimport__andotp_title">2AD jetonları andOTP\'den içeri aktarılıyor</string>
-    <string name="externalimport__andotp_success_msg">Bu JSON dosyası, jetonların andOTP\'den içeri aktarılmasına izin verir.</string>
-    <string name="externalimport__info_andotp_title">Jetonları andOTP\'den içeri aktar</string>
-    <string name="externalimport__andotp_msg">Hesaplarınızı andOTP\'den şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içeri aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
+    <string name="externalimport__andotp_title">2AD jetonları andOTP\'den içe aktarılıyor</string>
+    <string name="externalimport__andotp_success_msg">Bu JSON dosyası, jetonların andOTP\'den içe aktarılmasına izin verir.</string>
+    <string name="externalimport__info_andotp_title">Jetonları andOTP\'den içe aktar</string>
+    <string name="externalimport__andotp_msg">Hesaplarınızı andOTP\'den şifrelenmemiş bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içe aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
     <string name="introduction__backup_description">Bir sonraki adımda, 2AD jetonlarının güvenli bir şekilde saklanacağı Google Drive hesabınızı seçmeniz istenecektir.</string>
     <string name="introduction__backup_take_risk_cta">Yedekleme yapma, bu riski alıyorum</string>
     <string name="introduction__backup_success">Google Drive eşitlemesi başarıyla etkinleştirildi!</string>
-    <string name="backup__import_invalid_version">İçeri aktarmaya çalıştığınız yedek dosyası bu uygulama sürümünde desteklenmiyor. Uygulama yalnızca %d sürümüne kadar olan yedek biçimi sürümlerini desteklerken, içeri aktarmaya çalıştığınız dosya %d sürümündedir.</string>
+    <string name="backup__import_invalid_version">İçe aktarmaya çalıştığınız yedek dosyası bu uygulama sürümünde desteklenmiyor. Uygulama yalnızca %d sürümüne kadar olan yedek biçimi sürümlerini desteklerken, içe aktarmaya çalıştığınız dosya %d sürümündedir.</string>
     <string name="commons__pair">Eşleştir</string>
     <string name="introduction__backup_icloud_title">Güvenli eşitleme ve yedekleme</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
@@ -847,8 +847,8 @@
     <string name="security__enter_pin_short">PIN\'i girin</string>
     <string name="settings__sort_tokens">Jetonları sırala</string>
     <string name="appleWatch__installation_info_title">2FAS Apple Watch uygulaması yüklemesi</string>
-    <string name="appleWatch__installation_first_step">2FAS Auth\'u saat uygulaması üzerinden yükle</string>
-    <string name="appleWatch__installation_first_step_link">Saat uygulamasını aç</string>
+    <string name="appleWatch__installation_first_step">2FAS Auth\'u Watch uygulaması üzerinden yükle</string>
+    <string name="appleWatch__installation_first_step_link">Watch uygulamasını aç</string>
     <string name="appleWatch__installation_second_step">iCloud eşitlemesinin etkinleştirildiğinden emin olun</string>
     <string name="appleWatch__installation_second_step_link">2FAS yedeklemesi ayarlarına git</string>
     <string name="settings__apple_watch">Apple Watch</string>
@@ -869,9 +869,9 @@
     <string name="backup__watch_pairing_description">iCloud yedeklemenizle bir Apple Watch\'ı eşleştirmek istiyor musunuz? Cihazınızın adını girin:</string>
     <string name="backup__watch_pairing_default_name">Apple Watch</string>
     <string name="backup__watch_pairing_action">Cihaz eşleştir</string>
-    <string name="backup__watch_pairing_error">Şu anda saat ile eşleştirilemiyor. Bulut yedeklemesinin etkinleştirilmiş ve bir parola ile eşitlenmiş olduğundan emin olun.</string>
+    <string name="backup__watch_pairing_error">Şu anda Watch ile eşleştirilemiyor. Bulut yedeklemesinin etkinleştirilmiş ve bir parola ile eşitlenmiş olduğundan emin olun.</string>
     <string name="backup__cloud_error_title">Bulut yedekleme hatası</string>
-    <string name="backup__cloud_error_missing_system_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü Sistem Anahtarı yok. iCloud Anahtar Zincirinin etkinleştirilmiş olduğu ve doğru çalıştığını denetleyin.</string>
+    <string name="backup__cloud_error_missing_system_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü sistem anahtarı yok. iCloud Anahtar Zincirinin etkinleştirilmiş olduğu ve doğru çalıştığını denetleyin.</string>
     <string name="backup__cloud_error_mismatch_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü Sistem Anahtarı kullanılarak şifrelenmiş ve şu anda özel bir parola kullanıyorsunuz. Geçiş yapmak ister misiniz?</string>
     <string name="backup__cloud_error_new_version_content">Bulut yedeklemesi ile eşitlenemiyor çünkü uygulamanın daha güncel bir sürümüne taşınmıştı. Bulut yedeklemesini kullanmaya devam etmek için uygulamayı güncelleyin.</string>
     <string name="backup__enter_cloud_backup_password_title">Bulut yedeklemesi parolası girin</string>
@@ -880,22 +880,22 @@
     <string name="backup__enter_password_wrong_password">Yanlış parola! Lütfen tekrar deneyin</string>
     <string name="backup__migration_title">Bulut yedeği taşınıyor</string>
     <string name="backup__migration_subtitle">Uygulamayı kapatmayın!</string>
-    <string name="backup__migration_description">Yedeğiniz bir Sistem anahtarı ile şifreli. Bu anahtar, iCloud Anahtar Zincirini kullanan diğer uygulamalar arasında paylaştırılacak. Bu seçeneğin açık olduğundan emin olun Eğer kendi parolanızı kullanmak isterseniz, taşıma işleminden sonra Bulut yedeği ayarlarından ayarlayabilirsiniz.</string>
+    <string name="backup__migration_description">Yedeğiniz bir sistem anahtarı ile şifreli. Bu anahtar, iCloud Anahtar Zincirini kullanan diğer uygulamalar arasında paylaştırılacak. Bu seçeneğin açık olduğundan emin olun Eğer kendi parolanızı kullanmak isterseniz, taşıma işleminden sonra Bulut yedeği ayarlarından ayarlayabilirsiniz.</string>
     <string name="commons__success_ex">Başarılı!</string>
     <string name="backup__encryption_type">Şifreleme türü</string>
     <string name="backup__encryption_select">Şifreleme türü seçin</string>
     <string name="backup__encryption_enter_password">Parolayı gir</string>
     <string name="backup__encryption_change_password">Parolayı değiştir</string>
-    <string name="backup__encryption_password_description">Parola verilerinizi şifrelemek için kullanılır. Eğer parolanızı kaybederseniz verilerinizi Bulut yedeklemesinden kurtaramazsınız.</string>
+    <string name="backup__encryption_password_description">Parola, verilerinizi şifrelemek için kullanılır. Eğer parolanızı kaybederseniz verilerinizi bulut yedeklemesinden kurtaramazsınız.</string>
     <string name="backup__encryption_change_title">Şifreleme türünü değiştirin</string>
-    <string name="backup__encryption_method_footer">Sistem veya Özel parola seçin</string>
+    <string name="backup__encryption_method_footer">Sistem parolası veya özel parola seçin</string>
     <string name="backup__manage_paired_watches_title">Eşleşmiş Apple Watch\'ları yönet</string>
     <string name="backup__manage_paired_watches_footer">Bu bulut yedeğine erişimi olan Apple Watch\'ları ekleyin, kaldırın veya yeniden adlandırın.</string>
-    <string name="backup__manage_paired_watches_rename_title">Saati yeniden adlandır</string>
+    <string name="backup__manage_paired_watches_rename_title">Watch\'ı yeniden adlandır</string>
     <string name="backup__manage_paired_watches_rename_description">Yeni cihaz adı gir</string>
     <string name="backup__manage_paired_watches_rename_action">Yeniden adlandır</string>
-    <string name="backup__manage_paired_watches_title_short">Saatleri yönet</string>
-    <string name="backup__manage_paired_watches_empty_list">Liste boş. + düğmesini kullanarak Saati eşleştirin</string>
+    <string name="backup__manage_paired_watches_title_short">Watch\'ları yönet</string>
+    <string name="backup__manage_paired_watches_empty_list">Liste boş. + düğmesini kullanarak Watch\'ı eşleştirin</string>
     <string name="backup__manage_paired_watches_syncing">Bulut yedeklemesi eşitleniyor...</string>
     <string name="backup__watch_pair_title">Apple Watch\'ınızı eşleştirin</string>
     <string name="backup__watch_pair_description">iPhone/iPad\'inizde 2FAS Yedeklemesi ayarına gidin ve \"Eşleşmiş Apple Watch\'ları yönet\" seçeneğini bulun. Bu seçenek, eğer yedekleme eşitlenmişse görünür olacak. QR kodunu oradan okutun.</string>
@@ -908,10 +908,37 @@
     <string name="backup__missing_system_key">Eksik Sistem Anahtarı</string>
     <string name="backup__system_key">Sistem Anahtarı</string>
     <string name="backup__custom_password">Özel parola</string>
-    <string name="commons__options_title">Options</string>
-    <string name="tokens__copy_secret">Copy Secret Key</string>
-    <string name="tokens__copy_link">Copy OTP Auth link</string>
-    <string name="notifications__link_copied">Link Copied</string>
-    <string name="tokens__qr_code_show">Show service QR Code</string>
-    <string name="tokens__qr_code_share">Share service QR Code</string>
+    <string name="commons__options_title">Seçenekler</string>
+    <string name="tokens__copy_secret">Gizli anahtarı kopyala</string>
+    <string name="tokens__copy_link">OTP doğrulama bağlantısını kopyala</string>
+    <string name="notifications__link_copied">Bağlantı kopyalandı</string>
+    <string name="tokens__qr_code_show">Hizmetin QR kodunu göster</string>
+    <string name="tokens__qr_code_share">Hizmetin QR kodunu paylaş</string>
+    <string name="settings_open_twofass_appstore">2FAS Pass\'ı al</string>
+    <string name="settings_open_twofass">2FAS Pass\'ı aç</string>
+    <string name="settings_manage_passwords_title">Parolaları yönet</string>
+    <string name="quick_setup_drive_sync_title">Kasa eşitlemesi</string>
+    <string name="quick_setup_drive_sync_description">Bu cihazın kaybolması veya hasar görmesi olasılığına karşı verilerinizi Google Drive\'ı kullanarak güvenli bir şekilde eşitleyin.</string>
+    <string name="commons__file_creation_error">Dosya oluşturma başarısız oldu</string>
+    <string name="settings__export_pin_needed">Gizli anahtarlarınız korunuyor. Onları dışa aktarmak için lütfen bir PIN veya biyometrik kilit ekleyin.</string>
+    <string name="settings__export_title_tokens">Jetonları dışa aktar</string>
+    <string name="settings__export_title_qr_codes">QR kodlarını dışa aktar</string>
+    <string name="settings__export_title_options">Dışa aktarma seçenekleri</string>
+    <string name="settings__export_options_copy_clipboard">Panoya kopyala</string>
+    <string name="settings__export_options_save_file">OTPAuth dosyasını kaydet</string>
+    <string name="settings__export_options_export_qr_codes">QR kodlarını dışa aktar</string>
+    <string name="settings__export_options_footer">Jetonları nasıl dışa aktarmak istediğinizi seçin. Jetonları panoya kopyalayabilir, OTPAuth dosyası olarak kaydedebilir veya QR kodları olarak dışa aktarabilirsiniz.</string>
+    <string name="settings__import_otpauth_title">OTPAuth bağlantıları</string>
+    <string name="settings__import_from_file">Dosyadan içe aktar</string>
+    <string name="settings__import_read_from_clipboard">Panodan içe aktar</string>
+    <string name="settings__import_otpauth_footer">Jetonları OTPAuth betin belgesi veya OTPAuth panosundan içe aktarın</string>
+    <string name="settings__import_from_text_file">Jetonları metin belgesinden içe aktar</string>
+    <string name="settings__import_from_clipboard">Jetonları panodan içe aktar</string>
+    <string name="settings__import_from_text_file_description">Metin belgesi \'otpauth://\' ile başlayan linklerden oluşan bir liste içermelidir.</string>
+    <string name="settings__import_from_clipboard_description">Pano \'otpauth://\' ile başlayan linklerden oluşan bir liste içermelidir.</string>
+    <string name="settings__import_contents_file">Jetonlar metin belgesinden içe aktarılıyor</string>
+    <string name="settings__import_contents_clipboard">Jetonlar panodan içe aktarılıyor</string>
+    <string name="settings__import_clipboard_empty">Pano boş veya desteklenen bir bağlantı biçimi içermiyor.</string>
+    <string name="widget__open_app">Open 2FAS Auth</string>
+    <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
 </resources>
