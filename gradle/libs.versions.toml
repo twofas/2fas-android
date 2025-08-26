@@ -90,7 +90,7 @@ playServicesCorutines = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:
 playUpdate = "com.google.android.play:app-update:2.1.0"
 playUpdateKtx = "com.google.android.play:app-update-ktx:2.1.0"
 playFeatureDelivery = "com.google.android.play:feature-delivery-ktx:2.1.0"
-protobuf = "com.google.protobuf:protobuf-kotlin-lite:3.19.1"
+protobuf = "com.google.protobuf:protobuf-kotlin-lite:4.32.0"
 reLinker = "com.getkeepsafe.relinker:relinker:1.4.5"
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
@@ -187,7 +187,7 @@ kotlinParcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = 
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlinComposeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kotlinKsp" }
-protobuf = "com.google.protobuf:0.9.1"
+protobuf = "com.google.protobuf:0.9.5"
 twofasAndroidApplication = "twofas.androidApplication:unspecified"
 twofasAndroidLibrary = "twofas.androidLibrary:unspecified"
 twofasCompose = "twofas.compose:unspecified"
