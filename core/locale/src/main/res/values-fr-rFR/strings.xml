@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -911,7 +911,34 @@
     <string name="commons__options_title">Options</string>
     <string name="tokens__copy_secret">Copier la clé secrète</string>
     <string name="tokens__copy_link">Copier le lien</string>
-    <string name="notifications__link_copied">Link Copied</string>
-    <string name="tokens__qr_code_show">Show service QR Code</string>
-    <string name="tokens__qr_code_share">Share service QR Code</string>
+    <string name="notifications__link_copied">Lien copié</string>
+    <string name="tokens__qr_code_show">Afficher le QR Code du service</string>
+    <string name="tokens__qr_code_share">Partager le QR Code du service</string>
+    <string name="settings_open_twofass_appstore">Obtenir 2FAS Pass</string>
+    <string name="settings_open_twofass">Ouvrir 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">Gérer les mots de passe</string>
+    <string name="quick_setup_drive_sync_title">Synchronisation du coffre-fort</string>
+    <string name="quick_setup_drive_sync_description">Synchronisez vos données de façon sécurisée avec Google Drive au cas où cet appareil serait endommagé ou volé.</string>
+    <string name="commons__file_creation_error">Erreur de la création du fichier</string>
+    <string name="settings__export_pin_needed">Vos Clés secrètes sont protégées. Veuillez choisir un NIP ou le verrouillage biométrique pour les exporter.</string>
+    <string name="settings__export_title_tokens">Exporter les jetons</string>
+    <string name="settings__export_title_qr_codes">Exporter les QR codes</string>
+    <string name="settings__export_title_options">Options d\'export</string>
+    <string name="settings__export_options_copy_clipboard">Copier vers le presse-papiers</string>
+    <string name="settings__export_options_save_file">Sauvegarder le fichier OTPAuth</string>
+    <string name="settings__export_options_export_qr_codes">Exporter les QR codes</string>
+    <string name="settings__export_options_footer">Veuillez choisir la méthode d\'export des jetons. Il est possible de les copier vers le presse-papiers, les sauvegarder dans un fichier OTPAuth, ou les exporter comme QR codes.</string>
+    <string name="settings__import_otpauth_title">Liens OTPAuth</string>
+    <string name="settings__import_from_file">Importer depuis un fichier</string>
+    <string name="settings__import_read_from_clipboard">Importer depuis le presse-papiers</string>
+    <string name="settings__import_otpauth_footer">Importer des jetons depuis le fichier texte OTPAuth ou le presse-papiers OTPAuth</string>
+    <string name="settings__import_from_text_file">Importer des jetons depuis un fichier texte</string>
+    <string name="settings__import_from_clipboard">Importer des jetons depuis le presse-papiers</string>
+    <string name="settings__import_from_text_file_description">Le fichier texte doit contenir une liste de liens débutant avec \'otpauth://\'.</string>
+    <string name="settings__import_from_clipboard_description">Le presse-papiers doit contenir une liste de liens débutant avec \'otpauth://\'.</string>
+    <string name="settings__import_contents_file">Importer des jetons depuis un fichier texte</string>
+    <string name="settings__import_contents_clipboard">Importer des jetons depuis le presse-papiers</string>
+    <string name="settings__import_clipboard_empty">Le presse-papiers est vide ou ne contient pas de format de lien supporté</string>
+    <string name="widget__open_app">Ouvrir 2FAS Auth</string>
+    <string name="widget__open_app_description">Accès rapide à 2FAS Auth</string>
 </resources>

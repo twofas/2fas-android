@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -920,4 +920,31 @@
     <string name="notifications__link_copied">Link skopiowany</string>
     <string name="tokens__qr_code_show">Pokaż kod QR serwisu</string>
     <string name="tokens__qr_code_share">Udostępnij kod QR serwisu</string>
+    <string name="settings_open_twofass_appstore">Pobierz 2FAS Pass</string>
+    <string name="settings_open_twofass">Otwórz 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">Zarządzaj hasłami</string>
+    <string name="quick_setup_drive_sync_title">Synchronizacja Vaulta</string>
+    <string name="quick_setup_drive_sync_description">Bezpiecznie zsynchronizuj swoje dane za pomocą Dysku Google na wypadek zgubienia lub uszkodzenia urządzenia.</string>
+    <string name="commons__file_creation_error">Nie udało się utworzyć pliku</string>
+    <string name="settings__export_pin_needed">Twoje Tajne Klucze są chronione. Aby móc je wyeksportować, dodaj kod PIN lub Blokadę Biometryczną</string>
+    <string name="settings__export_title_tokens">Eksportuj Tokeny</string>
+    <string name="settings__export_title_qr_codes">Eksportuj kody QR</string>
+    <string name="settings__export_title_options">Opcje Eksportu</string>
+    <string name="settings__export_options_copy_clipboard">Skopiuj do schowka</string>
+    <string name="settings__export_options_save_file">Zapisz plik OTPAuth</string>
+    <string name="settings__export_options_export_qr_codes">Exportuj kody QR</string>
+    <string name="settings__export_options_footer">Wybierz sposób eksportowania Tokenów. Możesz skopiować je do schowka, zapisać jako plik OTPAuth lub wyeksportować jako kody QR.</string>
+    <string name="settings__import_otpauth_title">Linki OTPAuth</string>
+    <string name="settings__import_from_file">Immportuj z pliku</string>
+    <string name="settings__import_read_from_clipboard">Importuj ze schowka</string>
+    <string name="settings__import_otpauth_footer">Importuj Tokeny z pliku tesktowego OTPAuth albo ze schowka OTPAuth</string>
+    <string name="settings__import_from_text_file">Importuj Tokeny z pliku tekstowego</string>
+    <string name="settings__import_from_clipboard">Importuj Tokeny ze schowka</string>
+    <string name="settings__import_from_text_file_description">Plik tekstowy powinien zawierać listę linków zaczynających się od „otpauth://”.</string>
+    <string name="settings__import_from_clipboard_description">Schowek powinien zawierać listę linków zaczynających się od „otpauth://”.</string>
+    <string name="settings__import_contents_file">Importowanie Tokenów z pliku tekstowego</string>
+    <string name="settings__import_contents_clipboard">Importowanie Tokenów ze schowka</string>
+    <string name="settings__import_clipboard_empty">Schowek jest pusty lub nie zawiera wspieranego formatu linków.</string>
+    <string name="widget__open_app">Open 2FAS Auth</string>
+    <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
 </resources>

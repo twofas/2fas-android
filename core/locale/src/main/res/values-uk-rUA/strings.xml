@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -914,10 +914,37 @@
     <string name="backup__missing_system_key">Відсутній ключ системи</string>
     <string name="backup__system_key">Ключ системи</string>
     <string name="backup__custom_password">Власний пароль</string>
-    <string name="commons__options_title">Options</string>
-    <string name="tokens__copy_secret">Copy Secret Key</string>
-    <string name="tokens__copy_link">Copy OTP Auth link</string>
-    <string name="notifications__link_copied">Link Copied</string>
-    <string name="tokens__qr_code_show">Show service QR Code</string>
-    <string name="tokens__qr_code_share">Share service QR Code</string>
+    <string name="commons__options_title">Опції</string>
+    <string name="tokens__copy_secret">Скопіювати секретний ключ</string>
+    <string name="tokens__copy_link">Скопіювати посилання аутентифікації OTP</string>
+    <string name="notifications__link_copied">Посилання скопійовано</string>
+    <string name="tokens__qr_code_show">Показати QR-код сервісу</string>
+    <string name="tokens__qr_code_share">Поділитися сервісом через QR-код</string>
+    <string name="settings_open_twofass_appstore">Отримати 2FAS Pass</string>
+    <string name="settings_open_twofass">Відкрити 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">Керування паролями</string>
+    <string name="quick_setup_drive_sync_title">Синхронізація сховища</string>
+    <string name="quick_setup_drive_sync_description">Безпечно синхронізуйте свої дані за допомогою Google Drive на випадок втрати або пошкодження цього пристрою.</string>
+    <string name="commons__file_creation_error">Помилка під час створення файлу</string>
+    <string name="settings__export_pin_needed">Ваші секретні ключі захищені. Будь ласка, додайте PIN-код або біометричний замок, щоб експортувати їх.</string>
+    <string name="settings__export_title_tokens">Експорт токенів</string>
+    <string name="settings__export_title_qr_codes">Експортувати QR-коди</string>
+    <string name="settings__export_title_options">Параметри експорту</string>
+    <string name="settings__export_options_copy_clipboard">Скопіювати в буфер обміну</string>
+    <string name="settings__export_options_save_file">Зберегти файл OTPAuth</string>
+    <string name="settings__export_options_export_qr_codes">Експорт QR-кодів</string>
+    <string name="settings__export_options_footer">Виберіть спосіб експорту токенів. Ви можете скопіювати їх у буфер обміну, зберегти як файл OTPAuth або експортувати як QR-коди.</string>
+    <string name="settings__import_otpauth_title">Посилання OTPAuth</string>
+    <string name="settings__import_from_file">Імпорт з файлу</string>
+    <string name="settings__import_read_from_clipboard">Імпортувати з буфера обміну</string>
+    <string name="settings__import_otpauth_footer">Імпортувати токени з текстового файлу OTPAuth або з буфера обміну OTPAuth</string>
+    <string name="settings__import_from_text_file">Імпортувати токени з текстового файлу</string>
+    <string name="settings__import_from_clipboard">Імпортувати токени з буфера обміну</string>
+    <string name="settings__import_from_text_file_description">Текстовий файл повинен містити список посилань, що починаються з “otpauth://”.</string>
+    <string name="settings__import_from_clipboard_description">Буфер обміну повинен містити список посилань, що починаються з «otpauth://».</string>
+    <string name="settings__import_contents_file">Імпорт токенів з текстового файлу</string>
+    <string name="settings__import_contents_clipboard">Імпорт токенів із буфера обміну</string>
+    <string name="settings__import_clipboard_empty">Буфер обміну порожній або не містить підтримуваного формату посилання.</string>
+    <string name="widget__open_app">Open 2FAS Auth</string>
+    <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
 </resources>

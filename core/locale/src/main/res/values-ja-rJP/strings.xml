@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -28,7 +28,7 @@
     <!-- notifications__service_already_modified_in_backup -->
     <string name="notifications__service_already_modified_title">サービスの変更はバックアップに反映済みです</string>
     <!-- backup__user_is_over_quota_on_icloud -->
-    <string name="backup__user_over_quota_icloud">iCloudの容量がオーバーしています</string>
+    <string name="backup__user_over_quota_icloud">iCloudの割り当て容量を超えています</string>
     <!-- backup__icloud_is_not_available -->
     <string name="backup__icloud_not_available">iCloudは利用できません</string>
     <!-- backup__icloud_has_been_disabled_by_user -->
@@ -50,7 +50,7 @@
     <string name="commons__off">オフ</string>
     <string name="commons__on">オン</string>
     <!-- commons__point_your_camera_at_code_on_website -->
-    <string name="commons__camera_title">カメラを画面に向けてQRコードをキャプチャします</string>
+    <string name="commons__camera_title">カメラを画面に向けてQRコードを撮影します</string>
     <string name="commons__rename">名前を変更</string>
     <string name="commons__retry">リトライ</string>
     <string name="commons__save">保存</string>
@@ -70,7 +70,7 @@
     <string name="commons__got_it">わかりました！</string>
     <string name="fingerprint__verifying">確認中…</string>
     <!-- fingerprint__setup_content -->
-    <string name="fingerprint__confirm_title">続行するには指紋認証します。</string>
+    <string name="fingerprint__confirm_title">指紋認証して続けます。</string>
     <!-- fingerprint__use_pin -->
     <string name="fingerprint__use_pin_title">今回はPINを使用</string>
     <!-- MARK: - Introduction -->
@@ -81,7 +81,7 @@
     <string name="introduction__page_3_title">プライバシー</string>
     <string name="introduction__page_3_content">2FASはあなたのプライバシーを大切にし、守ります。このアプリがあなたの個人情報を収集したり、処理したり、利用したりすることは決してありません。</string>
     <string name="introduction__page_4_title">セキュリティ</string>
-    <string name="introduction__page_4_content_ios">認証コードはデバイスのストレージ内でオフラインで保存されています。サービスのバックアップを忘れずに行ってください。 iCloud同期とPINパスワードを使用して、不正アクセスやデバイスの破損から保護してください。</string>
+    <string name="introduction__page_4_content_ios">認証コードはデバイスのストレージ内にオフラインで保存されています。バックアップを忘れずに！ iCloud同期とPINパスワードを使用して、不正アクセスやデバイスの破損から保護してください。</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">2FASを使い始める</string>
     <string name="introduction__tos">利用規約</string>
@@ -147,7 +147,7 @@
     <!-- settings__after_you_enable_widgets -->
     <string name="settings__widgets_title">ウィジェットを有効にすると、PIN コードなしですべての認証コードにアクセスできるようになります。\n\nウィジェットを有効にしてもよろしいですか?</string>
     <string name="settings__show_next_token">次の認証コードを表示</string>
-    <string name="settings__see_incoming_tokens">一覧に次の認証コードを表示する</string>
+    <string name="settings__see_incoming_tokens">次の認証コードをリストに表示する</string>
     <string name="settings__trash">ゴミ箱</string>
     <string name="settings__restore">元に戻す</string>
     <string name="settings__trash_is_empty">ゴミ箱は空です</string>
@@ -159,7 +159,7 @@
     <string name="tokens__choose_method">方法を選んでください</string>
     <string name="tokens__duplicated_private_key">秘密鍵が重複しています</string>
     <!-- tokens__incorrect_private_key -->
-    <string name="tokens__incorrect_service_key">秘密鍵が正しくありません（数字2～7とアルファベットのみ）。最大512文字</string>
+    <string name="tokens__incorrect_service_key">秘密鍵が正しくありません（数字2～7とアルファベット）、最大512文字</string>
     <string name="tokens__try_again">OK、もう一度やってみましょう</string>
     <!-- Original: To capture the QR code
         tokens__point_right_2fa_code -->
@@ -176,7 +176,7 @@
     <!-- Original: Take another try with a different search term
         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">別の検索キーワードでもう一度試してみる</string>
-    <string name="tokens__service_key_to_short">キーが短すぎます。4文字以上にしてください。</string>
+    <string name="tokens__service_key_to_short">秘密鍵が短すぎます。4文字以上にしてください。</string>
     <string name="tokens__service_name">サービス名</string>
     <!-- tokens__this_private_key_exists_used_in -->
     <string name="tokens__service_key_already_used_title">スキャンしたコードの秘密鍵は %s ですでに使用されています。おそらくまたスキャンしているのでしょう。</string>
@@ -184,7 +184,7 @@
     <string name="tokens__type_service_name">サービス名を入力</string>
     <string name="tokens__enter_service_name">サービス名を入力</string>
     <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
-    <string name="tokens__service_name_unknown_title">申し訳ありませんが、そのサービスは認識できません。名前を付けてもらえますか？</string>
+    <string name="tokens__service_name_unknown_title">すみません、そのサービスは認識できません。名前を付けてもらえますか？</string>
     <!-- tokens__you_wont_be_able_to_restore -->
     <string name="tokens__token_not_possible_to_restore">この認証コードを復元することはできなくなります。</string>
     <string name="tokens__badge_color">バッジの色</string>
@@ -218,7 +218,7 @@
         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">選択した画像には正しいQRコードがありません。別の画像をお試しください。</string>
     <string name="tokens__select_service">サービス選択</string>
-    <string name="tokens__adding_service_question_title">どのようなサービスを追加しますか?</string>
+    <string name="tokens__adding_service_question_title">どのサービスを追加しますか？</string>
     <string name="tokens__retype_this_token">認証コードを再入力</string>
     <!-- tokens__unlock_and_retype_this_token -->
     <string name="tokens__unlock_and_retype_token_title">ロックを解除して認証コードを再入力してください</string>
@@ -239,7 +239,7 @@
     <!-- tokens__advanced_alert_title -->
     <string name="tokens__advanced_alert">注意</string>
     <!-- tokens__advanced_alert_description -->
-    <string name="tokens__advanced_alert_description_title">詳細設定の変更は推奨されません。2要素認証プロバイダーが必要とし、明確な指示がある場合にのみ変更してください。</string>
+    <string name="tokens__advanced_alert_description_title">詳細設定の変更はおすすめしません。2要素認証プロバイダーが必要とし、明確な指示がある場合にのみ変更してください。</string>
     <string name="tokens__token_settings">認証コード設定</string>
     <string name="tokens__otp_authentication">ワンタイムパスワード(OTP)認証</string>
     <string name="tokens__algorithm">アルゴリズム</string>
@@ -353,7 +353,7 @@
     <string name="backup__update_required_to_import_title">このファイルをインポートするには、アプリの更新が必要です。最新バージョンをApp Storeから入手してください。</string>
     <string name="backup__cant_read_file_error">ファイルを読み込めません。壊れているか、アクセス中にエラーが発生した可能性があります。別のファイルを選択してください</string>
     <string name="backup__password">パスワード</string>
-    <string name="backup__repeat_password">パスワード再入力\n</string>
+    <string name="backup__repeat_password">パスワード再入力</string>
     <string name="backup__incorrect_character_error">使えない文字が含まれています。アルファベットA～Z、a～zと数字、次の記号のみが使えます: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
     <string name="backup__to_short_error">指定されたフレーズが短すぎます (最小 3 文字)</string>
     <string name="backup__passwords_dont_match">パスワードが一致しません</string>
@@ -369,7 +369,7 @@
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">iCloudに問題があります。システム設定を確認してください</string>
     <!-- backup__encrypted_unsupported -->
-    <string name="backup__encrypted_files_not_supported">このファイルは暗号化されてます。暗号化されていないファイルのみをサポートします</string>
+    <string name="backup__encrypted_files_not_supported">このファイルは暗号化されています。暗号化されていないファイルのみをサポートします</string>
     <string name="tokens__copy_token">認証コードをコピー</string>
     <!-- tokens__i_want_to_delete_this_servie -->
     <string name="tokens__i_want_to_delete_this_token">はい、このサービスを削除します</string>
@@ -429,7 +429,7 @@
     <string name="browser__pairing_failed_title">ペアリング失敗(T_T)</string>
     <string name="browser__pairing_failed_description">このQRコードは認識されなかったため、2FASはこのデバイスをブラウザ拡張機能とペアリングできませんでした。もう一度お試しください。</string>
     <!-- browser__pairing_already_paired_title -->
-    <string name="browser__already_paired_title">すでにペアリングされています！</string>
+    <string name="browser__already_paired_title">ペアリング済みです！</string>
     <!-- browser__pairing_already_paired_description -->
     <string name="browser__already_paired_description">このブラウザ拡張機能はすでにこのデバイスとペアリングされています。</string>
     <string name="browser__contact_support">サポートに連絡</string>
@@ -523,7 +523,7 @@
     <string name="biometric_dialog_auth_title">ロック解除</string>
     <string name="biometric_dialog_auth_subtitle">生体認証を行ってください</string>
     <string name="about_licenses">オープンソースライセンス</string>
-    <string name="externalimport_description">他の2段階認証アプリから2FASに認証コードをインポートできます。リストから移行元のアプリを選び、表示される手順に従ってください。</string>
+    <string name="externalimport_description">他の2要素認証アプリから2FASに認証コードをインポートできます。リストから移行元のアプリを選び、表示される手順に従ってください。</string>
     <string name="externalimport_select_app">アプリ選択</string>
     <string name="externalimport_google_authenticator">Google Authenticator</string>
     <string name="externalimport_aegis">Aegis</string>
@@ -566,7 +566,7 @@
     <string name="tokens__show_service_key_setup_lock">あなたの秘密鍵は保護されています。表示するには、PINまたは指紋ロックを追加してください。</string>
     <string name="tokens__tokens_list_is_empty">サービスリストは空です</string>
     <string name="tokens__use_plus_button_to_add_tokens">「+」ボタンで新しいサービスを追加します</string>
-    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">%1$s の2要素認証をオンにしている限り、この認証コードがなければ%2$sのアカウントにサインインすることができなくなります。\n\nこの認証コードを2FASのゴミ箱から復元することはできません。</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">%1$s の2要素認証を有効にしている限り、この認証コードがなければ%2$sのアカウントにログインすることができなくなります。\n\nこの認証コードを2FASのゴミ箱から復元することはできません。</string>
     <string name="import_ga_success">サービスは正常にインポートされました！</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
     <string name="backup_error_network">バックアップを同期するには、インターネット接続が必要です。ネットワークに接続して、もう一度お試しください。</string>
@@ -590,13 +590,13 @@
     <string name="brand_empty_msg">すみません、ブランドが見つかりません</string>
     <!-- Select which services will be visible on widget: -->
     <string name="widgets_select_msg">ウィジェットに表示するサービスを選択してください</string>
-    <string name="backup_turn_off_cta">同期無効</string>
+    <string name="backup_turn_off_cta">同期を無効</string>
     <string name="backup_turn_off_cancel">キャンセル</string>
     <string name="backup_settings_password_set_title">パスワードを設定</string>
     <string name="backup_settings_delete_title">バックアップファイルをGoogleドライブから削除する</string>
     <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
     <string name="backup_settings_delete_subtitle">このファイルをGoogleドライブから削除すると、同期されたすべてのデバイスで同期が無効になり、認証コードはローカルストレージを介してこのデバイスと他のデバイスにのみ残ります。</string>
-    <string name="browser__result_error_browser_paired">2FASはすでにこのブラウザとペアリングされています。</string>
+    <string name="browser__result_error_browser_paired">2FASはこのブラウザとペアリング済みです。</string>
     <!-- Scan QR code again -->
     <string name="browser__result_error_cta">もう一度QRコードをスキャンする</string>
     <string name="browser__scan_error_dialog_title">エラー</string>
@@ -609,14 +609,14 @@
     <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
     <string name="settings__option_fingerprint_description">生体認証を有効にするには、PINコードを有効にする必要があります。</string>
     <string name="settings__block_for_footer">アプリがロックされるまでの時間を設定します。</string>
-    <string name="error__out_of_disk_space">ディスク容量が不足しているか、過去に同じような状況が起きてデータベースが破損したようです。</string>
+    <string name="error__out_of_disk_space">ディスク容量が不足しているか、以前に同様の状況でデータベースが破損したようです。</string>
     <string name="error__cloud_backup_newer_version">クラウドバックアップは新しいバージョンに移行しました。アプリを更新してください</string>
     <string name="error__cloud_backup_encrypted_not_supported">クラウドバックアップは暗号化されています。この機能を使用するにはアプリを更新してください</string>
     <string name="extension__continue_to_app">アプリに進む</string>
     <string name="extension__cancel">キャンセル</string>
     <string name="extension__authorize">許可</string>
     <string name="extension__dismiss">閉じる</string>
-    <string name="extension__request_sent">リクエスト送信済</string>
+    <string name="extension__request_sent">リクエスト送信済み</string>
     <string name="extension__send_question_title">認証コードを送信しますか？</string>
     <string name="extension__send_question_content">%1$s は %2$s の 2FAS認証コードを要求しました</string>
     <string name="extension__error_while_sending">認証コードの送信中にエラーが発生しました</string>
@@ -632,7 +632,7 @@
     <string name="settings__turn_pin_code_to_enable_faceid">PINコードとFace ID認証をオンにして、このデバイス上の認証コードへの不正アクセスを防ぎます。</string>
     <string name="settings__turn_pin_code_to_enable_touchid">PINコードとTouch ID認証をオンにして、このデバイス上の認証コードへの不正アクセスを防ぎます。</string>
     <string name="settings__send_logs_error_not_exists">入力したコードが間違っています。もう一度確認してください。</string>
-    <string name="settings__send_logs_error_expired">提供されたコードは期限切れです。サポートに連絡し新しいコードを入手してください。</string>
+    <string name="settings__send_logs_error_expired">提供されたコードは期限切れです。サポートチームに連絡して新しいコードを入手してください。</string>
     <string name="settings__send_logs_error_no_internet">インターネットに接続していないようです。接続を確認してもう一度お試しください</string>
     <string name="settings__send_logs_error_server">サーバーに問題があるようです。問題が解決しない場合は、サポートチームにお問い合わせください。</string>
     <string name="settings__send_logs_error_title">操作が失敗しました</string>
@@ -739,7 +739,7 @@
     <string name="tokens__add_other_methods">\u0020他の方法</string>
     <string name="tokens__add_enter_manual">手動で秘密鍵を入力</string>
     <string name="tokens__add_from_gallery">QRコードのスクリーンショットをアップロード</string>
-    <string name="tokens__add_success_title">もうすぐ終わりです！</string>
+    <string name="tokens__add_success_title">あと少しです！</string>
     <string name="tokens__add_success_description">サービスのペアリングを完了するには、この認証コードを再入力する必要があります。</string>
     <string name="tokens__add_manual_title">2FASでサービスをペアリング</string>
     <string name="tokens__add_manual_description">サービス名と秘密鍵を入力してください。</string>
@@ -823,26 +823,26 @@
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
     <string name="widget__placeholder">プレースホルダ</string>
-    <string name="widget__size_not_supported">このサイズはまだサポートされていません</string>
-    <string name="widget__settings_description">ウィジェットに表示したいサービスを選択してください。利用可能なサービスがない場合、アプリの設定の項でウィジェットが有効になっているかを確認してください</string>
+    <string name="widget__size_not_supported">このサイズは未サポートです</string>
+    <string name="widget__settings_description">ウィジェットに表示したいサービスを選択してください。利用可能なサービスがない場合、アプリ設定でウィジェットが有効になっているかを確認してください</string>
     <string name="widget__service_icon">サービスのアイコン</string>
-    <string name="widget__not_enabled">2FASの設定でウィジェット機能が有効になっていません</string>
-    <string name="widget__not_enabled_no_services">2FASの設定でウィジェット機能が有効になっておらず、アプリ内に選択できるサービスはありません</string>
+    <string name="widget__not_enabled">2FAS設定でウィジェット機能が有効になっていません</string>
+    <string name="widget__not_enabled_no_services">2FAS設定でウィジェット機能が有効になっておらず、アプリ内に選択できるサービスはありません</string>
     <string name="widget__no_services">アプリ内に選択可能なサービスがありません</string>
-    <string name="widget__select_service_intent_description">2FASのウィジェットに表示させたいサービスを選択</string>
+    <string name="widget__select_service_intent_description">2FASのウィジェットに表示するサービスを選択</string>
     <string name="widget__my_secured_account">保護されたアカウント</string>
     <string name="widget__token">認証コード</string>
     <string name="watch__intro">2FASのwatchOS Appは、2FAS iOSアプリケーションのコンパニオンアプリです。iCloud同期を使用してバックアップされたサービスを表示します。\n\nすばやくアクセスするには、お気に入りのサービスに追加してください。\n\n2FASプラットフォームのさらなる改善のため、寄付をお願いします！</string>
-    <string name="tokens__hotp_not_supported">HOTPサービスはまだサポートされていません</string>
+    <string name="tokens__hotp_not_supported">HOTPサービスは未サポートです</string>
     <string name="tokens__favorite_services">お気に入りサービス</string>
     <string name="security__enter_new_pin_short">新しいPINを入力</string>
     <string name="security__repeat_new_pin_short">新しいPINを再入力</string>
     <string name="commons__success">成功</string>
     <string name="security__enter_pin_short">PIN入力</string>
     <string name="settings__sort_tokens">認証コード並び替え</string>
-    <string name="appleWatch__installation_info_title">Apple Watch Appに2FASをインストール</string>
-    <string name="appleWatch__installation_first_step">Apple Watch Appで2FAS Authをインストールしてください</string>
-    <string name="appleWatch__installation_first_step_link">Apple Watch Appを開く</string>
+    <string name="appleWatch__installation_info_title">2FAS Watch appをインストール</string>
+    <string name="appleWatch__installation_first_step">2FAS AuthのWatch appをインストールします</string>
+    <string name="appleWatch__installation_first_step_link">Watch appを開く</string>
     <string name="appleWatch__installation_second_step">iCloud同期が有効になっていることを確認してください</string>
     <string name="appleWatch__installation_second_step_link">2FASのバックアップ設定に移動します</string>
     <string name="settings__apple_watch">Apple Watch</string>
@@ -865,13 +865,13 @@
     <string name="backup__watch_pairing_action">デバイスをペアリング</string>
     <string name="backup__watch_pairing_error">Apple Watchとペアリングできません。クラウドバックアップが有効で、パスワードを使って同期されていることを確認してください。</string>
     <string name="backup__cloud_error_title">クラウドバックアップエラー</string>
-    <string name="backup__cloud_error_missing_system_key_content">クラウドバックアップはシステムキーがないため復号できません。 iCloudキーチェーン同期が有効で、正しく構成されているか確認してください。</string>
+    <string name="backup__cloud_error_missing_system_key_content">システムキーがないためクラウドバックアップは復号できません。 iCloudキーチェーン同期が有効で、正しく構成されているか確認してください。</string>
     <string name="backup__cloud_error_mismatch_key_content">クラウドバックアップはシステムキーを使って暗号化されていますが、現在はカスタムパスワードを使っているため復号できません。切り替えますか？</string>
     <string name="backup__cloud_error_new_version_content">アプリが新しいバージョンになったためクラウドバックアップが同期できません。クラウドバックアップを使い続けるためにアプリをアップデートしてください。</string>
     <string name="backup__enter_cloud_backup_password_title">クラウドバックアップのパスワードを入力</string>
     <string name="backup__enter_password_description">iCloudバックアップはパスワードで暗号化されています。同期を有効にするにはパスワードを入力してください。</string>
     <string name="backup__enter_password_failure">失敗しました: %s</string>
-    <string name="backup__enter_password_wrong_password">パスワードが間違っています！やり直してください</string>
+    <string name="backup__enter_password_wrong_password">パスワードが違います！やり直してください</string>
     <string name="backup__migration_title">クラウドバックアップに移行</string>
     <string name="backup__migration_subtitle">アプリを終了しないでください！</string>
     <string name="backup__migration_description">バックアップはシステムキーで暗号化されています。このキーはiCloudキーチェーンを使うアプリ間で共有されます。このオプションをオンにすることを忘れないでください。パスワードを使用する場合は、移行後にクラウドバックアップの設定で行うことができます。</string>
@@ -889,10 +889,10 @@
     <string name="backup__manage_paired_watches_rename_description">新しいデバイス名を入力</string>
     <string name="backup__manage_paired_watches_rename_action">名称変更</string>
     <string name="backup__manage_paired_watches_title_short">Watchを管理</string>
-    <string name="backup__manage_paired_watches_empty_list">リストは空です。Apple Watchとペアリングするには + ボタンを押してください</string>
+    <string name="backup__manage_paired_watches_empty_list">リストは空です。 + ボタンでWatchとペアリングします</string>
     <string name="backup__manage_paired_watches_syncing">クラウドバックアップ同期中...</string>
     <string name="backup__watch_pair_title">Apple Watchとペアリング</string>
-    <string name="backup__watch_pair_description">iPhone/iPadの2FAS Authで2FASバックアップ設定に移動し、「ペアリング済みApple Watchを管理」に移動します。このオプションは、バックアップが同期されている場合に表示されます。そこからQRコードをスキャンします。</string>
+    <string name="backup__watch_pair_description">iPhone/iPadの2FAS Authで2FASバックアップ設定に移動し、「ペアリング済みApple Watchを管理」に移動します。このオプションは、バックアップが同期されている場合に表示されます。ここからQRコードを読み取れます。</string>
     <string name="backup__watch_pair_qr_error">QRコード生成エラー</string>
     <string name="backup__cloud_switch_system_key">システムキーに切り替え</string>
     <string name="backup__cloud_turn_backup_off">クラウドバックアップ無効</string>
@@ -904,8 +904,35 @@
     <string name="backup__custom_password">カスタムパスワード</string>
     <string name="commons__options_title">オプション</string>
     <string name="tokens__copy_secret">秘密鍵をコピー</string>
-    <string name="tokens__copy_link">ワンタイムパスワード(OTP)認証リンクをコピー</string>
+    <string name="tokens__copy_link">OTPAuthリンクをコピー</string>
     <string name="notifications__link_copied">リンクをコピーしました</string>
     <string name="tokens__qr_code_show">サービスのQRコードを表示</string>
     <string name="tokens__qr_code_share">サービスのQRコードを共有</string>
+    <string name="settings_open_twofass_appstore">2FAS Passを入手する</string>
+    <string name="settings_open_twofass">2FAS Passを開く</string>
+    <string name="settings_manage_passwords_title">パスワードを管理</string>
+    <string name="quick_setup_drive_sync_title">コード保管庫を同期</string>
+    <string name="quick_setup_drive_sync_description">この端末をなくしたり壊れたりした場合に備えて、Googleドライブを使用してデータをセキュアに同期します。</string>
+    <string name="commons__file_creation_error">ファイル作成に失敗しました</string>
+    <string name="settings__export_pin_needed">秘密鍵は保護されています。エクスポートするにはPINか生体認証ロックを設定してください。</string>
+    <string name="settings__export_title_tokens">認証コードをエクスポート</string>
+    <string name="settings__export_title_qr_codes">QRコードでエクスポート</string>
+    <string name="settings__export_title_options">エクスポートの設定</string>
+    <string name="settings__export_options_copy_clipboard">クリップボードにコピー</string>
+    <string name="settings__export_options_save_file">OTPAuthファイルに保存</string>
+    <string name="settings__export_options_export_qr_codes">QRコードでエクスポート</string>
+    <string name="settings__export_options_footer">認証コードのエクスポート方法を選んでください。クリップボードにコピー、OTPAuthをファイルに保存、またはQRコードでエクスポートができます。</string>
+    <string name="settings__import_otpauth_title">OTPAuthリンク</string>
+    <string name="settings__import_from_file">ファイルからインポート</string>
+    <string name="settings__import_read_from_clipboard">クリップボードからインポート</string>
+    <string name="settings__import_otpauth_footer">OTPAuthテキストファイルかクリップボードのOTPAuthで認証コードをインポートします</string>
+    <string name="settings__import_from_text_file">テキストファイルから認証コードをインポート</string>
+    <string name="settings__import_from_clipboard">クリップボードから認証コードをインポート</string>
+    <string name="settings__import_from_text_file_description">テキストファイルには otpauth:// で始まるリンクが必要です。</string>
+    <string name="settings__import_from_clipboard_description">クリップボードには otpauth:// で始まるリンクが必要です。</string>
+    <string name="settings__import_contents_file">テキストファイルから認証コードをインポート</string>
+    <string name="settings__import_contents_clipboard">クリップボードから認証コードをインポート</string>
+    <string name="settings__import_clipboard_empty">クリップボードが空か、対応する形式のリンクが含まれていません。</string>
+    <string name="widget__open_app">2FAS Authを開く</string>
+    <string name="widget__open_app_description">2FAS Authにすばやくアクセス</string>
 </resources>

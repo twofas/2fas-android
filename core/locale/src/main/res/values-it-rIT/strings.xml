@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -908,10 +908,37 @@
     <string name="backup__missing_system_key">Chiave di Sistema mancante</string>
     <string name="backup__system_key">Chiave di Sistema</string>
     <string name="backup__custom_password">Password personalizzata</string>
-    <string name="commons__options_title">Options</string>
-    <string name="tokens__copy_secret">Copy Secret Key</string>
-    <string name="tokens__copy_link">Copy OTP Auth link</string>
-    <string name="notifications__link_copied">Link Copied</string>
-    <string name="tokens__qr_code_show">Show service QR Code</string>
-    <string name="tokens__qr_code_share">Share service QR Code</string>
+    <string name="commons__options_title">Opzioni</string>
+    <string name="tokens__copy_secret">Copia Chiave Segreta</string>
+    <string name="tokens__copy_link">Copia il link OTP Auth</string>
+    <string name="notifications__link_copied">Link Copiato</string>
+    <string name="tokens__qr_code_show">Mostra il QR Code del servizio</string>
+    <string name="tokens__qr_code_share">Condividi il QR Code del servizio</string>
+    <string name="settings_open_twofass_appstore">Ottieni 2FAS Pass</string>
+    <string name="settings_open_twofass">Apri 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">Gestisci Password</string>
+    <string name="quick_setup_drive_sync_title">Sincronizza Vault</string>
+    <string name="quick_setup_drive_sync_description">Sincronizza in modo sicuro i tuoi dati utilizzando Google Drive nel caso in cui questo dispositivo venga perso o danneggiato.</string>
+    <string name="commons__file_creation_error">Impossibile creare il file</string>
+    <string name="settings__export_pin_needed">Le tue chiavi segrete sono protette. Aggiungi un PIN o un blocco Biometrico per esportarle.</string>
+    <string name="settings__export_title_tokens">Esporta Token</string>
+    <string name="settings__export_title_qr_codes">Esporta QR Code</string>
+    <string name="settings__export_title_options">Esporta Impostazioni</string>
+    <string name="settings__export_options_copy_clipboard">Copia nella clipboard</string>
+    <string name="settings__export_options_save_file">Salva file OTPAuth</string>
+    <string name="settings__export_options_export_qr_codes">Esporta QR Code</string>
+    <string name="settings__export_options_footer">Scegli come vuoi esportare i tuoi token. Puoi copiarli nella clipboard, salvarlo come file OTPAuth, o esportarli come QR code.</string>
+    <string name="settings__import_otpauth_title">Link OTPAuth</string>
+    <string name="settings__import_from_file">Importa da file</string>
+    <string name="settings__import_read_from_clipboard">Leggi dalla clipboard</string>
+    <string name="settings__import_otpauth_footer">Scegli un file di testo con dei link OTPAuth da importare o incolla dei link OTPAuth dalla clipboard.</string>
+    <string name="settings__import_from_text_file">Importa token da file di testo</string>
+    <string name="settings__import_from_clipboard">Importa token dalla clipboard</string>
+    <string name="settings__import_from_text_file_description">Il file di testo dovrebbe contenere una lista di link che iniziano con \'otpauth://\'.</string>
+    <string name="settings__import_from_clipboard_description">La clipboard dovrebbe contenere una lista di link che iniziano con \'otpauth://\'.</string>
+    <string name="settings__import_contents_file">Il contenuto di questo file verrà importato.</string>
+    <string name="settings__import_contents_clipboard">Il contenuto della clipboard verrà importato.</string>
+    <string name="settings__import_clipboard_empty">La clipboard è vuota o non contiene un link supportato.</string>
+    <string name="widget__open_app">Apri 2FAS Auth</string>
+    <string name="widget__open_app_description">Accesso rapido a 2FAS Auth</string>
 </resources>

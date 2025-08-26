@@ -104,12 +104,10 @@ object ServiceParser {
         val matches = label.split(":".toRegex())
 
         return when (matches.size) {
-            2 -> Pair(matches.first().removeWhiteSpaces(), matches.last().trim())
-            else -> Pair(label.removeWhiteSpaces(), null)
+            2 -> Pair(matches.first().trim(), matches.last().trim())
+            else -> Pair(label.trim(), null)
         }
     }
-
-    private fun String.removeWhiteSpaces() = this.replace(" ", "")
 
     fun parseSupportedAlgorithm(otpAlgorithm: String?): Service.Algorithm? =
         when {

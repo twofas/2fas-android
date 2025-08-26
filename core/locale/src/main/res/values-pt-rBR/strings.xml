@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -911,7 +911,34 @@
     <string name="commons__options_title">Opções</string>
     <string name="tokens__copy_secret">Copiar Chave Secreta.</string>
     <string name="tokens__copy_link">Copiar link de autenticação OTP</string>
-    <string name="notifications__link_copied">Link Copied</string>
-    <string name="tokens__qr_code_show">Show service QR Code</string>
-    <string name="tokens__qr_code_share">Share service QR Code</string>
+    <string name="notifications__link_copied">Link Copiado</string>
+    <string name="tokens__qr_code_show">Mostrar Código QR do serviço.</string>
+    <string name="tokens__qr_code_share">Compartilhar serviço QR Code.</string>
+    <string name="settings_open_twofass_appstore">Obter 2FAS Pass.</string>
+    <string name="settings_open_twofass">Abrir 2FAS Pass.</string>
+    <string name="settings_manage_passwords_title">Gerenciar Senhas.</string>
+    <string name="quick_setup_drive_sync_title">Sincronização do Cofre.</string>
+    <string name="quick_setup_drive_sync_description">Sincronize seus dados com segurança usando o Google Drive, caso este dispositivo seja perdido ou danificado.</string>
+    <string name="commons__file_creation_error">Falha na criação do arquivo.</string>
+    <string name="settings__export_pin_needed">Suas Chaves Secretas estão protegidas. Por favor Adicione um PIN ou um bloqueio biométrico para exportá-las.</string>
+    <string name="settings__export_title_tokens">Codigos de Exportação.</string>
+    <string name="settings__export_title_qr_codes">Exportar códigos QR.</string>
+    <string name="settings__export_title_options">Opções de Exportação.</string>
+    <string name="settings__export_options_copy_clipboard">Copiar para a área de transferência.</string>
+    <string name="settings__export_options_save_file">Salvar arquivo OTPAuth.</string>
+    <string name="settings__export_options_export_qr_codes">Exportar códigos QR.</string>
+    <string name="settings__export_options_footer">Escolha como deseja exportar seus Codigos. Você pode copiá-los para a área de transferência, salvá-los como um arquivo OTPAuth ou exportá-los como códigos QR.</string>
+    <string name="settings__import_otpauth_title">links OTPAuth.</string>
+    <string name="settings__import_from_file">Importar de um arquivo.</string>
+    <string name="settings__import_read_from_clipboard">Importar da área de transferência</string>
+    <string name="settings__import_otpauth_footer">Importar tokens do arquivo de texto OTPAuth ou da área de transferência OTPAuth</string>
+    <string name="settings__import_from_text_file">Importando Codigos de arquivo de texto.</string>
+    <string name="settings__import_from_clipboard">Importando Codigos da área de transferência.</string>
+    <string name="settings__import_from_text_file_description">O arquivo de texto deve conter uma lista de links começando com \'otpauth://\'.</string>
+    <string name="settings__import_from_clipboard_description">A área de transferência deve conter uma lista de links começando com \'otpauth://\'.</string>
+    <string name="settings__import_contents_file">Importando Codigos de arquivo de texto.</string>
+    <string name="settings__import_contents_clipboard">Importando Codigos da área de transferência.</string>
+    <string name="settings__import_clipboard_empty">A área de transferência está vazia. ou não contém um formato de link suportado.</string>
+    <string name="widget__open_app">Abra o aplicativo 2FAS Auth</string>
+    <string name="widget__open_app_description">Acesso rápido ao 2FAS Auth</string>
 </resources>
