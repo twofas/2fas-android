@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -58,7 +58,7 @@
     <string name="commons__service">Dienst</string>
     <string name="commons__set">Festlegen</string>
     <string name="commons__skip">Überspringen</string>
-    <string name="commons__tokens">Tokens</string>
+    <string name="commons__tokens">Token</string>
     <string name="commons__warning">Warnung</string>
     <string name="commons__no_results">Keine Ergebnisse</string>
     <string name="commons__customize">Anpassen</string>
@@ -81,11 +81,11 @@
     <string name="introduction__page_3_title">Privat</string>
     <string name="introduction__page_3_content">2FAS respektiert und schützt deine Privatsphäre. Diese App wird niemals persönliche Daten von dir erheben, verarbeiten oder verwenden.</string>
     <string name="introduction__page_4_title">Sichern</string>
-    <string name="introduction__page_4_content_ios">Deine Tokens werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende iCloud Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
+    <string name="introduction__page_4_content_ios">Deine Token werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende iCloud Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">Verwendung von 2FAS beginnen</string>
     <string name="introduction__tos">Allgemeine Geschäftsbedingungen</string>
-    <string name="introduction__description_title">Kopple dein Online-Service-Konto mit 2FAS oder importiere deine Tokens</string>
+    <string name="introduction__description_title">Kopple dein Online-Service-Konto mit 2FAS oder importiere deine Token</string>
     <string name="introduction__pair_new_service">Neuen Dienst koppeln</string>
     <!-- introduction__import_2fas -->
     <string name="introduction__import_2fas_title">2FAS-Sicherungsdatei importieren</string>
@@ -145,9 +145,9 @@
     <string name="settings__widgets">Widgets</string>
     <string name="settings__display_selected_services">Zeige ausgewählte Dienste im Widget des Startbildschirms....</string>
     <!-- settings__after_you_enable_widgets -->
-    <string name="settings__widgets_title">Nachdem du Widgets aktiviert hast, kann auf alle deine Tokens ohne deinen PIN-Code zugegriffen werden. Bist du dir sicher, dass du Widgets aktivieren möchtest?</string>
+    <string name="settings__widgets_title">Nachdem du Widgets aktiviert hast, kann auf alle deine Token ohne deinen PIN-Code zugegriffen werden. Bist du dir sicher, dass du Widgets aktivieren möchtest?</string>
     <string name="settings__show_next_token">Nächsten Token anzeigen</string>
-    <string name="settings__see_incoming_tokens">Siehe eingehende Tokens in der Liste.</string>
+    <string name="settings__see_incoming_tokens">Siehe eingehende Token in der Liste.</string>
     <string name="settings__trash">Papierkorb</string>
     <string name="settings__restore">Wiederherstellen</string>
     <string name="settings__trash_is_empty">Papierkorb ist leer</string>
@@ -201,11 +201,11 @@
     <string name="tokens__pick_background_color">Hintergrundfarbe auswählen:</string>
     <string name="tokens__num_added">%s hinzugefügt</string>
     <string name="tokens__next_token">Nächster Token: %s</string>
-    <string name="tokens__next_token_title">Nächster Tokenwert</string>
-    <string name="tokens__my_tokens">Meine Tokens</string>
+    <string name="tokens__next_token_title">Nächster Token-Wert</string>
+    <string name="tokens__my_tokens">Meine Token</string>
     <string name="tokens__removing_group">Gruppe entfernen</string>
     <!-- tokens__all_tokens_will_be_moved -->
-    <string name="tokens__all_tokens_moved_to_group_title">Alle Tokens werden verschoben in die Gruppe: \"Meine Tokens\"</string>
+    <string name="tokens__all_tokens_moved_to_group_title">Alle Token werden verschoben in die Gruppe: \"Meine Tokens\"</string>
     <string name="tokens__add_group">Gruppe hinzufügen</string>
     <string name="tokens__group_name">Gruppenname:</string>
     <string name="tokens__select_from_gallery">Aus Galerie wählen</string>
@@ -224,11 +224,11 @@
     <string name="tokens__unlock_and_retype_token_title">Token entsperren und neu erzeugen</string>
     <string name="tokens__group">Gruppe</string>
     <string name="tokens__select_group">Gruppe auswählen</string>
-    <string name="tokens__google_auth_import">Importiere 2FA Tokens von der Google Authenticator App</string>
-    <string name="tokens__google_auth_import_subtitle">Dieser QR-Code erlaubt es Ihnen Tokens von Google Authenticator zu importieren</string>
+    <string name="tokens__google_auth_import">Importiere 2FA-Token von der Google Authenticator App</string>
+    <string name="tokens__google_auth_import_subtitle">Dieser QR-Code erlaubt es dir Token von Google Authenticator zu importieren</string>
     <!-- A number replaces %d  -->
     <string name="tokens__google_auth_out_of_title">%1$d von %2$d</string>
-    <string name="tokens__google_auth_import_subtitle_end">Tokens werden importiert.</string>
+    <string name="tokens__google_auth_import_subtitle_end">Token importieren</string>
     <string name="tokens__sort_by">Sortieren nach</string>
     <!-- tokens__sort_by_az -->
     <string name="tokens__sort_by_a_to_z">A - Z</string>
@@ -303,7 +303,7 @@
     <!-- voiceover__sort_by -->
     <string name="voiceover__sort_by_title">Verwende Sortieren nach um die Sortierung der Dienste festzulegen</string>
     <string name="voiceover__spinner">Daten werden geladen</string>
-    <string name="backup__incorrect_secret">Die Tokens konnten nicht gesichert werden, weil das Geheimnis \"%s\" unzulässige Zeichen enthält. Entferne es aus der Liste und versuche es erneut</string>
+    <string name="backup__incorrect_secret">Die Token konnten nicht gesichert werden, weil das Geheimnis \"%s\" unzulässige Zeichen enthält. Entferne es aus der Liste und versuche es erneut</string>
     <string name="backup__import">Importieren</string>
     <string name="backup__export">Exportieren</string>
     <string name="backup__backup_disabled_title">2FAS Backup wird deaktiviert, um seine Integrität zu schützen.</string>
@@ -328,7 +328,7 @@
     <string name="backup__section_description">EMPFOHLEN: iCloud Sync bewahrt deine Token sicher in Apple iCloud auf, für den Fall, dass dein Gerät verloren geht oder beschädigt wird. Lasse es eingeschaltet.</string>
     <string name="backup__file_backup">Datei-Backup</string>
     <!-- backup__use_file_backup_for -->
-    <string name="backup__file_backup_offline_title">Verwende Datei-Sicherung für die Offline-Sicherung deiner Tokens.</string>
+    <string name="backup__file_backup_offline_title">Verwende Datei-Sicherung für die Offline-Sicherung deiner Token.</string>
     <string name="backup__backup_removal">Backup entfernen</string>
     <string name="backup__delete_2fas_backup">2FAS Backup löschen</string>
     <string name="backup__warning_introduction">Warnung! Wenn du die 2FAS Sicherung löschst, werden zudem alle Tokens von anderen Geräten, die mit diesem Konto synchronisiert sind, gelöscht. Um die Tokens auf anderen Geräten zu erhalten, stelle bitte sicher, dass du die 2FAS Sicherung vor dem Löschen ausgeschaltet hast.</string>
@@ -470,11 +470,11 @@
     <string name="backup__google_drive_disabled_title">Google Drive wurde vom Benutzer deaktiviert</string>
     <string name="backup__update_required_to_import_title_2">Du benötigst eine neue Version der App, um den Inhalt dieser Datei zu importieren. Die neueste Version findest du im Google Store</string>
     <string name="tokens__qr_code_leads_to_google_store">Dieser QR-Code bringt dich zum Google Store</string>
-    <string name="introduction__page_4_content_android">Deine Tokens werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende Google Drive Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
+    <string name="introduction__page_4_content_android">Deine Token werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende Google Drive Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
     <string name="new_version__new_version_message_android">Eine neue Version von 2FAS ist im Google Store verfügbar. Jetzt aktualisieren!</string>
     <string name="security_error_no_match">PIN stimmt nicht überein! Bitte erneut versuchen.</string>
     <string name="settings_developer_options">Entwickleroptionen</string>
-    <string name="settings__external_import">Tokens importieren</string>
+    <string name="settings__external_import">Token importieren</string>
     <string name="settings__browser_extension_result_toolbar_title">Kopplungsergebnis</string>
     <string name="tokens__caution">ACHTUNG</string>
     <string name="tokens__qr_point_and_scan_again">Richte deine Kamera auf den richtigen QR-Code und scanne es erneut.</string>
@@ -503,16 +503,16 @@
     <string name="customization_edit_label">Kennzeichnung bearbeiten</string>
     <string name="groups_delete_msg">Bist du dir sicher, dass du diese Gruppe löschen möchtest?</string>
     <string name="export_backup_title">Deine Sicherungsdatei ist zum Exportieren bereit</string>
-    <string name="export_backup_msg">Exportiere diese Datei, um deine 2FAS-Tokens zu sichern. Du kannst die Datei später auf anderen Geräten mit der 2FAS Anwendung importieren.</string>
+    <string name="export_backup_msg">Exportiere diese Datei, um deine 2FAS-Token zu sichern. Du kannst die Datei später auf anderen Geräten mit der 2FAS Anwendung importieren.</string>
     <string name="export_backup_pass">Datei ohne Passwort exportieren\n(nicht empfohlen)</string>
     <string name="import_backup_msg2">Die Datei wird mit der Dienstliste der App synchronisiert.</string>
     <string name="backup_notice_later">Vielleicht später</string>
     <string name="backup_notice_cta">Einschalten</string>
     <string name="widgets_empty_msg">Keine Dienste hinzugefügt</string>
-    <string name="backup__section_description_google">EMPFOHLEN: Google Drive Sync bewahrt deine Tokens sicher in Google Drive auf, falls dein Gerät verloren geht oder beschädigt wird. Lasse es eingeschaltet.</string>
+    <string name="backup__section_description_google">EMPFOHLEN: Google Drive Sync bewahrt deine Token sicher in Google Drive auf, falls dein Gerät verloren geht oder beschädigt wird. Lasse es eingeschaltet.</string>
     <string name="backup_turn_off_title">Google Drive Sync Ausschalten?</string>
     <string name="backup_turn_off_msg1">2FA Token verbleiben auf diesem Gerät und in Google Drive, werden aber nicht synchronisiert. Du wirst auch aus deinem Google Konto abgemeldet.</string>
-    <string name="backup_turn_off_msg2">Denke daran, das im Falle eines Verlusts oder einer Beschädigung des Geräts oder einer App-Entfernung du deine Tokens möglicherweise nicht wiederherstellen kannst und du den Zugang zu den durch 2FA gesicherten Konten verlieren wirst.</string>
+    <string name="backup_turn_off_msg2">Denke daran, das im Falle eines Verlusts oder einer Beschädigung des Geräts oder einer App-Entfernung du deine Token möglicherweise nicht wiederherstellen kannst und du den Zugang zu den durch 2FA gesicherten Konten verlieren wirst.</string>
     <string name="backup_settings_password_set_subtitle">Sichere eine Google Drive Sicherungsdatei mit einem beliebigen Passwort.</string>
     <string name="backup_settings_password_remove_title">Passwort entfernen</string>
     <string name="backup_settings_password_remove_subtitle">Entferne das Passwort zu deiner Google Drive Sicherungsdatei.</string>
@@ -521,9 +521,9 @@
     <string name="browser_extension_result_success_description">2FAS wird dir PUSH-Nachrichten senden wenn du dich über diesen Webbrowser bei deinem Online-Diensten anmeldest. Du musst nicht mehr das Token für jede Verwendung neu eingeben.</string>
     <string name="browser_extension_browser_dialog">Browser Name</string>
     <string name="biometric_dialog_auth_title">Authentifizierung</string>
-    <string name="biometric_dialog_auth_subtitle">Verwende deinen Biometrischen Ausweis</string>
+    <string name="biometric_dialog_auth_subtitle">Verwende deine biometrischen Anmeldeinformationen</string>
     <string name="about_licenses">Open-Source-Lizenzen</string>
-    <string name="externalimport_description">Du kannst Tokens aus verschiedenen Apps nach 2FAS importieren. Wähle eine Anwendung aus der Liste und folge den Anweisungen.</string>
+    <string name="externalimport_description">Du kannst Token aus verschiedenen Apps nach 2FAS importieren. Wähle eine Anwendung aus der Liste und folge den Anweisungen.</string>
     <string name="externalimport_select_app">App auswählen</string>
     <string name="externalimport_google_authenticator">Google Authenticator</string>
     <string name="externalimport_aegis">Aegis</string>
@@ -563,7 +563,7 @@
     <string name="tokens__service_key_invalid_characters">Schlüssel enthält ungültige Zeichen</string>
     <string name="tokens__show_service_key">Geheimschlüssel anzeigen</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
-    <string name="tokens__show_service_key_setup_lock">Dein Geheimschlüssel ist geschützt. Bitte füge einen PIN oder eine Fingerabdrucksperre hinzu, um ihn zu sehen.</string>
+    <string name="tokens__show_service_key_setup_lock">Dein Geheimschlüssel ist geschützt. Bitte füge einen PIN oder Biometriesperre hinzu, um sie zu sehen.</string>
     <string name="tokens__tokens_list_is_empty">Liste mit Diensten ist leer</string>
     <string name="tokens__use_plus_button_to_add_tokens">Verwende den \"+\" Knopf, um einen neuen Dienst hinzuzufügen</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Du kannst dich ohne dieses Token nicht mehr bei deinem %1$s-Konto anmelden, solange die Zwei-Faktor-Authentifizierung für %2$s aktiviert ist.\n\nDu kannst dieses Token nicht aus dem 2FAS-Papierkorb wiederherstellen.</string>
@@ -582,7 +582,7 @@
     <string name="import_backup_title">Importiere Backup von der Datei</string>
     <string name="import_backup_msg1">Du wirst die Backup-Datei mit folgendem importieren</string>
     <string name="import_backup_cta">Importieren</string>
-    <string name="widgets_warning_msg">Die im Widget sichtbaren Tokens sind nicht durch deinen PIN-Code geschützt. Bist du sicher, dass du deine Tokens im Widget anzeigen lassen möchtest?</string>
+    <string name="widgets_warning_msg">Die im Widget sichtbaren Token sind nicht durch deinen PIN-Code geschützt. Bist du sicher, dass du deine Tokens im Widget anzeigen lassen möchtest?</string>
     <string name="widgets_warning_title">ACHTUNG!</string>
     <string name="widgets_warning_cta">Ja, ich bin mir sicher</string>
     <string name="backup_notice_title">2FAS Backup</string>
@@ -619,7 +619,7 @@
     <string name="extension__request_sent">Anfrage gesendet</string>
     <string name="extension__send_question_title">Token senden?</string>
     <string name="extension__send_question_content">%1$s hat 2FAS-Token für %2$s angefordert</string>
-    <string name="extension__error_while_sending">Fehler beim Senden des Tokens</string>
+    <string name="extension__error_while_sending">Fehler beim Senden des Token</string>
     <string name="extension__not_paired_title">Diese Website ist nicht gekoppelt</string>
     <string name="extension__not_paired_content">Öffne die App und wähle einen Dienst für diese Domain</string>
     <string name="extension__error_open_the_app">Öffne die App und überprüfe ob die Browsererweiterung gekoppelt ist</string>
@@ -680,7 +680,7 @@
     <string name="backup__local_file_title">Lokale Datei</string>
     <string name="backup__drive_title">Google Drive Sync</string>
     <string name="backup__delete_file_title">Möchtest du deine Sicherungsdatei aus Google Drive löschen?</string>
-    <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Tokens werden lokal bestehen bleiben, aber die 2FAS App wird aus deinem Google Account auf diesem und deinen anderen synchronisierten Geräten ausgeloggt.</string>
+    <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Token werden lokal bestehen bleiben, aber die 2FAS App wird aus deinem Google Account auf diesem und deinen anderen synchronisierten Geräten ausgeloggt.</string>
     <string name="backup__sync_status_waiting">Warten auf Synchronisierung...</string>
     <string name="backup__sync_status_progress">Synchronisiere...</string>
     <string name="import_backup_msg1_encrypted">Du wirst eine verschlüsselte Sicherungsdatei importieren.</string>
@@ -690,21 +690,21 @@
     <string name="externalimport__no_tokens_msg">Es gibt jedoch keine Dienste, die importiert werden könnten.</string>
     <string name="commons__try_again">Erneut versuchen</string>
     <string name="commons__proceed">Fortfahren</string>
-    <string name="externalimport__ga_title">2FA Tokens aus Google Authenticator importieren</string>
-    <string name="externalimport__aegis_title">2FA Tokens aus Aegis importieren</string>
-    <string name="externalimport__raivo_title">2FA Tokens aus Raivo importieren</string>
-    <string name="externalimport__ga_success_msg">Dieser QR-Code erlaubt es Tokens vom Google Authenticator zu importieren.</string>
-    <string name="externalimport__aegis_success_msg">Diese JSON-Datei erlaubt es Tokens von Aegis zu importieren.</string>
-    <string name="externalimport__raivo_success_msg">Diese JSON-Datei erlaubt es Tokens von Raivo zu importieren.</string>
-    <string name="externalimport__read_error">Es konnten keine Tokens gelesen werden. Versuche eine andere Datei auszuwählen.</string>
+    <string name="externalimport__ga_title">2FA Token aus Google Authenticator importieren</string>
+    <string name="externalimport__aegis_title">2FA Token aus Aegis importieren</string>
+    <string name="externalimport__raivo_title">2FA Token aus Raivo importieren</string>
+    <string name="externalimport__ga_success_msg">Dieser QR-Code erlaubt es Token vom Google Authenticator zu importieren.</string>
+    <string name="externalimport__aegis_success_msg">Diese JSON-Datei erlaubt es Token von Aegis zu importieren.</string>
+    <string name="externalimport__raivo_success_msg">Diese JSON-Datei erlaubt es Token von Raivo zu importieren.</string>
+    <string name="externalimport__read_error">Es konnten keine Token gelesen werden. Versuche eine andere Datei auszuwählen.</string>
     <string name="settings__gd_sync_info">Google Drive Sync-Info</string>
-    <string name="settings__gd_sync_disable_confirm">Bis du dir sicher? Ohne Google Drive Synchronisierung wirst du nicht mehr in der Lage sein deine Tokens wiederherzustellen, wenn du dein Smartphone verlierst oder zurücksetzt!</string>
+    <string name="settings__gd_sync_disable_confirm">Bis du dir sicher? Ohne Google Drive Synchronisierung wirst du nicht mehr in der Lage sein deine Token wiederherzustellen, wenn du dein Smartphone verlierst oder zurücksetzt!</string>
     <string name="extension__code_sent_msg">Code erfolgreich gesendet</string>
     <string name="extension__code_sent_error_msg">Beim Senden des Codes ist ein Fehler aufgetreten</string>
     <string name="tokens__add_service_title">Neuen Dienst hinzufügen</string>
     <string name="tokens__customize_service_title">Dienst anpassen</string>
     <string name="extension__services_suggested_header">Empfohlen</string>
-    <string name="extension__services_all_header">Alle Tokens</string>
+    <string name="extension__services_all_header">Alle Dienste</string>
     <string name="extension__services_other_header">Andere Dienste</string>
     <string name="settings__ssl_error_title">SSL Fehler</string>
     <string name="settings__ssl_error_description">Es ist ein SSL-Fehler aufgetreten und es kann keine sichere Verbindung zum Server hergestellt werden. Stelle sicher, dass du die neueste Version der App hast oder versuche, das Netzwerk zu ändern.</string>
@@ -732,12 +732,12 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Exportiere deine Konten von LastPass in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht nach einem erfolgreichen Import die Datei zu entfernen.</string>
     <string name="settings__about_crash_optout_title">Absturzberichte</string>
-    <string name="externalimport__lastpass_title">2FA Tokens aus LastPass importieren</string>
-    <string name="externalimport__lastpass_success_msg">Diese JSON-Datei erlaubt es Tokens von LastPass zu importieren.</string>
-    <string name="externalimport__info_lastpass_title">Importiere Tokens von LastPass</string>
-    <string name="externalimport__info_aegis_title">Importiere Tokens von Aegis</string>
-    <string name="externalimport__info_raivo_title">Importiere Tokens von Raivo OTP</string>
-    <string name="externalimport__info_google_authenticator_title">Importiere Tokens von Google Authenticator</string>
+    <string name="externalimport__lastpass_title">2FA Token aus LastPass importieren</string>
+    <string name="externalimport__lastpass_success_msg">Diese JSON-Datei erlaubt es Token von LastPass zu importieren.</string>
+    <string name="externalimport__info_lastpass_title">Importiere Token von LastPass</string>
+    <string name="externalimport__info_aegis_title">Importiere Token von Aegis</string>
+    <string name="externalimport__info_raivo_title">Importiere Token von Raivo OTP</string>
+    <string name="externalimport__info_google_authenticator_title">Importiere Token von Google Authenticator</string>
     <!-- Counter eg.: "25s" -->
     <string name="time_unit_seconds_short">s</string>
     <string name="tokens__add_title">Verbinde den Dienst mit 2FAS</string>
@@ -770,19 +770,19 @@
     <string name="social__linkedin">LinkedIn</string>
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
-    <string name="settings__hide_tokens_title">Tokens ausblenden</string>
-    <string name="settings__hide_tokens_description">Tokens werden nach dem Antippen angezeigt.</string>
+    <string name="settings__hide_tokens_title">Token ausblenden</string>
+    <string name="settings__hide_tokens_description">Token werden nach dem Antippen angezeigt.</string>
     <string name="browser__pair_manually_cta">Manuell koppeln</string>
     <string name="browser__pair_manually_hint">Pairing-Code</string>
     <string name="externalimport__info_authenticatorpro_title">Token aus Authenticator Pro importieren</string>
     <string name="externalimport__authenticatorpro_success_msg">Diese Textdatei ermöglicht den Import von Token aus Authenticator Pro.</string>
-    <string name="externalimport__authenticatorpro_title">2FA-Tokens aus der Authenticator Pro App importieren</string>
+    <string name="externalimport__authenticatorpro_title">2FA Token aus der Authenticator Pro App importieren</string>
     <string name="externalimport__authenticatorpro_msg">Exportiere deine Konten von Authenticator Pro in eine unverschlüsselte Textdatei und lade diese über die \"Textdatei auswählen\" Schaltfläche hoch. Denke daran die Datei nach erfolgreichen Import zu löschen.</string>
     <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Textdatei auswählen</string>
-    <string name="fingerprint__biometric_invalidated">Biometrische Anmeldungen wurden aufgrund von Änderungen der Systemsicherheits- und Datenschutzeinstellungen deaktiviert.</string>
-    <string name="tokens__last_pass_import">Importieren von 2FA Tokens von der LastPass App</string>
-    <string name="tokens__last_pass_import_subtitle">Dieser QR-Code erlaubt es dir Tokens von LastPass zu importieren</string>
+    <string name="fingerprint__biometric_invalidated">Die biometrische Anmeldung ist aufgrund von Änderungen in den Systemeinstellungen für Fingerabdrücke deaktiviert</string>
+    <string name="tokens__last_pass_import">Importieren von 2FA Token von der LastPass App</string>
+    <string name="tokens__last_pass_import_subtitle">Dieser QR-Code erlaubt es dir Token von LastPass zu importieren</string>
     <string name="tokens__add_with_guide">Leite mich an</string>
     <string name="guides__select_title">Suche Dienste</string>
     <string name="guides__select_description">Wähle den Service, den du mit der 2FAS App verknüpfen willst!</string>
@@ -802,9 +802,9 @@
     <string name="guides__guide_universal_title">Universelles 2FAS Hilfewerk\u0020</string>
     <string name="browser__save_choice">Meine Wahl speichern</string>
     <string name="externalimport_andotp">andOTP</string>
-    <string name="externalimport__andotp_title">2FA Tokens aus andOTP importieren</string>
-    <string name="externalimport__andotp_success_msg">Diese JSON-Datei erlaubt es Tokens von andOTP zu importieren.</string>
-    <string name="externalimport__info_andotp_title">Importiere Tokens von andOTP</string>
+    <string name="externalimport__andotp_title">2FA Token aus andOTP importieren</string>
+    <string name="externalimport__andotp_success_msg">Diese JSON-Datei erlaubt es Token von andOTP zu importieren.</string>
+    <string name="externalimport__info_andotp_title">Importiere Token von andOTP</string>
     <string name="externalimport__andotp_msg">Exportiere deine Konten von andOTP in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht, nach einem erfolgreichen Import die Datei zu entfernen.</string>
     <string name="introduction__backup_description">Im nächsten Schritt wirst du aufgefordert, dein Google Drive-Konto auszuwählen, in welchem die 2FA-Token sicher gespeichert werden sollen.</string>
     <string name="introduction__backup_take_risk_cta">Ich gehe das Risiko ein und erstelle kein Backup</string>
@@ -914,4 +914,31 @@
     <string name="notifications__link_copied">Link kopiert</string>
     <string name="tokens__qr_code_show">Zeige den Dienst QR-Code</string>
     <string name="tokens__qr_code_share">Teile den Dienst QR-Code</string>
+    <string name="settings_open_twofass_appstore">2FAS Pass holen</string>
+    <string name="settings_open_twofass">2FAS Pass öffnen</string>
+    <string name="settings_manage_passwords_title">Passwörter verwalten</string>
+    <string name="quick_setup_drive_sync_title">Vault-Synchronisierung</string>
+    <string name="quick_setup_drive_sync_description">Synchronisiere deine Daten sicher mit Google Drive, falls dieses Gerät verloren geht oder beschädigt wird.</string>
+    <string name="commons__file_creation_error">Dateierstellung fehlgeschlagen</string>
+    <string name="settings__export_pin_needed">Deine Geheimschlüssel sind geschützt. Bitte füge eine PIN oder Biometriesperre hinzu, um sie zu exportieren.</string>
+    <string name="settings__export_title_tokens">Token exportieren</string>
+    <string name="settings__export_title_qr_codes">QR-Codes exportieren</string>
+    <string name="settings__export_title_options">Einstellungen exportieren</string>
+    <string name="settings__export_options_copy_clipboard">In die Zwischenablage kopieren</string>
+    <string name="settings__export_options_save_file">OTPAuth-Datei speichern</string>
+    <string name="settings__export_options_export_qr_codes">QR-Codes exportieren</string>
+    <string name="settings__export_options_footer">Wähle aus, wie du deine Token exportieren möchtest. Du kannst sie in die Zwischenablage kopieren, als OTPAuth-Datei speichern oder als QR-Codes exportieren.</string>
+    <string name="settings__import_otpauth_title">OTPAuth-Links</string>
+    <string name="settings__import_from_file">Aus Datei importieren</string>
+    <string name="settings__import_read_from_clipboard">Aus Zwischenablage importieren</string>
+    <string name="settings__import_otpauth_footer">Token aus der OTPAuth-Textdatei oder der OTPAuth-Zwischenablage importieren</string>
+    <string name="settings__import_from_text_file">Token aus Textdatei importieren</string>
+    <string name="settings__import_from_clipboard">Token aus Zwischenablage importieren</string>
+    <string name="settings__import_from_text_file_description">Die Textdatei sollte eine Liste von Links enthalten, die mit \'otpauth://\' beginnen.</string>
+    <string name="settings__import_from_clipboard_description">Die Zwischenablage sollte eine Liste von Links enthalten, die mit \'otpauth://\' beginnen.</string>
+    <string name="settings__import_contents_file">Token aus Textdatei importieren</string>
+    <string name="settings__import_contents_clipboard">Token aus Zwischenablage importieren</string>
+    <string name="settings__import_clipboard_empty">Die Zwischenablage ist leer oder enthält kein unterstütztes Linkformat.</string>
+    <string name="widget__open_app">2FAS Auth öffnen</string>
+    <string name="widget__open_app_description">Schneller Zugriff auf die 2FAS Auth</string>
 </resources>

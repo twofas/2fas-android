@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: sv-SE, Swedish (Sweden)
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -908,10 +908,37 @@
     <string name="backup__missing_system_key">Systemnyckel saknas</string>
     <string name="backup__system_key">Systemnyckel</string>
     <string name="backup__custom_password">Anpassat lösenord</string>
-    <string name="commons__options_title">Options</string>
-    <string name="tokens__copy_secret">Copy Secret Key</string>
-    <string name="tokens__copy_link">Copy OTP Auth link</string>
-    <string name="notifications__link_copied">Link Copied</string>
-    <string name="tokens__qr_code_show">Show service QR Code</string>
-    <string name="tokens__qr_code_share">Share service QR Code</string>
+    <string name="commons__options_title">Alternativ</string>
+    <string name="tokens__copy_secret">Kopiera hemlig nyckel</string>
+    <string name="tokens__copy_link">Kopiera OTP-autentiseringslänk</string>
+    <string name="notifications__link_copied">Länk kopierad</string>
+    <string name="tokens__qr_code_show">Visa QR-kod för kontot</string>
+    <string name="tokens__qr_code_share">Dela QR-kod för kontot</string>
+    <string name="settings_open_twofass_appstore">Skaffa 2FAS Pass</string>
+    <string name="settings_open_twofass">Öppna 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">Hantera lösenord</string>
+    <string name="quick_setup_drive_sync_title">Synkronisera valv</string>
+    <string name="quick_setup_drive_sync_description">Synkronisera dina data säkert via Google Drive ifall att enheten tappas bort eller skadas.</string>
+    <string name="commons__file_creation_error">Kunde inte skapa filen</string>
+    <string name="settings__export_pin_needed">Dina hemliga nycklar är skyddade. Lägg till en PIN-kod eller biometriskt lås för att exportera dem.</string>
+    <string name="settings__export_title_tokens">Exportera konton</string>
+    <string name="settings__export_title_qr_codes">Exportera QR-koder</string>
+    <string name="settings__export_title_options">Exportalternativ</string>
+    <string name="settings__export_options_copy_clipboard">Kopiera till urklipp</string>
+    <string name="settings__export_options_save_file">Spara OTPAuth-fil</string>
+    <string name="settings__export_options_export_qr_codes">Exportera QR-koder</string>
+    <string name="settings__export_options_footer">Välj hur du vill exportera dina konton. Du kan kopiera dem till urklippet, spara dem i en OTPAuth-fil eller exportera som QR-koder.</string>
+    <string name="settings__import_otpauth_title">OTPAuth-länkar</string>
+    <string name="settings__import_from_file">Importera från fil</string>
+    <string name="settings__import_read_from_clipboard">Importera från urklipp</string>
+    <string name="settings__import_otpauth_footer">Importera konton från en OTPAuth-textfil eller urklipp</string>
+    <string name="settings__import_from_text_file">Importera konton från textfil</string>
+    <string name="settings__import_from_clipboard">Importera konton från urklipp</string>
+    <string name="settings__import_from_text_file_description">Textfilen måste innehålla en lista av länkar som börjar med \'otpauth://\'.</string>
+    <string name="settings__import_from_clipboard_description">Urklippet måste innehålla en lista av länkar som börjar med \'otpauth://\'.</string>
+    <string name="settings__import_contents_file">Importerar konton från textfil</string>
+    <string name="settings__import_contents_clipboard">Importerar konton från urklipp</string>
+    <string name="settings__import_clipboard_empty">Urklippet är tomt eller innehåller ingen giltig länk.</string>
+    <string name="widget__open_app">Öppna 2FAS Auth</string>
+    <string name="widget__open_app_description">Kom snabbt åt 2FAS Auth</string>
 </resources>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Loco xml export: Android string resources
+ Loco xml export: Android strings
  Project: 2FAS App
  Locale: zh-Hant, Traditional Chinese
  Exported by: rafakob
- Exported at: Sun, 20 Jul 2025 03:30:40 -0700
+ Exported at: Tue, 26 Aug 2025 12:20:12 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -563,7 +563,7 @@
     <string name="tokens__service_key_invalid_characters">金鑰包括無效的字元</string>
     <string name="tokens__show_service_key">顯示金鑰</string>
     <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
-    <string name="tokens__show_service_key_setup_lock">您的金鑰已受到保護。請新增 PIN 碼或指紋鎖才能檢視。</string>
+    <string name="tokens__show_service_key_setup_lock">您的金鑰已受到保護。請加入 PIN 碼或生物辨識鎖才能檢視。</string>
     <string name="tokens__tokens_list_is_empty">服務清單為空白</string>
     <string name="tokens__use_plus_button_to_add_tokens">按一下「+」按鈕以新增服務</string>
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">只要啟用了 %1$s 的雙重認證，沒有此權杖就無法登入 %2$s 帳戶。\n\n您將無法從 2FAS 資源回收筒還原此權杖。</string>
@@ -908,4 +908,31 @@
     <string name="notifications__link_copied">連結已複製</string>
     <string name="tokens__qr_code_show">顯示服務 QR 碼</string>
     <string name="tokens__qr_code_share">分享服務 QR 碼</string>
+    <string name="settings_open_twofass_appstore">取得 2FAS Pass</string>
+    <string name="settings_open_twofass">開啟 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">管理密碼</string>
+    <string name="quick_setup_drive_sync_title">儲存庫同步</string>
+    <string name="quick_setup_drive_sync_description">使用 Google Drive 能安全地同步資料，以防裝置遺失或損壞。</string>
+    <string name="commons__file_creation_error">建立檔案失敗</string>
+    <string name="settings__export_pin_needed">您的金鑰已受到保護。請加入 PIN 碼或生物辨識鎖以匯出金鑰。</string>
+    <string name="settings__export_title_tokens">匯出權杖</string>
+    <string name="settings__export_title_qr_codes">匯出 QR 碼</string>
+    <string name="settings__export_title_options">匯出選項</string>
+    <string name="settings__export_options_copy_clipboard">複製至剪貼簿</string>
+    <string name="settings__export_options_save_file">儲存 OTPAuth 檔案</string>
+    <string name="settings__export_options_export_qr_codes">匯出 QR 碼</string>
+    <string name="settings__export_options_footer">請選擇您想要匯出權杖的方式：您可以將權杖複製至剪貼簿、儲存為 OTPAuth 檔案，或匯出為二維碼。</string>
+    <string name="settings__import_otpauth_title">OTPAuth 連結</string>
+    <string name="settings__import_from_file">從檔案匯入</string>
+    <string name="settings__import_read_from_clipboard">從剪貼簿讀取</string>
+    <string name="settings__import_otpauth_footer">選擇包括 OTPAuth 連結的文字檔案以匯入，或將 OTPAuth 連結複製至剪貼簿。</string>
+    <string name="settings__import_from_text_file">從文字檔案匯入令牌</string>
+    <string name="settings__import_from_clipboard">從剪貼簿匯入權杖</string>
+    <string name="settings__import_from_text_file_description">文字檔案應包括以「otpauth://」開頭的連結清單。</string>
+    <string name="settings__import_from_clipboard_description">剪貼簿應包括以「otpauth://」開頭的連結清單。</string>
+    <string name="settings__import_contents_file">此檔案的內容將被匯入。</string>
+    <string name="settings__import_contents_clipboard">剪貼簿的內容將會匯入。</string>
+    <string name="settings__import_clipboard_empty">剪貼簿為空白或不支援的連結格式。</string>
+    <string name="widget__open_app">開啟 2FAS Auth</string>
+    <string name="widget__open_app_description">快速存取 2FAS Auth</string>
 </resources>
