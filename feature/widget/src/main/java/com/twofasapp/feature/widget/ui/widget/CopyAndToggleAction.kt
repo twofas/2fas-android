@@ -7,12 +7,19 @@ import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.action.ActionCallback
 import com.twofasapp.designsystem.ktx.copyToClipboard
 
-internal class CopyToClipboardAction : ActionCallback {
+internal class CopyAndToggleAction : ActionCallback {
+
     companion object {
         private val paramCode = ActionParameters.Key<String>("code")
+        private val paramAppWidgetId = ActionParameters.Key<Int>("appWidgetId")
+        private val paramServiceId = ActionParameters.Key<Long>("serviceId")
 
-        fun params(code: String): ActionParameters {
-            return actionParametersOf(paramCode to code)
+        fun params(code: String, appWidgetId: Int, serviceId: Long): ActionParameters {
+            return actionParametersOf(
+                paramCode to code,
+                paramAppWidgetId to appWidgetId,
+                paramServiceId to serviceId
+            )
         }
     }
 
@@ -21,10 +28,15 @@ internal class CopyToClipboardAction : ActionCallback {
         glanceId: GlanceId,
         parameters: ActionParameters
     ) {
+        // Copy to clipboard
         context.copyToClipboard(
             text = parameters[paramCode].orEmpty(),
             isSensitive = true,
-            showToast = false,
+            showToast = false
         )
+
+        // Call ToggleServiceAction to avoid duplicate code
+        ToggleServiceAction().onAction(context, glanceId, parameters)
+
     }
 }

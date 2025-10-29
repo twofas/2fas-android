@@ -55,7 +55,8 @@ internal fun WidgetContent(
 ) {
     val context = LocalContext.current
     val isNight by remember { mutableStateOf(context.resources.getBoolean(R.bool.isNight)) }
-    val widget by widgetsRepository.observeWidget(appWidgetId).collectAsState(initial = Widget(appWidgetId = appWidgetId))
+    val widget by widgetsRepository.observeWidget(appWidgetId)
+        .collectAsState(initial = Widget(appWidgetId = appWidgetId))
 
     Column(
         modifier = GlanceModifier
@@ -65,7 +66,8 @@ internal fun WidgetContent(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            modifier = GlanceModifier.fillMaxWidth().padding(start = 8.dp, end = 6.dp, top = 8.dp, bottom = 2.dp),
+            modifier = GlanceModifier.fillMaxWidth()
+                .padding(start = 8.dp, end = 6.dp, top = 8.dp, bottom = 2.dp),
             verticalAlignment = Alignment.Vertical.CenterVertically,
         ) {
             Image(
@@ -141,12 +143,17 @@ private fun ServiceItem(
             .fillMaxWidth()
             .height(52.dp)
             .clickable(
-                actionRunCallback<ToggleServiceAction>(
-                    ToggleServiceAction.params(
-                        appWidgetId = appWidgetId,
-                        serviceId = service.id
+                // toggle-on when it's hidden, copy to clipboard and toggle-off when it's revealed
+                if (!revealed) {
+                    actionRunCallback<ToggleServiceAction>(
+                        ToggleServiceAction.params(appWidgetId, service.id)
                     )
-                )
+                } else {
+                    actionRunCallback<CopyAndToggleAction>(
+                        CopyAndToggleAction.params(code.current, appWidgetId, service.id)
+                    )
+                }
+
             )
             .padding(
                 start = if (revealed) 0.dp else 8.dp,
@@ -188,7 +195,11 @@ private fun ServiceItem(
                         )
                         Text(
                             text = "${code.timer}" + context.getString(com.twofasapp.locale.R.string.time_unit_seconds_short),
-                            style = TextStyle(fontSize = 13.sp, fontWeight = FontWeight.Bold, color = textColor)
+                            style = TextStyle(
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = textColor
+                            )
                         )
                     }
                 }
@@ -211,15 +222,6 @@ private fun ServiceItem(
             }
 
             Spacer(GlanceModifier.width(8.dp))
-
-            Icon(
-                resId = com.twofasapp.designsystem.R.drawable.ic_copy,
-                modifier = GlanceModifier
-                    .size(26.dp)
-                    .clickable(actionRunCallback<CopyToClipboardAction>(CopyToClipboardAction.params(code.current)))
-                    .padding(2.dp)
-                    .cornerRadius(24.dp),
-            )
 
         } else {
             Text(
@@ -264,7 +266,11 @@ private fun ServiceImage(
             ) {
                 Text(
                     text = service.labelText.orEmpty(),
-                    style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Bold, color = ColorProvider(Color.White)),
+                    style = TextStyle(
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = ColorProvider(Color.White)
+                    ),
                 )
             }
         }
