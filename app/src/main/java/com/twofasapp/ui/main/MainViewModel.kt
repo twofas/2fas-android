@@ -50,7 +50,12 @@ internal class MainViewModel(
         }
 
         launchScoped {
-            runSafely { notificationsRepository.fetchNotifications(sessionRepository.getAppInstallTimestamp()) }
+            runSafely {
+                notificationsRepository.fetchNotifications(
+                    appInstallTimeMillis = sessionRepository.getAppInstallTimestamp(),
+                    noCompanionAppFromTimeMillis = sessionRepository.noCompanionAppFromTimestamp(),
+                )
+            }
         }
 
         launchScoped {

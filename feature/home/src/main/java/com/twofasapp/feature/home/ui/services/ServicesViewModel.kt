@@ -240,12 +240,10 @@ internal class ServicesViewModel(
     }
 
     fun onDragStart() {
-        println("onDragStart")
         servicesRepository.setTickerEnabled(false)
     }
 
     fun onDragEnd(data: List<ServicesListItem>) {
-        println("onDragEnd")
         launchScoped(Dispatchers.IO) {
             var groupId: String? = null
 

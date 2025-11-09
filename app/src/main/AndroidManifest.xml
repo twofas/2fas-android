@@ -20,6 +20,10 @@
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
 
+    <queries>
+        <package android:name="com.twofasapp.pass" />
+    </queries>
+
     <application
         android:name="com.twofasapp.App"
         android:allowBackup="false"
