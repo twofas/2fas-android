@@ -48,7 +48,6 @@ import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
 import com.twofasapp.locale.R
 import kotlinx.coroutines.launch
-import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
@@ -56,7 +55,7 @@ import timber.log.Timber
 internal fun ChangeBrandScreen(
     close: () -> Unit,
     onRequestIconClick: () -> Unit,
-    viewModel: EditServiceViewModel = getViewModel(),
+    viewModel: EditServiceViewModel = koinViewModel(),
     brandViewModel: ChangeBrandViewModel = koinViewModel(),
 ) {
     val service = viewModel.uiState.collectAsState().value.service

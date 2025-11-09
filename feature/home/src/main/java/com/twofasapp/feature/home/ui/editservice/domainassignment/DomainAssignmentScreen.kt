@@ -78,7 +78,7 @@ internal fun DomainAssignmentScreen(
             items(items = service.assignedDomains, key = { it }) {
                 Column {
                     SettingsLink(
-                        modifier = Modifier.animateItemPlacement(),
+                        modifier = Modifier.animateItem(),
                         title = it,
                         showEmptySpaceWhenNoIcon = true,
                         endContent = {

@@ -11,7 +11,7 @@ class ServiceTypeConverter : PropertyConverter<com.twofasapp.prefs.model.Service
 
         try {
             return com.twofasapp.prefs.model.ServiceType.values()
-                .firstOrNull { it.name.toLowerCase(Locale.ROOT) == databaseValue }
+                .firstOrNull { it.name.lowercase(Locale.ROOT) == databaseValue }
                 ?: com.twofasapp.prefs.model.ServiceType.Unknown
         } catch (e: Exception) {
             return com.twofasapp.prefs.model.ServiceType.Unknown
@@ -19,5 +19,5 @@ class ServiceTypeConverter : PropertyConverter<com.twofasapp.prefs.model.Service
     }
 
     override fun convertToDatabaseValue(entityProperty: com.twofasapp.prefs.model.ServiceType) =
-        entityProperty.name.toLowerCase(Locale.ROOT)
+        entityProperty.name.lowercase(Locale.ROOT)
 }
