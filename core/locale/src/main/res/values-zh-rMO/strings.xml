@@ -4,13 +4,13 @@
  Project: 2FAS App
  Locale: zh-Hant, Traditional Chinese
  Exported by: rafakob
- Exported at: Tue, 26 Aug 2025 12:27:16 -0700
+ Exported at: Sun, 09 Nov 2025 07:31:05 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
-        TwoFAS
-        Created by Zbigniew Cisiński on 14/03/2020.
-        Copyright © 2020 The Code. All rights reserved. -->
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
     <string name="NSCameraUsageDescription">用於掃描 QR 碼</string>
     <string name="NSFaceIDUsageDescription">您可以使用 Face ID 解鎖應用程式</string>
     <!-- MARK: - App -->
@@ -65,7 +65,7 @@
     <string name="commons__approve">批准</string>
     <string name="commons__deny">拒絕</string>
     <!-- max. %d chars = Maximum number of characters
-        commons__provided_text_too_long -->
+         commons__provided_text_too_long -->
     <string name="commons__text_long_title">提供的文字過長（最多 %d 字元）</string>
     <string name="commons__got_it">知道了！</string>
     <string name="fingerprint__verifying">驗證…</string>
@@ -162,7 +162,7 @@
     <string name="tokens__incorrect_service_key">金鑰錯誤：僅限允許使用數字 2 到 7 和字母，最大長度為 512 個字元。</string>
     <string name="tokens__try_again">好的，讓我們再試一次</string>
     <!-- Original: To capture the QR code
-        tokens__point_right_2fa_code -->
+         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">將相機對準螢幕掃描 QR 碼</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">金鑰</string>
@@ -174,7 +174,7 @@
     <!-- tokens__search_sorry_service_not_found -->
     <string name="tokens__service_not_found_search">對不起，未找到服務</string>
     <!-- Original: Take another try with a different search term
-        tokens__search_take_another_try_different_search_term -->
+         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">換個搜尋字詞再試一次</string>
     <string name="tokens__service_key_to_short">密鑰太短，需要至少 4 個字元</string>
     <string name="tokens__service_name">服務名稱</string>
@@ -214,8 +214,8 @@
     <string name="tokens__check_app_permissions">請檢查本應用程式在系統設定中是否具有權限</string>
     <string name="tokens__no_qr_codes_found">未找到 QR 碼</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
-        No correct QR codes had been found in the selected image. Please try a different image. -->
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">所選圖片中沒有正確的 QR 碼，請嘗試其他圖片。</string>
     <string name="tokens__select_service">選擇服務</string>
     <string name="tokens__adding_service_question_title">您想新增什麼服務？</string>
@@ -908,7 +908,7 @@
     <string name="notifications__link_copied">連結已複製</string>
     <string name="tokens__qr_code_show">顯示服務 QR 碼</string>
     <string name="tokens__qr_code_share">分享服務 QR 碼</string>
-    <string name="settings_open_twofass_appstore">取得 2FAS Pass</string>
+    <string name="settings_open_twofass_appstore">安裝 2FAS Pass</string>
     <string name="settings_open_twofass">開啟 2FAS Pass</string>
     <string name="settings_manage_passwords_title">管理密碼</string>
     <string name="quick_setup_drive_sync_title">儲存庫同步</string>
@@ -918,21 +918,32 @@
     <string name="settings__export_title_tokens">匯出權杖</string>
     <string name="settings__export_title_qr_codes">匯出 QR 碼</string>
     <string name="settings__export_title_options">匯出選項</string>
-    <string name="settings__export_options_copy_clipboard">複製至剪貼簿</string>
     <string name="settings__export_options_save_file">儲存 OTPAuth 檔案</string>
     <string name="settings__export_options_export_qr_codes">匯出 QR 碼</string>
     <string name="settings__export_options_footer">請選擇您想要匯出權杖的方式：您可以將權杖複製至剪貼簿、儲存為 OTPAuth 檔案，或匯出為二維碼。</string>
     <string name="settings__import_otpauth_title">OTPAuth 連結</string>
     <string name="settings__import_from_file">從檔案匯入</string>
-    <string name="settings__import_read_from_clipboard">從剪貼簿讀取</string>
-    <string name="settings__import_otpauth_footer">選擇包括 OTPAuth 連結的文字檔案以匯入，或將 OTPAuth 連結複製至剪貼簿。</string>
     <string name="settings__import_from_text_file">從文字檔案匯入令牌</string>
-    <string name="settings__import_from_clipboard">從剪貼簿匯入權杖</string>
     <string name="settings__import_from_text_file_description">文字檔案應包括以「otpauth://」開頭的連結清單。</string>
-    <string name="settings__import_from_clipboard_description">剪貼簿應包括以「otpauth://」開頭的連結清單。</string>
     <string name="settings__import_contents_file">此檔案的內容將被匯入。</string>
-    <string name="settings__import_contents_clipboard">剪貼簿的內容將會匯入。</string>
-    <string name="settings__import_clipboard_empty">剪貼簿為空白或不支援的連結格式。</string>
     <string name="widget__open_app">開啟 2FAS Auth</string>
     <string name="widget__open_app_description">快速存取 2FAS Auth</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">向上移動</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">向下移動</string>
+    <string name="settings__transfer">轉移權杖</string>
+    <string name="transfer__import_section_title">從其他應用程式匯入</string>
+    <string name="transfer__export_section_title">匯出至 OTPAuth</string>
+    <string name="transfer__export_otp_file">將權杖匯出至檔案</string>
+    <string name="transfer__export_otp_qr">將權杖匯出為 QR 碼</string>
+    <string name="exportwarning__title_file">將權杖匯出至檔案</string>
+    <string name="exportwarning__cta_file">匯出至檔案</string>
+    <string name="exportwarning__description_file">您即將把所有 2FA 權杖（包括金鑰）匯出至一個未加密的檔案，任何有權存取此文件的人都可以使用它來控制您的帳戶。請妥善保管。</string>
+    <string name="exportwarning__toggle">我了解風險</string>
+    <string name="transfer__import_otpauth_file">一般 OTPAuth 檔案</string>
+    <string name="exportwarning__description_qr">您即將把所有 2FA 權杖匯出至一個未加密的 ZIP 檔案中，其中包括 QR 碼。這些 QR 碼可用於控制您的帳戶。請妥善保管。</string>
+    <string name="exportwarning__title_qr">將權杖匯出為 QR 碼</string>
+    <string name="exportwarning__cta_qr">匯出為 QR 碼</string>
+    <string name="commons__icloud_backup_password"></string>
 </resources>

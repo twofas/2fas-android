@@ -4,13 +4,13 @@
  Project: 2FAS App
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Tue, 26 Aug 2025 12:20:12 -0700
+ Exported at: Sun, 09 Nov 2025 07:31:04 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
-        TwoFAS
-        Created by Zbigniew Cisiński on 14/03/2020.
-        Copyright © 2020 The Code. All rights reserved. -->
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
     <string name="NSCameraUsageDescription">Wird zum Scannen von QR-Codes verwendet</string>
     <string name="NSFaceIDUsageDescription">Du kannst die Anwendung unter Verwendung von Face ID entsperren</string>
     <!-- MARK: - App -->
@@ -65,7 +65,7 @@
     <string name="commons__approve">Bestätigen</string>
     <string name="commons__deny">Ablehnen</string>
     <!-- max. %d chars = Maximum number of characters
-        commons__provided_text_too_long -->
+         commons__provided_text_too_long -->
     <string name="commons__text_long_title">Der von Ihnen zu bereit gestellte Text ist zu lange (maximal %d Zeichen)</string>
     <string name="commons__got_it">Ich hab\'s!</string>
     <string name="fingerprint__verifying">Verifiziere...</string>
@@ -162,7 +162,7 @@
     <string name="tokens__incorrect_service_key">Falscher Geheimschlüssel (nur Zahlen von 2 bis 7, Buchstaben), max. 512 Zeichen lang</string>
     <string name="tokens__try_again">OK, versuch es erneut</string>
     <!-- Original: To capture the QR code
-        tokens__point_right_2fa_code -->
+         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Richte die Kamera auf den Bildschirm, um den QR-Code zu scannen</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">Geheimschlüssel</string>
@@ -174,7 +174,7 @@
     <!-- tokens__search_sorry_service_not_found -->
     <string name="tokens__service_not_found_search">Sorry, Service nicht gefunden</string>
     <!-- Original: Take another try with a different search term
-        tokens__search_take_another_try_different_search_term -->
+         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Versuche es erneut mit einem anderen Suchwert</string>
     <string name="tokens__service_key_to_short">Schlüssel zu kurz. Minimum 4 Zeichen</string>
     <string name="tokens__service_name">Service-Name</string>
@@ -214,8 +214,8 @@
     <string name="tokens__check_app_permissions">Überprüfe, ob die App die richtigen Berechtigungen besitzt</string>
     <string name="tokens__no_qr_codes_found">Keine QR-Codes gefunden</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
-        No correct QR codes had been found in the selected image. Please try a different image. -->
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Es gibt keinen korrekten QR-Code in dem ausgewählten Bild. Bitte versuch ein anderes Bild.</string>
     <string name="tokens__select_service">Dienst auswählen</string>
     <string name="tokens__adding_service_question_title">Welchen Dienst möchtest du hinzufügen?</string>
@@ -749,7 +749,7 @@
     <string name="tokens__add_success_description">Um die Verbindung, des Dienstes abzuschließen, musst du den Token erneut eingeben.</string>
     <string name="tokens__add_manual_title">Verbinde den Dienst mit 2FAS</string>
     <string name="tokens__add_manual_description">Gib den Dienst und Geheimschlüssel ein.</string>
-    <string name="tokens__add_manual_service_name">Dienstname</string>
+    <string name="tokens__add_manual_service_name">Service-name</string>
     <string name="tokens__add_manual_service_key">Geheimschlüssel</string>
     <string name="tokens__add_manual_other">Andere Einstellungen</string>
     <string name="tokens__add_manual_other_optional">(optional)</string>
@@ -901,7 +901,7 @@
     <string name="backup__watch_pair_description">Gehe zu den 2FAS Backup-Einstellungen in 2FAS Auth auf deinem iPhone/iPad und navigiere zu „Verwaltete gekoppelte Apple Watches“. Diese Option wird sichtbar sein, wenn das Backup synchronisiert ist. Scanne den QR-Code von dort aus.</string>
     <string name="backup__watch_pair_qr_error">Fehler beim Generieren des QR-Codes</string>
     <string name="backup__cloud_switch_system_key">Zum Systemschlüssel wechseln</string>
-    <string name="backup__cloud_turn_backup_off">Cloud-Backup deaktivieren</string>
+    <string name="backup__cloud_turn_backup_off">Cloud-Sicherung deaktivieren</string>
     <string name="commons__apply">Übernehmen</string>
     <string name="backup__state">Status:</string>
     <string name="backup__check_password">Überprüfe Passwort</string>
@@ -910,11 +910,11 @@
     <string name="backup__custom_password">Benutzerdefiniertes Passwort</string>
     <string name="commons__options_title">Optionen</string>
     <string name="tokens__copy_secret">Geheimschlüssel kopieren</string>
-    <string name="tokens__copy_link">OTP Authentifizierungs-Link kopieren</string>
+    <string name="tokens__copy_link">OTPAuth-Link kopieren</string>
     <string name="notifications__link_copied">Link kopiert</string>
     <string name="tokens__qr_code_show">Zeige den Dienst QR-Code</string>
     <string name="tokens__qr_code_share">Teile den Dienst QR-Code</string>
-    <string name="settings_open_twofass_appstore">2FAS Pass holen</string>
+    <string name="settings_open_twofass_appstore">Installiere 2FAS Pass</string>
     <string name="settings_open_twofass">2FAS Pass öffnen</string>
     <string name="settings_manage_passwords_title">Passwörter verwalten</string>
     <string name="quick_setup_drive_sync_title">Vault-Synchronisierung</string>
@@ -924,21 +924,32 @@
     <string name="settings__export_title_tokens">Token exportieren</string>
     <string name="settings__export_title_qr_codes">QR-Codes exportieren</string>
     <string name="settings__export_title_options">Einstellungen exportieren</string>
-    <string name="settings__export_options_copy_clipboard">In die Zwischenablage kopieren</string>
     <string name="settings__export_options_save_file">OTPAuth-Datei speichern</string>
     <string name="settings__export_options_export_qr_codes">QR-Codes exportieren</string>
     <string name="settings__export_options_footer">Wähle aus, wie du deine Token exportieren möchtest. Du kannst sie in die Zwischenablage kopieren, als OTPAuth-Datei speichern oder als QR-Codes exportieren.</string>
     <string name="settings__import_otpauth_title">OTPAuth-Links</string>
     <string name="settings__import_from_file">Aus Datei importieren</string>
-    <string name="settings__import_read_from_clipboard">Aus Zwischenablage importieren</string>
-    <string name="settings__import_otpauth_footer">Token aus der OTPAuth-Textdatei oder der OTPAuth-Zwischenablage importieren</string>
     <string name="settings__import_from_text_file">Token aus Textdatei importieren</string>
-    <string name="settings__import_from_clipboard">Token aus Zwischenablage importieren</string>
     <string name="settings__import_from_text_file_description">Die Textdatei sollte eine Liste von Links enthalten, die mit \'otpauth://\' beginnen.</string>
-    <string name="settings__import_from_clipboard_description">Die Zwischenablage sollte eine Liste von Links enthalten, die mit \'otpauth://\' beginnen.</string>
     <string name="settings__import_contents_file">Token aus Textdatei importieren</string>
-    <string name="settings__import_contents_clipboard">Token aus Zwischenablage importieren</string>
-    <string name="settings__import_clipboard_empty">Die Zwischenablage ist leer oder enthält kein unterstütztes Linkformat.</string>
     <string name="widget__open_app">2FAS Auth öffnen</string>
-    <string name="widget__open_app_description">Schneller Zugriff auf die 2FAS Auth</string>
+    <string name="widget__open_app_description">Schneller Zugriff auf 2FAS Auth</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Nach oben verschieben</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">nach unten verschieben</string>
+    <string name="settings__transfer">Token übertragen</string>
+    <string name="transfer__import_section_title">Aus anderen Apps importieren</string>
+    <string name="transfer__export_section_title">Zu OTPAuth exportieren</string>
+    <string name="transfer__export_otp_file">Token in eine Datei exportieren</string>
+    <string name="transfer__export_otp_qr">Token als QR-Codes exportieren</string>
+    <string name="exportwarning__title_file">Token in Datei exportieren</string>
+    <string name="exportwarning__cta_file">In eine Datei exportieren</string>
+    <string name="exportwarning__description_file">Du bist dabei, alle deine 2FA-Token einschließlich deiner geheimen Schlüssel in eine unverschlüsselte Datei zu exportieren. Jeder, der Zugriff auf diese Datei hat, kann damit die Kontrolle über deine Konten übernehmen. Bewahre sie bitte sicher auf.</string>
+    <string name="exportwarning__toggle">Ich verstehe das Risiko</string>
+    <string name="transfer__import_otpauth_file">Allgemeine OTPAuth-Datei</string>
+    <string name="exportwarning__description_qr">Du bist dabei, alle deine 2FA-Token in eine unverschlüsselte ZIP-Datei mit QR-Codes zu exportieren. Diese QR-Codes können verwendet werden, um die Kontrolle über deine Konten zu übernehmen. Bitte bewahre sie sicher auf.</string>
+    <string name="exportwarning__title_qr">Token als QR-Codes exportieren</string>
+    <string name="exportwarning__cta_qr">Als QR-Codes exportieren</string>
+    <string name="commons__icloud_backup_password">Passwort der iCloud-Sicherung</string>
 </resources>

@@ -4,13 +4,13 @@
  Project: 2FAS App
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Tue, 26 Aug 2025 12:20:12 -0700
+ Exported at: Sun, 09 Nov 2025 07:31:04 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
-        TwoFAS
-        Created by Zbigniew Cisiński on 14/03/2020.
-        Copyright © 2020 The Code. All rights reserved. -->
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
     <string name="NSCameraUsageDescription">Usato per scannerizzare i codici QR</string>
     <string name="NSFaceIDUsageDescription">Puoi sbloccare l\'applicazione utilizzando Face ID</string>
     <!-- MARK: - App -->
@@ -65,7 +65,7 @@
     <string name="commons__approve">Approva</string>
     <string name="commons__deny">Rifiuta</string>
     <!-- max. %d chars = Maximum number of characters
-        commons__provided_text_too_long -->
+         commons__provided_text_too_long -->
     <string name="commons__text_long_title">Il testo fornito è troppo lungo (massimo %d caratteri)</string>
     <string name="commons__got_it">Capito!</string>
     <string name="fingerprint__verifying">Verifica...</string>
@@ -162,7 +162,7 @@
     <string name="tokens__incorrect_service_key">Chiave segreta errata (solo numeri da 2 a 7 e lettere), max. 512 caratteri di lunghezza</string>
     <string name="tokens__try_again">OK, proviamo di nuovo</string>
     <!-- Original: To capture the QR code
-        tokens__point_right_2fa_code -->
+         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Punta la fotocamera sullo schermo per scansionare il codice QR</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">Chiave segreta</string>
@@ -174,7 +174,7 @@
     <!-- tokens__search_sorry_service_not_found -->
     <string name="tokens__service_not_found_search">Spiacente, servizio non trovato</string>
     <!-- Original: Take another try with a different search term
-        tokens__search_take_another_try_different_search_term -->
+         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Fai un altro tentativo con un termine di ricerca diverso</string>
     <string name="tokens__service_key_to_short">La chiave è troppo corta. Usare minimo 4 caratteri</string>
     <string name="tokens__service_name">Nome del servizio</string>
@@ -214,8 +214,8 @@
     <string name="tokens__check_app_permissions">Controlla se l\'app dispone delle autorizzazioni necessarie nelle Impostazioni di sistema</string>
     <string name="tokens__no_qr_codes_found">Nessun codice QR trovato</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
-        No correct QR codes had been found in the selected image. Please try a different image. -->
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Non è presente un codice QR corretto nell\'immagine selezionata. Si prega di provare un\'immagine diversa.</string>
     <string name="tokens__select_service">Seleziona servizio</string>
     <string name="tokens__adding_service_question_title">Quale servizio vuoi aggiungere?</string>
@@ -264,7 +264,7 @@
     <string name="tokens__request_icon_social_description">e consentire agli utenti di votare per le icone richieste.</string>
     <string name="tokens__request_icon_middle">o</string>
     <string name="tokens__request_icon_provider_title">Lascia che il fornitore del servizio lo sappia</string>
-    <string name="tokens__request_icon_provider_description">Puoi utilizzare i social media o l\'e-mail e condividere questo testo con loro.</string>
+    <string name="tokens__request_icon_provider_description">Puoi utilizzare i social media o l\'e-mail e condividere questo testo con loro:</string>
     <string name="tokens__request_icon_provider_message">Ehi! Sto usando l\'app 2FAS per accedere al tuo servizio con l\'autenticazione a 2 fattori. Tuttavia, manca la tua icona! Puoi inviare la tua icona qui: https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_footnote">Non dimenticarti di taggare l\'account ufficiale dell\'azienda!</string>
@@ -388,7 +388,7 @@
     <string name="settings__write_a_review">Scrivi una recensione</string>
     <string name="settings__about">A proposito</string>
     <string name="settings__privacy_policy">Informativa sulla privacy</string>
-    <string name="settings__terms_of_service">Termini di Servizio</string>
+    <string name="settings__terms_of_service">Termini di servizio</string>
     <string name="settings__version">Versione dell\'app %s</string>
     <string name="settings__no_limit">Nessun limite</string>
     <string name="settings__pin_code">Codice PIN</string>
@@ -537,8 +537,8 @@
     <string name="permissions__camera_permission_description">L\'accesso alla fotocamera è necessario per la scansione dei codici QR. Se vuoi utilizzare questa funzione, vai in Informazioni e Autorizzazioni dell\'applicazione e abilita la fotocamera.</string>
     <string name="security__disable_pin">Disabilita il PIN</string>
     <string name="security__enter_your_new_pin">Per favore digita il tuo nuovo PIN %s</string>
-    <string name="security__pin_error_incorrect">Il PIN non è corretto! Per favore riprova</string>
-    <string name="settings__biometrics">Biometrica</string>
+    <string name="security__pin_error_incorrect">Il PIN non è corretto! Per favore riprova.</string>
+    <string name="settings__biometrics">Biometria</string>
     <string name="settings__support">Supporto di 2FAS</string>
     <string name="settings__developer">Opzioni sviluppatore</string>
     <string name="settings__option_fingerprint">Blocco biometrico</string>
@@ -607,7 +607,7 @@
     <string name="biometric_dialog_setup_title">Abilita autenticazione</string>
     <string name="biometric_dialog_setup_cancel">Annulla</string>
     <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
-    <string name="settings__option_fingerprint_description">Per abilitare lo sblocco biometrico, è necessario abilitare e impostare un codice PIN.</string>
+    <string name="settings__option_fingerprint_description">Abilita e imposta un codice PIN per abilitare lo sblocco biometrico.</string>
     <string name="settings__block_for_footer">Seleziona il tempo dopo il quale l\'app verrà bloccata.</string>
     <string name="error__out_of_disk_space">Sembra che o hai esaurito lo spazio su disco o che un evento del genere in passato abbia danneggiato il database</string>
     <string name="error__cloud_backup_newer_version">Il backup su cloud è stato migrato alla\u0020\u0020nuova versione. Aggiorna l\'app</string>
@@ -762,7 +762,7 @@
     <string name="settings__option_screenshots">Consenti gli screenshot</string>
     <string name="settings__option_screenshots_confirm_title">Consentire gli screenshot dell\'app?</string>
     <string name="settings__option_screenshots_confirm_description">Sei sicuro? Questa opzione consente di effettuare screenshot e registrare qualsiasi schermata all\'interno dell\'applicazione. Tuttavia, consentirà anche qualsiasi tentativo esterno di catturare schermate nell\'app.\nPer motivi di sicurezza, questa opzione si disattiva automaticamente dopo 5 minuti.</string>
-    <string name="social__social_media">Media sociali</string>
+    <string name="social__social_media">Social media</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
     <string name="social__twitter">Twitter</string>
@@ -856,8 +856,8 @@
     <string name="widget__reveal_tokens_long_message">Mostra il tuo token 2FAS per 60 secondi</string>
     <string name="widget__reveal_tokens_short_message">Mostra per 60 secondi</string>
     <string name="settings__show_error_details">Mostra i dettagli dell\'errore</string>
-    <string name="tokens__show_qr_code">QR code di servizio</string>
-    <string name="tokens__show_service_qr_setup_lock">Il tuo servizio è protetto. Per favore aggiungi un PIN o attiva il riconoscimento biometrico per vedere il QR code.</string>
+    <string name="tokens__show_qr_code">Codice QR di servizio</string>
+    <string name="tokens__show_service_qr_setup_lock">Il tuo servizio è protetto. Per favore aggiungi un PIN o attiva il riconoscimento biometrico per vedere il codice QR.</string>
     <string name="tokens__copy_uri">Copia URI</string>
     <string name="backup__cloud_encrypted_user">iCloud è cifrato con una password personalizzata. Inserisci la password e abilita la sincronizzazione.</string>
     <string name="backup__cloud_encrypted_system">Il backup iCloud è cifrato con una chiave di sistema. Assicurati che il Portachiavi iCloud sia abilitato.</string>
@@ -898,8 +898,8 @@
     <string name="backup__manage_paired_watches_empty_list">La lista è vuota. Collega un Watch usando il tasto +</string>
     <string name="backup__manage_paired_watches_syncing">Il backup Cloud sta venendo sincronizzato...</string>
     <string name="backup__watch_pair_title">Collega il tuo Apple Watch</string>
-    <string name="backup__watch_pair_description">Vai nelle impostazioni di Backup di 2FAS nell\'app 2FAS Auth sul tuo iPhone/iPad e scorri fino a \"Gestisci Apple Watch collegati\". Questa opzione sarà visibile se il backup è sincronizzato. Scannerizza il QR code da lì.</string>
-    <string name="backup__watch_pair_qr_error">Errore nella generazione del QR Code</string>
+    <string name="backup__watch_pair_description">Vai nelle impostazioni di Backup di 2FAS nell\'app 2FAS Auth sul tuo iPhone/iPad e scorri fino a \"Gestisci Apple Watch collegati\". Questa opzione sarà visibile se il backup è sincronizzato. Scannerizza il codice QR da lì.</string>
+    <string name="backup__watch_pair_qr_error">Errore nella generazione del codice QR</string>
     <string name="backup__cloud_switch_system_key">Passa a Chiave di Sistema</string>
     <string name="backup__cloud_turn_backup_off">Disattiva backup Cloud</string>
     <string name="commons__apply">Applica</string>
@@ -914,31 +914,42 @@
     <string name="notifications__link_copied">Link Copiato</string>
     <string name="tokens__qr_code_show">Mostra il QR Code del servizio</string>
     <string name="tokens__qr_code_share">Condividi il QR Code del servizio</string>
-    <string name="settings_open_twofass_appstore">Ottieni 2FAS Pass</string>
+    <string name="settings_open_twofass_appstore">Installa 2FAS Pass</string>
     <string name="settings_open_twofass">Apri 2FAS Pass</string>
     <string name="settings_manage_passwords_title">Gestisci Password</string>
     <string name="quick_setup_drive_sync_title">Sincronizza Vault</string>
     <string name="quick_setup_drive_sync_description">Sincronizza in modo sicuro i tuoi dati utilizzando Google Drive nel caso in cui questo dispositivo venga perso o danneggiato.</string>
     <string name="commons__file_creation_error">Impossibile creare il file</string>
-    <string name="settings__export_pin_needed">Le tue chiavi segrete sono protette. Aggiungi un PIN o un blocco Biometrico per esportarle.</string>
+    <string name="settings__export_pin_needed">Le tue chiavi segrete sono protette. Aggiungi un PIN o un blocco biometrico per esportarle.</string>
     <string name="settings__export_title_tokens">Esporta Token</string>
-    <string name="settings__export_title_qr_codes">Esporta QR Code</string>
+    <string name="settings__export_title_qr_codes">Esporta codici QR</string>
     <string name="settings__export_title_options">Esporta Impostazioni</string>
-    <string name="settings__export_options_copy_clipboard">Copia nella clipboard</string>
     <string name="settings__export_options_save_file">Salva file OTPAuth</string>
-    <string name="settings__export_options_export_qr_codes">Esporta QR Code</string>
+    <string name="settings__export_options_export_qr_codes">Esporta codici QR</string>
     <string name="settings__export_options_footer">Scegli come vuoi esportare i tuoi token. Puoi copiarli nella clipboard, salvarlo come file OTPAuth, o esportarli come QR code.</string>
     <string name="settings__import_otpauth_title">Link OTPAuth</string>
     <string name="settings__import_from_file">Importa da file</string>
-    <string name="settings__import_read_from_clipboard">Leggi dalla clipboard</string>
-    <string name="settings__import_otpauth_footer">Scegli un file di testo con dei link OTPAuth da importare o incolla dei link OTPAuth dalla clipboard.</string>
     <string name="settings__import_from_text_file">Importa token da file di testo</string>
-    <string name="settings__import_from_clipboard">Importa token dalla clipboard</string>
     <string name="settings__import_from_text_file_description">Il file di testo dovrebbe contenere una lista di link che iniziano con \'otpauth://\'.</string>
-    <string name="settings__import_from_clipboard_description">La clipboard dovrebbe contenere una lista di link che iniziano con \'otpauth://\'.</string>
-    <string name="settings__import_contents_file">Il contenuto di questo file verrà importato.</string>
-    <string name="settings__import_contents_clipboard">Il contenuto della clipboard verrà importato.</string>
-    <string name="settings__import_clipboard_empty">La clipboard è vuota o non contiene un link supportato.</string>
+    <string name="settings__import_contents_file">Il contenuto di questo file verrà importato</string>
     <string name="widget__open_app">Apri 2FAS Auth</string>
     <string name="widget__open_app_description">Accesso rapido a 2FAS Auth</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Sposta in alto</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">Sposta in basso</string>
+    <string name="settings__transfer">Trasferisci token</string>
+    <string name="transfer__import_section_title">Importa da altre app</string>
+    <string name="transfer__export_section_title">Esporta in OTPAuth</string>
+    <string name="transfer__export_otp_file">Esporta token in un file</string>
+    <string name="transfer__export_otp_qr">Esporta token come codici QR</string>
+    <string name="exportwarning__title_file">Esporta token in un file</string>
+    <string name="exportwarning__cta_file">Esporta in un file</string>
+    <string name="exportwarning__description_file">Stai per esportare tutti i tuoi token, incluse le relative chiavi segrete, in un file non crittografato. Chiunque abbia accesso a questo file può utilizzarlo per assumere il controllo dei tuoi account. Conservalo con cura.</string>
+    <string name="exportwarning__toggle">Ho compreso il rischio</string>
+    <string name="transfer__import_otpauth_file">File OTPAuth generale</string>
+    <string name="exportwarning__description_qr">Stai per esportare tutti i tuoi token 2FA in un file ZIP non crittografato contenente codici QR. Questi codici QR possono essere utilizzati per prendere il controllo dei tuoi account. Conservali al sicuro.</string>
+    <string name="exportwarning__title_qr">Esporta i token come codici QR</string>
+    <string name="exportwarning__cta_qr">Esporta come codici QR</string>
+    <string name="commons__icloud_backup_password">Password di Backup iCloud</string>
 </resources>

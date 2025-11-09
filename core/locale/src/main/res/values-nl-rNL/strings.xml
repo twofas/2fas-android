@@ -4,13 +4,13 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Tue, 26 Aug 2025 12:20:12 -0700
+ Exported at: Sun, 09 Nov 2025 07:31:04 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
-        TwoFAS
-        Created by Zbigniew Cisiński on 14/03/2020.
-        Copyright © 2020 The Code. All rights reserved. -->
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
     <string name="NSCameraUsageDescription">Wordt gebruikt om QR-codes te scannen</string>
     <string name="NSFaceIDUsageDescription">U kunt de applicatie ontgrendelen met Face ID</string>
     <!-- MARK: - App -->
@@ -65,7 +65,7 @@
     <string name="commons__approve">Goedkeuren</string>
     <string name="commons__deny">Afkeuren</string>
     <!-- max. %d chars = Maximum number of characters
-        commons__provided_text_too_long -->
+         commons__provided_text_too_long -->
     <string name="commons__text_long_title">De verstrekte tekst is te lang (max. %d tekens)</string>
     <string name="commons__got_it">Begrepen!</string>
     <string name="fingerprint__verifying">Verifiëren...</string>
@@ -162,7 +162,7 @@
     <string name="tokens__incorrect_service_key">Onjuiste Geheime Sleutel (alleen cijfers tussen de 2 en 7, letters), max. 512 tekens lang</string>
     <string name="tokens__try_again">Oké, laten we het opnieuw proberen</string>
     <!-- Original: To capture the QR code
-        tokens__point_right_2fa_code -->
+         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Richt uw camera op het scherm om de QR-code te scannen</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">Geheime Sleutel</string>
@@ -174,7 +174,7 @@
     <!-- tokens__search_sorry_service_not_found -->
     <string name="tokens__service_not_found_search">Sorry, service niet gevonden</string>
     <!-- Original: Take another try with a different search term
-        tokens__search_take_another_try_different_search_term -->
+         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Probeer het nog eens met een andere zoekterm</string>
     <string name="tokens__service_key_to_short">Sleutel is te kort. Minimaal 4 tekens</string>
     <string name="tokens__service_name">Servicenaam</string>
@@ -214,8 +214,8 @@
     <string name="tokens__check_app_permissions">Controleer of de app de juiste machtigingen heeft in de Systeeminstellingen</string>
     <string name="tokens__no_qr_codes_found">Geen QR-code gevonden</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
-        No correct QR codes had been found in the selected image. Please try a different image. -->
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Er is geen correcte QR-code in de geselecteerde afbeelding. Probeer een andere afbeelding.</string>
     <string name="tokens__select_service">Service selecteren</string>
     <string name="tokens__adding_service_question_title">Welke service wilt u toevoegen?</string>
@@ -815,17 +815,17 @@
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
     <string name="introduction__backup_icloud_description">2FAS gebruikt iCloud voor een veilige back-up en synchronisatie van uw 2FA tokens. De **versleutelde** back-upgegevens worden opgeslagen in iCloud en zijn **alleen toegankelijk via de 2FAS-app**. Bovendien helpt deze functie bij het **herstellen en synchroniseren** van tokens op iOS-apparaten.\n\nDeze functie is standaard ingeschakeld en kan op elk moment worden uitgeschakeld in de back-upinstellingen van de app.</string>
     <string name="introduction__backup_icloud_cta">Meer informatie over back-up</string>
-    <string name="backup__enter_password_google_drive_msg1">Het lijkt erop dat je Google Drive back-upbestand is beveiligd met een wachtwoord. Typ het juiste wachtwoord in om verder te gaan. Als je je Google Drive-back-upbestand wilt wissen,</string>
+    <string name="backup__enter_password_google_drive_msg1">Het lijkt erop dat u Google Drive back-upbestand is beveiligd met een wachtwoord. Typ het juiste wachtwoord in om verder te gaan. Als u uw Google Drive-back-upbestand wilt wissen,</string>
     <string name="backup__enter_password_google_drive_msg2">tik hier om te zien hoe</string>
     <string name="settings__preferences">Voorkeuren</string>
     <string name="settings__it_matters">Het is belangrijk</string>
     <string name="settings__manage_tokens">Tokens beheren</string>
     <string name="settings__info_footer">Dankzij uw steun kunnen we nieuwe functies en verbeteringen. Hartelijk dank!</string>
     <string name="settings__trash_option">Ophalen uit prullenbak</string>
-    <string name="periodic_notification_tips">Fijn dat je bij ons op 2FAS bent! 🌟 Neem even de tijd om nuttige Tips &amp; Tricks 🛠️ in de app te ontdekken voor meer veiligheid 🔒.</string>
+    <string name="periodic_notification_tips">Fijn dat u bij ons op 2FAS bent! 🌟 Neem even de tijd om nuttige Tips &amp; Tricks 🛠️ in de app te ontdekken voor meer veiligheid 🔒.</string>
     <string name="periodic_notification_backup">Schakel 2FAS Backup &amp; Sync in om ervoor te zorgen dat u nooit wordt buitengesloten, zelfs als u uw telefoon verliest - uw gemoedsrust in één tik! 🔐📱</string>
     <string name="periodic_notification_browser_extension">Versnel uw aanmeldingen met de 2FAS Browser Extension! 🚀 Download nu voor een snellere, gemakkelijkere verificatie. 🌐✨</string>
-    <string name="periodic_notification_donate">We zijn dankbaar voor je steun aan 2FAS! 🌟 Als je onze app nuttig vindt, overweeg dan een donatie om ons te helpen jouw digitale wereld veilig te houden. Alle beetjes helpen! 🙏💙</string>
+    <string name="periodic_notification_donate">We zijn dankbaar voor uw steun aan 2FAS! 🌟 Als u onze app nuttig vindt, overweeg dan een donatie om ons te helpen jouw digitale wereld veilig te houden. Alle beetjes helpen! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
     <string name="widget__placeholder">Placeholder</string>
@@ -854,9 +854,9 @@
     <string name="settings__apple_watch">Apple Watch / horloge</string>
     <string name="widget__no_selected_services">Houd de service ingedrukt en selecteer deze om de widget te activeren...</string>
     <string name="widget__reveal_tokens_long_message">Uw 2FAS tokens voor 60 seconden onthullen</string>
-    <string name="widget__reveal_tokens_short_message">60 seconden onthullen</string>
+    <string name="widget__reveal_tokens_short_message">Voor 60 seconden onthullen</string>
     <string name="settings__show_error_details">Foutdetails weergeven</string>
-    <string name="tokens__show_qr_code">Toon service QR-code</string>
+    <string name="tokens__show_qr_code">Service QR-code</string>
     <string name="tokens__show_service_qr_setup_lock">Uw service is beveiligd. Voeg een pincode of vingerafdruk toe om de QR-code te zien.</string>
     <string name="tokens__copy_uri">URI kopiëren</string>
     <string name="backup__cloud_encrypted_user">iCloud is versleuteld met een eigen wachtwoord. Voer dit wachtwoord in en activeer synchronisatie.</string>
@@ -866,13 +866,13 @@
     <string name="backup__sync_disabled">Synchronisatie uitgeschakeld.</string>
     <string name="backup__sync_not_available">Synchronisatie niet beschikbaar: %s</string>
     <string name="backup__watch_pairing_title">Verbinden met Apple Watch / horloge</string>
-    <string name="backup__watch_pairing_description">Wil je een Apple Watch / horloge verbinden met je iCloud backup? Voer de naam in voor je toestel:</string>
-    <string name="backup__watch_pairing_default_name">Apple Horloge</string>
+    <string name="backup__watch_pairing_description">Wilt u een Apple Watch / horloge verbinden met uw iCloud backup? Voer de naam in voor uw toestel:</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
     <string name="backup__watch_pairing_action">Apparaat verbinden</string>
     <string name="backup__watch_pairing_error">Kan niet met watch / horloge verbinden op dit moment. Verzeker dat cloud backup is ingeschakeld en synchroniseert met een wachtwoord.</string>
     <string name="backup__cloud_error_title">Cloud backup fout</string>
     <string name="backup__cloud_error_missing_system_key_content">Kan cloud backup niet ontsleutelen omdat er geen systeemsleutel is. Controleer of de iCloud Keychain synchronisatie is ingeschakeld en correct wrkt.</string>
-    <string name="backup__cloud_error_mismatch_key_content">Kan cloud backup niet ontsleutelen omdat deze is versleuteld met een systeemsleutel, en je gebruikmaakt van een eigen wachtwoord. Wil je dit omwisselen?</string>
+    <string name="backup__cloud_error_mismatch_key_content">Kan cloud backup niet ontsleutelen omdat deze is versleuteld met een systeemsleutel en u gebruikmaakt van een eigen wachtwoord. Wilt u dit omwisselen?</string>
     <string name="backup__cloud_error_new_version_content">Kan niet synchroniseren met cloud backup omdat deze gemigreerd is naar een nieuwere versie van de app. Werk de app bij om cloud backup verder te gebruiken.</string>
     <string name="backup__enter_cloud_backup_password_title">Cloud backup wachtwoord ingeven</string>
     <string name="backup__enter_password_description">iCloud backup is versleuteld met jouw wachtwoord. Voer dit in om synchronisatie in te schakelen.</string>
@@ -880,13 +880,13 @@
     <string name="backup__enter_password_wrong_password">Foutief wachtwoord! Probeer opnieuw</string>
     <string name="backup__migration_title">Cloud backup aan het migreren</string>
     <string name="backup__migration_subtitle">De app niet sluiten!</string>
-    <string name="backup__migration_description">Je backup is versleuteld met een systeemsleutel. Deze seleutel zal worden gedeeld met je apps die gebruikmaken van de iCloud Keychain. Onthoud dat je deze optie aan diet te hebben staan. Als je jouw wachtwoordt wilt gebruiken, kan je dit in de Cloud backup instellingen doen na de migratie.</string>
+    <string name="backup__migration_description">Uw backup is versleuteld met een systeemsleutel. Deze seleutel zal worden gedeeld met uw apps die gebruikmaken van de iCloud Keychain. Onthoud dat u deze optie aan dient te hebben staan. Als u uw wachtwoordt wilt gebruiken, kan u dit in de Cloud backup instellingen doen na de migratie.</string>
     <string name="commons__success_ex">Success!</string>
     <string name="backup__encryption_type">Encryptie type</string>
     <string name="backup__encryption_select">Selecteer encryptie type</string>
     <string name="backup__encryption_enter_password">Wachtwoord ingeven</string>
     <string name="backup__encryption_change_password">Wachtwoord veranderen</string>
-    <string name="backup__encryption_password_description">Wachtwoord wordt gebruikt om je data te versleutelen. Als je het verliest, is het onmogelijk om je data te recupereren uit de cloud backup.</string>
+    <string name="backup__encryption_password_description">Wachtwoord wordt gebruikt om uw data te versleutelen. Als u het verliest, is het onmogelijk om uw data te recupereren uit de cloud backup.</string>
     <string name="backup__encryption_change_title">Verander encryptie type</string>
     <string name="backup__encryption_method_footer">Kies systeemsleutel of eigen wachtwoord</string>
     <string name="backup__manage_paired_watches_title">Beheer verbonden Apple Watches</string>
@@ -897,8 +897,8 @@
     <string name="backup__manage_paired_watches_title_short">Beheer watches / Horloges</string>
     <string name="backup__manage_paired_watches_empty_list">Lijst is leeg. Watch / horloge verbinden met de + knop</string>
     <string name="backup__manage_paired_watches_syncing">Cloud backup is aan het synchroniseren...</string>
-    <string name="backup__watch_pair_title">Verbind je Apple Watch / horloge</string>
-    <string name="backup__watch_pair_description">Ga naar 2FAS Backup instellingen in 2FAS Auth op je iPhone/iPad en navigeer naar \"Beheer verbonden Apple Watches\". Deze optie wordt zichtbaar als de backup is gesynchroniseerd. Scan daar de QR code.</string>
+    <string name="backup__watch_pair_title">Verbind uw Apple Watch / horloge</string>
+    <string name="backup__watch_pair_description">Ga naar 2FAS Backup instellingen in 2FAS Auth op uw iPhone/iPad en navigeer naar \"Beheer verbonden Apple Watches\". Deze optie wordt zichtbaar als de backup is gesynchroniseerd. Scan daar de QR code.</string>
     <string name="backup__watch_pair_qr_error">Fout bij het genereren van de QR Code</string>
     <string name="backup__cloud_switch_system_key">Wissel naar systeemsleutel</string>
     <string name="backup__cloud_turn_backup_off">Cloud backup uitschakelen</string>
@@ -908,37 +908,48 @@
     <string name="backup__missing_system_key">Missende systeemsleutel</string>
     <string name="backup__system_key">Systeemsleutel</string>
     <string name="backup__custom_password">Eigen wachtwoord</string>
-    <string name="commons__options_title">Options</string>
-    <string name="tokens__copy_secret">Copy Secret Key</string>
-    <string name="tokens__copy_link">Copy OTP Auth link</string>
-    <string name="notifications__link_copied">Link Copied</string>
-    <string name="tokens__qr_code_show">Show service QR Code</string>
-    <string name="tokens__qr_code_share">Share service QR Code</string>
-    <string name="settings_open_twofass_appstore">Get 2FAS Pass</string>
+    <string name="commons__options_title">Opties</string>
+    <string name="tokens__copy_secret">Kopieer Geheime Sleutel</string>
+    <string name="tokens__copy_link">Kopieer OTP-authenticatielink</string>
+    <string name="notifications__link_copied">Link gekopieerd</string>
+    <string name="tokens__qr_code_show">Toon service QR-code</string>
+    <string name="tokens__qr_code_share">Deel service QR-code</string>
+    <string name="settings_open_twofass_appstore">Installeer 2FAS Pass</string>
     <string name="settings_open_twofass">Open 2FAS Pass</string>
-    <string name="settings_manage_passwords_title">Manage Passwords</string>
-    <string name="quick_setup_drive_sync_title">Vault Sync</string>
-    <string name="quick_setup_drive_sync_description">Securely sync your data using Google Drive in case this device gets lost or damaged.</string>
-    <string name="commons__file_creation_error">File creation failed</string>
-    <string name="settings__export_pin_needed">Your Secret Keys are protected. Please add a PIN or Biometry lock to export them.</string>
-    <string name="settings__export_title_tokens">Export Tokens</string>
-    <string name="settings__export_title_qr_codes">Export QR codes</string>
-    <string name="settings__export_title_options">Export Options</string>
-    <string name="settings__export_options_copy_clipboard">Copy to clipboard</string>
-    <string name="settings__export_options_save_file">Save OTPAuth file</string>
-    <string name="settings__export_options_export_qr_codes">Export QR codes</string>
-    <string name="settings__export_options_footer">Choose how you would like to export your Tokens. You can copy them to clipboard, save as an OTPAuth file, or export as QR codes.</string>
-    <string name="settings__import_otpauth_title">OTPAuth links</string>
-    <string name="settings__import_from_file">Import from file</string>
-    <string name="settings__import_read_from_clipboard">Import from clipboard</string>
-    <string name="settings__import_otpauth_footer">Import Tokens from the OTPAuth text file or the OTPAuth clipboard</string>
-    <string name="settings__import_from_text_file">Import Tokens from text file</string>
-    <string name="settings__import_from_clipboard">Import Tokens from clipboard</string>
-    <string name="settings__import_from_text_file_description">Text file should contain a list of links starting with \'otpauth://\'.</string>
-    <string name="settings__import_from_clipboard_description">Clipboard should contain a list of links starting with \'otpauth://\'.</string>
-    <string name="settings__import_contents_file">Importing Tokens from text file</string>
-    <string name="settings__import_contents_clipboard">Importing Tokens from clipboard</string>
-    <string name="settings__import_clipboard_empty">Clipboard is empty or doesn\'t contain a supported link format.</string>
+    <string name="settings_manage_passwords_title">Wachtwoorden beheren</string>
+    <string name="quick_setup_drive_sync_title">Kluis synchronisatie</string>
+    <string name="quick_setup_drive_sync_description">Synchroniseer uw gegevens veilig met Google Drive voor het geval dit apparaat verloren gaat of beschadigd raakt.</string>
+    <string name="commons__file_creation_error">Bestand aanmaken mislukt</string>
+    <string name="settings__export_pin_needed">Uw Geheime Sleutels zijn beveiligd. Voeg een pincode of biometrische vergrendeling toe om ze te exporteren.</string>
+    <string name="settings__export_title_tokens">Exporteer Tokens</string>
+    <string name="settings__export_title_qr_codes">Exporteer QR-codes</string>
+    <string name="settings__export_title_options">Exporteer Opties</string>
+    <string name="settings__export_options_save_file">OTP-Authenticatie bestand opslaan</string>
+    <string name="settings__export_options_export_qr_codes">Exporteer QR-codes</string>
+    <string name="settings__export_options_footer">Kies hoe u Tokens wilt exporteren. U kunt ze naar het klembord kopiëren, opslaan als een OTP-Authenticatie bestand of exporteren als QR-codes.</string>
+    <string name="settings__import_otpauth_title">OTP-Authenticatie links</string>
+    <string name="settings__import_from_file">Importeer vanuit bestand</string>
+    <string name="settings__import_from_text_file">Importeer Tokens vanuit tekstbestand</string>
+    <string name="settings__import_from_text_file_description">Tekstbestand moet een lijst met links bevatten die beginnen met \'otpauth://\'.</string>
+    <string name="settings__import_contents_file">Tokens aan het importeren vanuit tekstbestand</string>
     <string name="widget__open_app">Open 2FAS Auth</string>
-    <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
+    <string name="widget__open_app_description">Snelle toegang tot 2FAS Auth</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Omhoog verplaatsen</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">Omlaag verplaatsen</string>
+    <string name="settings__transfer">Tokens overzetten</string>
+    <string name="transfer__import_section_title">Importeer vanuit andere apps</string>
+    <string name="transfer__export_section_title">Exporteer naar OTPAuth</string>
+    <string name="transfer__export_otp_file">Exporteer Tokens naar bestand</string>
+    <string name="transfer__export_otp_qr">Exporteer Tokens als QR-codes</string>
+    <string name="exportwarning__title_file">Exporteer Tokens naar bestand</string>
+    <string name="exportwarning__cta_file">Exporteer naar bestand</string>
+    <string name="exportwarning__description_file">U staat op het punt om al uw 2FA-tokens, inclusief geheime sleutels, naar een niet versleuteld bestand te exporteren. Iedereen die toegang heeft tot dit bestand kan het gebruiken om controle over uw accounts te krijgen. Bewaar het daarom op een veilige plaats.</string>
+    <string name="exportwarning__toggle">Ik begrijp het risico</string>
+    <string name="transfer__import_otpauth_file">Algemeen OTPAuth-bestand</string>
+    <string name="exportwarning__description_qr">U staat op het punt al uw 2FA-tokens te exporteren naar een niet versleuteld ZIP-bestand met QR-codes erin. Deze QR-codes kunnen worden gebruikt om controle over uw accounts te krijgen. Bewaar ze daarom op een veilige plaats.</string>
+    <string name="exportwarning__title_qr">Exporteer Tokens als QR-codes</string>
+    <string name="exportwarning__cta_qr">Exporteer als QR-code</string>
+    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
 </resources>
