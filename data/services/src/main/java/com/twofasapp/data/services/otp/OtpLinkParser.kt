@@ -55,7 +55,9 @@ object OtpLinkParser {
     private fun isAuthorityValid(uri: Uri) =
         uri.authority?.lowercase() == TOTP || uri.authority?.lowercase() == HOTP || uri.authority?.lowercase() == STEAM
 
-    private fun mapQueryParams(uri: Uri) = uri.queryParameterNames.associateWith { uri.getQueryParameter(it)!! }
+    private fun mapQueryParams(uri: Uri) = uri.queryParameterNames.associateWith {
+        uri.getQueryParameter(it) ?: "" // getQueryParameter() is nullable when parameters key contains semicolon
+    }
 
     private fun getPath(uri: Uri): String {
         if (uri.path == null) return ""
