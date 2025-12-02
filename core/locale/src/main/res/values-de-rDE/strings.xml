@@ -361,6 +361,11 @@
     <string name="backup__set_password_title">Um den Schutz deiner Sicherungsdatei zu erhöhen, lege bitte das Passwort fest</string>
     <string name="backup__enter_password_title">Gib ein Passwort für diese Sicherungsdatei ein, um mit dem Importvorgang fortzufahren</string>
     <string name="backup__backup_file_password_title">Ein Passwort für diese Sicherungsdatei festlegen</string>
+    <!-- Password validation errors -->
+    <string name="backup__password_length_error">Das Passwort muss zwischen %1$d und %2$d Zeichen lang sein</string>
+    <string name="backup__password_confirm_error">Die Passwörter stimmen nicht überein</string>
+    <string name="backup__password_validation_error">Das Passwort enthält ungültige Zeichen</string>
+    <string name="backup__password_validation_hint">Das Passwort darf nur Buchstaben, Zahlen und diese Symbole enthalten: _/!#$%&amp;+*~@?=^.,(){}[]&lt;&gt;|-</string>
     <string name="backup__incorrect_password">Falsches Passwort</string>
     <!-- %d - number -->
     <string name="backup__new_services">%d neue Dienste</string>
