@@ -4,13 +4,13 @@
  Project: 2FAS App
  Locale: sv-SE, Swedish (Sweden)
  Exported by: rafakob
- Exported at: Tue, 26 Aug 2025 12:20:12 -0700
+ Exported at: Sun, 09 Nov 2025 07:31:05 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
-        TwoFAS
-        Created by Zbigniew Cisiński on 14/03/2020.
-        Copyright © 2020 The Code. All rights reserved. -->
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
     <string name="NSCameraUsageDescription">Används för att skanna QR-koder</string>
     <string name="NSFaceIDUsageDescription">Låter dig låsa upp appen med Face ID</string>
     <!-- MARK: - App -->
@@ -65,7 +65,7 @@
     <string name="commons__approve">Godkänn</string>
     <string name="commons__deny">Neka</string>
     <!-- max. %d chars = Maximum number of characters
-        commons__provided_text_too_long -->
+         commons__provided_text_too_long -->
     <string name="commons__text_long_title">Texten är för lång (får vara högst %d tecken)</string>
     <string name="commons__got_it">Jag förstår!</string>
     <string name="fingerprint__verifying">Verifierar...</string>
@@ -162,7 +162,7 @@
     <string name="tokens__incorrect_service_key">Ogiltig hemlig nyckel (endast siffror mellan 2 och 7, bokstäver, max 512 tecken)</string>
     <string name="tokens__try_again">Okej, försök igen</string>
     <!-- Original: To capture the QR code
-        tokens__point_right_2fa_code -->
+         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Rikta kameran mot skärmen och skanna QR-koden</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">Hemlig nyckel</string>
@@ -174,7 +174,7 @@
     <!-- tokens__search_sorry_service_not_found -->
     <string name="tokens__service_not_found_search">Inget matchande konto hittades</string>
     <!-- Original: Take another try with a different search term
-        tokens__search_take_another_try_different_search_term -->
+         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Prova att söka efter något annat</string>
     <string name="tokens__service_key_to_short">Nyckeln är för kort. Minst 4 tecken.</string>
     <string name="tokens__service_name">Namn för kontot</string>
@@ -214,8 +214,8 @@
     <string name="tokens__check_app_permissions">Kontrollera om appen har rätt behörigheter i systeminställningarna</string>
     <string name="tokens__no_qr_codes_found">Ingen QR-kod hittades</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
-        No correct QR codes had been found in the selected image. Please try a different image. -->
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Det finns ingen giltig QR-kod i den valda bilden. Prova att välja en annan bild.</string>
     <string name="tokens__select_service">Välj konto</string>
     <string name="tokens__adding_service_question_title">Vilket konto vill du lägga till?</string>
@@ -914,7 +914,7 @@
     <string name="notifications__link_copied">Länk kopierad</string>
     <string name="tokens__qr_code_show">Visa QR-kod för kontot</string>
     <string name="tokens__qr_code_share">Dela QR-kod för kontot</string>
-    <string name="settings_open_twofass_appstore">Skaffa 2FAS Pass</string>
+    <string name="settings_open_twofass_appstore">Installera 2FAS Pass</string>
     <string name="settings_open_twofass">Öppna 2FAS Pass</string>
     <string name="settings_manage_passwords_title">Hantera lösenord</string>
     <string name="quick_setup_drive_sync_title">Synkronisera valv</string>
@@ -924,21 +924,32 @@
     <string name="settings__export_title_tokens">Exportera konton</string>
     <string name="settings__export_title_qr_codes">Exportera QR-koder</string>
     <string name="settings__export_title_options">Exportalternativ</string>
-    <string name="settings__export_options_copy_clipboard">Kopiera till urklipp</string>
     <string name="settings__export_options_save_file">Spara OTPAuth-fil</string>
     <string name="settings__export_options_export_qr_codes">Exportera QR-koder</string>
     <string name="settings__export_options_footer">Välj hur du vill exportera dina konton. Du kan kopiera dem till urklippet, spara dem i en OTPAuth-fil eller exportera som QR-koder.</string>
     <string name="settings__import_otpauth_title">OTPAuth-länkar</string>
     <string name="settings__import_from_file">Importera från fil</string>
-    <string name="settings__import_read_from_clipboard">Importera från urklipp</string>
-    <string name="settings__import_otpauth_footer">Importera konton från en OTPAuth-textfil eller urklipp</string>
     <string name="settings__import_from_text_file">Importera konton från textfil</string>
-    <string name="settings__import_from_clipboard">Importera konton från urklipp</string>
     <string name="settings__import_from_text_file_description">Textfilen måste innehålla en lista av länkar som börjar med \'otpauth://\'.</string>
-    <string name="settings__import_from_clipboard_description">Urklippet måste innehålla en lista av länkar som börjar med \'otpauth://\'.</string>
     <string name="settings__import_contents_file">Importerar konton från textfil</string>
-    <string name="settings__import_contents_clipboard">Importerar konton från urklipp</string>
-    <string name="settings__import_clipboard_empty">Urklippet är tomt eller innehåller ingen giltig länk.</string>
     <string name="widget__open_app">Öppna 2FAS Auth</string>
     <string name="widget__open_app_description">Kom snabbt åt 2FAS Auth</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Flytta upp</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">Flytta ner</string>
+    <string name="settings__transfer">Överför konton</string>
+    <string name="transfer__import_section_title">Importera från andra appar</string>
+    <string name="transfer__export_section_title">Exportera till OTPAuth</string>
+    <string name="transfer__export_otp_file">Exportera konton till fil</string>
+    <string name="transfer__export_otp_qr">Exportera konton till QR-koder</string>
+    <string name="exportwarning__title_file">Exportera konton till en fil</string>
+    <string name="exportwarning__cta_file">Exportera till fil</string>
+    <string name="exportwarning__description_file">Du är på väg att exportera alla dina 2FA-koder, inklusive deras hemliga nycklar, till en okrypterad fil. Vem som helst kan använda filen för att ta kontroll över dina konton. Förvara den säkert.</string>
+    <string name="exportwarning__toggle">Jag förstår risken</string>
+    <string name="transfer__import_otpauth_file">Generell OTPAuth-fil</string>
+    <string name="exportwarning__description_qr">Du är på väg att exportera alla dina 2FA-koder till en okrypterad ZIP-fil med QR-koder inuti. Dessa QR-koder kan användas för att ta kontroll över dina konton. Förvara dem säkert.</string>
+    <string name="exportwarning__title_qr">Exportera konton till QR-koder</string>
+    <string name="exportwarning__cta_qr">Exportera till QR-koder</string>
+    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
 </resources>

@@ -4,13 +4,13 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Tue, 26 Aug 2025 12:20:12 -0700
+ Exported at: Sun, 09 Nov 2025 07:31:04 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
-        TwoFAS
-        Created by Zbigniew Cisiński on 14/03/2020.
-        Copyright © 2020 The Code. All rights reserved. -->
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
     <string name="NSCameraUsageDescription">Used for scanning QR-codes</string>
     <string name="NSFaceIDUsageDescription">You can unlock the application using Face ID</string>
     <!-- MARK: - App -->
@@ -65,7 +65,7 @@
     <string name="commons__approve">Approve</string>
     <string name="commons__deny">Deny</string>
     <!-- max. %d chars = Maximum number of characters
-        commons__provided_text_too_long -->
+         commons__provided_text_too_long -->
     <string name="commons__text_long_title">The provided text is too long (max. %d chars)</string>
     <string name="commons__got_it">Got it!</string>
     <string name="fingerprint__verifying">Verifying…</string>
@@ -162,7 +162,7 @@
     <string name="tokens__incorrect_service_key">Incorrect Secret Key (only numbers 2 to 7, letters), max. 512 chars long</string>
     <string name="tokens__try_again">OK, let\'s try again</string>
     <!-- Original: To capture the QR code
-        tokens__point_right_2fa_code -->
+         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Point your camera to the screen to scan the QR Code</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">Secret Key</string>
@@ -174,7 +174,7 @@
     <!-- tokens__search_sorry_service_not_found -->
     <string name="tokens__service_not_found_search">Sorry, service not found</string>
     <!-- Original: Take another try with a different search term
-        tokens__search_take_another_try_different_search_term -->
+         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Take another try with a different search term</string>
     <string name="tokens__service_key_to_short">Secret Key is too short. Minimum 4 characters</string>
     <string name="tokens__service_name">Service Name</string>
@@ -214,8 +214,8 @@
     <string name="tokens__check_app_permissions">Check if the app has proper permissions in the System Settings</string>
     <string name="tokens__no_qr_codes_found">No QR codes found</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
-        No correct QR codes had been found in the selected image. Please try a different image. -->
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">There is no correct QR code in the selected image. Please try a different image.</string>
     <string name="tokens__select_service">Select Service</string>
     <string name="tokens__adding_service_question_title">What service do you want to add?</string>
@@ -674,7 +674,7 @@
     <string name="backup__export_result_success">File successfully saved!</string>
     <string name="backup__share_result_failure">Could not share file!</string>
     <string name="backup__enter_password_dialog_title">Type in password</string>
-    <string name="backup__remove_password_msg">Enter the backup password to proceed with remove.</string>
+    <string name="backup__remove_password_msg">Enter the backup password to proceed with removal.</string>
     <string name="backup__revoke_google_access_msg">Enter the backup password to proceed with revoking access to Google.</string>
     <string name="backup__synchronization_settings">Synchronization settings</string>
     <string name="backup__local_file_title">Local file</string>
@@ -914,7 +914,7 @@
     <string name="notifications__link_copied">Link Copied</string>
     <string name="tokens__qr_code_show">Show service QR Code</string>
     <string name="tokens__qr_code_share">Share service QR Code</string>
-    <string name="settings_open_twofass_appstore">Get 2FAS Pass</string>
+    <string name="settings_open_twofass_appstore">Install 2FAS Pass</string>
     <string name="settings_open_twofass">Open 2FAS Pass</string>
     <string name="settings_manage_passwords_title">Manage Passwords</string>
     <string name="quick_setup_drive_sync_title">Vault Sync</string>
@@ -924,21 +924,32 @@
     <string name="settings__export_title_tokens">Export Tokens</string>
     <string name="settings__export_title_qr_codes">Export QR codes</string>
     <string name="settings__export_title_options">Export Options</string>
-    <string name="settings__export_options_copy_clipboard">Copy to clipboard</string>
     <string name="settings__export_options_save_file">Save OTPAuth file</string>
     <string name="settings__export_options_export_qr_codes">Export QR codes</string>
-    <string name="settings__export_options_footer">Choose how you would like to export your Tokens. You can copy them to clipboard, save as an OTPAuth file, or export as QR codes.</string>
+    <string name="settings__export_options_footer">Choose how you would like to export your Tokens. You can export them as an OTPAuth file or as QR codes.</string>
     <string name="settings__import_otpauth_title">OTPAuth links</string>
     <string name="settings__import_from_file">Import from file</string>
-    <string name="settings__import_read_from_clipboard">Import from clipboard</string>
-    <string name="settings__import_otpauth_footer">Import Tokens from the OTPAuth text file or the OTPAuth clipboard</string>
     <string name="settings__import_from_text_file">Import Tokens from text file</string>
-    <string name="settings__import_from_clipboard">Import Tokens from clipboard</string>
     <string name="settings__import_from_text_file_description">Text file should contain a list of links starting with \'otpauth://\'.</string>
-    <string name="settings__import_from_clipboard_description">Clipboard should contain a list of links starting with \'otpauth://\'.</string>
     <string name="settings__import_contents_file">Importing Tokens from text file</string>
-    <string name="settings__import_contents_clipboard">Importing Tokens from clipboard</string>
-    <string name="settings__import_clipboard_empty">Clipboard is empty or doesn\'t contain a supported link format.</string>
     <string name="widget__open_app">Open 2FAS Auth</string>
     <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Move up</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">Move down</string>
+    <string name="settings__transfer">Transfer Tokens</string>
+    <string name="transfer__import_section_title">Import from other apps</string>
+    <string name="transfer__export_section_title">Export to OTPAuth</string>
+    <string name="transfer__export_otp_file">Export Tokens to file</string>
+    <string name="transfer__export_otp_qr">Export Tokens as QR codes</string>
+    <string name="exportwarning__title_file">Export Tokens to file</string>
+    <string name="exportwarning__cta_file">Export to file</string>
+    <string name="exportwarning__description_file">You are about to export all of your 2FA Tokens, including their Secret Keys, into an unencrypted file. Anyone with access to this file can use it to take control of your accounts. Please keep it safe.</string>
+    <string name="exportwarning__toggle">I understand the risk</string>
+    <string name="transfer__import_otpauth_file">General OTPAuth file</string>
+    <string name="exportwarning__description_qr">You are about to export all of your 2FA Tokens into an unencrypted ZIP file with QR codes inside. Those QR codes can be used to take control of your accounts. Please keep them safe.</string>
+    <string name="exportwarning__title_qr">Export Tokens as QR codes</string>
+    <string name="exportwarning__cta_qr">Export as QR codes</string>
+    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
 </resources>

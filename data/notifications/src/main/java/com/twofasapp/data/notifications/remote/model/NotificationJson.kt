@@ -8,7 +8,5 @@ internal class NotificationJson(
     val icon: String,
     val link: String,
     val message: String,
-    val published_at: String,
-    val push: Boolean,
-    val platform: String,
+    val created_at: String,
 )

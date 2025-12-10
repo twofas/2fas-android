@@ -7,12 +7,12 @@ import java.util.Locale
 class SyncStatusConverter : PropertyConverter<SyncStatus, String> {
     override fun convertToEntityProperty(databaseValue: String): SyncStatus {
         try {
-            return SyncStatus.valueOf(databaseValue.toUpperCase(Locale.ROOT))
+            return SyncStatus.valueOf(databaseValue.uppercase(Locale.ROOT))
         } catch (e: IllegalArgumentException) {
             return SyncStatus.SYNCED
         }
     }
 
     override fun convertToDatabaseValue(entityProperty: SyncStatus) =
-        entityProperty.name.toLowerCase(Locale.ROOT)
+        entityProperty.name.lowercase(Locale.ROOT)
 }

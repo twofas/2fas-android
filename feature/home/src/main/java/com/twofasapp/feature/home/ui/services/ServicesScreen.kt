@@ -321,7 +321,7 @@ private fun ServicesScreen(
                     ServicesProgress(
                         Modifier
                             .fillParentMaxSize()
-                            .animateItemPlacement()
+                            .animateItem()
                     )
                 }
                 return@LazyColumn
@@ -334,7 +334,7 @@ private fun ServicesScreen(
                         image = painterResource(id = R.drawable.img_services_empty_search),
                         modifier = Modifier
                             .fillParentMaxSize()
-                            .animateItemPlacement(),
+                            .animateItem(),
                     )
                 }
 
@@ -354,7 +354,7 @@ private fun ServicesScreen(
                         },
                         modifier = Modifier
                             .fillParentMaxSize()
-                            .animateItemPlacement()
+                            .animateItem()
                     )
                 }
 
@@ -403,7 +403,7 @@ private fun ServicesScreen(
                                         if (isDragging) {
                                             Modifier
                                         } else {
-                                            Modifier.animateItemPlacement()
+                                            Modifier.animateItem()
                                         }
                                     ),
                                 onClick = { onToggleGroupExpand(group.id) },
@@ -435,7 +435,7 @@ private fun ServicesScreen(
                                         if (isDragging) {
                                             Modifier
                                         } else {
-                                            Modifier.animateItemPlacement()
+                                            Modifier.animateItem()
                                         }
                                     ),
                             ) { _ ->

@@ -12,6 +12,7 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
         private const val KeyShowOnboardWarning = "showOnboardWarning"
         private const val KeyBackupReminderTimestamp = "backupReminderTimestamp"
         private const val KeyAppInstallTimestamp = "appInstallTimestamp"
+        private const val KeyNoCompanionAppFromTimestamp = "noCompanionAppFromTimestamp"
     }
 
     private val backupReminderTimestampFlow: MutableStateFlow<Long> by lazy {
@@ -46,6 +47,18 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
     fun markAppInstalled() {
         if (preferences.getLong(KeyAppInstallTimestamp) == null) {
             preferences.putLong(KeyAppInstallTimestamp, Instant.now().toEpochMilli())
+        }
+    }
+
+    fun getNoCompanionAppFromTimestamp(): Long? {
+        return preferences.getLong(KeyNoCompanionAppFromTimestamp)
+    }
+
+    fun setNoCompanionAppFromTimestamp(millis: Long?) {
+        if (millis == null) {
+            preferences.delete(KeyNoCompanionAppFromTimestamp)
+        } else {
+            preferences.putLong(KeyNoCompanionAppFromTimestamp, millis)
         }
     }
 }

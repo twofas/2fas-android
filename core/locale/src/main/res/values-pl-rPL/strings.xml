@@ -4,13 +4,13 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Tue, 26 Aug 2025 12:20:12 -0700
+ Exported at: Sun, 09 Nov 2025 07:31:04 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
-        TwoFAS
-        Created by Zbigniew Cisiński on 14/03/2020.
-        Copyright © 2020 The Code. All rights reserved. -->
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
     <string name="NSCameraUsageDescription">Służy do skanowania kodów QR</string>
     <string name="NSFaceIDUsageDescription">Możesz odblokować aplikację używając Face ID</string>
     <!-- MARK: - App -->
@@ -65,7 +65,7 @@
     <string name="commons__approve">Zatwierdź</string>
     <string name="commons__deny">Odrzuć</string>
     <!-- max. %d chars = Maximum number of characters
-        commons__provided_text_too_long -->
+         commons__provided_text_too_long -->
     <string name="commons__text_long_title">Podany tekst jest za długi (maks. %d znaków)</string>
     <string name="commons__got_it">Rozumiem!</string>
     <string name="fingerprint__verifying">Weryfikuje...</string>
@@ -162,7 +162,7 @@
     <string name="tokens__incorrect_service_key">Niepoprawny Tajny klucz (tylko cyfry od 2 do 7, litery), o długości maks. 512</string>
     <string name="tokens__try_again">OK, spróbujmy jeszcze raz</string>
     <!-- Original: To capture the QR code
-        tokens__point_right_2fa_code -->
+         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Skieruj kamerę na ekran, aby zeskanować kod QR</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">Tajny klucz</string>
@@ -174,7 +174,7 @@
     <!-- tokens__search_sorry_service_not_found -->
     <string name="tokens__service_not_found_search">Nic nie znaleziono</string>
     <!-- Original: Take another try with a different search term
-        tokens__search_take_another_try_different_search_term -->
+         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Wpisz inną nazwę i spróbuj ponownie.</string>
     <string name="tokens__service_key_to_short">Klucz jest za krótki. Minimum 4 znaki</string>
     <string name="tokens__service_name">Nazwa serwisu</string>
@@ -214,8 +214,8 @@
     <string name="tokens__check_app_permissions">Sprawdź czy aplikacja ma prawidłowe uprawnienia w Ustawieniach systemowych</string>
     <string name="tokens__no_qr_codes_found">Nie znaleziono kodów QR</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
-        No correct QR codes had been found in the selected image. Please try a different image. -->
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Na wybranym obrazie nie ma prawidłowego kodu QR. Proszę spróbować innego obrazu.</string>
     <string name="tokens__select_service">Wybierz serwis</string>
     <string name="tokens__adding_service_question_title">Jaki serwis chcesz dodać?</string>
@@ -764,10 +764,10 @@
     <string name="tokens__add_manual_advanced">Zaawansowane ustawienia tokenów</string>
     <string name="tokens__add_manual_additional_info">Opis</string>
     <string name="tokens__add_manual_advanced_description">Zmiana domyślnych ustawień tokena nie jest zalecana. Zrób to tylko wtedy, gdy wymaga tego Twój dostawca 2FA i gdy masz jasne instrukcje.</string>
-    <string name="settings__option_screenshots_description">Pozwól wykonywać zrzuty ekranu (również wideo) w aplikacji przez 5 minut.</string>
-    <string name="settings__option_screenshots">Zezwalaj na zrzuty ekranu</string>
+    <string name="settings__option_screenshots_description">Pozwól na wykonywanie zrzutów ekranu i nagrywanie ekranu aplikacji przez 5 minut.</string>
+    <string name="settings__option_screenshots">Pozwól na zrzuty ekranu</string>
     <string name="settings__option_screenshots_confirm_title">Pozwolić na zrzuty ekranu w aplikacji?</string>
-    <string name="settings__option_screenshots_confirm_description">Czy na pewno? Ta opcja umożliwia zrzuty ekranu i nagrywanie dowolnego ekranu w aplikacji. Jednocześnie umożliwia ona próby przechwycenia ekranu przez zewnętrzne aplikacje. Ze względów bezpieczeństwa, opcja ta zostanie automatycznie wyłączona po 5 minutach.</string>
+    <string name="settings__option_screenshots_confirm_description">Jesteś pewien? Ta opcja umożliwia robienie zrzutów ekranu i nagrywanie wszystkiego w aplikacji. Jednocześnie umożliwia ona próby przechwycenia ekranu przez zewnętrzne aplikacje. Aby zapewnić bezpieczeństwo, opcja ta wyłącza się automatycznie po 5 minutach.</string>
     <string name="social__social_media">Linki do mediów społecznościowych</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -883,7 +883,7 @@
     <string name="backup__enter_cloud_backup_password_title">Wprowadź hasło kopii zapasowej iCloud</string>
     <string name="backup__enter_password_description">Kopia zapasowa iCloud jest zaszyfrowana twoim hasłem. Wprowadź je, aby włączyć synchronizację.</string>
     <string name="backup__enter_password_failure">Błąd! %s</string>
-    <string name="backup__enter_password_wrong_password">Niepoprawne hasło! Proszę spróbować podobnie</string>
+    <string name="backup__enter_password_wrong_password">Niepoprawne hasło! Proszę spróbować ponownie</string>
     <string name="backup__migration_title">Migracja kopii zapasowej iCloud</string>
     <string name="backup__migration_subtitle">Nie wyłączaj aplikacji!</string>
     <string name="backup__migration_description">Kopia zapasowa jest zaszyfrowana Kluczem Systemowym. Ten klucz będzie udostępniony wszystkim aplikacjom korzystającym z pęku kluczy iCloud. Pamiętaj, aby włączyć tę opcję. Jeśli chcesz użyć własnego hasła, możesz to zrobić w ustawieniach kopii zapasowej iCloud po migracji.</string>
@@ -920,7 +920,7 @@
     <string name="notifications__link_copied">Link skopiowany</string>
     <string name="tokens__qr_code_show">Pokaż kod QR serwisu</string>
     <string name="tokens__qr_code_share">Udostępnij kod QR serwisu</string>
-    <string name="settings_open_twofass_appstore">Pobierz 2FAS Pass</string>
+    <string name="settings_open_twofass_appstore">Zainstaluj 2FAS Pass</string>
     <string name="settings_open_twofass">Otwórz 2FAS Pass</string>
     <string name="settings_manage_passwords_title">Zarządzaj hasłami</string>
     <string name="quick_setup_drive_sync_title">Synchronizacja Vaulta</string>
@@ -930,21 +930,32 @@
     <string name="settings__export_title_tokens">Eksportuj Tokeny</string>
     <string name="settings__export_title_qr_codes">Eksportuj kody QR</string>
     <string name="settings__export_title_options">Opcje Eksportu</string>
-    <string name="settings__export_options_copy_clipboard">Skopiuj do schowka</string>
     <string name="settings__export_options_save_file">Zapisz plik OTPAuth</string>
     <string name="settings__export_options_export_qr_codes">Exportuj kody QR</string>
-    <string name="settings__export_options_footer">Wybierz sposób eksportowania Tokenów. Możesz skopiować je do schowka, zapisać jako plik OTPAuth lub wyeksportować jako kody QR.</string>
+    <string name="settings__export_options_footer">Wybierz sposób eksportowania Tokenów. Możesz wyeksportować je jako plik OTPAuth lub jako kody QR.</string>
     <string name="settings__import_otpauth_title">Linki OTPAuth</string>
     <string name="settings__import_from_file">Immportuj z pliku</string>
-    <string name="settings__import_read_from_clipboard">Importuj ze schowka</string>
-    <string name="settings__import_otpauth_footer">Importuj Tokeny z pliku tesktowego OTPAuth albo ze schowka OTPAuth</string>
     <string name="settings__import_from_text_file">Importuj Tokeny z pliku tekstowego</string>
-    <string name="settings__import_from_clipboard">Importuj Tokeny ze schowka</string>
     <string name="settings__import_from_text_file_description">Plik tekstowy powinien zawierać listę linków zaczynających się od „otpauth://”.</string>
-    <string name="settings__import_from_clipboard_description">Schowek powinien zawierać listę linków zaczynających się od „otpauth://”.</string>
     <string name="settings__import_contents_file">Importowanie Tokenów z pliku tekstowego</string>
-    <string name="settings__import_contents_clipboard">Importowanie Tokenów ze schowka</string>
-    <string name="settings__import_clipboard_empty">Schowek jest pusty lub nie zawiera wspieranego formatu linków.</string>
-    <string name="widget__open_app">Open 2FAS Auth</string>
-    <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
+    <string name="widget__open_app">Otwórz 2FAS Auth</string>
+    <string name="widget__open_app_description">Szybki dostęp do 2FAS Auth</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Przesuń w górę</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">Przesuń w dół</string>
+    <string name="settings__transfer">Transfer tokenów</string>
+    <string name="transfer__import_section_title">Import z innych aplikacji</string>
+    <string name="transfer__export_section_title">Eksport do OTPAuth</string>
+    <string name="transfer__export_otp_file">Eksport tokenów do pliku</string>
+    <string name="transfer__export_otp_qr">Eksport tokenów jako kody QR</string>
+    <string name="exportwarning__title_file">Eksport tokenów do pliku</string>
+    <string name="exportwarning__cta_file">Eksportuj do pliku</string>
+    <string name="exportwarning__description_file">Zamierzasz wyeksportować wszystkie swoje tokeny 2FA, łącznie z ich tajnymi kluczami, do niezaszyfrowanego pliku. Każdy, kto uzyska dostęp do tego pliku, będzie mógł przejąć kontrolę nad Twoimi kontami. Przechowuj go w bezpiecznym miejscu.</string>
+    <string name="exportwarning__toggle">Rozumiem ryzyko</string>
+    <string name="transfer__import_otpauth_file">Ogólny plik OTPAuth</string>
+    <string name="exportwarning__description_qr">Zamierzasz wyeksportować wszystkie swoje tokeny 2FA do niezaszyfrowanego pliku z kodami QR w środku. Te kody QR mogą zostać użyte aby przejąć kontrolę nad Twoimi kontami. Przechowuj je w bezpiecznym miejscu.</string>
+    <string name="exportwarning__title_qr">Eksport tokenów jako kody QR</string>
+    <string name="exportwarning__cta_qr">Eksportuj jako kody QR</string>
+    <string name="commons__icloud_backup_password">Hasło kopii zapasowej iCloud</string>
 </resources>

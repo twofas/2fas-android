@@ -2,13 +2,14 @@ package com.twofasapp.buildlogic.extension
 
 import com.android.build.api.dsl.CommonExtension
 import com.twofasapp.buildlogic.version.AppConfig
-import com.twofasapp.buildlogic.version.AppConfig.compileSdk
-import com.twofasapp.buildlogic.version.AppConfig.minSdk
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
-import org.gradle.api.plugins.ExtensionAware
+import org.gradle.api.tasks.testing.Test
+import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.dependencies
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 internal fun Project.applyKotlinAndroid(
     commonExtension: CommonExtension<*, *, *, *, *, *>,
@@ -34,35 +35,21 @@ internal fun Project.applyKotlinAndroid(
         }
 
         buildFeatures {
-            viewBinding = true
             buildConfig = true
-        }
-
-        kotlinOptions {
-            jvmTarget = "17"
-
-            freeCompilerArgs = freeCompilerArgs + listOf(
-                "-opt-in=kotlin.RequiresOptIn",
-                // Enable experimental coroutines APIs, including Flow
-                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-                "-opt-in=kotlinx.coroutines.FlowPreview",
-                "-opt-in=kotlin.Experimental",
-                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-                "-opt-in=androidx.lifecycle.compose.ExperimentalLifecycleComposeApi",
-                "-P",
-                "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true",
-            )
         }
 
         packaging {
             resources {
                 excludes += "META-INF/DEPENDENCIES"
                 excludes += "META-INF/LICENSE"
+                excludes += "META-INF/LICENSE.md"
+                excludes += "META-INF/LICENSE-notice.md"
                 excludes += "META-INF/LICENSE.txt"
                 excludes += "META-INF/license.txt"
                 excludes += "META-INF/NOTICE"
                 excludes += "META-INF/NOTICE.txt"
                 excludes += "META-INF/notice.txt"
+                excludes += "META-INF/ASL2.0"
                 excludes += "META-INF/INDEX.LIST"
                 excludes += "/META-INF/{AL2.0,LGPL2.1}"
             }
@@ -73,6 +60,12 @@ internal fun Project.applyKotlinAndroid(
                 isIncludeAndroidResources = true
             }
         }
+
+        tasks.withType<Test>().configureEach {
+            failOnNoDiscoveredTests = false
+        }
+
+        configureKotlin()
     }
 
     dependencies {
@@ -80,6 +73,19 @@ internal fun Project.applyKotlinAndroid(
     }
 }
 
-internal fun CommonExtension<*, *, *, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
-    (this as ExtensionAware).extensions.configure("kotlinOptions", block)
+private fun Project.configureKotlin() {
+    tasks.withType<KotlinCompile>().configureEach {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+
+            freeCompilerArgs.addAll(
+                "-opt-in=kotlin.RequiresOptIn",
+                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-opt-in=kotlinx.coroutines.FlowPreview",
+                "-opt-in=kotlin.Experimental",
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+                "-opt-in=androidx.lifecycle.compose.ExperimentalLifecycleComposeApi",
+            )
+        }
+    }
 }

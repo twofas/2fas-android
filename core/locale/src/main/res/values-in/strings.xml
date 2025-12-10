@@ -369,7 +369,6 @@
     <!-- backup__user_has_icloud_problem -->
     <string name="backup__icloud_problem">Ada masalah dengan iCloud.\u0020\u0020Periksa pengaturan sistem</string>
     <!-- backup__newer_schema_unsupported -->
-    <string name="backup__newer_format_not_supported">File ini dalam versi format yang lebih baru daripada yang didukung aplikasi</string>
     <!-- backup__encrypted_unsupported -->
     <string name="backup__encrypted_files_not_supported">File ini dienkripsi. Kami hanya mendukung file yang tidak terenkripsi</string>
     <string name="tokens__copy_token">Salin token</string>

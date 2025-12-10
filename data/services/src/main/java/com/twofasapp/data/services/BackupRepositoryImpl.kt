@@ -138,7 +138,7 @@ class BackupRepositoryImpl(
             val size = context.contentResolver.openAssetFileDescriptor(fileUri, "r")!!.use { it.length }
 
             // Ignore too big files
-            if (size > 10 * 1024 * 1024) {
+            if (size > 100 * 1024 * 1024) {
                 throw FileTooBigException()
             }
 

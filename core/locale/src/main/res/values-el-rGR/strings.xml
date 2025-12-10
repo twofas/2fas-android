@@ -4,13 +4,13 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Tue, 26 Aug 2025 12:20:12 -0700
+ Exported at: Sun, 09 Nov 2025 07:31:04 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
-        TwoFAS
-        Created by Zbigniew Cisiński on 14/03/2020.
-        Copyright © 2020 The Code. All rights reserved. -->
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
     <string name="NSCameraUsageDescription">Χρησιμοποιείται για τη σάρωση των QR κωδικών.</string>
     <string name="NSFaceIDUsageDescription">Μπορείτε να ξεκλειδώσετε την εφαρμογή χρησιμοποιώντας το Face ID</string>
     <!-- MARK: - App -->
@@ -65,7 +65,7 @@
     <string name="commons__approve">Έγκριση</string>
     <string name="commons__deny">Άρνηση</string>
     <!-- max. %d chars = Maximum number of characters
-        commons__provided_text_too_long -->
+         commons__provided_text_too_long -->
     <string name="commons__text_long_title">Το παρεχόμενο κέιμενο είναι πολύ μεγάλο (max. %d chars)</string>
     <string name="commons__got_it">Το έπιασα!</string>
     <string name="fingerprint__verifying">Επαλήθευση…</string>
@@ -162,7 +162,7 @@
     <string name="tokens__incorrect_service_key">Λανθασμένο μυστικό κλειδί (μόνο αριθμοί 2 έως 7, γράμματα), μέγ. Μήκος 512 χαρακτήρες</string>
     <string name="tokens__try_again">Εντάξει, ας προσπαθήσουμε ξανά</string>
     <!-- Original: To capture the QR code
-        tokens__point_right_2fa_code -->
+         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">Στρέψτε την κάμερά σας στην οθόνη για να σκανάρετε τον κωδικό QR.</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">Μυστικό κλειδί</string>
@@ -174,7 +174,7 @@
     <!-- tokens__search_sorry_service_not_found -->
     <string name="tokens__service_not_found_search">Λυπούμαστε, η υπηρεσία δεν βρέθηκε</string>
     <!-- Original: Take another try with a different search term
-        tokens__search_take_another_try_different_search_term -->
+         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Κάντε άλλη μια δοκιμή με διαφορετικό όρο αναζήτησης</string>
     <string name="tokens__service_key_to_short">Το κλειδί είναι πολύ μικρό. Τουλάχιστον 4 χαρακτήρες</string>
     <string name="tokens__service_name">Όνομα Υπηρεσίας</string>
@@ -214,8 +214,8 @@
     <string name="tokens__check_app_permissions">Ελέγξτε αν η εφαρμογή έχει τις κατάλληλες άδειες στις ρυθμίσεις του συστήματος.</string>
     <string name="tokens__no_qr_codes_found">Δεν βρέθηκαν κωδικοί QR.</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
-        No correct QR codes had been found in the selected image. Please try a different image. -->
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Δεν υπάρχει σωστός κωδικός QR στην επιλεγμένη εικόνα. Παρακαλώ δοκιμάστε μια διαφορετική εικόνα.</string>
     <string name="tokens__select_service">Επιλέξτε υπηρεσία</string>
     <string name="tokens__adding_service_question_title">Ποια υπηρεσία θέλετε να προσθέσετε;</string>
@@ -914,7 +914,7 @@
     <string name="notifications__link_copied">Ο σύνδεσμος αντιγράφηκε</string>
     <string name="tokens__qr_code_show">Προβολή QR κωδικού υπηρεσίας</string>
     <string name="tokens__qr_code_share">Κοινοποίησε τον QR κωδικό υπηρεσίας</string>
-    <string name="settings_open_twofass_appstore">Λήψη 2FAS Pass</string>
+    <string name="settings_open_twofass_appstore">Εγκαταστήστε 2FAS Pass</string>
     <string name="settings_open_twofass">Άνοιγμα του 2FAS Pass</string>
     <string name="settings_manage_passwords_title">Διαχείριση Κωδικών Πρόσβασης</string>
     <string name="quick_setup_drive_sync_title">Συγχρονισμός Θησαυροφυλακίου</string>
@@ -924,21 +924,32 @@
     <string name="settings__export_title_tokens">Εξαγωγή διακριτικών</string>
     <string name="settings__export_title_qr_codes">Εξαγωγή QR κωδικών</string>
     <string name="settings__export_title_options">Επιλογές εξαγωγής</string>
-    <string name="settings__export_options_copy_clipboard">Αντιγραφή στο πρόχειρο</string>
     <string name="settings__export_options_save_file">Αποθήκευση αρχείου OTPAuth</string>
     <string name="settings__export_options_export_qr_codes">Εξαγωγή QR κωδικών</string>
-    <string name="settings__export_options_footer">Επίλεξε πώς θέλεις να εξάγεις τα διακριτικά σου. Μπορείς να τα αντιγράψεις στο πρόχειρο, να τα αποθηκεύσεις ως αρχείο OTPAuth ή να τα εξάγεις ως QR κωδικούς.</string>
+    <string name="settings__export_options_footer">Επίλεξε πώς θα ήθελες να εξαγάγεις τα Tokens σου. Μπορείς να τα εξαγάγεις ως αρχείο OTPAuth ή ως QR κωδικούς.</string>
     <string name="settings__import_otpauth_title">Σύνδεσμοι OTPAuth</string>
     <string name="settings__import_from_file">Εισαγωγή από αρχείο</string>
-    <string name="settings__import_read_from_clipboard">Εισαγωγή από το πρόχειρο</string>
-    <string name="settings__import_otpauth_footer">Εισαγωγή διακριτικών από το αρχείο κειμένου OTPAuth ή από το πρόχειρο OTPAuth</string>
     <string name="settings__import_from_text_file">Εισαγωγή διακριτικών από αρχείο κειμένου</string>
-    <string name="settings__import_from_clipboard">Εισαγωγή διακριτικών από το πρόχειρο</string>
     <string name="settings__import_from_text_file_description">Το αρχείο κειμένου πρέπει να περιέχει μια λίστα συνδέσμων που ξεκινούν με \'otpauth://\'.</string>
-    <string name="settings__import_from_clipboard_description">Το πρόχειρο πρέπει να περιέχει μια λίστα συνδέσμων που ξεκινούν με \'otpauth://\'.</string>
     <string name="settings__import_contents_file">Τα περιεχόμενα αυτού του αρχείου θα εισαχθούν.</string>
-    <string name="settings__import_contents_clipboard">Τα περιεχόμενα του προχείρου θα εισαχθούν.</string>
-    <string name="settings__import_clipboard_empty">Το πρόχειρο είναι άδειο ή δεν περιέχει έναν υποστηριζόμενο τύπο συνδέσμου.</string>
-    <string name="widget__open_app">Open 2FAS Auth</string>
-    <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
+    <string name="widget__open_app">Άνοιγμα του 2FAS Auth</string>
+    <string name="widget__open_app_description">Γρήγορη πρόσβαση στο 2FAS Auth</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Μετακίνηση πάνω</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">Μετακίνηση κάτω</string>
+    <string name="settings__transfer">Μεταφορά Tokens</string>
+    <string name="transfer__import_section_title">Εισαγωγή από άλλες εφαρμογές</string>
+    <string name="transfer__export_section_title">Εξαγωγή σε αρχείο OTPAuth</string>
+    <string name="transfer__export_otp_file">Εξαγωγή των Tokens σε αρχείο</string>
+    <string name="transfer__export_otp_qr">Εξαγωγή των Tokens ως QR κωδικοί</string>
+    <string name="exportwarning__title_file">Εξαγωγή Tokens σε αρχείο</string>
+    <string name="exportwarning__cta_file">Εξαγωγή σε αρχείο</string>
+    <string name="exportwarning__description_file">Πρόκειται να εξαγάγεις όλα τα 2FA tokens σου, συμπεριλαμβανομένων των μυστικών κλειδιών τους, σε ένα μη κρυπτογραφημένο αρχείο. Οποιοσδήποτε έχει πρόσβαση σε αυτό το αρχείο μπορεί να το χρησιμοποιήσει για να αποκτήσει έλεγχο των λογαριασμών σου. Παρακαλώ φύλαξέ το με ασφάλεια.</string>
+    <string name="exportwarning__toggle">Καταλαβαίνω τον κίνδυνο.</string>
+    <string name="transfer__import_otpauth_file">Γενικό αρχείο OTPAuth.</string>
+    <string name="exportwarning__description_qr">Πρόκειται να εξαγάγεις όλα τα 2FA tokens σου σε ένα μη κρυπτογραφημένο αρχείο ZIP που περιέχει QR κωδικούς. Αυτοί οι QR κωδικοί μπορούν να χρησιμοποιηθούν για να αποκτήσει κάποιος έλεγχο των λογαριασμών σου. Παρακαλώ φύλαξέ τους με ασφάλεια.</string>
+    <string name="exportwarning__title_qr">Εξαγωγή Tokens ως QR κωδικοί</string>
+    <string name="exportwarning__cta_qr">Εξαγωγή ως QR κωδικοί</string>
+    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
 </resources>

@@ -4,13 +4,13 @@
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Tue, 26 Aug 2025 12:20:12 -0700
+ Exported at: Sun, 09 Nov 2025 07:31:04 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
-        TwoFAS
-        Created by Zbigniew Cisiński on 14/03/2020.
-        Copyright © 2020 The Code. All rights reserved. -->
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
     <string name="NSCameraUsageDescription">QR kodlarını taramak için kullanılır</string>
     <string name="NSFaceIDUsageDescription">Uygulamanın kilidini Face ID\'nizi kullanarak açabilirsiniz</string>
     <!-- MARK: - App -->
@@ -65,7 +65,7 @@
     <string name="commons__approve">Onayla</string>
     <string name="commons__deny">Reddet</string>
     <!-- max. %d chars = Maximum number of characters
-        commons__provided_text_too_long -->
+         commons__provided_text_too_long -->
     <string name="commons__text_long_title">Girilen metin çok uzun (en fazla %d karakter)</string>
     <string name="commons__got_it">Anlaşıldı!</string>
     <string name="fingerprint__verifying">Doğrulanıyor…</string>
@@ -162,7 +162,7 @@
     <string name="tokens__incorrect_service_key">Yanlış gizli anahtar (sadece 2\'den 7\'ye kadar olan rakamlar, harfler), en fazla 512 karakter uzunluğunda</string>
     <string name="tokens__try_again">Tamam, hadi tekrar deneyelim</string>
     <!-- Original: To capture the QR code
-        tokens__point_right_2fa_code -->
+         tokens__point_right_2fa_code -->
     <string name="tokens__scan_qr_code_title">QR kodunu taramak için kameranızı ekrana doğrultun</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">Gizli anahtar</string>
@@ -174,7 +174,7 @@
     <!-- tokens__search_sorry_service_not_found -->
     <string name="tokens__service_not_found_search">Üzgünüz, hizmet bulunamadı</string>
     <!-- Original: Take another try with a different search term
-        tokens__search_take_another_try_different_search_term -->
+         tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Başka bir arama terimi ile tekrar deneyin</string>
     <string name="tokens__service_key_to_short">Anahtar çok kısa. En az 4 karakter</string>
     <string name="tokens__service_name">Hizmet adı</string>
@@ -214,8 +214,8 @@
     <string name="tokens__check_app_permissions">Uygulamanın sistem ayarlarında uygun izinlere sahip olup olmadığını kontrol edin</string>
     <string name="tokens__no_qr_codes_found">QR kodu bulunamadı</string>
     <!-- tokens__no_correct_qr_code_had_been_found
-        
-        No correct QR codes had been found in the selected image. Please try a different image. -->
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
     <string name="tokens__no_correct_qr_code_found_title">Seçilen resmin içinde doğru QR kodu yok. Lütfen başka bir resim deneyin.</string>
     <string name="tokens__select_service">Hizmet seç</string>
     <string name="tokens__adding_service_question_title">Ne hizmeti eklemek istiyorsunuz?</string>
@@ -304,11 +304,11 @@
     <string name="voiceover__sort_by_title">Hizmet sıralamasını ayarlamak için sıralama ölçütünü kullanın</string>
     <string name="voiceover__spinner">İçerik yükleniyor</string>
     <string name="backup__incorrect_secret">\"%s\" gizli anahtarı geçersiz karakterler içerdiğinden jetonlar yedeklenemedi. Onu listeden silin ve tekrar deneyin</string>
-    <string name="backup__import">İçeri aktar</string>
+    <string name="backup__import">İçe aktar</string>
     <string name="backup__export">Dışa aktar</string>
     <string name="backup__backup_disabled_title">2FAS yedeklemesi, kendi bütünlüğünü korumak için devre dışı bırakılacak</string>
     <string name="backup__error_while_exporting_file">Dosya dışa aktarılırken hata oluştu</string>
-    <string name="backup__import_completed_successfuly">İçeri aktarma başarıyla tamamlandı</string>
+    <string name="backup__import_completed_successfuly">İçe aktarma başarıyla tamamlandı</string>
     <!-- camera__video_device_in_use_by_another_app -->
     <string name="camera__camera_used_by_other_app_title">Başka bir uygulama kamerayı kullanıyor. Eğer diğer uygulamaları kapatmak işe yaramazsa cihazı yeniden başlatın</string>
     <!-- camera__video_device_unavailable_due_to_system_overload  -->
@@ -345,7 +345,7 @@
     <string name="backup__import_other_devices">Şunları içeren bir yedek dosyasını içe aktaracaksınız:</string>
     <string name="backup__import_file">Dosyayı içe aktar</string>
     <string name="backup__choose_antother_file">Başka bir dosya seç</string>
-    <string name="backup__no_new_services">İçeri aktarılacak hiçbir şey yok</string>
+    <string name="backup__no_new_services">İçe aktarılacak hiçbir şey yok</string>
     <string name="backup__file_error">Dosya hatası!</string>
     <!-- backup__services_form_file_will_be_merged -->
     <string name="backup__services_merge_title">Dosyadaki hizmetler, uygulamanızdaki hizmetlerle birleştirilecek</string>
@@ -359,7 +359,7 @@
     <string name="backup__passwords_dont_match">Parolalar eşleşmiyor</string>
     <string name="backup__save_and_export">Kaydet ve dışa aktar</string>
     <string name="backup__set_password_title">Yedek dosyanızın korunmasını artırmak için lütfen bir parola ayarlayın</string>
-    <string name="backup__enter_password_title">İçeri aktarma işlemine devam etmek için bu yedek dosyası için bir parola girin</string>
+    <string name="backup__enter_password_title">İçe aktarma işlemine devam etmek için bu yedek dosyası için bir parola girin</string>
     <string name="backup__backup_file_password_title">Bu yedek dosyası için bir parola ayarla</string>
     <string name="backup__incorrect_password">Yanlış parola</string>
     <!-- %d - number -->
@@ -581,7 +581,7 @@
     <string name="export_backup_share_cta">Paylaş</string>
     <string name="import_backup_title">Yedeği dosyadan içe aktar</string>
     <string name="import_backup_msg1">Yedek dosyasını şununla içe aktaracaksınız:</string>
-    <string name="import_backup_cta">İçeri aktar</string>
+    <string name="import_backup_cta">İçe aktar</string>
     <string name="widgets_warning_msg">Widget\'ta görünen jetonlar PIN kodunuz tarafından korunamaz.\n\nJetonlarınızı widget\'ta görüntülemek istediğinizden emin misiniz?</string>
     <string name="widgets_warning_title">UYARI!</string>
     <string name="widgets_warning_cta">Evet, eminim</string>
@@ -708,8 +708,8 @@
     <string name="extension__services_other_header">Diğer hizmetler</string>
     <string name="settings__ssl_error_title">SSL Hatası</string>
     <string name="settings__ssl_error_description">Bir SSL hatası oluştu ve sunucuya güvenli bir bağlantı yapılamıyor. Uygulamanın en son sürümüne sahip olduğunuzdan emin olun veya ağınızı değiştirmeyi deneyin.</string>
-    <string name="backup__import_error_file_size">İçeri aktarmaya çalıştığınız dosya çok büyük. Dosya boyutu sınırı 10 MB\'dir.</string>
-    <string name="backup__import_error_file_invalid">İçeri aktarmaya çalıştığınız dosya geçersiz veya bozuk. Lütfen başka bir dosya seçin.</string>
+    <string name="backup__import_error_file_size">İçe aktarmaya çalıştığınız dosya çok büyük. Dosya boyutu sınırı 10 MB\'dir.</string>
+    <string name="backup__import_error_file_invalid">İçe aktarmaya çalıştığınız dosya geçersiz veya bozuk. Lütfen başka bir dosya seçin.</string>
     <string name="appearance__toggle_active_search">Etkin arama</string>
     <string name="appearance__active_search_description">Başlangıçta aramayı etkinleştirir.</string>
     <string name="widgets__expires_in">Sona eriyor:</string>
@@ -871,7 +871,7 @@
     <string name="backup__watch_pairing_action">Cihaz eşleştir</string>
     <string name="backup__watch_pairing_error">Şu anda Watch ile eşleştirilemiyor. Bulut yedeklemesinin etkinleştirilmiş ve bir parola ile eşitlenmiş olduğundan emin olun.</string>
     <string name="backup__cloud_error_title">Bulut yedekleme hatası</string>
-    <string name="backup__cloud_error_missing_system_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü sistem anahtarı yok. iCloud Anahtar Zincirinin etkinleştirilmiş olduğu ve doğru çalıştığını denetleyin.</string>
+    <string name="backup__cloud_error_missing_system_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü sistem anahtarı yok. iCloud Anahtar Zincirinin etkinleştirilmiş olduğunu ve doğru çalıştığını denetleyin.</string>
     <string name="backup__cloud_error_mismatch_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü Sistem Anahtarı kullanılarak şifrelenmiş ve şu anda özel bir parola kullanıyorsunuz. Geçiş yapmak ister misiniz?</string>
     <string name="backup__cloud_error_new_version_content">Bulut yedeklemesi ile eşitlenemiyor çünkü uygulamanın daha güncel bir sürümüne taşınmıştı. Bulut yedeklemesini kullanmaya devam etmek için uygulamayı güncelleyin.</string>
     <string name="backup__enter_cloud_backup_password_title">Bulut yedeklemesi parolası girin</string>
@@ -914,7 +914,7 @@
     <string name="notifications__link_copied">Bağlantı kopyalandı</string>
     <string name="tokens__qr_code_show">Hizmetin QR kodunu göster</string>
     <string name="tokens__qr_code_share">Hizmetin QR kodunu paylaş</string>
-    <string name="settings_open_twofass_appstore">2FAS Pass\'ı al</string>
+    <string name="settings_open_twofass_appstore">2FAS Pass\'ı yükle</string>
     <string name="settings_open_twofass">2FAS Pass\'ı aç</string>
     <string name="settings_manage_passwords_title">Parolaları yönet</string>
     <string name="quick_setup_drive_sync_title">Kasa eşitlemesi</string>
@@ -924,21 +924,32 @@
     <string name="settings__export_title_tokens">Jetonları dışa aktar</string>
     <string name="settings__export_title_qr_codes">QR kodlarını dışa aktar</string>
     <string name="settings__export_title_options">Dışa aktarma seçenekleri</string>
-    <string name="settings__export_options_copy_clipboard">Panoya kopyala</string>
     <string name="settings__export_options_save_file">OTPAuth dosyasını kaydet</string>
     <string name="settings__export_options_export_qr_codes">QR kodlarını dışa aktar</string>
-    <string name="settings__export_options_footer">Jetonları nasıl dışa aktarmak istediğinizi seçin. Jetonları panoya kopyalayabilir, OTPAuth dosyası olarak kaydedebilir veya QR kodları olarak dışa aktarabilirsiniz.</string>
+    <string name="settings__export_options_footer">Jetonları nasıl dışa aktarmak istediğinizi seçin. Jetonları OTPAuth dosyası veya QR kodları olarak dışa aktarabilirsiniz.</string>
     <string name="settings__import_otpauth_title">OTPAuth bağlantıları</string>
     <string name="settings__import_from_file">Dosyadan içe aktar</string>
-    <string name="settings__import_read_from_clipboard">Panodan içe aktar</string>
-    <string name="settings__import_otpauth_footer">Jetonları OTPAuth betin belgesi veya OTPAuth panosundan içe aktarın</string>
     <string name="settings__import_from_text_file">Jetonları metin belgesinden içe aktar</string>
-    <string name="settings__import_from_clipboard">Jetonları panodan içe aktar</string>
-    <string name="settings__import_from_text_file_description">Metin belgesi \'otpauth://\' ile başlayan linklerden oluşan bir liste içermelidir.</string>
-    <string name="settings__import_from_clipboard_description">Pano \'otpauth://\' ile başlayan linklerden oluşan bir liste içermelidir.</string>
+    <string name="settings__import_from_text_file_description">Metin belgesi \'otpauth://\' ile başlayan bağlantılardan oluşan bir liste içermelidir.</string>
     <string name="settings__import_contents_file">Jetonlar metin belgesinden içe aktarılıyor</string>
-    <string name="settings__import_contents_clipboard">Jetonlar panodan içe aktarılıyor</string>
-    <string name="settings__import_clipboard_empty">Pano boş veya desteklenen bir bağlantı biçimi içermiyor.</string>
-    <string name="widget__open_app">Open 2FAS Auth</string>
-    <string name="widget__open_app_description">Quick access to 2FAS Auth</string>
+    <string name="widget__open_app">2FAS Auth\'u aç</string>
+    <string name="widget__open_app_description">2FAS Auth\'a hızlı erişim</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Yukarı taşı</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">Aşağı taşı</string>
+    <string name="settings__transfer">Jetonları aktar</string>
+    <string name="transfer__import_section_title">Diğer uygulamalardan içe aktar</string>
+    <string name="transfer__export_section_title">OTPAuth\'a dışa aktar</string>
+    <string name="transfer__export_otp_file">Jetonları dosyaya dışa aktar</string>
+    <string name="transfer__export_otp_qr">Jetonları QR kodları olarak dışa aktar</string>
+    <string name="exportwarning__title_file">Jetonları dosyaya dışa aktar</string>
+    <string name="exportwarning__cta_file">Dosyaya dışa aktar</string>
+    <string name="exportwarning__description_file">Tüm 2AD jetonlarınızı, gizli anahtarlarıyla birlikte, şifrelenmemiş bir dosyaya dışa aktarmak üzeresiniz. Bu dosyaya erişimi olan herkes, dosyayı kullanarak hesaplarınızı ele geçirebilir. Lütfen dosyayı güvende tutun.</string>
+    <string name="exportwarning__toggle">Riski anlıyorum</string>
+    <string name="transfer__import_otpauth_file">Genel OTPAuth dosyası</string>
+    <string name="exportwarning__description_qr">Tüm 2AD jetonlarınızı, QR kodları içeren şifrelenmemiş bir ZIP dosyasına dışa aktarmak üzeresiniz. Bu QR kodları, hesaplarınızı ele geçirmek üzere kullanılabilir. Lütfen QR kodlarını güvende tutun.</string>
+    <string name="exportwarning__title_qr">Jetonları QR kodları olarak dışa aktar</string>
+    <string name="exportwarning__cta_qr">QR kodları olarak dışa aktar</string>
+    <string name="commons__icloud_backup_password">iCloud yedeği parolası</string>
 </resources>

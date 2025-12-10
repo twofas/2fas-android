@@ -24,6 +24,7 @@ fun TwNavigationBar(
         tonalElevation = 0.dp,
         modifier = modifier,
         content = content,
+        containerColor = TwTheme.color.surface,
     )
 }
 

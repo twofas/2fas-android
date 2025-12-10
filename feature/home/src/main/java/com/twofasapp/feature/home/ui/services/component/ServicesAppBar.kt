@@ -173,7 +173,7 @@ private fun SearchBar(
                 )
             },
             textStyle = TwTheme.typo.body1.copy(fontSize = 18.sp),
-            colors = TextFieldDefaults.textFieldColors(
+            colors = TextFieldDefaults.colors(
                 disabledTextColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
@@ -181,6 +181,10 @@ private fun SearchBar(
                 focusedTextColor = TwTheme.color.onSurfacePrimary,
                 focusedPlaceholderColor = TwTheme.color.onSurfaceSecondary,
                 unfocusedPlaceholderColor = TwTheme.color.onSurfaceSecondary,
+                unfocusedContainerColor = TwTheme.color.surface,
+                focusedContainerColor = TwTheme.color.surface,
+                disabledContainerColor = TwTheme.color.surface,
+                errorContainerColor = TwTheme.color.surface,
             ),
             interactionSource = remember { MutableInteractionSource() }
                 .also { interactionSource ->

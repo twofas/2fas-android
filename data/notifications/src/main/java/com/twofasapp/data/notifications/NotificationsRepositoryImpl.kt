@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import java.time.Instant
-import java.time.ZoneId
 
 internal class NotificationsRepositoryImpl(
     private val dispatchers: Dispatchers,
@@ -24,10 +23,14 @@ internal class NotificationsRepositoryImpl(
         }
     }
 
-    override suspend fun fetchNotifications(sinceMillis: Long) {
+    override suspend fun fetchNotifications(
+        appInstallTimeMillis: Long,
+        noCompanionAppFromTimeMillis: Long?
+    ) {
         withContext(dispatchers.io) {
             val remoteData = remote.fetchNotifications(
-                publishedAfter = Instant.ofEpochMilli(sinceMillis).atZone(ZoneId.systemDefault()).toOffsetDateTime()
+                appInstallTime = Instant.ofEpochMilli(appInstallTimeMillis),
+                noCompanionAppFromTime = noCompanionAppFromTimeMillis?.let { Instant.ofEpochMilli(it) },
             )
             local.saveNotifications(remoteData.map { it.asDomain() })
         }
@@ -46,7 +49,7 @@ internal class NotificationsRepositoryImpl(
     }
 
     private fun List<Notification>.sortedByTime(): List<Notification> {
-        return sortedByDescending { it.publishTime }
+        return sortedByDescending { it.createdAt }
     }
 
     override suspend fun getPeriodicNotificationCounter(): Int {

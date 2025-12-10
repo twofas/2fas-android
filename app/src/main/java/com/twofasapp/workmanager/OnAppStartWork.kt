@@ -155,9 +155,7 @@ class OnAppStartWork(
             category = category,
             link = link,
             message = message,
-            publishTime = Instant.now().toEpochMilli(),
-            push = false,
-            platform = "android",
+            createdAt = Instant.now().toEpochMilli(),
             isRead = false,
             internalRoute = internalRoute,
         )

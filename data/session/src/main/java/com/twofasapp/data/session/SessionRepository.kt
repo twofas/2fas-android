@@ -15,4 +15,5 @@ interface SessionRepository {
     suspend fun getAppInstallTimestamp(): Long
     suspend fun markAppInstalled()
     suspend fun recalculateTimeDelta()
+    suspend fun noCompanionAppFromTimestamp(): Long?
 }

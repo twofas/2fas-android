@@ -142,7 +142,7 @@ private fun Notification(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = TwLocale.formatDuration(notification.publishTime),
+                text = TwLocale.formatDuration(notification.createdAt),
                 modifier = Modifier.fillMaxWidth(),
                 color = TwTheme.color.onSurfaceSecondary,
                 style = TwTheme.typo.body4
