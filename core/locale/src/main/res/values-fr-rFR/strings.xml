@@ -361,6 +361,11 @@
     <string name="backup__set_password_title">Pour renforcer la protection de votre fichier de sauvegarde, veuillez définir un mot de passe.</string>
     <string name="backup__enter_password_title">Saisissez un mot de passe pour ce fichier de sauvegarde afin de poursuivre le processus d\'importation</string>
     <string name="backup__backup_file_password_title">Définir un mot de passe pour le fichier de sauvegarde</string>
+    <!-- Password validation errors -->
+    <string name="backup__password_length_error">Le mot de passe doit contenir entre %1$d et %2$d caractères</string>
+    <string name="backup__password_confirm_error">Les mots de passe ne correspondent pas</string>
+    <string name="backup__password_validation_error">Le mot de passe contient des caractères non valides</string>
+    <string name="backup__password_validation_hint">Le mot de passe ne peut contenir que des lettres, des chiffres et ces symboles : _/!#$%&amp;+*~@?=^.,(){}[]&lt;&gt;|-</string>
     <string name="backup__incorrect_password">Mot de passe incorrect</string>
     <!-- %d - number -->
     <string name="backup__new_services">%d nouveaux services</string>
