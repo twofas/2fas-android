@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Sat, 28 Feb 2026 03:33:49 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -878,9 +878,9 @@
     <string name="backup__enter_password_description">La sauvegarde iCloud est chiffrée avec votre mot de passe. Veuillez le saisir pour activer la synchronisation.</string>
     <string name="backup__enter_password_failure">Échec ! %s</string>
     <string name="backup__enter_password_wrong_password">Mauvais mot de passe ! Veuillez ressayer</string>
-    <string name="backup__migration_title">Migration de la sauvegarde dans le nuage</string>
-    <string name="backup__migration_subtitle">Ne fermez pas l\'appli !</string>
-    <string name="backup__migration_description">Votre sauvegarde est chiffrée avec votre Clé Système. Cette clé sera partagée parmi les applications qui utilisent votre trousseau iCloud. Souvenez-vous d\'activer cette option. Si vous utilisez votre mot de passe, il est possible de le faire à partir des paramètres de sauvegarde dans le nuage après la migration.</string>
+    <string name="backup__migration_title">Mise à niveau en cours</string>
+    <string name="backup__migration_subtitle">Merci de patienter...\n</string>
+    <string name="backup__migration_description">Nous mettons l\'app à niveau afin de vous fournir de nouvelles fonctionnalités de sécurité.</string>
     <string name="commons__success_ex">L\'opération s\'est terminée avec succès !</string>
     <string name="backup__encryption_type">Type de chiffrement</string>
     <string name="backup__encryption_select">Sélectionner le type de chiffrement</string>
@@ -952,4 +952,23 @@
     <string name="exportwarning__title_qr">Exporter tous les jetons en tant que QR codes</string>
     <string name="exportwarning__cta_qr">Exporter en tant que QR codes</string>
     <string name="commons__icloud_backup_password">Mot de passe de la sauvegarde iCloud</string>
+    <string name="backup__manage_title">Gérer la sauvegarde</string>
+    <string name="backup__password_length_error">Le mot de passe doit contenir au minimum %1$d-%2$d caractères.</string>
+    <string name="backup__password_characters_error">Le mot de passe doit contenir uniquement des lettres, chiffres, espaces ou symboles.</string>
+    <string name="backup__password_match_error">Les mots de passe ne correspondent pas.</string>
+    <string name="backup__encryption_title">Chiffrement</string>
+    <string name="backup__removing_password">Retrait du mot de passe</string>
+    <string name="backup__veryfing_password">Vérification du mot de passe</string>
+    <string name="backup__verify_password_description">La sauvegarde iCloud est chiffrée avec votre mot de passe. Saisir le mdp pour appliquer les changements.</string>
+    <string name="backup__password_set">Mot de passe appliqué avec succès</string>
+    <string name="backup__setting_password">Paramétrage du mot de passe</string>
+    <string name="backup__changing_password">Changement du mot de passe en cours</string>
+    <string name="backup__set_password">Saisir un mot de passe</string>
+    <string name="backup__change_password">Changer votre mot de passe</string>
+    <string name="backup__password_set_description">Saisir un mot de passe pour ajouter une couche de protection à votre sauvegarde. Si vous oubliez le mot de passe, le processus de sauvegarde devra reprendre de zéro.</string>
+    <string name="backup__password_rules_description">Seuls les lettres, chiffres, espaces et caractères spéciaux (!@#$%^&amp;*()-_) sont permis.</string>
+    <string name="pass_promo_banner_title">Nous avons créé quelque chose de nouveau pour vous !</string>
+    <string name="pass_promo_banner_msg">Un **gestionnaire de mots de passe – 2FAS Pass** sécurisé, axé sur le local, conçu pour fonctionner avec 2FAS Auth, en gardant votre Authenticator exactement tel qu’il est.</string>
+    <string name="pass_promo_banner_positive_cta">Aller au Store</string>
+    <string name="pass_promo_banner_negative_cta">Ne plus afficher</string>
 </resources>

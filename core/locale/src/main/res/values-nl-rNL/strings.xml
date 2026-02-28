@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Sat, 28 Feb 2026 03:33:49 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -951,5 +951,24 @@
     <string name="exportwarning__description_qr">U staat op het punt al uw 2FA-tokens te exporteren naar een niet versleuteld ZIP-bestand met QR-codes erin. Deze QR-codes kunnen worden gebruikt om controle over uw accounts te krijgen. Bewaar ze daarom op een veilige plaats.</string>
     <string name="exportwarning__title_qr">Exporteer Tokens als QR-codes</string>
     <string name="exportwarning__cta_qr">Exporteer als QR-code</string>
-    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
+    <string name="commons__icloud_backup_password">Wachtwoord voor iCloud backup</string>
+    <string name="backup__manage_title">Back-up beheren</string>
+    <string name="backup__password_length_error">Wachtwoord moet %1$d-%2$d tekens lang zijn.</string>
+    <string name="backup__password_characters_error">Wachtwoord mag alleen letters, cijfers, spaties en symbolen bevatten.</string>
+    <string name="backup__password_match_error">Wachtwoorden komen niet overeen.</string>
+    <string name="backup__encryption_title">Encryptie</string>
+    <string name="backup__removing_password">Wachtwoord verwijderen</string>
+    <string name="backup__veryfing_password">Wachtwoord verifiëren</string>
+    <string name="backup__verify_password_description">iCloud backup is versleuteld met uw wachtwoord. Voer het in om wijzigingen toe te passen.</string>
+    <string name="backup__password_set">Wachtwoord succesvol ingesteld</string>
+    <string name="backup__setting_password">Wachtwoord instellen</string>
+    <string name="backup__changing_password">Wachtwoord veranderen</string>
+    <string name="backup__set_password">Stel uw wachtwoord in</string>
+    <string name="backup__change_password">Verander uw wachtwoord</string>
+    <string name="backup__password_set_description">Voer uw wachtwoord in om de inhoud van uw back-up extra te beveiligen. Als u dit wachtwoord vergeet, moet u de back-up verwijderen en opnieuw beginnen.</string>
+    <string name="backup__password_rules_description">Alleen letters, cijfers, spaties en speciale tekens (!@#$%^&amp;*()-_) zijn toegestaan.</string>
+    <string name="pass_promo_banner_title">We hebben iets nieuws voor je gebouwd!</string>
+    <string name="pass_promo_banner_msg">Een veilige, lokaal-eerst **wachtwoordmanager – 2FAS Pass**, ontworpen om samen te werken met 2FAS Auth, zodat je Authenticator precies blijft zoals hij is.</string>
+    <string name="pass_promo_banner_positive_cta">Ga naar de Store</string>
+    <string name="pass_promo_banner_negative_cta">Niet meer tonen</string>
 </resources>

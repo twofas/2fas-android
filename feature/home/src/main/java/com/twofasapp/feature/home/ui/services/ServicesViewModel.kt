@@ -51,6 +51,7 @@ internal class ServicesViewModel(
                 sessionRepository.observeBackupEnabled(),
                 backupRepository.observeCloudSyncStatus(),
                 searchQuery,
+                sessionRepository.observeShowPassBanner(),
             ) { array ->
                 CombinedResult(
                     groups = array[0] as List<Group>,
@@ -61,12 +62,15 @@ internal class ServicesViewModel(
                     backupEnabled = array[5] as Boolean,
                     cloudSyncStatus = array[6] as CloudSyncStatus,
                     searchQuery = array[7] as String,
+                    showPassBanner = array[8] as Boolean,
                 )
             }.collect { result ->
 
                 val showSyncReminder = result.appSettings.showBackupNotice && result.showBackupReminder && result.backupEnabled.not()
                 val showSyncNoticeBar =
                     result.appSettings.showBackupNotice && showSyncReminder.not() && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
+
+                val showPassBanner = result.showPassBanner && result.services.size == 1
 
                 val filteredServices = result.services
                     .sortedBy {
@@ -83,6 +87,7 @@ internal class ServicesViewModel(
                         groups = result.groups,
                         showSyncNoticeBar = showSyncNoticeBar,
                         showSyncReminder = showSyncReminder,
+                        showPassBanner = showPassBanner,
                         totalGroups = result.groups.size,
                         totalServices = result.services.size,
                         isLoading = false,
@@ -94,8 +99,9 @@ internal class ServicesViewModel(
                                 add(ServicesListItem.SyncNoticeBar)
                             }
 
-                            if (showSyncReminder) {
-                                add(ServicesListItem.SyncReminder)
+                            when {
+                                showSyncReminder -> add(ServicesListItem.SyncReminder)
+                                showPassBanner -> add(ServicesListItem.PassBanner)
                             }
 
                             val groupedServices: Map<Group, List<Service>> = buildMap {
@@ -218,6 +224,12 @@ internal class ServicesViewModel(
         }
     }
 
+    fun dismissPassBanner() {
+        launchScoped {
+            sessionRepository.resetPassBannerDismiss()
+        }
+    }
+
     fun incrementHotpCounter(service: Service) {
         launchScoped {
             servicesRepository.incrementHotpCounter(service)
@@ -310,5 +322,6 @@ internal class ServicesViewModel(
         val backupEnabled: Boolean,
         val cloudSyncStatus: CloudSyncStatus,
         val searchQuery: String,
+        val showPassBanner: Boolean,
     )
 }

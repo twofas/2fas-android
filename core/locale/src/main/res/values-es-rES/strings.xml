@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Sat, 28 Feb 2026 03:33:49 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -951,5 +951,24 @@
     <string name="exportwarning__description_qr">Estás a punto de exportar todos tus Tokens 2FA a un archivo ZIP sin cifrar con códigos QR dentro del archivo. Esos QR pueden ser usados para obtener control de tus cuentas. Por favor guárdalos de forma segura.</string>
     <string name="exportwarning__title_qr">Exportar Tokens como códigos QR</string>
     <string name="exportwarning__cta_qr">Exportar como códigos QR</string>
-    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
+    <string name="commons__icloud_backup_password">Contraseña de copia de seguridad de iCloud</string>
+    <string name="backup__manage_title">Gestionar copia de seguridad</string>
+    <string name="backup__password_length_error">La contraseña debe tener entre %1$d y %2$d caracteres.</string>
+    <string name="backup__password_characters_error">La contraseña solo puede contener letras, números, espacios y símbolos.</string>
+    <string name="backup__password_match_error">Las contraseñas no coinciden.</string>
+    <string name="backup__encryption_title">Cifrado</string>
+    <string name="backup__removing_password">Eliminando la contraseña</string>
+    <string name="backup__veryfing_password">Verificación de contraseña</string>
+    <string name="backup__verify_password_description">La copia de seguridad de iCloud está cifrada con tu contraseña. Introdúcela para aplicar los cambios.</string>
+    <string name="backup__password_set">Contraseña establecida correctamente</string>
+    <string name="backup__setting_password">Estableciendo contraseña</string>
+    <string name="backup__changing_password">La contraseña está cambiando</string>
+    <string name="backup__set_password">Establezca su contraseña</string>
+    <string name="backup__change_password">Cambia tu contraseña</string>
+    <string name="backup__password_set_description">Introduce una contraseña para proteger con mayor seguridad el contenido de tu copia de seguridad. Si la olvidas, tendrás que borrar la copia de seguridad y crear una nueva.</string>
+    <string name="backup__password_rules_description">Solo se permiten letras, dígitos, espacios y caracteres especiales (!@#$%^&amp;*()-_).</string>
+    <string name="pass_promo_banner_title">¡Hemos creado algo nuevo para ti!</string>
+    <string name="pass_promo_banner_msg">Un **gestor de contraseñas – 2FAS Pass** seguro y “local-first”, diseñado para funcionar junto con 2FAS Auth, manteniendo tu Authenticator exactamente como está.</string>
+    <string name="pass_promo_banner_positive_cta">Ir a la tienda</string>
+    <string name="pass_promo_banner_negative_cta">No volver a mostrar</string>
 </resources>

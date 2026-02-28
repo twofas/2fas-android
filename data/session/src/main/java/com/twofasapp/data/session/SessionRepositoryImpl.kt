@@ -36,7 +36,7 @@ internal class SessionRepositoryImpl(
         }
     }
 
-    override suspend fun showBackupReminder(): Boolean {
+override suspend fun showBackupReminder(): Boolean {
         return true
     }
 
@@ -110,6 +110,28 @@ internal class SessionRepositoryImpl(
         }
 
         return noCompanionAppFromTimestamp
+    }
+
+    override fun observeShowPassBanner(): Flow<Boolean> {
+        return local.observePassBannerDismissTimestamp().map { dismissTimestamp ->
+            if (context.isAppInstalled(packageName = "com.twofasapp.pass")) {
+                return@map false
+            }
+
+            // Check if app installed for at least 3 months
+            val currentTime = timeProvider.systemCurrentTime()
+            val appInstallTimestamp = local.getAppInstallTimestamp()
+            if ((currentTime - appInstallTimestamp) < Duration.ofDays(90).toMillis()) {
+                return@map false
+            }
+
+            // Check if 3 months elapsed since last dismiss
+            (currentTime - dismissTimestamp) >= Duration.ofDays(90).toMillis()
+        }
+    }
+
+    override fun resetPassBannerDismiss() {
+        local.setPassBannerDismissTimestamp(timeProvider.systemCurrentTime())
     }
 
     private fun recalculate(): Boolean {

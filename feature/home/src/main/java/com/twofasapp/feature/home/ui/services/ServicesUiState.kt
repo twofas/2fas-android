@@ -15,6 +15,7 @@ data class ServicesUiState(
     val searchFocused: Boolean = false,
     val showSyncNoticeBar: Boolean = false,
     val showSyncReminder: Boolean = true,
+    val showPassBanner: Boolean = false,
     val hasUnreadNotifications: Boolean = false,
     val appSettings: AppSettings = AppSettings(),
     val events: List<ServicesUiEvent> = listOf(),

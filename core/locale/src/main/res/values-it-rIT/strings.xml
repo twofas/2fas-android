@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Sat, 28 Feb 2026 03:33:49 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -878,9 +878,9 @@
     <string name="backup__enter_password_description">Il backup iCloud è cifrato con la tua password. Inseriscila per abilitare la sincronizzazione.</string>
     <string name="backup__enter_password_failure">Fallito! %s</string>
     <string name="backup__enter_password_wrong_password">Password errata! Riprova</string>
-    <string name="backup__migration_title">Migrando il backup Cloud</string>
-    <string name="backup__migration_subtitle">Non chiudere l\'app!</string>
-    <string name="backup__migration_description">Il tuo backup è cifrato con una chiave di sistema. Questa chiave sarà condivisa tra le tue applicazioni che utilizzano il Portachiavi iCloud. Ricordati di mantenere l\'opzione attiva. Se vuoi utilizzare una tua password, puoi farlo nelle impostazioni di backup Cloud dopo la migrazione.</string>
+    <string name="backup__migration_title">Aggiornamento in corso</string>
+    <string name="backup__migration_subtitle">Attendere prego...</string>
+    <string name="backup__migration_description">Stiamo aggiornando l\'app per offrirti nuove fantastiche funzionalità di sicurezza.</string>
     <string name="commons__success_ex">Successo!</string>
     <string name="backup__encryption_type">Tipo di cifratura</string>
     <string name="backup__encryption_select">Seleziona tipo di cifratura</string>
@@ -952,4 +952,23 @@
     <string name="exportwarning__title_qr">Esporta i token come codici QR</string>
     <string name="exportwarning__cta_qr">Esporta come codici QR</string>
     <string name="commons__icloud_backup_password">Password di Backup iCloud</string>
+    <string name="backup__manage_title">Gestione Backup</string>
+    <string name="backup__password_length_error">La password deve essere lunga almeno %1$d-%2$d caratteri.</string>
+    <string name="backup__password_characters_error">La password deve contenere solo lettere, numeri, spazi e simboli.</string>
+    <string name="backup__password_match_error">Le password non corrispondono.</string>
+    <string name="backup__encryption_title">Crittografia</string>
+    <string name="backup__removing_password">Rimozione della password</string>
+    <string name="backup__veryfing_password">Verifica della password</string>
+    <string name="backup__verify_password_description">Il backup di iCloud è crittografato con la tua password. Inseriscila per applicare le modifiche.</string>
+    <string name="backup__password_set">Password impostata con successo.</string>
+    <string name="backup__setting_password">Impostazione della password</string>
+    <string name="backup__changing_password">Modifica della password</string>
+    <string name="backup__set_password">Imposta la tua password</string>
+    <string name="backup__change_password">Modifica la tua password</string>
+    <string name="backup__password_set_description">Inserisci la tua password per proteggere ulteriormente il contenuto del tuo backup. Se dimentichi la password, dovrai rimuovere il backup e ricominciare da capo.</string>
+    <string name="backup__password_rules_description">Sono consentiti solo lettere, cifre, spazi e caratteri speciali (!@#$%^&amp;*()-_).</string>
+    <string name="pass_promo_banner_title">Abbiamo creato qualcosa di nuovo per te!</string>
+    <string name="pass_promo_banner_msg">Un **gestore di password – 2FAS Pass** sicuro e “local-first”, progettato per integrarsi con 2FAS Auth, mantenendo il tuo Authenticator esattamente com’è.</string>
+    <string name="pass_promo_banner_positive_cta">Vai allo Store</string>
+    <string name="pass_promo_banner_negative_cta">Non mostrare più</string>
 </resources>

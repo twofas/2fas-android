@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hant, Traditional Chinese
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:05 -0800
+ Exported at: Sat, 28 Feb 2026 03:33:50 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -40,7 +40,7 @@
     <string name="commons__copy">複製</string>
     <string name="commons__delete">刪除</string>
     <string name="commons__dismiss">取消</string>
-    <string name="commons__done">已完成</string>
+    <string name="commons__done">完成</string>
     <string name="commons__edit">編輯</string>
     <string name="commons__enter_code_manually">手動輸入驗證碼</string>
     <string name="commons__error">錯誤</string>
@@ -872,9 +872,9 @@
     <string name="backup__enter_password_description">iCloud 備份透過您的密碼加密。輸入密碼以啟用同步。</string>
     <string name="backup__enter_password_failure">失敗！%s</string>
     <string name="backup__enter_password_wrong_password">密碼錯誤！請再試一次。</string>
-    <string name="backup__migration_title">遷移雲端備份</string>
-    <string name="backup__migration_subtitle">不要關閉此應用程式！</string>
-    <string name="backup__migration_description">您的備份已透過系統金鑰進行加密，此金鑰將與您使用 iCloud 鑰匙圈的應用程式共用，請確保該選項已啟用。如您想使用自己的密碼，可以在遷移後在雲端備份設定中進行設定。</string>
+    <string name="backup__migration_title">升級進行中</string>
+    <string name="backup__migration_subtitle">請稍候…</string>
+    <string name="backup__migration_description">我們正在升級應用程式，為您帶來全新的強大安全功能。</string>
     <string name="commons__success_ex">成功！</string>
     <string name="backup__encryption_type">加密類型</string>
     <string name="backup__encryption_select">選擇加密類型</string>
@@ -945,5 +945,24 @@
     <string name="exportwarning__description_qr">您即將把所有 2FA 權杖匯出至一個未加密的 ZIP 檔案中，其中包括 QR 碼。這些 QR 碼可用於控制您的帳戶。請妥善保管。</string>
     <string name="exportwarning__title_qr">將權杖匯出為 QR 碼</string>
     <string name="exportwarning__cta_qr">匯出為 QR 碼</string>
-    <string name="commons__icloud_backup_password"></string>
+    <string name="commons__icloud_backup_password">iCloud 備份密碼</string>
+    <string name="backup__manage_title">管理備份</string>
+    <string name="backup__password_length_error">密碼長度必須為%1$d-%2$d個字元。</string>
+    <string name="backup__password_characters_error">密碼僅限包括字母、數字、空格及符號。</string>
+    <string name="backup__password_match_error">密碼不符。</string>
+    <string name="backup__encryption_title">加密</string>
+    <string name="backup__removing_password">移除密碼</string>
+    <string name="backup__veryfing_password">驗證密碼</string>
+    <string name="backup__verify_password_description">iCloud 備份已使用您的密碼進行加密，請輸入密碼以套用變更。</string>
+    <string name="backup__password_set">密碼設定成功</string>
+    <string name="backup__setting_password">正在設定密碼</string>
+    <string name="backup__changing_password">正在變更密碼</string>
+    <string name="backup__set_password">設定密碼</string>
+    <string name="backup__change_password">變更密碼</string>
+    <string name="backup__password_set_description">請輸入密碼以進一步保護備份內容。如果忘記密碼，您將需要移除備份並重新開始。</string>
+    <string name="backup__password_rules_description">僅允許使用字母、數字、空格及特殊字元 (!@#$%^&amp;*()-_)。</string>
+    <string name="pass_promo_banner_title">我們為你打造了全新功能！</string>
+    <string name="pass_promo_banner_msg">一個安全、本地優先的密碼管理器 – 2FAS Pass，可與 2FAS Auth 搭配使用，讓你的驗證器完全維持原樣。</string>
+    <string name="pass_promo_banner_positive_cta">前往商店</string>
+    <string name="pass_promo_banner_negative_cta">不再顯示</string>
 </resources>

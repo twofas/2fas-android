@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Sat, 28 Feb 2026 03:33:49 -0800
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -81,7 +81,7 @@
     <string name="introduction__page_3_title">Private</string>
     <string name="introduction__page_3_content">2FAS respects and protects your privacy. This app will never collect, process, or use any of your personal data.</string>
     <string name="introduction__page_4_title">Secure</string>
-    <string name="introduction__page_4_content_ios">Your Tokens are stored offline via the device storage, so remember to back up your services! Use iCloud Sync and a PIN password to protect against unauthorized access and device damage.</string>
+    <string name="introduction__page_4_content_ios">Your Tokens are stored offline via the device storage, so remember to back up your services! Use iCloud Sync and a PIN to protect against unauthorized access and device damage.</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">Start using 2FAS</string>
     <string name="introduction__tos">Terms of service</string>
@@ -426,7 +426,7 @@
     <string name="browser__more_info_link">https://www.2fas.com/be</string>
     <string name="browser__pairing_successful_title">Pairing successful!</string>
     <string name="browser__pairing_successful_description">2FAS will send you a Push Notification whenever you log in to your online services using this web browser. You will no longer need to re-type your tokens for each use.</string>
-    <string name="browser__pairing_failed_title">Pairing failed :(</string>
+    <string name="browser__pairing_failed_title">Pairing failed</string>
     <string name="browser__pairing_failed_description">This QR code wasn’t recognized, and 2FAS could not pair this device with the browser extension. Please try again.</string>
     <!-- browser__pairing_already_paired_title -->
     <string name="browser__already_paired_title">Already paired!</string>
@@ -470,7 +470,7 @@
     <string name="backup__google_drive_disabled_title">Google Drive has been disabled by the user</string>
     <string name="backup__update_required_to_import_title_2">You\'ll need a new version of the app to import the contents of this file. You can find the newest version in the Google Store</string>
     <string name="tokens__qr_code_leads_to_google_store">This QR Code takes you to the Google Store</string>
-    <string name="introduction__page_4_content_android">Your Tokens are stored offline via the device storage, so remember to back up your services! Use Google Drive Sync and PIN password to protect against unauthorized access and device damage.</string>
+    <string name="introduction__page_4_content_android">Your Tokens are stored offline via the device storage, so remember to back up your services! Use Google Drive Sync and PIN to protect against unauthorized access and device damage.</string>
     <string name="new_version__new_version_message_android">A new version of 2FAS is available on Google Store. Update now!</string>
     <string name="security_error_no_match">PIN does not match! Please try again.</string>
     <string name="settings_developer_options">Developer Options</string>
@@ -869,7 +869,7 @@
     <string name="backup__watch_pairing_description">Do you want to pair an Apple Watch with your iCloud backup? Enter the name for your device:</string>
     <string name="backup__watch_pairing_default_name">Apple Watch</string>
     <string name="backup__watch_pairing_action">Pair device</string>
-    <string name="backup__watch_pairing_error">Can\'t pair with the Watch now. Ensure the Cloud backup is enabled and synced using a password.</string>
+    <string name="backup__watch_pairing_error">Can\'t pair with the Watch now. Ensure the iCloud backup is enabled and synced using a password.</string>
     <string name="backup__cloud_error_title">Cloud backup error</string>
     <string name="backup__cloud_error_missing_system_key_content">Can\'t decrypt Cloud backup because there\'s no System Key. Check if iCloud Keychain sync is enabled and works correctly.</string>
     <string name="backup__cloud_error_mismatch_key_content">Can\'t decrypt Cloud backup because it\'s encrypted using System Key, and you\'re using a custom password. Would you like to switch?</string>
@@ -878,23 +878,23 @@
     <string name="backup__enter_password_description">iCloud backup is encrypted with your password. Enter it to enable sync.</string>
     <string name="backup__enter_password_failure">Failure! %s</string>
     <string name="backup__enter_password_wrong_password">Wrong password! Please try again</string>
-    <string name="backup__migration_title">Migrating Cloud backup</string>
-    <string name="backup__migration_subtitle">Don\'t turn off the app!</string>
-    <string name="backup__migration_description">Your backup is encrypted with a System key. This key will be shared amongst your apps that use iCloud Keychain. Remember to have that option turned on. If you want to use your password, you can do that in the Cloud backup settings after migration.</string>
+    <string name="backup__migration_title">Upgrade in progress</string>
+    <string name="backup__migration_subtitle">Please wait...</string>
+    <string name="backup__migration_description">We\'re upgrading the app to bring you new awesome security features.</string>
     <string name="commons__success_ex">Success!</string>
     <string name="backup__encryption_type">Encryption type</string>
     <string name="backup__encryption_select">Select encryption type</string>
     <string name="backup__encryption_enter_password">Enter password</string>
     <string name="backup__encryption_change_password">Change password</string>
-    <string name="backup__encryption_password_description">Password is used to encrypt your data. If you lose it, you won\'t be able to recover data from the Cloud backup.</string>
+    <string name="backup__encryption_password_description">This password is used to encrypt your data. If you lose it, you won\'t be able to recover data from the iCloud backup.</string>
     <string name="backup__encryption_change_title">Change encryption type</string>
     <string name="backup__encryption_method_footer">Select System or Custom password</string>
     <string name="backup__manage_paired_watches_title">Manage paired Apple Watches</string>
-    <string name="backup__manage_paired_watches_footer">Add, remove or rename Apple Watches with access to this Cloud backup.</string>
+    <string name="backup__manage_paired_watches_footer">Add, remove or rename Apple Watches that have access to this Cloud backup.</string>
     <string name="backup__manage_paired_watches_rename_title">Rename Watch</string>
     <string name="backup__manage_paired_watches_rename_description">Enter new device name</string>
     <string name="backup__manage_paired_watches_rename_action">Rename</string>
-    <string name="backup__manage_paired_watches_title_short">Manage Watches</string>
+    <string name="backup__manage_paired_watches_title_short">Apple Watches</string>
     <string name="backup__manage_paired_watches_empty_list">List is empty. Pair Watch using + button</string>
     <string name="backup__manage_paired_watches_syncing">Cloud backup is syncing...</string>
     <string name="backup__watch_pair_title">Pair your Apple Watch</string>
@@ -938,7 +938,7 @@
     <string name="tokens__move_up">Move up</string>
     <!-- Used on a tokens list in context menu to move service down on that list -->
     <string name="tokens__move_down">Move down</string>
-    <string name="settings__transfer">Transfer Tokens</string>
+    <string name="settings__transfer">Transfer tokens</string>
     <string name="transfer__import_section_title">Import from other apps</string>
     <string name="transfer__export_section_title">Export to OTPAuth</string>
     <string name="transfer__export_otp_file">Export Tokens to file</string>
@@ -951,5 +951,24 @@
     <string name="exportwarning__description_qr">You are about to export all of your 2FA Tokens into an unencrypted ZIP file with QR codes inside. Those QR codes can be used to take control of your accounts. Please keep them safe.</string>
     <string name="exportwarning__title_qr">Export Tokens as QR codes</string>
     <string name="exportwarning__cta_qr">Export as QR codes</string>
-    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
+    <string name="commons__icloud_backup_password">iCloud Backup password</string>
+    <string name="backup__manage_title">Manage Backup</string>
+    <string name="backup__password_length_error">Password must be %1$d-%2$d characters long.</string>
+    <string name="backup__password_characters_error">Password may only contain letters, numbers, spaces and symbols.</string>
+    <string name="backup__password_match_error">Passwords do not match.</string>
+    <string name="backup__encryption_title">Encryption</string>
+    <string name="backup__removing_password">Removing password</string>
+    <string name="backup__veryfing_password">Verifying password</string>
+    <string name="backup__verify_password_description">iCloud backup is encrypted with your password. Enter it to apply changes.</string>
+    <string name="backup__password_set">Password set successfully</string>
+    <string name="backup__setting_password">Setting password</string>
+    <string name="backup__changing_password">Changing password</string>
+    <string name="backup__set_password">Set your password</string>
+    <string name="backup__change_password">Change your password</string>
+    <string name="backup__password_set_description">Enter your password to additionally protect the contents of your backup. If you forget this password, you will need to remove the backup and start over.</string>
+    <string name="backup__password_rules_description">Only letters, digits, spaces and special characters (!@#$%^&amp;*()-_) are allowed.</string>
+    <string name="pass_promo_banner_title">We built something new for you!</string>
+    <string name="pass_promo_banner_msg">A secure, local-first **Password Manager – 2FAS Pass**, designed to work alongside 2FAS Auth, keeping your Authenticator exactly as it is.</string>
+    <string name="pass_promo_banner_positive_cta">Go to Store</string>
+    <string name="pass_promo_banner_negative_cta">Don\'t show again</string>
 </resources>
