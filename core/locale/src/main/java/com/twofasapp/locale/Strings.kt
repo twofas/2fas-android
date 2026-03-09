@@ -193,6 +193,8 @@ class Strings(c: Context) {
     val browserRequestEmpty = c.getString(R.string.tokens__service_not_found_search)
 
     val settingsTheme = c.getString(R.string.settings__option_theme)
+    val settingsDynamicColors = c.getString(R.string.appearance_dynamic_colors)
+    val settingsDynamicColorsBody = c.getString(R.string.appearance_dynamic_colors_description)
     val settingsShowNextCode = c.getString(R.string.settings__show_next_token)
     val settingsShowNextCodeBody = c.getString(R.string.settings__show_next_token_desc)
     val settingsAutoFocusSearch = c.getString(R.string.appearance__toggle_active_search)

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Sat, 28 Feb 2026 03:33:49 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:08 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -971,4 +971,6 @@
     <string name="pass_promo_banner_msg">Ένας ασφαλής, «local-first» **διαχειριστής κωδικών πρόσβασης – 2FAS Pass**, σχεδιασμένος να λειτουργεί δίπλα στο 2FAS Auth, κρατώντας τον Authenticator σας ακριβώς όπως είναι.</string>
     <string name="pass_promo_banner_positive_cta">Μετάβαση στο Store</string>
     <string name="pass_promo_banner_negative_cta">Να μην εμφανιστεί ξανά</string>
+    <string name="appearance_dynamic_colors">Δυναμικά χρώματα</string>
+    <string name="appearance_dynamic_colors_description">Αλλάξτε δυναμικά τα χρώματα της εφαρμογής με βάση την ταπετσαρία σας.</string>
 </resources>

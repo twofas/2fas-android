@@ -70,4 +70,18 @@ internal class AppSettingsViewModel(
             settingsRepository.setHideCodes(uiState.value.appSettings.hideCodes.not())
         }
     }
+
+    fun toggleDynamicColors() {
+        launchScoped {
+            val shouldRecreate = uiState.value.appSettings.dynamicColors.not() != uiState.value.appSettings.dynamicColors
+
+            settingsRepository.setDynamicColors(uiState.value.appSettings.dynamicColors.not())
+
+            if (shouldRecreate) {
+                uiState.update {
+                    it.copy(events = it.events.plus(AppSettingsUiEvent.Recreate))
+                }
+            }
+        }
+    }
 }

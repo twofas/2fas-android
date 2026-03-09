@@ -12,4 +12,5 @@ data class AppSettings(
     val servicesStyle: ServicesStyle = ServicesStyle.Default,
     val servicesSort: ServicesSort = ServicesSort.Manual,
     val hideCodes: Boolean = false,
+    val dynamicColors: Boolean = false,
 )

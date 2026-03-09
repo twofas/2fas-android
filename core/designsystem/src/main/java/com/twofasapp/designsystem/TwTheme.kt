@@ -2,7 +2,6 @@ package com.twofasapp.designsystem
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.luminance
-import com.twofasapp.designsystem.internal.LocalThemeColors
 import com.twofasapp.designsystem.internal.ThemeColors
 import com.twofasapp.designsystem.internal.ThemeDimens
 import com.twofasapp.designsystem.internal.ThemeShapes

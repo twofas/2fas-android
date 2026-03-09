@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Sat, 28 Feb 2026 03:33:49 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:08 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -971,4 +971,6 @@
     <string name="pass_promo_banner_msg">2FAS Auth ile birlikte çalışacak şekilde tasarlanmış, Authenticator’ınızı olduğu gibi bırakan, güvenli ve “local-first” bir parola yöneticisi – 2FAS Pass.</string>
     <string name="pass_promo_banner_positive_cta">Mağazaya git</string>
     <string name="pass_promo_banner_negative_cta">Bir daha gösterme</string>
+    <string name="appearance_dynamic_colors">Dinamik renkler</string>
+    <string name="appearance_dynamic_colors_description">Duvar kâğıdınıza göre uygulama renklerini dinamik olarak değiştirin.</string>
 </resources>

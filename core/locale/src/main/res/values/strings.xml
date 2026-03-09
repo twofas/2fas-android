@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Sat, 28 Feb 2026 03:33:49 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -971,4 +971,6 @@
     <string name="pass_promo_banner_msg">A secure, local-first **Password Manager – 2FAS Pass**, designed to work alongside 2FAS Auth, keeping your Authenticator exactly as it is.</string>
     <string name="pass_promo_banner_positive_cta">Go to Store</string>
     <string name="pass_promo_banner_negative_cta">Don\'t show again</string>
+    <string name="appearance_dynamic_colors">Dynamic Colors</string>
+    <string name="appearance_dynamic_colors_description">Dynamically change the app colors based on your wallpaper.</string>
 </resources>

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sat, 28 Feb 2026 03:33:49 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -967,8 +967,10 @@
     <string name="backup__change_password">Ändere dein Passwort</string>
     <string name="backup__password_set_description">Gib ein Passwort ein, um den Inhalt deiner Sicherung zusätzlich zu schützen. Wenn du dein Passwort vergisst, dann musst du die Sicherung entfernen und von vorne beginnen.</string>
     <string name="backup__password_rules_description">Es sind nur Buchstaben, Ziffern, Leerzeichen und Sonderzeichen (!@#$%^&amp;*()-_) zulässig.</string>
-    <string name="pass_promo_banner_title">We built something new for you!</string>
-    <string name="pass_promo_banner_msg">A secure, local-first **Password Manager – 2FAS Pass**, designed to work alongside 2FAS Auth, keeping your Authenticator exactly as it is.</string>
-    <string name="pass_promo_banner_positive_cta">Go to Store</string>
-    <string name="pass_promo_banner_negative_cta">Don\'t show again</string>
+    <string name="pass_promo_banner_title">Wir haben etwas Neues für dich entwickelt!</string>
+    <string name="pass_promo_banner_msg">Ein sicherer, lokal ausgerichteter **Password Manager – 2FAS Pass**, der für die Zusammenarbeit mit 2FAS Auth entwickelt wurde und deinen Authenticator unverändert beibehält.</string>
+    <string name="pass_promo_banner_positive_cta">Zum Store gehen</string>
+    <string name="pass_promo_banner_negative_cta">Nicht erneut anzeigen</string>
+    <string name="appearance_dynamic_colors">Dynamische Farben</string>
+    <string name="appearance_dynamic_colors_description">Ändere die App-Farben dynamisch basierend auf deinem Hintergrundbild.</string>
 </resources>

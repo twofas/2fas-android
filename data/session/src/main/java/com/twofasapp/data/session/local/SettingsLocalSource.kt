@@ -20,6 +20,7 @@ internal class SettingsLocalSource(
         private const val KeyShowNextCode = "showNextToken"
         private const val KeyShowBackupNotice = "showBackupNotice"
         private const val KeySelectedTheme = "selectedTheme"
+        private const val KeyDynamicColors = "dynamicColors"
         private const val KeyServicesStyle = "servicesStyle"
         private const val KeyServicesSort = "servicesSort"
         private const val KeyAutoFocusSearch = "autoFocusSearch"
@@ -51,6 +52,7 @@ internal class SettingsLocalSource(
             servicesStyle = preferences.getString(KeyServicesStyle)?.let { ServicesStyle.valueOf(it) } ?: ServicesStyle.Default,
             servicesSort = preferences.getString(KeyServicesSort)?.let { ServicesSort.valueOf(it) } ?: ServicesSort.Manual,
             hideCodes = preferences.getBoolean(KeyHideCodes) ?: false,
+            dynamicColors = preferences.getBoolean(KeyDynamicColors) ?: false,
         )
     }
 
@@ -62,6 +64,11 @@ internal class SettingsLocalSource(
     fun setSelectedTheme(selectedTheme: SelectedTheme) {
         appSettingsFlow.update { it.copy(selectedTheme = selectedTheme) }
         preferences.putString(KeySelectedTheme, selectedTheme.name)
+    }
+
+    fun setDynamicColors(dynamicColors: Boolean) {
+        appSettingsFlow.update { it.copy(dynamicColors = dynamicColors) }
+        preferences.putBoolean(KeyDynamicColors, dynamicColors)
     }
 
     fun setServicesStyle(servicesStyle: ServicesStyle) {

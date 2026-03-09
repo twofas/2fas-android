@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Sat, 28 Feb 2026 03:33:49 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -971,4 +971,6 @@
     <string name="pass_promo_banner_msg">Um **gerenciador de senhas – 2FAS Pass** seguro e “local-first”, feito para funcionar junto com o 2FAS Auth, mantendo seu Authenticator exatamente como está.</string>
     <string name="pass_promo_banner_positive_cta">Ir para a loja</string>
     <string name="pass_promo_banner_negative_cta">Não mostrar novamente</string>
+    <string name="appearance_dynamic_colors">Cores dinâmicas</string>
+    <string name="appearance_dynamic_colors_description">Altere dinamicamente as cores do aplicativo com base no seu papel de parede.</string>
 </resources>

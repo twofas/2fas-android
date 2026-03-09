@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Sat, 28 Feb 2026 03:33:49 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:08 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -965,4 +965,6 @@
     <string name="pass_promo_banner_msg">安全なローカルファーストのパスワードマネージャー – 2FAS Pass。2FAS Auth と連携して動作し、Authenticator は今のまま変わりません。</string>
     <string name="pass_promo_banner_positive_cta">ストアへ</string>
     <string name="pass_promo_banner_negative_cta">今後表示しない</string>
+    <string name="appearance_dynamic_colors">ダイナミックカラー</string>
+    <string name="appearance_dynamic_colors_description">壁紙に基づいてアプリの色を動的に変更します。</string>
 </resources>

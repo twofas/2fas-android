@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Sat, 28 Feb 2026 03:33:49 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:08 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -971,4 +971,6 @@
     <string name="pass_promo_banner_msg">Een veilige, lokaal-eerst **wachtwoordmanager – 2FAS Pass**, ontworpen om samen te werken met 2FAS Auth, zodat je Authenticator precies blijft zoals hij is.</string>
     <string name="pass_promo_banner_positive_cta">Ga naar de Store</string>
     <string name="pass_promo_banner_negative_cta">Niet meer tonen</string>
+    <string name="appearance_dynamic_colors">Dynamische kleuren</string>
+    <string name="appearance_dynamic_colors_description">Wijzig de appkleuren dynamisch op basis van je achtergrond.</string>
 </resources>

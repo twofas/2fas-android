@@ -70,7 +70,7 @@ internal class ServicesViewModel(
                 val showSyncNoticeBar =
                     result.appSettings.showBackupNotice && showSyncReminder.not() && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
 
-                val showPassBanner = result.showPassBanner && result.services.size == 1
+                val showPassBanner = result.showPassBanner && result.services.size > 1
 
                 val filteredServices = result.services
                     .sortedBy {

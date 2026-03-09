@@ -40,7 +40,8 @@ internal fun AppSettingsScreen(
         onShowNextTokenToggle = { viewModel.toggleShowNextToken() },
         onShowBackupNoticeToggle = { viewModel.toggleShowBackupNotice() },
         onAutoFocusSearchToggle = { viewModel.toggleAutoFocusSearch() },
-        onHideCodesToggle = { viewModel.toggleHideTokens() }
+        onHideCodesToggle = { viewModel.toggleHideTokens() },
+        onDynamicColorsToggle = { viewModel.toggleDynamicColors() }
     )
 }
 
@@ -54,6 +55,7 @@ private fun ScreenContent(
     onShowBackupNoticeToggle: () -> Unit,
     onAutoFocusSearchToggle: () -> Unit,
     onHideCodesToggle: () -> Unit,
+    onDynamicColorsToggle: () -> Unit,
 ) {
     val activity = LocalContext.currentActivity
     var showThemeDialog by remember { mutableStateOf(false) }
@@ -79,6 +81,16 @@ private fun ScreenContent(
                     subtitle = uiState.appSettings.selectedTheme.toStringResource(),
                     icon = TwIcons.Theme,
                     onClick = { showThemeDialog = true }
+                )
+            }
+
+            item {
+                SettingsSwitch(
+                    title = TwLocale.strings.settingsDynamicColors,
+                    subtitle = TwLocale.strings.settingsDynamicColorsBody,
+                    icon = TwIcons.Theme,
+                    checked = uiState.appSettings.dynamicColors,
+                    onCheckedChange = { onDynamicColorsToggle() },
                 )
             }
 

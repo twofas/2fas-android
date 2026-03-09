@@ -4,6 +4,7 @@ import com.twofasapp.common.domain.SelectedTheme
 
 internal data class MainUiState(
     val selectedTheme: SelectedTheme? = null,
+    val dynamicColors: Boolean = false,
     val startDestination: StartDestination? = null,
     val browserExtRequests: List<BrowserExtRequest> = emptyList(),
     val addServiceAdvancedExpanded: Boolean = false,

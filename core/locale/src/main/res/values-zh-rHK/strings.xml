@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hant, Traditional Chinese
  Exported by: rafakob
- Exported at: Sat, 28 Feb 2026 03:33:50 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:08 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -965,4 +965,6 @@
     <string name="pass_promo_banner_msg">一個安全、本地優先的密碼管理器 – 2FAS Pass，可與 2FAS Auth 搭配使用，讓你的驗證器完全維持原樣。</string>
     <string name="pass_promo_banner_positive_cta">前往商店</string>
     <string name="pass_promo_banner_negative_cta">不再顯示</string>
+    <string name="appearance_dynamic_colors">動態色彩</string>
+    <string name="appearance_dynamic_colors_description">根據您的桌布動態變更應用程式的顏色。</string>
 </resources>
