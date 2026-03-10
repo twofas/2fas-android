@@ -18,4 +18,5 @@ interface SessionRepository {
     suspend fun noCompanionAppFromTimestamp(): Long?
     fun observeShowPassBanner(): Flow<Boolean>
     fun resetPassBannerDismiss()
+    fun disablePassBanner()
 }

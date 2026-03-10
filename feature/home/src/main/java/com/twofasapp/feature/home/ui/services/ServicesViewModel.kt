@@ -70,7 +70,7 @@ internal class ServicesViewModel(
                 val showSyncNoticeBar =
                     result.appSettings.showBackupNotice && showSyncReminder.not() && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
 
-                val showPassBanner = result.showPassBanner && result.services.size > 1
+                val showPassBanner = result.showPassBanner && result.services.isNotEmpty()
 
                 val filteredServices = result.services
                     .sortedBy {
@@ -227,6 +227,12 @@ internal class ServicesViewModel(
     fun dismissPassBanner() {
         launchScoped {
             sessionRepository.resetPassBannerDismiss()
+        }
+    }
+
+    fun disablePassBanner() {
+        launchScoped {
+            sessionRepository.disablePassBanner()
         }
     }
 

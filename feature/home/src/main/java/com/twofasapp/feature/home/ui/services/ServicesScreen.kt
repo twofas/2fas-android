@@ -109,6 +109,7 @@ internal fun ServicesRoute(
         onOpenBackupClick = { listener.openBackup(it) },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
         onDismissPassBannerClick = { viewModel.dismissPassBanner() },
+        onDisablePassBannerClick = { viewModel.disablePassBanner() },
         onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
         onRevealClick = { viewModel.reveal(it) }
     )
@@ -137,6 +138,7 @@ private fun ServicesScreen(
     onOpenBackupClick: (Boolean) -> Unit = {},
     onDismissSyncReminderClick: () -> Unit = {},
     onDismissPassBannerClick: () -> Unit = {},
+    onDisablePassBannerClick: () -> Unit = {},
     onIncrementHotpCounterClick: (Service) -> Unit = {},
     onRevealClick: (Service) -> Unit = {},
 ) {
@@ -403,7 +405,7 @@ private fun ServicesScreen(
                                     uriHandler.openSafely(TwLocale.links.passPlayStore, activity)
                                     onDismissPassBannerClick()
                                 },
-                                onDismissClick = onDismissPassBannerClick,
+                                onDismissClick = onDisablePassBannerClick,
                             )
                         }
                     }

@@ -36,7 +36,7 @@ internal class SessionRepositoryImpl(
         }
     }
 
-override suspend fun showBackupReminder(): Boolean {
+    override suspend fun showBackupReminder(): Boolean {
         return true
     }
 
@@ -132,6 +132,10 @@ override suspend fun showBackupReminder(): Boolean {
 
     override fun resetPassBannerDismiss() {
         local.setPassBannerDismissTimestamp(timeProvider.systemCurrentTime())
+    }
+
+    override fun disablePassBanner() {
+        local.setPassBannerDismissTimestamp(timeProvider.systemCurrentTime() + Duration.ofDays(365 * 100).toMillis())
     }
 
     private fun recalculate(): Boolean {
