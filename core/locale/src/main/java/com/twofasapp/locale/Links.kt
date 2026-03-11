@@ -7,6 +7,7 @@ import androidx.compose.runtime.Stable
 @Immutable
 class Links {
     val playStore = "https://play.google.com/store/apps/details?id=com.twofasapp"
+    val passPlayStore = "https://play.google.com/store/apps/details?id=com.twofasapp.pass"
     val terms = "https://2fas.com/terms-of-service"
     val privacyPolicy = "https://2fas.com/privacy-policy"
     val donate = "https://2fas.com/donate"

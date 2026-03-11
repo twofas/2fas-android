@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonDefaults.textButtonColors
 import androidx.compose.material3.Icon
@@ -36,6 +37,10 @@ fun TwButton(
     modifier: Modifier = Modifier,
     style: TextStyle = TwTheme.typo.body2,
     enabled: Boolean = true,
+    colors: ButtonColors = ButtonDefaults.buttonColors(
+        containerColor = TwTheme.color.primary,
+        contentColor = Color.White,
+    ),
     leadingIcon: Painter? = null,
     leadingIconSize: Dp = 18.dp,
     leadingIconTint: Color = Color.Unspecified,
@@ -43,10 +48,7 @@ fun TwButton(
 ) {
     Button(
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(
-            containerColor = TwTheme.color.primary,
-            contentColor = Color.White,
-        ),
+        colors = colors,
         enabled = enabled,
         modifier = modifier.height(height),
     ) {
@@ -83,12 +85,14 @@ fun TwOutlinedButton(
     modifier: Modifier = Modifier,
     style: TextStyle = TwTheme.typo.body2,
     enabled: Boolean = true,
+    textColor: Color = TwTheme.color.primary,
+    borderColor: Color = TwTheme.color.primary
 ) {
     OutlinedButton(
         onClick = onClick,
         border = BorderStroke(
             width = 1.dp,
-            color = TwTheme.color.primary,
+            color = borderColor,
         ),
         enabled = enabled,
         modifier = modifier.height(height),
@@ -96,7 +100,7 @@ fun TwOutlinedButton(
         Text(
             text = text,
             style = style,
-            color = TwTheme.color.primary
+            color = textColor
         )
     }
 }

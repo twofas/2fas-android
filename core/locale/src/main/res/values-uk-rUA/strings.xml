@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -957,5 +957,26 @@
     <string name="exportwarning__description_qr">Ви збираєтеся експортувати всі свої токени 2FA в незашифрований ZIP-файл із QR-кодами всередині. Ці QR-коди можуть бути використані для отримання контролю над вашими обліковими записами. Будь ласка, зберігайте їх у безпечному місці.</string>
     <string name="exportwarning__title_qr">Експорт токенів у вигляді QR-кодів</string>
     <string name="exportwarning__cta_qr">Експортувати у вигляді QR-кодів</string>
-    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
+    <string name="commons__icloud_backup_password">Пароль для резервного копіювання iCloud</string>
+    <string name="backup__manage_title">Керувати резервною копією</string>
+    <string name="backup__password_length_error">Пароль повинен мати не менше %1$d-%2$d символів.</string>
+    <string name="backup__password_characters_error">Пароль може містити тільки літери, цифри, пробіли та символи.</string>
+    <string name="backup__password_match_error">Паролі не збігаються.</string>
+    <string name="backup__encryption_title">Шифрування</string>
+    <string name="backup__removing_password">Видалення пароля</string>
+    <string name="backup__veryfing_password">Перевірка пароля</string>
+    <string name="backup__verify_password_description">Резервна копія iCloud зашифрована вашим паролем. Введіть його, щоб застосувати зміни.</string>
+    <string name="backup__password_set">Пароль встановлено успішно</string>
+    <string name="backup__setting_password">Встановлення пароля</string>
+    <string name="backup__changing_password">Зміна пароля</string>
+    <string name="backup__set_password">Встановіть свій пароль</string>
+    <string name="backup__change_password">Змінити пароль</string>
+    <string name="backup__password_set_description">Введіть пароль, щоб додатково захистити вміст резервної копії. Якщо ви забудете цей пароль, вам доведеться видалити резервну копію і почати заново.</string>
+    <string name="backup__password_rules_description">Дозволено використовувати тільки літери, цифри, пробіли та спеціальні символи (!@#$%^&amp;*()-_).</string>
+    <string name="pass_promo_banner_title">Ми створили для вас щось нове!</string>
+    <string name="pass_promo_banner_msg">Безпечний «local-first» **менеджер паролів – 2FAS Pass**, створений для роботи разом із 2FAS Auth, залишаючи ваш Authenticator саме таким, як є.</string>
+    <string name="pass_promo_banner_positive_cta">Перейти до магазину</string>
+    <string name="pass_promo_banner_negative_cta">Більше не показувати</string>
+    <string name="appearance_dynamic_colors">Динамічні кольори</string>
+    <string name="appearance_dynamic_colors_description">Динамічно змінюйте кольори застосунку на основі ваших шпалер.</string>
 </resources>

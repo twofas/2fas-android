@@ -13,6 +13,7 @@ sealed class ServicesListItem(
     object EmptySearch : ServicesListItem("EmptySearch", "EmptySearch")
     object SyncNoticeBar : ServicesListItem("SyncNoticeBar", "SyncNoticeBar")
     object SyncReminder : ServicesListItem("SyncReminder", "SyncReminder")
+    object PassBanner : ServicesListItem("PassBanner", "PassBanner")
     data class ServiceItem(val service: Service) : ServicesListItem("Service:${service.id}", "Service")
     data class GroupItem(val group: Group) : ServicesListItem("Group:${group.id ?: "Default"}", "Group")
 }

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -24,9 +24,9 @@
     <!-- A number replaces %d, for example, 4 of 5. -->
     <string name="commons__page_of_page_title">%1$d von %2$d</string>
     <!-- notifications__service_already_removed_from_backup -->
-    <string name="notifications__service_already_removed_title">Dienst bereits aus dem Backup entfernt</string>
+    <string name="notifications__service_already_removed_title">Dienst bereits aus der Sicherung entfernt</string>
     <!-- notifications__service_already_modified_in_backup -->
-    <string name="notifications__service_already_modified_title">Dienst bereits in Backup geändert</string>
+    <string name="notifications__service_already_modified_title">Dienst bereits in der Sicherung geändert</string>
     <!-- backup__user_is_over_quota_on_icloud -->
     <string name="backup__user_over_quota_icloud">Benutzer hat sein Kontingent in iCloud überschritten</string>
     <!-- backup__icloud_is_not_available -->
@@ -34,7 +34,7 @@
     <!-- backup__icloud_has_been_disabled_by_user -->
     <string name="backup__icloud_disabled_title">iCloud wurde vom Benutzer deaktiviert</string>
     <!-- backup__turned_off_description_bold_part -->
-    <string name="backup__2fas_backup">2FAS Backup</string>
+    <string name="backup__2fas_backup">2FAS Sicherung</string>
     <string name="commons__close">Schließen</string>
     <string name="commons__continue">Fortsetzen</string>
     <string name="commons__copy">Kopieren</string>
@@ -81,14 +81,14 @@
     <string name="introduction__page_3_title">Privat</string>
     <string name="introduction__page_3_content">2FAS respektiert und schützt deine Privatsphäre. Diese App wird niemals persönliche Daten von dir erheben, verarbeiten oder verwenden.</string>
     <string name="introduction__page_4_title">Sichern</string>
-    <string name="introduction__page_4_content_ios">Deine Token werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende iCloud Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
+    <string name="introduction__page_4_content_ios">Deine Token werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende iCloud-Synchronisierung und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
     <!-- introduction__start_using -->
     <string name="introduction__title">Verwendung von 2FAS beginnen</string>
     <string name="introduction__tos">Allgemeine Geschäftsbedingungen</string>
     <string name="introduction__description_title">Kopple dein Online-Service-Konto mit 2FAS oder importiere deine Token</string>
     <string name="introduction__pair_new_service">Neuen Dienst koppeln</string>
     <!-- introduction__import_2fas -->
-    <string name="introduction__import_2fas_title">2FAS-Sicherungsdatei importieren</string>
+    <string name="introduction__import_2fas_title">2FAS Sicherungsdatei importieren</string>
     <!-- introduction__import_ga -->
     <string name="introduction__import_google_authenticator">Importieren von Google Authenticator</string>
     <!-- introduction__not_sure -->
@@ -205,7 +205,7 @@
     <string name="tokens__my_tokens">Meine Token</string>
     <string name="tokens__removing_group">Gruppe entfernen</string>
     <!-- tokens__all_tokens_will_be_moved -->
-    <string name="tokens__all_tokens_moved_to_group_title">Alle Token werden verschoben in die Gruppe: \"Meine Tokens\"</string>
+    <string name="tokens__all_tokens_moved_to_group_title">Alle Token werden verschoben in die Gruppe: \"Meine Token\"</string>
     <string name="tokens__add_group">Gruppe hinzufügen</string>
     <string name="tokens__group_name">Gruppenname:</string>
     <string name="tokens__select_from_gallery">Aus Galerie wählen</string>
@@ -224,7 +224,7 @@
     <string name="tokens__unlock_and_retype_token_title">Token entsperren und neu erzeugen</string>
     <string name="tokens__group">Gruppe</string>
     <string name="tokens__select_group">Gruppe auswählen</string>
-    <string name="tokens__google_auth_import">Importiere 2FA-Token von der Google Authenticator App</string>
+    <string name="tokens__google_auth_import">Importiere 2FA Token von der Google Authenticator App</string>
     <string name="tokens__google_auth_import_subtitle">Dieser QR-Code erlaubt es dir Token von Google Authenticator zu importieren</string>
     <!-- A number replaces %d  -->
     <string name="tokens__google_auth_out_of_title">%1$d von %2$d</string>
@@ -267,7 +267,7 @@
     <string name="tokens__request_icon_provider_description">Du kannst die sozialen Medien oder E-Mail verwenden und diesen Text teilen:</string>
     <string name="tokens__request_icon_provider_message">Hey! Ich verwende die 2FAS App um mich mit 2FA in deinen Dienst einzuloggen. Allerdings fehlt dein Symbol! Du kannst dein Symbol einrichten unter: https://2fas.com/yb</string>
     <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
-    <string name="tokens__request_icon_provider_footnote">Vergiss nicht den offiziellen Account des Unternehmens zu taggen!</string>
+    <string name="tokens__request_icon_provider_footnote">Vergiss nicht das offizielle Konto des Unternehmens zu markieren!</string>
     <string name="tokens__order_icon_description">Du kannst ein Markenlogo in 2FAS nicht finden?</string>
     <string name="tokens__order_icon_link">Ein Markenlogo anfragen</string>
     <string name="tokens__order_icon_title">Ein Markenlogo anfragen</string>
@@ -306,7 +306,7 @@
     <string name="backup__incorrect_secret">Die Token konnten nicht gesichert werden, weil das Geheimnis \"%s\" unzulässige Zeichen enthält. Entferne es aus der Liste und versuche es erneut</string>
     <string name="backup__import">Importieren</string>
     <string name="backup__export">Exportieren</string>
-    <string name="backup__backup_disabled_title">2FAS Backup wird deaktiviert, um seine Integrität zu schützen.</string>
+    <string name="backup__backup_disabled_title">2FAS Sicherung wird deaktiviert, um seine Integrität zu schützen.</string>
     <string name="backup__error_while_exporting_file">Fehler beim Exportieren der Datei</string>
     <string name="backup__import_completed_successfuly">Import erfolgreich abgeschlossen</string>
     <!-- camera__video_device_in_use_by_another_app -->
@@ -315,26 +315,26 @@
     <string name="camera__camera_unavailable_title">Die Kamera ist aufgrund einer Systemüberlastung nicht verfügbar. Versuche das Gerät neu zustarten</string>
     <string name="camera__cant_initialize_camera_general">Kamera konnte nicht initialisiert werden. Versuche das Gerät neu zustarten</string>
     <string name="camera__cant_initialize_camera_split_view">Kamera konnte im geteilten Bildschirm-Modus nicht initialisiert werden. Öffne die App im Vollbildmodus und versuche es erneut</string>
-    <string name="restore__how_to_restore">Wie kann ich die 2FAS-App wiederherstellen?</string>
+    <string name="restore__how_to_restore">Wie kann ich die 2FAS App wiederherstellen?</string>
     <string name="restore__application_restoration">Wiederherstellung der Anwendung</string>
     <!-- restore_if_you_forgotten -->
-    <string name="restore__reset_Pin_title">Wenn du die PIN vergessen hast oder die 2FAS-App zurücksetzen möchtest, musst du die App neu installieren.</string>
+    <string name="restore__reset_Pin_title">Wenn du die PIN vergessen hast oder die 2FAS App zurücksetzen möchtest, musst du die App neu installieren.</string>
     <!-- restore_please_remember -->
     <string name="restore__backup_advice">Beachte, dass du sofern du keine Sicherung hast und die App zurücksetzt, den Zugriff auf alle deine Codes verlierst. Und damit auch den Zugriff auf alle deine 2FA gesicherten Konten.</string>
     <!-- restore_if_you_have_backup -->
     <string name="restore__backup_title">Wenn du über eine Sicherung verfügst, kannst du alle deine Codes wiederherstellen.</string>
-    <string name="backup__cloud_backup">Cloud Backup</string>
+    <string name="backup__cloud_backup">Cloudsicherung</string>
     <string name="backup__icloud_sync">iCloud Sync</string>
-    <string name="backup__section_description">EMPFOHLEN: iCloud Sync bewahrt deine Token sicher in Apple iCloud auf, für den Fall, dass dein Gerät verloren geht oder beschädigt wird. Lasse es eingeschaltet.</string>
-    <string name="backup__file_backup">Datei-Backup</string>
+    <string name="backup__section_description">EMPFOHLEN: iCloud-Synchronisierung bewahrt deine Token sicher in Apple iCloud auf, für den Fall, dass dein Gerät verloren geht oder beschädigt wird. Lasse es eingeschaltet.</string>
+    <string name="backup__file_backup">Datei-Sicherung</string>
     <!-- backup__use_file_backup_for -->
     <string name="backup__file_backup_offline_title">Verwende Datei-Sicherung für die Offline-Sicherung deiner Token.</string>
-    <string name="backup__backup_removal">Backup entfernen</string>
-    <string name="backup__delete_2fas_backup">2FAS Backup löschen</string>
-    <string name="backup__warning_introduction">Warnung! Wenn du die 2FAS Sicherung löschst, werden zudem alle Tokens von anderen Geräten, die mit diesem Konto synchronisiert sind, gelöscht. Um die Tokens auf anderen Geräten zu erhalten, stelle bitte sicher, dass du die 2FAS Sicherung vor dem Löschen ausgeschaltet hast.</string>
+    <string name="backup__backup_removal">Sicherung entfernen</string>
+    <string name="backup__delete_2fas_backup">2FAS Sicherung löschen</string>
+    <string name="backup__warning_introduction">Warnung! Wenn du die 2FAS Sicherung löschst, werden zudem alle Token von anderen Geräten, die mit diesem Konto synchronisiert sind, gelöscht. Um die Token auf anderen Geräten zu erhalten, stelle bitte sicher, dass du die 2FAS Sicherung vor dem Löschen ausgeschaltet hast.</string>
     <!-- backup__i_want_to_delete -->
-    <string name="backup__delete_title">Ich möchte das Backup löschen</string>
-    <string name="backup__export_to_backup_file">Backup in Datei exportieren</string>
+    <string name="backup__delete_title">Ich möchte die Sicherung löschen</string>
+    <string name="backup__export_to_backup_file">Sicherung in Datei exportieren</string>
     <!-- backup__you_can_import_exported_file -->
     <string name="backup__import_file_title">Du kannst exportierte Dateien auf anderen Geräten mit der 2FAS Anwendung importieren</string>
     <string name="backup__export_to_file">Als Datei exportieren</string>
@@ -393,7 +393,7 @@
     <string name="settings__no_limit">Kein Limit</string>
     <string name="settings__pin_code">PIN-Code</string>
     <string name="settings__app_security">App-Sicherheit</string>
-    <string name="settings__app_blocking">Sperr-Einstellungen</string>
+    <string name="settings__app_blocking">Sperreinstellungen</string>
     <string name="settings__face_id">Face ID</string>
     <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
@@ -416,7 +416,7 @@
     <string name="new_version__skip_title">Diese Version überspringen</string>
     <!-- new_version__later_action -->
     <string name="new_version__update_later">Später aktualisieren</string>
-    <string name="browser__browser_extension">Browser Erweiterung\u0020</string>
+    <string name="browser__browser_extension">Browsererweiterung</string>
     <string name="browser__info_title">2FAS Webbrowser-Erweiterung</string>
     <string name="browser__info_description_first">Installiere die 2FAS Browsererweiterung auf deinem Computer.</string>
     <string name="browser__info_description_second">Kopple es mit deiner 2FAS App.</string>
@@ -427,11 +427,11 @@
     <string name="browser__pairing_successful_title">Kopplung erfolgreich!</string>
     <string name="browser__pairing_successful_description">2FAS wird dir eine Benachrichtigung senden wann immer du dich im Browser in einen Online-Dienst einloggen willst. Du musst deinen Token nicht mehr bei jeder Verwendung erneut eingeben.</string>
     <string name="browser__pairing_failed_title">Verbindung fehlgeschlagen :(</string>
-    <string name="browser__pairing_failed_description">Dieser QR-Code wurde nicht erkannt und 2FAS konnte das Gerät nicht mit der Browser-Erweiterung koppeln. Bitte versuche es erneut.</string>
+    <string name="browser__pairing_failed_description">Dieser QR-Code wurde nicht erkannt und 2FAS konnte das Gerät nicht mit der Browsererweiterung koppeln. Bitte versuche es erneut.</string>
     <!-- browser__pairing_already_paired_title -->
     <string name="browser__already_paired_title">Bereits gekoppelt!</string>
     <!-- browser__pairing_already_paired_description -->
-    <string name="browser__already_paired_description">Die Browser-Erweiterung ist bereits mit diesem Gerät gekoppelt.</string>
+    <string name="browser__already_paired_description">Die Browsererweiterung ist bereits mit diesem Gerät gekoppelt.</string>
     <string name="browser__contact_support">Support kontaktieren</string>
     <string name="browser__pairing_with_browser">Kopplung mit Browser</string>
     <!-- browser__paired_devices -->
@@ -441,7 +441,7 @@
     <string name="browser__this_device_name">Geräte-Bezeichnung</string>
     <string name="browser__device_name">Geräte-Bezeichnung</string>
     <string name="browser__name">Name</string>
-    <string name="browser__this_device_footer">Die Bezeichnung wird dir helfen das Gerät von anderen Geräten, die mit der Browser-Erweiterung gekoppelt sind, zu unterscheiden.</string>
+    <string name="browser__this_device_footer">Die Bezeichnung wird dir helfen das Gerät von anderen Geräten, die mit der Browsererweiterung gekoppelt sind, zu unterscheiden.</string>
     <string name="browser__browser_extension_settings">Einstellungen der Browsererweiterung</string>
     <string name="browser__unkown_name">&lt;UNKOWN_NAME&gt;</string>
     <string name="browser__request_source_description">%1$s hat ein 2FA-Token für %2$s angefordert. Wähle den Dienst, den du mit dieser Domäne autorisieren und speichern möchtest.</string>
@@ -470,7 +470,7 @@
     <string name="backup__google_drive_disabled_title">Google Drive wurde vom Benutzer deaktiviert</string>
     <string name="backup__update_required_to_import_title_2">Du benötigst eine neue Version der App, um den Inhalt dieser Datei zu importieren. Die neueste Version findest du im Google Store</string>
     <string name="tokens__qr_code_leads_to_google_store">Dieser QR-Code bringt dich zum Google Store</string>
-    <string name="introduction__page_4_content_android">Deine Token werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende Google Drive Sync und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
+    <string name="introduction__page_4_content_android">Deine Token werden offline über den Gerätespeicher geladen, denke also daran, deine Dienste zu sichern! Verwende Google Drive Synchronisierung und ein PIN-Passwort, um dich vor unberechtigtem Zugriff und Geräteschäden zu schützen.</string>
     <string name="new_version__new_version_message_android">Eine neue Version von 2FAS ist im Google Store verfügbar. Jetzt aktualisieren!</string>
     <string name="security_error_no_match">PIN stimmt nicht überein! Bitte erneut versuchen.</string>
     <string name="settings_developer_options">Entwickleroptionen</string>
@@ -482,19 +482,19 @@
     <string name="tokens__service_unsaved_changes_title">Ungespeicherte Änderungen</string>
     <string name="tokens__service_key_invalid_format">Der Schlüssel hat ein ungültiges Format</string>
     <string name="intent_error_no_gallery_app">Systemfehler! Es gibt keine Galerie-App.</string>
-    <string name="gdrive_permission_title">Google Drive Erlaubnis</string>
-    <string name="gdrive_permission_msg">Wir benötigen die Google Drive-Berechtigung, um die Sicherungsdateien in den App-Daten zu speichern.</string>
+    <string name="gdrive_permission_title">Google Drive Berechtigung</string>
+    <string name="gdrive_permission_msg">Wir benötigen die Google Drive Berechtigung, um die Sicherungsdateien in den App-Daten zu speichern.</string>
     <string name="gdrive_internet_title">Internetverbindung benötigt</string>
     <string name="gdrive_internet_msg">Um mit Google Drive zu synchronisieren, musst du deine Internetverbindung aktivieren.</string>
     <string name="gdrive_wipe_internet_msg">Um den Zugriff auf Google Drive zu entfernen, musst du deine Internetverbindung aktivieren.</string>
     <string name="backup_explanation_msg">Speichere und synchronisiere deine Sicherungsdatei automatisch in einem versteckten Ordner auf Google Drive. Dieser Ordner ist nur durch die 2FAS App zugänglich.</string>
-    <string name="backup_error_unknown">Bei der Synchronisierung des Backups ist ein Fehler aufgetreten. Bitte starte die App nach ein paar Minuten neu und versuche es erneut.</string>
-    <string name="backup_error_encrypt_unknown">Bei der Verschlüsselung des Backups ist ein Fehler aufgetreten. Bitte gib dein Passwort erneut ein.</string>
-    <string name="backup_error_decrypt_unknown">Bei der Entschlüsselung des Backups ist ein Fehler aufgetreten. Bitte gib dein Passwort erneut ein.</string>
+    <string name="backup_error_unknown">Bei der Synchronisierung der Sicherung ist ein Fehler aufgetreten. Bitte starte die App nach ein paar Minuten neu und versuche es erneut.</string>
+    <string name="backup_error_encrypt_unknown">Bei der Verschlüsselung der Sicherung ist ein Fehler aufgetreten. Bitte gib dein Passwort erneut ein.</string>
+    <string name="backup_error_decrypt_unknown">Bei der Entschlüsselung der Sicherung ist ein Fehler aufgetreten. Bitte gib dein Passwort erneut ein.</string>
     <string name="backup__google_drive_problem_title">Es existiert ein Problem mit iCloud. Überprüfen die Systemeinstellungen</string>
     <string name="backup_error_auth">Es gab ein Problem mit den Berechtigungen deines Google Drive-Kontos. Versuche die Synchronisierung ein- und auszuschalten.</string>
-    <string name="backup_error_no_password">Dein Backup ist passwortgeschützt. Schalte es ein und gib dein Passwort ein.</string>
-    <string name="backup_error_wrong_password">Dein Backup ist passwortgeschützt, aber das eingegebene Passwort ist falsch. Schalte es ein und gib dein Passwort ein.</string>
+    <string name="backup_error_no_password">Deine Sicherung ist passwortgeschützt. Schalte es ein und gib dein Passwort ein.</string>
+    <string name="backup_error_wrong_password">Deine Sicherung ist passwortgeschützt, aber das eingegebene Passwort ist falsch. Schalte es ein und gib dein Passwort ein.</string>
     <string name="customization_service_assignment">Dienstzuweisung</string>
     <string name="customization_personalization">Personalisierung</string>
     <string name="customization_change_brand">Marke ändern</string>
@@ -503,14 +503,14 @@
     <string name="customization_edit_label">Kennzeichnung bearbeiten</string>
     <string name="groups_delete_msg">Bist du dir sicher, dass du diese Gruppe löschen möchtest?</string>
     <string name="export_backup_title">Deine Sicherungsdatei ist zum Exportieren bereit</string>
-    <string name="export_backup_msg">Exportiere diese Datei, um deine 2FAS-Token zu sichern. Du kannst die Datei später auf anderen Geräten mit der 2FAS Anwendung importieren.</string>
+    <string name="export_backup_msg">Exportiere diese Datei, um deine 2FAS Token zu sichern. Du kannst die Datei später auf anderen Geräten mit der 2FAS App importieren.</string>
     <string name="export_backup_pass">Datei ohne Passwort exportieren\n(nicht empfohlen)</string>
     <string name="import_backup_msg2">Die Datei wird mit der Dienstliste der App synchronisiert.</string>
     <string name="backup_notice_later">Vielleicht später</string>
     <string name="backup_notice_cta">Einschalten</string>
     <string name="widgets_empty_msg">Keine Dienste hinzugefügt</string>
-    <string name="backup__section_description_google">EMPFOHLEN: Google Drive Sync bewahrt deine Token sicher in Google Drive auf, falls dein Gerät verloren geht oder beschädigt wird. Lasse es eingeschaltet.</string>
-    <string name="backup_turn_off_title">Google Drive Sync Ausschalten?</string>
+    <string name="backup__section_description_google">EMPFOHLEN: Google Drive Synchronisierung bewahrt deine Token sicher in Google Drive auf, falls dein Gerät verloren geht oder beschädigt wird. Lasse es eingeschaltet.</string>
+    <string name="backup_turn_off_title">Google Drive Synchronisierung ausschalten?</string>
     <string name="backup_turn_off_msg1">2FA Token verbleiben auf diesem Gerät und in Google Drive, werden aber nicht synchronisiert. Du wirst auch aus deinem Google Konto abgemeldet.</string>
     <string name="backup_turn_off_msg2">Denke daran, das im Falle eines Verlusts oder einer Beschädigung des Geräts oder einer App-Entfernung du deine Token möglicherweise nicht wiederherstellen kannst und du den Zugang zu den durch 2FA gesicherten Konten verlieren wirst.</string>
     <string name="backup_settings_password_set_subtitle">Sichere eine Google Drive Sicherungsdatei mit einem beliebigen Passwort.</string>
@@ -569,24 +569,24 @@
     <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Du kannst dich ohne dieses Token nicht mehr bei deinem %1$s-Konto anmelden, solange die Zwei-Faktor-Authentifizierung für %2$s aktiviert ist.\n\nDu kannst dieses Token nicht aus dem 2FAS-Papierkorb wiederherstellen.</string>
     <string name="import_ga_success">Dienste erfolgreich importiert!</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
-    <string name="backup_error_network">Du benötigst eine aktive Internetverbindung, um dein Backup zu synchronisieren. Bitte schalte deine Netzwerkverbindung ein und versuche es erneut.</string>
+    <string name="backup_error_network">Du benötigst eine aktive Internetverbindung, um deine Sicherung zu synchronisieren. Bitte schalte deine Netzwerkverbindung ein und versuche es erneut.</string>
     <string name="update_app_title">App aktualisieren</string>
     <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
     <string name="update_app_msg">Bitte aktualisiere auf die neuste 2FAS Version, um alle Funktionen zu erhalten und die Aufrechterhaltung eines hohen Sicherheitsniveaus zu gewährleisten</string>
     <string name="delete_service_title">Du löschst gerade</string>
     <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
-    <string name="delete_service_msg">aus deiner 2FAS-Dienstenliste.\n\nDenke daran, solange du Zwei-Faktor-Authentifizierung aktiviert hast, kannst du dich ohne diesen Token nicht in %s Konto anmelden.</string>
+    <string name="delete_service_msg">aus deiner 2FAS Dienstliste.\n\nDenke daran, solange du Zwei-Faktor-Authentifizierung aktiviert hast, kannst du dich ohne dieses Token nicht in %s Konto anmelden.</string>
     <string name="delete_service_cta">Löschen</string>
     <string name="export_backup_cta">Exportieren</string>
     <string name="export_backup_share_cta">Teilen</string>
-    <string name="import_backup_title">Importiere Backup von der Datei</string>
-    <string name="import_backup_msg1">Du wirst die Backup-Datei mit folgendem importieren</string>
+    <string name="import_backup_title">Importiere Sicherung von der Datei</string>
+    <string name="import_backup_msg1">Du wirst die Sicherungsdatei mit folgendem importieren</string>
     <string name="import_backup_cta">Importieren</string>
-    <string name="widgets_warning_msg">Die im Widget sichtbaren Token sind nicht durch deinen PIN-Code geschützt. Bist du sicher, dass du deine Tokens im Widget anzeigen lassen möchtest?</string>
+    <string name="widgets_warning_msg">Die im Widget sichtbaren Token sind nicht durch deinen PIN-Code geschützt. Bist du sicher, dass du deine Token im Widget anzeigen lassen möchtest?</string>
     <string name="widgets_warning_title">ACHTUNG!</string>
     <string name="widgets_warning_cta">Ja, ich bin mir sicher</string>
-    <string name="backup_notice_title">2FAS Backup</string>
-    <string name="backup_notice_msg">Aktiviere 2FAS Backup und bewahren deine Codes sicher in Google Drive auf.</string>
+    <string name="backup_notice_title">2FAS Sicherung</string>
+    <string name="backup_notice_msg">Aktiviere die 2FAS Sicherung. Im Falle einer Zurücksetzung oder eines Verlusts deines Telefons kannst du alle deine Token wiederherstellen.</string>
     <string name="brand_empty_msg">Entschuldigung, die Marke konnte nicht gefunden werden</string>
     <!-- Select which services will be visible on widget: -->
     <string name="widgets_select_msg">Wähle aus, welche Dienste im Widget sichtbar sein sollen:</string>
@@ -596,7 +596,7 @@
     <string name="backup_settings_delete_title">Sicherungsdatei von Google Drive löschen</string>
     <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
     <string name="backup_settings_delete_subtitle">Wenn du diese Datei aus deinem Google Drive löschst, wird die Synchronisierung auf allen synchronisierten Geräten deaktiviert und die Token bleiben nur auf diesem und anderen Geräten über den lokalen Speicher erhalten.</string>
-    <string name="browser__result_error_browser_paired">Deine 2FAS-App ist bereits mit diesem Browser gekoppelt.</string>
+    <string name="browser__result_error_browser_paired">Deine 2FAS App ist bereits mit diesem Browser gekoppelt.</string>
     <!-- Scan QR code again -->
     <string name="browser__result_error_cta">Scanne den QR-Code erneut</string>
     <string name="browser__scan_error_dialog_title">Fehler</string>
@@ -610,15 +610,15 @@
     <string name="settings__option_fingerprint_description">Um die biometrische Sperre zu aktivieren, musst du einen PIN-Code aktivieren und festlegen.</string>
     <string name="settings__block_for_footer">Wähle die Zeit, für die die App gesperrt werden soll.</string>
     <string name="error__out_of_disk_space">Es sieht so aus, als ob du entweder keinen Speicherplatz mehr hast, oder ein solches Ereignis in der Vergangenheit die Datenbank beschädigt hat</string>
-    <string name="error__cloud_backup_newer_version">Die Cloud-Sicherung wurde auf die neue Version migriert. Aktualisiere die App</string>
-    <string name="error__cloud_backup_encrypted_not_supported">Die Cloud-Sicherung ist verschlüsselt. Aktualisiere die App, um diese Funktion zu unterstützen</string>
+    <string name="error__cloud_backup_newer_version">Die Cloudsicherung wurde auf die neue Version migriert. Aktualisiere die App</string>
+    <string name="error__cloud_backup_encrypted_not_supported">Die Cloudsicherung ist verschlüsselt. Aktualisiere die App, um diese Funktion zu unterstützen</string>
     <string name="extension__continue_to_app">Weiter zur App</string>
     <string name="extension__cancel">Abbrechen</string>
     <string name="extension__authorize">Autorisieren</string>
     <string name="extension__dismiss">Verwerfen</string>
     <string name="extension__request_sent">Anfrage gesendet</string>
     <string name="extension__send_question_title">Token senden?</string>
-    <string name="extension__send_question_content">%1$s hat 2FAS-Token für %2$s angefordert</string>
+    <string name="extension__send_question_content">%1$s hat 2FAS Token für %2$s angefordert</string>
     <string name="extension__error_while_sending">Fehler beim Senden des Token</string>
     <string name="extension__not_paired_title">Diese Website ist nicht gekoppelt</string>
     <string name="extension__not_paired_content">Öffne die App und wähle einen Dienst für diese Domain</string>
@@ -626,7 +626,7 @@
     <string name="extension__error_no_internet">Es existiert ein Verbindungsproblem</string>
     <string name="extension__try_again">Bitte versuche es erneut</string>
     <string name="extension__error">Fehler</string>
-    <string name="extension__error_no_services">Damit die Browser-Erweiterung funktioniert, füge bitte Dienste zur 2FAS-App hinzu</string>
+    <string name="extension__error_no_services">Damit die Browsererweiterung funktioniert, füge bitte Dienste zur 2FAS App hinzu</string>
     <string name="extension__approve">Genehmigen</string>
     <string name="extension__deny">Ablehnen</string>
     <string name="settings__turn_pin_code_to_enable_faceid">Aktiviere die PIN-Code- und Face ID-Autorisierung, um unbefugten Zugriff auf deine Token auf diesem Gerät zu verhindern.</string>
@@ -674,13 +674,13 @@
     <string name="backup__export_result_success">Datei erfolgreich gespeichert!</string>
     <string name="backup__share_result_failure">Datei konnte nicht geteilt werden!</string>
     <string name="backup__enter_password_dialog_title">Gib das Passwort ein</string>
-    <string name="backup__remove_password_msg">Bitte gib das Sicherungs-Passwort ein, um mit dem Löschvorgang fortzufahren.</string>
-    <string name="backup__revoke_google_access_msg">Bitte gib das Sicherungs-Passwort ein, um den Zugriff auf Google zu sperren.</string>
-    <string name="backup__synchronization_settings">Synchronisierungs-Einstellungen</string>
+    <string name="backup__remove_password_msg">Bitte gib das Passwort der Sicherung ein, um mit dem Löschvorgang fortzufahren.</string>
+    <string name="backup__revoke_google_access_msg">Gib das Passwort der Sicherung ein, um mit dem Widerruf des Zugriffs auf Google fortzufahren.</string>
+    <string name="backup__synchronization_settings">Synchronisierungseinstellungen</string>
     <string name="backup__local_file_title">Lokale Datei</string>
-    <string name="backup__drive_title">Google Drive Sync</string>
+    <string name="backup__drive_title">Google Drive Synchronisierung</string>
     <string name="backup__delete_file_title">Möchtest du deine Sicherungsdatei aus Google Drive löschen?</string>
-    <string name="backup__delete_file_msg">Google Sync wird deaktiviert sein. Deine Token werden lokal bestehen bleiben, aber die 2FAS App wird aus deinem Google Account auf diesem und deinen anderen synchronisierten Geräten ausgeloggt.</string>
+    <string name="backup__delete_file_msg">Die Google Synchronisierung wird deaktiviert. Deine Tokens bleiben lokal gespeichert, aber die 2FAS App wird von deinem Google-Konto auf diesem und Ihren anderen synchronisierten Geräten abgemeldet.</string>
     <string name="backup__sync_status_waiting">Warten auf Synchronisierung...</string>
     <string name="backup__sync_status_progress">Synchronisiere...</string>
     <string name="import_backup_msg1_encrypted">Du wirst eine verschlüsselte Sicherungsdatei importieren.</string>
@@ -697,7 +697,7 @@
     <string name="externalimport__aegis_success_msg">Diese JSON-Datei erlaubt es Token von Aegis zu importieren.</string>
     <string name="externalimport__raivo_success_msg">Diese JSON-Datei erlaubt es Token von Raivo zu importieren.</string>
     <string name="externalimport__read_error">Es konnten keine Token gelesen werden. Versuche eine andere Datei auszuwählen.</string>
-    <string name="settings__gd_sync_info">Google Drive Sync-Info</string>
+    <string name="settings__gd_sync_info">Google Drive Synchronisierungserinnerung</string>
     <string name="settings__gd_sync_disable_confirm">Bis du dir sicher? Ohne Google Drive Synchronisierung wirst du nicht mehr in der Lage sein deine Token wiederherzustellen, wenn du dein Smartphone verlierst oder zurücksetzt!</string>
     <string name="extension__code_sent_msg">Code erfolgreich gesendet</string>
     <string name="extension__code_sent_error_msg">Beim Senden des Codes ist ein Fehler aufgetreten</string>
@@ -726,7 +726,7 @@
     <string name="settings__show_next_token_desc">Nächsten Token anzeigen, wenn der Jetzige demnächst abläuft</string>
     <string name="settings__list_style">Listenstil</string>
     <string name="backup__reminder_msg">Google Drive nicht synchronisiert</string>
-    <string name="backup__reminder_cta">Zu den Backup-Einstellungen gehen</string>
+    <string name="backup__reminder_cta">Zu den Sicherungseinstellungen gehen</string>
     <string name="settings__list_style_option_default">Standard</string>
     <string name="settings__list_style_option_compact">Kompakt</string>
     <string name="externalimport_lastpass">LastPass</string>
@@ -807,15 +807,15 @@
     <string name="externalimport__info_andotp_title">Importiere Token von andOTP</string>
     <string name="externalimport__andotp_msg">Exportiere deine Konten von andOTP in eine unverschlüsselte JSON Datei und lade sie über die \"JSON Datei auswählen\" Option aus. Vergiss nicht, nach einem erfolgreichen Import die Datei zu entfernen.</string>
     <string name="introduction__backup_description">Im nächsten Schritt wirst du aufgefordert, dein Google Drive-Konto auszuwählen, in welchem die 2FA-Token sicher gespeichert werden sollen.</string>
-    <string name="introduction__backup_take_risk_cta">Ich gehe das Risiko ein und erstelle kein Backup</string>
-    <string name="introduction__backup_success">Die Google Drive Synchronisation wurde erfolgreich aktiviert.</string>
-    <string name="backup__import_invalid_version">Die Backup-Datei, die du versuchst zu importieren, wird in dieser Version der App nicht unterstützt. Die App unterstützt nur Backup-Formate bis zu Version %d, während die Datei, die du importierst, die Version %d hat.</string>
+    <string name="introduction__backup_take_risk_cta">Ich gehe das Risiko ein und erstelle keine Sicherung</string>
+    <string name="introduction__backup_success">Die Google Drive Synchronisierung wurde erfolgreich aktiviert.</string>
+    <string name="backup__import_invalid_version">Die Sicherungsdatei, die du versuchst zu importieren, wird in dieser Version der App nicht unterstützt. Die App unterstützt nur Sicherungsformate bis zu Version %d, während die Datei, die du importierst, die Version %d hat.</string>
     <string name="commons__pair">Verbinden</string>
     <string name="introduction__backup_icloud_title">Sicherheit bei der Synchronisierung und Datensicherung</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS verwendet iCloud für ein sicheres Backup und die Synchronisierung deiner 2FA-Token. Die **verschlüsselten** Backup-Daten werden in iCloud gespeichert und sind **nur über die 2FAS-App** zugänglich. Außerdem hilft diese Funktion bei der **Wiederherstellung und Synchronisierung** von Token zwischen iOS-Geräten.\n\nStandardmäßig ist dies aktiviert und kann in den Backup-Einstellungen der App jederzeit deaktiviert werden.</string>
+    <string name="introduction__backup_icloud_description">2FAS verwendet iCloud für ein sichere Sicherung und die Synchronisierung deiner 2FA Token. Die **verschlüsselten** Sicherungsdaten werden in iCloud gespeichert und sind **nur über die 2FAS App** zugänglich. Außerdem hilft diese Funktion bei der **Wiederherstellung und Synchronisierung** von Token zwischen iOS-Geräten.\n\nStandardmäßig ist dies aktiviert und kann in den Sicherungs-Einstellungen der App jederzeit deaktiviert werden.</string>
     <string name="introduction__backup_icloud_cta">Lerne mehr über die Datensicherung</string>
-    <string name="backup__enter_password_google_drive_msg1">Es scheint, als wäre deine Google Drive-Backup-Datei passwortgeschützt. Gib das richtige Passwort ein, um fortzufahren. Wenn du deine Google Drive-Backup-Datei löschen möchtest, ...</string>
+    <string name="backup__enter_password_google_drive_msg1">Es scheint, als wäre deine Google Drive Sicherungsdatei passwortgeschützt. Gib das richtige Passwort ein, um fortzufahren. Wenn du deine Google Drive-Backup-Datei löschen möchtest, ...</string>
     <string name="backup__enter_password_google_drive_msg2">Tippe hier, um zu sehen, wie es funktioniert</string>
     <string name="settings__preferences">Einstellungen</string>
     <string name="settings__it_matters">Es zählt</string>
@@ -823,8 +823,8 @@
     <string name="settings__info_footer">Deine Unterstützung ermöglicht uns die Entwicklung neuer Funktionen und Verbesserungen. Danke dir!</string>
     <string name="settings__trash_option">Wiederherstellen aus dem Papierkorb</string>
     <string name="periodic_notification_tips">Schön, dass du bei 2FAS dabei bist! 🌟 Nimm dir einen Moment Zeit, um hilfreiche Tipps &amp; Tricks 🛠️ in der App für mehr Sicherheit zu entdecken 🔒.</string>
-    <string name="periodic_notification_backup">Aktiviere 2FAS Backup &amp; Sync, um sicherzustellen, dass du nie ausgesperrt wirst, selbst wenn du dein Telefon verlierst - Dein Seelenfrieden mit einem Fingertipp! 🔐📱</string>
-    <string name="periodic_notification_browser_extension">Beschleunige deine Anmeldungen mit der 2FAS-Browsererweiterung! 🚀 Jetzt herunterladen für eine schnellere und bequemere Authentifizierung. 🌐✨</string>
+    <string name="periodic_notification_backup">Aktiviere 2FAS Sicherung &amp; Synchronisierung, um sicherzustellen, dass du nie ausgesperrt wirst, selbst wenn du dein Telefon verlierst - Dein Seelenfrieden mit einem Fingertipp! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Beschleunige deine Anmeldungen mit der 2FAS Browsererweiterung! 🚀 Jetzt herunterladen für eine schnellere und bequemere Authentifizierung. 🌐✨</string>
     <string name="periodic_notification_donate">Wir sind dankbar für deine Unterstützung von 2FAS! 🌟 Wenn du unsere App hilfreich findest, ziehe eine Spende in Betracht, um uns zu helfen, deine digitale Welt sicher zu halten. Jedes bisschen hilft! 🙏💙</string>
     <!-- DO NOT TRANSLATE! -->
     <string name="tokens__steam">STEAM</string>
@@ -832,10 +832,10 @@
     <string name="widget__size_not_supported">Diese Größe wird noch nicht unterstützt</string>
     <string name="widget__settings_description">Wähle die Dienste aus, die du auf dem Widget anzeigen möchtest. Wenn keine Dienste verfügbar sind, vergewissere dich, dass du die Widgets in den Einstellungen der App aktiviert hast.</string>
     <string name="widget__service_icon">Dienst-Symbol</string>
-    <string name="widget__not_enabled">Die Widget-Funktionalität ist in den 2FAS-Einstellungen nicht aktiviert</string>
-    <string name="widget__not_enabled_no_services">Die Widget-Funktionalität ist in den 2FAS-Einstellungen nicht aktiviert und es stehen keine Dienste in der App zur Auswahl</string>
+    <string name="widget__not_enabled">Die Widget-Funktionalität ist in den 2FAS Einstellungen nicht aktiviert</string>
+    <string name="widget__not_enabled_no_services">Die Widget-Funktionalität ist in den 2FAS Einstellungen nicht aktiviert und es stehen keine Dienste in der App zur Auswahl</string>
     <string name="widget__no_services">Es sind keine Dienste in der App zur Auswahl verfügbar</string>
-    <string name="widget__select_service_intent_description">Wähle den Dienst, den du in deinem 2FAS-Widget anzeigen möchtest</string>
+    <string name="widget__select_service_intent_description">Wähle den Dienst, den du in deinem 2FAS Widget anzeigen möchtest</string>
     <string name="widget__my_secured_account">Mein gesichertes Konto</string>
     <string name="widget__token">Token</string>
     <string name="watch__intro">Die 2FAS watchOS-App ist eine Begleit-App für die 2FAS iOS-Anwendung. Sie zeigt die Dienste an, die mit der iCloud-Synchronisierung gesichert wurden.\n\nFür schnellen Zugriff füge sie zu deinen bevorzugten Diensten hinzu.\n\nBitte denke daran zu spenden, damit wir die 2FAS-Plattform weiter verbessern können!</string>
@@ -850,10 +850,10 @@
     <string name="appleWatch__installation_first_step">2FAS Auth über die Watch-App installieren</string>
     <string name="appleWatch__installation_first_step_link">Watch-App öffnen</string>
     <string name="appleWatch__installation_second_step">Stelle sicher, dass die iCloud-Synchronisierung aktiviert ist</string>
-    <string name="appleWatch__installation_second_step_link">Gehe zu den 2FAS-Backup-Einstellungen</string>
+    <string name="appleWatch__installation_second_step_link">Gehe zu den 2FAS Sicherungseinstellungen</string>
     <string name="settings__apple_watch">Apple Watch</string>
     <string name="widget__no_selected_services">Gedrückt halten und Dienst auswählen, um das Widget zu aktivieren...</string>
-    <string name="widget__reveal_tokens_long_message">Decke deine 2FAS-Token für 60 Sekunden auf</string>
+    <string name="widget__reveal_tokens_long_message">Decke deine 2FAS Token für 60 Sekunden auf</string>
     <string name="widget__reveal_tokens_short_message">Aufdecken für 60 Sekunden</string>
     <string name="settings__show_error_details">Fehlerdetails anzeigen</string>
     <string name="tokens__show_qr_code">Dienst QR-Code</string>
@@ -866,21 +866,21 @@
     <string name="backup__sync_disabled">Die Synchronisierung ist deaktiviert.</string>
     <string name="backup__sync_not_available">Synchronisierung nicht verfügbar: %s</string>
     <string name="backup__watch_pairing_title">Kopplung mit Apple Watch</string>
-    <string name="backup__watch_pairing_description">Möchtest du eine Apple Watch mit deinem iCloud-Backup koppeln? Gib den Namen für dein Gerät ein:</string>
+    <string name="backup__watch_pairing_description">Möchtest du eine Apple Watch mit deiner iCloud-Sicherung koppeln? Gib den Namen für dein Gerät ein:</string>
     <string name="backup__watch_pairing_default_name">Apple Watch</string>
     <string name="backup__watch_pairing_action">Gerät koppeln</string>
-    <string name="backup__watch_pairing_error">Kann nicht mit der Watch gekoppelt werden. Stelle sicher, dass das Cloud-Backup aktiviert ist und mit einem Passwort synchronisiert wird.</string>
-    <string name="backup__cloud_error_title">Fehler bei der Cloud-Sicherung</string>
-    <string name="backup__cloud_error_missing_system_key_content">Das Cloud-Backup kann nicht entschlüsselt werden, weil es keinen Systemschlüssel gibt. Prüfe, ob die iCloud-Schlüsselbund-Synchronisierung aktiviert ist und richtig funktioniert.</string>
-    <string name="backup__cloud_error_mismatch_key_content">Die Cloud-Sicherung kann nicht entschlüsselt werden, da sie mit dem Systemschlüssel verschlüsselt ist und du ein benutzerdefiniertes Passwort verwendest. Möchtest du wechseln?</string>
-    <string name="backup__cloud_error_new_version_content">Die Synchronisierung mit dem Cloud-Backup ist nicht möglich, da es auf eine neuere Version der App migriert wurde. Aktualisiere die App, um Cloud-Backup weiterhin zu verwenden.</string>
-    <string name="backup__enter_cloud_backup_password_title">Cloud-Backup-Passwort eingeben</string>
+    <string name="backup__watch_pairing_error">Kann nicht mit der Watch gekoppelt werden. Stelle sicher, dass die Cloudsicherung aktiviert ist und mit einem Passwort synchronisiert wird.</string>
+    <string name="backup__cloud_error_title">Fehler bei der Cloudsicherung</string>
+    <string name="backup__cloud_error_missing_system_key_content">Die Cloudsicherung kann nicht entschlüsselt werden, weil es keinen Systemschlüssel gibt. Prüfe, ob die iCloud-Schlüsselbund-Synchronisierung aktiviert ist und richtig funktioniert.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Die Cloudsicherung kann nicht entschlüsselt werden, da sie mit dem Systemschlüssel verschlüsselt ist und du ein benutzerdefiniertes Passwort verwendest. Möchtest du wechseln?</string>
+    <string name="backup__cloud_error_new_version_content">Die Synchronisierung mit der Cloudsicherung ist nicht möglich, da es auf eine neuere Version der App migriert wurde. Aktualisiere die App, um Cloud-Backup weiterhin zu verwenden.</string>
+    <string name="backup__enter_cloud_backup_password_title">Gib das Passwort für die Cloudsicherung ein</string>
     <string name="backup__enter_password_description">Die iCloud-Sicherung ist mit deinem Passwort verschlüsselt. Gib es ein, um die Synchronisierung zu aktivieren.</string>
     <string name="backup__enter_password_failure">Misserfolg! %s</string>
     <string name="backup__enter_password_wrong_password">Falsches Passwort! Bitte versuche es erneut</string>
-    <string name="backup__migration_title">Migration der Cloud-Sicherung</string>
-    <string name="backup__migration_subtitle">Schalte die App nicht aus!</string>
-    <string name="backup__migration_description">Deine Sicherung wird mit einem Systemschlüssel verschlüsselt. Dieser Schlüssel wird von deinen Apps, die iCloud-Schlüsselbund verwenden, gemeinsam genutzt. Denke daran, diese Option zu aktivieren. Wenn du dein Passwort verwenden möchtest, kannst du dies nach der Migration in den Einstellungen für die Cloud-Sicherung tun.</string>
+    <string name="backup__migration_title">Verbesserung im Gange</string>
+    <string name="backup__migration_subtitle">Bitte warten...</string>
+    <string name="backup__migration_description">Wir verbessern die App, um dir neue, großartige Sicherheitsfunktionen zu bieten.</string>
     <string name="commons__success_ex">Erfolg!</string>
     <string name="backup__encryption_type">Verschlüsselungsart</string>
     <string name="backup__encryption_select">Verschlüsselungsart auswählen</string>
@@ -890,15 +890,15 @@
     <string name="backup__encryption_change_title">Verschlüsselungsart ändern</string>
     <string name="backup__encryption_method_footer">Wähle ein System- oder benutzerdefiniertes Passwort</string>
     <string name="backup__manage_paired_watches_title">Gekoppelte Apple Watches verwalten</string>
-    <string name="backup__manage_paired_watches_footer">Hinzufügen, Entfernen oder Umbenennen von Apple Watches mit Zugriff auf dieses Cloud-Backup.</string>
+    <string name="backup__manage_paired_watches_footer">Hinzufügen, Entfernen oder Umbenennen von Apple Watches mit Zugriff auf diese Cloudsicherung.</string>
     <string name="backup__manage_paired_watches_rename_title">Watch umbenennen</string>
     <string name="backup__manage_paired_watches_rename_description">Neuen Gerätenamen eingeben</string>
     <string name="backup__manage_paired_watches_rename_action">Umbenennen</string>
     <string name="backup__manage_paired_watches_title_short">Watches verwalten</string>
     <string name="backup__manage_paired_watches_empty_list">Die Liste ist leer. Watch mit der Taste + koppeln</string>
-    <string name="backup__manage_paired_watches_syncing">Die Cloud-Sicherung synchronisiert...</string>
+    <string name="backup__manage_paired_watches_syncing">Die Cloudsicherung synchronisiert...</string>
     <string name="backup__watch_pair_title">Kopple deine Apple Watch</string>
-    <string name="backup__watch_pair_description">Gehe zu den 2FAS Backup-Einstellungen in 2FAS Auth auf deinem iPhone/iPad und navigiere zu „Verwaltete gekoppelte Apple Watches“. Diese Option wird sichtbar sein, wenn das Backup synchronisiert ist. Scanne den QR-Code von dort aus.</string>
+    <string name="backup__watch_pair_description">Gehe zu den 2FAS Sicherungseinstellungen in 2FAS Auth auf deinem iPhone/iPad und navigiere zu „Verwaltete gekoppelte Apple Watches“. Diese Option wird sichtbar sein, wenn das Backup synchronisiert ist. Scanne den QR-Code von dort aus.</string>
     <string name="backup__watch_pair_qr_error">Fehler beim Generieren des QR-Codes</string>
     <string name="backup__cloud_switch_system_key">Zum Systemschlüssel wechseln</string>
     <string name="backup__cloud_turn_backup_off">Cloud-Sicherung deaktivieren</string>
@@ -952,4 +952,25 @@
     <string name="exportwarning__title_qr">Token als QR-Codes exportieren</string>
     <string name="exportwarning__cta_qr">Als QR-Codes exportieren</string>
     <string name="commons__icloud_backup_password">Passwort der iCloud-Sicherung</string>
+    <string name="backup__manage_title">Sicherung verwalten</string>
+    <string name="backup__password_length_error">Das Passwort muss %1$d-%2$d Zeichen lang sein.</string>
+    <string name="backup__password_characters_error">Das Passwort darf nur Buchstaben, Zahlen, Leerzeichen und Sonderzeichen enthalten.</string>
+    <string name="backup__password_match_error">Die Passwörter stimmen nicht überein.</string>
+    <string name="backup__encryption_title">Verschlüsselung</string>
+    <string name="backup__removing_password">Passwort entfernen</string>
+    <string name="backup__veryfing_password">Passwort überprüfen</string>
+    <string name="backup__verify_password_description">Die iCloud-Sicherung ist mit deinem Passwort verschlüsselt. Gib es ein, um die Änderungen zu übernehmen.</string>
+    <string name="backup__password_set">Passwort erfolgreich festgelegt</string>
+    <string name="backup__setting_password">Passwort festlegen</string>
+    <string name="backup__changing_password">Passwort ändern</string>
+    <string name="backup__set_password">Lege dein Passwort fest</string>
+    <string name="backup__change_password">Ändere dein Passwort</string>
+    <string name="backup__password_set_description">Gib ein Passwort ein, um den Inhalt deiner Sicherung zusätzlich zu schützen. Wenn du dein Passwort vergisst, dann musst du die Sicherung entfernen und von vorne beginnen.</string>
+    <string name="backup__password_rules_description">Es sind nur Buchstaben, Ziffern, Leerzeichen und Sonderzeichen (!@#$%^&amp;*()-_) zulässig.</string>
+    <string name="pass_promo_banner_title">Wir haben etwas Neues für dich entwickelt!</string>
+    <string name="pass_promo_banner_msg">Ein sicherer, lokal ausgerichteter **Password Manager – 2FAS Pass**, der für die Zusammenarbeit mit 2FAS Auth entwickelt wurde und deinen Authenticator unverändert beibehält.</string>
+    <string name="pass_promo_banner_positive_cta">Zum Store gehen</string>
+    <string name="pass_promo_banner_negative_cta">Nicht erneut anzeigen</string>
+    <string name="appearance_dynamic_colors">Dynamische Farben</string>
+    <string name="appearance_dynamic_colors_description">Ändere die App-Farben dynamisch basierend auf deinem Hintergrundbild.</string>
 </resources>

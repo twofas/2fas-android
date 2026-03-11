@@ -18,4 +18,5 @@ interface SettingsRepository {
     suspend fun setSendCrashLogs(sendCrashLogs: Boolean)
     suspend fun setAllowScreenshots(allow: Boolean)
     suspend fun setHideCodes(hideCodes: Boolean)
+    suspend fun setDynamicColors(dynamicColors: Boolean)
 }

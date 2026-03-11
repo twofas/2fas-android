@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: sv-SE, Swedish (Sweden)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:05 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:08 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -878,9 +878,9 @@
     <string name="backup__enter_password_description">iCloud-säkerhetskopian är krypterad med ett anpassat lösenord. Ange lösenordet för att synkronisera.</string>
     <string name="backup__enter_password_failure">Fel! %s</string>
     <string name="backup__enter_password_wrong_password">Fel lösenord! Försök igen</string>
-    <string name="backup__migration_title">Migrerar säkerhetskopia</string>
-    <string name="backup__migration_subtitle">Stäng inte appen!</string>
-    <string name="backup__migration_description">Din säkerhetskopia krypteras med en systemnyckel som delas mellan appar som använder iCloud-nyckelring. Se till att den funktionen är påslagen. Om du i stället vill använda ett anpassat lösenord kan du välja det i inställningarna för säkerhetskopiering efter att migrationen är klar.</string>
+    <string name="backup__migration_title">Uppgradering pågår</string>
+    <string name="backup__migration_subtitle">Vänligen vänta...</string>
+    <string name="backup__migration_description">Vi uppgraderar appen för att ge dig nya spännande säkerhetsfunktioner.</string>
     <string name="commons__success_ex">Slutfört!</string>
     <string name="backup__encryption_type">Typ av kryptering</string>
     <string name="backup__encryption_select">Välj typ av kryptering</string>
@@ -951,5 +951,26 @@
     <string name="exportwarning__description_qr">Du är på väg att exportera alla dina 2FA-koder till en okrypterad ZIP-fil med QR-koder inuti. Dessa QR-koder kan användas för att ta kontroll över dina konton. Förvara dem säkert.</string>
     <string name="exportwarning__title_qr">Exportera konton till QR-koder</string>
     <string name="exportwarning__cta_qr">Exportera till QR-koder</string>
-    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
+    <string name="commons__icloud_backup_password">Lösenord för iCloud-säkerhetskopia</string>
+    <string name="backup__manage_title">Hantera säkerhetskopia</string>
+    <string name="backup__password_length_error">Lösenordet måste vara %1$d-%2$d tecken långt.</string>
+    <string name="backup__password_characters_error">Lösenordet får endast innehålla bokstäver, siffror, mellanslag och specialtecken.</string>
+    <string name="backup__password_match_error">Lösenorden stämmer inte överens.</string>
+    <string name="backup__encryption_title">Kryptering</string>
+    <string name="backup__removing_password">Tar bort lösenord</string>
+    <string name="backup__veryfing_password">Kontrollerar lösenord</string>
+    <string name="backup__verify_password_description">iCloud-säkerhetskopian är kypterad med ditt lösenord. Ange det för att spara ändringarna.</string>
+    <string name="backup__password_set">Lösenordet har ställts in</string>
+    <string name="backup__setting_password">Ställer in lösenord</string>
+    <string name="backup__changing_password">Byter lösenord</string>
+    <string name="backup__set_password">Ställ in lösenord</string>
+    <string name="backup__change_password">Byt lösenord</string>
+    <string name="backup__password_set_description">Ange ditt lösenord för att ytterligare skydda innehållet i din säkerhetskopia. Om du glömmer ditt lösenord måste du ta bort säkerhetskopian och börja om från början.</string>
+    <string name="backup__password_rules_description">Endast bokstäver, siffror, mellanslag och specialtecken (!@#$%^&amp;*()-_) tillåts.</string>
+    <string name="pass_promo_banner_title">Vi har skapat något nytt för dig!</string>
+    <string name="pass_promo_banner_msg">2FAS Pass – en säker, lokal lösenordshanterare utformad för att fungera tillsammans med 2FAS Auth, så att din autentiserare förblir precis som den är.</string>
+    <string name="pass_promo_banner_positive_cta">Skaffa appen</string>
+    <string name="pass_promo_banner_negative_cta">Visa inte igen</string>
+    <string name="appearance_dynamic_colors">Dynamiska färger</string>
+    <string name="appearance_dynamic_colors_description">Ändra appens färger dynamiskt baserat på din bakgrund.</string>
 </resources>

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -952,4 +952,25 @@
     <string name="exportwarning__title_qr">Exportar Tokens como códigos QR</string>
     <string name="exportwarning__cta_qr">Exportar como códigos QR</string>
     <string name="commons__icloud_backup_password">Backup de Senhas do iCloud</string>
+    <string name="backup__manage_title">Gerenciar backup</string>
+    <string name="backup__password_length_error">A senha deve ter entre %1$d e %2$d caracteres.</string>
+    <string name="backup__password_characters_error">A senha só pode conter letras, números, espaços e símbolos.</string>
+    <string name="backup__password_match_error">As senhas não correspondem.</string>
+    <string name="backup__encryption_title">Criptografia</string>
+    <string name="backup__removing_password">Removendo a senha</string>
+    <string name="backup__veryfing_password">Verificando senha</string>
+    <string name="backup__verify_password_description">O backup do iCloud está criptografado com sua senha. Digite-a para aplicar as alterações.</string>
+    <string name="backup__password_set">Senha definida com sucesso</string>
+    <string name="backup__setting_password">Definir senha</string>
+    <string name="backup__changing_password">Alterar senha</string>
+    <string name="backup__set_password">Coloque sua senha</string>
+    <string name="backup__change_password">Troque sua senha</string>
+    <string name="backup__password_set_description">Digite sua senha para proteger ainda mais o conteúdo do seu backup. Se você esquecer essa senha, precisará remover o backup e começar do zero.</string>
+    <string name="backup__password_rules_description">Somente letras, dígitos, espaços e caracteres especiais (!@#$%^&amp;*()-_) são permitidos.</string>
+    <string name="pass_promo_banner_title">Criamos algo novo para você!</string>
+    <string name="pass_promo_banner_msg">Um **gerenciador de senhas – 2FAS Pass** seguro e “local-first”, feito para funcionar junto com o 2FAS Auth, mantendo seu Authenticator exatamente como está.</string>
+    <string name="pass_promo_banner_positive_cta">Ir para a loja</string>
+    <string name="pass_promo_banner_negative_cta">Não mostrar novamente</string>
+    <string name="appearance_dynamic_colors">Cores dinâmicas</string>
+    <string name="appearance_dynamic_colors_description">Altere dinamicamente as cores do aplicativo com base no seu papel de parede.</string>
 </resources>

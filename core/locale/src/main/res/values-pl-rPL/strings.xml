@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:07 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -426,7 +426,7 @@
     <string name="browser__more_info_link">https://www.2fas.com/be</string>
     <string name="browser__pairing_successful_title">Parowanie udane!</string>
     <string name="browser__pairing_successful_description">2FAS wyśle Ci powiadomienie Push za każdym razem, gdy zalogujesz się do swoich serwisów online za pomocą tej przeglądarki internetowej. Nie będziesz już musiał ponownie wpisywać tokenów przy każdym użyciu.</string>
-    <string name="browser__pairing_failed_title">Parowanie nieudane :(</string>
+    <string name="browser__pairing_failed_title">Parowanie nieudane</string>
     <string name="browser__pairing_failed_description">Ten kod QR nie został rozpoznany i 2FAS nie mógł sparować tego urządzenia z rozszerzeniem przeglądarki. Spróbuj ponownie.</string>
     <!-- browser__pairing_already_paired_title -->
     <string name="browser__already_paired_title">Już sparowane!</string>
@@ -884,9 +884,9 @@
     <string name="backup__enter_password_description">Kopia zapasowa iCloud jest zaszyfrowana twoim hasłem. Wprowadź je, aby włączyć synchronizację.</string>
     <string name="backup__enter_password_failure">Błąd! %s</string>
     <string name="backup__enter_password_wrong_password">Niepoprawne hasło! Proszę spróbować ponownie</string>
-    <string name="backup__migration_title">Migracja kopii zapasowej iCloud</string>
-    <string name="backup__migration_subtitle">Nie wyłączaj aplikacji!</string>
-    <string name="backup__migration_description">Kopia zapasowa jest zaszyfrowana Kluczem Systemowym. Ten klucz będzie udostępniony wszystkim aplikacjom korzystającym z pęku kluczy iCloud. Pamiętaj, aby włączyć tę opcję. Jeśli chcesz użyć własnego hasła, możesz to zrobić w ustawieniach kopii zapasowej iCloud po migracji.</string>
+    <string name="backup__migration_title">Trwa aktualizacja</string>
+    <string name="backup__migration_subtitle">Proszę czekać...</string>
+    <string name="backup__migration_description">Aktualizujemy aplikację, aby zapewnić Ci ulepszone funkcje bezpieczeństwa.</string>
     <string name="commons__success_ex">Sukces!</string>
     <string name="backup__encryption_type">Rodzaj szyfrowania</string>
     <string name="backup__encryption_select">Wybierz rodzaj szyfrowania</string>
@@ -900,7 +900,7 @@
     <string name="backup__manage_paired_watches_rename_title">Zmień nazwę Watcha</string>
     <string name="backup__manage_paired_watches_rename_description">Wprowadź nową nazwę urządzenia</string>
     <string name="backup__manage_paired_watches_rename_action">Zmień nazwę</string>
-    <string name="backup__manage_paired_watches_title_short">Zarządzaj Watchami</string>
+    <string name="backup__manage_paired_watches_title_short">Apple Watche</string>
     <string name="backup__manage_paired_watches_empty_list">Lista jest pusta. Sparuj z Apple Watch przyciskiem +</string>
     <string name="backup__manage_paired_watches_syncing">Synchronizacja kopii zapasowej iCloud...</string>
     <string name="backup__watch_pair_title">Sparuj twój Apple Watch</string>
@@ -958,4 +958,25 @@
     <string name="exportwarning__title_qr">Eksport tokenów jako kody QR</string>
     <string name="exportwarning__cta_qr">Eksportuj jako kody QR</string>
     <string name="commons__icloud_backup_password">Hasło kopii zapasowej iCloud</string>
+    <string name="backup__manage_title">Zarządzaj kopią zapasową</string>
+    <string name="backup__password_length_error">Hasło musi mieć conajmniej %1$d-%2$d znaków.</string>
+    <string name="backup__password_characters_error">Hasło może zawierać tylko litery, cyfry, spacje i symbole.</string>
+    <string name="backup__password_match_error">Hasła się nie zgadzają</string>
+    <string name="backup__encryption_title">Szyfrowanie</string>
+    <string name="backup__removing_password">Usuwanie hasła</string>
+    <string name="backup__veryfing_password">Weryfikowanie hasła</string>
+    <string name="backup__verify_password_description">Kopia zapasowa iCloud jest zaszyfrowana twoim hasłem. Wpisz je aby wprowadzić zmiany.</string>
+    <string name="backup__password_set">Hasło ustawione pomyślnie</string>
+    <string name="backup__setting_password">Ustawianie hasła</string>
+    <string name="backup__changing_password">Zmiana hasła</string>
+    <string name="backup__set_password">Ustaw hasło</string>
+    <string name="backup__change_password">Zmień hasło</string>
+    <string name="backup__password_set_description">Wprowadź hasło, aby dodatkowo zabezpieczyć swoją kopię zapasową. W przypadku utraty hasła konieczne będzie usunięcie i stworzenie nower kopii zapasowej.</string>
+    <string name="backup__password_rules_description">Dozwolone są tylko litery, cyfry, spacja oraz znaki specjalne (!@#$%^&amp;*()-_).</string>
+    <string name="pass_promo_banner_title">Stworzyliśmy coś nowego dla ciebie!</string>
+    <string name="pass_promo_banner_msg">Bezpieczny i lokalny **Menedżer haseł - 2FAS Pass**, zaprojektowany do doskonałej współpracy z 2FAS Auth, aby zwiększyć bezpieczeństwo twoich danych.</string>
+    <string name="pass_promo_banner_positive_cta">Idź do sklepu</string>
+    <string name="pass_promo_banner_negative_cta">Nie pokazuj ponownie</string>
+    <string name="appearance_dynamic_colors">Dynamiczny motyw</string>
+    <string name="appearance_dynamic_colors_description">Zmieniaj motyw aplikacji dynamicznie w oparciu o tapetę.</string>
 </resources>

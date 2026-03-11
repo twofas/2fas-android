@@ -193,6 +193,8 @@ class Strings(c: Context) {
     val browserRequestEmpty = c.getString(R.string.tokens__service_not_found_search)
 
     val settingsTheme = c.getString(R.string.settings__option_theme)
+    val settingsDynamicColors = c.getString(R.string.appearance_dynamic_colors)
+    val settingsDynamicColorsBody = c.getString(R.string.appearance_dynamic_colors_description)
     val settingsShowNextCode = c.getString(R.string.settings__show_next_token)
     val settingsShowNextCodeBody = c.getString(R.string.settings__show_next_token_desc)
     val settingsAutoFocusSearch = c.getString(R.string.appearance__toggle_active_search)
@@ -353,5 +355,10 @@ class Strings(c: Context) {
     val widgetSettingsEmpty = c.getString(R.string.tokens__tokens_list_is_empty)
     val widgetSelectMsg = c.getString(R.string.widgets_select_msg)
     val widgetNoServices = c.getString(R.string.widgets_empty_msg)
+
+    val passBannerTitle = c.getString(R.string.pass_promo_banner_title)
+    val passBannerMsg = c.getString(R.string.pass_promo_banner_msg)
+    val passBannerPositiveCta = c.getString(R.string.pass_promo_banner_positive_cta)
+    val passBannerNegativeCta = c.getString(R.string.pass_promo_banner_negative_cta)
 
 }

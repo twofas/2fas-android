@@ -75,4 +75,10 @@ internal class SettingsRepositoryImpl(
             local.setHideCodes(hideCodes)
         }
     }
+
+    override suspend fun setDynamicColors(dynamicColors: Boolean) {
+        withContext(dispatchers.io) {
+            local.setDynamicColors(dynamicColors)
+        }
+    }
 }

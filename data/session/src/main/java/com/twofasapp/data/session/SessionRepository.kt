@@ -16,4 +16,7 @@ interface SessionRepository {
     suspend fun markAppInstalled()
     suspend fun recalculateTimeDelta()
     suspend fun noCompanionAppFromTimestamp(): Long?
+    fun observeShowPassBanner(): Flow<Boolean>
+    fun resetPassBannerDismiss()
+    fun disablePassBanner()
 }

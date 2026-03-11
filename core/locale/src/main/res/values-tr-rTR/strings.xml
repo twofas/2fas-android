@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:08 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -419,7 +419,7 @@
     <string name="browser__browser_extension">Tarayıcı uzantısı</string>
     <string name="browser__info_title">2FAS web tarayıcısı uzantısı</string>
     <string name="browser__info_description_first">2FAS tarayıcı uzantısını masaüstü bilgisayarınıza yükleyin.</string>
-    <string name="browser__info_description_second">Uzantıyı bu uygulamayla eşleştirin.</string>
+    <string name="browser__info_description_second">Uzantıyı 2FAS uygulamanızla eşleştirin.</string>
     <string name="browser__more_info">Daha fazla bilgi:</string>
     <string name="browser__more_info_link_title">2fas.com/be</string>
     <string name="browser__pair_with_web_browser">Web tarayıcısı ile eşleştir</string>
@@ -875,12 +875,12 @@
     <string name="backup__cloud_error_mismatch_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü Sistem Anahtarı kullanılarak şifrelenmiş ve şu anda özel bir parola kullanıyorsunuz. Geçiş yapmak ister misiniz?</string>
     <string name="backup__cloud_error_new_version_content">Bulut yedeklemesi ile eşitlenemiyor çünkü uygulamanın daha güncel bir sürümüne taşınmıştı. Bulut yedeklemesini kullanmaya devam etmek için uygulamayı güncelleyin.</string>
     <string name="backup__enter_cloud_backup_password_title">Bulut yedeklemesi parolası girin</string>
-    <string name="backup__enter_password_description">iCloud yedeği parolanızla şifrelenmiştir. Eşitlemeyi etkinleştirmek için parolanızı girin.</string>
+    <string name="backup__enter_password_description">iCloud yedeği parolanızla şifreli. Eşitlemeyi etkinleştirmek için parolanızı girin.</string>
     <string name="backup__enter_password_failure">Başarısız! %s</string>
     <string name="backup__enter_password_wrong_password">Yanlış parola! Lütfen tekrar deneyin</string>
-    <string name="backup__migration_title">Bulut yedeği taşınıyor</string>
-    <string name="backup__migration_subtitle">Uygulamayı kapatmayın!</string>
-    <string name="backup__migration_description">Yedeğiniz bir sistem anahtarı ile şifreli. Bu anahtar, iCloud Anahtar Zincirini kullanan diğer uygulamalar arasında paylaştırılacak. Bu seçeneğin açık olduğundan emin olun Eğer kendi parolanızı kullanmak isterseniz, taşıma işleminden sonra Bulut yedeği ayarlarından ayarlayabilirsiniz.</string>
+    <string name="backup__migration_title">Yükseltme sürüyor</string>
+    <string name="backup__migration_subtitle">Lütfen bekleyin...</string>
+    <string name="backup__migration_description">Size yeni harika güvenlik özellikleri getirmek için uygulamayı güncelliyoruz.</string>
     <string name="commons__success_ex">Başarılı!</string>
     <string name="backup__encryption_type">Şifreleme türü</string>
     <string name="backup__encryption_select">Şifreleme türü seçin</string>
@@ -952,4 +952,25 @@
     <string name="exportwarning__title_qr">Jetonları QR kodları olarak dışa aktar</string>
     <string name="exportwarning__cta_qr">QR kodları olarak dışa aktar</string>
     <string name="commons__icloud_backup_password">iCloud yedeği parolası</string>
+    <string name="backup__manage_title">Yedeklemeyi yönet</string>
+    <string name="backup__password_length_error">Parola %1$d-%2$d karakter uzunluğunda olmalıdır.</string>
+    <string name="backup__password_characters_error">Parola sadece harf, numara, boşluk ve simge içerebilir.</string>
+    <string name="backup__password_match_error">Parolalar eşleşmiyor.</string>
+    <string name="backup__encryption_title">Şifreleme</string>
+    <string name="backup__removing_password">Parola kaldırılıyor</string>
+    <string name="backup__veryfing_password">Parola doğrulanıyor</string>
+    <string name="backup__verify_password_description">iCloud yedeği parolanızla şifreli. Değişiklikleri uygulamak için parolanızı girin.</string>
+    <string name="backup__password_set">Parola başarıyla ayarlandı</string>
+    <string name="backup__setting_password">Parola ayarlanıyor</string>
+    <string name="backup__changing_password">Parola değiştiriliyor</string>
+    <string name="backup__set_password">Parolanızı ayarlayın</string>
+    <string name="backup__change_password">Parolanızı değiştirin</string>
+    <string name="backup__password_set_description">Ek olarak yedeğinizin içeriğini korumak için parolanızı girin. Eğer parolanızı unutursanız, yedeğinizi silmeniz ve baştan başlamanız gerekecek.</string>
+    <string name="backup__password_rules_description">Sadece harfler, rakamlar, boşluklar ve özel karakterlere (!@#$%^&amp;*()-_) izin verilir.</string>
+    <string name="pass_promo_banner_title">Sizin için yeni bir şey geliştirdik!</string>
+    <string name="pass_promo_banner_msg">2FAS Auth ile birlikte çalışacak şekilde tasarlanmış, Authenticator’ınızı olduğu gibi bırakan, güvenli ve “local-first” bir parola yöneticisi – 2FAS Pass.</string>
+    <string name="pass_promo_banner_positive_cta">Mağazaya git</string>
+    <string name="pass_promo_banner_negative_cta">Bir daha gösterme</string>
+    <string name="appearance_dynamic_colors">Dinamik renkler</string>
+    <string name="appearance_dynamic_colors_description">Duvar kâğıdınıza göre uygulama renklerini dinamik olarak değiştirin.</string>
 </resources>

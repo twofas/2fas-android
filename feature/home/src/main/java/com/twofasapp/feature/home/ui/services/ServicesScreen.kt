@@ -31,6 +31,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -53,6 +54,7 @@ import com.twofasapp.designsystem.dialog.InputDialog
 import com.twofasapp.designsystem.dialog.ListRadioDialog
 import com.twofasapp.designsystem.group.ServicesGroup
 import com.twofasapp.designsystem.ktx.currentActivity
+import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.designsystem.lazy.listItem
 import com.twofasapp.designsystem.service.DsService
 import com.twofasapp.designsystem.service.ServiceStyle
@@ -61,6 +63,7 @@ import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
+import com.twofasapp.feature.home.ui.services.component.PassBanner
 import com.twofasapp.feature.home.ui.services.component.ServicesAppBar
 import com.twofasapp.feature.home.ui.services.component.ServicesFab
 import com.twofasapp.feature.home.ui.services.component.ServicesProgress
@@ -105,6 +108,8 @@ internal fun ServicesRoute(
         onSearchFocusChange = { viewModel.searchFocused(it) },
         onOpenBackupClick = { listener.openBackup(it) },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
+        onDismissPassBannerClick = { viewModel.dismissPassBanner() },
+        onDisablePassBannerClick = { viewModel.disablePassBanner() },
         onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
         onRevealClick = { viewModel.reveal(it) }
     )
@@ -132,6 +137,8 @@ private fun ServicesScreen(
     onSearchFocusChange: (Boolean) -> Unit,
     onOpenBackupClick: (Boolean) -> Unit = {},
     onDismissSyncReminderClick: () -> Unit = {},
+    onDismissPassBannerClick: () -> Unit = {},
+    onDisablePassBannerClick: () -> Unit = {},
     onIncrementHotpCounterClick: (Service) -> Unit = {},
     onRevealClick: (Service) -> Unit = {},
 ) {
@@ -149,6 +156,7 @@ private fun ServicesScreen(
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
     val activity = LocalContext.currentActivity
     val scope = rememberCoroutineScope()
+    val uriHandler = LocalUriHandler.current
 
     var isDragging by remember { mutableStateOf(false) }
 //    val data = remember { mutableStateOf(List(100) { "Item $it" }) }
@@ -387,6 +395,21 @@ private fun ServicesScreen(
                         }
                     }
 
+                    ServicesListItem.PassBanner -> {
+                        listItem(item) {
+                            PassBanner(
+                                modifier = Modifier
+                                    .padding(horizontal = 16.dp)
+                                    .padding(bottom = 12.dp, top = 4.dp),
+                                onGoToStoreClick = {
+                                    uriHandler.openSafely(TwLocale.links.passPlayStore, activity)
+                                    onDismissPassBannerClick()
+                                },
+                                onDismissClick = onDisablePassBannerClick,
+                            )
+                        }
+                    }
+
                     is ServicesListItem.GroupItem -> {
                         val group = item.group
 
@@ -477,7 +500,8 @@ private fun ServicesScreen(
     }
 
     if (showAddGroupDialog) {
-        InputDialog(title = TwLocale.strings.groupsAdd,
+        InputDialog(
+            title = TwLocale.strings.groupsAdd,
             onDismissRequest = { showAddGroupDialog = false },
             positive = TwLocale.strings.commonAdd,
             negative = TwLocale.strings.commonCancel,
@@ -493,7 +517,8 @@ private fun ServicesScreen(
     }
 
     if (showEditGroupDialog) {
-        InputDialog(title = TwLocale.strings.groupsEdit,
+        InputDialog(
+            title = TwLocale.strings.groupsEdit,
             onDismissRequest = { showEditGroupDialog = false },
             positive = TwLocale.strings.commonSave,
             negative = TwLocale.strings.commonCancel,

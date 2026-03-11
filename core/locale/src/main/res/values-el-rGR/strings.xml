@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Sun, 09 Nov 2025 07:31:04 -0800
+ Exported at: Mon, 09 Mar 2026 14:54:08 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -951,5 +951,26 @@
     <string name="exportwarning__description_qr">Πρόκειται να εξαγάγεις όλα τα 2FA tokens σου σε ένα μη κρυπτογραφημένο αρχείο ZIP που περιέχει QR κωδικούς. Αυτοί οι QR κωδικοί μπορούν να χρησιμοποιηθούν για να αποκτήσει κάποιος έλεγχο των λογαριασμών σου. Παρακαλώ φύλαξέ τους με ασφάλεια.</string>
     <string name="exportwarning__title_qr">Εξαγωγή Tokens ως QR κωδικοί</string>
     <string name="exportwarning__cta_qr">Εξαγωγή ως QR κωδικοί</string>
-    <string name="commons__icloud_backup_password">iCloud Backup Password</string>
+    <string name="commons__icloud_backup_password">Κωδικός πρόσβασης iCloud Backup</string>
+    <string name="backup__manage_title">Διαχείριση αντιγράφων ασφαλείας</string>
+    <string name="backup__password_length_error">Ο κωδικός πρέπει να έχει μήκος %1$d–%2$d χαρακτήρες.</string>
+    <string name="backup__password_characters_error">Ο κωδικός μπορεί να περιέχει μόνο γράμματα, αριθμούς, κενά και σύμβολα.</string>
+    <string name="backup__password_match_error">Οι κωδικοί δεν ταιριάζουν.</string>
+    <string name="backup__encryption_title">Κρυπτογράφηση</string>
+    <string name="backup__removing_password">Αφαίρεση κωδικού πρόσβασης</string>
+    <string name="backup__veryfing_password">Επαλήθευση κωδικού πρόσβασης</string>
+    <string name="backup__verify_password_description">Το iCloud backup είναι κρυπτογραφημένο με τον κωδικό σου. Εισήγαγε τον κωδικό για να εφαρμοστούν οι αλλαγές.</string>
+    <string name="backup__password_set">Ο κωδικός ορίστηκε με επιτυχία.</string>
+    <string name="backup__setting_password">Ορισμός κωδικού πρόσβασης</string>
+    <string name="backup__changing_password">Αλλαγή κωδικού πρόσβασης</string>
+    <string name="backup__set_password">Ορίστε τον κωδικό πρόσβασής σας</string>
+    <string name="backup__change_password">Αλλάξτε τον κωδικό πρόσβασής σας</string>
+    <string name="backup__password_set_description">Εισάγετε τον κωδικό σας για να προστατεύσετε επιπλέον τα περιεχόμενα του αντιγράφου ασφαλείας σας. Εάν ξεχάσετε τον κωδικό, θα χρειαστεί να διαγράψετε το αντίγραφο ασφαλείας και να ξεκινήσετε ξανά.</string>
+    <string name="backup__password_rules_description">Επιτρέπονται μόνο γράμματα, αριθμοί, κενά και ειδικοί χαρακτήρες (!@#$%^&amp;*()-_)</string>
+    <string name="pass_promo_banner_title">Φτιάξαμε κάτι νέο για εσάς!</string>
+    <string name="pass_promo_banner_msg">Ένας ασφαλής, «local-first» **διαχειριστής κωδικών πρόσβασης – 2FAS Pass**, σχεδιασμένος να λειτουργεί δίπλα στο 2FAS Auth, κρατώντας τον Authenticator σας ακριβώς όπως είναι.</string>
+    <string name="pass_promo_banner_positive_cta">Μετάβαση στο Store</string>
+    <string name="pass_promo_banner_negative_cta">Να μην εμφανιστεί ξανά</string>
+    <string name="appearance_dynamic_colors">Δυναμικά χρώματα</string>
+    <string name="appearance_dynamic_colors_description">Αλλάξτε δυναμικά τα χρώματα της εφαρμογής με βάση την ταπετσαρία σας.</string>
 </resources>

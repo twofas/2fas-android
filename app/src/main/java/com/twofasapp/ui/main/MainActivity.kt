@@ -8,6 +8,7 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.lifecycleScope
@@ -23,7 +24,10 @@ import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.designsystem.AppTheme
 import com.twofasapp.designsystem.AppThemeState
+import com.twofasapp.designsystem.LocalAppTheme
+import com.twofasapp.designsystem.LocalDynamicColors
 import com.twofasapp.designsystem.MainAppTheme
 import com.twofasapp.designsystem.ktx.makeWindowSecure
 import com.twofasapp.designsystem.ktx.toastLong
@@ -53,6 +57,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
     private var recalculateTimeJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val appSettings = settingsRepository.getAppSettings()
         val selectedTheme = settingsRepository.getAppSettings().selectedTheme
         AppThemeState.applyTheme(selectedTheme)
         enableEdgeToEdge(
@@ -92,8 +97,17 @@ class MainActivity : AppCompatActivity(), AuthAware {
                 window.isNavigationBarContrastEnforced = false
             }
 
-            MainAppTheme {
-                MainScreen()
+            CompositionLocalProvider(
+                LocalAppTheme provides when (selectedTheme) {
+                    SelectedTheme.Auto -> AppTheme.Auto
+                    SelectedTheme.Light -> AppTheme.Light
+                    SelectedTheme.Dark -> AppTheme.Dark
+                },
+                LocalDynamicColors provides appSettings.dynamicColors,
+            ) {
+                MainAppTheme {
+                    MainScreen()
+                }
             }
         }
 

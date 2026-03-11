@@ -11,7 +11,6 @@ import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.feature.browserext.notification.DomainMatcher
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.update
 
 internal class MainViewModel(
@@ -40,10 +39,12 @@ internal class MainViewModel(
 
         launchScoped {
             settingsRepository.observeAppSettings()
-                .distinctUntilChangedBy { it.selectedTheme }
                 .collect { appSettings ->
                     uiState.update {
-                        it.copy(selectedTheme = appSettings.selectedTheme)
+                        it.copy(
+                            selectedTheme = appSettings.selectedTheme,
+                            dynamicColors = appSettings.dynamicColors,
+                        )
                     }
                 }
 
