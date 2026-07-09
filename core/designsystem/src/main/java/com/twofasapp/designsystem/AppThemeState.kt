@@ -10,6 +10,7 @@ object AppThemeState {
         val mode = when (theme) {
             SelectedTheme.Light -> AppCompatDelegate.MODE_NIGHT_NO
             SelectedTheme.Dark -> AppCompatDelegate.MODE_NIGHT_YES
+            SelectedTheme.AmoledDark -> AppCompatDelegate.MODE_NIGHT_YES
             SelectedTheme.Auto -> {
                 when {
                     Build.VERSION.SDK_INT >= 28 -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM

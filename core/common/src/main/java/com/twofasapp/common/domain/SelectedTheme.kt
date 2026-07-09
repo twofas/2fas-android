@@ -4,4 +4,5 @@ enum class SelectedTheme {
     Auto,
     Light,
     Dark,
+    AmoledDark,
 }

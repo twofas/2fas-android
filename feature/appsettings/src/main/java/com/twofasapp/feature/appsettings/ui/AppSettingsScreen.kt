@@ -186,6 +186,7 @@ private fun SelectedTheme.toStringResource(): String {
         SelectedTheme.Auto -> stringResource(id = R.string.settings__theme_option_auto)
         SelectedTheme.Light -> stringResource(id = R.string.settings__theme_option_light)
         SelectedTheme.Dark -> stringResource(id = R.string.settings__theme_option_dark)
+        SelectedTheme.AmoledDark -> stringResource(id = R.string.settings__theme_option_amoled_dark)
     }
 }
 
