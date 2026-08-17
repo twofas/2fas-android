@@ -6,7 +6,6 @@ import androidx.work.WorkerParameters
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.migration.ClearObsoletePrefs
-import com.twofasapp.migration.MigrateBoxToRoom
 import com.twofasapp.migration.MigratePin
 import com.twofasapp.migration.MigrateUnknownServices
 import com.twofasapp.prefs.usecase.CurrentAppVersionPreference
@@ -26,7 +25,6 @@ class OnAppUpdatedWork(
     private val clearObsoletePrefs: ClearObsoletePrefs by inject()
     private val migratePin: MigratePin by inject()
     private val migrateUnknownServices: MigrateUnknownServices by inject()
-    private val migrateBoxToRoom: MigrateBoxToRoom by inject()
 
     override suspend fun doWork(): Result {
         return withContext(dispatchers.io) {
@@ -40,9 +38,6 @@ class OnAppUpdatedWork(
 
                 Timber.d("Migrate: Obsolete prefs")
                 clearObsoletePrefs.invoke()
-
-                Timber.d("Migrate: Box to Room")
-                migrateBoxToRoom.invoke()
 
                 Timber.d("Migrate: Unknown services")
                 migrateUnknownServices.invoke()
