@@ -154,7 +154,7 @@ internal fun MainNavHost(
 
                     override fun openAddServiceModal() {
                         recentlyAddedService = null
-                        navController.navigate(Modal.AddService.route)
+                        navController.navigate(Modal.AddService.routeWithArgs())
                     }
 
                     override fun openFocusServiceModal(id: Long) {
@@ -220,7 +220,7 @@ internal fun MainNavHost(
                 BackupRoute(
                     openSettings = { navController.navigate(Screen.BackupSettings.route) },
                     openExport = { navController.navigate(Screen.BackupExport.route) },
-                    openImport = { navController.navigate(Screen.BackupImport.route) },
+                    openImport = { navController.navigate(Screen.BackupImport.routeWithArgs()) },
                     goBack = { navController.popBackStack() }
                 )
             }

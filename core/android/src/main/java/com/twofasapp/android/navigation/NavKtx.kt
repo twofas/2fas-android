@@ -32,6 +32,14 @@ internal fun String.replaceArgsInRoute(vararg args: Pair<NamedNavArgument, Any?>
     args
         .filter { it.second != null }
         .forEach { arg -> routeWithArgs = routeWithArgs.replace("{${arg.first.name}}", arg.second.toString()) }
+
+    // Drop optional query params left unfilled — otherwise the literal "{ArgName}"
+    // placeholder is passed to the destination as the argument value, which then
+    // gets forwarded as a bogus route and crashes navigation.
+    routeWithArgs = routeWithArgs.replace(Regex("""[?&][^?&]*\{[^{}]+\}[^?&]*"""), "")
+    if (!routeWithArgs.contains('?') && routeWithArgs.contains('&')) {
+        routeWithArgs = routeWithArgs.replaceFirst('&', '?')
+    }
     return routeWithArgs
 }
 

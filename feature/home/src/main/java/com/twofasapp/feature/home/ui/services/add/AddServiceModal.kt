@@ -27,7 +27,9 @@ fun AddServiceModal(
     val navController = rememberNavController()
 
     LaunchedEffect(Unit) {
-        initRoute?.let { navController.navigate(it) }
+        initRoute
+            ?.takeIf { it.isNotBlank() && !it.contains('{') }
+            ?.let { navController.navigate(it) }
     }
 
     Modal {

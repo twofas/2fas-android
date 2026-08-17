@@ -40,7 +40,7 @@ fun NavGraphBuilder.guidesNavigation(
             guideVariantIndex = it.arguments!!.getInt(NavArg.GuideVariantIndex.name),
             openAddScan = {
                 navController.popBackStack(Screen.Services.route, false)
-                navController.navigate(Modal.AddService.route)
+                navController.navigate(Modal.AddService.routeWithArgs())
             },
             openAddManually = {
                 navController.popBackStack(Screen.Services.route, false)
