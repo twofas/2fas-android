@@ -52,3 +52,5 @@ app/src/main/google-services.json
 app/src/release/google-services.json
 app/src/releaseLocal/google-services.json
 scripts/
+
+gradle/gradle-daemon-jvm.properties

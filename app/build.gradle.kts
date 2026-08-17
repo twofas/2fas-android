@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.twofasCompose)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.kotlinParcelize)
-    alias(libs.plugins.kotlinKapt)
     alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
@@ -19,15 +18,20 @@ android {
         versionCode = 5000035
     }
 
-    applicationVariants.all {
-        outputs.all {
-            val output = this as? com.android.build.gradle.internal.api.BaseVariantOutputImpl
-            output?.outputFileName = "TwoFas-$versionName-${versionCode - 5000000}.apk"
-        }
-    }
-
     ksp {
         arg("room.schemaLocation", "$projectDir/schemas")
+    }
+}
+
+androidComponents {
+    onVariants { variant ->
+        variant.outputs.forEach { output ->
+            output.outputFileName.set(
+                output.versionName.zip(output.versionCode) { versionName, versionCode ->
+                    "TwoFas-$versionName-${(versionCode ?: 0) - 5000000}.apk"
+                }
+            )
+        }
     }
 }
 
@@ -104,10 +108,4 @@ dependencies {
         exclude("org.apache.httpcomponents", "guava-jdk5")
         exclude("com.google.http-client", "google-http-client")
     }
-
-    // ObjectBox - legacy
-    debugImplementation("io.objectbox:objectbox-android-objectbrowser:4.3.0")
-    releaseImplementation("io.objectbox:objectbox-android:4.3.0")
-    implementation("io.objectbox:objectbox-kotlin:4.3.0")
-    kapt("io.objectbox:objectbox-processor:4.3.0")
 }
