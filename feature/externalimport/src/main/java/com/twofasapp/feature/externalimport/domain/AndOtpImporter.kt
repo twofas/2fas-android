@@ -16,7 +16,6 @@ internal class AndOtpImporter(
     private val servicesRepository: ServicesRepository,
 ) : ExternalImporter {
 
-
     @Serializable
     data class Model(
         val secret: String,
@@ -35,7 +34,6 @@ internal class AndOtpImporter(
 
     override fun read(content: String): ExternalImport {
         try {
-
             val fileUri = Uri.parse(content)
             val fileDescriptor = context.contentResolver.openAssetFileDescriptor(fileUri, "r")
             val size = fileDescriptor?.length ?: 0
@@ -59,11 +57,11 @@ internal class AndOtpImporter(
                 .filter { it.period == 10 || it.period == 30 || it.period == 60 || it.period == 90 || it.period == null }
                 .filter {
                     it.algorithm.equals("SHA1", true) ||
-                            it.algorithm.equals("SHA224", true) ||
-                            it.algorithm.equals("SHA256", true) ||
-                            it.algorithm.equals("SHA384", true) ||
-                            it.algorithm.equals("SHA512", true) ||
-                            it.algorithm == null
+                        it.algorithm.equals("SHA224", true) ||
+                        it.algorithm.equals("SHA256", true) ||
+                        it.algorithm.equals("SHA384", true) ||
+                        it.algorithm.equals("SHA512", true) ||
+                        it.algorithm == null
                 }
                 .filter { servicesRepository.isSecretValid(it.secret) }
                 .forEach { entry ->

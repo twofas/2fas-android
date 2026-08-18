@@ -93,9 +93,9 @@ internal class AddServiceScanViewModel(
                                 source = when (source) {
                                     Source.Scan -> RecentlyAddedService.Source.QrScan
                                     Source.Gallery -> RecentlyAddedService.Source.QrGallery
-                                }
-                            )
-                        )
+                                },
+                            ),
+                        ),
                     )
                 }
                 .onFailure { uiState.update { it.copy(showErrorDialog = true) } }

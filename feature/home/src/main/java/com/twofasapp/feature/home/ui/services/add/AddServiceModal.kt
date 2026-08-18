@@ -8,8 +8,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.twofasapp.android.navigation.NavAnimation
+import com.twofasapp.core.design.foundation.modal.Modal
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.designsystem.common.Modal
 import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualScreen
 import com.twofasapp.feature.home.ui.services.add.scan.AddServiceScanScreen
 import com.twofasapp.feature.home.ui.services.add.success.AddServiceSuccessScreen
@@ -39,7 +39,6 @@ fun AddServiceModal(
             enterTransition = NavAnimation.Enter,
             exitTransition = NavAnimation.Exit,
         ) {
-
             composable(route = "main") {
                 AddServiceScanScreen(
                     openManual = { navController.navigate("manual") },
@@ -62,7 +61,7 @@ fun AddServiceModal(
 
             composable(
                 route = "success/{${NavArg.ServiceId.name}}",
-                arguments = listOf(NavArg.ServiceId)
+                arguments = listOf(NavArg.ServiceId),
             ) {
                 AddServiceSuccessScreen()
             }

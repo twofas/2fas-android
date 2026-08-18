@@ -24,23 +24,21 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.dialog.BaseDialog
-import com.twofasapp.designsystem.service.asColor
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.asColor
+import com.twofasapp.core.design.foundation.dialog.BaseDialog
 
 @Composable
 internal fun ColorBadgeDialog(
     selected: Service.Tint,
     onDismiss: () -> Unit = {},
-    onSelected: (Service.Tint) -> Unit = {}
+    onSelected: (Service.Tint) -> Unit = {},
 ) {
     BaseDialog(
         onDismissRequest = onDismiss,
     ) {
-
         LazyColumn {
             items(Service.Tint.values().toList(), key = { it.name }) {
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -48,9 +46,8 @@ internal fun ColorBadgeDialog(
                             onSelected(it)
                             onDismiss.invoke()
                         }
-                        .padding(vertical = 12.dp, horizontal = 24.dp)
+                        .padding(vertical = 12.dp, horizontal = 24.dp),
                 ) {
-
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Box(
@@ -59,8 +56,9 @@ internal fun ColorBadgeDialog(
                             .align(CenterVertically)
                             .clip(CircleShape)
                             .border(
-                                BorderStroke(if (it == selected) 50.dp else 5.dp, SolidColor(it.asColor())), CircleShape
-                            )
+                                BorderStroke(if (it == selected) 50.dp else 5.dp, SolidColor(it.asColor())),
+                                CircleShape,
+                            ),
                     )
 
                     Spacer(modifier = Modifier.width(24.dp))
@@ -79,12 +77,12 @@ internal fun ColorBadgeDialog(
                                 Service.Tint.Yellow -> com.twofasapp.locale.R.string.color__yellow
                                 Service.Tint.Pink -> com.twofasapp.locale.R.string.color__pink
                                 Service.Tint.Brown -> com.twofasapp.locale.R.string.color__brown
-                            }
+                            },
                         ),
-                        style = MaterialTheme.typography.bodyLarge.copy(color = TwTheme.color.onSurfacePrimary),
+                        style = MaterialTheme.typography.bodyLarge.copy(color = MdtTheme.color.onSurfacePrimary),
                         modifier = Modifier
                             .align(CenterVertically)
-                            .wrapContentWidth()
+                            .wrapContentWidth(),
                     )
                 }
             }

@@ -14,10 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwIcon
-import com.twofasapp.designsystem.common.TwTextButton
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.icon.Icon
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -27,16 +27,15 @@ internal fun SyncNoticeBar(
 ) {
     Row(
         modifier = modifier
-            .background(TwTheme.color.surface)
+            .background(MdtTheme.color.surface)
             .padding(start = 16.dp, end = 4.dp)
             .padding(vertical = 2.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-
-        TwIcon(
-            painter = TwIcons.CloudOff,
-            tint = TwTheme.color.primary,
-            modifier = Modifier.size(20.dp)
+        Icon(
+            painter = MdtIcons.CloudOff,
+            tint = MdtTheme.color.primary,
+            modifier = Modifier.size(20.dp),
         )
 
         Spacer(modifier = Modifier.width(12.dp))
@@ -44,17 +43,17 @@ internal fun SyncNoticeBar(
         Text(
             text = TwLocale.strings.backupSyncNotice,
             modifier = Modifier.weight(1f),
-            color = TwTheme.color.onSurfacePrimary,
-            style = TwTheme.typo.body3,
+            color = MdtTheme.color.onSurfacePrimary,
+            style = MdtTheme.typo.body3,
         )
 
         Spacer(modifier = Modifier.width(4.dp))
 
-        TwTextButton(
+        TextButton(
             text = TwLocale.strings.backupSyncCta,
             onClick = onOpenBackupClick,
             textAlign = TextAlign.Center,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
         )
     }
 }

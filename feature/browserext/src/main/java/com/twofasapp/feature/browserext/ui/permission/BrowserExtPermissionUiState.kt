@@ -1,4 +1,3 @@
 package com.twofasapp.feature.browserext.ui.permission
 
-internal class BrowserExtPermissionUiState {
-}
+internal class BrowserExtPermissionUiState

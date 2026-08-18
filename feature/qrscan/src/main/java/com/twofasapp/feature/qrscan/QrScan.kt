@@ -69,7 +69,7 @@ fun QrScan(
                     this.scaleType = scaleType
                     layoutParams = ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT
+                        ViewGroup.LayoutParams.MATCH_PARENT,
                     )
                 }
 
@@ -77,7 +77,7 @@ fun QrScan(
                     BarcodeScannerOptions.Builder()
                         .setBarcodeFormats(
                             Barcode.FORMAT_QR_CODE,
-                        ).build()
+                        ).build(),
                 )
                 val cameraExecutor: ExecutorService by lazy {
                     Executors.newSingleThreadExecutor()
@@ -128,7 +128,7 @@ private fun processImageProxy(
     imageProxy.image?.let { image ->
         val inputImage = InputImage.fromMediaImage(
             image,
-            imageProxy.imageInfo.rotationDegrees
+            imageProxy.imageInfo.rotationDegrees,
         )
 
         barcodeScanner.process(inputImage)
@@ -149,7 +149,7 @@ suspend fun Context.getCameraProvider(): ProcessCameraProvider = suspendCoroutin
             {
                 continuation.resume(future.get())
             },
-            executor
+            executor,
         )
     }
 }

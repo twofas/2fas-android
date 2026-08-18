@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
-import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.parsers.ServiceIcons
 
 @Composable
@@ -34,4 +34,4 @@ fun getBitmapFromAssets(context: Context, fileName: String): Bitmap {
 }
 
 @Composable
-fun isNight() = TwTheme.color.background.luminance() < 0.5
+fun isNight() = MdtTheme.color.background.luminance() < 0.5

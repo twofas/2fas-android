@@ -26,17 +26,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.R
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwCircularProgressIndicator
-import com.twofasapp.designsystem.common.TwTextButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.InfoDialog
-import com.twofasapp.designsystem.dialog.PasswordDialog
-import com.twofasapp.designsystem.dialog.StackTraceDetails
-import com.twofasapp.designsystem.ktx.strings
-import com.twofasapp.designsystem.ktx.toastShort
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.R
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.dialog.InfoDialog
+import com.twofasapp.core.design.foundation.dialog.PasswordDialog
+import com.twofasapp.core.design.foundation.dialog.StackTraceDetails
+import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.strings
+import com.twofasapp.core.design.ktx.toastShort
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -111,14 +111,14 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = strings.backupImportFile) }
+        topBar = { TopAppBar(titleText = strings.backupImportFile) },
     ) { padding ->
 
         if (uiState.screenState != null) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(padding)
+                    .padding(padding),
             ) {
                 Column(
                     modifier = Modifier
@@ -132,13 +132,15 @@ private fun ScreenContent(
                     Image(
                         painter = when (uiState.screenState) {
                             is ScreenState.BackupRead,
-                            is ScreenState.BackupReadEncrypted -> painterResource(id = R.drawable.illustration_2fas_import)
+                            is ScreenState.BackupReadEncrypted,
+                            -> painterResource(id = R.drawable.illustration_2fas_import)
 
                             is ScreenState.ErrorInvalidFile,
-                            is ScreenState.ErrorInvalidFileSize -> painterResource(id = R.drawable.illustration_file_error)
+                            is ScreenState.ErrorInvalidFileSize,
+                            -> painterResource(id = R.drawable.illustration_file_error)
                         },
                         contentDescription = null,
-                        modifier = Modifier.height(124.dp)
+                        modifier = Modifier.height(124.dp),
                     )
 
                     Text(
@@ -149,8 +151,8 @@ private fun ScreenContent(
                             is ScreenState.ErrorInvalidFileSize -> strings.backupImportErrorHeader
                         },
                         textAlign = TextAlign.Center,
-                        color = TwTheme.color.onSurfacePrimary,
-                        style = TwTheme.typo.title,
+                        color = MdtTheme.color.onSurfacePrimary,
+                        style = MdtTheme.typo.title,
                     )
 
                     Text(
@@ -161,8 +163,8 @@ private fun ScreenContent(
                             is ScreenState.ErrorInvalidFileSize -> strings.backupImportErrorMsgSize
                         },
                         textAlign = TextAlign.Center,
-                        color = TwTheme.color.onSurfacePrimary,
-                        style = TwTheme.typo.body3,
+                        color = MdtTheme.color.onSurfacePrimary,
+                        style = MdtTheme.typo.body3,
                     )
 
                     when (uiState.screenState) {
@@ -170,8 +172,8 @@ private fun ScreenContent(
                             Text(
                                 text = uiState.screenState.servicesToImport.toString(),
                                 textAlign = TextAlign.Center,
-                                color = TwTheme.color.onSurfacePrimary,
-                                style = TwTheme.typo.title,
+                                color = MdtTheme.color.onSurfacePrimary,
+                                style = MdtTheme.typo.title,
                             )
                         }
 
@@ -182,12 +184,13 @@ private fun ScreenContent(
 
                     when (uiState.screenState) {
                         is ScreenState.BackupRead,
-                        is ScreenState.BackupReadEncrypted -> {
+                        is ScreenState.BackupReadEncrypted,
+                        -> {
                             Text(
                                 text = strings.backupImportMsg2,
                                 textAlign = TextAlign.Center,
-                                color = TwTheme.color.onSurfacePrimary,
-                                style = TwTheme.typo.body3,
+                                color = MdtTheme.color.onSurfacePrimary,
+                                style = MdtTheme.typo.body3,
                             )
                         }
 
@@ -202,13 +205,13 @@ private fun ScreenContent(
                     }
 
                     if (uiState.importing) {
-                        TwCircularProgressIndicator()
+                        CircularProgressIndicator()
                     }
                 }
 
                 when (uiState.screenState) {
                     is ScreenState.BackupRead -> {
-                        TwButton(
+                        Button(
                             text = strings.backupImportCta,
                             modifier = Modifier
                                 .padding(horizontal = 16.dp)
@@ -219,7 +222,7 @@ private fun ScreenContent(
                     }
 
                     is ScreenState.BackupReadEncrypted -> {
-                        TwButton(
+                        Button(
                             text = strings.backupImportCta,
                             modifier = Modifier
                                 .padding(horizontal = 16.dp)
@@ -229,8 +232,9 @@ private fun ScreenContent(
                     }
 
                     is ScreenState.ErrorInvalidFile,
-                    is ScreenState.ErrorInvalidFileSize -> {
-                        TwButton(
+                    is ScreenState.ErrorInvalidFileSize,
+                    -> {
+                        Button(
                             text = strings.backupImportChooseAnotherFileCta,
                             modifier = Modifier
                                 .padding(horizontal = 16.dp)
@@ -240,7 +244,7 @@ private fun ScreenContent(
                     }
                 }
 
-                TwTextButton(
+                TextButton(
                     text = strings.commonCancel,
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
@@ -272,7 +276,6 @@ private fun ScreenContent(
         )
     }
 }
-
 
 @Preview
 @Composable

@@ -36,14 +36,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwOutlinedTextField
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.LocalBackDispatcher
-import com.twofasapp.designsystem.ktx.dpToSp
-import com.twofasapp.designsystem.service.asColor
-import com.twofasapp.locale.R
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.asColor
+import com.twofasapp.core.design.foundation.textfield.OutlinedTextField
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.LocalBackDispatcher
+import com.twofasapp.core.design.ktx.dpToSp
 import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
+import com.twofasapp.locale.R
 
 @Composable
 internal fun ChangeLabelScreen(
@@ -56,12 +56,12 @@ internal fun ChangeLabelScreen(
 
     Scaffold(
         topBar = {
-            TwTopAppBar(titleText = stringResource(id = R.string.customization_edit_label), actions = {
+            TopAppBar(titleText = stringResource(id = R.string.customization_edit_label), actions = {
                 TextButton(onClick = { backDispatcher.onBackPressed() }) {
                     Text(text = stringResource(id = R.string.commons__done))
                 }
             })
-        }
+        },
     ) { padding ->
 
         Column(Modifier.padding(padding)) {
@@ -69,14 +69,14 @@ internal fun ChangeLabelScreen(
                 Box(
                     modifier = Modifier
                         .size(64.dp)
-                        .background(shape = CircleShape, color = service.labelColor.asColor())
+                        .background(shape = CircleShape, color = service.labelColor.asColor()),
                 ) {
                     Box(
                         modifier = Modifier
                             .width(45.dp)
                             .height(28.dp)
                             .clip(RoundedCornerShape(16.dp))
-                            .background(TwTheme.color.background)
+                            .background(MdtTheme.color.background)
                             .align(Alignment.Center),
                     )
 
@@ -84,18 +84,18 @@ internal fun ChangeLabelScreen(
                         text = labelText.value,
                         color = MaterialTheme.colorScheme.onSurface,
                         textAlign = TextAlign.Center,
-                        style = TwTheme.typo.body3.copy(
+                        style = MdtTheme.typo.body3.copy(
                             fontWeight = FontWeight.Bold,
                             fontSize = dpToSp(dp = 22.dp),
-                            lineHeight = dpToSp(dp = 32.dp)
+                            lineHeight = dpToSp(dp = 32.dp),
                         ),
-                        modifier = Modifier.align(Alignment.Center)
+                        modifier = Modifier.align(Alignment.Center),
                     )
                 }
             }
 
             Box(modifier = Modifier.padding(24.dp)) {
-                TwOutlinedTextField(
+                OutlinedTextField(
                     value = labelText.value,
                     labelText = stringResource(id = R.string.tokens__label_characters_title),
                     maxLength = 2,
@@ -109,23 +109,26 @@ internal fun ChangeLabelScreen(
 
             LazyRow {
                 items(Service.Tint.values().toList(), key = { it.name }) {
-                    Column(modifier = Modifier
-                        .width(80.dp)
-                        .clip(CircleShape)
-                        .clickable {
-                            labelTint.value = it
+                    Column(
+                        modifier = Modifier
+                            .width(80.dp)
+                            .clip(CircleShape)
+                            .clickable {
+                                labelTint.value = it
 
-                            viewModel.updateLabel(labelText.value.uppercase(), labelTint.value)
-                        }
-                        .padding(vertical = 12.dp)) {
+                                viewModel.updateLabel(labelText.value.uppercase(), labelTint.value)
+                            }
+                            .padding(vertical = 12.dp),
+                    ) {
                         Box(
                             modifier = Modifier
                                 .size(32.dp)
                                 .align(Alignment.CenterHorizontally)
                                 .clip(CircleShape)
                                 .border(
-                                    BorderStroke(if (it == labelTint.value) 50.dp else 5.dp, SolidColor(it.asColor())), CircleShape
-                                )
+                                    BorderStroke(if (it == labelTint.value) 50.dp else 5.dp, SolidColor(it.asColor())),
+                                    CircleShape,
+                                ),
                         )
 
                         Spacer(modifier = Modifier.height(8.dp))
@@ -144,16 +147,16 @@ internal fun ChangeLabelScreen(
                                     Service.Tint.Yellow -> R.string.color__yellow
                                     Service.Tint.Pink -> R.string.color__pink
                                     Service.Tint.Brown -> R.string.color__brown
-                                }
+                                },
                             ),
-                            style = MaterialTheme.typography.bodySmall.copy(color = TwTheme.color.onSurfacePrimary),
+                            style = MaterialTheme.typography.bodySmall.copy(color = MdtTheme.color.onSurfacePrimary),
                             modifier = Modifier
                                 .padding(horizontal = 8.dp)
                                 .align(Alignment.CenterHorizontally)
                                 .wrapContentWidth(),
                             textAlign = TextAlign.Center,
                             maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
+                            overflow = TextOverflow.Ellipsis,
                         )
                     }
                 }

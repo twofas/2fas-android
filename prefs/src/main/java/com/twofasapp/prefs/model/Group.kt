@@ -31,13 +31,13 @@ data class Group(
 
     fun isContentEqualTo(group: Group) =
         name == group.name &&
-                id == group.id &&
-                isExpanded == group.isExpanded
+            id == group.id &&
+            isExpanded == group.isExpanded
 
     fun toRemote() = RemoteGroup(
         id = id!!,
         name = name,
         isExpanded = isExpanded,
-        updatedAt = updatedAt
+        updatedAt = updatedAt,
     )
 }

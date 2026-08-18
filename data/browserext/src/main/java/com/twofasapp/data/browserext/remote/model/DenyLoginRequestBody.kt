@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class DenyLoginRequestBody(
-    val status: String = "completed"
+    val status: String = "completed",
 )

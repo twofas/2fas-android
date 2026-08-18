@@ -9,7 +9,6 @@ enum class ImportType {
     LastPass,
     AuthenticatorPro,
     AndOtp,
-    ;
 }
 
 val ImportType.image: Int

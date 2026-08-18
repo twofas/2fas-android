@@ -2,7 +2,7 @@ package com.twofasapp.feature.home.ui.guides
 
 import android.content.Context
 import androidx.compose.runtime.Composable
-import com.twofasapp.designsystem.internal.isDarkTheme
+import com.twofasapp.core.design.theme.isDarkTheme
 import com.twofasapp.parsers.ServiceIcons
 import java.io.IOException
 
@@ -19,7 +19,6 @@ enum class Guide {
     RockstarGames,
     Twitter,
     Universal,
-    ;
 }
 
 val Guide.json: String

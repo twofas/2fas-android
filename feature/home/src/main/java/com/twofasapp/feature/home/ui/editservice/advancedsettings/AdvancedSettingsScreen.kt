@@ -11,26 +11,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.settings.SettingsDivider
-import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.settings.SettingsDivider
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
 
 @Composable
 internal fun AdvancedSettingsScreen(
-    viewModel: com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
+    viewModel: com.twofasapp.feature.home.ui.editservice.EditServiceViewModel,
 ) {
-
     val service = viewModel.uiState.collectAsState().value.service
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = stringResource(id = R.string.customization_advanced)) }
+        topBar = { TopAppBar(titleText = stringResource(id = R.string.customization_advanced)) },
     ) { padding ->
 
         LazyColumn(modifier = Modifier.padding(padding)) {
-
             item {
                 SettingsLink(
                     title = "TOTP",
@@ -41,11 +39,11 @@ internal fun AdvancedSettingsScreen(
                             enabled = false,
                             onClick = {},
                             colors = RadioButtonDefaults.colors(
-                                selectedColor = TwTheme.color.primary,
+                                selectedColor = MdtTheme.color.primary,
                                 unselectedColor = Color(0xFF585858),
-                            )
+                            ),
                         )
-                    }
+                    },
                 )
             }
 
@@ -59,11 +57,11 @@ internal fun AdvancedSettingsScreen(
                             enabled = false,
                             onClick = {},
                             colors = RadioButtonDefaults.colors(
-                                selectedColor = TwTheme.color.primary,
+                                selectedColor = MdtTheme.color.primary,
                                 unselectedColor = Color(0xFF585858),
-                            )
+                            ),
                         )
-                    }
+                    },
                 )
             }
 
@@ -77,11 +75,11 @@ internal fun AdvancedSettingsScreen(
                             enabled = false,
                             onClick = {},
                             colors = RadioButtonDefaults.colors(
-                                selectedColor = TwTheme.color.primary,
+                                selectedColor = MdtTheme.color.primary,
                                 unselectedColor = Color(0xFF585858),
-                            )
+                            ),
                         )
-                    }
+                    },
                 )
             }
 

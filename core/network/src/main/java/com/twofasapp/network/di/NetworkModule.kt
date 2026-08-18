@@ -35,7 +35,7 @@ class NetworkModule : KoinModule {
                             encodeDefaults = true
                             explicitNulls = false
                             coerceInputValues = true
-                        }
+                        },
                     )
                 }
                 install(DefaultRequest) {

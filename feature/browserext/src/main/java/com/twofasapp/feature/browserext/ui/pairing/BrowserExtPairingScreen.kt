@@ -20,9 +20,9 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.notificationManager
-import com.twofasapp.designsystem.screen.CommonContent
+import com.twofasapp.core.design.foundation.screen.CommonContent
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.notificationManager
 import com.twofasapp.feature.browserext.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
@@ -54,7 +54,7 @@ private fun ScreenContent(
     val strings = TwLocale.strings
 
     Scaffold(
-        topBar = { TwTopAppBar(if (uiState.pairing) strings.browserPairingTitle else strings.browserPairingResultTitle) }
+        topBar = { TopAppBar(if (uiState.pairing) strings.browserPairingTitle else strings.browserPairingResultTitle) },
     ) { padding ->
 
         AnimatedVisibility(
@@ -68,7 +68,7 @@ private fun ScreenContent(
             Pairing(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp)
+                    .padding(16.dp),
             )
         }
 
@@ -116,11 +116,10 @@ private fun Result(
         false
     }
 
-
     val image = when (pairingResult) {
-        PairingResult.Success -> com.twofasapp.designsystem.R.drawable.illustration_be_pairing_success
-        PairingResult.Failure -> com.twofasapp.designsystem.R.drawable.illustration_be_pairing_error
-        PairingResult.AlreadyPaired -> com.twofasapp.designsystem.R.drawable.illustration_be_pairing_success
+        PairingResult.Success -> com.twofasapp.core.design.R.drawable.illustration_be_pairing_success
+        PairingResult.Failure -> com.twofasapp.core.design.R.drawable.illustration_be_pairing_error
+        PairingResult.AlreadyPaired -> com.twofasapp.core.design.R.drawable.illustration_be_pairing_success
     }
 
     val title = when (pairingResult) {
@@ -144,7 +143,8 @@ private fun Result(
     val ctaAction = when (pairingResult) {
         PairingResult.Failure -> onScanAgain
         PairingResult.Success,
-        PairingResult.AlreadyPaired -> {
+        PairingResult.AlreadyPaired,
+        -> {
             if (shouldAskForNotificationPermission) {
                 onContinueAskForPermission
             } else {
@@ -169,7 +169,7 @@ private fun PreviewParing() {
     ScreenContent(
         uiState = BrowserExtPairingUiState(
             pairing = true,
-        )
+        ),
     )
 }
 
@@ -179,8 +179,8 @@ private fun PreviewSuccess() {
     ScreenContent(
         uiState = BrowserExtPairingUiState(
             pairing = false,
-            pairingResult = PairingResult.Success
-        )
+            pairingResult = PairingResult.Success,
+        ),
     )
 }
 
@@ -190,8 +190,8 @@ private fun PreviewFailure() {
     ScreenContent(
         uiState = BrowserExtPairingUiState(
             pairing = false,
-            pairingResult = PairingResult.Failure
-        )
+            pairingResult = PairingResult.Failure,
+        ),
     )
 }
 
@@ -201,7 +201,7 @@ private fun PreviewAlreadyPaired() {
     ScreenContent(
         uiState = BrowserExtPairingUiState(
             pairing = false,
-            pairingResult = PairingResult.AlreadyPaired
-        )
+            pairingResult = PairingResult.AlreadyPaired,
+        ),
     )
 }

@@ -104,20 +104,22 @@ internal class ServicesLocalSource(
 
     fun observeOrder(): Flow<ServicesOrder> {
         return preferences.observe(KeyOrder, "").map { value ->
-            (value?.let {
-                try {
-                    json.decodeFromString(value)
-                } catch (e: Exception) {
-                    ServicesOrderEntity()
-                }
-            } ?: ServicesOrderEntity()).asDomain()
+            (
+                value?.let {
+                    try {
+                        json.decodeFromString(value)
+                    } catch (e: Exception) {
+                        ServicesOrderEntity()
+                    }
+                } ?: ServicesOrderEntity()
+                ).asDomain()
         }
     }
 
     fun deleteServiceFromOrder(id: Long) {
         val local = getOrder()
         val newOrder = local.copy(
-            ids = local.ids.minus(id)
+            ids = local.ids.minus(id),
         )
 
         saveOrder(newOrder)
@@ -126,7 +128,7 @@ internal class ServicesLocalSource(
     fun addServiceToOrder(id: Long) {
         val local = getOrder()
         val newOrder = local.copy(
-            ids = local.ids.plus(id)
+            ids = local.ids.plus(id),
         )
         saveOrder(newOrder)
     }
@@ -144,7 +146,7 @@ internal class ServicesLocalSource(
                 hotpCounterTimestamp = timestamp,
                 backupSyncStatus = BackupSyncStatus.NOT_SYNCED.name,
                 updatedAt = timeProvider.systemCurrentTime(),
-            )
+            ),
         )
     }
 
@@ -154,7 +156,7 @@ internal class ServicesLocalSource(
                 groupId = groupId,
                 backupSyncStatus = BackupSyncStatus.NOT_SYNCED.name,
                 updatedAt = timeProvider.systemCurrentTime(),
-            )
+            ),
         )
     }
 
@@ -179,7 +181,7 @@ internal class ServicesLocalSource(
         dao.update(
             dao.select(id).copy(
                 revealTimestamp = System.currentTimeMillis(),
-            )
+            ),
         )
     }
 }

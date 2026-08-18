@@ -37,7 +37,7 @@ internal class BrowserExtViewModel(
         launchScoped {
             runSafely {
                 browserExtRepository.updateMobileDevice(
-                    browserExtRepository.getMobileDevice().copy(name = name)
+                    browserExtRepository.getMobileDevice().copy(name = name),
                 )
             }.onFailure {
                 uiState.update { state -> state.copy(events = state.events.plus(BrowserExtUiEvent.ShowErrorSnackbar)) }

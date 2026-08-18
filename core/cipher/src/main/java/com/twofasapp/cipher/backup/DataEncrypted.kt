@@ -8,7 +8,7 @@ data class DataEncrypted(
     constructor(
         data: ByteArray,
         salt: ByteArray,
-        iv: ByteArray
+        iv: ByteArray,
     ) : this("${data.encodeBase64ToString()}:${salt.encodeBase64ToString()}:${iv.encodeBase64ToString()}")
 
     private val split = value.split(":")

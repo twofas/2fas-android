@@ -32,15 +32,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwSwitch
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.ExportPasswordRegex
-import com.twofasapp.designsystem.dialog.PasswordDialog
-import com.twofasapp.designsystem.ktx.strings
-import com.twofasapp.designsystem.ktx.toastShort
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.checked.Switch
+import com.twofasapp.core.design.foundation.dialog.ExportPasswordRegex
+import com.twofasapp.core.design.foundation.dialog.PasswordDialog
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.strings
+import com.twofasapp.core.design.ktx.toastShort
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 import java.io.File
@@ -79,7 +79,6 @@ private fun ScreenContent(
     onEventConsumed: (BackupExportUiEvent) -> Unit = {},
     onGoBack: () -> Unit = {},
 ) {
-
     val context = LocalContext.current
     val strings = LocalContext.strings
     var showPasswordDialog by remember { mutableStateOf(false) }
@@ -107,12 +106,12 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.backupExportFile) }
+        topBar = { TopAppBar(titleText = TwLocale.strings.backupExportFile) },
     ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
+                .padding(padding),
         ) {
             Column(
                 modifier = Modifier
@@ -123,29 +122,29 @@ private fun ScreenContent(
                 verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterVertically),
             ) {
                 Image(
-                    painter = painterResource(id = com.twofasapp.designsystem.R.drawable.illustration_2fas_export),
+                    painter = painterResource(id = com.twofasapp.core.design.R.drawable.illustration_2fas_export),
                     contentDescription = null,
-                    modifier = Modifier.height(124.dp)
+                    modifier = Modifier.height(124.dp),
                 )
 
                 Text(
                     text = TwLocale.strings.backupExportHeader,
                     textAlign = TextAlign.Center,
-                    color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.title,
+                    color = MdtTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.title,
                 )
 
                 Text(
                     text = TwLocale.strings.backupExportMsg,
                     textAlign = TextAlign.Center,
-                    color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.body3,
+                    color = MdtTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.body3,
                 )
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    TwSwitch(
+                    Switch(
                         checked = uiState.passwordChecked,
                         onCheckedChange = { onPasswordCheckedChange() },
                     )
@@ -154,8 +153,8 @@ private fun ScreenContent(
 
                     Text(
                         text = TwLocale.strings.backupExportPassMsg,
-                        color = TwTheme.color.onSurfacePrimary,
-                        style = TwTheme.typo.body3,
+                        color = MdtTheme.color.onSurfacePrimary,
+                        style = MdtTheme.typo.body3,
                     )
                 }
             }
@@ -164,11 +163,11 @@ private fun ScreenContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                TwButton(
+                Button(
                     text = TwLocale.strings.backupExportShareCta,
-                    leadingIcon = TwIcons.Share,
+                    leadingIcon = MdtIcons.Share,
                     leadingIconTint = Color.White,
                     modifier = Modifier.weight(1f),
                     onClick = {
@@ -181,9 +180,9 @@ private fun ScreenContent(
                         }
                     },
                 )
-                TwButton(
+                Button(
                     text = TwLocale.strings.backupExportCta,
-                    leadingIcon = TwIcons.Download,
+                    leadingIcon = MdtIcons.Download,
                     leadingIconTint = Color.White,
                     modifier = Modifier.weight(1f),
                     onClick = {
@@ -246,7 +245,7 @@ private fun Context.showSharePicker(
         Intent.createChooser(
             shareIntent,
             "2FAS Backup File",
-        )
+        ),
     )
 }
 

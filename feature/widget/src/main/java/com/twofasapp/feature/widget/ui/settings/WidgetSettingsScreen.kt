@@ -22,14 +22,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.glance.appwidget.updateAll
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwCircularProgressIndicator
-import com.twofasapp.designsystem.common.TwSwitch
-import com.twofasapp.designsystem.common.TwTextButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.service.DsServiceSimple
-import com.twofasapp.designsystem.service.asState
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.DsServiceSimple
+import com.twofasapp.core.design.feature.items.asState
+import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.checked.Switch
+import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.feature.widget.GlanceWidget
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
@@ -74,21 +74,21 @@ private fun ScreenContent(
 ) {
     Scaffold(
         topBar = {
-            TwTopAppBar(
+            TopAppBar(
                 titleText = TwLocale.strings.widgetSettingsTitle,
                 actions = {
-                    TwTextButton(
+                    TextButton(
                         text = TwLocale.strings.commonSave,
                         onClick = onSave,
                         enabled = uiState.loading.not() && uiState.services.isNotEmpty(),
                     )
-                }
+                },
             )
-        }
+        },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
-                .padding(padding)
+                .padding(padding),
         ) {
             if (uiState.loading) {
                 item("Loader", "Loader") {
@@ -96,7 +96,7 @@ private fun ScreenContent(
                         modifier = Modifier.fillParentMaxSize(),
                         contentAlignment = Alignment.Center,
                     ) {
-                        TwCircularProgressIndicator()
+                        CircularProgressIndicator()
                     }
                 }
 
@@ -113,7 +113,7 @@ private fun ScreenContent(
                     ) {
                         Text(
                             text = TwLocale.strings.widgetSettingsEmpty,
-                            style = TwTheme.typo.body1,
+                            style = MdtTheme.typo.body1,
                             textAlign = TextAlign.Center,
                         )
                     }
@@ -125,8 +125,8 @@ private fun ScreenContent(
             item("Info", "Info") {
                 Text(
                     text = TwLocale.strings.widgetSelectMsg,
-                    style = TwTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
-                    modifier = Modifier.padding(16.dp)
+                    style = MdtTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
+                    modifier = Modifier.padding(16.dp),
                 )
             }
 
@@ -138,9 +138,9 @@ private fun ScreenContent(
                         .clickable { onToggleService(service.id) }
                         .padding(start = 16.dp, end = 16.dp),
                 ) {
-                    TwSwitch(
+                    Switch(
                         checked = uiState.selected.contains(service.id),
-                        onCheckedChange = { onToggleService(service.id) }
+                        onCheckedChange = { onToggleService(service.id) },
                     )
                 }
             }

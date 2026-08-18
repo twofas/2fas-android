@@ -25,8 +25,8 @@ import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.common.ktx.encodeBase64ToString
+import com.twofasapp.core.design.foundation.modal.ModalBottomSheet
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.designsystem.common.ModalBottomSheet
 import com.twofasapp.feature.about.navigation.AboutLicensesRoute
 import com.twofasapp.feature.about.navigation.AboutRoute
 import com.twofasapp.feature.appsettings.navigation.AppSettingsRoute
@@ -93,14 +93,12 @@ internal fun MainNavHost(
         },
         bottomSheetNavigator = bottomSheetNavigator,
     ) {
-
         NavHost(
             navController = navController,
             startDestination = startDestination,
             enterTransition = NavAnimation.Enter,
             exitTransition = NavAnimation.Exit,
         ) {
-
             composable(Screen.Startup.route) {
                 StartupRoute(
                     openHome = {
@@ -169,7 +167,7 @@ internal fun MainNavHost(
                     authSuccessCallback = onSuccess
 
                     startAuthForResult.launch(context.intentFor<LockActivity>("canGoBack" to true))
-                }
+                },
             )
 
             securityNavigation(navController = navController)
@@ -179,7 +177,7 @@ internal fun MainNavHost(
                 AddServiceModal(
                     initRoute = it.arguments?.getString(NavArg.AddServiceInitRoute.name),
                     onAddedSuccessfully = { recentlyAddedService = it },
-                    openGuides = { navController.navigate(Screen.Guides.route) }
+                    openGuides = { navController.navigate(Screen.Guides.route) },
                 )
             }
 
@@ -188,7 +186,7 @@ internal fun MainNavHost(
                     openService = {
                         navController.navigate(Screen.EditService.routeWithArgs(NavArg.ServiceId to it))
                         scope.launch { bottomSheetState.hide() }
-                    }
+                    },
                 )
             }
 
@@ -206,13 +204,13 @@ internal fun MainNavHost(
 
             composable(Screen.Trash.route) {
                 TrashRoute(
-                    openDispose = { navController.navigate(Screen.Dispose.routeWithArgs(NavArg.ServiceId to it)) }
+                    openDispose = { navController.navigate(Screen.Dispose.routeWithArgs(NavArg.ServiceId to it)) },
                 )
             }
 
             composable(Screen.Dispose.route, listOf(NavArg.ServiceId)) {
                 DisposeRoute(
-                    navigateBack = { navController.popBackStack() }
+                    navigateBack = { navController.popBackStack() },
                 )
             }
 
@@ -221,25 +219,25 @@ internal fun MainNavHost(
                     openSettings = { navController.navigate(Screen.BackupSettings.route) },
                     openExport = { navController.navigate(Screen.BackupExport.route) },
                     openImport = { navController.navigate(Screen.BackupImport.routeWithArgs()) },
-                    goBack = { navController.popBackStack() }
+                    goBack = { navController.popBackStack() },
                 )
             }
 
             composable(Screen.BackupSettings.route) {
                 BackupSettingsRoute(
-                    goBack = { navController.popBackStack() }
+                    goBack = { navController.popBackStack() },
                 )
             }
 
             composable(Screen.BackupExport.route) {
                 BackupExportRoute(
-                    goBack = { navController.popBackStack() }
+                    goBack = { navController.popBackStack() },
                 )
             }
 
             composable(Screen.BackupImport.route, listOf(NavArg.ImportFileUri)) {
                 BackupImportRoute(
-                    goBack = { navController.popBackStack() }
+                    goBack = { navController.popBackStack() },
                 )
             }
 
@@ -248,13 +246,13 @@ internal fun MainNavHost(
                     openScan = { navController.navigate(Screen.BrowserExtScan.route) },
                     openDetails = { extensionId ->
                         navController.navigate(Screen.BrowserExtDetails.routeWithArgs(NavArg.ExtensionId to extensionId))
-                    }
+                    },
                 )
             }
 
             composable(Screen.BrowserExtPermission.route) {
                 BrowserExtPermissionRoute(
-                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) }
+                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
                 )
             }
 
@@ -264,7 +262,7 @@ internal fun MainNavHost(
                         navController.navigate(Screen.BrowserExtPairing.routeWithArgs(NavArg.ExtensionId to extensionId)) {
                             popUpTo(Screen.BrowserExt.route)
                         }
-                    }
+                    },
                 )
             }
 
@@ -272,7 +270,7 @@ internal fun MainNavHost(
                 BrowserExtPairingRoute(
                     openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
                     openPermission = { navController.navigate(Screen.BrowserExtPermission.route) { popUpTo(Screen.BrowserExt.route) } },
-                    openScan = { navController.navigate(Screen.BrowserExtScan.route) { popUpTo(Screen.BrowserExt.route) } }
+                    openScan = { navController.navigate(Screen.BrowserExtScan.route) { popUpTo(Screen.BrowserExt.route) } },
                 )
             }
 
@@ -286,7 +284,7 @@ internal fun MainNavHost(
                 ExternalImportSelectorRoute(
                     openImport = { importType ->
                         navController.navigate(Screen.ExternalImport.routeWithArgs(NavArg.ImportType to importType.name))
-                    }
+                    },
                 )
             }
 
@@ -302,9 +300,9 @@ internal fun MainNavHost(
                             Screen.ExternalImportResult.routeWithArgs(
                                 NavArg.ImportType to importType.name,
                                 NavArg.ImportFileUri to encodedFileUri,
-                            )
+                            ),
                         )
-                    }
+                    },
                 )
             }
 
@@ -317,16 +315,16 @@ internal fun MainNavHost(
                             Screen.ExternalImportResult.routeWithArgs(
                                 NavArg.ImportType to importType.name,
                                 NavArg.ImportFileContent to encodedFileContent,
-                            )
+                            ),
                         )
-                    }
+                    },
                 )
             }
 
             composable(Screen.ExternalImportResult.route, listOf(NavArg.ImportType, NavArg.ImportFileUri)) {
                 ExternalImportResultRoute(
                     openSettings = { navController.popBackStack(Screen.ExternalImportSelector.route, true) },
-                    openImport = { navController.popBackStack(Screen.ExternalImport.route, false) }
+                    openImport = { navController.popBackStack(Screen.ExternalImport.route, false) },
                 )
             }
         }

@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.ktx.encodeBase64ToString
-import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
 import com.twofasapp.locale.TwLocale
@@ -39,7 +39,7 @@ private fun ScreenContent(
     var qrScanEnabled = true
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = strings.scanQr) }
+        topBar = { TopAppBar(titleText = strings.scanQr) },
     ) { padding ->
         Box(
             modifier = Modifier
@@ -66,6 +66,6 @@ private fun ScreenContent(
 @Composable
 private fun Preview() {
     ScreenContent(
-        uiState = ExternalImportScanUiState()
+        uiState = ExternalImportScanUiState(),
     )
 }

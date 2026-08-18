@@ -13,7 +13,7 @@ import androidx.navigation.NamedNavArgument
 @Composable
 fun withOwner(viewModelStoreOwner: ViewModelStoreOwner?, content: @Composable () -> Unit) {
     CompositionLocalProvider(
-        LocalViewModelStoreOwner provides viewModelStoreOwner!!
+        LocalViewModelStoreOwner provides viewModelStoreOwner!!,
     ) {
         content()
     }

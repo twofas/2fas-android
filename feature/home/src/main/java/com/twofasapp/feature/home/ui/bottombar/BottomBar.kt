@@ -2,9 +2,9 @@ package com.twofasapp.feature.home.ui.bottombar
 
 import androidx.compose.runtime.Composable
 import com.twofasapp.android.navigation.Screen
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.common.TwNavigationBar
-import com.twofasapp.designsystem.common.TwNavigationBarItem
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.foundation.navigationbar.NavigationBar
+import com.twofasapp.core.design.foundation.navigationbar.NavigationBarItem
 import com.twofasapp.locale.TwLocale
 
 private val bottomNavItems
@@ -12,14 +12,14 @@ private val bottomNavItems
     get() = listOf(
         BottomNavItem(
             title = TwLocale.strings.bottomBarTokens,
-            icon = TwIcons.Home,
-            iconSelected = TwIcons.HomeFilled,
+            icon = MdtIcons.Home,
+            iconSelected = MdtIcons.HomeFilled,
             route = Screen.Services.route,
         ),
         BottomNavItem(
             title = TwLocale.strings.bottomBarSettings,
-            icon = TwIcons.Settings,
-            iconSelected = TwIcons.SettingsFilled,
+            icon = MdtIcons.Settings,
+            iconSelected = MdtIcons.SettingsFilled,
             route = Screen.Settings.route,
         ),
     )
@@ -35,9 +35,9 @@ internal fun BottomBar(
     listener: BottomBarListener,
     onItemClick: () -> Unit = {},
 ) {
-    TwNavigationBar {
+    NavigationBar {
         bottomNavItems.forEachIndexed { index, item ->
-            TwNavigationBarItem(
+            NavigationBarItem(
                 text = item.title,
                 icon = if (index == selectedIndex) item.iconSelected else item.icon,
                 selected = index == selectedIndex,
@@ -53,7 +53,7 @@ internal fun BottomBar(
                             listener.openSettings()
                         }
                     }
-                }
+                },
             )
         }
     }

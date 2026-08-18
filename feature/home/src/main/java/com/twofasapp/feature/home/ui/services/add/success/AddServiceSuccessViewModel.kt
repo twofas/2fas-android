@@ -3,9 +3,9 @@ package com.twofasapp.feature.home.ui.services.add.success
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.twofasapp.android.navigation.getOrThrow
+import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.common.domain.Service
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.feature.home.ui.services.add.NavArg
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,7 +26,7 @@ internal class AddServiceSuccessViewModel(
             servicesRepository.observeServicesTicker().collect { services ->
                 uiState.update { state ->
                     state.copy(
-                        service = services.firstOrNull { it.id == serviceId }
+                        service = services.firstOrNull { it.id == serviceId },
                     )
                 }
             }

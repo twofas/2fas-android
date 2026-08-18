@@ -40,20 +40,20 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.domain.Service
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.IconButton
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.dialog.InputDialog
+import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
+import com.twofasapp.core.design.foundation.other.Divider
+import com.twofasapp.core.design.foundation.textfield.OutlinedTextField
+import com.twofasapp.core.design.foundation.textfield.OutlinedTextFieldPassword
+import com.twofasapp.core.design.foundation.topbar.BackButton
+import com.twofasapp.core.design.ktx.assetAsBitmap
+import com.twofasapp.core.design.ktx.keyboardAsState
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.BackButton
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwDivider
-import com.twofasapp.designsystem.common.TwIconButton
-import com.twofasapp.designsystem.common.TwOutlinedTextField
-import com.twofasapp.designsystem.common.TwOutlinedTextFieldPassword
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.dialog.InputDialog
-import com.twofasapp.designsystem.dialog.ListRadioDialog
-import com.twofasapp.designsystem.ktx.assetAsBitmap
-import com.twofasapp.designsystem.ktx.keyboardAsState
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.android.awaitFrame
 import org.koin.androidx.compose.koinViewModel
@@ -72,9 +72,9 @@ internal fun AddServiceManualScreen(
     var showHotpDialog by remember { mutableStateOf(false) }
     val borderStyle = Stroke(
         width = 2f,
-        pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
+        pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f),
     )
-    val borderColor = TwTheme.color.iconTint
+    val borderColor = MdtTheme.color.iconTint
     val scrollState = rememberScrollState()
     val isKeyboardExpanded = keyboardAsState()
     val focusRequester = remember { FocusRequester() }
@@ -94,8 +94,8 @@ internal fun AddServiceManualScreen(
 
     Column(
         modifier = Modifier
-            .background(TwTheme.color.surface)
-            .verticalScroll(scrollState)
+            .background(MdtTheme.color.surface)
+            .verticalScroll(scrollState),
     ) {
         Row(
             modifier = Modifier
@@ -107,8 +107,8 @@ internal fun AddServiceManualScreen(
 
             Text(
                 text = TwLocale.strings.addTitle,
-                style = TwTheme.typo.title,
-                color = TwTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.title,
+                color = MdtTheme.color.onSurfacePrimary,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(end = 16.dp),
@@ -116,7 +116,7 @@ internal fun AddServiceManualScreen(
             )
         }
 
-        TwOutlinedTextField(
+        OutlinedTextField(
             value = uiState.serviceName.orEmpty(),
             onValueChange = { viewModel.updateName(it) },
             labelText = TwLocale.strings.addManualServiceName,
@@ -133,11 +133,11 @@ internal fun AddServiceManualScreen(
             trailingIcon = {
                 if (uiState.iconLight != null || uiState.iconDark != null) {
                     Image(
-                        bitmap = assetAsBitmap(if (TwTheme.isDark) uiState.iconDark.orEmpty() else uiState.iconLight.orEmpty()),
+                        bitmap = assetAsBitmap(if (MdtTheme.isDark) uiState.iconDark.orEmpty() else uiState.iconLight.orEmpty()),
                         contentDescription = null,
                         modifier = Modifier
                             .padding(end = 8.dp)
-                            .size(32.dp)
+                            .size(32.dp),
                     )
                 } else {
                     Box(
@@ -147,24 +147,24 @@ internal fun AddServiceManualScreen(
                             .drawBehind {
                                 drawCircle(
                                     color = borderColor,
-                                    style = borderStyle
+                                    style = borderStyle,
                                 )
-                            }
+                            },
                     ) {
                         Icon(
-                            painter = TwIcons.Panorama,
+                            painter = MdtIcons.Panorama,
                             contentDescription = null,
                             modifier = Modifier
                                 .align(Alignment.Center)
                                 .size(20.dp),
-                            tint = TwTheme.color.iconTint
+                            tint = MdtTheme.color.iconTint,
                         )
                     }
                 }
-            }
+            },
         )
 
-        TwOutlinedTextFieldPassword(
+        OutlinedTextFieldPassword(
             value = uiState.serviceSecret.orEmpty(),
             onValueChange = { viewModel.updateSecret(it) },
             labelText = TwLocale.strings.addManualServiceKey,
@@ -187,34 +187,34 @@ internal fun AddServiceManualScreen(
         ) {
             Text(
                 text = TwLocale.strings.addManualOther,
-                color = TwTheme.color.onSurfacePrimary,
-                style = TwTheme.typo.body1,
+                color = MdtTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.body1,
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
                 text = TwLocale.strings.addManualOtherOptional,
-                color = TwTheme.color.onSurfaceSecondary,
-                style = TwTheme.typo.body1,
+                color = MdtTheme.color.onSurfaceSecondary,
+                style = MdtTheme.typo.body1,
             )
             Spacer(Modifier.weight(1f))
-            TwIconButton(
+            IconButton(
                 painter = if (uiState.advancedExpanded) {
-                    TwIcons.ChevronUp
+                    MdtIcons.ChevronUp
                 } else {
-                    TwIcons.ChevronDown
+                    MdtIcons.ChevronDown
                 },
                 onClick = { viewModel.toggleAdvanceExpanded() },
             )
         }
 
         if (uiState.advancedExpanded) {
-            TwOutlinedTextField(
+            OutlinedTextField(
                 value = uiState.additionalInfo,
                 onValueChange = { viewModel.updateInfo(it) },
                 labelText = TwLocale.strings.addManualAdditionalInfo,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     capitalization = KeyboardCapitalization.Sentences,
-                    imeAction = ImeAction.Done
+                    imeAction = ImeAction.Done,
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -228,8 +228,8 @@ internal fun AddServiceManualScreen(
 
             Text(
                 text = TwLocale.strings.addManualAdvanced,
-                color = TwTheme.color.onSurfacePrimary,
-                style = TwTheme.typo.body1,
+                color = MdtTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.body1,
                 modifier = Modifier.padding(horizontal = 24.dp),
             )
 
@@ -237,8 +237,8 @@ internal fun AddServiceManualScreen(
 
             Text(
                 text = TwLocale.strings.addManualAdvancedDescription,
-                color = TwTheme.color.onSurfaceSecondary,
-                style = TwTheme.typo.body3,
+                color = MdtTheme.color.onSurfaceSecondary,
+                style = MdtTheme.typo.body3,
                 modifier = Modifier.padding(horizontal = 24.dp),
             )
 
@@ -254,18 +254,18 @@ internal fun AddServiceManualScreen(
             ) {
                 Text(
                     text = "Type",
-                    color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.body1,
+                    color = MdtTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.body1,
                 )
 
                 Text(
                     text = uiState.authType.name,
-                    color = TwTheme.color.onSurfaceSecondary,
-                    style = TwTheme.typo.body3,
+                    color = MdtTheme.color.onSurfaceSecondary,
+                    style = MdtTheme.typo.body3,
                 )
             }
 
-            TwDivider()
+            Divider()
 
             Row(
                 modifier = Modifier
@@ -279,27 +279,28 @@ internal fun AddServiceManualScreen(
             ) {
                 Text(
                     text = TwLocale.strings.addManualAlgorithm,
-                    color = if (uiState.authType == Service.AuthType.TOTP) TwTheme.color.onSurfacePrimary else TwTheme.color.onSurfaceSecondary,
-                    style = TwTheme.typo.body1,
+                    color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurfacePrimary else MdtTheme.color.onSurfaceSecondary,
+                    style = MdtTheme.typo.body1,
                 )
 
                 Text(
                     text = uiState.algorithm.name,
-                    color = TwTheme.color.onSurfaceSecondary,
-                    style = TwTheme.typo.body3,
+                    color = MdtTheme.color.onSurfaceSecondary,
+                    style = MdtTheme.typo.body3,
                 )
             }
 
-            TwDivider()
+            Divider()
 
             when (uiState.authType) {
                 Service.AuthType.STEAM,
-                Service.AuthType.TOTP -> {
+                Service.AuthType.TOTP,
+                -> {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable(
-                                uiState.authType == Service.AuthType.TOTP
+                                uiState.authType == Service.AuthType.TOTP,
                             ) { showRefreshTimeDialog = true }
                             .padding(horizontal = 24.dp, vertical = 16.dp),
                         verticalAlignment = Alignment.CenterVertically,
@@ -307,14 +308,14 @@ internal fun AddServiceManualScreen(
                     ) {
                         Text(
                             text = TwLocale.strings.addManualRefreshTime,
-                            color = if (uiState.authType == Service.AuthType.TOTP) TwTheme.color.onSurfacePrimary else TwTheme.color.onSurfaceSecondary,
-                            style = TwTheme.typo.body1,
+                            color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurfacePrimary else MdtTheme.color.onSurfaceSecondary,
+                            style = MdtTheme.typo.body1,
                         )
 
                         Text(
                             text = uiState.refreshTime.toString(),
-                            color = TwTheme.color.onSurfaceSecondary,
-                            style = TwTheme.typo.body3,
+                            color = MdtTheme.color.onSurfaceSecondary,
+                            style = MdtTheme.typo.body3,
                         )
                     }
                 }
@@ -330,20 +331,20 @@ internal fun AddServiceManualScreen(
                     ) {
                         Text(
                             text = TwLocale.strings.addManualInitialCounter,
-                            color = TwTheme.color.onSurfacePrimary,
-                            style = TwTheme.typo.body1,
+                            color = MdtTheme.color.onSurfacePrimary,
+                            style = MdtTheme.typo.body1,
                         )
 
                         Text(
                             text = uiState.hotpCounter.toString(),
-                            color = TwTheme.color.onSurfaceSecondary,
-                            style = TwTheme.typo.body3,
+                            color = MdtTheme.color.onSurfaceSecondary,
+                            style = MdtTheme.typo.body3,
                         )
                     }
                 }
             }
 
-            TwDivider()
+            Divider()
 
             Row(
                 modifier = Modifier
@@ -355,25 +356,24 @@ internal fun AddServiceManualScreen(
             ) {
                 Text(
                     text = TwLocale.strings.addManualDigits,
-                    color = if (uiState.authType != Service.AuthType.STEAM) TwTheme.color.onSurfacePrimary else TwTheme.color.onSurfaceSecondary,
-                    style = TwTheme.typo.body1,
+                    color = if (uiState.authType != Service.AuthType.STEAM) MdtTheme.color.onSurfacePrimary else MdtTheme.color.onSurfaceSecondary,
+                    style = MdtTheme.typo.body1,
                 )
 
                 Text(
                     text = uiState.digits.toString(),
-                    color = TwTheme.color.onSurfaceSecondary,
-                    style = TwTheme.typo.body3,
+                    color = MdtTheme.color.onSurfaceSecondary,
+                    style = MdtTheme.typo.body3,
                 )
             }
 
             Spacer(modifier = Modifier.height(24.dp))
-
         } else {
-            TwDivider()
+            Divider()
             Spacer(modifier = Modifier.height(24.dp))
         }
 
-        TwButton(
+        Button(
             text = TwLocale.strings.addManualDoneCta,
             onClick = {
                 if (uiState.isFormValid) {
@@ -383,7 +383,7 @@ internal fun AddServiceManualScreen(
             enabled = uiState.isFormValid,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 4.dp)
+                .padding(horizontal = 24.dp, vertical = 4.dp),
         )
 
         if (isKeyboardExpanded.value) {
@@ -397,7 +397,7 @@ internal fun AddServiceManualScreen(
                 onDismissRequest = { showAuthTypeDialog = false },
                 options = Service.AuthType.entries.map { it.name },
                 selectedIndex = Service.AuthType.entries.indexOf(uiState.authType),
-                onOptionSelected = { index, _ -> viewModel.updateAuthType(Service.AuthType.entries[index]) }
+                onOptionSelected = { index, _ -> viewModel.updateAuthType(Service.AuthType.entries[index]) },
             )
         }
 
@@ -406,7 +406,7 @@ internal fun AddServiceManualScreen(
                 onDismissRequest = { showAlgorithmDialog = false },
                 options = Service.Algorithm.entries.map { it.name },
                 selectedIndex = Service.Algorithm.entries.indexOf(uiState.algorithm),
-                onOptionSelected = { index, _ -> viewModel.updateAlgorithm(Service.Algorithm.entries[index]) }
+                onOptionSelected = { index, _ -> viewModel.updateAlgorithm(Service.Algorithm.entries[index]) },
             )
         }
 
@@ -415,7 +415,7 @@ internal fun AddServiceManualScreen(
                 onDismissRequest = { showRefreshTimeDialog = false },
                 options = listOf("10", "30", "60", "90"),
                 selectedOption = uiState.refreshTime.toString(),
-                onOptionSelected = { _, value -> viewModel.updateRefreshTime(value.toInt()) }
+                onOptionSelected = { _, value -> viewModel.updateRefreshTime(value.toInt()) },
             )
         }
 
@@ -424,7 +424,7 @@ internal fun AddServiceManualScreen(
                 onDismissRequest = { showDigitsDialog = false },
                 options = listOf("5", "6", "7", "8"),
                 selectedOption = uiState.digits.toString(),
-                onOptionSelected = { _, value -> viewModel.updateDigits(value.toInt()) }
+                onOptionSelected = { _, value -> viewModel.updateDigits(value.toInt()) },
             )
         }
 
@@ -440,7 +440,7 @@ internal fun AddServiceManualScreen(
                     keyboardType = KeyboardType.Number,
                 ),
                 positiveEnabled = { it.toIntOrNull() != null },
-                onPositiveClick = { viewModel.updateHotpCounter(it.toIntOrNull() ?: 1) }
+                onPositiveClick = { viewModel.updateHotpCounter(it.toIntOrNull() ?: 1) },
             )
         }
 

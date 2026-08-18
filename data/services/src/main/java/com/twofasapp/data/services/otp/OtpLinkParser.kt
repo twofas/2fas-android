@@ -42,8 +42,6 @@ object OtpLinkParser {
                 params = queryParams,
                 link = link,
             )
-
-
         } catch (e: Exception) {
             Timber.e(e)
             return null

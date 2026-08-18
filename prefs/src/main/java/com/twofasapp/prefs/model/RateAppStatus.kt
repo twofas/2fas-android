@@ -16,5 +16,5 @@ data class RateAppStatus(
     @SerialName("counterStartedMillis")
     val counterStarted: Instant = Instant.now(),
     @SerialName("counterReachedMillis")
-    val counterReached: Instant = Instant.now()
+    val counterReached: Instant = Instant.now(),
 )

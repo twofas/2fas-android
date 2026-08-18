@@ -5,5 +5,4 @@ enum class PeriodicNotificationType {
     Backup,
     BrowserExtension,
     Donate,
-    ;
 }

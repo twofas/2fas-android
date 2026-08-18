@@ -2,9 +2,9 @@ package com.twofasapp.feature.trash.ui.trash
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.common.domain.Service
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -20,7 +20,7 @@ class TrashViewModel(
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000),
-                initialValue = emptyList()
+                initialValue = emptyList(),
             )
 
     fun restoreService(id: Long) {

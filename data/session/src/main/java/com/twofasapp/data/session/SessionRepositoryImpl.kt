@@ -55,7 +55,6 @@ internal class SessionRepositoryImpl(
     }
 
     override suspend fun setRateAppDisplayed(isDisplayed: Boolean) {
-
     }
 
     override fun observeBackupEnabled(): Flow<Boolean> {
@@ -72,7 +71,7 @@ internal class SessionRepositoryImpl(
 
     override fun resetBackupReminder() {
         local.setBackupReminderTimestamp(
-            timeProvider.systemCurrentTime() + Duration.ofDays(21).toMillis()
+            timeProvider.systemCurrentTime() + Duration.ofDays(21).toMillis(),
         )
     }
 

@@ -1,8 +1,8 @@
 package com.twofasapp.feature.home.ui.services
 
-import com.twofasapp.data.services.domain.Group
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.lazy.ListItem
+import com.twofasapp.core.design.foundation.lazy.ListItem
+import com.twofasapp.data.services.domain.Group
 
 sealed class ServicesListItem(
     override val key: Any,

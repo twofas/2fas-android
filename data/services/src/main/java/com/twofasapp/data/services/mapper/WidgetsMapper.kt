@@ -18,9 +18,9 @@ internal fun WidgetSettingsEntity.asDomain(services: List<Service>): Widgets {
                         service = services.firstOrNull { it.id == s.id } ?: return@mapNotNull null,
                         revealed = s.isActive,
                     )
-                }
+                },
             )
-        }
+        },
     )
 }
 
@@ -31,8 +31,8 @@ internal fun Widget.asEntity(): WidgetEntity {
         services = services.map {
             WidgetEntity.Service(
                 id = it.service.id,
-                isActive = it.revealed
+                isActive = it.revealed,
             )
-        }
+        },
     )
 }

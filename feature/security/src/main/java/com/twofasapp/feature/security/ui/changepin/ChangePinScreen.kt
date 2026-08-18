@@ -10,7 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.security.ui.pin.PinScreen
 import com.twofasapp.feature.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.feature.security.ui.pin.vibrateInvalidPin
@@ -37,13 +37,14 @@ internal fun ChangePinScreen(
 
     Scaffold(
         topBar = {
-            TwTopAppBar(titleText = stringResource(id = R.string.security__change_pin))
-        }
+            TopAppBar(titleText = stringResource(id = R.string.security__change_pin))
+        },
     ) { padding ->
         Box(
             modifier = Modifier
                 .padding(padding)
-                .fillMaxSize(), contentAlignment = Alignment.Center
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center,
         ) {
             PinScreen(
                 message = stringResource(id = R.string.security__enter_current_pin),
@@ -53,7 +54,7 @@ internal fun ChangePinScreen(
                 showBiometrics = false,
                 state = uiState.pinScreenState,
                 currentPinState = currentPinState,
-                onPinEntered = { viewModel.pinEntered(it) }
+                onPinEntered = { viewModel.pinEntered(it) },
             )
         }
     }

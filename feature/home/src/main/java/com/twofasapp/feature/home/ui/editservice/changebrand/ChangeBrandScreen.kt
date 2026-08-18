@@ -41,10 +41,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TopAppBarWithSearch
-import com.twofasapp.designsystem.dialog.ListDialog
-import com.twofasapp.designsystem.ktx.LocalBackDispatcher
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.dialog.ListDialog
+import com.twofasapp.core.design.foundation.topbar.TopAppBarWithSearch
+import com.twofasapp.core.design.ktx.LocalBackDispatcher
 import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
 import com.twofasapp.locale.R
 import kotlinx.coroutines.launch
@@ -67,7 +67,6 @@ internal fun ChangeBrandScreen(
     val backDispatcher = LocalBackDispatcher
     val uriHandler = LocalUriHandler.current
 
-
     LaunchedEffect(finish) {
         if (finish) {
             close()
@@ -83,58 +82,60 @@ internal fun ChangeBrandScreen(
             ) {
                 backDispatcher.onBackPressed()
             }
-        }
+        },
     ) { padding ->
         if (state.sections.isEmpty()) {
             Text(
                 text = stringResource(id = R.string.brand_empty_msg),
-                style = MaterialTheme.typography.bodyLarge.copy(color = TwTheme.color.onSurfaceSecondary),
+                style = MaterialTheme.typography.bodyLarge.copy(color = MdtTheme.color.onSurfaceSecondary),
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(padding)
-                    .padding(horizontal = 16.dp, vertical = 24.dp)
+                    .padding(horizontal = 16.dp, vertical = 24.dp),
             )
             return@Scaffold
         }
 
         LazyColumn(
-            state = listState, modifier = Modifier
+            state = listState,
+            modifier = Modifier
                 .fillMaxWidth()
                 .imePadding()
-                .padding(padding)
+                .padding(padding),
         ) {
             // Icon order
             item(key = "icon_order") { SectionHeader(header = stringResource(id = R.string.tokens__order_icon_title)) }
 
             item(key = "icon_order_details") {
-
                 Row(
                     Modifier
                         .fillMaxWidth()
-                        .padding(24.dp)
+                        .padding(24.dp),
                 ) {
                     Image(
-                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.img_order_icon),
+                        painter = painterResource(id = com.twofasapp.core.design.R.drawable.img_order_icon),
                         contentDescription = null,
-                        Modifier.height(80.dp)
+                        Modifier.height(80.dp),
                     )
 
                     Column(modifier = Modifier.padding(start = 24.dp)) {
                         Text(
                             text = stringResource(id = R.string.tokens__order_icon_description),
                             style = MaterialTheme.typography.bodyLarge,
-                            color = TwTheme.color.onSurfacePrimary,
+                            color = MdtTheme.color.onSurfacePrimary,
                         )
                         Spacer(modifier = Modifier.height(12.dp))
-                        Row(modifier = Modifier.clickable {
-                            showBrandingDialog.value = true
-                        }) {
+                        Row(
+                            modifier = Modifier.clickable {
+                                showBrandingDialog.value = true
+                            },
+                        ) {
                             Text(
                                 text = stringResource(id = R.string.tokens__order_icon_link),
                                 style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.SemiBold),
-                                color = TwTheme.color.primary,
-                                modifier = Modifier.align(CenterVertically)
+                                color = MdtTheme.color.primary,
+                                modifier = Modifier.align(CenterVertically),
                             )
                         }
                     }
@@ -152,14 +153,14 @@ internal fun ChangeBrandScreen(
                         horizontalArrangement = Arrangement.SpaceAround,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 8.dp)
+                            .padding(vertical = 8.dp),
                     ) {
                         brandsRow.forEach {
                             Column(
                                 modifier = Modifier
                                     .width(72.dp)
                                     .height(104.dp)
-                                    .align(CenterVertically)
+                                    .align(CenterVertically),
                             ) {
                                 Image(
                                     bitmap = com.twofasapp.feature.home.ui.editservice.serviceIconBitmap(iconCollectionId = it.iconCollectionId),
@@ -170,28 +171,27 @@ internal fun ChangeBrandScreen(
                                         .align(CenterHorizontally)
                                         .border(
                                             width = 2.dp,
-                                            color = if (it.iconCollectionId == service.iconCollectionId) TwTheme.color.primary else TwTheme.color.background,
-                                            shape = CircleShape
+                                            color = if (it.iconCollectionId == service.iconCollectionId) MdtTheme.color.primary else MdtTheme.color.background,
+                                            shape = CircleShape,
                                         )
                                         .clip(CircleShape)
                                         .clickable {
                                             viewModel.updateBrand(it)
                                             finish = true
                                         }
-                                        .padding(16.dp)
+                                        .padding(16.dp),
                                 )
 
                                 Text(
                                     text = it.name,
-                                    style = MaterialTheme.typography.bodySmall.copy(color = TwTheme.color.onSurfacePrimary),
+                                    style = MaterialTheme.typography.bodySmall.copy(color = MdtTheme.color.onSurfacePrimary),
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis,
                                     modifier = Modifier
                                         .align(CenterHorizontally)
-                                        .padding(top = 4.dp)
+                                        .padding(top = 4.dp),
                                 )
                             }
-
                         }
 
                         repeat(4 - brandsRow.size) {
@@ -208,14 +208,14 @@ internal fun ChangeBrandScreen(
                 title = stringResource(id = R.string.tokens__order_menu_title),
                 options = listOf(
                     stringResource(id = R.string.tokens__order_menu_option_user),
-                    stringResource(id = R.string.tokens__order_menu_option_company)
+                    stringResource(id = R.string.tokens__order_menu_option_company),
                 ),
                 onOptionSelected = { index ->
                     when (index) {
                         0 -> onRequestIconClick()
                         1 -> uriHandler.openUri("https://2fas.com/your-branding/")
                     }
-                }
+                },
             )
         }
 
@@ -223,7 +223,6 @@ internal fun ChangeBrandScreen(
             if (state.scrollTo.not()) return@LaunchedEffect
 
             scope.launch {
-
                 var selectedIndex = -1
                 var i = 0
 
@@ -254,10 +253,10 @@ fun SectionHeader(header: String) {
     Text(
         text = header,
         style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-        color = TwTheme.color.onSurfacePrimary,
+        color = MdtTheme.color.onSurfacePrimary,
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = TwTheme.color.divider)
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .background(color = MdtTheme.color.divider)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
     )
 }

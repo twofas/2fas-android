@@ -1,9 +1,9 @@
 package com.twofasapp.data.session.local
 
+import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.environment.BuildVariant
 import com.twofasapp.data.session.domain.AppSettings
-import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.storage.PlainPreferences

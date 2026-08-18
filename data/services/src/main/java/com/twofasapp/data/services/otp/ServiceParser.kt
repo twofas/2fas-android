@@ -1,10 +1,10 @@
 package com.twofasapp.data.services.otp
 
-import com.twofasapp.common.domain.Service
 import com.twofasapp.common.domain.BackupSyncStatus
+import com.twofasapp.common.domain.OtpAuthLink
+import com.twofasapp.common.domain.Service
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.common.domain.OtpAuthLink
 
 object ServiceParser {
 
@@ -85,7 +85,7 @@ object ServiceParser {
             updatedAt = System.currentTimeMillis(),
             source = Service.Source.Link,
             assignedDomains = listOf(),
-            backupSyncStatus = BackupSyncStatus.NOT_SYNCED
+            backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
 
         )
     }

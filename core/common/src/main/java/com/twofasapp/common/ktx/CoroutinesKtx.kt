@@ -36,14 +36,14 @@ fun tickerFlow(period: Long, initialDelay: Long = 0) = flow {
 fun ViewModel.launchScoped(
     context: CoroutineContext = EmptyCoroutineContext,
     start: CoroutineStart = CoroutineStart.DEFAULT,
-    block: suspend CoroutineScope.() -> Unit
+    block: suspend CoroutineScope.() -> Unit,
 ): Job {
     return viewModelScope.launch(context, start, block)
 }
 
 fun BroadcastReceiver.launchScoped(
     context: CoroutineContext = EmptyCoroutineContext,
-    block: suspend CoroutineScope.() -> Unit
+    block: suspend CoroutineScope.() -> Unit,
 ) {
     val pendingResult = goAsync()
     CoroutineScope(SupervisorJob()).launch(context) {

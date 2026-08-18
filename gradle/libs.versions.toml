@@ -132,8 +132,6 @@ aboutLibrariesCompose = { module = "com.mikepenz:aboutlibraries-compose-m3", ver
 palette = "androidx.palette:palette:1.0.0"
 playReview = "com.google.android.play:review-ktx:2.0.2"
 kotlinxCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinxCollections" }
-
-# --- project-specific libraries not present in the reference catalog (kept/bumped safely) ---
 accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
 accompanistPagerIndicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
 accompanistPermissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }

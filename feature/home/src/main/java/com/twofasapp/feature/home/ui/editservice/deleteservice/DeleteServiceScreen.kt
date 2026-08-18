@@ -22,21 +22,20 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwTextButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.LocalBackDispatcher
-import com.twofasapp.locale.R
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.LocalBackDispatcher
 import com.twofasapp.feature.home.ui.editservice.EditServiceUiEvent
 import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
+import com.twofasapp.locale.R
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun DeleteServiceScreen(
     viewModel: com.twofasapp.feature.home.ui.editservice.EditServiceViewModel,
 ) {
-
     val service = viewModel.uiState.collectAsState().value.service
     val backDispatcher = LocalBackDispatcher
     val scope = rememberCoroutineScope()
@@ -52,7 +51,7 @@ internal fun DeleteServiceScreen(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = "") }
+        topBar = { TopAppBar(titleText = "") },
     ) { padding ->
         Column(
             modifier = Modifier
@@ -62,18 +61,17 @@ internal fun DeleteServiceScreen(
                 .padding(bottom = 16.dp),
             horizontalAlignment = CenterHorizontally,
         ) {
-
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
                 horizontalAlignment = CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Center,
             ) {
                 Image(
-                    painter = painterResource(id = com.twofasapp.designsystem.R.drawable.illustration_delete_confirm),
+                    painter = painterResource(id = com.twofasapp.core.design.R.drawable.illustration_delete_confirm),
                     contentDescription = null,
-                    modifier = Modifier.height(150.dp)
+                    modifier = Modifier.height(150.dp),
                 )
 
                 Spacer(modifier = Modifier.height(40.dp))
@@ -82,7 +80,7 @@ internal fun DeleteServiceScreen(
                     text = stringResource(id = R.string.delete_service_title),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.titleMedium.copy(fontSize = 22.sp),
-                    color = TwTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurfacePrimary,
                 )
 
                 Text(
@@ -90,25 +88,25 @@ internal fun DeleteServiceScreen(
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(vertical = 16.dp),
                     style = MaterialTheme.typography.titleSmall.copy(fontSize = 18.sp),
-                    color = TwTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurfacePrimary,
                 )
 
                 Text(
                     text = stringResource(id = R.string.delete_service_msg, service.name),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = TwTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurfacePrimary,
                 )
             }
 
-            TwButton(
+            Button(
                 text = stringResource(id = R.string.delete_service_cta),
                 onClick = { viewModel.delete() },
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            TwTextButton(
+            TextButton(
                 text = stringResource(id = R.string.commons__cancel),
                 onClick = { backDispatcher.onBackPressed() },
             )

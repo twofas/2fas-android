@@ -18,18 +18,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.settings.SettingsDivider
+import com.twofasapp.core.design.feature.settings.SettingsHeader
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.SettingsSwitch
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.data.session.domain.LockMethod
 import com.twofasapp.data.session.domain.PinTimeout
 import com.twofasapp.data.session.domain.PinTrials
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.dialog.ListRadioDialog
-import com.twofasapp.designsystem.settings.SettingsDivider
-import com.twofasapp.designsystem.settings.SettingsHeader
-import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.designsystem.settings.SettingsSwitch
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.feature.security.ui.biometric.BiometricDialog
 import com.twofasapp.locale.R
@@ -54,17 +54,17 @@ internal fun SecurityScreen(
 
     Scaffold(
         topBar = {
-            TwTopAppBar(titleText = stringResource(id = R.string.settings__security))
-        }
+            TopAppBar(titleText = stringResource(id = R.string.settings__security))
+        },
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
             if (uiState.lockMethod == LockMethod.NoLock) {
                 item {
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__pin_code),
-                        icon = TwIcons.PinCode,
+                        icon = MdtIcons.PinCode,
                         checked = false,
-                        onCheckedChange = { openSetupPin() }
+                        onCheckedChange = { openSetupPin() },
                     )
                 }
 
@@ -75,20 +75,20 @@ internal fun SecurityScreen(
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_fingerprint),
                         subtitle = stringResource(id = R.string.settings__option_fingerprint_description),
-                        icon = TwIcons.Fingerprint,
+                        icon = MdtIcons.Fingerprint,
                         checked = false,
                         enabled = false,
-                        onCheckedChange = { isChecked -> }
+                        onCheckedChange = { isChecked -> },
                     )
                 }
 
-                item { Divider(color = TwTheme.color.divider, modifier = Modifier.padding(vertical = 8.dp)) }
+                item { Divider(color = MdtTheme.color.divider, modifier = Modifier.padding(vertical = 8.dp)) }
 
                 item {
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_screenshots),
                         subtitle = stringResource(id = R.string.settings__option_screenshots_description),
-                        icon = TwIcons.Screenshot,
+                        icon = MdtIcons.Screenshot,
                         checked = uiState.allowScreenshots,
                         onCheckedChange = { isChecked ->
                             if (isChecked) {
@@ -96,28 +96,26 @@ internal fun SecurityScreen(
                             } else {
                                 viewModel.toggleScreenshots()
                             }
-                        }
+                        },
                     )
                 }
-
             } else {
-
                 item { SettingsHeader(title = stringResource(id = R.string.settings__settings)) }
 
                 item {
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__pin_code),
-                        icon = TwIcons.PinCode,
+                        icon = MdtIcons.PinCode,
                         checked = true,
-                        onCheckedChange = { openDisablePin() }
+                        onCheckedChange = { openDisablePin() },
                     )
                 }
 
                 item {
                     SettingsLink(
                         title = stringResource(id = R.string.security__change_pin),
-                        icon = TwIcons.Change,
-                        onClick = { openChangePin() }
+                        icon = MdtIcons.Change,
+                        onClick = { openChangePin() },
                     )
                 }
 
@@ -127,14 +125,14 @@ internal fun SecurityScreen(
                 item {
                     SettingsLink(
                         title = stringResource(id = R.string.settings__limit_of_trials),
-                        icon = TwIcons.Stop,
-                        subtitleGravity = com.twofasapp.designsystem.settings.SubtitleGravity.End,
+                        icon = MdtIcons.Stop,
+                        subtitleGravity = com.twofasapp.core.design.feature.settings.SubtitleGravity.End,
                         subtitle = if (uiState.pinTrials == PinTrials.NoLimit) {
                             stringResource(id = R.string.settings__no_limit)
                         } else {
                             uiState.pinTrials.label
                         },
-                        onClick = { showTrailsDialog = true }
+                        onClick = { showTrailsDialog = true },
                     )
                 }
 
@@ -142,18 +140,18 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__how_many_attempts_footer),
                         modifier = Modifier.padding(start = 72.dp, end = 16.dp),
-                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = MdtTheme.color.onSurfaceSecondary),
                     )
                 }
 
                 item {
                     SettingsLink(
                         title = stringResource(id = R.string.settings__block_for),
-                        icon = TwIcons.Time,
-                        subtitleGravity = com.twofasapp.designsystem.settings.SubtitleGravity.End,
+                        icon = MdtIcons.Time,
+                        subtitleGravity = com.twofasapp.core.design.feature.settings.SubtitleGravity.End,
                         subtitle = stringResource(id = uiState.pinTimeout.label),
                         enabled = uiState.pinTrials != PinTrials.NoLimit,
-                        onClick = { showTimeoutDialog = true }
+                        onClick = { showTimeoutDialog = true },
                     )
                 }
 
@@ -161,7 +159,7 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__block_for_footer),
                         modifier = Modifier.padding(start = 72.dp, end = 16.dp),
-                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = TwTheme.color.onSurfaceSecondary),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = MdtTheme.color.onSurfaceSecondary),
                     )
                 }
 
@@ -171,7 +169,7 @@ internal fun SecurityScreen(
                 item {
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_fingerprint),
-                        icon = TwIcons.Fingerprint,
+                        icon = MdtIcons.Fingerprint,
                         checked = uiState.lockMethod == LockMethod.Biometrics,
                         onCheckedChange = { isChecked ->
                             if (isChecked) {
@@ -179,17 +177,17 @@ internal fun SecurityScreen(
                             } else {
                                 viewModel.updateBiometricLock(false)
                             }
-                        }
+                        },
                     )
                 }
 
-                item { Divider(color = TwTheme.color.divider, modifier = Modifier.padding(vertical = 8.dp)) }
+                item { Divider(color = MdtTheme.color.divider, modifier = Modifier.padding(vertical = 8.dp)) }
 
                 item {
                     SettingsSwitch(
                         title = stringResource(id = R.string.settings__option_screenshots),
                         subtitle = stringResource(id = R.string.settings__option_screenshots_description),
-                        icon = TwIcons.Screenshot,
+                        icon = MdtIcons.Screenshot,
                         checked = uiState.allowScreenshots,
                         onCheckedChange = { isChecked ->
                             if (isChecked) {
@@ -197,7 +195,7 @@ internal fun SecurityScreen(
                             } else {
                                 viewModel.toggleScreenshots()
                             }
-                        }
+                        },
                     )
                 }
 
@@ -216,7 +214,7 @@ internal fun SecurityScreen(
                 },
                 selectedOption = if (uiState.pinTrials == PinTrials.NoLimit) stringResource(id = R.string.settings__no_limit) else uiState.pinTrials.label,
                 onDismissRequest = { showTrailsDialog = false },
-                onOptionSelected = { index, _ -> viewModel.updatePinTrails(PinTrials.values()[index]) }
+                onOptionSelected = { index, _ -> viewModel.updatePinTrails(PinTrials.values()[index]) },
             )
         }
 
@@ -225,7 +223,7 @@ internal fun SecurityScreen(
                 options = PinTimeout.values().map { stringResource(id = it.label) },
                 selectedOption = stringResource(id = uiState.pinTimeout.label),
                 onDismissRequest = { showTimeoutDialog = false },
-                onOptionSelected = { index, _ -> viewModel.updatePinTimeout(PinTimeout.values()[index]) }
+                onOptionSelected = { index, _ -> viewModel.updatePinTimeout(PinTimeout.values()[index]) },
             )
         }
 
@@ -242,7 +240,7 @@ internal fun SecurityScreen(
                     showBiometricDialog = false
                 },
                 requireKeyValidation = false,
-                biometricKeyProvider = biometricKeyProvider
+                biometricKeyProvider = biometricKeyProvider,
             )
         }
 
@@ -253,7 +251,7 @@ internal fun SecurityScreen(
                 body = stringResource(id = R.string.settings__option_screenshots_confirm_description),
                 negative = stringResource(id = R.string.commons__no),
                 positive = stringResource(id = R.string.commons__yes),
-                onPositive = { viewModel.toggleScreenshots() }
+                onPositive = { viewModel.toggleScreenshots() },
             )
         }
     }

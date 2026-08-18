@@ -18,7 +18,7 @@ class ReadQrFromImage(private val context: Context) {
                 BarcodeScannerOptions.Builder()
                     .setBarcodeFormats(
                         Barcode.FORMAT_QR_CODE,
-                    ).build()
+                    ).build(),
             )
             scanner.process(image)
                 .addOnSuccessListener { barcodes ->
@@ -30,7 +30,6 @@ class ReadQrFromImage(private val context: Context) {
                 .addOnFailureListener {
                     continuation.resume(Result.failure(it))
                 }
-
         } catch (e: Exception) {
             e.printStackTrace()
 

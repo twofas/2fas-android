@@ -8,8 +8,8 @@ import com.twofasapp.android.navigation.getOrNull
 import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.ktx.decodeBase64
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.designsystem.dialog.formatErrorDetails
 import com.twofasapp.feature.externalimport.domain.AegisImporter
 import com.twofasapp.feature.externalimport.domain.AndOtpImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
@@ -79,13 +79,13 @@ internal class ExternalImportResultViewModel(
                         is ExternalImport.Success -> ReadResult.Success(
                             services = result.servicesToImport,
                             countServicesToImport = result.servicesToImport.size,
-                            countTotalServices = result.totalServicesCount
+                            countTotalServices = result.totalServicesCount,
                         )
 
                         is ExternalImport.ParsingError -> ReadResult.Failure(reason = result.reason.formatErrorDetails())
                         is ExternalImport.UnsupportedError -> ReadResult.Failure(reason = result.reason)
                         is ExternalImport.FileReadError -> ReadResult.Failure(reason = result.reason)
-                    }
+                    },
                 )
             }
         }

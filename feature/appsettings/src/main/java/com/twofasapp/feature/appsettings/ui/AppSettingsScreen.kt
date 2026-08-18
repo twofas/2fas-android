@@ -13,23 +13,22 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.domain.SelectedTheme
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.SettingsSwitch
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.data.session.domain.ServicesStyle
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.dialog.ListRadioDialog
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.designsystem.settings.SettingsSwitch
 import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun AppSettingsScreen(
-    viewModel: AppSettingsViewModel = koinViewModel()
+    viewModel: AppSettingsViewModel = koinViewModel(),
 ) {
-
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     ScreenContent(
@@ -41,7 +40,7 @@ internal fun AppSettingsScreen(
         onShowBackupNoticeToggle = { viewModel.toggleShowBackupNotice() },
         onAutoFocusSearchToggle = { viewModel.toggleAutoFocusSearch() },
         onHideCodesToggle = { viewModel.toggleHideTokens() },
-        onDynamicColorsToggle = { viewModel.toggleDynamicColors() }
+        onDynamicColorsToggle = { viewModel.toggleDynamicColors() },
     )
 }
 
@@ -71,7 +70,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.settingsAppearance) }
+        topBar = { TopAppBar(titleText = TwLocale.strings.settingsAppearance) },
     ) { padding ->
 
         LazyColumn(Modifier.padding(padding)) {
@@ -79,8 +78,8 @@ private fun ScreenContent(
                 SettingsLink(
                     title = TwLocale.strings.settingsTheme,
                     subtitle = uiState.appSettings.selectedTheme.toStringResource(),
-                    icon = TwIcons.Theme,
-                    onClick = { showThemeDialog = true }
+                    icon = MdtIcons.Theme,
+                    onClick = { showThemeDialog = true },
                 )
             }
 
@@ -88,7 +87,7 @@ private fun ScreenContent(
                 SettingsSwitch(
                     title = TwLocale.strings.settingsDynamicColors,
                     subtitle = TwLocale.strings.settingsDynamicColorsBody,
-                    icon = TwIcons.Theme,
+                    icon = MdtIcons.Theme,
                     checked = uiState.appSettings.dynamicColors,
                     onCheckedChange = { onDynamicColorsToggle() },
                 )
@@ -98,8 +97,8 @@ private fun ScreenContent(
                 SettingsLink(
                     title = TwLocale.strings.settingsServicesStyle,
                     subtitle = uiState.appSettings.servicesStyle.toStringResource(),
-                    icon = TwIcons.ListStyle,
-                    onClick = { showServicesStyleDialog = true }
+                    icon = MdtIcons.ListStyle,
+                    onClick = { showServicesStyleDialog = true },
                 )
             }
 
@@ -107,7 +106,7 @@ private fun ScreenContent(
                 SettingsSwitch(
                     title = TwLocale.strings.settingsShowNextCode,
                     subtitle = TwLocale.strings.settingsShowNextCodeBody,
-                    icon = TwIcons.NextToken,
+                    icon = MdtIcons.NextToken,
                     checked = uiState.appSettings.showNextCode,
                     onCheckedChange = { onShowNextTokenToggle() },
                 )
@@ -117,7 +116,7 @@ private fun ScreenContent(
                 SettingsSwitch(
                     title = TwLocale.strings.settingsAutoFocusSearch,
                     subtitle = TwLocale.strings.settingsAutoFocusSearchBody,
-                    icon = TwIcons.Search,
+                    icon = MdtIcons.Search,
                     checked = uiState.appSettings.autoFocusSearch,
                     onCheckedChange = { onAutoFocusSearchToggle() },
                 )
@@ -126,7 +125,7 @@ private fun ScreenContent(
             item {
                 SettingsSwitch(
                     title = TwLocale.strings.settingsShowBackupNotice,
-                    icon = TwIcons.CloudOff,
+                    icon = MdtIcons.CloudOff,
                     checked = uiState.appSettings.showBackupNotice,
                     onCheckedChange = { checked ->
                         if (checked.not()) {
@@ -142,7 +141,7 @@ private fun ScreenContent(
                 SettingsSwitch(
                     title = TwLocale.strings.settingsHideCodes,
                     subtitle = TwLocale.strings.settingsHideCodesBody,
-                    icon = TwIcons.Eye,
+                    icon = MdtIcons.Eye,
                     checked = uiState.appSettings.hideCodes,
                     onCheckedChange = { onHideCodesToggle() },
                 )
@@ -174,7 +173,7 @@ private fun ScreenContent(
                 onDismissRequest = { showConfirmDisableBackupNotice = false },
                 title = TwLocale.strings.settingsShowBackupNotice,
                 body = TwLocale.strings.settingsShowBackupNoticeConfirmBody,
-                onPositive = { onShowBackupNoticeToggle() }
+                onPositive = { onShowBackupNoticeToggle() },
             )
         }
     }

@@ -22,3 +22,19 @@ plugins {
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+
+tasks.register("prcheck", Exec::class) {
+    commandLine = "./gradlew formatKotlin lintKotlin testDebugUnitTest".split(" ")
+}
+
+tasks.register("prformat", Exec::class) {
+    commandLine = "./gradlew formatKotlin lintKotlin".split(" ")
+}
+
+tasks.register("libs", Exec::class) {
+    commandLine = "./gradlew dependencyUpdates".split(" ")
+}
+
+tasks.register("libsFormat", Exec::class) {
+    commandLine = "./gradlew versionCatalogFormat".split(" ")
+}

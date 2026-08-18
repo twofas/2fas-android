@@ -24,12 +24,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwImage
-import com.twofasapp.designsystem.common.TwSwitch
-import com.twofasapp.designsystem.common.TwTextButton
-import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.checked.Switch
+import com.twofasapp.core.design.foundation.image.Image
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.trash.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
@@ -37,7 +37,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun DisposeScreen(
     viewModel: DisposeViewModel = koinViewModel(),
-    navigateBack: () -> Unit
+    navigateBack: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -47,7 +47,7 @@ internal fun DisposeScreen(
             viewModel.delete()
             navigateBack()
         },
-        onFinish = navigateBack
+        onFinish = navigateBack,
     )
 }
 
@@ -59,7 +59,7 @@ private fun ScreenContent(
 ) {
     var checked by remember { mutableStateOf(false) }
 
-    Scaffold(topBar = { TwTopAppBar(titleText = "") }) { padding ->
+    Scaffold(topBar = { TopAppBar(titleText = "") }) { padding ->
         Column(
             modifier = Modifier
                 .padding(padding)
@@ -73,33 +73,32 @@ private fun ScreenContent(
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-
                 Text(
                     text = uiState.serviceName,
-                    color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.h3,
+                    color = MdtTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.h3,
                     textAlign = TextAlign.Center,
                 )
 
                 Text(
                     text = TwLocale.strings.disposeBody1,
-                    color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.body3,
+                    color = MdtTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.body3,
                     textAlign = TextAlign.Center,
                 )
 
-                TwImage(
+                Image(
                     painter = painterResource(id = R.drawable.img_dispose),
-                    modifier = Modifier.height(TwTheme.dimen.commonContentImageHeight),
+                    modifier = Modifier.height(MdtTheme.dimen.commonContentImageHeight),
                 )
 
                 Text(
                     text = TwLocale.strings.disposeBody2 + "\n" + TwLocale.strings.disposeBody3.format(
                         uiState.serviceName,
-                        uiState.serviceName
+                        uiState.serviceName,
                     ),
-                    color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.body3,
+                    color = MdtTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.body3,
                     textAlign = TextAlign.Center,
                 )
             }
@@ -107,29 +106,28 @@ private fun ScreenContent(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(TwTheme.shape.roundedDefault)
-                    .background(TwTheme.color.surface)
+                    .clip(MdtTheme.shape.roundedDefault)
+                    .background(MdtTheme.color.surface)
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    TwSwitch(
+                    Switch(
                         checked = checked,
-                        onCheckedChange = { checked = checked.not() }
+                        onCheckedChange = { checked = checked.not() },
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(
                         text = TwLocale.strings.disposeConfirm,
-                        color = TwTheme.color.onSurfacePrimary,
-                        style = TwTheme.typo.body1,
+                        color = MdtTheme.color.onSurfacePrimary,
+                        style = MdtTheme.typo.body1,
                         textAlign = TextAlign.Center,
                     )
-
                 }
                 Spacer(modifier = Modifier.height(16.dp))
-                TwButton(
+                Button(
                     text = TwLocale.strings.disposeCta,
                     onClick = onDeleteClick,
                     enabled = checked,
@@ -137,7 +135,7 @@ private fun ScreenContent(
                 )
             }
             Spacer(modifier = Modifier.height(4.dp))
-            TwTextButton(text = TwLocale.strings.commonCancel, onClick = onFinish)
+            TextButton(text = TwLocale.strings.commonCancel, onClick = onFinish)
         }
     }
 }
@@ -147,7 +145,7 @@ private fun ScreenContent(
 private fun Preview() {
     ScreenContent(
         DisposeUiState(
-            serviceName = "ServiceName"
-        )
+            serviceName = "ServiceName",
+        ),
     )
 }

@@ -43,23 +43,23 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.domain.Service
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.DsService
+import com.twofasapp.core.design.feature.items.ServiceStyle
+import com.twofasapp.core.design.feature.items.ServicesGroup
+import com.twofasapp.core.design.feature.items.asState
+import com.twofasapp.core.design.foundation.button.OutlinedButton
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.dialog.InputDialog
+import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
+import com.twofasapp.core.design.foundation.lazy.isScrollingUp
+import com.twofasapp.core.design.foundation.lazy.listItem
+import com.twofasapp.core.design.foundation.screen.EmptyScreen
+import com.twofasapp.core.design.ktx.currentActivity
+import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwEmptyScreen
-import com.twofasapp.designsystem.common.TwOutlinedButton
-import com.twofasapp.designsystem.common.isScrollingUp
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.dialog.InputDialog
-import com.twofasapp.designsystem.dialog.ListRadioDialog
-import com.twofasapp.designsystem.group.ServicesGroup
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.ktx.openSafely
-import com.twofasapp.designsystem.lazy.listItem
-import com.twofasapp.designsystem.service.DsService
-import com.twofasapp.designsystem.service.ServiceStyle
-import com.twofasapp.designsystem.service.asState
 import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
@@ -116,7 +116,7 @@ internal fun ServicesRoute(
         onDismissPassBannerClick = { viewModel.dismissPassBanner() },
         onDisablePassBannerClick = { viewModel.disablePassBanner() },
         onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
-        onRevealClick = { viewModel.reveal(it) }
+        onRevealClick = { viewModel.reveal(it) },
     )
 }
 
@@ -149,7 +149,6 @@ private fun ServicesScreen(
     onIncrementHotpCounterClick: (Service) -> Unit = {},
     onRevealClick: (Service) -> Unit = {},
 ) {
-
     val focusRequester = remember { FocusRequester() }
     val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -194,11 +193,11 @@ private fun ServicesScreen(
     )
 
     val serviceContainerColor = if (uiState.totalGroups == 1) {
-        TwTheme.color.background
+        MdtTheme.color.background
     } else {
-        TwTheme.color.serviceBackgroundWithGroups
+        MdtTheme.color.serviceBackgroundWithGroups
     }
-    val serviceContainerColorBlink = TwTheme.color.primary.copy(alpha = 0.2f)
+    val serviceContainerColorBlink = MdtTheme.color.primary.copy(alpha = 0.2f)
     val serviceContainerColorBlinking = remember { Animatable(serviceContainerColor) }
 
     var recentlyAddedService by remember { mutableStateOf<Long?>(null) }
@@ -267,7 +266,7 @@ private fun ServicesScreen(
     }
 
     BackHandler(
-        enabled = uiState.isInEditMode || uiState.searchFocused
+        enabled = uiState.isInEditMode || uiState.searchFocused,
     ) {
         when {
             uiState.isInEditMode -> onEditModeChange()
@@ -285,7 +284,7 @@ private fun ServicesScreen(
                     if (uiState.searchFocused) {
                         onSearchFocusChange(false)
                     }
-                }
+                },
             )
         },
         topBar = {
@@ -318,14 +317,14 @@ private fun ServicesScreen(
                 },
             )
         },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { padding ->
 
         LazyColumn(
             state = reorderableState.listState,
             modifier = Modifier
                 .fillMaxSize()
-                .background(TwTheme.color.background)
+                .background(MdtTheme.color.background)
                 .padding(padding)
                 .reorderable(reorderableState),
             contentPadding = PaddingValues(top = 8.dp, bottom = 48.dp),
@@ -336,14 +335,14 @@ private fun ServicesScreen(
                     ServicesProgress(
                         Modifier
                             .fillParentMaxSize()
-                            .animateItem()
+                            .animateItem(),
                     )
                 }
                 return@LazyColumn
             }
             if (uiState.services.isEmpty() && uiState.totalGroups == 1 && uiState.searchQuery.isNotEmpty()) {
                 listItem(ServicesListItem.EmptySearch) {
-                    TwEmptyScreen(
+                    EmptyScreen(
                         title = TwLocale.strings.servicesEmptySearch,
                         body = TwLocale.strings.servicesEmptySearchBody,
                         image = painterResource(id = R.drawable.img_services_empty_search),
@@ -358,18 +357,18 @@ private fun ServicesScreen(
 
             if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
                 listItem(ServicesListItem.Empty) {
-                    TwEmptyScreen(
+                    EmptyScreen(
                         body = TwLocale.strings.servicesEmptyBody,
                         image = painterResource(id = R.drawable.img_services_empty),
                         additionalContent = {
-                            TwOutlinedButton(
+                            OutlinedButton(
                                 text = TwLocale.strings.servicesEmptyImportCta,
                                 onClick = onExternalImportClick,
                             )
                         },
                         modifier = Modifier
                             .fillParentMaxSize()
-                            .animateItem()
+                            .animateItem(),
                     )
                 }
 
@@ -442,7 +441,7 @@ private fun ServicesScreen(
                                             Modifier
                                         } else {
                                             Modifier.animateItem()
-                                        }
+                                        },
                                     ),
                                 onClick = { onToggleGroupExpand(group.id) },
                                 onExpandClick = { onToggleGroupExpand(group.id) },
@@ -474,7 +473,7 @@ private fun ServicesScreen(
                                             Modifier
                                         } else {
                                             Modifier.animateItem()
-                                        }
+                                        },
                                     ),
                             ) { _ ->
                                 val state = service.asState()
@@ -502,7 +501,7 @@ private fun ServicesScreen(
                                         listener.openFocusServiceModal(service.id)
                                     },
                                     onIncrementCounterClick = { onIncrementHotpCounterClick(service) },
-                                    onRevealClick = { onRevealClick(service) }
+                                    onRevealClick = { onRevealClick(service) },
                                 )
                             }
                         }
@@ -528,7 +527,8 @@ private fun ServicesScreen(
                 capitalization = KeyboardCapitalization.Sentences,
                 keyboardType = KeyboardType.Text,
             ),
-            onPositiveClick = { onAddGroup(it) })
+            onPositiveClick = { onAddGroup(it) },
+        )
     }
 
     if (showEditGroupDialog) {
@@ -546,7 +546,8 @@ private fun ServicesScreen(
                 capitalization = KeyboardCapitalization.Sentences,
                 keyboardType = KeyboardType.Text,
             ),
-            onPositiveClick = { onEditGroup(clickedGroup?.id.orEmpty(), it) })
+            onPositiveClick = { onEditGroup(clickedGroup?.id.orEmpty(), it) },
+        )
     }
 
     if (showDeleteGroupDialog) {
@@ -567,7 +568,7 @@ private fun ServicesScreen(
                 ServicesSort.Alphabetical -> 0
                 ServicesSort.Manual -> 1
             },
-            onOptionSelected = { index, _ -> onSortChange(index) }
+            onOptionSelected = { index, _ -> onSortChange(index) },
         )
     }
 
@@ -585,7 +586,7 @@ private fun ServicesScreen(
                 }
 
                 append(TwLocale.strings.servicesQrFromGalleryBody3)
-            }
+            },
         )
     }
 
@@ -602,4 +603,3 @@ private fun ServicesScreen(
 //        )
 //    }
 }
-

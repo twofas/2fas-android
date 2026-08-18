@@ -30,8 +30,8 @@ internal class GroupsRepositoryImpl(
                     Group(
                         id = null,
                         name = null,
-                        isExpanded = groups.isDefaultGroupExpanded
-                    )
+                        isExpanded = groups.isDefaultGroupExpanded,
+                    ),
                 )
                     .plus(groups.list.map { it.asDomain() })
                     .distinctBy { it.id }

@@ -18,7 +18,7 @@ import org.koin.core.component.inject
 
 class BrowserExtRequestWorker(
     private val context: Context,
-    workerParams: WorkerParameters
+    workerParams: WorkerParameters,
 ) : CoroutineWorker(context, workerParams), KoinComponent {
 
     private val servicesRepository: ServicesRepository by inject()
@@ -27,7 +27,6 @@ class BrowserExtRequestWorker(
 
     override suspend fun doWork(): Result {
         return withContext(Dispatchers.IO) {
-
             val payload = inputData.getString(BrowserExtRequestPayload.Key)!!.let {
                 json.decodeFromString<BrowserExtRequestPayload>(it)
             }
@@ -58,7 +57,6 @@ class BrowserExtRequestWorker(
                     }
 
                     browserExtRepository.deleteTokenRequest(payload.requestId)
-
                 } catch (e: Exception) {
                     showToast(context.getString(com.twofasapp.locale.R.string.extension__code_sent_error_msg))
                 }
@@ -75,7 +73,6 @@ class BrowserExtRequestWorker(
                 Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
             }, 500)
         } catch (_: Exception) {
-
         }
     }
 }

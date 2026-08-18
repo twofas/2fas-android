@@ -19,7 +19,7 @@ data class RemoteBackupStatusEntity(
     val reference: String? = null,
 ) {
     enum class SyncProvider {
-        GOOGLE_DRIVE
+        GOOGLE_DRIVE,
     }
 
     enum class State {

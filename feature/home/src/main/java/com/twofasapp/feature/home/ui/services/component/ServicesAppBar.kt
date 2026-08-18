@@ -37,14 +37,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwDropdownMenu
-import com.twofasapp.designsystem.common.TwDropdownMenuItem
-import com.twofasapp.designsystem.common.TwIcon
-import com.twofasapp.designsystem.common.TwIconButton
-import com.twofasapp.designsystem.common.TwImage
-import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.IconButton
+import com.twofasapp.core.design.foundation.icon.Icon
+import com.twofasapp.core.design.foundation.image.Image
+import com.twofasapp.core.design.foundation.menu.DropdownMenu
+import com.twofasapp.core.design.foundation.menu.DropdownMenuItem
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
 
@@ -68,23 +68,23 @@ internal fun ServicesAppBar(
         enter = fadeIn(),
         exit = fadeOut(),
     ) {
-        TwTopAppBar(
+        TopAppBar(
             titleText = stringResource(id = R.string.tokens__manage_list),
             onBackClick = onEditModeChange,
             scrollBehavior = scrollBehavior,
             actions = {
-                TwIconButton(
-                    painter = TwIcons.Sort,
-                    tint = TwTheme.color.primary,
+                IconButton(
+                    painter = MdtIcons.Sort,
+                    tint = MdtTheme.color.primary,
                     onClick = onSortClick,
                 )
 
-                TwIconButton(
-                    painter = TwIcons.AddGroup,
-                    tint = TwTheme.color.primary,
+                IconButton(
+                    painter = MdtIcons.AddGroup,
+                    tint = MdtTheme.color.primary,
                     onClick = onAddGroupClick,
                 )
-            }
+            },
         )
     }
 
@@ -93,7 +93,7 @@ internal fun ServicesAppBar(
         enter = fadeIn(),
         exit = fadeOut(),
     ) {
-        TwTopAppBar(
+        TopAppBar(
             title = {
                 SearchBar(
                     modifier = Modifier
@@ -111,22 +111,22 @@ internal fun ServicesAppBar(
             scrollBehavior = scrollBehavior,
             actions = {
                 Box {
-                    TwIconButton(
-                        painter = TwIcons.Notification,
-                        tint = TwTheme.color.iconTint,
+                    IconButton(
+                        painter = MdtIcons.Notification,
+                        tint = MdtTheme.color.iconTint,
                         onClick = onNotificationsClick,
                     )
 
                     if (hasUnreadNotifications) {
                         Badge(
-                            containerColor = TwTheme.color.primary,
+                            containerColor = MdtTheme.color.primary,
                             modifier = Modifier
                                 .align(Alignment.Center)
-                                .padding(start = 18.dp, bottom = 18.dp)
+                                .padding(start = 18.dp, bottom = 18.dp),
                         )
                     }
                 }
-            }
+            },
         )
     }
 }
@@ -147,17 +147,16 @@ private fun SearchBar(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(28.dp))
-            .background(TwTheme.color.surface)
+            .background(MdtTheme.color.surface)
             .padding(start = 16.dp, end = 4.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-
         AnimatedVisibility(visible = focused.not() && query.isEmpty()) {
-            TwImage(painter = painterResource(id = com.twofasapp.designsystem.R.drawable.logo_2fas), modifier = Modifier.size(24.dp))
+            Image(painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_2fas), modifier = Modifier.size(24.dp))
         }
 
         AnimatedVisibility(visible = focused || query.isNotEmpty()) {
-            TwIcon(painter = TwIcons.Search, modifier = Modifier.size(24.dp))
+            Icon(painter = MdtIcons.Search, modifier = Modifier.size(24.dp))
         }
 
         TextField(
@@ -169,22 +168,22 @@ private fun SearchBar(
             placeholder = {
                 Text(
                     text = TwLocale.strings.commonSearch,
-                    style = TwTheme.typo.body1.copy(fontSize = 18.sp)
+                    style = MdtTheme.typo.body1.copy(fontSize = 18.sp),
                 )
             },
-            textStyle = TwTheme.typo.body1.copy(fontSize = 18.sp),
+            textStyle = MdtTheme.typo.body1.copy(fontSize = 18.sp),
             colors = TextFieldDefaults.colors(
                 disabledTextColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
-                focusedTextColor = TwTheme.color.onSurfacePrimary,
-                focusedPlaceholderColor = TwTheme.color.onSurfaceSecondary,
-                unfocusedPlaceholderColor = TwTheme.color.onSurfaceSecondary,
-                unfocusedContainerColor = TwTheme.color.surface,
-                focusedContainerColor = TwTheme.color.surface,
-                disabledContainerColor = TwTheme.color.surface,
-                errorContainerColor = TwTheme.color.surface,
+                focusedTextColor = MdtTheme.color.onSurfacePrimary,
+                focusedPlaceholderColor = MdtTheme.color.onSurfaceSecondary,
+                unfocusedPlaceholderColor = MdtTheme.color.onSurfaceSecondary,
+                unfocusedContainerColor = MdtTheme.color.surface,
+                focusedContainerColor = MdtTheme.color.surface,
+                disabledContainerColor = MdtTheme.color.surface,
+                errorContainerColor = MdtTheme.color.surface,
             ),
             interactionSource = remember { MutableInteractionSource() }
                 .also { interactionSource ->
@@ -199,31 +198,31 @@ private fun SearchBar(
             maxLines = 1,
             singleLine = true,
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Search),
-            keyboardActions = KeyboardActions(onSearch = { onSearchFocusChange(false) })
+            keyboardActions = KeyboardActions(onSearch = { onSearchFocusChange(false) }),
         )
 
         AnimatedVisibility(visible = focused || query.isNotEmpty()) {
-            TwIconButton(
-                painter = TwIcons.Close,
+            IconButton(
+                painter = MdtIcons.Close,
                 onClick = {
                     if (query.isNotEmpty()) {
                         onSearchQueryChange("")
                     } else {
                         onSearchFocusChange(false)
                     }
-                }
+                },
             )
         }
 
         AnimatedVisibility(visible = focused.not() && query.isEmpty()) {
-            TwDropdownMenu(
+            DropdownMenu(
                 expanded = showDropdown,
                 onDismissRequest = { showDropdown = false },
-                anchor = { TwIconButton(painter = TwIcons.More, onClick = { showDropdown = true }) }
+                anchor = { IconButton(painter = MdtIcons.More, onClick = { showDropdown = true }) },
             ) {
-                TwDropdownMenuItem(
+                DropdownMenuItem(
                     text = TwLocale.strings.servicesManageList,
-                    icon = TwIcons.Edit,
+                    icon = MdtIcons.Edit,
                     onClick = {
                         onToggleEditMode()
                         showDropdown = false

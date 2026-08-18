@@ -39,7 +39,6 @@ internal class BrowserExtPairingViewModel(
                 val fcmToken = browserExtRepository.getFcmToken()
                 val currentMobileDevice = browserExtRepository.getMobileDevice()
 
-
                 val registeredMobileDevice = if (currentMobileDevice.id.isNotBlank()) {
                     currentMobileDevice
                 } else {

@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.onStart
 import timber.log.Timber
 
 internal class PreferencesDelegate(
-    private val factory: SharedPreferencesFactory
+    private val factory: SharedPreferencesFactory,
 ) : EncryptedPreferences, PlainPreferences {
 
     private val sharedPrefs: SharedPreferences by lazy {

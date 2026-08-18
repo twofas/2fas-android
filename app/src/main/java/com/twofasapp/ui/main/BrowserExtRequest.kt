@@ -1,7 +1,7 @@
 package com.twofasapp.ui.main
 
-import com.twofasapp.data.browserext.domain.TokenRequest
 import com.twofasapp.common.domain.Service
+import com.twofasapp.data.browserext.domain.TokenRequest
 
 data class BrowserExtRequest(
     val request: TokenRequest,

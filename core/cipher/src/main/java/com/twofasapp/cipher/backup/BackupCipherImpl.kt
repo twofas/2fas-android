@@ -20,7 +20,6 @@ internal class BackupCipherImpl(
         keyEncoded: String?,
         saltEncoded: String?,
     ): BackupEncrypted {
-
         // Use existing salt or generate new one
         val salt = saltEncoded?.decodeBase64ToByteArray() ?: saltGenerator.generate()
 
@@ -47,7 +46,7 @@ internal class BackupCipherImpl(
         reference: DataEncrypted,
         services: DataEncrypted,
         password: String?,
-        keyEncoded: String?
+        keyEncoded: String?,
     ): BackupDecrypted {
         return BackupDecrypted(
             reference = decrypt(reference, password, keyEncoded).data,
@@ -58,9 +57,8 @@ internal class BackupCipherImpl(
     override fun decrypt(
         dataEncrypted: DataEncrypted,
         password: String?,
-        keyEncoded: String?
+        keyEncoded: String?,
     ): DataDecrypted {
-
         // Extract splitted data
         val data = dataEncrypted.dataEncoded.decodeBase64ToByteArray()
         val salt = dataEncrypted.saltEncoded.decodeBase64ToByteArray()
@@ -76,7 +74,7 @@ internal class BackupCipherImpl(
         return DataDecrypted(
             data = cipher.decrypt(key, iv, data).data.decodeToString(),
             saltEncoded = salt.encodeBase64ToString(),
-            keyEncoded = key.encoded.encodeBase64ToString()
+            keyEncoded = key.encoded.encodeBase64ToString(),
         )
     }
 

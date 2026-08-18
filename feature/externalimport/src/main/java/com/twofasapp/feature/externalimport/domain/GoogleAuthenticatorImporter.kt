@@ -105,7 +105,8 @@ class GoogleAuthenticatorImporter : ExternalImporter {
             MigrationPayload.Algorithm.ALGORITHM_SHA512 -> params[ALGORITHM] = "SHA512"
             MigrationPayload.Algorithm.ALGORITHM_UNSPECIFIED,
             MigrationPayload.Algorithm.ALGORITHM_MD5,
-            MigrationPayload.Algorithm.UNRECOGNIZED -> Unit
+            MigrationPayload.Algorithm.UNRECOGNIZED,
+            -> Unit
 
             else -> Unit
         }

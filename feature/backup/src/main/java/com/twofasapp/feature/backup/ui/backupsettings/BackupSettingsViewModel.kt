@@ -96,6 +96,4 @@ internal class BackupSettingsViewModel(
     private fun publishEvent(event: BackupSettingsUiEvent) {
         uiState.update { it.copy(events = it.events.plus(event)) }
     }
-
-
 }

@@ -21,7 +21,6 @@ import org.koin.dsl.module
 class PreferencesPlainModule : KoinModule {
 
     override fun provide() = module {
-
         single { PinCodePreference(get<PlainPreferences>()) }
         single { TimeDeltaPreference(get<PlainPreferences>()) }
         single { ShowNextTokenPreference(get<PlainPreferences>()) }

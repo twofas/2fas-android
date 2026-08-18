@@ -45,9 +45,9 @@ object SupportedServices {
                                         "light" -> IconCollection.IconType.Light
                                         "dark" -> IconCollection.IconType.Dark
                                         else -> IconCollection.IconType.Light
-                                    }
+                                    },
                                 )
-                            } ?: emptyList()
+                            } ?: emptyList(),
                         ),
                         matchRules = service.match_rules?.map { rule ->
                             MatchRule(
@@ -68,9 +68,9 @@ object SupportedServices {
                                 },
                                 ignoreCase = rule.ignore_case ?: true,
                             )
-                        } ?: emptyList()
+                        } ?: emptyList(),
                     )
-                }
+                },
             )
         }
     }

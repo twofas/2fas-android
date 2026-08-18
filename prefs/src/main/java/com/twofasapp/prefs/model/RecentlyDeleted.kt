@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RecentlyDeleted(
     @SerialName("services")
-    val services: List<RecentlyDeletedService>
+    val services: List<RecentlyDeletedService>,
 )

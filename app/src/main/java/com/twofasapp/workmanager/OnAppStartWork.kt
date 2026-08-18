@@ -39,7 +39,6 @@ class OnAppStartWork(
         }
     }
 
-
     private val sessionRepository: SessionRepository by inject()
     private val notificationsRepository: NotificationsRepository by inject()
     private val backupRepository: BackupRepository by inject()
@@ -97,7 +96,7 @@ class OnAppStartWork(
                         category = Notification.Category.Tips,
                         message = context.getString(com.twofasapp.locale.R.string.periodic_notification_tips),
                         link = "https://2fas.com/2fasauth-tutorial",
-                    )
+                    ),
                 )
             }
 
@@ -111,7 +110,7 @@ class OnAppStartWork(
                             message = context.getString(com.twofasapp.locale.R.string.periodic_notification_backup),
                             link = "",
                             internalRoute = Screen.Backup.route,
-                        )
+                        ),
                     )
                 }
             }
@@ -124,7 +123,7 @@ class OnAppStartWork(
                             category = Notification.Category.News,
                             message = context.getString(com.twofasapp.locale.R.string.periodic_notification_browser_extension),
                             link = "https://2fas.com/browser-extension/",
-                        )
+                        ),
                     )
                 }
             }
@@ -137,7 +136,7 @@ class OnAppStartWork(
                             category = Notification.Category.Features,
                             message = context.getString(com.twofasapp.locale.R.string.periodic_notification_donate),
                             link = "https://2fas.com/donate/",
-                        )
+                        ),
                     )
                 }
             }

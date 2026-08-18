@@ -10,13 +10,12 @@ import com.twofasapp.feature.home.ui.guideinit.GuideInitScreen
 import com.twofasapp.feature.home.ui.guidepager.GuidePagerScreen
 import com.twofasapp.feature.home.ui.guides.GuidesScreen
 
-
 fun NavGraphBuilder.guidesNavigation(
     navController: NavHostController,
 ) {
     composable(Screen.Guides.route) {
         GuidesScreen(
-            openGuide = { navController.navigate(Screen.GuideInit.routeWithArgs(NavArg.Guide to it.name)) }
+            openGuide = { navController.navigate(Screen.GuideInit.routeWithArgs(NavArg.Guide to it.name)) },
         )
     }
 
@@ -28,9 +27,9 @@ fun NavGraphBuilder.guidesNavigation(
                     Screen.GuidePager.routeWithArgs(
                         NavArg.Guide to guide.name,
                         NavArg.GuideVariantIndex to guideVariantIndex,
-                    )
+                    ),
                 )
-            }
+            },
         )
     }
 

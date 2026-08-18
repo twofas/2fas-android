@@ -16,7 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.twofasapp.android.navigation.Screen
-import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.core.design.MdtTheme
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
@@ -44,7 +44,7 @@ internal fun MainScreen(
                 ModalBottomSheetValue.HalfExpanded -> true
             }
         },
-        skipHalfExpanded = true
+        skipHalfExpanded = true,
     )
     val bottomSheetNavigator = remember { BottomSheetNavigator(sheetState) }
     val navController: NavHostController = rememberNavController(bottomSheetNavigator)
@@ -79,7 +79,7 @@ internal fun MainScreen(
         }
 
         Surface(
-            color = TwTheme.color.background,
+            color = MdtTheme.color.background,
         ) {
             MainNavHost(
                 navController = navController,
@@ -97,7 +97,7 @@ internal fun MainScreen(
                 onRequestHandled = {
                     viewModel.browserExtRequestHandled(browserExtRequest)
                     NotificationManagerCompat.from(context).cancel(null, browserExtRequest.request.requestId.hashCode())
-                }
+                },
             )
         }
     }

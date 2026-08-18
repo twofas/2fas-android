@@ -8,7 +8,7 @@ import de.adorsys.android.securestoragelibrary.SecurePreferences
 // Historically it was only saved in SecurePreferences, migrate at some point
 class PinSecuredPreference(
     private val context: Context,
-    preferences: Preferences
+    preferences: Preferences,
 ) : PreferenceString(preferences) {
 
     override val key: String = "pinSecured"

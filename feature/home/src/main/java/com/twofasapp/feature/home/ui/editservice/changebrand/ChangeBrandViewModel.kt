@@ -1,9 +1,9 @@
 package com.twofasapp.feature.home.ui.editservice.changebrand
 
 import androidx.lifecycle.ViewModel
+import com.twofasapp.feature.home.ui.editservice.BrandIcon
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.feature.home.ui.editservice.BrandIcon
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -18,7 +18,7 @@ internal class ChangeBrandViewModel : ViewModel() {
             BrandIcon(
                 name = it.name,
                 iconCollectionId = it.id,
-                tags = SupportedServices.list.firstOrNull { service -> service.iconCollection.id == it.id }?.tags ?: emptyList()
+                tags = SupportedServices.list.firstOrNull { service -> service.iconCollection.id == it.id }?.tags ?: emptyList(),
             )
         }
             .sortedBy { it.name.uppercase() }
@@ -38,7 +38,7 @@ internal class ChangeBrandViewModel : ViewModel() {
             .filter {
                 if (query.isNotEmpty()) {
                     it.name.contains(query.trim(), ignoreCase = true) ||
-                            it.tags.map { tag -> tag.lowercase() }.contains(query.lowercase())
+                        it.tags.map { tag -> tag.lowercase() }.contains(query.lowercase())
                 } else {
                     true
                 }

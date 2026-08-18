@@ -44,7 +44,8 @@ internal class GroupsLocalSource(
         val local = getGroups()
 
         preferences.putString(
-            KeyGroups, json.encodeToString(
+            KeyGroups,
+            json.encodeToString(
                 local.copy(
                     list = local.list.plus(
                         GroupEntity(
@@ -53,10 +54,10 @@ internal class GroupsLocalSource(
                             isExpanded = true,
                             updatedAt = timeProvider.systemCurrentTime(),
                             backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
-                        )
-                    ).distinctBy { it.id }
-                )
-            )
+                        ),
+                    ).distinctBy { it.id },
+                ),
+            ),
         )
     }
 
@@ -64,7 +65,8 @@ internal class GroupsLocalSource(
         val local = getGroups()
 
         preferences.putString(
-            KeyGroups, json.encodeToString(
+            KeyGroups,
+            json.encodeToString(
                 local.copy(
                     list = local.list.plus(
                         GroupEntity(
@@ -73,10 +75,10 @@ internal class GroupsLocalSource(
                             isExpanded = group.isExpanded,
                             updatedAt = timeProvider.systemCurrentTime(),
                             backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
-                        )
-                    ).distinctBy { it.id }
-                )
-            )
+                        ),
+                    ).distinctBy { it.id },
+                ),
+            ),
         )
     }
 
@@ -85,12 +87,13 @@ internal class GroupsLocalSource(
         val newList = local.list.filterNot { it.id == id }
 
         preferences.putString(
-            KeyGroups, json.encodeToString(
+            KeyGroups,
+            json.encodeToString(
                 local.copy(
                     list = newList,
-                    isDefaultGroupExpanded = if (newList.isEmpty()) true else local.isDefaultGroupExpanded
-                )
-            )
+                    isDefaultGroupExpanded = if (newList.isEmpty()) true else local.isDefaultGroupExpanded,
+                ),
+            ),
         )
     }
 
@@ -98,7 +101,8 @@ internal class GroupsLocalSource(
         val local = getGroups()
 
         preferences.putString(
-            KeyGroups, json.encodeToString(
+            KeyGroups,
+            json.encodeToString(
                 local.copy(
                     list = local.list.map { group ->
                         if (group.id == id) {
@@ -110,9 +114,9 @@ internal class GroupsLocalSource(
                         } else {
                             group
                         }
-                    }
-                )
-            )
+                    },
+                ),
+            ),
         )
     }
 
@@ -120,7 +124,8 @@ internal class GroupsLocalSource(
         val local = getGroups()
 
         preferences.putString(
-            KeyGroups, json.encodeToString(
+            KeyGroups,
+            json.encodeToString(
                 local.copy(
                     list = local.list.map { groupEntity ->
                         if (groupEntity.id == newGroup.id) {
@@ -134,9 +139,9 @@ internal class GroupsLocalSource(
                         } else {
                             groupEntity
                         }
-                    }
-                )
-            )
+                    },
+                ),
+            ),
         )
     }
 
@@ -160,9 +165,9 @@ internal class GroupsLocalSource(
                         } else {
                             groupEntity
                         }
-                    }
-                )
-            )
+                    },
+                ),
+            ),
         )
     }
 
@@ -187,9 +192,9 @@ internal class GroupsLocalSource(
                         } else {
                             groupEntity
                         }
-                    }
-                )
-            )
+                    },
+                ),
+            ),
         )
     }
 
@@ -206,7 +211,7 @@ internal class GroupsLocalSource(
                     } else {
                         group
                     }
-                }.distinctBy { it.id }
+                }.distinctBy { it.id },
             )
         }
 
@@ -218,11 +223,12 @@ internal class GroupsLocalSource(
         val sortedList = local.list.sortedBy { ids.indexOf(it.id) }
 
         preferences.putString(
-            KeyGroups, json.encodeToString(
+            KeyGroups,
+            json.encodeToString(
                 local.copy(
                     list = sortedList,
-                )
-            )
+                ),
+            ),
         )
     }
 
@@ -230,11 +236,12 @@ internal class GroupsLocalSource(
         val local = getGroups()
 
         preferences.putString(
-            KeyGroups, json.encodeToString(
+            KeyGroups,
+            json.encodeToString(
                 local.copy(
                     list = local.list.map { group -> group.copy(backupSyncStatus = BackupSyncStatus.SYNCED) },
-                )
-            )
+                ),
+            ),
         )
     }
 }

@@ -22,7 +22,7 @@ class DisposeViewModel(
         launchScoped {
             uiState.update {
                 DisposeUiState(
-                    serviceName = servicesRepository.getService(serviceId).name
+                    serviceName = servicesRepository.getService(serviceId).name,
                 )
             }
         }

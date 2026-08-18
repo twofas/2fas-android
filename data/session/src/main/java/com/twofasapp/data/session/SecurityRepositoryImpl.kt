@@ -43,7 +43,8 @@ internal class SecurityRepositoryImpl(
         } else {
             when (lockMethod) {
                 LockMethod.NoLock,
-                LockMethod.Pin -> editLockMethod(LockMethod.Pin)
+                LockMethod.Pin,
+                -> editLockMethod(LockMethod.Pin)
 
                 LockMethod.Biometrics -> editLockMethod(LockMethod.Biometrics)
             }
@@ -79,7 +80,7 @@ internal class SecurityRepositoryImpl(
                     else -> true
                 },
                 timeLeftMs = timeLeftMs,
-                timeLeftMin = ceil(timeLeftMs / 1000f / 60f).toInt()
+                timeLeftMin = ceil(timeLeftMs / 1000f / 60f).toInt(),
             )
         }
     }

@@ -38,7 +38,7 @@ internal class BrowserExtDetailsViewModel(
             runSafely {
                 browserExtRepository.deletePairedBrowser(
                     deviceId = browserExtRepository.getMobileDevice().id,
-                    extensionId = extensionId
+                    extensionId = extensionId,
                 )
             }
                 .onSuccess { uiState.update { it.copy(finish = true) } }

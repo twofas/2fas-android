@@ -12,7 +12,6 @@ data class SupportedService(
         issuer: String?,
         label: String,
     ): Boolean {
-
         if (issuer.isNullOrBlank().not()) {
             issuers.forEach {
                 if (it.equals(issuer, ignoreCase = true)) {

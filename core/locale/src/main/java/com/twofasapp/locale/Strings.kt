@@ -365,5 +365,4 @@ class Strings(c: Context) {
     val passBannerMsg = c.getString(R.string.pass_promo_banner_msg)
     val passBannerPositiveCta = c.getString(R.string.pass_promo_banner_positive_cta)
     val passBannerNegativeCta = c.getString(R.string.pass_promo_banner_negative_cta)
-
 }

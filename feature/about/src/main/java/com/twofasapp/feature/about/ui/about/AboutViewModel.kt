@@ -36,7 +36,7 @@ internal class AboutViewModel(
                     "${appBuild.versionName} (${appBuild.buildVariant.name.camelCaseBeginLower()})"
                 } else {
                     appBuild.versionName
-                }
+                },
             )
         }
     }

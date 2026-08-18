@@ -22,10 +22,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwTextButton
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.TextButton
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -39,7 +39,7 @@ internal fun SyncReminderItem(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .clip(RoundedCornerShape(16.dp))
-            .background(TwTheme.color.surface)
+            .background(MdtTheme.color.surface)
             .padding(all = 16.dp),
     ) {
         Row(
@@ -49,14 +49,14 @@ internal fun SyncReminderItem(
                 modifier = Modifier
                     .size(48.dp)
                     .clip(CircleShape)
-                    .background(TwTheme.color.primary.copy(alpha = 0.12f)),
+                    .background(MdtTheme.color.primary.copy(alpha = 0.12f)),
                 contentAlignment = Alignment.Center,
             ) {
                 Icon(
-                    painter = TwIcons.CloudUpload,
+                    painter = MdtIcons.CloudUpload,
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
-                    tint = TwTheme.color.primary,
+                    tint = MdtTheme.color.primary,
                 )
             }
 
@@ -65,16 +65,16 @@ internal fun SyncReminderItem(
             Column {
                 Text(
                     text = TwLocale.strings.backupReminder,
-                    style = TwTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
-                    color = TwTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
+                    color = MdtTheme.color.onSurfacePrimary,
                 )
 
                 Spacer(Modifier.height(6.dp))
 
                 Text(
                     text = TwLocale.strings.backupReminderBody,
-                    style = TwTheme.typo.body3,
-                    color = TwTheme.color.onSurfaceSecondary,
+                    style = MdtTheme.typo.body3,
+                    color = MdtTheme.color.onSurfaceSecondary,
                 )
             }
         }
@@ -86,15 +86,15 @@ internal fun SyncReminderItem(
             horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            TwTextButton(
+            TextButton(
                 text = TwLocale.strings.backupReminderDismiss,
                 onClick = onDismissClick,
             )
 
-            TwButton(
+            Button(
                 text = TwLocale.strings.backupReminderCta,
                 height = 36.dp,
-                leadingIcon = TwIcons.CloudUpload,
+                leadingIcon = MdtIcons.CloudUpload,
                 leadingIconTint = Color.White,
                 onClick = onOpenBackupClick,
             )

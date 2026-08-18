@@ -83,7 +83,7 @@ class BackupRepositoryImpl(
         password: String?,
         keyEncoded: String?,
         saltEncoded: String?,
-        account: String?
+        account: String?,
     ): BackupContentCreateResult {
         return withContext(dispatchers.io) {
             val groups = groupsRepository.observeGroups().first().asBackup()
@@ -171,7 +171,6 @@ class BackupRepositoryImpl(
                     servicesEncrypted = null,
                     reference = null,
                 )
-
             } catch (e: Exception) {
                 if (e is AEADBadTagException) {
                     throw DecryptWrongPassword()
@@ -184,7 +183,6 @@ class BackupRepositoryImpl(
 
     override suspend fun import(backupContent: BackupContent) {
         withContext(dispatchers.io) {
-
             // Import groups
             backupContent.groups.forEach { group ->
                 groupsRepository.addGroup(group.asDomain())
@@ -216,7 +214,7 @@ class BackupRepositoryImpl(
 
                     it.asDomain(
                         serviceTypeIdFromLegacy = serviceTypeIdFromLegacy,
-                        iconCollectionIdFromLegacy = iconCollectionIdFromLegacy
+                        iconCollectionIdFromLegacy = iconCollectionIdFromLegacy,
                     )
                 }
 
@@ -237,7 +235,7 @@ class BackupRepositoryImpl(
                 state = RemoteBackupStatusEntity.State.ACTIVE,
                 account = email,
                 schemaVersion = BackupContent.CurrentSchema,
-            )
+            ),
         )
     }
 
@@ -268,14 +266,13 @@ class BackupRepositoryImpl(
                             // No password provided
                             CloudBackupGetResult.Failure(CloudSyncError.DecryptNoPassword)
                         } else {
-
                             try {
                                 CloudBackupGetResult.Success(
                                     decryptBackupContent(
                                         backupContent = backupContent,
                                         password = password,
                                         keyEncoded = remoteBackupKeyPreference.get().keyEncoded,
-                                    )
+                                    ),
                                 )
                             } catch (e: Exception) {
                                 // Handle decrypt error
@@ -308,7 +305,7 @@ class BackupRepositoryImpl(
         keyEncoded: String?,
         saltEncoded: String?,
         firstConnect: Boolean,
-        updatedAt: Long
+        updatedAt: Long,
     ): CloudBackupUpdateResult {
         return withContext(dispatchers.io) {
             try {
@@ -321,7 +318,7 @@ class BackupRepositoryImpl(
 
                 val backupContent = if (firstConnect) {
                     backupContentCreateResult.backupContent.copy(
-                        services = backupContentCreateResult.backupContent.services.map { service -> service.copy(updatedAt = updatedAt) }
+                        services = backupContentCreateResult.backupContent.services.map { service -> service.copy(updatedAt = updatedAt) },
                     )
                 } else {
                     backupContentCreateResult.backupContent
@@ -337,7 +334,7 @@ class BackupRepositoryImpl(
                     remoteBackupStatusPreference.put {
                         it.copy(
                             reference = backupContentCreateResult.backupContent.reference,
-                            lastSyncMillis = backupContent.updatedAt
+                            lastSyncMillis = backupContent.updatedAt,
                         )
                     }
                 } else {
@@ -345,13 +342,15 @@ class BackupRepositoryImpl(
                     remoteBackupKeyPreference.delete()
                 }
 
-                when (val updateResult = googleDrive.updateBackupFile(
-                    serializeBackupContent(
-                        backupContent.copy(
-                            updatedAt = updatedAt
-                        )
+                when (
+                    val updateResult = googleDrive.updateBackupFile(
+                        serializeBackupContent(
+                            backupContent.copy(
+                                updatedAt = updatedAt,
+                            ),
+                        ),
                     )
-                )) {
+                ) {
                     is GoogleDriveResult.Success -> {
                         CloudBackupUpdateResult.Success
                     }
@@ -360,7 +359,6 @@ class BackupRepositoryImpl(
                         CloudBackupUpdateResult.Failure(error = updateResult.error.asDomain())
                     }
                 }
-
             } catch (e: Exception) {
                 e.printStackTrace()
                 CloudBackupUpdateResult.Failure(error = CloudSyncError.EncryptUnknownFailure)
@@ -374,7 +372,7 @@ class BackupRepositoryImpl(
             val result = backupCipher.decrypt(
                 dataEncrypted = DataEncrypted(referenceEncrypted),
                 password = password,
-                keyEncoded = null
+                keyEncoded = null,
             )
             val isCorrect = result.data == BackupContent.Reference
 
@@ -390,7 +388,6 @@ class BackupRepositoryImpl(
             }
 
             return isCorrect
-
         } catch (e: Exception) {
             e.printStackTrace()
             false

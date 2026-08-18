@@ -40,7 +40,8 @@ class StorageModule : KoinModule {
 
             val builder = Room.databaseBuilder(
                 context,
-                AppDatabase::class.java, "database-2fas"
+                AppDatabase::class.java,
+                "database-2fas",
             ).addMigrations(
                 MIGRATION_1_2,
                 MIGRATION_2_3,

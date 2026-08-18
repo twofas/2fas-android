@@ -1,8 +1,8 @@
 package com.twofasapp.data.services
 
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.prefs.model.RecentlyDeleted
 import kotlinx.coroutines.flow.Flow
 

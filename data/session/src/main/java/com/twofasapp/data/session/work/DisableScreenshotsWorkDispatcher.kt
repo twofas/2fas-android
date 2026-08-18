@@ -8,7 +8,7 @@ import com.twofasapp.common.domain.WorkDispatcher
 import java.util.concurrent.TimeUnit
 
 class DisableScreenshotsWorkDispatcher(
-    private val context: Context
+    private val context: Context,
 ) : WorkDispatcher {
 
     fun dispatch() {

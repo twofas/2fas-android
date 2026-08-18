@@ -17,6 +17,7 @@ java {
 dependencies {
     compileOnly("com.android.tools.build:gradle:${libs.versions.agp.get()}")
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin.get()}")
+    implementation("org.jmailen.kotlinter:org.jmailen.kotlinter.gradle.plugin:${libs.versions.ktlint.get()}")
 }
 
 gradlePlugin {
@@ -35,6 +36,11 @@ plugins {
         register("TwoFasAndroidApplicationPlugin") {
             id = "twofas.androidApplication"
             implementationClass = "com.twofasapp.buildlogic.TwoFasAndroidApplicationPlugin"
+        }
+
+        register("TwoFasLintPlugin") {
+            id = "twofas.lint"
+            implementationClass = "com.twofasapp.buildlogic.TwoFasLintPlugin"
         }
     }
 }

@@ -122,7 +122,7 @@ internal class ServicesViewModel(
                                     put(
                                         key = group,
                                         value = filteredServices
-                                            .filter { it.groupId == group.id }
+                                            .filter { it.groupId == group.id },
                                     )
                                 }
                             }
@@ -133,9 +133,9 @@ internal class ServicesViewModel(
                                     add(
                                         ServicesListItem.GroupItem(
                                             group = group.copy(
-                                                isExpanded = if (result.searchQuery.isNotEmpty()) true else group.isExpanded
-                                            )
-                                        )
+                                                isExpanded = if (result.searchQuery.isNotEmpty()) true else group.isExpanded,
+                                            ),
+                                        ),
                                     )
                                 }
 
@@ -145,7 +145,7 @@ internal class ServicesViewModel(
                                     }
                                 }
                             }
-                        }
+                        },
                     )
                 }
             }
@@ -220,7 +220,7 @@ internal class ServicesViewModel(
                 when (index) {
                     0 -> ServicesSort.Alphabetical
                     else -> ServicesSort.Manual
-                }
+                },
             )
         }
     }
@@ -266,9 +266,9 @@ internal class ServicesViewModel(
 
     private fun Service.isMatchingQuery(query: String): Boolean {
         return name.contains(query, true) ||
-                issuer?.contains(query, true) ?: false ||
-                info?.contains(query, true) ?: false ||
-                tags.contains(query.lowercase())
+            issuer?.contains(query, true) ?: false ||
+            info?.contains(query, true) ?: false ||
+            tags.contains(query.lowercase())
     }
 
     fun onDragStart() {
@@ -290,7 +290,7 @@ internal class ServicesViewModel(
             }
 
             servicesRepository.updateServicesOrder(
-                ids = data.filterIsInstance<ServicesListItem.ServiceItem>().map { it.service.id }
+                ids = data.filterIsInstance<ServicesListItem.ServiceItem>().map { it.service.id },
             )
 
             servicesRepository.setTickerEnabled(true)
@@ -309,7 +309,6 @@ internal class ServicesViewModel(
     fun handleIncomingData(incomingData: String?) {
         if (incomingData == null) return
         launchScoped {
-
             if (incomingData.startsWith("content://") && incomingData.endsWith(".2fas")) {
                 // Import backup
                 publishEvent(ServicesUiEvent.OpenImport(incomingData))
@@ -325,8 +324,9 @@ internal class ServicesViewModel(
                     val id = servicesRepository.addService(otpLink)
                     servicesRepository.pushRecentlyAddedService(
                         RecentlyAddedService(
-                            serviceId = id, source = RecentlyAddedService.Source.Manually
-                        )
+                            serviceId = id,
+                            source = RecentlyAddedService.Source.Manually,
+                        ),
                     )
                 }
             }

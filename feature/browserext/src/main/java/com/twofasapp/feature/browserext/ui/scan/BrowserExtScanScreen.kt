@@ -17,10 +17,10 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.common.TwTextButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.InfoDialog
-import com.twofasapp.designsystem.dialog.InputDialog
+import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.dialog.InfoDialog
+import com.twofasapp.core.design.foundation.dialog.InputDialog
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
 import com.twofasapp.locale.TwLocale
@@ -68,16 +68,16 @@ private fun ScreenContent(
 
     Scaffold(
         topBar = {
-            TwTopAppBar(
+            TopAppBar(
                 titleText = strings.scanQr,
                 actions = {
-                    TwTextButton(
+                    TextButton(
                         text = strings.browserPairManuallyCta,
                         onClick = { showManualDialog = true },
                     )
-                }
+                },
             )
-        }
+        },
     ) { padding ->
         Box(
             modifier = Modifier
@@ -121,7 +121,7 @@ private fun ScreenContent(
                 qrScanEnabled = true
             },
             title = strings.commonError,
-            body = strings.browserErrorScanFormatMsg
+            body = strings.browserErrorScanFormatMsg,
         )
     }
 
@@ -132,7 +132,7 @@ private fun ScreenContent(
                 qrScanEnabled = true
             },
             title = strings.commonError,
-            body = strings.browserErrorScanMsg
+            body = strings.browserErrorScanMsg,
         )
     }
 }
@@ -141,6 +141,6 @@ private fun ScreenContent(
 @Composable
 private fun Preview() {
     ScreenContent(
-        uiState = BrowserExtScanUiState()
+        uiState = BrowserExtScanUiState(),
     )
 }

@@ -34,7 +34,7 @@ internal class NotificationsLocalSource(
 
     suspend fun readAllNotifications() {
         notificationsDao.update(
-            *notificationsDao.select().map { it.copy(isRead = true) }.toTypedArray()
+            *notificationsDao.select().map { it.copy(isRead = true) }.toTypedArray(),
         )
     }
 

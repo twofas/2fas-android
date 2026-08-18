@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
-import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -22,7 +22,7 @@ private fun ScreenContent() {
     val context = LocalContext.current
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.aboutLicenses) }
+        topBar = { TopAppBar(titleText = TwLocale.strings.aboutLicenses) },
     ) { padding ->
         AndroidView(factory = {
             WebView(context).apply {
@@ -37,7 +37,7 @@ private fun ScreenContent() {
                     Toast.makeText(
                         context,
                         "There is no WebView installed. Can not display licenses.",
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_LONG,
                     ).show()
                 }
             }

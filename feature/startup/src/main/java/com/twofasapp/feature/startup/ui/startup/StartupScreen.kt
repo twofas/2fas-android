@@ -30,10 +30,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.HorizontalPagerIndicator
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwTextButton
-import com.twofasapp.designsystem.ktx.openSafely
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.feature.startup.R
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
@@ -59,7 +59,7 @@ internal fun StartupScreen(
                 viewModel.finishOnboarding()
                 openBackup()
             }
-        }
+        },
     )
 }
 
@@ -80,15 +80,13 @@ internal fun ScreenContent(
             .statusBarsPadding()
             .navigationBarsPadding(),
     ) {
-
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-
             HorizontalPager(
                 state = pagerState,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             ) { page ->
                 when (page) {
                     0 -> Step(
@@ -121,7 +119,7 @@ internal fun ScreenContent(
                     )
 
                     4 -> Step(
-                        image = painterResource(id = com.twofasapp.designsystem.R.drawable.illustration_2fas_backup),
+                        image = painterResource(id = com.twofasapp.core.design.R.drawable.illustration_2fas_backup),
                         headerText = null,
                         bodyText = TwLocale.strings.startupBackupBody,
                         showBackupSkip = true,
@@ -134,25 +132,25 @@ internal fun ScreenContent(
                 Text(
                     text = TwLocale.strings.startupTermsLabel,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = TwTheme.color.onSurfaceSecondary,
+                    color = MdtTheme.color.onSurfaceSecondary,
                     modifier = Modifier
-                        .clip(TwTheme.shape.roundedDefault)
+                        .clip(MdtTheme.shape.roundedDefault)
                         .clickable { uriHandler.openSafely(TwLocale.links.terms, context) }
-                        .padding(4.dp)
+                        .padding(4.dp),
                 )
             } else {
                 HorizontalPagerIndicator(
                     pagerState = pagerState,
-                    activeColor = TwTheme.color.primary,
-                    inactiveColor = TwTheme.color.divider,
+                    activeColor = MdtTheme.color.primary,
+                    inactiveColor = MdtTheme.color.divider,
                     pageCount = pagerState.pageCount - 1,
-                    pageIndexMapping = { it - 1 }
+                    pageIndexMapping = { it - 1 },
                 )
             }
 
             Spacer(modifier = Modifier.height(36.dp))
 
-            TwButton(
+            Button(
                 text = when (pagerState.currentPage) {
                     1 -> TwLocale.strings.commonNext
                     2 -> TwLocale.strings.commonNext
@@ -168,7 +166,7 @@ internal fun ScreenContent(
                     scope.launch {
                         pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                     }
-                }
+                },
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -188,20 +186,20 @@ private fun Step(
 ) {
     Column(
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // Image
             Image(
                 painter = image,
                 contentDescription = null,
-                modifier = Modifier.height(imageSize)
+                modifier = Modifier.height(imageSize),
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -215,7 +213,7 @@ private fun Step(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     textAlign = TextAlign.Center,
-                    color = TwTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurfacePrimary,
                 )
             }
 
@@ -229,17 +227,17 @@ private fun Step(
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp),
                 textAlign = TextAlign.Center,
-                color = TwTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurfacePrimary,
             )
 
             if (showBackupSkip) {
                 Spacer(modifier = Modifier.height(16.dp))
 
-                TwTextButton(
+                TextButton(
                     text = TwLocale.strings.startupBackupCloseCta,
                     onClick = openHome,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier.padding(horizontal = 16.dp),
                 )
             }
         }

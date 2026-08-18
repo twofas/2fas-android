@@ -13,10 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.common.TwOutlinedButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.button.OutlinedButton
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -35,7 +35,7 @@ internal fun BrowserExtDetailsScreen(
 
     ScreenContent(
         uiState = uiState,
-        onForget = { viewModel.forgetBrowser() }
+        onForget = { viewModel.forgetBrowser() },
     )
 }
 
@@ -48,7 +48,7 @@ private fun ScreenContent(
     var showConfirmDeleteDialog by remember { mutableStateOf(false) }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = strings.browserExtTitle) },
+        topBar = { TopAppBar(titleText = strings.browserExtTitle) },
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
             item {
@@ -66,7 +66,7 @@ private fun ScreenContent(
             }
 
             item {
-                TwOutlinedButton(
+                OutlinedButton(
                     text = strings.browserDetailsForget,
                     onClick = { showConfirmDeleteDialog = true },
                     modifier = Modifier.padding(start = 72.dp, top = 16.dp),
@@ -89,6 +89,6 @@ private fun ScreenContent(
 @Composable
 private fun Preview() {
     ScreenContent(
-        uiState = BrowserExtDetailsUiState(browserName = "Test")
+        uiState = BrowserExtDetailsUiState(browserName = "Test"),
     )
 }

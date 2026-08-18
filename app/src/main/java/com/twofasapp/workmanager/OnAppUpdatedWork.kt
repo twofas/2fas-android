@@ -16,7 +16,7 @@ import timber.log.Timber
 
 class OnAppUpdatedWork(
     context: Context,
-    params: WorkerParameters
+    params: WorkerParameters,
 ) : CoroutineWorker(context, params), KoinComponent {
 
     private val dispatchers: Dispatchers by inject()

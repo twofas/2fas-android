@@ -1,7 +1,7 @@
 package com.twofasapp.feature.home.ui.editservice
 
-import com.twofasapp.data.services.domain.Group
 import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.domain.Group
 
 internal data class EditServiceUiState(
     val service: Service = Service.Empty,

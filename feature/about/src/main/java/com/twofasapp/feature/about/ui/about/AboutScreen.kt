@@ -21,14 +21,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ShareCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.openSafely
-import com.twofasapp.designsystem.settings.SettingsDivider
-import com.twofasapp.designsystem.settings.SettingsHeader
-import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.designsystem.settings.SettingsSwitch
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.settings.SettingsDivider
+import com.twofasapp.core.design.feature.settings.SettingsHeader
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.SettingsSwitch
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
@@ -36,16 +36,15 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun AboutScreen(
     viewModel: AboutViewModel = koinViewModel(),
-    openLicenses: () -> Unit
+    openLicenses: () -> Unit,
 ) {
-
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     ScreenContent(
         uiState = uiState,
         onLicensesClick = openLicenses,
         onReviewClick = { viewModel.reviewDone() },
-        onSendCrashLogsToggle = { viewModel.toggleSendCrashLogs() }
+        onSendCrashLogsToggle = { viewModel.toggleSendCrashLogs() },
     )
 }
 
@@ -61,34 +60,32 @@ private fun ScreenContent(
     val shareText = TwLocale.strings.aboutTellFriendShareText
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.aboutTitle) }
+        topBar = { TopAppBar(titleText = TwLocale.strings.aboutTitle) },
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
-
             LazyColumn(modifier = Modifier.weight(1f)) {
-
                 item { SettingsHeader(title = TwLocale.strings.aboutGeneral) }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutWriteReview, icon = TwIcons.Write, external = true) {
+                    SettingsLink(title = TwLocale.strings.aboutWriteReview, icon = MdtIcons.Write, external = true) {
                         uriHandler.openSafely(TwLocale.links.playStore, activity)
                     }
                 }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutPrivacyPolicy, icon = TwIcons.LockOpen, external = true) {
+                    SettingsLink(title = TwLocale.strings.aboutPrivacyPolicy, icon = MdtIcons.LockOpen, external = true) {
                         uriHandler.openSafely(TwLocale.links.privacyPolicy, activity)
                     }
                 }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutTerms, icon = TwIcons.Terms, external = true) {
+                    SettingsLink(title = TwLocale.strings.aboutTerms, icon = MdtIcons.Terms, external = true) {
                         uriHandler.openSafely(TwLocale.links.terms, activity)
                     }
                 }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutLicenses, icon = TwIcons.Licenses) {
+                    SettingsLink(title = TwLocale.strings.aboutLicenses, icon = MdtIcons.Licenses) {
                         onLicensesClick()
                     }
                 }
@@ -98,7 +95,7 @@ private fun ScreenContent(
                 item { SettingsHeader(title = TwLocale.strings.aboutShare) }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutTellFriend, icon = TwIcons.Share) {
+                    SettingsLink(title = TwLocale.strings.aboutTellFriend, icon = MdtIcons.Share) {
                         ShareCompat.IntentBuilder(activity)
                             .setType("text/plain")
                             .setChooserTitle("Share 2FAS")
@@ -114,8 +111,8 @@ private fun ScreenContent(
                 item {
                     SettingsLink(
                         title = TwLocale.strings.aboutSocialDiscord,
-                        image = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_discord),
-                        external = true
+                        image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_discord),
+                        external = true,
                     ) {
                         uriHandler.openSafely(TwLocale.links.discord, activity)
                     }
@@ -124,8 +121,8 @@ private fun ScreenContent(
                 item {
                     SettingsLink(
                         title = TwLocale.strings.aboutSocialYouTube,
-                        image = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_youtube),
-                        external = true
+                        image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_youtube),
+                        external = true,
                     ) {
                         uriHandler.openSafely(TwLocale.links.youtube, activity)
                     }
@@ -134,8 +131,8 @@ private fun ScreenContent(
                 item {
                     SettingsLink(
                         title = TwLocale.strings.aboutSocialTwitter,
-                        image = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_twitter),
-                        external = true
+                        image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_twitter),
+                        external = true,
                     ) {
                         uriHandler.openSafely(TwLocale.links.twitter, activity)
                     }
@@ -144,8 +141,8 @@ private fun ScreenContent(
                 item {
                     SettingsLink(
                         title = TwLocale.strings.aboutSocialGitHub,
-                        image = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_github),
-                        external = true
+                        image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_github),
+                        external = true,
                     ) {
                         uriHandler.openSafely(TwLocale.links.github, activity)
                     }
@@ -154,8 +151,8 @@ private fun ScreenContent(
                 item {
                     SettingsLink(
                         title = TwLocale.strings.aboutSocialLinkedIn,
-                        image = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_linkedin),
-                        external = true
+                        image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_linkedin),
+                        external = true,
                     ) {
                         uriHandler.openSafely(TwLocale.links.linkedin, activity)
                     }
@@ -164,8 +161,8 @@ private fun ScreenContent(
                 item {
                     SettingsLink(
                         title = TwLocale.strings.aboutSocialReddit,
-                        image = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_reddit),
-                        external = true
+                        image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_reddit),
+                        external = true,
                     ) {
                         uriHandler.openSafely(TwLocale.links.reddit, activity)
                     }
@@ -174,8 +171,8 @@ private fun ScreenContent(
                 item {
                     SettingsLink(
                         title = TwLocale.strings.aboutSocialFacebook,
-                        image = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_facebook),
-                        external = true
+                        image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_facebook),
+                        external = true,
                     ) {
                         uriHandler.openSafely(TwLocale.links.facebook, activity)
                     }
@@ -189,9 +186,9 @@ private fun ScreenContent(
                     SettingsSwitch(
                         title = TwLocale.strings.settingsSendCrashes,
                         subtitle = TwLocale.strings.settingsSendCrashesBody,
-                        icon = TwIcons.Settings,
+                        icon = MdtIcons.Settings,
                         checked = uiState.appSettings.sendCrashLogs,
-                        onCheckedChange = { onSendCrashLogsToggle() }
+                        onCheckedChange = { onSendCrashLogsToggle() },
                     )
                 }
 
@@ -202,18 +199,18 @@ private fun ScreenContent(
                         Modifier
                             .fillMaxWidth()
                             .padding(vertical = 24.dp)
-                            .padding(start = 24.dp, end = 16.dp)
+                            .padding(start = 24.dp, end = 16.dp),
                     ) {
                         Text(
                             text = stringResource(id = R.string.settings__version, uiState.versionName),
-                            color = TwTheme.color.onSurfaceSecondary,
-                            style = TwTheme.typo.body3
+                            color = MdtTheme.color.onSurfaceSecondary,
+                            style = MdtTheme.typo.body3,
                         )
                         Spacer(modifier = Modifier.weight(1f))
                         Image(
-                            painter = painterResource(id = com.twofasapp.designsystem.R.drawable.logo_2fas),
+                            painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_2fas),
                             contentDescription = null,
-                            modifier = Modifier.size(24.dp)
+                            modifier = Modifier.size(24.dp),
                         )
                     }
                 }

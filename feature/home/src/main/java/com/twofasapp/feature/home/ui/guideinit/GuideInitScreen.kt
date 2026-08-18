@@ -27,10 +27,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwDivider
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.assetAsBitmap
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.other.Divider
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.assetAsBitmap
 import com.twofasapp.feature.home.ui.guides.Guide
 import com.twofasapp.feature.home.ui.guides.GuideJson
 import com.twofasapp.feature.home.ui.guides.getGuideJson
@@ -59,7 +59,7 @@ internal fun GuideInitScreen(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.guideTitle.format(guideJson?.serviceName)) }
+        topBar = { TopAppBar(titleText = TwLocale.strings.guideTitle.format(guideJson?.serviceName)) },
     ) { padding ->
 
         guideJson?.let { guideJson ->
@@ -93,15 +93,15 @@ private fun Content(
         Image(
             bitmap = context.assetAsBitmap(guide.iconFile()).asImageBitmap(),
             contentDescription = null,
-            modifier = Modifier.size(60.dp)
+            modifier = Modifier.size(60.dp),
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
             text = guideJson.serviceName,
-            style = TwTheme.typo.h3,
-            color = TwTheme.color.onSurfacePrimary,
+            style = MdtTheme.typo.h3,
+            color = MdtTheme.color.onSurfacePrimary,
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -109,19 +109,19 @@ private fun Content(
         Text(
             text = guideJson.flow.header,
             style = MaterialTheme.typography.bodyLarge,
-            color = TwTheme.color.onSurfacePrimary,
+            color = MdtTheme.color.onSurfacePrimary,
             modifier = Modifier.padding(horizontal = 24.dp),
             textAlign = TextAlign.Center,
         )
 
         Spacer(modifier = Modifier.weight(1f))
 
-        TwDivider(modifier = Modifier.padding(vertical = 16.dp))
+        Divider(modifier = Modifier.padding(vertical = 16.dp))
 
         Text(
             text = guideJson.flow.menu.title,
             style = MaterialTheme.typography.bodyMedium,
-            color = TwTheme.color.onSurfacePrimary.copy(alpha = 0.7f),
+            color = MdtTheme.color.onSurfacePrimary.copy(alpha = 0.7f),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp),
@@ -132,7 +132,7 @@ private fun Content(
             Text(
                 text = menuItem.name,
                 style = MaterialTheme.typography.bodyLarge,
-                color = TwTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurfacePrimary,
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
@@ -142,7 +142,7 @@ private fun Content(
             )
         }
 
-        TwDivider(modifier = Modifier.padding(vertical = 16.dp))
+        Divider(modifier = Modifier.padding(vertical = 16.dp))
         Spacer(modifier = Modifier.height(16.dp))
     }
 }
@@ -153,10 +153,10 @@ private fun Preview() {
     Content(
         modifier = Modifier
             .fillMaxSize()
-            .background(TwTheme.color.background),
+            .background(MdtTheme.color.background),
         guide = Guide.Universal,
         guideJson = PreviewGuide,
-        openGuide = { _, _ -> }
+        openGuide = { _, _ -> },
     )
 }
 
@@ -170,7 +170,7 @@ internal val PreviewGuide: GuideJson = GuideJson(
             items = listOf(
                 GuideJson.Variant(name = "Desktop", steps = emptyList()),
                 GuideJson.Variant(name = "Mobile", steps = emptyList()),
-            )
-        )
-    )
+            ),
+        ),
+    ),
 )

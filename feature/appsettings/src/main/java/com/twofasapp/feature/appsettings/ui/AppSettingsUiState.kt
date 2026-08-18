@@ -4,7 +4,7 @@ import com.twofasapp.data.session.domain.AppSettings
 
 internal data class AppSettingsUiState(
     val appSettings: AppSettings = AppSettings(),
-    val events: List<AppSettingsUiEvent> = emptyList()
+    val events: List<AppSettingsUiEvent> = emptyList(),
 )
 
 internal sealed interface AppSettingsUiEvent {
