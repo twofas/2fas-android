@@ -37,6 +37,7 @@ internal class ServicesViewModel(
 
     private val isInEditMode = MutableStateFlow(false)
     private val searchQuery = MutableStateFlow("")
+    private val searchFocused = MutableStateFlow(false)
 
     init {
         searchFocused(settingsRepository.getAppSettings().autoFocusSearch)
@@ -52,6 +53,8 @@ internal class ServicesViewModel(
                 backupRepository.observeCloudSyncStatus(),
                 searchQuery,
                 sessionRepository.observeShowPassBanner(),
+                sessionRepository.observeAppReviewPrompted(),
+                searchFocused,
             ) { array ->
                 CombinedResult(
                     groups = array[0] as List<Group>,
@@ -63,12 +66,20 @@ internal class ServicesViewModel(
                     cloudSyncStatus = array[6] as CloudSyncStatus,
                     searchQuery = array[7] as String,
                     showPassBanner = array[8] as Boolean,
+                    appReviewPrompted = array[9] as Boolean,
+                    searchFocused = array[10] as Boolean,
                 )
             }.collect { result ->
 
                 val showSyncReminder = result.appSettings.showBackupNotice && result.showBackupReminder && result.backupEnabled.not()
                 val showSyncNoticeBar =
                     result.appSettings.showBackupNotice && showSyncReminder.not() && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
+
+                val showAppReview = result.appReviewPrompted.not() &&
+                    result.searchQuery.isEmpty() &&
+                    result.searchFocused.not() &&
+                    result.isInEditMode.not() &&
+                    result.services.size >= AppReviewItemsThreshold
 
                 val showPassBanner = result.showPassBanner && result.services.isNotEmpty()
 
@@ -87,6 +98,7 @@ internal class ServicesViewModel(
                         groups = result.groups,
                         showSyncNoticeBar = showSyncNoticeBar,
                         showSyncReminder = showSyncReminder,
+                        showAppReview = showAppReview,
                         showPassBanner = showPassBanner,
                         totalGroups = result.groups.size,
                         totalServices = result.services.size,
@@ -101,6 +113,7 @@ internal class ServicesViewModel(
 
                             when {
                                 showSyncReminder -> add(ServicesListItem.SyncReminder)
+                                showAppReview -> add(ServicesListItem.AppReview)
                                 showPassBanner -> add(ServicesListItem.PassBanner)
                             }
 
@@ -215,6 +228,7 @@ internal class ServicesViewModel(
     fun searchFocused(focused: Boolean) {
         if (uiState.value.searchFocused == focused) return
 
+        searchFocused.update { focused }
         uiState.update { it.copy(searchFocused = focused) }
     }
 
@@ -329,5 +343,11 @@ internal class ServicesViewModel(
         val cloudSyncStatus: CloudSyncStatus,
         val searchQuery: String,
         val showPassBanner: Boolean,
+        val appReviewPrompted: Boolean,
+        val searchFocused: Boolean,
     )
+
+    private companion object {
+        const val AppReviewItemsThreshold = 3
+    }
 }

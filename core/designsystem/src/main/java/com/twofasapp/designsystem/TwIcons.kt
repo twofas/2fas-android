@@ -39,6 +39,8 @@ object TwIcons {
     val Eye @Composable get() = painterResource(R.drawable.ic_eye)
     val EyeSlash @Composable get() = painterResource(R.drawable.ic_eye_slash)
     val Favorite @Composable get() = painterResource(R.drawable.ic_favorite)
+    val Star @Composable get() = painterResource(R.drawable.ic_star)
+    val StarShine @Composable get() = painterResource(R.drawable.ic_star_shine)
     val Download @Composable get() = painterResource(R.drawable.ic_download)
     val Info @Composable get() = painterResource(R.drawable.ic_info)
     val Security @Composable get() = painterResource(R.drawable.ic_security)

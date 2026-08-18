@@ -1,5 +1,6 @@
 package com.twofasapp.feature.home.ui.services
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.animateContentSize
@@ -63,12 +64,13 @@ import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
+import com.twofasapp.feature.home.ui.services.component.AppReviewItem
 import com.twofasapp.feature.home.ui.services.component.PassBanner
 import com.twofasapp.feature.home.ui.services.component.ServicesAppBar
 import com.twofasapp.feature.home.ui.services.component.ServicesFab
 import com.twofasapp.feature.home.ui.services.component.ServicesProgress
 import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
-import com.twofasapp.feature.home.ui.services.component.SyncReminder
+import com.twofasapp.feature.home.ui.services.component.SyncReminderItem
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.delay
@@ -84,7 +86,8 @@ import org.koin.androidx.compose.koinViewModel
 internal fun ServicesRoute(
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
-    viewModel: ServicesViewModel = koinViewModel()
+    viewModel: ServicesViewModel = koinViewModel(),
+    appReviewViewModel: AppReviewViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -108,6 +111,8 @@ internal fun ServicesRoute(
         onSearchFocusChange = { viewModel.searchFocused(it) },
         onOpenBackupClick = { listener.openBackup(it) },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
+        onRateAppClick = { appReviewViewModel.rate(it) },
+        onDismissAppReviewClick = { appReviewViewModel.dismiss() },
         onDismissPassBannerClick = { viewModel.dismissPassBanner() },
         onDisablePassBannerClick = { viewModel.disablePassBanner() },
         onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
@@ -137,6 +142,8 @@ private fun ServicesScreen(
     onSearchFocusChange: (Boolean) -> Unit,
     onOpenBackupClick: (Boolean) -> Unit = {},
     onDismissSyncReminderClick: () -> Unit = {},
+    onRateAppClick: (Activity) -> Unit = {},
+    onDismissAppReviewClick: () -> Unit = {},
     onDismissPassBannerClick: () -> Unit = {},
     onDisablePassBannerClick: () -> Unit = {},
     onIncrementHotpCounterClick: (Service) -> Unit = {},
@@ -385,12 +392,20 @@ private fun ServicesScreen(
 
                     ServicesListItem.SyncReminder -> {
                         listItem(item) {
-                            SyncReminder(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 16.dp),
+                            SyncReminderItem(
+                                modifier = Modifier.fillMaxWidth(),
                                 onOpenBackupClick = { onOpenBackupClick(true) },
                                 onDismissClick = onDismissSyncReminderClick,
+                            )
+                        }
+                    }
+
+                    ServicesListItem.AppReview -> {
+                        listItem(item) {
+                            AppReviewItem(
+                                modifier = Modifier.fillMaxWidth(),
+                                onRateClick = { onRateAppClick(activity) },
+                                onDismissClick = onDismissAppReviewClick,
                             )
                         }
                     }

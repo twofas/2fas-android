@@ -28,6 +28,7 @@ dependencies {
     implementation(libs.bundles.viewModel)
     implementation(libs.bundles.accompanist)
     implementation(libs.bundles.commonmark)
+    implementation(libs.bundles.playReview)
     implementation(libs.timber)
     implementation(libs.kotlinSerialization)
     implementation(libs.zxing)

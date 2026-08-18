@@ -19,4 +19,6 @@ interface SessionRepository {
     fun observeShowPassBanner(): Flow<Boolean>
     fun resetPassBannerDismiss()
     fun disablePassBanner()
+    fun observeAppReviewPrompted(): Flow<Boolean>
+    suspend fun markAppReviewPrompted()
 }

@@ -138,6 +138,16 @@ internal class SessionRepositoryImpl(
         local.setPassBannerDismissTimestamp(timeProvider.systemCurrentTime() + Duration.ofDays(365 * 100).toMillis())
     }
 
+    override fun observeAppReviewPrompted(): Flow<Boolean> {
+        return local.observeAppReviewPromptedTimestamp().map { it > 0L }
+    }
+
+    override suspend fun markAppReviewPrompted() {
+        withContext(dispatchers.io) {
+            local.setAppReviewPromptedTimestamp(timeProvider.systemCurrentTime())
+        }
+    }
+
     private fun recalculate(): Boolean {
         Timber.d("TrueTime: sync...")
         return if (TrueTime.isInitialized()) {

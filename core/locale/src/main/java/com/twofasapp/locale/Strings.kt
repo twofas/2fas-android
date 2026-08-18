@@ -214,6 +214,11 @@ class Strings(c: Context) {
     val backupReminderDismiss = c.getString(R.string.backup_notice_later)
     val backupReminderCta = c.getString(R.string.backup_notice_cta)
 
+    val homeAppReviewTitle = c.getString(R.string.home__app_review_title)
+    val homeAppReviewMsg = c.getString(R.string.home__app_review_msg)
+    val homeAppReviewRate = c.getString(R.string.home__app_review_rate)
+    val homeAppReviewDismiss = c.getString(R.string.home__app_review_dismiss)
+
     val disposeBody1 = c.getString(R.string.tokens__do_you_really_want_to_remove_all_devices)
     val disposeBody2 = c.getString(R.string.tokens__caution)
     val disposeBody3 = c.getString(R.string.tokens__you_will_not_be_able_to_sign_in_to_your)
