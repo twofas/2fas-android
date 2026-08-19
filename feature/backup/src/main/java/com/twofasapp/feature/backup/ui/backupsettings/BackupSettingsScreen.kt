@@ -28,7 +28,7 @@ import com.twofasapp.core.design.ktx.currentConnectivityState
 import com.twofasapp.core.design.ktx.strings
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -149,7 +149,7 @@ private fun BackupSettingsScreenContent(
                                 if (uiState.lastSyncMillis == 0L) {
                                     strings.backupSyncStatusWaiting
                                 } else {
-                                    TwLocale.formatDuration(millis = uiState.lastSyncMillis)
+                                    MdtLocale.formatDuration(millis = uiState.lastSyncMillis)
                                 }
                             }
 
@@ -161,7 +161,7 @@ private fun BackupSettingsScreenContent(
                                         if (uiState.lastSyncMillis == 0L) {
                                             strings.backupSyncStatusWaiting
                                         } else {
-                                            TwLocale.formatDuration(millis = uiState.lastSyncMillis)
+                                            MdtLocale.formatDuration(millis = uiState.lastSyncMillis)
                                         }
                                     }
 

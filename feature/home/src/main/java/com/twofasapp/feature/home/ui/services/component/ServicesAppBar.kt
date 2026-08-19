@@ -45,8 +45,8 @@ import com.twofasapp.core.design.foundation.image.Image
 import com.twofasapp.core.design.foundation.menu.DropdownMenu
 import com.twofasapp.core.design.foundation.menu.DropdownMenuItem
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
-import com.twofasapp.locale.TwLocale
 
 @Composable
 internal fun ServicesAppBar(
@@ -167,7 +167,7 @@ private fun SearchBar(
                 .focusRequester(focusRequester),
             placeholder = {
                 Text(
-                    text = TwLocale.strings.commonSearch,
+                    text = MdtLocale.strings.commonSearch,
                     style = MdtTheme.typo.regular.base.copy(fontSize = 18.sp),
                 )
             },
@@ -221,7 +221,7 @@ private fun SearchBar(
                 anchor = { IconButton(icon = MdtIcons.More, onClick = { showDropdown = true }) },
             ) {
                 DropdownMenuItem(
-                    text = TwLocale.strings.servicesManageList,
+                    text = MdtLocale.strings.servicesManageList,
                     icon = MdtIcons.Edit,
                     onClick = {
                         onToggleEditMode()

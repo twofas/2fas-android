@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.checked.Switch
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun SettingsSwitch(
@@ -53,7 +53,7 @@ fun SettingsSwitch(
 @Composable
 private fun Preview() {
     SettingsSwitch(
-        title = TwLocale.strings.placeholder,
+        title = MdtLocale.strings.placeholder,
         checked = false,
         icon = MdtIcons.Placeholder,
     )

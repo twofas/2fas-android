@@ -26,7 +26,7 @@ import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.TextButton
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun AppReviewItem(
@@ -64,7 +64,7 @@ internal fun AppReviewItem(
 
             Column {
                 Text(
-                    text = TwLocale.strings.homeAppReviewTitle,
+                    text = MdtLocale.strings.homeAppReviewTitle,
                     style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
                     color = MdtTheme.color.onSurface,
                 )
@@ -72,7 +72,7 @@ internal fun AppReviewItem(
                 Spacer(Modifier.height(6.dp))
 
                 Text(
-                    text = TwLocale.strings.homeAppReviewMsg,
+                    text = MdtLocale.strings.homeAppReviewMsg,
                     style = MdtTheme.typo.regular.sm,
                     color = MdtTheme.color.onSurfaceVariant,
                 )
@@ -87,12 +87,12 @@ internal fun AppReviewItem(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             TextButton(
-                text = TwLocale.strings.homeAppReviewDismiss,
+                text = MdtLocale.strings.homeAppReviewDismiss,
                 onClick = onDismissClick,
             )
 
             Button(
-                text = TwLocale.strings.homeAppReviewRate,
+                text = MdtLocale.strings.homeAppReviewRate,
                 height = 36.dp,
                 leadingIcon = MdtIcons.Star,
                 onClick = onRateClick,

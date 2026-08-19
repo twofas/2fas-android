@@ -27,7 +27,7 @@ import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.toastShort
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.image
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -38,7 +38,7 @@ internal fun ExternalImportResultScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
 
     LaunchedEffect(uiState.finishSuccess) {
         if (uiState.finishSuccess) {
@@ -60,7 +60,7 @@ private fun ScreenContent(
     onImport: () -> Unit = {},
     onTryAgain: () -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
 
     Scaffold(
         topBar = { TopAppBar(strings.externalImportResultTitle) },
@@ -108,7 +108,7 @@ private fun Result(
     onImport: () -> Unit,
     onTryAgain: () -> Unit,
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
 
     val title = when (importType) {
         ImportType.GoogleAuthenticator -> strings.externalImportResultGoogleAuthenticatorTitle

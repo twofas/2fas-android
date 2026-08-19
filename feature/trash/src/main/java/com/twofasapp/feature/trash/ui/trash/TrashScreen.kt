@@ -27,7 +27,7 @@ import com.twofasapp.core.design.foundation.menu.DropdownMenuItem
 import com.twofasapp.core.design.foundation.screen.EmptyScreen
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.trash.R
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -50,13 +50,13 @@ private fun ScreenContent(
     onRestoreClick: (Long) -> Unit,
     onDisposeClick: (Long) -> Unit,
 ) {
-    Scaffold(topBar = { TopAppBar(TwLocale.strings.trashTitle) }) { padding ->
+    Scaffold(topBar = { TopAppBar(MdtLocale.strings.trashTitle) }) { padding ->
 
         LazyColumn(Modifier.padding(padding)) {
             if (services.isEmpty()) {
                 item {
                     EmptyScreen(
-                        body = TwLocale.strings.trashEmpty,
+                        body = MdtLocale.strings.trashEmpty,
                         image = painterResource(id = R.drawable.img_trash),
                         modifier = Modifier.fillParentMaxSize(),
                     )
@@ -92,7 +92,7 @@ private fun ScreenContent(
                         anchor = { IconButton(icon = MdtIcons.More, onClick = { dropdownVisible = true }) },
                     ) {
                         DropdownMenuItem(
-                            text = TwLocale.strings.trashRestoreCta,
+                            text = MdtLocale.strings.trashRestoreCta,
                             icon = MdtIcons.Refresh,
                             onClick = {
                                 dropdownVisible = false
@@ -100,7 +100,7 @@ private fun ScreenContent(
                             },
                         )
                         DropdownMenuItem(
-                            text = TwLocale.strings.trashDisposeCta,
+                            text = MdtLocale.strings.trashDisposeCta,
                             icon = MdtIcons.Delete,
                             contentColor = MdtTheme.color.accentRed,
                             onClick = {

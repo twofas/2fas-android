@@ -66,8 +66,8 @@ import com.twofasapp.core.design.ktx.copyToClipboard
 import com.twofasapp.core.design.ktx.dpToSp
 import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.feature.home.ui.editservice.badge.ColorBadgeDialog
+import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
-import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
 
 @Composable
@@ -280,7 +280,7 @@ internal fun EditServiceScreen(
 
                         ) {
                             OutlinedTextField(
-                                value = uiState.groups.firstOrNull { it.id == service.groupId }?.name ?: TwLocale.strings.servicesMyTokens,
+                                value = uiState.groups.firstOrNull { it.id == service.groupId }?.name ?: MdtLocale.strings.servicesMyTokens,
                                 onValueChange = { },
                                 label = { Text(stringResource(id = R.string.tokens__group)) },
                                 readOnly = true,
@@ -298,7 +298,7 @@ internal fun EditServiceScreen(
                             ) {
                                 DropdownMenuItem(
                                     text = {
-                                        Text(text = TwLocale.strings.servicesMyTokens, color = MdtTheme.color.onSurface)
+                                        Text(text = MdtLocale.strings.servicesMyTokens, color = MdtTheme.color.onSurface)
                                     },
                                     onClick = {
                                         viewModel.updateGroup(null)

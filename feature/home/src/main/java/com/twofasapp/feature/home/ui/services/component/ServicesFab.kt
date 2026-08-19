@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -28,7 +28,7 @@ internal fun ServicesFab(
             ExtendedFloatingActionButton(
                 onClick = onClick,
                 icon = { Icon(MdtIcons.Add, null) },
-                text = { Text(text = TwLocale.strings.servicesEmptyPairServiceCta) },
+                text = { Text(text = MdtLocale.strings.servicesEmptyPairServiceCta) },
                 containerColor = MdtTheme.color.primary,
                 contentColor = Color.White,
             )

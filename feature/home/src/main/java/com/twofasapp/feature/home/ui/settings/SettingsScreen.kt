@@ -31,16 +31,18 @@ import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun SettingsRoute(
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
+    showBottomBar: Boolean = true,
 ) {
     SettingsScreen(
         listener = listener,
         bottomBarListener = bottomBarListener,
+        showBottomBar = showBottomBar,
     )
 }
 
@@ -48,13 +50,14 @@ internal fun SettingsRoute(
 private fun SettingsScreen(
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
+    showBottomBar: Boolean = true,
 ) {
     val activity = LocalContext.current as Activity
     val uriHandler = LocalUriHandler.current
 
     Scaffold(
-        bottomBar = { BottomBar(1, bottomBarListener) },
-        topBar = { TopAppBar(title = TwLocale.strings.settingsSettings, showBackButton = false) },
+        bottomBar = { if (showBottomBar) BottomBar(1, bottomBarListener) },
+        topBar = { TopAppBar(title = MdtLocale.strings.settingsSettings, showBackButton = false) },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
@@ -63,31 +66,31 @@ private fun SettingsScreen(
                 .padding(padding),
         ) {
             item {
-                SettingsLink(title = TwLocale.strings.settingsBackup, icon = MdtIcons.CloudUpload) {
+                SettingsLink(title = MdtLocale.strings.settingsBackup, icon = MdtIcons.CloudUpload) {
                     listener.openBackup(false)
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsSecurity, icon = MdtIcons.Security) {
+                SettingsLink(title = MdtLocale.strings.settingsSecurity, icon = MdtIcons.Security) {
                     listener.openSecurity(activity)
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsAppearance, icon = MdtIcons.Eye) {
+                SettingsLink(title = MdtLocale.strings.settingsAppearance, icon = MdtIcons.Eye) {
                     listener.openAppSettings()
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsExternalImport, icon = MdtIcons.Download) {
+                SettingsLink(title = MdtLocale.strings.settingsExternalImport, icon = MdtIcons.Download) {
                     listener.openExternalImport()
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsBrowserExt, icon = MdtIcons.Extension) {
+                SettingsLink(title = MdtLocale.strings.settingsBrowserExt, icon = MdtIcons.Extension) {
                     listener.openBrowserExt()
                 }
             }
@@ -95,19 +98,19 @@ private fun SettingsScreen(
             item { SettingsDivider() }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsTrash, icon = MdtIcons.Delete) {
+                SettingsLink(title = MdtLocale.strings.settingsTrash, icon = MdtIcons.Delete) {
                     listener.openTrash()
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsSupport, icon = MdtIcons.Support, external = true) {
-                    uriHandler.openSafely(TwLocale.links.support, activity)
+                SettingsLink(title = MdtLocale.strings.settingsSupport, icon = MdtIcons.Support, external = true) {
+                    uriHandler.openSafely(MdtLocale.links.support, activity)
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsAbout, icon = MdtIcons.Info) {
+                SettingsLink(title = MdtLocale.strings.settingsAbout, icon = MdtIcons.Info) {
                     listener.openAbout()
                 }
             }
@@ -115,8 +118,8 @@ private fun SettingsScreen(
             item { SettingsDivider() }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsDonate, icon = MdtIcons.Favorite, external = true) {
-                    uriHandler.openSafely(TwLocale.links.donate, activity)
+                SettingsLink(title = MdtLocale.strings.settingsDonate, icon = MdtIcons.Favorite, external = true) {
+                    uriHandler.openSafely(MdtLocale.links.donate, activity)
                 }
             }
 
@@ -133,7 +136,7 @@ private fun SettingsScreen(
                         modifier = Modifier
                             .size(52.dp)
                             .clip(CircleShape)
-                            .clickable { uriHandler.openSafely(TwLocale.links.discord, activity) }
+                            .clickable { uriHandler.openSafely(MdtLocale.links.discord, activity) }
                             .padding(14.dp),
                     )
                     Image(
@@ -142,7 +145,7 @@ private fun SettingsScreen(
                         modifier = Modifier
                             .size(52.dp)
                             .clip(CircleShape)
-                            .clickable { uriHandler.openSafely(TwLocale.links.youtube, activity) }
+                            .clickable { uriHandler.openSafely(MdtLocale.links.youtube, activity) }
                             .padding(14.dp),
                     )
                     Image(
@@ -151,7 +154,7 @@ private fun SettingsScreen(
                         modifier = Modifier
                             .size(52.dp)
                             .clip(CircleShape)
-                            .clickable { uriHandler.openSafely(TwLocale.links.twitter, activity) }
+                            .clickable { uriHandler.openSafely(MdtLocale.links.twitter, activity) }
                             .padding(14.dp),
                     )
                     Icon(
@@ -161,7 +164,7 @@ private fun SettingsScreen(
                         modifier = Modifier
                             .size(52.dp)
                             .clip(CircleShape)
-                            .clickable { uriHandler.openSafely(TwLocale.links.github, activity) }
+                            .clickable { uriHandler.openSafely(MdtLocale.links.github, activity) }
                             .padding(14.dp),
                     )
                 }

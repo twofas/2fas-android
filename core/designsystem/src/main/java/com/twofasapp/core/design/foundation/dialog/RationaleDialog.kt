@@ -3,7 +3,7 @@ package com.twofasapp.core.design.foundation.dialog
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import com.twofasapp.core.design.ktx.settingsIntent
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun RationaleDialog(
@@ -21,8 +21,8 @@ fun RationaleDialog(
         onDismissRequest = onDismissRequest,
         title = title,
         body = text,
-        positive = positiveText ?: TwLocale.strings.settingsSettings,
-        negative = negativeText ?: TwLocale.strings.commonCancel,
+        positive = positiveText ?: MdtLocale.strings.settingsSettings,
+        negative = negativeText ?: MdtLocale.strings.commonCancel,
         onPositiveClick = {
             if (onPositive != null) {
                 onPositive.invoke()

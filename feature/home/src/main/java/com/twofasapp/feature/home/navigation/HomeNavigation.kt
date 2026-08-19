@@ -4,8 +4,8 @@ import android.app.Activity
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.twofasapp.android.navigation.LegacyScreen
 import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.Screen
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.feature.home.ui.editservice.EditServiceScreenRoute
 import com.twofasapp.feature.home.ui.notifications.NotificationsScreen
@@ -20,36 +20,36 @@ fun NavGraphBuilder.homeNavigation(
     val bottomBarListener = object : BottomBarListener {
         override fun openHome() {
             navController.popBackStack(
-                route = Screen.Services.route,
+                route = LegacyScreen.Services.route,
                 inclusive = false,
                 saveState = true,
             )
         }
 
         override fun openSettings() {
-            navController.navigate(Screen.Settings.route) {
-                popUpTo(Screen.Services.route) { inclusive = false }
+            navController.navigate(LegacyScreen.Settings.route) {
+                popUpTo(LegacyScreen.Services.route) { inclusive = false }
             }
         }
     }
 
-    composable(Screen.Services.route) {
+    composable(LegacyScreen.Services.route) {
         ServicesRoute(
             listener = listener,
             bottomBarListener = bottomBarListener,
         )
     }
 
-    composable(Screen.Settings.route) {
+    composable(LegacyScreen.Settings.route) {
         SettingsRoute(listener, bottomBarListener)
     }
 
-    composable(Screen.Notifications.route) {
+    composable(LegacyScreen.Notifications.route) {
         NotificationsScreen(
             openInternalRoute = { route ->
                 when (route) {
-                    Screen.Backup.route -> {
-                        navController.navigate(Screen.Backup.routeWithArgs(NavArg.TurnOnBackup to true))
+                    LegacyScreen.Backup.route -> {
+                        navController.navigate(LegacyScreen.Backup.routeWithArgs(NavArg.TurnOnBackup to true))
                     }
 
                     else -> {
@@ -60,10 +60,10 @@ fun NavGraphBuilder.homeNavigation(
         )
     }
 
-    composable(Screen.EditService.route, listOf(NavArg.ServiceId)) {
+    composable(LegacyScreen.EditService.route, listOf(NavArg.ServiceId)) {
         EditServiceScreenRoute(
             navController = navController,
-            openSecurity = { navController.navigate(Screen.Security.route) },
+            openSecurity = { navController.navigate(LegacyScreen.Security.route) },
             openAuth = openEditServiceAuth,
         )
     }

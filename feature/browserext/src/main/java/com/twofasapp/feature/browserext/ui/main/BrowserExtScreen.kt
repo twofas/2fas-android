@@ -56,7 +56,7 @@ import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.data.browserext.domain.PairedBrowser
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 import java.time.Instant
@@ -88,7 +88,7 @@ private fun ScreenContent(
     onEventConsumed: (BrowserExtUiEvent) -> Unit = {},
 ) {
     val activity = LocalContext.currentActivity
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     var askForCameraPermission by remember { mutableStateOf(false) }
@@ -137,7 +137,7 @@ private fun ScreenContent(
                     SettingsLink(
                         title = it.name,
                         showEmptySpaceWhenNoIcon = true,
-                        subtitle = TwLocale.formatDate(it.pairedAt),
+                        subtitle = MdtLocale.formatDate(it.pairedAt),
                         onClick = { openDetails(it.id) },
                     )
                 }
@@ -154,7 +154,7 @@ private fun ScreenContent(
                 item {
                     SettingsLink(
                         title = uiState.mobileDevice.name.orEmpty(),
-                        subtitle = TwLocale.strings.browserExtDeviceNameSubtitle,
+                        subtitle = MdtLocale.strings.browserExtDeviceNameSubtitle,
                         endContent = {
                             Icon(
                                 painter = MdtIcons.Edit,
@@ -233,16 +233,16 @@ private fun Empty(
 
     CommonContent(
         image = painterResource(id = R.drawable.illustration_2fas_be),
-        titleText = TwLocale.strings.browserExtHeader,
-        descriptionText = "${TwLocale.strings.browserExtBody1}\n${TwLocale.strings.browserExtBody2}",
-        ctaPrimaryText = TwLocale.strings.browserExtCta,
+        titleText = MdtLocale.strings.browserExtHeader,
+        descriptionText = "${MdtLocale.strings.browserExtBody1}\n${MdtLocale.strings.browserExtBody2}",
+        ctaPrimaryText = MdtLocale.strings.browserExtCta,
         ctaPrimaryClick = onPairBrowserClick,
         description = {
             Text(
                 text = buildAnnotatedString {
-                    append("${TwLocale.strings.browserExtMore1} ")
+                    append("${MdtLocale.strings.browserExtMore1} ")
                     withStyle(style = SpanStyle(MdtTheme.color.primary)) {
-                        append(TwLocale.strings.browserExtMore2)
+                        append(MdtLocale.strings.browserExtMore2)
                     }
                 },
                 style = MdtTheme.typo.medium.sm,
@@ -250,7 +250,7 @@ private fun Empty(
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
                     .padding(top = 16.dp)
-                    .clickable { uriHandler.openSafely(TwLocale.links.browserExt, context) },
+                    .clickable { uriHandler.openSafely(MdtLocale.links.browserExt, context) },
             )
         },
         modifier = modifier,

@@ -18,7 +18,7 @@ import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -45,7 +45,7 @@ private fun ScreenContent(
     uiState: BrowserExtDetailsUiState,
     onForget: () -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
     var showConfirmDeleteDialog by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -62,7 +62,7 @@ private fun ScreenContent(
             item {
                 SettingsLink(
                     title = strings.browserDetailsDate,
-                    subtitle = TwLocale.formatDate(uiState.browserPairedAt),
+                    subtitle = MdtLocale.formatDate(uiState.browserPairedAt),
                 )
             }
 

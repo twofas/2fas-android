@@ -40,7 +40,7 @@ import com.twofasapp.core.design.foundation.textfield.SecretField
 import com.twofasapp.core.design.foundation.textfield.SecretFieldTrailingIcon
 import com.twofasapp.core.design.foundation.textfield.TextField
 import com.twofasapp.core.design.theme.DialogPadding
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.android.awaitFrame
 
 sealed interface InputValidation {
@@ -58,8 +58,8 @@ fun InputDialog(
     label: String? = null,
     prefill: String? = null,
     validate: (String) -> InputValidation = { InputValidation.Valid },
-    positive: String = TwLocale.strings.commonSave,
-    negative: String? = TwLocale.strings.commonCancel,
+    positive: String = MdtLocale.strings.commonSave,
+    negative: String? = MdtLocale.strings.commonCancel,
     neutral: String? = null,
     icon: Painter? = null,
     iconColor: Color = Color.Unspecified,

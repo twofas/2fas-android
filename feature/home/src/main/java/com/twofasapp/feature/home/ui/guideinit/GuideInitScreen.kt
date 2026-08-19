@@ -36,7 +36,7 @@ import com.twofasapp.feature.home.ui.guides.GuideJson
 import com.twofasapp.feature.home.ui.guides.getGuideJson
 import com.twofasapp.feature.home.ui.guides.iconFile
 import com.twofasapp.feature.home.ui.guides.json
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -59,7 +59,7 @@ internal fun GuideInitScreen(
     }
 
     Scaffold(
-        topBar = { TopAppBar(title = TwLocale.strings.guideTitle.format(guideJson?.serviceName)) },
+        topBar = { TopAppBar(title = MdtLocale.strings.guideTitle.format(guideJson?.serviceName)) },
     ) { padding ->
 
         guideJson?.let { guideJson ->

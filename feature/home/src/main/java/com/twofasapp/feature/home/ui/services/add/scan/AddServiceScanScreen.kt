@@ -44,7 +44,7 @@ import com.twofasapp.core.design.foundation.permission.RequestPermission
 import com.twofasapp.core.design.ktx.settingsIntent
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.feature.qrscan.QrScan
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalPermissionsApi::class)
@@ -85,7 +85,7 @@ internal fun AddServiceScanScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = TwLocale.strings.addTitle,
+                text = MdtLocale.strings.addTitle,
                 style = MdtTheme.typo.regular.xl,
                 color = MdtTheme.color.onSurface,
                 modifier = Modifier
@@ -96,7 +96,7 @@ internal fun AddServiceScanScreen(
         }
 
         Text(
-            text = TwLocale.strings.addDescription,
+            text = MdtLocale.strings.addDescription,
             color = MdtTheme.color.onSurface,
             style = MdtTheme.typo.regular.base,
             textAlign = TextAlign.Center,
@@ -128,7 +128,7 @@ internal fun AddServiceScanScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Text(
-                        text = TwLocale.strings.permissionCameraBody,
+                        text = MdtLocale.strings.permissionCameraBody,
                         color = Color.White.copy(alpha = 0.4f),
                         style = MdtTheme.typo.regular.sm,
                         modifier = Modifier.fillMaxWidth(),
@@ -138,7 +138,7 @@ internal fun AddServiceScanScreen(
                     Spacer(modifier = Modifier.height(8.dp))
 
                     TextButton(
-                        text = TwLocale.strings.settingsSettings,
+                        text = MdtLocale.strings.settingsSettings,
                         onClick = { context.startActivity(context.settingsIntent) },
                     )
                 }
@@ -146,18 +146,18 @@ internal fun AddServiceScanScreen(
         }
 
         Text(
-            text = TwLocale.strings.addOtherMethods,
+            text = MdtLocale.strings.addOtherMethods,
             color = MdtTheme.color.onSurfaceTertiary,
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
         )
 
         SettingsLink(
-            title = TwLocale.strings.addEnterManual,
+            title = MdtLocale.strings.addEnterManual,
             icon = MdtIcons.Keyboard,
         ) { openManual() }
 
         SettingsLink(
-            title = TwLocale.strings.addFromGallery,
+            title = MdtLocale.strings.addFromGallery,
             icon = MdtIcons.Panorama,
         ) {
             singlePhotoPickerLauncher.launch(
@@ -166,7 +166,7 @@ internal fun AddServiceScanScreen(
         }
 
         SettingsLink(
-            title = TwLocale.strings.addWithGuide,
+            title = MdtLocale.strings.addWithGuide,
             icon = MdtIcons.Guide,
         ) { openGuides() }
 
@@ -176,9 +176,9 @@ internal fun AddServiceScanScreen(
     if (uiState.showInvalidQrDialog) {
         ConfirmDialog(
             onDismissRequest = { viewModel.resetScanner() },
-            title = TwLocale.strings.addScanInvalidQrTitle,
-            body = TwLocale.strings.addScanInvalidQrBody,
-            positive = TwLocale.strings.addScanInvalidQrCta,
+            title = MdtLocale.strings.addScanInvalidQrTitle,
+            body = MdtLocale.strings.addScanInvalidQrBody,
+            positive = MdtLocale.strings.addScanInvalidQrCta,
             negative = null,
         )
     }
@@ -186,10 +186,10 @@ internal fun AddServiceScanScreen(
     if (uiState.showServiceExistsDialog) {
         ConfirmDialog(
             onDismissRequest = { viewModel.resetScanner() },
-            title = TwLocale.strings.addScanServiceExistsTitle,
-            body = TwLocale.strings.addScanServiceExistsBody,
-            positive = TwLocale.strings.addScanServiceExistsPositiveCta,
-            negative = TwLocale.strings.addScanServiceExistsNegativeCta,
+            title = MdtLocale.strings.addScanServiceExistsTitle,
+            body = MdtLocale.strings.addScanServiceExistsBody,
+            positive = MdtLocale.strings.addScanServiceExistsPositiveCta,
+            negative = MdtLocale.strings.addScanServiceExistsNegativeCta,
             onPositive = { viewModel.saveService(uiState.scanned, uiState.source) },
             onNegative = { viewModel.resetScanner() },
         )
@@ -198,18 +198,18 @@ internal fun AddServiceScanScreen(
     if (uiState.showErrorDialog) {
         InfoDialog(
             onDismissRequest = { viewModel.resetScanner() },
-            title = TwLocale.strings.addScanErrorTitle,
-            body = TwLocale.strings.addScanErrorBody,
-            positive = TwLocale.strings.addScanErrorPositiveCta,
+            title = MdtLocale.strings.addScanErrorTitle,
+            body = MdtLocale.strings.addScanErrorBody,
+            positive = MdtLocale.strings.addScanErrorPositiveCta,
         )
     }
 
     if (uiState.showGalleryErrorDialog) {
         InfoDialog(
             onDismissRequest = { viewModel.resetScanner() },
-            title = TwLocale.strings.addGalleryErrorTitle,
-            body = TwLocale.strings.addGalleryErrorBody,
-            positive = TwLocale.strings.addGalleryErrorPositiveCta,
+            title = MdtLocale.strings.addGalleryErrorTitle,
+            body = MdtLocale.strings.addGalleryErrorBody,
+            positive = MdtLocale.strings.addGalleryErrorPositiveCta,
             onPositive = {
                 singlePhotoPickerLauncher.launch(
                     PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly),

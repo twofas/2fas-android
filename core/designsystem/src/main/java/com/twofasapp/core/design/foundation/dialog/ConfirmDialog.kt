@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.window.DialogProperties
 import com.twofasapp.core.design.foundation.preview.PreviewTextLong
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun ConfirmDialog(
@@ -24,10 +24,10 @@ fun ConfirmDialog(
     title: String? = null,
     body: String? = null,
     bodyAnnotated: AnnotatedString? = null,
-    positive: String = TwLocale.strings.commonYes,
+    positive: String = MdtLocale.strings.commonYes,
     // Relaxed to nullable vs the reference: some call sites pass negative = null to render a
     // single-button confirm (BaseDialog only shows the button when non-null).
-    negative: String? = TwLocale.strings.commonNo,
+    negative: String? = MdtLocale.strings.commonNo,
     icon: Painter? = null,
     iconColor: Color = Color.Unspecified,
     onPositive: () -> Unit = {},

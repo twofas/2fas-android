@@ -19,10 +19,10 @@ import androidx.navigation.compose.composable
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.navigation.material.bottomSheet
+import com.twofasapp.android.navigation.LegacyScreen
 import com.twofasapp.android.navigation.Modal
 import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.Screen
 import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.common.ktx.encodeBase64ToString
 import com.twofasapp.core.design.foundation.modal.ModalBottomSheet
@@ -99,14 +99,14 @@ internal fun MainNavHost(
             enterTransition = NavAnimation.Enter,
             exitTransition = NavAnimation.Exit,
         ) {
-            composable(Screen.Startup.route) {
+            composable(LegacyScreen.Startup.route) {
                 StartupRoute(
                     openHome = {
-                        navController.navigate(Screen.Services.route) { popUpTo(0) }
+                        navController.navigate(LegacyScreen.Services.route) { popUpTo(0) }
                     },
                     openBackup = {
-                        navController.navigate(Screen.Services.route) { popUpTo(0) }
-                        navController.navigate(Screen.Backup.routeWithArgs(NavArg.TurnOnBackup to true)) { popUpTo(Screen.Services.route) }
+                        navController.navigate(LegacyScreen.Services.route) { popUpTo(0) }
+                        navController.navigate(LegacyScreen.Backup.routeWithArgs(NavArg.TurnOnBackup to true)) { popUpTo(LegacyScreen.Services.route) }
                     },
                 )
             }
@@ -115,39 +115,39 @@ internal fun MainNavHost(
                 navController = navController,
                 listener = object : HomeNavigationListener {
                     override fun openService(activity: Activity, serviceId: Long) {
-                        navController.navigate(Screen.EditService.routeWithArgs(NavArg.ServiceId to serviceId))
+                        navController.navigate(LegacyScreen.EditService.routeWithArgs(NavArg.ServiceId to serviceId))
                     }
 
                     override fun openExternalImport() {
-                        navController.navigate(Screen.ExternalImportSelector.route)
+                        navController.navigate(LegacyScreen.ExternalImportSelector.route)
                     }
 
                     override fun openBrowserExt() {
-                        navController.navigate(Screen.BrowserExt.route)
+                        navController.navigate(LegacyScreen.BrowserExt.route)
                     }
 
                     override fun openSecurity(activity: Activity) {
-                        navController.navigate(Screen.Security.route)
+                        navController.navigate(LegacyScreen.Security.route)
                     }
 
                     override fun openBackup(turnOnBackup: Boolean) {
-                        navController.navigate(Screen.Backup.routeWithArgs(NavArg.TurnOnBackup to turnOnBackup))
+                        navController.navigate(LegacyScreen.Backup.routeWithArgs(NavArg.TurnOnBackup to turnOnBackup))
                     }
 
                     override fun openAppSettings() {
-                        navController.navigate(Screen.AppSettings.route)
+                        navController.navigate(LegacyScreen.AppSettings.route)
                     }
 
                     override fun openTrash() {
-                        navController.navigate(Screen.Trash.route)
+                        navController.navigate(LegacyScreen.Trash.route)
                     }
 
                     override fun openNotifications() {
-                        navController.navigate(Screen.Notifications.route)
+                        navController.navigate(LegacyScreen.Notifications.route)
                     }
 
                     override fun openAbout() {
-                        navController.navigate(Screen.About.route)
+                        navController.navigate(LegacyScreen.About.route)
                     }
 
                     override fun openAddServiceModal() {
@@ -160,7 +160,7 @@ internal fun MainNavHost(
                     }
 
                     override fun openBackupImport(filePath: String?) {
-                        navController.navigate(Screen.BackupImport.routeWithArgs(NavArg.ImportFileUri to filePath?.encodeBase64ToString()))
+                        navController.navigate(LegacyScreen.BackupImport.routeWithArgs(NavArg.ImportFileUri to filePath?.encodeBase64ToString()))
                     }
                 },
                 openEditServiceAuth = { onSuccess ->
@@ -177,127 +177,127 @@ internal fun MainNavHost(
                 AddServiceModal(
                     initRoute = it.arguments?.getString(NavArg.AddServiceInitRoute.name),
                     onAddedSuccessfully = { recentlyAddedService = it },
-                    openGuides = { navController.navigate(Screen.Guides.route) },
+                    openGuides = { navController.navigate(LegacyScreen.Guides.route) },
                 )
             }
 
             bottomSheet(Modal.FocusService.route, listOf(FocusServiceModalNavArg.ServiceId)) {
                 FocusServiceModal(
                     openService = {
-                        navController.navigate(Screen.EditService.routeWithArgs(NavArg.ServiceId to it))
+                        navController.navigate(LegacyScreen.EditService.routeWithArgs(NavArg.ServiceId to it))
                         scope.launch { bottomSheetState.hide() }
                     },
                 )
             }
 
-            composable(Screen.AppSettings.route) {
+            composable(LegacyScreen.AppSettings.route) {
                 AppSettingsRoute()
             }
 
-            composable(Screen.About.route) {
-                AboutRoute(openLicenses = { navController.navigate(Screen.AboutLicenses.route) })
+            composable(LegacyScreen.About.route) {
+                AboutRoute(openLicenses = { navController.navigate(LegacyScreen.AboutLicenses.route) })
             }
 
-            composable(Screen.AboutLicenses.route) {
+            composable(LegacyScreen.AboutLicenses.route) {
                 AboutLicensesRoute()
             }
 
-            composable(Screen.Trash.route) {
+            composable(LegacyScreen.Trash.route) {
                 TrashRoute(
-                    openDispose = { navController.navigate(Screen.Dispose.routeWithArgs(NavArg.ServiceId to it)) },
+                    openDispose = { navController.navigate(LegacyScreen.Dispose.routeWithArgs(NavArg.ServiceId to it)) },
                 )
             }
 
-            composable(Screen.Dispose.route, listOf(NavArg.ServiceId)) {
+            composable(LegacyScreen.Dispose.route, listOf(NavArg.ServiceId)) {
                 DisposeRoute(
                     navigateBack = { navController.popBackStack() },
                 )
             }
 
-            composable(Screen.Backup.route, listOf(NavArg.TurnOnBackup)) {
+            composable(LegacyScreen.Backup.route, listOf(NavArg.TurnOnBackup)) {
                 BackupRoute(
-                    openSettings = { navController.navigate(Screen.BackupSettings.route) },
-                    openExport = { navController.navigate(Screen.BackupExport.route) },
-                    openImport = { navController.navigate(Screen.BackupImport.routeWithArgs()) },
+                    openSettings = { navController.navigate(LegacyScreen.BackupSettings.route) },
+                    openExport = { navController.navigate(LegacyScreen.BackupExport.route) },
+                    openImport = { navController.navigate(LegacyScreen.BackupImport.routeWithArgs()) },
                     goBack = { navController.popBackStack() },
                 )
             }
 
-            composable(Screen.BackupSettings.route) {
+            composable(LegacyScreen.BackupSettings.route) {
                 BackupSettingsRoute(
                     goBack = { navController.popBackStack() },
                 )
             }
 
-            composable(Screen.BackupExport.route) {
+            composable(LegacyScreen.BackupExport.route) {
                 BackupExportRoute(
                     goBack = { navController.popBackStack() },
                 )
             }
 
-            composable(Screen.BackupImport.route, listOf(NavArg.ImportFileUri)) {
+            composable(LegacyScreen.BackupImport.route, listOf(NavArg.ImportFileUri)) {
                 BackupImportRoute(
                     goBack = { navController.popBackStack() },
                 )
             }
 
-            composable(Screen.BrowserExt.route) {
+            composable(LegacyScreen.BrowserExt.route) {
                 BrowserExtRoute(
-                    openScan = { navController.navigate(Screen.BrowserExtScan.route) },
+                    openScan = { navController.navigate(LegacyScreen.BrowserExtScan.route) },
                     openDetails = { extensionId ->
-                        navController.navigate(Screen.BrowserExtDetails.routeWithArgs(NavArg.ExtensionId to extensionId))
+                        navController.navigate(LegacyScreen.BrowserExtDetails.routeWithArgs(NavArg.ExtensionId to extensionId))
                     },
                 )
             }
 
-            composable(Screen.BrowserExtPermission.route) {
+            composable(LegacyScreen.BrowserExtPermission.route) {
                 BrowserExtPermissionRoute(
-                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
+                    openMain = { navController.popBackStack(LegacyScreen.BrowserExt.route, false) },
                 )
             }
 
-            composable(Screen.BrowserExtScan.route) {
+            composable(LegacyScreen.BrowserExtScan.route) {
                 BrowserExtScanRoute(
                     openProgress = { extensionId ->
-                        navController.navigate(Screen.BrowserExtPairing.routeWithArgs(NavArg.ExtensionId to extensionId)) {
-                            popUpTo(Screen.BrowserExt.route)
+                        navController.navigate(LegacyScreen.BrowserExtPairing.routeWithArgs(NavArg.ExtensionId to extensionId)) {
+                            popUpTo(LegacyScreen.BrowserExt.route)
                         }
                     },
                 )
             }
 
-            composable(Screen.BrowserExtPairing.route, listOf(NavArg.ExtensionId)) {
+            composable(LegacyScreen.BrowserExtPairing.route, listOf(NavArg.ExtensionId)) {
                 BrowserExtPairingRoute(
-                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
-                    openPermission = { navController.navigate(Screen.BrowserExtPermission.route) { popUpTo(Screen.BrowserExt.route) } },
-                    openScan = { navController.navigate(Screen.BrowserExtScan.route) { popUpTo(Screen.BrowserExt.route) } },
+                    openMain = { navController.popBackStack(LegacyScreen.BrowserExt.route, false) },
+                    openPermission = { navController.navigate(LegacyScreen.BrowserExtPermission.route) { popUpTo(LegacyScreen.BrowserExt.route) } },
+                    openScan = { navController.navigate(LegacyScreen.BrowserExtScan.route) { popUpTo(LegacyScreen.BrowserExt.route) } },
                 )
             }
 
-            composable(Screen.BrowserExtDetails.route, listOf(NavArg.ExtensionId)) {
+            composable(LegacyScreen.BrowserExtDetails.route, listOf(NavArg.ExtensionId)) {
                 BrowserExtDetailsRoute(
-                    openMain = { navController.popBackStack(Screen.BrowserExt.route, false) },
+                    openMain = { navController.popBackStack(LegacyScreen.BrowserExt.route, false) },
                 )
             }
 
-            composable(Screen.ExternalImportSelector.route) {
+            composable(LegacyScreen.ExternalImportSelector.route) {
                 ExternalImportSelectorRoute(
                     openImport = { importType ->
-                        navController.navigate(Screen.ExternalImport.routeWithArgs(NavArg.ImportType to importType.name))
+                        navController.navigate(LegacyScreen.ExternalImport.routeWithArgs(NavArg.ImportType to importType.name))
                     },
                 )
             }
 
-            composable(Screen.ExternalImport.route, listOf(NavArg.ImportType)) {
+            composable(LegacyScreen.ExternalImport.route, listOf(NavArg.ImportType)) {
                 val importType = enumValueOf<ImportType>(it.arguments!!.getString(NavArg.ImportType.name)!!)
 
                 ExternalImportRoute(
                     openScanner = {
-                        navController.navigate(Screen.ExternalImportScan.routeWithArgs(NavArg.ImportType to importType.name))
+                        navController.navigate(LegacyScreen.ExternalImportScan.routeWithArgs(NavArg.ImportType to importType.name))
                     },
                     openResult = { encodedFileUri ->
                         navController.navigate(
-                            Screen.ExternalImportResult.routeWithArgs(
+                            LegacyScreen.ExternalImportResult.routeWithArgs(
                                 NavArg.ImportType to importType.name,
                                 NavArg.ImportFileUri to encodedFileUri,
                             ),
@@ -306,13 +306,13 @@ internal fun MainNavHost(
                 )
             }
 
-            composable(Screen.ExternalImportScan.route, listOf(NavArg.ImportType)) {
+            composable(LegacyScreen.ExternalImportScan.route, listOf(NavArg.ImportType)) {
                 val importType = enumValueOf<ImportType>(it.arguments!!.getString(NavArg.ImportType.name)!!)
 
                 ExternalImportScanRoute(
                     openResult = { encodedFileContent ->
                         navController.navigate(
-                            Screen.ExternalImportResult.routeWithArgs(
+                            LegacyScreen.ExternalImportResult.routeWithArgs(
                                 NavArg.ImportType to importType.name,
                                 NavArg.ImportFileContent to encodedFileContent,
                             ),
@@ -321,10 +321,10 @@ internal fun MainNavHost(
                 )
             }
 
-            composable(Screen.ExternalImportResult.route, listOf(NavArg.ImportType, NavArg.ImportFileUri)) {
+            composable(LegacyScreen.ExternalImportResult.route, listOf(NavArg.ImportType, NavArg.ImportFileUri)) {
                 ExternalImportResultRoute(
-                    openSettings = { navController.popBackStack(Screen.ExternalImportSelector.route, true) },
-                    openImport = { navController.popBackStack(Screen.ExternalImport.route, false) },
+                    openSettings = { navController.popBackStack(LegacyScreen.ExternalImportSelector.route, true) },
+                    openImport = { navController.popBackStack(LegacyScreen.ExternalImport.route, false) },
                 )
             }
         }

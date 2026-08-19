@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter
 import kotlin.math.abs
 import kotlin.math.sign
 
-object TwLocale {
+object MdtLocale {
     private val timeUnits = TimeUnit.entries.reversed()
 
     val strings: Strings

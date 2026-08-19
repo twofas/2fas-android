@@ -11,29 +11,79 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
+import com.twofasapp.android.navigation.LegacyScreen
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
-@OptIn(ExperimentalMaterialNavigationApi::class, ExperimentalMaterialApi::class)
 @Composable
 internal fun MainScreen(
     viewModel: MainViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
+    uiState.events.firstOrNull()?.let {
+        viewModel.consumeEvent(it)
+    }
+
+    if (uiState.startDestination != null && uiState.selectedTheme != null) {
+        val useNavigation3 = true
+
+        Surface(
+            color = MdtTheme.color.background,
+        ) {
+            if (useNavigation3) {
+                val startDestination = when (uiState.startDestination!!) {
+                    MainUiState.StartDestination.Onboarding -> Screen.Startup
+                    MainUiState.StartDestination.Home -> Screen.Services
+                }
+
+                MainNavDisplay(
+                    startDestination = startDestination,
+                    onServiceAddedSuccessfully = { viewModel.serviceAdded(it) },
+                )
+            } else {
+                LegacyMainNavHost(
+                    uiState = uiState,
+                    onToggleAdvanceExpanded = { viewModel.toggleAdvanceExpanded() },
+                    onServiceAddedSuccessfully = { viewModel.serviceAdded(it) },
+                )
+            }
+        }
+
+        if (uiState.browserExtRequests.isNotEmpty()) {
+            val browserExtRequest = uiState.browserExtRequests.first()
+            BrowserExtRequestDialog(
+                browserExtRequest = browserExtRequest,
+                onRequestHandled = {
+                    viewModel.browserExtRequestHandled(browserExtRequest)
+                    NotificationManagerCompat.from(context).cancel(null, browserExtRequest.request.requestId.hashCode())
+                },
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterialNavigationApi::class, ExperimentalMaterialApi::class)
+@Composable
+private fun LegacyMainNavHost(
+    uiState: MainUiState,
+    onToggleAdvanceExpanded: () -> Unit,
+    onServiceAddedSuccessfully: (RecentlyAddedService) -> Unit,
+) {
     val sheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
         confirmValueChange = {
             when (it) {
                 ModalBottomSheetValue.Hidden -> {
                     if (uiState.addServiceAdvancedExpanded) {
-                        viewModel.toggleAdvanceExpanded()
+                        onToggleAdvanceExpanded()
                         false
                     } else {
                         true
@@ -47,8 +97,7 @@ internal fun MainScreen(
         skipHalfExpanded = true,
     )
     val bottomSheetNavigator = remember { BottomSheetNavigator(sheetState) }
-    val navController: NavHostController = rememberNavController(bottomSheetNavigator)
-    val context = LocalContext.current
+    val navController = rememberNavController(bottomSheetNavigator)
 
     LaunchedEffect(Unit) {
         navController.addOnDestinationChangedListener { _, destination, arguments ->
@@ -65,40 +114,16 @@ internal fun MainScreen(
         }
     }
 
-    uiState.events.firstOrNull()?.let {
-        LaunchedEffect(Unit) {
-        }
-
-        viewModel.consumeEvent(it)
+    val startDestination = when (uiState.startDestination!!) {
+        MainUiState.StartDestination.Onboarding -> LegacyScreen.Startup.route
+        MainUiState.StartDestination.Home -> LegacyScreen.Services.route
     }
 
-    if (uiState.startDestination != null && uiState.selectedTheme != null) {
-        val startDestination = when (uiState.startDestination!!) {
-            MainUiState.StartDestination.Onboarding -> Screen.Startup.route
-            MainUiState.StartDestination.Home -> Screen.Services.route
-        }
-
-        Surface(
-            color = MdtTheme.color.background,
-        ) {
-            MainNavHost(
-                navController = navController,
-                bottomSheetNavigator = bottomSheetNavigator,
-                bottomSheetState = sheetState,
-                startDestination = startDestination,
-                onServiceAddedSuccessfully = { viewModel.serviceAdded(it) },
-            )
-        }
-
-        if (uiState.browserExtRequests.isNotEmpty()) {
-            val browserExtRequest = uiState.browserExtRequests.first()
-            BrowserExtRequestDialog(
-                browserExtRequest = browserExtRequest,
-                onRequestHandled = {
-                    viewModel.browserExtRequestHandled(browserExtRequest)
-                    NotificationManagerCompat.from(context).cancel(null, browserExtRequest.request.requestId.hashCode())
-                },
-            )
-        }
-    }
+    MainNavHost(
+        navController = navController,
+        bottomSheetNavigator = bottomSheetNavigator,
+        bottomSheetState = sheetState,
+        startDestination = startDestination,
+        onServiceAddedSuccessfully = onServiceAddedSuccessfully,
+    )
 }

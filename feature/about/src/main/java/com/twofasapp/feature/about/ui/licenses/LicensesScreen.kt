@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun AboutLicensesScreen() {
@@ -22,7 +22,7 @@ private fun ScreenContent() {
     val context = LocalContext.current
 
     Scaffold(
-        topBar = { TopAppBar(title = TwLocale.strings.aboutLicenses) },
+        topBar = { TopAppBar(title = MdtLocale.strings.aboutLicenses) },
     ) { padding ->
         AndroidView(factory = {
             WebView(context).apply {

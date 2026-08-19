@@ -24,7 +24,7 @@ import com.twofasapp.core.design.foundation.dialog.InputValidation
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -49,7 +49,7 @@ private fun ScreenContent(
     onEventConsumed: (BrowserExtScanUiEvent) -> Unit = {},
     onSuccess: (String) -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
     var showManualDialog by remember { mutableStateOf(false) }
     var showUnsupportedFormatError by remember { mutableStateOf(false) }
     var showUnknownError by remember { mutableStateOf(false) }

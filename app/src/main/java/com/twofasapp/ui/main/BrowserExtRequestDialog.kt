@@ -11,7 +11,7 @@ import com.twofasapp.data.browserext.domain.TokenRequest
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
 import com.twofasapp.feature.browserext.ui.request.BrowserExtRequestActivity
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun BrowserExtRequestDialog(
@@ -22,10 +22,10 @@ internal fun BrowserExtRequestDialog(
 
     ConfirmDialog(
         onDismissRequest = {},
-        title = TwLocale.strings.tokenRequestTitle,
-        body = TwLocale.strings.tokenRequestBody.plus("${browserExtRequest.domain}?"),
-        positive = TwLocale.strings.commonApprove,
-        negative = TwLocale.strings.commonDeny,
+        title = MdtLocale.strings.tokenRequestTitle,
+        body = MdtLocale.strings.tokenRequestBody.plus("${browserExtRequest.domain}?"),
+        positive = MdtLocale.strings.commonApprove,
+        negative = MdtLocale.strings.commonDeny,
         onPositive = {
             val isOneDomainMatched =
                 browserExtRequest.matchedServices.size == 1

@@ -40,8 +40,8 @@ import com.twofasapp.core.design.ktx.LocalBackDispatcher
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
+import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
-import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -91,7 +91,7 @@ private fun ScreenContent(
     onServiceClick: (Service) -> Unit = {},
     onSearchChanged: (String) -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
     val backDispatcher = LocalBackDispatcher
 
     Scaffold(

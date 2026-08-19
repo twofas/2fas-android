@@ -31,7 +31,7 @@ import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.feature.widget.GlanceWidget
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -75,10 +75,10 @@ private fun ScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = TwLocale.strings.widgetSettingsTitle,
+                title = MdtLocale.strings.widgetSettingsTitle,
                 actions = {
                     TextButton(
-                        text = TwLocale.strings.commonSave,
+                        text = MdtLocale.strings.commonSave,
                         onClick = onSave,
                         enabled = uiState.loading.not() && uiState.services.isNotEmpty(),
                     )
@@ -112,7 +112,7 @@ private fun ScreenContent(
                         contentAlignment = Alignment.Center,
                     ) {
                         Text(
-                            text = TwLocale.strings.widgetSettingsEmpty,
+                            text = MdtLocale.strings.widgetSettingsEmpty,
                             style = MdtTheme.typo.regular.base,
                             textAlign = TextAlign.Center,
                         )
@@ -124,7 +124,7 @@ private fun ScreenContent(
 
             item("Info", "Info") {
                 Text(
-                    text = TwLocale.strings.widgetSelectMsg,
+                    text = MdtLocale.strings.widgetSelectMsg,
                     style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
                     modifier = Modifier.padding(16.dp),
                 )

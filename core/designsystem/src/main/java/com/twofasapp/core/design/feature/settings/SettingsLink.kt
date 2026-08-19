@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.icon.Icon
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 enum class SubtitleGravity { Bottom, End }
 
@@ -178,7 +178,7 @@ private fun Subtitle(
 private fun Preview() {
     Column {
         SettingsLink(
-            title = TwLocale.strings.placeholder,
+            title = MdtLocale.strings.placeholder,
             icon = MdtIcons.Placeholder,
             endContent = {
                 Text(text = "Test")
@@ -186,7 +186,7 @@ private fun Preview() {
         )
 
         SettingsLink(
-            title = TwLocale.strings.placeholder,
+            title = MdtLocale.strings.placeholder,
             icon = MdtIcons.Placeholder,
             external = true,
         )
@@ -197,8 +197,8 @@ private fun Preview() {
 @Composable
 private fun PreviewWithSubtitle() {
     SettingsLink(
-        title = TwLocale.strings.placeholder,
-        subtitle = TwLocale.strings.placeholderMedium,
+        title = MdtLocale.strings.placeholder,
+        subtitle = MdtLocale.strings.placeholderMedium,
         icon = MdtIcons.Placeholder,
     )
 }
@@ -207,8 +207,8 @@ private fun PreviewWithSubtitle() {
 @Composable
 private fun PreviewWithSubtitleEnd() {
     SettingsLink(
-        title = TwLocale.strings.placeholder,
-        subtitle = TwLocale.strings.placeholder,
+        title = MdtLocale.strings.placeholder,
+        subtitle = MdtLocale.strings.placeholder,
         icon = MdtIcons.Placeholder,
         subtitleGravity = SubtitleGravity.End,
     )
@@ -218,8 +218,8 @@ private fun PreviewWithSubtitleEnd() {
 @Composable
 private fun PreviewWithSubtitleIconNotAligned() {
     SettingsLink(
-        title = TwLocale.strings.placeholder,
-        subtitle = TwLocale.strings.placeholderMedium,
+        title = MdtLocale.strings.placeholder,
+        subtitle = MdtLocale.strings.placeholderMedium,
         icon = MdtIcons.Placeholder,
         alignCenterIcon = false,
     )

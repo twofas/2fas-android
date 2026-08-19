@@ -57,7 +57,7 @@ import com.twofasapp.core.design.foundation.topbar.BackButton
 import com.twofasapp.core.design.ktx.assetAsBitmap
 import com.twofasapp.core.design.ktx.keyboardAsState
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.android.awaitFrame
 import org.koin.androidx.compose.koinViewModel
 
@@ -110,7 +110,7 @@ internal fun AddServiceManualScreen(
             BackButton()
 
             Text(
-                text = TwLocale.strings.addTitle,
+                text = MdtLocale.strings.addTitle,
                 style = MdtTheme.typo.regular.xl,
                 color = MdtTheme.color.onSurface,
                 maxLines = 1,
@@ -123,7 +123,7 @@ internal fun AddServiceManualScreen(
         TextField(
             value = uiState.serviceName.orEmpty(),
             onValueChange = { if (it.length <= 30) viewModel.updateName(it) },
-            labelText = TwLocale.strings.addManualServiceName,
+            labelText = MdtLocale.strings.addManualServiceName,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp, vertical = 4.dp)
@@ -170,7 +170,7 @@ internal fun AddServiceManualScreen(
         TextField(
             value = uiState.serviceSecret.orEmpty(),
             onValueChange = { viewModel.updateSecret(it) },
-            labelText = TwLocale.strings.addManualServiceKey,
+            labelText = MdtLocale.strings.addManualServiceKey,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp, vertical = 4.dp),
@@ -200,13 +200,13 @@ internal fun AddServiceManualScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = TwLocale.strings.addManualOther,
+                text = MdtLocale.strings.addManualOther,
                 color = MdtTheme.color.onSurface,
                 style = MdtTheme.typo.regular.base,
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = TwLocale.strings.addManualOtherOptional,
+                text = MdtLocale.strings.addManualOtherOptional,
                 color = MdtTheme.color.onSurfaceVariant,
                 style = MdtTheme.typo.regular.base,
             )
@@ -225,7 +225,7 @@ internal fun AddServiceManualScreen(
             TextField(
                 value = uiState.additionalInfo,
                 onValueChange = { if (it.length <= 50) viewModel.updateInfo(it) },
-                labelText = TwLocale.strings.addManualAdditionalInfo,
+                labelText = MdtLocale.strings.addManualAdditionalInfo,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     capitalization = KeyboardCapitalization.Sentences,
                     imeAction = ImeAction.Done,
@@ -240,7 +240,7 @@ internal fun AddServiceManualScreen(
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(
-                text = TwLocale.strings.addManualAdvanced,
+                text = MdtLocale.strings.addManualAdvanced,
                 color = MdtTheme.color.onSurface,
                 style = MdtTheme.typo.regular.base,
                 modifier = Modifier.padding(horizontal = 24.dp),
@@ -249,7 +249,7 @@ internal fun AddServiceManualScreen(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = TwLocale.strings.addManualAdvancedDescription,
+                text = MdtLocale.strings.addManualAdvancedDescription,
                 color = MdtTheme.color.onSurfaceVariant,
                 style = MdtTheme.typo.regular.sm,
                 modifier = Modifier.padding(horizontal = 24.dp),
@@ -291,7 +291,7 @@ internal fun AddServiceManualScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
-                    text = TwLocale.strings.addManualAlgorithm,
+                    text = MdtLocale.strings.addManualAlgorithm,
                     color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant,
                     style = MdtTheme.typo.regular.base,
                 )
@@ -320,7 +320,7 @@ internal fun AddServiceManualScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
                         Text(
-                            text = TwLocale.strings.addManualRefreshTime,
+                            text = MdtLocale.strings.addManualRefreshTime,
                             color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant,
                             style = MdtTheme.typo.regular.base,
                         )
@@ -343,7 +343,7 @@ internal fun AddServiceManualScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
                         Text(
-                            text = TwLocale.strings.addManualInitialCounter,
+                            text = MdtLocale.strings.addManualInitialCounter,
                             color = MdtTheme.color.onSurface,
                             style = MdtTheme.typo.regular.base,
                         )
@@ -368,7 +368,7 @@ internal fun AddServiceManualScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
-                    text = TwLocale.strings.addManualDigits,
+                    text = MdtLocale.strings.addManualDigits,
                     color = if (uiState.authType != Service.AuthType.STEAM) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant,
                     style = MdtTheme.typo.regular.base,
                 )
@@ -387,7 +387,7 @@ internal fun AddServiceManualScreen(
         }
 
         Button(
-            text = TwLocale.strings.addManualDoneCta,
+            text = MdtLocale.strings.addManualDoneCta,
             onClick = {
                 if (uiState.isFormValid) {
                     viewModel.tryInsertService()
@@ -444,10 +444,10 @@ internal fun AddServiceManualScreen(
         if (showHotpDialog) {
             InputDialog(
                 onDismissRequest = { showHotpDialog = false },
-                label = TwLocale.strings.addManualInitialCounter,
+                label = MdtLocale.strings.addManualInitialCounter,
                 prefill = uiState.hotpCounter.toString(),
-                positive = TwLocale.strings.commonSave,
-                negative = TwLocale.strings.commonCancel,
+                positive = MdtLocale.strings.commonSave,
+                negative = MdtLocale.strings.commonCancel,
                 validate = { if (it.trim().toIntOrNull() != null) InputValidation.Valid else InputValidation.Invalid(null) },
                 keyboardOptions = KeyboardOptions(
                     capitalization = KeyboardCapitalization.None,
@@ -460,10 +460,10 @@ internal fun AddServiceManualScreen(
         if (uiState.showServiceExistsDialog) {
             ConfirmDialog(
                 onDismissRequest = { viewModel.dismissServiceExistsDialog() },
-                title = TwLocale.strings.addScanServiceExistsTitle,
-                body = TwLocale.strings.addScanServiceExistsBody,
-                positive = TwLocale.strings.addScanServiceExistsPositiveCta,
-                negative = TwLocale.strings.addScanServiceExistsNegativeCta,
+                title = MdtLocale.strings.addScanServiceExistsTitle,
+                body = MdtLocale.strings.addScanServiceExistsBody,
+                positive = MdtLocale.strings.addScanServiceExistsPositiveCta,
+                negative = MdtLocale.strings.addScanServiceExistsNegativeCta,
                 onPositive = {
                     viewModel.dismissServiceExistsDialog()
                     viewModel.addService()

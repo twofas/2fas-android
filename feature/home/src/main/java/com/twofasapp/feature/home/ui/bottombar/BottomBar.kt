@@ -1,26 +1,26 @@
 package com.twofasapp.feature.home.ui.bottombar
 
 import androidx.compose.runtime.Composable
-import com.twofasapp.android.navigation.Screen
+import com.twofasapp.android.navigation.LegacyScreen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.foundation.navigationbar.NavigationBar
 import com.twofasapp.core.design.foundation.navigationbar.NavigationBarItem
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 private val bottomNavItems
     @Composable
     get() = listOf(
         BottomNavItem(
-            title = TwLocale.strings.bottomBarTokens,
+            title = MdtLocale.strings.bottomBarTokens,
             icon = MdtIcons.Home,
             iconSelected = MdtIcons.HomeFilled,
-            route = Screen.Services.route,
+            route = LegacyScreen.Services.route,
         ),
         BottomNavItem(
-            title = TwLocale.strings.bottomBarSettings,
+            title = MdtLocale.strings.bottomBarSettings,
             icon = MdtIcons.Settings,
             iconSelected = MdtIcons.SettingsFilled,
-            route = Screen.Settings.route,
+            route = LegacyScreen.Settings.route,
         ),
     )
 

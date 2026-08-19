@@ -24,7 +24,7 @@ import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.notificationManager
 import com.twofasapp.feature.browserext.R
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -51,7 +51,7 @@ private fun ScreenContent(
     onContinueAskForPermission: () -> Unit = {},
     onScanAgain: () -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
 
     Scaffold(
         topBar = { TopAppBar(if (uiState.pairing) strings.browserPairingTitle else strings.browserPairingResultTitle) },
@@ -123,21 +123,21 @@ private fun Result(
     }
 
     val title = when (pairingResult) {
-        PairingResult.Success -> TwLocale.strings.browserPairingSuccessTitle
-        PairingResult.Failure -> TwLocale.strings.browserPairingFailureTitle
-        PairingResult.AlreadyPaired -> TwLocale.strings.browserPairingAlreadyPairedTitle
+        PairingResult.Success -> MdtLocale.strings.browserPairingSuccessTitle
+        PairingResult.Failure -> MdtLocale.strings.browserPairingFailureTitle
+        PairingResult.AlreadyPaired -> MdtLocale.strings.browserPairingAlreadyPairedTitle
     }
 
     val description = when (pairingResult) {
-        PairingResult.Success -> TwLocale.strings.browserPairingSuccessMsg
-        PairingResult.Failure -> TwLocale.strings.browserPairingFailureMsg
-        PairingResult.AlreadyPaired -> TwLocale.strings.browserPairingAlreadyPairedMsg
+        PairingResult.Success -> MdtLocale.strings.browserPairingSuccessMsg
+        PairingResult.Failure -> MdtLocale.strings.browserPairingFailureMsg
+        PairingResult.AlreadyPaired -> MdtLocale.strings.browserPairingAlreadyPairedMsg
     }
 
     val cta = when (pairingResult) {
-        PairingResult.Success -> TwLocale.strings.browserPairingSuccessCta
-        PairingResult.Failure -> TwLocale.strings.browserPairingFailureCta
-        PairingResult.AlreadyPaired -> TwLocale.strings.browserPairingSuccessCta
+        PairingResult.Success -> MdtLocale.strings.browserPairingSuccessCta
+        PairingResult.Failure -> MdtLocale.strings.browserPairingFailureCta
+        PairingResult.AlreadyPaired -> MdtLocale.strings.browserPairingSuccessCta
     }
 
     val ctaAction = when (pairingResult) {

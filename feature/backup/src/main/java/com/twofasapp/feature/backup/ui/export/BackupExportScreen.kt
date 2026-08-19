@@ -40,7 +40,7 @@ import com.twofasapp.core.design.foundation.dialog.PasswordDialog
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.strings
 import com.twofasapp.core.design.ktx.toastShort
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 import java.io.File
 import java.io.FileOutputStream
@@ -105,7 +105,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TopAppBar(title = TwLocale.strings.backupExportFile) },
+        topBar = { TopAppBar(title = MdtLocale.strings.backupExportFile) },
     ) { padding ->
         Column(
             modifier = Modifier
@@ -127,14 +127,14 @@ private fun ScreenContent(
                 )
 
                 Text(
-                    text = TwLocale.strings.backupExportHeader,
+                    text = MdtLocale.strings.backupExportHeader,
                     textAlign = TextAlign.Center,
                     color = MdtTheme.color.onSurface,
                     style = MdtTheme.typo.regular.xl,
                 )
 
                 Text(
-                    text = TwLocale.strings.backupExportMsg,
+                    text = MdtLocale.strings.backupExportMsg,
                     textAlign = TextAlign.Center,
                     color = MdtTheme.color.onSurface,
                     style = MdtTheme.typo.regular.sm,
@@ -151,7 +151,7 @@ private fun ScreenContent(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = TwLocale.strings.backupExportPassMsg,
+                        text = MdtLocale.strings.backupExportPassMsg,
                         color = MdtTheme.color.onSurface,
                         style = MdtTheme.typo.regular.sm,
                     )
@@ -165,7 +165,7 @@ private fun ScreenContent(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Button(
-                    text = TwLocale.strings.backupExportShareCta,
+                    text = MdtLocale.strings.backupExportShareCta,
                     leadingIcon = MdtIcons.Share,
                     modifier = Modifier.weight(1f),
                     onClick = {
@@ -179,7 +179,7 @@ private fun ScreenContent(
                     },
                 )
                 Button(
-                    text = TwLocale.strings.backupExportCta,
+                    text = MdtLocale.strings.backupExportCta,
                     leadingIcon = MdtIcons.Download,
                     modifier = Modifier.weight(1f),
                     onClick = {
@@ -197,8 +197,8 @@ private fun ScreenContent(
             if (showPasswordDialog) {
                 PasswordDialog(
                     onDismissRequest = { showPasswordDialog = false },
-                    title = TwLocale.strings.backupSetPassword,
-                    body = TwLocale.strings.backupSetPasswordDescription,
+                    title = MdtLocale.strings.backupSetPassword,
+                    body = MdtLocale.strings.backupSetPasswordDescription,
                     validation = { text -> ExportPasswordRegex.matches(text) },
                     onPositive = {
                         onPasswordConfirm(it)

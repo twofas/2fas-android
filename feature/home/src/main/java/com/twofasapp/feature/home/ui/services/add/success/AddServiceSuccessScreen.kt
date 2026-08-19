@@ -29,7 +29,7 @@ import com.twofasapp.core.design.feature.items.asState
 import com.twofasapp.core.design.feature.settings.SettingsLink
 import com.twofasapp.core.design.foundation.modal.ModalList
 import com.twofasapp.core.design.ktx.currentActivity
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -52,7 +52,7 @@ internal fun AddServiceSuccessScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = TwLocale.strings.addSuccessTitle,
+                text = MdtLocale.strings.addSuccessTitle,
                 style = MdtTheme.typo.regular.xl,
                 color = MdtTheme.color.onSurface,
                 modifier = Modifier
@@ -63,7 +63,7 @@ internal fun AddServiceSuccessScreen(
         }
 
         Text(
-            text = TwLocale.strings.addSuccessDescription,
+            text = MdtLocale.strings.addSuccessDescription,
             color = MdtTheme.color.onSurface,
             style = MdtTheme.typo.regular.base,
             textAlign = TextAlign.Center,
@@ -91,7 +91,7 @@ internal fun AddServiceSuccessScreen(
             }
 
             ModalList {
-                SettingsLink(title = TwLocale.strings.copyToken, icon = MdtIcons.Copy) {
+                SettingsLink(title = MdtLocale.strings.copyToken, icon = MdtIcons.Copy) {
                     serviceState.copyToClipboard(activity, uiState.showNextCode)
                 }
             }

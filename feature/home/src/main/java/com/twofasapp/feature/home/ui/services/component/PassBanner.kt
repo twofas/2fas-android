@@ -31,7 +31,7 @@ import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.text.richText
 import com.twofasapp.feature.home.R
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun PassBanner(
@@ -64,7 +64,7 @@ internal fun PassBanner(
             Spacer(Modifier.height(12.dp))
 
             Text(
-                text = TwLocale.strings.passBannerTitle,
+                text = MdtLocale.strings.passBannerTitle,
                 color = MdtTheme.color.onSurface,
                 style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
                 textAlign = TextAlign.Center,
@@ -74,7 +74,7 @@ internal fun PassBanner(
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text = richText(TwLocale.strings.passBannerMsg),
+                text = richText(MdtLocale.strings.passBannerMsg),
                 color = MdtTheme.color.onSurface,
                 style = MdtTheme.typo.regular.sm,
                 textAlign = TextAlign.Center,
@@ -88,7 +88,7 @@ internal fun PassBanner(
                 horizontalArrangement = Arrangement.Center,
             ) {
                 Button(
-                    text = TwLocale.strings.passBannerNegativeCta,
+                    text = MdtLocale.strings.passBannerNegativeCta,
                     style = ButtonStyle.Outlined,
                     height = 36.dp,
                     onClick = onDismissClick,

@@ -32,7 +32,7 @@ import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.IconButton
 import com.twofasapp.core.design.foundation.menu.DropdownMenu
 import com.twofasapp.core.design.foundation.menu.DropdownMenuItem
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun ServicesGroup(
@@ -107,7 +107,7 @@ fun ServicesGroup(
                         },
                     ) {
                         DropdownMenuItem(
-                            text = TwLocale.strings.commonEdit,
+                            text = MdtLocale.strings.commonEdit,
                             icon = MdtIcons.Edit,
                             onClick = {
                                 dropdownVisible = false
@@ -115,7 +115,7 @@ fun ServicesGroup(
                             },
                         )
                         DropdownMenuItem(
-                            text = TwLocale.strings.commonDelete,
+                            text = MdtLocale.strings.commonDelete,
                             icon = MdtIcons.Delete,
                             contentColor = MdtTheme.color.accentRed,
                             onClick = {

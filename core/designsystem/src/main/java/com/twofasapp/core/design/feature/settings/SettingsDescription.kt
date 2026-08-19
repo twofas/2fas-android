@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun SettingsDescription(text: String) {
@@ -30,5 +30,5 @@ fun SettingsDescription(text: String) {
 @Preview
 @Composable
 private fun Preview() {
-    SettingsDescription(text = TwLocale.strings.placeholderLong)
+    SettingsDescription(text = MdtLocale.strings.placeholderLong)
 }

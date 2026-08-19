@@ -17,7 +17,7 @@ import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.TextButton
 import com.twofasapp.core.design.foundation.icon.Icon
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun SyncNoticeBar(
@@ -40,7 +40,7 @@ internal fun SyncNoticeBar(
         Spacer(modifier = Modifier.width(12.dp))
 
         Text(
-            text = TwLocale.strings.backupSyncNotice,
+            text = MdtLocale.strings.backupSyncNotice,
             modifier = Modifier.weight(1f),
             color = MdtTheme.color.onSurface,
             style = MdtTheme.typo.regular.sm,
@@ -49,7 +49,7 @@ internal fun SyncNoticeBar(
         Spacer(modifier = Modifier.width(4.dp))
 
         TextButton(
-            text = TwLocale.strings.backupSyncCta,
+            text = MdtLocale.strings.backupSyncCta,
             onClick = onOpenBackupClick,
             modifier = Modifier.weight(1f),
         )

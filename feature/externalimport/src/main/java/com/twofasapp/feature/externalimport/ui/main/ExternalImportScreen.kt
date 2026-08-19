@@ -23,7 +23,7 @@ import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.image
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -47,7 +47,7 @@ private fun ScreenContent(
     onScanClick: () -> Unit = {},
     onFilePicked: (String) -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
     var askForCameraPermission by remember { mutableStateOf(false) }
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         uri?.let { onFilePicked(it.toString().encodeBase64ToString()) }

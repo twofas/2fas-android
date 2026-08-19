@@ -25,7 +25,7 @@ import com.twofasapp.core.design.foundation.textfield.SecretField
 import com.twofasapp.core.design.foundation.textfield.SecretFieldTrailingIcon
 import com.twofasapp.core.design.foundation.textfield.TextField
 import com.twofasapp.core.design.theme.DialogPadding
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.android.awaitFrame
 
 @Composable
@@ -36,8 +36,8 @@ fun PasswordDialog(
     bodyAnnotated: AnnotatedString? = null,
     error: String? = null,
     enabled: Boolean = true,
-    positive: String? = TwLocale.strings.commonSave,
-    negative: String? = TwLocale.strings.commonCancel,
+    positive: String? = MdtLocale.strings.commonSave,
+    negative: String? = MdtLocale.strings.commonCancel,
     onBodyClick: ((Int) -> Unit)? = null,
     onPositive: ((String) -> Unit)? = null,
     onNegative: (() -> Unit)? = null,
@@ -86,7 +86,7 @@ fun PasswordDialog(
             modifier = Modifier
                 .padding(horizontal = DialogPadding)
                 .focusRequester(focusRequester),
-            labelText = TwLocale.strings.password,
+            labelText = MdtLocale.strings.password,
             isError = error.isNullOrBlank().not(),
             keyboardOptions = keyboardOptions.copy(
                 keyboardType = KeyboardType.Password,
@@ -111,7 +111,7 @@ fun PasswordDialog(
                 onValueChange = { passwordConfirm = it },
                 modifier = Modifier
                     .padding(horizontal = DialogPadding),
-                labelText = TwLocale.strings.passwordConfirm,
+                labelText = MdtLocale.strings.passwordConfirm,
                 isError = error.isNullOrBlank().not(),
                 keyboardOptions = keyboardOptions.copy(
                     keyboardType = KeyboardType.Password,
@@ -144,6 +144,6 @@ private fun Preview() {
     PasswordDialog(
         onDismissRequest = { },
         title = "Password",
-        body = TwLocale.strings.placeholderMedium,
+        body = MdtLocale.strings.placeholderMedium,
     )
 }

@@ -32,7 +32,7 @@ import com.twofasapp.core.design.foundation.image.Image
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.feature.trash.R
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -82,7 +82,7 @@ private fun ScreenContent(
                 )
 
                 Text(
-                    text = TwLocale.strings.disposeBody1,
+                    text = MdtLocale.strings.disposeBody1,
                     color = MdtTheme.color.onSurface,
                     style = MdtTheme.typo.regular.sm,
                     textAlign = TextAlign.Center,
@@ -94,7 +94,7 @@ private fun ScreenContent(
                 )
 
                 Text(
-                    text = TwLocale.strings.disposeBody2 + "\n" + TwLocale.strings.disposeBody3.format(
+                    text = MdtLocale.strings.disposeBody2 + "\n" + MdtLocale.strings.disposeBody3.format(
                         uiState.serviceName,
                         uiState.serviceName,
                     ),
@@ -121,7 +121,7 @@ private fun ScreenContent(
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(
-                        text = TwLocale.strings.disposeConfirm,
+                        text = MdtLocale.strings.disposeConfirm,
                         color = MdtTheme.color.onSurface,
                         style = MdtTheme.typo.regular.base,
                         textAlign = TextAlign.Center,
@@ -129,14 +129,14 @@ private fun ScreenContent(
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
-                    text = TwLocale.strings.disposeCta,
+                    text = MdtLocale.strings.disposeCta,
                     onClick = onDeleteClick,
                     enabled = checked,
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
             Spacer(modifier = Modifier.height(4.dp))
-            TextButton(text = TwLocale.strings.commonCancel, onClick = onFinish)
+            TextButton(text = MdtLocale.strings.commonCancel, onClick = onFinish)
         }
     }
 }

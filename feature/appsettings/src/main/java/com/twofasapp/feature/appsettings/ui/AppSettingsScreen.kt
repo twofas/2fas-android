@@ -21,8 +21,8 @@ import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.data.session.domain.ServicesStyle
+import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
-import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -70,13 +70,13 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TopAppBar(title = TwLocale.strings.settingsAppearance) },
+        topBar = { TopAppBar(title = MdtLocale.strings.settingsAppearance) },
     ) { padding ->
 
         LazyColumn(Modifier.padding(padding)) {
             item {
                 SettingsLink(
-                    title = TwLocale.strings.settingsTheme,
+                    title = MdtLocale.strings.settingsTheme,
                     subtitle = uiState.appSettings.selectedTheme.toStringResource(),
                     icon = MdtIcons.Theme,
                     onClick = { showThemeDialog = true },
@@ -85,8 +85,8 @@ private fun ScreenContent(
 
             item {
                 SettingsSwitch(
-                    title = TwLocale.strings.settingsDynamicColors,
-                    subtitle = TwLocale.strings.settingsDynamicColorsBody,
+                    title = MdtLocale.strings.settingsDynamicColors,
+                    subtitle = MdtLocale.strings.settingsDynamicColorsBody,
                     icon = MdtIcons.Theme,
                     checked = uiState.appSettings.dynamicColors,
                     onCheckedChange = { onDynamicColorsToggle() },
@@ -95,7 +95,7 @@ private fun ScreenContent(
 
             item {
                 SettingsLink(
-                    title = TwLocale.strings.settingsServicesStyle,
+                    title = MdtLocale.strings.settingsServicesStyle,
                     subtitle = uiState.appSettings.servicesStyle.toStringResource(),
                     icon = MdtIcons.ListStyle,
                     onClick = { showServicesStyleDialog = true },
@@ -104,8 +104,8 @@ private fun ScreenContent(
 
             item {
                 SettingsSwitch(
-                    title = TwLocale.strings.settingsShowNextCode,
-                    subtitle = TwLocale.strings.settingsShowNextCodeBody,
+                    title = MdtLocale.strings.settingsShowNextCode,
+                    subtitle = MdtLocale.strings.settingsShowNextCodeBody,
                     icon = MdtIcons.NextToken,
                     checked = uiState.appSettings.showNextCode,
                     onCheckedChange = { onShowNextTokenToggle() },
@@ -114,8 +114,8 @@ private fun ScreenContent(
 
             item {
                 SettingsSwitch(
-                    title = TwLocale.strings.settingsAutoFocusSearch,
-                    subtitle = TwLocale.strings.settingsAutoFocusSearchBody,
+                    title = MdtLocale.strings.settingsAutoFocusSearch,
+                    subtitle = MdtLocale.strings.settingsAutoFocusSearchBody,
                     icon = MdtIcons.Search,
                     checked = uiState.appSettings.autoFocusSearch,
                     onCheckedChange = { onAutoFocusSearchToggle() },
@@ -124,7 +124,7 @@ private fun ScreenContent(
 
             item {
                 SettingsSwitch(
-                    title = TwLocale.strings.settingsShowBackupNotice,
+                    title = MdtLocale.strings.settingsShowBackupNotice,
                     icon = MdtIcons.CloudOff,
                     checked = uiState.appSettings.showBackupNotice,
                     onCheckedChange = { checked ->
@@ -139,8 +139,8 @@ private fun ScreenContent(
 
             item {
                 SettingsSwitch(
-                    title = TwLocale.strings.settingsHideCodes,
-                    subtitle = TwLocale.strings.settingsHideCodesBody,
+                    title = MdtLocale.strings.settingsHideCodes,
+                    subtitle = MdtLocale.strings.settingsHideCodesBody,
                     icon = MdtIcons.Eye,
                     checked = uiState.appSettings.hideCodes,
                     onCheckedChange = { onHideCodesToggle() },
@@ -151,7 +151,7 @@ private fun ScreenContent(
         if (showThemeDialog) {
             ListRadioDialog(
                 onDismissRequest = { showThemeDialog = false },
-                title = TwLocale.strings.settingsTheme,
+                title = MdtLocale.strings.settingsTheme,
                 options = SelectedTheme.values().map { it.toStringResource() },
                 selectedOption = uiState.appSettings.selectedTheme.toStringResource(),
                 onOptionSelected = { index, _ -> onSelectedThemeChange(SelectedTheme.values()[index]) },
@@ -161,7 +161,7 @@ private fun ScreenContent(
         if (showServicesStyleDialog) {
             ListRadioDialog(
                 onDismissRequest = { showServicesStyleDialog = false },
-                title = TwLocale.strings.settingsServicesStyle,
+                title = MdtLocale.strings.settingsServicesStyle,
                 options = ServicesStyle.values().map { it.toStringResource() },
                 selectedOption = uiState.appSettings.servicesStyle.toStringResource(),
                 onOptionSelected = { index, _ -> onServicesStyleChange(ServicesStyle.values()[index]) },
@@ -171,8 +171,8 @@ private fun ScreenContent(
         if (showConfirmDisableBackupNotice) {
             ConfirmDialog(
                 onDismissRequest = { showConfirmDisableBackupNotice = false },
-                title = TwLocale.strings.settingsShowBackupNotice,
-                body = TwLocale.strings.settingsShowBackupNoticeConfirmBody,
+                title = MdtLocale.strings.settingsShowBackupNotice,
+                body = MdtLocale.strings.settingsShowBackupNoticeConfirmBody,
                 onPositive = { onShowBackupNoticeToggle() },
             )
         }

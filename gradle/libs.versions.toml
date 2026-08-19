@@ -13,6 +13,7 @@ kotlin = "2.4.10"
 kotlinCoroutines = "1.11.0"
 kotlinKsp = "2.3.9"
 ktor = "3.5.1"
+navigation3 = "1.1.6"
 ktlint = "5.4.2"
 lifecycle = "2.11.0"
 room = "2.8.4"
@@ -51,6 +52,7 @@ composeMaterial2 = { module = "androidx.compose.material:material" }
 composeMaterial3 = { module = "androidx.compose.material3:material3" }
 composeMaterial3Window = { module = "androidx.compose.material3:material3-window-size-class" }
 composeMaterial3Adaptive = "androidx.compose.material3.adaptive:adaptive:1.2.0"
+composeMaterial3AdaptiveNavigationSuite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite" }
 composeUi = { module = "androidx.compose.ui:ui" }
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling" }
 credentialsPlayServices = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentials" }
@@ -88,6 +90,9 @@ lifecycleProcess = { module = "androidx.lifecycle:lifecycle-process", version.re
 lifecycleSavedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
 lottie = "com.airbnb.android:lottie-compose:6.7.1"
 material = "com.google.android.material:material:1.14.0"
+navigation3Runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "navigation3" }
+navigation3Ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
+navigation3ViewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycle" }
 opencsv = "com.opencsv:opencsv:5.12.0"
 playServicesCorutines = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.11.0"
 revenuecat = { module = "com.revenuecat.purchases:purchases", version.ref = "revenuecat" }
@@ -219,6 +224,12 @@ elmyr = [
 ]
 koin = [
     "koinCompose",
+]
+navigation3 = [
+    "navigation3Runtime",
+    "navigation3Ui",
+    "navigation3ViewModel",
+    "composeMaterial3AdaptiveNavigationSuite",
 ]
 ktor = [
     "ktorAuth",

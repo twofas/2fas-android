@@ -32,7 +32,7 @@ import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.notifications.domain.Notification
 import com.twofasapp.feature.home.R
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -59,14 +59,14 @@ private fun ScreenContent(
     val context = LocalContext.current
 
     Scaffold(
-        topBar = { TopAppBar(title = TwLocale.strings.notificationsTitle) },
+        topBar = { TopAppBar(title = MdtLocale.strings.notificationsTitle) },
     ) { padding ->
 
         LazyColumn(Modifier.padding(padding)) {
             if (notifications.isEmpty()) {
                 item {
                     EmptyScreen(
-                        body = TwLocale.strings.notificationsEmpty,
+                        body = MdtLocale.strings.notificationsEmpty,
                         image = painterResource(id = R.drawable.img_notifications_empty),
                         modifier = Modifier.fillParentMaxSize(),
                     )
@@ -141,7 +141,7 @@ private fun Notification(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = TwLocale.formatDuration(notification.createdAt),
+                text = MdtLocale.formatDuration(notification.createdAt),
                 modifier = Modifier.fillMaxWidth(),
                 color = MdtTheme.color.onSurfaceVariant,
                 style = MdtTheme.typo.regular.xs,

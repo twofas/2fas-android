@@ -25,9 +25,9 @@ import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.unit.Dp
 import androidx.core.app.ComponentActivity
+import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
 import com.twofasapp.locale.Strings
-import com.twofasapp.locale.TwLocale
 
 val CompositionLocal<Context>.currentActivity: ComponentActivity
     @Composable
@@ -58,7 +58,7 @@ val Context.notificationManager: NotificationManager
 
 val CompositionLocal<Context>.strings: Strings
     @Composable
-    get() = TwLocale.strings
+    get() = MdtLocale.strings
 
 val LocalBackDispatcher
     @Composable

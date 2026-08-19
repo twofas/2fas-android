@@ -25,7 +25,7 @@ import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.TextButton
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun SyncReminderItem(
@@ -63,7 +63,7 @@ internal fun SyncReminderItem(
 
             Column {
                 Text(
-                    text = TwLocale.strings.backupReminder,
+                    text = MdtLocale.strings.backupReminder,
                     style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
                     color = MdtTheme.color.onSurface,
                 )
@@ -71,7 +71,7 @@ internal fun SyncReminderItem(
                 Spacer(Modifier.height(6.dp))
 
                 Text(
-                    text = TwLocale.strings.backupReminderBody,
+                    text = MdtLocale.strings.backupReminderBody,
                     style = MdtTheme.typo.regular.sm,
                     color = MdtTheme.color.onSurfaceVariant,
                 )
@@ -86,12 +86,12 @@ internal fun SyncReminderItem(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             TextButton(
-                text = TwLocale.strings.backupReminderDismiss,
+                text = MdtLocale.strings.backupReminderDismiss,
                 onClick = onDismissClick,
             )
 
             Button(
-                text = TwLocale.strings.backupReminderCta,
+                text = MdtLocale.strings.backupReminderCta,
                 height = 36.dp,
                 leadingIcon = MdtIcons.CloudUpload,
                 onClick = onOpenBackupClick,

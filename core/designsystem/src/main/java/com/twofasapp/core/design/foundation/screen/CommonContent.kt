@@ -20,7 +20,7 @@ import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.TextButton
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun CommonContent(
@@ -121,10 +121,10 @@ fun CommonContentDescription(text: String) {
 private fun Preview() {
     CommonContent(
         image = MdtIcons.Placeholder,
-        titleText = TwLocale.strings.placeholder,
-        descriptionText = TwLocale.strings.placeholderLong,
-        ctaPrimaryText = TwLocale.strings.placeholder,
-        ctaSecondaryText = TwLocale.strings.placeholder,
+        titleText = MdtLocale.strings.placeholder,
+        descriptionText = MdtLocale.strings.placeholderLong,
+        ctaPrimaryText = MdtLocale.strings.placeholder,
+        ctaSecondaryText = MdtLocale.strings.placeholder,
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),

@@ -36,7 +36,7 @@ import com.twofasapp.core.design.foundation.button.TextButton
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.feature.startup.R
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -92,37 +92,37 @@ internal fun ScreenContent(
                 when (page) {
                     0 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_one),
-                        headerText = TwLocale.strings.startupStepOneHeader,
-                        bodyText = TwLocale.strings.startupStepOneBody,
+                        headerText = MdtLocale.strings.startupStepOneHeader,
+                        bodyText = MdtLocale.strings.startupStepOneBody,
                         imageSize = 60.dp,
                         openHome = openHome,
                     )
 
                     1 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_two),
-                        headerText = TwLocale.strings.startupStepTwoHeader,
-                        bodyText = TwLocale.strings.startupStepTwoBody,
+                        headerText = MdtLocale.strings.startupStepTwoHeader,
+                        bodyText = MdtLocale.strings.startupStepTwoBody,
                         openHome = openHome,
                     )
 
                     2 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_three),
-                        headerText = TwLocale.strings.startupStepThreeHeader,
-                        bodyText = TwLocale.strings.startupStepThreeBody,
+                        headerText = MdtLocale.strings.startupStepThreeHeader,
+                        bodyText = MdtLocale.strings.startupStepThreeBody,
                         openHome = openHome,
                     )
 
                     3 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_four),
-                        headerText = TwLocale.strings.startupStepFourHeader,
-                        bodyText = TwLocale.strings.startupStepFourBody,
+                        headerText = MdtLocale.strings.startupStepFourHeader,
+                        bodyText = MdtLocale.strings.startupStepFourBody,
                         openHome = openHome,
                     )
 
                     4 -> Step(
                         image = painterResource(id = com.twofasapp.core.design.R.drawable.illustration_2fas_backup),
                         headerText = null,
-                        bodyText = TwLocale.strings.startupBackupBody,
+                        bodyText = MdtLocale.strings.startupBackupBody,
                         showBackupSkip = true,
                         openHome = openHome,
                     )
@@ -131,12 +131,12 @@ internal fun ScreenContent(
 
             if (pagerState.currentPage == 0) {
                 Text(
-                    text = TwLocale.strings.startupTermsLabel,
+                    text = MdtLocale.strings.startupTermsLabel,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MdtTheme.color.onSurfaceVariant,
                     modifier = Modifier
                         .clip(RoundedShape12)
-                        .clickable { uriHandler.openSafely(TwLocale.links.terms, context) }
+                        .clickable { uriHandler.openSafely(MdtLocale.links.terms, context) }
                         .padding(4.dp),
                 )
             } else {
@@ -153,11 +153,11 @@ internal fun ScreenContent(
 
             Button(
                 text = when (pagerState.currentPage) {
-                    1 -> TwLocale.strings.commonNext
-                    2 -> TwLocale.strings.commonNext
-                    3 -> TwLocale.strings.commonNext
-                    4 -> TwLocale.strings.commonContinue
-                    else -> TwLocale.strings.commonContinue
+                    1 -> MdtLocale.strings.commonNext
+                    2 -> MdtLocale.strings.commonNext
+                    3 -> MdtLocale.strings.commonNext
+                    4 -> MdtLocale.strings.commonContinue
+                    else -> MdtLocale.strings.commonContinue
                 },
                 onClick = {
                     if (pagerState.canScrollForward.not()) {
@@ -235,7 +235,7 @@ private fun Step(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 TextButton(
-                    text = TwLocale.strings.startupBackupCloseCta,
+                    text = MdtLocale.strings.startupBackupCloseCta,
                     onClick = openHome,
                     modifier = Modifier.padding(horizontal = 16.dp),
                 )

@@ -18,7 +18,7 @@ import com.twofasapp.core.design.R
 import com.twofasapp.core.design.foundation.permission.RequestPermission
 import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -39,7 +39,7 @@ private fun ScreenContent(
     uiState: BrowserExtPermissionUiState,
     onContinue: () -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
     var askForPermission by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -67,8 +67,8 @@ private fun ScreenContent(
                 askForPermission = false
                 onContinue()
             },
-            rationaleTitle = TwLocale.strings.permissionPushTitle,
-            rationaleText = TwLocale.strings.permissionPushBody,
+            rationaleTitle = MdtLocale.strings.permissionPushTitle,
+            rationaleText = MdtLocale.strings.permissionPushBody,
         )
     }
 }

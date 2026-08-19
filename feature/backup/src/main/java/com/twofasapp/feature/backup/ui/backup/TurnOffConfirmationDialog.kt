@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.R
 import com.twofasapp.core.design.foundation.dialog.RichConfirmDialog
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun TurnOffConfirmationDialog(
@@ -22,20 +22,20 @@ internal fun TurnOffConfirmationDialog(
     RichConfirmDialog(
         onDismissRequest = onDismissRequest,
         image = painterResource(id = R.drawable.illustration_2fas_backup_failed),
-        title = TwLocale.strings.backupTurnOffTitle,
-        body = TwLocale.strings.backupTurnOffMsg1,
+        title = MdtLocale.strings.backupTurnOffTitle,
+        body = MdtLocale.strings.backupTurnOffMsg1,
         content = {
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = TwLocale.strings.backupTurnOffMsg2,
+                text = MdtLocale.strings.backupTurnOffMsg2,
                 textAlign = TextAlign.Center,
                 color = MdtTheme.color.onSurfaceVariant,
                 style = MdtTheme.typo.regular.xs,
             )
         },
-        positive = TwLocale.strings.backupTurnOffCta,
-        negative = TwLocale.strings.commonCancel,
+        positive = MdtLocale.strings.backupTurnOffCta,
+        negative = MdtLocale.strings.commonCancel,
         onPositive = onConfirm,
     )
 }

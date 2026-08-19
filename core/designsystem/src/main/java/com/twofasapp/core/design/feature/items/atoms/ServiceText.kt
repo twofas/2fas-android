@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.ServiceStyle
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun ServiceName(
@@ -66,7 +66,7 @@ internal fun ServiceInfo(
 @Composable
 private fun Preview() {
     Column {
-        ServiceName(text = TwLocale.strings.placeholder, modifier = Modifier.fillMaxWidth())
-        ServiceInfo(text = TwLocale.strings.placeholderMedium, modifier = Modifier.fillMaxWidth(), style = ServiceStyle.Default)
+        ServiceName(text = MdtLocale.strings.placeholder, modifier = Modifier.fillMaxWidth())
+        ServiceInfo(text = MdtLocale.strings.placeholderMedium, modifier = Modifier.fillMaxWidth(), style = ServiceStyle.Default)
     }
 }

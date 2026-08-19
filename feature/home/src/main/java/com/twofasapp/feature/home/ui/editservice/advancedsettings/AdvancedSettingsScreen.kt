@@ -15,8 +15,8 @@ import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.settings.SettingsDivider
 import com.twofasapp.core.design.feature.settings.SettingsLink
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
-import com.twofasapp.locale.TwLocale
 
 @Composable
 internal fun AdvancedSettingsScreen(
@@ -87,7 +87,7 @@ internal fun AdvancedSettingsScreen(
 
             item {
                 SettingsLink(
-                    title = TwLocale.strings.addManualAlgorithm,
+                    title = MdtLocale.strings.addManualAlgorithm,
                     subtitle = service.algorithm?.name ?: Service.DefaultAlgorithm.name,
                     enabled = false,
                 )
@@ -96,7 +96,7 @@ internal fun AdvancedSettingsScreen(
             if (service.authType == Service.AuthType.TOTP || service.authType == Service.AuthType.STEAM) {
                 item {
                     SettingsLink(
-                        title = TwLocale.strings.addManualRefreshTime,
+                        title = MdtLocale.strings.addManualRefreshTime,
                         subtitle = (service.period ?: Service.DefaultPeriod).toString(),
                         enabled = false,
                     )
@@ -115,7 +115,7 @@ internal fun AdvancedSettingsScreen(
 
             item {
                 SettingsLink(
-                    title = TwLocale.strings.addManualDigits,
+                    title = MdtLocale.strings.addManualDigits,
                     subtitle = (service.digits ?: Service.DefaultDigits).toString(),
                     enabled = false,
                 )

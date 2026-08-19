@@ -79,6 +79,7 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
     implementation(libs.bundles.accompanist)
+    implementation(libs.bundles.navigation3)
     implementation(libs.bundles.playReview)
     implementation(libs.bundles.playUpdate)
     implementation(libs.bundles.glance)

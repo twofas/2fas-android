@@ -20,7 +20,7 @@ import com.twofasapp.core.design.feature.settings.SettingsLink
 import com.twofasapp.core.design.foundation.modal.Modal
 import com.twofasapp.core.design.foundation.modal.ModalList
 import com.twofasapp.core.design.ktx.currentActivity
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 object FocusServiceModalNavArg {
@@ -67,10 +67,10 @@ fun FocusServiceModal(
             SettingsDivider()
 
             ModalList {
-                SettingsLink(title = TwLocale.strings.editService, icon = MdtIcons.Edit) {
+                SettingsLink(title = MdtLocale.strings.editService, icon = MdtIcons.Edit) {
                     uiState.service?.id?.let(openService)
                 }
-                SettingsLink(title = TwLocale.strings.copyToken, icon = MdtIcons.Copy) {
+                SettingsLink(title = MdtLocale.strings.copyToken, icon = MdtIcons.Copy) {
                     serviceState.copyToClipboard(
                         activity,
                         uiState.showNextCode,

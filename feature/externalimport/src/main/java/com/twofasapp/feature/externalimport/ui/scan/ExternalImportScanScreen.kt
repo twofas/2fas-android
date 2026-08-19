@@ -14,7 +14,7 @@ import com.twofasapp.common.ktx.encodeBase64ToString
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -35,7 +35,7 @@ private fun ScreenContent(
     uiState: ExternalImportScanUiState,
     onScanned: (String) -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
     var qrScanEnabled = true
 
     Scaffold(

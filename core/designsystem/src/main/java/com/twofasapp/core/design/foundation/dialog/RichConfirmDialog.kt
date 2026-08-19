@@ -20,7 +20,7 @@ import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.R
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.TextButton
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun RichConfirmDialog(
@@ -29,8 +29,8 @@ fun RichConfirmDialog(
     title: String? = null,
     body: String? = null,
     content: @Composable (() -> Unit)? = null,
-    positive: String? = TwLocale.strings.commonYes,
-    negative: String? = TwLocale.strings.commonNo,
+    positive: String? = MdtLocale.strings.commonYes,
+    negative: String? = MdtLocale.strings.commonNo,
     onPositive: () -> Unit = {},
     onNegative: () -> Unit = {},
     properties: DialogProperties = DialogProperties(),
@@ -111,7 +111,7 @@ private fun Preview() {
     RichConfirmDialog(
         onDismissRequest = { },
         image = painterResource(id = R.drawable.illustration_2fas_backup_failed),
-        title = TwLocale.strings.placeholderMedium,
-        body = TwLocale.strings.placeholderLong,
+        title = MdtLocale.strings.placeholderMedium,
+        body = MdtLocale.strings.placeholderLong,
     )
 }

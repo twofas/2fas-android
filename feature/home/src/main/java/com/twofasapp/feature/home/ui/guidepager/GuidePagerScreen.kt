@@ -45,7 +45,7 @@ import com.twofasapp.feature.home.ui.guides.Guide
 import com.twofasapp.feature.home.ui.guides.GuideJson
 import com.twofasapp.feature.home.ui.guides.getGuideJson
 import com.twofasapp.feature.home.ui.guides.json
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -74,8 +74,8 @@ internal fun GuidePagerScreen(
         topBar = {
             TopAppBar(
                 title = when (guide) {
-                    Guide.Universal -> TwLocale.strings.guideUniversalTitle
-                    else -> TwLocale.strings.guideTitle.format(guideJson?.serviceName ?: "")
+                    Guide.Universal -> MdtLocale.strings.guideUniversalTitle
+                    else -> MdtLocale.strings.guideTitle.format(guideJson?.serviceName ?: "")
                 },
             )
         },
@@ -191,7 +191,7 @@ private fun Content(
             text = if (isLastStep) {
                 steps[pagerState.currentPage].cta?.name.orEmpty()
             } else {
-                TwLocale.strings.commonNext
+                MdtLocale.strings.commonNext
             },
             modifier = Modifier.padding(16.dp),
             onClick = {

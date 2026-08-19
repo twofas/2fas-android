@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun SimpleItem(
@@ -97,8 +97,8 @@ fun SimpleItem(
 @Composable
 private fun Preview() {
     SimpleItem(
-        title = TwLocale.strings.placeholder,
-        subtitle = TwLocale.strings.placeholderLong,
+        title = MdtLocale.strings.placeholder,
+        subtitle = MdtLocale.strings.placeholderLong,
         icon = MdtIcons.Placeholder,
     )
 }

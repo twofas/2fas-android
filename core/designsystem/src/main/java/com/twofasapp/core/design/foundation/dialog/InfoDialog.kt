@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.window.DialogProperties
 import com.twofasapp.core.design.foundation.preview.PreviewTextLong
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun InfoDialog(
@@ -24,7 +24,7 @@ fun InfoDialog(
     title: String? = null,
     body: String? = null,
     bodyAnnotated: AnnotatedString? = null,
-    positive: String = TwLocale.strings.commonOk,
+    positive: String = MdtLocale.strings.commonOk,
     negative: String? = null,
     neutral: String? = null,
     icon: Painter? = null,

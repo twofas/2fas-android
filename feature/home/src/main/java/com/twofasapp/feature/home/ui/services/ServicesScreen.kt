@@ -73,7 +73,7 @@ import com.twofasapp.feature.home.ui.services.component.ServicesFab
 import com.twofasapp.feature.home.ui.services.component.ServicesProgress
 import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
 import com.twofasapp.feature.home.ui.services.component.SyncReminderItem
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
@@ -88,6 +88,7 @@ import org.koin.androidx.compose.koinViewModel
 internal fun ServicesRoute(
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
+    showBottomBar: Boolean = true,
     viewModel: ServicesViewModel = koinViewModel(),
     appReviewViewModel: AppReviewViewModel = koinViewModel(),
 ) {
@@ -97,6 +98,7 @@ internal fun ServicesRoute(
         uiState = uiState,
         listener = listener,
         bottomBarListener = bottomBarListener,
+        showBottomBar = showBottomBar,
         onEventConsumed = { viewModel.consumeEvent(it) },
         onExternalImportClick = { listener.openExternalImport() },
         onEditModeChange = { viewModel.toggleEditMode() },
@@ -128,6 +130,7 @@ private fun ServicesScreen(
     uiState: ServicesUiState,
     listener: HomeNavigationListener,
     bottomBarListener: BottomBarListener,
+    showBottomBar: Boolean = true,
     onEventConsumed: (ServicesUiEvent) -> Unit,
     onExternalImportClick: () -> Unit = {},
     onEditModeChange: () -> Unit = {},
@@ -279,15 +282,17 @@ private fun ServicesScreen(
 
     Scaffold(
         bottomBar = {
-            BottomBar(
-                selectedIndex = 0,
-                listener = bottomBarListener,
-                onItemClick = {
-                    if (uiState.searchFocused) {
-                        onSearchFocusChange(false)
-                    }
-                },
-            )
+            if (showBottomBar) {
+                BottomBar(
+                    selectedIndex = 0,
+                    listener = bottomBarListener,
+                    onItemClick = {
+                        if (uiState.searchFocused) {
+                            onSearchFocusChange(false)
+                        }
+                    },
+                )
+            }
         },
         topBar = {
             ServicesAppBar(
@@ -345,8 +350,8 @@ private fun ServicesScreen(
             if (uiState.services.isEmpty() && uiState.totalGroups == 1 && uiState.searchQuery.isNotEmpty()) {
                 listItem(ServicesListItem.EmptySearch) {
                     EmptyScreen(
-                        title = TwLocale.strings.servicesEmptySearch,
-                        body = TwLocale.strings.servicesEmptySearchBody,
+                        title = MdtLocale.strings.servicesEmptySearch,
+                        body = MdtLocale.strings.servicesEmptySearchBody,
                         image = painterResource(id = R.drawable.img_services_empty_search),
                         modifier = Modifier
                             .fillParentMaxSize()
@@ -360,11 +365,11 @@ private fun ServicesScreen(
             if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
                 listItem(ServicesListItem.Empty) {
                     EmptyScreen(
-                        body = TwLocale.strings.servicesEmptyBody,
+                        body = MdtLocale.strings.servicesEmptyBody,
                         image = painterResource(id = R.drawable.img_services_empty),
                         additionalContent = {
                             Button(
-                                text = TwLocale.strings.servicesEmptyImportCta,
+                                text = MdtLocale.strings.servicesEmptyImportCta,
                                 style = ButtonStyle.Outlined,
                                 onClick = onExternalImportClick,
                             )
@@ -419,7 +424,7 @@ private fun ServicesScreen(
                                     .padding(horizontal = 16.dp)
                                     .padding(bottom = 12.dp, top = 4.dp),
                                 onGoToStoreClick = {
-                                    uriHandler.openSafely(TwLocale.links.passPlayStore, activity)
+                                    uriHandler.openSafely(MdtLocale.links.passPlayStore, activity)
                                     onDismissPassBannerClick()
                                 },
                                 onDismissClick = onDisablePassBannerClick,
@@ -433,7 +438,7 @@ private fun ServicesScreen(
                         listItem(item) {
                             ServicesGroup(
                                 id = group.id,
-                                name = group.name ?: TwLocale.strings.servicesMyTokens,
+                                name = group.name ?: MdtLocale.strings.servicesMyTokens,
                                 count = uiState.services.count { it.groupId == group.id },
                                 expanded = group.isExpanded,
                                 editMode = uiState.isInEditMode,
@@ -519,10 +524,10 @@ private fun ServicesScreen(
     if (showAddGroupDialog) {
         InputDialog(
             onDismissRequest = { showAddGroupDialog = false },
-            title = TwLocale.strings.groupsAdd,
-            label = TwLocale.strings.groupsName,
-            positive = TwLocale.strings.commonAdd,
-            negative = TwLocale.strings.commonCancel,
+            title = MdtLocale.strings.groupsAdd,
+            label = MdtLocale.strings.groupsName,
+            positive = MdtLocale.strings.commonAdd,
+            negative = MdtLocale.strings.commonCancel,
             validate = { if (it.trim().length in 1..32) InputValidation.Valid else InputValidation.Invalid(null) },
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Sentences,
@@ -535,11 +540,11 @@ private fun ServicesScreen(
     if (showEditGroupDialog) {
         InputDialog(
             onDismissRequest = { showEditGroupDialog = false },
-            title = TwLocale.strings.groupsEdit,
-            label = TwLocale.strings.groupsName,
+            title = MdtLocale.strings.groupsEdit,
+            label = MdtLocale.strings.groupsName,
             prefill = clickedGroup?.name.orEmpty(),
-            positive = TwLocale.strings.commonSave,
-            negative = TwLocale.strings.commonCancel,
+            positive = MdtLocale.strings.commonSave,
+            negative = MdtLocale.strings.commonCancel,
             validate = { if (it.trim().length in 1..32) InputValidation.Valid else InputValidation.Invalid(null) },
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Sentences,
@@ -552,8 +557,8 @@ private fun ServicesScreen(
     if (showDeleteGroupDialog) {
         ConfirmDialog(
             onDismissRequest = { showDeleteGroupDialog = false },
-            title = TwLocale.strings.commonDelete,
-            body = TwLocale.strings.groupsDelete,
+            title = MdtLocale.strings.commonDelete,
+            body = MdtLocale.strings.groupsDelete,
             onPositive = { onDeleteGroup(clickedGroup?.id.orEmpty()) },
         )
     }
@@ -561,8 +566,8 @@ private fun ServicesScreen(
     if (showSortDialog) {
         ListRadioDialog(
             onDismissRequest = { showSortDialog = false },
-            title = TwLocale.strings.servicesSortBy,
-            options = TwLocale.strings.servicesSortByOptions,
+            title = MdtLocale.strings.servicesSortBy,
+            options = MdtLocale.strings.servicesSortByOptions,
             selectedIndex = when (uiState.appSettings.servicesSort) {
                 ServicesSort.Alphabetical -> 0
                 ServicesSort.Manual -> 1
@@ -574,17 +579,17 @@ private fun ServicesScreen(
     if (showQrFromGalleryDialog) {
         ConfirmDialog(
             onDismissRequest = { showQrFromGalleryDialog = false },
-            title = TwLocale.strings.servicesQrFromGalleryTitle,
-            positive = TwLocale.strings.servicesQrFromGalleryCta,
+            title = MdtLocale.strings.servicesQrFromGalleryTitle,
+            positive = MdtLocale.strings.servicesQrFromGalleryCta,
             negative = null,
             bodyAnnotated = buildAnnotatedString {
-                append(TwLocale.strings.servicesQrFromGalleryBody1)
+                append(MdtLocale.strings.servicesQrFromGalleryBody1)
 
                 withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append(TwLocale.strings.servicesQrFromGalleryBody2)
+                    append(MdtLocale.strings.servicesQrFromGalleryBody2)
                 }
 
-                append(TwLocale.strings.servicesQrFromGalleryBody3)
+                append(MdtLocale.strings.servicesQrFromGalleryBody3)
             },
         )
     }

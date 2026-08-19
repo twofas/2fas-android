@@ -15,9 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.R
-import com.twofasapp.core.design.foundation.screen.CommonContentDescription
-import com.twofasapp.core.design.foundation.screen.CommonContentTitle
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun EmptyScreen(
@@ -59,7 +57,7 @@ fun EmptyScreen(
 @Composable
 private fun Preview() {
     EmptyScreen(
-        body = TwLocale.strings.placeholderLong,
+        body = MdtLocale.strings.placeholderLong,
         image = painterResource(id = R.drawable.ic_placeholder),
         modifier = Modifier.fillMaxSize(),
     )

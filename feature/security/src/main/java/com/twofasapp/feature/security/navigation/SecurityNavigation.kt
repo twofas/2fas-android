@@ -3,7 +3,7 @@ package com.twofasapp.feature.security.navigation
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.twofasapp.android.navigation.Screen
+import com.twofasapp.android.navigation.LegacyScreen
 import com.twofasapp.feature.security.ui.changepin.ChangePinScreen
 import com.twofasapp.feature.security.ui.disablepin.DisablePinScreen
 import com.twofasapp.feature.security.ui.security.SecurityScreen
@@ -12,25 +12,25 @@ import com.twofasapp.feature.security.ui.setuppin.SetupPinScreen
 fun NavGraphBuilder.securityNavigation(
     navController: NavHostController,
 ) {
-    composable(Screen.Security.route) {
+    composable(LegacyScreen.Security.route) {
         SecurityScreen(
-            openSetupPin = { navController.navigate(Screen.SetupPin.route) { popUpTo(Screen.Security.route) } },
-            openDisablePin = { navController.navigate(Screen.DisablePin.route) },
-            openChangePin = { navController.navigate(Screen.ChangePin.route) },
+            openSetupPin = { navController.navigate(LegacyScreen.SetupPin.route) { popUpTo(LegacyScreen.Security.route) } },
+            openDisablePin = { navController.navigate(LegacyScreen.DisablePin.route) },
+            openChangePin = { navController.navigate(LegacyScreen.ChangePin.route) },
         )
     }
 
-    composable(Screen.SetupPin.route) {
+    composable(LegacyScreen.SetupPin.route) {
         SetupPinScreen()
     }
 
-    composable(Screen.DisablePin.route) {
+    composable(LegacyScreen.DisablePin.route) {
         DisablePinScreen()
     }
 
-    composable(Screen.ChangePin.route) {
+    composable(LegacyScreen.ChangePin.route) {
         ChangePinScreen(
-            openSetupPin = { navController.navigate(Screen.SetupPin.route) { popUpTo(Screen.Security.route) } },
+            openSetupPin = { navController.navigate(LegacyScreen.SetupPin.route) { popUpTo(LegacyScreen.Security.route) } },
         )
     }
 }

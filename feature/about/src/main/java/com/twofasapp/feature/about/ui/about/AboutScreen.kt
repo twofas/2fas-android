@@ -29,8 +29,8 @@ import com.twofasapp.core.design.feature.settings.SettingsLink
 import com.twofasapp.core.design.feature.settings.SettingsSwitch
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.openSafely
+import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
-import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -57,45 +57,45 @@ private fun ScreenContent(
 ) {
     val activity = LocalContext.current as Activity
     val uriHandler = LocalUriHandler.current
-    val shareText = TwLocale.strings.aboutTellFriendShareText
+    val shareText = MdtLocale.strings.aboutTellFriendShareText
 
     Scaffold(
-        topBar = { TopAppBar(title = TwLocale.strings.aboutTitle) },
+        topBar = { TopAppBar(title = MdtLocale.strings.aboutTitle) },
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
             LazyColumn(modifier = Modifier.weight(1f)) {
-                item { SettingsHeader(title = TwLocale.strings.aboutGeneral) }
+                item { SettingsHeader(title = MdtLocale.strings.aboutGeneral) }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutWriteReview, icon = MdtIcons.Write, external = true) {
-                        uriHandler.openSafely(TwLocale.links.playStore, activity)
+                    SettingsLink(title = MdtLocale.strings.aboutWriteReview, icon = MdtIcons.Write, external = true) {
+                        uriHandler.openSafely(MdtLocale.links.playStore, activity)
                     }
                 }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutPrivacyPolicy, icon = MdtIcons.LockOpen, external = true) {
-                        uriHandler.openSafely(TwLocale.links.privacyPolicy, activity)
+                    SettingsLink(title = MdtLocale.strings.aboutPrivacyPolicy, icon = MdtIcons.LockOpen, external = true) {
+                        uriHandler.openSafely(MdtLocale.links.privacyPolicy, activity)
                     }
                 }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutTerms, icon = MdtIcons.Terms, external = true) {
-                        uriHandler.openSafely(TwLocale.links.terms, activity)
+                    SettingsLink(title = MdtLocale.strings.aboutTerms, icon = MdtIcons.Terms, external = true) {
+                        uriHandler.openSafely(MdtLocale.links.terms, activity)
                     }
                 }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutLicenses, icon = MdtIcons.Licenses) {
+                    SettingsLink(title = MdtLocale.strings.aboutLicenses, icon = MdtIcons.Licenses) {
                         onLicensesClick()
                     }
                 }
 
                 item { SettingsDivider() }
 
-                item { SettingsHeader(title = TwLocale.strings.aboutShare) }
+                item { SettingsHeader(title = MdtLocale.strings.aboutShare) }
 
                 item {
-                    SettingsLink(title = TwLocale.strings.aboutTellFriend, icon = MdtIcons.Share) {
+                    SettingsLink(title = MdtLocale.strings.aboutTellFriend, icon = MdtIcons.Share) {
                         ShareCompat.IntentBuilder(activity)
                             .setType("text/plain")
                             .setChooserTitle("Share 2FAS")
@@ -106,86 +106,86 @@ private fun ScreenContent(
 
                 item { SettingsDivider() }
 
-                item { SettingsHeader(title = TwLocale.strings.aboutSocialMedia) }
+                item { SettingsHeader(title = MdtLocale.strings.aboutSocialMedia) }
 
                 item {
                     SettingsLink(
-                        title = TwLocale.strings.aboutSocialDiscord,
+                        title = MdtLocale.strings.aboutSocialDiscord,
                         image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_discord),
                         external = true,
                     ) {
-                        uriHandler.openSafely(TwLocale.links.discord, activity)
+                        uriHandler.openSafely(MdtLocale.links.discord, activity)
                     }
                 }
 
                 item {
                     SettingsLink(
-                        title = TwLocale.strings.aboutSocialYouTube,
+                        title = MdtLocale.strings.aboutSocialYouTube,
                         image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_youtube),
                         external = true,
                     ) {
-                        uriHandler.openSafely(TwLocale.links.youtube, activity)
+                        uriHandler.openSafely(MdtLocale.links.youtube, activity)
                     }
                 }
 
                 item {
                     SettingsLink(
-                        title = TwLocale.strings.aboutSocialTwitter,
+                        title = MdtLocale.strings.aboutSocialTwitter,
                         image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_twitter),
                         external = true,
                     ) {
-                        uriHandler.openSafely(TwLocale.links.twitter, activity)
+                        uriHandler.openSafely(MdtLocale.links.twitter, activity)
                     }
                 }
 
                 item {
                     SettingsLink(
-                        title = TwLocale.strings.aboutSocialGitHub,
+                        title = MdtLocale.strings.aboutSocialGitHub,
                         image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_github),
                         external = true,
                     ) {
-                        uriHandler.openSafely(TwLocale.links.github, activity)
+                        uriHandler.openSafely(MdtLocale.links.github, activity)
                     }
                 }
 
                 item {
                     SettingsLink(
-                        title = TwLocale.strings.aboutSocialLinkedIn,
+                        title = MdtLocale.strings.aboutSocialLinkedIn,
                         image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_linkedin),
                         external = true,
                     ) {
-                        uriHandler.openSafely(TwLocale.links.linkedin, activity)
+                        uriHandler.openSafely(MdtLocale.links.linkedin, activity)
                     }
                 }
 
                 item {
                     SettingsLink(
-                        title = TwLocale.strings.aboutSocialReddit,
+                        title = MdtLocale.strings.aboutSocialReddit,
                         image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_reddit),
                         external = true,
                     ) {
-                        uriHandler.openSafely(TwLocale.links.reddit, activity)
+                        uriHandler.openSafely(MdtLocale.links.reddit, activity)
                     }
                 }
 
                 item {
                     SettingsLink(
-                        title = TwLocale.strings.aboutSocialFacebook,
+                        title = MdtLocale.strings.aboutSocialFacebook,
                         image = painterResource(id = com.twofasapp.core.design.R.drawable.ic_facebook),
                         external = true,
                     ) {
-                        uriHandler.openSafely(TwLocale.links.facebook, activity)
+                        uriHandler.openSafely(MdtLocale.links.facebook, activity)
                     }
                 }
 
                 item { SettingsDivider() }
 
-                item { SettingsHeader(title = TwLocale.strings.aboutSendCrashes) }
+                item { SettingsHeader(title = MdtLocale.strings.aboutSendCrashes) }
 
                 item {
                     SettingsSwitch(
-                        title = TwLocale.strings.settingsSendCrashes,
-                        subtitle = TwLocale.strings.settingsSendCrashesBody,
+                        title = MdtLocale.strings.settingsSendCrashes,
+                        subtitle = MdtLocale.strings.settingsSendCrashesBody,
                         icon = MdtIcons.Settings,
                         checked = uiState.appSettings.sendCrashLogs,
                         onCheckedChange = { onSendCrashLogsToggle() },

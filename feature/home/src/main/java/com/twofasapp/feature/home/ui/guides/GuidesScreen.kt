@@ -41,7 +41,7 @@ import com.twofasapp.core.design.foundation.text.ResponsiveText
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.assetAsBitmap
 import com.twofasapp.core.design.ktx.openSafely
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 
 @Composable
 internal fun GuidesScreen(
@@ -60,7 +60,7 @@ private fun GuidesScreenContent(
     val guides by remember { mutableStateOf(Guide.entries) }
 
     Scaffold(
-        topBar = { TopAppBar(title = TwLocale.strings.guidesSelectTitle) },
+        topBar = { TopAppBar(title = MdtLocale.strings.guidesSelectTitle) },
     ) { padding ->
 
         Column(
@@ -75,7 +75,7 @@ private fun GuidesScreenContent(
                     .verticalScroll(rememberScrollState()),
             ) {
                 Text(
-                    text = TwLocale.strings.guidesSelectDescription,
+                    text = MdtLocale.strings.guidesSelectDescription,
                     style = MdtTheme.typo.regular.base,
                     modifier = Modifier.padding(16.dp),
                     color = MdtTheme.color.onSurface,
@@ -110,7 +110,7 @@ private fun GuidesScreenContent(
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
-                    text = TwLocale.strings.guidesSelectProvideGuide,
+                    text = MdtLocale.strings.guidesSelectProvideGuide,
                     style = MdtTheme.typo.regular.sm,
                     color = MdtTheme.color.onSurface,
                 )
@@ -125,7 +125,7 @@ private fun GuidesScreenContent(
                     ),
                 ) {
                     Text(
-                        text = TwLocale.strings.guidesSelectProvideGuideCta,
+                        text = MdtLocale.strings.guidesSelectProvideGuideCta,
                         style = MdtTheme.typo.medium.sm,
                     )
 
