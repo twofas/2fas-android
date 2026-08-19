@@ -68,7 +68,7 @@ fun OutlinedTextField(
     shape: Shape = TextFieldDefaults.outlinedShape,
     colors: TextFieldColors = textFieldsColors(),
 ) {
-    var textValue by remember { mutableStateOf(TextFieldValue(value, selection = TextRange(value.length))) }
+    var textValue by remember { mutableStateOf(TextFieldValue(value, selection = TextRange(index=0))) }
 
     OutlinedTextField(
         value = textValue.copy(text = value),
