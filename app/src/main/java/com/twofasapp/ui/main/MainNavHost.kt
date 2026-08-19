@@ -100,15 +100,7 @@ internal fun MainNavHost(
             exitTransition = NavAnimation.Exit,
         ) {
             composable(LegacyScreen.Startup.route) {
-                StartupRoute(
-                    openHome = {
-                        navController.navigate(LegacyScreen.Services.route) { popUpTo(0) }
-                    },
-                    openBackup = {
-                        navController.navigate(LegacyScreen.Services.route) { popUpTo(0) }
-                        navController.navigate(LegacyScreen.Backup.routeWithArgs(NavArg.TurnOnBackup to true)) { popUpTo(LegacyScreen.Services.route) }
-                    },
-                )
+                StartupRoute()
             }
 
             homeNavigation(

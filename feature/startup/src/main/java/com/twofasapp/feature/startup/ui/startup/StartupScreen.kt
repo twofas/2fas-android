@@ -42,33 +42,17 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun StartupScreen(
-    openHome: () -> Unit = {},
-    openBackup: () -> Unit = {},
     viewModel: StartupViewModel = koinViewModel(),
 ) {
-    val scope = rememberCoroutineScope()
-
     ScreenContent(
-        openHome = {
-            scope.launch {
-                viewModel.finishOnboarding()
-                openHome()
-            }
-        },
-        openBackup = {
-            scope.launch {
-                viewModel.finishOnboarding()
-                openBackup()
-            }
-        },
+        onFinish = { viewModel.finishOnboarding() },
     )
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun ScreenContent(
-    openHome: () -> Unit = {},
-    openBackup: () -> Unit = {},
+    onFinish: () -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
     val pagerState = rememberPagerState(pageCount = { 5 })
@@ -95,28 +79,28 @@ internal fun ScreenContent(
                         headerText = MdtLocale.strings.startupStepOneHeader,
                         bodyText = MdtLocale.strings.startupStepOneBody,
                         imageSize = 60.dp,
-                        openHome = openHome,
+                        onFinish = onFinish,
                     )
 
                     1 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_two),
                         headerText = MdtLocale.strings.startupStepTwoHeader,
                         bodyText = MdtLocale.strings.startupStepTwoBody,
-                        openHome = openHome,
+                        onFinish = onFinish,
                     )
 
                     2 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_three),
                         headerText = MdtLocale.strings.startupStepThreeHeader,
                         bodyText = MdtLocale.strings.startupStepThreeBody,
-                        openHome = openHome,
+                        onFinish = onFinish,
                     )
 
                     3 -> Step(
                         image = painterResource(id = R.drawable.onboarding_step_four),
                         headerText = MdtLocale.strings.startupStepFourHeader,
                         bodyText = MdtLocale.strings.startupStepFourBody,
-                        openHome = openHome,
+                        onFinish = onFinish,
                     )
 
                     4 -> Step(
@@ -124,7 +108,7 @@ internal fun ScreenContent(
                         headerText = null,
                         bodyText = MdtLocale.strings.startupBackupBody,
                         showBackupSkip = true,
-                        openHome = openHome,
+                        onFinish = onFinish,
                     )
                 }
             }
@@ -161,7 +145,7 @@ internal fun ScreenContent(
                 },
                 onClick = {
                     if (pagerState.canScrollForward.not()) {
-                        openBackup()
+                        onFinish()
                     }
 
                     scope.launch {
@@ -183,7 +167,7 @@ private fun Step(
     modifier: Modifier = Modifier,
     imageSize: Dp = 180.dp,
     showBackupSkip: Boolean = false,
-    openHome: () -> Unit = {},
+    onFinish: () -> Unit = {},
 ) {
     Column(
         modifier = modifier,
@@ -236,7 +220,7 @@ private fun Step(
 
                 TextButton(
                     text = MdtLocale.strings.startupBackupCloseCta,
-                    onClick = openHome,
+                    onClick = onFinish,
                     modifier = Modifier.padding(horizontal = 16.dp),
                 )
             }

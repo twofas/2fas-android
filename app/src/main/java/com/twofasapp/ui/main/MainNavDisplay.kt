@@ -9,7 +9,6 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.data.services.domain.RecentlyAddedService
@@ -18,6 +17,7 @@ import com.twofasapp.feature.home.navigation.ServicesEntry
 import com.twofasapp.feature.home.navigation.SettingsEntry
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.feature.startup.navigation.StartupRoute
+import org.koin.compose.koinInject
 import timber.log.Timber
 
 @OptIn(ExperimentalMaterial3AdaptiveNavigationSuiteApi::class)
@@ -25,12 +25,11 @@ import timber.log.Timber
 internal fun MainNavDisplay(
     startDestination: Screen,
     onServiceAddedSuccessfully: (RecentlyAddedService) -> Unit,
+    navigator: AppNavigator = koinInject(),
 ) {
-    val backStack = rememberNavBackStack(startDestination)
-
-    fun resetTo(screen: Screen) {
-        backStack.clear()
-        backStack.add(screen)
+    val backStack = remember(startDestination) {
+        navigator.setStartRoot(startDestination)
+        navigator.backStack
     }
 
     fun selectTab(tab: Screen) {
@@ -70,7 +69,7 @@ internal fun MainNavDisplay(
         }
     }
 
-    val currentDestination = backStack.lastOrNull() as? Screen
+    val currentDestination = backStack.lastOrNull()
     val showNavigationBar = when (currentDestination) {
         Screen.Services,
         Screen.Settings,
@@ -96,13 +95,10 @@ internal fun MainNavDisplay(
     ) {
         NavDisplay(
             backStack = backStack,
-            onBack = { backStack.removeLastOrNull() },
+            onBack = { navigator.back() },
             entryProvider = entryProvider {
                 entry<Screen.Startup> {
-                    StartupRoute(
-                        openHome = { resetTo(Screen.Services) },
-                        openBackup = { resetTo(Screen.Services) },
-                    )
+                    StartupRoute()
                 }
 
                 entry<Screen.Services> {
