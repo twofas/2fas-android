@@ -73,7 +73,7 @@ internal fun GuidePagerScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                titleText = when (guide) {
+                title = when (guide) {
                     Guide.Universal -> TwLocale.strings.guideUniversalTitle
                     else -> TwLocale.strings.guideTitle.format(guideJson?.serviceName ?: "")
                 },
@@ -157,7 +157,7 @@ private fun Content(
                         markdown = steps[page].content,
                         typography = MaterialTheme.typography,
                     ),
-                    color = MdtTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurface,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()

@@ -75,7 +75,7 @@ private fun ScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                titleText = TwLocale.strings.widgetSettingsTitle,
+                title = TwLocale.strings.widgetSettingsTitle,
                 actions = {
                     TextButton(
                         text = TwLocale.strings.commonSave,
@@ -113,7 +113,7 @@ private fun ScreenContent(
                     ) {
                         Text(
                             text = TwLocale.strings.widgetSettingsEmpty,
-                            style = MdtTheme.typo.body1,
+                            style = MdtTheme.typo.regular.base,
                             textAlign = TextAlign.Center,
                         )
                     }
@@ -125,7 +125,7 @@ private fun ScreenContent(
             item("Info", "Info") {
                 Text(
                     text = TwLocale.strings.widgetSelectMsg,
-                    style = MdtTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
+                    style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
                     modifier = Modifier.padding(16.dp),
                 )
             }

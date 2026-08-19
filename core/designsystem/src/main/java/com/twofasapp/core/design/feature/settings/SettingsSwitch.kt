@@ -21,8 +21,8 @@ fun SettingsSwitch(
     subtitle: String? = null,
     icon: Painter? = null,
     image: Painter? = null,
-    textColor: Color = MdtTheme.color.onSurfacePrimary,
-    textColorSecondary: Color = MdtTheme.color.onSurfaceSecondary,
+    textColor: Color = MdtTheme.color.onSurface,
+    textColorSecondary: Color = MdtTheme.color.onSurfaceVariant,
     showEmptySpaceWhenIconMissing: Boolean = true,
     alignCenterIcon: Boolean = true,
 ) {

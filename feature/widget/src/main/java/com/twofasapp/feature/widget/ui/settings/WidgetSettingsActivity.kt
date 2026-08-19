@@ -14,7 +14,6 @@ import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.core.design.AppTheme
 import com.twofasapp.core.design.LocalAppTheme
 import com.twofasapp.core.design.LocalDynamicColors
-import com.twofasapp.core.design.MainAppTheme
 import com.twofasapp.core.design.window.ActivityHelper
 import com.twofasapp.data.session.SettingsRepository
 import org.koin.android.ext.android.get
@@ -57,7 +56,7 @@ class WidgetSettingsActivity : ComponentActivity(), AuthAware {
                 },
                 LocalDynamicColors provides settingsRepository.getAppSettings().dynamicColors,
             ) {
-                MainAppTheme {
+                AppTheme {
                     WidgetSettingsScreen(
                         appWidgetId = appWidgetId,
                     ) {

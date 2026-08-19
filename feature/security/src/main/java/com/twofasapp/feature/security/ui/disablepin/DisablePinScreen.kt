@@ -37,7 +37,7 @@ internal fun DisablePinScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(titleText = stringResource(id = R.string.security__disable_pin))
+            TopAppBar(title = stringResource(id = R.string.security__disable_pin))
         },
     ) { padding ->
         Box(

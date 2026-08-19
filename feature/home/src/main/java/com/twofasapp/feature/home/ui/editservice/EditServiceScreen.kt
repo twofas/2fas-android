@@ -60,10 +60,11 @@ import com.twofasapp.core.design.foundation.dialog.BaseDialog
 import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.dialog.InfoDialog
 import com.twofasapp.core.design.foundation.lazy.listItem
-import com.twofasapp.core.design.foundation.textfield.OutlinedTextField
+import com.twofasapp.core.design.foundation.textfield.TextField
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.copyToClipboard
 import com.twofasapp.core.design.ktx.dpToSp
+import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.feature.home.ui.editservice.badge.ColorBadgeDialog
 import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
@@ -115,7 +116,7 @@ internal fun EditServiceScreen(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    titleText = activity!!.getString(R.string.tokens__customize_service_title),
+                    title = activity!!.getString(R.string.tokens__customize_service_title),
                     actions = {
                         TextButton(
                             onClick = { viewModel.saveService() },
@@ -133,17 +134,18 @@ internal fun EditServiceScreen(
                 }
 
                 listItem(EditServiceListItem.InputName) {
-                    OutlinedTextField(
+                    TextField(
                         value = service.name,
                         labelText = stringResource(R.string.tokens__service_name),
-                        maxLength = 30,
                         singleLine = true,
                         keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
                         onValueChange = { text ->
-                            if (text.isBlank()) {
-                                viewModel.updateName(text, false)
-                            } else {
-                                viewModel.updateName(text, true)
+                            if (text.length <= 30) {
+                                if (text.isBlank()) {
+                                    viewModel.updateName(text, false)
+                                } else {
+                                    viewModel.updateName(text, true)
+                                }
                             }
                         },
                         modifier = Modifier
@@ -154,7 +156,7 @@ internal fun EditServiceScreen(
                 }
 
                 listItem(EditServiceListItem.InputSecret) {
-                    OutlinedTextField(
+                    TextField(
                         value = service.secret,
                         labelText = stringResource(R.string.tokens__service_key),
                         readOnly = true,
@@ -214,12 +216,11 @@ internal fun EditServiceScreen(
                 }
 
                 listItem(EditServiceListItem.InputInfo) {
-                    OutlinedTextField(
+                    TextField(
                         value = service.info.orEmpty(),
                         labelText = stringResource(R.string.tokens__additional_info),
-                        maxLength = 50,
                         singleLine = true,
-                        onValueChange = { text -> viewModel.updateInfo(text, true) },
+                        onValueChange = { text -> if (text.length <= 50) viewModel.updateInfo(text, true) },
                         keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
                         modifier = Modifier
                             .fillMaxWidth()
@@ -297,7 +298,7 @@ internal fun EditServiceScreen(
                             ) {
                                 DropdownMenuItem(
                                     text = {
-                                        Text(text = TwLocale.strings.servicesMyTokens, color = MdtTheme.color.onSurfacePrimary)
+                                        Text(text = TwLocale.strings.servicesMyTokens, color = MdtTheme.color.onSurface)
                                     },
                                     onClick = {
                                         viewModel.updateGroup(null)
@@ -308,7 +309,7 @@ internal fun EditServiceScreen(
                                 uiState.groups.filter { it.name != null }.forEach { group ->
                                     DropdownMenuItem(
                                         text = {
-                                            Text(text = group.name.orEmpty(), color = MdtTheme.color.onSurfacePrimary)
+                                            Text(text = group.name.orEmpty(), color = MdtTheme.color.onSurface)
                                         },
                                         onClick = {
                                             viewModel.updateGroup(group)
@@ -502,7 +503,7 @@ fun IconSelector(
                 modifier = Modifier
                     .width(28.dp)
                     .height(18.dp)
-                    .clip(MdtTheme.shape.roundedDefault)
+                    .clip(RoundedShape12)
                     .background(MdtTheme.color.background)
                     .align(Alignment.Center),
             )
@@ -511,7 +512,7 @@ fun IconSelector(
                 text = service.labelText ?: service.name.take(2).uppercase(),
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,
-                style = MdtTheme.typo.body3.copy(
+                style = MdtTheme.typo.regular.sm.copy(
                     fontWeight = FontWeight.Bold,
                     fontSize = dpToSp(dp = 14.dp),
                     lineHeight = dpToSp(dp = 20.dp),

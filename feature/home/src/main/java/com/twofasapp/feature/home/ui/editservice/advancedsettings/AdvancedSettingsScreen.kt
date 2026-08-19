@@ -25,7 +25,7 @@ internal fun AdvancedSettingsScreen(
     val service = viewModel.uiState.collectAsState().value.service
 
     Scaffold(
-        topBar = { TopAppBar(titleText = stringResource(id = R.string.customization_advanced)) },
+        topBar = { TopAppBar(title = stringResource(id = R.string.customization_advanced)) },
     ) { padding ->
 
         LazyColumn(modifier = Modifier.padding(padding)) {

@@ -53,8 +53,8 @@ internal fun AddServiceSuccessScreen(
         ) {
             Text(
                 text = TwLocale.strings.addSuccessTitle,
-                style = MdtTheme.typo.title,
-                color = MdtTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.regular.xl,
+                color = MdtTheme.color.onSurface,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
@@ -64,8 +64,8 @@ internal fun AddServiceSuccessScreen(
 
         Text(
             text = TwLocale.strings.addSuccessDescription,
-            color = MdtTheme.color.onSurfacePrimary,
-            style = MdtTheme.typo.body1,
+            color = MdtTheme.color.onSurface,
+            style = MdtTheme.typo.regular.base,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = 16.dp),
         )

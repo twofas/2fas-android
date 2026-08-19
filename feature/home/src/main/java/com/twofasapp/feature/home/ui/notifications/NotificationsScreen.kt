@@ -59,7 +59,7 @@ private fun ScreenContent(
     val context = LocalContext.current
 
     Scaffold(
-        topBar = { TopAppBar(titleText = TwLocale.strings.notificationsTitle) },
+        topBar = { TopAppBar(title = TwLocale.strings.notificationsTitle) },
     ) { padding ->
 
         LazyColumn(Modifier.padding(padding)) {
@@ -134,8 +134,8 @@ private fun Notification(
             Text(
                 text = notification.message,
                 modifier = Modifier.fillMaxWidth(),
-                color = MdtTheme.color.onSurfacePrimary,
-                style = MdtTheme.typo.body3,
+                color = MdtTheme.color.onSurface,
+                style = MdtTheme.typo.regular.sm,
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -143,8 +143,8 @@ private fun Notification(
             Text(
                 text = TwLocale.formatDuration(notification.createdAt),
                 modifier = Modifier.fillMaxWidth(),
-                color = MdtTheme.color.onSurfaceSecondary,
-                style = MdtTheme.typo.body4,
+                color = MdtTheme.color.onSurfaceVariant,
+                style = MdtTheme.typo.regular.xs,
             )
         }
 

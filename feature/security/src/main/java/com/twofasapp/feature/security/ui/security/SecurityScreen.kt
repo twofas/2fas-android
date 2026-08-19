@@ -54,7 +54,7 @@ internal fun SecurityScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(titleText = stringResource(id = R.string.settings__security))
+            TopAppBar(title = stringResource(id = R.string.settings__security))
         },
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
@@ -140,7 +140,7 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__how_many_attempts_footer),
                         modifier = Modifier.padding(start = 72.dp, end = 16.dp),
-                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = MdtTheme.color.onSurfaceSecondary),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = MdtTheme.color.onSurfaceVariant),
                     )
                 }
 
@@ -159,7 +159,7 @@ internal fun SecurityScreen(
                     Text(
                         text = stringResource(id = R.string.settings__block_for_footer),
                         modifier = Modifier.padding(start = 72.dp, end = 16.dp),
-                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = MdtTheme.color.onSurfaceSecondary),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp, color = MdtTheme.color.onSurfaceVariant),
                     )
                 }
 

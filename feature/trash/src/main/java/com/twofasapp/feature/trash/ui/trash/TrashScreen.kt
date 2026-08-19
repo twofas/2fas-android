@@ -89,7 +89,7 @@ private fun ScreenContent(
                     DropdownMenu(
                         expanded = dropdownVisible,
                         onDismissRequest = { dropdownVisible = false },
-                        anchor = { IconButton(painter = MdtIcons.More, onClick = { dropdownVisible = true }) },
+                        anchor = { IconButton(icon = MdtIcons.More, onClick = { dropdownVisible = true }) },
                     ) {
                         DropdownMenuItem(
                             text = TwLocale.strings.trashRestoreCta,

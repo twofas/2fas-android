@@ -39,14 +39,14 @@ internal fun ServiceCode(
                 ResponsiveText(
                     text = code.formatCode(),
                     style = textStyles.codeTextStyle,
-                    color = if (animateColor) color else MdtTheme.color.onSurfacePrimary,
+                    color = if (animateColor) color else MdtTheme.color.onSurface,
                     maxLines = 1,
                 )
 
                 AnimatedVisibility(visible = nextCodeVisible) {
                     Text(
                         text = nextCode.formatCode(),
-                        style = MdtTheme.typo.body2,
+                        style = MdtTheme.typo.medium.sm,
                         maxLines = 1,
                         overflow = TextOverflow.Visible,
                     )
@@ -61,14 +61,14 @@ internal fun ServiceCode(
                 ResponsiveText(
                     text = code.formatCode(),
                     style = textStyles.codeTextStyle,
-                    color = if (animateColor) color else MdtTheme.color.onSurfacePrimary,
+                    color = if (animateColor) color else MdtTheme.color.onSurface,
                     maxLines = 1,
                 )
 
                 AnimatedVisibility(visible = nextCodeVisible) {
                     Text(
                         text = nextCode.formatCode(),
-                        style = MdtTheme.typo.body2,
+                        style = MdtTheme.typo.medium.sm,
                         maxLines = 1,
                         overflow = TextOverflow.Visible,
                         modifier = Modifier.padding(bottom = 2.dp, start = 8.dp),

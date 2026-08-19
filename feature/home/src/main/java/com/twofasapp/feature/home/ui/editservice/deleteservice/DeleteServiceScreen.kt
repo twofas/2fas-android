@@ -51,7 +51,7 @@ internal fun DeleteServiceScreen(
     }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = "") },
+        topBar = { TopAppBar(title = "") },
     ) { padding ->
         Column(
             modifier = Modifier
@@ -80,7 +80,7 @@ internal fun DeleteServiceScreen(
                     text = stringResource(id = R.string.delete_service_title),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.titleMedium.copy(fontSize = 22.sp),
-                    color = MdtTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurface,
                 )
 
                 Text(
@@ -88,14 +88,14 @@ internal fun DeleteServiceScreen(
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(vertical = 16.dp),
                     style = MaterialTheme.typography.titleSmall.copy(fontSize = 18.sp),
-                    color = MdtTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurface,
                 )
 
                 Text(
                     text = stringResource(id = R.string.delete_service_msg, service.name),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MdtTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurface,
                 )
             }
 

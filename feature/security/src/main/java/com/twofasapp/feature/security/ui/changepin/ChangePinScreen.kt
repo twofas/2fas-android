@@ -37,7 +37,7 @@ internal fun ChangePinScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(titleText = stringResource(id = R.string.security__change_pin))
+            TopAppBar(title = stringResource(id = R.string.security__change_pin))
         },
     ) { padding ->
         Box(

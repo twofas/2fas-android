@@ -69,19 +69,19 @@ internal fun ServicesAppBar(
         exit = fadeOut(),
     ) {
         TopAppBar(
-            titleText = stringResource(id = R.string.tokens__manage_list),
+            title = stringResource(id = R.string.tokens__manage_list),
             onBackClick = onEditModeChange,
             scrollBehavior = scrollBehavior,
             actions = {
                 IconButton(
-                    painter = MdtIcons.Sort,
-                    tint = MdtTheme.color.primary,
+                    icon = MdtIcons.Sort,
+                    iconTint = MdtTheme.color.primary,
                     onClick = onSortClick,
                 )
 
                 IconButton(
-                    painter = MdtIcons.AddGroup,
-                    tint = MdtTheme.color.primary,
+                    icon = MdtIcons.AddGroup,
+                    iconTint = MdtTheme.color.primary,
                     onClick = onAddGroupClick,
                 )
             },
@@ -94,7 +94,7 @@ internal fun ServicesAppBar(
         exit = fadeOut(),
     ) {
         TopAppBar(
-            title = {
+            content = {
                 SearchBar(
                     modifier = Modifier
                         .padding(end = 8.dp)
@@ -112,8 +112,8 @@ internal fun ServicesAppBar(
             actions = {
                 Box {
                     IconButton(
-                        painter = MdtIcons.Notification,
-                        tint = MdtTheme.color.iconTint,
+                        icon = MdtIcons.Notification,
+                        iconTint = MdtTheme.color.iconTint,
                         onClick = onNotificationsClick,
                     )
 
@@ -168,18 +168,18 @@ private fun SearchBar(
             placeholder = {
                 Text(
                     text = TwLocale.strings.commonSearch,
-                    style = MdtTheme.typo.body1.copy(fontSize = 18.sp),
+                    style = MdtTheme.typo.regular.base.copy(fontSize = 18.sp),
                 )
             },
-            textStyle = MdtTheme.typo.body1.copy(fontSize = 18.sp),
+            textStyle = MdtTheme.typo.regular.base.copy(fontSize = 18.sp),
             colors = TextFieldDefaults.colors(
                 disabledTextColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
-                focusedTextColor = MdtTheme.color.onSurfacePrimary,
-                focusedPlaceholderColor = MdtTheme.color.onSurfaceSecondary,
-                unfocusedPlaceholderColor = MdtTheme.color.onSurfaceSecondary,
+                focusedTextColor = MdtTheme.color.onSurface,
+                focusedPlaceholderColor = MdtTheme.color.onSurfaceVariant,
+                unfocusedPlaceholderColor = MdtTheme.color.onSurfaceVariant,
                 unfocusedContainerColor = MdtTheme.color.surface,
                 focusedContainerColor = MdtTheme.color.surface,
                 disabledContainerColor = MdtTheme.color.surface,
@@ -203,7 +203,7 @@ private fun SearchBar(
 
         AnimatedVisibility(visible = focused || query.isNotEmpty()) {
             IconButton(
-                painter = MdtIcons.Close,
+                icon = MdtIcons.Close,
                 onClick = {
                     if (query.isNotEmpty()) {
                         onSearchQueryChange("")
@@ -218,7 +218,7 @@ private fun SearchBar(
             DropdownMenu(
                 expanded = showDropdown,
                 onDismissRequest = { showDropdown = false },
-                anchor = { IconButton(painter = MdtIcons.More, onClick = { showDropdown = true }) },
+                anchor = { IconButton(icon = MdtIcons.More, onClick = { showDropdown = true }) },
             ) {
                 DropdownMenuItem(
                     text = TwLocale.strings.servicesManageList,

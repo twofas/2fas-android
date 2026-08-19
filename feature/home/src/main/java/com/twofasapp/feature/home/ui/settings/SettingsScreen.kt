@@ -54,7 +54,7 @@ private fun SettingsScreen(
 
     Scaffold(
         bottomBar = { BottomBar(1, bottomBarListener) },
-        topBar = { TopAppBar(titleText = TwLocale.strings.settingsSettings, showBackButton = false) },
+        topBar = { TopAppBar(title = TwLocale.strings.settingsSettings, showBackButton = false) },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
@@ -157,7 +157,7 @@ private fun SettingsScreen(
                     Icon(
                         painter = painterResource(id = com.twofasapp.core.design.R.drawable.ic_github),
                         contentDescription = null,
-                        tint = MdtTheme.color.onSurfacePrimary,
+                        tint = MdtTheme.color.onSurface,
                         modifier = Modifier
                             .size(52.dp)
                             .clip(CircleShape)

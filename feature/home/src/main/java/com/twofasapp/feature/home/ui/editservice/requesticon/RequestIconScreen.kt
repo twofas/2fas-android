@@ -54,7 +54,7 @@ internal fun RequestIconScreen() {
     val uriHandler = LocalUriHandler.current
 
     Scaffold(
-        topBar = { TopAppBar(titleText = stringResource(id = R.string.customization_request_icon)) },
+        topBar = { TopAppBar(title = stringResource(id = R.string.customization_request_icon)) },
     ) { padding ->
 
         Column(
@@ -75,7 +75,7 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_social_title),
                 style = MaterialTheme.typography.titleMedium,
-                color = MdtTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurface,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -108,7 +108,7 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_social_description),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MdtTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurface,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -125,7 +125,7 @@ internal fun RequestIconScreen() {
                 Text(
                     text = stringResource(id = R.string.tokens__request_icon_middle),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MdtTheme.color.onSurfaceSecondary,
+                    color = MdtTheme.color.onSurfaceVariant,
                     modifier = Modifier
                         .align(Center)
                         .background(color = MdtTheme.color.background)
@@ -145,7 +145,7 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_title),
                 style = MaterialTheme.typography.titleMedium,
-                color = MdtTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurface,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -155,7 +155,7 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_description),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MdtTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurface,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -174,7 +174,7 @@ internal fun RequestIconScreen() {
                     Text(
                         text = shareText,
                         style = MaterialTheme.typography.bodySmall,
-                        color = MdtTheme.color.onSurfacePrimary,
+                        color = MdtTheme.color.onSurface,
                         modifier = Modifier
                             .weight(1f)
                             .padding(12.dp),
@@ -207,7 +207,7 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_footnote),
                 style = MaterialTheme.typography.bodySmall,
-                color = MdtTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurface,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()

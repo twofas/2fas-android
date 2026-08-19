@@ -13,7 +13,7 @@ import com.twofasapp.core.design.MdtTheme
 fun SettingsHeader(title: String) {
     Text(
         text = title,
-        style = MdtTheme.typo.body2,
+        style = MdtTheme.typo.medium.sm,
         color = MdtTheme.color.primary,
         modifier = Modifier
             .fillMaxWidth()

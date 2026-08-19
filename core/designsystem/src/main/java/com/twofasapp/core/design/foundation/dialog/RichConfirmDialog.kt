@@ -59,8 +59,8 @@ fun RichConfirmDialog(
                 Text(
                     text = title,
                     textAlign = TextAlign.Center,
-                    color = MdtTheme.color.onSurfacePrimary,
-                    style = MdtTheme.typo.title,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.regular.xl,
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -70,8 +70,8 @@ fun RichConfirmDialog(
                 Text(
                     text = body,
                     textAlign = TextAlign.Center,
-                    color = MdtTheme.color.onSurfacePrimary,
-                    style = MdtTheme.typo.body3,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.regular.sm,
                 )
             }
 

@@ -20,6 +20,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.core.design.foundation.button.TextButton
 import com.twofasapp.core.design.foundation.dialog.InfoDialog
 import com.twofasapp.core.design.foundation.dialog.InputDialog
+import com.twofasapp.core.design.foundation.dialog.InputValidation
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
@@ -69,7 +70,7 @@ private fun ScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                titleText = strings.scanQr,
+                title = strings.scanQr,
                 actions = {
                     TextButton(
                         text = strings.browserPairManuallyCta,
@@ -101,16 +102,15 @@ private fun ScreenContent(
     if (showManualDialog) {
         InputDialog(
             onDismissRequest = { showManualDialog = false },
+            label = strings.browserPairManuallyHint,
             positive = strings.commonOk,
             negative = strings.commonCancel,
-            hint = strings.browserPairManuallyHint,
+            validate = { if (it.isNotBlank()) InputValidation.Valid else InputValidation.Invalid(null) },
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.None,
                 keyboardType = KeyboardType.Text,
             ),
-            positiveEnabled = { it.isNotBlank() },
-            onPositiveClick = { onSuccess(it.trim().lowercase()) },
-            minLength = 1,
+            onPositive = { onSuccess(it.trim().lowercase()) },
         )
     }
 

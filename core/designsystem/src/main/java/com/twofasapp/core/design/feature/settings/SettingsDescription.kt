@@ -14,8 +14,8 @@ import com.twofasapp.locale.TwLocale
 fun SettingsDescription(text: String) {
     Text(
         text = text,
-        style = MdtTheme.typo.body3,
-        color = MdtTheme.color.onSurfaceSecondary,
+        style = MdtTheme.typo.regular.sm,
+        color = MdtTheme.color.onSurfaceVariant,
         modifier = Modifier
             .fillMaxWidth()
             .padding(

@@ -34,6 +34,7 @@ import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.TextButton
 import com.twofasapp.core.design.ktx.openSafely
+import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.feature.startup.R
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
@@ -132,9 +133,9 @@ internal fun ScreenContent(
                 Text(
                     text = TwLocale.strings.startupTermsLabel,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MdtTheme.color.onSurfaceSecondary,
+                    color = MdtTheme.color.onSurfaceVariant,
                     modifier = Modifier
-                        .clip(MdtTheme.shape.roundedDefault)
+                        .clip(RoundedShape12)
                         .clickable { uriHandler.openSafely(TwLocale.links.terms, context) }
                         .padding(4.dp),
                 )
@@ -213,7 +214,7 @@ private fun Step(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     textAlign = TextAlign.Center,
-                    color = MdtTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurface,
                 )
             }
 
@@ -227,7 +228,7 @@ private fun Step(
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp),
                 textAlign = TextAlign.Center,
-                color = MdtTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurface,
             )
 
             if (showBackupSkip) {
@@ -236,7 +237,6 @@ private fun Step(
                 TextButton(
                     text = TwLocale.strings.startupBackupCloseCta,
                     onClick = openHome,
-                    textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 16.dp),
                 )
             }

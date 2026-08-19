@@ -86,8 +86,8 @@ internal fun AddServiceScanScreen(
         ) {
             Text(
                 text = TwLocale.strings.addTitle,
-                style = MdtTheme.typo.title,
-                color = MdtTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.regular.xl,
+                color = MdtTheme.color.onSurface,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
@@ -97,8 +97,8 @@ internal fun AddServiceScanScreen(
 
         Text(
             text = TwLocale.strings.addDescription,
-            color = MdtTheme.color.onSurfacePrimary,
-            style = MdtTheme.typo.body1,
+            color = MdtTheme.color.onSurface,
+            style = MdtTheme.typo.regular.base,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = 16.dp),
         )
@@ -130,7 +130,7 @@ internal fun AddServiceScanScreen(
                     Text(
                         text = TwLocale.strings.permissionCameraBody,
                         color = Color.White.copy(alpha = 0.4f),
-                        style = MdtTheme.typo.body3,
+                        style = MdtTheme.typo.regular.sm,
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center,
                     )

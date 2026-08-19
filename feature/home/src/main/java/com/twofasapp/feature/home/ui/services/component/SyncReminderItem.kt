@@ -12,13 +12,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -65,16 +64,16 @@ internal fun SyncReminderItem(
             Column {
                 Text(
                     text = TwLocale.strings.backupReminder,
-                    style = MdtTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
-                    color = MdtTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
+                    color = MdtTheme.color.onSurface,
                 )
 
                 Spacer(Modifier.height(6.dp))
 
                 Text(
                     text = TwLocale.strings.backupReminderBody,
-                    style = MdtTheme.typo.body3,
-                    color = MdtTheme.color.onSurfaceSecondary,
+                    style = MdtTheme.typo.regular.sm,
+                    color = MdtTheme.color.onSurfaceVariant,
                 )
             }
         }
@@ -95,7 +94,6 @@ internal fun SyncReminderItem(
                 text = TwLocale.strings.backupReminderCta,
                 height = 36.dp,
                 leadingIcon = MdtIcons.CloudUpload,
-                leadingIconTint = Color.White,
                 onClick = onOpenBackupClick,
             )
         }

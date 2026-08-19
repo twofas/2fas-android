@@ -76,7 +76,7 @@ fun SimpleItem(
 
             Text(
                 text = title,
-                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 17.sp, color = MdtTheme.color.onSurfacePrimary),
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 17.sp, color = MdtTheme.color.onSurface),
                 modifier = Modifier.weight(1f),
             )
         }
@@ -84,7 +84,7 @@ fun SimpleItem(
         if (subtitle != null) {
             Text(
                 text = subtitle,
-                style = MaterialTheme.typography.bodySmall.copy(fontSize = 15.sp, color = MdtTheme.color.onSurfaceSecondary),
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 15.sp, color = MdtTheme.color.onSurfaceVariant),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 48.dp, top = 4.dp),

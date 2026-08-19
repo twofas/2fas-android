@@ -2,7 +2,7 @@ package com.twofasapp.feature.home.ui.editservice
 
 import com.twofasapp.core.design.foundation.lazy.ListItem
 
-sealed class EditServiceListItem(override val key: Any, override val type: Any) : ListItem {
+sealed class EditServiceListItem(key: Any, type: Any) : ListItem(key = key, type = type) {
     data object HeaderInfo : EditServiceListItem("HeaderInfo", "Header")
     data object HeaderPersonalization : EditServiceListItem("HeaderPersonalization", "Header")
     data object HeaderOther : EditServiceListItem("HeaderOther", "Header")

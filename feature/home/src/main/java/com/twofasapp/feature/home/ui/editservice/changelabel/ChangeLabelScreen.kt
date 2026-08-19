@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.asColor
-import com.twofasapp.core.design.foundation.textfield.OutlinedTextField
+import com.twofasapp.core.design.foundation.textfield.TextField
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.LocalBackDispatcher
 import com.twofasapp.core.design.ktx.dpToSp
@@ -56,7 +56,7 @@ internal fun ChangeLabelScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(titleText = stringResource(id = R.string.customization_edit_label), actions = {
+            TopAppBar(title = stringResource(id = R.string.customization_edit_label), actions = {
                 TextButton(onClick = { backDispatcher.onBackPressed() }) {
                     Text(text = stringResource(id = R.string.commons__done))
                 }
@@ -84,7 +84,7 @@ internal fun ChangeLabelScreen(
                         text = labelText.value,
                         color = MaterialTheme.colorScheme.onSurface,
                         textAlign = TextAlign.Center,
-                        style = MdtTheme.typo.body3.copy(
+                        style = MdtTheme.typo.regular.sm.copy(
                             fontWeight = FontWeight.Bold,
                             fontSize = dpToSp(dp = 22.dp),
                             lineHeight = dpToSp(dp = 32.dp),
@@ -95,13 +95,14 @@ internal fun ChangeLabelScreen(
             }
 
             Box(modifier = Modifier.padding(24.dp)) {
-                OutlinedTextField(
+                TextField(
                     value = labelText.value,
                     labelText = stringResource(id = R.string.tokens__label_characters_title),
-                    maxLength = 2,
                     onValueChange = {
-                        labelText.value = it.uppercase()
-                        viewModel.updateLabel(labelText.value.uppercase(), labelTint.value)
+                        if (it.length <= 2) {
+                            labelText.value = it.uppercase()
+                            viewModel.updateLabel(labelText.value.uppercase(), labelTint.value)
+                        }
                     },
                     keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Characters),
                 )
@@ -149,7 +150,7 @@ internal fun ChangeLabelScreen(
                                     Service.Tint.Brown -> R.string.color__brown
                                 },
                             ),
-                            style = MaterialTheme.typography.bodySmall.copy(color = MdtTheme.color.onSurfacePrimary),
+                            style = MaterialTheme.typography.bodySmall.copy(color = MdtTheme.color.onSurface),
                             modifier = Modifier
                                 .padding(horizontal = 8.dp)
                                 .align(Alignment.CenterHorizontally)

@@ -30,6 +30,7 @@ import com.twofasapp.core.design.foundation.button.TextButton
 import com.twofasapp.core.design.foundation.checked.Switch
 import com.twofasapp.core.design.foundation.image.Image
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.feature.trash.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
@@ -59,7 +60,7 @@ private fun ScreenContent(
 ) {
     var checked by remember { mutableStateOf(false) }
 
-    Scaffold(topBar = { TopAppBar(titleText = "") }) { padding ->
+    Scaffold(topBar = { TopAppBar(title = "") }) { padding ->
         Column(
             modifier = Modifier
                 .padding(padding)
@@ -75,21 +76,21 @@ private fun ScreenContent(
             ) {
                 Text(
                     text = uiState.serviceName,
-                    color = MdtTheme.color.onSurfacePrimary,
-                    style = MdtTheme.typo.h3,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.regular.xl2,
                     textAlign = TextAlign.Center,
                 )
 
                 Text(
                     text = TwLocale.strings.disposeBody1,
-                    color = MdtTheme.color.onSurfacePrimary,
-                    style = MdtTheme.typo.body3,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.regular.sm,
                     textAlign = TextAlign.Center,
                 )
 
                 Image(
                     painter = painterResource(id = R.drawable.img_dispose),
-                    modifier = Modifier.height(MdtTheme.dimen.commonContentImageHeight),
+                    modifier = Modifier.height(120.dp),
                 )
 
                 Text(
@@ -97,8 +98,8 @@ private fun ScreenContent(
                         uiState.serviceName,
                         uiState.serviceName,
                     ),
-                    color = MdtTheme.color.onSurfacePrimary,
-                    style = MdtTheme.typo.body3,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.regular.sm,
                     textAlign = TextAlign.Center,
                 )
             }
@@ -106,7 +107,7 @@ private fun ScreenContent(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(MdtTheme.shape.roundedDefault)
+                    .clip(RoundedShape12)
                     .background(MdtTheme.color.surface)
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -121,8 +122,8 @@ private fun ScreenContent(
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(
                         text = TwLocale.strings.disposeConfirm,
-                        color = MdtTheme.color.onSurfacePrimary,
-                        style = MdtTheme.typo.body1,
+                        color = MdtTheme.color.onSurface,
+                        style = MdtTheme.typo.regular.base,
                         textAlign = TextAlign.Center,
                     )
                 }

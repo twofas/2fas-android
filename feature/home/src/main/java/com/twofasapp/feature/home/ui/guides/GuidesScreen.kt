@@ -60,7 +60,7 @@ private fun GuidesScreenContent(
     val guides by remember { mutableStateOf(Guide.entries) }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = TwLocale.strings.guidesSelectTitle) },
+        topBar = { TopAppBar(title = TwLocale.strings.guidesSelectTitle) },
     ) { padding ->
 
         Column(
@@ -76,9 +76,9 @@ private fun GuidesScreenContent(
             ) {
                 Text(
                     text = TwLocale.strings.guidesSelectDescription,
-                    style = MdtTheme.typo.body1,
+                    style = MdtTheme.typo.regular.base,
                     modifier = Modifier.padding(16.dp),
-                    color = MdtTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurface,
                 )
 
                 guides.chunked(2).forEach { chunk ->
@@ -111,8 +111,8 @@ private fun GuidesScreenContent(
             ) {
                 Text(
                     text = TwLocale.strings.guidesSelectProvideGuide,
-                    style = MdtTheme.typo.body3,
-                    color = MdtTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.regular.sm,
+                    color = MdtTheme.color.onSurface,
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -121,12 +121,12 @@ private fun GuidesScreenContent(
                     onClick = { uriHandler.openSafely("https://2fas.com/y2g") },
                     colors = ButtonDefaults.textButtonColors(
                         contentColor = MdtTheme.color.primary,
-                        disabledContentColor = MdtTheme.color.onSurfaceSecondary,
+                        disabledContentColor = MdtTheme.color.onSurfaceVariant,
                     ),
                 ) {
                     Text(
                         text = TwLocale.strings.guidesSelectProvideGuideCta,
-                        style = MdtTheme.typo.body2,
+                        style = MdtTheme.typo.medium.sm,
                     )
 
                     Spacer(modifier = Modifier.width(4.dp))
@@ -185,8 +185,8 @@ private fun GuideItem(
                     Guide.PayPal -> "PayPal"
                     Guide.Reddit -> "Reddit"
                 },
-                style = MdtTheme.typo.body3,
-                color = MdtTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.regular.sm,
+                color = MdtTheme.color.onSurface,
                 maxLines = 1,
             )
         }

@@ -115,7 +115,7 @@ private fun ScreenContent(
             item {
                 Text(
                     text = strings.browserRequestInfo.format(uiState.browserName, uiState.domain),
-                    style = MdtTheme.typo.body3,
+                    style = MdtTheme.typo.regular.sm,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
@@ -133,8 +133,8 @@ private fun ScreenContent(
                 ) {
                     Text(
                         text = strings.browserRequestSaveChoice,
-                        color = MdtTheme.color.onSurfacePrimary,
-                        style = MdtTheme.typo.body1,
+                        color = MdtTheme.color.onSurface,
+                        style = MdtTheme.typo.regular.base,
                         modifier = Modifier.weight(1f),
                     )
                     Spacer(modifier = Modifier.width(8.dp))
@@ -182,8 +182,8 @@ private fun ScreenContent(
                         Spacer(modifier = Modifier.height(24.dp))
                         Text(
                             text = strings.browserRequestEmpty,
-                            color = MdtTheme.color.onSurfaceSecondary,
-                            style = MdtTheme.typo.body2,
+                            color = MdtTheme.color.onSurfaceVariant,
+                            style = MdtTheme.typo.medium.sm,
                             modifier = Modifier,
                         )
                     }
@@ -201,8 +201,8 @@ private fun SectionItem(title: String) {
             .fillMaxWidth()
             .background(MdtTheme.color.surfaceVariant)
             .padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 12.dp),
-        color = MdtTheme.color.onSurfaceSecondary,
-        style = MdtTheme.typo.body4,
+        color = MdtTheme.color.onSurfaceVariant,
+        style = MdtTheme.typo.regular.xs,
     )
 }
 

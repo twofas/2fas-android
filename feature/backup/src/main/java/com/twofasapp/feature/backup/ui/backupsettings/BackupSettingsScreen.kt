@@ -86,7 +86,7 @@ private fun BackupSettingsScreenContent(
     }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = strings.backupSettingsTitle) },
+        topBar = { TopAppBar(title = strings.backupSettingsTitle) },
     ) { padding ->
         LazyColumn(
             modifier = Modifier.padding(padding),

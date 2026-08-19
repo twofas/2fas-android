@@ -42,6 +42,7 @@ import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.core.design.ktx.strings
 import com.twofasapp.core.design.ktx.toastLong
+import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.locale.R
 import org.koin.androidx.compose.koinViewModel
@@ -134,7 +135,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = strings.backupTitle) },
+        topBar = { TopAppBar(title = strings.backupTitle) },
     ) { padding ->
         LazyColumn(
             modifier = Modifier.padding(padding),
@@ -172,13 +173,13 @@ private fun ScreenContent(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(start = 68.dp, end = 16.dp, bottom = 16.dp, top = 8.dp)
-                            .border(1.dp, MdtTheme.color.primary, MdtTheme.shape.roundedDefault)
+                            .border(1.dp, MdtTheme.color.primary, RoundedShape12)
                             .padding(16.dp),
 
                     ) {
                         Text(
                             text = stringResource(id = formatErrorMsg(uiState.error ?: CloudSyncError.Unknown)),
-                            style = MdtTheme.typo.body3,
+                            style = MdtTheme.typo.regular.sm,
                             color = MdtTheme.color.primary,
                         )
 
@@ -187,7 +188,7 @@ private fun ScreenContent(
 
                             Text(
                                 text = "Error code: ${uiState.error?.code}",
-                                style = MdtTheme.typo.caption,
+                                style = MdtTheme.typo.regular.xs,
                                 color = MdtTheme.color.primary,
                             )
                         }

@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.theme.RoundedShape12
 
 @OptIn(ExperimentalMaterialNavigationApi::class, ExperimentalMaterialApi::class)
 @Composable
@@ -46,7 +47,7 @@ fun ModalBottomSheet(
         sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
         sheetElevation = 2.dp,
         sheetBackgroundColor = MdtTheme.color.surface,
-        sheetContentColor = MdtTheme.color.onSurfacePrimary,
+        sheetContentColor = MdtTheme.color.onSurface,
         scrimColor = ModalBottomSheetDefaults.scrimColor,
         content = content,
     )
@@ -84,7 +85,7 @@ fun SlideHandle(
         modifier = modifier
             .width(44.dp)
             .height(4.dp)
-            .clip(MdtTheme.shape.roundedDefault)
+            .clip(RoundedShape12)
             .background(MdtTheme.color.surfaceVariant),
     )
 }

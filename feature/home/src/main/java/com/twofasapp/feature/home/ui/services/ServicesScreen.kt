@@ -48,9 +48,11 @@ import com.twofasapp.core.design.feature.items.DsService
 import com.twofasapp.core.design.feature.items.ServiceStyle
 import com.twofasapp.core.design.feature.items.ServicesGroup
 import com.twofasapp.core.design.feature.items.asState
-import com.twofasapp.core.design.foundation.button.OutlinedButton
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.dialog.InputDialog
+import com.twofasapp.core.design.foundation.dialog.InputValidation
 import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
 import com.twofasapp.core.design.foundation.lazy.isScrollingUp
 import com.twofasapp.core.design.foundation.lazy.listItem
@@ -361,8 +363,9 @@ private fun ServicesScreen(
                         body = TwLocale.strings.servicesEmptyBody,
                         image = painterResource(id = R.drawable.img_services_empty),
                         additionalContent = {
-                            OutlinedButton(
+                            Button(
                                 text = TwLocale.strings.servicesEmptyImportCta,
+                                style = ButtonStyle.Outlined,
                                 onClick = onExternalImportClick,
                             )
                         },
@@ -515,38 +518,34 @@ private fun ServicesScreen(
 
     if (showAddGroupDialog) {
         InputDialog(
-            title = TwLocale.strings.groupsAdd,
             onDismissRequest = { showAddGroupDialog = false },
+            title = TwLocale.strings.groupsAdd,
+            label = TwLocale.strings.groupsName,
             positive = TwLocale.strings.commonAdd,
             negative = TwLocale.strings.commonCancel,
-            hint = TwLocale.strings.groupsName,
-            showCounter = true,
-            minLength = 1,
-            maxLength = 32,
+            validate = { if (it.trim().length in 1..32) InputValidation.Valid else InputValidation.Invalid(null) },
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Sentences,
                 keyboardType = KeyboardType.Text,
             ),
-            onPositiveClick = { onAddGroup(it) },
+            onPositive = { onAddGroup(it.trim()) },
         )
     }
 
     if (showEditGroupDialog) {
         InputDialog(
-            title = TwLocale.strings.groupsEdit,
             onDismissRequest = { showEditGroupDialog = false },
+            title = TwLocale.strings.groupsEdit,
+            label = TwLocale.strings.groupsName,
+            prefill = clickedGroup?.name.orEmpty(),
             positive = TwLocale.strings.commonSave,
             negative = TwLocale.strings.commonCancel,
-            hint = TwLocale.strings.groupsName,
-            prefill = clickedGroup?.name.orEmpty(),
-            showCounter = true,
-            minLength = 1,
-            maxLength = 32,
+            validate = { if (it.trim().length in 1..32) InputValidation.Valid else InputValidation.Invalid(null) },
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Sentences,
                 keyboardType = KeyboardType.Text,
             ),
-            onPositiveClick = { onEditGroup(clickedGroup?.id.orEmpty(), it) },
+            onPositive = { onEditGroup(clickedGroup?.id.orEmpty(), it.trim()) },
         )
     }
 

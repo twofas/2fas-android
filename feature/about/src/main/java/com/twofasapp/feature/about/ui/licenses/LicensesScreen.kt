@@ -22,7 +22,7 @@ private fun ScreenContent() {
     val context = LocalContext.current
 
     Scaffold(
-        topBar = { TopAppBar(titleText = TwLocale.strings.aboutLicenses) },
+        topBar = { TopAppBar(title = TwLocale.strings.aboutLicenses) },
     ) { padding ->
         AndroidView(factory = {
             WebView(context).apply {

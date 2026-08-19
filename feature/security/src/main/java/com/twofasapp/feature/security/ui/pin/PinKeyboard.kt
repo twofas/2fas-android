@@ -89,7 +89,7 @@ internal fun PinKeyboard(
                     Icon(
                         MdtIcons.Fingerprint,
                         null,
-                        tint = MdtTheme.color.onSurfacePrimary,
+                        tint = MdtTheme.color.onSurface,
                         modifier = Modifier
                             .align(Alignment.Center)
                             .alpha(alpha),
@@ -101,7 +101,7 @@ internal fun PinKeyboard(
                         modifier = Modifier
                             .align(Alignment.Center)
                             .alpha(alpha),
-                        color = MdtTheme.color.onSurfacePrimary,
+                        color = MdtTheme.color.onSurface,
                         fontWeight = FontWeight.Light,
                     )
                 }

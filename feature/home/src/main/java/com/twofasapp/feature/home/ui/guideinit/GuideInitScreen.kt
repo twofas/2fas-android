@@ -59,7 +59,7 @@ internal fun GuideInitScreen(
     }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = TwLocale.strings.guideTitle.format(guideJson?.serviceName)) },
+        topBar = { TopAppBar(title = TwLocale.strings.guideTitle.format(guideJson?.serviceName)) },
     ) { padding ->
 
         guideJson?.let { guideJson ->
@@ -100,8 +100,8 @@ private fun Content(
 
         Text(
             text = guideJson.serviceName,
-            style = MdtTheme.typo.h3,
-            color = MdtTheme.color.onSurfacePrimary,
+            style = MdtTheme.typo.regular.xl2,
+            color = MdtTheme.color.onSurface,
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -109,7 +109,7 @@ private fun Content(
         Text(
             text = guideJson.flow.header,
             style = MaterialTheme.typography.bodyLarge,
-            color = MdtTheme.color.onSurfacePrimary,
+            color = MdtTheme.color.onSurface,
             modifier = Modifier.padding(horizontal = 24.dp),
             textAlign = TextAlign.Center,
         )
@@ -121,7 +121,7 @@ private fun Content(
         Text(
             text = guideJson.flow.menu.title,
             style = MaterialTheme.typography.bodyMedium,
-            color = MdtTheme.color.onSurfacePrimary.copy(alpha = 0.7f),
+            color = MdtTheme.color.onSurface.copy(alpha = 0.7f),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp),
@@ -132,7 +132,7 @@ private fun Content(
             Text(
                 text = menuItem.name,
                 style = MaterialTheme.typography.bodyLarge,
-                color = MdtTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurface,
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {

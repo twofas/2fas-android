@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.twofasapp.base.AuthTracker
+import com.twofasapp.core.design.AppTheme
 import com.twofasapp.core.design.AppThemeState
-import com.twofasapp.core.design.MainAppTheme
 import com.twofasapp.core.design.ktx.makeWindowSecure
 import com.twofasapp.data.session.SettingsRepository
 import kotlinx.coroutines.launch
@@ -30,7 +30,7 @@ class LockActivity : AppCompatActivity() {
         }
 
         setContent {
-            MainAppTheme {
+            AppTheme {
                 LockScreen {
                     authTracker.onAuthenticated()
                     finishWithSuccess()

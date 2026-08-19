@@ -9,6 +9,11 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+fun Modifier.thenIfTrue(
+    condition: Boolean,
+    modifier: Modifier,
+): Modifier = if (condition) this.then(modifier) else this
+
 fun Modifier.advancedShadow(
     color: Color = Color.Black,
     alpha: Float = 1f,

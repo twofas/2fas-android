@@ -36,6 +36,9 @@ internal fun ColorBadgeDialog(
 ) {
     BaseDialog(
         onDismissRequest = onDismiss,
+        // LazyColumn brings its own scrolling; BaseDialog must not wrap it in verticalScroll
+        // (nested scroll containers → infinite-height crash).
+        contentScrollable = false,
     ) {
         LazyColumn {
             items(Service.Tint.values().toList(), key = { it.name }) {
@@ -79,7 +82,7 @@ internal fun ColorBadgeDialog(
                                 Service.Tint.Brown -> com.twofasapp.locale.R.string.color__brown
                             },
                         ),
-                        style = MaterialTheme.typography.bodyLarge.copy(color = MdtTheme.color.onSurfacePrimary),
+                        style = MaterialTheme.typography.bodyLarge.copy(color = MdtTheme.color.onSurface),
                         modifier = Modifier
                             .align(CenterVertically)
                             .wrapContentWidth(),

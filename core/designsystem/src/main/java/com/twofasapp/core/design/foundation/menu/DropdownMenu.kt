@@ -53,7 +53,7 @@ fun DropdownMenuItem(
     text: String,
     onClick: () -> Unit,
     icon: Painter? = null,
-    contentColor: Color = MdtTheme.color.onSurfacePrimary,
+    contentColor: Color = MdtTheme.color.onSurface,
 ) {
     Row(
         Modifier

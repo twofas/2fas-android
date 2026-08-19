@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.ServiceImageType
 import com.twofasapp.core.design.ktx.assetAsBitmap
+import com.twofasapp.core.design.theme.RoundedShape12
 
 @Composable
 internal fun ServiceImage(
@@ -46,7 +48,7 @@ internal fun ServiceImage(
                 Box(
                     modifier = Modifier
                         .size(dimens.imageSize)
-                        .clip(MdtTheme.shape.circle)
+                        .clip(CircleShape)
                         .background(labelColor),
                     contentAlignment = Alignment.Center,
                 ) {
@@ -54,14 +56,14 @@ internal fun ServiceImage(
                         modifier = Modifier
                             .width(dimens.labelPillWidth)
                             .height(dimens.labelPillHeight)
-                            .clip(MdtTheme.shape.roundedDefault)
+                            .clip(RoundedShape12)
                             .background(MdtTheme.color.background),
                     )
 
                     Text(
                         text = labelText.orEmpty(),
                         style = textStyles.imageLabelTextStyle,
-                        color = MdtTheme.color.onSurfacePrimary,
+                        color = MdtTheme.color.onSurface,
                         textAlign = TextAlign.Center,
                     )
                 }

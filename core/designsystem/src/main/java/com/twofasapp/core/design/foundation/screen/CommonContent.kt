@@ -48,7 +48,7 @@ fun CommonContent(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             if (image != null) {
-                Image(painter = image, contentDescription = null, Modifier.height(MdtTheme.dimen.commonContentImageHeight))
+                Image(painter = image, contentDescription = null, Modifier.height(120.dp))
                 Spacer(Modifier.height(24.dp))
             }
 
@@ -94,8 +94,8 @@ fun CommonContent(
 fun CommonContentTitle(text: String) {
     Text(
         text = text,
-        style = MdtTheme.typo.title,
-        color = MdtTheme.color.onSurfacePrimary,
+        style = MdtTheme.typo.regular.xl,
+        color = MdtTheme.color.onSurface,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .fillMaxWidth()
@@ -107,8 +107,8 @@ fun CommonContentTitle(text: String) {
 fun CommonContentDescription(text: String) {
     Text(
         text = text,
-        style = MdtTheme.typo.body1,
-        color = MdtTheme.color.onSurfacePrimary,
+        style = MdtTheme.typo.regular.base,
+        color = MdtTheme.color.onSurface,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .fillMaxWidth()

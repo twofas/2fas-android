@@ -21,7 +21,7 @@ fun RadioButton(
     enabled: Boolean = true,
     colors: RadioButtonColors = RadioButtonDefaults.colors(
         selectedColor = MdtTheme.color.primary,
-        unselectedColor = MdtTheme.color.onSurfaceSecondary,
+        unselectedColor = MdtTheme.color.onSurfaceVariant,
     ),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {

@@ -47,6 +47,7 @@ import com.twofasapp.core.design.feature.settings.SettingsHeader
 import com.twofasapp.core.design.feature.settings.SettingsLink
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.dialog.InputDialog
+import com.twofasapp.core.design.foundation.dialog.InputValidation
 import com.twofasapp.core.design.foundation.icon.Icon
 import com.twofasapp.core.design.foundation.permission.RequestPermission
 import com.twofasapp.core.design.foundation.screen.CommonContent
@@ -113,7 +114,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = strings.browserExtTitle) },
+        topBar = { TopAppBar(title = strings.browserExtTitle) },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     ) { padding ->
         if (uiState.loading) return@Scaffold
@@ -171,7 +172,7 @@ private fun ScreenContent(
                         HorizontalDivider(Modifier.padding(top = 24.dp, bottom = 24.dp))
                         Text(
                             text = strings.permissionPushBody,
-                            style = MdtTheme.typo.body3,
+                            style = MdtTheme.typo.regular.sm,
                             modifier = Modifier.padding(start = 72.dp, bottom = 8.dp, end = 16.dp),
                             color = MdtTheme.color.primary,
                         )
@@ -211,14 +212,13 @@ private fun ScreenContent(
     if (showEditDeviceNameDialog) {
         InputDialog(
             onDismissRequest = { showEditDeviceNameDialog = false },
+            label = strings.browserExtDeviceName,
             prefill = uiState.mobileDevice.name.orEmpty(),
-            hint = strings.browserExtDeviceName,
             positive = strings.commonOk,
             negative = strings.commonCancel,
-            minLength = 1,
-            maxLength = 100,
+            validate = { if (it.trim().length in 1..100) InputValidation.Valid else InputValidation.Invalid(null) },
             keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
-            onPositiveClick = { onUpdateDeviceName(it) },
+            onPositive = { onUpdateDeviceName(it.trim()) },
         )
     }
 }
@@ -245,7 +245,7 @@ private fun Empty(
                         append(TwLocale.strings.browserExtMore2)
                     }
                 },
-                style = MdtTheme.typo.body2,
+                style = MdtTheme.typo.medium.sm,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(horizontal = 16.dp)

@@ -24,7 +24,7 @@ internal fun ServiceName(
     Text(
         text = text,
         style = textStyles.nameTextStyle,
-        color = MdtTheme.color.onSurfacePrimary,
+        color = MdtTheme.color.onSurface,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,
         modifier = modifier.padding(bottom = 2.dp),
@@ -43,7 +43,7 @@ internal fun ServiceInfo(
         Text(
             text = text!!,
             style = textStyles.infoTextStyle,
-            color = MdtTheme.color.onSurfaceSecondary,
+            color = MdtTheme.color.onSurfaceVariant,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             modifier = modifier,

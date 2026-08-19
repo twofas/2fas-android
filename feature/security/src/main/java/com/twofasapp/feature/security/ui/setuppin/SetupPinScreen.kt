@@ -48,7 +48,7 @@ internal fun SetupPinScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(titleText = stringResource(id = R.string.security__create_pin))
+            TopAppBar(title = stringResource(id = R.string.security__create_pin))
         },
     ) { padding ->
         Box(

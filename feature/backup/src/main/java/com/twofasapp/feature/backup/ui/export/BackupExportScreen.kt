@@ -24,7 +24,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -106,7 +105,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = TwLocale.strings.backupExportFile) },
+        topBar = { TopAppBar(title = TwLocale.strings.backupExportFile) },
     ) { padding ->
         Column(
             modifier = Modifier
@@ -130,15 +129,15 @@ private fun ScreenContent(
                 Text(
                     text = TwLocale.strings.backupExportHeader,
                     textAlign = TextAlign.Center,
-                    color = MdtTheme.color.onSurfacePrimary,
-                    style = MdtTheme.typo.title,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.regular.xl,
                 )
 
                 Text(
                     text = TwLocale.strings.backupExportMsg,
                     textAlign = TextAlign.Center,
-                    color = MdtTheme.color.onSurfacePrimary,
-                    style = MdtTheme.typo.body3,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.regular.sm,
                 )
 
                 Row(
@@ -153,8 +152,8 @@ private fun ScreenContent(
 
                     Text(
                         text = TwLocale.strings.backupExportPassMsg,
-                        color = MdtTheme.color.onSurfacePrimary,
-                        style = MdtTheme.typo.body3,
+                        color = MdtTheme.color.onSurface,
+                        style = MdtTheme.typo.regular.sm,
                     )
                 }
             }
@@ -168,7 +167,6 @@ private fun ScreenContent(
                 Button(
                     text = TwLocale.strings.backupExportShareCta,
                     leadingIcon = MdtIcons.Share,
-                    leadingIconTint = Color.White,
                     modifier = Modifier.weight(1f),
                     onClick = {
                         exportMethod = ExportMethod.Share
@@ -183,7 +181,6 @@ private fun ScreenContent(
                 Button(
                     text = TwLocale.strings.backupExportCta,
                     leadingIcon = MdtIcons.Download,
-                    leadingIconTint = Color.White,
                     modifier = Modifier.weight(1f),
                     onClick = {
                         exportMethod = ExportMethod.Download

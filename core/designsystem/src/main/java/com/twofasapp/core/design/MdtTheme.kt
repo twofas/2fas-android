@@ -1,28 +1,21 @@
 package com.twofasapp.core.design
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.luminance
-import com.twofasapp.core.design.theme.ThemeColors
-import com.twofasapp.core.design.theme.ThemeDimens
-import com.twofasapp.core.design.theme.ThemeShapes
-import com.twofasapp.core.design.theme.ThemeTypo
+import com.twofasapp.core.design.theme.ColorTokens
+import com.twofasapp.core.design.theme.TypographyTokens
 
 object MdtTheme {
-    val color: ThemeColors
+    val color: ColorTokens
         @Composable
-        get() = LocalThemeColors.current
+        @ReadOnlyComposable
+        get() = LocalColorTokens.current
 
-    val typo: ThemeTypo
+    val typo: TypographyTokens
         @Composable
-        get() = ThemeTypo()
-
-    val shape: ThemeShapes
-        @Composable
-        get() = ThemeShapes()
-
-    val dimen: ThemeDimens
-        @Composable
-        get() = ThemeDimens()
+        @ReadOnlyComposable
+        get() = TypographyTokens(color)
 
     val isDark: Boolean
         @Composable

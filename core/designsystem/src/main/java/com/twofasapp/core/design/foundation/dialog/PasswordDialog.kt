@@ -15,10 +15,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
-import com.twofasapp.core.design.foundation.textfield.OutlinedTextFieldPassword
+import com.twofasapp.core.design.foundation.textfield.SecretField
+import com.twofasapp.core.design.foundation.textfield.SecretFieldTrailingIcon
+import com.twofasapp.core.design.foundation.textfield.TextField
+import com.twofasapp.core.design.theme.DialogPadding
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.android.awaitFrame
 
@@ -44,6 +50,8 @@ fun PasswordDialog(
 ) {
     var password by remember { mutableStateOf("") }
     var passwordConfirm by remember { mutableStateOf("") }
+    var passwordVisible by remember { mutableStateOf(false) }
+    var passwordConfirmVisible by remember { mutableStateOf(false) }
 
     val positiveEnabledState by remember {
         derivedStateOf {
@@ -72,7 +80,7 @@ fun PasswordDialog(
     ) {
         Spacer(modifier = Modifier.height(8.dp))
 
-        OutlinedTextFieldPassword(
+        TextField(
             value = password,
             onValueChange = { password = it },
             modifier = Modifier
@@ -80,24 +88,44 @@ fun PasswordDialog(
                 .focusRequester(focusRequester),
             labelText = TwLocale.strings.password,
             isError = error.isNullOrBlank().not(),
-            keyboardOptions = keyboardOptions,
+            keyboardOptions = keyboardOptions.copy(
+                keyboardType = KeyboardType.Password,
+                capitalization = KeyboardCapitalization.None,
+            ),
             maxLines = 1,
             enabled = enabled,
             supportingText = if (error.isNullOrBlank()) null else error,
+            visualTransformation = VisualTransformation.SecretField(passwordVisible),
+            trailingIcon = {
+                SecretFieldTrailingIcon(
+                    visible = passwordVisible,
+                    onToggle = { passwordVisible = passwordVisible.not() },
+                )
+            },
         )
 
         if (confirmRequired) {
             Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextFieldPassword(
+            TextField(
                 value = passwordConfirm,
                 onValueChange = { passwordConfirm = it },
                 modifier = Modifier
                     .padding(horizontal = DialogPadding),
                 labelText = TwLocale.strings.passwordConfirm,
                 isError = error.isNullOrBlank().not(),
-                keyboardOptions = keyboardOptions,
+                keyboardOptions = keyboardOptions.copy(
+                    keyboardType = KeyboardType.Password,
+                    capitalization = KeyboardCapitalization.None,
+                ),
                 maxLines = 1,
                 enabled = enabled,
+                visualTransformation = VisualTransformation.SecretField(passwordConfirmVisible),
+                trailingIcon = {
+                    SecretFieldTrailingIcon(
+                        visible = passwordConfirmVisible,
+                        onToggle = { passwordConfirmVisible = passwordConfirmVisible.not() },
+                    )
+                },
             )
         }
     }

@@ -25,7 +25,6 @@ import com.twofasapp.core.design.AppTheme
 import com.twofasapp.core.design.AppThemeState
 import com.twofasapp.core.design.LocalAppTheme
 import com.twofasapp.core.design.LocalDynamicColors
-import com.twofasapp.core.design.MainAppTheme
 import com.twofasapp.core.design.ktx.makeWindowSecure
 import com.twofasapp.core.design.ktx.toastLong
 import com.twofasapp.data.services.ServicesRepository
@@ -105,7 +104,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
                 },
                 LocalDynamicColors provides appSettings.dynamicColors,
             ) {
-                MainAppTheme {
+                AppTheme {
                     MainScreen()
                 }
             }

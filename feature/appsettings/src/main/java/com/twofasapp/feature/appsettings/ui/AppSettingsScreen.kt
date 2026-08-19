@@ -70,7 +70,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = TwLocale.strings.settingsAppearance) },
+        topBar = { TopAppBar(title = TwLocale.strings.settingsAppearance) },
     ) { padding ->
 
         LazyColumn(Modifier.padding(padding)) {

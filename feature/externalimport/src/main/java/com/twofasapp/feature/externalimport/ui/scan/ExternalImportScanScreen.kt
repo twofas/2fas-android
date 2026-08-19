@@ -39,7 +39,7 @@ private fun ScreenContent(
     var qrScanEnabled = true
 
     Scaffold(
-        topBar = { TopAppBar(titleText = strings.scanQr) },
+        topBar = { TopAppBar(title = strings.scanQr) },
     ) { padding ->
         Box(
             modifier = Modifier

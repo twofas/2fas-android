@@ -67,7 +67,7 @@ fun ServicesGroup(
             Box(modifier = Modifier.width(64.dp)) {
                 Text(
                     text = count.toString(),
-                    color = MdtTheme.color.onSurfaceSecondary,
+                    color = MdtTheme.color.onSurfaceVariant,
                     style = MaterialTheme.typography.labelMedium,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -81,7 +81,7 @@ fun ServicesGroup(
 
             Text(
                 text = name,
-                color = MdtTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurface,
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.weight(1f),
             )
@@ -89,11 +89,11 @@ fun ServicesGroup(
             if (editMode && id != null) {
                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                     IconButton(
-                        painter = MdtIcons.ArrowUpward,
+                        icon = MdtIcons.ArrowUpward,
                         onClick = onMoveUpClick,
                     )
                     IconButton(
-                        painter = MdtIcons.ArrowDownward,
+                        icon = MdtIcons.ArrowDownward,
                         onClick = onMoveDownClick,
                     )
                     DropdownMenu(
@@ -101,7 +101,7 @@ fun ServicesGroup(
                         onDismissRequest = { dropdownVisible = false },
                         anchor = {
                             IconButton(
-                                painter = MdtIcons.More,
+                                icon = MdtIcons.More,
                                 onClick = { dropdownVisible = true },
                             )
                         },
@@ -127,7 +127,7 @@ fun ServicesGroup(
                 }
             } else if (editMode.not() && count > 0) {
                 IconButton(
-                    painter = if (expanded) {
+                    icon = if (expanded) {
                         MdtIcons.ChevronUp
                     } else {
                         MdtIcons.ChevronDown

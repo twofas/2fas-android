@@ -1,8 +1,18 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ *
+ * Copyright © 2025 Two Factor Authentication Service, Inc.
+ * Licensed under the Business Source License 1.1
+ * See LICENSE file for full terms
+ */
+
 package com.twofasapp.core.design.foundation.dialog
 
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import android.view.View
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -14,84 +24,163 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextRange
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.twofasapp.core.design.foundation.textfield.OutlinedTextField
+import androidx.compose.ui.window.DialogProperties
+import com.twofasapp.core.design.foundation.preview.PreviewTextLong
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.textfield.SecretField
+import com.twofasapp.core.design.foundation.textfield.SecretFieldTrailingIcon
+import com.twofasapp.core.design.foundation.textfield.TextField
+import com.twofasapp.core.design.theme.DialogPadding
+import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.android.awaitFrame
+
+sealed interface InputValidation {
+    data object Valid : InputValidation
+    data class Invalid(val error: String?) : InputValidation
+}
 
 @Composable
 fun InputDialog(
     onDismissRequest: () -> Unit,
+    modifier: Modifier = Modifier,
     title: String? = null,
+    body: String? = null,
+    bodyAnnotated: AnnotatedString? = null,
+    label: String? = null,
     prefill: String? = null,
-    hint: String? = null,
-    error: String? = null,
-    enabled: Boolean = true,
-    positive: String? = null,
-    negative: String? = null,
-    positiveEnabled: ((String) -> Boolean)? = null,
-    onPositiveClick: ((String) -> Unit)? = null,
-    onNegativeClick: (() -> Unit)? = null,
+    validate: (String) -> InputValidation = { InputValidation.Valid },
+    positive: String = TwLocale.strings.commonSave,
+    negative: String? = TwLocale.strings.commonCancel,
+    neutral: String? = null,
+    icon: Painter? = null,
+    iconColor: Color = Color.Unspecified,
+    onPositive: (String) -> Unit = {},
+    onNegative: () -> Unit = {},
+    onNeutral: () -> Unit = {},
+    positiveColor: Color = Color.Unspecified,
+    negativeColor: Color = Color.Unspecified,
+    neutralColor: Color = Color.Unspecified,
+    actionsAlignment: ActionsAlignment = ActionsAlignment.Horizontal,
+    properties: DialogProperties = DialogProperties(),
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    showCounter: Boolean = false,
-    minLength: Int = 0,
-    maxLength: Int = Int.MAX_VALUE,
+    isSecret: Boolean = false,
+    excludeFromAutofill: Boolean = true,
 ) {
-    val context = LocalContext.current
-    var validationErrorText by remember { mutableStateOf<String?>(null) }
-
-    var input by remember { mutableStateOf(prefill.orEmpty()) }
-
-    val positiveEnabledState by remember {
+    var secretVisible by remember { mutableStateOf(false) }
+    val focusRequester = remember { FocusRequester() }
+    var textFieldValue by remember {
+        mutableStateOf(
+            TextFieldValue(
+                text = prefill.orEmpty(),
+                selection = TextRange(prefill.orEmpty().length),
+            ),
+        )
+    }
+    var startedTyping by remember { mutableStateOf(false) }
+    val inputValidation by remember {
         derivedStateOf {
-            when {
-                input.trim().length !in minLength..maxLength -> false
-                else -> positiveEnabled?.invoke(input) ?: true
+            if (startedTyping.not() && textFieldValue.text.isEmpty()) {
+                InputValidation.Invalid(null)
+            } else {
+                validate(textFieldValue.text)
             }
         }
-    }
-    val focusRequester = remember { FocusRequester() }
-
-    BaseDialog(
-        onDismissRequest = onDismissRequest,
-        title = title,
-        positive = positive,
-        negative = negative,
-        onPositiveClick = { onPositiveClick?.invoke(input.trim()) },
-        onNegativeClick = onNegativeClick,
-        positiveEnabled = positiveEnabledState,
-        negativeEnabled = true,
-    ) {
-        Spacer(modifier = Modifier.height(8.dp))
-
-        OutlinedTextField(
-            value = input,
-            onValueChange = { input = it },
-            modifier = Modifier
-                .padding(horizontal = DialogPadding)
-                .focusRequester(focusRequester),
-            labelText = hint,
-            showCounter = showCounter,
-            isError = error.isNullOrBlank().not(),
-            keyboardOptions = keyboardOptions,
-            maxLines = 1,
-            maxLength = maxLength,
-            enabled = enabled,
-        )
     }
 
     LaunchedEffect(Unit) {
         awaitFrame()
         focusRequester.requestFocus()
     }
+
+    BaseDialog(
+        onDismissRequest = onDismissRequest,
+        modifier = modifier,
+        title = title,
+        body = body,
+        bodyAnnotated = bodyAnnotated,
+        positive = positive,
+        negative = negative,
+        neutral = neutral,
+        icon = icon,
+        iconColor = iconColor,
+        onPositiveClick = { onPositive(textFieldValue.text) },
+        onNegativeClick = onNegative,
+        onNeutralClick = onNeutral,
+        positiveColor = positiveColor,
+        positiveEnabled = inputValidation is InputValidation.Valid,
+        negativeColor = negativeColor,
+        neutralColor = neutralColor,
+        properties = properties,
+        actionsAlignment = actionsAlignment,
+        content = {
+            if (excludeFromAutofill) {
+                LocalView.current.rootView.importantForAutofill = View.IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS
+            }
+
+            Column(
+                modifier = Modifier.padding(horizontal = DialogPadding),
+            ) {
+                TextField(
+                    value = textFieldValue,
+                    onValueChange = { textFieldValue = it },
+                    labelText = label.orEmpty(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .focusRequester(focusRequester)
+                        .onKeyEvent {
+                            startedTyping = true
+                            false
+                        },
+                    singleLine = true,
+                    maxLines = 1,
+                    supportingText = (inputValidation as? InputValidation.Invalid)?.error.orEmpty(),
+                    isError = startedTyping && inputValidation is InputValidation.Invalid,
+                    keyboardOptions = keyboardOptions,
+                    visualTransformation = if (isSecret) {
+                        VisualTransformation.SecretField(secretVisible)
+                    } else {
+                        VisualTransformation.None
+                    },
+                    trailingIcon = if (isSecret) {
+                        {
+                            SecretFieldTrailingIcon(
+                                visible = secretVisible,
+                                onToggle = { secretVisible = !secretVisible },
+                            )
+                        }
+                    } else {
+                        null
+                    },
+                    keyboardActions = if (inputValidation is InputValidation.Valid) {
+                        KeyboardActions(
+                            onDone = { onPositive(textFieldValue.text) },
+                        )
+                    } else {
+                        KeyboardActions.Default
+                    },
+                )
+            }
+        },
+    )
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    InputDialog(
-        onDismissRequest = { },
-        title = "Input",
-    )
+    PreviewTheme {
+        InputDialog(
+            onDismissRequest = { },
+            title = "Input",
+            body = PreviewTextLong,
+        )
+    }
 }

@@ -39,7 +39,7 @@ internal fun DomainAssignmentScreen(
     val backDispatcher = LocalBackDispatcher
 
     Scaffold(
-        topBar = { TopAppBar(titleText = stringResource(id = R.string.browser__browser_extension)) },
+        topBar = { TopAppBar(title = stringResource(id = R.string.browser__browser_extension)) },
     ) { padding ->
 
         if (showConfirmDialog.value) {
@@ -68,7 +68,7 @@ internal fun DomainAssignmentScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 72.dp, end = 16.dp, top = 24.dp, bottom = 24.dp),
-                    style = MaterialTheme.typography.bodyMedium.copy(color = MdtTheme.color.onSurfaceSecondary),
+                    style = MaterialTheme.typography.bodyMedium.copy(color = MdtTheme.color.onSurfaceVariant),
                 )
             }
 
@@ -82,8 +82,8 @@ internal fun DomainAssignmentScreen(
                         showEmptySpaceWhenNoIcon = true,
                         endContent = {
                             IconButton(
-                                painter = MdtIcons.Delete,
-                                tint = MdtTheme.color.primary,
+                                icon = MdtIcons.Delete,
+                                iconTint = MdtTheme.color.primary,
                                 onClick = {
                                     clickedDomainName.value = it
                                     showConfirmDialog.value = true

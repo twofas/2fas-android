@@ -35,6 +35,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -46,10 +47,12 @@ import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.IconButton
 import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.dialog.InputDialog
+import com.twofasapp.core.design.foundation.dialog.InputValidation
 import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
 import com.twofasapp.core.design.foundation.other.Divider
-import com.twofasapp.core.design.foundation.textfield.OutlinedTextField
-import com.twofasapp.core.design.foundation.textfield.OutlinedTextFieldPassword
+import com.twofasapp.core.design.foundation.textfield.SecretField
+import com.twofasapp.core.design.foundation.textfield.SecretFieldTrailingIcon
+import com.twofasapp.core.design.foundation.textfield.TextField
 import com.twofasapp.core.design.foundation.topbar.BackButton
 import com.twofasapp.core.design.ktx.assetAsBitmap
 import com.twofasapp.core.design.ktx.keyboardAsState
@@ -70,6 +73,7 @@ internal fun AddServiceManualScreen(
     var showRefreshTimeDialog by remember { mutableStateOf(false) }
     var showDigitsDialog by remember { mutableStateOf(false) }
     var showHotpDialog by remember { mutableStateOf(false) }
+    var secretVisible by remember { mutableStateOf(false) }
     val borderStyle = Stroke(
         width = 2f,
         pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f),
@@ -107,8 +111,8 @@ internal fun AddServiceManualScreen(
 
             Text(
                 text = TwLocale.strings.addTitle,
-                style = MdtTheme.typo.title,
-                color = MdtTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.regular.xl,
+                color = MdtTheme.color.onSurface,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(end = 16.dp),
@@ -116,9 +120,9 @@ internal fun AddServiceManualScreen(
             )
         }
 
-        OutlinedTextField(
+        TextField(
             value = uiState.serviceName.orEmpty(),
-            onValueChange = { viewModel.updateName(it) },
+            onValueChange = { if (it.length <= 30) viewModel.updateName(it) },
             labelText = TwLocale.strings.addManualServiceName,
             modifier = Modifier
                 .fillMaxWidth()
@@ -127,7 +131,6 @@ internal fun AddServiceManualScreen(
             supportingText = uiState.serviceNameError?.let { context.getString(it) },
             isError = uiState.serviceName != null && uiState.serviceNameValid.not(),
             keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences, imeAction = ImeAction.Next),
-            maxLength = 30,
             singleLine = true,
             maxLines = 1,
             trailingIcon = {
@@ -164,7 +167,7 @@ internal fun AddServiceManualScreen(
             },
         )
 
-        OutlinedTextFieldPassword(
+        TextField(
             value = uiState.serviceSecret.orEmpty(),
             onValueChange = { viewModel.updateSecret(it) },
             labelText = TwLocale.strings.addManualServiceKey,
@@ -173,9 +176,20 @@ internal fun AddServiceManualScreen(
                 .padding(horizontal = 24.dp, vertical = 4.dp),
             supportingText = uiState.serviceSecretError?.let { context.getString(it) },
             isError = uiState.serviceSecret != null && uiState.serviceSecretValid.not(),
-            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Password,
+                capitalization = KeyboardCapitalization.None,
+                imeAction = ImeAction.Done,
+            ),
             singleLine = true,
             maxLines = 1,
+            visualTransformation = VisualTransformation.SecretField(secretVisible),
+            trailingIcon = {
+                SecretFieldTrailingIcon(
+                    visible = secretVisible,
+                    onToggle = { secretVisible = secretVisible.not() },
+                )
+            },
         )
 
         Row(
@@ -187,18 +201,18 @@ internal fun AddServiceManualScreen(
         ) {
             Text(
                 text = TwLocale.strings.addManualOther,
-                color = MdtTheme.color.onSurfacePrimary,
-                style = MdtTheme.typo.body1,
+                color = MdtTheme.color.onSurface,
+                style = MdtTheme.typo.regular.base,
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
                 text = TwLocale.strings.addManualOtherOptional,
-                color = MdtTheme.color.onSurfaceSecondary,
-                style = MdtTheme.typo.body1,
+                color = MdtTheme.color.onSurfaceVariant,
+                style = MdtTheme.typo.regular.base,
             )
             Spacer(Modifier.weight(1f))
             IconButton(
-                painter = if (uiState.advancedExpanded) {
+                icon = if (uiState.advancedExpanded) {
                     MdtIcons.ChevronUp
                 } else {
                     MdtIcons.ChevronDown
@@ -208,9 +222,9 @@ internal fun AddServiceManualScreen(
         }
 
         if (uiState.advancedExpanded) {
-            OutlinedTextField(
+            TextField(
                 value = uiState.additionalInfo,
-                onValueChange = { viewModel.updateInfo(it) },
+                onValueChange = { if (it.length <= 50) viewModel.updateInfo(it) },
                 labelText = TwLocale.strings.addManualAdditionalInfo,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     capitalization = KeyboardCapitalization.Sentences,
@@ -219,7 +233,6 @@ internal fun AddServiceManualScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp, vertical = 4.dp),
-                maxLength = 50,
                 singleLine = true,
                 maxLines = 1,
             )
@@ -228,8 +241,8 @@ internal fun AddServiceManualScreen(
 
             Text(
                 text = TwLocale.strings.addManualAdvanced,
-                color = MdtTheme.color.onSurfacePrimary,
-                style = MdtTheme.typo.body1,
+                color = MdtTheme.color.onSurface,
+                style = MdtTheme.typo.regular.base,
                 modifier = Modifier.padding(horizontal = 24.dp),
             )
 
@@ -237,8 +250,8 @@ internal fun AddServiceManualScreen(
 
             Text(
                 text = TwLocale.strings.addManualAdvancedDescription,
-                color = MdtTheme.color.onSurfaceSecondary,
-                style = MdtTheme.typo.body3,
+                color = MdtTheme.color.onSurfaceVariant,
+                style = MdtTheme.typo.regular.sm,
                 modifier = Modifier.padding(horizontal = 24.dp),
             )
 
@@ -254,14 +267,14 @@ internal fun AddServiceManualScreen(
             ) {
                 Text(
                     text = "Type",
-                    color = MdtTheme.color.onSurfacePrimary,
-                    style = MdtTheme.typo.body1,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.regular.base,
                 )
 
                 Text(
                     text = uiState.authType.name,
-                    color = MdtTheme.color.onSurfaceSecondary,
-                    style = MdtTheme.typo.body3,
+                    color = MdtTheme.color.onSurfaceVariant,
+                    style = MdtTheme.typo.regular.sm,
                 )
             }
 
@@ -279,14 +292,14 @@ internal fun AddServiceManualScreen(
             ) {
                 Text(
                     text = TwLocale.strings.addManualAlgorithm,
-                    color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurfacePrimary else MdtTheme.color.onSurfaceSecondary,
-                    style = MdtTheme.typo.body1,
+                    color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant,
+                    style = MdtTheme.typo.regular.base,
                 )
 
                 Text(
                     text = uiState.algorithm.name,
-                    color = MdtTheme.color.onSurfaceSecondary,
-                    style = MdtTheme.typo.body3,
+                    color = MdtTheme.color.onSurfaceVariant,
+                    style = MdtTheme.typo.regular.sm,
                 )
             }
 
@@ -308,14 +321,14 @@ internal fun AddServiceManualScreen(
                     ) {
                         Text(
                             text = TwLocale.strings.addManualRefreshTime,
-                            color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurfacePrimary else MdtTheme.color.onSurfaceSecondary,
-                            style = MdtTheme.typo.body1,
+                            color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant,
+                            style = MdtTheme.typo.regular.base,
                         )
 
                         Text(
                             text = uiState.refreshTime.toString(),
-                            color = MdtTheme.color.onSurfaceSecondary,
-                            style = MdtTheme.typo.body3,
+                            color = MdtTheme.color.onSurfaceVariant,
+                            style = MdtTheme.typo.regular.sm,
                         )
                     }
                 }
@@ -331,14 +344,14 @@ internal fun AddServiceManualScreen(
                     ) {
                         Text(
                             text = TwLocale.strings.addManualInitialCounter,
-                            color = MdtTheme.color.onSurfacePrimary,
-                            style = MdtTheme.typo.body1,
+                            color = MdtTheme.color.onSurface,
+                            style = MdtTheme.typo.regular.base,
                         )
 
                         Text(
                             text = uiState.hotpCounter.toString(),
-                            color = MdtTheme.color.onSurfaceSecondary,
-                            style = MdtTheme.typo.body3,
+                            color = MdtTheme.color.onSurfaceVariant,
+                            style = MdtTheme.typo.regular.sm,
                         )
                     }
                 }
@@ -356,14 +369,14 @@ internal fun AddServiceManualScreen(
             ) {
                 Text(
                     text = TwLocale.strings.addManualDigits,
-                    color = if (uiState.authType != Service.AuthType.STEAM) MdtTheme.color.onSurfacePrimary else MdtTheme.color.onSurfaceSecondary,
-                    style = MdtTheme.typo.body1,
+                    color = if (uiState.authType != Service.AuthType.STEAM) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant,
+                    style = MdtTheme.typo.regular.base,
                 )
 
                 Text(
                     text = uiState.digits.toString(),
-                    color = MdtTheme.color.onSurfaceSecondary,
-                    style = MdtTheme.typo.body3,
+                    color = MdtTheme.color.onSurfaceVariant,
+                    style = MdtTheme.typo.regular.sm,
                 )
             }
 
@@ -431,16 +444,16 @@ internal fun AddServiceManualScreen(
         if (showHotpDialog) {
             InputDialog(
                 onDismissRequest = { showHotpDialog = false },
+                label = TwLocale.strings.addManualInitialCounter,
+                prefill = uiState.hotpCounter.toString(),
                 positive = TwLocale.strings.commonSave,
                 negative = TwLocale.strings.commonCancel,
-                hint = TwLocale.strings.addManualInitialCounter,
-                prefill = uiState.hotpCounter.toString(),
+                validate = { if (it.trim().toIntOrNull() != null) InputValidation.Valid else InputValidation.Invalid(null) },
                 keyboardOptions = KeyboardOptions(
                     capitalization = KeyboardCapitalization.None,
                     keyboardType = KeyboardType.Number,
                 ),
-                positiveEnabled = { it.toIntOrNull() != null },
-                onPositiveClick = { viewModel.updateHotpCounter(it.toIntOrNull() ?: 1) },
+                onPositive = { viewModel.updateHotpCounter(it.trim().toIntOrNull() ?: 1) },
             )
         }
 

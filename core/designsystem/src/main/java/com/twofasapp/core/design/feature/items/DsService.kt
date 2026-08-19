@@ -53,7 +53,7 @@ internal const val ServiceExpireTransitionThreshold = 5
 fun animateExpireColor(timer: Int): State<Color> {
     return animateColorAsState(
         targetValue = if (timer > ServiceExpireTransitionThreshold) {
-            MdtTheme.color.onSurfacePrimary
+            MdtTheme.color.onSurface
         } else {
             MdtTheme.color.primary
         },
@@ -226,7 +226,7 @@ fun DsService(
 
             if (editMode && dragHandleVisible) {
                 IconButton(
-                    painter = MdtIcons.DragHandle,
+                    icon = MdtIcons.DragHandle,
                     enabled = false,
                     modifier = Modifier
                         .padding(end = 8.dp)
@@ -255,7 +255,7 @@ internal fun HiddenDots(
                     modifier = Modifier
                         .padding(horizontal = 4.dp)
                         .size(8.dp)
-                        .background(MdtTheme.color.onSurfacePrimary, CircleShape),
+                        .background(MdtTheme.color.onSurface, CircleShape),
                 )
             }
         }

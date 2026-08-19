@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,7 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
-import com.twofasapp.core.design.foundation.button.OutlinedButton
+import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.text.richText
 import com.twofasapp.feature.home.R
 import com.twofasapp.locale.TwLocale
@@ -66,8 +65,8 @@ internal fun PassBanner(
 
             Text(
                 text = TwLocale.strings.passBannerTitle,
-                color = MdtTheme.color.onSurfacePrimary,
-                style = MdtTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
+                color = MdtTheme.color.onSurface,
+                style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -76,8 +75,8 @@ internal fun PassBanner(
 
             Text(
                 text = richText(TwLocale.strings.passBannerMsg),
-                color = MdtTheme.color.onSurfacePrimary,
-                style = MdtTheme.typo.body3,
+                color = MdtTheme.color.onSurface,
+                style = MdtTheme.typo.regular.sm,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -88,12 +87,14 @@ internal fun PassBanner(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center,
             ) {
-                OutlinedButton(
+                Button(
                     text = TwLocale.strings.passBannerNegativeCta,
+                    style = ButtonStyle.Outlined,
                     height = 36.dp,
                     onClick = onDismissClick,
-                    textColor = MdtTheme.color.onSurfacePrimary,
-                    borderColor = MdtTheme.color.onSurfacePrimary,
+                    // Adapted from OutlinedButton(textColor/borderColor = onSurface): the new Button's
+                    // Outlined border color is fixed (MdtTheme.color.outline); only content color is set here.
+                    contentColor = MdtTheme.color.onSurface,
                 )
                 Spacer(modifier = Modifier.width(8.dp))
 
@@ -101,10 +102,8 @@ internal fun PassBanner(
                     text = "Go to Store",
                     height = 36.dp,
                     onClick = onGoToStoreClick,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF064AD7),
-                        contentColor = Color.White,
-                    ),
+                    containerColor = Color(0xFF064AD7),
+                    contentColor = Color.White,
                 )
             }
         }

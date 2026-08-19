@@ -60,7 +60,7 @@ private fun ScreenContent(
     val shareText = TwLocale.strings.aboutTellFriendShareText
 
     Scaffold(
-        topBar = { TopAppBar(titleText = TwLocale.strings.aboutTitle) },
+        topBar = { TopAppBar(title = TwLocale.strings.aboutTitle) },
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
             LazyColumn(modifier = Modifier.weight(1f)) {
@@ -203,8 +203,8 @@ private fun ScreenContent(
                     ) {
                         Text(
                             text = stringResource(id = R.string.settings__version, uiState.versionName),
-                            color = MdtTheme.color.onSurfaceSecondary,
-                            style = MdtTheme.typo.body3,
+                            color = MdtTheme.color.onSurfaceVariant,
+                            style = MdtTheme.typo.regular.sm,
                         )
                         Spacer(modifier = Modifier.weight(1f))
                         Image(

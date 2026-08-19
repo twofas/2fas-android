@@ -45,11 +45,11 @@ fun TopAppBarWithSearch(
     val showSearch = remember { mutableStateOf(false) }
 
     TopAppBar(
-        title = {
+        content = {
             if (showSearch.value) {
                 SearchBar(hint = searchHint, showSearch = showSearch, onValueChanged = onSearchValueChanged)
             } else {
-                Text(text = title, color = MdtTheme.color.onSurfacePrimary)
+                Text(text = title, color = MdtTheme.color.onSurface)
             }
         },
         navigationIcon = {
@@ -61,7 +61,7 @@ fun TopAppBarWithSearch(
                     navigationClick.invoke()
                 }
             }) {
-                Icon(MdtIcons.ArrowBack, null, tint = MdtTheme.color.onSurfacePrimary)
+                Icon(MdtIcons.ArrowBack, null, tint = MdtTheme.color.onSurface)
             }
         },
         actions = {
@@ -125,12 +125,12 @@ fun SearchBar(
             },
             textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 18.sp),
             colors = OutlinedTextFieldDefaults.colors(
-                focusedTextColor = MdtTheme.color.onSurfacePrimary,
+                focusedTextColor = MdtTheme.color.onSurface,
                 disabledTextColor = Color.Black,
                 focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent,
-                focusedLabelColor = MdtTheme.color.onSurfaceSecondary,
-                unfocusedLabelColor = MdtTheme.color.onSurfaceSecondary,
+                focusedLabelColor = MdtTheme.color.onSurfaceVariant,
+                unfocusedLabelColor = MdtTheme.color.onSurfaceVariant,
                 errorLabelColor = MdtTheme.color.error,
             ),
             trailingIcon = {
@@ -154,7 +154,7 @@ fun SearchBar(
                     }) {
                         Icon(
                             painter = MdtIcons.Close,
-                            tint = MdtTheme.color.onSurfacePrimary,
+                            tint = MdtTheme.color.onSurface,
                             contentDescription = null,
                         )
                     }

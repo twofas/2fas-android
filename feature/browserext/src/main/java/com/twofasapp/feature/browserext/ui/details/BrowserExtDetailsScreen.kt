@@ -14,7 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.core.design.feature.settings.SettingsLink
-import com.twofasapp.core.design.foundation.button.OutlinedButton
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.TwLocale
@@ -48,7 +49,7 @@ private fun ScreenContent(
     var showConfirmDeleteDialog by remember { mutableStateOf(false) }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = strings.browserExtTitle) },
+        topBar = { TopAppBar(title = strings.browserExtTitle) },
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
             item {
@@ -66,8 +67,9 @@ private fun ScreenContent(
             }
 
             item {
-                OutlinedButton(
+                Button(
                     text = strings.browserDetailsForget,
+                    style = ButtonStyle.Outlined,
                     onClick = { showConfirmDeleteDialog = true },
                     modifier = Modifier.padding(start = 72.dp, top = 16.dp),
                 )

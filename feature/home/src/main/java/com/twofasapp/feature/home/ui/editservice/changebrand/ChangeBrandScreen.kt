@@ -87,7 +87,7 @@ internal fun ChangeBrandScreen(
         if (state.sections.isEmpty()) {
             Text(
                 text = stringResource(id = R.string.brand_empty_msg),
-                style = MaterialTheme.typography.bodyLarge.copy(color = MdtTheme.color.onSurfaceSecondary),
+                style = MaterialTheme.typography.bodyLarge.copy(color = MdtTheme.color.onSurfaceVariant),
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -123,7 +123,7 @@ internal fun ChangeBrandScreen(
                         Text(
                             text = stringResource(id = R.string.tokens__order_icon_description),
                             style = MaterialTheme.typography.bodyLarge,
-                            color = MdtTheme.color.onSurfacePrimary,
+                            color = MdtTheme.color.onSurface,
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         Row(
@@ -184,7 +184,7 @@ internal fun ChangeBrandScreen(
 
                                 Text(
                                     text = it.name,
-                                    style = MaterialTheme.typography.bodySmall.copy(color = MdtTheme.color.onSurfacePrimary),
+                                    style = MaterialTheme.typography.bodySmall.copy(color = MdtTheme.color.onSurface),
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis,
                                     modifier = Modifier
@@ -253,7 +253,7 @@ fun SectionHeader(header: String) {
     Text(
         text = header,
         style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-        color = MdtTheme.color.onSurfacePrimary,
+        color = MdtTheme.color.onSurface,
         modifier = Modifier
             .fillMaxWidth()
             .background(color = MdtTheme.color.divider)

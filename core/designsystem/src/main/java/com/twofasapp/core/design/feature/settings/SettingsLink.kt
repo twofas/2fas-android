@@ -36,8 +36,8 @@ fun SettingsLink(
     icon: Painter? = null,
     image: Painter? = null,
     iconTint: Color? = null,
-    textColor: Color = MdtTheme.color.onSurfacePrimary,
-    textColorSecondary: Color = MdtTheme.color.onSurfaceSecondary,
+    textColor: Color = MdtTheme.color.onSurface,
+    textColorSecondary: Color = MdtTheme.color.onSurfaceVariant,
     endContent: (@Composable () -> Unit)? = null,
     showEmptySpaceWhenNoIcon: Boolean = true,
     external: Boolean = false,
@@ -151,7 +151,7 @@ private fun Title(
 ) {
     Text(
         text = title,
-        style = MdtTheme.typo.body1,
+        style = MdtTheme.typo.regular.base,
         color = textColor,
         modifier = modifier,
     )
@@ -166,7 +166,7 @@ private fun Subtitle(
     if (subtitle != null) {
         Text(
             text = subtitle,
-            style = MdtTheme.typo.body3,
+            style = MdtTheme.typo.regular.sm,
             color = textColorSecondary,
             modifier = modifier.padding(top = 2.dp),
         )

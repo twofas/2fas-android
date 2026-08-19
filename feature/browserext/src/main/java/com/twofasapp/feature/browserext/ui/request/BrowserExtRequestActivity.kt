@@ -11,7 +11,6 @@ import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.core.design.AppTheme
 import com.twofasapp.core.design.LocalAppTheme
 import com.twofasapp.core.design.LocalDynamicColors
-import com.twofasapp.core.design.MainAppTheme
 import com.twofasapp.core.design.window.ActivityHelper
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
@@ -53,7 +52,7 @@ class BrowserExtRequestActivity : ComponentActivity(), AuthAware {
                 },
                 LocalDynamicColors provides settingsRepository.getAppSettings().dynamicColors,
             ) {
-                MainAppTheme {
+                AppTheme {
                     BrowserExtRequestScreen(payload = payload)
                 }
             }

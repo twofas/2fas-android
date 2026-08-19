@@ -100,7 +100,7 @@ internal fun PinScreen(
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.bodyLarge,
-                color = if (errorMessage.isNotBlank()) MdtTheme.color.primary else MdtTheme.color.onSurfacePrimary,
+                color = if (errorMessage.isNotBlank()) MdtTheme.color.primary else MdtTheme.color.onSurface,
             )
 
             PinInput(

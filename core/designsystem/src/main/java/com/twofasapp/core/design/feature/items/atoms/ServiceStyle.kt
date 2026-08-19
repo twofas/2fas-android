@@ -8,6 +8,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.ktx.dpToSp
+import com.twofasapp.core.design.theme.CodeExtraLight
+import com.twofasapp.core.design.theme.CodeLightSmall
 
 internal data class ServiceTextStyle(
     val nameTextStyle: TextStyle,
@@ -29,29 +31,29 @@ internal data class ServiceDimens(
 internal object ServiceTextDefaults {
     @Composable
     fun default() = ServiceTextStyle(
-        nameTextStyle = MdtTheme.typo.body3.copy(fontWeight = FontWeight.Medium),
-        infoTextStyle = MdtTheme.typo.body4.copy(fontWeight = FontWeight.Normal),
-        codeTextStyle = MdtTheme.typo.codeExtraLight,
-        imageLabelTextStyle = MdtTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
-        timerTextStyle = MdtTheme.typo.caption,
+        nameTextStyle = MdtTheme.typo.regular.sm.copy(fontWeight = FontWeight.Medium),
+        infoTextStyle = MdtTheme.typo.regular.xs.copy(fontWeight = FontWeight.Normal),
+        codeTextStyle = CodeExtraLight,
+        imageLabelTextStyle = MdtTheme.typo.regular.sm.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
+        timerTextStyle = MdtTheme.typo.regular.xs,
     )
 
     @Composable
     fun compact() = ServiceTextStyle(
-        nameTextStyle = MdtTheme.typo.caption.copy(fontWeight = FontWeight.Medium),
-        infoTextStyle = MdtTheme.typo.caption.copy(fontWeight = FontWeight.Normal),
-        codeTextStyle = MdtTheme.typo.codeLightSmall,
-        imageLabelTextStyle = MdtTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 11.dp), lineHeight = dpToSp(dp = 15.dp)),
-        timerTextStyle = MdtTheme.typo.caption.copy(fontSize = 11.sp),
+        nameTextStyle = MdtTheme.typo.regular.xs.copy(fontWeight = FontWeight.Medium),
+        infoTextStyle = MdtTheme.typo.regular.xs.copy(fontWeight = FontWeight.Normal),
+        codeTextStyle = CodeLightSmall,
+        imageLabelTextStyle = MdtTheme.typo.regular.sm.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 11.dp), lineHeight = dpToSp(dp = 15.dp)),
+        timerTextStyle = MdtTheme.typo.regular.xs.copy(fontSize = 11.sp),
     )
 
     @Composable
     fun modal() = ServiceTextStyle(
-        nameTextStyle = MdtTheme.typo.title.copy(fontWeight = FontWeight.Normal),
-        infoTextStyle = MdtTheme.typo.body1.copy(fontWeight = FontWeight.Normal),
-        codeTextStyle = MdtTheme.typo.codeExtraLight,
-        imageLabelTextStyle = MdtTheme.typo.body3.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
-        timerTextStyle = MdtTheme.typo.caption,
+        nameTextStyle = MdtTheme.typo.regular.xl.copy(fontWeight = FontWeight.Normal),
+        infoTextStyle = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Normal),
+        codeTextStyle = CodeExtraLight,
+        imageLabelTextStyle = MdtTheme.typo.regular.sm.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
+        timerTextStyle = MdtTheme.typo.regular.xs,
     )
 }
 

@@ -7,11 +7,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtIcons
@@ -43,8 +42,8 @@ internal fun SyncNoticeBar(
         Text(
             text = TwLocale.strings.backupSyncNotice,
             modifier = Modifier.weight(1f),
-            color = MdtTheme.color.onSurfacePrimary,
-            style = MdtTheme.typo.body3,
+            color = MdtTheme.color.onSurface,
+            style = MdtTheme.typo.regular.sm,
         )
 
         Spacer(modifier = Modifier.width(4.dp))
@@ -52,7 +51,6 @@ internal fun SyncNoticeBar(
         TextButton(
             text = TwLocale.strings.backupSyncCta,
             onClick = onOpenBackupClick,
-            textAlign = TextAlign.Center,
             modifier = Modifier.weight(1f),
         )
     }

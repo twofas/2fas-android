@@ -111,7 +111,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TopAppBar(titleText = strings.backupImportFile) },
+        topBar = { TopAppBar(title = strings.backupImportFile) },
     ) { padding ->
 
         if (uiState.screenState != null) {
@@ -151,8 +151,8 @@ private fun ScreenContent(
                             is ScreenState.ErrorInvalidFileSize -> strings.backupImportErrorHeader
                         },
                         textAlign = TextAlign.Center,
-                        color = MdtTheme.color.onSurfacePrimary,
-                        style = MdtTheme.typo.title,
+                        color = MdtTheme.color.onSurface,
+                        style = MdtTheme.typo.regular.xl,
                     )
 
                     Text(
@@ -163,8 +163,8 @@ private fun ScreenContent(
                             is ScreenState.ErrorInvalidFileSize -> strings.backupImportErrorMsgSize
                         },
                         textAlign = TextAlign.Center,
-                        color = MdtTheme.color.onSurfacePrimary,
-                        style = MdtTheme.typo.body3,
+                        color = MdtTheme.color.onSurface,
+                        style = MdtTheme.typo.regular.sm,
                     )
 
                     when (uiState.screenState) {
@@ -172,8 +172,8 @@ private fun ScreenContent(
                             Text(
                                 text = uiState.screenState.servicesToImport.toString(),
                                 textAlign = TextAlign.Center,
-                                color = MdtTheme.color.onSurfacePrimary,
-                                style = MdtTheme.typo.title,
+                                color = MdtTheme.color.onSurface,
+                                style = MdtTheme.typo.regular.xl,
                             )
                         }
 
@@ -189,8 +189,8 @@ private fun ScreenContent(
                             Text(
                                 text = strings.backupImportMsg2,
                                 textAlign = TextAlign.Center,
-                                color = MdtTheme.color.onSurfacePrimary,
-                                style = MdtTheme.typo.body3,
+                                color = MdtTheme.color.onSurface,
+                                style = MdtTheme.typo.regular.sm,
                             )
                         }
 

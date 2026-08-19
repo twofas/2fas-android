@@ -5,9 +5,9 @@ import com.twofasapp.core.design.foundation.lazy.ListItem
 import com.twofasapp.data.services.domain.Group
 
 sealed class ServicesListItem(
-    override val key: Any,
-    override val type: Any,
-) : ListItem {
+    key: Any,
+    type: Any,
+) : ListItem(key = key, type = type) {
     object Loader : ServicesListItem("Loader", "Loader")
     object Empty : ServicesListItem("Empty", "Empty")
     object EmptySearch : ServicesListItem("EmptySearch", "EmptySearch")

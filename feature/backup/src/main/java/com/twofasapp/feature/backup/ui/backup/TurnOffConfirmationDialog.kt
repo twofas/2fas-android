@@ -30,8 +30,8 @@ internal fun TurnOffConfirmationDialog(
             Text(
                 text = TwLocale.strings.backupTurnOffMsg2,
                 textAlign = TextAlign.Center,
-                color = MdtTheme.color.onSurfaceSecondary,
-                style = MdtTheme.typo.caption,
+                color = MdtTheme.color.onSurfaceVariant,
+                style = MdtTheme.typo.regular.xs,
             )
         },
         positive = TwLocale.strings.backupTurnOffCta,
