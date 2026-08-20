@@ -147,7 +147,7 @@ internal fun AddServiceScanScreen(
 
         Text(
             text = MdtLocale.strings.addOtherMethods,
-            color = MdtTheme.color.onSurfaceTertiary,
+            color = MdtTheme.color.onSurfaceVariant,
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
         )
 

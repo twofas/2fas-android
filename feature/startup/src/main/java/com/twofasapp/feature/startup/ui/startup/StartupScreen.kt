@@ -79,7 +79,7 @@ internal fun ScreenContent(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(16.dp),
+                .padding(vertical = 16.dp),
         ) {
             HorizontalPager(
                 state = pagerState,
@@ -152,7 +152,9 @@ internal fun ScreenContent(
             }
 
             Button(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
                 text = when (currentPage) {
                     0, pageCount - 1 -> MdtLocale.strings.commonContinue
                     else -> MdtLocale.strings.commonNext
@@ -173,7 +175,9 @@ private fun WelcomeStep() {
     val uriHandler = LocalUriHandler.current
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Space(0.6f)
@@ -181,7 +185,7 @@ private fun WelcomeStep() {
         Image(
             painter = painterResource(com.twofasapp.core.design.R.drawable.logo_auth),
             contentDescription = null,
-            modifier = Modifier.size(120.dp),
+            modifier = Modifier.size(100.dp),
         )
 
         Space(0.3f)
@@ -196,7 +200,7 @@ private fun WelcomeStep() {
         Text(
             text = MdtLocale.strings.startupStepOneBody,
             style = MdtTheme.typo.base.normal,
-            color = MdtTheme.color.onSurfaceTertiary,
+            color = MdtTheme.color.onSurfaceVariant,
             textAlign = TextAlign.Center,
         )
 
@@ -221,7 +225,9 @@ private fun Step(
     additionalContent: @Composable () -> Unit = {},
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Space(0.1f)
@@ -236,7 +242,7 @@ private fun Step(
         Text(
             text = subtitle,
             style = MdtTheme.typo.base.normal,
-            color = MdtTheme.color.onSurfaceTertiary,
+            color = MdtTheme.color.onSurfaceVariant,
             textAlign = TextAlign.Center,
         )
 

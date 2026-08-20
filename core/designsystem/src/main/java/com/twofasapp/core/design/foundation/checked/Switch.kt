@@ -24,9 +24,9 @@ fun Switch(
         checkedBorderColor = Color.Transparent,
         checkedIconColor = MdtTheme.color.primary,
 
-        uncheckedThumbColor = MdtTheme.color.switchThumb,
-        uncheckedTrackColor = MdtTheme.color.switchTrack,
-        uncheckedBorderColor = MdtTheme.color.switchThumb.copy(alpha = 0.3f),
+        uncheckedThumbColor = MdtTheme.color.primary,
+        uncheckedTrackColor = MdtTheme.color.primary,
+        uncheckedBorderColor = MdtTheme.color.primary.copy(alpha = 0.3f),
     ),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {

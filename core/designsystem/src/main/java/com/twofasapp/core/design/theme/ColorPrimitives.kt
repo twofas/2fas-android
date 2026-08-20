@@ -12,101 +12,79 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
-internal val seed = Color(0xFFED1C24)
-
-// region Light
 internal val primaryLight = Color(0xFFED1C24)
-internal val onPrimaryLight = Color(0xFFFFFFFF) // added: white foreground on red brand
-internal val primaryContainerLight = Color(0xFFF8E2E3) // added: from primaryIndicatorLight
-internal val onPrimaryContainerLight = Color(0xFF410002) // added: best-match dark red
-internal val secondaryLight = Color(0xFF4C4C4C) // added: neutral (from onSurfaceTertiaryLight)
-internal val onSecondaryLight = Color(0xFFFFFFFF) // added
-internal val secondaryContainerLight = Color(0xFFEEEEEE) // added: from surfaceVariantLight
-internal val onSecondaryContainerLight = Color(0xFF000000) // added
-internal val tertiaryLight = Color(0xFF8C49DE) // added: from accentPurple
-internal val onTertiaryLight = Color(0xFFFFFFFF) // added
-internal val tertiaryContainerLight = Color(0xFFF0DDFB) // added: best-match light purple
-internal val onTertiaryContainerLight = Color(0xFF2C0A47) // added
-internal val errorLight = Color(0xFFF83A40) // from current error
-internal val onErrorLight = Color(0xFFFFFFFF) // added
-internal val errorContainerLight = Color(0xFFFFDAD6) // added
-internal val onErrorContainerLight = Color(0xFF410002) // added
-internal val backgroundLight = Color(0xFFFFFFFF)
-internal val onBackgroundLight = Color(0xFF000000) // from onSurfacePrimaryLight
-internal val surfaceLight = Color(0xFFF9F9F9)
-internal val onSurfaceLight = Color(0xFF000000) // from onSurfacePrimaryLight
-internal val surfaceVariantLight = Color(0xFFEEEEEE)
-internal val onSurfaceVariantLight = Color(0xFF9E9E9E) // from onSurfaceSecondaryLight
-internal val outlineLight = Color(0xFFBBBBBB) // added: neutral outline (from switchThumbLight)
-internal val outlineVariantLight = Color(0xFFEEEEEE) // added: from surfaceVariantLight (divider tone)
+internal val onPrimaryLight = Color(0xFFFFFFFF)
+internal val primaryContainerLight = Color(0xFFFFDAD6)
+internal val onPrimaryContainerLight = Color(0xFF8C1720)
+internal val secondaryLight = Color(0xFF775653)
+internal val onSecondaryLight = Color(0xFFFFFFFF)
+internal val secondaryContainerLight = Color(0xFFFFDAD6)
+internal val onSecondaryContainerLight = Color(0xFF5D3F3C)
+internal val tertiaryLight = Color(0xFF715B2E)
+internal val onTertiaryLight = Color(0xFFFFFFFF)
+internal val tertiaryContainerLight = Color(0xFFFEDFA6)
+internal val onTertiaryContainerLight = Color(0xFF584419)
+internal val errorLight = Color(0xFFBA1A1A)
+internal val onErrorLight = Color(0xFFFFFFFF)
+internal val errorContainerLight = Color(0xFFFFDAD6)
+internal val onErrorContainerLight = Color(0xFF93000A)
+internal val backgroundLight = Color(0xFFF4F4F4)
+internal val onBackgroundLight = Color(0xFF1B1B1B)
+internal val surfaceLight = Color(0xFFFAFAFA)
+internal val onSurfaceLight = Color(0xFF1B1B1B)
+internal val surfaceVariantLight = Color(0xFFE2E2E2)
+internal val onSurfaceVariantLight = Color(0xFF5C5C5C)
+internal val outlineLight = Color(0xFF767680)
+internal val outlineVariantLight = Color(0xFFC6C5D0)
 internal val scrimLight = Color(0xFF000000)
-internal val inverseSurfaceLight = Color(0xFF1A1B21) // added: from dark surface
-internal val inverseOnSurfaceLight = Color(0xFFF9F9F9) // added
-internal val inversePrimaryLight = Color(0xFFF83A40) // added: from dark primary
-internal val surfaceDimLight = Color(0xFFEEEEEE) // added
-internal val surfaceBrightLight = Color(0xFFFFFFFF) // added
-internal val surfaceContainerLowestLight = Color(0xFFFFFFFF) // added
-internal val surfaceContainerLowLight = Color(0xFFF9F9F9) // added: from surfaceLight
-internal val surfaceContainerLight = Color(0xFFF3F3F3) // added
-internal val surfaceContainerHighLight = Color(0xFFEEEEEE) // added
-internal val surfaceContainerHighestLight = Color(0xFFE8E8E8) // added
-internal val successLight = Color(0xFF03BF38) // from accentGreen
+internal val inverseSurfaceLight = Color(0xFF303030)
+internal val inverseOnSurfaceLight = Color(0xFFF4F4F4)
+internal val inversePrimaryLight = Color(0xFFF83A40)
+internal val surfaceDimLight = Color(0xFFDADADA)
+internal val surfaceBrightLight = Color(0xFFFAFAFA)
+internal val surfaceContainerLowestLight = Color(0xFFFFFFFF)
+internal val surfaceContainerLowLight = Color(0xFFF4F4F4)
+internal val surfaceContainerLight = Color(0xFFEEEEEE)
+internal val surfaceContainerHighLight = Color(0xFFE8E8E8)
+internal val surfaceContainerHighestLight = Color(0xFFE2E2E2)
 
-// App-specific (no reference-design equivalent)
-internal val onSurfaceTertiaryLight = Color(0xFF4C4C4C)
-internal val primaryIndicatorLight = Color(0xFFF8E2E3)
-internal val serviceBackgroundWithGroupsLight = Color(0xFFFCFCFC)
-internal val switchTrackLight = Color(0xFFEEEEEE)
-internal val switchThumbLight = Color(0xFFBBBBBB)
-// endregion
-
-// region Dark
 internal val primaryDark = Color(0xFFF83A40)
-internal val onPrimaryDark = Color(0xFFFFFFFF) // added: white foreground on red brand
-internal val primaryContainerDark = Color(0xFF482227) // added: from primaryIndicatorDark
-internal val onPrimaryContainerDark = Color(0xFFFFDAD6) // added
-internal val secondaryDark = Color(0xFF9E9E9E) // added: neutral (from onSurfaceTertiaryDark)
-internal val onSecondaryDark = Color(0xFF000000) // added
-internal val secondaryContainerDark = Color(0xFF232323) // added: from surfaceVariantDark
-internal val onSecondaryContainerDark = Color(0xFFFFFFFF) // added
-internal val tertiaryDark = Color(0xFF8C49DE) // added: from accentPurple
-internal val onTertiaryDark = Color(0xFFFFFFFF) // added
-internal val tertiaryContainerDark = Color(0xFF3A1A5A) // added: best-match dark purple
-internal val onTertiaryContainerDark = Color(0xFFF0DDFB) // added
-internal val errorDark = Color(0xFFF83A40) // from current error
-internal val onErrorDark = Color(0xFFFFFFFF) // added
-internal val errorContainerDark = Color(0xFF93000A) // added
-internal val onErrorContainerDark = Color(0xFFFFDAD6) // added
-internal val backgroundDark = Color(0xFF101116)
-internal val onBackgroundDark = Color(0xFFFFFFFF) // from onSurfacePrimaryDark
-internal val surfaceDark = Color(0xFF1A1B21)
-internal val onSurfaceDark = Color(0xFFFFFFFF) // from onSurfacePrimaryDark
-internal val surfaceVariantDark = Color(0xFF232323)
-internal val onSurfaceVariantDark = Color(0xFF636363) // from onSurfaceSecondaryDark
-internal val outlineDark = Color(0xFF48494E) // added: neutral outline (from switchThumbDark)
-internal val outlineVariantDark = Color(0xFF232323) // added: from surfaceVariantDark (divider tone)
+internal val onPrimaryDark = Color(0xFFFFFFFF)
+internal val primaryContainerDark = Color(0xFF8C1720)
+internal val onPrimaryContainerDark = Color(0xFFFFDAD6)
+internal val secondaryDark = Color(0xFFE7BDB8)
+internal val onSecondaryDark = Color(0xFF442927)
+internal val secondaryContainerDark = Color(0xFF5D3F3C)
+internal val onSecondaryContainerDark = Color(0xFFFFDAD6)
+internal val tertiaryDark = Color(0xFFE0C38C)
+internal val onTertiaryDark = Color(0xFF3F2E04)
+internal val tertiaryContainerDark = Color(0xFF584419)
+internal val onTertiaryContainerDark = Color(0xFFFEDFA6)
+internal val errorDark = Color(0xFFFFB4AB)
+internal val onErrorDark = Color(0xFF690005)
+internal val errorContainerDark = Color(0xFF93000A)
+internal val onErrorContainerDark = Color(0xFFFFDAD6)
+internal val backgroundDark = Color(0xFF111216)
+internal val onBackgroundDark = Color(0xFAFAFAFF)
+internal val surfaceDark = Color(0xFF17181D)
+internal val onSurfaceDark = Color(0xFAFAFAFF)
+internal val surfaceVariantDark = Color(0xFF414249)
+internal val onSurfaceVariantDark = Color(0xFFC2C2C2)
+internal val outlineDark = Color(0xFF65666F)
+internal val outlineVariantDark = Color(0xFF33343B)
 internal val scrimDark = Color(0xFF000000)
-internal val inverseSurfaceDark = Color(0xFFF9F9F9) // added: from light surface
-internal val inverseOnSurfaceDark = Color(0xFF1A1B21) // added
-internal val inversePrimaryDark = Color(0xFFED1C24) // added: from light primary
-internal val surfaceDimDark = Color(0xFF101116) // added
-internal val surfaceBrightDark = Color(0xFF33343E) // added
-internal val surfaceContainerLowestDark = Color(0xFF0C0D11) // added
-internal val surfaceContainerLowDark = Color(0xFF17181B) // added: from serviceBackgroundWithGroupsDark
-internal val surfaceContainerDark = Color(0xFF1A1B21) // added: from surfaceDark
-internal val surfaceContainerHighDark = Color(0xFF232323) // added
-internal val surfaceContainerHighestDark = Color(0xFF2D2E33) // added
-internal val successDark = Color(0xFF03BF38) // from accentGreen
+internal val inverseSurfaceDark = Color(0xFFE4E4E4)
+internal val inverseOnSurfaceDark = Color(0xFF303030)
+internal val inversePrimaryDark = Color(0xFFED1C24)
+internal val surfaceDimDark = Color(0xFF111216)
+internal val surfaceBrightDark = Color(0xFF37383E)
+internal val surfaceContainerLowestDark = Color(0xFF0C0D11)
+internal val surfaceContainerLowDark = Color(0xFF15161B)
+internal val surfaceContainerDark = Color(0xFF1B1C21)
+internal val surfaceContainerHighDark = Color(0xFF232429)
+internal val surfaceContainerHighestDark = Color(0xFF2B2C32)
 
-// App-specific (no reference-design equivalent)
-internal val onSurfaceTertiaryDark = Color(0xFF9E9E9E)
-internal val primaryIndicatorDark = Color(0xFF482227)
-internal val serviceBackgroundWithGroupsDark = Color(0xFF17181B)
-internal val switchTrackDark = Color(0xFF1F2025)
-internal val switchThumbDark = Color(0xFF48494E)
-// endregion
-
-// region Accents (theme-independent; accentRed follows the brand primary)
+internal val seed = Color(0xFFED1C24)
 internal val accentLightBlue = Color(0xFF7F9CFF)
 internal val accentIndigo = Color(0xFF5E5CE6)
 internal val accentPurple = Color(0xFF8C49DE)
@@ -116,7 +94,6 @@ internal val accentOrange = Color(0xFFFF7A00)
 internal val accentYellow = Color(0xFFFFBA0A)
 internal val accentPink = Color(0xFFCA49DE)
 internal val accentBrown = Color(0xFFBD8857)
-// endregion
 
 internal val LightColors = lightColorScheme(
     primary = primaryLight,

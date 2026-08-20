@@ -53,7 +53,7 @@ fun RowScope.NavigationBarItem(
         colors = NavigationBarItemDefaults.colors(
             selectedIconColor = MdtTheme.color.primary,
             selectedTextColor = MdtTheme.color.primary,
-            indicatorColor = MdtTheme.color.primaryIndicator,
+            indicatorColor = MdtTheme.color.primary,
             unselectedIconColor = MdtTheme.color.onSurfaceVariant,
             unselectedTextColor = MdtTheme.color.onSurfaceVariant,
         ),

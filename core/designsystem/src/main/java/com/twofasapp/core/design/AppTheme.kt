@@ -31,24 +31,12 @@ import com.twofasapp.core.design.theme.accentPink
 import com.twofasapp.core.design.theme.accentPurple
 import com.twofasapp.core.design.theme.accentTurquoise
 import com.twofasapp.core.design.theme.accentYellow
-import com.twofasapp.core.design.theme.onSurfaceTertiaryDark
-import com.twofasapp.core.design.theme.onSurfaceTertiaryLight
-import com.twofasapp.core.design.theme.primaryIndicatorDark
-import com.twofasapp.core.design.theme.primaryIndicatorLight
 import com.twofasapp.core.design.theme.seed
-import com.twofasapp.core.design.theme.serviceBackgroundWithGroupsDark
-import com.twofasapp.core.design.theme.serviceBackgroundWithGroupsLight
-import com.twofasapp.core.design.theme.successDark
-import com.twofasapp.core.design.theme.successLight
-import com.twofasapp.core.design.theme.switchThumbDark
-import com.twofasapp.core.design.theme.switchThumbLight
-import com.twofasapp.core.design.theme.switchTrackDark
-import com.twofasapp.core.design.theme.switchTrackLight
 import com.twofasapp.core.design.window.ScreenOrientation
 
 val LocalAppTheme = staticCompositionLocalOf { AppTheme.Auto }
 val LocalColorTokens = staticCompositionLocalOf { ColorTokens() }
-val LocalDynamicColors = staticCompositionLocalOf { true }
+val LocalDynamicColors = staticCompositionLocalOf { false }
 val LocalDarkMode = staticCompositionLocalOf { true }
 
 enum class AppTheme {
@@ -69,7 +57,6 @@ fun AppTheme(
         AppTheme.Dark -> true
     }
 
-    // Dynamic color requires Android 12 (API 31) — minSdk is 24, so keep the guard.
     val supportsDynamicColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
     val colorScheme: ColorScheme = when {
@@ -99,8 +86,6 @@ fun AppTheme(
         onErrorContainer = colorScheme.onErrorContainer,
         background = colorScheme.background,
         onBackground = colorScheme.onBackground,
-        success = if (isInDarkTheme) successDark else successLight,
-        notice = colorScheme.error,
         surface = colorScheme.surface,
         onSurface = colorScheme.onSurface,
         surfaceVariant = colorScheme.surfaceVariant,
@@ -118,7 +103,6 @@ fun AppTheme(
         surfaceContainer = colorScheme.surfaceContainer,
         surfaceContainerHigh = colorScheme.surfaceContainerHigh,
         surfaceContainerHighest = colorScheme.surfaceContainerHighest,
-        bottomBar = colorScheme.background,
         accentLightBlue = accentLightBlue,
         accentIndigo = accentIndigo,
         accentPurple = accentPurple,
@@ -128,12 +112,6 @@ fun AppTheme(
         accentYellow = accentYellow,
         accentPink = accentPink,
         accentBrown = accentBrown,
-        // App-specific
-        onSurfaceTertiary = if (isInDarkTheme) onSurfaceTertiaryDark else onSurfaceTertiaryLight,
-        primaryIndicator = if (isInDarkTheme) primaryIndicatorDark else primaryIndicatorLight,
-        serviceBackgroundWithGroups = if (isInDarkTheme) serviceBackgroundWithGroupsDark else serviceBackgroundWithGroupsLight,
-        switchTrack = if (isInDarkTheme) switchTrackDark else switchTrackLight,
-        switchThumb = if (isInDarkTheme) switchThumbDark else switchThumbLight,
     )
 
     CompositionLocalProvider(

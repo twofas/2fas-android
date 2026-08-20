@@ -29,8 +29,6 @@ data class ColorTokens(
     val onTertiary: Color = Color.Unspecified,
     val tertiaryContainer: Color = Color.Unspecified,
     val onTertiaryContainer: Color = Color.Unspecified,
-    val success: Color = Color.Unspecified,
-    val notice: Color = Color.Unspecified,
     val error: Color = Color.Unspecified,
     val onError: Color = Color.Unspecified,
     val errorContainer: Color = Color.Unspecified,
@@ -62,8 +60,6 @@ data class ColorTokens(
     val onSurface24: Color = onSurface.copy(alpha = 0.24f),
     val onSurface28: Color = onSurface.copy(alpha = 0.28f),
 
-    val bottomBar: Color = Color.Unspecified,
-
     val accentLightBlue: Color = Color.Unspecified,
     val accentIndigo: Color = Color.Unspecified,
     val accentPurple: Color = Color.Unspecified,
@@ -73,14 +69,6 @@ data class ColorTokens(
     val accentYellow: Color = Color.Unspecified,
     val accentPink: Color = Color.Unspecified,
     val accentBrown: Color = Color.Unspecified,
-
-    // region App-specific (no reference-design equivalent, retained for this app)
-    val onSurfaceTertiary: Color = Color.Unspecified,
-    val primaryIndicator: Color = Color.Unspecified,
-    val serviceBackgroundWithGroups: Color = Color.Unspecified,
-    val switchTrack: Color = Color.Unspecified,
-    val switchThumb: Color = Color.Unspecified,
-    // endregion
 ) {
     val divider: Color
         get() = surfaceVariant

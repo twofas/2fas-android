@@ -200,7 +200,7 @@ private fun ServicesScreen(
     val serviceContainerColor = if (uiState.totalGroups == 1) {
         MdtTheme.color.background
     } else {
-        MdtTheme.color.serviceBackgroundWithGroups
+        MdtTheme.color.background
     }
     val serviceContainerColorBlink = MdtTheme.color.primary.copy(alpha = 0.2f)
     val serviceContainerColorBlinking = remember { Animatable(serviceContainerColor) }

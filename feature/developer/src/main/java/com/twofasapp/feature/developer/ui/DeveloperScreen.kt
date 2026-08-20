@@ -31,6 +31,7 @@ import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.toastShort
 import com.twofasapp.feature.developer.ui.sections.BuildSection
+import com.twofasapp.feature.developer.ui.sections.ColorsSection
 import com.twofasapp.feature.developer.ui.sections.ServicesSection
 import org.koin.androidx.compose.koinViewModel
 
@@ -61,7 +62,7 @@ private fun Content(
     onDeleteAllServices: () -> Unit = {},
 ) {
     var selectedTabIndex by remember { mutableIntStateOf(0) }
-    val tabs = listOf("Services", "Build")
+    val tabs = listOf("Services", "Build", "Colors")
 
     Scaffold(
         topBar = { TopAppBar(title = "Developer") },
@@ -103,6 +104,8 @@ private fun Content(
                 1 -> BuildSection(
                     uiState = uiState,
                 )
+
+                2 -> ColorsSection()
             }
         }
     }
