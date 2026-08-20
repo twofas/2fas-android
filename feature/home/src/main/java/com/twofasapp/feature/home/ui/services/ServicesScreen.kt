@@ -64,8 +64,6 @@ import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
-import com.twofasapp.feature.home.ui.bottombar.BottomBar
-import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.feature.home.ui.services.component.AppReviewItem
 import com.twofasapp.feature.home.ui.services.component.PassBanner
 import com.twofasapp.feature.home.ui.services.component.ServicesAppBar
@@ -85,10 +83,17 @@ import org.burnoutcrew.reorderable.reorderable
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
+fun ServicesRoutePublic(
+    listener: HomeNavigationListener,
+) {
+    ServicesRoute(
+        listener = listener,
+    )
+}
+
+@Composable
 internal fun ServicesRoute(
     listener: HomeNavigationListener,
-    bottomBarListener: BottomBarListener,
-    showBottomBar: Boolean = true,
     viewModel: ServicesViewModel = koinViewModel(),
     appReviewViewModel: AppReviewViewModel = koinViewModel(),
 ) {
@@ -97,8 +102,6 @@ internal fun ServicesRoute(
     ServicesScreen(
         uiState = uiState,
         listener = listener,
-        bottomBarListener = bottomBarListener,
-        showBottomBar = showBottomBar,
         onEventConsumed = { viewModel.consumeEvent(it) },
         onExternalImportClick = { listener.openExternalImport() },
         onEditModeChange = { viewModel.toggleEditMode() },
@@ -129,8 +132,6 @@ internal fun ServicesRoute(
 private fun ServicesScreen(
     uiState: ServicesUiState,
     listener: HomeNavigationListener,
-    bottomBarListener: BottomBarListener,
-    showBottomBar: Boolean = true,
     onEventConsumed: (ServicesUiEvent) -> Unit,
     onExternalImportClick: () -> Unit = {},
     onEditModeChange: () -> Unit = {},
@@ -281,19 +282,6 @@ private fun ServicesScreen(
     }
 
     Scaffold(
-        bottomBar = {
-            if (showBottomBar) {
-                BottomBar(
-                    selectedIndex = 0,
-                    listener = bottomBarListener,
-                    onItemClick = {
-                        if (uiState.searchFocused) {
-                            onSearchFocusChange(false)
-                        }
-                    },
-                )
-            }
-        },
         topBar = {
             ServicesAppBar(
                 query = uiState.searchQuery,

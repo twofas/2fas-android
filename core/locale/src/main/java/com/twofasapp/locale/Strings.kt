@@ -36,7 +36,6 @@ class Strings(c: Context) {
 
     val bottomBarTokens = c.getString(R.string.commons__tokens)
     val bottomBarSettings = c.getString(R.string.settings__settings)
-    val bottomBarNotifications = c.getString(R.string.commons__notifications)
 
     val startupTermsLabel = c.getString(R.string.introduction__tos)
     val startupStepOneHeader = c.getString(R.string.introduction__page_1_title)

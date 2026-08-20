@@ -20,8 +20,7 @@ import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.feature.developer.navigation.DeveloperRoute
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
-import com.twofasapp.feature.home.navigation.ServicesEntry
-import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
+import com.twofasapp.feature.home.ui.services.ServicesRoutePublic
 import com.twofasapp.feature.home.ui.settings.SettingsRoute
 import com.twofasapp.feature.startup.navigation.StartupRoute
 import org.koin.compose.koinInject
@@ -70,13 +69,6 @@ internal fun MainNavDisplay(
         }
     }
 
-    val bottomBarListener = remember {
-        object : BottomBarListener {
-            override fun openHome() = selectTab(Screen.Services)
-            override fun openSettings() = selectTab(Screen.Settings)
-        }
-    }
-
     val currentDestination = backStack.lastOrNull()
     val showNavigationBar = when (currentDestination) {
         Screen.Services,
@@ -115,10 +107,8 @@ internal fun MainNavDisplay(
                     }
 
                     entry<Screen.Services> {
-                        ServicesEntry(
+                        ServicesRoutePublic(
                             listener = listener,
-                            bottomBarListener = bottomBarListener,
-                            showBottomBar = false,
                         )
                     }
 
