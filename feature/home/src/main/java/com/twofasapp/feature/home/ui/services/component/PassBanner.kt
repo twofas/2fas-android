@@ -66,7 +66,7 @@ internal fun PassBanner(
             Text(
                 text = MdtLocale.strings.passBannerTitle,
                 color = MdtTheme.color.onSurface,
-                style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
+                style = MdtTheme.typo.base.normal.copy(fontWeight = FontWeight.Medium),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -76,7 +76,7 @@ internal fun PassBanner(
             Text(
                 text = richText(MdtLocale.strings.passBannerMsg),
                 color = MdtTheme.color.onSurface,
-                style = MdtTheme.typo.regular.sm,
+                style = MdtTheme.typo.sm.normal,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
             )

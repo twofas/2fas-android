@@ -9,7 +9,6 @@ import java.time.Instant
 internal class SessionLocalSource(private val preferences: PlainPreferences) {
 
     companion object {
-        private const val KeyShowOnboardWarning = "showOnboardWarning"
         private const val KeyBackupReminderTimestamp = "backupReminderTimestamp"
         private const val KeyAppInstallTimestamp = "appInstallTimestamp"
         private const val KeyNoCompanionAppFromTimestamp = "noCompanionAppFromTimestamp"
@@ -27,14 +26,6 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
 
     private val appReviewPromptedTimestampFlow: MutableStateFlow<Long> by lazy {
         MutableStateFlow(getAppReviewPromptedTimestamp())
-    }
-
-    fun isOnboardingDisplayed(): Boolean {
-        return preferences.getBoolean(KeyShowOnboardWarning)?.not() ?: false
-    }
-
-    fun setOnboardingDisplayed(isDisplayed: Boolean) {
-        preferences.putBoolean(KeyShowOnboardWarning, isDisplayed.not())
     }
 
     fun observeBackupReminderTimestamp(): Flow<Long> {

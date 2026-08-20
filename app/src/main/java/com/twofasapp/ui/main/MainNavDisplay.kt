@@ -12,6 +12,7 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.feature.developer.navigation.DeveloperRoute
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.navigation.ServicesEntry
 import com.twofasapp.feature.home.navigation.SettingsEntry
@@ -56,6 +57,7 @@ internal fun MainNavDisplay(
             override fun openTrash() = todo("Trash")
             override fun openNotifications() = todo("Notifications")
             override fun openAbout() = todo("About")
+            override fun openDeveloper() = navigator.navigate(Screen.Developer)
             override fun openAddServiceModal() = todo("AddServiceModal")
             override fun openFocusServiceModal(id: Long) = todo("FocusServiceModal")
             override fun openBackupImport(filePath: String?) = todo("BackupImport")
@@ -115,6 +117,10 @@ internal fun MainNavDisplay(
                         bottomBarListener = bottomBarListener,
                         showBottomBar = false,
                     )
+                }
+
+                entry<Screen.Developer> {
+                    DeveloperRoute()
                 }
             },
         )

@@ -1,6 +1,6 @@
 package com.twofasapp.cipher.backup
 
-import com.twofasapp.common.ktx.encodeBase64ToString
+import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 
 data class DataEncrypted(
     val value: String,
@@ -9,7 +9,7 @@ data class DataEncrypted(
         data: ByteArray,
         salt: ByteArray,
         iv: ByteArray,
-    ) : this("${data.encodeBase64ToString()}:${salt.encodeBase64ToString()}:${iv.encodeBase64ToString()}")
+    ) : this("${data.legacyEncodeBase64ToString()}:${salt.legacyEncodeBase64ToString()}:${iv.legacyEncodeBase64ToString()}")
 
     private val split = value.split(":")
 

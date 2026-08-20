@@ -10,7 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.common.ktx.encodeBase64ToString
+import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
@@ -26,7 +26,7 @@ internal fun ExternalImportScanScreen(
 
     ScreenContent(
         uiState = uiState,
-        onScanned = { openResult(it.encodeBase64ToString()) },
+        onScanned = { openResult(it.legacyEncodeBase64ToString()) },
     )
 }
 

@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: BUSL-1.1
  *
- * Copyright © 2025 Two Factor Authentication Service, Inc.
+ * Copyright © 2026 Two Factor Authentication Service, Inc.
  * Licensed under the Business Source License 1.1
  * See LICENSE file for full terms
  */
@@ -12,6 +12,7 @@ import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.window.core.layout.WindowWidthSizeClass
 import com.twofasapp.core.design.ktx.currentActivity
 
@@ -21,6 +22,8 @@ import com.twofasapp.core.design.ktx.currentActivity
  */
 @Composable
 fun ScreenOrientation(compactOrientation: Int) {
+    if (LocalInspectionMode.current) return
+
     val activity = LocalContext.currentActivity
     val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
     val isCompact = windowSizeClass.windowWidthSizeClass == WindowWidthSizeClass.COMPACT

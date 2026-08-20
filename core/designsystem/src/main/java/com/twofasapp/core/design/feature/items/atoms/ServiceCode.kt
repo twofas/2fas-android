@@ -46,7 +46,7 @@ internal fun ServiceCode(
                 AnimatedVisibility(visible = nextCodeVisible) {
                     Text(
                         text = nextCode.formatCode(),
-                        style = MdtTheme.typo.medium.sm,
+                        style = MdtTheme.typo.sm.medium,
                         maxLines = 1,
                         overflow = TextOverflow.Visible,
                     )
@@ -68,7 +68,7 @@ internal fun ServiceCode(
                 AnimatedVisibility(visible = nextCodeVisible) {
                     Text(
                         text = nextCode.formatCode(),
-                        style = MdtTheme.typo.medium.sm,
+                        style = MdtTheme.typo.sm.medium,
                         maxLines = 1,
                         overflow = TextOverflow.Visible,
                         modifier = Modifier.padding(bottom = 2.dp, start = 8.dp),

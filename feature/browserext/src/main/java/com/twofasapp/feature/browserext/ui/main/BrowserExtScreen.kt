@@ -172,7 +172,7 @@ private fun ScreenContent(
                         HorizontalDivider(Modifier.padding(top = 24.dp, bottom = 24.dp))
                         Text(
                             text = strings.permissionPushBody,
-                            style = MdtTheme.typo.regular.sm,
+                            style = MdtTheme.typo.sm.normal,
                             modifier = Modifier.padding(start = 72.dp, bottom = 8.dp, end = 16.dp),
                             color = MdtTheme.color.primary,
                         )
@@ -245,7 +245,7 @@ private fun Empty(
                         append(MdtLocale.strings.browserExtMore2)
                     }
                 },
-                style = MdtTheme.typo.medium.sm,
+                style = MdtTheme.typo.sm.medium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(horizontal = 16.dp)

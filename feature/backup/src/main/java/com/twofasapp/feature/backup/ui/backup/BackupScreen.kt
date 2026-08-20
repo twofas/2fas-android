@@ -179,7 +179,7 @@ private fun ScreenContent(
                     ) {
                         Text(
                             text = stringResource(id = formatErrorMsg(uiState.error ?: CloudSyncError.Unknown)),
-                            style = MdtTheme.typo.regular.sm,
+                            style = MdtTheme.typo.sm.normal,
                             color = MdtTheme.color.primary,
                         )
 
@@ -188,7 +188,7 @@ private fun ScreenContent(
 
                             Text(
                                 text = "Error code: ${uiState.error?.code}",
-                                style = MdtTheme.typo.regular.xs,
+                                style = MdtTheme.typo.xs.normal,
                                 color = MdtTheme.color.primary,
                             )
                         }

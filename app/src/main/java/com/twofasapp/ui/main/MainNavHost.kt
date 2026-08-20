@@ -24,7 +24,7 @@ import com.twofasapp.android.navigation.Modal
 import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.intentFor
-import com.twofasapp.common.ktx.encodeBase64ToString
+import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import com.twofasapp.core.design.foundation.modal.ModalBottomSheet
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.feature.about.navigation.AboutLicensesRoute
@@ -39,6 +39,7 @@ import com.twofasapp.feature.browserext.navigation.BrowserExtPairingRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtPermissionRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtScanRoute
+import com.twofasapp.feature.developer.navigation.DeveloperRoute
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.navigation.ExternalImportResultRoute
 import com.twofasapp.feature.externalimport.navigation.ExternalImportRoute
@@ -142,6 +143,10 @@ internal fun MainNavHost(
                         navController.navigate(LegacyScreen.About.route)
                     }
 
+                    override fun openDeveloper() {
+                        navController.navigate(LegacyScreen.Developer.route)
+                    }
+
                     override fun openAddServiceModal() {
                         recentlyAddedService = null
                         navController.navigate(Modal.AddService.routeWithArgs())
@@ -152,7 +157,7 @@ internal fun MainNavHost(
                     }
 
                     override fun openBackupImport(filePath: String?) {
-                        navController.navigate(LegacyScreen.BackupImport.routeWithArgs(NavArg.ImportFileUri to filePath?.encodeBase64ToString()))
+                        navController.navigate(LegacyScreen.BackupImport.routeWithArgs(NavArg.ImportFileUri to filePath?.legacyEncodeBase64ToString()))
                     }
                 },
                 openEditServiceAuth = { onSuccess ->
@@ -192,6 +197,10 @@ internal fun MainNavHost(
 
             composable(LegacyScreen.AboutLicenses.route) {
                 AboutLicensesRoute()
+            }
+
+            composable(LegacyScreen.Developer.route) {
+                DeveloperRoute()
             }
 
             composable(LegacyScreen.Trash.route) {

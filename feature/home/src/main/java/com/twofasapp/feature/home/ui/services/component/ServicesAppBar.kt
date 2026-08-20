@@ -28,10 +28,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -58,6 +60,7 @@ internal fun ServicesAppBar(
     onSortClick: () -> Unit = {},
     onAddGroupClick: () -> Unit = {},
     onNotificationsClick: () -> Unit = {},
+    onDeveloperClick: () -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
     focusRequester: FocusRequester,
@@ -110,6 +113,14 @@ internal fun ServicesAppBar(
             showBackButton = false,
             scrollBehavior = scrollBehavior,
             actions = {
+                IconButton(
+                    icon = MdtIcons.Placeholder,
+                    onClick = onDeveloperClick,
+                    modifier = Modifier
+                        .alpha(0.1f)
+                        .testTag("homeDeveloperButton"),
+                )
+
                 Box {
                     IconButton(
                         icon = MdtIcons.Notification,
@@ -168,10 +179,10 @@ private fun SearchBar(
             placeholder = {
                 Text(
                     text = MdtLocale.strings.commonSearch,
-                    style = MdtTheme.typo.regular.base.copy(fontSize = 18.sp),
+                    style = MdtTheme.typo.base.normal.copy(fontSize = 18.sp),
                 )
             },
-            textStyle = MdtTheme.typo.regular.base.copy(fontSize = 18.sp),
+            textStyle = MdtTheme.typo.base.normal.copy(fontSize = 18.sp),
             colors = TextFieldDefaults.colors(
                 disabledTextColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: sv-SE, Swedish (Sweden)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:08 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -889,7 +889,7 @@
     <string name="backup__encryption_password_description">Lösenordet används för att kryptera dina data. Om du förlorar det kommer du inte att kunna återställa data från molnet.</string>
     <string name="backup__encryption_change_title">Byt typ av kryptering</string>
     <string name="backup__encryption_method_footer">Välj systemnyckel eller anpassat lösenord</string>
-    <string name="backup__manage_paired_watches_title">Hantera parkopplade Apple Watches</string>
+    <string name="backup__manage_paired_watches_title">Hantera parkopplade klockor</string>
     <string name="backup__manage_paired_watches_footer">Lägg till, ta bort eller byt namn på klockor som har åtkomst till säkerhetskopian i molnet.</string>
     <string name="backup__manage_paired_watches_rename_title">Byt namn på klocka</string>
     <string name="backup__manage_paired_watches_rename_description">Ange nytt enhetsnamn</string>
@@ -898,7 +898,7 @@
     <string name="backup__manage_paired_watches_empty_list">Listan är tom. Parkoppla en klocka med \"+\"-knappen.</string>
     <string name="backup__manage_paired_watches_syncing">Synkroniserar säkerhetskopia i molnet...</string>
     <string name="backup__watch_pair_title">Parkoppla din Apple Watch</string>
-    <string name="backup__watch_pair_description">Gå till inställningarna för säkerhetskopiering i 2FAS på din iPhone/iPad och välj \"Parkopplade klockor\". Detta alternativ kommer bara synas om säkerhetskopian har synkroniserats. Skanna QR-koden därifrån.</string>
+    <string name="backup__watch_pair_description">Gå till inställningarna för säkerhetskopiering i 2FAS Auth på din iPhone/iPad och välj \"Hantera parkopplade klockor\". Detta alternativ kommer bara synas om säkerhetskopian har synkroniserats. Skanna QR-koden därifrån.</string>
     <string name="backup__watch_pair_qr_error">Kunde inte skapa QR-kod</string>
     <string name="backup__cloud_switch_system_key">Byt till systemnyckel</string>
     <string name="backup__cloud_turn_backup_off">Stäng av säkerhetskopiering till molnet</string>
@@ -973,4 +973,40 @@
     <string name="pass_promo_banner_negative_cta">Visa inte igen</string>
     <string name="appearance_dynamic_colors">Dynamiska färger</string>
     <string name="appearance_dynamic_colors_description">Ändra appens färger dynamiskt baserat på din bakgrund.</string>
+    <string name="backup__section_note">OBS: Med iCloud-synkronisering lagras krypteringsnycklar i din iCloud-nyckelring. Om iCloud-nyckelring är avstängd behöver du manuellt exportera dina nycklar under \"Hantera säkerhetskopia\" i inställningarna. Om du inte gör det kommer du inte kunna återställa eller synkronisera dina data till andra enheter.</string>
+    <string name="backup__keys_import_warning">När nycklarna importeras kommer de nuvarande nycklarna att ersättas. Vill du fortsätta?</string>
+    <string name="backup__key_import_system_key">Systemnyckel</string>
+    <string name="backup__keys_import_error">Kunde inte importera nycklarna.</string>
+    <string name="watch__intro_step1">Följ de här instruktionerna för att parkoppla appen på din klocka.</string>
+    <string name="watch__intro_step2">Gå till inställningarna för säkerhetskopiering i 2FAS Auth på din iPhone.</string>
+    <string name="watch__intro_step3">Se till att iCloud-säkerhetskopian har synkroniserats och att iCloud-nyckelring är påslagen i iOS systeminställningar.</string>
+    <string name="watch__intro_step4">Välj \"Hantera parkopplade klockor\".</string>
+    <string name="watch__intro_step5">Tryck på \"+\" och skanna QR-koden på nästa sida.</string>
+    <string name="watch__intro_step6">Du kan nu stänga det här fönstret. Synkroniseringen kan ta en stund.</string>
+    <string name="tokens__empty_screen_in_trash">Du har **%d** konton i papperskorgen.</string>
+    <string name="commons__go_to_trash">Gå till papperskorgen</string>
+    <string name="backup__moved_to_trash_title">Resultat av iCloud-synkronisering</string>
+    <string name="backup__moved_to_trash_message">Din senaste iCloud-synkronisering flyttade alla konton till papperskorgen. Du kan återställa dem när som helst.</string>
+    <string name="commons__understood">Understood</string>
+    <string name="introduction__backup_icloud_description_note">It\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__call_1">Just know you\'re</string>
+    <string name="introduction__call_2">Incredible!</string>
+    <string name="restore__reset__title">Restoring the app</string>
+    <string name="login__hello_header">Hello again!</string>
+    <string name="login__hello_header_1">Hello there!</string>
+    <string name="login__hello_header_2">Welcome back!</string>
+    <string name="login__hello_header_3">Good to see you again!</string>
+    <string name="login__hello_header_4">Hi!</string>
+    <string name="tokens__empty_list_title">Add first service</string>
+    <string name="guides__request_service">Request</string>
+    <string name="guides__step_number">Step %d</string>
+    <string name="about__generate_logs">Generate logs</string>
+    <string name="about__generate_logs_alert_title">Generate logs?</string>
+    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
+    <string name="about__generate_logs_alert_action">Generate</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

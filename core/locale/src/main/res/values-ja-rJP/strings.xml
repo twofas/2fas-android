@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:08 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -961,10 +961,46 @@
     <string name="backup__change_password">パスワードを変更する</string>
     <string name="backup__password_set_description">バックアップの中身をより強固に保護するため、パスワードを入力してください。パスワードを忘れた場合、バックアップを削除してはじめからやりなおす必要があります。</string>
     <string name="backup__password_rules_description">英数字、空白及び特殊文字 (!@#$%^&amp;*()-_) のみ使用できます。</string>
-    <string name="pass_promo_banner_title">あなたのために新しいものを作りました！</string>
-    <string name="pass_promo_banner_msg">安全なローカルファーストのパスワードマネージャー – 2FAS Pass。2FAS Auth と連携して動作し、Authenticator は今のまま変わりません。</string>
+    <string name="pass_promo_banner_title">新しいアプリを作りました！</string>
+    <string name="pass_promo_banner_msg">「2FAS Pass」— 2FAS Authとの連携に最適化された、セキュアなローカルファースト・パスワードマネージャー。既存の認証アプリ（Authenticator）の使い勝手はそのままに。</string>
     <string name="pass_promo_banner_positive_cta">ストアへ</string>
     <string name="pass_promo_banner_negative_cta">今後表示しない</string>
     <string name="appearance_dynamic_colors">ダイナミックカラー</string>
     <string name="appearance_dynamic_colors_description">壁紙に基づいてアプリの色を動的に変更します。</string>
+    <string name="backup__section_note">注: iCloud同期は、暗号化キーをiCloudキーチェーンに保存します。 iCloudキーチェーンが無効になっている場合、「バックアップを管理」セクションからキーを手動でエクスポートしないと、データの復元や他のデバイスへの同期ができなくなります。</string>
+    <string name="backup__keys_import_warning">キーをインポートすると、現在の暗号化キーが上書きされます。続行しますか？</string>
+    <string name="backup__key_import_system_key">システムキー</string>
+    <string name="backup__keys_import_error">キーのインポートに失敗しました。</string>
+    <string name="watch__intro_step1">手順に従い、Watchアプリをペアリングします。</string>
+    <string name="watch__intro_step2">iPhoneの2FAS Authアプリの「2FASバックアップ」設定に移動します。</string>
+    <string name="watch__intro_step3">iOSのシステム設定でiCloudバックアップが同期され、iCloudキーチェーンが有効になっていることを確認します。</string>
+    <string name="watch__intro_step4">「ペアリングされたApple Watchを管理」を選択します。</string>
+    <string name="watch__intro_step5">「＋」をタップして、次のページからQRコードをスキャンしてください。</string>
+    <string name="watch__intro_step6">このウィンドウを閉じても構いません。同期には時間がかかる場合があります。</string>
+    <string name="tokens__empty_screen_in_trash">%d個のサービスがゴミ箱に入っています。</string>
+    <string name="commons__go_to_trash">ゴミ箱に移動する</string>
+    <string name="backup__moved_to_trash_title">iCloud同期結果</string>
+    <string name="backup__moved_to_trash_message">最後のiCloud同期により、すべてのサービスがゴミ箱に移動されました。いつでも戻せます。</string>
+    <string name="commons__understood">理解しました</string>
+    <string name="introduction__backup_icloud_description_note">デフォルトで有効になっており、アプリのバックアップ設定でいつでも無効にできます。</string>
+    <string name="introduction__call_1">これだけは知っておいて</string>
+    <string name="introduction__call_2">すばらしい！</string>
+    <string name="restore__reset__title">アプリを復元する</string>
+    <string name="login__hello_header">また会えましたね！</string>
+    <string name="login__hello_header_1">こんにちは！</string>
+    <string name="login__hello_header_2">おかえりなさい！</string>
+    <string name="login__hello_header_3">また会えてうれしいです！</string>
+    <string name="login__hello_header_4">やあ！</string>
+    <string name="tokens__empty_list_title">最初のサービスを追加</string>
+    <string name="guides__request_service">リクエスト</string>
+    <string name="guides__step_number">ステップ %d</string>
+    <string name="about__generate_logs">Generate logs</string>
+    <string name="about__generate_logs_alert_title">Generate logs?</string>
+    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
+    <string name="about__generate_logs_alert_action">Generate</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

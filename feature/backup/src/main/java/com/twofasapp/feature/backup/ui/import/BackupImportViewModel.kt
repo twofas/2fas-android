@@ -5,8 +5,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.getOrNull
-import com.twofasapp.common.ktx.decodeBase64
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.ktx.legacyDecodeBase64
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
 import com.twofasapp.data.services.BackupRepository
@@ -30,7 +30,7 @@ internal class BackupImportViewModel(
         if (importFileUri == null) {
             publishEvent(BackupImportUiEvent.ShowFilePicker)
         } else {
-            fileOpened(Uri.parse(importFileUri.decodeBase64()))
+            fileOpened(Uri.parse(importFileUri.legacyDecodeBase64()))
         }
     }
 

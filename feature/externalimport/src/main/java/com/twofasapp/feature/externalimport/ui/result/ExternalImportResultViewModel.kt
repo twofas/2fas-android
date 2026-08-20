@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.getOrNull
 import com.twofasapp.android.navigation.getOrThrow
-import com.twofasapp.common.ktx.decodeBase64
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.ktx.legacyDecodeBase64
 import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.externalimport.domain.AegisImporter
@@ -51,7 +51,7 @@ internal class ExternalImportResultViewModel(
             val result = when (importType) {
                 ImportType.GoogleAuthenticator -> {
                     if (importFileContent != null) {
-                        googleAuthenticatorImporter.read(importFileContent.decodeBase64())
+                        googleAuthenticatorImporter.read(importFileContent.legacyDecodeBase64())
                     } else if (importFileUri != null) {
                         val readQrResult = readQrFromImage.invoke(Uri.parse(importFileUri))
 
@@ -65,11 +65,11 @@ internal class ExternalImportResultViewModel(
                     }
                 }
 
-                ImportType.Aegis -> aegisImporter.read(importFileUri.orEmpty().decodeBase64())
-                ImportType.Raivo -> raivoImporter.read(importFileUri.orEmpty().decodeBase64())
-                ImportType.LastPass -> lastPassImporter.read(importFileUri.orEmpty().decodeBase64())
-                ImportType.AuthenticatorPro -> authenticatorProImporter.read(importFileUri.orEmpty().decodeBase64())
-                ImportType.AndOtp -> andOtpImporter.read(importFileUri.orEmpty().decodeBase64())
+                ImportType.Aegis -> aegisImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
+                ImportType.Raivo -> raivoImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
+                ImportType.LastPass -> lastPassImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
+                ImportType.AuthenticatorPro -> authenticatorProImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
+                ImportType.AndOtp -> andOtpImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
             }
 
             uiState.update { state ->

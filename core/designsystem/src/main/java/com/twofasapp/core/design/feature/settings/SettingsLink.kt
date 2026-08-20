@@ -151,7 +151,7 @@ private fun Title(
 ) {
     Text(
         text = title,
-        style = MdtTheme.typo.regular.base,
+        style = MdtTheme.typo.base.normal,
         color = textColor,
         modifier = modifier,
     )
@@ -166,7 +166,7 @@ private fun Subtitle(
     if (subtitle != null) {
         Text(
             text = subtitle,
-            style = MdtTheme.typo.regular.sm,
+            style = MdtTheme.typo.sm.normal,
             color = textColorSecondary,
             modifier = modifier.padding(top = 2.dp),
         )

@@ -152,7 +152,7 @@ private fun ScreenContent(
                         },
                         textAlign = TextAlign.Center,
                         color = MdtTheme.color.onSurface,
-                        style = MdtTheme.typo.regular.xl,
+                        style = MdtTheme.typo.xl.normal,
                     )
 
                     Text(
@@ -164,7 +164,7 @@ private fun ScreenContent(
                         },
                         textAlign = TextAlign.Center,
                         color = MdtTheme.color.onSurface,
-                        style = MdtTheme.typo.regular.sm,
+                        style = MdtTheme.typo.sm.normal,
                     )
 
                     when (uiState.screenState) {
@@ -173,7 +173,7 @@ private fun ScreenContent(
                                 text = uiState.screenState.servicesToImport.toString(),
                                 textAlign = TextAlign.Center,
                                 color = MdtTheme.color.onSurface,
-                                style = MdtTheme.typo.regular.xl,
+                                style = MdtTheme.typo.xl.normal,
                             )
                         }
 
@@ -190,7 +190,7 @@ private fun ScreenContent(
                                 text = strings.backupImportMsg2,
                                 textAlign = TextAlign.Center,
                                 color = MdtTheme.color.onSurface,
-                                style = MdtTheme.typo.regular.sm,
+                                style = MdtTheme.typo.sm.normal,
                             )
                         }
 

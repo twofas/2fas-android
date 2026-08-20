@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:07 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -566,7 +566,7 @@
     <string name="tokens__show_service_key_setup_lock">La tua chiave segreta è protetta. Aggiungi un PIN o un blocco biometrico per vederla.</string>
     <string name="tokens__tokens_list_is_empty">La lista dei servizi è vuota</string>
     <string name="tokens__use_plus_button_to_add_tokens">Usa il pulsante \"+\" per aggiungere un nuovo servizio</string>
-    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Senza questo token non sarai in grado di accedere al tuo account %1$s finché avrai abilitata l\'autenticazione a due fattori per %2$s.\n\nNon sarai in grado di ripristinare questo token dal cestino 2FAS.</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Senza questo token non sarai in grado di accedere al tuo account %1$s finché avrai abilitata l\'autenticazione a due fattori per %2$s.\n\nNon sarà possibile recuperare questo token dal cestino.</string>
     <string name="import_ga_success">Servizi importati con successo!</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
     <string name="backup_error_network">È necessaria una connessione Internet attiva per sincronizzare il backup. Attiva la connessione a internet e riprova.</string>
@@ -973,4 +973,40 @@
     <string name="pass_promo_banner_negative_cta">Non mostrare più</string>
     <string name="appearance_dynamic_colors">Colori dinamici</string>
     <string name="appearance_dynamic_colors_description">Cambia dinamicamente i colori dell’app in base allo sfondo.</string>
+    <string name="backup__section_note">NB: la sincronizzazione iCloud memorizza le chiavi di crittografia nel Portachiavi iCloud. Se il Portachiavi iCloud è disabilitato, esporta manualmente le chiavi dalla sezione Gestisci backup. In caso contrario, non sarà possibile ripristinare i dati o sincronizzarli con altri dispositivi.</string>
+    <string name="backup__keys_import_warning">L\'importazione delle chiavi sovrascriverà le chiavi di crittografia attualmente in uso. Vuoi continuare?</string>
+    <string name="backup__key_import_system_key">Chiave di sistema</string>
+    <string name="backup__keys_import_error">Impossibile importare le chiavi.</string>
+    <string name="watch__intro_step1">Segui queste istruzioni per associare l\'app al tuo orologio.</string>
+    <string name="watch__intro_step2">Accedi alle impostazioni \"Backup 2FAS\" nell\'app 2FAS Auth sul tuo iPhone.</string>
+    <string name="watch__intro_step3">Assicurati che il backup di iCloud sia sincronizzato e che il Portachiavi iCloud sia abilitato nelle impostazioni di sistema di iOS.</string>
+    <string name="watch__intro_step4">Seleziona \"Gestione degli Apple Watch abbinati\".</string>
+    <string name="watch__intro_step5">Tocca \"+\" e scansiona il codice QR dalla pagina successiva.</string>
+    <string name="watch__intro_step6">Ora puoi chiudere questa finestra. La sincronizzazione potrebbe richiedere del tempo.</string>
+    <string name="tokens__empty_screen_in_trash">Hai **%d** servizi nel cestino.</string>
+    <string name="commons__go_to_trash">Vai al cestino</string>
+    <string name="backup__moved_to_trash_title">Risultato della sincronizzazione iCloud</string>
+    <string name="backup__moved_to_trash_message">L\'ultima sincronizzazione di iCloud ha spostato tutti i tuoi servizi nel cestino. Puoi ripristinarli in qualsiasi momento.</string>
+    <string name="commons__understood">Understood</string>
+    <string name="introduction__backup_icloud_description_note">It\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__call_1">Just know you\'re</string>
+    <string name="introduction__call_2">Incredible!</string>
+    <string name="restore__reset__title">Restoring the app</string>
+    <string name="login__hello_header">Hello again!</string>
+    <string name="login__hello_header_1">Hello there!</string>
+    <string name="login__hello_header_2">Welcome back!</string>
+    <string name="login__hello_header_3">Good to see you again!</string>
+    <string name="login__hello_header_4">Hi!</string>
+    <string name="tokens__empty_list_title">Add first service</string>
+    <string name="guides__request_service">Request</string>
+    <string name="guides__step_number">Step %d</string>
+    <string name="about__generate_logs">Generate logs</string>
+    <string name="about__generate_logs_alert_title">Generate logs?</string>
+    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
+    <string name="about__generate_logs_alert_action">Generate</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

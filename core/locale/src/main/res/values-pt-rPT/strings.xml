@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:07 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -973,4 +973,40 @@
     <string name="pass_promo_banner_negative_cta">Não mostrar novamente</string>
     <string name="appearance_dynamic_colors">Cores dinâmicas</string>
     <string name="appearance_dynamic_colors_description">Altere dinamicamente as cores da aplicação com base no seu papel de parede.</string>
+    <string name="backup__section_note">NOTA: A Sincronização do iCloud armazena as chaves de encriptação no Porta-chaves do iCloud. Se o Porta-chaves do iCloud estiver desativado, exporta as tuas chaves manualmente na secção Gerir cópia de segurança. Caso contrário, não será possível restaurar os teus dados nem sincronizar com outros dispositivos.</string>
+    <string name="backup__keys_import_warning">Importar chaves irá substituir as tuas chaves de encriptação atuais. Queres continuar?</string>
+    <string name="backup__key_import_system_key">Chave do sistema</string>
+    <string name="backup__keys_import_error">Falha ao importar chaves.</string>
+    <string name="watch__intro_step1">Segue estas instruções para emparelhar a app do relógio.</string>
+    <string name="watch__intro_step2">Vai às definições de “Cópia de Segurança 2FAS” na app 2FAS Auth no teu iPhone.</string>
+    <string name="watch__intro_step3">Certifica-te de que a Cópia de segurança do iCloud está sincronizada e o Porta-chaves do iCloud está ativado nas definições do iOS.</string>
+    <string name="watch__intro_step4">Seleciona “Gerir Apple Watches emparelhados”.</string>
+    <string name="watch__intro_step5">Toca em “+” e lê o Código QR na página seguinte.</string>
+    <string name="watch__intro_step6">Já podes fechar esta janela. A sincronização pode demorar algum tempo.</string>
+    <string name="tokens__empty_screen_in_trash">Tens **%d** serviços no teu Lixo.</string>
+    <string name="commons__go_to_trash">Ir para o Lixo</string>
+    <string name="backup__moved_to_trash_title">Resultado da sincronização do iCloud</string>
+    <string name="backup__moved_to_trash_message">A última sincronização do iCloud moveu todos os teus serviços para o Lixo. Podes restaurá-los a qualquer momento.</string>
+    <string name="commons__understood">Understood</string>
+    <string name="introduction__backup_icloud_description_note">It\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__call_1">Just know you\'re</string>
+    <string name="introduction__call_2">Incredible!</string>
+    <string name="restore__reset__title">Restoring the app</string>
+    <string name="login__hello_header">Hello again!</string>
+    <string name="login__hello_header_1">Hello there!</string>
+    <string name="login__hello_header_2">Welcome back!</string>
+    <string name="login__hello_header_3">Good to see you again!</string>
+    <string name="login__hello_header_4">Hi!</string>
+    <string name="tokens__empty_list_title">Add first service</string>
+    <string name="guides__request_service">Request</string>
+    <string name="guides__step_number">Step %d</string>
+    <string name="about__generate_logs">Generate logs</string>
+    <string name="about__generate_logs_alert_title">Generate logs?</string>
+    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
+    <string name="about__generate_logs_alert_action">Generate</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

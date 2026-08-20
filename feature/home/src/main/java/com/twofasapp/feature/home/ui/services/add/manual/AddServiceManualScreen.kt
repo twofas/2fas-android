@@ -111,7 +111,7 @@ internal fun AddServiceManualScreen(
 
             Text(
                 text = MdtLocale.strings.addTitle,
-                style = MdtTheme.typo.regular.xl,
+                style = MdtTheme.typo.xl.normal,
                 color = MdtTheme.color.onSurface,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -202,13 +202,13 @@ internal fun AddServiceManualScreen(
             Text(
                 text = MdtLocale.strings.addManualOther,
                 color = MdtTheme.color.onSurface,
-                style = MdtTheme.typo.regular.base,
+                style = MdtTheme.typo.base.normal,
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
                 text = MdtLocale.strings.addManualOtherOptional,
                 color = MdtTheme.color.onSurfaceVariant,
-                style = MdtTheme.typo.regular.base,
+                style = MdtTheme.typo.base.normal,
             )
             Spacer(Modifier.weight(1f))
             IconButton(
@@ -242,7 +242,7 @@ internal fun AddServiceManualScreen(
             Text(
                 text = MdtLocale.strings.addManualAdvanced,
                 color = MdtTheme.color.onSurface,
-                style = MdtTheme.typo.regular.base,
+                style = MdtTheme.typo.base.normal,
                 modifier = Modifier.padding(horizontal = 24.dp),
             )
 
@@ -251,7 +251,7 @@ internal fun AddServiceManualScreen(
             Text(
                 text = MdtLocale.strings.addManualAdvancedDescription,
                 color = MdtTheme.color.onSurfaceVariant,
-                style = MdtTheme.typo.regular.sm,
+                style = MdtTheme.typo.sm.normal,
                 modifier = Modifier.padding(horizontal = 24.dp),
             )
 
@@ -268,13 +268,13 @@ internal fun AddServiceManualScreen(
                 Text(
                     text = "Type",
                     color = MdtTheme.color.onSurface,
-                    style = MdtTheme.typo.regular.base,
+                    style = MdtTheme.typo.base.normal,
                 )
 
                 Text(
                     text = uiState.authType.name,
                     color = MdtTheme.color.onSurfaceVariant,
-                    style = MdtTheme.typo.regular.sm,
+                    style = MdtTheme.typo.sm.normal,
                 )
             }
 
@@ -293,13 +293,13 @@ internal fun AddServiceManualScreen(
                 Text(
                     text = MdtLocale.strings.addManualAlgorithm,
                     color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant,
-                    style = MdtTheme.typo.regular.base,
+                    style = MdtTheme.typo.base.normal,
                 )
 
                 Text(
                     text = uiState.algorithm.name,
                     color = MdtTheme.color.onSurfaceVariant,
-                    style = MdtTheme.typo.regular.sm,
+                    style = MdtTheme.typo.sm.normal,
                 )
             }
 
@@ -322,13 +322,13 @@ internal fun AddServiceManualScreen(
                         Text(
                             text = MdtLocale.strings.addManualRefreshTime,
                             color = if (uiState.authType == Service.AuthType.TOTP) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant,
-                            style = MdtTheme.typo.regular.base,
+                            style = MdtTheme.typo.base.normal,
                         )
 
                         Text(
                             text = uiState.refreshTime.toString(),
                             color = MdtTheme.color.onSurfaceVariant,
-                            style = MdtTheme.typo.regular.sm,
+                            style = MdtTheme.typo.sm.normal,
                         )
                     }
                 }
@@ -345,13 +345,13 @@ internal fun AddServiceManualScreen(
                         Text(
                             text = MdtLocale.strings.addManualInitialCounter,
                             color = MdtTheme.color.onSurface,
-                            style = MdtTheme.typo.regular.base,
+                            style = MdtTheme.typo.base.normal,
                         )
 
                         Text(
                             text = uiState.hotpCounter.toString(),
                             color = MdtTheme.color.onSurfaceVariant,
-                            style = MdtTheme.typo.regular.sm,
+                            style = MdtTheme.typo.sm.normal,
                         )
                     }
                 }
@@ -370,13 +370,13 @@ internal fun AddServiceManualScreen(
                 Text(
                     text = MdtLocale.strings.addManualDigits,
                     color = if (uiState.authType != Service.AuthType.STEAM) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant,
-                    style = MdtTheme.typo.regular.base,
+                    style = MdtTheme.typo.base.normal,
                 )
 
                 Text(
                     text = uiState.digits.toString(),
                     color = MdtTheme.color.onSurfaceVariant,
-                    style = MdtTheme.typo.regular.sm,
+                    style = MdtTheme.typo.sm.normal,
                 )
             }
 

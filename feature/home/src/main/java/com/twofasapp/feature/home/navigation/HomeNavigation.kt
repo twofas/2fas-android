@@ -79,6 +79,7 @@ interface HomeNavigationListener {
     fun openTrash()
     fun openNotifications()
     fun openAbout()
+    fun openDeveloper()
     fun openAddServiceModal()
     fun openFocusServiceModal(id: Long)
     fun openBackupImport(filePath: String?)

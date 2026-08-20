@@ -150,13 +150,13 @@ private fun Result(
                                 readResult.countTotalServices,
                             )
                         },
-                        style = MdtTheme.typo.regular.xl2,
+                        style = MdtTheme.typo.xl2.normal,
                         modifier = Modifier.padding(vertical = 16.dp),
                     )
 
                     Text(
                         text = strings.externalImportResultTokensMsg,
-                        style = MdtTheme.typo.regular.base,
+                        style = MdtTheme.typo.base.normal,
                     )
                 }
             }

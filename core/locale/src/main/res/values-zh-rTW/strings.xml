@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hant, Traditional Chinese
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:08 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -967,4 +967,40 @@
     <string name="pass_promo_banner_negative_cta">不再顯示</string>
     <string name="appearance_dynamic_colors">動態色彩</string>
     <string name="appearance_dynamic_colors_description">根據您的桌布動態變更應用程式的顏色。</string>
+    <string name="backup__section_note">**注意：**iCloud 同步會將加密金鑰儲存在 iCloud 鑰匙圈中。若 iCloud 鑰匙圈已停用，請在 管理備份 中手動匯出你的金鑰。否則將無法還原資料或與其他裝置同步。</string>
+    <string name="backup__keys_import_warning">匯入金鑰將覆寫你目前的加密金鑰。要繼續嗎？</string>
+    <string name="backup__key_import_system_key">系統金鑰</string>
+    <string name="backup__keys_import_error">匯入金鑰失敗。</string>
+    <string name="watch__intro_step1">請依照以下指示配對你的手錶 App。</string>
+    <string name="watch__intro_step2">在 iPhone 上的 2FAS Auth App 中，前往 「2FAS 備份」 設定。</string>
+    <string name="watch__intro_step3">請在 iOS 系統設定中確認 iCloud 備份已同步，並已啟用 iCloud 鑰匙圈。</string>
+    <string name="watch__intro_step4">選擇 「管理已配對的 Apple Watch」。</string>
+    <string name="watch__intro_step5">點選 「+」 並掃描下一頁的 QR Code。</string>
+    <string name="watch__intro_step6">你現在可以關閉此視窗。同步可能需要一些時間。</string>
+    <string name="tokens__empty_screen_in_trash">你的垃圾桶中有 **%d** 項服務。</string>
+    <string name="commons__go_to_trash">前往垃圾桶</string>
+    <string name="backup__moved_to_trash_title">iCloud 同步結果</string>
+    <string name="backup__moved_to_trash_message">上一次 iCloud 同步已將你所有的服務移至垃圾桶。你可以隨時還原它們。</string>
+    <string name="commons__understood"></string>
+    <string name="introduction__backup_icloud_description_note"></string>
+    <string name="introduction__call_1"></string>
+    <string name="introduction__call_2"></string>
+    <string name="restore__reset__title"></string>
+    <string name="login__hello_header"></string>
+    <string name="login__hello_header_1"></string>
+    <string name="login__hello_header_2"></string>
+    <string name="login__hello_header_3"></string>
+    <string name="login__hello_header_4"></string>
+    <string name="tokens__empty_list_title"></string>
+    <string name="guides__request_service"></string>
+    <string name="guides__step_number"></string>
+    <string name="about__generate_logs"></string>
+    <string name="about__generate_logs_alert_title"></string>
+    <string name="about__generate_logs_alert_message"></string>
+    <string name="about__generate_logs_alert_action"></string>
+    <string name="introduction__backup_header"></string>
+    <string name="home__app_review_title"></string>
+    <string name="home__app_review_msg"></string>
+    <string name="home__app_review_rate"></string>
+    <string name="home__app_review_dismiss"></string>
 </resources>

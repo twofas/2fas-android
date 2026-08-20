@@ -135,7 +135,7 @@ private fun Notification(
                 text = notification.message,
                 modifier = Modifier.fillMaxWidth(),
                 color = MdtTheme.color.onSurface,
-                style = MdtTheme.typo.regular.sm,
+                style = MdtTheme.typo.sm.normal,
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -144,7 +144,7 @@ private fun Notification(
                 text = MdtLocale.formatDuration(notification.createdAt),
                 modifier = Modifier.fillMaxWidth(),
                 color = MdtTheme.color.onSurfaceVariant,
-                style = MdtTheme.typo.regular.xs,
+                style = MdtTheme.typo.xs.normal,
             )
         }
 

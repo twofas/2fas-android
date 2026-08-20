@@ -100,7 +100,7 @@ private fun Content(
 
         Text(
             text = guideJson.serviceName,
-            style = MdtTheme.typo.regular.xl2,
+            style = MdtTheme.typo.xl2.normal,
             color = MdtTheme.color.onSurface,
         )
 

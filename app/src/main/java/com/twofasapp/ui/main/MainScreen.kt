@@ -1,5 +1,7 @@
 package com.twofasapp.ui.main
 
+import android.Manifest
+import android.os.Build
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.Surface
@@ -7,13 +9,16 @@ import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
+import com.twofasapp.RequestPermission
 import com.twofasapp.android.navigation.LegacyScreen
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
@@ -64,6 +69,27 @@ internal fun MainScreen(
                 onRequestHandled = {
                     viewModel.browserExtRequestHandled(browserExtRequest)
                     NotificationManagerCompat.from(context).cancel(null, browserExtRequest.request.requestId.hashCode())
+                },
+            )
+        }
+    }
+
+    // TODO: Remove
+    var askForPushPermission by remember { mutableStateOf(true) }
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        if (askForPushPermission) {
+            RequestPermission(
+                permission = Manifest.permission.POST_NOTIFICATIONS,
+                rationaleEnabled = false,
+                onGranted = {
+                    askForPushPermission = false
+                },
+                onDenied = {
+                    askForPushPermission = false
+                },
+                onDismissRequest = {
+                    askForPushPermission = false
                 },
             )
         }

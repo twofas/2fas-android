@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: BUSL-1.1
  *
- * Copyright © 2025 Two Factor Authentication Service, Inc.
+ * Copyright © 2026 Two Factor Authentication Service, Inc.
  * Licensed under the Business Source License 1.1
  * See LICENSE file for full terms
  */
@@ -110,7 +110,7 @@ fun Button(
                     text = text,
                     // Adapted: reference used MdtTheme.typo.labelLarge (absent here); medium.sm is an
                     // exact match (14sp / 20sp / FontWeight 500).
-                    style = MdtTheme.typo.medium.sm,
+                    style = MdtTheme.typo.sm.medium,
                     color = contentColor ?: if (enabled) style.contentColor else style.disabledContentColor,
                     leadingIcon = leadingIcon,
                     leadingIconUrl = leadingIconUrl,

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:08 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -973,4 +973,40 @@
     <string name="pass_promo_banner_negative_cta">Να μην εμφανιστεί ξανά</string>
     <string name="appearance_dynamic_colors">Δυναμικά χρώματα</string>
     <string name="appearance_dynamic_colors_description">Αλλάξτε δυναμικά τα χρώματα της εφαρμογής με βάση την ταπετσαρία σας.</string>
+    <string name="backup__section_note">ΣΗΜΕΙΩΣΗ: Το iCloud Sync αποθηκεύει κλειδιά κρυπτογράφησης στο iCloud Keychain. Εάν το iCloud Keychain είναι απενεργοποιημένο, εξαγάγετε τα κλειδιά σας χειροκίνητα από την ενότητα Διαχείριση αντιγράφων ασφαλείας. Χωρίς αυτό, η επαναφορά των δεδομένων σας ή ο συγχρονισμός με άλλες συσκευές δεν θα είναι δυνατή.</string>
+    <string name="backup__keys_import_warning">Η εισαγωγή κλειδιών θα αντικαταστήσει τα τρέχοντα κλειδιά κρυπτογράφησης. Θέλετε να συνεχίσετε;</string>
+    <string name="backup__key_import_system_key">Κλειδί συστήματος</string>
+    <string name="backup__keys_import_error">Αποτυχία εισαγωγής κλειδιών.</string>
+    <string name="watch__intro_step1">Ακολουθήστε αυτές τις οδηγίες για να αντιστοιχίσετε την εφαρμογή ρολογιού σας.</string>
+    <string name="watch__intro_step2">Μεταβείτε στις ρυθμίσεις \"2FAS Backup\" στην εφαρμογή 2FAS Auth στο iPhone σας.</string>
+    <string name="watch__intro_step3">Βεβαιωθείτε ότι το iCloud Backup είναι συγχρονισμένο και ότι το iCloud Keychain είναι ενεργοποιημένο στις ρυθμίσεις του συστήματος iOS.</string>
+    <string name="watch__intro_step4">Επιλέξτε \"Διαχειριζόμενα συζευγμένα ρολόγια Apple\".</string>
+    <string name="watch__intro_step5">Πατήστε \"+\" και σαρώστε τον κωδικό QR από την επόμενη σελίδα.</string>
+    <string name="watch__intro_step6">Μπορείτε τώρα να κλείσετε αυτό το παράθυρο. Ο συγχρονισμός μπορεί να διαρκέσει λίγο.</string>
+    <string name="tokens__empty_screen_in_trash">Έχετε **%d** υπηρεσίες στον Κάδο απορριμμάτων.</string>
+    <string name="commons__go_to_trash">Μετάβαση στον Κάδο απορριμμάτων</string>
+    <string name="backup__moved_to_trash_title">Αποτέλεσμα συγχρονισμού iCloud</string>
+    <string name="backup__moved_to_trash_message">Ο τελευταίος συγχρονισμός iCloud μετέφερε όλες τις υπηρεσίες σας στον Κάδο απορριμμάτων. Μπορείτε να τις επαναφέρετε οποιαδήποτε στιγμή.</string>
+    <string name="commons__understood">Κατάλαβα</string>
+    <string name="introduction__backup_icloud_description_note">Είναι ενεργοποιημένο από προεπιλογή και μπορεί να απενεργοποιηθεί ανά πάσα στιγμή από τις ρυθμίσεις δημιουργίας αντιγράφων ασφαλείας της εφαρμογής.</string>
+    <string name="introduction__call_1">Απλώς να ξέρετε ότι είστε</string>
+    <string name="introduction__call_2">Απίστευτο!</string>
+    <string name="restore__reset__title">Επαναφορά της εφαρμογής</string>
+    <string name="login__hello_header">Γεια σας και πάλι!</string>
+    <string name="login__hello_header_1">Γεια σας!</string>
+    <string name="login__hello_header_2">Καλώς ήρθατε ξανά!</string>
+    <string name="login__hello_header_3">Χαιρόμαστε που σας βλέπουμε ξανά!</string>
+    <string name="login__hello_header_4">Γεια!</string>
+    <string name="tokens__empty_list_title">Προσθήκη πρώτης υπηρεσίας</string>
+    <string name="guides__request_service">Αίτημα</string>
+    <string name="guides__step_number">Βήμα %d</string>
+    <string name="about__generate_logs">Δημιουργία αρχείων καταγραφής</string>
+    <string name="about__generate_logs_alert_title">Να δημιουργηθούν αρχεία καταγραφής;</string>
+    <string name="about__generate_logs_alert_message">Θέλετε να δημιουργήσετε αρχεία καταγραφής; Η διαδικασία ενδέχεται να διαρκέσει λίγο.</string>
+    <string name="about__generate_logs_alert_action">Δημιουργία</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

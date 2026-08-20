@@ -5,6 +5,9 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.pluto.Pluto
+import com.pluto.plugins.datastore.pref.PlutoDatastorePreferencesPlugin
+import com.pluto.plugins.rooms.db.PlutoRoomsDatabasePlugin
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
@@ -63,5 +66,12 @@ class App : Application() {
 
         FirebaseCrashlytics.getInstance()
             .setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
+
+        Pluto.Installer(this)
+            .apply {
+                addPlugin(PlutoRoomsDatabasePlugin())
+                addPlugin(PlutoDatastorePreferencesPlugin())
+            }
+            .install()
     }
 }

@@ -4,9 +4,11 @@ import android.app.NotificationManager
 import android.content.Context
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.biometric.BiometricKeyProviderImpl
+import com.twofasapp.common.crypto.AndroidKeyStore
 import com.twofasapp.common.di.KoinModule
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.crypto.AndroidKeyStoreImpl
 import com.twofasapp.data.push.notification.ShowBrowserExtRequestNotification
 import com.twofasapp.environment.AppBuildImpl
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
@@ -35,6 +37,7 @@ class AppModule : KoinModule {
         singleOf(::AppBuildImpl) { bind<AppBuild>() }
         singleOf(::TimeProviderImpl) { bind<TimeProvider>() }
         singleOf(::BiometricKeyProviderImpl) { bind<BiometricKeyProvider>() }
+        singleOf(::AndroidKeyStoreImpl) { bind<AndroidKeyStore>() }
 
         factory { androidContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
 

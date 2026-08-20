@@ -1,16 +1,22 @@
+@file:OptIn(ExperimentalEncodingApi::class)
+
 package com.twofasapp.common.ktx
 
+import com.twofasapp.common.crypto.EncryptedBytes
 import java.io.ByteArrayOutputStream
+import java.net.URLDecoder
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
 
-fun String.encodeBase64ToString(): String = String(this.toByteArray().encodeBase64())
-fun String.encodeBase64ToByteArray(): ByteArray = this.toByteArray().encodeBase64()
-fun ByteArray.encodeBase64ToString(): String = String(this.encodeBase64())
+fun String.legacyEncodeBase64ToString(): String = String(this.toByteArray().legacyEncodeBase64())
+fun ByteArray.legacyEncodeBase64ToString(): String = String(this.legacyEncodeBase64())
 
-fun String.decodeBase64(): String = String(this.toByteArray().decodeBase64())
-fun String.decodeBase64ToByteArray(): ByteArray = this.toByteArray().decodeBase64()
-fun ByteArray.decodeBase64ToString(): String = String(this.decodeBase64())
+fun String.legacyDecodeBase64(): String = String(this.toByteArray().legacyDecodeBase64())
+fun String.legacyDecodeBase64ToByteArray(): ByteArray = this.toByteArray().legacyDecodeBase64()
 
-private fun ByteArray.encodeBase64(): ByteArray {
+private fun ByteArray.legacyEncodeBase64(): ByteArray {
     val table = (CharRange('A', 'Z') + CharRange('a', 'z') + CharRange('0', '9') + '+' + '/').toCharArray()
     val output = ByteArrayOutputStream()
     var padding = 0
@@ -32,7 +38,7 @@ private fun ByteArray.encodeBase64(): ByteArray {
     return output.toByteArray()
 }
 
-private fun ByteArray.decodeBase64(): ByteArray {
+private fun ByteArray.legacyDecodeBase64(): ByteArray {
     val table = intArrayOf(
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1,
@@ -76,4 +82,48 @@ private fun ByteArray.decodeBase64(): ByteArray {
         position += 4
     }
     return output.toByteArray()
+}
+
+fun ByteArray.encodeBase64(): String {
+    return Base64.encode(this)
+}
+
+fun EncryptedBytes.encodeBase64(): String {
+    return Base64.encode(this.bytes)
+}
+
+fun ByteArray.encodeBase64UrlSafe(): String {
+    return Base64.UrlSafe.encode(this)
+        .replace("+", "-")
+        .replace("/", "_")
+        .replace("=", "")
+}
+
+fun EncryptedBytes.encodeBase64UrlSafe(): String {
+    return Base64.UrlSafe.encode(this.bytes)
+}
+
+fun String.decodeBase64(): ByteArray {
+    return Base64.decode(this)
+}
+
+fun String.decodeBase64UrlSafe(): ByteArray {
+    val padded = when (length % 4) {
+        2 -> "$this=="
+        3 -> "$this="
+        else -> this
+    }
+    return Base64.UrlSafe.decode(padded)
+}
+
+fun String.decodeBase64ToString(): String {
+    return String(Base64.decode(this))
+}
+
+fun String.encodeUrlParam(): String {
+    return URLEncoder.encode(this, StandardCharsets.UTF_8.toString())
+}
+
+fun String.decodeUrlParam(): String {
+    return URLDecoder.decode(this, StandardCharsets.UTF_8.toString()).replace(" ", "+")
 }

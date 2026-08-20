@@ -2,7 +2,7 @@ package com.twofasapp.data.services.mapper
 
 import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.domain.Service
-import com.twofasapp.common.ktx.enumValueOrNull
+import com.twofasapp.common.ktx.legacyEnumValueOrNull
 import com.twofasapp.data.services.domain.BackupService
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServiceEntity
@@ -133,14 +133,14 @@ internal fun BackupService.asDomain(
         secret = secret,
         name = name,
         info = otp.account ?: otp.label,
-        authType = otp.tokenType?.let { enumValueOrNull<Service.AuthType>(it) } ?: Service.AuthType.TOTP,
+        authType = otp.tokenType?.let { legacyEnumValueOrNull<Service.AuthType>(it) } ?: Service.AuthType.TOTP,
         link = otp.link,
         issuer = otp.issuer,
         period = otp.period,
         digits = otp.digits,
         hotpCounter = otp.counter,
         hotpCounterTimestamp = null,
-        algorithm = otp.algorithm?.let { enumValueOrNull<Service.Algorithm>(it) },
+        algorithm = otp.algorithm?.let { legacyEnumValueOrNull<Service.Algorithm>(it) },
         groupId = groupId,
         imageType = when (icon?.selected) {
             BackupService.IconType.Brand -> Service.ImageType.IconCollection
@@ -152,8 +152,8 @@ internal fun BackupService.asDomain(
         iconLight = ServiceIcons.getIcon(iconCollectionId, false),
         iconDark = ServiceIcons.getIcon(iconCollectionId, true),
         labelText = icon?.label?.text,
-        labelColor = icon?.label?.backgroundColor?.let { enumValueOrNull<Service.Tint>(it) },
-        badgeColor = badge?.color?.let { enumValueOrNull<Service.Tint>(it) },
+        labelColor = icon?.label?.backgroundColor?.let { legacyEnumValueOrNull<Service.Tint>(it) },
+        badgeColor = badge?.color?.let { legacyEnumValueOrNull<Service.Tint>(it) },
         isDeleted = false,
         updatedAt = updatedAt,
         source = when (otp.source?.lowercase()) {

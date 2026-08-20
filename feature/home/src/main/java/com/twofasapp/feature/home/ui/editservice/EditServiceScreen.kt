@@ -512,7 +512,7 @@ fun IconSelector(
                 text = service.labelText ?: service.name.take(2).uppercase(),
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,
-                style = MdtTheme.typo.regular.sm.copy(
+                style = MdtTheme.typo.sm.normal.copy(
                     fontWeight = FontWeight.Bold,
                     fontSize = dpToSp(dp = 14.dp),
                     lineHeight = dpToSp(dp = 20.dp),

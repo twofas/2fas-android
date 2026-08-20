@@ -31,29 +31,29 @@ internal data class ServiceDimens(
 internal object ServiceTextDefaults {
     @Composable
     fun default() = ServiceTextStyle(
-        nameTextStyle = MdtTheme.typo.regular.sm.copy(fontWeight = FontWeight.Medium),
-        infoTextStyle = MdtTheme.typo.regular.xs.copy(fontWeight = FontWeight.Normal),
+        nameTextStyle = MdtTheme.typo.sm.normal.copy(fontWeight = FontWeight.Medium),
+        infoTextStyle = MdtTheme.typo.xs.normal.copy(fontWeight = FontWeight.Normal),
         codeTextStyle = CodeExtraLight,
-        imageLabelTextStyle = MdtTheme.typo.regular.sm.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
-        timerTextStyle = MdtTheme.typo.regular.xs,
+        imageLabelTextStyle = MdtTheme.typo.sm.normal.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
+        timerTextStyle = MdtTheme.typo.xs.normal,
     )
 
     @Composable
     fun compact() = ServiceTextStyle(
-        nameTextStyle = MdtTheme.typo.regular.xs.copy(fontWeight = FontWeight.Medium),
-        infoTextStyle = MdtTheme.typo.regular.xs.copy(fontWeight = FontWeight.Normal),
+        nameTextStyle = MdtTheme.typo.xs.normal.copy(fontWeight = FontWeight.Medium),
+        infoTextStyle = MdtTheme.typo.xs.normal.copy(fontWeight = FontWeight.Normal),
         codeTextStyle = CodeLightSmall,
-        imageLabelTextStyle = MdtTheme.typo.regular.sm.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 11.dp), lineHeight = dpToSp(dp = 15.dp)),
-        timerTextStyle = MdtTheme.typo.regular.xs.copy(fontSize = 11.sp),
+        imageLabelTextStyle = MdtTheme.typo.sm.normal.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 11.dp), lineHeight = dpToSp(dp = 15.dp)),
+        timerTextStyle = MdtTheme.typo.xs.normal.copy(fontSize = 11.sp),
     )
 
     @Composable
     fun modal() = ServiceTextStyle(
-        nameTextStyle = MdtTheme.typo.regular.xl.copy(fontWeight = FontWeight.Normal),
-        infoTextStyle = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Normal),
+        nameTextStyle = MdtTheme.typo.xl.normal.copy(fontWeight = FontWeight.Normal),
+        infoTextStyle = MdtTheme.typo.base.normal.copy(fontWeight = FontWeight.Normal),
         codeTextStyle = CodeExtraLight,
-        imageLabelTextStyle = MdtTheme.typo.regular.sm.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
-        timerTextStyle = MdtTheme.typo.regular.xs,
+        imageLabelTextStyle = MdtTheme.typo.sm.normal.copy(fontWeight = FontWeight.Bold, fontSize = dpToSp(dp = 14.dp), lineHeight = dpToSp(dp = 20.dp)),
+        timerTextStyle = MdtTheme.typo.xs.normal,
     )
 }
 

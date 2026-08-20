@@ -1,7 +1,7 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     alias(libs.plugins.twofasLint)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 android {
@@ -10,6 +10,8 @@ android {
 
 dependencies {
     implementation(libs.kotlinCoroutines)
+    implementation(libs.kotlinSerialization)
+    implementation(libs.dataStore)
     api(libs.bundles.koin)
     api(libs.javaxInject)
 }

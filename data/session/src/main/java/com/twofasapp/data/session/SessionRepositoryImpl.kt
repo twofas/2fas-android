@@ -30,12 +30,6 @@ internal class SessionRepositoryImpl(
     private val timeDeltaPreference: TimeDeltaPreference,
 ) : SessionRepository {
 
-    override suspend fun isOnboardingDisplayed(): Boolean {
-        return withContext(dispatchers.io) {
-            local.isOnboardingDisplayed()
-        }
-    }
-
     override suspend fun showBackupReminder(): Boolean {
         return true
     }
@@ -46,12 +40,6 @@ internal class SessionRepositoryImpl(
 
     override fun setAppUpdateDisplayed() {
         appUpdateLastCheckVersionPreference.put(appBuild.versionCode.toLong())
-    }
-
-    override suspend fun setOnboardingDisplayed(isDisplayed: Boolean) {
-        withContext(dispatchers.io) {
-            local.setOnboardingDisplayed(isDisplayed)
-        }
     }
 
     override suspend fun setRateAppDisplayed(isDisplayed: Boolean) {

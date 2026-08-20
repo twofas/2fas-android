@@ -14,7 +14,7 @@ import com.twofasapp.locale.MdtLocale
 fun SettingsDescription(text: String) {
     Text(
         text = text,
-        style = MdtTheme.typo.regular.sm,
+        style = MdtTheme.typo.sm.normal,
         color = MdtTheme.color.onSurfaceVariant,
         modifier = Modifier
             .fillMaxWidth()

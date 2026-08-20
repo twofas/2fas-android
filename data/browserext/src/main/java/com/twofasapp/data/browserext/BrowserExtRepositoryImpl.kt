@@ -2,8 +2,8 @@ package com.twofasapp.data.browserext
 
 import com.google.firebase.messaging.FirebaseMessaging
 import com.twofasapp.common.coroutines.Dispatchers
-import com.twofasapp.common.ktx.decodeBase64ToByteArray
-import com.twofasapp.common.ktx.encodeBase64ToString
+import com.twofasapp.common.ktx.legacyDecodeBase64ToByteArray
+import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.data.browserext.domain.PairedBrowser
 import com.twofasapp.data.browserext.domain.TokenRequest
@@ -162,7 +162,7 @@ internal class BrowserExtRepositoryImpl(
         code: String,
         extensionPublicKey: String,
     ): String {
-        val publicKeySpec = X509EncodedKeySpec(extensionPublicKey.decodeBase64ToByteArray())
+        val publicKeySpec = X509EncodedKeySpec(extensionPublicKey.legacyDecodeBase64ToByteArray())
         val publicKey = KeyFactory.getInstance("RSA").generatePublic(publicKeySpec)
 
         val cipher: Cipher = Cipher.getInstance("RSA/ECB/OAEPPadding")
@@ -177,6 +177,6 @@ internal class BrowserExtRepositoryImpl(
                 // init(Cipher.ENCRYPT_MODE, publicKey, OAEPParameterSpec("SHA-510", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT))
             }
         val bytes = cipher.doFinal(code.toByteArray())
-        return bytes.encodeBase64ToString()
+        return bytes.legacyEncodeBase64ToString()
     }
 }

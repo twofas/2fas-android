@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:07 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -973,4 +973,40 @@
     <string name="pass_promo_banner_negative_cta">Ne plus afficher</string>
     <string name="appearance_dynamic_colors">Couleurs dynamiques</string>
     <string name="appearance_dynamic_colors_description">Modifiez dynamiquement les couleurs de l’application en fonction de votre fond d’écran.\n</string>
+    <string name="backup__section_note">NOTE : la synchronisation iCloud conserve vos clés de chiffrement dans le trousseau iCloud. Si le trousseau iCloud est désactivé, veuillez exporter vos clés manuellement depuis la section Gérer les sauvegardes ; sans quoi la restauration de données ou la synchronisation avec d\'autres appareils ne sera pas possible.</string>
+    <string name="backup__keys_import_warning">Importer des clés écrasera vos clés de chiffrement. Souhaitez-vous vraiment continuer ?</string>
+    <string name="backup__key_import_system_key">Clé Système</string>
+    <string name="backup__keys_import_error">Échec de l\'import des clés.</string>
+    <string name="watch__intro_step1">Suivez ces instructions pour jumeler la version de l\'app dédiée à la montre.</string>
+    <string name="watch__intro_step2">Allez dans la section \"Sauvegarde 2FAS\" des réglages de l\'app 2FAS sur votre iPhone.</string>
+    <string name="watch__intro_step3">Assurez-vous que la sauvegarde iCloud soit synchronisée et le trousseau de clés iCloud activé dans les paramètres système iOS.</string>
+    <string name="watch__intro_step4">Sélectionnez \"Gérer les Apple Watch jumelées\".</string>
+    <string name="watch__intro_step5">Appuyez sur \"+\" et scannez le QR Code à la prochaine page.</string>
+    <string name="watch__intro_step6">Vous pouvez maintenant fermer cette fenêtre. La synchronisation peut prendre un certain temps.</string>
+    <string name="tokens__empty_screen_in_trash">Vous avez **%d** services dans la Corbeille.</string>
+    <string name="commons__go_to_trash">Accéder à la Corbeille</string>
+    <string name="backup__moved_to_trash_title">Résultat de la synchro iCloud</string>
+    <string name="backup__moved_to_trash_message">La dernière synchronisation iCloud a déplacé tous vos services vers la Corbeille. Vous pouvez les restaurer à tout moment.</string>
+    <string name="commons__understood">D\'accord</string>
+    <string name="introduction__backup_icloud_description_note">Cette fonctionnalité est activée par défaut et peut être désactivée à tout moment dans les paramètres de sauvegarde de l\'application.</string>
+    <string name="introduction__call_1">Sache simplement que tu es</string>
+    <string name="introduction__call_2">Incroyable !</string>
+    <string name="restore__reset__title">Restauration de l\'application</string>
+    <string name="login__hello_header">Bonjour à nouveau !</string>
+    <string name="login__hello_header_1">Bonjour ici!</string>
+    <string name="login__hello_header_2">Bon retour parmis nous!</string>
+    <string name="login__hello_header_3">C\'est bon de vous revoir à nouveau!</string>
+    <string name="login__hello_header_4">Hi!</string>
+    <string name="tokens__empty_list_title">Add first service</string>
+    <string name="guides__request_service">Request</string>
+    <string name="guides__step_number">Step %d</string>
+    <string name="about__generate_logs">Generate logs</string>
+    <string name="about__generate_logs_alert_title">Generate logs?</string>
+    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
+    <string name="about__generate_logs_alert_action">Generate</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

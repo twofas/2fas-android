@@ -14,7 +14,7 @@ import com.twofasapp.data.notifications.domain.Notification
 import com.twofasapp.data.notifications.domain.PeriodicNotificationType
 import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.data.session.SessionRepository
+import com.twofasapp.data.session.StartupRepository
 import kotlinx.coroutines.flow.first
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -39,7 +39,7 @@ class OnAppStartWork(
         }
     }
 
-    private val sessionRepository: SessionRepository by inject()
+    private val startupRepository: StartupRepository by inject()
     private val notificationsRepository: NotificationsRepository by inject()
     private val backupRepository: BackupRepository by inject()
     private val servicesRepository: ServicesRepository by inject()
@@ -51,7 +51,7 @@ class OnAppStartWork(
     }
 
     private suspend fun checkPeriodicNotifications() {
-        if (sessionRepository.isOnboardingDisplayed().not()) {
+        if (startupRepository.isOnboardingDisplayed().not()) {
             Timber.d("This is first app launch -> do nothing")
             // This is first app launch -> do nothing
             return

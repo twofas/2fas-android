@@ -41,7 +41,7 @@ fun OptionHeader(
 ) {
     Text(
         text = text,
-        style = MdtTheme.typo.medium.sm,
+        style = MdtTheme.typo.sm.medium,
         color = MdtTheme.color.primary,
         modifier = Modifier
             .fillMaxWidth()

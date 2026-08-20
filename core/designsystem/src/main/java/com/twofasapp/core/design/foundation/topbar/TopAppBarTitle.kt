@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: BUSL-1.1
  *
- * Copyright © 2025 Two Factor Authentication Service, Inc.
+ * Copyright © 2026 Two Factor Authentication Service, Inc.
  * Licensed under the Business Source License 1.1
  * See LICENSE file for full terms
  */
@@ -21,7 +21,7 @@ fun TopAppBarTitle(
     text: String,
     modifier: Modifier = Modifier,
     color: Color = MdtTheme.color.onBackground,
-    style: TextStyle = MdtTheme.typo.medium.xl,
+    style: TextStyle = MdtTheme.typo.xl.medium,
 ) {
     Text(
         modifier = modifier,

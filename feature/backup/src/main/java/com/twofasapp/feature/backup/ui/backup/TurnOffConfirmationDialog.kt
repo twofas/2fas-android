@@ -31,7 +31,7 @@ internal fun TurnOffConfirmationDialog(
                 text = MdtLocale.strings.backupTurnOffMsg2,
                 textAlign = TextAlign.Center,
                 color = MdtTheme.color.onSurfaceVariant,
-                style = MdtTheme.typo.regular.xs,
+                style = MdtTheme.typo.xs.normal,
             )
         },
         positive = MdtLocale.strings.backupTurnOffCta,

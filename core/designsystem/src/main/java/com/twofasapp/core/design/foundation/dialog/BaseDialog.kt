@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: BUSL-1.1
  *
- * Copyright © 2025 Two Factor Authentication Service, Inc.
+ * Copyright © 2026 Two Factor Authentication Service, Inc.
  * Licensed under the Business Source License 1.1
  * See LICENSE file for full terms
  */
@@ -241,7 +241,7 @@ private fun Title(
 ) {
     Text(
         text = text,
-        style = MdtTheme.typo.semiBold.xl,
+        style = MdtTheme.typo.xl.semiBold,
         color = MdtTheme.color.onSurface,
         textAlign = if (centered) TextAlign.Center else TextAlign.Start,
         modifier = Modifier
@@ -257,7 +257,7 @@ private fun Body(
 ) {
     Text(
         text = text,
-        style = MdtTheme.typo.regular.sm.copy(fontSize = 15.sp),
+        style = MdtTheme.typo.sm.normal.copy(fontSize = 15.sp),
         color = MdtTheme.color.onSurfaceVariant,
         modifier = Modifier
             .padding(horizontal = DialogPadding)
@@ -274,7 +274,7 @@ private fun BodyAnnotated(
         ClickableText(
             text = text,
             onClick = { onBodyClick(it) },
-            style = MdtTheme.typo.regular.sm.copy(
+            style = MdtTheme.typo.sm.normal.copy(
                 fontSize = 15.sp,
                 color = MdtTheme.color.onSurfaceVariant,
             ),
@@ -285,7 +285,7 @@ private fun BodyAnnotated(
     } else {
         Text(
             text = text,
-            style = MdtTheme.typo.regular.sm.copy(fontSize = 15.sp),
+            style = MdtTheme.typo.sm.normal.copy(fontSize = 15.sp),
             color = MdtTheme.color.onSurfaceVariant,
             modifier = Modifier
                 .padding(horizontal = DialogPadding)

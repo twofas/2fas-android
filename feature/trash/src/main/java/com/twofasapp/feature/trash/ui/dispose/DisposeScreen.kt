@@ -77,14 +77,14 @@ private fun ScreenContent(
                 Text(
                     text = uiState.serviceName,
                     color = MdtTheme.color.onSurface,
-                    style = MdtTheme.typo.regular.xl2,
+                    style = MdtTheme.typo.xl2.normal,
                     textAlign = TextAlign.Center,
                 )
 
                 Text(
                     text = MdtLocale.strings.disposeBody1,
                     color = MdtTheme.color.onSurface,
-                    style = MdtTheme.typo.regular.sm,
+                    style = MdtTheme.typo.sm.normal,
                     textAlign = TextAlign.Center,
                 )
 
@@ -99,7 +99,7 @@ private fun ScreenContent(
                         uiState.serviceName,
                     ),
                     color = MdtTheme.color.onSurface,
-                    style = MdtTheme.typo.regular.sm,
+                    style = MdtTheme.typo.sm.normal,
                     textAlign = TextAlign.Center,
                 )
             }
@@ -123,7 +123,7 @@ private fun ScreenContent(
                     Text(
                         text = MdtLocale.strings.disposeConfirm,
                         color = MdtTheme.color.onSurface,
-                        style = MdtTheme.typo.regular.base,
+                        style = MdtTheme.typo.base.normal,
                         textAlign = TextAlign.Center,
                     )
                 }

@@ -63,6 +63,7 @@ dependencies {
     implementation(project(":feature:backup"))
     implementation(project(":feature:widget"))
     implementation(project(":feature:security"))
+    implementation(project(":feature:developer"))
 
     implementation(project(":base"))
     implementation(project(":prefs"))
@@ -110,4 +111,19 @@ dependencies {
         exclude("org.apache.httpcomponents", "guava-jdk5")
         exclude("com.google.http-client", "google-http-client")
     }
+
+    debugImplementation(libs.pluto)
+    debugImplementation(libs.plutoRoom)
+    debugImplementation(libs.plutoDataStore)
+    debugImplementation(libs.plutoLogger)
+
+    releaseLocalImplementation(libs.plutoNoOp)
+    releaseLocalImplementation(libs.plutoRoomNoOp)
+    releaseLocalImplementation(libs.plutoDataStoreNoOp)
+    releaseLocalImplementation(libs.plutoLoggerNoOp)
+
+    releaseImplementation(libs.plutoNoOp)
+    releaseImplementation(libs.plutoRoomNoOp)
+    releaseImplementation(libs.plutoDataStoreNoOp)
+    releaseImplementation(libs.plutoLoggerNoOp)
 }

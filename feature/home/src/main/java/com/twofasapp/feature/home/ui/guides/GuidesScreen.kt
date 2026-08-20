@@ -76,7 +76,7 @@ private fun GuidesScreenContent(
             ) {
                 Text(
                     text = MdtLocale.strings.guidesSelectDescription,
-                    style = MdtTheme.typo.regular.base,
+                    style = MdtTheme.typo.base.normal,
                     modifier = Modifier.padding(16.dp),
                     color = MdtTheme.color.onSurface,
                 )
@@ -111,7 +111,7 @@ private fun GuidesScreenContent(
             ) {
                 Text(
                     text = MdtLocale.strings.guidesSelectProvideGuide,
-                    style = MdtTheme.typo.regular.sm,
+                    style = MdtTheme.typo.sm.normal,
                     color = MdtTheme.color.onSurface,
                 )
 
@@ -126,7 +126,7 @@ private fun GuidesScreenContent(
                 ) {
                     Text(
                         text = MdtLocale.strings.guidesSelectProvideGuideCta,
-                        style = MdtTheme.typo.medium.sm,
+                        style = MdtTheme.typo.sm.medium,
                     )
 
                     Spacer(modifier = Modifier.width(4.dp))
@@ -185,7 +185,7 @@ private fun GuideItem(
                     Guide.PayPal -> "PayPal"
                     Guide.Reddit -> "Reddit"
                 },
-                style = MdtTheme.typo.regular.sm,
+                style = MdtTheme.typo.sm.normal,
                 color = MdtTheme.color.onSurface,
                 maxLines = 1,
             )

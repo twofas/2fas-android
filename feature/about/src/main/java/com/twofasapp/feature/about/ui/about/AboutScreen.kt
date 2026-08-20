@@ -204,7 +204,7 @@ private fun ScreenContent(
                         Text(
                             text = stringResource(id = R.string.settings__version, uiState.versionName),
                             color = MdtTheme.color.onSurfaceVariant,
-                            style = MdtTheme.typo.regular.sm,
+                            style = MdtTheme.typo.sm.normal,
                         )
                         Spacer(modifier = Modifier.weight(1f))
                         Image(

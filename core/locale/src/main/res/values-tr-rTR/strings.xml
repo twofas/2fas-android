@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:08 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -973,4 +973,40 @@
     <string name="pass_promo_banner_negative_cta">Bir daha gösterme</string>
     <string name="appearance_dynamic_colors">Dinamik renkler</string>
     <string name="appearance_dynamic_colors_description">Duvar kâğıdınıza göre uygulama renklerini dinamik olarak değiştirin.</string>
+    <string name="backup__section_note">NOT: iCloud Eşitleme, şifreleme anahtarlarını iCloud Anahtar Zinciri’nde saklar. iCloud Anahtar Zinciri devre dışıysa lütfen anahtarlarınızı Yedeklemeyi Yönet bölümünden manuel olarak dışa aktarın. Aksi halde verilerinizi geri yüklemek veya diğer cihazlarla senkronize etmek mümkün olmayacaktır.</string>
+    <string name="backup__keys_import_warning">Anahtarları içe aktarmak mevcut şifreleme anahtarlarınızın üzerine yazacaktır. Devam etmek istiyor musunuz?</string>
+    <string name="backup__key_import_system_key">Sistem Anahtarı</string>
+    <string name="backup__keys_import_error">Anahtarlar içe aktarılamadı.</string>
+    <string name="watch__intro_step1">Saat uygulamanızı eşleştirmek için bu talimatları izleyin.</string>
+    <string name="watch__intro_step2">iPhone’unuzdaki 2FAS Auth uygulamasında “2FAS yedeklemesi” ayarlarına gidin.</string>
+    <string name="watch__intro_step3">iOS sistem ayarlarında iCloud Yedekleme’nin senkronize edildiğinden ve iCloud Anahtar Zinciri’nin etkin olduğundan emin olun.</string>
+    <string name="watch__intro_step4">“Eşleştirilmiş Apple Watch’ları Yönet” seçeneğini seçin.</string>
+    <string name="watch__intro_step5">“+” düğmesine dokunun ve sonraki sayfadaki QR kodunu tarayın.</string>
+    <string name="watch__intro_step6">Artık bu pencereyi kapatabilirsiniz. Senkronizasyon biraz zaman alabilir.</string>
+    <string name="tokens__empty_screen_in_trash">Çöp Kutunuzda **%d** hizmet var.</string>
+    <string name="commons__go_to_trash">Çöp Kutusuna Git</string>
+    <string name="backup__moved_to_trash_title">iCloud eşitleme sonucu</string>
+    <string name="backup__moved_to_trash_message">Son iCloud eşitlemesi tüm hizmetlerinizi Çöp Kutusuna taşıdı. İstediğiniz zaman geri yükleyebilirsiniz.</string>
+    <string name="commons__understood">Understood</string>
+    <string name="introduction__backup_icloud_description_note">It\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__call_1">Just know you\'re</string>
+    <string name="introduction__call_2">Incredible!</string>
+    <string name="restore__reset__title">Restoring the app</string>
+    <string name="login__hello_header">Hello again!</string>
+    <string name="login__hello_header_1">Hello there!</string>
+    <string name="login__hello_header_2">Welcome back!</string>
+    <string name="login__hello_header_3">Good to see you again!</string>
+    <string name="login__hello_header_4">Hi!</string>
+    <string name="tokens__empty_list_title">Add first service</string>
+    <string name="guides__request_service">Request</string>
+    <string name="guides__step_number">Step %d</string>
+    <string name="about__generate_logs">Generate logs</string>
+    <string name="about__generate_logs_alert_title">Generate logs?</string>
+    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
+    <string name="about__generate_logs_alert_action">Generate</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

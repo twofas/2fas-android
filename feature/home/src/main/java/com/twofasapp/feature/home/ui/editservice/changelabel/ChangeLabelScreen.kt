@@ -84,7 +84,7 @@ internal fun ChangeLabelScreen(
                         text = labelText.value,
                         color = MaterialTheme.colorScheme.onSurface,
                         textAlign = TextAlign.Center,
-                        style = MdtTheme.typo.regular.sm.copy(
+                        style = MdtTheme.typo.sm.normal.copy(
                             fontWeight = FontWeight.Bold,
                             fontSize = dpToSp(dp = 22.dp),
                             lineHeight = dpToSp(dp = 32.dp),

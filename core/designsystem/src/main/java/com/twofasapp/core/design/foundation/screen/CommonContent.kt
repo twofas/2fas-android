@@ -94,7 +94,7 @@ fun CommonContent(
 fun CommonContentTitle(text: String) {
     Text(
         text = text,
-        style = MdtTheme.typo.regular.xl,
+        style = MdtTheme.typo.xl.normal,
         color = MdtTheme.color.onSurface,
         textAlign = TextAlign.Center,
         modifier = Modifier
@@ -107,7 +107,7 @@ fun CommonContentTitle(text: String) {
 fun CommonContentDescription(text: String) {
     Text(
         text = text,
-        style = MdtTheme.typo.regular.base,
+        style = MdtTheme.typo.base.normal,
         color = MdtTheme.color.onSurface,
         textAlign = TextAlign.Center,
         modifier = Modifier

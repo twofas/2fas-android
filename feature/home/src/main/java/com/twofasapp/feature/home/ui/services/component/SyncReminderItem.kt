@@ -64,7 +64,7 @@ internal fun SyncReminderItem(
             Column {
                 Text(
                     text = MdtLocale.strings.backupReminder,
-                    style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
+                    style = MdtTheme.typo.base.normal.copy(fontWeight = FontWeight.Medium),
                     color = MdtTheme.color.onSurface,
                 )
 
@@ -72,7 +72,7 @@ internal fun SyncReminderItem(
 
                 Text(
                     text = MdtLocale.strings.backupReminderBody,
-                    style = MdtTheme.typo.regular.sm,
+                    style = MdtTheme.typo.sm.normal,
                     color = MdtTheme.color.onSurfaceVariant,
                 )
             }

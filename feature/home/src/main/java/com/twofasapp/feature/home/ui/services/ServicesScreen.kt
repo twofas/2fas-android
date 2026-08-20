@@ -308,6 +308,10 @@ private fun ServicesScreen(
                     onSearchFocusChange(false)
                     listener.openNotifications()
                 },
+                onDeveloperClick = {
+                    onSearchFocusChange(false)
+                    listener.openDeveloper()
+                },
                 onSearchQueryChange = onSearchQueryChange,
                 onSearchFocusChange = onSearchFocusChange,
                 focusRequester = focusRequester,

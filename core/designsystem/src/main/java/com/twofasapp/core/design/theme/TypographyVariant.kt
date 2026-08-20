@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: BUSL-1.1
  *
- * Copyright © 2025 Two Factor Authentication Service, Inc.
+ * Copyright © 2026 Two Factor Authentication Service, Inc.
  * Licensed under the Business Source License 1.1
  * See LICENSE file for full terms
  */
@@ -14,85 +14,46 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.TextUnit
 
 @Immutable
 @Stable
 class TypographyVariant(
-    fontWeight: FontWeight,
-    fontFamily: FontFamily = FontFamily.Default,
+    fontSize: TextUnit,
+    lineHeight: TextUnit,
     defaultColor: Color,
+    fontFamily: FontFamily = FontFamily.Default,
 ) {
 
-    val xxs = TextStyle(
-        fontSize = 10.sp,
-        lineHeight = 16.sp,
+    val normal = TextStyle(
         fontFamily = fontFamily,
-        fontWeight = fontWeight,
+        fontSize = fontSize,
+        lineHeight = lineHeight,
+        fontWeight = FontWeight.Normal,
         color = defaultColor,
     )
 
-    val xs = TextStyle(
-        fontSize = 12.sp,
-        lineHeight = 16.sp,
+    val medium = TextStyle(
         fontFamily = fontFamily,
-        fontWeight = fontWeight,
+        fontSize = fontSize,
+        lineHeight = lineHeight,
+        fontWeight = FontWeight.Medium,
         color = defaultColor,
     )
 
-    val sm = TextStyle(
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
+    val semiBold = TextStyle(
         fontFamily = fontFamily,
-        fontWeight = fontWeight,
+        fontSize = fontSize,
+        lineHeight = lineHeight,
+        fontWeight = FontWeight.SemiBold,
         color = defaultColor,
     )
 
-    val base = TextStyle(
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
+    val bold = TextStyle(
         fontFamily = fontFamily,
-        fontWeight = fontWeight,
-        color = defaultColor,
-    )
-
-    val lg = TextStyle(
-        fontSize = 18.sp,
-        lineHeight = 28.sp,
-        fontFamily = fontFamily,
-        fontWeight = fontWeight,
-        color = defaultColor,
-    )
-
-    val xl = TextStyle(
-        fontSize = 20.sp,
-        lineHeight = 28.sp,
-        fontFamily = fontFamily,
-        fontWeight = fontWeight,
-        color = defaultColor,
-    )
-
-    val xl2 = TextStyle(
-        fontSize = 24.sp,
-        lineHeight = 32.sp,
-        fontFamily = fontFamily,
-        fontWeight = fontWeight,
-        color = defaultColor,
-    )
-
-    val xl3 = TextStyle(
-        fontSize = 30.sp,
-        lineHeight = 36.sp,
-        fontFamily = fontFamily,
-        fontWeight = fontWeight,
-        color = defaultColor,
-    )
-
-    val xl4 = TextStyle(
-        fontSize = 36.sp,
-        lineHeight = 40.sp,
-        fontFamily = fontFamily,
-        fontWeight = fontWeight,
+        fontSize = fontSize,
+        lineHeight = lineHeight,
+        fontWeight = FontWeight.Bold,
         color = defaultColor,
     )
 }

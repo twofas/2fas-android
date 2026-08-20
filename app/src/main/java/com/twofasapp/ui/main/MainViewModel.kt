@@ -9,12 +9,14 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.data.session.StartupRepository
 import com.twofasapp.feature.browserext.notification.DomainMatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class MainViewModel(
     private val sessionRepository: SessionRepository,
+    private val startupRepository: StartupRepository,
     private val settingsRepository: SettingsRepository,
     private val notificationsRepository: NotificationsRepository,
     private val browserExtRepository: BrowserExtRepository,
@@ -29,7 +31,7 @@ internal class MainViewModel(
         }
 
         launchScoped {
-            val destination = when (sessionRepository.isOnboardingDisplayed()) {
+            val destination = when (startupRepository.isOnboardingDisplayed()) {
                 true -> MainUiState.StartDestination.Home
                 false -> MainUiState.StartDestination.Onboarding
             }

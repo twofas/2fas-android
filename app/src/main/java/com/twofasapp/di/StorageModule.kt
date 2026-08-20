@@ -1,9 +1,16 @@
 package com.twofasapp.di
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
 import com.google.android.play.core.splitinstall.SplitInstallHelper
+import com.pluto.plugins.datastore.pref.PlutoDatastoreWatcher
 import com.twofasapp.common.di.KoinModule
+import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.storage.AppDatabase
+import com.twofasapp.storage.DataStoreOwnerImpl
 import com.twofasapp.storage.MIGRATION_10_11
 import com.twofasapp.storage.MIGRATION_11_12
 import com.twofasapp.storage.MIGRATION_1_2
@@ -23,8 +30,16 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 class StorageModule : KoinModule {
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "2fas-auth-datastore")
 
     override fun provide() = module {
+        single<DataStore<Preferences>> {
+            androidContext().dataStore.also {
+                PlutoDatastoreWatcher.watch("2fas-auth-datastore", it)
+            }
+        }
+        singleOf(::DataStoreOwnerImpl) { bind<DataStoreOwner>() }
+
         singleOf(::DatabaseKeyGeneratorRandom) { bind<DatabaseKeyGenerator>() }
         singleOf(::GetDatabaseMasterKey)
 

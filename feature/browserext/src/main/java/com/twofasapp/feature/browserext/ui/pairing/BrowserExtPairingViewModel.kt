@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.environment.AppBuild
-import com.twofasapp.common.ktx.encodeBase64ToString
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.browserext.remote.exception.BrowserAlreadyPairedException
@@ -72,7 +72,7 @@ internal class BrowserExtPairingViewModel(
     }
 
     private fun createDevicePublicKey(): String {
-        return createRsaKey().public.encoded.encodeBase64ToString()
+        return createRsaKey().public.encoded.legacyEncodeBase64ToString()
     }
 
     private fun createRsaKey(): KeyPair {

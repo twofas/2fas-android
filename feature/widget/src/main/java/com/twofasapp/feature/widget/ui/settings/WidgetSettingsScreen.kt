@@ -113,7 +113,7 @@ private fun ScreenContent(
                     ) {
                         Text(
                             text = MdtLocale.strings.widgetSettingsEmpty,
-                            style = MdtTheme.typo.regular.base,
+                            style = MdtTheme.typo.base.normal,
                             textAlign = TextAlign.Center,
                         )
                     }
@@ -125,7 +125,7 @@ private fun ScreenContent(
             item("Info", "Info") {
                 Text(
                     text = MdtLocale.strings.widgetSelectMsg,
-                    style = MdtTheme.typo.regular.base.copy(fontWeight = FontWeight.Medium),
+                    style = MdtTheme.typo.base.normal.copy(fontWeight = FontWeight.Medium),
                     modifier = Modifier.padding(16.dp),
                 )
             }

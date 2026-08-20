@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:07 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -143,7 +143,7 @@
     <string name="settings__suggestion">Suggestion</string>
     <string name="settings__advanced">Advanced</string>
     <string name="settings__widgets">Widgets</string>
-    <string name="settings__display_selected_services">Display selected services on the Home Screen Widgets.</string>
+    <string name="settings__display_selected_services">Display selected services on widgets.</string>
     <!-- settings__after_you_enable_widgets -->
     <string name="settings__widgets_title">After you enable widgets, all your Tokens can be accessed without your PIN code.\n\nAre you sure you want to enable widgets?</string>
     <string name="settings__show_next_token">Show next Token</string>
@@ -318,9 +318,9 @@
     <string name="restore__how_to_restore">How to restore 2FAS app?</string>
     <string name="restore__application_restoration">Application restoration</string>
     <!-- restore_if_you_forgotten -->
-    <string name="restore__reset_Pin_title">If you have forgotten the PIN or want to reset the 2FAS app, you have to reinstall the app.</string>
+    <string name="restore__reset_Pin_title">If you have forgotten the PIN or want to reset the 2FAS app, you have to reinstall it.</string>
     <!-- restore_please_remember -->
-    <string name="restore__backup_advice">Be advised that if you do not have a backup and reset the app, you will lose access to all your codes. And therefore, access to all your 2FA-secured accounts.</string>
+    <string name="restore__backup_advice">If you do not have a backup and reset the app, you will lose access to all your 2FA codes and all secured accounts.</string>
     <!-- restore_if_you_have_backup -->
     <string name="restore__backup_title">If you have a backup, take it easy, you\'ll be able to restore all your codes.</string>
     <string name="backup__cloud_backup">Cloud backup</string>
@@ -397,8 +397,8 @@
     <string name="settings__face_id">Face ID</string>
     <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
-    <string name="settings__too_many_attempts_header">Block after X failed attempts:</string>
-    <string name="settings__how_many_attempts_footer">Select the maximum number of unsuccessful attempts to enter the passcode before locking the application (lockout time can be changed below).\n</string>
+    <string name="settings__too_many_attempts_header">Number of failed attempts:</string>
+    <string name="settings__how_many_attempts_footer">Select the maximum number of unsuccessful attempts to enter the passcode before locking the application for set amount of time.\n</string>
     <string name="settings__block_for">Lockout time</string>
     <string name="settings__3_minutes">3 minutes</string>
     <string name="settings__5_minutes">5 minutes</string>
@@ -523,7 +523,7 @@
     <string name="biometric_dialog_auth_title">Authenticate</string>
     <string name="biometric_dialog_auth_subtitle">Use your biometric credential</string>
     <string name="about_licenses">Open source licenses</string>
-    <string name="externalimport_description">You can import your Tokens to 2FAS from different apps. Choose an app from the list and follow the instructions.</string>
+    <string name="externalimport_description">Choose an app from the list and follow the instructions.</string>
     <string name="externalimport_select_app">Select app</string>
     <string name="externalimport_google_authenticator">Google Authenticator</string>
     <string name="externalimport_aegis">Aegis</string>
@@ -555,7 +555,7 @@
     <!-- Could not read QR code from the image! -->
     <string name="tokens__qr_read_image_failed">Could not read the QR code from the image!</string>
     <string name="tokens__qr_read_image_try_again">Try to select a different image.</string>
-    <string name="tokens__remove_it_forever">Delete service forever</string>
+    <string name="tokens__remove_it_forever">Delete</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
     <string name="tokens__service_add_error">Service could not be added because Secret Key is invalid. Try again.</string>
     <!-- A service with this Service Key already exists. Do you want to override it? -->
@@ -587,10 +587,6 @@
     <string name="widgets_warning_cta">Yes, I am sure</string>
     <string name="backup_notice_title">2FAS Backup</string>
     <string name="backup_notice_msg">Enable 2FAS Backup. In the event of a reset or loss of your phone, you will be able to restore all your Tokens.</string>
-    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
-    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
-    <string name="home__app_review_rate">Rate</string>
-    <string name="home__app_review_dismiss">Not now</string>
     <string name="brand_empty_msg">Sorry, brand not found</string>
     <!-- Select which services will be visible on widget: -->
     <string name="widgets_select_msg">Select which services will be visible on the widget:</string>
@@ -817,7 +813,7 @@
     <string name="commons__pair">Pair</string>
     <string name="introduction__backup_icloud_title">Secure sync and backup</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA Tokens. The **encrypted** backup data is stored in iCloud, accessible **only by the 2FAS app**. Additionally, this feature aids with Token **recovery and syncing** across iOS devices.\n\nIt\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__backup_icloud_description">2FAS uses iCloud for secure backup and sync of your 2FA Tokens. The encrypted backup data is stored in iCloud, accessible only by the 2FAS app. Additionally, this feature aids with Token recovery and syncing across iOS devices.</string>
     <string name="introduction__backup_icloud_cta">Learn more about backup</string>
     <string name="backup__enter_password_google_drive_msg1">It looks like your Google Drive backup file is password-protected. Type in the correct password to proceed. If you’d like to wipe your Google Drive backup file,</string>
     <string name="backup__enter_password_google_drive_msg2">tap here to see how</string>
@@ -842,7 +838,7 @@
     <string name="widget__select_service_intent_description">Select Service you want to show on your 2FAS Widget</string>
     <string name="widget__my_secured_account">My secured account</string>
     <string name="widget__token">Token</string>
-    <string name="watch__intro">2FAS watchOS app is a companion app for the 2FAS iOS application. It will present services backed up using iCloud sync.\n\nFor quick access, add them to Favorite Services.\n\nPlease remember to donate so we can further improve the 2FAS platform!</string>
+    <string name="watch__intro">The 2FAS watchOS app is a companion to the 2FAS Auth mobile app. \n\nIt will display Tokens backed up using iCloud sync.</string>
     <string name="tokens__hotp_not_supported">HOTP services aren\'t supported yet</string>
     <string name="tokens__favorite_services">Favorite Services</string>
     <string name="security__enter_new_pin_short">Enter new PIN</string>
@@ -875,13 +871,13 @@
     <string name="backup__watch_pairing_action">Pair device</string>
     <string name="backup__watch_pairing_error">Can\'t pair with the Watch now. Ensure the iCloud backup is enabled and synced using a password.</string>
     <string name="backup__cloud_error_title">Cloud backup error</string>
-    <string name="backup__cloud_error_missing_system_key_content">Can\'t decrypt Cloud backup because there\'s no System Key. Check if iCloud Keychain sync is enabled and works correctly.</string>
+    <string name="backup__cloud_error_missing_system_key_content">Cannot decrypt the iCloud Backup because no System Key was found. Make sure iCloud Keychain sync is enabled and working correctly. If you have a copy of the System Key that was used to create the Backup, you can import it manually in the Advanced section. You can also delete the Backup and start over.</string>
     <string name="backup__cloud_error_mismatch_key_content">Can\'t decrypt Cloud backup because it\'s encrypted using System Key, and you\'re using a custom password. Would you like to switch?</string>
     <string name="backup__cloud_error_new_version_content">Can\'t sync with Cloud backup because it was migrated to a newer version of the app. Update the app to continue using Cloud backup.</string>
     <string name="backup__enter_cloud_backup_password_title">Enter Cloud backup password</string>
     <string name="backup__enter_password_description">iCloud backup is encrypted with your password. Enter it to enable sync.</string>
     <string name="backup__enter_password_failure">Failure! %s</string>
-    <string name="backup__enter_password_wrong_password">Wrong password! Please try again</string>
+    <string name="backup__enter_password_wrong_password">Wrong password! Please try again. Also, check if iCloud Keychain is enabled, or import the required keys manually from the device that created this backup.</string>
     <string name="backup__migration_title">Upgrade in progress</string>
     <string name="backup__migration_subtitle">Please wait...</string>
     <string name="backup__migration_description">We\'re upgrading the app to bring you new awesome security features.</string>
@@ -902,7 +898,7 @@
     <string name="backup__manage_paired_watches_empty_list">List is empty. Pair Watch using + button</string>
     <string name="backup__manage_paired_watches_syncing">Cloud backup is syncing...</string>
     <string name="backup__watch_pair_title">Pair your Apple Watch</string>
-    <string name="backup__watch_pair_description">Go to 2FAS Backup settings in 2FAS Auth on your iPhone/iPad and navigate to \"Managed Paired Apple Watches\". This option will be visible if the backup is synced. Scan the QR code from there.</string>
+    <string name="backup__watch_pair_description">Go to 2FAS Backup settings in 2FAS Auth on your iPhone/iPad and navigate to \"Manage Paired Apple Watches\". This option will be visible if the backup is synced. Scan the QR code from there.</string>
     <string name="backup__watch_pair_qr_error">Error while generating QR Code</string>
     <string name="backup__cloud_switch_system_key">Switch to System Key</string>
     <string name="backup__cloud_turn_backup_off">Disable Cloud backup</string>
@@ -930,7 +926,7 @@
     <string name="settings__export_title_options">Export Options</string>
     <string name="settings__export_options_save_file">Save OTPAuth file</string>
     <string name="settings__export_options_export_qr_codes">Export QR codes</string>
-    <string name="settings__export_options_footer">Choose how you would like to export your Tokens. You can export them as an OTPAuth file or as QR codes.</string>
+    <string name="settings__export_options_footer">Choose how you would like to export your Tokens.</string>
     <string name="settings__import_otpauth_title">OTPAuth links</string>
     <string name="settings__import_from_file">Import from file</string>
     <string name="settings__import_from_text_file">Import Tokens from text file</string>
@@ -977,4 +973,40 @@
     <string name="pass_promo_banner_negative_cta">Don\'t show again</string>
     <string name="appearance_dynamic_colors">Dynamic Colors</string>
     <string name="appearance_dynamic_colors_description">Dynamically change the app colors based on your wallpaper.</string>
+    <string name="backup__section_note">NOTE: iCloud Sync stores encryption keys in iCloud Keychain. If iCloud Keychain is disabled, please export your keys manually from the Manage Backup section. Without doing so, restoring your data or syncing to other devices will not be possible.</string>
+    <string name="backup__keys_import_warning">Importing keys will overwrite your current encryption keys. Do you want to continue?</string>
+    <string name="backup__key_import_system_key">System Key</string>
+    <string name="backup__keys_import_error">Failed to import keys.</string>
+    <string name="watch__intro_step1">Follow these instructions to pair your watch app.</string>
+    <string name="watch__intro_step2">Go to \"2FAS Backup\" settings in 2FAS Auth app on your iPhone.</string>
+    <string name="watch__intro_step3">Ensure that iCloud Backup is synced and iCloud Keychain is enabled in iOS system settings.</string>
+    <string name="watch__intro_step4">Select \"Manage Paired Apple Watches\".</string>
+    <string name="watch__intro_step5">Tap \"+\" and scan the QR Code from the next page.</string>
+    <string name="watch__intro_step6">You can now close this window. Sync can take some time.</string>
+    <string name="tokens__empty_screen_in_trash">You have **%d** services in your Trash.</string>
+    <string name="commons__go_to_trash">Go to Trash</string>
+    <string name="backup__moved_to_trash_title">iCloud Sync result</string>
+    <string name="backup__moved_to_trash_message">The last iCloud sync has moved all your services to the Trash. You can restore them at any time.</string>
+    <string name="commons__understood">Understood</string>
+    <string name="introduction__backup_icloud_description_note">It\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__call_1">Just know you\'re</string>
+    <string name="introduction__call_2">Incredible!</string>
+    <string name="restore__reset__title">Restoring the app</string>
+    <string name="login__hello_header">Hello again!</string>
+    <string name="login__hello_header_1">Hello there!</string>
+    <string name="login__hello_header_2">Welcome back!</string>
+    <string name="login__hello_header_3">Good to see you again!</string>
+    <string name="login__hello_header_4">Hi!</string>
+    <string name="tokens__empty_list_title">Add first service</string>
+    <string name="guides__request_service">Request</string>
+    <string name="guides__step_number">Step %d</string>
+    <string name="about__generate_logs">Generate logs</string>
+    <string name="about__generate_logs_alert_title">Generate logs?</string>
+    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
+    <string name="about__generate_logs_alert_action">Generate</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

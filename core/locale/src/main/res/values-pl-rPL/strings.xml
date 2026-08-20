@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:07 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -143,7 +143,7 @@
     <string name="settings__suggestion">Propozycja</string>
     <string name="settings__advanced">Zaawansowane</string>
     <string name="settings__widgets">Widżety</string>
-    <string name="settings__display_selected_services">Wyświetlanie wybranych serwisów na widżetach ekranu głównego.</string>
+    <string name="settings__display_selected_services">Wyświetlaj wybrane serwisy na widżetach.</string>
     <!-- settings__after_you_enable_widgets -->
     <string name="settings__widgets_title">Po włączeniu widżetów, wszystkie Twoje tokeny mogą być dostępne bez kodu PIN.\n\nCzy na pewno chcesz włączyć widżety?</string>
     <string name="settings__show_next_token">Pokaż następny token</string>
@@ -318,14 +318,14 @@
     <string name="restore__how_to_restore">Jak przywrócić aplikację 2FAS?</string>
     <string name="restore__application_restoration">Przywracanie aplikacji</string>
     <!-- restore_if_you_forgotten -->
-    <string name="restore__reset_Pin_title">Jeśli zapomniałeś PIN lub chcesz zresetować aplikację 2FAS, musisz ją ponownie zainstalować.</string>
+    <string name="restore__reset_Pin_title">Jeśli zapomniałeś PIN-u lub chcesz zresetować aplikację 2FAS, musisz ją ponownie zainstalować.</string>
     <!-- restore_please_remember -->
-    <string name="restore__backup_advice">Uwaga, jeśli nie masz kopii zapasowej i zresetujesz aplikację, stracisz dostęp do wszystkich swoich kont zabezpieczonych przez 2FA.</string>
+    <string name="restore__backup_advice">Jeśli nie masz kopii zapasowej i zresetujesz aplikację, stracisz dostęp do wszystkich swoich kont zabezpieczonych przez 2FA.</string>
     <!-- restore_if_you_have_backup -->
     <string name="restore__backup_title">Jeśli masz kopię zapasową, spokojnie, będziesz mógł przywrócić wszystkie swoje kody.</string>
     <string name="backup__cloud_backup">Kopia zapasowa w chmurze</string>
     <string name="backup__icloud_sync">Synchronizacja iCloud</string>
-    <string name="backup__section_description">ZALECANE: Synchronizacja z iCloud chroni Twoje tokeny w Apple iCloud w przypadku utraty lub uszkodzenia urządzenia. Zachęcamy do jej włączenia.</string>
+    <string name="backup__section_description">ZALECANE: Synchronizacja z iCloud chroni Twoje tokeny w Apple iCloud w przypadku utraty lub uszkodzenia urządzenia.</string>
     <string name="backup__file_backup">Lokalna kopia zapasowa</string>
     <!-- backup__use_file_backup_for -->
     <string name="backup__file_backup_offline_title">Zabezpiecz swoje tokeny tworząc lokalny plik kopii zapasowej.</string>
@@ -360,7 +360,7 @@
     <string name="backup__save_and_export">Zapisz i eksportuj</string>
     <string name="backup__set_password_title">Ustaw hasło, aby zwiększyć ochronę pliku kopii zapasowej</string>
     <string name="backup__enter_password_title">Wpisz hasło dla tego pliku kopii zapasowej, aby kontynuować proces importowania.</string>
-    <string name="backup__backup_file_password_title">Ustaw hasło dla tego pliku kopii zapasowej</string>
+    <string name="backup__backup_file_password_title">Ustaw hasło</string>
     <string name="backup__incorrect_password">Niepoprawne hasło</string>
     <!-- %d - number -->
     <string name="backup__new_services">%d nowych serwisów</string>
@@ -397,8 +397,8 @@
     <string name="settings__face_id">Face ID</string>
     <string name="settings__touch_id">Touch ID</string>
     <!-- settings__how_many_attempts_header -->
-    <string name="settings__too_many_attempts_header">Blokuj po X nieudanych próbach:</string>
-    <string name="settings__how_many_attempts_footer">Wybierz maksymalną liczbę nieudanych prób wprowadzenia PINu przed zablokowaniem aplikacji (czas blokady można zmienić poniżej).</string>
+    <string name="settings__too_many_attempts_header">Liczba nieudanych prób:</string>
+    <string name="settings__how_many_attempts_footer">Wybierz maksymalną liczbę nieudanych prób wprowadzenia PINu przed zablokowaniem aplikacji na określony czas.</string>
     <string name="settings__block_for">Czas blokady</string>
     <string name="settings__3_minutes">3 minuty</string>
     <string name="settings__5_minutes">5 minut</string>
@@ -523,7 +523,7 @@
     <string name="biometric_dialog_auth_title">Weryfikacja</string>
     <string name="biometric_dialog_auth_subtitle">Potwierdź swoją tożsamość</string>
     <string name="about_licenses">Licencje Open Source</string>
-    <string name="externalimport_description">Możesz zaimportować swoje tokeny do aplikacji 2FAS z innych aplikacji. Wybierz aplikację z listy i postępuj zgodnie z instrukcjami.</string>
+    <string name="externalimport_description">Wybierz aplikację z listy i postępuj zgodnie z instrukcjami.</string>
     <string name="externalimport_select_app">Wybierz aplikacje\u0020</string>
     <string name="externalimport_google_authenticator">Google Authenticator</string>
     <string name="externalimport_aegis">Aegis</string>
@@ -555,7 +555,7 @@
     <!-- Could not read QR code from the image! -->
     <string name="tokens__qr_read_image_failed">Nie można odczytać kodu QR ze zdjęcia!</string>
     <string name="tokens__qr_read_image_try_again">Spróbuj wybrać inne zdjęcie</string>
-    <string name="tokens__remove_it_forever">Usuń serwis na zawsze</string>
+    <string name="tokens__remove_it_forever">Usuń</string>
     <!-- Service could not be added, Service Key is invalid. Try again. -->
     <string name="tokens__service_add_error">Serwis nie mógł zostać dodany, ponieważ Tajny klucz jest nieprawidłowy. Spróbuj ponownie.</string>
     <!-- A service with this Service Key already exists. Do you want to override it? -->
@@ -717,7 +717,7 @@
     <string name="backup__import_error_file_size">Plik, który próbujesz zaimportować jest zbyt duży. Maksymalny rozmiar wynosi 10 MB.</string>
     <string name="backup__import_error_file_invalid">Plik, który próbujesz zaimportować jest nieprawidłowy lub uszkodzony. Wybierz inny plik.</string>
     <string name="appearance__toggle_active_search">Aktywna wyszukiwarka</string>
-    <string name="appearance__active_search_description">Aktywna wyszukiwarka serwisów od razu po uruchomieniu aplikacji.</string>
+    <string name="appearance__active_search_description">Aktywne wyszukiwanie serwisów po uruchomieniu aplikacji.</string>
     <string name="widgets__expires_in">Wygasa za:</string>
     <string name="widgets__settings">Ustawienia widgetów</string>
     <string name="errors__input_integer_number">Wprowadzony tekst musi składać się z liczb całkowitych</string>
@@ -844,7 +844,7 @@
     <string name="widget__select_service_intent_description">Wybierz serwis, którą chcesz wyświetlać w widżecie 2FAS.</string>
     <string name="widget__my_secured_account">Moje zabezpieczone konto</string>
     <string name="widget__token">Token</string>
-    <string name="watch__intro">Aplikacja 2FAS watchOS jest aplikacją towarzyszącą aplikacji 2FAS iOS. Będzie ona prezentować serwisy zarchiwizowane przy użyciu synchronizacji iCloud.\n\nAby uzyskać szybki dostęp, dodaj je do Ulubionych.\n\nPamiętaj, aby przekazać darowiznę, abyśmy mogli nadal ulepszać platformę 2FAS!</string>
+    <string name="watch__intro">Aplikacja 2FAS na watchOS stanowi uzupełnienie aplikacji mobilnej 2FAS Auth.\n\nWyświetla ona tokeny zapisane w kopii zapasowej iCloud.</string>
     <string name="tokens__hotp_not_supported">Usługi HOTP nie są jeszcze obsługiwane</string>
     <string name="tokens__favorite_services">Ulubione Serwisy</string>
     <string name="security__enter_new_pin_short">Wprowadź nowy PIN</string>
@@ -904,7 +904,7 @@
     <string name="backup__manage_paired_watches_empty_list">Lista jest pusta. Sparuj z Apple Watch przyciskiem +</string>
     <string name="backup__manage_paired_watches_syncing">Synchronizacja kopii zapasowej iCloud...</string>
     <string name="backup__watch_pair_title">Sparuj twój Apple Watch</string>
-    <string name="backup__watch_pair_description">Przejdź do ustawień 2FAS Backup w 2FAS Auth na iPhonie/iPadzie i do „Zarządzane sparowane Apple Watche”. Ta opcja będzie widoczna, jeśli kopia zapasowa jest zsynchronizowana. Zeskanuj stamtąd kod QR.</string>
+    <string name="backup__watch_pair_description">Przejdź do ustawień 2FAS Backup w 2FAS Auth na iPhonie/iPadzie i do „Zarządzaj sparowanymi Apple Watch”. Ta opcja będzie widoczna, jeśli kopia zapasowa jest zsynchronizowana. Zeskanuj stamtąd kod QR.</string>
     <string name="backup__watch_pair_qr_error">Błąd przy generowaniu kodu QR</string>
     <string name="backup__cloud_switch_system_key">Przełącz na Klucz Systemowy</string>
     <string name="backup__cloud_turn_backup_off">Wyłącz kopię zapasową iCloud</string>
@@ -932,7 +932,7 @@
     <string name="settings__export_title_options">Opcje Eksportu</string>
     <string name="settings__export_options_save_file">Zapisz plik OTPAuth</string>
     <string name="settings__export_options_export_qr_codes">Exportuj kody QR</string>
-    <string name="settings__export_options_footer">Wybierz sposób eksportowania Tokenów. Możesz wyeksportować je jako plik OTPAuth lub jako kody QR.</string>
+    <string name="settings__export_options_footer">Wybierz sposób eksportowania Tokenów.</string>
     <string name="settings__import_otpauth_title">Linki OTPAuth</string>
     <string name="settings__import_from_file">Immportuj z pliku</string>
     <string name="settings__import_from_text_file">Importuj Tokeny z pliku tekstowego</string>
@@ -979,4 +979,40 @@
     <string name="pass_promo_banner_negative_cta">Nie pokazuj ponownie</string>
     <string name="appearance_dynamic_colors">Dynamiczny motyw</string>
     <string name="appearance_dynamic_colors_description">Zmieniaj motyw aplikacji dynamicznie w oparciu o tapetę.</string>
+    <string name="backup__section_note">UWAGA: Synchronizacja iCloud przechowuje klucze szyfrowania w Pęku kluczy iCloud. Jeśli Pęk kluczy iCloud jest wyłączony, wyeksportuj swoje klucze ręcznie w sekcji \"Zarządzaj kopią zapasową\". W przeciwnym razie przywrócenie danych lub synchronizacja z innymi urządzeniami nie będzie możliwa.</string>
+    <string name="backup__keys_import_warning">Importowanie kluczy nadpisze obecne klucze szyfrowania. Czy chcesz kontynuować?</string>
+    <string name="backup__key_import_system_key">Klucz Systemowy</string>
+    <string name="backup__keys_import_error">Importowanie kluczy nieudane.</string>
+    <string name="watch__intro_step1">Postępuj zgodnie z poniższymi instrukcjami, aby sparować aplikację zegarka.</string>
+    <string name="watch__intro_step2">Przejdź do ustawień „Kopii zapasowej 2FAS” w aplikacji 2FAS Auth na swoim iPhonie.</string>
+    <string name="watch__intro_step3">Upewnij się, że kopia zapasowa iCloud jest zsynchronizowana oraz że pęk kluczy iCloud jest włączony w ustawieniach systemu iOS.</string>
+    <string name="watch__intro_step4">Wybierz \"Zarządzaj sparowanymi Apple Watch\"</string>
+    <string name="watch__intro_step5">Naciśnij „+” i zeskanuj kod QR z następnej strony.</string>
+    <string name="watch__intro_step6">Możesz teraz zamknąć to okno. Synchronizacja może chwilę potrwać.</string>
+    <string name="tokens__empty_screen_in_trash">Posiadasz **%d** serwisów w koszu.</string>
+    <string name="commons__go_to_trash">Przejdź do kosza</string>
+    <string name="backup__moved_to_trash_title">Status synchronizacji iCloud</string>
+    <string name="backup__moved_to_trash_message">Ostatnia synchronizacja iClouda przeniosła wszystkie twoje serwisy do kosza. Możesz przywrócić je w każdym momencie.</string>
+    <string name="commons__understood">Rozumiem</string>
+    <string name="introduction__backup_icloud_description_note">Jest domyślnie włączony i może zostać w każdym momencie wyłączony w ustawieniach kopii zapasowej.</string>
+    <string name="introduction__call_1">Wiedz że jesteś</string>
+    <string name="introduction__call_2">Niesamowity!</string>
+    <string name="restore__reset__title">Przywracanie aplikacji</string>
+    <string name="login__hello_header">Witaj ponownie!</string>
+    <string name="login__hello_header_1">Cześć!</string>
+    <string name="login__hello_header_2">Witaj ponownie!</string>
+    <string name="login__hello_header_3">Dobrze cię znów widzieć!</string>
+    <string name="login__hello_header_4">Hej!</string>
+    <string name="tokens__empty_list_title">Dodaj pierwszy serwis</string>
+    <string name="guides__request_service">Formularz</string>
+    <string name="guides__step_number">Krok %d</string>
+    <string name="about__generate_logs">Wyślij logi</string>
+    <string name="about__generate_logs_alert_title">Wysłać logi?</string>
+    <string name="about__generate_logs_alert_message">Czy chcesz wysłać logi?</string>
+    <string name="about__generate_logs_alert_action">Wyślij</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

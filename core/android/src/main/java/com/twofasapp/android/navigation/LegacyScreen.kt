@@ -15,6 +15,7 @@ sealed class LegacyScreen(val route: String) {
 
     data object AppSettings : LegacyScreen("appsettings")
     data object About : LegacyScreen("about")
+    data object Developer : LegacyScreen("developer")
     data object AboutLicenses : LegacyScreen("about/licenses")
     data object Notifications : LegacyScreen("notifications")
     data object Trash : LegacyScreen("trash")

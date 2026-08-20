@@ -9,6 +9,9 @@ sealed interface Screen : NavKey {
     data object Startup : Screen
 
     @Serializable
+    data object Developer : Screen
+
+    @Serializable
     data object Services : Screen
 
     @Serializable

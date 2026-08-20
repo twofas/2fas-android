@@ -7,6 +7,8 @@ import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SessionRepositoryImpl
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.SettingsRepositoryImpl
+import com.twofasapp.data.session.StartupRepository
+import com.twofasapp.data.session.StartupRepositoryImpl
 import com.twofasapp.data.session.local.SessionLocalSource
 import com.twofasapp.data.session.local.SettingsLocalSource
 import com.twofasapp.data.session.work.DisableScreenshotsWorkDispatcher
@@ -18,6 +20,7 @@ class DataSessionModule : KoinModule {
     override fun provide() = module {
         singleOf(::SessionLocalSource)
         singleOf(::SessionRepositoryImpl) { bind<SessionRepository>() }
+        singleOf(::StartupRepositoryImpl) { bind<StartupRepository>() }
 
         singleOf(::SettingsLocalSource)
         singleOf(::SettingsRepositoryImpl) { bind<SettingsRepository>() }

@@ -43,7 +43,7 @@ internal fun SyncNoticeBar(
             text = MdtLocale.strings.backupSyncNotice,
             modifier = Modifier.weight(1f),
             color = MdtTheme.color.onSurface,
-            style = MdtTheme.typo.regular.sm,
+            style = MdtTheme.typo.sm.normal,
         )
 
         Spacer(modifier = Modifier.width(4.dp))

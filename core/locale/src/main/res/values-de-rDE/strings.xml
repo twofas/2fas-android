@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:07 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:49 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -166,7 +166,7 @@
     <string name="tokens__scan_qr_code_title">Richte die Kamera auf den Bildschirm, um den QR-Code zu scannen</string>
     <!-- tokens__private_key -->
     <string name="tokens__service_key">Geheimschlüssel</string>
-    <string name="tokens__qr_code_leads_to_app_store">Dieser QR-Code führt dich zum App-Store</string>
+    <string name="tokens__qr_code_leads_to_app_store">Dieser QR-Code führt dich zum App Store</string>
     <!-- tokens__remove_it_forever -->
     <string name="tokens__remove_forever">Token löschen</string>
     <!-- tokens__search_by_service_name_or_login -->
@@ -176,7 +176,7 @@
     <!-- Original: Take another try with a different search term
          tokens__search_take_another_try_different_search_term -->
     <string name="tokens__try_different_search_term">Versuche es erneut mit einem anderen Suchwert</string>
-    <string name="tokens__service_key_to_short">Schlüssel zu kurz. Minimum 4 Zeichen</string>
+    <string name="tokens__service_key_to_short">Der Geheimschlüssel ist zu kurz. Mindestens 4 Zeichen</string>
     <string name="tokens__service_name">Service-Name</string>
     <!-- tokens__this_private_key_exists_used_in -->
     <string name="tokens__service_key_already_used_title">Der Geheimschlüssel aus dem gescannten Code wird bereits in %s verwendet. Du scannst ihn wahrscheinlich erneut</string>
@@ -410,7 +410,7 @@
     <string name="settings__donations">Spenden</string>
     <string name="settings__donate_twofas">Spenden an 2FAS</string>
     <string name="new_version__new_version_title">Neue Version</string>
-    <string name="new_version__new_version_message_ios">Eine neue Version von 2FAS ist im AppStore verfügbar. Jetzt aktualisieren!</string>
+    <string name="new_version__new_version_message_ios">Eine neue Version von 2FAS ist im App Store verfügbar. Jetzt aktualisieren!</string>
     <string name="new_version__update_action">Jetzt aktualisieren</string>
     <!-- new_version__skip_action -->
     <string name="new_version__skip_title">Diese Version überspringen</string>
@@ -480,7 +480,7 @@
     <string name="tokens__qr_point_and_scan_again">Richte deine Kamera auf den richtigen QR-Code und scanne es erneut.</string>
     <string name="tokens__service_unsaved_changes">Möchtest du deine Änderungen verwerfen?</string>
     <string name="tokens__service_unsaved_changes_title">Ungespeicherte Änderungen</string>
-    <string name="tokens__service_key_invalid_format">Der Schlüssel hat ein ungültiges Format</string>
+    <string name="tokens__service_key_invalid_format">Der Geheimschlüssel hat ein ungültiges Format</string>
     <string name="intent_error_no_gallery_app">Systemfehler! Es gibt keine Galerie-App.</string>
     <string name="gdrive_permission_title">Google Drive Berechtigung</string>
     <string name="gdrive_permission_msg">Wir benötigen die Google Drive Berechtigung, um die Sicherungsdateien in den App-Daten zu speichern.</string>
@@ -726,7 +726,7 @@
     <string name="settings__show_next_token_desc">Nächsten Token anzeigen, wenn der Jetzige demnächst abläuft</string>
     <string name="settings__list_style">Listenstil</string>
     <string name="backup__reminder_msg">Google Drive nicht synchronisiert</string>
-    <string name="backup__reminder_cta">Zu den Sicherungseinstellungen gehen</string>
+    <string name="backup__reminder_cta">Gehe zu den Sicherungseinstellungen</string>
     <string name="settings__list_style_option_default">Standard</string>
     <string name="settings__list_style_option_compact">Kompakt</string>
     <string name="externalimport_lastpass">LastPass</string>
@@ -794,13 +794,13 @@
     <string name="tokens__camera_is_unavailable_app_permission">Die Kamera ist nicht verfügbar. Überprüfe die Zugriffsberechtigung von Apps in den Systemeinstellungen</string>
     <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
     <string name="tokens__camera_is_unavailable_app_permission_underline">Systemeinstellungen</string>
-    <string name="commons__text_short_title">Der angegebene Text ist zu kurz (mind. %d Zeichen)</string>
+    <string name="commons__text_short_title">Der angegebene Text ist zu kurz (mind. %d Zeichen).</string>
     <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
     <string name="tokens__add_manual_advanced_description_highlight">wird nicht empfohlen</string>
     <string name="guides__guide_init_title">2FAS Hilfewerk</string>
     <string name="guides__guide_title">2FAS für %s\n</string>
     <string name="guides__guide_universal_title">Universelles 2FAS Hilfewerk\u0020</string>
-    <string name="browser__save_choice">Meine Wahl speichern</string>
+    <string name="browser__save_choice">Meine Auswahl speichern</string>
     <string name="externalimport_andotp">andOTP</string>
     <string name="externalimport__andotp_title">2FA Token aus andOTP importieren</string>
     <string name="externalimport__andotp_success_msg">Diese JSON-Datei erlaubt es Token von andOTP zu importieren.</string>
@@ -937,7 +937,7 @@
     <!-- Used on a tokens list in context menu to move service up on that list -->
     <string name="tokens__move_up">Nach oben verschieben</string>
     <!-- Used on a tokens list in context menu to move service down on that list -->
-    <string name="tokens__move_down">nach unten verschieben</string>
+    <string name="tokens__move_down">Nach unten verschieben</string>
     <string name="settings__transfer">Token übertragen</string>
     <string name="transfer__import_section_title">Aus anderen Apps importieren</string>
     <string name="transfer__export_section_title">Zu OTPAuth exportieren</string>
@@ -945,7 +945,7 @@
     <string name="transfer__export_otp_qr">Token als QR-Codes exportieren</string>
     <string name="exportwarning__title_file">Token in Datei exportieren</string>
     <string name="exportwarning__cta_file">In eine Datei exportieren</string>
-    <string name="exportwarning__description_file">Du bist dabei, alle deine 2FA-Token einschließlich deiner geheimen Schlüssel in eine unverschlüsselte Datei zu exportieren. Jeder, der Zugriff auf diese Datei hat, kann damit die Kontrolle über deine Konten übernehmen. Bewahre sie bitte sicher auf.</string>
+    <string name="exportwarning__description_file">Du bist dabei, alle deine 2FA-Token einschließlich deiner Geheimschlüssel in eine unverschlüsselte Datei zu exportieren. Jeder, der Zugriff auf diese Datei hat, kann damit die Kontrolle über deine Konten übernehmen. Bewahre sie bitte sicher auf.</string>
     <string name="exportwarning__toggle">Ich verstehe das Risiko</string>
     <string name="transfer__import_otpauth_file">Allgemeine OTPAuth-Datei</string>
     <string name="exportwarning__description_qr">Du bist dabei, alle deine 2FA-Token in eine unverschlüsselte ZIP-Datei mit QR-Codes zu exportieren. Diese QR-Codes können verwendet werden, um die Kontrolle über deine Konten zu übernehmen. Bitte bewahre sie sicher auf.</string>
@@ -968,9 +968,45 @@
     <string name="backup__password_set_description">Gib ein Passwort ein, um den Inhalt deiner Sicherung zusätzlich zu schützen. Wenn du dein Passwort vergisst, dann musst du die Sicherung entfernen und von vorne beginnen.</string>
     <string name="backup__password_rules_description">Es sind nur Buchstaben, Ziffern, Leerzeichen und Sonderzeichen (!@#$%^&amp;*()-_) zulässig.</string>
     <string name="pass_promo_banner_title">Wir haben etwas Neues für dich entwickelt!</string>
-    <string name="pass_promo_banner_msg">Ein sicherer, lokal ausgerichteter **Password Manager – 2FAS Pass**, der für die Zusammenarbeit mit 2FAS Auth entwickelt wurde und deinen Authenticator unverändert beibehält.</string>
+    <string name="pass_promo_banner_msg">Ein sicherer, lokal ausgerichteter **Passwortmanager – 2FAS Pass**, der für die Zusammenarbeit mit 2FAS Auth entwickelt wurde und deinen Authenticator unverändert beibehält.</string>
     <string name="pass_promo_banner_positive_cta">Zum Store gehen</string>
     <string name="pass_promo_banner_negative_cta">Nicht erneut anzeigen</string>
     <string name="appearance_dynamic_colors">Dynamische Farben</string>
     <string name="appearance_dynamic_colors_description">Ändere die App-Farben dynamisch basierend auf deinem Hintergrundbild.</string>
+    <string name="backup__section_note">HINWEIS: Die iCloud-Synchronisierung speichert Verschlüsselungsschlüssel im iCloud-Schlüsselbund. Wenn der iCloud-Schlüsselbund deaktiviert ist, dann exportiere deine Schlüssel bitte manuell aus dem Bereich „Sicherung verwalten“. Andernfalls ist es nicht möglich, deine Daten wiederherzustellen oder mit anderen Geräten zu synchronisieren.</string>
+    <string name="backup__keys_import_warning">Durch das Importieren der Schlüssel werden deine aktuellen Verschlüsselungsschlüssel überschrieben. Möchtest du fortfahren?</string>
+    <string name="backup__key_import_system_key">Systemschlüssel</string>
+    <string name="backup__keys_import_error">Der Import der Schlüssel ist fehlgeschlagen.</string>
+    <string name="watch__intro_step1">Befolge diese Anweisungen, um deine Watch-App zu koppeln.</string>
+    <string name="watch__intro_step2">Öffne in der 2FAS Auth-App auf deinem iPhone die Einstellungen unter „2FAS Sicherung“.</string>
+    <string name="watch__intro_step3">Stelle sicher, dass die iCloud-Sicherung synchronisiert und der iCloud-Schlüsselbund in den iOS-Systemeinstellungen aktiviert ist.</string>
+    <string name="watch__intro_step4">Wähle „Verwaltete gekoppelte Apple Watches“ aus.</string>
+    <string name="watch__intro_step5">Tippe auf „+“ und scanne den QR-Code auf der nächsten Seite.</string>
+    <string name="watch__intro_step6">Du kannst dieses Fenster nun schließen. Die Synchronisierung kann einige Zeit in Anspruch nehmen.</string>
+    <string name="tokens__empty_screen_in_trash">Du hast **%d** Dienste in deinem Papierkorb.</string>
+    <string name="commons__go_to_trash">Zum Papierkorb gehen</string>
+    <string name="backup__moved_to_trash_title">Ergebnis der iCloud-Synchronisierung</string>
+    <string name="backup__moved_to_trash_message">Die letzte iCloud-Synchronisierung hat alle deine Dienste in den Papierkorb verschoben. Du kannst sie jederzeit wiederherstellen.</string>
+    <string name="commons__understood">Verstanden</string>
+    <string name="introduction__backup_icloud_description_note">Es ist standardmäßig aktiviert und kann jederzeit in den Sicherungseinstellungen der App deaktiviert werden.</string>
+    <string name="introduction__call_1">Ich weiß nur, dass du es bist</string>
+    <string name="introduction__call_2">Unglaublich!</string>
+    <string name="restore__reset__title">Wiederherstellung der App</string>
+    <string name="login__hello_header">Hallo nochmal!</string>
+    <string name="login__hello_header_1">Hallo!</string>
+    <string name="login__hello_header_2">Willkommen zurück!</string>
+    <string name="login__hello_header_3">Schön, dich wiederzusehen!</string>
+    <string name="login__hello_header_4">Hi!</string>
+    <string name="tokens__empty_list_title">Ersten Dienst hinzufügen</string>
+    <string name="guides__request_service">Anfrage</string>
+    <string name="guides__step_number">Schritt %d</string>
+    <string name="about__generate_logs">Log generieren</string>
+    <string name="about__generate_logs_alert_title">Logs generieren?</string>
+    <string name="about__generate_logs_alert_message">Möchtest du Logs generieren? Es kann einige Zeit dauern.</string>
+    <string name="about__generate_logs_alert_action">Generieren</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>

@@ -130,14 +130,14 @@ private fun ScreenContent(
                     text = MdtLocale.strings.backupExportHeader,
                     textAlign = TextAlign.Center,
                     color = MdtTheme.color.onSurface,
-                    style = MdtTheme.typo.regular.xl,
+                    style = MdtTheme.typo.xl.normal,
                 )
 
                 Text(
                     text = MdtLocale.strings.backupExportMsg,
                     textAlign = TextAlign.Center,
                     color = MdtTheme.color.onSurface,
-                    style = MdtTheme.typo.regular.sm,
+                    style = MdtTheme.typo.sm.normal,
                 )
 
                 Row(
@@ -153,7 +153,7 @@ private fun ScreenContent(
                     Text(
                         text = MdtLocale.strings.backupExportPassMsg,
                         color = MdtTheme.color.onSurface,
-                        style = MdtTheme.typo.regular.sm,
+                        style = MdtTheme.typo.sm.normal,
                     )
                 }
             }

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:08 -0700
+ Exported at: Thu, 20 Aug 2026 09:01:50 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -973,4 +973,40 @@
     <string name="pass_promo_banner_negative_cta">Niet meer tonen</string>
     <string name="appearance_dynamic_colors">Dynamische kleuren</string>
     <string name="appearance_dynamic_colors_description">Wijzig de appkleuren dynamisch op basis van je achtergrond.</string>
+    <string name="backup__section_note">OPMERKING: iCloud-synchronisatie bewaart encryptiesleutels in iCloud-sleutelhanger. Als iCloud-sleutelhanger is uitgeschakeld, exporteer je sleutels dan handmatig via Back-up beheren. Zonder dit kun je je gegevens niet herstellen en niet synchroniseren met andere apparaten.</string>
+    <string name="backup__keys_import_warning">Het importeren van sleutels overschrijft je huidige encryptiesleutels. Wil je doorgaan?</string>
+    <string name="backup__key_import_system_key">Systeemcode</string>
+    <string name="backup__keys_import_error">Importeren van sleutels mislukt.</string>
+    <string name="watch__intro_step1">Volg deze instructies om je watch-app te koppelen.</string>
+    <string name="watch__intro_step2">Ga naar de instellingen van ‘2FAS Back-up’ in de 2FAS Auth-app op je iPhone.</string>
+    <string name="watch__intro_step3">Controleer in de iOS-systeeminstellingen of iCloud-reservekopie is gesynchroniseerd en iCloud-sleutelhanger is ingeschakeld.</string>
+    <string name="watch__intro_step4">Selecteer ‘Gekoppelde Apple Watches beheren’.</string>
+    <string name="watch__intro_step5">Tik op ‘+’ en scan de QR-code op de volgende pagina.</string>
+    <string name="watch__intro_step6">Je kunt dit venster nu sluiten. Synchroniseren kan even duren.</string>
+    <string name="tokens__empty_screen_in_trash">Je hebt **%d** diensten in je Prullenbak.</string>
+    <string name="commons__go_to_trash">Ga naar Prullenbak</string>
+    <string name="backup__moved_to_trash_title">Resultaat van iCloud-synchronisatie</string>
+    <string name="backup__moved_to_trash_message">De laatste iCloud-synchronisatie heeft al je diensten naar de Prullenbak verplaatst. Je kunt ze op elk moment herstellen.</string>
+    <string name="commons__understood">Understood</string>
+    <string name="introduction__backup_icloud_description_note">It\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__call_1">Just know you\'re</string>
+    <string name="introduction__call_2">Incredible!</string>
+    <string name="restore__reset__title">Restoring the app</string>
+    <string name="login__hello_header">Hello again!</string>
+    <string name="login__hello_header_1">Hello there!</string>
+    <string name="login__hello_header_2">Welcome back!</string>
+    <string name="login__hello_header_3">Good to see you again!</string>
+    <string name="login__hello_header_4">Hi!</string>
+    <string name="tokens__empty_list_title">Add first service</string>
+    <string name="guides__request_service">Request</string>
+    <string name="guides__step_number">Step %d</string>
+    <string name="about__generate_logs">Generate logs</string>
+    <string name="about__generate_logs_alert_title">Generate logs?</string>
+    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
+    <string name="about__generate_logs_alert_action">Generate</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
 </resources>
