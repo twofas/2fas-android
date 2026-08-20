@@ -9,7 +9,7 @@ import com.twofasapp.data.push.di.DataPushModule
 import com.twofasapp.data.services.di.DataServicesModule
 import com.twofasapp.data.session.di.DataSessionModule
 import com.twofasapp.feature.about.di.AboutModule
-import com.twofasapp.feature.appsettings.di.AppSettingsModule
+import com.twofasapp.feature.appsettings.di.CustomizationModule
 import com.twofasapp.feature.backup.di.BackupModule
 import com.twofasapp.feature.browserext.di.BrowserExtModule
 import com.twofasapp.feature.developer.di.DeveloperModule
@@ -53,7 +53,7 @@ object Modules {
         StartupModule(),
         HomeModule(),
         ExternalImportModule(),
-        AppSettingsModule(),
+        CustomizationModule(),
         TrashModule(),
         AboutModule(),
         QrScanModule(),

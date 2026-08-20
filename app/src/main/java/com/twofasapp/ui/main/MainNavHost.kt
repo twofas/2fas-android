@@ -29,7 +29,6 @@ import com.twofasapp.core.design.foundation.modal.ModalBottomSheet
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.feature.about.navigation.AboutLicensesRoute
 import com.twofasapp.feature.about.navigation.AboutRoute
-import com.twofasapp.feature.appsettings.navigation.AppSettingsRoute
 import com.twofasapp.feature.backup.navigation.BackupExportRoute
 import com.twofasapp.feature.backup.navigation.BackupImportRoute
 import com.twofasapp.feature.backup.navigation.BackupRoute
@@ -185,10 +184,6 @@ internal fun MainNavHost(
                         scope.launch { bottomSheetState.hide() }
                     },
                 )
-            }
-
-            composable(LegacyScreen.AppSettings.route) {
-                AppSettingsRoute()
             }
 
             composable(LegacyScreen.About.route) {

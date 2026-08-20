@@ -98,7 +98,7 @@ private fun Content(
                     title = strings.settingsAppearance,
                     subtitle = strings.settingsAppearanceDesc,
                     icon = MdtIcons.Eye,
-                    onClick = { navigator.open(Screen.Developer) },
+                    onClick = { navigator.open(Screen.Customization) },
                 )
             }
 

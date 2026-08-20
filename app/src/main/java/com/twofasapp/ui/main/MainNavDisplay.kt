@@ -18,6 +18,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.feature.appsettings.navigation.CustomizationRoute
 import com.twofasapp.feature.developer.navigation.DeveloperRoute
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.services.ServicesRoutePublic
@@ -73,7 +74,7 @@ internal fun MainNavDisplay(
     val showNavigationBar = when (currentDestination) {
         Screen.Services,
         Screen.Settings,
-        -> true
+            -> true
 
         else -> false
     }
@@ -106,6 +107,10 @@ internal fun MainNavDisplay(
                         StartupRoute()
                     }
 
+                    entry<Screen.Developer> {
+                        DeveloperRoute()
+                    }
+
                     entry<Screen.Services> {
                         ServicesRoutePublic(
                             listener = listener,
@@ -116,8 +121,8 @@ internal fun MainNavDisplay(
                         SettingsRoute()
                     }
 
-                    entry<Screen.Developer> {
-                        DeveloperRoute()
+                    entry<Screen.Customization> {
+                        CustomizationRoute()
                     }
                 },
             )

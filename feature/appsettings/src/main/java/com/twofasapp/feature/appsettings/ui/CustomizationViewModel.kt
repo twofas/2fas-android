@@ -8,11 +8,11 @@ import com.twofasapp.data.session.domain.ServicesStyle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
-internal class AppSettingsViewModel(
+internal class CustomizationViewModel(
     private val settingsRepository: SettingsRepository,
 ) : ViewModel() {
 
-    val uiState = MutableStateFlow(AppSettingsUiState())
+    val uiState = MutableStateFlow(CustomizationUiState())
 
     init {
         launchScoped {
@@ -31,7 +31,7 @@ internal class AppSettingsViewModel(
 
             if (shouldRecreate) {
                 uiState.update {
-                    it.copy(events = it.events.plus(AppSettingsUiEvent.Recreate))
+                    it.copy(events = it.events.plus(CustomizationUiEvent.Recreate))
                 }
             }
         }
@@ -61,7 +61,7 @@ internal class AppSettingsViewModel(
         }
     }
 
-    fun consumeEvent(event: AppSettingsUiEvent) {
+    fun consumeEvent(event: CustomizationUiEvent) {
         uiState.update { it.copy(events = it.events.minus(event)) }
     }
 
@@ -79,7 +79,7 @@ internal class AppSettingsViewModel(
 
             if (shouldRecreate) {
                 uiState.update {
-                    it.copy(events = it.events.plus(AppSettingsUiEvent.Recreate))
+                    it.copy(events = it.events.plus(CustomizationUiEvent.Recreate))
                 }
             }
         }
