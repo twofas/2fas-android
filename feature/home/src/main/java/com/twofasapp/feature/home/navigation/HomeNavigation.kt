@@ -41,7 +41,7 @@ fun NavGraphBuilder.homeNavigation(
     }
 
     composable(LegacyScreen.Settings.route) {
-        SettingsRoute(listener, bottomBarListener)
+        SettingsRoute()
     }
 
     composable(LegacyScreen.Notifications.route) {

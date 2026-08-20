@@ -86,4 +86,6 @@ class TypographyTokens(colorTokens: ColorTokens) {
         lineHeight = TypographySizes.xl4.lineHeight,
         defaultColor = colorTokens.onBackground,
     )
+
+    val material = TypographyMaterial(colorTokens)
 }

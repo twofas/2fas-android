@@ -123,7 +123,7 @@ fun OptionEntry(
             title?.let {
                 Text(
                     text = it,
-                    style = MdtTheme.typo.base.medium,
+                    style = MdtTheme.typo.material.titleMedium,
                     color = titleColor,
                 )
             }
@@ -131,13 +131,13 @@ fun OptionEntry(
             if (subtitle != null) {
                 Text(
                     text = subtitle,
-                    style = MdtTheme.typo.sm.normal,
+                    style = MdtTheme.typo.material.bodyMedium,
                     color = subtitleColor,
                 )
             } else if (subtitleAnnotated != null) {
                 Text(
                     text = subtitleAnnotated,
-                    style = MdtTheme.typo.sm.normal,
+                    style = MdtTheme.typo.material.bodyMedium,
                     color = subtitleColor,
                 )
             }
@@ -148,7 +148,7 @@ fun OptionEntry(
 
             Text(
                 text = value,
-                style = MdtTheme.typo.sm.normal,
+                style = MdtTheme.typo.material.bodyMedium,
                 color = titleColor,
                 textAlign = TextAlign.End,
                 modifier = Modifier.weight(0.25f),

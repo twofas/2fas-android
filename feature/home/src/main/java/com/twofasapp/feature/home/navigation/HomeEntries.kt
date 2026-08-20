@@ -24,9 +24,5 @@ fun SettingsEntry(
     bottomBarListener: BottomBarListener,
     showBottomBar: Boolean = true,
 ) {
-    SettingsRoute(
-        listener = listener,
-        bottomBarListener = bottomBarListener,
-        showBottomBar = showBottomBar,
-    )
+    SettingsRoute()
 }

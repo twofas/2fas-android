@@ -1,10 +1,10 @@
 package com.twofasapp.feature.home.ui.settings
 
-import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,109 +22,174 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.feature.settings.SettingsDivider
-import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.OptionEntry
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
+import com.twofasapp.core.design.foundation.lazy.listItem
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
-import com.twofasapp.feature.home.navigation.HomeNavigationListener
-import com.twofasapp.feature.home.ui.bottombar.BottomBar
-import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
 import com.twofasapp.locale.MdtLocale
+import org.koin.compose.koinInject
 
 @Composable
-internal fun SettingsRoute(
-    listener: HomeNavigationListener,
-    bottomBarListener: BottomBarListener,
-    showBottomBar: Boolean = true,
-) {
-    SettingsScreen(
-        listener = listener,
-        bottomBarListener = bottomBarListener,
-        showBottomBar = showBottomBar,
-    )
+fun SettingsRoute() {
+    SettingsScreen()
 }
 
 @Composable
 private fun SettingsScreen(
-    listener: HomeNavigationListener,
-    bottomBarListener: BottomBarListener,
-    showBottomBar: Boolean = true,
+    navigator: Navigator = koinInject(),
 ) {
-    val activity = LocalContext.current as Activity
+    Content(
+        navigator = navigator,
+    )
+}
+
+@Composable
+private fun Content(
+    navigator: Navigator,
+) {
+    val strings = MdtLocale.strings
+    val activity = LocalContext.currentActivity
     val uriHandler = LocalUriHandler.current
 
     Scaffold(
-        bottomBar = { if (showBottomBar) BottomBar(1, bottomBarListener) },
-        topBar = { TopAppBar(title = MdtLocale.strings.settingsSettings, showBackButton = false) },
+        topBar = {
+            TopAppBar(
+                content = { Text(text = strings.settingsSettings, style = MdtTheme.typo.xl2.medium) },
+                showBackButton = false,
+            )
+        },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MdtTheme.color.background)
-                .padding(padding),
+                .padding(top = padding.calculateTopPadding()),
+            contentPadding = PaddingValues(bottom = 16.dp),
         ) {
-            item {
-                SettingsLink(title = MdtLocale.strings.settingsBackup, icon = MdtIcons.CloudUpload) {
-                    listener.openBackup(false)
-                }
+            // Preferences section
+            listItem(SettingsListItem.Header(strings.settingsPreferences)) {
+                OptionHeader(
+                    text = strings.settingsPreferences,
+                    contentPadding = OptionHeaderContentPaddingFirst,
+                )
             }
 
-            item {
-                SettingsLink(title = MdtLocale.strings.settingsSecurity, icon = MdtIcons.Security) {
-                    listener.openSecurity(activity)
-                }
+            listItem(SettingsListItem.Entry(strings.settingsSecurity)) {
+                OptionEntry(
+                    title = strings.settingsSecurity,
+                    subtitle = strings.settingsSecurityDesc,
+                    icon = MdtIcons.Security,
+                    onClick = { navigator.open(Screen.Developer) },
+                )
             }
 
-            item {
-                SettingsLink(title = MdtLocale.strings.settingsAppearance, icon = MdtIcons.Eye) {
-                    listener.openAppSettings()
-                }
+            listItem(SettingsListItem.Entry(strings.settingsAppearance)) {
+                OptionEntry(
+                    title = strings.settingsAppearance,
+                    subtitle = strings.settingsAppearanceDesc,
+                    icon = MdtIcons.Eye,
+                    onClick = { navigator.open(Screen.Developer) },
+                )
             }
 
-            item {
-                SettingsLink(title = MdtLocale.strings.settingsExternalImport, icon = MdtIcons.Download) {
-                    listener.openExternalImport()
-                }
+            listItem(SettingsListItem.Entry(strings.settingsRemovedItems)) {
+                OptionEntry(
+                    title = strings.settingsRemovedItems,
+                    subtitle = strings.settingsRemovedItemsDesc,
+                    icon = MdtIcons.Delete,
+                    onClick = { navigator.open(Screen.Developer) },
+                )
             }
 
-            item {
-                SettingsLink(title = MdtLocale.strings.settingsBrowserExt, icon = MdtIcons.Extension) {
-                    listener.openBrowserExt()
-                }
+            // Backup and Transfer section
+            listItem(SettingsListItem.Header(strings.settingsBackupAndTransfer)) {
+                OptionHeader(
+                    text = strings.settingsBackupAndTransfer,
+                )
             }
 
-            item { SettingsDivider() }
-
-            item {
-                SettingsLink(title = MdtLocale.strings.settingsTrash, icon = MdtIcons.Delete) {
-                    listener.openTrash()
-                }
+            listItem(SettingsListItem.Entry(strings.settingsBackup)) {
+                OptionEntry(
+                    title = strings.settingsBackup,
+                    subtitle = strings.settingsBackupDesc,
+                    icon = MdtIcons.CloudUpload,
+                    onClick = { navigator.open(Screen.Developer) },
+                )
             }
 
-            item {
-                SettingsLink(title = MdtLocale.strings.settingsSupport, icon = MdtIcons.Support, external = true) {
-                    uriHandler.openSafely(MdtLocale.links.support, activity)
-                }
+            listItem(SettingsListItem.Entry(strings.settingsExternalImport)) {
+                OptionEntry(
+                    title = strings.settingsExternalImport,
+                    subtitle = strings.settingsImportTokensDesc,
+                    icon = MdtIcons.Download,
+                    onClick = { navigator.open(Screen.Developer) },
+                )
             }
 
-            item {
-                SettingsLink(title = MdtLocale.strings.settingsAbout, icon = MdtIcons.Info) {
-                    listener.openAbout()
-                }
+            // Browser Extension section
+            listItem(SettingsListItem.Header(strings.settingsBrowserExtHeader)) {
+                OptionHeader(
+                    text = strings.settingsBrowserExtHeader,
+                )
             }
 
-            item { SettingsDivider() }
-
-            item {
-                SettingsLink(title = MdtLocale.strings.settingsDonate, icon = MdtIcons.Favorite, external = true) {
-                    uriHandler.openSafely(MdtLocale.links.donate, activity)
-                }
+            listItem(SettingsListItem.Entry(strings.settingsConnectedExtensions)) {
+                OptionEntry(
+                    title = strings.settingsConnectedExtensions,
+                    subtitle = strings.settingsConnectedExtensionsDesc,
+                    icon = MdtIcons.Extension,
+                    onClick = { navigator.open(Screen.Developer) },
+                )
             }
 
-            item {
+            // More section
+            listItem(SettingsListItem.Header(strings.settingsMore)) {
+                OptionHeader(
+                    text = strings.settingsMore,
+                )
+            }
+
+            listItem(SettingsListItem.Entry(strings.settingsAbout)) {
+                OptionEntry(
+                    title = strings.settingsAbout,
+                    subtitle = strings.settingsAboutDesc,
+                    icon = MdtIcons.Info,
+                    onClick = { navigator.open(Screen.Developer) },
+                )
+            }
+
+            listItem(SettingsListItem.Entry(strings.settingsSupport)) {
+                OptionEntry(
+                    title = strings.settingsSupport,
+                    subtitle = strings.settingsSupportDesc,
+                    icon = MdtIcons.Support,
+                    external = true,
+                    onClick = { uriHandler.openSafely(MdtLocale.links.support, activity) },
+                )
+            }
+
+            listItem(SettingsListItem.Entry(strings.settingsDonate)) {
+                OptionEntry(
+                    title = strings.settingsDonate,
+                    subtitle = strings.settingsDonateDesc,
+                    icon = MdtIcons.Favorite,
+                    external = true,
+                    onClick = { uriHandler.openSafely(MdtLocale.links.donate, activity) },
+                )
+            }
+
+            // Social links
+            listItem(SettingsListItem.Entry("Social")) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -170,5 +236,15 @@ private fun SettingsScreen(
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        Content(
+            navigator = Navigator.Stub,
+        )
     }
 }

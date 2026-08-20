@@ -18,7 +18,7 @@ class StartupViewModel(
             navigator.resetTo(Screen.Services)
 
             if (openBackup) {
-                navigator.navigate(Screen.Settings) // TODO: Replace with a proper backup screen when implemented
+                navigator.open(Screen.Settings) // TODO: Replace with a proper backup screen when implemented
             }
         }
     }

@@ -15,7 +15,7 @@ internal class AppNavigator : Navigator {
         }
     }
 
-    override fun navigate(screen: Screen) {
+    override fun open(screen: Screen) {
         backStack.add(screen)
     }
 

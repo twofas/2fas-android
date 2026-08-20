@@ -1,22 +1,28 @@
 package com.twofasapp.ui.main
 
 import android.app.Activity
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.navigationsuite.ExperimentalMaterial3AdaptiveNavigationSuiteApi
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaults
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldDefaults
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.twofasapp.android.navigation.Screen
+import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.feature.developer.navigation.DeveloperRoute
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.navigation.ServicesEntry
-import com.twofasapp.feature.home.navigation.SettingsEntry
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
+import com.twofasapp.feature.home.ui.settings.SettingsRoute
 import com.twofasapp.feature.startup.navigation.StartupRoute
 import org.koin.compose.koinInject
 import timber.log.Timber
@@ -57,7 +63,7 @@ internal fun MainNavDisplay(
             override fun openTrash() = todo("Trash")
             override fun openNotifications() = todo("Notifications")
             override fun openAbout() = todo("About")
-            override fun openDeveloper() = navigator.navigate(Screen.Developer)
+            override fun openDeveloper() = navigator.open(Screen.Developer)
             override fun openAddServiceModal() = todo("AddServiceModal")
             override fun openFocusServiceModal(id: Long) = todo("FocusServiceModal")
             override fun openBackupImport(filePath: String?) = todo("BackupImport")
@@ -88,6 +94,9 @@ internal fun MainNavDisplay(
 
     NavigationSuiteScaffold(
         layoutType = layoutType,
+        navigationSuiteColors = NavigationSuiteDefaults.colors(
+            navigationBarContainerColor = MdtTheme.color.background,
+        ),
         navigationSuiteItems = {
             mainNavigationSuiteItems(
                 currentDestination = currentDestination,
@@ -95,34 +104,40 @@ internal fun MainNavDisplay(
             )
         },
     ) {
-        NavDisplay(
-            backStack = backStack,
-            onBack = { navigator.back() },
-            entryProvider = entryProvider {
-                entry<Screen.Startup> {
-                    StartupRoute()
-                }
+        Column {
+            NavDisplay(
+                modifier = Modifier.weight(1f),
+                backStack = backStack,
+                onBack = { navigator.back() },
+                entryProvider = entryProvider {
+                    entry<Screen.Startup> {
+                        StartupRoute()
+                    }
 
-                entry<Screen.Services> {
-                    ServicesEntry(
-                        listener = listener,
-                        bottomBarListener = bottomBarListener,
-                        showBottomBar = false,
-                    )
-                }
+                    entry<Screen.Services> {
+                        ServicesEntry(
+                            listener = listener,
+                            bottomBarListener = bottomBarListener,
+                            showBottomBar = false,
+                        )
+                    }
 
-                entry<Screen.Settings> {
-                    SettingsEntry(
-                        listener = listener,
-                        bottomBarListener = bottomBarListener,
-                        showBottomBar = false,
-                    )
-                }
+                    entry<Screen.Settings> {
+                        SettingsRoute()
+                    }
 
-                entry<Screen.Developer> {
-                    DeveloperRoute()
-                }
-            },
-        )
+                    entry<Screen.Developer> {
+                        DeveloperRoute()
+                    }
+                },
+            )
+
+            if (showNavigationBar) {
+                HorizontalDivider(
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MdtTheme.color.surfaceContainer,
+                )
+            }
+        }
     }
 }
