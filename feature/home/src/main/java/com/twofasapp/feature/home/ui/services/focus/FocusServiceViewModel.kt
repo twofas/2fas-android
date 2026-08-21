@@ -5,15 +5,16 @@ import androidx.lifecycle.ViewModel
 import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.data.session.CustomizationRepository
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
 class FocusServiceViewModel(
     savedStateHandle: SavedStateHandle,
     private val servicesRepository: ServicesRepository,
-    private val settingsRepository: SettingsRepository,
+    private val customizationRepository: CustomizationRepository,
 ) : ViewModel() {
 
     private val serviceId: Long = savedStateHandle.getOrThrow(FocusServiceModalNavArg.ServiceId.name)
@@ -29,12 +30,15 @@ class FocusServiceViewModel(
         }
 
         launchScoped {
-            settingsRepository.observeAppSettings()
-                .collect { settings ->
+            combine(
+                customizationRepository.observeShowNextCode(),
+                customizationRepository.observeHideCodes(),
+            ) { showNextCode, hideCodes -> showNextCode to hideCodes }
+                .collect { (showNextCode, hideCodes) ->
                     uiState.update {
                         it.copy(
-                            showNextCode = settings.showNextCode,
-                            hideCodes = settings.hideCodes,
+                            showNextCode = showNextCode,
+                            hideCodes = hideCodes,
                         )
                     }
                 }

@@ -1,16 +1,10 @@
 package com.twofasapp.ui.main
 
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -20,14 +14,12 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
-import com.twofasapp.common.domain.SelectedTheme
-import com.twofasapp.core.design.AppTheme
-import com.twofasapp.core.design.AppThemeState
-import com.twofasapp.core.design.LocalAppTheme
-import com.twofasapp.core.design.LocalDynamicColors
+import com.twofasapp.core.design.ktx.applyAppTheme
+import com.twofasapp.core.design.ktx.enableThemedEdgeToEdge
 import com.twofasapp.core.design.ktx.makeWindowSecure
 import com.twofasapp.core.design.ktx.toastLong
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import kotlinx.coroutines.Job
@@ -43,6 +35,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
     }
 
     private val settingsRepository: SettingsRepository by inject()
+    private val customizationRepository: CustomizationRepository by inject()
     private val sessionRepository: SessionRepository by inject()
     private val servicesRepository: ServicesRepository by inject()
     private val appUpdateManager by lazy { AppUpdateManagerFactory.create(this) }
@@ -56,35 +49,18 @@ class MainActivity : AppCompatActivity(), AuthAware {
     private var recalculateTimeJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val appSettings = settingsRepository.getAppSettings()
-        val selectedTheme = settingsRepository.getAppSettings().selectedTheme
-        AppThemeState.applyTheme(selectedTheme)
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(
-                lightScrim = Color.Transparent.toArgb(),
-                darkScrim = Color.Transparent.toArgb(),
-                detectDarkMode = {
-                    when (selectedTheme) {
-                        SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-                        SelectedTheme.Light -> false
-                        SelectedTheme.Dark -> true
-                    }
-                },
-            ),
-            navigationBarStyle = SystemBarStyle.auto(
-                lightScrim = Color.Transparent.toArgb(),
-                darkScrim = Color.Transparent.toArgb(),
-                detectDarkMode = {
-                    when (selectedTheme) {
-                        SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-                        SelectedTheme.Light -> false
-                        SelectedTheme.Dark -> true
-                    }
-                },
-            ),
-        )
+        val selectedTheme = customizationRepository.getSelectedTheme()
+        applyAppTheme(selectedTheme)
+        enableThemedEdgeToEdge(theme = selectedTheme)
 
         super.onCreate(savedInstanceState)
+
+        lifecycleScope.launch {
+            customizationRepository.observeSelectedTheme().collect { theme ->
+                applyAppTheme(theme)
+            }
+        }
+
         lifecycleScope.launch {
             settingsRepository.observeAppSettings().collect {
                 makeWindowSecure(allow = it.allowScreenshots)
@@ -96,18 +72,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
                 window.isNavigationBarContrastEnforced = false
             }
 
-            CompositionLocalProvider(
-                LocalAppTheme provides when (selectedTheme) {
-                    SelectedTheme.Auto -> AppTheme.Auto
-                    SelectedTheme.Light -> AppTheme.Light
-                    SelectedTheme.Dark -> AppTheme.Dark
-                },
-                LocalDynamicColors provides appSettings.dynamicColors,
-            ) {
-                AppTheme {
-                    MainScreen()
-                }
-            }
+            MainScreen()
         }
 
         attachAuthLifecycleObserver()

@@ -13,10 +13,12 @@ import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.otp.OtpLinkParser
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.domain.AppSettings
 import com.twofasapp.data.session.domain.ServicesSort
+import com.twofasapp.data.session.domain.ServicesStyle
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -27,6 +29,7 @@ internal class ServicesViewModel(
     private val servicesRepository: ServicesRepository,
     private val groupsRepository: GroupsRepository,
     private val settingsRepository: SettingsRepository,
+    private val customizationRepository: CustomizationRepository,
     private val sessionRepository: SessionRepository,
     private val notificationsRepository: NotificationsRepository,
     private val backupRepository: BackupRepository,
@@ -40,7 +43,7 @@ internal class ServicesViewModel(
     private val searchFocused = MutableStateFlow(false)
 
     init {
-        searchFocused(settingsRepository.getAppSettings().autoFocusSearch)
+        searchFocused(customizationRepository.getAutoFocusSearch())
 
         launchScoped {
             combine(
@@ -55,6 +58,10 @@ internal class ServicesViewModel(
                 sessionRepository.observeShowPassBanner(),
                 sessionRepository.observeAppReviewPrompted(),
                 searchFocused,
+                customizationRepository.observeServicesSort(),
+                customizationRepository.observeServicesStyle(),
+                customizationRepository.observeShowNextCode(),
+                customizationRepository.observeHideCodes(),
             ) { array ->
                 CombinedResult(
                     groups = array[0] as List<Group>,
@@ -68,6 +75,10 @@ internal class ServicesViewModel(
                     showPassBanner = array[8] as Boolean,
                     appReviewPrompted = array[9] as Boolean,
                     searchFocused = array[10] as Boolean,
+                    servicesSort = array[11] as ServicesSort,
+                    servicesStyle = array[12] as ServicesStyle,
+                    showNextCode = array[13] as Boolean,
+                    hideCodes = array[14] as Boolean,
                 )
             }.collect { result ->
 
@@ -85,7 +96,7 @@ internal class ServicesViewModel(
 
                 val filteredServices = result.services
                     .sortedBy {
-                        when (result.appSettings.servicesSort) {
+                        when (result.servicesSort) {
                             ServicesSort.Alphabetical -> it.name.lowercase()
                             ServicesSort.Manual -> null
                         }
@@ -105,6 +116,10 @@ internal class ServicesViewModel(
                         isLoading = false,
                         isInEditMode = result.isInEditMode,
                         appSettings = result.appSettings,
+                        servicesSort = result.servicesSort,
+                        servicesStyle = result.servicesStyle,
+                        showNextCode = result.showNextCode,
+                        hideCodes = result.hideCodes,
                         items = buildList {
 
                             if (showSyncNoticeBar) {
@@ -216,7 +231,7 @@ internal class ServicesViewModel(
 
     fun updateSort(index: Int) {
         launchScoped {
-            settingsRepository.setServicesSort(
+            customizationRepository.setServicesSort(
                 when (index) {
                     0 -> ServicesSort.Alphabetical
                     else -> ServicesSort.Manual
@@ -254,7 +269,7 @@ internal class ServicesViewModel(
         launchScoped {
             servicesRepository.incrementHotpCounter(service)
 
-            if (uiState.value.appSettings.hideCodes) {
+            if (uiState.value.hideCodes) {
                 servicesRepository.revealService(id = service.id)
             }
         }
@@ -345,6 +360,10 @@ internal class ServicesViewModel(
         val showPassBanner: Boolean,
         val appReviewPrompted: Boolean,
         val searchFocused: Boolean,
+        val servicesSort: ServicesSort,
+        val servicesStyle: ServicesStyle,
+        val showNextCode: Boolean,
+        val hideCodes: Boolean,
     )
 
     private companion object {

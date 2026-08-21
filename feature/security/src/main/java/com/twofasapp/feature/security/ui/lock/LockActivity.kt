@@ -7,8 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.core.design.AppTheme
-import com.twofasapp.core.design.AppThemeState
+import com.twofasapp.core.design.ktx.applyAppTheme
 import com.twofasapp.core.design.ktx.makeWindowSecure
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.data.session.SettingsRepository
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -17,9 +18,10 @@ class LockActivity : AppCompatActivity() {
 
     private val authTracker: AuthTracker by inject()
     private val settingsRepository: SettingsRepository by inject()
+    private val customizationRepository: CustomizationRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AppThemeState.applyTheme(settingsRepository.getAppSettings().selectedTheme)
+        applyAppTheme(customizationRepository.getSelectedTheme())
 
         overridePendingTransition(0, 0)
         super.onCreate(savedInstanceState)

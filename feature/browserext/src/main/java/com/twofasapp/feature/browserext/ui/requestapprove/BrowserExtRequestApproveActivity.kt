@@ -6,6 +6,7 @@ import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.core.design.window.ActivityHelper
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
@@ -16,12 +17,13 @@ import org.koin.core.parameter.parametersOf
 class BrowserExtRequestApproveActivity : ComponentActivity(), AuthAware {
 
     private val settingsRepository: SettingsRepository by inject()
+    private val customizationRepository: CustomizationRepository by inject()
     private val authTracker: AuthTracker by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ActivityHelper.onCreate(
             activity = this,
-            selectedTheme = settingsRepository.getAppSettings().selectedTheme,
+            selectedTheme = customizationRepository.getSelectedTheme(),
             allowScreenshots = settingsRepository.getAppSettings().allowScreenshots,
         )
         super.onCreate(savedInstanceState)

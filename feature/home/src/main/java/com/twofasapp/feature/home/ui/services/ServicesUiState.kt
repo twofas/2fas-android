@@ -3,6 +3,8 @@ package com.twofasapp.feature.home.ui.services
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.session.domain.AppSettings
+import com.twofasapp.data.session.domain.ServicesSort
+import com.twofasapp.data.session.domain.ServicesStyle
 
 data class ServicesUiState(
     val services: List<Service> = emptyList(),
@@ -19,6 +21,10 @@ data class ServicesUiState(
     val showPassBanner: Boolean = false,
     val hasUnreadNotifications: Boolean = false,
     val appSettings: AppSettings = AppSettings(),
+    val servicesSort: ServicesSort = ServicesSort.Manual,
+    val servicesStyle: ServicesStyle = ServicesStyle.Default,
+    val showNextCode: Boolean = false,
+    val hideCodes: Boolean = false,
     val events: List<ServicesUiEvent> = listOf(),
     val items: List<ServicesListItem> = mutableListOf(),
 ) {

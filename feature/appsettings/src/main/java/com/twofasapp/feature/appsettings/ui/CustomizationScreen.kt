@@ -32,7 +32,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -50,7 +49,6 @@ import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
-import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.theme.RoundedShape16
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.feature.appsettings.R
@@ -66,7 +64,6 @@ internal fun CustomizationScreen(
 
     Content(
         uiState = uiState,
-        onConsumeEvent = { viewModel.consumeEvent(it) },
         onSelectedThemeChange = { viewModel.setSelectedTheme(it) },
         onServicesStyleChange = { viewModel.setServiceStyle(it) },
         onShowNextTokenToggle = { viewModel.toggleShowNextToken() },
@@ -80,7 +77,6 @@ internal fun CustomizationScreen(
 @Composable
 private fun Content(
     uiState: CustomizationUiState,
-    onConsumeEvent: (CustomizationUiEvent) -> Unit = {},
     onSelectedThemeChange: (SelectedTheme) -> Unit = {},
     onServicesStyleChange: (ServicesStyle) -> Unit = {},
     onShowNextTokenToggle: () -> Unit = {},
@@ -90,17 +86,8 @@ private fun Content(
     onDynamicColorsToggle: () -> Unit = {},
 ) {
     val strings = MdtLocale.strings
-    val activity = LocalContext.currentActivity
     var showServicesStyleDialog by remember { mutableStateOf(false) }
     var showConfirmDisableBackupNotice by remember { mutableStateOf(false) }
-
-    uiState.events.firstOrNull()?.let {
-        onConsumeEvent(it)
-
-        when (it) {
-            CustomizationUiEvent.Recreate -> activity.recreate()
-        }
-    }
 
     Scaffold(
         topBar = { TopAppBar(title = strings.settingsAppearance) },
@@ -129,7 +116,7 @@ private fun Content(
                     ThemeOption(
                         modifier = Modifier.weight(1f),
                         theme = theme,
-                        selected = uiState.appSettings.selectedTheme == theme,
+                        selected = uiState.selectedTheme == theme,
                         onClick = { onSelectedThemeChange(theme) },
                     )
                 }
@@ -139,7 +126,7 @@ private fun Content(
                 title = strings.settingsDynamicColors,
                 subtitle = strings.settingsDynamicColorsBody,
                 icon = MdtIcons.Theme,
-                checked = uiState.appSettings.dynamicColors,
+                checked = uiState.dynamicColors,
                 onToggle = { onDynamicColorsToggle() },
             )
 
@@ -149,7 +136,7 @@ private fun Content(
 
             OptionEntry(
                 title = strings.settingsServicesStyle,
-                subtitle = uiState.appSettings.servicesStyle.toStringResource(),
+                subtitle = uiState.servicesStyle.toStringResource(),
                 icon = MdtIcons.ListStyle,
                 onClick = { showServicesStyleDialog = true },
             )
@@ -158,7 +145,7 @@ private fun Content(
                 title = strings.settingsShowNextCode,
                 subtitle = strings.settingsShowNextCodeBody,
                 icon = MdtIcons.NextToken,
-                checked = uiState.appSettings.showNextCode,
+                checked = uiState.showNextCode,
                 onToggle = { onShowNextTokenToggle() },
             )
 
@@ -166,7 +153,7 @@ private fun Content(
                 title = strings.settingsHideCodes,
                 subtitle = strings.settingsHideCodesBody,
                 icon = MdtIcons.Eye,
-                checked = uiState.appSettings.hideCodes,
+                checked = uiState.hideCodes,
                 onToggle = { onHideCodesToggle() },
             )
 
@@ -174,14 +161,14 @@ private fun Content(
                 title = strings.settingsAutoFocusSearch,
                 subtitle = strings.settingsAutoFocusSearchBody,
                 icon = MdtIcons.Search,
-                checked = uiState.appSettings.autoFocusSearch,
+                checked = uiState.autoFocusSearch,
                 onToggle = { onAutoFocusSearchToggle() },
             )
 
             OptionSwitch(
                 title = strings.settingsShowBackupNotice,
                 icon = MdtIcons.CloudOff,
-                checked = uiState.appSettings.showBackupNotice,
+                checked = uiState.showBackupNotice,
                 onToggle = { checked ->
                     if (checked.not()) {
                         showConfirmDisableBackupNotice = true
@@ -198,7 +185,7 @@ private fun Content(
             onDismissRequest = { showServicesStyleDialog = false },
             title = strings.settingsServicesStyle,
             options = ServicesStyle.entries.map { it.toStringResource() },
-            selectedIndex = ServicesStyle.entries.indexOf(uiState.appSettings.servicesStyle),
+            selectedIndex = ServicesStyle.entries.indexOf(uiState.servicesStyle),
             onOptionSelected = { index, _ -> onServicesStyleChange(ServicesStyle.entries[index]) },
         )
     }

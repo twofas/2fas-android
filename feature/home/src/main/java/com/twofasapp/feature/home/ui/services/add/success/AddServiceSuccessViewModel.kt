@@ -6,15 +6,16 @@ import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.feature.home.ui.services.add.NavArg
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 
 internal class AddServiceSuccessViewModel(
     savedStateHandle: SavedStateHandle,
     private val servicesRepository: ServicesRepository,
-    private val settingsRepository: SettingsRepository,
+    private val customizationRepository: CustomizationRepository,
 ) : ViewModel() {
 
     private val serviceId: Long = savedStateHandle.getOrThrow(NavArg.ServiceId.name)
@@ -33,12 +34,15 @@ internal class AddServiceSuccessViewModel(
         }
 
         launchScoped {
-            settingsRepository.observeAppSettings()
-                .collect { settings ->
+            combine(
+                customizationRepository.observeShowNextCode(),
+                customizationRepository.observeHideCodes(),
+            ) { showNextCode, hideCodes -> showNextCode to hideCodes }
+                .collect { (showNextCode, hideCodes) ->
                     uiState.update {
                         it.copy(
-                            showNextCode = settings.showNextCode,
-                            hideCodes = settings.hideCodes,
+                            showNextCode = showNextCode,
+                            hideCodes = hideCodes,
                         )
                     }
                 }

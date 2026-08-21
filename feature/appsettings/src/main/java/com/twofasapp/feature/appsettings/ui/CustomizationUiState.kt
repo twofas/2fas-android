@@ -1,12 +1,14 @@
 package com.twofasapp.feature.appsettings.ui
 
-import com.twofasapp.data.session.domain.AppSettings
+import com.twofasapp.common.domain.SelectedTheme
+import com.twofasapp.data.session.domain.ServicesStyle
 
 internal data class CustomizationUiState(
-    val appSettings: AppSettings = AppSettings(),
-    val events: List<CustomizationUiEvent> = emptyList(),
+    val selectedTheme: SelectedTheme = SelectedTheme.Auto,
+    val dynamicColors: Boolean = false,
+    val servicesStyle: ServicesStyle = ServicesStyle.Default,
+    val showNextCode: Boolean = false,
+    val hideCodes: Boolean = false,
+    val autoFocusSearch: Boolean = false,
+    val showBackupNotice: Boolean = true,
 )
-
-internal sealed interface CustomizationUiEvent {
-    object Recreate : CustomizationUiEvent
-}

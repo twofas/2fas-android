@@ -1,84 +1,82 @@
 package com.twofasapp.data.session
 
 import com.twofasapp.common.coroutines.Dispatchers
-import com.twofasapp.common.domain.SelectedTheme
+import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.environment.BuildVariant
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.booleanPref
 import com.twofasapp.data.session.domain.AppSettings
-import com.twofasapp.data.session.domain.ServicesSort
-import com.twofasapp.data.session.domain.ServicesStyle
-import com.twofasapp.data.session.local.SettingsLocalSource
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
 internal class SettingsRepositoryImpl(
+    dataStoreOwner: DataStoreOwner,
     private val dispatchers: Dispatchers,
-    private val local: SettingsLocalSource,
-) : SettingsRepository {
+    private val appBuild: AppBuild,
+) : SettingsRepository, DataStoreOwner by dataStoreOwner {
+
+    private val scope = CoroutineScope(dispatchers.io)
+
+    private val showBackupNotice by booleanPref(name = "showBackupNotice", default = true)
+    private val sendCrashLogs by booleanPref(name = "sendCrashLogs", default = true)
+    private val allowScreenshots by booleanPref(
+        name = "allowScreenshots",
+        default = when (appBuild.buildVariant) {
+            BuildVariant.Release -> false
+            BuildVariant.ReleaseLocal -> true
+            BuildVariant.Debug -> true
+        },
+    )
+
+    private val appSettings: StateFlow<AppSettings> =
+        combineAppSettings().stateIn(
+            scope = scope,
+            started = SharingStarted.Eagerly,
+            initialValue = runBlocking { combineAppSettings().first() },
+        )
 
     override fun observeAppSettings(): Flow<AppSettings> {
-        return local.observeAppSettings()
+        return appSettings
     }
 
     override fun getAppSettings(): AppSettings {
-        return local.getAppSettings()
+        return appSettings.value
     }
 
-    override suspend fun setShowNextCode(showNextCode: Boolean) {
-        withContext(dispatchers.io) {
-            local.setShowNextCode(showNextCode)
-        }
-    }
-
-    override suspend fun setSelectedTheme(selectedTheme: SelectedTheme) {
-        withContext(dispatchers.io) {
-            local.setSelectedTheme(selectedTheme)
-        }
-    }
-
-    override suspend fun setServicesStyle(servicesStyle: ServicesStyle) {
-        withContext(dispatchers.io) {
-            local.setServicesStyle(servicesStyle)
-        }
-    }
-
-    override suspend fun setAutoFocusSearch(autoFocusSearch: Boolean) {
-        withContext(dispatchers.io) {
-            local.setAutoFocusSearch(autoFocusSearch)
-        }
-    }
-
-    override suspend fun setServicesSort(servicesSort: ServicesSort) {
-        withContext(dispatchers.io) {
-            local.setServicesSort(servicesSort)
-        }
+    override fun observeShowBackupNotice(): Flow<Boolean> {
+        return showBackupNotice.asFlow()
     }
 
     override suspend fun setShowBackupNotice(showBackupNotice: Boolean) {
-        withContext(dispatchers.io) {
-            local.setShowBackupNotice(showBackupNotice)
-        }
+        withContext(dispatchers.io) { this@SettingsRepositoryImpl.showBackupNotice.set(showBackupNotice) }
     }
 
     override suspend fun setSendCrashLogs(sendCrashLogs: Boolean) {
-        withContext(dispatchers.io) {
-            local.setSendCrashLogs(sendCrashLogs)
-        }
+        withContext(dispatchers.io) { this@SettingsRepositoryImpl.sendCrashLogs.set(sendCrashLogs) }
     }
 
     override suspend fun setAllowScreenshots(allow: Boolean) {
-        withContext(dispatchers.io) {
-            local.setAllowScreenshots(allow)
-        }
+        withContext(dispatchers.io) { this@SettingsRepositoryImpl.allowScreenshots.set(allow) }
     }
 
-    override suspend fun setHideCodes(hideCodes: Boolean) {
-        withContext(dispatchers.io) {
-            local.setHideCodes(hideCodes)
-        }
-    }
-
-    override suspend fun setDynamicColors(dynamicColors: Boolean) {
-        withContext(dispatchers.io) {
-            local.setDynamicColors(dynamicColors)
+    private fun combineAppSettings(): Flow<AppSettings> {
+        return combine(
+            showBackupNotice.asFlow(),
+            sendCrashLogs.asFlow(),
+            allowScreenshots.asFlow(),
+        ) { backup, crash, screenshots ->
+            AppSettings(
+                showBackupNotice = backup,
+                sendCrashLogs = crash,
+                allowScreenshots = screenshots,
+            )
         }
     }
 }

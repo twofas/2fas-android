@@ -7,7 +7,7 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.WidgetsRepository
 import com.twofasapp.data.services.domain.Widget
 import com.twofasapp.data.services.domain.WidgetService
-import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.data.session.domain.ServicesSort
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.update
 class WidgetSettingsViewModel(
     private val widgetsRepository: WidgetsRepository,
     private val servicesRepository: ServicesRepository,
-    private val settingsRepository: SettingsRepository,
+    private val customizationRepository: CustomizationRepository,
     private val timeProvider: TimeProvider,
 ) : ViewModel() {
 
@@ -25,12 +25,12 @@ class WidgetSettingsViewModel(
 
     init {
         launchScoped {
-            combine(servicesRepository.observeServices(), settingsRepository.observeAppSettings()) { services, appSettings -> services to appSettings }.collect { (services, appSettings) ->
+            combine(servicesRepository.observeServices(), customizationRepository.observeServicesSort()) { services, servicesSort -> services to servicesSort }.collect { (services, servicesSort) ->
                 uiState.update {
                     it.copy(
                         loading = false,
                         services = services.sortedBy { service ->
-                            when (appSettings.servicesSort) {
+                            when (servicesSort) {
                                 ServicesSort.Alphabetical -> service.name.lowercase()
                                 ServicesSort.Manual -> null
                             }

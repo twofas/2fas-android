@@ -3,12 +3,14 @@ package com.twofasapp.feature.appsettings.ui
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.domain.ServicesStyle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class CustomizationViewModel(
+    private val customizationRepository: CustomizationRepository,
     private val settingsRepository: SettingsRepository,
 ) : ViewModel() {
 
@@ -16,72 +18,87 @@ internal class CustomizationViewModel(
 
     init {
         launchScoped {
-            settingsRepository.observeAppSettings()
-                .collect { appSettings ->
-                    uiState.update { it.copy(appSettings = appSettings) }
-                }
+            customizationRepository.observeSelectedTheme().collect { selectedTheme ->
+                uiState.update { it.copy(selectedTheme = selectedTheme) }
+            }
+        }
+
+        launchScoped {
+            customizationRepository.observeDynamicColors().collect { dynamicColors ->
+                uiState.update { it.copy(dynamicColors = dynamicColors) }
+            }
+        }
+
+        launchScoped {
+            customizationRepository.observeServicesStyle().collect { servicesStyle ->
+                uiState.update { it.copy(servicesStyle = servicesStyle) }
+            }
+        }
+
+        launchScoped {
+            customizationRepository.observeShowNextCode().collect { showNextCode ->
+                uiState.update { it.copy(showNextCode = showNextCode) }
+            }
+        }
+
+        launchScoped {
+            customizationRepository.observeHideCodes().collect { hideCodes ->
+                uiState.update { it.copy(hideCodes = hideCodes) }
+            }
+        }
+
+        launchScoped {
+            customizationRepository.observeAutoFocusSearch().collect { autoFocusSearch ->
+                uiState.update { it.copy(autoFocusSearch = autoFocusSearch) }
+            }
+        }
+
+        launchScoped {
+            settingsRepository.observeShowBackupNotice().collect { showBackupNotice ->
+                uiState.update { it.copy(showBackupNotice = showBackupNotice) }
+            }
         }
     }
 
     fun setSelectedTheme(selectedTheme: SelectedTheme) {
         launchScoped {
-            val shouldRecreate = selectedTheme != uiState.value.appSettings.selectedTheme
-
-            settingsRepository.setSelectedTheme(selectedTheme)
-
-            if (shouldRecreate) {
-                uiState.update {
-                    it.copy(events = it.events.plus(CustomizationUiEvent.Recreate))
-                }
-            }
+            customizationRepository.setSelectedTheme(selectedTheme)
         }
     }
 
     fun setServiceStyle(servicesStyle: ServicesStyle) {
         launchScoped {
-            settingsRepository.setServicesStyle(servicesStyle)
+            customizationRepository.setServicesStyle(servicesStyle)
         }
     }
 
     fun toggleShowNextToken() {
         launchScoped {
-            settingsRepository.setShowNextCode(uiState.value.appSettings.showNextCode.not())
+            customizationRepository.setShowNextCode(uiState.value.showNextCode.not())
         }
     }
 
     fun toggleAutoFocusSearch() {
         launchScoped {
-            settingsRepository.setAutoFocusSearch(uiState.value.appSettings.autoFocusSearch.not())
+            customizationRepository.setAutoFocusSearch(uiState.value.autoFocusSearch.not())
         }
     }
 
     fun toggleShowBackupNotice() {
         launchScoped {
-            settingsRepository.setShowBackupNotice(uiState.value.appSettings.showBackupNotice.not())
+            settingsRepository.setShowBackupNotice(uiState.value.showBackupNotice.not())
         }
-    }
-
-    fun consumeEvent(event: CustomizationUiEvent) {
-        uiState.update { it.copy(events = it.events.minus(event)) }
     }
 
     fun toggleHideTokens() {
         launchScoped {
-            settingsRepository.setHideCodes(uiState.value.appSettings.hideCodes.not())
+            customizationRepository.setHideCodes(uiState.value.hideCodes.not())
         }
     }
 
     fun toggleDynamicColors() {
         launchScoped {
-            val shouldRecreate = uiState.value.appSettings.dynamicColors.not() != uiState.value.appSettings.dynamicColors
-
-            settingsRepository.setDynamicColors(uiState.value.appSettings.dynamicColors.not())
-
-            if (shouldRecreate) {
-                uiState.update {
-                    it.copy(events = it.events.plus(CustomizationUiEvent.Recreate))
-                }
-            }
+            customizationRepository.setDynamicColors(uiState.value.dynamicColors.not())
         }
     }
 }

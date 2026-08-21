@@ -481,21 +481,21 @@ private fun ServicesScreen(
                                 DsService(
                                     state = state,
                                     modifier = Modifier,
-                                    style = when (uiState.appSettings.servicesStyle) {
+                                    style = when (uiState.servicesStyle) {
                                         ServicesStyle.Default -> ServiceStyle.Default
                                         ServicesStyle.Compact -> ServiceStyle.Compact
                                     },
                                     editMode = uiState.isInEditMode,
-                                    showNextCode = uiState.appSettings.showNextCode,
-                                    hideCodes = uiState.appSettings.hideCodes,
+                                    showNextCode = uiState.showNextCode,
+                                    hideCodes = uiState.hideCodes,
                                     containerColor = if (recentlyAddedService == service.id) {
                                         serviceContainerColorBlinking.value
                                     } else {
                                         serviceContainerColor
                                     },
-                                    dragHandleVisible = uiState.appSettings.servicesSort == ServicesSort.Manual,
+                                    dragHandleVisible = uiState.servicesSort == ServicesSort.Manual,
                                     dragModifier = Modifier.detectReorder(state = reorderableState),
-                                    onClick = { state.copyToClipboard(activity, uiState.appSettings.showNextCode) },
+                                    onClick = { state.copyToClipboard(activity, uiState.showNextCode) },
                                     onLongClick = {
                                         keyboardController?.hide()
                                         listener.openFocusServiceModal(service.id)
@@ -560,7 +560,7 @@ private fun ServicesScreen(
             onDismissRequest = { showSortDialog = false },
             title = MdtLocale.strings.servicesSortBy,
             options = MdtLocale.strings.servicesSortByOptions,
-            selectedIndex = when (uiState.appSettings.servicesSort) {
+            selectedIndex = when (uiState.servicesSort) {
                 ServicesSort.Alphabetical -> 0
                 ServicesSort.Manual -> 1
             },

@@ -31,6 +31,7 @@ import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.settings.OptionEntry
 import com.twofasapp.core.design.feature.settings.OptionHeader
 import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
+import com.twofasapp.core.design.foundation.button.IconButton
 import com.twofasapp.core.design.foundation.lazy.listItem
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
@@ -66,6 +67,13 @@ private fun Content(
             TopAppBar(
                 content = { Text(text = strings.settingsSettings, style = MdtTheme.typo.xl2.medium) },
                 showBackButton = false,
+                actions = {
+                    IconButton(
+                        icon = MdtIcons.Favorite,
+                        iconTint = MdtTheme.color.primary,
+                        onClick = { uriHandler.openSafely(MdtLocale.links.donate, activity) },
+                    )
+                },
             )
         },
     ) { padding ->
@@ -159,12 +167,13 @@ private fun Content(
                 )
             }
 
-            listItem(SettingsListItem.Entry(strings.settingsAbout)) {
+            listItem(SettingsListItem.Entry(strings.settingsDonate)) {
                 OptionEntry(
-                    title = strings.settingsAbout,
-                    subtitle = strings.settingsAboutDesc,
-                    icon = MdtIcons.Info,
-                    onClick = { navigator.open(Screen.Developer) },
+                    title = strings.settingsDonate,
+                    subtitle = strings.settingsDonateDesc,
+                    icon = MdtIcons.Favorite,
+                    external = true,
+                    onClick = { uriHandler.openSafely(MdtLocale.links.donate, activity) },
                 )
             }
 
@@ -178,13 +187,12 @@ private fun Content(
                 )
             }
 
-            listItem(SettingsListItem.Entry(strings.settingsDonate)) {
+            listItem(SettingsListItem.Entry(strings.settingsAbout)) {
                 OptionEntry(
-                    title = strings.settingsDonate,
-                    subtitle = strings.settingsDonateDesc,
-                    icon = MdtIcons.Favorite,
-                    external = true,
-                    onClick = { uriHandler.openSafely(MdtLocale.links.donate, activity) },
+                    title = strings.settingsAbout,
+                    subtitle = strings.settingsAboutDesc,
+                    icon = MdtIcons.Info,
+                    onClick = { navigator.open(Screen.Developer) },
                 )
             }
 

@@ -74,7 +74,7 @@ internal fun MainNavDisplay(
     val showNavigationBar = when (currentDestination) {
         Screen.Services,
         Screen.Settings,
-            -> true
+        -> true
 
         else -> false
     }

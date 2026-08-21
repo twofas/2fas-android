@@ -24,13 +24,34 @@ class MigrateDataStore(
         if (entries.isEmpty()) return
 
         /**
-         * KeyShowOnboardWarning = "showOnboardWarning" (Boolean)
+         * "showOnboardWarning" (Boolean)
+         * "showNextToken" (Boolean)
+         * "showBackupNotice" (Boolean)
+         * "autoFocusSearch" (Boolean)
+         * "sendCrashLogs" (Boolean)
+         * "allowScreenshots" (Boolean)
+         * "hideCodes" (Boolean)
+         * "dynamicColors" (Boolean)
+         * "selectedTheme" (String)
+         * "servicesStyle" (String)
+         * "servicesSort" (String)
          */
 
         dataStoreOwner.dataStore.edit { preferences ->
             entries.forEach { (key, value) ->
                 when (key) {
                     "showOnboardWarning" -> preferences[booleanPreferencesKey("onboardingDisplayed")] = value as Boolean
+                    "showNextToken" -> preferences[booleanPreferencesKey("showNextToken")] = value as Boolean
+                    "showBackupNotice" -> preferences[booleanPreferencesKey("showBackupNotice")] = value as Boolean
+                    "autoFocusSearch" -> preferences[booleanPreferencesKey("autoFocusSearch")] = value as Boolean
+                    "sendCrashLogs" -> preferences[booleanPreferencesKey("sendCrashLogs")] = value as Boolean
+                    "allowScreenshots" -> preferences[booleanPreferencesKey("allowScreenshots")] = value as Boolean
+                    "hideCodes" -> preferences[booleanPreferencesKey("hideCodes")] = value as Boolean
+                    "dynamicColors" -> preferences[booleanPreferencesKey("dynamicColors")] = value as Boolean
+                    "selectedTheme" -> preferences[stringPreferencesKey("selectedTheme")] = value as String
+                    "servicesStyle" -> preferences[stringPreferencesKey("servicesStyle")] = value as String
+                    "servicesSort" -> preferences[stringPreferencesKey("servicesSort")] = value as String
+
                     else -> {
                         when (value) {
                             is Boolean -> preferences[booleanPreferencesKey(key)] = value

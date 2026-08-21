@@ -1,6 +1,8 @@
 package com.twofasapp.data.session.di
 
 import com.twofasapp.common.di.KoinModule
+import com.twofasapp.data.session.CustomizationRepository
+import com.twofasapp.data.session.CustomizationRepositoryImpl
 import com.twofasapp.data.session.SecurityRepository
 import com.twofasapp.data.session.SecurityRepositoryImpl
 import com.twofasapp.data.session.SessionRepository
@@ -10,7 +12,6 @@ import com.twofasapp.data.session.SettingsRepositoryImpl
 import com.twofasapp.data.session.StartupRepository
 import com.twofasapp.data.session.StartupRepositoryImpl
 import com.twofasapp.data.session.local.SessionLocalSource
-import com.twofasapp.data.session.local.SettingsLocalSource
 import com.twofasapp.data.session.work.DisableScreenshotsWorkDispatcher
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
@@ -22,8 +23,8 @@ class DataSessionModule : KoinModule {
         singleOf(::SessionRepositoryImpl) { bind<SessionRepository>() }
         singleOf(::StartupRepositoryImpl) { bind<StartupRepository>() }
 
-        singleOf(::SettingsLocalSource)
         singleOf(::SettingsRepositoryImpl) { bind<SettingsRepository>() }
+        singleOf(::CustomizationRepositoryImpl) { bind<CustomizationRepository>() }
 
         singleOf(::SecurityRepositoryImpl) { bind<SecurityRepository>() }
 

@@ -2,7 +2,7 @@ package com.twofasapp.core.design.window
 
 import android.app.Activity
 import com.twofasapp.common.domain.SelectedTheme
-import com.twofasapp.core.design.AppThemeState
+import com.twofasapp.core.design.ktx.applyAppTheme
 import com.twofasapp.core.design.ktx.makeWindowSecure
 
 object ActivityHelper {
@@ -11,7 +11,7 @@ object ActivityHelper {
         selectedTheme: SelectedTheme,
         allowScreenshots: Boolean,
     ) {
-        AppThemeState.applyTheme(selectedTheme)
+        activity.applyAppTheme(selectedTheme)
         activity.makeWindowSecure(allow = allowScreenshots)
     }
 }
