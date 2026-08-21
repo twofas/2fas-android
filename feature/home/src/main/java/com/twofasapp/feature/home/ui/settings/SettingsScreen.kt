@@ -192,7 +192,7 @@ private fun Content(
                     title = strings.settingsAbout,
                     subtitle = strings.settingsAboutDesc,
                     icon = MdtIcons.Info,
-                    onClick = { navigator.open(Screen.Developer) },
+                    onClick = { navigator.open(Screen.About) },
                 )
             }
 

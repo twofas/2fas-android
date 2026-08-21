@@ -7,6 +7,7 @@ interface SettingsRepository {
     fun observeAppSettings(): Flow<AppSettings>
     fun getAppSettings(): AppSettings
     fun observeShowBackupNotice(): Flow<Boolean>
+    fun observeSendCrashLogs(): Flow<Boolean>
     suspend fun setShowBackupNotice(showBackupNotice: Boolean)
     suspend fun setSendCrashLogs(sendCrashLogs: Boolean)
     suspend fun setAllowScreenshots(allow: Boolean)

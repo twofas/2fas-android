@@ -23,6 +23,8 @@ import androidx.navigation3.ui.NavDisplay
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.feature.about.navigation.AboutLicensesRoute
+import com.twofasapp.feature.about.navigation.AboutRoute
 import com.twofasapp.feature.appsettings.navigation.CustomizationRoute
 import com.twofasapp.feature.developer.navigation.DeveloperRoute
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
@@ -122,6 +124,14 @@ internal fun MainNavDisplay(
 
                 entry<Screen.Trash> {
                     TrashRoute()
+                }
+
+                entry<Screen.About> {
+                    AboutRoute()
+                }
+
+                entry<Screen.AboutLicenses> {
+                    AboutLicensesRoute()
                 }
             },
         )

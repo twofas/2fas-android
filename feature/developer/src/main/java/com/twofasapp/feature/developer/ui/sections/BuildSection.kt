@@ -47,7 +47,7 @@ internal fun BuildSection(
             label = "Variant: ",
             value = when (uiState.appBuild?.buildVariant) {
                 BuildVariant.Release -> "release"
-                BuildVariant.ReleaseLocal -> "releaseLocal"
+                BuildVariant.Internal -> "internal"
                 BuildVariant.Debug -> "debug"
                 else -> "unknown"
             },

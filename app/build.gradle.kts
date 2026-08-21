@@ -86,7 +86,6 @@ dependencies {
     implementation(libs.bundles.glance)
     implementation(libs.biometric)
     implementation(libs.timber)
-    implementation(libs.webkit)
     implementation(libs.securityCrypto)
     implementation(libs.lottie)
     implementation(libs.kotlinCoroutines)
@@ -117,10 +116,10 @@ dependencies {
     debugImplementation(libs.plutoDataStore)
     debugImplementation(libs.plutoLogger)
 
-    releaseLocalImplementation(libs.plutoNoOp)
-    releaseLocalImplementation(libs.plutoRoomNoOp)
-    releaseLocalImplementation(libs.plutoDataStoreNoOp)
-    releaseLocalImplementation(libs.plutoLoggerNoOp)
+    internalImplementation(libs.plutoNoOp)
+    internalImplementation(libs.plutoRoomNoOp)
+    internalImplementation(libs.plutoDataStoreNoOp)
+    internalImplementation(libs.plutoLoggerNoOp)
 
     releaseImplementation(libs.plutoNoOp)
     releaseImplementation(libs.plutoRoomNoOp)

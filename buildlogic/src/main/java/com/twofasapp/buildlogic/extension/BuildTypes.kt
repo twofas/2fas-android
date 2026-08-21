@@ -14,10 +14,10 @@ internal fun Project.applyBuildTypes(
                 signingConfig = signingConfigs.getByName("debug")
                 applicationIdSuffix = ".debug"
             }
-            create("releaseLocal") {
+            create("internal") {
                 isMinifyEnabled = true
                 isDebuggable = false
-                signingConfig = signingConfigs.getByName("releaseLocal")
+                signingConfig = signingConfigs.getByName("internal")
                 proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
                 matchingFallbacks += "release"
             }

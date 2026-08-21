@@ -50,7 +50,7 @@ config/release_upload_cert.pem
 app/src/debug/google-services.json
 app/src/main/google-services.json
 app/src/release/google-services.json
-app/src/releaseLocal/google-services.json
+app/src/internal/google-services.json
 scripts/
 
 gradle/gradle-daemon-jvm.properties

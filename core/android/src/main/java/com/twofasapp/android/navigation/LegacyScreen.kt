@@ -13,12 +13,7 @@ sealed class LegacyScreen(val route: String) {
     data object Settings : LegacyScreen("settings")
     data object EditService : LegacyScreen("services/{${NavArg.ServiceId.name}}")
 
-    data object AppSettings : LegacyScreen("appsettings")
-    data object About : LegacyScreen("about")
-    data object Developer : LegacyScreen("developer")
-    data object AboutLicenses : LegacyScreen("about/licenses")
     data object Notifications : LegacyScreen("notifications")
-    data object Trash : LegacyScreen("trash")
     data object Dispose : LegacyScreen("dispose/{${NavArg.ServiceId.name}}")
 
     data object BrowserExt : LegacyScreen("browserext")

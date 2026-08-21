@@ -30,7 +30,7 @@ internal class SettingsRepositoryImpl(
         name = "allowScreenshots",
         default = when (appBuild.buildVariant) {
             BuildVariant.Release -> false
-            BuildVariant.ReleaseLocal -> true
+            BuildVariant.Internal -> true
             BuildVariant.Debug -> true
         },
     )
@@ -54,6 +54,10 @@ internal class SettingsRepositoryImpl(
         return showBackupNotice.asFlow()
     }
 
+    override fun observeSendCrashLogs(): Flow<Boolean> {
+        return sendCrashLogs.asFlow()
+    }
+
     override suspend fun setShowBackupNotice(showBackupNotice: Boolean) {
         withContext(dispatchers.io) { this@SettingsRepositoryImpl.showBackupNotice.set(showBackupNotice) }
     }
@@ -69,12 +73,10 @@ internal class SettingsRepositoryImpl(
     private fun combineAppSettings(): Flow<AppSettings> {
         return combine(
             showBackupNotice.asFlow(),
-            sendCrashLogs.asFlow(),
             allowScreenshots.asFlow(),
-        ) { backup, crash, screenshots ->
+        ) { backup, screenshots ->
             AppSettings(
                 showBackupNotice = backup,
-                sendCrashLogs = crash,
                 allowScreenshots = screenshots,
             )
         }

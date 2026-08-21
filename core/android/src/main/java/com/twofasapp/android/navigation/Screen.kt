@@ -22,4 +22,10 @@ sealed interface Screen : NavKey {
 
     @Serializable
     data object Trash : Screen
+
+    @Serializable
+    data object About : Screen
+
+    @Serializable
+    data object AboutLicenses : Screen
 }

@@ -11,9 +11,11 @@ import com.pluto.plugins.rooms.db.PlutoRoomsDatabasePlugin
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
+import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.di.Modules
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.prefs.usecase.SendCrashLogsPreference
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -23,7 +25,7 @@ class App : Application() {
 
     private val authTracker: AuthTracker by inject()
     private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher by inject()
-    private val sendCrashLogsPreference: SendCrashLogsPreference by inject()
+    private val settingsRepository: SettingsRepository by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -64,8 +66,9 @@ class App : Application() {
 
         cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.AppStart)
 
-        FirebaseCrashlytics.getInstance()
-            .setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())
+        runBlocking {
+            FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = settingsRepository.observeSendCrashLogs().first()
+        }
 
         Pluto.Installer(this)
             .apply {

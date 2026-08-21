@@ -1,22 +1,15 @@
 package com.twofasapp.feature.about.ui.about
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.environment.BuildVariant
-import com.twofasapp.common.ktx.camelCaseBeginLower
 import com.twofasapp.common.ktx.launchScoped
-import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 internal class AboutViewModel(
-    private val dispatchers: Dispatchers,
     private val appBuild: AppBuild,
-    private val sessionRepository: SessionRepository,
     private val settingsRepository: SettingsRepository,
 ) : ViewModel() {
 
@@ -24,36 +17,29 @@ internal class AboutViewModel(
 
     init {
         launchScoped {
-            settingsRepository.observeAppSettings()
-                .collect { appSettings ->
-                    uiState.update { it.copy(appSettings = appSettings) }
-                }
+            settingsRepository.observeSendCrashLogs().collect { sendCrashLogs ->
+                uiState.update { it.copy(crashLogsEnabled = sendCrashLogs) }
+            }
         }
 
         uiState.update {
             it.copy(
-                versionName = if (appBuild.buildVariant != BuildVariant.Release) {
-                    "${appBuild.versionName} (${appBuild.buildVariant.name.camelCaseBeginLower()})"
-                } else {
-                    appBuild.versionName
+                version = buildString {
+                    append("${appBuild.versionName} (${appBuild.versionCode})")
+
+                    when (appBuild.buildVariant) {
+                        BuildVariant.Release -> Unit
+                        BuildVariant.Internal -> append(" - internal")
+                        BuildVariant.Debug -> append(" - debug")
+                    }
                 },
             )
         }
     }
 
-    fun reviewDone() {
-        viewModelScope.launch(dispatchers.io) {
-            sessionRepository.setRateAppDisplayed(true)
-        }
-        // TODO
-//        rateAppStatusPreference.put(
-//            rateAppStatusPreference.get().copy(counterStarted = Instant.now(), counterReached = Instant.now())
-//        )
-    }
-
     fun toggleSendCrashLogs() {
         launchScoped {
-            settingsRepository.setSendCrashLogs(uiState.value.appSettings.sendCrashLogs.not())
+            settingsRepository.setSendCrashLogs(uiState.value.crashLogsEnabled.not())
         }
     }
 }

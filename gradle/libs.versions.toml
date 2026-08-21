@@ -103,7 +103,6 @@ roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 timber = "com.jakewharton.timber:timber:5.0.1"
 truetime = "com.github.instacart:truetime-android:4.0.0.alpha"
 workManager = "androidx.work:work-runtime-ktx:2.11.2"
-webkit = "androidx.webkit:webkit:1.16.0"
 pdfbox = "com.tom-roush:pdfbox-android:2.0.27.0"
 pluto = { module = "com.androidpluto:pluto", version.ref = "pluto" }
 plutoNoOp = { module = "com.androidpluto:pluto-no-op", version.ref = "pluto" }

@@ -27,8 +27,6 @@ import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import com.twofasapp.core.design.foundation.modal.ModalBottomSheet
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.feature.about.navigation.AboutLicensesRoute
-import com.twofasapp.feature.about.navigation.AboutRoute
 import com.twofasapp.feature.backup.navigation.BackupExportRoute
 import com.twofasapp.feature.backup.navigation.BackupImportRoute
 import com.twofasapp.feature.backup.navigation.BackupRoute
@@ -38,7 +36,6 @@ import com.twofasapp.feature.browserext.navigation.BrowserExtPairingRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtPermissionRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtScanRoute
-import com.twofasapp.feature.developer.navigation.DeveloperRoute
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.navigation.ExternalImportResultRoute
 import com.twofasapp.feature.externalimport.navigation.ExternalImportRoute
@@ -54,7 +51,6 @@ import com.twofasapp.feature.security.navigation.securityNavigation
 import com.twofasapp.feature.security.ui.lock.LockActivity
 import com.twofasapp.feature.startup.navigation.StartupRoute
 import com.twofasapp.feature.trash.navigation.DisposeRoute
-import com.twofasapp.feature.trash.navigation.TrashRoute
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialNavigationApi::class, ExperimentalMaterialApi::class)
@@ -127,11 +123,9 @@ internal fun MainNavHost(
                     }
 
                     override fun openAppSettings() {
-                        navController.navigate(LegacyScreen.AppSettings.route)
                     }
 
                     override fun openTrash() {
-                        navController.navigate(LegacyScreen.Trash.route)
                     }
 
                     override fun openNotifications() {
@@ -139,11 +133,9 @@ internal fun MainNavHost(
                     }
 
                     override fun openAbout() {
-                        navController.navigate(LegacyScreen.About.route)
                     }
 
                     override fun openDeveloper() {
-                        navController.navigate(LegacyScreen.Developer.route)
                     }
 
                     override fun openAddServiceModal() {
@@ -184,22 +176,6 @@ internal fun MainNavHost(
                         scope.launch { bottomSheetState.hide() }
                     },
                 )
-            }
-
-            composable(LegacyScreen.About.route) {
-                AboutRoute(openLicenses = { navController.navigate(LegacyScreen.AboutLicenses.route) })
-            }
-
-            composable(LegacyScreen.AboutLicenses.route) {
-                AboutLicensesRoute()
-            }
-
-            composable(LegacyScreen.Developer.route) {
-                DeveloperRoute()
-            }
-
-            composable(LegacyScreen.Trash.route) {
-                TrashRoute()
             }
 
             composable(LegacyScreen.Dispose.route, listOf(NavArg.ServiceId)) {

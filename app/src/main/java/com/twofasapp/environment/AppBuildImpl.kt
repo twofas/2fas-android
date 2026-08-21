@@ -4,8 +4,8 @@ import com.twofasapp.BuildConfig
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.environment.BuildVariant
 import com.twofasapp.common.environment.BuildVariant.Debug
+import com.twofasapp.common.environment.BuildVariant.Internal
 import com.twofasapp.common.environment.BuildVariant.Release
-import com.twofasapp.common.environment.BuildVariant.ReleaseLocal
 
 class AppBuildImpl : AppBuild {
     override val id: String = BuildConfig.APPLICATION_ID
@@ -16,9 +16,9 @@ class AppBuildImpl : AppBuild {
 
     override val versionCode: Int = BuildConfig.VERSION_CODE
 
-    override val buildVariant: BuildVariant = when (BuildConfig.BUILD_TYPE) {
+    override val buildVariant: BuildVariant = when (BuildConfig.BUILD_TYPE.lowercase()) {
         "debug" -> Debug
-        "releaseLocal" -> ReleaseLocal
+        "internal" -> Internal
         "release" -> Release
         else -> throw RuntimeException("Unknown build variant!")
     }
