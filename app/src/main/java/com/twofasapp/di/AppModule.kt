@@ -12,6 +12,7 @@ import com.twofasapp.crypto.AndroidKeyStoreImpl
 import com.twofasapp.data.push.notification.ShowBrowserExtRequestNotification
 import com.twofasapp.environment.AppBuildImpl
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
+import com.twofasapp.locale.Strings
 import com.twofasapp.navigator.ActivityScopedNavigator
 import com.twofasapp.notification.ShowBrowserExtRequestNotificationImpl
 import com.twofasapp.prefs.ScopedNavigator
@@ -34,6 +35,8 @@ class AppModule : KoinModule {
                 coerceInputValues = true
             }
         }
+
+        singleOf(::Strings)
         singleOf(::AppBuildImpl) { bind<AppBuild>() }
         singleOf(::TimeProviderImpl) { bind<TimeProvider>() }
         singleOf(::BiometricKeyProviderImpl) { bind<BiometricKeyProvider>() }

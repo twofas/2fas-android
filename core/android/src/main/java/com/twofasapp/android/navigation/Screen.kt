@@ -19,4 +19,7 @@ sealed interface Screen : NavKey {
 
     @Serializable
     data object Customization : Screen
+
+    @Serializable
+    data object Trash : Screen
 }

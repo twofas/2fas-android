@@ -116,7 +116,8 @@ class Strings(c: Context) {
     val trashTitle = c.getString(R.string.settings__trash)
     val trashEmpty = c.getString(R.string.settings__trash_is_empty)
     val trashRestoreCta = c.getString(R.string.settings__restore)
-    val trashDisposeCta = c.getString(R.string.tokens__remove_forever)
+    val trashDisposeCta = c.getString(R.string.commons__delete)
+    val trashSelectedItems = c.getString(R.string.settings__trash_selected)
 
     val notificationsTitle = c.getString(R.string.commons__notifications)
     val notificationsEmpty = c.getString(R.string.notifications__no_notifications)

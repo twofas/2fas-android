@@ -115,7 +115,7 @@ private fun Content(
                     title = strings.settingsRemovedItems,
                     subtitle = strings.settingsRemovedItemsDesc,
                     icon = MdtIcons.Delete,
-                    onClick = { navigator.open(Screen.Developer) },
+                    onClick = { navigator.open(Screen.Trash) },
                 )
             }
 

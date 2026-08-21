@@ -199,9 +199,7 @@ internal fun MainNavHost(
             }
 
             composable(LegacyScreen.Trash.route) {
-                TrashRoute(
-                    openDispose = { navController.navigate(LegacyScreen.Dispose.routeWithArgs(NavArg.ServiceId to it)) },
-                )
+                TrashRoute()
             }
 
             composable(LegacyScreen.Dispose.route, listOf(NavArg.ServiceId)) {

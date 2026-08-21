@@ -324,7 +324,7 @@ private fun ServicesScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MdtTheme.color.background)
-                .padding(padding)
+                .padding(top = padding.calculateTopPadding())
                 .reorderable(reorderableState),
             contentPadding = PaddingValues(top = 8.dp, bottom = 48.dp),
             userScrollEnabled = uiState.services.isNotEmpty() || (uiState.searchQuery.isNotBlank() && uiState.groups.size > 1),

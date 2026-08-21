@@ -48,6 +48,10 @@ internal fun DeveloperScreen(
             viewModel.generateServices(count) {
             }
         },
+        onTrashAllServices = {
+            viewModel.trashAllServices {
+            }
+        },
         onDeleteAllServices = {
             viewModel.deleteAllServices {
             }
@@ -59,6 +63,7 @@ internal fun DeveloperScreen(
 private fun Content(
     uiState: DeveloperUiState,
     onGenerateServices: (Int) -> Unit = {},
+    onTrashAllServices: () -> Unit = {},
     onDeleteAllServices: () -> Unit = {},
 ) {
     var selectedTabIndex by remember { mutableIntStateOf(0) }
@@ -98,6 +103,7 @@ private fun Content(
                 0 -> ServicesSection(
                     uiState = uiState,
                     onGenerateServices = onGenerateServices,
+                    onTrashAllServices = onTrashAllServices,
                     onDeleteAllServices = onDeleteAllServices,
                 )
 

@@ -5,10 +5,8 @@ import com.twofasapp.feature.trash.ui.dispose.DisposeScreen
 import com.twofasapp.feature.trash.ui.trash.TrashScreen
 
 @Composable
-fun TrashRoute(
-    openDispose: (Long) -> Unit,
-) {
-    TrashScreen(openDispose = openDispose)
+fun TrashRoute() {
+    TrashScreen()
 }
 
 @Composable

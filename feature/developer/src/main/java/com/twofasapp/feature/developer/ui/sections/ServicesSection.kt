@@ -36,6 +36,7 @@ import com.twofasapp.feature.developer.ui.DeveloperUiState
 internal fun ServicesSection(
     uiState: DeveloperUiState,
     onGenerateServices: (Int) -> Unit = {},
+    onTrashAllServices: () -> Unit = {},
     onDeleteAllServices: () -> Unit = {},
 ) {
     var showGenerateMenu by remember { mutableStateOf(false) }
@@ -79,6 +80,12 @@ internal fun ServicesSection(
                 }
             }
         }
+
+        OptionEntry(
+            title = "Trash all services",
+            icon = MdtIcons.Delete,
+            onClick = { onTrashAllServices() },
+        )
 
         OptionEntry(
             title = "Delete all services",

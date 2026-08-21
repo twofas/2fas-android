@@ -64,6 +64,14 @@ internal class DeveloperViewModel(
         }.invokeOnCompletion { onComplete() }
     }
 
+    fun trashAllServices(onComplete: () -> Unit = {}) {
+        launchScoped(Dispatchers.IO) {
+            servicesRepository.getServices().forEach { service ->
+                servicesRepository.trashService(service.id)
+            }
+        }.invokeOnCompletion { onComplete() }
+    }
+
     private companion object {
         private const val Base32Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
 

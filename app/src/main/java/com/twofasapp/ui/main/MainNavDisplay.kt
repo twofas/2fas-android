@@ -1,17 +1,22 @@
 package com.twofasapp.ui.main
 
 import android.app.Activity
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
-import androidx.compose.material3.adaptive.navigationsuite.ExperimentalMaterial3AdaptiveNavigationSuiteApi
-import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaults
-import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
-import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldDefaults
-import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
@@ -24,10 +29,10 @@ import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.services.ServicesRoutePublic
 import com.twofasapp.feature.home.ui.settings.SettingsRoute
 import com.twofasapp.feature.startup.navigation.StartupRoute
+import com.twofasapp.feature.trash.navigation.TrashRoute
 import org.koin.compose.koinInject
 import timber.log.Timber
 
-@OptIn(ExperimentalMaterial3AdaptiveNavigationSuiteApi::class)
 @Composable
 internal fun MainNavDisplay(
     startDestination: Screen,
@@ -79,60 +84,57 @@ internal fun MainNavDisplay(
         else -> false
     }
 
-    val layoutType = if (showNavigationBar) {
-        NavigationSuiteScaffoldDefaults.calculateFromAdaptiveInfo(currentWindowAdaptiveInfo())
-    } else {
-        NavigationSuiteType.None
-    }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MdtTheme.color.background)
+            .then(if (showNavigationBar) Modifier else Modifier.navigationBarsPadding()),
+    ) {
+        NavDisplay(
+            modifier = Modifier.weight(1f),
+            backStack = backStack,
+            onBack = { navigator.back() },
+            transitionSpec = { fadeIn(animationSpec = tween(250)) togetherWith fadeOut(animationSpec = tween(250)) },
+            popTransitionSpec = { fadeIn(animationSpec = tween(250)) togetherWith fadeOut(animationSpec = tween(250)) },
+            predictivePopTransitionSpec = { fadeIn(animationSpec = tween(250)) togetherWith fadeOut(animationSpec = tween(250)) },
+            entryProvider = entryProvider {
+                entry<Screen.Startup> {
+                    StartupRoute()
+                }
 
-    NavigationSuiteScaffold(
-        layoutType = layoutType,
-        navigationSuiteColors = NavigationSuiteDefaults.colors(
-            navigationBarContainerColor = MdtTheme.color.background,
-        ),
-        navigationSuiteItems = {
-            mainNavigationSuiteItems(
+                entry<Screen.Developer> {
+                    DeveloperRoute()
+                }
+
+                entry<Screen.Services> {
+                    ServicesRoutePublic(
+                        listener = listener,
+                    )
+                }
+
+                entry<Screen.Settings> {
+                    SettingsRoute()
+                }
+
+                entry<Screen.Customization> {
+                    CustomizationRoute()
+                }
+
+                entry<Screen.Trash> {
+                    TrashRoute()
+                }
+            },
+        )
+
+        AnimatedVisibility(
+            visible = showNavigationBar,
+            enter = slideInVertically { it } + expandVertically(expandFrom = Alignment.Bottom),
+            exit = shrinkVertically(shrinkTowards = Alignment.Bottom) + slideOutVertically { it },
+        ) {
+            MainNavBar(
                 currentDestination = currentDestination,
                 onTabSelected = { selectTab(it) },
             )
-        },
-    ) {
-        Column {
-            NavDisplay(
-                modifier = Modifier.weight(1f),
-                backStack = backStack,
-                onBack = { navigator.back() },
-                entryProvider = entryProvider {
-                    entry<Screen.Startup> {
-                        StartupRoute()
-                    }
-
-                    entry<Screen.Developer> {
-                        DeveloperRoute()
-                    }
-
-                    entry<Screen.Services> {
-                        ServicesRoutePublic(
-                            listener = listener,
-                        )
-                    }
-
-                    entry<Screen.Settings> {
-                        SettingsRoute()
-                    }
-
-                    entry<Screen.Customization> {
-                        CustomizationRoute()
-                    }
-                },
-            )
-
-            if (showNavigationBar) {
-                HorizontalDivider(
-                    modifier = Modifier.fillMaxWidth(),
-                    color = MdtTheme.color.surfaceContainer,
-                )
-            }
         }
     }
 }

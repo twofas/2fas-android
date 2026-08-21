@@ -151,6 +151,7 @@
     <string name="settings__trash">Trash</string>
     <string name="settings__restore">Restore</string>
     <string name="settings__trash_is_empty">Trash is Empty</string>
+    <string name="settings__trash_selected">%d selected</string>
     <string name="settings__share_app">Share the app</string>
     <!-- tokens__remove_from_list -->
     <string name="tokens__delete_token">Are you sure you want to delete the Token for:</string>

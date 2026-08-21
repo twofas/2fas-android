@@ -1,31 +1,71 @@
 package com.twofasapp.feature.trash.ui.trash
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.core.design.state.ScreenState
+import com.twofasapp.core.design.state.empty
+import com.twofasapp.core.design.state.loading
+import com.twofasapp.core.design.state.success
 import com.twofasapp.data.services.ServicesRepository
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import com.twofasapp.locale.Strings
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 
-class TrashViewModel(
+internal class TrashViewModel(
+    private val strings: Strings,
     private val servicesRepository: ServicesRepository,
 ) : ViewModel() {
+    val uiState = MutableStateFlow(TrashUiState())
+    val screenState = MutableStateFlow(ScreenState.Loading)
 
-    val services: StateFlow<List<Service>> =
-        servicesRepository.observeDeletedServices()
-            .map { list -> list.sortedByDescending { it.updatedAt } }
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5000),
-                initialValue = emptyList(),
-            )
-
-    fun restoreService(id: Long) {
+    init {
         launchScoped {
-            servicesRepository.restoreService(id)
+            servicesRepository.observeDeletedServices().collect { services ->
+                val sorted = services.sortedByDescending { it.updatedAt }
+
+                uiState.update { it.copy(trashedItems = sorted) }
+
+                if (sorted.isEmpty()) {
+                    screenState.empty(strings.trashEmpty)
+                } else {
+                    screenState.success()
+                }
+            }
         }
+    }
+
+    fun restore(onComplete: (String) -> Unit) {
+        launchScoped {
+            val ids = uiState.value.selected
+            screenState.loading()
+            clearSelections()
+            ids.forEach { servicesRepository.restoreService(it) }
+        }.invokeOnCompletion { onComplete("Items restored!") }
+    }
+
+    fun delete(onComplete: (String) -> Unit) {
+        launchScoped {
+            val ids = uiState.value.selected
+            screenState.loading()
+            clearSelections()
+            ids.forEach { servicesRepository.deleteService(it) }
+        }.invokeOnCompletion { onComplete("Items deleted!") }
+    }
+
+    fun toggle(service: Service) {
+        if (uiState.value.selected.contains(service.id)) {
+            uiState.update { it.copy(selected = it.selected.minus(service.id)) }
+        } else {
+            uiState.update { it.copy(selected = it.selected.plus(service.id)) }
+        }
+    }
+
+    fun selectAll() {
+        uiState.update { it.copy(selected = it.trashedItems.map { service -> service.id }) }
+    }
+
+    fun clearSelections() {
+        uiState.update { it.copy(selected = emptyList()) }
     }
 }
