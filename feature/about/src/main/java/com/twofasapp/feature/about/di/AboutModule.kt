@@ -4,9 +4,9 @@ import com.twofasapp.common.di.KoinModule
 import com.twofasapp.feature.about.ui.about.AboutViewModel
 import com.twofasapp.feature.about.ui.licenses.OpenSourceLibrariesProvider
 import com.twofasapp.feature.about.ui.licenses.OpenSourceLibrariesProviderImpl
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class AboutModule : KoinModule {

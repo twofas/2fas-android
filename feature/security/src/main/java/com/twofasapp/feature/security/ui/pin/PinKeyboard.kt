@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -21,99 +22,110 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 
-internal enum class Keys {
-    Key1,
-    Key2,
-    Key3,
-    Key4,
-    Key5,
-    Key6,
-    Key7,
-    Key8,
-    Key9,
-    Empty,
-    Key0,
-    Biometrics,
-    Empty2,
-    ;
+private val KeyHeight = 64.dp
+private val KeyPadding = 8.dp
 
-    fun toKeyInt(): Int {
-        return try {
-            name.replace("Key", "").toInt()
-        } catch (e: Exception) {
-            -1
-        }
-    }
+private sealed interface PinKey {
+    data class Digit(val value: Int) : PinKey
+    data object Backspace : PinKey
+    data object Biometrics : PinKey
+    data object Empty : PinKey
+}
+
+private fun pinKeys(showBiometrics: Boolean): List<PinKey> = buildList {
+    for (digit in 1..9) add(PinKey.Digit(digit))
+    add(if (showBiometrics) PinKey.Biometrics else PinKey.Empty)
+    add(PinKey.Digit(0))
+    add(PinKey.Backspace)
 }
 
 @Composable
 internal fun PinKeyboard(
-    isEnabled: Boolean = true,
+    enabled: Boolean = true,
     showBiometrics: Boolean = true,
     onKeyClick: (Int) -> Unit = {},
+    onBackspaceClick: () -> Unit = {},
     onBiometricsClick: () -> Unit = {},
 ) {
-    val alpha = if (isEnabled) 1f else 0.5f
-    var keys = Keys.values().toList()
-
-    keys = if (showBiometrics.not()) {
-        keys.minus(Keys.Biometrics)
-    } else {
-        keys.minus(Keys.Empty2)
-    }
+    val keys = remember(showBiometrics) { pinKeys(showBiometrics) }
 
     LazyVerticalGrid(
-        userScrollEnabled = false,
         columns = GridCells.Fixed(3),
-        modifier = Modifier
-            .padding(horizontal = 16.dp),
+        userScrollEnabled = false,
+        modifier = Modifier.padding(horizontal = 16.dp),
     ) {
-        items(keys, key = { it.name }) {
-            Box(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .height(64.dp)
-                    .clip(CircleShape)
-                    .then(
-                        if (it == Keys.Biometrics) {
-                            Modifier.clickable(isEnabled) { onBiometricsClick() }
-                        } else if (it != Keys.Empty && it != Keys.Empty2) {
-                            Modifier.clickable(isEnabled) { onKeyClick(it.toKeyInt()) }
-                        } else {
-                            Modifier
-                        },
-                    ),
-            ) {
-                if (it == Keys.Biometrics) {
-                    Icon(
-                        MdtIcons.Fingerprint,
-                        null,
-                        tint = MdtTheme.color.onSurface,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .alpha(alpha),
-                    )
-                } else if (it != Keys.Empty && it != Keys.Empty2) {
-                    Text(
-                        text = it.toKeyInt().toString(),
-                        fontSize = 34.sp,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .alpha(alpha),
-                        color = MdtTheme.color.onSurface,
-                        fontWeight = FontWeight.Light,
-                    )
-                }
-            }
+        items(items = keys, key = { it.toString() }) { key ->
+            PinKeyButton(
+                key = key,
+                enabled = enabled,
+                onClick = when (key) {
+                    is PinKey.Digit -> ({ onKeyClick(key.value) })
+                    PinKey.Backspace -> onBackspaceClick
+                    PinKey.Biometrics -> onBiometricsClick
+                    PinKey.Empty -> null
+                },
+            )
         }
     }
 }
 
 @Composable
-@Preview(showSystemUi = true)
+private fun PinKeyButton(
+    modifier: Modifier = Modifier,
+    key: PinKey,
+    enabled: Boolean,
+    onClick: (() -> Unit)?,
+) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+            .padding(KeyPadding)
+            .height(KeyHeight)
+            .clip(CircleShape)
+            .then(
+                if (onClick != null) {
+                    Modifier.clickable(enabled = enabled, onClick = onClick)
+                } else {
+                    Modifier
+                },
+            ),
+    ) {
+        when (key) {
+            PinKey.Empty -> Unit
+
+            PinKey.Biometrics -> Icon(
+                painter = MdtIcons.Fingerprint,
+                contentDescription = null,
+                tint = MdtTheme.color.onSurface,
+                modifier = Modifier.alpha(if (enabled) 1f else 0.5f),
+            )
+
+            PinKey.Backspace -> Icon(
+                painter = MdtIcons.Backspace,
+                contentDescription = null,
+                tint = MdtTheme.color.onSurface,
+                modifier = Modifier.alpha(if (enabled) 1f else 0.5f),
+            )
+
+            is PinKey.Digit -> Text(
+                text = key.value.toString(),
+                color = MdtTheme.color.onSurface,
+                fontSize = 34.sp,
+                fontWeight = FontWeight.Light,
+                modifier = Modifier.alpha(if (enabled) 1f else 0.5f),
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
 fun PreviewPinKeyboard() {
-    PinKeyboard(
-        isEnabled = true,
-    )
+    PreviewTheme {
+        PinKeyboard(
+            enabled = true,
+        )
+    }
 }

@@ -21,7 +21,6 @@ import com.twofasapp.feature.startup.di.StartupModule
 import com.twofasapp.feature.trash.di.TrashModule
 import com.twofasapp.feature.widget.di.WidgetModule
 import com.twofasapp.network.di.NetworkModule
-import com.twofasapp.prefs.PreferencesEncryptedModule
 import com.twofasapp.prefs.PreferencesPlainModule
 import com.twofasapp.storage.di.PrefsModule
 import org.koin.core.module.Module
@@ -30,7 +29,6 @@ object Modules {
     private val app = listOf(
         StartModule(),
         PreferencesPlainModule(),
-        PreferencesEncryptedModule(),
         AppModule(),
         CommonModule(),
         NetworkModule(),

@@ -6,6 +6,8 @@ import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.domain.WidgetCallbacks
 import com.twofasapp.common.ktx.tickerFlow
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.serializedPref
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.RecentlyAddedService
@@ -16,7 +18,6 @@ import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.prefs.model.RecentlyDeleted
 import com.twofasapp.prefs.model.RecentlyDeletedService
 import com.twofasapp.prefs.model.RemoteBackupStatusEntity
-import com.twofasapp.prefs.usecase.RecentlyDeletedPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,18 +28,25 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 internal class ServicesRepositoryImpl(
+    dataStoreOwner: DataStoreOwner,
     private val dispatchers: Dispatchers,
     private val timeProvider: TimeProvider,
     private val codeGenerator: ServiceCodeGenerator,
     private val local: ServicesLocalSource,
     private val widgetCallbacks: WidgetCallbacks,
     private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
-    private val recentlyDeletedPreference: RecentlyDeletedPreference,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
-) : ServicesRepository {
+) : ServicesRepository, DataStoreOwner by dataStoreOwner {
 
     private val isTickerEnabled = MutableStateFlow(true)
     private var guideManualPrefill: String? = null
+
+    private val recentlyDeleted by serializedPref(
+        name = "recentlyDeleted",
+        default = RecentlyDeleted(emptyList()),
+        serializer = RecentlyDeleted.serializer(),
+        encrypted = true,
+    )
 
     override fun observeServices(): Flow<List<Service>> {
         return combine(
@@ -155,10 +163,10 @@ internal class ServicesRepositoryImpl(
             widgetCallbacks.onServiceDeleted(id)
 
             if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
-                val recentlyDeleted = recentlyDeletedPreference.get()
-                recentlyDeletedPreference.put(
-                    recentlyDeleted.copy(
-                        services = recentlyDeleted.services.plus(
+                val recentlyDeletedServices = recentlyDeleted.get()
+                recentlyDeleted.set(
+                    recentlyDeletedServices.copy(
+                        services = recentlyDeletedServices.services.plus(
                             RecentlyDeletedService(
                                 secret = localService.secret,
                                 deletedAt = timeProvider.systemCurrentTime(),
@@ -337,7 +345,7 @@ internal class ServicesRepositoryImpl(
     }
 
     override suspend fun getRecentlyDeletedServices(): RecentlyDeleted {
-        return recentlyDeletedPreference.get()
+        return recentlyDeleted.get()
     }
 
     override suspend fun removeRecentlyDeleted(secret: String) {
@@ -345,7 +353,7 @@ internal class ServicesRepositoryImpl(
             val index = it.services.indexOfFirst { service -> service.secret == secret }
 
             if (index > -1) {
-                recentlyDeletedPreference.put(it.copy(services = it.services.filter { service -> service.secret != secret }))
+                recentlyDeleted.set(it.copy(services = it.services.filter { service -> service.secret != secret }))
             }
         }
     }

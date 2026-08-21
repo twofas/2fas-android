@@ -5,8 +5,8 @@ import com.twofasapp.common.domain.WidgetCallbacks
 import com.twofasapp.feature.widget.sync.WidgetCallbacksImpl
 import com.twofasapp.feature.widget.ui.settings.WidgetSettingsViewModel
 import org.koin.android.ext.koin.androidApplication
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 import javax.inject.Provider
 

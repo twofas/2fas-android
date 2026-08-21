@@ -97,7 +97,7 @@ private fun Content(
                     title = strings.settingsSecurity,
                     subtitle = strings.settingsSecurityDesc,
                     icon = MdtIcons.Security,
-                    onClick = { navigator.open(Screen.Developer) },
+                    onClick = { navigator.open(Screen.Security) },
                 )
             }
 
@@ -131,7 +131,7 @@ private fun Content(
                     title = strings.settingsBackup,
                     subtitle = strings.settingsBackupDesc,
                     icon = MdtIcons.CloudUpload,
-                    onClick = { navigator.open(Screen.Developer) },
+                    onClick = { navigator.open(Screen.Backup) },
                 )
             }
 
@@ -140,7 +140,7 @@ private fun Content(
                     title = strings.settingsExternalImport,
                     subtitle = strings.settingsImportTokensDesc,
                     icon = MdtIcons.Download,
-                    onClick = { navigator.open(Screen.Developer) },
+                    onClick = { navigator.open(Screen.BackupSettings) },
                 )
             }
 

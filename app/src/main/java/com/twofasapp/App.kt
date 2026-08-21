@@ -9,11 +9,17 @@ import com.pluto.Pluto
 import com.pluto.plugins.datastore.pref.PlutoDatastorePreferencesPlugin
 import com.pluto.plugins.rooms.db.PlutoRoomsDatabasePlugin
 import com.twofasapp.base.AuthTracker
+import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.environment.BuildVariant
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
 import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.di.Modules
+import com.twofasapp.logger.FlogSinkLogcat
+import com.twofasapp.migration.MigrateDataStore
 import com.twofasapp.parsers.SupportedServices
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
@@ -23,9 +29,12 @@ import timber.log.Timber
 
 class App : Application() {
 
+    private val flogSinkLogcat: FlogSinkLogcat by inject()
+    private val appBuild: AppBuild by inject()
     private val authTracker: AuthTracker by inject()
     private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher by inject()
     private val settingsRepository: SettingsRepository by inject()
+    private val migrateDataStore: MigrateDataStore by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -37,7 +46,6 @@ class App : Application() {
         }
 
         startKoin {
-            // androidLogger(level = Level.DEBUG)
             androidContext(this@App)
             modules(Modules.provide())
         }
@@ -46,6 +54,20 @@ class App : Application() {
             Timber.plant(Timber.DebugTree())
             System.setProperty("kotlinx.coroutines.debug", "on")
         }
+
+        runBlocking(Dispatchers.IO) {
+            try {
+                migrateDataStore.invoke()
+            } catch (e: Exception) {
+                FirebaseCrashlytics.getInstance().recordException(e)
+                throw e
+            }
+        }
+
+        Flog.init(
+            debug = appBuild.buildVariant == BuildVariant.Debug,
+            sinkLogcat = flogSinkLogcat,
+        )
 
         authTracker.onAppCreate()
 

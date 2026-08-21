@@ -6,7 +6,7 @@ import com.twofasapp.feature.security.ui.disablepin.DisablePinViewModel
 import com.twofasapp.feature.security.ui.lock.LockViewModel
 import com.twofasapp.feature.security.ui.security.SecurityViewModel
 import com.twofasapp.feature.security.ui.setuppin.SetupPinViewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class SecurityModule : KoinModule {

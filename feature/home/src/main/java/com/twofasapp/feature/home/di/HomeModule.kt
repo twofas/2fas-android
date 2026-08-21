@@ -12,7 +12,7 @@ import com.twofasapp.feature.home.ui.services.add.success.AddServiceSuccessViewM
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class HomeModule : KoinModule {

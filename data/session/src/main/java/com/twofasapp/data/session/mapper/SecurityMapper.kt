@@ -23,17 +23,15 @@ internal fun PinOptionsEntity.asDomain() = PinOptions(
 )
 
 internal fun LockMethod.asEntity(): LockMethodEntity = when (this) {
-    LockMethod.NoLock -> LockMethodEntity.NO_LOCK
-    LockMethod.Pin -> LockMethodEntity.PIN_SECURED
-    LockMethod.Biometrics -> LockMethodEntity.FINGERPRINT_WITH_PIN_SECURED
+    LockMethod.NoLock -> LockMethodEntity.NoLock
+    LockMethod.Pin -> LockMethodEntity.Pin
+    LockMethod.Biometrics -> LockMethodEntity.Biometrics
 }
 
 internal fun LockMethodEntity.asDomain(): LockMethod = when (this) {
-    LockMethodEntity.NO_LOCK -> LockMethod.NoLock
-    LockMethodEntity.PIN_LOCK -> LockMethod.Pin
-    LockMethodEntity.FINGERPRINT_LOCK -> LockMethod.Biometrics
-    LockMethodEntity.PIN_SECURED -> LockMethod.Pin
-    LockMethodEntity.FINGERPRINT_WITH_PIN_SECURED -> LockMethod.Biometrics
+    LockMethodEntity.NoLock -> LockMethod.NoLock
+    LockMethodEntity.Pin -> LockMethod.Pin
+    LockMethodEntity.Biometrics -> LockMethod.Biometrics
 }
 
 internal fun InvalidPinStatus.asEntity() = InvalidPinStatusEntity(

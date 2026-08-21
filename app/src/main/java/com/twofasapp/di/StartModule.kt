@@ -2,12 +2,8 @@ package com.twofasapp.di
 
 import com.twofasapp.android.navigation.DeeplinkHandler
 import com.twofasapp.common.di.KoinModule
-import com.twofasapp.migration.ClearObsoletePrefs
 import com.twofasapp.migration.MigrateDataStore
-import com.twofasapp.migration.MigratePin
 import com.twofasapp.migration.MigrateUnknownServices
-import com.twofasapp.storage.EncryptedPreferences
-import com.twofasapp.storage.PlainPreferences
 import com.twofasapp.workmanager.OnAppUpdatedWorkDispatcher
 import com.twofasapp.workmanager.OnAppUpdatedWorkDispatcherImpl
 import com.twofasapp.workmanager.SyncTimeWorkDispatcher
@@ -25,14 +21,7 @@ class StartModule : KoinModule {
         singleOf(::OnAppUpdatedWorkDispatcherImpl) { bind<OnAppUpdatedWorkDispatcher>() }
         singleOf(::SyncTimeWorkDispatcherImpl) { bind<SyncTimeWorkDispatcher>() }
 
-        single {
-            ClearObsoletePrefs(
-                get<PlainPreferences>(),
-                get<EncryptedPreferences>(),
-            )
-        }
-        singleOf(::MigratePin)
         singleOf(::MigrateUnknownServices)
-        single { MigrateDataStore(androidContext(), get()) }
+        single { MigrateDataStore(androidContext(), get(), get()) }
     }
 }

@@ -17,7 +17,6 @@ import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import timber.log.Timber
 import java.util.Locale
@@ -29,7 +28,6 @@ class CloudSync(
     private val groupsRepository: GroupsRepository,
     private val backupRepository: BackupRepository,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
-    private val remoteBackupKeyPreference: RemoteBackupKeyPreference,
 ) {
     private sealed interface RemoteStatus {
         data class Success(
@@ -89,7 +87,7 @@ class CloudSync(
                 when (syncBackupStatus.error) {
                     CloudSyncError.DecryptNoPassword,
                     CloudSyncError.DecryptWrongPassword,
-                    -> remoteBackupKeyPreference.delete()
+                    -> backupRepository.deleteRemoteBackupKey()
 
                     else -> Unit
                 }
@@ -216,7 +214,7 @@ class CloudSync(
     ): RemoteStatus {
         try {
             val updatedLocalServices = servicesRepository.getServices()
-            val remoteKey = remoteBackupKeyPreference.get()
+            val remoteKey = backupRepository.getRemoteBackupKey()
 
             val updateResult = backupRepository.updateCloudBackup(
                 firstConnect = isFirstConnect,

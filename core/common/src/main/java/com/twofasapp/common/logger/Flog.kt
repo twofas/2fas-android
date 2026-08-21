@@ -18,7 +18,7 @@ object Flog {
     @Volatile
     private var debug: Boolean = false
 
-    fun init(debug: Boolean, sinkLogcat: FlogSink, sinkPersist: FlogSink) {
+    fun init(debug: Boolean, sinkLogcat: FlogSink?, sinkPersist: FlogSink? = null) {
         Flog.debug = debug
         Flog.sinkLogcat = sinkLogcat
         Flog.sinkPersist = sinkPersist

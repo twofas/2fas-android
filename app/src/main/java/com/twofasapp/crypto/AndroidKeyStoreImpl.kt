@@ -24,6 +24,7 @@ internal class AndroidKeyStoreImpl : AndroidKeyStore {
         private const val keyPadding = KeyProperties.ENCRYPTION_PADDING_NONE
 
         private const val appKeyAlias = "twofasapp_app_key"
+        private const val dataStoreKeyAlias = "twofasapp_datastore_key"
     }
 
     private val keyStore: KeyStore
@@ -39,6 +40,26 @@ internal class AndroidKeyStoreImpl : AndroidKeyStore {
                 init(
                     KeyGenParameterSpec
                         .Builder(appKeyAlias, keyPurposes)
+                        .setBlockModes(keyBlockMode)
+                        .setEncryptionPaddings(keyPadding)
+                        .setKeySize(256)
+                        .build(),
+                )
+
+                generateKey()
+            }
+        }
+
+    override val dataStoreKey: Key
+        get() {
+            if (keyStore.containsAlias(dataStoreKeyAlias)) {
+                return keyStore.getKey(dataStoreKeyAlias, null)
+            }
+
+            return KeyGenerator.getInstance(keyAlgorithm, keyStoreProvider).run {
+                init(
+                    KeyGenParameterSpec
+                        .Builder(dataStoreKeyAlias, keyPurposes)
                         .setBlockModes(keyBlockMode)
                         .setEncryptionPaddings(keyPadding)
                         .setKeySize(256)

@@ -5,40 +5,59 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
-import com.twofasapp.core.design.ktx.LocalBackDispatcher
-import com.twofasapp.feature.security.ui.pin.PinScreen
-import com.twofasapp.feature.security.ui.pin.rememberCurrentPinState
-import com.twofasapp.feature.security.ui.pin.vibrateInvalidPin
+import com.twofasapp.feature.security.ui.pin.SettingsPinScreen
+import com.twofasapp.feature.security.ui.pin.notifyInvalidPin
 import com.twofasapp.locale.R
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun DisablePinScreen(
     viewModel: DisablePinViewModel = koinViewModel(),
+    navigator: Navigator = koinInject(),
 ) {
-    val uiState = viewModel.uiState.collectAsState().value
-    val currentPinState = rememberCurrentPinState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    uiState.events.firstOrNull()?.let {
-        when (it) {
-            DisablePinUiEvent.ClearCurrentPin -> currentPinState.reset()
-            DisablePinUiEvent.Finish -> LocalBackDispatcher.onBackPressed()
-            DisablePinUiEvent.NotifyInvalidPin -> vibrateInvalidPin(LocalContext.current)
+    LaunchedEffect(uiState.finished) {
+        if (uiState.finished) {
+            navigator.back()
         }
+    }
 
-        viewModel.consumeEvent(it)
+    Content(
+        uiState = uiState,
+        onKeyClick = viewModel::onKeyClick,
+        onBackspaceClick = viewModel::onBackspaceClick,
+    )
+}
+
+@Composable
+private fun Content(
+    uiState: DisablePinUiState,
+    onKeyClick: (Int) -> Unit = {},
+    onBackspaceClick: () -> Unit = {},
+) {
+    val haptic = LocalHapticFeedback.current
+
+    LaunchedEffect(uiState.invalidPinCount) {
+        if (uiState.invalidPinCount > 0) {
+            notifyInvalidPin(haptic)
+        }
     }
 
     Scaffold(
-        topBar = {
-            TopAppBar(title = stringResource(id = R.string.security__disable_pin))
-        },
+        topBar = { TopAppBar(title = stringResource(id = R.string.security__disable_pin)) },
     ) { padding ->
         Box(
             modifier = Modifier
@@ -46,16 +65,26 @@ internal fun DisablePinScreen(
                 .fillMaxSize(),
             contentAlignment = Alignment.Center,
         ) {
-            PinScreen(
+            SettingsPinScreen(
+                digits = uiState.digits.value,
+                enteredDigits = uiState.enteredPin.length,
                 message = stringResource(id = R.string.security__enter_current_pin),
                 errorMessage = uiState.errorMessage?.let { stringResource(id = it) }.orEmpty(),
-                digits = uiState.digits.value,
-                showLogo = false,
-                showBiometrics = false,
-                state = uiState.pinScreenState,
-                currentPinState = currentPinState,
-                onPinEntered = { viewModel.pinEntered(it) },
+                enabled = !uiState.verifying,
+                loading = uiState.verifying,
+                onKeyClick = onKeyClick,
+                onBackspaceClick = onBackspaceClick,
             )
         }
+    }
+}
+
+@Composable
+@Preview
+private fun Preview() {
+    PreviewTheme {
+        Content(
+            uiState = DisablePinUiState(),
+        )
     }
 }

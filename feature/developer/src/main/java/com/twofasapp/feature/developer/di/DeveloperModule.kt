@@ -10,7 +10,7 @@ package com.twofasapp.feature.developer.di
 
 import com.twofasapp.common.di.KoinModule
 import com.twofasapp.feature.developer.ui.DeveloperViewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class DeveloperModule : KoinModule {

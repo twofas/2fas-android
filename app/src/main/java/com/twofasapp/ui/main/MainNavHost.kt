@@ -47,7 +47,6 @@ import com.twofasapp.feature.home.navigation.homeNavigation
 import com.twofasapp.feature.home.ui.services.add.AddServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
-import com.twofasapp.feature.security.navigation.securityNavigation
 import com.twofasapp.feature.security.ui.lock.LockActivity
 import com.twofasapp.feature.startup.navigation.StartupRoute
 import com.twofasapp.feature.trash.navigation.DisposeRoute
@@ -158,7 +157,6 @@ internal fun MainNavHost(
                 },
             )
 
-            securityNavigation(navController = navController)
             guidesNavigation(navController = navController)
 
             bottomSheet(Modal.AddService.route, listOf(NavArg.AddServiceInitRoute)) {

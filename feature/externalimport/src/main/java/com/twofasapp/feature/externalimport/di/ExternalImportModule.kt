@@ -10,8 +10,8 @@ import com.twofasapp.feature.externalimport.domain.RaivoImporter
 import com.twofasapp.feature.externalimport.ui.main.ExternalImportViewModel
 import com.twofasapp.feature.externalimport.ui.result.ExternalImportResultViewModel
 import com.twofasapp.feature.externalimport.ui.scan.ExternalImportScanViewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class ExternalImportModule : KoinModule {

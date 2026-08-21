@@ -18,7 +18,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
@@ -26,10 +28,16 @@ import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.feature.about.navigation.AboutLicensesRoute
 import com.twofasapp.feature.about.navigation.AboutRoute
 import com.twofasapp.feature.appsettings.navigation.CustomizationRoute
+import com.twofasapp.feature.backup.navigation.BackupRoute
+import com.twofasapp.feature.backup.navigation.BackupSettingsRoute
 import com.twofasapp.feature.developer.navigation.DeveloperRoute
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.services.ServicesRoutePublic
 import com.twofasapp.feature.home.ui.settings.SettingsRoute
+import com.twofasapp.feature.security.navigation.ChangePinRoute
+import com.twofasapp.feature.security.navigation.DisablePinRoute
+import com.twofasapp.feature.security.navigation.SecurityRoute
+import com.twofasapp.feature.security.navigation.SetupPinRoute
 import com.twofasapp.feature.startup.navigation.StartupRoute
 import com.twofasapp.feature.trash.navigation.TrashRoute
 import org.koin.compose.koinInject
@@ -96,6 +104,10 @@ internal fun MainNavDisplay(
             modifier = Modifier.weight(1f),
             backStack = backStack,
             onBack = { navigator.back() },
+            entryDecorators = listOf(
+                rememberSaveableStateHolderNavEntryDecorator(),
+                rememberViewModelStoreNavEntryDecorator(),
+            ),
             transitionSpec = { fadeIn(animationSpec = tween(250)) togetherWith fadeOut(animationSpec = tween(250)) },
             popTransitionSpec = { fadeIn(animationSpec = tween(250)) togetherWith fadeOut(animationSpec = tween(250)) },
             predictivePopTransitionSpec = { fadeIn(animationSpec = tween(250)) togetherWith fadeOut(animationSpec = tween(250)) },
@@ -122,8 +134,32 @@ internal fun MainNavDisplay(
                     CustomizationRoute()
                 }
 
+                entry<Screen.Security> {
+                    SecurityRoute()
+                }
+
+                entry<Screen.SetupPin> {
+                    SetupPinRoute()
+                }
+
+                entry<Screen.DisablePin> {
+                    DisablePinRoute()
+                }
+
+                entry<Screen.ChangePin> {
+                    ChangePinRoute()
+                }
+
                 entry<Screen.Trash> {
                     TrashRoute()
+                }
+
+                entry<Screen.Backup> {
+                    BackupRoute({}, {}, {}, {})
+                }
+
+                entry<Screen.BackupSettings> {
+                    BackupSettingsRoute({})
                 }
 
                 entry<Screen.About> {

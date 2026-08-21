@@ -12,4 +12,5 @@ import java.security.Key
 
 interface AndroidKeyStore {
     val appKey: Key
+    val dataStoreKey: Key
 }

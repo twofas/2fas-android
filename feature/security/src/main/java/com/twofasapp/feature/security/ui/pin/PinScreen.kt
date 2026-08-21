@@ -30,6 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.feature.security.ui.biometric.BiometricDialog
@@ -104,20 +105,21 @@ internal fun PinScreen(
             )
 
             PinInput(
+                modifier = Modifier.padding(vertical = 32.dp),
                 digits = digits,
                 enteredDigits = currentPinState.pin.value.length,
-                isVerifying = state == PinScreenState.Verifying,
-                onBackClick = {
-                    if (currentPinState.pin.value.isNotEmpty()) {
-                        currentPinState.pin.value = currentPinState.pin.value.dropLast(1)
-                    }
-                },
+                loading = state == PinScreenState.Verifying,
             )
 
             PinKeyboard(
                 showBiometrics = showBiometrics,
-                isEnabled = state != PinScreenState.Verifying && isEnabled,
+                enabled = state != PinScreenState.Verifying && isEnabled,
                 onBiometricsClick = { showBiometricDialog = true },
+                onBackspaceClick = {
+                    if (currentPinState.pin.value.isNotEmpty()) {
+                        currentPinState.pin.value = currentPinState.pin.value.dropLast(1)
+                    }
+                },
                 onKeyClick = {
                     if (currentPinState.pin.value.length < digits) {
                         val isFullyEntered = currentPinState.pin.value.length == digits - 1
@@ -170,8 +172,10 @@ internal fun rememberCurrentPinState(
 @Composable
 @Preview(showSystemUi = true)
 fun PreviewPinScreen() {
-    PinScreen(
-        message = "Please enter your PIN",
-        state = PinScreenState.Default,
-    )
+    PreviewTheme {
+        PinScreen(
+            message = "Please enter your PIN",
+            state = PinScreenState.Default,
+        )
+    }
 }

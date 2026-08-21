@@ -28,7 +28,8 @@ internal class BackupViewModel(
     private val googleAuth: GoogleAuth,
 ) : ViewModel() {
 
-    private val autoTurnOnBackup: Boolean = savedStateHandle.getOrThrow(NavArg.TurnOnBackup.name)
+    private val autoTurnOnBackup: Boolean = false
+//    private val autoTurnOnBackup: Boolean = savedStateHandle.getOrThrow(NavArg.TurnOnBackup.name)
 
     val uiState: MutableStateFlow<BackupUiState> = MutableStateFlow(BackupUiState())
 

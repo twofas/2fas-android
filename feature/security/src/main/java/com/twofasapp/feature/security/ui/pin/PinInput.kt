@@ -1,110 +1,147 @@
 package com.twofasapp.feature.security.ui.pin
 
-import android.content.Context
-import android.os.Vibrator
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.StartOffset
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.keyframes
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Divider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.hapticfeedback.HapticFeedback
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.preview.PreviewColumn
+
+private val DotSize = 18.dp
+private val DotSpacing = 20.dp
+
+private const val BreatheDurationMillis = 1000
+private const val BreatheStaggerMillis = 140
+private const val BreatheMinAlpha = 0.25f
 
 @Composable
 internal fun PinInput(
+    modifier: Modifier = Modifier,
     digits: Int,
     enteredDigits: Int,
-    isVerifying: Boolean = false,
-    onBackClick: () -> Unit,
+    loading: Boolean = false,
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(64.dp)
-            .padding(horizontal = 24.dp),
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(DotSpacing),
+        modifier = modifier,
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-                .padding(horizontal = 12.dp),
-        ) {
-            Row(modifier = Modifier.align(Alignment.Center)) {
-                repeat(digits) { index ->
-                    Box(
-                        modifier = Modifier
-                            .padding(horizontal = 8.dp)
-                            .size(12.dp)
-                            .run {
-                                if (index < enteredDigits) {
-                                    background(shape = CircleShape, color = MdtTheme.color.primary)
-                                } else {
-                                    background(shape = CircleShape, color = MdtTheme.color.background)
-                                    border(width = 2.dp, color = MdtTheme.color.divider, shape = CircleShape)
-                                }
-                            },
-
-                    )
-                }
-            }
-
-            if (isVerifying) {
-                CircularProgressIndicator(
-                    strokeWidth = 2.dp,
-                    modifier = Modifier
-                        .align(Alignment.CenterEnd)
-                        .size(20.dp),
-                )
-            } else {
-                IconButton(onClick = {
-                    if (enteredDigits > 0) {
-                        onBackClick()
-                    }
-                }, modifier = Modifier.align(Alignment.CenterEnd)) {
-                    Icon(
-                        MdtIcons.Backspace,
-                        null,
-                        tint = if (enteredDigits == 0) {
-                            Color(0x80606060)
-                        } else {
-                            Color(0xFF606060)
-                        },
-                    )
-                }
-            }
+        repeat(digits) { index ->
+            PinDot(
+                filled = index < enteredDigits,
+                index = index,
+                loading = loading,
+            )
         }
-
-        Divider(color = MdtTheme.color.divider)
     }
 }
 
 @Composable
-@Preview(showSystemUi = true)
-fun PreviewPinInput() {
-    PinInput(
-        digits = 4,
-        enteredDigits = 1,
-        isVerifying = false,
-        onBackClick = {},
+private fun PinDot(
+    filled: Boolean,
+    index: Int,
+    loading: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    val scale = remember { Animatable(1f) }
+
+    LaunchedEffect(filled) {
+        if (filled) {
+            scale.animateTo(
+                targetValue = 1f,
+                animationSpec = keyframes {
+                    durationMillis = 220
+                    1f at 0
+                    1.2f at 90
+                    1f at 220
+                },
+            )
+        }
+    }
+
+    val alpha = if (loading) breathingAlpha(index) else 1f
+
+    Box(
+        modifier = modifier
+            .size(DotSize)
+            .scale(scale.value)
+            .alpha(alpha)
+            .background(
+                color = if (filled) MdtTheme.color.primary else MdtTheme.color.transparent,
+                shape = CircleShape,
+            )
+            .then(
+                if (filled) {
+                    Modifier
+                } else {
+                    Modifier.border(width = 2.dp, color = MdtTheme.color.outline, shape = CircleShape)
+                },
+            ),
     )
 }
 
-internal fun vibrateInvalidPin(context: Context) {
-    val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-    vibrator.vibrate(longArrayOf(0, 200, 20, 30), -1)
+/**
+ * Slow "breathing" fade that loops forever, offset by [index] so the dots pulse one after another
+ * like a wave. Used while the entered pin is being verified.
+ */
+@Composable
+private fun breathingAlpha(index: Int): Float {
+    val transition = rememberInfiniteTransition(label = "PinBreathe")
+    val alpha by transition.animateFloat(
+        initialValue = 1f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = keyframes {
+                durationMillis = BreatheDurationMillis
+                1f at 0
+                BreatheMinAlpha at BreatheDurationMillis / 2 using FastOutSlowInEasing
+                1f at BreatheDurationMillis using FastOutSlowInEasing
+            },
+            repeatMode = RepeatMode.Restart,
+            initialStartOffset = StartOffset(index * BreatheStaggerMillis),
+        ),
+        label = "PinBreatheAlpha",
+    )
+    return alpha
+}
+
+@Preview
+@Composable
+fun PreviewPinInput() {
+    PreviewColumn {
+        PinInput(
+            digits = 4,
+            enteredDigits = 1,
+        )
+
+        PinInput(
+            digits = 6,
+            enteredDigits = 3,
+        )
+    }
+}
+
+internal fun notifyInvalidPin(haptic: HapticFeedback) {
+    haptic.performHapticFeedback(HapticFeedbackType.Reject)
 }

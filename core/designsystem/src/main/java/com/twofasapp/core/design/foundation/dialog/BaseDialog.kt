@@ -123,7 +123,7 @@ fun BaseDialog(
                     Icon(
                         painter = icon,
                         contentDescription = null,
-                        tint = if (iconColor == Color.Unspecified) MdtTheme.color.secondary else iconColor,
+                        tint = if (iconColor == Color.Unspecified) MdtTheme.color.onSurfaceVariant else iconColor,
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally)
                             .padding(bottom = 16.dp)

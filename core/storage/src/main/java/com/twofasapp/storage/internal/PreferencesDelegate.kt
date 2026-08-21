@@ -1,7 +1,6 @@
 package com.twofasapp.storage.internal
 
 import android.content.SharedPreferences
-import com.twofasapp.storage.EncryptedPreferences
 import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +13,7 @@ import timber.log.Timber
 
 internal class PreferencesDelegate(
     private val factory: SharedPreferencesFactory,
-) : EncryptedPreferences, PlainPreferences {
+) : PlainPreferences {
 
     private val sharedPrefs: SharedPreferences by lazy {
         factory.create()

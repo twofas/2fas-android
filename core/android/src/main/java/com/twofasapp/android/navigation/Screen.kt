@@ -21,7 +21,25 @@ sealed interface Screen : NavKey {
     data object Customization : Screen
 
     @Serializable
+    data object Security : Screen
+
+    @Serializable
+    data object SetupPin : Screen
+
+    @Serializable
+    data object DisablePin : Screen
+
+    @Serializable
+    data object ChangePin : Screen
+
+    @Serializable
     data object Trash : Screen
+
+    @Serializable
+    data object Backup : Screen
+
+    @Serializable
+    data object BackupSettings : Screen
 
     @Serializable
     data object About : Screen

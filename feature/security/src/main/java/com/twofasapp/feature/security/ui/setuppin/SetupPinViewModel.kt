@@ -5,13 +5,12 @@ import com.twofasapp.base.AuthTracker
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.session.SecurityRepository
 import com.twofasapp.data.session.domain.PinDigits
-import com.twofasapp.feature.security.ui.pin.PinScreenState
 import com.twofasapp.locale.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
+import kotlin.time.Duration.Companion.milliseconds
 
 internal class SetupPinViewModel(
     private val securityRepository: SecurityRepository,
@@ -19,85 +18,91 @@ internal class SetupPinViewModel(
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(SetupPinUiState())
-
-    private val tmpPinDigitsFlow: MutableStateFlow<PinDigits?> = MutableStateFlow(null)
-
-    private var enteredPin = ""
+    private var digitsOverridden = false
 
     init {
         launchScoped {
-            combine(
-                securityRepository.observePinOptions(),
-                tmpPinDigitsFlow,
-            ) { a, b -> Pair(a, b) }
-                .collect { (pinOptions, tmpPinDigits) ->
-                    uiState.update { state -> state.copy(digits = tmpPinDigits ?: pinOptions.digits) }
+            securityRepository.observePinOptions().collect { options ->
+                if (!digitsOverridden) {
+                    uiState.update { it.copy(digits = options.digits) }
                 }
+            }
         }
     }
 
-    fun pinEntered(pin: String) {
-        if (enteredPin.isBlank()) {
-            enteredPin = pin
+    fun onKeyClick(digit: Int) {
+        val state = uiState.value
+        if (state.verifying || state.enteredPin.length >= state.digits.value) return
 
+        val pin = state.enteredPin + digit
+        uiState.update { it.copy(enteredPin = pin, errorMessage = null) }
+
+        if (pin.length == state.digits.value) {
+            onPinComplete(pin)
+        }
+    }
+
+    fun onBackspaceClick() {
+        uiState.update { it.copy(enteredPin = it.enteredPin.dropLast(1)) }
+    }
+
+    fun onPinDigitsChanged(digits: PinDigits) {
+        digitsOverridden = true
+        uiState.update {
+            it.copy(
+                digits = digits,
+                enteredPin = "",
+                firstPin = "",
+                message = R.string.security__enter_your_new_pin,
+                errorMessage = null,
+            )
+        }
+    }
+
+    private fun onPinComplete(pin: String) {
+        if (uiState.value.firstPin.isEmpty()) {
             launchScoped {
-                delay(200)
-                uiState.update { state ->
-                    state.copy(
+                delay(200.milliseconds)
+                uiState.update {
+                    it.copy(
+                        firstPin = pin,
+                        enteredPin = "",
                         showPinOptions = false,
                         message = R.string.security__confirm_new_pin,
                     )
                 }
-
-                publishEvent(SetupPinUiEvent.ClearCurrentPin)
             }
         } else {
-            confirmPinEntered(pin)
+            confirm(pin)
         }
     }
 
-    private fun confirmPinEntered(pin: String) {
-        if (pin == enteredPin) {
+    private fun confirm(pin: String) {
+        val state = uiState.value
+
+        if (pin == state.firstPin) {
             launchScoped {
-                uiState.update { it.copy(pinScreenState = PinScreenState.Verifying) }
+                uiState.update { it.copy(verifying = true) }
 
-                securityRepository.editPin(enteredPin)
-
+                securityRepository.editPin(state.firstPin)
                 securityRepository.editPinOptions(
-                    securityRepository.observePinOptions().first().copy(
-                        digits = uiState.value.digits,
-                    ),
+                    securityRepository.observePinOptions().first().copy(digits = state.digits),
                 )
-
                 authTracker.onChangingLockStatus()
 
-                publishEvent(SetupPinUiEvent.Finish)
+                uiState.update { it.copy(finished = true) }
             }
         } else {
             launchScoped {
-                delay(200)
+                delay(200.milliseconds)
                 uiState.update {
                     it.copy(
-                        pinScreenState = PinScreenState.Default,
+                        enteredPin = "",
                         errorMessage = R.string.security_error_no_match,
+                        invalidPinCount = it.invalidPinCount + 1,
                     )
                 }
-
-                publishEvent(SetupPinUiEvent.NotifyInvalidPin)
-                publishEvent(SetupPinUiEvent.ClearCurrentPin)
             }
         }
-    }
-
-    fun pinDigitsChanged(pinDigits: PinDigits) {
-        tmpPinDigitsFlow.tryEmit(pinDigits)
-    }
-
-    fun consumeEvent(event: SetupPinUiEvent) {
-        uiState.update { it.copy(events = it.events.minus(event)) }
-    }
-
-    private fun publishEvent(event: SetupPinUiEvent) {
-        uiState.update { it.copy(events = it.events.plus(event)) }
     }
 }

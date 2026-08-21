@@ -6,6 +6,8 @@ import com.twofasapp.cipher.backup.BackupCipher
 import com.twofasapp.cipher.backup.DataEncrypted
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.serializedPref
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.cloud.googledrive.GoogleDrive
 import com.twofasapp.data.cloud.googledrive.GoogleDriveFileResult
@@ -30,7 +32,6 @@ import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.prefs.model.RemoteBackupKey
 import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.model.isSet
-import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference
 import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
@@ -39,29 +40,33 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 import javax.crypto.AEADBadTagException
 
 class BackupRepositoryImpl(
+    dataStoreOwner: DataStoreOwner,
     private val context: Application,
     private val dispatchers: Dispatchers,
     private val appBuild: AppBuild,
     private val timeProvider: TimeProvider,
-    private val json: Json,
     private val servicesRepository: ServicesRepository,
     private val groupsRepository: GroupsRepository,
     private val backupCipher: BackupCipher,
     private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
     private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
-    private val remoteBackupKeyPreference: RemoteBackupKeyPreference,
     private val wipeGoogleDriveWorkDispatcher: WipeGoogleDriveWorkDispatcher,
     private val googleDrive: GoogleDrive,
-) : BackupRepository {
+) : BackupRepository, DataStoreOwner by dataStoreOwner {
 
     private val cloudSyncStatusFlow = MutableStateFlow<CloudSyncStatus>(CloudSyncStatus.Default)
     private val passwordForCloudSync = MutableStateFlow<String?>(null)
+
+    private val remoteBackupKey by serializedPref(
+        name = "remoteBackupKey",
+        default = RemoteBackupKey("", ""),
+        serializer = RemoteBackupKey.serializer(),
+        encrypted = true,
+    )
 
     override fun dispatchCloudSync(trigger: CloudSyncTrigger, password: String?) {
         cloudSyncWorkDispatcher.tryDispatch(
@@ -74,7 +79,7 @@ class BackupRepositoryImpl(
         GlobalScope.launch {
             remoteBackupStatusPreference.put(RemoteBackupStatusEntity(schemaVersion = BackupContent.CurrentSchema))
             remoteBackupStatusPreference.delete()
-            remoteBackupKeyPreference.delete()
+            remoteBackupKey.delete()
             wipeGoogleDriveWorkDispatcher.dispatch()
         }
     }
@@ -243,7 +248,7 @@ class BackupRepositoryImpl(
         remoteBackupStatusPreference.put {
             it.copy(state = RemoteBackupStatusEntity.State.NOT_CONFIGURED, reference = null)
         }
-        remoteBackupKeyPreference.delete()
+        remoteBackupKey.delete()
     }
 
     override suspend fun getCloudBackup(password: String?): CloudBackupGetResult {
@@ -262,7 +267,7 @@ class BackupRepositoryImpl(
 
                     // Decrypt backup
                     if (backupContent.isEncrypted) {
-                        if (password.isNullOrEmpty() && remoteBackupKeyPreference.get().isSet().not()) {
+                        if (password.isNullOrEmpty() && remoteBackupKey.get().isSet().not()) {
                             // No password provided
                             CloudBackupGetResult.Failure(CloudSyncError.DecryptNoPassword)
                         } else {
@@ -271,7 +276,7 @@ class BackupRepositoryImpl(
                                     decryptBackupContent(
                                         backupContent = backupContent,
                                         password = password,
-                                        keyEncoded = remoteBackupKeyPreference.get().keyEncoded,
+                                        keyEncoded = remoteBackupKey.get().keyEncoded,
                                     ),
                                 )
                             } catch (e: Exception) {
@@ -283,7 +288,7 @@ class BackupRepositoryImpl(
                             }
                         }
                     } else {
-                        remoteBackupKeyPreference.delete()
+                        remoteBackupKey.delete()
                         CloudBackupGetResult.Success(backupContent)
                     }
                 } catch (e: Exception) {
@@ -325,12 +330,13 @@ class BackupRepositoryImpl(
                 }
 
                 if (backupContent.isEncrypted) {
-                    remoteBackupKeyPreference.put {
-                        it.copy(
+                    remoteBackupKey.set(
+                        RemoteBackupKey(
                             saltEncoded = backupContentCreateResult.saltEncoded.orEmpty(),
                             keyEncoded = backupContentCreateResult.keyEncoded.orEmpty(),
-                        )
-                    }
+                        ),
+
+                    )
                     remoteBackupStatusPreference.put {
                         it.copy(
                             reference = backupContentCreateResult.backupContent.reference,
@@ -339,7 +345,7 @@ class BackupRepositoryImpl(
                     }
                 } else {
                     remoteBackupStatusPreference.put { it.copy(reference = null, lastSyncMillis = backupContent.updatedAt) }
-                    remoteBackupKeyPreference.delete()
+                    remoteBackupKey.delete()
                 }
 
                 when (
@@ -377,14 +383,14 @@ class BackupRepositoryImpl(
             val isCorrect = result.data == BackupContent.Reference
 
             if (isCorrect) {
-                remoteBackupKeyPreference.put {
+                remoteBackupKey.set(
                     RemoteBackupKey(
                         saltEncoded = result.saltEncoded,
                         keyEncoded = result.keyEncoded,
-                    )
-                }
+                    ),
+                )
             } else {
-                remoteBackupKeyPreference.delete()
+                remoteBackupKey.delete()
             }
 
             return isCorrect
@@ -419,6 +425,14 @@ class BackupRepositoryImpl(
 
     override fun observePasswordForCloudSync(): Flow<String?> {
         return passwordForCloudSync
+    }
+
+    override suspend fun getRemoteBackupKey(): RemoteBackupKey {
+        return remoteBackupKey.get()
+    }
+
+    override suspend fun deleteRemoteBackupKey() {
+        remoteBackupKey.delete()
     }
 
     private fun serializeBackupContent(backupContent: BackupContent): String {

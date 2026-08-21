@@ -7,8 +7,8 @@ import com.twofasapp.feature.browserext.ui.pairing.BrowserExtPairingViewModel
 import com.twofasapp.feature.browserext.ui.permission.BrowserExtPermissionViewModel
 import com.twofasapp.feature.browserext.ui.request.BrowserExtRequestViewModel
 import com.twofasapp.feature.browserext.ui.scan.BrowserExtScanViewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class BrowserExtModule : KoinModule {

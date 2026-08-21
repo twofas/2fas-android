@@ -38,7 +38,7 @@ abstract class BasePref<PrefType, ValueType>(
 ) {
     suspend fun delete() {
         Flog.tag(Tag).d("[DELETE] $keyName")
-        owner.dataStore.edit { preferences -> preferences.remove(keyType.asPreferencesKey()) }
+        owner.dataStore.edit { preferences -> preferences.remove(storageKey()) }
     }
 
     abstract suspend fun set(value: ValueType)
@@ -55,7 +55,7 @@ abstract class BasePref<PrefType, ValueType>(
                     ?.decodeBase64()
                     ?.let {
                         decrypt(
-                            key = owner.androidKeyStore.appKey,
+                            key = owner.androidKeyStore.dataStoreKey,
                             data = EncryptedBytes(it),
                         ).decodeString()
                     }
@@ -84,7 +84,7 @@ abstract class BasePref<PrefType, ValueType>(
     protected suspend fun setInternal(value: PrefType?) {
         owner.dataStore.edit { preferences ->
             if (value == null) {
-                preferences.remove(keyType.asPreferencesKey()).also {
+                preferences.remove(storageKey()).also {
                     Flog.tag(Tag).d("[SET] $keyName = null")
                 }
                 return@edit
@@ -93,7 +93,7 @@ abstract class BasePref<PrefType, ValueType>(
             if (encrypted) {
                 preferences[stringPreferencesKey(keyName)] =
                     encrypt(
-                        key = owner.androidKeyStore.appKey,
+                        key = owner.androidKeyStore.dataStoreKey,
                         data = value.toString().toByteArray(),
                     ).encodeBase64().also {
                         Flog.tag(Tag).d("[SET] $keyName = $value (encrypted = $it)")
@@ -111,6 +111,10 @@ abstract class BasePref<PrefType, ValueType>(
                 }
             }
         }
+    }
+
+    private fun storageKey(): Preferences.Key<*> {
+        return if (encrypted) stringPreferencesKey(keyName) else keyType.asPreferencesKey()
     }
 
     private fun KeyType.asPreferencesKey(): Preferences.Key<*> {

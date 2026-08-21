@@ -4,19 +4,19 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.core.os.bundleOf
+import com.twofasapp.data.session.SecurityRepository
+import com.twofasapp.data.session.domain.LockMethod
 import com.twofasapp.feature.security.ui.lock.LockActivity
 import com.twofasapp.prefs.ScopedNavigator
-import com.twofasapp.prefs.model.CheckLockStatus
-import com.twofasapp.prefs.model.LockMethodEntity
 
 class ActivityScopedNavigator(
     private val activity: Activity,
-    private val checkLockStatus: CheckLockStatus,
+    private val securityRepository: SecurityRepository,
 ) : ScopedNavigator {
 
     override fun openAuthenticate(canGoBack: Boolean, requestCode: Int?) {
-        when (checkLockStatus.execute()) {
-            LockMethodEntity.NO_LOCK -> Unit
+        when (securityRepository.getLockMethod()) {
+            LockMethod.NoLock -> Unit
             else -> activity.startActivityForResult<LockActivity>(
                 requestCode ?: RequestCodes.AUTH_REQUEST_CODE,
                 "canGoBack" to canGoBack,
