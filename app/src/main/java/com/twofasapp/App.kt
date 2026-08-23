@@ -39,38 +39,72 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        initSupportedServices()
+        initKoin()
+        initDebugTools()
+
+        migrationError = migrateToDataStore()
+        if (migrationError != null) {
+            return
+        }
+
+        initLogger()
+        initCrashlytics()
+        initLifecycleObserver()
+        initPluto()
+
+        authTracker.onAppCreate()
+        cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.AppStart)
+    }
+
+    private fun initSupportedServices() {
         try {
             SupportedServices.load(this@App)
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
 
+    private fun initKoin() {
         startKoin {
             androidContext(this@App)
             modules(Modules.provide())
         }
+    }
 
+    private fun initDebugTools() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
             System.setProperty("kotlinx.coroutines.debug", "on")
         }
+    }
 
-        runBlocking(Dispatchers.IO) {
+    private fun migrateToDataStore(): Throwable? {
+        return runBlocking(Dispatchers.IO) {
             try {
                 migrateDataStore.invoke()
+                null
             } catch (e: Exception) {
                 FirebaseCrashlytics.getInstance().recordException(e)
-                throw e
+                e
             }
         }
+    }
 
+    private fun initLogger() {
         Flog.init(
             debug = appBuild.buildVariant == BuildVariant.Debug,
             sinkLogcat = flogSinkLogcat,
         )
+    }
 
-        authTracker.onAppCreate()
+    private fun initCrashlytics() {
+        runBlocking {
+            FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = settingsRepository.observeSendCrashLogs().first()
+        }
+    }
 
+    private fun initLifecycleObserver() {
         ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
             override fun onStart(owner: LifecycleOwner) {
                 super.onStart(owner)
@@ -85,18 +119,20 @@ class App : Application() {
                 cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.AppBackground)
             }
         })
+    }
 
-        cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.AppStart)
-
-        runBlocking {
-            FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = settingsRepository.observeSendCrashLogs().first()
-        }
-
+    private fun initPluto() {
         Pluto.Installer(this)
             .apply {
                 addPlugin(PlutoRoomsDatabasePlugin())
                 addPlugin(PlutoDatastorePreferencesPlugin())
             }
             .install()
+    }
+
+    companion object {
+        @Volatile
+        var migrationError: Throwable? = null
+            private set
     }
 }

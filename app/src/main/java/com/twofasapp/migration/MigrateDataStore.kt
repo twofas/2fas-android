@@ -1,6 +1,7 @@
 package com.twofasapp.migration
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Base64
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
@@ -12,7 +13,8 @@ import com.twofasapp.common.crypto.encrypt
 import com.twofasapp.common.ktx.encodeBase64
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.prefs.model.LockMethodEntity
-import timber.log.Timber
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import java.io.ByteArrayInputStream
 import java.io.File
 import java.security.KeyStore
@@ -26,9 +28,13 @@ class MigrateDataStore(
     private val androidKeyStore: AndroidKeyStore,
 ) {
     suspend fun invoke() {
+        if (isMigrated()) return
+
         migratePlain()
-        migrateEncrypted()
         migrateSecureStorage()
+        migrateEncrypted()
+
+        setMigrated()
     }
 
     private suspend fun migratePlain() {
@@ -36,51 +42,40 @@ class MigrateDataStore(
 
         if (File(context.dataDir, "shared_prefs/$fileName.xml").exists().not()) return
 
-        try {
-            val sharedPreferences = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
-            val entries = sharedPreferences.all
-            val migratedKeys = mutableListOf<String>()
+        val sharedPreferences = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
+        val entries = sharedPreferences.all
 
-            dataStoreOwner.dataStore.edit { preferences ->
-                entries.forEach { (key, value) ->
-                    when (key) {
-                        "showOnboardWarning" -> preferences[booleanPreferencesKey("onboardingDisplayed")] = value as Boolean
-                        "showNextToken" -> preferences[booleanPreferencesKey("showNextToken")] = value as Boolean
-                        "showBackupNotice" -> preferences[booleanPreferencesKey("showBackupNotice")] = value as Boolean
-                        "autoFocusSearch" -> preferences[booleanPreferencesKey("autoFocusSearch")] = value as Boolean
-                        "sendCrashLogs" -> preferences[booleanPreferencesKey("sendCrashLogs")] = value as Boolean
-                        "allowScreenshots" -> preferences[booleanPreferencesKey("allowScreenshots")] = value as Boolean
-                        "hideCodes" -> preferences[booleanPreferencesKey("hideCodes")] = value as Boolean
-                        "dynamicColors" -> preferences[booleanPreferencesKey("dynamicColors")] = value as Boolean
-                        "selectedTheme" -> preferences[stringPreferencesKey("selectedTheme")] = value as String
-                        "servicesStyle" -> preferences[stringPreferencesKey("servicesStyle")] = value as String
-                        "servicesSort" -> preferences[stringPreferencesKey("servicesSort")] = value as String
-                        "lockStatus" -> {
-                            val lockMethod = when (value as String) {
-                                "NO_LOCK" -> LockMethodEntity.NoLock.name
-                                "PIN_LOCK", "PIN_SECURED" -> LockMethodEntity.Pin.name
-                                "FINGERPRINT_LOCK", "FINGERPRINT_WITH_PIN_SECURED" -> LockMethodEntity.Biometrics.name
-                                else -> LockMethodEntity.NoLock.name
-                            }
-
-                            preferences[stringPreferencesKey("lockMethod")] = encrypt(
-                                key = androidKeyStore.dataStoreKey,
-                                data = lockMethod.toByteArray(),
-                            ).encodeBase64()
+        dataStoreOwner.dataStore.edit { preferences ->
+            entries.forEach { (key, value) ->
+                when (key) {
+                    "showOnboardWarning" -> preferences[booleanPreferencesKey("onboardingDisplayed")] = value as Boolean
+                    "showNextToken" -> preferences[booleanPreferencesKey("showNextToken")] = value as Boolean
+                    "showBackupNotice" -> preferences[booleanPreferencesKey("showBackupNotice")] = value as Boolean
+                    "autoFocusSearch" -> preferences[booleanPreferencesKey("autoFocusSearch")] = value as Boolean
+                    "sendCrashLogs" -> preferences[booleanPreferencesKey("sendCrashLogs")] = value as Boolean
+                    "allowScreenshots" -> preferences[booleanPreferencesKey("allowScreenshots")] = value as Boolean
+                    "hideCodes" -> preferences[booleanPreferencesKey("hideCodes")] = value as Boolean
+                    "dynamicColors" -> preferences[booleanPreferencesKey("dynamicColors")] = value as Boolean
+                    "selectedTheme" -> preferences[stringPreferencesKey("selectedTheme")] = value as String
+                    "servicesStyle" -> preferences[stringPreferencesKey("servicesStyle")] = value as String
+                    "servicesSort" -> preferences[stringPreferencesKey("servicesSort")] = value as String
+                    "lockStatus" -> {
+                        val lockMethod = when (value as String) {
+                            "NO_LOCK" -> LockMethodEntity.NoLock.name
+                            "PIN_LOCK", "PIN_SECURED" -> LockMethodEntity.Pin.name
+                            "FINGERPRINT_LOCK", "FINGERPRINT_WITH_PIN_SECURED" -> LockMethodEntity.Biometrics.name
+                            else -> LockMethodEntity.NoLock.name
                         }
 
-                        else -> return@forEach
+                        preferences[stringPreferencesKey("lockMethod")] = encrypt(
+                            key = androidKeyStore.dataStoreKey,
+                            data = lockMethod.toByteArray(),
+                        ).encodeBase64()
                     }
 
-                    migratedKeys += key
+                    else -> return@forEach
                 }
             }
-
-            // Migration to DataStore succeeded - remove the migrated keys one by one.
-            sharedPreferences.edit().apply { migratedKeys.forEach { remove(it) } }.apply()
-        } catch (e: Exception) {
-            Timber.e(e, "Failed to migrate plain preferences")
-            throw e
         }
     }
 
@@ -89,53 +84,39 @@ class MigrateDataStore(
 
         if (File(context.dataDir, "shared_prefs/$fileName.xml").exists().not()) return
 
-        try {
-            val masterKey = MasterKey.Builder(context)
-                .setUserAuthenticationRequired(false)
-                .setRequestStrongBoxBacked(false)
-                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-                .build()
+        val masterKey = MasterKey.Builder(context)
+            .setUserAuthenticationRequired(false)
+            .setRequestStrongBoxBacked(false)
+            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+            .build()
 
-            val sharedPreferences = EncryptedSharedPreferences.create(
-                /* context = */
-                context,
-                /* fileName = */
-                fileName,
-                /* masterKey = */
-                masterKey,
-                /* prefKeyEncryptionScheme = */
-                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                /* prefValueEncryptionScheme = */
-                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM,
-            )
+        val sharedPreferences = EncryptedSharedPreferences.create(
+            context,
+            fileName,
+            masterKey,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM,
+        )
 
-            val encryptedKeys = listOf(
-                "recentlyDeleted",
-                "pinOptions",
-                "invalidPinStatus",
-                "databaseMasterKey",
-                "remoteBackupKey",
-            )
+        val encryptedKeys = listOf(
+            "recentlyDeleted",
+            "pinOptions",
+            "invalidPinStatus",
+            "remoteBackupKey",
+            "databaseMasterKey",
+        )
 
-            val values = encryptedKeys
-                .associateWith { sharedPreferences.getString(it, null) }
-                .filterValues { it != null }
+        encryptedKeys.forEach { key -> migrateEncryptedKey(sharedPreferences, key) }
+    }
 
-            dataStoreOwner.dataStore.edit { preferences ->
-                values.forEach { (key, value) ->
-                    val encryptedValue = encrypt(
-                        key = androidKeyStore.dataStoreKey,
-                        data = value.toString().toByteArray(),
-                    ).encodeBase64()
+    private suspend fun migrateEncryptedKey(source: SharedPreferences, key: String) {
+        val value = source.getString(key, null) ?: return
 
-                    preferences[stringPreferencesKey(key)] = encryptedValue
-                }
-            }
-
-            context.deleteSharedPreferences(fileName)
-        } catch (e: Exception) {
-            Timber.e(e, "Failed to migrate encrypted preferences")
-            throw e
+        dataStoreOwner.dataStore.edit { preferences ->
+            preferences[stringPreferencesKey(key)] = encrypt(
+                key = androidKeyStore.dataStoreKey,
+                data = value.toByteArray(),
+            ).encodeBase64()
         }
     }
 
@@ -148,27 +129,20 @@ class MigrateDataStore(
 
         if (File(context.dataDir, "shared_prefs/$fileName.xml").exists().not()) return
 
-        try {
-            val sharedPreferences = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
-            val storedValue = sharedPreferences.getString(key, null)
+        val sharedPreferences = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
+        val storedValue = sharedPreferences.getString(key, null)
 
-            if (storedValue.isNullOrBlank()) return
+        if (storedValue.isNullOrBlank()) return
 
-            val value = decryptSecureStorageValue(storedValue)
+        val value = decryptSecureStorageValue(storedValue)
 
-            dataStoreOwner.dataStore.edit { preferences ->
-                val encryptedValue = encrypt(
-                    key = androidKeyStore.dataStoreKey,
-                    data = value.toByteArray(),
-                ).encodeBase64()
+        dataStoreOwner.dataStore.edit { preferences ->
+            val encryptedValue = encrypt(
+                key = androidKeyStore.dataStoreKey,
+                data = value.toByteArray(),
+            ).encodeBase64()
 
-                preferences[stringPreferencesKey(key)] = encryptedValue
-            }
-
-            context.deleteSharedPreferences(fileName)
-        } catch (e: Exception) {
-            Timber.e(e, "Failed to migrate secure storage")
-            throw e
+            preferences[stringPreferencesKey(key)] = encryptedValue
         }
     }
 
@@ -184,5 +158,17 @@ class MigrateDataStore(
             .use { it.readBytes() }
 
         return String(decryptedBytes, Charsets.UTF_8)
+    }
+
+    private suspend fun isMigrated(): Boolean {
+        return dataStoreOwner.dataStore.data.map { it[MigratedFlag] ?: false }.first()
+    }
+
+    private suspend fun setMigrated() {
+        dataStoreOwner.dataStore.edit { it[MigratedFlag] = true }
+    }
+
+    companion object {
+        private val MigratedFlag = booleanPreferencesKey("migratedToDataStore")
     }
 }
