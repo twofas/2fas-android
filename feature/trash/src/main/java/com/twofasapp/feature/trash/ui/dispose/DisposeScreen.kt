@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.TextButton
@@ -34,11 +35,14 @@ import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.feature.trash.R
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun DisposeScreen(
-    viewModel: DisposeViewModel = koinViewModel(),
-    navigateBack: () -> Unit,
+    serviceId: Long,
+    viewModel: DisposeViewModel = koinViewModel { parametersOf(serviceId) },
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -46,9 +50,9 @@ internal fun DisposeScreen(
         uiState = uiState,
         onDeleteClick = {
             viewModel.delete()
-            navigateBack()
+            navigator.back()
         },
-        onFinish = navigateBack,
+        onFinish = { navigator.back() },
     )
 }
 

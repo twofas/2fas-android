@@ -17,33 +17,40 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.foundation.button.TextButton
 import com.twofasapp.core.design.foundation.dialog.InfoDialog
 import com.twofasapp.core.design.foundation.dialog.InputDialog
 import com.twofasapp.core.design.foundation.dialog.InputValidation
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun BrowserExtScanScreen(
     viewModel: BrowserExtScanViewModel = koinViewModel(),
-    openProgress: (String) -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    Content(
         uiState = uiState,
         onScanned = { viewModel.scanned(it) },
         onEventConsumed = { viewModel.consumeEvent(it) },
-        onSuccess = { openProgress(it) },
+        onSuccess = { extensionId ->
+            navigator.popTo(Screen.BrowserExt)
+            navigator.open(Screen.BrowserExtPairing(extensionId = extensionId))
+        },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: BrowserExtScanUiState,
     onScanned: (String) -> Unit = {},
     onEventConsumed: (BrowserExtScanUiEvent) -> Unit = {},
@@ -140,7 +147,9 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BrowserExtScanUiState(),
-    )
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtScanUiState(),
+        )
+    }
 }

@@ -40,6 +40,8 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.R
@@ -50,6 +52,7 @@ import com.twofasapp.core.design.foundation.dialog.InputDialog
 import com.twofasapp.core.design.foundation.dialog.InputValidation
 import com.twofasapp.core.design.foundation.icon.Icon
 import com.twofasapp.core.design.foundation.permission.RequestPermission
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.currentActivity
@@ -59,20 +62,20 @@ import com.twofasapp.data.browserext.domain.PairedBrowser
 import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 import java.time.Instant
 
 @Composable
 internal fun BrowserExtScreen(
     viewModel: BrowserExtViewModel = koinViewModel(),
-    openScan: () -> Unit = {},
-    openDetails: (String) -> Unit = {},
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    Content(
         uiState = uiState,
-        openScan = openScan,
-        openDetails = openDetails,
+        openScan = { navigator.open(Screen.BrowserExtScan) },
+        openDetails = { navigator.open(Screen.BrowserExtDetails(extensionId = it)) },
         onUpdateDeviceName = { viewModel.updateDeviceName(it) },
         onEventConsumed = { viewModel.consumeEvent(it) },
     )
@@ -80,7 +83,7 @@ internal fun BrowserExtScreen(
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: BrowserExtUiState,
     openScan: () -> Unit = {},
     openDetails: (String) -> Unit = {},
@@ -260,32 +263,36 @@ private fun Empty(
 @Preview
 @Composable
 private fun PreviewEmpty() {
-    ScreenContent(
-        uiState = BrowserExtUiState(loading = false),
-    )
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtUiState(loading = false),
+        )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewContent() {
-    ScreenContent(
-        uiState = BrowserExtUiState(
-            loading = false,
-            mobileDevice = MobileDevice(
-                id = "",
-                name = "Mobile Device",
-                fcmToken = "",
-                platform = "",
-                publicKey = "",
-            ),
-            pairedBrowsers = listOf(
-                PairedBrowser(
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtUiState(
+                loading = false,
+                mobileDevice = MobileDevice(
                     id = "",
-                    name = "Paired Browser",
-                    pairedAt = Instant.now(),
-                    extensionPublicKey = "",
+                    name = "Mobile Device",
+                    fcmToken = "",
+                    platform = "",
+                    publicKey = "",
+                ),
+                pairedBrowsers = listOf(
+                    PairedBrowser(
+                        id = "",
+                        name = "Paired Browser",
+                        pairedAt = Instant.now(),
+                        extensionPublicKey = "",
+                    ),
                 ),
             ),
-        ),
-    )
+        )
+    }
 }

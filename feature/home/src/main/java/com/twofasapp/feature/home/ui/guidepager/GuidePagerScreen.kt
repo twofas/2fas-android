@@ -36,6 +36,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
@@ -53,13 +55,18 @@ import org.koin.compose.koinInject
 
 @Composable
 internal fun GuidePagerScreen(
-    json: Json = koinInject(),
-    servicesRepository: ServicesRepository = koinInject(),
     guide: Guide,
     guideVariantIndex: Int,
-    openAddScan: () -> Unit,
-    openAddManually: () -> Unit,
+    json: Json = koinInject(),
+    servicesRepository: ServicesRepository = koinInject(),
+    navigator: Navigator = koinInject(),
 ) {
+    // The "Add service" flow is a bottom-sheet Modal that is not yet migrated to
+    // Navigation3. For now these CTAs just return to the services list.
+    // TODO: open the AddService modal once modals are migrated to Navigation3.
+    val openAddScan: () -> Unit = { navigator.popTo(Screen.Services) }
+    val openAddManually: () -> Unit = { navigator.popTo(Screen.Services) }
+
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var guideJson by remember { mutableStateOf<GuideJson?>(null) }

@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.R
 import com.twofasapp.core.design.feature.settings.SettingsDivider
@@ -30,11 +31,12 @@ import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun BackupSettingsScreen(
     viewModel: BackupSettingsViewModel = koinViewModel(),
-    goBack: () -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -43,7 +45,7 @@ internal fun BackupSettingsScreen(
         onSetPassword = { viewModel.setPassword(it) },
         onRemovePassword = { viewModel.removePassword(it) },
         onDeleteBackup = { viewModel.deleteBackup(it) },
-        onFinish = { goBack() },
+        onFinish = { navigator.back() },
         onEventConsumed = { viewModel.consumeEvent(it) },
     )
 }

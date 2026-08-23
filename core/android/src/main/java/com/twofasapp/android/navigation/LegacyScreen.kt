@@ -10,7 +10,6 @@ sealed class LegacyScreen(val route: String) {
 
     data object Startup : LegacyScreen("startup")
     data object Services : LegacyScreen("services")
-    data object Settings : LegacyScreen("settings")
     data object EditService : LegacyScreen("services/{${NavArg.ServiceId.name}}")
 
     data object Notifications : LegacyScreen("notifications")
@@ -32,11 +31,6 @@ sealed class LegacyScreen(val route: String) {
     data object BackupSettings : LegacyScreen("backup/settings")
     data object BackupExport : LegacyScreen("backup/export")
     data object BackupImport : LegacyScreen("backup/import?{${NavArg.ImportFileUri.name}}")
-
-    data object Security : LegacyScreen("security")
-    data object SetupPin : LegacyScreen("pin/setup")
-    data object DisablePin : LegacyScreen("pin/disable")
-    data object ChangePin : LegacyScreen("pin/change")
 
     data object Guides : LegacyScreen("guides")
     data object GuideInit : LegacyScreen("guides/init?guide={${NavArg.Guide.name}}")

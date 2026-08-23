@@ -13,35 +13,41 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.feature.settings.SettingsLink
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun BrowserExtDetailsScreen(
-    viewModel: BrowserExtDetailsViewModel = koinViewModel(),
-    openMain: () -> Unit,
+    extensionId: String,
+    viewModel: BrowserExtDetailsViewModel = koinViewModel { parametersOf(extensionId) },
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(uiState.finish) {
         if (uiState.finish) {
-            openMain()
+            navigator.popTo(Screen.BrowserExt)
         }
     }
 
-    ScreenContent(
+    Content(
         uiState = uiState,
         onForget = { viewModel.forgetBrowser() },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: BrowserExtDetailsUiState,
     onForget: () -> Unit = {},
 ) {
@@ -90,7 +96,9 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BrowserExtDetailsUiState(browserName = "Test"),
-    )
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtDetailsUiState(browserName = "Test"),
+        )
+    }
 }

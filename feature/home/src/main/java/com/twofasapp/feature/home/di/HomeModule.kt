@@ -24,7 +24,14 @@ class HomeModule : KoinModule {
         viewModelOf(::AddServiceScanViewModel)
         viewModelOf(::AddServiceSuccessViewModel)
         viewModelOf(::FocusServiceViewModel)
-        viewModelOf(::EditServiceViewModel)
+        viewModel { (serviceId: Long) ->
+            EditServiceViewModel(
+                serviceId = serviceId,
+                groupsRepository = get(),
+                servicesRepository = get(),
+                securityRepository = get(),
+            )
+        }
         viewModelOf(::ChangeBrandViewModel)
     }
 }

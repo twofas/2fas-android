@@ -23,10 +23,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.LegacyScreen
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.EmptyScreen
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.openSafely
@@ -34,18 +39,24 @@ import com.twofasapp.data.notifications.domain.Notification
 import com.twofasapp.feature.home.R
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun NotificationsScreen(
     viewModel: NotificationsViewModel = koinViewModel(),
-    openInternalRoute: (String) -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val notifications by viewModel.notificationsList.collectAsStateWithLifecycle()
 
     ScreenContent(
         notifications = notifications,
         onNotificationClick = { viewModel.onNotificationClick(it) },
-        onInternalRouteClick = openInternalRoute,
+        onInternalRouteClick = { route ->
+            when (route) {
+                LegacyScreen.Backup.route -> navigator.open(Screen.Backup)
+                else -> Unit
+            }
+        },
     )
 }
 
@@ -153,5 +164,17 @@ private fun Notification(
         if (notification.link.isNotBlank()) {
             Icon(painter = MdtIcons.ExternalLink, contentDescription = null, tint = MdtTheme.color.iconTint)
         }
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        ScreenContent(
+            notifications = emptyList(),
+            onNotificationClick = {},
+            onInternalRouteClick = {},
+        )
     }
 }

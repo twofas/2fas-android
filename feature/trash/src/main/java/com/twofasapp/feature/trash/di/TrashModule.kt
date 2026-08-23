@@ -3,12 +3,13 @@ package com.twofasapp.feature.trash.di
 import com.twofasapp.common.di.KoinModule
 import com.twofasapp.feature.trash.ui.dispose.DisposeViewModel
 import com.twofasapp.feature.trash.ui.trash.TrashViewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class TrashModule : KoinModule {
     override fun provide() = module {
         viewModelOf(::TrashViewModel)
-        viewModelOf(::DisposeViewModel)
+        viewModel { (serviceId: Long) -> DisposeViewModel(serviceId = serviceId, servicesRepository = get()) }
     }
 }

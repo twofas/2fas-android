@@ -35,6 +35,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.text.ResponsiveText
@@ -42,13 +44,14 @@ import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.assetAsBitmap
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.locale.MdtLocale
+import org.koin.compose.koinInject
 
 @Composable
 internal fun GuidesScreen(
-    openGuide: (Guide) -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     GuidesScreenContent(
-        onGuideClick = openGuide,
+        onGuideClick = { navigator.open(Screen.GuideInit(guide = it.name)) },
     )
 }
 

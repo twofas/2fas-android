@@ -27,6 +27,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.other.Divider
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
@@ -44,10 +46,14 @@ import org.koin.compose.koinInject
 
 @Composable
 internal fun GuideInitScreen(
-    json: Json = koinInject(),
     guide: Guide,
-    openGuide: (Guide, Int) -> Unit,
+    json: Json = koinInject(),
+    navigator: Navigator = koinInject(),
 ) {
+    val openGuide: (Guide, Int) -> Unit = { targetGuide, guideVariantIndex ->
+        navigator.open(Screen.GuidePager(guide = targetGuide.name, guideVariantIndex = guideVariantIndex))
+    }
+
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var guideJson by remember { mutableStateOf<GuideJson?>(null) }

@@ -1,11 +1,7 @@
 package com.twofasapp.feature.externalimport.ui.result
 
 import android.net.Uri
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.getOrNull
-import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.legacyDecodeBase64
 import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
@@ -23,7 +19,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class ExternalImportResultViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val importType: ImportType,
+    private val importFileUri: String?,
+    private val importFileContent: String?,
     private val servicesRepository: ServicesRepository,
     private val readQrFromImage: ReadQrFromImage,
     private val googleAuthenticatorImporter: GoogleAuthenticatorImporter,
@@ -33,10 +31,6 @@ internal class ExternalImportResultViewModel(
     private val authenticatorProImporter: AuthenticatorProImporter,
     private val andOtpImporter: AndOtpImporter,
 ) : ViewModel() {
-
-    private val importType: ImportType = enumValueOf(savedStateHandle.getOrThrow(NavArg.ImportType.name))
-    private val importFileUri = savedStateHandle.getOrNull<String>(NavArg.ImportFileUri.name)
-    private val importFileContent = savedStateHandle.getOrNull<String>(NavArg.ImportFileContent.name)
 
     val uiState = MutableStateFlow(ExternalImportResultUiState())
 

@@ -8,16 +8,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.R
 import com.twofasapp.core.design.feature.settings.SettingsDescription
 import com.twofasapp.core.design.feature.settings.SettingsHeader
 import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.locale.MdtLocale
+import org.koin.compose.koinInject
 
 @Composable
 internal fun ExternalImportSelectorScreen(
+    navigator: Navigator = koinInject(),
+) {
+    Content(
+        onImportTypeSelected = { navigator.open(Screen.ExternalImport(importType = it.name)) },
+    )
+}
+
+@Composable
+private fun Content(
     onImportTypeSelected: (ImportType) -> Unit = {},
 ) {
     Scaffold(
@@ -90,5 +103,7 @@ internal fun ExternalImportSelectorScreen(
 @Preview
 @Composable
 private fun Preview() {
-    ExternalImportSelectorScreen()
+    PreviewTheme {
+        Content()
+    }
 }

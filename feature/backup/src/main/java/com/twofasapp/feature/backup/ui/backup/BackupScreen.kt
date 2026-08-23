@@ -29,6 +29,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.settings.SettingsDivider
@@ -46,14 +48,12 @@ import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.locale.R
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun BackupScreen(
     viewModel: BackupViewModel = koinViewModel(),
-    openSettings: () -> Unit,
-    openExport: () -> Unit,
-    openImport: () -> Unit,
-    goBack: () -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -62,12 +62,12 @@ internal fun BackupScreen(
         onTurnOnSync = { viewModel.turnOnSync() },
         onTurnOffSync = { viewModel.turnOffSync() },
         onEnterPassword = { viewModel.enterPassword(it) },
-        onSettingsClick = openSettings,
-        onExportClick = openExport,
-        onImportClick = openImport,
+        onSettingsClick = { navigator.open(Screen.BackupSettings) },
+        onExportClick = { navigator.open(Screen.BackupExport) },
+        onImportClick = { navigator.open(Screen.BackupImport()) },
         onEventConsumed = { viewModel.consumeEvent(it) },
         onSignInResult = { viewModel.handleSignInResult(it) },
-        goBack = goBack,
+        goBack = { navigator.back() },
     )
 }
 

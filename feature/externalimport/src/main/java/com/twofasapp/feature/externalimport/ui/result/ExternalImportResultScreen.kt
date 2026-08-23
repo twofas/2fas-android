@@ -19,8 +19,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.dialog.StackTraceDetails
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
@@ -29,12 +32,16 @@ import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.image
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun ExternalImportResultScreen(
-    viewModel: ExternalImportResultViewModel = koinViewModel(),
-    openSettings: () -> Unit,
-    openImport: () -> Unit,
+    importType: ImportType,
+    importFileUri: String?,
+    importFileContent: String?,
+    viewModel: ExternalImportResultViewModel = koinViewModel { parametersOf(importType, importFileUri, importFileContent) },
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
@@ -43,19 +50,19 @@ internal fun ExternalImportResultScreen(
     LaunchedEffect(uiState.finishSuccess) {
         if (uiState.finishSuccess) {
             context.toastShort(strings.externalImportSuccessToast)
-            openSettings()
+            navigator.popTo(Screen.ExternalImportSelector, inclusive = true)
         }
     }
 
-    ScreenContent(
+    Content(
         uiState = uiState,
         onImport = { viewModel.importServices() },
-        onTryAgain = openImport,
+        onTryAgain = { navigator.popTo(Screen.ExternalImport(importType = importType.name)) },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: ExternalImportResultUiState,
     onImport: () -> Unit = {},
     onTryAgain: () -> Unit = {},
@@ -197,21 +204,25 @@ private fun Result(
 @Preview
 @Composable
 private fun PreviewSuccess() {
-    ScreenContent(
-        uiState = ExternalImportResultUiState(
-            loading = false,
-            readResult = ReadResult.Success(services = emptyList(), countServicesToImport = 5, countTotalServices = 10),
-        ),
-    )
+    PreviewTheme {
+        Content(
+            uiState = ExternalImportResultUiState(
+                loading = false,
+                readResult = ReadResult.Success(services = emptyList(), countServicesToImport = 5, countTotalServices = 10),
+            ),
+        )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewFailure() {
-    ScreenContent(
-        uiState = ExternalImportResultUiState(
-            loading = false,
-            readResult = ReadResult.Failure(""),
-        ),
-    )
+    PreviewTheme {
+        Content(
+            uiState = ExternalImportResultUiState(
+                loading = false,
+                readResult = ReadResult.Failure(""),
+            ),
+        )
+    }
 }

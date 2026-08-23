@@ -140,7 +140,7 @@ private fun Content(
                     title = strings.settingsExternalImport,
                     subtitle = strings.settingsImportTokensDesc,
                     icon = MdtIcons.Download,
-                    onClick = { navigator.open(Screen.BackupSettings) },
+                    onClick = { navigator.open(Screen.ExternalImportSelector) },
                 )
             }
 
@@ -156,7 +156,7 @@ private fun Content(
                     title = strings.settingsConnectedExtensions,
                     subtitle = strings.settingsConnectedExtensionsDesc,
                     icon = MdtIcons.Extension,
-                    onClick = { navigator.open(Screen.Developer) },
+                    onClick = { navigator.open(Screen.BrowserExt) },
                 )
             }
 

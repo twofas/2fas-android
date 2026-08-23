@@ -8,52 +8,30 @@ import com.twofasapp.feature.browserext.ui.permission.BrowserExtPermissionScreen
 import com.twofasapp.feature.browserext.ui.scan.BrowserExtScanScreen
 
 @Composable
-fun BrowserExtRoute(
-    openScan: () -> Unit = {},
-    openDetails: (String) -> Unit = {},
-) {
-    BrowserExtScreen(
-        openScan = openScan,
-        openDetails = openDetails,
-    )
+fun BrowserExtRoute() {
+    BrowserExtScreen()
 }
 
 @Composable
-fun BrowserExtPermissionRoute(
-    openMain: () -> Unit,
-) {
-    BrowserExtPermissionScreen(
-        openMain = openMain,
-    )
+fun BrowserExtPermissionRoute() {
+    BrowserExtPermissionScreen()
 }
 
 @Composable
-fun BrowserExtScanRoute(
-    openProgress: (String) -> Unit,
-) {
-    BrowserExtScanScreen(
-        openProgress = openProgress,
-    )
+fun BrowserExtScanRoute() {
+    BrowserExtScanScreen()
 }
 
 @Composable
 fun BrowserExtPairingRoute(
-    openMain: () -> Unit,
-    openPermission: () -> Unit,
-    openScan: () -> Unit,
+    extensionId: String,
 ) {
-    BrowserExtPairingScreen(
-        openMain = openMain,
-        openPermission = openPermission,
-        openScan = openScan,
-    )
+    BrowserExtPairingScreen(extensionId = extensionId)
 }
 
 @Composable
 fun BrowserExtDetailsRoute(
-    openMain: () -> Unit,
+    extensionId: String,
 ) {
-    BrowserExtDetailsScreen(
-        openMain = openMain,
-    )
+    BrowserExtDetailsScreen(extensionId = extensionId)
 }

@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
@@ -42,6 +43,7 @@ import com.twofasapp.core.design.ktx.strings
 import com.twofasapp.core.design.ktx.toastShort
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 import java.io.File
 import java.io.FileOutputStream
 import java.time.LocalDateTime
@@ -50,7 +52,7 @@ import java.time.format.DateTimeFormatter
 @Composable
 internal fun BackupExportScreen(
     viewModel: BackupExportViewModel = koinViewModel(),
-    goBack: () -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("*/*")) { uri ->
@@ -64,7 +66,7 @@ internal fun BackupExportScreen(
         onShareClick = { viewModel.shareBackup() },
         onDownloadClick = { launcher.launch(generateFilename()) },
         onEventConsumed = { viewModel.consumeEvent(it) },
-        onGoBack = goBack,
+        onGoBack = { navigator.back() },
     )
 }
 

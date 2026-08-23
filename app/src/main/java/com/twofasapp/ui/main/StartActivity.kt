@@ -39,9 +39,9 @@ class StartActivity : AppCompatActivity(), AuthAware {
                     ErrorScreen(
                         title = "Couldn't start 2FAS",
                         message = "Something went wrong while upgrading your local data, so the app " +
-                                "can't open safely. Your 2FA tokens have not been deleted. Please close " +
-                                "the app and open it again to try once more. If it keeps happening, " +
-                                "contact support with the details below and we'll help.",
+                            "can't open safely. Your 2FA tokens have not been deleted. Please close " +
+                            "the app and open it again to try once more. If it keeps happening, " +
+                            "contact support with the details below and we'll help.",
                         details = error.stackTraceToString(),
                         onClose = { closeApp() },
                     )

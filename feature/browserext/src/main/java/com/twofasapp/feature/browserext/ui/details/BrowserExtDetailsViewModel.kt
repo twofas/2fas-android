@@ -1,9 +1,6 @@
 package com.twofasapp.feature.browserext.ui.details
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
@@ -11,11 +8,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class BrowserExtDetailsViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val extensionId: String,
     private val browserExtRepository: BrowserExtRepository,
 ) : ViewModel() {
 
-    private val extensionId: String = savedStateHandle.getOrThrow(NavArg.ExtensionId.name)
     val uiState = MutableStateFlow(BrowserExtDetailsUiState())
 
     init {

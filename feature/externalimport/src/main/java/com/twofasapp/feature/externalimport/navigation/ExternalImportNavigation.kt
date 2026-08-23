@@ -8,41 +8,33 @@ import com.twofasapp.feature.externalimport.ui.scan.ExternalImportScanScreen
 import com.twofasapp.feature.externalimport.ui.selector.ExternalImportSelectorScreen
 
 @Composable
-fun ExternalImportSelectorRoute(
-    openImport: (ImportType) -> Unit,
-) {
-    ExternalImportSelectorScreen(
-        onImportTypeSelected = openImport,
-    )
+fun ExternalImportSelectorRoute() {
+    ExternalImportSelectorScreen()
 }
 
 @Composable
 fun ExternalImportRoute(
-    openScanner: () -> Unit,
-    openResult: (String) -> Unit,
+    importType: ImportType,
 ) {
-    ExternalImportScreen(
-        openScanner = openScanner,
-        openResult = openResult,
-    )
+    ExternalImportScreen(importType = importType)
 }
 
 @Composable
 fun ExternalImportScanRoute(
-    openResult: (String) -> Unit,
+    importType: ImportType,
 ) {
-    ExternalImportScanScreen(
-        openResult = openResult,
-    )
+    ExternalImportScanScreen(importType = importType)
 }
 
 @Composable
 fun ExternalImportResultRoute(
-    openSettings: () -> Unit,
-    openImport: () -> Unit,
+    importType: ImportType,
+    importFileUri: String?,
+    importFileContent: String?,
 ) {
     ExternalImportResultScreen(
-        openSettings = openSettings,
-        openImport = openImport,
+        importType = importType,
+        importFileUri = importFileUri,
+        importFileContent = importFileContent,
     )
 }

@@ -11,7 +11,7 @@ fun TrashRoute() {
 
 @Composable
 fun DisposeRoute(
-    navigateBack: () -> Unit,
+    serviceId: Long,
 ) {
-    DisposeScreen(navigateBack = navigateBack)
+    DisposeScreen(serviceId = serviceId)
 }

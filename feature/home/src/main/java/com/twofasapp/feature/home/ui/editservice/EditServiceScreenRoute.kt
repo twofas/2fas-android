@@ -4,12 +4,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.twofasapp.android.navigation.NavAnimation
+import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.feature.home.ui.editservice.advancedsettings.AdvancedSettingsScreen
 import com.twofasapp.feature.home.ui.editservice.changebrand.ChangeBrandScreen
 import com.twofasapp.feature.home.ui.editservice.changelabel.ChangeLabelScreen
@@ -17,6 +17,8 @@ import com.twofasapp.feature.home.ui.editservice.deleteservice.DeleteServiceScre
 import com.twofasapp.feature.home.ui.editservice.domainassignment.DomainAssignmentScreen
 import com.twofasapp.feature.home.ui.editservice.requesticon.RequestIconScreen
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 private sealed class EditServiceScreen(val route: String) {
     data object Main : EditServiceScreen("main")
@@ -30,10 +32,10 @@ private sealed class EditServiceScreen(val route: String) {
 
 @Composable
 internal fun EditServiceScreenRoute(
-    navController: NavController,
-    openSecurity: () -> Unit,
+    serviceId: Long,
     openAuth: (successCallback: () -> Unit) -> Unit,
-    serviceViewModel: EditServiceViewModel = koinViewModel(),
+    navigator: Navigator = koinInject(),
+    serviceViewModel: EditServiceViewModel = koinViewModel { parametersOf(serviceId) },
 ) {
     val navHostController = rememberNavController()
 
@@ -49,13 +51,13 @@ internal fun EditServiceScreenRoute(
             navigation(route = "editservice", startDestination = EditServiceScreen.Main.route) {
                 composable(EditServiceScreen.Main.route) {
                     EditServiceScreen(
-                        onBackClick = { navController.popBackStack() },
+                        onBackClick = { navigator.back() },
                         onAdvanceClick = { navHostController.navigate(EditServiceScreen.AdvancedSettings.route) },
                         onChangeBrandClick = { navHostController.navigate(EditServiceScreen.ChangeBrand.route) },
                         onChangeLabelClick = { navHostController.navigate(EditServiceScreen.ChangeLabel.route) },
                         onDomainAssignmentClick = { navHostController.navigate(EditServiceScreen.DomainAssignment.route) },
                         onDeleteClick = { navHostController.navigate(EditServiceScreen.Delete.route) },
-                        onSecurityClick = { openSecurity() },
+                        onSecurityClick = { },
                         onAuthenticateSecretClick = {
                             openAuth {
                                 serviceViewModel.secretAuthenticated()

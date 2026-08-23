@@ -20,32 +20,42 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.notificationManager
 import com.twofasapp.feature.browserext.R
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun BrowserExtPairingScreen(
-    viewModel: BrowserExtPairingViewModel = koinViewModel(),
-    openMain: () -> Unit,
-    openPermission: () -> Unit,
-    openScan: () -> Unit,
+    extensionId: String,
+    viewModel: BrowserExtPairingViewModel = koinViewModel { parametersOf(extensionId) },
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    Content(
         uiState = uiState,
-        onContinue = openMain,
-        onContinueAskForPermission = openPermission,
-        onScanAgain = openScan,
+        onContinue = { navigator.popTo(Screen.BrowserExt) },
+        onContinueAskForPermission = {
+            navigator.popTo(Screen.BrowserExt)
+            navigator.open(Screen.BrowserExtPermission)
+        },
+        onScanAgain = {
+            navigator.popTo(Screen.BrowserExt)
+            navigator.open(Screen.BrowserExtScan)
+        },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: BrowserExtPairingUiState,
     onContinue: () -> Unit = {},
     onContinueAskForPermission: () -> Unit = {},
@@ -166,42 +176,50 @@ private fun Result(
 @Preview
 @Composable
 private fun PreviewParing() {
-    ScreenContent(
-        uiState = BrowserExtPairingUiState(
-            pairing = true,
-        ),
-    )
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtPairingUiState(
+                pairing = true,
+            ),
+        )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewSuccess() {
-    ScreenContent(
-        uiState = BrowserExtPairingUiState(
-            pairing = false,
-            pairingResult = PairingResult.Success,
-        ),
-    )
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtPairingUiState(
+                pairing = false,
+                pairingResult = PairingResult.Success,
+            ),
+        )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewFailure() {
-    ScreenContent(
-        uiState = BrowserExtPairingUiState(
-            pairing = false,
-            pairingResult = PairingResult.Failure,
-        ),
-    )
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtPairingUiState(
+                pairing = false,
+                pairingResult = PairingResult.Failure,
+            ),
+        )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewAlreadyPaired() {
-    ScreenContent(
-        uiState = BrowserExtPairingUiState(
-            pairing = false,
-            pairingResult = PairingResult.AlreadyPaired,
-        ),
-    )
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtPairingUiState(
+                pairing = false,
+                pairingResult = PairingResult.AlreadyPaired,
+            ),
+        )
+    }
 }

@@ -1,10 +1,7 @@
 package com.twofasapp.feature.backup.ui.import
 
 import android.net.Uri
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.getOrNull
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.legacyDecodeBase64
 import com.twofasapp.common.ktx.runSafely
@@ -18,12 +15,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class BackupImportViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val importFileUri: String?,
     private val backupRepository: BackupRepository,
     private val sessionRepository: SessionRepository,
 ) : ViewModel() {
 
-    private val importFileUri = savedStateHandle.getOrNull<String>(NavArg.ImportFileUri.name)
     val uiState: MutableStateFlow<BackupImportUiState> = MutableStateFlow(BackupImportUiState())
 
     init {

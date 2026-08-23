@@ -2,10 +2,7 @@ package com.twofasapp.feature.browserext.ui.pairing
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.legacyEncodeBase64ToString
@@ -20,12 +17,11 @@ import java.security.KeyPairGenerator
 import java.security.KeyStore
 
 internal class BrowserExtPairingViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val extensionId: String,
     private val browserExtRepository: BrowserExtRepository,
     private val appBuild: AppBuild,
 ) : ViewModel() {
 
-    private val extensionId: String = savedStateHandle.getOrThrow(NavArg.ExtensionId.name)
     val uiState = MutableStateFlow(BrowserExtPairingUiState())
 
     companion object {

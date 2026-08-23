@@ -8,16 +8,17 @@ import com.twofasapp.feature.browserext.ui.permission.BrowserExtPermissionViewMo
 import com.twofasapp.feature.browserext.ui.request.BrowserExtRequestViewModel
 import com.twofasapp.feature.browserext.ui.scan.BrowserExtScanViewModel
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class BrowserExtModule : KoinModule {
 
     override fun provide(): Module = module {
-        viewModelOf(::BrowserExtDetailsViewModel)
+        viewModel { params -> BrowserExtDetailsViewModel(extensionId = params.get(), browserExtRepository = get()) }
         viewModelOf(::BrowserExtViewModel)
         viewModelOf(::BrowserExtPermissionViewModel)
-        viewModelOf(::BrowserExtPairingViewModel)
+        viewModel { params -> BrowserExtPairingViewModel(extensionId = params.get(), browserExtRepository = get(), appBuild = get()) }
         viewModelOf(::BrowserExtScanViewModel)
         viewModelOf(::BrowserExtRequestViewModel)
     }

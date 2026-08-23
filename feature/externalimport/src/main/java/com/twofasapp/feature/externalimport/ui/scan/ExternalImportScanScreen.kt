@@ -10,28 +10,41 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.common.ktx.legacyEncodeBase64ToString
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun ExternalImportScanScreen(
+    importType: ImportType,
     viewModel: ExternalImportScanViewModel = koinViewModel(),
-    openResult: (String) -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    Content(
         uiState = uiState,
-        onScanned = { openResult(it.legacyEncodeBase64ToString()) },
+        onScanned = { scanned ->
+            navigator.open(
+                Screen.ExternalImportResult(
+                    importType = importType.name,
+                    importFileContent = scanned.legacyEncodeBase64ToString(),
+                ),
+            )
+        },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: ExternalImportScanUiState,
     onScanned: (String) -> Unit = {},
 ) {
@@ -65,7 +78,9 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = ExternalImportScanUiState(),
-    )
+    PreviewTheme {
+        Content(
+            uiState = ExternalImportScanUiState(),
+        )
+    }
 }

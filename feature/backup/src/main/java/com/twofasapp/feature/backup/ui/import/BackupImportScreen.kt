@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.R
 import com.twofasapp.core.design.foundation.button.Button
@@ -38,16 +39,19 @@ import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.strings
 import com.twofasapp.core.design.ktx.toastShort
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun BackupImportScreen(
-    viewModel: BackupImportViewModel = koinViewModel(),
-    goBack: () -> Unit,
+    importFileUri: String? = null,
+    viewModel: BackupImportViewModel = koinViewModel { parametersOf(importFileUri) },
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         // Or fallback to ACTION_GET_CONTENT
-        uri?.let { viewModel.fileOpened(it) } ?: goBack()
+        uri?.let { viewModel.fileOpened(it) } ?: navigator.back()
     }
 
     ScreenContent(
@@ -56,7 +60,7 @@ internal fun BackupImportScreen(
         onPasswordConfirm = { viewModel.import(it) },
         onImportClick = { viewModel.import() },
         onEventConsumed = { viewModel.consumeEvent(it) },
-        onGoBack = goBack,
+        onGoBack = { navigator.back() },
     )
 }
 

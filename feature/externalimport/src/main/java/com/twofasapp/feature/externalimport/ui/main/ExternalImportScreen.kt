@@ -17,32 +17,39 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import com.twofasapp.core.design.foundation.permission.RequestPermission
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.image
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun ExternalImportScreen(
-    viewModel: ExternalImportViewModel = koinViewModel(),
-    openScanner: () -> Unit,
-    openResult: (String) -> Unit,
+    importType: ImportType,
+    viewModel: ExternalImportViewModel = koinViewModel { parametersOf(importType) },
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    Content(
         uiState = uiState,
-        onScanClick = openScanner,
-        onFilePicked = openResult,
+        onScanClick = { navigator.open(Screen.ExternalImportScan(importType = importType.name)) },
+        onFilePicked = { encodedFileUri ->
+            navigator.open(Screen.ExternalImportResult(importType = importType.name, importFileUri = encodedFileUri))
+        },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: ExternalImportUiState,
     onScanClick: () -> Unit = {},
     onFilePicked: (String) -> Unit = {},
@@ -142,11 +149,15 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun PreviewGa() {
-    ScreenContent(uiState = ExternalImportUiState())
+    PreviewTheme {
+        Content(uiState = ExternalImportUiState())
+    }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(uiState = ExternalImportUiState(importType = ImportType.AuthenticatorPro))
+    PreviewTheme {
+        Content(uiState = ExternalImportUiState(importType = ImportType.AuthenticatorPro))
+    }
 }

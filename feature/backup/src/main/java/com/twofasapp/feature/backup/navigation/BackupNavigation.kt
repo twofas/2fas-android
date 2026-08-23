@@ -7,37 +7,23 @@ import com.twofasapp.feature.backup.ui.export.BackupExportScreen
 import com.twofasapp.feature.backup.ui.import.BackupImportScreen
 
 @Composable
-fun BackupRoute(
-    openSettings: () -> Unit,
-    openExport: () -> Unit,
-    openImport: () -> Unit,
-    goBack: () -> Unit,
-) {
-    BackupScreen(
-        openSettings = openSettings,
-        openExport = openExport,
-        openImport = openImport,
-        goBack = goBack,
-    )
+fun BackupRoute() {
+    BackupScreen()
 }
 
 @Composable
-fun BackupSettingsRoute(
-    goBack: () -> Unit,
-) {
-    BackupSettingsScreen(goBack = goBack)
+fun BackupSettingsRoute() {
+    BackupSettingsScreen()
 }
 
 @Composable
-fun BackupExportRoute(
-    goBack: () -> Unit,
-) {
-    BackupExportScreen(goBack = goBack)
+fun BackupExportRoute() {
+    BackupExportScreen()
 }
 
 @Composable
 fun BackupImportRoute(
-    goBack: () -> Unit,
+    importFileUri: String? = null,
 ) {
-    BackupImportScreen(goBack = goBack)
+    BackupImportScreen(importFileUri = importFileUri)
 }

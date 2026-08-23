@@ -1,6 +1,7 @@
 package com.twofasapp.feature.home.navigation
 
 import android.app.Activity
+import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -9,7 +10,6 @@ import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.feature.home.ui.editservice.EditServiceScreenRoute
 import com.twofasapp.feature.home.ui.notifications.NotificationsScreen
 import com.twofasapp.feature.home.ui.services.ServicesRoute
-import com.twofasapp.feature.home.ui.settings.SettingsRoute
 
 fun NavGraphBuilder.homeNavigation(
     navController: NavController,
@@ -22,33 +22,32 @@ fun NavGraphBuilder.homeNavigation(
         )
     }
 
-    composable(LegacyScreen.Settings.route) {
-        SettingsRoute()
-    }
-
     composable(LegacyScreen.Notifications.route) {
-        NotificationsScreen(
-            openInternalRoute = { route ->
-                when (route) {
-                    LegacyScreen.Backup.route -> {
-                        navController.navigate(LegacyScreen.Backup.routeWithArgs(NavArg.TurnOnBackup to true))
-                    }
-
-                    else -> {
-                        navController.navigate(route)
-                    }
-                }
-            },
-        )
+        NotificationsScreen()
     }
 
     composable(LegacyScreen.EditService.route, listOf(NavArg.ServiceId)) {
         EditServiceScreenRoute(
-            navController = navController,
-            openSecurity = { navController.navigate(LegacyScreen.Security.route) },
+            serviceId = it.arguments?.getLong(NavArg.ServiceId.name) ?: 0L,
             openAuth = openEditServiceAuth,
         )
     }
+}
+
+@Composable
+fun NotificationsRoute() {
+    NotificationsScreen()
+}
+
+@Composable
+fun EditServiceRoute(
+    serviceId: Long,
+    openAuth: (successCallback: () -> Unit) -> Unit,
+) {
+    EditServiceScreenRoute(
+        serviceId = serviceId,
+        openAuth = openAuth,
+    )
 }
 
 interface HomeNavigationListener {

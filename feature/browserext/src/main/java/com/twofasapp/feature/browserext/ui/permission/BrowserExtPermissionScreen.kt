@@ -14,28 +14,32 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.R
 import com.twofasapp.core.design.foundation.permission.RequestPermission
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun BrowserExtPermissionScreen(
     viewModel: BrowserExtPermissionViewModel = koinViewModel(),
-    openMain: () -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    Content(
         uiState = uiState,
-        onContinue = openMain,
+        onContinue = { navigator.popTo(Screen.BrowserExt) },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: BrowserExtPermissionUiState,
     onContinue: () -> Unit = {},
 ) {
@@ -76,7 +80,9 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BrowserExtPermissionUiState(),
-    )
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtPermissionUiState(),
+        )
+    }
 }
