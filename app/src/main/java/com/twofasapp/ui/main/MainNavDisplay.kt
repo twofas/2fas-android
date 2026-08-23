@@ -38,7 +38,6 @@ import com.twofasapp.feature.backup.navigation.BackupExportRoute
 import com.twofasapp.feature.backup.navigation.BackupImportRoute
 import com.twofasapp.feature.backup.navigation.BackupRoute
 import com.twofasapp.feature.backup.navigation.BackupSettingsRoute
-import com.twofasapp.feature.browserext.navigation.BrowserExtDetailsRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtPairingRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtPermissionRoute
 import com.twofasapp.feature.browserext.navigation.BrowserExtRoute
@@ -238,10 +237,6 @@ internal fun MainNavDisplay(
 
                 entry<Screen.BrowserExtPairing> { key ->
                     BrowserExtPairingRoute(extensionId = key.extensionId)
-                }
-
-                entry<Screen.BrowserExtDetails> { key ->
-                    BrowserExtDetailsRoute(extensionId = key.extensionId)
                 }
 
                 entry<Screen.Security> {

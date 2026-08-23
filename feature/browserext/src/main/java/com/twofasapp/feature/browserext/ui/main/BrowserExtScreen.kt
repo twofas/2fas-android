@@ -3,9 +3,15 @@ package com.twofasapp.feature.browserext.ui.main
 import android.Manifest
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,6 +29,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
@@ -35,6 +42,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
@@ -45,15 +53,19 @@ import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.R
-import com.twofasapp.core.design.feature.settings.SettingsHeader
-import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
 import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonHeight
+import com.twofasapp.core.design.foundation.button.IconButton
+import com.twofasapp.core.design.foundation.dialog.BaseDialog
 import com.twofasapp.core.design.foundation.dialog.InputDialog
 import com.twofasapp.core.design.foundation.dialog.InputValidation
 import com.twofasapp.core.design.foundation.icon.Icon
+import com.twofasapp.core.design.foundation.other.Space
 import com.twofasapp.core.design.foundation.permission.RequestPermission
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
-import com.twofasapp.core.design.foundation.screen.CommonContent
+import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
@@ -75,7 +87,7 @@ internal fun BrowserExtScreen(
     Content(
         uiState = uiState,
         openScan = { navigator.open(Screen.BrowserExtScan) },
-        openDetails = { navigator.open(Screen.BrowserExtDetails(extensionId = it)) },
+        onForgetBrowser = { viewModel.forgetBrowser(it.id) },
         onUpdateDeviceName = { viewModel.updateDeviceName(it) },
         onEventConsumed = { viewModel.consumeEvent(it) },
     )
@@ -86,7 +98,7 @@ internal fun BrowserExtScreen(
 private fun Content(
     uiState: BrowserExtUiState,
     openScan: () -> Unit = {},
-    openDetails: (String) -> Unit = {},
+    onForgetBrowser: (PairedBrowser) -> Unit = {},
     onUpdateDeviceName: (String) -> Unit = {},
     onEventConsumed: (BrowserExtUiEvent) -> Unit = {},
 ) {
@@ -100,7 +112,11 @@ private fun Content(
         // Dummy in preview mode
         PermissionStatus.Denied(false)
     } else {
-        rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS).status
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS).status
+        } else {
+            PermissionStatus.Granted
+        }
     }
 
     uiState.events.firstOrNull()?.let {
@@ -117,7 +133,8 @@ private fun Content(
     }
 
     Scaffold(
-        topBar = { TopAppBar(title = strings.browserExtTitle) },
+        modifier = Modifier.fillMaxSize(),
+        topBar = { TopAppBar(title = if (uiState.pairedBrowsers.isEmpty()) null else strings.browserExtTitle) },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     ) { padding ->
         if (uiState.loading) return@Scaffold
@@ -132,58 +149,67 @@ private fun Content(
             )
         } else {
             LazyColumn(
-                modifier = Modifier.padding(padding),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding),
             ) {
-                item { SettingsHeader(strings.browserExtPairedDevices) }
+                item {
+                    OptionHeader(
+                        text = strings.browserExtPairedDevices,
+                        contentPadding = OptionHeaderContentPaddingFirst,
+                    )
+                }
 
                 items(uiState.pairedBrowsers, key = { it.id }) {
-                    SettingsLink(
-                        title = it.name,
-                        showEmptySpaceWhenNoIcon = true,
-                        subtitle = MdtLocale.formatDate(it.pairedAt),
-                        onClick = { openDetails(it.id) },
+                    PairedBrowserItem(
+                        browser = it,
+                        deleting = uiState.deletingBrowserIds.contains(it.id),
+                        onForgetClick = { onForgetBrowser(it) },
                     )
                 }
                 item {
                     Button(
                         text = strings.browserExtAddNew,
-                        modifier = Modifier.padding(start = 72.dp, top = 6.dp, bottom = 2.dp),
+                        size = ButtonHeight.Small,
+                        leadingIcon = MdtIcons.Add,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 12.dp),
                         onClick = openScan,
                     )
                 }
 
-                item { SettingsHeader(strings.browserExtDeviceName) }
+                item { OptionHeader(text = strings.browserExtDeviceName) }
 
                 item {
-                    SettingsLink(
-                        title = uiState.mobileDevice.name.orEmpty(),
-                        subtitle = MdtLocale.strings.browserExtDeviceNameSubtitle,
-                        endContent = {
-                            Icon(
-                                painter = MdtIcons.Edit,
-                                tint = MdtTheme.color.iconTint,
-                                modifier = Modifier
-                                    .size(24.dp)
-                                    .clickable { showEditDeviceNameDialog = true },
-                            )
-                        },
+                    DeviceNameItem(
+                        name = uiState.mobileDevice.name,
+                        subtitle = strings.browserExtDeviceNameSubtitle,
+                        onEditClick = { showEditDeviceNameDialog = true },
                     )
                 }
 
                 if (notificationsPermissionState.isGranted.not()) {
                     item {
-                        HorizontalDivider(Modifier.padding(top = 24.dp, bottom = 24.dp))
+                        HorizontalDivider(
+                            modifier = Modifier.padding(top = 24.dp, bottom = 24.dp, start = 16.dp, end = 16.dp),
+                            color = MdtTheme.color.outlineVariant,
+                        )
                         Text(
                             text = strings.permissionPushBody,
                             style = MdtTheme.typo.sm.normal,
-                            modifier = Modifier.padding(start = 72.dp, bottom = 8.dp, end = 16.dp),
+                            modifier = Modifier.padding(start = 16.dp, bottom = 8.dp, end = 16.dp),
                             color = MdtTheme.color.primary,
                         )
                     }
                     item {
                         Button(
                             text = "Enable Notifications",
-                            modifier = Modifier.padding(start = 72.dp, top = 6.dp, bottom = 2.dp),
+                            size = ButtonHeight.Small,
+                            leadingIcon = MdtIcons.Warning,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 12.dp),
                             onClick = {
                                 val intent = Intent(
                                     Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
@@ -216,7 +242,9 @@ private fun Content(
         InputDialog(
             onDismissRequest = { showEditDeviceNameDialog = false },
             label = strings.browserExtDeviceName,
-            prefill = uiState.mobileDevice.name.orEmpty(),
+            title = strings.browserExtDeviceName,
+            icon = MdtIcons.Mobile,
+            prefill = uiState.mobileDevice.name,
             positive = strings.commonOk,
             negative = strings.commonCancel,
             validate = { if (it.trim().length in 1..100) InputValidation.Valid else InputValidation.Invalid(null) },
@@ -227,6 +255,147 @@ private fun Content(
 }
 
 @Composable
+private fun PairedBrowserItem(
+    modifier: Modifier = Modifier,
+    browser: PairedBrowser,
+    deleting: Boolean = false,
+    onForgetClick: () -> Unit = {},
+) {
+    var showConfirmDeleteDialog by remember { mutableStateOf(false) }
+
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, end = 8.dp, top = 14.dp, bottom = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            painter = MdtIcons.Extension,
+            tint = MdtTheme.color.primary,
+            modifier = Modifier.size(24.dp),
+        )
+
+        Space(16.dp)
+
+        Column(
+            modifier = Modifier.weight(1f),
+        ) {
+            Text(
+                text = browser.name,
+                style = MdtTheme.typo.material.titleMedium,
+                color = MdtTheme.color.onSurface,
+            )
+
+            Text(
+                text = MdtLocale.formatDate(browser.pairedAt),
+                style = MdtTheme.typo.material.bodyMedium,
+                color = MdtTheme.color.onSurfaceVariant,
+            )
+        }
+
+        Space(8.dp)
+
+        IconButton(
+            icon = MdtIcons.Delete,
+            iconTint = MdtTheme.color.outline,
+            onClick = { showConfirmDeleteDialog = true },
+        )
+    }
+
+    if (showConfirmDeleteDialog) {
+        ForgetBrowserDialog(
+            deleting = deleting,
+            onDismissRequest = { showConfirmDeleteDialog = false },
+            onConfirm = onForgetClick,
+        )
+    }
+}
+
+@Composable
+private fun DeviceNameItem(
+    modifier: Modifier = Modifier,
+    name: String?,
+    subtitle: String,
+    onEditClick: () -> Unit = {},
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable { onEditClick() }
+            .padding(start = 16.dp, end = 8.dp, top = 14.dp, bottom = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            painter = MdtIcons.Mobile,
+            tint = MdtTheme.color.primary,
+            modifier = Modifier.size(24.dp),
+        )
+
+        Space(16.dp)
+
+        Column(
+            modifier = Modifier.weight(1f),
+        ) {
+            Text(
+                text = name.orEmpty(),
+                style = MdtTheme.typo.material.titleMedium,
+                color = MdtTheme.color.onSurface,
+            )
+
+            Text(
+                text = subtitle,
+                style = MdtTheme.typo.material.bodyMedium,
+                color = MdtTheme.color.onSurfaceVariant,
+            )
+        }
+
+        Space(8.dp)
+
+        IconButton(
+            icon = MdtIcons.Edit,
+            iconTint = MdtTheme.color.outline,
+            onClick = onEditClick,
+        )
+    }
+}
+
+@Composable
+private fun ForgetBrowserDialog(
+    deleting: Boolean,
+    onDismissRequest: () -> Unit,
+    onConfirm: () -> Unit,
+) {
+    val strings = MdtLocale.strings
+
+    BaseDialog(
+        onDismissRequest = { if (deleting.not()) onDismissRequest() },
+        title = strings.browserDetailsForgetTitle,
+        body = strings.browserDetailsForgetMsg,
+        icon = MdtIcons.Warning,
+        positive = if (deleting) null else strings.commonYes,
+        negative = if (deleting) null else strings.commonNo,
+        onPositiveClick = onConfirm,
+        dismissOnPositive = false,
+        properties = DialogProperties(
+            dismissOnBackPress = deleting.not(),
+            dismissOnClickOutside = deleting.not(),
+        ),
+        content = {
+            if (deleting) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp, bottom = 16.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    CircularProgressIndicator()
+                }
+            }
+        },
+    )
+}
+
+@Composable
 private fun Empty(
     modifier: Modifier = Modifier,
     onPairBrowserClick: () -> Unit,
@@ -234,30 +403,56 @@ private fun Empty(
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
 
-    CommonContent(
-        image = painterResource(id = R.drawable.illustration_2fas_be),
-        titleText = MdtLocale.strings.browserExtHeader,
-        descriptionText = "${MdtLocale.strings.browserExtBody1}\n${MdtLocale.strings.browserExtBody2}",
-        ctaPrimaryText = MdtLocale.strings.browserExtCta,
-        ctaPrimaryClick = onPairBrowserClick,
-        description = {
-            Text(
-                text = buildAnnotatedString {
-                    append("${MdtLocale.strings.browserExtMore1} ")
-                    withStyle(style = SpanStyle(MdtTheme.color.primary)) {
-                        append(MdtLocale.strings.browserExtMore2)
-                    }
-                },
-                style = MdtTheme.typo.sm.medium,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 16.dp)
-                    .clickable { uriHandler.openSafely(MdtLocale.links.browserExt, context) },
-            )
-        },
+    Column(
         modifier = modifier,
-    )
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = MdtLocale.strings.browserExtHeader,
+            style = MdtTheme.typo.xl2.medium,
+            textAlign = TextAlign.Center,
+        )
+
+        Space(24.dp)
+
+        Text(
+            text = "${MdtLocale.strings.browserExtBody1}\n${MdtLocale.strings.browserExtBody2}",
+            style = MdtTheme.typo.base.normal,
+            color = MdtTheme.color.onSurface,
+            textAlign = TextAlign.Center,
+        )
+
+        Space(24.dp)
+
+        Text(
+            text = buildAnnotatedString {
+                append("${MdtLocale.strings.browserExtMore1} ")
+                withStyle(style = SpanStyle(MdtTheme.color.primary)) {
+                    append(MdtLocale.strings.browserExtMore2)
+                }
+            },
+            style = MdtTheme.typo.base.normal,
+            color = MdtTheme.color.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.clickable { uriHandler.openSafely(MdtLocale.links.browserExt, context) },
+        )
+
+        Space(0.3f)
+
+        Image(
+            painter = painterResource(id = R.drawable.illustration_2fas_be),
+            contentDescription = null,
+            modifier = Modifier.fillMaxWidth(0.7f),
+        )
+
+        Space(1f)
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            text = MdtLocale.strings.browserExtCta,
+            onClick = onPairBrowserClick,
+        )
+    }
 }
 
 @Preview
@@ -286,8 +481,14 @@ private fun PreviewContent() {
                 ),
                 pairedBrowsers = listOf(
                     PairedBrowser(
-                        id = "",
-                        name = "Paired Browser",
+                        id = "1",
+                        name = "Paired Browser 1",
+                        pairedAt = Instant.now(),
+                        extensionPublicKey = "",
+                    ),
+                    PairedBrowser(
+                        id = "2",
+                        name = "Paired Browser 2",
                         pairedAt = Instant.now(),
                         extensionPublicKey = "",
                     ),

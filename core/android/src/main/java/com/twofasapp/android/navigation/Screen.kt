@@ -51,9 +51,6 @@ sealed interface Screen : NavKey {
     data class BrowserExtPairing(val extensionId: String) : Screen
 
     @Serializable
-    data class BrowserExtDetails(val extensionId: String) : Screen
-
-    @Serializable
     data object ExternalImportSelector : Screen
 
     @Serializable

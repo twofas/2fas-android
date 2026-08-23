@@ -86,22 +86,18 @@ internal fun MainNavHost(
                 navController = navController,
                 listener = object : HomeNavigationListener {
                     override fun openService(activity: Activity, serviceId: Long) {
-                        navController.navigate(LegacyScreen.EditService.routeWithArgs(NavArg.ServiceId to serviceId))
                     }
 
                     override fun openExternalImport() {
-                        navController.navigate(LegacyScreen.ExternalImportSelector.route)
                     }
 
                     override fun openBrowserExt() {
-                        navController.navigate(LegacyScreen.BrowserExt.route)
                     }
 
                     override fun openSecurity(activity: Activity) {
                     }
 
                     override fun openBackup(turnOnBackup: Boolean) {
-                        navController.navigate(LegacyScreen.Backup.routeWithArgs(NavArg.TurnOnBackup to turnOnBackup))
                     }
 
                     override fun openAppSettings() {
@@ -111,7 +107,6 @@ internal fun MainNavHost(
                     }
 
                     override fun openNotifications() {
-                        navController.navigate(LegacyScreen.Notifications.route)
                     }
 
                     override fun openAbout() {

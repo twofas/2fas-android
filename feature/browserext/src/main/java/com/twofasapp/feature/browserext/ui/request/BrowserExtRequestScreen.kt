@@ -35,6 +35,7 @@ import com.twofasapp.core.design.feature.items.DsServiceSimple
 import com.twofasapp.core.design.feature.items.asState
 import com.twofasapp.core.design.foundation.checked.Switch
 import com.twofasapp.core.design.foundation.other.Divider
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBarWithSearch
 import com.twofasapp.core.design.ktx.LocalBackDispatcher
 import com.twofasapp.core.design.ktx.currentActivity
@@ -226,25 +227,29 @@ private fun ServiceItem(
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BrowserExtRequestUiState(
-            browserName = "{browser}",
-            domain = "{domain}",
-            suggestedServices = listOf(Service.Preview),
-            otherServices = listOf(Service.Preview.copy(id = 1)),
-        ),
-    )
+    PreviewTheme {
+        ScreenContent(
+            uiState = BrowserExtRequestUiState(
+                browserName = "{browser}",
+                domain = "{domain}",
+                suggestedServices = listOf(Service.Preview),
+                otherServices = listOf(Service.Preview.copy(id = 1)),
+            ),
+        )
+    }
 }
 
 @Preview
 @Composable
 private fun Empty() {
-    ScreenContent(
-        uiState = BrowserExtRequestUiState(
-            browserName = "{browser}",
-            domain = "{domain}",
-            suggestedServices = emptyList(),
-            otherServices = emptyList(),
-        ),
-    )
+    PreviewTheme {
+        ScreenContent(
+            uiState = BrowserExtRequestUiState(
+                browserName = "{browser}",
+                domain = "{domain}",
+                suggestedServices = emptyList(),
+                otherServices = emptyList(),
+            ),
+        )
+    }
 }

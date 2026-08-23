@@ -15,12 +15,6 @@ sealed class LegacyScreen(val route: String) {
     data object Notifications : LegacyScreen("notifications")
     data object Dispose : LegacyScreen("dispose/{${NavArg.ServiceId.name}}")
 
-    data object BrowserExt : LegacyScreen("browserext")
-    data object BrowserExtPermission : LegacyScreen("browserext/permission")
-    data object BrowserExtScan : LegacyScreen("browserext/scan")
-    data object BrowserExtPairing : LegacyScreen("browserext/pairing?extensionId={${NavArg.ExtensionId.name}}")
-    data object BrowserExtDetails : LegacyScreen("browserext/details?extensionId={${NavArg.ExtensionId.name}}")
-
     data object ExternalImportSelector : LegacyScreen("externalimport/selector")
     data object ExternalImport : LegacyScreen("externalimport?importType={${NavArg.ImportType.name}}")
     data object ExternalImportScan : LegacyScreen("externalimport/scan?importType={${NavArg.ImportType.name}}")

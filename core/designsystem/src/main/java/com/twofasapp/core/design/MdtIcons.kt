@@ -83,4 +83,5 @@ object MdtIcons {
     val CheckCircle @Composable get() = painterResource(R.drawable.ic_check_circle)
     val ErrorCircle @Composable get() = painterResource(R.drawable.ic_error_circle)
     val Stub @Composable get() = painterResource(R.drawable.ic_stub)
+    val Mobile @Composable get() = painterResource(R.drawable.ic_mobile)
 }

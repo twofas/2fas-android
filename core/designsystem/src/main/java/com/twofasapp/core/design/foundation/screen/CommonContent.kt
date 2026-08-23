@@ -19,7 +19,8 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
-import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.locale.MdtLocale
 
 @Composable
@@ -73,16 +74,17 @@ fun CommonContent(
             Button(
                 text = ctaPrimaryText,
                 onClick = ctaPrimaryClick,
-                modifier = Modifier,
+                modifier = Modifier.fillMaxWidth(),
             )
         }
 
         if (ctaSecondaryText != null) {
             Spacer(modifier = Modifier.height(4.dp))
-            TextButton(
+            Button(
+                style = ButtonStyle.Text,
                 text = ctaSecondaryText,
                 onClick = ctaSecondaryClick,
-                modifier = Modifier,
+                modifier = Modifier.fillMaxWidth(),
             )
         }
 
@@ -119,14 +121,16 @@ fun CommonContentDescription(text: String) {
 @Preview(showSystemUi = true)
 @Composable
 private fun Preview() {
-    CommonContent(
-        image = MdtIcons.Placeholder,
-        titleText = MdtLocale.strings.placeholder,
-        descriptionText = MdtLocale.strings.placeholderLong,
-        ctaPrimaryText = MdtLocale.strings.placeholder,
-        ctaSecondaryText = MdtLocale.strings.placeholder,
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-    )
+    PreviewTheme {
+        CommonContent(
+            image = MdtIcons.Placeholder,
+            titleText = MdtLocale.strings.placeholder,
+            descriptionText = MdtLocale.strings.placeholderLong,
+            ctaPrimaryText = MdtLocale.strings.placeholder,
+            ctaSecondaryText = MdtLocale.strings.placeholder,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+        )
+    }
 }
