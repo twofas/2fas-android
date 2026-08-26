@@ -6,7 +6,7 @@ import java.time.Instant
 import javax.inject.Provider
 
 class AuthTracker(
-    private val checkLockStatus: Provider<CheckLockStatus>
+    private val checkLockStatus: Provider<CheckLockStatus>,
 ) {
 
     companion object {
@@ -36,7 +36,6 @@ class AuthTracker(
     fun onWidgetSettingsScreen() {
         reset()
     }
-
 
     fun onChangingLockStatus() {
         isAuthenticated = true

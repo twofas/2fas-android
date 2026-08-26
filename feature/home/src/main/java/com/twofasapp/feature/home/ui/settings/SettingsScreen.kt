@@ -22,12 +22,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.openSafely
-import com.twofasapp.designsystem.settings.SettingsDivider
-import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.settings.SettingsDivider
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.bottombar.BottomBar
 import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
@@ -54,41 +54,40 @@ private fun SettingsScreen(
 
     Scaffold(
         bottomBar = { BottomBar(1, bottomBarListener) },
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.settingsSettings, showBackButton = false) },
+        topBar = { TopAppBar(titleText = TwLocale.strings.settingsSettings, showBackButton = false) },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(TwTheme.color.background)
-                .padding(padding)
+                .background(MdtTheme.color.background)
+                .padding(padding),
         ) {
-
             item {
-                SettingsLink(title = TwLocale.strings.settingsBackup, icon = TwIcons.CloudUpload) {
+                SettingsLink(title = TwLocale.strings.settingsBackup, icon = MdtIcons.CloudUpload) {
                     listener.openBackup(false)
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsSecurity, icon = TwIcons.Security) {
+                SettingsLink(title = TwLocale.strings.settingsSecurity, icon = MdtIcons.Security) {
                     listener.openSecurity(activity)
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsAppearance, icon = TwIcons.Eye) {
+                SettingsLink(title = TwLocale.strings.settingsAppearance, icon = MdtIcons.Eye) {
                     listener.openAppSettings()
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsExternalImport, icon = TwIcons.Download) {
+                SettingsLink(title = TwLocale.strings.settingsExternalImport, icon = MdtIcons.Download) {
                     listener.openExternalImport()
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsBrowserExt, icon = TwIcons.Extension) {
+                SettingsLink(title = TwLocale.strings.settingsBrowserExt, icon = MdtIcons.Extension) {
                     listener.openBrowserExt()
                 }
             }
@@ -96,19 +95,19 @@ private fun SettingsScreen(
             item { SettingsDivider() }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsTrash, icon = TwIcons.Delete) {
+                SettingsLink(title = TwLocale.strings.settingsTrash, icon = MdtIcons.Delete) {
                     listener.openTrash()
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsSupport, icon = TwIcons.Support, external = true) {
+                SettingsLink(title = TwLocale.strings.settingsSupport, icon = MdtIcons.Support, external = true) {
                     uriHandler.openSafely(TwLocale.links.support, activity)
                 }
             }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsAbout, icon = TwIcons.Info) {
+                SettingsLink(title = TwLocale.strings.settingsAbout, icon = MdtIcons.Info) {
                     listener.openAbout()
                 }
             }
@@ -116,7 +115,7 @@ private fun SettingsScreen(
             item { SettingsDivider() }
 
             item {
-                SettingsLink(title = TwLocale.strings.settingsDonate, icon = TwIcons.Favorite, external = true) {
+                SettingsLink(title = TwLocale.strings.settingsDonate, icon = MdtIcons.Favorite, external = true) {
                     uriHandler.openSafely(TwLocale.links.donate, activity)
                 }
             }
@@ -129,7 +128,7 @@ private fun SettingsScreen(
                     horizontalArrangement = Arrangement.spacedBy(14.dp, Alignment.CenterHorizontally),
                 ) {
                     Image(
-                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_discord),
+                        painter = painterResource(id = com.twofasapp.core.design.R.drawable.ic_discord),
                         contentDescription = null,
                         modifier = Modifier
                             .size(52.dp)
@@ -138,7 +137,7 @@ private fun SettingsScreen(
                             .padding(14.dp),
                     )
                     Image(
-                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_youtube),
+                        painter = painterResource(id = com.twofasapp.core.design.R.drawable.ic_youtube),
                         contentDescription = null,
                         modifier = Modifier
                             .size(52.dp)
@@ -147,7 +146,7 @@ private fun SettingsScreen(
                             .padding(14.dp),
                     )
                     Image(
-                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_twitter),
+                        painter = painterResource(id = com.twofasapp.core.design.R.drawable.ic_twitter),
                         contentDescription = null,
                         modifier = Modifier
                             .size(52.dp)
@@ -156,9 +155,9 @@ private fun SettingsScreen(
                             .padding(14.dp),
                     )
                     Icon(
-                        painter = painterResource(id = com.twofasapp.designsystem.R.drawable.ic_github),
+                        painter = painterResource(id = com.twofasapp.core.design.R.drawable.ic_github),
                         contentDescription = null,
-                        tint = TwTheme.color.onSurfacePrimary,
+                        tint = MdtTheme.color.onSurfacePrimary,
                         modifier = Modifier
                             .size(52.dp)
                             .clip(CircleShape)

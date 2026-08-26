@@ -36,10 +36,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwTopAppBar
 import com.twofasapp.feature.home.ui.guideinit.PreviewGuide
 import com.twofasapp.feature.home.ui.guides.Guide
 import com.twofasapp.feature.home.ui.guides.GuideJson
@@ -72,13 +72,13 @@ internal fun GuidePagerScreen(
 
     Scaffold(
         topBar = {
-            TwTopAppBar(
+            TopAppBar(
                 titleText = when (guide) {
                     Guide.Universal -> TwLocale.strings.guideUniversalTitle
                     else -> TwLocale.strings.guideTitle.format(guideJson?.serviceName ?: "")
-                }
+                },
             )
-        }
+        },
     ) { padding ->
 
         guideJson?.let { guideJson ->
@@ -105,7 +105,6 @@ private fun Content(
     openAddScan: () -> Unit = {},
     openAddManually: (String?) -> Unit = {},
 ) {
-
     val scope = rememberCoroutineScope()
     val stepsCount = steps.size
     val pagerState = rememberPagerState(pageCount = { stepsCount })
@@ -115,7 +114,6 @@ private fun Content(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-
         HorizontalPager(
             state = pagerState,
             modifier = Modifier
@@ -127,30 +125,29 @@ private fun Content(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-
                 Spacer(modifier = Modifier.fillMaxHeight(fraction = 0.1f))
 
                 Image(
                     painter = painterResource(
                         id = when (steps[page].image) {
-                            "web_url" -> com.twofasapp.designsystem.R.drawable.illustration_web_url
-                            "web_account_1" -> com.twofasapp.designsystem.R.drawable.illustration_web_account_1
-                            "web_menu" -> com.twofasapp.designsystem.R.drawable.illustration_web_menu
-                            "2fas_type" -> com.twofasapp.designsystem.R.drawable.illustration_2fas_type
-                            "phone_qr" -> com.twofasapp.designsystem.R.drawable.illustration_phone_qr
-                            "gears" -> com.twofasapp.designsystem.R.drawable.illustration_gears
-                            "web_phone" -> com.twofasapp.designsystem.R.drawable.illustration_web_phone
-                            "retype" -> com.twofasapp.designsystem.R.drawable.illustration_retype
-                            "web_button" -> com.twofasapp.designsystem.R.drawable.illustration_web_button
-                            "push_notification" -> com.twofasapp.designsystem.R.drawable.illustration_push_notification
-                            "account" -> com.twofasapp.designsystem.R.drawable.illustration_account
-                            "app_button" -> com.twofasapp.designsystem.R.drawable.illustration_app_button
-                            "secret_key" -> com.twofasapp.designsystem.R.drawable.illustration_secret_key
-                            else -> com.twofasapp.designsystem.R.drawable.ic_placeholder
-                        }
+                            "web_url" -> com.twofasapp.core.design.R.drawable.illustration_web_url
+                            "web_account_1" -> com.twofasapp.core.design.R.drawable.illustration_web_account_1
+                            "web_menu" -> com.twofasapp.core.design.R.drawable.illustration_web_menu
+                            "2fas_type" -> com.twofasapp.core.design.R.drawable.illustration_2fas_type
+                            "phone_qr" -> com.twofasapp.core.design.R.drawable.illustration_phone_qr
+                            "gears" -> com.twofasapp.core.design.R.drawable.illustration_gears
+                            "web_phone" -> com.twofasapp.core.design.R.drawable.illustration_web_phone
+                            "retype" -> com.twofasapp.core.design.R.drawable.illustration_retype
+                            "web_button" -> com.twofasapp.core.design.R.drawable.illustration_web_button
+                            "push_notification" -> com.twofasapp.core.design.R.drawable.illustration_push_notification
+                            "account" -> com.twofasapp.core.design.R.drawable.illustration_account
+                            "app_button" -> com.twofasapp.core.design.R.drawable.illustration_app_button
+                            "secret_key" -> com.twofasapp.core.design.R.drawable.illustration_secret_key
+                            else -> com.twofasapp.core.design.R.drawable.ic_placeholder
+                        },
                     ),
                     contentDescription = null,
-                    modifier = Modifier.height(140.dp)
+                    modifier = Modifier.height(140.dp),
                 )
 
                 Spacer(modifier = Modifier.height(32.dp))
@@ -158,9 +155,9 @@ private fun Content(
                 Text(
                     text = parseMarkdown(
                         markdown = steps[page].content,
-                        typography = MaterialTheme.typography
+                        typography = MaterialTheme.typography,
                     ),
-                    color = TwTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurfacePrimary,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -180,17 +177,17 @@ private fun Content(
                         .clip(CircleShape)
                         .background(
                             if (pagerState.currentPage == index) {
-                                TwTheme.color.primary
+                                MdtTheme.color.primary
                             } else {
-                                TwTheme.color.divider
-                            }
+                                MdtTheme.color.divider
+                            },
                         )
-                        .size(8.dp)
+                        .size(8.dp),
                 )
             }
         }
 
-        TwButton(
+        Button(
             text = if (isLastStep) {
                 steps[pagerState.currentPage].cta?.name.orEmpty()
             } else {
@@ -207,7 +204,7 @@ private fun Content(
                 } else {
                     scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
                 }
-            }
+            },
         )
     }
 }
@@ -218,7 +215,7 @@ private fun Preview() {
     Content(
         modifier = Modifier
             .fillMaxSize()
-            .background(TwTheme.color.background),
+            .background(MdtTheme.color.background),
         steps = PreviewGuide.flow.menu.items.first().steps,
     )
 }

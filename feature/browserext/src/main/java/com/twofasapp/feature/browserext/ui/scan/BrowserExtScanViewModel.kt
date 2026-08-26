@@ -23,7 +23,6 @@ internal class BrowserExtScanViewModel : ViewModel() {
         }
     }
 
-
     fun consumeEvent(event: BrowserExtScanUiEvent) {
         uiState.update { state -> state.copy(events = state.events.minus(event)) }
     }

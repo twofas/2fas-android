@@ -40,21 +40,21 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.R
+import com.twofasapp.core.design.feature.settings.SettingsHeader
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.dialog.InputDialog
+import com.twofasapp.core.design.foundation.icon.Icon
+import com.twofasapp.core.design.foundation.permission.RequestPermission
+import com.twofasapp.core.design.foundation.screen.CommonContent
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.currentActivity
+import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.data.browserext.domain.PairedBrowser
-import com.twofasapp.designsystem.R
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.RequestPermission
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwIcon
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.InputDialog
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.ktx.openSafely
-import com.twofasapp.designsystem.screen.CommonContent
-import com.twofasapp.designsystem.settings.SettingsHeader
-import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -73,7 +73,7 @@ internal fun BrowserExtScreen(
         openScan = openScan,
         openDetails = openDetails,
         onUpdateDeviceName = { viewModel.updateDeviceName(it) },
-        onEventConsumed = { viewModel.consumeEvent(it) }
+        onEventConsumed = { viewModel.consumeEvent(it) },
     )
 }
 
@@ -113,7 +113,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = strings.browserExtTitle) },
+        topBar = { TopAppBar(titleText = strings.browserExtTitle) },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     ) { padding ->
         if (uiState.loading) return@Scaffold
@@ -124,7 +124,7 @@ private fun ScreenContent(
                     .fillMaxSize()
                     .padding(padding)
                     .padding(16.dp),
-                onPairBrowserClick = { askForCameraPermission = true }
+                onPairBrowserClick = { askForCameraPermission = true },
             )
         } else {
             LazyColumn(
@@ -141,7 +141,7 @@ private fun ScreenContent(
                     )
                 }
                 item {
-                    TwButton(
+                    Button(
                         text = strings.browserExtAddNew,
                         modifier = Modifier.padding(start = 72.dp, top = 6.dp, bottom = 2.dp),
                         onClick = openScan,
@@ -155,9 +155,9 @@ private fun ScreenContent(
                         title = uiState.mobileDevice.name.orEmpty(),
                         subtitle = TwLocale.strings.browserExtDeviceNameSubtitle,
                         endContent = {
-                            TwIcon(
-                                painter = TwIcons.Edit,
-                                tint = TwTheme.color.iconTint,
+                            Icon(
+                                painter = MdtIcons.Edit,
+                                tint = MdtTheme.color.iconTint,
                                 modifier = Modifier
                                     .size(24.dp)
                                     .clickable { showEditDeviceNameDialog = true },
@@ -171,23 +171,23 @@ private fun ScreenContent(
                         HorizontalDivider(Modifier.padding(top = 24.dp, bottom = 24.dp))
                         Text(
                             text = strings.permissionPushBody,
-                            style = TwTheme.typo.body3,
+                            style = MdtTheme.typo.body3,
                             modifier = Modifier.padding(start = 72.dp, bottom = 8.dp, end = 16.dp),
-                            color = TwTheme.color.primary,
+                            color = MdtTheme.color.primary,
                         )
                     }
                     item {
-                        TwButton(
+                        Button(
                             text = "Enable Notifications",
                             modifier = Modifier.padding(start = 72.dp, top = 6.dp, bottom = 2.dp),
                             onClick = {
                                 val intent = Intent(
                                     Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                    Uri.fromParts("package", activity.packageName, null)
+                                    Uri.fromParts("package", activity.packageName, null),
                                 )
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                                 activity.startActivity(intent)
-                            }
+                            },
                         )
                     }
                 }
@@ -241,11 +241,11 @@ private fun Empty(
             Text(
                 text = buildAnnotatedString {
                     append("${TwLocale.strings.browserExtMore1} ")
-                    withStyle(style = SpanStyle(TwTheme.color.primary)) {
+                    withStyle(style = SpanStyle(MdtTheme.color.primary)) {
                         append(TwLocale.strings.browserExtMore2)
                     }
                 },
-                style = TwTheme.typo.body2,
+                style = MdtTheme.typo.body2,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
@@ -276,7 +276,7 @@ private fun PreviewContent() {
                 name = "Mobile Device",
                 fcmToken = "",
                 platform = "",
-                publicKey = ""
+                publicKey = "",
             ),
             pairedBrowsers = listOf(
                 PairedBrowser(
@@ -284,8 +284,8 @@ private fun PreviewContent() {
                     name = "Paired Browser",
                     pairedAt = Instant.now(),
                     extensionPublicKey = "",
-                )
-            )
-        )
+                ),
+            ),
+        ),
     )
 }

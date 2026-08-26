@@ -45,7 +45,7 @@ class WidgetSettingsViewModel(
                 uiState.update {
                     it.copy(
                         selected = widgetsRepository.getWidgets().list
-                            .firstOrNull { widget -> widget.appWidgetId == appWidgetId }?.selectedServices.orEmpty()
+                            .firstOrNull { widget -> widget.appWidgetId == appWidgetId }?.selectedServices.orEmpty(),
                     )
                 }
             }
@@ -75,7 +75,7 @@ class WidgetSettingsViewModel(
                                 revealed = false,
                             )
                         },
-                )
+                ),
             )
         }
     }

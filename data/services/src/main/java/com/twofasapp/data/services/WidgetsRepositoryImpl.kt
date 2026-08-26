@@ -50,7 +50,7 @@ class WidgetsRepositoryImpl(
 
         preference.put { entity ->
             entity.copy(
-                widgets = entity.widgets.map { it.copy(lastInteractionTimestamp = now) }
+                widgets = entity.widgets.map { it.copy(lastInteractionTimestamp = now) },
             )
         }
     }
@@ -62,9 +62,9 @@ class WidgetsRepositoryImpl(
                     widgetEntity.copy(
                         services = widgetEntity.services.map { service ->
                             service.copy(isActive = false)
-                        }
+                        },
                     )
-                }
+                },
             )
         }
     }
@@ -72,7 +72,7 @@ class WidgetsRepositoryImpl(
     override suspend fun deleteWidget(appWidgetIds: List<Int>) {
         preference.put { entity ->
             entity.copy(
-                widgets = entity.widgets.filterNot { appWidgetIds.contains(it.appWidgetId) }
+                widgets = entity.widgets.filterNot { appWidgetIds.contains(it.appWidgetId) },
             )
         }
     }
@@ -97,12 +97,12 @@ class WidgetsRepositoryImpl(
                                 } else {
                                     service
                                 }
-                            }.toMutableList()
+                            }.toMutableList(),
                         )
                     } else {
                         widget
                     }
-                }
+                },
             )
         }
     }
@@ -116,7 +116,7 @@ class WidgetsRepositoryImpl(
             entity.copy(
                 widgets = entity.widgets
                     .filter { it.appWidgetId != widget.appWidgetId }
-                    .plus(widget.asEntity())
+                    .plus(widget.asEntity()),
             )
         }
     }

@@ -22,13 +22,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.ModalList
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.service.DsServiceModal
-import com.twofasapp.designsystem.service.asState
-import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.DsServiceModal
+import com.twofasapp.core.design.feature.items.asState
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.modal.ModalList
+import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -41,9 +41,9 @@ internal fun AddServiceSuccessScreen(
 
     Column(
         modifier = Modifier
-            .background(TwTheme.color.surface)
+            .background(MdtTheme.color.surface)
             .verticalScroll(rememberScrollState())
-            .animateContentSize()
+            .animateContentSize(),
     ) {
         Row(
             modifier = Modifier
@@ -53,8 +53,8 @@ internal fun AddServiceSuccessScreen(
         ) {
             Text(
                 text = TwLocale.strings.addSuccessTitle,
-                style = TwTheme.typo.title,
-                color = TwTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.title,
+                color = MdtTheme.color.onSurfacePrimary,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
@@ -64,8 +64,8 @@ internal fun AddServiceSuccessScreen(
 
         Text(
             text = TwLocale.strings.addSuccessDescription,
-            color = TwTheme.color.onSurfacePrimary,
-            style = TwTheme.typo.body1,
+            color = MdtTheme.color.onSurfacePrimary,
+            style = MdtTheme.typo.body1,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = 16.dp),
         )
@@ -78,21 +78,20 @@ internal fun AddServiceSuccessScreen(
                     .padding(horizontal = 24.dp)
                     .padding(top = 24.dp)
                     .border(2.dp, Color(0x66BCBBC1), RoundedCornerShape(24.dp))
-                    .padding(vertical = 8.dp)
+                    .padding(vertical = 8.dp),
             ) {
-
                 DsServiceModal(
                     state = service.asState(),
                     showNextCode = uiState.showNextCode,
                     hideCodes = false,
-                    containerColor = TwTheme.color.surface,
+                    containerColor = MdtTheme.color.surface,
                     onIncrementCounterClick = { viewModel.incrementHotpCounter(service) },
-                    onRevealClick = { viewModel.reveal(service) }
+                    onRevealClick = { viewModel.reveal(service) },
                 )
             }
 
             ModalList {
-                SettingsLink(title = TwLocale.strings.copyToken, icon = TwIcons.Copy) {
+                SettingsLink(title = TwLocale.strings.copyToken, icon = MdtIcons.Copy) {
                     serviceState.copyToClipboard(activity, uiState.showNextCode)
                 }
             }

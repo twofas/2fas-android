@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.onSubscription
 import kotlinx.serialization.json.Json
 
 abstract class PreferenceModel<T>(
-    private val preferences: Preferences
+    private val preferences: Preferences,
 ) : Preference<T>() {
 
     protected abstract val serialize: (T) -> String

@@ -40,11 +40,11 @@ import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 import com.twofasapp.common.domain.Service
+import com.twofasapp.core.design.feature.items.asColor
+import com.twofasapp.core.design.feature.items.atoms.formatCode
+import com.twofasapp.core.design.ktx.assetAsBitmap
 import com.twofasapp.data.services.WidgetsRepository
 import com.twofasapp.data.services.domain.Widget
-import com.twofasapp.designsystem.ktx.assetAsBitmap
-import com.twofasapp.designsystem.service.asColor
-import com.twofasapp.designsystem.service.atoms.formatCode
 import com.twofasapp.feature.widget.R
 import com.twofasapp.feature.widget.ui.settings.WidgetSettingsActivity
 
@@ -62,7 +62,7 @@ internal fun WidgetContent(
             .fillMaxSize()
             .background(R.color.background),
         verticalAlignment = Alignment.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row(
             modifier = GlanceModifier.fillMaxWidth().padding(start = 8.dp, end = 6.dp, top = 8.dp, bottom = 2.dp),
@@ -71,7 +71,7 @@ internal fun WidgetContent(
             Image(
                 provider = ImageProvider(R.drawable.logo_2fas_widget),
                 contentDescription = null,
-                modifier = GlanceModifier.height(20.dp)
+                modifier = GlanceModifier.height(20.dp),
             )
 
             Spacer(GlanceModifier.defaultWeight())
@@ -82,13 +82,13 @@ internal fun WidgetContent(
                     .clickable(
                         actionStartActivity<WidgetSettingsActivity>(
                             actionParametersOf(
-                                ActionParameters.Key<Int>(AppWidgetManager.EXTRA_APPWIDGET_ID) to appWidgetId
-                            )
-                        )
+                                ActionParameters.Key<Int>(AppWidgetManager.EXTRA_APPWIDGET_ID) to appWidgetId,
+                            ),
+                        ),
                     )
                     .padding(2.dp)
                     .cornerRadius(24.dp),
-                resId = com.twofasapp.designsystem.R.drawable.ic_settings,
+                resId = com.twofasapp.core.design.R.drawable.ic_settings,
             )
         }
 
@@ -99,14 +99,14 @@ internal fun WidgetContent(
                 item {
                     Box(
                         modifier = GlanceModifier.fillMaxWidth().padding(vertical = 12.dp),
-                        contentAlignment = Alignment.Center
+                        contentAlignment = Alignment.Center,
                     ) {
                         Text(
                             text = context.getString(com.twofasapp.locale.R.string.widgets_empty_msg),
                             style = TextStyle(
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.Medium,
-                                color = context.getColorProvider(R.color.iconTint)
+                                color = context.getColorProvider(R.color.iconTint),
                             ),
                         )
                     }
@@ -144,13 +144,13 @@ private fun ServiceItem(
                 actionRunCallback<ToggleServiceAction>(
                     ToggleServiceAction.params(
                         appWidgetId = appWidgetId,
-                        serviceId = service.id
-                    )
-                )
+                        serviceId = service.id,
+                    ),
+                ),
             )
             .padding(
                 start = if (revealed) 0.dp else 8.dp,
-                end = if (revealed) 8.dp else 4.dp
+                end = if (revealed) 8.dp else 4.dp,
             ),
         verticalAlignment = Alignment.Vertical.CenterVertically,
     ) {
@@ -171,37 +171,38 @@ private fun ServiceItem(
         if (revealed) {
             Text(
                 text = code.current.formatCode(),
-                style = TextStyle(fontSize = 23.sp, color = textColor)
+                style = TextStyle(fontSize = 23.sp, color = textColor),
             )
 
             Spacer(GlanceModifier.defaultWeight())
 
             when (service.authType) {
                 Service.AuthType.STEAM,
-                Service.AuthType.TOTP -> {
+                Service.AuthType.TOTP,
+                -> {
                     Column(
                         horizontalAlignment = Alignment.Horizontal.CenterHorizontally,
                     ) {
                         Text(
                             text = context.getString(com.twofasapp.locale.R.string.widgets__expires_in),
-                            style = TextStyle(fontSize = 11.sp, color = textColor)
+                            style = TextStyle(fontSize = 11.sp, color = textColor),
                         )
                         Text(
                             text = "${code.timer}" + context.getString(com.twofasapp.locale.R.string.time_unit_seconds_short),
-                            style = TextStyle(fontSize = 13.sp, fontWeight = FontWeight.Bold, color = textColor)
+                            style = TextStyle(fontSize = 13.sp, fontWeight = FontWeight.Bold, color = textColor),
                         )
                     }
                 }
 
                 Service.AuthType.HOTP -> {
                     Icon(
-                        resId = com.twofasapp.designsystem.R.drawable.ic_increment_hotp,
+                        resId = com.twofasapp.core.design.R.drawable.ic_increment_hotp,
                         modifier = GlanceModifier
                             .size(26.dp)
                             .clickable(
                                 actionRunCallback<HotpGenerateAction>(
-                                    HotpGenerateAction.params(service.id)
-                                )
+                                    HotpGenerateAction.params(service.id),
+                                ),
                             )
                             .padding(2.dp)
                             .cornerRadius(24.dp),
@@ -213,14 +214,13 @@ private fun ServiceItem(
             Spacer(GlanceModifier.width(8.dp))
 
             Icon(
-                resId = com.twofasapp.designsystem.R.drawable.ic_copy,
+                resId = com.twofasapp.core.design.R.drawable.ic_copy,
                 modifier = GlanceModifier
                     .size(26.dp)
                     .clickable(actionRunCallback<CopyToClipboardAction>(CopyToClipboardAction.params(code.current)))
                     .padding(2.dp)
                     .cornerRadius(24.dp),
             )
-
         } else {
             Text(
                 text = service.name,
@@ -275,7 +275,7 @@ private fun ServiceImage(
 private fun Divider(modifier: GlanceModifier = GlanceModifier.fillMaxWidth().height(1.dp)) {
     Box(
         modifier = modifier.background(R.color.divider),
-        content = {}
+        content = {},
     )
 }
 

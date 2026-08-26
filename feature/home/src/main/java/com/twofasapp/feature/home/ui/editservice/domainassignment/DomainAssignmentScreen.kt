@@ -19,13 +19,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwIconButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.ktx.LocalBackDispatcher
-import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.button.IconButton
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.LocalBackDispatcher
 import com.twofasapp.locale.R
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -33,14 +33,13 @@ import com.twofasapp.locale.R
 internal fun DomainAssignmentScreen(
     viewModel: com.twofasapp.feature.home.ui.editservice.EditServiceViewModel,
 ) {
-
     val service = viewModel.uiState.collectAsState().value.service
     val showConfirmDialog = remember { mutableStateOf(false) }
     val clickedDomainName = remember { mutableStateOf("") }
     val backDispatcher = LocalBackDispatcher
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = stringResource(id = R.string.browser__browser_extension)) }
+        topBar = { TopAppBar(titleText = stringResource(id = R.string.browser__browser_extension)) },
     ) { padding ->
 
         if (showConfirmDialog.value) {
@@ -69,11 +68,11 @@ internal fun DomainAssignmentScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 72.dp, end = 16.dp, top = 24.dp, bottom = 24.dp),
-                    style = MaterialTheme.typography.bodyMedium.copy(color = TwTheme.color.onSurfaceSecondary)
+                    style = MaterialTheme.typography.bodyMedium.copy(color = MdtTheme.color.onSurfaceSecondary),
                 )
             }
 
-            item { HorizontalDivider(color = TwTheme.color.divider) }
+            item { HorizontalDivider(color = MdtTheme.color.divider) }
 
             items(items = service.assignedDomains, key = { it }) {
                 Column {
@@ -82,18 +81,18 @@ internal fun DomainAssignmentScreen(
                         title = it,
                         showEmptySpaceWhenNoIcon = true,
                         endContent = {
-                            TwIconButton(
-                                painter = TwIcons.Delete,
-                                tint = TwTheme.color.primary,
+                            IconButton(
+                                painter = MdtIcons.Delete,
+                                tint = MdtTheme.color.primary,
                                 onClick = {
                                     clickedDomainName.value = it
                                     showConfirmDialog.value = true
-                                }
+                                },
                             )
                         },
                     )
 
-                    HorizontalDivider(color = TwTheme.color.divider)
+                    HorizontalDivider(color = MdtTheme.color.divider)
                 }
             }
         }

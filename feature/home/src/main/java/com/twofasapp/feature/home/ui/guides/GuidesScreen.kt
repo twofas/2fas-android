@@ -35,12 +35,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.ResponsiveText
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.assetAsBitmap
-import com.twofasapp.designsystem.ktx.openSafely
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.text.ResponsiveText
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.assetAsBitmap
+import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -60,25 +60,25 @@ private fun GuidesScreenContent(
     val guides by remember { mutableStateOf(Guide.entries) }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.guidesSelectTitle) }
+        topBar = { TopAppBar(titleText = TwLocale.strings.guidesSelectTitle) },
     ) { padding ->
 
         Column(
             Modifier
                 .fillMaxSize()
-                .padding(top = padding.calculateTopPadding())
+                .padding(top = padding.calculateTopPadding()),
         ) {
             Column(
                 Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .verticalScroll(rememberScrollState())
+                    .verticalScroll(rememberScrollState()),
             ) {
                 Text(
                     text = TwLocale.strings.guidesSelectDescription,
-                    style = TwTheme.typo.body1,
+                    style = MdtTheme.typo.body1,
                     modifier = Modifier.padding(16.dp),
-                    color = TwTheme.color.onSurfacePrimary,
+                    color = MdtTheme.color.onSurfacePrimary,
                 )
 
                 guides.chunked(2).forEach { chunk ->
@@ -86,7 +86,7 @@ private fun GuidesScreenContent(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp, vertical = 8.dp),
-                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
                     ) {
                         if (chunk.firstOrNull() != null) {
                             GuideItem(guide = chunk.first(), modifier = Modifier.weight(1f), onClick = onGuideClick)
@@ -104,15 +104,15 @@ private fun GuidesScreenContent(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(TwTheme.color.surface)
+                    .background(MdtTheme.color.surface)
                     .padding(horizontal = 16.dp)
                     .padding(top = 24.dp, bottom = padding.calculateBottomPadding()),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = TwLocale.strings.guidesSelectProvideGuide,
-                    style = TwTheme.typo.body3,
-                    color = TwTheme.color.onSurfacePrimary,
+                    style = MdtTheme.typo.body3,
+                    color = MdtTheme.color.onSurfacePrimary,
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -120,27 +120,26 @@ private fun GuidesScreenContent(
                 TextButton(
                     onClick = { uriHandler.openSafely("https://2fas.com/y2g") },
                     colors = ButtonDefaults.textButtonColors(
-                        contentColor = TwTheme.color.primary,
-                        disabledContentColor = TwTheme.color.onSurfaceSecondary,
-                    )
+                        contentColor = MdtTheme.color.primary,
+                        disabledContentColor = MdtTheme.color.onSurfaceSecondary,
+                    ),
                 ) {
                     Text(
                         text = TwLocale.strings.guidesSelectProvideGuideCta,
-                        style = TwTheme.typo.body2,
+                        style = MdtTheme.typo.body2,
                     )
 
                     Spacer(modifier = Modifier.width(4.dp))
 
                     Icon(
-                        painter = TwIcons.ExternalLink,
+                        painter = MdtIcons.ExternalLink,
                         contentDescription = null,
-                        modifier = Modifier.size(16.dp)
+                        modifier = Modifier.size(16.dp),
                     )
                 }
             }
         }
     }
-
 }
 
 @Composable
@@ -154,10 +153,10 @@ private fun GuideItem(
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(20.dp))
-            .border(2.dp, TwTheme.color.divider, RoundedCornerShape(20.dp))
+            .border(2.dp, MdtTheme.color.divider, RoundedCornerShape(20.dp))
             .clickable { onClick(guide) }
             .padding(vertical = 16.dp),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -168,7 +167,7 @@ private fun GuideItem(
                 contentDescription = null,
                 modifier = Modifier
                     .padding(12.dp)
-                    .size(56.dp)
+                    .size(56.dp),
             )
 
             ResponsiveText(
@@ -186,8 +185,8 @@ private fun GuideItem(
                     Guide.PayPal -> "PayPal"
                     Guide.Reddit -> "Reddit"
                 },
-                style = TwTheme.typo.body3,
-                color = TwTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.body3,
+                color = MdtTheme.color.onSurfacePrimary,
                 maxLines = 1,
             )
         }

@@ -29,6 +29,5 @@ internal fun GoogleDriveError.asDomain(): CloudSyncError {
         GoogleDriveError.FileNotFound -> CloudSyncError.FileNotFound
         GoogleDriveError.CredentialsNotFound -> CloudSyncError.CredentialsNotFound
         GoogleDriveError.Unknown -> CloudSyncError.Unknown
-
     }
 }

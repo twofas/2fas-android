@@ -15,7 +15,7 @@ class WidgetModule : KoinModule {
         single<WidgetCallbacks> {
             WidgetCallbacksImpl(
                 context = androidApplication(),
-                widgetsRepository = Provider { get() }
+                widgetsRepository = Provider { get() },
             )
         }
 

@@ -8,12 +8,12 @@ import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.common.domain.SelectedTheme
+import com.twofasapp.core.design.AppTheme
+import com.twofasapp.core.design.LocalAppTheme
+import com.twofasapp.core.design.LocalDynamicColors
+import com.twofasapp.core.design.MainAppTheme
+import com.twofasapp.core.design.window.ActivityHelper
 import com.twofasapp.data.session.SettingsRepository
-import com.twofasapp.designsystem.AppTheme
-import com.twofasapp.designsystem.LocalAppTheme
-import com.twofasapp.designsystem.LocalDynamicColors
-import com.twofasapp.designsystem.MainAppTheme
-import com.twofasapp.designsystem.activity.ActivityHelper
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
@@ -40,8 +40,8 @@ class BrowserExtRequestActivity : ComponentActivity(), AuthAware {
             AuthLifecycle(
                 authTracker = get(),
                 navigator = get { parametersOf(this) },
-                authAware = this as? AuthAware
-            )
+                authAware = this as? AuthAware,
+            ),
         )
 
         setContent {

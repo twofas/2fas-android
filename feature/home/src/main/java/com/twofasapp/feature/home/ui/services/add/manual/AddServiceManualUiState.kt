@@ -1,7 +1,7 @@
 package com.twofasapp.feature.home.ui.services.add.manual
 
-import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.domain.RecentlyAddedService
 
 internal data class AddServiceManualUiState(
     val serviceName: String? = null,
@@ -30,7 +30,6 @@ internal data class AddServiceManualUiState(
     val isFormValid: Boolean
         get() = serviceNameValid && serviceSecretValid
 }
-
 
 internal sealed interface AddServiceManualUiEvent {
     data class AddedSuccessfully(val recentlyAddedService: RecentlyAddedService) : AddServiceManualUiEvent

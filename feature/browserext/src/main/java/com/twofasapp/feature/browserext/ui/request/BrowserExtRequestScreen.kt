@@ -30,14 +30,14 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TopAppBarWithSearch
-import com.twofasapp.designsystem.common.TwDivider
-import com.twofasapp.designsystem.common.TwSwitch
-import com.twofasapp.designsystem.ktx.LocalBackDispatcher
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.service.DsServiceSimple
-import com.twofasapp.designsystem.service.asState
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.DsServiceSimple
+import com.twofasapp.core.design.feature.items.asState
+import com.twofasapp.core.design.foundation.checked.Switch
+import com.twofasapp.core.design.foundation.other.Divider
+import com.twofasapp.core.design.foundation.topbar.TopAppBarWithSearch
+import com.twofasapp.core.design.ktx.LocalBackDispatcher
+import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
 import com.twofasapp.locale.R
@@ -80,7 +80,7 @@ internal fun BrowserExtRequestScreen(
                 activity.finish()
                 activity.sendBroadcast(intent)
             }
-        }
+        },
     )
 }
 
@@ -105,17 +105,17 @@ private fun ScreenContent(
             ) {
                 backDispatcher.onBackPressed()
             }
-        }
+        },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
                 .padding(padding)
-                .imePadding()
+                .imePadding(),
         ) {
             item {
                 Text(
                     text = strings.browserRequestInfo.format(uiState.browserName, uiState.domain),
-                    style = TwTheme.typo.body3,
+                    style = MdtTheme.typo.body3,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
@@ -133,12 +133,12 @@ private fun ScreenContent(
                 ) {
                     Text(
                         text = strings.browserRequestSaveChoice,
-                        color = TwTheme.color.onSurfacePrimary,
-                        style = TwTheme.typo.body1,
-                        modifier = Modifier.weight(1f)
+                        color = MdtTheme.color.onSurfacePrimary,
+                        style = MdtTheme.typo.body1,
+                        modifier = Modifier.weight(1f),
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    TwSwitch(
+                    Switch(
                         checked = uiState.saveMyChoice,
                         onCheckedChange = { onSaveMyChoiceToggle() },
                     )
@@ -153,7 +153,7 @@ private fun ScreenContent(
                 items(items = uiState.suggestedServices, key = { it.id }) {
                     ServiceItem(
                         service = it,
-                        onClick = onServiceClick
+                        onClick = onServiceClick,
                     )
                 }
             }
@@ -166,7 +166,7 @@ private fun ScreenContent(
                 items(items = uiState.otherServices, key = { it.id }) {
                     ServiceItem(
                         service = it,
-                        onClick = onServiceClick
+                        onClick = onServiceClick,
                     )
                 }
             }
@@ -178,12 +178,12 @@ private fun ScreenContent(
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        TwDivider()
+                        Divider()
                         Spacer(modifier = Modifier.height(24.dp))
                         Text(
                             text = strings.browserRequestEmpty,
-                            color = TwTheme.color.onSurfaceSecondary,
-                            style = TwTheme.typo.body2,
+                            color = MdtTheme.color.onSurfaceSecondary,
+                            style = MdtTheme.typo.body2,
                             modifier = Modifier,
                         )
                     }
@@ -199,10 +199,10 @@ private fun SectionItem(title: String) {
         text = title.uppercase(),
         modifier = Modifier
             .fillMaxWidth()
-            .background(TwTheme.color.surfaceVariant)
+            .background(MdtTheme.color.surfaceVariant)
             .padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 12.dp),
-        color = TwTheme.color.onSurfaceSecondary,
-        style = TwTheme.typo.body4,
+        color = MdtTheme.color.onSurfaceSecondary,
+        style = MdtTheme.typo.body4,
     )
 }
 
@@ -217,9 +217,9 @@ private fun ServiceItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { onClick(service) }
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 16.dp),
         )
-        HorizontalDivider(color = TwTheme.color.divider)
+        HorizontalDivider(color = MdtTheme.color.divider)
     }
 }
 

@@ -8,18 +8,18 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
-import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.feature.browserext.ui.request.BrowserExtRequestActivity
-import com.twofasapp.feature.browserext.ui.requestapprove.BrowserExtRequestApproveActivity
-import com.twofasapp.locale.R
-import com.twofasapp.data.push.notification.ShowBrowserExtRequestNotification
 import com.twofasapp.data.push.domain.Push
 import com.twofasapp.data.push.notification.NotificationChannelProvider
+import com.twofasapp.data.push.notification.ShowBrowserExtRequestNotification
+import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.session.SecurityRepository
+import com.twofasapp.data.session.domain.LockMethod
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
 import com.twofasapp.feature.browserext.notification.DomainMatcher
-import com.twofasapp.data.session.SecurityRepository
-import com.twofasapp.data.session.domain.LockMethod
+import com.twofasapp.feature.browserext.ui.request.BrowserExtRequestActivity
+import com.twofasapp.feature.browserext.ui.requestapprove.BrowserExtRequestApproveActivity
+import com.twofasapp.locale.R
 
 class ShowBrowserExtRequestNotificationImpl(
     private val context: Context,
@@ -48,7 +48,7 @@ class ShowBrowserExtRequestNotificationImpl(
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setAutoCancel(true)
-            .setSmallIcon(com.twofasapp.designsystem.R.drawable.push_icon)
+            .setSmallIcon(com.twofasapp.core.design.R.drawable.push_icon)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(
                 createContentIntent(
@@ -57,11 +57,10 @@ class ShowBrowserExtRequestNotificationImpl(
                     requestId = push.requestId,
                     serviceId = serviceId,
                     domain = domain,
-                )
+                ),
             )
             .apply {
                 if (isOneDomainMatched) {
-
                     val denyIntent = createActionIntent(
                         action = BrowserExtRequestPayload.Action.Deny,
                         notificationId = notificationId,
@@ -82,15 +81,15 @@ class ShowBrowserExtRequestNotificationImpl(
 
                     val denyAction =
                         NotificationCompat.Action.Builder(
-                            com.twofasapp.designsystem.R.drawable.ic_close,
+                            com.twofasapp.core.design.R.drawable.ic_close,
                             context.getString(R.string.extension__deny),
-                            denyIntent
+                            denyIntent,
                         ).build()
                     val allowAction =
                         NotificationCompat.Action.Builder(
-                            com.twofasapp.designsystem.R.drawable.ic_done,
+                            com.twofasapp.core.design.R.drawable.ic_done,
                             context.getString(R.string.extension__approve),
-                            allowIntent
+                            allowIntent,
                         ).build()
 
                     addAction(denyAction)
@@ -113,19 +112,23 @@ class ShowBrowserExtRequestNotificationImpl(
             flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
 
             putExtra(
-                BrowserExtRequestPayload.Key, BrowserExtRequestPayload(
+                BrowserExtRequestPayload.Key,
+                BrowserExtRequestPayload(
                     action = BrowserExtRequestPayload.Action.Approve,
                     notificationId = notificationId,
                     extensionId = extensionId,
                     requestId = requestId,
                     serviceId = serviceId ?: -1,
                     domain = domain,
-                )
+                ),
             )
         }
 
         return PendingIntent.getActivity(
-            context, notificationId, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            context,
+            notificationId,
+            contentIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
     }
 
@@ -137,7 +140,6 @@ class ShowBrowserExtRequestNotificationImpl(
         serviceId: Long?,
         domain: String,
     ): PendingIntent {
-
         val payload = BrowserExtRequestPayload(
             action = action,
             notificationId = notificationId,
@@ -155,14 +157,15 @@ class ShowBrowserExtRequestNotificationImpl(
                     flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
 
                     putExtra(
-                        BrowserExtRequestPayload.Key, BrowserExtRequestPayload(
+                        BrowserExtRequestPayload.Key,
+                        BrowserExtRequestPayload(
                             action = action,
                             notificationId = notificationId,
                             extensionId = extensionId,
                             requestId = requestId,
                             serviceId = serviceId ?: -1,
                             domain = domain,
-                        )
+                        ),
                     )
                 }
 
@@ -170,7 +173,7 @@ class ShowBrowserExtRequestNotificationImpl(
                     context,
                     notificationId + action.hashCode(),
                     contentIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
                 )
             }
 
@@ -180,7 +183,7 @@ class ShowBrowserExtRequestNotificationImpl(
                     context,
                     notificationId + action.hashCode(),
                     notifyIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
                 )
             }
         }

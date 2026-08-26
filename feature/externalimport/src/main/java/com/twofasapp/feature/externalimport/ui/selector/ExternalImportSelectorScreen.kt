@@ -8,11 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.twofasapp.designsystem.R
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.settings.SettingsDescription
-import com.twofasapp.designsystem.settings.SettingsHeader
-import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.core.design.R
+import com.twofasapp.core.design.feature.settings.SettingsDescription
+import com.twofasapp.core.design.feature.settings.SettingsHeader
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.locale.TwLocale
 
@@ -21,12 +21,12 @@ internal fun ExternalImportSelectorScreen(
     onImportTypeSelected: (ImportType) -> Unit = {},
 ) {
     Scaffold(
-        topBar = { TwTopAppBar(TwLocale.strings.externalImportTitle) }
+        topBar = { TopAppBar(TwLocale.strings.externalImportTitle) },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
+                .padding(padding),
         ) {
             item {
                 SettingsHeader(title = TwLocale.strings.externalImportHeader)
@@ -36,7 +36,7 @@ internal fun ExternalImportSelectorScreen(
                 SettingsLink(
                     title = TwLocale.strings.externalImportGoogleAuthenticator,
                     image = painterResource(id = R.drawable.logo_google_authenticator),
-                    onClick = { onImportTypeSelected(ImportType.GoogleAuthenticator) }
+                    onClick = { onImportTypeSelected(ImportType.GoogleAuthenticator) },
                 )
             }
 
@@ -44,7 +44,7 @@ internal fun ExternalImportSelectorScreen(
                 SettingsLink(
                     title = TwLocale.strings.externalImportAegis,
                     image = painterResource(id = R.drawable.logo_aegis),
-                    onClick = { onImportTypeSelected(ImportType.Aegis) }
+                    onClick = { onImportTypeSelected(ImportType.Aegis) },
                 )
             }
 
@@ -52,7 +52,7 @@ internal fun ExternalImportSelectorScreen(
                 SettingsLink(
                     title = TwLocale.strings.externalImportRaivo,
                     image = painterResource(id = R.drawable.logo_raivo),
-                    onClick = { onImportTypeSelected(ImportType.Raivo) }
+                    onClick = { onImportTypeSelected(ImportType.Raivo) },
                 )
             }
 
@@ -60,7 +60,7 @@ internal fun ExternalImportSelectorScreen(
                 SettingsLink(
                     title = TwLocale.strings.externalImportLastPass,
                     image = painterResource(id = R.drawable.logo_lastpass),
-                    onClick = { onImportTypeSelected(ImportType.LastPass) }
+                    onClick = { onImportTypeSelected(ImportType.LastPass) },
                 )
             }
 
@@ -68,7 +68,7 @@ internal fun ExternalImportSelectorScreen(
                 SettingsLink(
                     title = TwLocale.strings.externalImportAuthenticatorPro,
                     image = painterResource(id = R.drawable.logo_authenticatorpro),
-                    onClick = { onImportTypeSelected(ImportType.AuthenticatorPro) }
+                    onClick = { onImportTypeSelected(ImportType.AuthenticatorPro) },
                 )
             }
 
@@ -76,7 +76,7 @@ internal fun ExternalImportSelectorScreen(
                 SettingsLink(
                     title = TwLocale.strings.externalImportAndOtp,
                     image = painterResource(id = R.drawable.logo_andotp),
-                    onClick = { onImportTypeSelected(ImportType.AndOtp) }
+                    onClick = { onImportTypeSelected(ImportType.AndOtp) },
                 )
             }
 

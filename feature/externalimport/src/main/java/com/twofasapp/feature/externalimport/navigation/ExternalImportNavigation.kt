@@ -12,7 +12,7 @@ fun ExternalImportSelectorRoute(
     openImport: (ImportType) -> Unit,
 ) {
     ExternalImportSelectorScreen(
-        onImportTypeSelected = openImport
+        onImportTypeSelected = openImport,
     )
 }
 

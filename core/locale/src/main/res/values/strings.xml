@@ -587,6 +587,10 @@
     <string name="widgets_warning_cta">Yes, I am sure</string>
     <string name="backup_notice_title">2FAS Backup</string>
     <string name="backup_notice_msg">Enable 2FAS Backup. In the event of a reset or loss of your phone, you will be able to restore all your Tokens.</string>
+    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
+    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
+    <string name="home__app_review_rate">Rate</string>
+    <string name="home__app_review_dismiss">Not now</string>
     <string name="brand_empty_msg">Sorry, brand not found</string>
     <!-- Select which services will be visible on widget: -->
     <string name="widgets_select_msg">Select which services will be visible on the widget:</string>

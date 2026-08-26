@@ -1,8 +1,8 @@
 package com.twofasapp.feature.home.ui.services
 
-import com.twofasapp.data.services.domain.Group
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.lazy.ListItem
+import com.twofasapp.core.design.foundation.lazy.ListItem
+import com.twofasapp.data.services.domain.Group
 
 sealed class ServicesListItem(
     override val key: Any,
@@ -13,6 +13,7 @@ sealed class ServicesListItem(
     object EmptySearch : ServicesListItem("EmptySearch", "EmptySearch")
     object SyncNoticeBar : ServicesListItem("SyncNoticeBar", "SyncNoticeBar")
     object SyncReminder : ServicesListItem("SyncReminder", "SyncReminder")
+    object AppReview : ServicesListItem("AppReview", "AppReview")
     object PassBanner : ServicesListItem("PassBanner", "PassBanner")
     data class ServiceItem(val service: Service) : ServicesListItem("Service:${service.id}", "Service")
     data class GroupItem(val group: Group) : ServicesListItem("Group:${group.id ?: "Default"}", "Group")

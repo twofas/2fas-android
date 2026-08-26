@@ -12,12 +12,12 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 internal fun Project.applyKotlinAndroid(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
+    commonExtension: CommonExtension,
 ) {
     commonExtension.apply {
         compileSdk = AppConfig.compileSdk
 
-        defaultConfig {
+        defaultConfig.apply {
             minSdk = AppConfig.minSdk
 
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -27,38 +27,34 @@ internal fun Project.applyKotlinAndroid(
             )
         }
 
-        compileOptions {
+        compileOptions.apply {
             isCoreLibraryDesugaringEnabled = true
 
             sourceCompatibility = JavaVersion.VERSION_17
             targetCompatibility = JavaVersion.VERSION_17
         }
 
-        buildFeatures {
+        buildFeatures.apply {
             buildConfig = true
         }
 
-        packaging {
-            resources {
-                excludes += "META-INF/DEPENDENCIES"
-                excludes += "META-INF/LICENSE"
-                excludes += "META-INF/LICENSE.md"
-                excludes += "META-INF/LICENSE-notice.md"
-                excludes += "META-INF/LICENSE.txt"
-                excludes += "META-INF/license.txt"
-                excludes += "META-INF/NOTICE"
-                excludes += "META-INF/NOTICE.txt"
-                excludes += "META-INF/notice.txt"
-                excludes += "META-INF/ASL2.0"
-                excludes += "META-INF/INDEX.LIST"
-                excludes += "/META-INF/{AL2.0,LGPL2.1}"
-            }
+        packaging.resources.apply {
+            excludes += "META-INF/DEPENDENCIES"
+            excludes += "META-INF/LICENSE"
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/LICENSE-notice.md"
+            excludes += "META-INF/LICENSE.txt"
+            excludes += "META-INF/license.txt"
+            excludes += "META-INF/NOTICE"
+            excludes += "META-INF/NOTICE.txt"
+            excludes += "META-INF/notice.txt"
+            excludes += "META-INF/ASL2.0"
+            excludes += "META-INF/INDEX.LIST"
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
 
-        testOptions {
-            unitTests {
-                isIncludeAndroidResources = true
-            }
+        testOptions.unitTests.apply {
+            isIncludeAndroidResources = true
         }
 
         tasks.withType<Test>().configureEach {
@@ -70,6 +66,13 @@ internal fun Project.applyKotlinAndroid(
 
     dependencies {
         add("coreLibraryDesugaring", libs.findLibrary("desugar").get())
+
+        // Compose BOM aligns all unversioned Compose artifacts. Applied to every Android
+        // module (harmless where Compose is unused) so it also covers modules that consume
+        // the compose bundle without applying the twofas.compose convention plugin.
+        val composeBom = platform(libs.findLibrary("composeBom").get())
+        add("implementation", composeBom)
+        add("androidTestImplementation", composeBom)
     }
 }
 

@@ -284,27 +284,27 @@ object LegacyTypeToId {
 }
 
 // Match based on label:
-//AscendEX
-//Autodesk
-//Bitfinex
-//Bitkub
-//BitMax
-//Bitpanda
-//Bitpay
-//Bittrex
-//CoinSpot
-//CosmicPvP
-//DNSMadeEasy
-//FACEIT
-//Fritzbox
-//gate.io
-//GoDaddy
-//Kayako
-//MailChimp
-//OKX
-//Poloniex
-//Preceda
-//Surfshark
-//Trimble
-//Ubiquiti
-//Wiki.js
+// AscendEX
+// Autodesk
+// Bitfinex
+// Bitkub
+// BitMax
+// Bitpanda
+// Bitpay
+// Bittrex
+// CoinSpot
+// CosmicPvP
+// DNSMadeEasy
+// FACEIT
+// Fritzbox
+// gate.io
+// GoDaddy
+// Kayako
+// MailChimp
+// OKX
+// Poloniex
+// Preceda
+// Surfshark
+// Trimble
+// Ubiquiti
+// Wiki.js

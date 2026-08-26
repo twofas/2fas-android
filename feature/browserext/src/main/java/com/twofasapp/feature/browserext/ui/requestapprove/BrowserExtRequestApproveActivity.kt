@@ -5,8 +5,8 @@ import androidx.activity.ComponentActivity
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
+import com.twofasapp.core.design.window.ActivityHelper
 import com.twofasapp.data.session.SettingsRepository
-import com.twofasapp.designsystem.activity.ActivityHelper
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
 import org.koin.android.ext.android.get
@@ -38,8 +38,8 @@ class BrowserExtRequestApproveActivity : ComponentActivity(), AuthAware {
                 AuthLifecycle(
                     authTracker = get(),
                     navigator = get { parametersOf(this) },
-                    authAware = this as? AuthAware
-                )
+                    authAware = this as? AuthAware,
+                ),
             )
         }
     }

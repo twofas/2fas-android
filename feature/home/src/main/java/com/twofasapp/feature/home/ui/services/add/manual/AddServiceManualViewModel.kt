@@ -37,7 +37,7 @@ internal class AddServiceManualViewModel(
             BrandIcon(
                 name = it.name,
                 iconCollectionId = it.id,
-                tags = SupportedServices.list.firstOrNull { service -> service.iconCollection.id == it.id }?.tags ?: emptyList()
+                tags = SupportedServices.list.firstOrNull { service -> service.iconCollection.id == it.id }?.tags ?: emptyList(),
             )
         }
             .sortedBy { it.name.uppercase() }
@@ -102,14 +102,14 @@ internal class AddServiceManualViewModel(
             it.copy(
                 serviceName = text,
                 serviceNameError = errorRes,
-                serviceNameValid = isValid
+                serviceNameValid = isValid,
             )
         }
 
         val brand = brands.firstOrNull {
             if (text.isNotEmpty()) {
                 it.name.equals(text.trim(), ignoreCase = true) ||
-                        it.tags.map { tag -> tag.lowercase() }.contains(text.lowercase())
+                    it.tags.map { tag -> tag.lowercase() }.contains(text.lowercase())
             } else {
                 false
             }
@@ -129,7 +129,7 @@ internal class AddServiceManualViewModel(
             text.trim().length < 4 -> Pair(false, R.string.tokens__service_key_to_short)
             Pattern.compile("[^a-z0-9 =-]", Pattern.CASE_INSENSITIVE).matcher(text).find() -> Pair(
                 false,
-                R.string.tokens__service_key_invalid_characters
+                R.string.tokens__service_key_invalid_characters,
             )
 
             servicesRepository.isSecretValid(text).not() -> Pair(false, R.string.tokens__service_key_invalid_format)
@@ -141,7 +141,7 @@ internal class AddServiceManualViewModel(
             it.copy(
                 serviceSecret = text,
                 serviceSecretError = errorRes,
-                serviceSecretValid = isValid
+                serviceSecretValid = isValid,
             )
         }
     }
@@ -210,8 +210,8 @@ internal class AddServiceManualViewModel(
                     updatedAt = System.currentTimeMillis(),
                     source = Service.Source.Manual,
                     assignedDomains = listOf(),
-                    backupSyncStatus = BackupSyncStatus.NOT_SYNCED
-                )
+                    backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                ),
             )
 
             uiEvents.emit(AddServiceManualUiEvent.AddedSuccessfully(RecentlyAddedService(id, RecentlyAddedService.Source.Manually)))

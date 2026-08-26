@@ -45,7 +45,7 @@ internal class SetupPinViewModel(
                 uiState.update { state ->
                     state.copy(
                         showPinOptions = false,
-                        message = R.string.security__confirm_new_pin
+                        message = R.string.security__confirm_new_pin,
                     )
                 }
 
@@ -65,15 +65,14 @@ internal class SetupPinViewModel(
 
                 securityRepository.editPinOptions(
                     securityRepository.observePinOptions().first().copy(
-                        digits = uiState.value.digits
-                    )
+                        digits = uiState.value.digits,
+                    ),
                 )
 
                 authTracker.onChangingLockStatus()
 
                 publishEvent(SetupPinUiEvent.Finish)
             }
-
         } else {
             launchScoped {
                 delay(200)
@@ -86,7 +85,6 @@ internal class SetupPinViewModel(
 
                 publishEvent(SetupPinUiEvent.NotifyInvalidPin)
                 publishEvent(SetupPinUiEvent.ClearCurrentPin)
-
             }
         }
     }

@@ -43,7 +43,6 @@ internal class ChangePinViewModel(
                 publishEvent(ChangePinUiEvent.ClearCurrentPin)
             }
         }
-
     }
 
     fun consumeEvent(event: ChangePinUiEvent) {

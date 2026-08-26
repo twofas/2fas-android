@@ -8,18 +8,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.Modal
-import com.twofasapp.designsystem.common.ModalList
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.service.DsServiceModal
-import com.twofasapp.designsystem.service.ServiceAuthType
-import com.twofasapp.designsystem.service.ServiceImageType
-import com.twofasapp.designsystem.service.ServiceState
-import com.twofasapp.designsystem.settings.SettingsDivider
-import com.twofasapp.designsystem.settings.SettingsLink
-import com.twofasapp.designsystem.service.asState
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.DsServiceModal
+import com.twofasapp.core.design.feature.items.ServiceAuthType
+import com.twofasapp.core.design.feature.items.ServiceImageType
+import com.twofasapp.core.design.feature.items.ServiceState
+import com.twofasapp.core.design.feature.items.asState
+import com.twofasapp.core.design.feature.settings.SettingsDivider
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.modal.Modal
+import com.twofasapp.core.design.foundation.modal.ModalList
+import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -54,28 +54,26 @@ fun FocusServiceModal(
     )
 
     Modal {
-
         Column {
-
             DsServiceModal(
                 state = serviceState,
                 showNextCode = uiState.showNextCode,
                 hideCodes = uiState.hideCodes,
-                containerColor = TwTheme.color.surface,
+                containerColor = MdtTheme.color.surface,
                 onIncrementCounterClick = { viewModel.incrementCounter() },
-                onRevealClick = { viewModel.reveal() }
+                onRevealClick = { viewModel.reveal() },
             )
 
             SettingsDivider()
 
             ModalList {
-                SettingsLink(title = TwLocale.strings.editService, icon = TwIcons.Edit) {
+                SettingsLink(title = TwLocale.strings.editService, icon = MdtIcons.Edit) {
                     uiState.service?.id?.let(openService)
                 }
-                SettingsLink(title = TwLocale.strings.copyToken, icon = TwIcons.Copy) {
+                SettingsLink(title = TwLocale.strings.copyToken, icon = MdtIcons.Copy) {
                     serviceState.copyToClipboard(
                         activity,
-                        uiState.showNextCode
+                        uiState.showNextCode,
                     )
                 }
             }

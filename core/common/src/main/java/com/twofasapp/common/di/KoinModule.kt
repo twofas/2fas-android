@@ -5,4 +5,3 @@ import org.koin.core.module.Module
 interface KoinModule {
     fun provide(): Module
 }
-

@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onSubscription
 
 abstract class PreferenceLong(
-    private val preferences: Preferences
+    private val preferences: Preferences,
 ) : Preference<Long>() {
 
     override val default: Long = 0L

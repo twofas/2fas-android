@@ -50,20 +50,20 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwOutlinedTextField
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.BaseDialog
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.dialog.InfoDialog
-import com.twofasapp.designsystem.ktx.copyToClipboard
-import com.twofasapp.designsystem.ktx.dpToSp
-import com.twofasapp.designsystem.lazy.listItem
-import com.twofasapp.designsystem.service.asColor
-import com.twofasapp.designsystem.settings.SettingsDivider
-import com.twofasapp.designsystem.settings.SettingsHeader
-import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.asColor
+import com.twofasapp.core.design.feature.settings.SettingsDivider
+import com.twofasapp.core.design.feature.settings.SettingsHeader
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.dialog.BaseDialog
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.dialog.InfoDialog
+import com.twofasapp.core.design.foundation.lazy.listItem
+import com.twofasapp.core.design.foundation.textfield.OutlinedTextField
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.copyToClipboard
+import com.twofasapp.core.design.ktx.dpToSp
 import com.twofasapp.feature.home.ui.editservice.badge.ColorBadgeDialog
 import com.twofasapp.locale.R
 import com.twofasapp.locale.TwLocale
@@ -112,20 +112,20 @@ internal fun EditServiceScreen(
     }
 
     if (uiState.service.id != 0L) {
-        Scaffold(topBar = {
-            TwTopAppBar(
-                titleText = activity!!.getString(R.string.tokens__customize_service_title),
-                actions = {
-                    TextButton(
-                        onClick = { viewModel.saveService() },
-                        enabled = uiState.hasChanges && uiState.isInputNameValid && uiState.isInputInfoValid,
-                    ) {
-                        Text(text = stringResource(id = R.string.commons__save))
-                    }
-
-                }
-            )
-        }
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    titleText = activity!!.getString(R.string.tokens__customize_service_title),
+                    actions = {
+                        TextButton(
+                            onClick = { viewModel.saveService() },
+                            enabled = uiState.hasChanges && uiState.isInputNameValid && uiState.isInputInfoValid,
+                        ) {
+                            Text(text = stringResource(id = R.string.commons__save))
+                        }
+                    },
+                )
+            },
         ) { innerPadding ->
             LazyColumn(modifier = Modifier.padding(innerPadding)) {
                 listItem(EditServiceListItem.HeaderInfo) {
@@ -133,7 +133,7 @@ internal fun EditServiceScreen(
                 }
 
                 listItem(EditServiceListItem.InputName) {
-                    TwOutlinedTextField(
+                    OutlinedTextField(
                         value = service.name,
                         labelText = stringResource(R.string.tokens__service_name),
                         maxLength = 30,
@@ -149,12 +149,12 @@ internal fun EditServiceScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(start = 72.dp, end = 16.dp)
-                            .padding(top = 8.dp, bottom = 4.dp)
+                            .padding(top = 8.dp, bottom = 4.dp),
                     )
                 }
 
                 listItem(EditServiceListItem.InputSecret) {
-                    TwOutlinedTextField(
+                    OutlinedTextField(
                         value = service.secret,
                         labelText = stringResource(R.string.tokens__service_key),
                         readOnly = true,
@@ -167,13 +167,12 @@ internal fun EditServiceScreen(
                         visualTransformation = if (isSecretVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
                             Row(
-                                modifier = Modifier.padding(start = 4.dp, end = 8.dp)
+                                modifier = Modifier.padding(start = 4.dp, end = 8.dp),
                             ) {
-
                                 Icon(
-                                    painter = TwIcons.Qr,
+                                    painter = MdtIcons.Qr,
                                     contentDescription = null,
-                                    tint = TwTheme.color.iconTint,
+                                    tint = MdtTheme.color.iconTint,
                                     modifier = Modifier
                                         .size(36.dp)
                                         .clip(CircleShape)
@@ -184,15 +183,15 @@ internal fun EditServiceScreen(
                                                 uiState.hasLock.not() -> showQrNoLockDialog.value = true
                                             }
                                         }
-                                        .padding(6.dp)
+                                        .padding(6.dp),
                                 )
 
                                 Spacer(Modifier.width(4.dp))
 
                                 Icon(
-                                    painter = if (isSecretVisible) TwIcons.EyeSlash else TwIcons.Eye,
+                                    painter = if (isSecretVisible) MdtIcons.EyeSlash else MdtIcons.Eye,
                                     contentDescription = null,
-                                    tint = TwTheme.color.iconTint,
+                                    tint = MdtTheme.color.iconTint,
                                     modifier = Modifier
                                         .size(36.dp)
                                         .clip(CircleShape)
@@ -203,20 +202,19 @@ internal fun EditServiceScreen(
                                                 uiState.hasLock.not() -> showSecretNoLockDialog.value = true
                                             }
                                         }
-                                        .padding(6.dp)
+                                        .padding(6.dp),
                                 )
                             }
                         },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(start = 72.dp, end = 16.dp)
-                            .padding(top = 8.dp, bottom = 4.dp)
+                            .padding(top = 8.dp, bottom = 4.dp),
                     )
                 }
 
-
                 listItem(EditServiceListItem.InputInfo) {
-                    TwOutlinedTextField(
+                    OutlinedTextField(
                         value = service.info.orEmpty(),
                         labelText = stringResource(R.string.tokens__additional_info),
                         maxLength = 50,
@@ -226,7 +224,7 @@ internal fun EditServiceScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(start = 72.dp, end = 16.dp)
-                            .padding(top = 8.dp, bottom = 4.dp)
+                            .padding(top = 8.dp, bottom = 4.dp),
                     )
                 }
 
@@ -238,7 +236,6 @@ internal fun EditServiceScreen(
                     SettingsDivider()
                     SettingsHeader(title = stringResource(R.string.customization_personalization))
                 }
-
 
                 listItem(EditServiceListItem.IconSelector) {
                     IconSelector(service, isBrandSelected = isBrandSelected, isLabelSelected = isLabelSelected) {
@@ -263,10 +260,12 @@ internal fun EditServiceScreen(
                 }
 
                 listItem(EditServiceListItem.BadgeColor) {
-                    SettingsLink(title = stringResource(R.string.tokens__badge_color),
-                        icon = TwIcons.Circle,
+                    SettingsLink(
+                        title = stringResource(R.string.tokens__badge_color),
+                        icon = MdtIcons.Circle,
                         iconTint = uiState.service.badgeColor.asColor(),
-                        onClick = { showBadgeDialog.value = true })
+                        onClick = { showBadgeDialog.value = true },
+                    )
                 }
 
                 if (uiState.groups.isNotEmpty()) {
@@ -278,43 +277,43 @@ internal fun EditServiceScreen(
                                 .fillMaxWidth()
                                 .padding(end = 16.dp, start = 72.dp, bottom = 24.dp, top = 16.dp),
 
-                            ) {
+                        ) {
                             OutlinedTextField(
                                 value = uiState.groups.firstOrNull { it.id == service.groupId }?.name ?: TwLocale.strings.servicesMyTokens,
                                 onValueChange = { },
                                 label = { Text(stringResource(id = R.string.tokens__group)) },
                                 readOnly = true,
                                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                                colors = OutlinedTextFieldDefaults.colors(errorLabelColor = TwTheme.color.error),
+                                colors = OutlinedTextFieldDefaults.colors(errorLabelColor = MdtTheme.color.error),
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .menuAnchor()
+                                    .menuAnchor(),
                             )
 
                             ExposedDropdownMenu(
                                 expanded = expanded,
                                 onDismissRequest = { expanded = false },
-                                modifier = Modifier.background(TwTheme.color.surface),
+                                modifier = Modifier.background(MdtTheme.color.surface),
                             ) {
                                 DropdownMenuItem(
                                     text = {
-                                        Text(text = TwLocale.strings.servicesMyTokens, color = TwTheme.color.onSurfacePrimary)
+                                        Text(text = TwLocale.strings.servicesMyTokens, color = MdtTheme.color.onSurfacePrimary)
                                     },
                                     onClick = {
                                         viewModel.updateGroup(null)
                                         expanded = false
-                                    }
+                                    },
                                 )
 
                                 uiState.groups.filter { it.name != null }.forEach { group ->
                                     DropdownMenuItem(
                                         text = {
-                                            Text(text = group.name.orEmpty(), color = TwTheme.color.onSurfacePrimary)
+                                            Text(text = group.name.orEmpty(), color = MdtTheme.color.onSurfacePrimary)
                                         },
                                         onClick = {
                                             viewModel.updateGroup(group)
                                             expanded = false
-                                        }
+                                        },
                                     )
                                 }
                             }
@@ -327,9 +326,11 @@ internal fun EditServiceScreen(
                     SettingsHeader(title = stringResource(R.string.tokens__add_manual_other))
                 }
                 listItem(EditServiceListItem.BrowserExtension) {
-                    SettingsLink(title = stringResource(R.string.browser__browser_extension),
+                    SettingsLink(
+                        title = stringResource(R.string.browser__browser_extension),
                         enabled = service.assignedDomains.isNotEmpty(),
-                        onClick = { onDomainAssignmentClick() })
+                        onClick = { onDomainAssignmentClick() },
+                    )
                 }
 
                 listItem(EditServiceListItem.Delete) {
@@ -337,7 +338,7 @@ internal fun EditServiceScreen(
                     SettingsLink(
                         title = stringResource(R.string.commons__delete),
                         onClick = { onDeleteClick() },
-                        textColor = TwTheme.color.primary
+                        textColor = MdtTheme.color.primary,
                     )
                 }
             }
@@ -376,10 +377,12 @@ internal fun EditServiceScreen(
             }
 
             if (showUnsavedChangesDialog.value) {
-                ConfirmDialog(title = stringResource(id = R.string.tokens__service_unsaved_changes_title),
+                ConfirmDialog(
+                    title = stringResource(id = R.string.tokens__service_unsaved_changes_title),
                     body = stringResource(id = R.string.tokens__service_unsaved_changes),
                     onDismissRequest = { showUnsavedChangesDialog.value = false },
-                    onPositive = { onBackClick() })
+                    onPositive = { onBackClick() },
+                )
             }
 
             if (uiState.isQrVisible) {
@@ -388,7 +391,7 @@ internal fun EditServiceScreen(
                     title = stringResource(id = R.string.tokens__show_qr_code),
                     positive = stringResource(id = R.string.commons__OK),
                     negative = stringResource(id = R.string.tokens__copy_uri),
-                    onNegativeClick = { activity?.copyToClipboard(service.toUri(), isSensitive = true) }
+                    onNegativeClick = { activity?.copyToClipboard(service.toUri(), isSensitive = true) },
                 ) {
                     Box(
                         modifier = Modifier
@@ -414,50 +417,54 @@ internal fun EditServiceScreen(
 
 @Composable
 fun IconSelector(
-    service: Service, isBrandSelected: Boolean, isLabelSelected: Boolean, onSelectionChanged: (Service.ImageType) -> Unit
+    service: Service,
+    isBrandSelected: Boolean,
+    isLabelSelected: Boolean,
+    onSelectionChanged: (Service.ImageType) -> Unit,
 ) {
     Row(
         modifier = Modifier
             .padding(start = 72.dp)
             .padding(vertical = 16.dp)
-            .fillMaxWidth()
+            .fillMaxWidth(),
     ) {
-
         /**
          * Brand
          */
-        Box(modifier = Modifier
-            .size(88.dp)
-            .run {
-                if (isBrandSelected) {
-                    border(2.dp, TwTheme.color.primary, RoundedCornerShape(8.dp))
-                } else {
-                    border(1.dp, TwTheme.color.divider, RoundedCornerShape(8.dp))
+        Box(
+            modifier = Modifier
+                .size(88.dp)
+                .run {
+                    if (isBrandSelected) {
+                        border(2.dp, MdtTheme.color.primary, RoundedCornerShape(8.dp))
+                    } else {
+                        border(1.dp, MdtTheme.color.divider, RoundedCornerShape(8.dp))
+                    }
                 }
-            }
-            .clip(RoundedCornerShape(8.dp))
-            .clickable {
-                if (isLabelSelected) {
-                    onSelectionChanged(Service.ImageType.IconCollection)
-                }
-            }) {
+                .clip(RoundedCornerShape(8.dp))
+                .clickable {
+                    if (isLabelSelected) {
+                        onSelectionChanged(Service.ImageType.IconCollection)
+                    }
+                },
+        ) {
             Image(
                 bitmap = serviceIconBitmap(iconCollectionId = service.iconCollectionId),
                 contentDescription = null,
                 modifier = Modifier
                     .size(40.dp)
-                    .align(Alignment.Center)
+                    .align(Alignment.Center),
             )
 
             if (isBrandSelected) {
                 Icon(
-                    painter = TwIcons.CheckCircle,
+                    painter = MdtIcons.CheckCircle,
                     contentDescription = null,
-                    tint = TwTheme.color.primary,
+                    tint = MdtTheme.color.primary,
                     modifier = Modifier
                         .padding(6.dp)
                         .size(16.dp)
-                        .align(Alignment.BottomEnd)
+                        .align(Alignment.BottomEnd),
                 )
             }
         }
@@ -467,35 +474,36 @@ fun IconSelector(
         /**
          * Label
          */
-        Box(modifier = Modifier
-            .size(88.dp)
-            .run {
-                if (isLabelSelected) {
-                    border(2.dp, TwTheme.color.primary, RoundedCornerShape(8.dp))
-                } else {
-                    border(1.dp, TwTheme.color.divider, RoundedCornerShape(8.dp))
+        Box(
+            modifier = Modifier
+                .size(88.dp)
+                .run {
+                    if (isLabelSelected) {
+                        border(2.dp, MdtTheme.color.primary, RoundedCornerShape(8.dp))
+                    } else {
+                        border(1.dp, MdtTheme.color.divider, RoundedCornerShape(8.dp))
+                    }
                 }
-            }
-            .clip(RoundedCornerShape(8.dp))
-            .clickable {
-                if (isBrandSelected) {
-                    onSelectionChanged(Service.ImageType.Label)
-                }
-            }) {
-
+                .clip(RoundedCornerShape(8.dp))
+                .clickable {
+                    if (isBrandSelected) {
+                        onSelectionChanged(Service.ImageType.Label)
+                    }
+                },
+        ) {
             Box(
                 modifier = Modifier
                     .size(40.dp)
                     .align(Alignment.Center)
-                    .background(shape = CircleShape, color = service.labelColor.asColor())
+                    .background(shape = CircleShape, color = service.labelColor.asColor()),
             )
 
             Box(
                 modifier = Modifier
                     .width(28.dp)
                     .height(18.dp)
-                    .clip(TwTheme.shape.roundedDefault)
-                    .background(TwTheme.color.background)
+                    .clip(MdtTheme.shape.roundedDefault)
+                    .background(MdtTheme.color.background)
                     .align(Alignment.Center),
             )
 
@@ -503,23 +511,23 @@ fun IconSelector(
                 text = service.labelText ?: service.name.take(2).uppercase(),
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,
-                style = TwTheme.typo.body3.copy(
+                style = MdtTheme.typo.body3.copy(
                     fontWeight = FontWeight.Bold,
                     fontSize = dpToSp(dp = 14.dp),
-                    lineHeight = dpToSp(dp = 20.dp)
+                    lineHeight = dpToSp(dp = 20.dp),
                 ),
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
 
             if (isLabelSelected) {
                 Icon(
-                    painter = TwIcons.CheckCircle,
+                    painter = MdtIcons.CheckCircle,
                     contentDescription = null,
-                    tint = TwTheme.color.primary,
+                    tint = MdtTheme.color.primary,
                     modifier = Modifier
                         .padding(6.dp)
                         .size(16.dp)
-                        .align(Alignment.BottomEnd)
+                        .align(Alignment.BottomEnd),
                 )
             }
         }

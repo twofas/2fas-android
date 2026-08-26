@@ -17,10 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.LocalBackDispatcher
 import com.twofasapp.data.session.domain.PinDigits
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.ListRadioDialog
-import com.twofasapp.designsystem.ktx.LocalBackDispatcher
 import com.twofasapp.feature.security.ui.pin.PinScreen
 import com.twofasapp.feature.security.ui.pin.rememberCurrentPinState
 import com.twofasapp.feature.security.ui.pin.vibrateInvalidPin
@@ -48,13 +48,14 @@ internal fun SetupPinScreen(
 
     Scaffold(
         topBar = {
-            TwTopAppBar(titleText = stringResource(id = R.string.security__create_pin))
-        }
+            TopAppBar(titleText = stringResource(id = R.string.security__create_pin))
+        },
     ) { padding ->
         Box(
             modifier = Modifier
                 .padding(padding)
-                .fillMaxSize(), contentAlignment = Alignment.Center
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center,
         ) {
             PinScreen(
                 message = stringResource(
@@ -62,7 +63,7 @@ internal fun SetupPinScreen(
                     when (uiState.digits) {
                         PinDigits.Code4 -> stringResource(id = R.string.settings__pin_4_digits)
                         PinDigits.Code6 -> stringResource(id = R.string.settings__pin_6_digits)
-                    }
+                    },
                 ),
                 errorMessage = uiState.errorMessage?.let { stringResource(id = it) }.orEmpty(),
                 digits = uiState.digits.value,
@@ -70,14 +71,15 @@ internal fun SetupPinScreen(
                 showBiometrics = false,
                 state = uiState.pinScreenState,
                 currentPinState = currentPinState,
-                onPinEntered = { viewModel.pinEntered(it) }
+                onPinEntered = { viewModel.pinEntered(it) },
             )
 
             if (uiState.showPinOptions) {
                 TextButton(
-                    onClick = { showPinOptionsDialog = true }, modifier = Modifier
+                    onClick = { showPinOptionsDialog = true },
+                    modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(16.dp)
+                        .padding(16.dp),
                 ) {
                     Text(text = stringResource(id = R.string.settings__select_pin_length))
                 }
@@ -92,7 +94,7 @@ internal fun SetupPinScreen(
                 onOptionSelected = { index, _ ->
                     currentPinState.reset()
                     viewModel.pinDigitsChanged(PinDigits.values()[index])
-                }
+                },
             )
         }
     }

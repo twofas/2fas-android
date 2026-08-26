@@ -40,9 +40,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ShareCompat
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.R
 
 @Composable
@@ -54,113 +54,112 @@ internal fun RequestIconScreen() {
     val uriHandler = LocalUriHandler.current
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = stringResource(id = R.string.customization_request_icon)) }
+        topBar = { TopAppBar(titleText = stringResource(id = R.string.customization_request_icon)) },
     ) { padding ->
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(rememberScrollState()),
         ) {
-
             Spacer(modifier = Modifier.height(24.dp))
             Image(
-                painter = painterResource(id = com.twofasapp.designsystem.R.drawable.img_order_icon_message),
+                painter = painterResource(id = com.twofasapp.core.design.R.drawable.img_order_icon_message),
                 contentDescription = null,
                 modifier = Modifier
                     .height(64.dp)
-                    .align(CenterHorizontally)
+                    .align(CenterHorizontally),
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_social_title),
                 style = MaterialTheme.typography.titleMedium,
-                color = TwTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
+                    .padding(horizontal = 16.dp),
             )
             Spacer(modifier = Modifier.height(8.dp))
-            Row(modifier = Modifier
-                .align(CenterHorizontally)
-                .clickable {
-                    uriHandler.openUri("https://discord.gg/q4cP6qh2g5")
-                }) {
+            Row(
+                modifier = Modifier
+                    .align(CenterHorizontally)
+                    .clickable {
+                        uriHandler.openUri("https://discord.gg/q4cP6qh2g5")
+                    },
+            ) {
                 Text(
                     text = stringResource(id = R.string.tokens__request_icon_social_link),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = TwTheme.color.primary,
-                    modifier = Modifier.align(CenterVertically)
+                    color = MdtTheme.color.primary,
+                    modifier = Modifier.align(CenterVertically),
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Icon(
-                    painter = TwIcons.ExternalLink,
+                    painter = MdtIcons.ExternalLink,
                     contentDescription = null,
-                    tint = TwTheme.color.primary,
+                    tint = MdtTheme.color.primary,
                     modifier = Modifier
                         .size(20.dp)
-                        .align(CenterVertically)
+                        .align(CenterVertically),
                 )
             }
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_social_description),
                 style = MaterialTheme.typography.bodyMedium,
-                color = TwTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
+                    .padding(horizontal = 16.dp),
             )
-
 
             Spacer(modifier = Modifier.height(24.dp))
             Box(modifier = Modifier.fillMaxWidth()) {
                 HorizontalDivider(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .align(Center)
+                        .align(Center),
                 )
                 Text(
                     text = stringResource(id = R.string.tokens__request_icon_middle),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = TwTheme.color.onSurfaceSecondary,
+                    color = MdtTheme.color.onSurfaceSecondary,
                     modifier = Modifier
                         .align(Center)
-                        .background(color = TwTheme.color.background)
-                        .padding(horizontal = 16.dp)
+                        .background(color = MdtTheme.color.background)
+                        .padding(horizontal = 16.dp),
                 )
             }
             Spacer(modifier = Modifier.height(24.dp))
 
-
             Image(
-                painter = painterResource(id = com.twofasapp.designsystem.R.drawable.img_order_icon_share),
+                painter = painterResource(id = com.twofasapp.core.design.R.drawable.img_order_icon_share),
                 contentDescription = null,
                 modifier = Modifier
                     .height(64.dp)
-                    .align(CenterHorizontally)
+                    .align(CenterHorizontally),
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_title),
                 style = MaterialTheme.typography.titleMedium,
-                color = TwTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
+                    .padding(horizontal = 16.dp),
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_description),
                 style = MaterialTheme.typography.bodyMedium,
-                color = TwTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
+                    .padding(horizontal = 16.dp),
             )
 
             SelectionContainer {
@@ -169,37 +168,37 @@ internal fun RequestIconScreen() {
                         .height(IntrinsicSize.Min)
                         .fillMaxWidth()
                         .padding(24.dp)
-                        .border(width = 1.dp, color = TwTheme.color.divider, shape = RoundedCornerShape(12.dp))
-                        .padding(horizontal = 4.dp)
+                        .border(width = 1.dp, color = MdtTheme.color.divider, shape = RoundedCornerShape(12.dp))
+                        .padding(horizontal = 4.dp),
                 ) {
-
                     Text(
                         text = shareText,
                         style = MaterialTheme.typography.bodySmall,
-                        color = TwTheme.color.onSurfacePrimary,
+                        color = MdtTheme.color.onSurfacePrimary,
                         modifier = Modifier
                             .weight(1f)
-                            .padding(12.dp)
+                            .padding(12.dp),
                     )
                     HorizontalDivider(
                         modifier = Modifier
                             .fillMaxHeight()
                             .width(1.dp),
-                        color = TwTheme.color.divider
+                        color = MdtTheme.color.divider,
                     )
-                    IconButton(modifier = Modifier.align(CenterVertically),
+                    IconButton(
+                        modifier = Modifier.align(CenterVertically),
                         onClick = {
                             ShareCompat.IntentBuilder(activity!!)
                                 .setType("text/plain")
                                 .setChooserTitle("2FAS Icon Request")
                                 .setText(shareText)
                                 .startChooser()
-                        }
+                        },
                     ) {
                         Icon(
-                            painter = TwIcons.Share,
-                            tint = TwTheme.color.primary,
-                            contentDescription = null
+                            painter = MdtIcons.Share,
+                            tint = MdtTheme.color.primary,
+                            contentDescription = null,
                         )
                     }
                 }
@@ -208,11 +207,11 @@ internal fun RequestIconScreen() {
             Text(
                 text = stringResource(id = R.string.tokens__request_icon_provider_footnote),
                 style = MaterialTheme.typography.bodySmall,
-                color = TwTheme.color.onSurfacePrimary,
+                color = MdtTheme.color.onSurfacePrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+                    .padding(horizontal = 24.dp),
             )
 
             Spacer(modifier = Modifier.height(24.dp))

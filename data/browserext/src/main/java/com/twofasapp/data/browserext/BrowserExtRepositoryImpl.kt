@@ -55,7 +55,7 @@ internal class BrowserExtRepositoryImpl(
                 name = deviceName,
                 fcm_token = fcmToken,
                 platform = PLATFORM,
-            )
+            ),
         )
 
         localSource.saveMobileDevice(mobileDevice)
@@ -69,7 +69,7 @@ internal class BrowserExtRepositoryImpl(
                 extension_id = extensionId,
                 device_name = deviceName,
                 device_public_key = devicePublicKey,
-            )
+            ),
         )
         localSource.savePairedBrowser(browser)
         return browser
@@ -108,7 +108,7 @@ internal class BrowserExtRepositoryImpl(
 
             if (deviceId.isNullOrBlank().not()) {
                 localSource.updateTokenRequests(
-                    remoteSource.fetchTokenRequests(deviceId!!).map { it.asDomain() }
+                    remoteSource.fetchTokenRequests(deviceId!!).map { it.asDomain() },
                 )
             }
         }
@@ -146,7 +146,7 @@ internal class BrowserExtRepositoryImpl(
                 extension_id = extensionId,
                 token_request_id = requestId,
                 token = codeEncrypted,
-            )
+            ),
         )
     }
 
@@ -167,7 +167,7 @@ internal class BrowserExtRepositoryImpl(
                 init(
                     Cipher.ENCRYPT_MODE,
                     publicKey,
-                    OAEPParameterSpec("SHA-512", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT)
+                    OAEPParameterSpec("SHA-512", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT),
                 )
                 // To use SHA-512 for both digests
                 // init(Cipher.ENCRYPT_MODE, publicKey, OAEPParameterSpec("SHA-510", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT))

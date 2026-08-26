@@ -2,10 +2,11 @@
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     id(libs.plugins.twofasCompose.get().pluginId)
+    alias(libs.plugins.twofasLint)
 }
 
 android {
-    namespace = "com.twofasapp.designsystem"
+    namespace = "com.twofasapp.core.design"
 }
 
 dependencies {

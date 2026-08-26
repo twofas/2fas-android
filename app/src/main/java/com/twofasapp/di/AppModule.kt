@@ -2,7 +2,6 @@ package com.twofasapp.di
 
 import android.app.NotificationManager
 import android.content.Context
-import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.biometric.BiometricKeyProviderImpl
 import com.twofasapp.common.di.KoinModule
@@ -10,12 +9,12 @@ import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.push.notification.ShowBrowserExtRequestNotification
 import com.twofasapp.environment.AppBuildImpl
+import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.navigator.ActivityScopedNavigator
 import com.twofasapp.notification.ShowBrowserExtRequestNotificationImpl
 import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.prefs.model.CheckLockStatus
 import com.twofasapp.time.TimeProviderImpl
-import com.twofasapp.migration.MigrateBoxToRoom
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.bind
@@ -41,8 +40,6 @@ class AppModule : KoinModule {
 
         single { CheckLockStatus(get()) }
         single { AuthTracker(Provider { get() }) }
-
-        singleOf(::MigrateBoxToRoom)
 
         singleOf(::ShowBrowserExtRequestNotificationImpl) { bind<ShowBrowserExtRequestNotification>() }
 

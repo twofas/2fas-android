@@ -11,7 +11,7 @@ class PinOptionsPreference(preferences: Preferences) : PreferenceModel<PinOption
     override val default: PinOptionsEntity = PinOptionsEntity(
         digits = 4,
         trials = 3,
-        timeout = 5 * 60 * 1000
+        timeout = 5 * 60 * 1000,
     )
 
     override val serialize: (PinOptionsEntity) -> String = { jsonSerializer.encodeToString(it) }

@@ -55,7 +55,6 @@ internal class SessionRepositoryImpl(
     }
 
     override suspend fun setRateAppDisplayed(isDisplayed: Boolean) {
-
     }
 
     override fun observeBackupEnabled(): Flow<Boolean> {
@@ -72,7 +71,7 @@ internal class SessionRepositoryImpl(
 
     override fun resetBackupReminder() {
         local.setBackupReminderTimestamp(
-            timeProvider.systemCurrentTime() + Duration.ofDays(21).toMillis()
+            timeProvider.systemCurrentTime() + Duration.ofDays(21).toMillis(),
         )
     }
 
@@ -136,6 +135,16 @@ internal class SessionRepositoryImpl(
 
     override fun disablePassBanner() {
         local.setPassBannerDismissTimestamp(timeProvider.systemCurrentTime() + Duration.ofDays(365 * 100).toMillis())
+    }
+
+    override fun observeAppReviewPrompted(): Flow<Boolean> {
+        return local.observeAppReviewPromptedTimestamp().map { it > 0L }
+    }
+
+    override suspend fun markAppReviewPrompted() {
+        withContext(dispatchers.io) {
+            local.setAppReviewPromptedTimestamp(timeProvider.systemCurrentTime())
+        }
     }
 
     private fun recalculate(): Boolean {

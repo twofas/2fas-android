@@ -26,7 +26,7 @@ internal class BrowserExtRequestViewModel(
                     .filter {
                         if (query.isNotEmpty()) {
                             it.name.contains(query.trim(), ignoreCase = true) ||
-                                    it.tags.map { tag -> tag.lowercase() }.contains(query.lowercase())
+                                it.tags.map { tag -> tag.lowercase() }.contains(query.lowercase())
                         } else {
                             true
                         }

@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.twofasapp.designsystem.R
+import com.twofasapp.core.design.R
 
 @Composable
 fun QrScanFinder(
@@ -14,7 +14,7 @@ fun QrScanFinder(
     Image(
         painter = painterResource(id = R.drawable.img_qrscan_finder),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier,
     )
 }
 

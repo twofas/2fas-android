@@ -33,7 +33,7 @@ internal class SecurityViewModel(
                             lockMethod = lockMethod,
                             pinTrials = pinOptions.trials,
                             pinTimeout = pinOptions.timeout,
-                            pinDigits = pinOptions.digits
+                            pinDigits = pinOptions.digits,
                         )
                     }
                 }
@@ -81,8 +81,8 @@ internal class SecurityViewModel(
                         digits = uiState.value.pinDigits,
                         trials = uiState.value.pinTrials,
                         timeout = uiState.value.pinTimeout,
-                    )
-                )
+                    ),
+                ),
             )
         }
     }

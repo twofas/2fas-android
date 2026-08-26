@@ -14,20 +14,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.R
+import com.twofasapp.core.design.feature.settings.SettingsDivider
+import com.twofasapp.core.design.feature.settings.SettingsHeader
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.dialog.InfoDialog
+import com.twofasapp.core.design.foundation.dialog.PasswordDialog
+import com.twofasapp.core.design.foundation.dialog.RichConfirmDialog
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.ConnectionState
+import com.twofasapp.core.design.ktx.currentConnectivityState
+import com.twofasapp.core.design.ktx.strings
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
-import com.twofasapp.designsystem.R
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.InfoDialog
-import com.twofasapp.designsystem.dialog.PasswordDialog
-import com.twofasapp.designsystem.dialog.RichConfirmDialog
-import com.twofasapp.designsystem.ktx.ConnectionState
-import com.twofasapp.designsystem.ktx.currentConnectivityState
-import com.twofasapp.designsystem.ktx.strings
-import com.twofasapp.designsystem.settings.SettingsDivider
-import com.twofasapp.designsystem.settings.SettingsHeader
-import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -44,7 +44,7 @@ internal fun BackupSettingsScreen(
         onRemovePassword = { viewModel.removePassword(it) },
         onDeleteBackup = { viewModel.deleteBackup(it) },
         onFinish = { goBack() },
-        onEventConsumed = { viewModel.consumeEvent(it) }
+        onEventConsumed = { viewModel.consumeEvent(it) },
     )
 }
 
@@ -86,7 +86,7 @@ private fun BackupSettingsScreenContent(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = strings.backupSettingsTitle) }
+        topBar = { TopAppBar(titleText = strings.backupSettingsTitle) },
     ) { padding ->
         LazyColumn(
             modifier = Modifier.padding(padding),
@@ -96,7 +96,7 @@ private fun BackupSettingsScreenContent(
                     SettingsLink(
                         title = strings.backupSettingsRemovePasswordTitle,
                         subtitle = strings.backupSettingsRemovePasswordMsg,
-                        icon = TwIcons.LockOpen,
+                        icon = MdtIcons.LockOpen,
                         enabled = uiState.syncStatus != CloudSyncStatus.Syncing,
                         onClick = { showRemovePasswordDialog = true },
                     )
@@ -106,7 +106,7 @@ private fun BackupSettingsScreenContent(
                     SettingsLink(
                         title = strings.backupSettingsSetPasswordTitle,
                         subtitle = strings.backupSettingsSetPasswordMsg,
-                        icon = TwIcons.Lock,
+                        icon = MdtIcons.Lock,
                         enabled = uiState.syncStatus != CloudSyncStatus.Syncing,
                         onClick = { showSetPasswordDialog = true },
                     )
@@ -118,12 +118,11 @@ private fun BackupSettingsScreenContent(
                     SettingsLink(
                         title = strings.backupSettingsDeleteBackupTitle,
                         subtitle = strings.backupSettingsDeleteBackupMsg,
-                        icon = TwIcons.Delete,
+                        icon = MdtIcons.Delete,
                         enabled = uiState.syncStatus != CloudSyncStatus.Syncing,
                         onClick = { showConfirmDeleteDialog = true },
                     )
                 }
-
 
                 item {
                     SettingsDivider()
@@ -157,7 +156,8 @@ private fun BackupSettingsScreenContent(
                             is CloudSyncStatus.Error -> {
                                 when (uiState.syncStatus.trigger) {
                                     CloudSyncTrigger.SetPassword,
-                                    CloudSyncTrigger.RemovePassword -> {
+                                    CloudSyncTrigger.RemovePassword,
+                                    -> {
                                         if (uiState.lastSyncMillis == 0L) {
                                             strings.backupSyncStatusWaiting
                                         } else {
@@ -194,7 +194,7 @@ private fun BackupSettingsScreenContent(
 
                         ConnectionState.Unavailable -> showConnectionErrorDialog = true
                     }
-                }
+                },
             )
         }
 
@@ -217,7 +217,7 @@ private fun BackupSettingsScreenContent(
                 body = strings.backupDeleteEnterPasswordMsg,
                 positive = strings.commonContinue,
                 error = if (showPasswordError) strings.backupIncorrectPassword else null,
-                onPositive = { onDeleteBackup(it) }
+                onPositive = { onDeleteBackup(it) },
             )
         }
 
@@ -230,7 +230,7 @@ private fun BackupSettingsScreenContent(
                 title = strings.backupSetCloudPasswordTitle,
                 body = strings.backupSetCloudPasswordMsg,
                 positive = strings.commonContinue,
-                onPositive = { onSetPassword(it) }
+                onPositive = { onSetPassword(it) },
             )
         }
 

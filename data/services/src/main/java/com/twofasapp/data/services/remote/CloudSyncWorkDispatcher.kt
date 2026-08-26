@@ -28,7 +28,7 @@ class CloudSyncWorkDispatcher(
                 Data.Builder().apply {
                     putString(CloudSyncWork.ArgTrigger, trigger.name)
                     password?.let { putString(CloudSyncWork.ArgPassword, it) }
-                }.build()
+                }.build(),
             )
             .setConstraints(constraints)
             .build()

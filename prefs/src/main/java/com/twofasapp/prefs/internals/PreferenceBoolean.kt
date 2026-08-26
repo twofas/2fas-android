@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onSubscription
 
 abstract class PreferenceBoolean(
-    private val preferences: Preferences
+    private val preferences: Preferences,
 ) : Preference<Boolean>() {
 
     override val default: Boolean = false

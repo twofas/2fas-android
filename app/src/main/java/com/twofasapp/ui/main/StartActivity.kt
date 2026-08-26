@@ -15,8 +15,8 @@ import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.common.domain.SelectedTheme
+import com.twofasapp.core.design.AppThemeState
 import com.twofasapp.data.session.SettingsRepository
-import com.twofasapp.designsystem.AppThemeState
 import com.twofasapp.workmanager.OnAppStartWork
 import com.twofasapp.workmanager.OnAppUpdatedWorkDispatcher
 import com.twofasapp.workmanager.SyncTimeWorkDispatcher
@@ -45,7 +45,7 @@ class StartActivity : AppCompatActivity(), AuthAware {
                         SelectedTheme.Light -> false
                         SelectedTheme.Dark -> true
                     }
-                }
+                },
             ),
             navigationBarStyle = SystemBarStyle.auto(
                 lightScrim = Color.Transparent.toArgb(),
@@ -56,7 +56,7 @@ class StartActivity : AppCompatActivity(), AuthAware {
                         SelectedTheme.Light -> false
                         SelectedTheme.Dark -> true
                     }
-                }
+                },
             ),
         )
         super.onCreate(savedInstanceState)
@@ -75,8 +75,8 @@ class StartActivity : AppCompatActivity(), AuthAware {
             AuthLifecycle(
                 authTracker = get(),
                 navigator = get { parametersOf(this) },
-                authAware = this as? AuthAware
-            )
+                authAware = this as? AuthAware,
+            ),
         )
     }
 
@@ -88,7 +88,7 @@ class StartActivity : AppCompatActivity(), AuthAware {
         startActivity(
             Intent(this, MainActivity::class.java).apply {
                 data = intent.data
-            }
+            },
         )
 
         finish()

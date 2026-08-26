@@ -10,7 +10,6 @@ interface BackupCipher {
         saltEncoded: String? = null,
     ): BackupEncrypted
 
-
     fun decrypt(
         reference: DataEncrypted,
         services: DataEncrypted,

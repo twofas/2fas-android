@@ -56,7 +56,6 @@ data class Service(
         Pink,
         Purple,
         Brown,
-        ;
     }
 
     companion object {
@@ -131,7 +130,6 @@ data class Service(
     fun toUri(): String {
         return Uri.Builder()
             .apply {
-
                 scheme("otpauth")
 
                 authority(authType.name.lowercase())
@@ -163,7 +161,6 @@ data class Service(
                 if (algorithm != null && algorithm != DefaultAlgorithm) {
                     appendQueryParameter("algorithm", algorithm.name)
                 }
-
             }
             .toString()
     }

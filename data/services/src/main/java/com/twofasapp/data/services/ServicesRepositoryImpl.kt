@@ -113,7 +113,7 @@ internal class ServicesRepositoryImpl(
                 service.copy(
                     backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                     updatedAt = timeProvider.systemCurrentTime(),
-                )
+                ),
             )
 
             widgetCallbacks.onServiceChanged()
@@ -148,7 +148,7 @@ internal class ServicesRepositoryImpl(
                     backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                     updatedAt = timeProvider.systemCurrentTime(),
                     isDeleted = true,
-                )
+                ),
             )
 
             local.deleteServiceFromOrder(id)
@@ -161,10 +161,10 @@ internal class ServicesRepositoryImpl(
                         services = recentlyDeleted.services.plus(
                             RecentlyDeletedService(
                                 secret = localService.secret,
-                                deletedAt = timeProvider.systemCurrentTime()
-                            )
-                        )
-                    )
+                                deletedAt = timeProvider.systemCurrentTime(),
+                            ),
+                        ),
+                    ),
                 )
 
                 if (triggerSync) {
@@ -185,7 +185,7 @@ internal class ServicesRepositoryImpl(
                     backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                     updatedAt = timeProvider.systemCurrentTime(),
                     isDeleted = false,
-                )
+                ),
             )
 
             local.addServiceToOrder(id)
@@ -263,7 +263,7 @@ internal class ServicesRepositoryImpl(
                 secret = link.secret,
                 digits = digits,
                 period = period,
-                algorithm = algorithm
+                algorithm = algorithm,
             )
         } catch (e: Exception) {
             Timber.e(e)
@@ -364,7 +364,7 @@ internal class ServicesRepositoryImpl(
                 matched.copy(
                     assignedDomains = matched.assignedDomains.minus(domain.lowercase()),
                     updatedAt = timeProvider.systemCurrentTime(),
-                )
+                ),
             )
         }
 
@@ -372,7 +372,7 @@ internal class ServicesRepositoryImpl(
             service.copy(
                 assignedDomains = service.assignedDomains.plus(domain.lowercase()),
                 updatedAt = timeProvider.systemCurrentTime(),
-            )
+            ),
         )
     }
 }

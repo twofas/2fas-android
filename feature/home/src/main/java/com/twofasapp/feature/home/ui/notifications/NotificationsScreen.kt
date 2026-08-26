@@ -25,12 +25,12 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.screen.EmptyScreen
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.notifications.domain.Notification
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwEmptyScreen
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.openSafely
 import com.twofasapp.feature.home.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
@@ -59,14 +59,13 @@ private fun ScreenContent(
     val context = LocalContext.current
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.notificationsTitle) },
+        topBar = { TopAppBar(titleText = TwLocale.strings.notificationsTitle) },
     ) { padding ->
 
         LazyColumn(Modifier.padding(padding)) {
-
             if (notifications.isEmpty()) {
                 item {
-                    TwEmptyScreen(
+                    EmptyScreen(
                         body = TwLocale.strings.notificationsEmpty,
                         image = painterResource(id = R.drawable.img_notifications_empty),
                         modifier = Modifier.fillParentMaxSize(),
@@ -83,7 +82,7 @@ private fun ScreenContent(
                         .clickable(
                             notification.link.isNotBlank() || notification.internalRoute
                                 .isNullOrBlank()
-                                .not()
+                                .not(),
                         ) {
                             onNotificationClick(notification)
 
@@ -98,10 +97,10 @@ private fun ScreenContent(
                                 onInternalRouteClick(notification.internalRoute.orEmpty())
                             }
                         }
-                        .background(if (notification.isRead) TwTheme.color.background else TwTheme.color.surface)
-                        .padding(16.dp)
+                        .background(if (notification.isRead) MdtTheme.color.background else MdtTheme.color.surface)
+                        .padding(16.dp),
                 )
-                HorizontalDivider(color = TwTheme.color.divider)
+                HorizontalDivider(color = MdtTheme.color.divider)
             }
         }
     }
@@ -121,12 +120,12 @@ private fun Notification(
                     Notification.Category.Features -> R.drawable.notif_category_feature
                     Notification.Category.Youtube -> R.drawable.notif_category_video
                     Notification.Category.Tips -> R.drawable.notif_category_tips
-                }
+                },
             ),
             contentDescription = null,
             modifier = Modifier
                 .size(40.dp)
-                .padding(top = 6.dp)
+                .padding(top = 6.dp),
         )
 
         Spacer(modifier = Modifier.width(16.dp))
@@ -135,8 +134,8 @@ private fun Notification(
             Text(
                 text = notification.message,
                 modifier = Modifier.fillMaxWidth(),
-                color = TwTheme.color.onSurfacePrimary,
-                style = TwTheme.typo.body3
+                color = MdtTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.body3,
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -144,15 +143,15 @@ private fun Notification(
             Text(
                 text = TwLocale.formatDuration(notification.createdAt),
                 modifier = Modifier.fillMaxWidth(),
-                color = TwTheme.color.onSurfaceSecondary,
-                style = TwTheme.typo.body4
+                color = MdtTheme.color.onSurfaceSecondary,
+                style = MdtTheme.typo.body4,
             )
         }
 
         Spacer(modifier = Modifier.width(24.dp))
 
         if (notification.link.isNotBlank()) {
-            Icon(painter = TwIcons.ExternalLink, contentDescription = null, tint = TwTheme.color.iconTint)
+            Icon(painter = MdtIcons.ExternalLink, contentDescription = null, tint = MdtTheme.color.iconTint)
         }
     }
 }

@@ -15,11 +15,12 @@ data class ServicesUiState(
     val searchFocused: Boolean = false,
     val showSyncNoticeBar: Boolean = false,
     val showSyncReminder: Boolean = true,
+    val showAppReview: Boolean = false,
     val showPassBanner: Boolean = false,
     val hasUnreadNotifications: Boolean = false,
     val appSettings: AppSettings = AppSettings(),
     val events: List<ServicesUiEvent> = listOf(),
-    val items: List<ServicesListItem> = mutableListOf()
+    val items: List<ServicesListItem> = mutableListOf(),
 ) {
     fun getService(id: Long): Service? {
         return services.firstOrNull { it.id == id }

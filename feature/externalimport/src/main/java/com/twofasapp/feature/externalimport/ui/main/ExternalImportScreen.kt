@@ -18,9 +18,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.ktx.encodeBase64ToString
-import com.twofasapp.designsystem.common.RequestPermission
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.screen.CommonContent
+import com.twofasapp.core.design.foundation.permission.RequestPermission
+import com.twofasapp.core.design.foundation.screen.CommonContent
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.image
 import com.twofasapp.locale.TwLocale
@@ -54,9 +54,8 @@ private fun ScreenContent(
     }
     val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
-        onResult = { uri -> uri?.let { onFilePicked(it.toString()) } }
+        onResult = { uri -> uri?.let { onFilePicked(it.toString()) } },
     )
-
 
     val title = when (uiState.importType) {
         ImportType.GoogleAuthenticator -> strings.externalImportGoogleAuthenticator
@@ -91,7 +90,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(title) }
+        topBar = { TopAppBar(title) },
     ) { padding ->
         CommonContent(
             modifier = Modifier
@@ -116,13 +115,13 @@ private fun ScreenContent(
                 when (uiState.importType) {
                     ImportType.GoogleAuthenticator -> {
                         galleryLauncher.launch(
-                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly),
                         )
                     }
 
                     else -> Unit
                 }
-            }
+            },
         )
     }
 

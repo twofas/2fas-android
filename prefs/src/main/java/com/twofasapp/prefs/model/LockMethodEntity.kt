@@ -9,5 +9,5 @@ enum class LockMethodEntity {
     @Deprecated("Since version 2.1.10 use FINGERPRINT_WITH_PIN_SECURED")
     FINGERPRINT_LOCK,
     PIN_SECURED,
-    FINGERPRINT_WITH_PIN_SECURED
+    FINGERPRINT_WITH_PIN_SECURED,
 }

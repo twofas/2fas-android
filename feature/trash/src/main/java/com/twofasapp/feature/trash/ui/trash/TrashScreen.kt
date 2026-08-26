@@ -15,17 +15,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwDropdownMenu
-import com.twofasapp.designsystem.common.TwDropdownMenuItem
-import com.twofasapp.designsystem.common.TwEmptyScreen
-import com.twofasapp.designsystem.common.TwIconButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.service.DsServiceSimple
-import com.twofasapp.designsystem.service.ServiceImageType
-import com.twofasapp.designsystem.service.ServiceState
-import com.twofasapp.designsystem.service.asColor
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.DsServiceSimple
+import com.twofasapp.core.design.feature.items.ServiceImageType
+import com.twofasapp.core.design.feature.items.ServiceState
+import com.twofasapp.core.design.feature.items.asColor
+import com.twofasapp.core.design.foundation.button.IconButton
+import com.twofasapp.core.design.foundation.menu.DropdownMenu
+import com.twofasapp.core.design.foundation.menu.DropdownMenuItem
+import com.twofasapp.core.design.foundation.screen.EmptyScreen
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.trash.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
@@ -33,7 +33,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun TrashScreen(
     viewModel: TrashViewModel = koinViewModel(),
-    openDispose: (Long) -> Unit
+    openDispose: (Long) -> Unit,
 ) {
     val services by viewModel.services.collectAsStateWithLifecycle()
 
@@ -50,14 +50,12 @@ private fun ScreenContent(
     onRestoreClick: (Long) -> Unit,
     onDisposeClick: (Long) -> Unit,
 ) {
-
-    Scaffold(topBar = { TwTopAppBar(TwLocale.strings.trashTitle) }) { padding ->
+    Scaffold(topBar = { TopAppBar(TwLocale.strings.trashTitle) }) { padding ->
 
         LazyColumn(Modifier.padding(padding)) {
-
             if (services.isEmpty()) {
                 item {
-                    TwEmptyScreen(
+                    EmptyScreen(
                         body = TwLocale.strings.trashEmpty,
                         image = painterResource(id = R.drawable.img_trash),
                         modifier = Modifier.fillParentMaxSize(),
@@ -84,31 +82,31 @@ private fun ScreenContent(
                     ),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp, end = 0.dp)
+                        .padding(start = 16.dp, end = 0.dp),
                 ) {
                     var dropdownVisible by rememberSaveable { mutableStateOf(false) }
 
-                    TwDropdownMenu(
+                    DropdownMenu(
                         expanded = dropdownVisible,
                         onDismissRequest = { dropdownVisible = false },
-                        anchor = { TwIconButton(painter = TwIcons.More, onClick = { dropdownVisible = true }) }
+                        anchor = { IconButton(painter = MdtIcons.More, onClick = { dropdownVisible = true }) },
                     ) {
-                        TwDropdownMenuItem(
+                        DropdownMenuItem(
                             text = TwLocale.strings.trashRestoreCta,
-                            icon = TwIcons.Refresh,
+                            icon = MdtIcons.Refresh,
                             onClick = {
                                 dropdownVisible = false
                                 onRestoreClick(it.id)
-                            }
+                            },
                         )
-                        TwDropdownMenuItem(
+                        DropdownMenuItem(
                             text = TwLocale.strings.trashDisposeCta,
-                            icon = TwIcons.Delete,
-                            contentColor = TwTheme.color.accentRed,
+                            icon = MdtIcons.Delete,
+                            contentColor = MdtTheme.color.accentRed,
                             onClick = {
                                 dropdownVisible = false
                                 onDisposeClick(it.id)
-                            }
+                            },
                         )
                     }
                 }

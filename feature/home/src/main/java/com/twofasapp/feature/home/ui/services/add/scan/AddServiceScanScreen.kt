@@ -34,15 +34,15 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.dialog.InfoDialog
+import com.twofasapp.core.design.foundation.permission.RequestPermission
+import com.twofasapp.core.design.ktx.settingsIntent
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.RequestPermission
-import com.twofasapp.designsystem.common.TwTextButton
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.dialog.InfoDialog
-import com.twofasapp.designsystem.ktx.settingsIntent
-import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
@@ -59,7 +59,7 @@ internal fun AddServiceScanScreen(
     val context = LocalContext.current
     val singlePhotoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
-        onResult = { uri -> uri?.let { viewModel.onLoadFromGallery(it) } }
+        onResult = { uri -> uri?.let { viewModel.onLoadFromGallery(it) } },
     )
 
     var askForPermission by remember { mutableStateOf(true) }
@@ -86,8 +86,8 @@ internal fun AddServiceScanScreen(
         ) {
             Text(
                 text = TwLocale.strings.addTitle,
-                style = TwTheme.typo.title,
-                color = TwTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.title,
+                color = MdtTheme.color.onSurfacePrimary,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
@@ -97,8 +97,8 @@ internal fun AddServiceScanScreen(
 
         Text(
             text = TwLocale.strings.addDescription,
-            color = TwTheme.color.onSurfacePrimary,
-            style = TwTheme.typo.body1,
+            color = MdtTheme.color.onSurfacePrimary,
+            style = MdtTheme.typo.body1,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = 16.dp),
         )
@@ -108,7 +108,7 @@ internal fun AddServiceScanScreen(
                 .padding(16.dp)
                 .clip(RoundedCornerShape(20.dp))
                 .fillMaxWidth()
-                .height(260.dp)
+                .height(260.dp),
         ) {
             QrScan(
                 modifier = Modifier.fillMaxSize(),
@@ -116,7 +116,7 @@ internal fun AddServiceScanScreen(
                     if (uiState.enabled) {
                         viewModel.onScanned(it)
                     }
-                }
+                },
             )
 
             if (cameraPermissionState.status is PermissionStatus.Denied) {
@@ -127,20 +127,19 @@ internal fun AddServiceScanScreen(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-
                     Text(
                         text = TwLocale.strings.permissionCameraBody,
                         color = Color.White.copy(alpha = 0.4f),
-                        style = TwTheme.typo.body3,
+                        style = MdtTheme.typo.body3,
                         modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    TwTextButton(
+                    TextButton(
                         text = TwLocale.strings.settingsSettings,
-                        onClick = { context.startActivity(context.settingsIntent) }
+                        onClick = { context.startActivity(context.settingsIntent) },
                     )
                 }
             }
@@ -148,27 +147,27 @@ internal fun AddServiceScanScreen(
 
         Text(
             text = TwLocale.strings.addOtherMethods,
-            color = TwTheme.color.onSurfaceTertiary,
-            modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
+            color = MdtTheme.color.onSurfaceTertiary,
+            modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
         )
 
         SettingsLink(
             title = TwLocale.strings.addEnterManual,
-            icon = TwIcons.Keyboard
+            icon = MdtIcons.Keyboard,
         ) { openManual() }
 
         SettingsLink(
             title = TwLocale.strings.addFromGallery,
-            icon = TwIcons.Panorama
+            icon = MdtIcons.Panorama,
         ) {
             singlePhotoPickerLauncher.launch(
-                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly),
             )
         }
 
         SettingsLink(
             title = TwLocale.strings.addWithGuide,
-            icon = TwIcons.Guide
+            icon = MdtIcons.Guide,
         ) { openGuides() }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -213,7 +212,7 @@ internal fun AddServiceScanScreen(
             positive = TwLocale.strings.addGalleryErrorPositiveCta,
             onPositive = {
                 singlePhotoPickerLauncher.launch(
-                    PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                    PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly),
                 )
             },
         )

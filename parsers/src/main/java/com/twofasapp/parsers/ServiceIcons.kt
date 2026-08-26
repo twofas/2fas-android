@@ -28,7 +28,6 @@ object ServiceIcons {
             ?: defaultCollectionId
     }
 
-
     private fun formatPath(fileName: String): String {
         return "icons/$fileName.png"
     }

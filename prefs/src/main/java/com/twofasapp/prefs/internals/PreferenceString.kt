@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onSubscription
 
 abstract class PreferenceString(
-    private val preferences: Preferences
+    private val preferences: Preferences,
 ) : Preference<String>() {
 
     override fun get(): String =

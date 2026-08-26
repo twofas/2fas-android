@@ -6,14 +6,14 @@ import com.twofasapp.feature.trash.ui.trash.TrashScreen
 
 @Composable
 fun TrashRoute(
-    openDispose: (Long) -> Unit
+    openDispose: (Long) -> Unit,
 ) {
     TrashScreen(openDispose = openDispose)
 }
 
 @Composable
 fun DisposeRoute(
-    navigateBack: () -> Unit
+    navigateBack: () -> Unit,
 ) {
     DisposeScreen(navigateBack = navigateBack)
 }

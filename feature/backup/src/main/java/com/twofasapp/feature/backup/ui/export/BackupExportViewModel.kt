@@ -32,7 +32,7 @@ internal class BackupExportViewModel(
         launchScoped {
             runSafely {
                 backupRepository.createBackupContentSerialized(
-                    password = if (uiState.value.passwordChecked) uiState.value.password else null
+                    password = if (uiState.value.passwordChecked) uiState.value.password else null,
                 )
             }
                 .onSuccess { content ->
@@ -42,7 +42,7 @@ internal class BackupExportViewModel(
                         BackupExportUiEvent.ShowSharePicker(
                             appId = appBuild.id,
                             content = content,
-                        )
+                        ),
                     )
                 }
                 .onFailure { publishEvent(BackupExportUiEvent.ShareError) }
@@ -53,14 +53,13 @@ internal class BackupExportViewModel(
         launchScoped {
             runSafely {
                 val content = backupRepository.createBackupContentSerialized(
-                    password = if (uiState.value.passwordChecked) uiState.value.password else null
+                    password = if (uiState.value.passwordChecked) uiState.value.password else null,
                 )
 
                 context.contentResolver.openOutputStream(fileUri)
                     ?.use { outputStream ->
                         outputStream.write(content.toByteArray(Charsets.UTF_8))
                     }
-
             }
                 .onSuccess {
                     sessionRepository.resetBackupReminder()

@@ -11,8 +11,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.locale.TwLocale
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -23,14 +23,13 @@ internal fun ServicesFab(
     isNormalVisible: Boolean,
     onClick: () -> Unit,
 ) {
-
     if (isVisible) {
         if (isExtendedVisible) {
             ExtendedFloatingActionButton(
                 onClick = onClick,
-                icon = { Icon(TwIcons.Add, null) },
+                icon = { Icon(MdtIcons.Add, null) },
                 text = { Text(text = TwLocale.strings.servicesEmptyPairServiceCta) },
-                containerColor = TwTheme.color.primary,
+                containerColor = MdtTheme.color.primary,
                 contentColor = Color.White,
             )
         } else {
@@ -41,8 +40,8 @@ internal fun ServicesFab(
             ) {
                 FloatingActionButton(
                     onClick = onClick,
-                    content = { Icon(TwIcons.Add, null) },
-                    containerColor = TwTheme.color.primary,
+                    content = { Icon(MdtIcons.Add, null) },
+                    containerColor = MdtTheme.color.primary,
                     contentColor = Color.White,
                 )
             }

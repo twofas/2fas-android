@@ -29,8 +29,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwCircularProgressIndicator
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.feature.security.ui.biometric.BiometricDialog
 import com.twofasapp.locale.R
@@ -57,40 +57,39 @@ internal fun PinScreen(
     onBiometricsInvalidated: () -> Unit = {},
     biometricKeyProvider: BiometricKeyProvider? = null,
 ) {
-
     var showBiometricDialog by remember { mutableStateOf(true) }
 
     if (state == PinScreenState.Loading) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(TwTheme.color.background)
-                .safeContentPadding()
+                .background(MdtTheme.color.background)
+                .safeContentPadding(),
         ) {
-            TwCircularProgressIndicator(Modifier.align(Alignment.Center))
+            CircularProgressIndicator(Modifier.align(Alignment.Center))
         }
     }
 
     AnimatedVisibility(
         visible = state != PinScreenState.Loading,
         enter = fadeIn(),
-        exit = fadeOut()
+        exit = fadeOut(),
     ) {
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .background(TwTheme.color.background)
+                .background(MdtTheme.color.background)
                 .safeContentPadding(),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             if (showLogo) {
                 Image(
-                    painter = painterResource(id = com.twofasapp.designsystem.R.drawable.logo_2fas),
+                    painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_2fas),
                     contentDescription = null,
                     modifier = Modifier
                         .padding(16.dp)
-                        .size(48.dp)
+                        .size(48.dp),
                 )
             }
 
@@ -101,7 +100,7 @@ internal fun PinScreen(
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.bodyLarge,
-                color = if (errorMessage.isNotBlank()) TwTheme.color.primary else TwTheme.color.onSurfacePrimary
+                color = if (errorMessage.isNotBlank()) MdtTheme.color.primary else MdtTheme.color.onSurfacePrimary,
             )
 
             PinInput(
@@ -112,7 +111,7 @@ internal fun PinScreen(
                     if (currentPinState.pin.value.isNotEmpty()) {
                         currentPinState.pin.value = currentPinState.pin.value.dropLast(1)
                     }
-                }
+                },
             )
 
             PinKeyboard(
@@ -128,7 +127,7 @@ internal fun PinScreen(
                             onPinEntered.invoke(currentPinState.pin.value)
                         }
                     }
-                }
+                },
             )
         }
     }
@@ -147,7 +146,7 @@ internal fun PinScreen(
             },
             onBiometricInvalidated = { onBiometricsInvalidated() },
             requireKeyValidation = true,
-            biometricKeyProvider = biometricKeyProvider
+            biometricKeyProvider = biometricKeyProvider,
         )
     }
 }

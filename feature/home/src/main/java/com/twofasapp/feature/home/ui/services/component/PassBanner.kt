@@ -27,10 +27,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwOutlinedButton
-import com.twofasapp.designsystem.common.richText
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.OutlinedButton
+import com.twofasapp.core.design.foundation.text.richText
 import com.twofasapp.feature.home.R
 import com.twofasapp.locale.TwLocale
 
@@ -49,7 +49,7 @@ internal fun PassBanner(
             painter = painterResource(R.drawable.pass_banner_bg),
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
 
         Column(
@@ -66,20 +66,20 @@ internal fun PassBanner(
 
             Text(
                 text = TwLocale.strings.passBannerTitle,
-                color = TwTheme.color.onSurfacePrimary,
-                style = TwTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
+                color = MdtTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
 
             Spacer(Modifier.height(8.dp))
 
             Text(
                 text = richText(TwLocale.strings.passBannerMsg),
-                color = TwTheme.color.onSurfacePrimary,
-                style = TwTheme.typo.body3,
+                color = MdtTheme.color.onSurfacePrimary,
+                style = MdtTheme.typo.body3,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
 
             Spacer(Modifier.height(16.dp))
@@ -88,29 +88,27 @@ internal fun PassBanner(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center,
             ) {
-                TwOutlinedButton(
+                OutlinedButton(
                     text = TwLocale.strings.passBannerNegativeCta,
                     height = 36.dp,
                     onClick = onDismissClick,
-                    textColor = TwTheme.color.onSurfacePrimary,
-                    borderColor = TwTheme.color.onSurfacePrimary,
+                    textColor = MdtTheme.color.onSurfacePrimary,
+                    borderColor = MdtTheme.color.onSurfacePrimary,
                 )
                 Spacer(modifier = Modifier.width(8.dp))
 
-                TwButton(
+                Button(
                     text = "Go to Store",
                     height = 36.dp,
                     onClick = onGoToStoreClick,
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFF064AD7),
                         contentColor = Color.White,
-                    )
+                    ),
                 )
             }
         }
     }
-
-
 }
 
 @Preview

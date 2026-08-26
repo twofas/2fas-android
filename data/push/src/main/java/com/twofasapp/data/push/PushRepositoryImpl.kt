@@ -19,7 +19,6 @@ internal class PushRepositoryImpl : PushRepository {
         onBufferOverflow = BufferOverflow.DROP_OLDEST,
     )
 
-
     override fun observeInAppPushes(): Flow<Push> {
         return flowInAppPushes
     }
@@ -33,7 +32,6 @@ internal class PushRepositoryImpl : PushRepository {
             Push.Handler.InAppOnly -> dispatchInAppPush(push)
             Push.Handler.NotificationOnly -> dispatchNotificationPush(push)
             Push.Handler.InAppOrNotification -> {
-
                 val dispatchSuccess = dispatchInAppPush(push)
                 if (dispatchSuccess.not()) {
                     dispatchNotificationPush(push)

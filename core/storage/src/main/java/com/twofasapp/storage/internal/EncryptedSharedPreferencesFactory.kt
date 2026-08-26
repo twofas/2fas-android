@@ -19,7 +19,7 @@ internal class EncryptedSharedPreferencesFactory(private val context: Context) :
             "${context.packageName}_preferences_encrypted",
             mainKey,
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM,
         )
     }
 }

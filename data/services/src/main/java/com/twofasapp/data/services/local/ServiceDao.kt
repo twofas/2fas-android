@@ -46,8 +46,10 @@ interface ServiceDao {
         local.removeAll { it.groupId == null }
         local.removeAll { groupIds.contains(it.groupId) }
 
-        update(*local
-            .map { it.copy(groupId = null) }
-            .toTypedArray())
+        update(
+            *local
+                .map { it.copy(groupId = null) }
+                .toTypedArray(),
+        )
     }
 }

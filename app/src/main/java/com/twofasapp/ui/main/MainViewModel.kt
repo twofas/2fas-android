@@ -47,7 +47,6 @@ internal class MainViewModel(
                         )
                     }
                 }
-
         }
 
         launchScoped {
@@ -77,7 +76,7 @@ internal class MainViewModel(
                                 matchedServices = matchedServices,
                             )
                         }
-                            .distinctBy { it.request.requestId }
+                            .distinctBy { it.request.requestId },
                     )
                 }
             }
@@ -101,7 +100,6 @@ internal class MainViewModel(
     fun toggleAdvanceExpanded() {
         launchScoped { servicesRepository.pushAddServiceAdvancedExpanded(uiState.value.addServiceAdvancedExpanded.not()) }
     }
-
 
     fun consumeEvent(event: MainUiEvent) {
         uiState.update { it.copy(events = it.events.minus(event)) }

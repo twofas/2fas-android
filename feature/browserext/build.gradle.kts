@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.twofasCompose)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.kotlinParcelize)
+    alias(libs.plugins.twofasLint)
 }
 
 android {

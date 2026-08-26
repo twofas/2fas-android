@@ -114,9 +114,9 @@ internal fun List<Service>.asBackup(): List<BackupService> {
                 },
                 brand = null,
                 label = s.labelText?.let { BackupService.Label(text = it, backgroundColor = s.labelColor?.name ?: Tint.LightBlue.name) },
-                iconCollection = BackupService.IconCollection(id = s.iconCollectionId)
+                iconCollection = BackupService.IconCollection(id = s.iconCollectionId),
             ),
-            groupId = s.groupId
+            groupId = s.groupId,
         )
     }
 }
@@ -174,5 +174,5 @@ internal fun ServicesOrderEntity.asDomain() =
         type = when (type) {
             ServicesOrderEntity.Type.Alphabetical -> ServicesOrder.Type.Alphabetical
             ServicesOrderEntity.Type.Manual -> ServicesOrder.Type.Manual
-        }
+        },
     )

@@ -22,8 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
 
 @Composable
 internal fun PinInput(
@@ -36,14 +36,13 @@ internal fun PinInput(
         modifier = Modifier
             .fillMaxWidth()
             .height(64.dp)
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = 24.dp),
     ) {
-
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .padding(horizontal = 12.dp)
+                .padding(horizontal = 12.dp),
         ) {
             Row(modifier = Modifier.align(Alignment.Center)) {
                 repeat(digits) { index ->
@@ -53,13 +52,12 @@ internal fun PinInput(
                             .size(12.dp)
                             .run {
                                 if (index < enteredDigits) {
-                                    background(shape = CircleShape, color = TwTheme.color.primary)
-
+                                    background(shape = CircleShape, color = MdtTheme.color.primary)
                                 } else {
-                                    background(shape = CircleShape, color = TwTheme.color.background)
-                                    border(width = 2.dp, color = TwTheme.color.divider, shape = CircleShape)
+                                    background(shape = CircleShape, color = MdtTheme.color.background)
+                                    border(width = 2.dp, color = MdtTheme.color.divider, shape = CircleShape)
                                 }
-                            }
+                            },
 
                     )
                 }
@@ -70,7 +68,7 @@ internal fun PinInput(
                     strokeWidth = 2.dp,
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
-                        .size(20.dp)
+                        .size(20.dp),
                 )
             } else {
                 IconButton(onClick = {
@@ -79,18 +77,19 @@ internal fun PinInput(
                     }
                 }, modifier = Modifier.align(Alignment.CenterEnd)) {
                     Icon(
-                        TwIcons.Backspace, null,
+                        MdtIcons.Backspace,
+                        null,
                         tint = if (enteredDigits == 0) {
                             Color(0x80606060)
                         } else {
                             Color(0xFF606060)
-                        }
+                        },
                     )
                 }
             }
         }
 
-        Divider(color = TwTheme.color.divider)
+        Divider(color = MdtTheme.color.divider)
     }
 }
 
@@ -101,7 +100,7 @@ fun PreviewPinInput() {
         digits = 4,
         enteredDigits = 1,
         isVerifying = false,
-        onBackClick = {}
+        onBackClick = {},
     )
 }
 

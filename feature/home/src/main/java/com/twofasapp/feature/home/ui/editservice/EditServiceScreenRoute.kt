@@ -38,7 +38,7 @@ internal fun EditServiceScreenRoute(
     val navHostController = rememberNavController()
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         NavHost(
             navHostController,
@@ -47,9 +47,7 @@ internal fun EditServiceScreenRoute(
             exitTransition = NavAnimation.Exit,
         ) {
             navigation(route = "editservice", startDestination = EditServiceScreen.Main.route) {
-
                 composable(EditServiceScreen.Main.route) {
-
                     EditServiceScreen(
                         onBackClick = { navController.popBackStack() },
                         onAdvanceClick = { navHostController.navigate(EditServiceScreen.AdvancedSettings.route) },

@@ -26,7 +26,8 @@ class BrowserExtRequestReceiver : BroadcastReceiver(), KoinComponent {
                 action = ACTION
 
                 putExtra(
-                    BrowserExtRequestPayload.Key, payload
+                    BrowserExtRequestPayload.Key,
+                    payload,
                 )
             }
     }
@@ -41,7 +42,7 @@ class BrowserExtRequestReceiver : BroadcastReceiver(), KoinComponent {
                 .setInputData(
                     Data.Builder().apply {
                         putString(BrowserExtRequestPayload.Key, json.encodeToString(payload))
-                    }.build()
+                    }.build(),
                 )
                 .build()
 

@@ -5,11 +5,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.window.DialogProperties
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.ktx.currentActivity
+import com.twofasapp.data.browserext.domain.TokenRequest
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestReceiver
-import com.twofasapp.data.browserext.domain.TokenRequest
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.ktx.currentActivity
 import com.twofasapp.feature.browserext.ui.request.BrowserExtRequestActivity
 import com.twofasapp.locale.TwLocale
 
@@ -43,15 +43,14 @@ internal fun BrowserExtRequestDialog(
                         domain = browserExtRequest.domain,
                     )
                 activity.sendBroadcast(
-                    BrowserExtRequestReceiver.createIntent(activity, payload)
+                    BrowserExtRequestReceiver.createIntent(activity, payload),
                 )
 
                 onRequestHandled.invoke()
             } else {
-
                 val contentIntent = Intent(
                     activity,
-                    BrowserExtRequestActivity::class.java
+                    BrowserExtRequestActivity::class.java,
                 ).apply {
                     flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
 
@@ -64,7 +63,7 @@ internal fun BrowserExtRequestDialog(
                             requestId = browserExtRequest.request.requestId,
                             serviceId = -1,
                             domain = browserExtRequest.domain,
-                        )
+                        ),
                     )
                 }
 
@@ -82,7 +81,7 @@ internal fun BrowserExtRequestDialog(
             )
 
             activity.sendBroadcast(
-                BrowserExtRequestReceiver.createIntent(activity, payload)
+                BrowserExtRequestReceiver.createIntent(activity, payload),
             )
 
             onRequestHandled.invoke()
@@ -90,7 +89,7 @@ internal fun BrowserExtRequestDialog(
         properties = DialogProperties(
             dismissOnBackPress = false,
             dismissOnClickOutside = false,
-        )
+        ),
     )
 }
 
@@ -102,10 +101,10 @@ private fun Preview() {
             request = TokenRequest(
                 domain = "Antionette",
                 requestId = "Cristian",
-                extensionId = "Kalia"
+                extensionId = "Kalia",
             ),
             domain = "Darleen",
-            matchedServices = listOf()
-        )
+            matchedServices = listOf(),
+        ),
     )
 }

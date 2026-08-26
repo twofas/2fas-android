@@ -55,7 +55,8 @@ internal class BackupViewModel(
 
                 when (cloudSyncStatus) {
                     is CloudSyncStatus.Default,
-                    is CloudSyncStatus.Synced -> {
+                    is CloudSyncStatus.Synced,
+                    -> {
                         uiState.update {
                             it.copy(
                                 syncChecked = cloudBackupStatus.active,
@@ -83,7 +84,7 @@ internal class BackupViewModel(
 
                     is CloudSyncStatus.Error -> {
                         val isPasswordError = cloudSyncStatus.error == CloudSyncError.DecryptWrongPassword ||
-                                cloudSyncStatus.error == CloudSyncError.DecryptNoPassword
+                            cloudSyncStatus.error == CloudSyncError.DecryptNoPassword
 
                         uiState.update {
                             it.copy(
@@ -127,7 +128,7 @@ internal class BackupViewModel(
                     showError = false,
                     error = null,
                     cloudBackupStatus = null,
-                    cloudSyncStatus = CloudSyncStatus.Default
+                    cloudSyncStatus = CloudSyncStatus.Default,
                 )
             }
         }

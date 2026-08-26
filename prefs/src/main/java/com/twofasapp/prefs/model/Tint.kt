@@ -12,5 +12,4 @@ enum class Tint(val hex: String, val hexDark: String = hex) {
     Pink("#ca49de"),
     Purple("#8C49DE"),
     Brown("#bd8857"),
-    ;
 }

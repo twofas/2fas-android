@@ -14,6 +14,7 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
         private const val KeyAppInstallTimestamp = "appInstallTimestamp"
         private const val KeyNoCompanionAppFromTimestamp = "noCompanionAppFromTimestamp"
         private const val KeyPassBannerDismissTimestamp = "passBannerDismissTimestamp"
+        private const val KeyAppReviewPromptedTimestamp = "appReviewPromptedTimestamp"
     }
 
     private val backupReminderTimestampFlow: MutableStateFlow<Long> by lazy {
@@ -22,6 +23,10 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
 
     private val passBannerDismissTimestampFlow: MutableStateFlow<Long> by lazy {
         MutableStateFlow(getPassBannerDismissTimestamp())
+    }
+
+    private val appReviewPromptedTimestampFlow: MutableStateFlow<Long> by lazy {
+        MutableStateFlow(getAppReviewPromptedTimestamp())
     }
 
     fun isOnboardingDisplayed(): Boolean {
@@ -78,5 +83,18 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
     fun setPassBannerDismissTimestamp(millis: Long) {
         passBannerDismissTimestampFlow.update { millis }
         preferences.putLong(KeyPassBannerDismissTimestamp, millis)
+    }
+
+    fun observeAppReviewPromptedTimestamp(): Flow<Long> {
+        return appReviewPromptedTimestampFlow
+    }
+
+    fun getAppReviewPromptedTimestamp(): Long {
+        return preferences.getLong(KeyAppReviewPromptedTimestamp) ?: 0L
+    }
+
+    fun setAppReviewPromptedTimestamp(millis: Long) {
+        appReviewPromptedTimestampFlow.update { millis }
+        preferences.putLong(KeyAppReviewPromptedTimestamp, millis)
     }
 }

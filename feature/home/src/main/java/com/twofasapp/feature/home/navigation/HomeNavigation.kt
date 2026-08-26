@@ -22,7 +22,7 @@ fun NavGraphBuilder.homeNavigation(
             navController.popBackStack(
                 route = Screen.Services.route,
                 inclusive = false,
-                saveState = true
+                saveState = true,
             )
         }
 
@@ -56,7 +56,7 @@ fun NavGraphBuilder.homeNavigation(
                         navController.navigate(route)
                     }
                 }
-            }
+            },
         )
     }
 

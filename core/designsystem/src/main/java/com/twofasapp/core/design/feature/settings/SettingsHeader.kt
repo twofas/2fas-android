@@ -1,0 +1,33 @@
+package com.twofasapp.core.design.feature.settings
+
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.twofasapp.core.design.MdtTheme
+
+@Composable
+fun SettingsHeader(title: String) {
+    Text(
+        text = title,
+        style = MdtTheme.typo.body2,
+        color = MdtTheme.color.primary,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                start = 72.dp,
+                top = 16.dp,
+                end = 16.dp,
+                bottom = 8.dp,
+            ),
+    )
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    SettingsHeader(title = "Header")
+}

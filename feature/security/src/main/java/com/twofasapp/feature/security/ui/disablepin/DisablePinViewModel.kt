@@ -44,7 +44,6 @@ internal class DisablePinViewModel(
                 publishEvent(DisablePinUiEvent.ClearCurrentPin)
             }
         }
-
     }
 
     fun consumeEvent(event: DisablePinUiEvent) {

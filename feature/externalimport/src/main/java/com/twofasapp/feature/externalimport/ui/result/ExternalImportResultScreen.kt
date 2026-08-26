@@ -19,12 +19,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwCircularProgressIndicator
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.StackTraceDetails
-import com.twofasapp.designsystem.ktx.toastShort
-import com.twofasapp.designsystem.screen.CommonContent
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.dialog.StackTraceDetails
+import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
+import com.twofasapp.core.design.foundation.screen.CommonContent
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.toastShort
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.image
 import com.twofasapp.locale.TwLocale
@@ -63,7 +63,7 @@ private fun ScreenContent(
     val strings = TwLocale.strings
 
     Scaffold(
-        topBar = { TwTopAppBar(strings.externalImportResultTitle) }
+        topBar = { TopAppBar(strings.externalImportResultTitle) },
     ) { padding ->
 
         AnimatedVisibility(
@@ -75,7 +75,7 @@ private fun ScreenContent(
                 .padding(padding),
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
-                TwCircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         }
 
@@ -147,16 +147,16 @@ private fun Result(
                         } else {
                             strings.externalImportResultTokensCount.format(
                                 readResult.countServicesToImport,
-                                readResult.countTotalServices
+                                readResult.countTotalServices,
                             )
                         },
-                        style = TwTheme.typo.h3,
-                        modifier = Modifier.padding(vertical = 16.dp)
+                        style = MdtTheme.typo.h3,
+                        modifier = Modifier.padding(vertical = 16.dp),
                     )
 
                     Text(
                         text = strings.externalImportResultTokensMsg,
-                        style = TwTheme.typo.body1,
+                        style = MdtTheme.typo.body1,
                     )
                 }
             }
@@ -200,8 +200,8 @@ private fun PreviewSuccess() {
     ScreenContent(
         uiState = ExternalImportResultUiState(
             loading = false,
-            readResult = ReadResult.Success(services = emptyList(), countServicesToImport = 5, countTotalServices = 10)
-        )
+            readResult = ReadResult.Success(services = emptyList(), countServicesToImport = 5, countTotalServices = 10),
+        ),
     )
 }
 
@@ -211,7 +211,7 @@ private fun PreviewFailure() {
     ScreenContent(
         uiState = ExternalImportResultUiState(
             loading = false,
-            readResult = ReadResult.Failure("")
-        )
+            readResult = ReadResult.Failure(""),
+        ),
     )
 }

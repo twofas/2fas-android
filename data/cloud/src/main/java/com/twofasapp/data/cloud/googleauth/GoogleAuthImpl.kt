@@ -37,7 +37,6 @@ internal class GoogleAuthImpl(
 
     override suspend fun handleSignInResult(result: ActivityResult): SignInResult {
         return withContext(dispatchers.io) {
-
             suspendCancellableCoroutine { continuation ->
 
                 if (result.resultCode != Activity.RESULT_OK) {
@@ -62,10 +61,11 @@ internal class GoogleAuthImpl(
         return withContext(dispatchers.io) {
             suspendCancellableCoroutine { continuation ->
                 GoogleSignIn.getClient(
-                    context, GoogleSignInOptions.Builder()
+                    context,
+                    GoogleSignInOptions.Builder()
                         .requestEmail()
                         .requestScopes(scope)
-                        .build()
+                        .build(),
                 ).signOut()
                     .addOnSuccessListener { continuation.resumeIfActive(Unit) }
                     .addOnCanceledListener { continuation.resumeIfActive(Unit) }
@@ -78,10 +78,11 @@ internal class GoogleAuthImpl(
         return withContext(dispatchers.io) {
             suspendCancellableCoroutine { continuation ->
                 GoogleSignIn.getClient(
-                    context, GoogleSignInOptions.Builder()
+                    context,
+                    GoogleSignInOptions.Builder()
                         .requestEmail()
                         .requestScopes(scope)
-                        .build()
+                        .build(),
                 ).revokeAccess()
                     .addOnSuccessListener { continuation.resumeIfActive(Unit) }
                     .addOnCanceledListener { continuation.resumeIfActive(Unit) }

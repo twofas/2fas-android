@@ -21,16 +21,16 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.common.domain.SelectedTheme
+import com.twofasapp.core.design.AppTheme
+import com.twofasapp.core.design.AppThemeState
+import com.twofasapp.core.design.LocalAppTheme
+import com.twofasapp.core.design.LocalDynamicColors
+import com.twofasapp.core.design.MainAppTheme
+import com.twofasapp.core.design.ktx.makeWindowSecure
+import com.twofasapp.core.design.ktx.toastLong
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.session.SessionRepository
 import com.twofasapp.data.session.SettingsRepository
-import com.twofasapp.designsystem.AppTheme
-import com.twofasapp.designsystem.AppThemeState
-import com.twofasapp.designsystem.LocalAppTheme
-import com.twofasapp.designsystem.LocalDynamicColors
-import com.twofasapp.designsystem.MainAppTheme
-import com.twofasapp.designsystem.ktx.makeWindowSecure
-import com.twofasapp.designsystem.ktx.toastLong
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
                         SelectedTheme.Light -> false
                         SelectedTheme.Dark -> true
                     }
-                }
+                },
             ),
             navigationBarStyle = SystemBarStyle.auto(
                 lightScrim = Color.Transparent.toArgb(),
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
                         SelectedTheme.Light -> false
                         SelectedTheme.Dark -> true
                     }
-                }
+                },
             ),
         )
 
@@ -138,8 +138,8 @@ class MainActivity : AppCompatActivity(), AuthAware {
             AuthLifecycle(
                 authTracker = get(),
                 navigator = get { parametersOf(this) },
-                authAware = this as? AuthAware
-            )
+                authAware = this as? AuthAware,
+            ),
         )
     }
 
@@ -148,7 +148,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
             Snackbar.make(
                 window.decorView.rootView,
                 "An update has just been downloaded.",
-                Snackbar.LENGTH_INDEFINITE
+                Snackbar.LENGTH_INDEFINITE,
             ).apply {
                 setAction("RESTART") {
                     appUpdateManager.unregisterListener(appUpdateListener)
@@ -156,7 +156,6 @@ class MainActivity : AppCompatActivity(), AuthAware {
                 }
                 show()
             }
-
         } catch (e: Exception) {
         }
     }
@@ -168,9 +167,9 @@ class MainActivity : AppCompatActivity(), AuthAware {
                     showSnackbarForCompleteUpdate()
                 }
 
-                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)
-                    && appUpdateInfo.clientVersionStalenessDays() == null
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&
+                    appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE) &&
+                    appUpdateInfo.clientVersionStalenessDays() == null
                 ) {
                     if (sessionRepository.showAppUpdate()) {
                         sessionRepository.setAppUpdateDisplayed()
@@ -179,7 +178,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
                             appUpdateInfo,
                             AppUpdateType.FLEXIBLE,
                             this,
-                            UPDATE_REQUEST_CODE
+                            UPDATE_REQUEST_CODE,
                         )
                     }
                 }
@@ -196,7 +195,6 @@ class MainActivity : AppCompatActivity(), AuthAware {
             return
         }
     }
-
 
 //
 //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

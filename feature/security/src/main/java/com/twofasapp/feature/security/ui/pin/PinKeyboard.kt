@@ -19,8 +19,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
 
 internal enum class Keys {
     Key1,
@@ -54,7 +54,6 @@ internal fun PinKeyboard(
     onKeyClick: (Int) -> Unit = {},
     onBiometricsClick: () -> Unit = {},
 ) {
-
     val alpha = if (isEnabled) 1f else 0.5f
     var keys = Keys.values().toList()
 
@@ -68,7 +67,7 @@ internal fun PinKeyboard(
         userScrollEnabled = false,
         columns = GridCells.Fixed(3),
         modifier = Modifier
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 16.dp),
     ) {
         items(keys, key = { it.name }) {
             Box(
@@ -83,19 +82,18 @@ internal fun PinKeyboard(
                             Modifier.clickable(isEnabled) { onKeyClick(it.toKeyInt()) }
                         } else {
                             Modifier
-                        }
-                    )
+                        },
+                    ),
             ) {
                 if (it == Keys.Biometrics) {
                     Icon(
-                       TwIcons.Fingerprint,
+                        MdtIcons.Fingerprint,
                         null,
-                        tint = TwTheme.color.onSurfacePrimary,
+                        tint = MdtTheme.color.onSurfacePrimary,
                         modifier = Modifier
                             .align(Alignment.Center)
                             .alpha(alpha),
                     )
-
                 } else if (it != Keys.Empty && it != Keys.Empty2) {
                     Text(
                         text = it.toKeyInt().toString(),
@@ -103,8 +101,8 @@ internal fun PinKeyboard(
                         modifier = Modifier
                             .align(Alignment.Center)
                             .alpha(alpha),
-                        color = TwTheme.color.onSurfacePrimary,
-                        fontWeight = FontWeight.Light
+                        color = MdtTheme.color.onSurfacePrimary,
+                        fontWeight = FontWeight.Light,
                     )
                 }
             }
@@ -116,6 +114,6 @@ internal fun PinKeyboard(
 @Preview(showSystemUi = true)
 fun PreviewPinKeyboard() {
     PinKeyboard(
-        isEnabled = true
+        isEnabled = true,
     )
 }

@@ -14,7 +14,7 @@ data class MobileDevice(
                 name = "",
                 fcmToken = "",
                 platform = "",
-                publicKey = ""
+                publicKey = "",
             )
     }
 }

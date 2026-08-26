@@ -9,9 +9,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.R
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.dialog.RichConfirmDialog
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.R
+import com.twofasapp.core.design.foundation.dialog.RichConfirmDialog
 import com.twofasapp.locale.TwLocale
 
 @Composable
@@ -30,13 +30,13 @@ internal fun TurnOffConfirmationDialog(
             Text(
                 text = TwLocale.strings.backupTurnOffMsg2,
                 textAlign = TextAlign.Center,
-                color = TwTheme.color.onSurfaceSecondary,
-                style = TwTheme.typo.caption,
+                color = MdtTheme.color.onSurfaceSecondary,
+                style = MdtTheme.typo.caption,
             )
         },
         positive = TwLocale.strings.backupTurnOffCta,
         negative = TwLocale.strings.commonCancel,
-        onPositive = onConfirm
+        onPositive = onConfirm,
     )
 }
 
