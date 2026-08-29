@@ -20,13 +20,16 @@ internal class BrowserExtDetailsViewModel(
 
     init {
         launchScoped {
-            val browser = browserExtRepository.getPairedBrowser(extensionId)
-            uiState.update {
-                it.copy(
-                    browserName = browser.name,
-                    browserPairedAt = browser.pairedAt,
-                )
-            }
+            runSafely { browserExtRepository.getPairedBrowser(extensionId) }
+                .onSuccess { browser ->
+                    uiState.update {
+                        it.copy(
+                            browserName = browser.name,
+                            browserPairedAt = browser.pairedAt,
+                        )
+                    }
+                }
+                .onFailure { uiState.update { it.copy(finish = true) } }
         }
     }
 

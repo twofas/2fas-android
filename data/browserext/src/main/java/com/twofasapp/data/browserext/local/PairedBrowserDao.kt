@@ -1,6 +1,10 @@
 package com.twofasapp.data.browserext.local
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
 import com.twofasapp.data.browserext.local.model.PairedBrowserEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -27,8 +31,8 @@ interface PairedBrowserDao {
         deleteAll()
 
         insertOrUpdate(
-            *entities.map { newEntity ->
-                newEntity.copy(extensionPublicKey = local.first { newEntity.id == it.id }.extensionPublicKey)
+            *entities.mapNotNull { newEntity ->
+                newEntity.copy(extensionPublicKey = local.firstOrNull { newEntity.id == it.id }?.extensionPublicKey ?: return@mapNotNull null)
             }.toTypedArray()
         )
     }

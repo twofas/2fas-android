@@ -7,31 +7,14 @@ import com.twofasapp.data.push.domain.Push
 import com.twofasapp.data.push.internal.PushFactory
 import com.twofasapp.data.push.internal.PushLogger
 import com.twofasapp.data.push.notification.ShowBrowserExtRequestNotification
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 
 class FcmMessagingService : FirebaseMessagingService() {
 
-    private val scope = CoroutineScope(Dispatchers.IO)
     private val appBuild: AppBuild by inject()
-    private val pushRepository: PushRepository by inject()
 
     private val showBrowserExtensionRequest: ShowBrowserExtRequestNotification by inject()
-
-    override fun onCreate() {
-        super.onCreate()
-        scope.launch(Dispatchers.IO) {
-            pushRepository.observeNotificationPushes().flowOn(Dispatchers.IO).collect {
-                when (it) {
-                    is Push.BrowserExtRequest -> showBrowserExtensionRequest(it)
-                }
-            }
-        }
-    }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
@@ -39,7 +22,19 @@ class FcmMessagingService : FirebaseMessagingService() {
             PushLogger.logMessage(remoteMessage)
         }
 
-        PushFactory.createPush(remoteMessage)?.let { pushRepository.dispatchPush(it) }
+        val push = PushFactory.createPush(remoteMessage) ?: return
+
+        when (push.handler) {
+            Push.Handler.InAppOnly -> Unit // Unsupported for now, we don't have in-app push yet
+
+            Push.Handler.NotificationOnly -> {
+                showNotification(push)
+            }
+
+            Push.Handler.InAppOrNotification -> {
+                showNotification(push)
+            }
+        }
     }
 
     override fun onNewToken(token: String) {
@@ -48,8 +43,9 @@ class FcmMessagingService : FirebaseMessagingService() {
         }
     }
 
-    override fun onDestroy() {
-        scope.cancel()
-        super.onDestroy()
+    private fun showNotification(push: Push) = runBlocking {
+        when (push) {
+            is Push.BrowserExtRequest -> showBrowserExtensionRequest(push)
+        }
     }
 }

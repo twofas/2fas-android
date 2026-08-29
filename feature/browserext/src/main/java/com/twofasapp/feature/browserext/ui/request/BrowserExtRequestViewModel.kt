@@ -3,6 +3,7 @@ package com.twofasapp.feature.browserext.ui.request
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
@@ -36,9 +37,13 @@ internal class BrowserExtRequestViewModel(
                     domain?.let { DomainMatcher.findSuggestedForDomain(services, domain) }?.minus(matched.toSet()) ?: emptyList()
                 val recommended = matched.plus(suggested)
 
+                val browserName = runSafely {
+                    browserExtRepository.getPairedBrowser(payload.extensionId).name
+                }.getOrDefault(uiState.value.browserName)
+
                 uiState.update { state ->
                     state.copy(
-                        browserName = browserExtRepository.getPairedBrowser(payload.extensionId).name,
+                        browserName = browserName,
                         domain = payload.domain.orEmpty(),
                         suggestedServices = recommended,
                         otherServices = services.minus(recommended.toSet()),
