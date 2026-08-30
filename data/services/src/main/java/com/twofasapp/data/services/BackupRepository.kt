@@ -111,6 +111,11 @@ interface BackupRepository {
     fun observeCloudBackupStatus(): Flow<CloudBackupStatus>
 
     /**
+     * Observe whether cloud backup is enabled (active)
+     */
+    fun observeBackupEnabled(): Flow<Boolean>
+
+    /**
      * Observe cloud sync status
      */
     fun observeCloudSyncStatus(): Flow<CloudSyncStatus>

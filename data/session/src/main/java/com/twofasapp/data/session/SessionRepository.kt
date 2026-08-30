@@ -8,7 +8,6 @@ interface SessionRepository {
     fun setAppUpdateDisplayed()
     suspend fun setRateAppDisplayed(isDisplayed: Boolean)
     fun observeShowBackupReminder(): Flow<Boolean>
-    fun observeBackupEnabled(): Flow<Boolean>
     fun resetBackupReminder()
     suspend fun getAppInstallTimestamp(): Long
     suspend fun markAppInstalled()

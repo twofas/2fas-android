@@ -14,10 +14,10 @@ import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.local.BackupLocalSource
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import timber.log.Timber
 import java.util.Locale
 
@@ -27,7 +27,7 @@ class CloudSync(
     private val servicesRepository: ServicesRepository,
     private val groupsRepository: GroupsRepository,
     private val backupRepository: BackupRepository,
-    private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
+    private val backupLocalSource: BackupLocalSource,
 ) {
     private sealed interface RemoteStatus {
         data class Success(
@@ -71,7 +71,7 @@ class CloudSync(
 
         return when (syncBackupStatus) {
             is RemoteStatus.Success -> {
-                remoteBackupStatusPreference.put {
+                backupLocalSource.updateRemoteBackupStatus {
                     it.copy(
                         lastSyncMillis = syncBackupStatus.lastSyncTime,
                         schemaVersion = BackupContent.CurrentSchema,
@@ -136,7 +136,7 @@ class CloudSync(
         }
 
         // Prepare database revisions (in our case it's timestamp)
-        val backupStatus = remoteBackupStatusPreference.get()
+        val backupStatus = backupLocalSource.getRemoteBackupStatus()
 
         val localRevision = backupStatus.lastSyncMillis
         val remoteRevision = remoteStatus.lastSyncTime

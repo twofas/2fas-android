@@ -52,7 +52,7 @@ internal class ServicesViewModel(
                 isInEditMode,
                 settingsRepository.observeAppSettings(),
                 sessionRepository.observeShowBackupReminder(),
-                sessionRepository.observeBackupEnabled(),
+                backupRepository.observeBackupEnabled(),
                 backupRepository.observeCloudSyncStatus(),
                 searchQuery,
                 sessionRepository.observeShowPassBanner(),

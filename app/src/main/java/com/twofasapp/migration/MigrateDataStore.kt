@@ -70,9 +70,8 @@ class MigrateDataStore(
                         preferences[stringPreferencesKey("lockMethod")] = encryptValue(lockMethod)
                     }
 
-                    "mobileDevice" -> {
-                        preferences[stringPreferencesKey("mobileDevice")] = encryptValue(value as String)
-                    }
+                    "mobileDevice" -> preferences[stringPreferencesKey("mobileDevice")] = encryptValue(value as String)
+                    "remoteBackupStatus" -> preferences[stringPreferencesKey("remoteBackupStatus")] = encryptValue(value as String)
 
                     else -> return@forEach
                 }

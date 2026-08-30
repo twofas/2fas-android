@@ -38,6 +38,7 @@ import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.checked.Switch
 import com.twofasapp.core.design.foundation.dialog.ExportPasswordRegex
 import com.twofasapp.core.design.foundation.dialog.PasswordDialog
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.strings
 import com.twofasapp.core.design.ktx.toastShort
@@ -164,7 +165,7 @@ private fun ScreenContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 Button(
                     text = MdtLocale.strings.backupExportShareCta,
@@ -258,7 +259,9 @@ private enum class ExportMethod {
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BackupExportUiState(),
-    )
+    PreviewTheme {
+        ScreenContent(
+            uiState = BackupExportUiState(),
+        )
+    }
 }

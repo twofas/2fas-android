@@ -30,10 +30,11 @@ import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.R
 import com.twofasapp.core.design.foundation.button.Button
-import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.dialog.InfoDialog
 import com.twofasapp.core.design.foundation.dialog.PasswordDialog
 import com.twofasapp.core.design.foundation.dialog.StackTraceDetails
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.strings
@@ -218,6 +219,7 @@ private fun ScreenContent(
                         Button(
                             text = strings.backupImportCta,
                             modifier = Modifier
+                                .fillMaxWidth()
                                 .padding(horizontal = 16.dp)
                                 .align(Alignment.CenterHorizontally),
                             onClick = { onImportClick() },
@@ -229,6 +231,7 @@ private fun ScreenContent(
                         Button(
                             text = strings.backupImportCta,
                             modifier = Modifier
+                                .fillMaxWidth()
                                 .padding(horizontal = 16.dp)
                                 .align(Alignment.CenterHorizontally),
                             onClick = { showPasswordDialog = true },
@@ -241,6 +244,7 @@ private fun ScreenContent(
                         Button(
                             text = strings.backupImportChooseAnotherFileCta,
                             modifier = Modifier
+                                .fillMaxWidth()
                                 .padding(horizontal = 16.dp)
                                 .align(Alignment.CenterHorizontally),
                             onClick = onShowFilePicker,
@@ -248,9 +252,11 @@ private fun ScreenContent(
                     }
                 }
 
-                TextButton(
+                Button(
                     text = strings.commonCancel,
+                    style = ButtonStyle.Text,
                     modifier = Modifier
+                        .fillMaxWidth()
                         .padding(horizontal = 16.dp)
                         .padding(top = 8.dp, bottom = 16.dp)
                         .align(Alignment.CenterHorizontally),
@@ -284,7 +290,11 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BackupImportUiState(),
-    )
+    PreviewTheme {
+        ScreenContent(
+            uiState = BackupImportUiState(
+                screenState = ScreenState.BackupRead(servicesToImport = 42),
+            ),
+        )
+    }
 }

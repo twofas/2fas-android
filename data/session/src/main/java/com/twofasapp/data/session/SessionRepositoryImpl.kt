@@ -8,9 +8,7 @@ import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.session.local.SessionLocalSource
-import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
-import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import com.twofasapp.prefs.usecase.TimeDeltaPreference
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -25,7 +23,6 @@ internal class SessionRepositoryImpl(
     private val appBuild: AppBuild,
     private val local: SessionLocalSource,
     private val timeProvider: TimeProvider,
-    private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
     private val appUpdateLastCheckVersionPreference: AppUpdateLastCheckVersionPreference,
     private val timeDeltaPreference: TimeDeltaPreference,
 ) : SessionRepository {
@@ -43,12 +40,6 @@ internal class SessionRepositoryImpl(
     }
 
     override suspend fun setRateAppDisplayed(isDisplayed: Boolean) {
-    }
-
-    override fun observeBackupEnabled(): Flow<Boolean> {
-        return remoteBackupStatusPreference.flow(true).map {
-            it.state == RemoteBackupStatusEntity.State.ACTIVE
-        }
     }
 
     override fun observeShowBackupReminder(): Flow<Boolean> {

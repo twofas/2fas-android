@@ -9,6 +9,7 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.ServicesRepositoryImpl
 import com.twofasapp.data.services.WidgetsRepository
 import com.twofasapp.data.services.WidgetsRepositoryImpl
+import com.twofasapp.data.services.local.BackupLocalSource
 import com.twofasapp.data.services.local.GroupsLocalSource
 import com.twofasapp.data.services.local.ServicesLocalSource
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
@@ -28,6 +29,7 @@ class DataServicesModule : KoinModule {
         singleOf(::GroupsLocalSource)
         singleOf(::GroupsRepositoryImpl) { bind<GroupsRepository>() }
 
+        singleOf(::BackupLocalSource)
         singleOf(::BackupRepositoryImpl) { bind<BackupRepository>() }
 
         singleOf(::WidgetsRepositoryImpl) { bind<WidgetsRepository>() }

@@ -34,7 +34,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 internal fun DeleteServiceScreen(
-    viewModel: com.twofasapp.feature.home.ui.editservice.EditServiceViewModel,
+    viewModel: EditServiceViewModel,
 ) {
     val service = viewModel.uiState.collectAsState().value.service
     val backDispatcher = LocalBackDispatcher
@@ -44,7 +44,7 @@ internal fun DeleteServiceScreen(
         scope.launch {
             viewModel.events.collect {
                 when (it) {
-                    com.twofasapp.feature.home.ui.editservice.EditServiceUiEvent.Finish -> scope.launch { backDispatcher.onBackPressed() }
+                    EditServiceUiEvent.Finish -> scope.launch { backDispatcher.onBackPressed() }
                 }
             }
         }

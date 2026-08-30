@@ -11,22 +11,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.core.design.MdtIcons
-import com.twofasapp.core.design.R
-import com.twofasapp.core.design.feature.settings.SettingsDivider
-import com.twofasapp.core.design.feature.settings.SettingsHeader
-import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.OptionEntry
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.dialog.InfoDialog
 import com.twofasapp.core.design.foundation.dialog.PasswordDialog
-import com.twofasapp.core.design.foundation.dialog.RichConfirmDialog
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.ConnectionState
 import com.twofasapp.core.design.ktx.currentConnectivityState
 import com.twofasapp.core.design.ktx.strings
+import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.locale.MdtLocale
@@ -95,7 +94,7 @@ private fun BackupSettingsScreenContent(
         ) {
             if (uiState.encrypted || uiState.pass.isNullOrBlank().not()) {
                 item {
-                    SettingsLink(
+                    OptionEntry(
                         title = strings.backupSettingsRemovePasswordTitle,
                         subtitle = strings.backupSettingsRemovePasswordMsg,
                         icon = MdtIcons.LockOpen,
@@ -105,7 +104,7 @@ private fun BackupSettingsScreenContent(
                 }
             } else {
                 item {
-                    SettingsLink(
+                    OptionEntry(
                         title = strings.backupSettingsSetPasswordTitle,
                         subtitle = strings.backupSettingsSetPasswordMsg,
                         icon = MdtIcons.Lock,
@@ -117,7 +116,7 @@ private fun BackupSettingsScreenContent(
 
             if (uiState.syncActive) {
                 item {
-                    SettingsLink(
+                    OptionEntry(
                         title = strings.backupSettingsDeleteBackupTitle,
                         subtitle = strings.backupSettingsDeleteBackupMsg,
                         icon = MdtIcons.Delete,
@@ -127,22 +126,18 @@ private fun BackupSettingsScreenContent(
                 }
 
                 item {
-                    SettingsDivider()
+                    OptionHeader(text = strings.commonInfo)
                 }
 
                 item {
-                    SettingsHeader(title = strings.commonInfo)
-                }
-
-                item {
-                    SettingsLink(
+                    OptionEntry(
                         title = strings.backupSettingsAccountTitle,
                         subtitle = uiState.account,
                     )
                 }
 
                 item {
-                    SettingsLink(
+                    OptionEntry(
                         title = strings.backupSettingsSyncTitle,
                         subtitle = when (uiState.syncStatus) {
                             is CloudSyncStatus.Syncing -> strings.backupSyncStatusSyncing
@@ -177,11 +172,11 @@ private fun BackupSettingsScreenContent(
         }
 
         if (showConfirmDeleteDialog) {
-            RichConfirmDialog(
+            ConfirmDialog(
                 onDismissRequest = { showConfirmDeleteDialog = false },
-                image = painterResource(id = R.drawable.illustration_delete_confirm),
                 title = strings.backupDeleteConfirmTitle,
                 body = strings.backupDeleteConfirmMsg,
+                icon = MdtIcons.Warning,
                 positive = strings.commonDelete,
                 negative = strings.commonCancel,
                 onPositive = {
@@ -256,10 +251,29 @@ private fun BackupSettingsScreenContent(
 @Preview
 @Composable
 private fun Preview() {
-    BackupSettingsScreenContent(
-        uiState = BackupSettingsUiState(
-            account = "mail@test.com",
-            syncActive = true,
-        ),
-    )
+    PreviewTheme {
+        BackupSettingsScreenContent(
+            uiState = BackupSettingsUiState(
+                account = "mail@test.com",
+                syncActive = true,
+            ),
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewError() {
+    PreviewTheme {
+        BackupSettingsScreenContent(
+            uiState = BackupSettingsUiState(
+                account = "mail@test.com",
+                syncActive = true,
+                syncStatus = CloudSyncStatus.Error(
+                    trigger = CloudSyncTrigger.AppBackground,
+                    error = CloudSyncError.Unknown,
+                ),
+            ),
+        )
+    }
 }

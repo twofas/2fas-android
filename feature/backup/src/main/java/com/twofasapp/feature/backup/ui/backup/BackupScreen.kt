@@ -33,12 +33,14 @@ import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.feature.settings.SettingsDivider
-import com.twofasapp.core.design.feature.settings.SettingsHeader
-import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.OptionEntry
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
 import com.twofasapp.core.design.foundation.checked.Switch
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.dialog.InfoDialog
 import com.twofasapp.core.design.foundation.dialog.PasswordDialog
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
@@ -140,16 +142,20 @@ private fun ScreenContent(
         LazyColumn(
             modifier = Modifier.padding(padding),
         ) {
-            item { SettingsHeader(title = strings.backupDriveHeader) }
+            item {
+                OptionHeader(
+                    text = strings.backupDriveHeader,
+                    contentPadding = OptionHeaderContentPaddingFirst,
+                )
+            }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = strings.backupSync,
                     icon = if (uiState.syncChecked) MdtIcons.Cloud else MdtIcons.CloudOff,
                     subtitle = if (uiState.showSyncMsg) strings.backupSyncDescription else null,
-                    alignCenterIcon = false,
                     enabled = uiState.syncEnabled,
-                    endContent = {
+                    content = {
                         Switch(
                             checked = uiState.syncChecked,
                             onCheckedChange = null,
@@ -172,7 +178,7 @@ private fun ScreenContent(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 68.dp, end = 16.dp, bottom = 16.dp, top = 8.dp)
+                            .padding(start = 56.dp, end = 16.dp, bottom = 16.dp, top = 8.dp)
                             .border(1.dp, MdtTheme.color.primary, RoundedShape12)
                             .padding(16.dp),
 
@@ -197,19 +203,17 @@ private fun ScreenContent(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = strings.backupSyncSettings,
                     icon = MdtIcons.Settings,
                     onClick = onSettingsClick,
                 )
             }
 
-            item { SettingsDivider() }
-
-            item { SettingsHeader(title = strings.backupLocalHeader) }
+            item { OptionHeader(text = strings.backupLocalHeader) }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = strings.backupImportFile,
                     icon = MdtIcons.Import,
                     onClick = onImportClick,
@@ -217,7 +221,7 @@ private fun ScreenContent(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = strings.backupExportFile,
                     icon = MdtIcons.Export,
                     enabled = uiState.exportEnabled,
@@ -227,9 +231,14 @@ private fun ScreenContent(
         }
 
         if (showTurnOffConfirmationDialog) {
-            TurnOffConfirmationDialog(
+            ConfirmDialog(
                 onDismissRequest = { showTurnOffConfirmationDialog = false },
-                onConfirm = onTurnOffSync,
+                title = strings.backupTurnOffTitle,
+                body = strings.backupTurnOffMsg1,
+                icon = MdtIcons.Warning,
+                positive = strings.backupTurnOffCta,
+                negative = strings.commonCancel,
+                onPositive = onTurnOffSync,
             )
         }
 
@@ -315,7 +324,23 @@ private fun formatShouldShowErrorCode(type: CloudSyncError) =
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BackupUiState(),
-    )
+    PreviewTheme {
+        ScreenContent(
+            uiState = BackupUiState(),
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewError() {
+    PreviewTheme {
+        ScreenContent(
+            uiState = BackupUiState(
+                syncChecked = true,
+                showError = true,
+                error = CloudSyncError.Unknown,
+            ),
+        )
+    }
 }
