@@ -44,6 +44,7 @@ class StartActivity : AppCompatActivity(), AuthAware {
                         SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
                         SelectedTheme.Light -> false
                         SelectedTheme.Dark -> true
+                        SelectedTheme.AmoledDark -> true
                     }
                 }
             ),
@@ -55,6 +56,7 @@ class StartActivity : AppCompatActivity(), AuthAware {
                         SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
                         SelectedTheme.Light -> false
                         SelectedTheme.Dark -> true
+                        SelectedTheme.AmoledDark -> true
                     }
                 }
             ),

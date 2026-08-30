@@ -33,6 +33,11 @@ internal val serviceBackgroundWithGroupsDark = Color(0xFF17181B)
 internal val switchTrackDark = Color(0xFF1F2025)
 internal val switchThumbDark = Color(0xFF48494E)
 
+// AMOLED theme colors
+internal val backgroundAmoled = Color(0xFF000000)
+internal val surfaceAmoled = Color(0xFF000000)
+internal val surfaceVariantAmoled = Color(0xFF0A0A0A)
+
 // Light Color Scheme
 internal val OverriddenLightColors = lightColorScheme(
     primary = primaryLight,

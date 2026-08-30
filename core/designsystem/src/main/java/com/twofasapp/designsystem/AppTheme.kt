@@ -17,6 +17,9 @@ import androidx.window.core.layout.WindowWidthSizeClass
 import com.twofasapp.designsystem.internal.OverriddenDarkColors
 import com.twofasapp.designsystem.internal.OverriddenLightColors
 import com.twofasapp.designsystem.internal.ThemeColors
+import com.twofasapp.designsystem.internal.backgroundAmoled
+import com.twofasapp.designsystem.internal.surfaceAmoled
+import com.twofasapp.designsystem.internal.surfaceVariantAmoled
 import com.twofasapp.designsystem.internal.onSurfacePrimaryDark
 import com.twofasapp.designsystem.internal.onSurfacePrimaryLight
 import com.twofasapp.designsystem.internal.onSurfaceSecondaryDark
@@ -40,7 +43,7 @@ val LocalThemeColors = staticCompositionLocalOf { ThemeColors() }
 val LocalDynamicColors = staticCompositionLocalOf { false }
 
 enum class AppTheme {
-    Auto, Light, Dark,
+    Auto, Light, Dark, AmoledDark,
 }
 
 @Composable
@@ -55,13 +58,25 @@ fun MainAppTheme(
         AppTheme.Auto -> isSystemInDarkTheme()
         AppTheme.Light -> false
         AppTheme.Dark -> true
+        AppTheme.AmoledDark -> true
     }
 
-    val colorScheme: ColorScheme = when {
+    var colorScheme: ColorScheme = when {
         isDynamicColorEnabled && isInDarkTheme && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> dynamicDarkColorScheme(LocalContext.current)
         isDynamicColorEnabled && !isInDarkTheme && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> dynamicLightColorScheme(LocalContext.current)
         isInDarkTheme -> OverriddenDarkColors
         else -> OverriddenLightColors
+    }
+
+    if (LocalAppTheme.current == AppTheme.AmoledDark) {
+         colorScheme = colorScheme.copy(
+            background = backgroundAmoled,
+            onBackground = onSurfacePrimaryDark,
+            surface = surfaceAmoled,
+            onSurface = onSurfacePrimaryDark,
+            surfaceVariant = surfaceVariantAmoled,
+            onSurfaceVariant = onSurfacePrimaryDark,
+        )
     }
 
     val themeColors = ThemeColors(

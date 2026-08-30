@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
                         SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
                         SelectedTheme.Light -> false
                         SelectedTheme.Dark -> true
+                        SelectedTheme.AmoledDark -> true
                     }
                 }
             ),
@@ -80,6 +81,7 @@ class MainActivity : AppCompatActivity(), AuthAware {
                         SelectedTheme.Auto -> (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
                         SelectedTheme.Light -> false
                         SelectedTheme.Dark -> true
+                        SelectedTheme.AmoledDark -> true
                     }
                 }
             ),
@@ -97,11 +99,16 @@ class MainActivity : AppCompatActivity(), AuthAware {
                 window.isNavigationBarContrastEnforced = false
             }
 
+            if (selectedTheme == SelectedTheme.AmoledDark) {
+                window.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(android.graphics.Color.BLACK))
+            }
+
             CompositionLocalProvider(
                 LocalAppTheme provides when (selectedTheme) {
                     SelectedTheme.Auto -> AppTheme.Auto
                     SelectedTheme.Light -> AppTheme.Light
                     SelectedTheme.Dark -> AppTheme.Dark
+                    SelectedTheme.AmoledDark -> AppTheme.AmoledDark
                 },
                 LocalDynamicColors provides appSettings.dynamicColors,
             ) {

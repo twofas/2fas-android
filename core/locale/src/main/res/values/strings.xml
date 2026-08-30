@@ -547,6 +547,7 @@
     <string name="settings__theme_option_auto_system">Auto - System Settings</string>
     <string name="settings__theme_option_dark">Dark</string>
     <string name="settings__theme_option_light">Light</string>
+    <string name="settings__theme_option_amoled_dark">AMOLED Dark</string>
     <string name="tokens__copied_clipboard">Token copied to clipboard!</string>
     <string name="tokens__next_copied_clipboard">Next Token copied to clipboard!</string>
     <string name="tokens__do_you_really_want_to_remove_all_devices">Do you want to permanently delete this 2FA service?</string>

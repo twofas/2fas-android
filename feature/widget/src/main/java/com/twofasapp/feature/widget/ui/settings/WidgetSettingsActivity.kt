@@ -54,6 +54,7 @@ class WidgetSettingsActivity : ComponentActivity(), AuthAware {
                     SelectedTheme.Auto -> AppTheme.Auto
                     SelectedTheme.Light -> AppTheme.Light
                     SelectedTheme.Dark -> AppTheme.Dark
+                    SelectedTheme.AmoledDark -> AppTheme.AmoledDark
                 },
                 LocalDynamicColors provides settingsRepository.getAppSettings().dynamicColors,
             ) {
