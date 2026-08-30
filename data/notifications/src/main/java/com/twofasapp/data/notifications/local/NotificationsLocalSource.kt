@@ -1,22 +1,22 @@
 package com.twofasapp.data.notifications.local
 
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.intPref
+import com.twofasapp.common.storage.longPref
 import com.twofasapp.data.notifications.domain.Notification
 import com.twofasapp.data.notifications.domain.PeriodicNotificationType
 import com.twofasapp.data.notifications.mappper.asDomain
 import com.twofasapp.data.notifications.mappper.asEntity
-import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 internal class NotificationsLocalSource(
+    dataStoreOwner: DataStoreOwner,
     private val notificationsDao: NotificationsDao,
-    private val preferences: PlainPreferences,
-) {
+) : DataStoreOwner by dataStoreOwner {
 
-    companion object {
-        private const val KeyPeriodicNotificationCounter = "periodicNotificationCounter"
-        private const val KeyPeriodicNotificationTimestamp = "periodicNotificationTimestamp" // Time when last notification was triggered
-    }
+    private val periodicNotificationCounter by intPref(default = -1, name = "periodicNotificationCounter")
+    private val periodicNotificationTimestamp by longPref(default = 0, name = "periodicNotificationTimestamp")
 
     suspend fun getNotifications(): List<Notification> {
         return notificationsDao.select().map { it.asDomain() }
@@ -39,19 +39,19 @@ internal class NotificationsLocalSource(
     }
 
     suspend fun getPeriodicNotificationCounter(): Int {
-        return preferences.getInt(KeyPeriodicNotificationCounter) ?: -1
+        return periodicNotificationCounter.get()
     }
 
     suspend fun setPeriodicNotificationCounter(counter: Int) {
-        preferences.putInt(KeyPeriodicNotificationCounter, counter)
+        periodicNotificationCounter.set(counter)
     }
 
     suspend fun getPeriodicNotificationTimestamp(): Long {
-        return preferences.getLong(KeyPeriodicNotificationTimestamp) ?: 0
+        return periodicNotificationTimestamp.get()
     }
 
     suspend fun setPeriodicNotificationTimestamp(timestamp: Long) {
-        preferences.putLong(KeyPeriodicNotificationTimestamp, timestamp)
+        periodicNotificationTimestamp.set(timestamp)
     }
 
     suspend fun clearPeriodicNotifications() {

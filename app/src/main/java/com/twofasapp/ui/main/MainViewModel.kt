@@ -5,7 +5,9 @@ import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.notifications.NotificationsRepository
+import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.data.session.SessionRepository
@@ -22,6 +24,7 @@ internal class MainViewModel(
     private val notificationsRepository: NotificationsRepository,
     private val browserExtRepository: BrowserExtRepository,
     private val servicesRepository: ServicesRepository,
+    private val backupRepository: BackupRepository,
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<MainUiState> = MutableStateFlow(MainUiState())
@@ -91,6 +94,16 @@ internal class MainViewModel(
         launchScoped {
             servicesRepository.observeAddServiceAdvancedExpanded().collect { expanded ->
                 uiState.update { it.copy(addServiceAdvancedExpanded = expanded) }
+            }
+        }
+
+        launchScoped {
+            backupRepository.observeCloudSyncStatus().collect { cloudSyncStatus ->
+                uiState.update {
+                    it.copy(
+                        showBackupError = cloudSyncStatus is CloudSyncStatus.Error && cloudSyncStatus.shouldShowError(),
+                    )
+                }
             }
         }
     }

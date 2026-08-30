@@ -40,8 +40,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.DsService
@@ -56,6 +59,7 @@ import com.twofasapp.core.design.foundation.dialog.InputValidation
 import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
 import com.twofasapp.core.design.foundation.lazy.isScrollingUp
 import com.twofasapp.core.design.foundation.lazy.listItem
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.EmptyScreen
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
@@ -63,7 +67,6 @@ import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.feature.home.R
-import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.ui.services.component.AppReviewItem
 import com.twofasapp.feature.home.ui.services.component.PassBanner
 import com.twofasapp.feature.home.ui.services.component.ServicesAppBar
@@ -81,29 +84,20 @@ import org.burnoutcrew.reorderable.detectReorder
 import org.burnoutcrew.reorderable.rememberReorderableLazyListState
 import org.burnoutcrew.reorderable.reorderable
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
-fun ServicesRoutePublic(
-    listener: HomeNavigationListener,
-) {
-    ServicesRoute(
-        listener = listener,
-    )
-}
-
-@Composable
-internal fun ServicesRoute(
-    listener: HomeNavigationListener,
+internal fun ServicesScreen(
     viewModel: ServicesViewModel = koinViewModel(),
     appReviewViewModel: AppReviewViewModel = koinViewModel(),
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ServicesScreen(
+    Content(
         uiState = uiState,
-        listener = listener,
         onEventConsumed = { viewModel.consumeEvent(it) },
-        onExternalImportClick = { listener.openExternalImport() },
+        onExternalImportClick = { navigator.open(Screen.ExternalImportSelector) },
         onEditModeChange = { viewModel.toggleEditMode() },
         onToggleGroupExpand = { viewModel.toggleGroup(it) },
         onAddGroup = { viewModel.addGroup(it) },
@@ -116,7 +110,12 @@ internal fun ServicesRoute(
         onSortChange = { viewModel.updateSort(it) },
         onSearchQueryChange = { viewModel.search(it) },
         onSearchFocusChange = { viewModel.searchFocused(it) },
-        onOpenBackupClick = { listener.openBackup(it) },
+        onOpenBackupClick = { navigator.open(Screen.Backup) },
+        onOpenBackupImport = { /* TODO: Migrate to Navigation3 */ },
+        onOpenNotifications = { navigator.open(Screen.Notifications) },
+        onOpenDeveloper = { navigator.open(Screen.Developer) },
+        onOpenAddServiceModal = { /* TODO: Migrate to Navigation3 */ },
+        onOpenFocusService = { /* TODO: Migrate to Navigation3 */ },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
         onRateAppClick = { appReviewViewModel.rate(it) },
         onDismissAppReviewClick = { appReviewViewModel.dismiss() },
@@ -129,9 +128,8 @@ internal fun ServicesRoute(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun ServicesScreen(
+private fun Content(
     uiState: ServicesUiState,
-    listener: HomeNavigationListener,
     onEventConsumed: (ServicesUiEvent) -> Unit,
     onExternalImportClick: () -> Unit = {},
     onEditModeChange: () -> Unit = {},
@@ -147,6 +145,11 @@ private fun ServicesScreen(
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
     onOpenBackupClick: (Boolean) -> Unit = {},
+    onOpenBackupImport: (String?) -> Unit = {},
+    onOpenNotifications: () -> Unit = {},
+    onOpenDeveloper: () -> Unit = {},
+    onOpenAddServiceModal: () -> Unit = {},
+    onOpenFocusService: (Long) -> Unit = {},
     onDismissSyncReminderClick: () -> Unit = {},
     onRateAppClick: (Activity) -> Unit = {},
     onDismissAppReviewClick: () -> Unit = {},
@@ -242,7 +245,7 @@ private fun ServicesScreen(
                 }
             }
 
-            is ServicesUiEvent.OpenImport -> listener.openBackupImport(it.filePath)
+            is ServicesUiEvent.OpenImport -> onOpenBackupImport(it.filePath)
         }
 
         onEventConsumed(it)
@@ -294,11 +297,11 @@ private fun ServicesScreen(
                 onAddGroupClick = { showAddGroupDialog = true },
                 onNotificationsClick = {
                     onSearchFocusChange(false)
-                    listener.openNotifications()
+                    onOpenNotifications()
                 },
                 onDeveloperClick = {
                     onSearchFocusChange(false)
-                    listener.openDeveloper()
+                    onOpenDeveloper()
                 },
                 onSearchQueryChange = onSearchQueryChange,
                 onSearchFocusChange = onSearchFocusChange,
@@ -312,7 +315,7 @@ private fun ServicesScreen(
                 isNormalVisible = reorderableState.listState.isScrollingUp(),
                 onClick = {
                     onSearchFocusChange(false)
-                    listener.openAddServiceModal()
+                    onOpenAddServiceModal()
                 },
             )
         },
@@ -498,7 +501,7 @@ private fun ServicesScreen(
                                     onClick = { state.copyToClipboard(activity, uiState.showNextCode) },
                                     onLongClick = {
                                         keyboardController?.hide()
-                                        listener.openFocusServiceModal(service.id)
+                                        onOpenFocusService(service.id)
                                     },
                                     onIncrementCounterClick = { onIncrementHotpCounterClick(service) },
                                     onRevealClick = { onRevealClick(service) },
@@ -598,4 +601,29 @@ private fun ServicesScreen(
 //            rationaleText = TwLocale.strings.permissionCameraBody,
 //        )
 //    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    val services = listOf(
+        Service.Preview.copy(id = 1L, name = "Google", info = "john.doe@gmail.com", labelText = "GO", labelColor = Service.Tint.Red),
+        Service.Preview.copy(id = 2L, name = "GitHub", info = "johndoe", labelText = "GH", labelColor = Service.Tint.Purple),
+        Service.Preview.copy(id = 3L, name = "Amazon", info = "john.doe@gmail.com", labelText = "AM", labelColor = Service.Tint.Orange),
+    )
+
+    PreviewTheme {
+        Content(
+            uiState = ServicesUiState(
+                services = services,
+                isLoading = false,
+                totalServices = services.size,
+                totalGroups = 1,
+                items = services.map { ServicesListItem.ServiceItem(it) },
+            ),
+            onEventConsumed = {},
+            onSearchQueryChange = {},
+            onSearchFocusChange = {},
+        )
+    }
 }

@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 import android.util.Base64
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
@@ -72,6 +74,9 @@ class MigrateDataStore(
 
                     "mobileDevice" -> preferences[stringPreferencesKey("mobileDevice")] = encryptValue(value as String)
                     "remoteBackupStatus" -> preferences[stringPreferencesKey("remoteBackupStatus")] = encryptValue(value as String)
+
+                    "periodicNotificationCounter" -> preferences[intPreferencesKey("periodicNotificationCounter")] = value as Int
+                    "periodicNotificationTimestamp" -> preferences[longPreferencesKey("periodicNotificationTimestamp")] = value as Long
 
                     else -> return@forEach
                 }

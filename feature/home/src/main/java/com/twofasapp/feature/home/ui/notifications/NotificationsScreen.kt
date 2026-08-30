@@ -1,36 +1,37 @@
 package com.twofasapp.feature.home.ui.notifications
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.android.navigation.LegacyScreen
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.other.DotBadge
+import com.twofasapp.core.design.foundation.other.Space
+import com.twofasapp.core.design.foundation.outline.HorizontalLine
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.EmptyScreen
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
@@ -53,7 +54,7 @@ internal fun NotificationsScreen(
         onNotificationClick = { viewModel.onNotificationClick(it) },
         onInternalRouteClick = { route ->
             when (route) {
-                LegacyScreen.Backup.route -> navigator.open(Screen.Backup)
+                Notification.InternalRoute.Backup -> navigator.open(Screen.Backup)
                 else -> Unit
             }
         },
@@ -64,7 +65,7 @@ internal fun NotificationsScreen(
 private fun ScreenContent(
     notifications: List<Notification>,
     onNotificationClick: (Notification) -> Unit,
-    onInternalRouteClick: (String) -> Unit,
+    onInternalRouteClick: (Notification.InternalRoute) -> Unit,
 ) {
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
@@ -91,9 +92,7 @@ private fun ScreenContent(
                     notification = notification,
                     modifier = Modifier
                         .clickable(
-                            notification.link.isNotBlank() || notification.internalRoute
-                                .isNullOrBlank()
-                                .not(),
+                            notification.link.isNotBlank() || notification.internalRoute != null,
                         ) {
                             onNotificationClick(notification)
 
@@ -101,17 +100,12 @@ private fun ScreenContent(
                                 uriHandler.openSafely(notification.link, context)
                             }
 
-                            if (notification.internalRoute
-                                    .isNullOrBlank()
-                                    .not()
-                            ) {
-                                onInternalRouteClick(notification.internalRoute.orEmpty())
-                            }
+                            notification.internalRoute?.let { onInternalRouteClick(it) }
                         }
-                        .background(if (notification.isRead) MdtTheme.color.background else MdtTheme.color.surface)
-                        .padding(16.dp),
+                        .background(MdtTheme.color.background),
                 )
-                HorizontalDivider(color = MdtTheme.color.divider)
+
+                HorizontalLine()
             }
         }
     }
@@ -122,7 +116,18 @@ private fun Notification(
     notification: Notification,
     modifier: Modifier = Modifier,
 ) {
-    Row(modifier) {
+    Row(
+        modifier
+            .animateContentSize()
+            .fillMaxWidth()
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        if (notification.isRead.not()) {
+            DotBadge()
+            Space(12.dp)
+        }
+
         Image(
             painter = painterResource(
                 when (notification.category) {
@@ -135,21 +140,20 @@ private fun Notification(
             ),
             contentDescription = null,
             modifier = Modifier
-                .size(40.dp)
-                .padding(top = 6.dp),
+                .size(28.dp),
         )
 
-        Spacer(modifier = Modifier.width(16.dp))
+        Space(12.dp)
 
         Column(Modifier.weight(1f)) {
             Text(
                 text = notification.message,
                 modifier = Modifier.fillMaxWidth(),
                 color = MdtTheme.color.onSurface,
-                style = MdtTheme.typo.sm.normal,
+                style = MdtTheme.typo.sm.normal.copy(lineHeight = 18.sp),
             )
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Space(4.dp)
 
             Text(
                 text = MdtLocale.formatDuration(notification.createdAt),
@@ -159,20 +163,83 @@ private fun Notification(
             )
         }
 
-        Spacer(modifier = Modifier.width(24.dp))
+        Space(12.dp)
 
         if (notification.link.isNotBlank()) {
-            Icon(painter = MdtIcons.ExternalLink, contentDescription = null, tint = MdtTheme.color.iconTint)
+            Icon(
+                painter = MdtIcons.ExternalLink,
+                contentDescription = null,
+                tint = MdtTheme.color.onSurfaceVariant,
+                modifier = Modifier.size(20.dp),
+            )
         }
     }
 }
 
 @Preview
 @Composable
-private fun Preview() {
+private fun PreviewEmpty() {
     PreviewTheme {
         ScreenContent(
             notifications = emptyList(),
+            onNotificationClick = {},
+            onInternalRouteClick = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewList() {
+    PreviewTheme {
+        ScreenContent(
+            notifications = listOf(
+                Notification(
+                    id = "1",
+                    category = Notification.Category.Updates,
+                    link = "https://2fas.com",
+                    internalRoute = null,
+                    message = "A new version of the app is available. Update now to get the latest features.",
+                    createdAt = 1_000_000_000_000,
+                    isRead = false,
+                ),
+                Notification(
+                    id = "2",
+                    category = Notification.Category.News,
+                    link = "",
+                    internalRoute = null,
+                    message = "2FAS is now available on more platforms. Check out what's new.",
+                    createdAt = 900_000_000_000,
+                    isRead = true,
+                ),
+                Notification(
+                    id = "3",
+                    category = Notification.Category.Features,
+                    link = "",
+                    internalRoute = null,
+                    message = "You can now sync your tokens across devices securely.",
+                    createdAt = 800_000_000_000,
+                    isRead = true,
+                ),
+                Notification(
+                    id = "4",
+                    category = Notification.Category.Youtube,
+                    link = "https://youtube.com",
+                    internalRoute = null,
+                    message = "Watch our latest tutorial on setting up two-factor authentication.",
+                    createdAt = 700_000_000_000,
+                    isRead = true,
+                ),
+                Notification(
+                    id = "5",
+                    category = Notification.Category.Tips,
+                    link = "",
+                    internalRoute = null,
+                    message = "Tip: Enable a backup to never lose access to your accounts.",
+                    createdAt = 600_000_000_000,
+                    isRead = true,
+                ),
+            ),
             onNotificationClick = {},
             onInternalRouteClick = {},
         )

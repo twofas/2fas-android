@@ -10,6 +10,7 @@ import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualViewMod
 import com.twofasapp.feature.home.ui.services.add.scan.AddServiceScanViewModel
 import com.twofasapp.feature.home.ui.services.add.success.AddServiceSuccessViewModel
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceViewModel
+import com.twofasapp.feature.home.ui.settings.SettingsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.dsl.viewModelOf
@@ -18,6 +19,7 @@ import org.koin.dsl.module
 class HomeModule : KoinModule {
     override fun provide() = module {
         viewModelOf(::ServicesViewModel)
+        viewModelOf(::SettingsViewModel)
         viewModel { AppReviewViewModel(androidContext(), get()) }
         viewModelOf(::NotificationsViewModel)
         viewModelOf(::AddServiceManualViewModel)

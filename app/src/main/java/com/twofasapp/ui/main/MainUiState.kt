@@ -8,6 +8,7 @@ internal data class MainUiState(
     val startDestination: StartDestination? = null,
     val browserExtRequests: List<BrowserExtRequest> = emptyList(),
     val addServiceAdvancedExpanded: Boolean = false,
+    val showBackupError: Boolean = false,
     val events: List<MainUiEvent> = emptyList(),
 ) {
     enum class StartDestination {

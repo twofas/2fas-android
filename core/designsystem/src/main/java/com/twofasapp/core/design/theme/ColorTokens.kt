@@ -71,7 +71,7 @@ data class ColorTokens(
     val accentBrown: Color = Color.Unspecified,
 ) {
     val divider: Color
-        get() = surfaceVariant
+        get() = outlineVariant
 
     val iconTint: Color
         get() = onSurfaceVariant

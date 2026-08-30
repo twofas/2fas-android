@@ -26,13 +26,11 @@ import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.core.design.foundation.modal.ModalBottomSheet
 import com.twofasapp.data.services.domain.RecentlyAddedService
-import com.twofasapp.feature.home.navigation.HomeNavigationListener
-import com.twofasapp.feature.home.navigation.homeNavigation
+import com.twofasapp.feature.home.navigation.EditServiceRoute
 import com.twofasapp.feature.home.ui.services.add.AddServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModalNavArg
 import com.twofasapp.feature.security.ui.lock.LockActivity
-import com.twofasapp.feature.startup.navigation.StartupRoute
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialNavigationApi::class, ExperimentalMaterialApi::class)
@@ -77,61 +75,16 @@ internal fun MainNavHost(
             enterTransition = NavAnimation.Enter,
             exitTransition = NavAnimation.Exit,
         ) {
-            composable(LegacyScreen.Startup.route) {
-                StartupRoute()
+            composable(LegacyScreen.EditService.route, listOf(NavArg.ServiceId)) {
+                EditServiceRoute(
+                    serviceId = it.arguments?.getLong(NavArg.ServiceId.name) ?: 0L,
+                    openAuth = { onSuccess ->
+                        authSuccessCallback = onSuccess
+
+                        startAuthForResult.launch(context.intentFor<LockActivity>("canGoBack" to true))
+                    },
+                )
             }
-
-            homeNavigation(
-                navController = navController,
-                listener = object : HomeNavigationListener {
-                    override fun openService(activity: Activity, serviceId: Long) {
-                    }
-
-                    override fun openExternalImport() {
-                    }
-
-                    override fun openBrowserExt() {
-                    }
-
-                    override fun openSecurity(activity: Activity) {
-                    }
-
-                    override fun openBackup(turnOnBackup: Boolean) {
-                    }
-
-                    override fun openAppSettings() {
-                    }
-
-                    override fun openTrash() {
-                    }
-
-                    override fun openNotifications() {
-                    }
-
-                    override fun openAbout() {
-                    }
-
-                    override fun openDeveloper() {
-                    }
-
-                    override fun openAddServiceModal() {
-                        recentlyAddedService = null
-                        navController.navigate(Modal.AddService.routeWithArgs())
-                    }
-
-                    override fun openFocusServiceModal(id: Long) {
-                        navController.navigate(Modal.FocusService.route.replace("{id}", id.toString()))
-                    }
-
-                    override fun openBackupImport(filePath: String?) {
-                    }
-                },
-                openEditServiceAuth = { onSuccess ->
-                    authSuccessCallback = onSuccess
-
-                    startAuthForResult.launch(context.intentFor<LockActivity>("canGoBack" to true))
-                },
-            )
 
             bottomSheet(Modal.AddService.route, listOf(NavArg.AddServiceInitRoute)) {
                 AddServiceModal(

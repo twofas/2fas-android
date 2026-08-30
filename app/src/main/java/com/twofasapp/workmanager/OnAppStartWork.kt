@@ -7,7 +7,6 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import com.twofasapp.android.navigation.LegacyScreen
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.notifications.domain.Notification
@@ -109,7 +108,7 @@ class OnAppStartWork(
                             category = Notification.Category.Updates,
                             message = context.getString(com.twofasapp.locale.R.string.periodic_notification_backup),
                             link = "",
-                            internalRoute = LegacyScreen.Backup.route,
+                            internalRoute = Notification.InternalRoute.Backup,
                         ),
                     )
                 }
@@ -147,7 +146,7 @@ class OnAppStartWork(
         category: Notification.Category,
         message: String,
         link: String,
-        internalRoute: String? = null,
+        internalRoute: Notification.InternalRoute? = null,
     ): Notification {
         return Notification(
             id = UUID.randomUUID().toString(),

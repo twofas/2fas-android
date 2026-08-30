@@ -34,6 +34,9 @@ fun String.removeWhiteCharacters(): String {
     return replace(" ", "")
 }
 
+inline fun <reified T : Enum<*>> enumValueOrNull(name: String?): T? =
+    T::class.java.enumConstants?.firstOrNull { it.name == name }
+
 fun <T : Enum<*>> enumValueOrNull(cls: Class<T>, name: String?): T? {
     return cls.enumConstants?.firstOrNull { it.name == name }
 }

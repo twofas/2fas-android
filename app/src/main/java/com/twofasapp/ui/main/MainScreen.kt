@@ -66,6 +66,7 @@ internal fun MainScreen(
 
                             MainNavDisplay(
                                 startDestination = startDestination,
+                                showBackupError = uiState.showBackupError,
                                 onServiceAddedSuccessfully = { viewModel.serviceAdded(it) },
                             )
                         } else {

@@ -16,6 +16,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,6 +25,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
@@ -33,11 +35,13 @@ import com.twofasapp.core.design.feature.settings.OptionHeader
 import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
 import com.twofasapp.core.design.foundation.button.IconButton
 import com.twofasapp.core.design.foundation.lazy.listItem
+import com.twofasapp.core.design.foundation.other.DotBadge
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.locale.MdtLocale
+import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 
 @Composable
@@ -47,15 +51,20 @@ fun SettingsRoute() {
 
 @Composable
 private fun SettingsScreen(
+    viewModel: SettingsViewModel = koinViewModel(),
     navigator: Navigator = koinInject(),
 ) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     Content(
+        uiState = uiState,
         navigator = navigator,
     )
 }
 
 @Composable
 private fun Content(
+    uiState: SettingsUiState,
     navigator: Navigator,
 ) {
     val strings = MdtLocale.strings
@@ -132,6 +141,14 @@ private fun Content(
                     subtitle = strings.settingsBackupDesc,
                     icon = MdtIcons.CloudUpload,
                     onClick = { navigator.open(Screen.Backup) },
+                    content = {
+                        if (uiState.showBackupError) {
+                            DotBadge(
+                                modifier = Modifier
+                                    .padding(start = 8.dp),
+                            )
+                        }
+                    },
                 )
             }
 
@@ -252,6 +269,7 @@ private fun Content(
 private fun Preview() {
     PreviewTheme {
         Content(
+            uiState = SettingsUiState(showBackupError = true),
             navigator = Navigator.Stub,
         )
     }

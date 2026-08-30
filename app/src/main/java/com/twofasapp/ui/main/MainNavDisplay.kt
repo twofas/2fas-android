@@ -51,9 +51,8 @@ import com.twofasapp.feature.home.navigation.EditServiceRoute
 import com.twofasapp.feature.home.navigation.GuideInitRoute
 import com.twofasapp.feature.home.navigation.GuidePagerRoute
 import com.twofasapp.feature.home.navigation.GuidesRoute
-import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.navigation.NotificationsRoute
-import com.twofasapp.feature.home.ui.services.ServicesRoutePublic
+import com.twofasapp.feature.home.navigation.ServicesRoute
 import com.twofasapp.feature.home.ui.settings.SettingsRoute
 import com.twofasapp.feature.security.navigation.ChangePinRoute
 import com.twofasapp.feature.security.navigation.DisablePinRoute
@@ -64,11 +63,11 @@ import com.twofasapp.feature.startup.navigation.StartupRoute
 import com.twofasapp.feature.trash.navigation.DisposeRoute
 import com.twofasapp.feature.trash.navigation.TrashRoute
 import org.koin.compose.koinInject
-import timber.log.Timber
 
 @Composable
 internal fun MainNavDisplay(
     startDestination: Screen,
+    showBackupError: Boolean,
     onServiceAddedSuccessfully: (RecentlyAddedService) -> Unit,
     navigator: AppNavigator = koinInject(),
 ) {
@@ -97,29 +96,6 @@ internal fun MainNavDisplay(
         }
         if (backStack.firstOrNull() != tab) {
             backStack.add(tab)
-        }
-    }
-
-    val listener = remember {
-        object : HomeNavigationListener {
-            private fun todo(destination: String) {
-                Timber.tag("Nav3").w("Destination '$destination' not migrated yet - use useNavigation3 = false")
-            }
-
-            override fun openService(activity: Activity, serviceId: Long) = navigator.open(Screen.EditService(serviceId = serviceId))
-            override fun openExternalImport() = navigator.open(Screen.ExternalImportSelector)
-            override fun openBrowserExt() = navigator.open(Screen.BrowserExt)
-            override fun openSecurity(activity: Activity) = navigator.open(Screen.Security)
-            override fun openBackup(turnOnBackup: Boolean) = navigator.open(Screen.Backup)
-            override fun openAppSettings() = todo("AppSettings")
-            override fun openTrash() = navigator.open(Screen.Trash)
-            override fun openNotifications() = navigator.open(Screen.Notifications)
-            override fun openAbout() = navigator.open(Screen.About)
-            override fun openDeveloper() = navigator.open(Screen.Developer)
-            override fun openAddServiceModal() = todo("AddServiceModal")
-            override fun openFocusServiceModal(id: Long) = todo("FocusServiceModal")
-            override fun openBackupImport(filePath: String?) {
-            }
         }
     }
 
@@ -159,9 +135,7 @@ internal fun MainNavDisplay(
                 }
 
                 entry<Screen.Services> {
-                    ServicesRoutePublic(
-                        listener = listener,
-                    )
+                    ServicesRoute()
                 }
 
                 entry<Screen.Settings> {
@@ -291,6 +265,7 @@ internal fun MainNavDisplay(
         ) {
             MainNavBar(
                 currentDestination = currentDestination,
+                showBackupError = showBackupError,
                 onTabSelected = { selectTab(it) },
             )
         }
