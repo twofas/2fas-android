@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.guidepager
+package com.twofasapp.feature.guides.ui.guidepager
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -40,13 +40,14 @@ import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.feature.home.ui.guideinit.PreviewGuide
-import com.twofasapp.feature.home.ui.guides.Guide
-import com.twofasapp.feature.home.ui.guides.GuideJson
-import com.twofasapp.feature.home.ui.guides.getGuideJson
-import com.twofasapp.feature.home.ui.guides.json
+import com.twofasapp.feature.guides.ui.guideinit.PreviewGuide
+import com.twofasapp.feature.guides.ui.guides.Guide
+import com.twofasapp.feature.guides.ui.guides.GuideJson
+import com.twofasapp.feature.guides.ui.guides.getGuideJson
+import com.twofasapp.feature.guides.ui.guides.json
 import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -180,13 +181,13 @@ private fun Content(
             repeat(stepsCount) { index ->
                 Box(
                     modifier = Modifier
-                        .padding(3.dp)
+                        .padding(4.dp)
                         .clip(CircleShape)
                         .background(
                             if (pagerState.currentPage == index) {
                                 MdtTheme.color.primary
                             } else {
-                                MdtTheme.color.divider
+                                MdtTheme.color.surfaceContainerHighest
                             },
                         )
                         .size(8.dp),
@@ -200,7 +201,9 @@ private fun Content(
             } else {
                 MdtLocale.strings.commonNext
             },
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
             onClick = {
                 if (isLastStep) {
                     when (steps[pagerState.currentPage].cta?.action) {
@@ -219,10 +222,10 @@ private fun Content(
 @Preview
 @Composable
 private fun Preview() {
-    Content(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MdtTheme.color.background),
-        steps = PreviewGuide.flow.menu.items.first().steps,
-    )
+    PreviewTheme {
+        Content(
+            modifier = Modifier.fillMaxSize(),
+            steps = PreviewGuide.flow.menu.items.first().steps,
+        )
+    }
 }

@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -80,7 +79,7 @@ fun ListRadioDialog(
                         Text(
                             text = text,
                             color = MdtTheme.color.onSurface,
-                            style = MaterialTheme.typography.bodyLarge,
+                            style = MdtTheme.typo.material.bodyLarge,
                             modifier = Modifier.padding(start = 16.dp),
                         )
                     }

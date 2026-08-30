@@ -47,10 +47,10 @@ import com.twofasapp.feature.externalimport.navigation.ExternalImportResultRoute
 import com.twofasapp.feature.externalimport.navigation.ExternalImportRoute
 import com.twofasapp.feature.externalimport.navigation.ExternalImportScanRoute
 import com.twofasapp.feature.externalimport.navigation.ExternalImportSelectorRoute
+import com.twofasapp.feature.guides.navigation.GuideInitRoute
+import com.twofasapp.feature.guides.navigation.GuidePagerRoute
+import com.twofasapp.feature.guides.navigation.GuidesRoute
 import com.twofasapp.feature.home.navigation.EditServiceRoute
-import com.twofasapp.feature.home.navigation.GuideInitRoute
-import com.twofasapp.feature.home.navigation.GuidePagerRoute
-import com.twofasapp.feature.home.navigation.GuidesRoute
 import com.twofasapp.feature.home.navigation.NotificationsRoute
 import com.twofasapp.feature.home.navigation.ServicesRoute
 import com.twofasapp.feature.home.ui.settings.SettingsRoute

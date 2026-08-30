@@ -54,6 +54,7 @@ dependencies {
 
     implementation(project(":feature:startup"))
     implementation(project(":feature:home"))
+    implementation(project(":feature:guides"))
     implementation(project(":feature:trash"))
     implementation(project(":feature:about"))
     implementation(project(":feature:externalimport"))

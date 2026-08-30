@@ -131,7 +131,7 @@ private val ButtonStyle.containerColor: Color
         ButtonStyle.Filled -> MdtTheme.color.primary
         ButtonStyle.Outlined -> MdtTheme.color.transparent
         ButtonStyle.Text -> MdtTheme.color.transparent
-        ButtonStyle.Tonal -> MdtTheme.color.secondaryContainer
+        ButtonStyle.Tonal -> MdtTheme.color.surfaceContainer
     }
 
 private val ButtonStyle.disabledContainerColor: Color
@@ -140,7 +140,7 @@ private val ButtonStyle.disabledContainerColor: Color
         ButtonStyle.Filled -> MdtTheme.color.onSurface12
         ButtonStyle.Outlined -> MdtTheme.color.transparent
         ButtonStyle.Text -> MdtTheme.color.transparent
-        ButtonStyle.Tonal -> MdtTheme.color.onSurface12
+        ButtonStyle.Tonal -> MdtTheme.color.surfaceContainerLow
     }
 
 private val ButtonStyle.contentColor: Color

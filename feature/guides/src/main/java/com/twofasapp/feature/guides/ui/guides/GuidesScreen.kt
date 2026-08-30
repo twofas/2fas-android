@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.guides
+package com.twofasapp.feature.guides.ui.guides
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -11,18 +11,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,7 +35,10 @@ import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.other.Space
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.text.ResponsiveText
+import com.twofasapp.core.design.foundation.text.TextIcon
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.assetAsBitmap
 import com.twofasapp.core.design.ktx.openSafely
@@ -109,7 +108,7 @@ private fun GuidesScreenContent(
                     .fillMaxWidth()
                     .background(MdtTheme.color.surface)
                     .padding(horizontal = 16.dp)
-                    .padding(top = 24.dp, bottom = padding.calculateBottomPadding()),
+                    .padding(top = 20.dp, bottom = padding.calculateBottomPadding()),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
@@ -118,28 +117,23 @@ private fun GuidesScreenContent(
                     color = MdtTheme.color.onSurface,
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Space(8.dp)
 
-                TextButton(
-                    onClick = { uriHandler.openSafely("https://2fas.com/y2g") },
-                    colors = ButtonDefaults.textButtonColors(
-                        contentColor = MdtTheme.color.primary,
-                        disabledContentColor = MdtTheme.color.onSurfaceVariant,
-                    ),
-                ) {
-                    Text(
-                        text = MdtLocale.strings.guidesSelectProvideGuideCta,
-                        style = MdtTheme.typo.sm.medium,
-                    )
+                TextIcon(
+                    text = MdtLocale.strings.guidesSelectProvideGuideCta,
+                    style = MdtTheme.typo.sm.semiBold,
+                    color = MdtTheme.color.primary,
+                    trailingIcon = MdtIcons.ExternalLink,
+                    trailingIconTint = MdtTheme.color.primary,
+                    trailingIconSize = 16.dp,
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .clickable { uriHandler.openSafely("https://2fas.com/y2g") }
+                        .padding(8.dp),
 
-                    Spacer(modifier = Modifier.width(4.dp))
+                )
 
-                    Icon(
-                        painter = MdtIcons.ExternalLink,
-                        contentDescription = null,
-                        modifier = Modifier.size(16.dp),
-                    )
-                }
+                Space(8.dp)
             }
         }
     }
@@ -170,7 +164,7 @@ private fun GuideItem(
                 contentDescription = null,
                 modifier = Modifier
                     .padding(12.dp)
-                    .size(56.dp),
+                    .size(48.dp),
             )
 
             ResponsiveText(
@@ -198,6 +192,8 @@ private fun GuideItem(
 
 @Preview
 @Composable
-fun Preview() {
-    GuidesScreenContent {}
+private fun Preview() {
+    PreviewTheme {
+        GuidesScreenContent {}
+    }
 }

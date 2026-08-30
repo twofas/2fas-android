@@ -42,7 +42,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.foundation.dialog.ListDialog
+import com.twofasapp.core.design.foundation.dialog.LegacyListDialog
 import com.twofasapp.core.design.foundation.topbar.TopAppBarWithSearch
 import com.twofasapp.core.design.ktx.LocalBackDispatcher
 import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
@@ -203,7 +203,7 @@ internal fun ChangeBrandScreen(
         }
 
         if (showBrandingDialog.value) {
-            ListDialog(
+            LegacyListDialog(
                 onDismissRequest = { showBrandingDialog.value = false },
                 title = stringResource(id = R.string.tokens__order_menu_title),
                 options = listOf(

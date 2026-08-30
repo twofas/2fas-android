@@ -15,7 +15,6 @@ import com.twofasapp.core.design.feature.items.ServiceAuthType
 import com.twofasapp.core.design.feature.items.ServiceImageType
 import com.twofasapp.core.design.feature.items.ServiceState
 import com.twofasapp.core.design.feature.items.asState
-import com.twofasapp.core.design.feature.settings.SettingsDivider
 import com.twofasapp.core.design.feature.settings.SettingsLink
 import com.twofasapp.core.design.foundation.modal.Modal
 import com.twofasapp.core.design.foundation.modal.ModalList
@@ -63,8 +62,6 @@ fun FocusServiceModal(
                 onIncrementCounterClick = { viewModel.incrementCounter() },
                 onRevealClick = { viewModel.reveal() },
             )
-
-            SettingsDivider()
 
             ModalList {
                 SettingsLink(title = MdtLocale.strings.editService, icon = MdtIcons.Edit) {

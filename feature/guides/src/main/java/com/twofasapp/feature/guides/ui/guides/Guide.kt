@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.guides
+package com.twofasapp.feature.guides.ui.guides
 
 import android.content.Context
 import androidx.compose.runtime.Composable
@@ -40,7 +40,7 @@ val Guide.json: String
 private val Guide.serviceId: String
     get() = when (this) {
         Guide.Facebook -> "744e788d-3975-43ac-8166-0029c9a0871c"
-        Guide.Twitter -> "a2987ab4-ac5c-48ce-863c-d3d3d1220fdb"
+        Guide.Twitter -> "48bf8471-b319-45fd-a1c7-f9f6ce17f6b9"
         Guide.Amazon -> "d50d085c-87a1-4c03-80aa-d2384971c6f3"
         Guide.Universal -> "89efcc2d-52f4-4ac3-988d-5d7f3b3cd0a7"
         Guide.LinkedIn -> "924f8361-2435-41fe-8070-b2f6b105b042"

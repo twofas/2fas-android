@@ -1,8 +1,7 @@
-package com.twofasapp.feature.home.ui.guideinit
+package com.twofasapp.feature.guides.ui.guideinit
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,14 +28,16 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.foundation.other.Divider
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.assetAsBitmap
-import com.twofasapp.feature.home.ui.guides.Guide
-import com.twofasapp.feature.home.ui.guides.GuideJson
-import com.twofasapp.feature.home.ui.guides.getGuideJson
-import com.twofasapp.feature.home.ui.guides.iconFile
-import com.twofasapp.feature.home.ui.guides.json
+import com.twofasapp.feature.guides.ui.guides.Guide
+import com.twofasapp.feature.guides.ui.guides.GuideJson
+import com.twofasapp.feature.guides.ui.guides.getGuideJson
+import com.twofasapp.feature.guides.ui.guides.iconFile
+import com.twofasapp.feature.guides.ui.guides.json
 import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -94,7 +94,7 @@ private fun Content(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.weight(1f))
 
         Image(
             bitmap = context.assetAsBitmap(guide.iconFile()).asImageBitmap(),
@@ -114,7 +114,7 @@ private fun Content(
 
         Text(
             text = guideJson.flow.header,
-            style = MaterialTheme.typography.bodyLarge,
+            style = MdtTheme.typo.base.normal,
             color = MdtTheme.color.onSurface,
             modifier = Modifier.padding(horizontal = 24.dp),
             textAlign = TextAlign.Center,
@@ -122,33 +122,34 @@ private fun Content(
 
         Spacer(modifier = Modifier.weight(1f))
 
-        Divider(modifier = Modifier.padding(vertical = 16.dp))
-
         Text(
             text = guideJson.flow.menu.title,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MdtTheme.color.onSurface.copy(alpha = 0.7f),
+            textAlign = TextAlign.Center,
+            style = MdtTheme.typo.xs.normal,
+            color = MdtTheme.color.onSurfaceVariant,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp),
         )
+
         Spacer(modifier = Modifier.height(16.dp))
 
-        guideJson.flow.menu.items.forEachIndexed { index, menuItem ->
-            Text(
-                text = menuItem.name,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MdtTheme.color.onSurface,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        openGuide(guide, index)
-                    }
-                    .padding(horizontal = 24.dp, vertical = 20.dp),
-            )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            guideJson.flow.menu.items.forEachIndexed { index, menuItem ->
+                Button(
+                    text = menuItem.name,
+                    style = ButtonStyle.Tonal,
+                    onClick = { openGuide(guide, index) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
         }
 
-        Divider(modifier = Modifier.padding(vertical = 16.dp))
         Spacer(modifier = Modifier.height(16.dp))
     }
 }
@@ -156,14 +157,14 @@ private fun Content(
 @Preview
 @Composable
 private fun Preview() {
-    Content(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MdtTheme.color.background),
-        guide = Guide.Universal,
-        guideJson = PreviewGuide,
-        openGuide = { _, _ -> },
-    )
+    PreviewTheme {
+        Content(
+            modifier = Modifier.fillMaxSize(),
+            guide = Guide.Universal,
+            guideJson = PreviewGuide,
+            openGuide = { _, _ -> },
+        )
+    }
 }
 
 internal val PreviewGuide: GuideJson = GuideJson(

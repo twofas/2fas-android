@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.guidepager
+package com.twofasapp.feature.guides.ui.guidepager
 
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.ParagraphStyle

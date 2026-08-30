@@ -18,7 +18,7 @@ import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.theme.DialogPadding
 
 @Composable
-fun ListDialog(
+fun LegacyListDialog(
     onDismissRequest: () -> Unit,
     title: String? = null,
     options: List<String>,
@@ -55,7 +55,7 @@ fun ListDialog(
 @Preview
 @Composable
 private fun Preview() {
-    ListDialog(
+    LegacyListDialog(
         onDismissRequest = { },
         options = listOf("Test 1", "Test 2"),
     )

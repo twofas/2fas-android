@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.guides
+package com.twofasapp.feature.guides.ui.guides
 
 import kotlinx.serialization.Serializable
 

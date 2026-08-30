@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -100,7 +99,7 @@ internal fun PinScreen(
                     .padding(16.dp)
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyLarge,
+                style = MdtTheme.typo.material.bodyLarge,
                 color = if (errorMessage.isNotBlank()) MdtTheme.color.primary else MdtTheme.color.onSurface,
             )
 

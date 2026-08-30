@@ -1,12 +1,12 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     alias(libs.plugins.twofasCompose)
+    alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.twofasLint)
 }
 
 android {
-    namespace = "com.twofasapp.feature.home"
+    namespace = "com.twofasapp.feature.guides"
 }
 
 dependencies {
@@ -15,19 +15,11 @@ dependencies {
     implementation(project(":core:locale"))
     implementation(project(":core:designsystem"))
 
-    implementation(project(":data:notifications"))
     implementation(project(":data:services"))
-    implementation(project(":data:session"))
-
-    implementation(project(":feature:qrscan"))
 
     implementation(project(":parsers"))
-    implementation(project(":prefs"))
 
     implementation(libs.bundles.compose)
-    implementation(libs.bundles.viewModel)
-    implementation(libs.bundles.accompanist)
-    implementation(libs.bundles.playReview)
-    implementation(libs.timber)
-    implementation(libs.zxing)
+    implementation(libs.bundles.commonmark)
+    implementation(libs.kotlinSerialization)
 }
