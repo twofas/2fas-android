@@ -1,3 +1,8 @@
+<center><img src="https://static.2fas.com/images/logo-dark-mode.svg?version=4200cbe91dc8c225b6376894c9138eca" width ="400">
+</center>
+
+![introductory photo](https://static.2fas.com/images/ga-2-dark.png?version=39721627636b5dd9b125b733435f5182)
+
 # Open Source 2FAS for Android
 
 This is the official Android app for the Open Source 2FAS project.
