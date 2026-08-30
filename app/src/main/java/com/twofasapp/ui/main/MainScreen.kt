@@ -19,7 +19,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
-import com.twofasapp.RequestPermission
 import com.twofasapp.android.navigation.LegacyScreen
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.common.domain.SelectedTheme
@@ -27,6 +26,7 @@ import com.twofasapp.core.design.AppTheme
 import com.twofasapp.core.design.LocalAppTheme
 import com.twofasapp.core.design.LocalDynamicColors
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.permission.RequestPermission
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber

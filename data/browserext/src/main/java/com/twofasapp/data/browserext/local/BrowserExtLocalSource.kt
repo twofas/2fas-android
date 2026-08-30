@@ -1,5 +1,7 @@
 package com.twofasapp.data.browserext.local
 
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.serializedPref
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.data.browserext.domain.PairedBrowser
 import com.twofasapp.data.browserext.domain.TokenRequest
@@ -7,43 +9,27 @@ import com.twofasapp.data.browserext.local.model.MobileDeviceEntity
 import com.twofasapp.data.browserext.local.model.PairedBrowserEntity
 import com.twofasapp.data.browserext.mapper.asDomain
 import com.twofasapp.data.browserext.mapper.asEntity
-import com.twofasapp.storage.PlainPreferences
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onSubscription
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.time.Instant
 
 internal class BrowserExtLocalSource(
-    private val json: Json,
+    dataStoreOwner: DataStoreOwner,
     private val dao: PairedBrowserDao,
-    private val preferences: PlainPreferences,
-) {
-    companion object {
-        private const val KeyMobileDevice = "mobileDevice"
-    }
+) : DataStoreOwner by dataStoreOwner {
 
-    private val mobileDeviceFlow: MutableSharedFlow<MobileDevice> = MutableSharedFlow(
-        replay = 0,
-        extraBufferCapacity = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    private val mobileDevice by serializedPref(
+        name = "mobileDevice",
+        default = MobileDeviceEntity(id = "", name = "", fcmToken = "", platform = "", publicKey = ""),
+        serializer = MobileDeviceEntity.serializer(),
+        encrypted = true,
     )
 
     private val tokenRequestsFlow: MutableStateFlow<List<TokenRequest>> = MutableStateFlow(emptyList())
 
     fun observeMobileDevice(): Flow<MobileDevice> {
-        return mobileDeviceFlow.onSubscription {
-            val device = preferences.getString(KeyMobileDevice)?.let {
-                json.decodeFromString<MobileDeviceEntity>(it)
-            } ?: MobileDeviceEntity(id = "", name = "", fcmToken = "", platform = "", publicKey = "")
-
-            emit(device.asDomain())
-        }
+        return mobileDevice.asFlow().map { it.asDomain() }
     }
 
     fun observePairedBrowsers(): Flow<List<PairedBrowser>> {
@@ -64,8 +50,7 @@ internal class BrowserExtLocalSource(
     }
 
     suspend fun saveMobileDevice(mobileDevice: MobileDevice) {
-        preferences.putString(KeyMobileDevice, json.encodeToString(mobileDevice.asEntity()))
-        mobileDeviceFlow.emit(mobileDevice)
+        this.mobileDevice.set(mobileDevice.asEntity())
     }
 
     suspend fun savePairedBrowser(pairedBrowser: PairedBrowser) {

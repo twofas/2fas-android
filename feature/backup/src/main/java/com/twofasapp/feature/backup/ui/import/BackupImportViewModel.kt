@@ -2,8 +2,8 @@ package com.twofasapp.feature.backup.ui.import
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
+import com.twofasapp.common.ktx.decodeBase64ToString
 import com.twofasapp.common.ktx.launchScoped
-import com.twofasapp.common.ktx.legacyDecodeBase64
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
 import com.twofasapp.data.services.BackupRepository
@@ -26,7 +26,7 @@ internal class BackupImportViewModel(
         if (importFileUri == null) {
             publishEvent(BackupImportUiEvent.ShowFilePicker)
         } else {
-            fileOpened(Uri.parse(importFileUri.legacyDecodeBase64()))
+            fileOpened(Uri.parse(importFileUri.decodeBase64ToString()))
         }
     }
 

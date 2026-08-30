@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
-import com.twofasapp.common.ktx.legacyEncodeBase64ToString
+import com.twofasapp.common.ktx.encodeBase64
 import com.twofasapp.core.design.foundation.permission.RequestPermission
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.CommonContent
@@ -57,7 +57,7 @@ private fun Content(
     val strings = MdtLocale.strings
     var askForCameraPermission by remember { mutableStateOf(false) }
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        uri?.let { onFilePicked(it.toString().legacyEncodeBase64ToString()) }
+        uri?.let { onFilePicked(it.toString().encodeBase64()) }
     }
     val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),

@@ -1,9 +1,9 @@
 package com.twofasapp.feature.externalimport.ui.result
 
-import android.net.Uri
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
+import com.twofasapp.common.ktx.decodeBase64ToString
 import com.twofasapp.common.ktx.launchScoped
-import com.twofasapp.common.ktx.legacyDecodeBase64
 import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.externalimport.domain.AegisImporter
@@ -45,9 +45,9 @@ internal class ExternalImportResultViewModel(
             val result = when (importType) {
                 ImportType.GoogleAuthenticator -> {
                     if (importFileContent != null) {
-                        googleAuthenticatorImporter.read(importFileContent.legacyDecodeBase64())
+                        googleAuthenticatorImporter.read(importFileContent.decodeBase64ToString())
                     } else if (importFileUri != null) {
-                        val readQrResult = readQrFromImage.invoke(Uri.parse(importFileUri))
+                        val readQrResult = readQrFromImage.invoke(importFileUri.toUri())
 
                         if (readQrResult.isSuccess) {
                             googleAuthenticatorImporter.read(readQrResult.getOrNull().orEmpty())
@@ -59,11 +59,11 @@ internal class ExternalImportResultViewModel(
                     }
                 }
 
-                ImportType.Aegis -> aegisImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
-                ImportType.Raivo -> raivoImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
-                ImportType.LastPass -> lastPassImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
-                ImportType.AuthenticatorPro -> authenticatorProImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
-                ImportType.AndOtp -> andOtpImporter.read(importFileUri.orEmpty().legacyDecodeBase64())
+                ImportType.Aegis -> aegisImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.Raivo -> raivoImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.LastPass -> lastPassImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.AuthenticatorPro -> authenticatorProImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.AndOtp -> andOtpImporter.read(importFileUri.orEmpty().decodeBase64ToString())
             }
 
             uiState.update { state ->

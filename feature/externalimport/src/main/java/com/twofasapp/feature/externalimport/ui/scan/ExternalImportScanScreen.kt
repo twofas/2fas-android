@@ -1,5 +1,6 @@
 package com.twofasapp.feature.externalimport.ui.scan
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -8,13 +9,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
-import com.twofasapp.common.ktx.legacyEncodeBase64ToString
+import com.twofasapp.common.ktx.encodeBase64
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.theme.RoundedShape24
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
@@ -36,7 +41,7 @@ internal fun ExternalImportScanScreen(
             navigator.open(
                 Screen.ExternalImportResult(
                     importType = importType.name,
-                    importFileContent = scanned.legacyEncodeBase64ToString(),
+                    importFileContent = scanned.encodeBase64(),
                 ),
             )
         },
@@ -61,7 +66,11 @@ private fun Content(
             contentAlignment = Alignment.Center,
         ) {
             QrScan(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .clip(RoundedShape24)
+                    .background(Color.Black),
                 onScanned = {
                     if (qrScanEnabled) {
                         qrScanEnabled = false

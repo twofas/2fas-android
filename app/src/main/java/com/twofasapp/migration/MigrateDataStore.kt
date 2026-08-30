@@ -67,10 +67,11 @@ class MigrateDataStore(
                             else -> LockMethodEntity.NoLock.name
                         }
 
-                        preferences[stringPreferencesKey("lockMethod")] = encrypt(
-                            key = androidKeyStore.dataStoreKey,
-                            data = lockMethod.toByteArray(),
-                        ).encodeBase64()
+                        preferences[stringPreferencesKey("lockMethod")] = encryptValue(lockMethod)
+                    }
+
+                    "mobileDevice" -> {
+                        preferences[stringPreferencesKey("mobileDevice")] = encryptValue(value as String)
                     }
 
                     else -> return@forEach
@@ -113,10 +114,7 @@ class MigrateDataStore(
         val value = source.getString(key, null) ?: return
 
         dataStoreOwner.dataStore.edit { preferences ->
-            preferences[stringPreferencesKey(key)] = encrypt(
-                key = androidKeyStore.dataStoreKey,
-                data = value.toByteArray(),
-            ).encodeBase64()
+            preferences[stringPreferencesKey(key)] = encryptValue(value)
         }
     }
 
@@ -137,13 +135,15 @@ class MigrateDataStore(
         val value = decryptSecureStorageValue(storedValue)
 
         dataStoreOwner.dataStore.edit { preferences ->
-            val encryptedValue = encrypt(
-                key = androidKeyStore.dataStoreKey,
-                data = value.toByteArray(),
-            ).encodeBase64()
-
-            preferences[stringPreferencesKey(key)] = encryptedValue
+            preferences[stringPreferencesKey(key)] = encryptValue(value)
         }
+    }
+
+    private fun encryptValue(value: String): String {
+        return encrypt(
+            key = androidKeyStore.dataStoreKey,
+            data = value.toByteArray(),
+        ).encodeBase64()
     }
 
     private fun decryptSecureStorageValue(encryptedMessage: String): String {

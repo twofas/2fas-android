@@ -28,7 +28,6 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.android.navigation.intentFor
-import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.feature.about.navigation.AboutLicensesRoute
@@ -119,8 +118,8 @@ internal fun MainNavDisplay(
             override fun openDeveloper() = navigator.open(Screen.Developer)
             override fun openAddServiceModal() = todo("AddServiceModal")
             override fun openFocusServiceModal(id: Long) = todo("FocusServiceModal")
-            override fun openBackupImport(filePath: String?) =
-                navigator.open(Screen.BackupImport(importFileUri = filePath?.legacyEncodeBase64ToString()))
+            override fun openBackupImport(filePath: String?) {
+            }
         }
     }
 

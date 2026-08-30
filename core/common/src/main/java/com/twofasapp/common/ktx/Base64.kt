@@ -10,10 +10,8 @@ import java.nio.charset.StandardCharsets
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
-fun String.legacyEncodeBase64ToString(): String = String(this.toByteArray().legacyEncodeBase64())
 fun ByteArray.legacyEncodeBase64ToString(): String = String(this.legacyEncodeBase64())
 
-fun String.legacyDecodeBase64(): String = String(this.toByteArray().legacyDecodeBase64())
 fun String.legacyDecodeBase64ToByteArray(): ByteArray = this.toByteArray().legacyDecodeBase64()
 
 private fun ByteArray.legacyEncodeBase64(): ByteArray {
@@ -86,6 +84,10 @@ private fun ByteArray.legacyDecodeBase64(): ByteArray {
 
 fun ByteArray.encodeBase64(): String {
     return Base64.encode(this)
+}
+
+fun String.encodeBase64(): String {
+    return this.encodeBase64()
 }
 
 fun EncryptedBytes.encodeBase64(): String {

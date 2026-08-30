@@ -108,7 +108,7 @@ private fun Pairing(modifier: Modifier) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.browserext_progress))
     val progress by animateLottieCompositionAsState(composition, iterations = LottieConstants.IterateForever)
 
-    LottieAnimation(composition, progress, modifier = modifier)
+    LottieAnimation(composition, { progress }, modifier = modifier)
 }
 
 @Composable

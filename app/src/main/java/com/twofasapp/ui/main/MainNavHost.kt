@@ -24,7 +24,6 @@ import com.twofasapp.android.navigation.Modal
 import com.twofasapp.android.navigation.NavAnimation
 import com.twofasapp.android.navigation.NavArg
 import com.twofasapp.android.navigation.intentFor
-import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import com.twofasapp.core.design.foundation.modal.ModalBottomSheet
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
@@ -125,7 +124,6 @@ internal fun MainNavHost(
                     }
 
                     override fun openBackupImport(filePath: String?) {
-                        navController.navigate(LegacyScreen.BackupImport.routeWithArgs(NavArg.ImportFileUri to filePath?.legacyEncodeBase64ToString()))
                     }
                 },
                 openEditServiceAuth = { onSuccess ->

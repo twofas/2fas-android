@@ -1,5 +1,6 @@
 package com.twofasapp.feature.externalimport.ui.selector
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,12 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.R
-import com.twofasapp.core.design.feature.settings.SettingsDescription
-import com.twofasapp.core.design.feature.settings.SettingsHeader
-import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.OptionEntry
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.externalimport.domain.ImportType
@@ -42,11 +44,22 @@ private fun Content(
                 .padding(padding),
         ) {
             item {
-                SettingsHeader(title = MdtLocale.strings.externalImportHeader)
+                OptionEntry(
+                    title = null,
+                    subtitle = MdtLocale.strings.externalImportNotice,
+                    contentPadding = PaddingValues(horizontal = 16.dp),
+                )
             }
 
             item {
-                SettingsLink(
+                OptionHeader(
+                    text = MdtLocale.strings.externalImportHeader,
+                    contentPadding = OptionHeaderContentPaddingFirst,
+                )
+            }
+
+            item {
+                OptionEntry(
                     title = MdtLocale.strings.externalImportGoogleAuthenticator,
                     image = painterResource(id = R.drawable.logo_google_authenticator),
                     onClick = { onImportTypeSelected(ImportType.GoogleAuthenticator) },
@@ -54,7 +67,7 @@ private fun Content(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = MdtLocale.strings.externalImportAegis,
                     image = painterResource(id = R.drawable.logo_aegis),
                     onClick = { onImportTypeSelected(ImportType.Aegis) },
@@ -62,7 +75,7 @@ private fun Content(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = MdtLocale.strings.externalImportRaivo,
                     image = painterResource(id = R.drawable.logo_raivo),
                     onClick = { onImportTypeSelected(ImportType.Raivo) },
@@ -70,7 +83,7 @@ private fun Content(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = MdtLocale.strings.externalImportLastPass,
                     image = painterResource(id = R.drawable.logo_lastpass),
                     onClick = { onImportTypeSelected(ImportType.LastPass) },
@@ -78,7 +91,7 @@ private fun Content(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = MdtLocale.strings.externalImportAuthenticatorPro,
                     image = painterResource(id = R.drawable.logo_authenticatorpro),
                     onClick = { onImportTypeSelected(ImportType.AuthenticatorPro) },
@@ -86,15 +99,11 @@ private fun Content(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = MdtLocale.strings.externalImportAndOtp,
                     image = painterResource(id = R.drawable.logo_andotp),
                     onClick = { onImportTypeSelected(ImportType.AndOtp) },
                 )
-            }
-
-            item {
-                SettingsDescription(text = MdtLocale.strings.externalImportNotice)
             }
         }
     }

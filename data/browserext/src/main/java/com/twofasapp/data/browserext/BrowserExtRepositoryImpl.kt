@@ -112,7 +112,7 @@ internal class BrowserExtRepositoryImpl(
 
             if (deviceId.isNullOrBlank().not()) {
                 localSource.updateTokenRequests(
-                    remoteSource.fetchTokenRequests(deviceId!!).map { it.asDomain() },
+                    remoteSource.fetchTokenRequests(deviceId).map { it.asDomain() },
                 )
             }
         }

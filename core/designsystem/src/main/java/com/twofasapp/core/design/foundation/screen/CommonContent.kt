@@ -118,7 +118,7 @@ fun CommonContentDescription(text: String) {
     )
 }
 
-@Preview(showSystemUi = true)
+@Preview
 @Composable
 private fun Preview() {
     PreviewTheme {
