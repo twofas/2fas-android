@@ -212,7 +212,7 @@ fun DsService(
                                 .clickable { onRevealClick?.invoke() },
                         ) {
                             Icon(
-                                painter = MdtIcons.Eye,
+                                painter = MdtIcons.Visibility,
                                 contentDescription = null,
                                 modifier = Modifier
                                     .size(24.dp)

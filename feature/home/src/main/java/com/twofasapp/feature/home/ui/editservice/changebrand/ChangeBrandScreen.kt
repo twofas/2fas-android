@@ -40,11 +40,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.dialog.LegacyListDialog
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBarWithSearch
 import com.twofasapp.core.design.ktx.LocalBackDispatcher
+import com.twofasapp.feature.home.ui.editservice.BrandIcon
 import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
 import com.twofasapp.locale.R
 import kotlinx.coroutines.launch
@@ -60,16 +64,38 @@ internal fun ChangeBrandScreen(
 ) {
     val service = viewModel.uiState.collectAsState().value.service
     val state = brandViewModel.uiState.collectAsState().value
+    val backDispatcher = LocalBackDispatcher
+
+    Content(
+        service = service,
+        state = state,
+        onClose = close,
+        onBack = { backDispatcher.onBackPressed() },
+        onSearchValueChanged = { brandViewModel.applySearchFilter(it) },
+        onUpdateBrand = { viewModel.updateBrand(it) },
+        onRequestIconClick = onRequestIconClick,
+    )
+}
+
+@Composable
+private fun Content(
+    service: Service,
+    state: ChangeBrandUiState,
+    onClose: () -> Unit = {},
+    onBack: () -> Unit = {},
+    onSearchValueChanged: (String) -> Unit = {},
+    onUpdateBrand: (BrandIcon) -> Unit = {},
+    onRequestIconClick: () -> Unit = {},
+) {
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
     var showBrandingDialog = remember { mutableStateOf(false) }
     var finish by remember { mutableStateOf(false) }
-    val backDispatcher = LocalBackDispatcher
     val uriHandler = LocalUriHandler.current
 
     LaunchedEffect(finish) {
         if (finish) {
-            close()
+            onClose()
         }
     }
 
@@ -78,9 +104,9 @@ internal fun ChangeBrandScreen(
             TopAppBarWithSearch(
                 title = stringResource(id = R.string.customization_change_brand),
                 searchHint = stringResource(id = R.string.commons__search),
-                onSearchValueChanged = { brandViewModel.applySearchFilter(it) },
+                onSearchValueChanged = { onSearchValueChanged(it) },
             ) {
-                backDispatcher.onBackPressed()
+                onBack()
             }
         },
     ) { padding ->
@@ -176,7 +202,7 @@ internal fun ChangeBrandScreen(
                                         )
                                         .clip(CircleShape)
                                         .clickable {
-                                            viewModel.updateBrand(it)
+                                            onUpdateBrand(it)
                                             finish = true
                                         }
                                         .padding(16.dp),
@@ -259,4 +285,22 @@ fun SectionHeader(header: String) {
             .background(color = MdtTheme.color.divider)
             .padding(horizontal = 16.dp, vertical = 8.dp),
     )
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        Content(
+            service = Service.Preview,
+            state = ChangeBrandUiState(
+                sections = mapOf(
+                    "A" to listOf(
+                        BrandIcon(name = "Apple", iconCollectionId = ""),
+                        BrandIcon(name = "Amazon", iconCollectionId = ""),
+                    ),
+                ),
+            ),
+        )
+    }
 }

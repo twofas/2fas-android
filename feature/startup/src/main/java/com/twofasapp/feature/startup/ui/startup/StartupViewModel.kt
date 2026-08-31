@@ -15,7 +15,7 @@ class StartupViewModel(
         launchScoped {
             startupRepository.setOnboardingDisplayed(true)
 
-            navigator.resetTo(Screen.Services)
+            navigator.resetTo(Screen.Home)
 
             if (openBackup) {
                 navigator.open(Screen.Settings) // TODO: Replace with a proper backup screen when implemented

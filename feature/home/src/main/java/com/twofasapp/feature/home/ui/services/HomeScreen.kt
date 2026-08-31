@@ -8,6 +8,7 @@ import androidx.compose.animation.core.EaseOut
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -64,9 +66,12 @@ import com.twofasapp.core.design.foundation.screen.EmptyScreen
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 import com.twofasapp.feature.home.R
+import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualModal
+import com.twofasapp.feature.home.ui.services.add.scan.AddServiceScanModal
 import com.twofasapp.feature.home.ui.services.component.AppReviewItem
 import com.twofasapp.feature.home.ui.services.component.PassBanner
 import com.twofasapp.feature.home.ui.services.component.ServicesAppBar
@@ -74,6 +79,7 @@ import com.twofasapp.feature.home.ui.services.component.ServicesFab
 import com.twofasapp.feature.home.ui.services.component.ServicesProgress
 import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
 import com.twofasapp.feature.home.ui.services.component.SyncReminderItem
+import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
 import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.delay
@@ -87,12 +93,16 @@ import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 
 @Composable
-internal fun ServicesScreen(
-    viewModel: ServicesViewModel = koinViewModel(),
+internal fun HomeScreen(
+    viewModel: HomeViewModel = koinViewModel(),
     appReviewViewModel: AppReviewViewModel = koinViewModel(),
     navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    var showAddServiceScanModal by remember { mutableStateOf(false) }
+    var showAddServiceManualModal by remember { mutableStateOf(false) }
+    var addedServiceInModal by remember { mutableStateOf<RecentlyAddedService?>(null) }
+    var focusServiceId by remember { mutableStateOf<Long?>(null) }
 
     Content(
         uiState = uiState,
@@ -114,8 +124,8 @@ internal fun ServicesScreen(
         onOpenBackupImport = { /* TODO: Migrate to Navigation3 */ },
         onOpenNotifications = { navigator.open(Screen.Notifications) },
         onOpenDeveloper = { navigator.open(Screen.Developer) },
-        onOpenAddServiceModal = { /* TODO: Migrate to Navigation3 */ },
-        onOpenFocusService = { /* TODO: Migrate to Navigation3 */ },
+        onOpenAddServiceModal = { showAddServiceScanModal = true },
+        onOpenFocusService = { focusServiceId = it },
         onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
         onRateAppClick = { appReviewViewModel.rate(it) },
         onDismissAppReviewClick = { appReviewViewModel.dismiss() },
@@ -124,13 +134,45 @@ internal fun ServicesScreen(
         onIncrementHotpCounterClick = { viewModel.incrementHotpCounter(it) },
         onRevealClick = { viewModel.reveal(it) },
     )
+
+    if (showAddServiceScanModal) {
+        AddServiceScanModal(
+            onDismissRequest = {
+                showAddServiceScanModal = false
+                addedServiceInModal?.let { viewModel.notifyServiceAdded(it) }
+                addedServiceInModal = null
+            },
+            openManual = { showAddServiceManualModal = true },
+            openGuides = { navigator.open(Screen.Guides) },
+            onAddedSuccessfully = { addedServiceInModal = it },
+        )
+    }
+
+    if (showAddServiceManualModal) {
+        AddServiceManualModal(
+            onDismissRequest = {
+                showAddServiceManualModal = false
+                addedServiceInModal?.let { viewModel.notifyServiceAdded(it) }
+                addedServiceInModal = null
+            },
+            onAddedSuccessfully = { addedServiceInModal = it },
+        )
+    }
+
+    focusServiceId?.let { serviceId ->
+        FocusServiceModal(
+            serviceId = serviceId,
+            onDismissRequest = { focusServiceId = null },
+            openService = { navigator.open(Screen.EditService(it)) },
+        )
+    }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun Content(
-    uiState: ServicesUiState,
-    onEventConsumed: (ServicesUiEvent) -> Unit,
+    uiState: HomeUiState,
+    onEventConsumed: (HomeUiEvent) -> Unit,
     onExternalImportClick: () -> Unit = {},
     onEditModeChange: () -> Unit = {},
     onToggleGroupExpand: (String?) -> Unit = {},
@@ -140,7 +182,7 @@ private fun Content(
     onEditGroup: (String, String) -> Unit = { _, _ -> },
     onDeleteGroup: (String) -> Unit = {},
     onDragStart: () -> Unit = { },
-    onDragEnd: (List<ServicesListItem>) -> Unit = { },
+    onDragEnd: (List<HomeListItem>) -> Unit = { },
     onSortChange: (Int) -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
@@ -184,8 +226,8 @@ private fun Content(
             isDragging = true
             val fromItem = reorderableData.value[from.index]
             val toItem = reorderableData.value[to.index]
-            if (fromItem is ServicesListItem.ServiceItem) {
-                if (toItem is ServicesListItem.ServiceItem || (toItem is ServicesListItem.GroupItem && toItem.group.id != null)) {
+            if (fromItem is HomeListItem.ServiceItem) {
+                if (toItem is HomeListItem.ServiceItem || (toItem is HomeListItem.GroupItem && toItem.group.id != null)) {
                     reorderableData.value = reorderableData.value.toMutableList().apply {
                         add(to.index, removeAt(from.index))
                     }
@@ -214,11 +256,11 @@ private fun Content(
 
     uiState.events.firstOrNull()?.let {
         when (it) {
-            ServicesUiEvent.ShowQrFromGalleryDialog -> {
+            HomeUiEvent.ShowQrFromGalleryDialog -> {
                 showQrFromGalleryDialog = true
             }
 
-            is ServicesUiEvent.ServiceAdded -> {
+            is HomeUiEvent.ServiceAdded -> {
                 val serviceId = it.id
                 val service = uiState.services.firstOrNull { it.id == serviceId }
 
@@ -226,7 +268,7 @@ private fun Content(
                     if (uiState.groups.firstOrNull { it.id == service.groupId }?.isExpanded == true) {
                         scope.launch {
                             val serviceIndex = uiState.items.indexOfFirst {
-                                it is ServicesListItem.ServiceItem && it.service.id == serviceId
+                                it is HomeListItem.ServiceItem && it.service.id == serviceId
                             }
 
                             if (serviceIndex < 0) {
@@ -245,7 +287,7 @@ private fun Content(
                 }
             }
 
-            is ServicesUiEvent.OpenImport -> onOpenBackupImport(it.filePath)
+            is HomeUiEvent.OpenImport -> onOpenBackupImport(it.filePath)
         }
 
         onEventConsumed(it)
@@ -308,8 +350,210 @@ private fun Content(
                 focusRequester = focusRequester,
             )
         },
-        floatingActionButton = {
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    ) { padding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MdtTheme.color.background)
+                .padding(top = padding.calculateTopPadding()),
+        ) {
+            LazyColumn(
+                state = reorderableState.listState,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MdtTheme.color.background)
+                    .reorderable(reorderableState),
+                contentPadding = PaddingValues(top = 8.dp, bottom = 48.dp),
+                userScrollEnabled = uiState.services.isNotEmpty() || (uiState.searchQuery.isNotBlank() && uiState.groups.size > 1),
+            ) {
+                if (uiState.isLoading) {
+                    listItem(HomeListItem.Loader) {
+                        ServicesProgress(
+                            Modifier
+                                .fillParentMaxSize()
+                                .animateItem(),
+                        )
+                    }
+                    return@LazyColumn
+                }
+                if (uiState.services.isEmpty() && uiState.totalGroups == 1 && uiState.searchQuery.isNotEmpty()) {
+                    listItem(HomeListItem.EmptySearch) {
+                        EmptyScreen(
+                            title = MdtLocale.strings.servicesEmptySearch,
+                            body = MdtLocale.strings.servicesEmptySearchBody,
+                            image = painterResource(id = R.drawable.img_services_empty_search),
+                            modifier = Modifier
+                                .fillParentMaxSize()
+                                .animateItem(),
+                        )
+                    }
+
+                    return@LazyColumn
+                }
+
+                if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
+                    listItem(HomeListItem.Empty) {
+                        EmptyScreen(
+                            body = MdtLocale.strings.servicesEmptyBody,
+                            image = painterResource(id = R.drawable.img_services_empty),
+                            additionalContent = {
+                                Button(
+                                    text = MdtLocale.strings.servicesEmptyImportCta,
+                                    style = ButtonStyle.Outlined,
+                                    onClick = onExternalImportClick,
+                                )
+                            },
+                            modifier = Modifier
+                                .fillParentMaxSize()
+                                .animateItem(),
+                        )
+                    }
+
+                    return@LazyColumn
+                }
+
+                reorderableData.value.forEach { item ->
+
+                    when (item) {
+                        HomeListItem.SyncNoticeBar -> {
+                            listItem(item) {
+                                SyncNoticeBar(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 8.dp),
+                                    onOpenBackupClick = { onOpenBackupClick(false) },
+                                )
+                            }
+                        }
+
+                        HomeListItem.SyncReminder -> {
+                            listItem(item) {
+                                SyncReminderItem(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    onOpenBackupClick = { onOpenBackupClick(true) },
+                                    onDismissClick = onDismissSyncReminderClick,
+                                )
+                            }
+                        }
+
+                        HomeListItem.AppReview -> {
+                            listItem(item) {
+                                AppReviewItem(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    onRateClick = { onRateAppClick(activity) },
+                                    onDismissClick = onDismissAppReviewClick,
+                                )
+                            }
+                        }
+
+                        HomeListItem.PassBanner -> {
+                            listItem(item) {
+                                PassBanner(
+                                    modifier = Modifier
+                                        .padding(horizontal = 16.dp)
+                                        .padding(bottom = 12.dp, top = 4.dp),
+                                    onGoToStoreClick = {
+                                        uriHandler.openSafely(MdtLocale.links.passPlayStore, activity)
+                                        onDismissPassBannerClick()
+                                    },
+                                    onDismissClick = onDisablePassBannerClick,
+                                )
+                            }
+                        }
+
+                        is HomeListItem.GroupItem -> {
+                            val group = item.group
+
+                            listItem(item) {
+                                ServicesGroup(
+                                    id = group.id,
+                                    name = group.name ?: MdtLocale.strings.servicesMyTokens,
+                                    count = uiState.services.count { it.groupId == group.id },
+                                    expanded = group.isExpanded,
+                                    editMode = uiState.isInEditMode,
+                                    modifier = Modifier
+                                        .animateContentSize()
+                                        .then(
+                                            if (isDragging) {
+                                                Modifier
+                                            } else {
+                                                Modifier.animateItem()
+                                            },
+                                        ),
+                                    onClick = { onToggleGroupExpand(group.id) },
+                                    onExpandClick = { onToggleGroupExpand(group.id) },
+                                    onMoveUpClick = { onMoveUpGroup(group.id.orEmpty()) },
+                                    onMoveDownClick = { onMoveDownGroup(group.id.orEmpty()) },
+                                    onEditClick = {
+                                        clickedGroup = group
+                                        showEditGroupDialog = true
+                                    },
+                                    onDeleteClick = {
+                                        clickedGroup = group
+                                        showDeleteGroupDialog = true
+                                    },
+                                )
+                            }
+                        }
+
+                        is HomeListItem.ServiceItem -> {
+                            val service = item.service
+
+                            listItem(item) {
+                                ReorderableItem(
+                                    state = reorderableState,
+                                    key = item.key,
+                                    modifier = Modifier
+                                        .animateContentSize()
+                                        .then(
+                                            if (isDragging) {
+                                                Modifier
+                                            } else {
+                                                Modifier.animateItem()
+                                            },
+                                        ),
+                                ) { _ ->
+                                    val state = service.asState()
+
+                                    DsService(
+                                        state = state,
+                                        modifier = Modifier,
+                                        style = when (uiState.servicesStyle) {
+                                            ServicesStyle.Default -> ServiceStyle.Default
+                                            ServicesStyle.Compact -> ServiceStyle.Compact
+                                        },
+                                        editMode = uiState.isInEditMode,
+                                        showNextCode = uiState.showNextCode,
+                                        hideCodes = uiState.hideCodes,
+                                        containerColor = if (recentlyAddedService == service.id) {
+                                            serviceContainerColorBlinking.value
+                                        } else {
+                                            serviceContainerColor
+                                        },
+                                        dragHandleVisible = uiState.servicesSort == ServicesSort.Manual,
+                                        dragModifier = Modifier.detectReorder(state = reorderableState),
+                                        onClick = { state.copyToClipboard(activity, uiState.showNextCode) },
+                                        onLongClick = {
+                                            keyboardController?.hide()
+                                            onOpenFocusService(service.id)
+                                        },
+                                        onIncrementCounterClick = { onIncrementHotpCounterClick(service) },
+                                        onRevealClick = { onRevealClick(service) },
+                                    )
+                                }
+                            }
+                        }
+
+                        else -> Unit
+                    }
+                }
+            }
+
             ServicesFab(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(16.dp),
                 isVisible = uiState.isLoading.not(),
                 isExtendedVisible = uiState.totalServices == 0,
                 isNormalVisible = reorderableState.listState.isScrollingUp(),
@@ -318,201 +562,6 @@ private fun Content(
                     onOpenAddServiceModal()
                 },
             )
-        },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-    ) { padding ->
-
-        LazyColumn(
-            state = reorderableState.listState,
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MdtTheme.color.background)
-                .padding(top = padding.calculateTopPadding())
-                .reorderable(reorderableState),
-            contentPadding = PaddingValues(top = 8.dp, bottom = 48.dp),
-            userScrollEnabled = uiState.services.isNotEmpty() || (uiState.searchQuery.isNotBlank() && uiState.groups.size > 1),
-        ) {
-            if (uiState.isLoading) {
-                listItem(ServicesListItem.Loader) {
-                    ServicesProgress(
-                        Modifier
-                            .fillParentMaxSize()
-                            .animateItem(),
-                    )
-                }
-                return@LazyColumn
-            }
-            if (uiState.services.isEmpty() && uiState.totalGroups == 1 && uiState.searchQuery.isNotEmpty()) {
-                listItem(ServicesListItem.EmptySearch) {
-                    EmptyScreen(
-                        title = MdtLocale.strings.servicesEmptySearch,
-                        body = MdtLocale.strings.servicesEmptySearchBody,
-                        image = painterResource(id = R.drawable.img_services_empty_search),
-                        modifier = Modifier
-                            .fillParentMaxSize()
-                            .animateItem(),
-                    )
-                }
-
-                return@LazyColumn
-            }
-
-            if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
-                listItem(ServicesListItem.Empty) {
-                    EmptyScreen(
-                        body = MdtLocale.strings.servicesEmptyBody,
-                        image = painterResource(id = R.drawable.img_services_empty),
-                        additionalContent = {
-                            Button(
-                                text = MdtLocale.strings.servicesEmptyImportCta,
-                                style = ButtonStyle.Outlined,
-                                onClick = onExternalImportClick,
-                            )
-                        },
-                        modifier = Modifier
-                            .fillParentMaxSize()
-                            .animateItem(),
-                    )
-                }
-
-                return@LazyColumn
-            }
-
-            reorderableData.value.forEach { item ->
-
-                when (item) {
-                    ServicesListItem.SyncNoticeBar -> {
-                        listItem(item) {
-                            SyncNoticeBar(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 8.dp),
-                                onOpenBackupClick = { onOpenBackupClick(false) },
-                            )
-                        }
-                    }
-
-                    ServicesListItem.SyncReminder -> {
-                        listItem(item) {
-                            SyncReminderItem(
-                                modifier = Modifier.fillMaxWidth(),
-                                onOpenBackupClick = { onOpenBackupClick(true) },
-                                onDismissClick = onDismissSyncReminderClick,
-                            )
-                        }
-                    }
-
-                    ServicesListItem.AppReview -> {
-                        listItem(item) {
-                            AppReviewItem(
-                                modifier = Modifier.fillMaxWidth(),
-                                onRateClick = { onRateAppClick(activity) },
-                                onDismissClick = onDismissAppReviewClick,
-                            )
-                        }
-                    }
-
-                    ServicesListItem.PassBanner -> {
-                        listItem(item) {
-                            PassBanner(
-                                modifier = Modifier
-                                    .padding(horizontal = 16.dp)
-                                    .padding(bottom = 12.dp, top = 4.dp),
-                                onGoToStoreClick = {
-                                    uriHandler.openSafely(MdtLocale.links.passPlayStore, activity)
-                                    onDismissPassBannerClick()
-                                },
-                                onDismissClick = onDisablePassBannerClick,
-                            )
-                        }
-                    }
-
-                    is ServicesListItem.GroupItem -> {
-                        val group = item.group
-
-                        listItem(item) {
-                            ServicesGroup(
-                                id = group.id,
-                                name = group.name ?: MdtLocale.strings.servicesMyTokens,
-                                count = uiState.services.count { it.groupId == group.id },
-                                expanded = group.isExpanded,
-                                editMode = uiState.isInEditMode,
-                                modifier = Modifier
-                                    .animateContentSize()
-                                    .then(
-                                        if (isDragging) {
-                                            Modifier
-                                        } else {
-                                            Modifier.animateItem()
-                                        },
-                                    ),
-                                onClick = { onToggleGroupExpand(group.id) },
-                                onExpandClick = { onToggleGroupExpand(group.id) },
-                                onMoveUpClick = { onMoveUpGroup(group.id.orEmpty()) },
-                                onMoveDownClick = { onMoveDownGroup(group.id.orEmpty()) },
-                                onEditClick = {
-                                    clickedGroup = group
-                                    showEditGroupDialog = true
-                                },
-                                onDeleteClick = {
-                                    clickedGroup = group
-                                    showDeleteGroupDialog = true
-                                },
-                            )
-                        }
-                    }
-
-                    is ServicesListItem.ServiceItem -> {
-                        val service = item.service
-
-                        listItem(item) {
-                            ReorderableItem(
-                                state = reorderableState,
-                                key = item.key,
-                                modifier = Modifier
-                                    .animateContentSize()
-                                    .then(
-                                        if (isDragging) {
-                                            Modifier
-                                        } else {
-                                            Modifier.animateItem()
-                                        },
-                                    ),
-                            ) { _ ->
-                                val state = service.asState()
-
-                                DsService(
-                                    state = state,
-                                    modifier = Modifier,
-                                    style = when (uiState.servicesStyle) {
-                                        ServicesStyle.Default -> ServiceStyle.Default
-                                        ServicesStyle.Compact -> ServiceStyle.Compact
-                                    },
-                                    editMode = uiState.isInEditMode,
-                                    showNextCode = uiState.showNextCode,
-                                    hideCodes = uiState.hideCodes,
-                                    containerColor = if (recentlyAddedService == service.id) {
-                                        serviceContainerColorBlinking.value
-                                    } else {
-                                        serviceContainerColor
-                                    },
-                                    dragHandleVisible = uiState.servicesSort == ServicesSort.Manual,
-                                    dragModifier = Modifier.detectReorder(state = reorderableState),
-                                    onClick = { state.copyToClipboard(activity, uiState.showNextCode) },
-                                    onLongClick = {
-                                        keyboardController?.hide()
-                                        onOpenFocusService(service.id)
-                                    },
-                                    onIncrementCounterClick = { onIncrementHotpCounterClick(service) },
-                                    onRevealClick = { onRevealClick(service) },
-                                )
-                            }
-                        }
-                    }
-
-                    else -> Unit
-                }
-            }
         }
     }
 
@@ -614,12 +663,12 @@ private fun Preview() {
 
     PreviewTheme {
         Content(
-            uiState = ServicesUiState(
+            uiState = HomeUiState(
                 services = services,
                 isLoading = false,
                 totalServices = services.size,
                 totalGroups = 1,
-                items = services.map { ServicesListItem.ServiceItem(it) },
+                items = services.map { HomeListItem.ServiceItem(it) },
             ),
             onEventConsumed = {},
             onSearchQueryChange = {},

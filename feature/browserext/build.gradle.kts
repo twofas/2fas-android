@@ -24,10 +24,10 @@ dependencies {
     implementation(project(":data:services"))
 
     implementation(project(":feature:qrscan"))
+    implementation(project(":feature:permissions"))
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
-    implementation(libs.bundles.accompanist)
     implementation(libs.kotlinSerialization)
     implementation(libs.lottie)
     implementation(libs.workManager)

@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: BUSL-1.1
  *
- * Copyright © 2025 Two Factor Authentication Service, Inc.
+ * Copyright © 2026 Two Factor Authentication Service, Inc.
  * Licensed under the Business Source License 1.1
  * See LICENSE file for full terms
  */
@@ -11,9 +11,10 @@ package com.twofasapp.feature.developer.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,12 +25,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
-import com.twofasapp.core.design.ktx.toastShort
 import com.twofasapp.feature.developer.ui.sections.BuildSection
 import com.twofasapp.feature.developer.ui.sections.ColorsSection
 import com.twofasapp.feature.developer.ui.sections.ServicesSection
@@ -78,10 +77,11 @@ private fun Content(
                 .background(MdtTheme.color.background)
                 .padding(padding),
         ) {
-            ScrollableTabRow(
-                modifier = Modifier.background(MdtTheme.color.background),
+            PrimaryTabRow(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MdtTheme.color.background),
                 selectedTabIndex = selectedTabIndex,
-                edgePadding = 0.dp,
             ) {
                 tabs.forEachIndexed { index, title ->
                     Tab(

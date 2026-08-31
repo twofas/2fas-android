@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     alias(libs.plugins.twofasCompose)
@@ -20,13 +19,13 @@ dependencies {
     implementation(project(":data:session"))
 
     implementation(project(":feature:qrscan"))
+    implementation(project(":feature:permissions"))
 
     implementation(project(":parsers"))
     implementation(project(":prefs"))
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
-    implementation(libs.bundles.accompanist)
     implementation(libs.bundles.playReview)
     implementation(libs.timber)
     implementation(libs.zxing)

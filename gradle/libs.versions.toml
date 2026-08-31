@@ -25,7 +25,6 @@ espresso = "3.7.0"
 uiAndroid = "1.11.4"
 aboutLibraries = "15.0.4"
 kotlinxCollections = "0.5.1"
-accompanist = "0.36.0"
 commonmark = "0.27.0"
 glance = "1.1.1"
 core = "1.17.0"
@@ -136,10 +135,6 @@ aboutLibrariesCompose = { module = "com.mikepenz:aboutlibraries-compose-m3", ver
 palette = "androidx.palette:palette:1.0.0"
 playReview = "com.google.android.play:review-ktx:2.0.2"
 kotlinxCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinxCollections" }
-accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
-accompanistPagerIndicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
-accompanistPermissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
-accompanistSystemUi = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 activityX = { module = "androidx.activity:activity-ktx", version.ref = "composeActivity" }
 apacheCommonsCodec = "commons-codec:commons-codec:1.20.0"
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
@@ -163,12 +158,6 @@ sqlCipher = "net.zetetic:sqlcipher-android:4.11.0"
 aboutLibraries = [
     "aboutLibrariesCore",
     "aboutLibrariesCompose",
-]
-accompanist = [
-    "accompanistNavigation",
-    "accompanistPagerIndicators",
-    "accompanistPermissions",
-    "accompanistSystemUi",
 ]
 appCompat = [
     "appcompat",

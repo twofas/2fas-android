@@ -9,8 +9,6 @@ import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.locale.R
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import java.util.regex.Pattern
@@ -20,11 +18,6 @@ internal class AddServiceManualViewModel(
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<AddServiceManualUiState> = MutableStateFlow(AddServiceManualUiState())
-    val uiEvents: MutableSharedFlow<AddServiceManualUiEvent> = MutableSharedFlow(
-        replay = 0,
-        extraBufferCapacity = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST,
-    )
 
     data class BrandIcon(
         val name: String,
@@ -118,8 +111,8 @@ internal class AddServiceManualViewModel(
         uiState.update {
             it.copy(
                 brand = brand,
-                iconLight = brand?.iconCollectionId?.let { ServiceIcons.getIcon(it, isDark = false) },
-                iconDark = brand?.iconCollectionId?.let { ServiceIcons.getIcon(it, isDark = true) },
+                iconLight = brand?.iconCollectionId?.let { id -> ServiceIcons.getIcon(id, isDark = false) },
+                iconDark = brand?.iconCollectionId?.let { id -> ServiceIcons.getIcon(id, isDark = true) },
             )
         }
     }
@@ -214,7 +207,9 @@ internal class AddServiceManualViewModel(
                 ),
             )
 
-            uiEvents.emit(AddServiceManualUiEvent.AddedSuccessfully(RecentlyAddedService(id, RecentlyAddedService.Source.Manually)))
+            uiState.update {
+                it.copy(addedService = RecentlyAddedService(id, RecentlyAddedService.Source.Manually))
+            }
         }
     }
 
@@ -222,12 +217,12 @@ internal class AddServiceManualViewModel(
         launchScoped { servicesRepository.pushAddServiceAdvancedExpanded(uiState.value.advancedExpanded.not()) }
     }
 
+    fun dismissServiceExistsDialog() {
+        uiState.update { it.copy(showServiceExistsDialog = false) }
+    }
+
     override fun onCleared() {
         servicesRepository.pushAddServiceAdvancedExpanded(false)
         super.onCleared()
-    }
-
-    fun dismissServiceExistsDialog() {
-        uiState.update { it.copy(showServiceExistsDialog = false) }
     }
 }

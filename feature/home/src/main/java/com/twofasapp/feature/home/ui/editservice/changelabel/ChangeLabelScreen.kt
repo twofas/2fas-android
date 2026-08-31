@@ -34,10 +34,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.asColor
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.textfield.TextField
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.LocalBackDispatcher
@@ -47,17 +49,31 @@ import com.twofasapp.locale.R
 
 @Composable
 internal fun ChangeLabelScreen(
-    viewModel: com.twofasapp.feature.home.ui.editservice.EditServiceViewModel,
+    viewModel: EditServiceViewModel,
 ) {
     val service = viewModel.uiState.collectAsState().value.service
+    val backDispatcher = LocalBackDispatcher
+
+    Content(
+        service = service,
+        onUpdateLabel = { text, tint -> viewModel.updateLabel(text, tint) },
+        onDone = { backDispatcher.onBackPressed() },
+    )
+}
+
+@Composable
+private fun Content(
+    service: Service,
+    onUpdateLabel: (String, Service.Tint) -> Unit = { _, _ -> },
+    onDone: () -> Unit = {},
+) {
     val labelText = remember { mutableStateOf(service.labelText ?: service.name.take(2).uppercase()) }
     val labelTint = remember { mutableStateOf(service.labelColor ?: Service.Tint.Default) }
-    val backDispatcher = LocalBackDispatcher
 
     Scaffold(
         topBar = {
             TopAppBar(title = stringResource(id = R.string.customization_edit_label), actions = {
-                TextButton(onClick = { backDispatcher.onBackPressed() }) {
+                TextButton(onClick = { onDone() }) {
                     Text(text = stringResource(id = R.string.commons__done))
                 }
             })
@@ -101,7 +117,7 @@ internal fun ChangeLabelScreen(
                     onValueChange = {
                         if (it.length <= 2) {
                             labelText.value = it.uppercase()
-                            viewModel.updateLabel(labelText.value.uppercase(), labelTint.value)
+                            onUpdateLabel(labelText.value.uppercase(), labelTint.value)
                         }
                     },
                     keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Characters),
@@ -117,7 +133,7 @@ internal fun ChangeLabelScreen(
                             .clickable {
                                 labelTint.value = it
 
-                                viewModel.updateLabel(labelText.value.uppercase(), labelTint.value)
+                                onUpdateLabel(labelText.value.uppercase(), labelTint.value)
                             }
                             .padding(vertical = 12.dp),
                     ) {
@@ -163,5 +179,15 @@ internal fun ChangeLabelScreen(
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        Content(
+            service = Service.Preview,
+        )
     }
 }

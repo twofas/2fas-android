@@ -6,7 +6,7 @@ import com.twofasapp.data.session.domain.AppSettings
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 
-data class ServicesUiState(
+data class HomeUiState(
     val services: List<Service> = emptyList(),
     val groups: List<Group> = emptyList(),
     val totalGroups: Int = 0,
@@ -25,16 +25,16 @@ data class ServicesUiState(
     val servicesStyle: ServicesStyle = ServicesStyle.Default,
     val showNextCode: Boolean = false,
     val hideCodes: Boolean = false,
-    val events: List<ServicesUiEvent> = listOf(),
-    val items: List<ServicesListItem> = mutableListOf(),
+    val events: List<HomeUiEvent> = listOf(),
+    val items: List<HomeListItem> = mutableListOf(),
 ) {
     fun getService(id: Long): Service? {
         return services.firstOrNull { it.id == id }
     }
 }
 
-sealed interface ServicesUiEvent {
-    data object ShowQrFromGalleryDialog : ServicesUiEvent
-    data class ServiceAdded(val id: Long) : ServicesUiEvent
-    data class OpenImport(val filePath: String) : ServicesUiEvent
+sealed interface HomeUiEvent {
+    data object ShowQrFromGalleryDialog : HomeUiEvent
+    data class ServiceAdded(val id: Long) : HomeUiEvent
+    data class OpenImport(val filePath: String) : HomeUiEvent
 }

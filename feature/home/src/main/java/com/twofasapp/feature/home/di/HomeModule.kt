@@ -5,7 +5,7 @@ import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
 import com.twofasapp.feature.home.ui.editservice.changebrand.ChangeBrandViewModel
 import com.twofasapp.feature.home.ui.notifications.NotificationsViewModel
 import com.twofasapp.feature.home.ui.services.AppReviewViewModel
-import com.twofasapp.feature.home.ui.services.ServicesViewModel
+import com.twofasapp.feature.home.ui.services.HomeViewModel
 import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualViewModel
 import com.twofasapp.feature.home.ui.services.add.scan.AddServiceScanViewModel
 import com.twofasapp.feature.home.ui.services.add.success.AddServiceSuccessViewModel
@@ -18,14 +18,26 @@ import org.koin.dsl.module
 
 class HomeModule : KoinModule {
     override fun provide() = module {
-        viewModelOf(::ServicesViewModel)
+        viewModelOf(::HomeViewModel)
         viewModelOf(::SettingsViewModel)
         viewModel { AppReviewViewModel(androidContext(), get()) }
         viewModelOf(::NotificationsViewModel)
-        viewModelOf(::AddServiceManualViewModel)
         viewModelOf(::AddServiceScanViewModel)
-        viewModelOf(::AddServiceSuccessViewModel)
-        viewModelOf(::FocusServiceViewModel)
+        viewModelOf(::AddServiceManualViewModel)
+        viewModel { (serviceId: Long) ->
+            AddServiceSuccessViewModel(
+                serviceId = serviceId,
+                servicesRepository = get(),
+                customizationRepository = get(),
+            )
+        }
+        viewModel { (serviceId: Long) ->
+            FocusServiceViewModel(
+                serviceId = serviceId,
+                servicesRepository = get(),
+                customizationRepository = get(),
+            )
+        }
         viewModel { (serviceId: Long) ->
             EditServiceViewModel(
                 serviceId = serviceId,

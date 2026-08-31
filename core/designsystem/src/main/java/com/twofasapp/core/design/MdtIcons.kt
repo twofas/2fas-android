@@ -39,8 +39,8 @@ object MdtIcons {
     val CircleCheckFilled @Composable get() = painterResource(R.drawable.ic_circle_check_filled)
     val CircleUncheck @Composable get() = painterResource(R.drawable.ic_circle_uncheck)
     val Extension @Composable get() = painterResource(R.drawable.ic_extension)
-    val Eye @Composable get() = painterResource(R.drawable.ic_eye)
-    val EyeSlash @Composable get() = painterResource(R.drawable.ic_eye_slash)
+    val Visibility @Composable get() = painterResource(R.drawable.ic_visibility)
+    val VisibilityOff @Composable get() = painterResource(R.drawable.ic_visibility_off)
     val Favorite @Composable get() = painterResource(R.drawable.ic_favorite)
     val Star @Composable get() = painterResource(R.drawable.ic_star)
     val StarShine @Composable get() = painterResource(R.drawable.ic_star_shine)
@@ -84,4 +84,5 @@ object MdtIcons {
     val ErrorCircle @Composable get() = painterResource(R.drawable.ic_error_circle)
     val Stub @Composable get() = painterResource(R.drawable.ic_stub)
     val Mobile @Composable get() = painterResource(R.drawable.ic_mobile)
+    val UnfoldMore @Composable get() = painterResource(R.drawable.ic_unfold_more)
 }

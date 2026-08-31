@@ -17,10 +17,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.R
-import com.twofasapp.core.design.foundation.permission.RequestPermission
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.feature.permissions.RequestPermission
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject

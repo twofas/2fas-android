@@ -29,6 +29,8 @@ import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
 import com.twofasapp.locale.Strings
 
+// TODO: Refactor this file and move it to :core:android
+
 val CompositionLocal<Context>.currentActivity: ComponentActivity
     @Composable
     get() {

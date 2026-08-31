@@ -44,10 +44,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.PermissionStatus
-import com.google.accompanist.permissions.isGranted
-import com.google.accompanist.permissions.rememberPermissionState
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.core.design.MdtIcons
@@ -63,7 +59,6 @@ import com.twofasapp.core.design.foundation.dialog.InputDialog
 import com.twofasapp.core.design.foundation.dialog.InputValidation
 import com.twofasapp.core.design.foundation.icon.Icon
 import com.twofasapp.core.design.foundation.other.Space
-import com.twofasapp.core.design.foundation.permission.RequestPermission
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
@@ -71,6 +66,10 @@ import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.data.browserext.domain.PairedBrowser
+import com.twofasapp.feature.permissions.PermissionStatus
+import com.twofasapp.feature.permissions.RequestPermission
+import com.twofasapp.feature.permissions.isGranted
+import com.twofasapp.feature.permissions.rememberPermissionState
 import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -93,7 +92,6 @@ internal fun BrowserExtScreen(
     )
 }
 
-@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 private fun Content(
     uiState: BrowserExtUiState,

@@ -51,8 +51,8 @@ import com.twofasapp.feature.guides.navigation.GuideInitRoute
 import com.twofasapp.feature.guides.navigation.GuidePagerRoute
 import com.twofasapp.feature.guides.navigation.GuidesRoute
 import com.twofasapp.feature.home.navigation.EditServiceRoute
+import com.twofasapp.feature.home.navigation.HomeRoute
 import com.twofasapp.feature.home.navigation.NotificationsRoute
-import com.twofasapp.feature.home.navigation.ServicesRoute
 import com.twofasapp.feature.home.ui.settings.SettingsRoute
 import com.twofasapp.feature.security.navigation.ChangePinRoute
 import com.twofasapp.feature.security.navigation.DisablePinRoute
@@ -101,7 +101,7 @@ internal fun MainNavDisplay(
 
     val currentDestination = backStack.lastOrNull()
     val showNavigationBar = when (currentDestination) {
-        Screen.Services,
+        Screen.Home,
         Screen.Settings,
         -> true
 
@@ -134,8 +134,8 @@ internal fun MainNavDisplay(
                     DeveloperRoute()
                 }
 
-                entry<Screen.Services> {
-                    ServicesRoute()
+                entry<Screen.Home> {
+                    HomeRoute()
                 }
 
                 entry<Screen.Settings> {
@@ -155,6 +155,15 @@ internal fun MainNavDisplay(
                         serviceId = key.serviceId,
                         openAuth = { onSuccess -> openAuth(onSuccess) },
                     )
+
+//                    EditServiceRoute(
+//                        serviceId = it.arguments?.getLong(NavArg.ServiceId.name) ?: 0L,
+//                        openAuth = { onSuccess ->
+//                            authSuccessCallback = onSuccess
+//
+//                            startAuthForResult.launch(context.intentFor<LockActivity>("canGoBack" to true))
+//                        },
+//                    )
                 }
 
                 entry<Screen.Dispose> { key ->

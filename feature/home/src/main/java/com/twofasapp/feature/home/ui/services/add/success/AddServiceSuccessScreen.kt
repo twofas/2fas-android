@@ -1,100 +1,127 @@
 package com.twofasapp.feature.home.ui.services.add.success
 
-import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.DsServiceModal
+import com.twofasapp.core.design.feature.items.ServiceState
 import com.twofasapp.core.design.feature.items.asState
-import com.twofasapp.core.design.feature.settings.SettingsLink
-import com.twofasapp.core.design.foundation.modal.ModalList
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.other.Space
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.ktx.currentActivity
+import com.twofasapp.core.design.theme.RoundedShape24
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
-internal fun AddServiceSuccessScreen(
-    viewModel: AddServiceSuccessViewModel = koinViewModel(),
+internal fun AddServiceSuccessContent(
+    serviceId: Long,
+    viewModel: AddServiceSuccessViewModel = koinViewModel { parametersOf(serviceId) },
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val activity = LocalContext.currentActivity
+    val serviceState = uiState.service?.asState()
 
+    Content(
+        uiState = uiState,
+        serviceState = serviceState,
+        onCopyClick = { serviceState?.copyToClipboard(activity, uiState.showNextCode) },
+        onIncrementCounterClick = { viewModel.incrementHotpCounter() },
+        onRevealClick = { viewModel.reveal() },
+    )
+}
+
+@Composable
+private fun Content(
+    uiState: AddServiceSuccessUiState,
+    serviceState: ServiceState?,
+    onCopyClick: () -> Unit = {},
+    onIncrementCounterClick: () -> Unit = {},
+    onRevealClick: () -> Unit = {},
+) {
     Column(
-        modifier = Modifier
-            .background(MdtTheme.color.surface)
-            .verticalScroll(rememberScrollState())
-            .animateContentSize(),
+        modifier = Modifier,
     ) {
-        Row(
+        Space(16.dp)
+
+        Text(
+            text = MdtLocale.strings.addSuccessTitle,
+            style = MdtTheme.typo.lg.medium,
+            color = MdtTheme.color.onSurface,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(64.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = MdtLocale.strings.addSuccessTitle,
-                style = MdtTheme.typo.xl.normal,
-                color = MdtTheme.color.onSurface,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                textAlign = TextAlign.Center,
-            )
-        }
+                .padding(horizontal = 16.dp),
+            textAlign = TextAlign.Center,
+        )
+
+        Space(12.dp)
 
         Text(
             text = MdtLocale.strings.addSuccessDescription,
-            color = MdtTheme.color.onSurface,
-            style = MdtTheme.typo.base.normal,
+            color = MdtTheme.color.onSurfaceVariant,
+            style = MdtTheme.typo.sm.normal,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(horizontal = 16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
         )
 
-        uiState.service?.let { service ->
-            val serviceState = service.asState()
+        Space(16.dp)
 
+        if (serviceState != null) {
             Box(
                 modifier = Modifier
-                    .padding(horizontal = 24.dp)
-                    .padding(top = 24.dp)
-                    .border(2.dp, Color(0x66BCBBC1), RoundedCornerShape(24.dp))
-                    .padding(vertical = 8.dp),
+                    .padding(horizontal = 16.dp)
+                    .border(1.dp, MdtTheme.color.outlineVariant, RoundedShape24),
             ) {
                 DsServiceModal(
-                    state = service.asState(),
+                    state = serviceState,
                     showNextCode = uiState.showNextCode,
                     hideCodes = false,
                     containerColor = MdtTheme.color.surface,
-                    onIncrementCounterClick = { viewModel.incrementHotpCounter(service) },
-                    onRevealClick = { viewModel.reveal(service) },
+                    onIncrementCounterClick = onIncrementCounterClick,
+                    onRevealClick = onRevealClick,
                 )
             }
 
-            ModalList {
-                SettingsLink(title = MdtLocale.strings.copyToken, icon = MdtIcons.Copy) {
-                    serviceState.copyToClipboard(activity, uiState.showNextCode)
-                }
-            }
+            Space(16.dp)
+
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                style = ButtonStyle.Tonal,
+                text = MdtLocale.strings.copyToken,
+                onClick = onCopyClick,
+            )
+
+            Space(24.dp)
         }
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        Content(
+            uiState = AddServiceSuccessUiState(),
+            serviceState = ServiceState.Empty.copy(name = "Google", info = "john@gmail.com", code = "123456"),
+        )
     }
 }

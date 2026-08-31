@@ -1,12 +1,12 @@
 /*
  * SPDX-License-Identifier: BUSL-1.1
  *
- * Copyright © 2025 Two Factor Authentication Service, Inc.
+ * Copyright © 2026 Two Factor Authentication Service, Inc.
  * Licensed under the Business Source License 1.1
  * See LICENSE file for full terms
  */
 
-package com.twofasapp.core.design.foundation.permission
+package com.twofasapp.feature.permissions
 
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -19,7 +19,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
-import com.twofasapp.core.design.foundation.dialog.RationaleDialog
 
 @Composable
 fun RequestPermission(

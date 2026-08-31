@@ -114,7 +114,7 @@ private fun Content(
                 OptionEntry(
                     title = strings.settingsAppearance,
                     subtitle = strings.settingsAppearanceDesc,
-                    icon = MdtIcons.Eye,
+                    icon = MdtIcons.Visibility,
                     onClick = { navigator.open(Screen.Customization) },
                 )
             }

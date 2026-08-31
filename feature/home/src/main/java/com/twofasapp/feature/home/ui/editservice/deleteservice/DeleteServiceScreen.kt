@@ -20,11 +20,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.LocalBackDispatcher
 import com.twofasapp.feature.home.ui.editservice.EditServiceUiEvent
@@ -50,6 +53,19 @@ internal fun DeleteServiceScreen(
         }
     }
 
+    Content(
+        service = service,
+        onDelete = { viewModel.delete() },
+        onCancel = { backDispatcher.onBackPressed() },
+    )
+}
+
+@Composable
+private fun Content(
+    service: Service,
+    onDelete: () -> Unit = {},
+    onCancel: () -> Unit = {},
+) {
     Scaffold(
         topBar = { TopAppBar(title = "") },
     ) { padding ->
@@ -101,15 +117,25 @@ internal fun DeleteServiceScreen(
 
             Button(
                 text = stringResource(id = R.string.delete_service_cta),
-                onClick = { viewModel.delete() },
+                onClick = { onDelete() },
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
             TextButton(
                 text = stringResource(id = R.string.commons__cancel),
-                onClick = { backDispatcher.onBackPressed() },
+                onClick = { onCancel() },
             )
         }
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        Content(
+            service = Service.Preview,
+        )
     }
 }

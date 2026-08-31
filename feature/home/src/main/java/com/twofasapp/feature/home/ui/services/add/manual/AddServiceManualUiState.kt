@@ -26,11 +26,9 @@ internal data class AddServiceManualUiState(
 
     val advancedExpanded: Boolean = false,
     val showServiceExistsDialog: Boolean = false,
+
+    val addedService: RecentlyAddedService? = null,
 ) {
     val isFormValid: Boolean
         get() = serviceNameValid && serviceSecretValid
-}
-
-internal sealed interface AddServiceManualUiEvent {
-    data class AddedSuccessfully(val recentlyAddedService: RecentlyAddedService) : AddServiceManualUiEvent
 }

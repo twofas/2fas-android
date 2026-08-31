@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.text.richText
 import com.twofasapp.feature.home.R
 import com.twofasapp.locale.MdtLocale
@@ -113,5 +114,7 @@ internal fun PassBanner(
 @Preview
 @Composable
 private fun Preview() {
-    PassBanner(Modifier.fillMaxWidth())
+    PreviewTheme {
+        PassBanner(Modifier.fillMaxWidth())
+    }
 }

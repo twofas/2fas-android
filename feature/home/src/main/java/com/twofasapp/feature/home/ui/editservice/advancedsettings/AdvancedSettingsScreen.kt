@@ -10,10 +10,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.feature.settings.SettingsDivider
-import com.twofasapp.core.design.feature.settings.SettingsLink
+import com.twofasapp.core.design.feature.settings.OptionEntry
+import com.twofasapp.core.design.foundation.outline.HorizontalLine
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
@@ -24,16 +26,23 @@ internal fun AdvancedSettingsScreen(
 ) {
     val service = viewModel.uiState.collectAsState().value.service
 
+    Content(service = service)
+}
+
+@Composable
+private fun Content(
+    service: Service,
+) {
     Scaffold(
         topBar = { TopAppBar(title = stringResource(id = R.string.customization_advanced)) },
     ) { padding ->
 
         LazyColumn(modifier = Modifier.padding(padding)) {
             item {
-                SettingsLink(
+                OptionEntry(
                     title = "TOTP",
                     enabled = false,
-                    endContent = {
+                    content = {
                         RadioButton(
                             selected = service.authType == Service.AuthType.TOTP,
                             enabled = false,
@@ -48,10 +57,10 @@ internal fun AdvancedSettingsScreen(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = "HOTP",
                     enabled = false,
-                    endContent = {
+                    content = {
                         RadioButton(
                             selected = service.authType == Service.AuthType.HOTP,
                             enabled = false,
@@ -66,10 +75,10 @@ internal fun AdvancedSettingsScreen(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = "STEAM",
                     enabled = false,
-                    endContent = {
+                    content = {
                         RadioButton(
                             selected = service.authType == Service.AuthType.STEAM,
                             enabled = false,
@@ -83,10 +92,10 @@ internal fun AdvancedSettingsScreen(
                 )
             }
 
-            item { SettingsDivider() }
+            item { HorizontalLine() }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = MdtLocale.strings.addManualAlgorithm,
                     subtitle = service.algorithm?.name ?: Service.DefaultAlgorithm.name,
                     enabled = false,
@@ -95,7 +104,7 @@ internal fun AdvancedSettingsScreen(
 
             if (service.authType == Service.AuthType.TOTP || service.authType == Service.AuthType.STEAM) {
                 item {
-                    SettingsLink(
+                    OptionEntry(
                         title = MdtLocale.strings.addManualRefreshTime,
                         subtitle = (service.period ?: Service.DefaultPeriod).toString(),
                         enabled = false,
@@ -105,7 +114,7 @@ internal fun AdvancedSettingsScreen(
 
             if (service.authType == Service.AuthType.HOTP) {
                 item {
-                    SettingsLink(
+                    OptionEntry(
                         title = stringResource(R.string.tokens__counter),
                         subtitle = (service.hotpCounter ?: 1).toString(),
                         enabled = false,
@@ -114,14 +123,22 @@ internal fun AdvancedSettingsScreen(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = MdtLocale.strings.addManualDigits,
                     subtitle = (service.digits ?: Service.DefaultDigits).toString(),
                     enabled = false,
                 )
             }
 
-            item { SettingsDivider() }
+            item { HorizontalLine() }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        Content(service = Service.Preview)
     }
 }

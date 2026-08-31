@@ -152,7 +152,7 @@ private fun Content(
             OptionSwitch(
                 title = strings.settingsHideCodes,
                 subtitle = strings.settingsHideCodesBody,
-                icon = MdtIcons.Eye,
+                icon = MdtIcons.Visibility,
                 checked = uiState.hideCodes,
                 onToggle = { onHideCodesToggle() },
             )

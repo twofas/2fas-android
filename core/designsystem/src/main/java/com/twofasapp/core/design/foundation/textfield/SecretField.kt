@@ -36,7 +36,7 @@ fun SecretFieldTrailingIcon(
 ) {
     IconButton(
         // Reference uses Visibility/VisibilityOff; this project ships Eye/EyeSlash.
-        icon = if (visible) MdtIcons.EyeSlash else MdtIcons.Eye,
+        icon = if (visible) MdtIcons.VisibilityOff else MdtIcons.Visibility,
         onClick = onToggle,
         modifier = if (testTag != null) Modifier.testTag(testTag) else Modifier,
     )

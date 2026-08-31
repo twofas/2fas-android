@@ -65,8 +65,8 @@ internal fun GuidePagerScreen(
     // The "Add service" flow is a bottom-sheet Modal that is not yet migrated to
     // Navigation3. For now these CTAs just return to the services list.
     // TODO: open the AddService modal once modals are migrated to Navigation3.
-    val openAddScan: () -> Unit = { navigator.popTo(Screen.Services) }
-    val openAddManually: () -> Unit = { navigator.popTo(Screen.Services) }
+    val openAddScan: () -> Unit = { navigator.popTo(Screen.Home) }
+    val openAddManually: () -> Unit = { navigator.popTo(Screen.Home) }
 
     val context = LocalContext.current
     val scope = rememberCoroutineScope()

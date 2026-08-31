@@ -25,7 +25,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 
 @Suppress("UNCHECKED_CAST")
-internal class ServicesViewModel(
+internal class HomeViewModel(
     private val servicesRepository: ServicesRepository,
     private val groupsRepository: GroupsRepository,
     private val settingsRepository: SettingsRepository,
@@ -36,7 +36,7 @@ internal class ServicesViewModel(
     private val deeplinkHandler: DeeplinkHandler,
 ) : ViewModel() {
 
-    val uiState = MutableStateFlow(ServicesUiState())
+    val uiState = MutableStateFlow(HomeUiState())
 
     private val isInEditMode = MutableStateFlow(false)
     private val searchQuery = MutableStateFlow("")
@@ -123,13 +123,13 @@ internal class ServicesViewModel(
                         items = buildList {
 
                             if (showSyncNoticeBar) {
-                                add(ServicesListItem.SyncNoticeBar)
+                                add(HomeListItem.SyncNoticeBar)
                             }
 
                             when {
-                                showSyncReminder -> add(ServicesListItem.SyncReminder)
-                                showAppReview -> add(ServicesListItem.AppReview)
-                                showPassBanner -> add(ServicesListItem.PassBanner)
+                                showSyncReminder -> add(HomeListItem.SyncReminder)
+                                showAppReview -> add(HomeListItem.AppReview)
+                                showPassBanner -> add(HomeListItem.PassBanner)
                             }
 
                             val groupedServices: Map<Group, List<Service>> = buildMap {
@@ -146,7 +146,7 @@ internal class ServicesViewModel(
 
                                 if (groupedServices.size > 1) {
                                     add(
-                                        ServicesListItem.GroupItem(
+                                        HomeListItem.GroupItem(
                                             group = group.copy(
                                                 isExpanded = if (result.searchQuery.isNotEmpty()) true else group.isExpanded,
                                             ),
@@ -156,7 +156,7 @@ internal class ServicesViewModel(
 
                                 if (group.isExpanded || result.isInEditMode || groupedServices.size == 1 || result.searchQuery.isNotEmpty()) {
                                     services.forEach { service ->
-                                        add(ServicesListItem.ServiceItem(service))
+                                        add(HomeListItem.ServiceItem(service))
                                     }
                                 }
                             }
@@ -169,10 +169,10 @@ internal class ServicesViewModel(
         launchScoped {
             servicesRepository.observeRecentlyAddedService().collect { recentlyAdded ->
                 if (recentlyAdded.source == RecentlyAddedService.Source.QrGallery) {
-                    publishEvent(ServicesUiEvent.ShowQrFromGalleryDialog)
+                    publishEvent(HomeUiEvent.ShowQrFromGalleryDialog)
                 }
 
-                publishEvent(ServicesUiEvent.ServiceAdded(recentlyAdded.serviceId))
+                publishEvent(HomeUiEvent.ServiceAdded(recentlyAdded.serviceId))
             }
         }
 
@@ -194,8 +194,12 @@ internal class ServicesViewModel(
         isInEditMode.value = isInEditMode.value.not()
     }
 
-    fun consumeEvent(event: ServicesUiEvent) {
+    fun consumeEvent(event: HomeUiEvent) {
         uiState.update { it.copy(events = it.events.minus(event)) }
+    }
+
+    fun notifyServiceAdded(recentlyAddedService: RecentlyAddedService) {
+        servicesRepository.pushRecentlyAddedService(recentlyAddedService)
     }
 
     fun search(query: String) {
@@ -275,7 +279,7 @@ internal class ServicesViewModel(
         }
     }
 
-    private fun publishEvent(event: ServicesUiEvent) {
+    private fun publishEvent(event: HomeUiEvent) {
         uiState.update { it.copy(events = it.events.plus(event)) }
     }
 
@@ -290,22 +294,22 @@ internal class ServicesViewModel(
         servicesRepository.setTickerEnabled(false)
     }
 
-    fun onDragEnd(data: List<ServicesListItem>) {
+    fun onDragEnd(data: List<HomeListItem>) {
         launchScoped(Dispatchers.IO) {
             var groupId: String? = null
 
             data.forEach { item ->
-                if (item is ServicesListItem.GroupItem) {
+                if (item is HomeListItem.GroupItem) {
                     groupId = item.group.id
                 }
 
-                if (item is ServicesListItem.ServiceItem && item.service.groupId != groupId) {
+                if (item is HomeListItem.ServiceItem && item.service.groupId != groupId) {
                     servicesRepository.setServiceGroup(item.service.id, groupId)
                 }
             }
 
             servicesRepository.updateServicesOrder(
-                ids = data.filterIsInstance<ServicesListItem.ServiceItem>().map { it.service.id },
+                ids = data.filterIsInstance<HomeListItem.ServiceItem>().map { it.service.id },
             )
 
             servicesRepository.setTickerEnabled(true)
@@ -326,7 +330,7 @@ internal class ServicesViewModel(
         launchScoped {
             if (incomingData.startsWith("content://") && incomingData.endsWith(".2fas")) {
                 // Import backup
-                publishEvent(ServicesUiEvent.OpenImport(incomingData))
+                publishEvent(HomeUiEvent.OpenImport(incomingData))
             }
 
             if (incomingData.startsWith("otpauth")) {

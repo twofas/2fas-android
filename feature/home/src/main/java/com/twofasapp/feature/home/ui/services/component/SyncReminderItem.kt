@@ -25,6 +25,7 @@ import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.locale.MdtLocale
 
 @Composable
@@ -103,5 +104,7 @@ internal fun SyncReminderItem(
 @Preview
 @Composable
 private fun Preview() {
-    SyncReminderItem(Modifier.fillMaxWidth())
+    PreviewTheme {
+        SyncReminderItem(Modifier.fillMaxWidth())
+    }
 }

@@ -12,7 +12,7 @@ sealed interface Screen : NavKey {
     data object Developer : Screen
 
     @Serializable
-    data object Services : Screen
+    data object Home : Screen
 
     @Serializable
     data object Notifications : Screen

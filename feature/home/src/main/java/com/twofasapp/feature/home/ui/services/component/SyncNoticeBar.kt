@@ -17,6 +17,7 @@ import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.TextButton
 import com.twofasapp.core.design.foundation.icon.Icon
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.locale.MdtLocale
 
 @Composable
@@ -59,5 +60,7 @@ internal fun SyncNoticeBar(
 @Preview
 @Composable
 private fun Preview() {
-    SyncNoticeBar(Modifier.fillMaxWidth())
+    PreviewTheme {
+        SyncNoticeBar(Modifier.fillMaxWidth())
+    }
 }

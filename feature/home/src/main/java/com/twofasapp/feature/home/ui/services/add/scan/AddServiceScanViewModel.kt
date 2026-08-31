@@ -9,12 +9,12 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.otp.OtpLinkParser
 import com.twofasapp.feature.qrscan.ReadQrFromImage
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.flow.update
 import timber.log.Timber
+import kotlin.time.Duration.Companion.milliseconds
 
 internal class AddServiceScanViewModel(
     private val servicesRepository: ServicesRepository,
@@ -22,24 +22,20 @@ internal class AddServiceScanViewModel(
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<AddServiceScanUiState> = MutableStateFlow(AddServiceScanUiState())
-    val uiEvents: MutableSharedFlow<AddServiceScanUiEvent> = MutableSharedFlow(
-        replay = 0,
-        extraBufferCapacity = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST,
-    )
 
-    enum class Source { Scan, Gallery }
+    enum class ScanSource { Scan, Gallery }
 
     fun onScanned(text: String) {
-        Timber.d("Scanned: $text")
-        uiState.update {
-            it.copy(
-                scanned = text,
-                enabled = false,
-            )
-        }
+        // The camera analyzer delivers frames continuously on a background thread, so this
+        // can fire many times before `enabled` propagates back to the composable gate.
+        // Atomically flip the flag here so only the first frame is processed - otherwise
+        // concurrent addService() calls race, delete each other's freshly-inserted rows,
+        // and the success screen ends up pointing at a serviceId that was already removed.
+        val wasEnabled = uiState.getAndUpdate { it.copy(scanned = text, enabled = false) }.enabled
+        if (wasEnabled.not()) return
 
-        tryInsertService(text, Source.Scan)
+        Timber.d("Scanned: $text")
+        handleScanned(text, ScanSource.Scan)
     }
 
     fun onLoadFromGallery(uri: Uri) {
@@ -47,13 +43,13 @@ internal class AddServiceScanViewModel(
             readQrFromImage.invoke(uri)
                 .onSuccess { text ->
                     uiState.update { it.copy(scanned = text) }
-                    tryInsertService(text, Source.Gallery)
+                    handleScanned(text, ScanSource.Gallery)
                 }
                 .onFailure { uiState.update { it.copy(showGalleryErrorDialog = true) } }
         }
     }
 
-    private fun tryInsertService(text: String, source: Source) {
+    private fun handleScanned(text: String, source: ScanSource) {
         launchScoped {
             uiState.update { it.copy(source = source) }
 
@@ -74,29 +70,29 @@ internal class AddServiceScanViewModel(
                 return@launchScoped
             }
 
-            saveService(text, source)
+            saveScannedService(text, source)
         }
     }
 
-    fun saveService(text: String, source: Source) {
-        saveService(OtpLinkParser.parse(text)!!, source)
+    fun saveScannedService(text: String, source: ScanSource) {
+        saveScannedService(OtpLinkParser.parse(text)!!, source)
     }
 
-    private fun saveService(link: OtpAuthLink, source: Source) {
+    private fun saveScannedService(link: OtpAuthLink, source: ScanSource) {
         launchScoped {
             runSafely { servicesRepository.addService(link) }
-                .onSuccess {
-                    uiEvents.emit(
-                        AddServiceScanUiEvent.AddedSuccessfully(
-                            RecentlyAddedService(
-                                serviceId = it,
+                .onSuccess { serviceId ->
+                    uiState.update { state ->
+                        state.copy(
+                            addedService = RecentlyAddedService(
+                                serviceId = serviceId,
                                 source = when (source) {
-                                    Source.Scan -> RecentlyAddedService.Source.QrScan
-                                    Source.Gallery -> RecentlyAddedService.Source.QrGallery
+                                    ScanSource.Scan -> RecentlyAddedService.Source.QrScan
+                                    ScanSource.Gallery -> RecentlyAddedService.Source.QrGallery
                                 },
                             ),
-                        ),
-                    )
+                        )
+                    }
                 }
                 .onFailure { uiState.update { it.copy(showErrorDialog = true) } }
         }
@@ -113,7 +109,7 @@ internal class AddServiceScanViewModel(
         }
 
         launchScoped {
-            delay(500)
+            delay(500.milliseconds)
             uiState.update { it.copy(enabled = true) }
         }
     }

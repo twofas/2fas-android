@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -40,9 +39,9 @@ internal fun MainNavBar(
             containerColor = MdtTheme.color.background,
         ) {
             NavBarItem(
-                selected = currentDestination == Screen.Services,
-                onClick = { onTabSelected(Screen.Services) },
-                icon = if (currentDestination == Screen.Services) MdtIcons.HomeFilled else MdtIcons.Home,
+                selected = currentDestination == Screen.Home,
+                onClick = { onTabSelected(Screen.Home) },
+                icon = if (currentDestination == Screen.Home) MdtIcons.HomeFilled else MdtIcons.Home,
                 label = MdtLocale.strings.bottomBarTokens,
             )
 

@@ -16,9 +16,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Badge
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -37,6 +39,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.core.design.MdtIcons
@@ -46,6 +49,7 @@ import com.twofasapp.core.design.foundation.icon.Icon
 import com.twofasapp.core.design.foundation.image.Image
 import com.twofasapp.core.design.foundation.menu.DropdownMenu
 import com.twofasapp.core.design.foundation.menu.DropdownMenuItem
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
@@ -241,5 +245,25 @@ private fun SearchBar(
                 )
             }
         }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+private fun Preview() {
+    val focusRequester = remember { FocusRequester() }
+
+    PreviewTheme {
+        ServicesAppBar(
+            query = "",
+            isInEditMode = false,
+            isSearchFocused = false,
+            hasUnreadNotifications = true,
+            onSearchQueryChange = {},
+            onSearchFocusChange = {},
+            focusRequester = focusRequester,
+            scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(),
+        )
     }
 }

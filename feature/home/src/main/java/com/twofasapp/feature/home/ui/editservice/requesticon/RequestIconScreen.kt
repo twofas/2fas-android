@@ -38,10 +38,12 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ShareCompat
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.locale.R
 
@@ -216,5 +218,13 @@ internal fun RequestIconScreen() {
 
             Spacer(modifier = Modifier.height(24.dp))
         }
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        RequestIconScreen()
     }
 }
