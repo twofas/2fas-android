@@ -7,12 +7,14 @@ import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
 
 data class HomeUiState(
+    val developerModeEnabled: Boolean = false,
     val services: List<Service> = emptyList(),
     val groups: List<Group> = emptyList(),
     val totalGroups: Int = 0,
     val totalServices: Int = 0,
     val isLoading: Boolean = true,
     val isInEditMode: Boolean = false,
+    val selectedServiceIds: Set<Long> = emptySet(),
     val searchQuery: String = "",
     val searchFocused: Boolean = false,
     val showSyncNoticeBar: Boolean = false,

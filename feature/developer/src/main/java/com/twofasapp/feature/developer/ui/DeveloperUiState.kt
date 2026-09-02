@@ -13,4 +13,6 @@ import com.twofasapp.common.environment.AppBuild
 internal data class DeveloperUiState(
     val appBuild: AppBuild? = null,
     val servicesCount: Int = 0,
+    val trashedServicesCount: Int = 0,
+    val supportedServicesCount: Int = 0,
 )

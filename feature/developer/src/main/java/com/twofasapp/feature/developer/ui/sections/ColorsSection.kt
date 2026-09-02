@@ -31,6 +31,8 @@ import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
 import com.twofasapp.core.design.theme.ColorTokens
 
 @Composable
@@ -40,20 +42,20 @@ internal fun ColorsSection() {
 
     Column(
         modifier = Modifier
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState()),
+            .verticalScroll(rememberScrollState())
+            .padding(bottom = 16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Text(
+        OptionHeader(
             text = "Colors",
-            style = MdtTheme.typo.base.semiBold,
-            color = MdtTheme.color.primary,
-            modifier = Modifier.padding(bottom = 8.dp),
+            contentPadding = OptionHeaderContentPaddingFirst,
         )
 
         swatches.chunked(2).forEach { row ->
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 row.forEach { (name, value) ->

@@ -1,5 +1,6 @@
 package com.twofasapp.di
 
+import com.twofasapp.android.navigation.BottomBarState
 import com.twofasapp.android.navigation.DeeplinkHandler
 import com.twofasapp.common.di.KoinModule
 import com.twofasapp.migration.MigrateDataStore
@@ -17,6 +18,7 @@ class StartModule : KoinModule {
 
     override fun provide() = module {
         singleOf(::DeeplinkHandler)
+        singleOf(::BottomBarState)
 
         singleOf(::OnAppUpdatedWorkDispatcherImpl) { bind<OnAppUpdatedWorkDispatcher>() }
         singleOf(::SyncTimeWorkDispatcherImpl) { bind<SyncTimeWorkDispatcher>() }

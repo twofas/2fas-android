@@ -27,8 +27,14 @@ interface ServiceDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(serviceEntity: ServiceEntity): Long
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(serviceEntities: List<ServiceEntity>): List<Long>
+
     @Query("DELETE FROM local_services WHERE id == :id")
     suspend fun delete(id: Long)
+
+    @Query("DELETE FROM local_services WHERE id IN (:ids)")
+    suspend fun delete(ids: List<Long>)
 
     @Query("DELETE FROM local_services WHERE secret == :secret")
     suspend fun deleteBySecret(secret: String)
@@ -38,6 +44,9 @@ interface ServiceDao {
 
     @Update
     suspend fun update(vararg entity: ServiceEntity)
+
+    @Update
+    suspend fun update(entities: List<ServiceEntity>)
 
     @Transaction
     suspend fun cleanUpGroups(groupIds: List<String>) {

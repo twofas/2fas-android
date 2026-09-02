@@ -73,6 +73,7 @@ fun DsService(
     modifier: Modifier = Modifier,
     style: ServiceStyle = ServiceStyle.Default,
     editMode: Boolean = false,
+    selected: Boolean = false,
     showNextCode: Boolean = false,
     hideCodes: Boolean = false,
     containerColor: Color = MdtTheme.color.background,
@@ -104,9 +105,7 @@ fun DsService(
                 .combinedClickable(
                     enabled = onClick != null,
                     onClick = {
-                        if (editMode.not()) {
-                            onClick?.invoke()
-                        }
+                        onClick?.invoke()
                     },
                     onLongClick = {
                         onLongClick?.invoke()
@@ -224,6 +223,17 @@ fun DsService(
                 }
             }
 
+            if (editMode) {
+                Icon(
+                    painter = if (selected) MdtIcons.CircleCheckFilled else MdtIcons.CircleUncheck,
+                    contentDescription = null,
+                    tint = if (selected) MdtTheme.color.primary else MdtTheme.color.iconTint,
+                    modifier = Modifier
+                        .padding(end = if (dragHandleVisible) 0.dp else 20.dp)
+                        .size(24.dp),
+                )
+            }
+
             if (editMode && dragHandleVisible) {
                 IconButton(
                     icon = MdtIcons.DragHandle,
@@ -299,7 +309,14 @@ private fun PreviewCompact() {
 @Preview
 @Composable
 private fun PreviewEdit() {
-    DsService(state = ServicePreview, editMode = true)
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        DsService(state = ServicePreview, editMode = true)
+        DsService(state = ServicePreview, editMode = true, selected = true)
+        DsService(state = ServicePreview, editMode = true, selected = true, dragHandleVisible = false)
+    }
 }
 
 internal val ServicePreview = ServiceState(

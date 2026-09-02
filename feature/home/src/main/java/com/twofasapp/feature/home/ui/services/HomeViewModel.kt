@@ -2,8 +2,11 @@ package com.twofasapp.feature.home.ui.services
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
+import com.twofasapp.android.navigation.BottomBarState
 import com.twofasapp.android.navigation.DeeplinkHandler
 import com.twofasapp.common.domain.Service
+import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.environment.BuildVariant
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.services.BackupRepository
@@ -26,6 +29,7 @@ import kotlinx.coroutines.flow.update
 
 @Suppress("UNCHECKED_CAST")
 internal class HomeViewModel(
+    appBuild: AppBuild,
     private val servicesRepository: ServicesRepository,
     private val groupsRepository: GroupsRepository,
     private val settingsRepository: SettingsRepository,
@@ -34,6 +38,7 @@ internal class HomeViewModel(
     private val notificationsRepository: NotificationsRepository,
     private val backupRepository: BackupRepository,
     private val deeplinkHandler: DeeplinkHandler,
+    private val bottomBarState: BottomBarState,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(HomeUiState())
@@ -43,6 +48,16 @@ internal class HomeViewModel(
     private val searchFocused = MutableStateFlow(false)
 
     init {
+        uiState.update {
+            it.copy(
+                developerModeEnabled = when (appBuild.buildVariant) {
+                    BuildVariant.Release -> false
+                    BuildVariant.Internal -> true
+                    BuildVariant.Debug -> true
+                },
+            )
+        }
+
         searchFocused(customizationRepository.getAutoFocusSearch())
 
         launchScoped {
@@ -192,6 +207,40 @@ internal class HomeViewModel(
 
     fun toggleEditMode() {
         isInEditMode.value = isInEditMode.value.not()
+        bottomBarState.setVisible(isInEditMode.value.not())
+
+        if (isInEditMode.value.not()) {
+            uiState.update { it.copy(selectedServiceIds = emptySet()) }
+        }
+    }
+
+    override fun onCleared() {
+        bottomBarState.setVisible(true)
+        super.onCleared()
+    }
+
+    fun toggleServiceSelection(id: Long) {
+        uiState.update { state ->
+            state.copy(
+                selectedServiceIds = if (state.selectedServiceIds.contains(id)) {
+                    state.selectedServiceIds.minus(id)
+                } else {
+                    state.selectedServiceIds.plus(id)
+                },
+            )
+        }
+    }
+
+    fun deleteSelectedServices() {
+        val ids = uiState.value.selectedServiceIds
+
+        if (isInEditMode.value) {
+            toggleEditMode()
+        }
+
+        launchScoped {
+            ids.forEach { servicesRepository.trashService(it) }
+        }
     }
 
     fun consumeEvent(event: HomeUiEvent) {

@@ -1,4 +1,4 @@
-package com.twofasapp.feature.home.ui.services
+package com.twofasapp.feature.home.ui.services.component
 
 import android.app.Activity
 import android.content.Context
@@ -10,6 +10,7 @@ import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.session.SessionRepository
 import kotlinx.coroutines.delay
 import timber.log.Timber
+import kotlin.time.Duration.Companion.milliseconds
 
 internal class AppReviewViewModel(
     context: Context,
@@ -26,7 +27,7 @@ internal class AppReviewViewModel(
             } catch (e: Exception) {
                 Timber.tag("AppReview").e(e, "Failed to launch in-app review flow")
             } finally {
-                delay(500)
+                delay(500.milliseconds)
                 sessionRepository.markAppReviewPrompted()
             }
         }

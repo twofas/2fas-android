@@ -23,7 +23,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.core.design.MdtTheme
@@ -39,31 +38,23 @@ internal fun DeveloperScreen(
     viewModel: DeveloperViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val context = LocalContext.current
 
     Content(
         uiState = uiState,
-        onGenerateServices = { count ->
-            viewModel.generateServices(count) {
-            }
-        },
-        onTrashAllServices = {
-            viewModel.trashAllServices {
-            }
-        },
-        onDeleteAllServices = {
-            viewModel.deleteAllServices {
-            }
-        },
+        onGenerateRandomServices = { count -> viewModel.generateRandomServices(count) },
+        onGenerateSupportedServices = { count -> viewModel.generateSupportedServices(count) },
+        onTrashServices = { count -> viewModel.trashServices(count) },
+        onEmptyTrash = { viewModel.emptyTrash() },
     )
 }
 
 @Composable
 private fun Content(
     uiState: DeveloperUiState,
-    onGenerateServices: (Int) -> Unit = {},
-    onTrashAllServices: () -> Unit = {},
-    onDeleteAllServices: () -> Unit = {},
+    onGenerateRandomServices: (Int) -> Unit = {},
+    onGenerateSupportedServices: (Int?) -> Unit = {},
+    onTrashServices: (Int?) -> Unit = {},
+    onEmptyTrash: () -> Unit = {},
 ) {
     var selectedTabIndex by remember { mutableIntStateOf(0) }
     val tabs = listOf("Services", "Build", "Colors")
@@ -102,9 +93,10 @@ private fun Content(
             when (selectedTabIndex) {
                 0 -> ServicesSection(
                     uiState = uiState,
-                    onGenerateServices = onGenerateServices,
-                    onTrashAllServices = onTrashAllServices,
-                    onDeleteAllServices = onDeleteAllServices,
+                    onGenerateRandomServices = onGenerateRandomServices,
+                    onGenerateSupportedServices = onGenerateSupportedServices,
+                    onTrashServices = onTrashServices,
+                    onEmptyTrash = onEmptyTrash,
                 )
 
                 1 -> BuildSection(

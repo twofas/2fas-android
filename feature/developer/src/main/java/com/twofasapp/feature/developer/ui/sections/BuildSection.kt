@@ -23,6 +23,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.environment.BuildVariant
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
 import com.twofasapp.core.design.ktx.copyToClipboard
 import com.twofasapp.feature.developer.ui.DeveloperUiState
 
@@ -32,15 +34,13 @@ internal fun BuildSection(
 ) {
     Column(
         modifier = Modifier
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState()),
+            .verticalScroll(rememberScrollState())
+            .padding(bottom = 16.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        Text(
+        OptionHeader(
             text = "Build",
-            style = MdtTheme.typo.base.semiBold,
-            color = MdtTheme.color.primary,
-            modifier = Modifier.padding(bottom = 8.dp),
+            contentPadding = OptionHeaderContentPaddingFirst,
         )
 
         ItemRow(
@@ -90,7 +90,8 @@ private fun ItemRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { context.copyToClipboard(text = value) },
+            .clickable { context.copyToClipboard(text = value) }
+            .padding(horizontal = 16.dp),
     ) {
         Text(
             text = label,

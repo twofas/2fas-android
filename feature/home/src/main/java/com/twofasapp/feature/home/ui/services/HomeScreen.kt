@@ -17,8 +17,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -30,7 +28,6 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -62,6 +59,7 @@ import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
 import com.twofasapp.core.design.foundation.lazy.isScrollingUp
 import com.twofasapp.core.design.foundation.lazy.listItem
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.core.design.foundation.screen.EmptyScreen
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
@@ -73,10 +71,10 @@ import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualModal
 import com.twofasapp.feature.home.ui.services.add.scan.AddServiceScanModal
 import com.twofasapp.feature.home.ui.services.component.AppReviewItem
+import com.twofasapp.feature.home.ui.services.component.AppReviewViewModel
+import com.twofasapp.feature.home.ui.services.component.HomeAppBar
+import com.twofasapp.feature.home.ui.services.component.HomeFab
 import com.twofasapp.feature.home.ui.services.component.PassBanner
-import com.twofasapp.feature.home.ui.services.component.ServicesAppBar
-import com.twofasapp.feature.home.ui.services.component.ServicesFab
-import com.twofasapp.feature.home.ui.services.component.ServicesProgress
 import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
 import com.twofasapp.feature.home.ui.services.component.SyncReminderItem
 import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
@@ -109,6 +107,8 @@ internal fun HomeScreen(
         onEventConsumed = { viewModel.consumeEvent(it) },
         onExternalImportClick = { navigator.open(Screen.ExternalImportSelector) },
         onEditModeChange = { viewModel.toggleEditMode() },
+        onToggleServiceSelection = { viewModel.toggleServiceSelection(it) },
+        onDeleteSelectedServices = { viewModel.deleteSelectedServices() },
         onToggleGroupExpand = { viewModel.toggleGroup(it) },
         onAddGroup = { viewModel.addGroup(it) },
         onMoveUpGroup = { viewModel.moveUpGroup(it) },
@@ -175,6 +175,8 @@ private fun Content(
     onEventConsumed: (HomeUiEvent) -> Unit,
     onExternalImportClick: () -> Unit = {},
     onEditModeChange: () -> Unit = {},
+    onToggleServiceSelection: (Long) -> Unit = {},
+    onDeleteSelectedServices: () -> Unit = {},
     onToggleGroupExpand: (String?) -> Unit = {},
     onAddGroup: (String) -> Unit = {},
     onMoveUpGroup: (String) -> Unit = {},
@@ -209,8 +211,6 @@ private fun Content(
     var showSortDialog by remember { mutableStateOf(false) }
     var showQrFromGalleryDialog by remember { mutableStateOf(false) }
     var clickedGroup by remember { mutableStateOf<Group?>(null) }
-    val topAppBarState = rememberTopAppBarState()
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
     val activity = LocalContext.currentActivity
     val scope = rememberCoroutineScope()
     val uriHandler = LocalUriHandler.current
@@ -328,15 +328,17 @@ private fun Content(
 
     Scaffold(
         topBar = {
-            ServicesAppBar(
+            HomeAppBar(
                 query = uiState.searchQuery,
                 isInEditMode = uiState.isInEditMode,
                 isSearchFocused = uiState.searchFocused,
                 hasUnreadNotifications = uiState.hasUnreadNotifications,
+                developerModeEnabled = uiState.developerModeEnabled,
+                selectedCount = uiState.selectedServiceIds.size,
                 onEditModeChange = onEditModeChange,
-                scrollBehavior = scrollBehavior,
                 onSortClick = { showSortDialog = true },
                 onAddGroupClick = { showAddGroupDialog = true },
+                onDeleteSelectedConfirmed = onDeleteSelectedServices,
                 onNotificationsClick = {
                     onSearchFocusChange(false)
                     onOpenNotifications()
@@ -350,7 +352,6 @@ private fun Content(
                 focusRequester = focusRequester,
             )
         },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { padding ->
         Box(
             modifier = Modifier
@@ -369,11 +370,14 @@ private fun Content(
             ) {
                 if (uiState.isLoading) {
                     listItem(HomeListItem.Loader) {
-                        ServicesProgress(
-                            Modifier
+                        Box(
+                            modifier = Modifier
                                 .fillParentMaxSize()
                                 .animateItem(),
-                        )
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            CircularProgressIndicator()
+                        }
                     }
                     return@LazyColumn
                 }
@@ -524,6 +528,7 @@ private fun Content(
                                             ServicesStyle.Compact -> ServiceStyle.Compact
                                         },
                                         editMode = uiState.isInEditMode,
+                                        selected = uiState.selectedServiceIds.contains(service.id),
                                         showNextCode = uiState.showNextCode,
                                         hideCodes = uiState.hideCodes,
                                         containerColor = if (recentlyAddedService == service.id) {
@@ -533,7 +538,13 @@ private fun Content(
                                         },
                                         dragHandleVisible = uiState.servicesSort == ServicesSort.Manual,
                                         dragModifier = Modifier.detectReorder(state = reorderableState),
-                                        onClick = { state.copyToClipboard(activity, uiState.showNextCode) },
+                                        onClick = {
+                                            if (uiState.isInEditMode) {
+                                                onToggleServiceSelection(service.id)
+                                            } else {
+                                                state.copyToClipboard(activity, uiState.showNextCode)
+                                            }
+                                        },
                                         onLongClick = {
                                             keyboardController?.hide()
                                             onOpenFocusService(service.id)
@@ -550,7 +561,7 @@ private fun Content(
                 }
             }
 
-            ServicesFab(
+            HomeFab(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .padding(16.dp),

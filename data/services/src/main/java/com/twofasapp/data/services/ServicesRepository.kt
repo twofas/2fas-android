@@ -17,10 +17,12 @@ interface ServicesRepository {
     suspend fun getServicesIncludingDeleted(): List<Service>
     suspend fun getService(id: Long): Service
     suspend fun deleteService(id: Long)
+    suspend fun deleteServices(ids: List<Long>)
     suspend fun updateService(service: Service)
     suspend fun updateServicesFromCloud(services: List<Service>)
     suspend fun setServiceGroup(id: Long, groupId: String?)
     suspend fun trashService(id: Long, triggerSync: Boolean = true)
+    suspend fun trashServices(ids: List<Long>, triggerSync: Boolean = true)
     suspend fun restoreService(id: Long)
     fun updateServicesOrder(ids: List<Long>)
     suspend fun incrementHotpCounter(service: Service)
@@ -32,6 +34,7 @@ interface ServicesRepository {
     suspend fun addService(link: OtpAuthLink): Long
     suspend fun addService(service: Service, triggerSync: Boolean = true): Long
     suspend fun addServices(services: List<Service>)
+    suspend fun addServicesFromLinks(links: List<OtpAuthLink>)
     fun observeAddServiceAdvancedExpanded(): Flow<Boolean>
     fun pushAddServiceAdvancedExpanded(expanded: Boolean)
     fun setManualGuideSelectedPrefill(prefill: String?)

@@ -13,6 +13,7 @@ import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.parsers.SupportedServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -30,46 +31,77 @@ internal class DeveloperViewModel(
     )
 
     init {
+        uiState.update { it.copy(supportedServicesCount = SupportedServices.list.size) }
+
         launchScoped {
             servicesRepository.observeServices().collect { services ->
                 uiState.update { it.copy(servicesCount = services.size) }
             }
         }
+
+        launchScoped {
+            servicesRepository.observeDeletedServices().collect { services ->
+                uiState.update { it.copy(trashedServicesCount = services.size) }
+            }
+        }
     }
 
-    fun generateServices(count: Int, onComplete: () -> Unit = {}) {
+    fun generateRandomServices(count: Int) {
         launchScoped(Dispatchers.IO) {
-            repeat(count) {
-                val id = Random.nextInt(9_999_999)
-
-                servicesRepository.addService(
-                    link = OtpAuthLink(
-                        type = "TOTP",
-                        label = "Dev $id",
-                        secret = randomSecret(),
-                        issuer = "Dev $id",
-                        params = emptyMap(),
-                        link = null,
-                    ),
-                )
-            }
-        }.invokeOnCompletion { onComplete() }
+            servicesRepository.addServicesFromLinks(
+                links = List(count) {
+                    createLink(issuer = "Service ${Random.nextInt(1_000_000).toString().padStart(6, '0')}")
+                },
+            )
+        }
     }
 
-    fun deleteAllServices(onComplete: () -> Unit = {}) {
+    fun generateSupportedServices(count: Int?) {
         launchScoped(Dispatchers.IO) {
-            servicesRepository.getServices().forEach { service ->
-                servicesRepository.deleteService(service.id)
-            }
-        }.invokeOnCompletion { onComplete() }
+            val supportedServices = SupportedServices.list.shuffled()
+
+            servicesRepository.addServicesFromLinks(
+                links = List(count ?: supportedServices.size) { index ->
+                    val supportedService = supportedServices.getOrNull(index % supportedServices.size.coerceAtLeast(1))
+
+                    createLink(
+                        issuer = supportedService?.let { it.issuers.firstOrNull() ?: it.name }
+                            ?: "Service ${Random.nextInt(1_000_000).toString().padStart(6, '0')}",
+                    )
+                },
+            )
+        }
     }
 
-    fun trashAllServices(onComplete: () -> Unit = {}) {
+    private fun createLink(issuer: String): OtpAuthLink {
+        return OtpAuthLink(
+            type = "TOTP",
+            label = "user@test.com",
+            secret = randomSecret(),
+            issuer = issuer,
+            params = emptyMap(),
+            link = null,
+        )
+    }
+
+    fun trashServices(count: Int?) {
         launchScoped(Dispatchers.IO) {
-            servicesRepository.getServices().forEach { service ->
-                servicesRepository.trashService(service.id)
-            }
-        }.invokeOnCompletion { onComplete() }
+            val ids = servicesRepository.getServices().map { it.id }
+
+            servicesRepository.trashServices(
+                ids = if (count != null) ids.take(count) else ids,
+            )
+        }
+    }
+
+    fun emptyTrash() {
+        launchScoped(Dispatchers.IO) {
+            servicesRepository.deleteServices(
+                ids = servicesRepository.getServicesIncludingDeleted()
+                    .filter { it.isDeleted }
+                    .map { it.id },
+            )
+        }
     }
 
     private companion object {

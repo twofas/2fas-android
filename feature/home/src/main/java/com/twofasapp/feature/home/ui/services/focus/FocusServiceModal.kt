@@ -12,8 +12,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavType
-import androidx.navigation.navArgument
 import com.twofasapp.android.viewmodel.ProvidesViewModelStoreOwner
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
@@ -29,10 +27,6 @@ import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-
-object FocusServiceModalNavArg {
-    val ServiceId = navArgument("id") { type = NavType.LongType }
-}
 
 @Composable
 fun FocusServiceModal(

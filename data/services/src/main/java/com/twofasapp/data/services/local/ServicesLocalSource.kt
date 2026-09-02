@@ -74,6 +74,10 @@ internal class ServicesLocalSource(
         return dao.insert(service.asEntity())
     }
 
+    suspend fun insertServices(services: List<Service>): List<Long> {
+        return dao.insert(services.map { it.asEntity() })
+    }
+
     suspend fun getService(id: Long): Service {
         return dao.select(id).asDomain()
     }
@@ -90,6 +94,15 @@ internal class ServicesLocalSource(
 
     suspend fun updateService(service: Service) {
         dao.update(service.asEntity())
+    }
+
+    suspend fun updateServices(services: List<Service>) {
+        dao.update(services.map { it.asEntity() })
+    }
+
+    suspend fun deleteServices(ids: List<Long>) {
+        log("Delete services $ids")
+        dao.delete(ids)
     }
 
     private fun getOrder(): ServicesOrderEntity {
@@ -125,12 +138,22 @@ internal class ServicesLocalSource(
         saveOrder(newOrder)
     }
 
+    fun deleteServicesFromOrder(ids: List<Long>) {
+        val local = getOrder()
+        saveOrder(local.copy(ids = local.ids.minus(ids.toSet())))
+    }
+
     fun addServiceToOrder(id: Long) {
         val local = getOrder()
         val newOrder = local.copy(
             ids = local.ids.plus(id),
         )
         saveOrder(newOrder)
+    }
+
+    fun addServicesToOrder(ids: List<Long>) {
+        val local = getOrder()
+        saveOrder(local.copy(ids = local.ids.plus(ids)))
     }
 
     fun pushRecentlyAddedService(recentlyAddedService: RecentlyAddedService) {

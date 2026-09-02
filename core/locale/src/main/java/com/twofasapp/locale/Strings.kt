@@ -58,6 +58,7 @@ class Strings(c: Context) {
     val servicesEmptySearchBody = c.getString(R.string.tokens__try_different_search_term)
     val servicesMyTokens = c.getString(R.string.tokens__my_tokens)
     val servicesManageList = c.getString(R.string.tokens__manage_list)
+    val servicesDeleteSelected = c.getString(R.string.tokens__delete_selected_msg)
     val servicesSortBy = c.getString(R.string.tokens__sort_by)
     val servicesSortByOptions = listOf(c.getString(R.string.tokens__sort_by_a_to_z), c.getString(R.string.tokens__sort_by_manual))
     val servicesCopyToken = c.getString(R.string.tokens__copied_clipboard)

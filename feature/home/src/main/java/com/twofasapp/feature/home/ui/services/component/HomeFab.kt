@@ -20,7 +20,7 @@ import com.twofasapp.locale.MdtLocale
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-internal fun ServicesFab(
+internal fun HomeFab(
     modifier: Modifier = Modifier,
     isVisible: Boolean,
     isExtendedVisible: Boolean,
@@ -59,7 +59,7 @@ internal fun ServicesFab(
 @Composable
 private fun Preview() {
     PreviewTheme {
-        ServicesFab(
+        HomeFab(
             isVisible = true,
             isExtendedVisible = true,
             isNormalVisible = true,
