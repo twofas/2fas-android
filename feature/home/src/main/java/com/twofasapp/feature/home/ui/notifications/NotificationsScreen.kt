@@ -33,11 +33,11 @@ import com.twofasapp.core.design.foundation.other.DotBadge
 import com.twofasapp.core.design.foundation.other.Space
 import com.twofasapp.core.design.foundation.outline.HorizontalLine
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
-import com.twofasapp.core.design.foundation.screen.EmptyScreen
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.notifications.domain.Notification
 import com.twofasapp.feature.home.R
+import com.twofasapp.feature.home.ui.notifications.component.NotificationsEmpty
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
@@ -77,9 +77,7 @@ private fun ScreenContent(
         LazyColumn(Modifier.padding(padding)) {
             if (notifications.isEmpty()) {
                 item {
-                    EmptyScreen(
-                        body = MdtLocale.strings.notificationsEmpty,
-                        image = painterResource(id = R.drawable.img_notifications_empty),
+                    NotificationsEmpty(
                         modifier = Modifier.fillParentMaxSize(),
                     )
                 }

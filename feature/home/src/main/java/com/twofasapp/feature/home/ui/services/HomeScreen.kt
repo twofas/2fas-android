@@ -32,7 +32,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -50,8 +49,6 @@ import com.twofasapp.core.design.feature.items.DsService
 import com.twofasapp.core.design.feature.items.ServiceStyle
 import com.twofasapp.core.design.feature.items.ServicesGroup
 import com.twofasapp.core.design.feature.items.asState
-import com.twofasapp.core.design.foundation.button.Button
-import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.dialog.InputDialog
 import com.twofasapp.core.design.foundation.dialog.InputValidation
@@ -60,20 +57,20 @@ import com.twofasapp.core.design.foundation.lazy.isScrollingUp
 import com.twofasapp.core.design.foundation.lazy.listItem
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
-import com.twofasapp.core.design.foundation.screen.EmptyScreen
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
-import com.twofasapp.feature.home.R
 import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualModal
 import com.twofasapp.feature.home.ui.services.add.scan.AddServiceScanModal
 import com.twofasapp.feature.home.ui.services.component.AppReviewItem
 import com.twofasapp.feature.home.ui.services.component.AppReviewViewModel
 import com.twofasapp.feature.home.ui.services.component.HomeAppBar
+import com.twofasapp.feature.home.ui.services.component.HomeEmpty
 import com.twofasapp.feature.home.ui.services.component.HomeFab
+import com.twofasapp.feature.home.ui.services.component.HomeSearchEmpty
 import com.twofasapp.feature.home.ui.services.component.PassBanner
 import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
 import com.twofasapp.feature.home.ui.services.component.SyncReminderItem
@@ -332,6 +329,7 @@ private fun Content(
                 query = uiState.searchQuery,
                 isInEditMode = uiState.isInEditMode,
                 isSearchFocused = uiState.searchFocused,
+                isListEmpty = uiState.totalServices == 0 && uiState.totalGroups <= 1 && uiState.isLoading.not(),
                 hasUnreadNotifications = uiState.hasUnreadNotifications,
                 developerModeEnabled = uiState.developerModeEnabled,
                 selectedCount = uiState.selectedServiceIds.size,
@@ -383,10 +381,7 @@ private fun Content(
                 }
                 if (uiState.services.isEmpty() && uiState.totalGroups == 1 && uiState.searchQuery.isNotEmpty()) {
                     listItem(HomeListItem.EmptySearch) {
-                        EmptyScreen(
-                            title = MdtLocale.strings.servicesEmptySearch,
-                            body = MdtLocale.strings.servicesEmptySearchBody,
-                            image = painterResource(id = R.drawable.img_services_empty_search),
+                        HomeSearchEmpty(
                             modifier = Modifier
                                 .fillParentMaxSize()
                                 .animateItem(),
@@ -398,19 +393,12 @@ private fun Content(
 
                 if (uiState.totalServices == 0 && uiState.totalGroups == 1) {
                     listItem(HomeListItem.Empty) {
-                        EmptyScreen(
-                            body = MdtLocale.strings.servicesEmptyBody,
-                            image = painterResource(id = R.drawable.img_services_empty),
-                            additionalContent = {
-                                Button(
-                                    text = MdtLocale.strings.servicesEmptyImportCta,
-                                    style = ButtonStyle.Outlined,
-                                    onClick = onExternalImportClick,
-                                )
-                            },
+                        HomeEmpty(
                             modifier = Modifier
                                 .fillParentMaxSize()
-                                .animateItem(),
+                                .animateItem()
+                                .padding(horizontal = 16.dp),
+                            onExternalImportClick = onExternalImportClick,
                         )
                     }
 
@@ -567,7 +555,7 @@ private fun Content(
                     .padding(16.dp),
                 isVisible = uiState.isLoading.not(),
                 isExtendedVisible = uiState.totalServices == 0,
-                isNormalVisible = reorderableState.listState.isScrollingUp(),
+                isNormalVisible = reorderableState.listState.isScrollingUp() && uiState.isInEditMode.not(),
                 onClick = {
                     onSearchFocusChange(false)
                     onOpenAddServiceModal()

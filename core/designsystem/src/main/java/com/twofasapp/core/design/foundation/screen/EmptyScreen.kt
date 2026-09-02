@@ -1,64 +1,86 @@
 package com.twofasapp.core.design.foundation.screen
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.twofasapp.core.design.R
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.icon.Icon
+import com.twofasapp.core.design.foundation.other.Space
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.locale.MdtLocale
 
 @Composable
 fun EmptyScreen(
+    icon: Painter,
+    modifier: Modifier = Modifier,
     title: String? = null,
     body: String? = null,
-    image: Painter? = null,
-    additionalContent:
-    @Composable (ColumnScope.() -> Unit) = {},
-    modifier: Modifier = Modifier,
+    additionalContent: (@Composable ColumnScope.() -> Unit)? = null,
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterVertically),
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        if (image != null) {
-            Image(
-                painter = image,
-                contentDescription = null,
-                modifier = Modifier.height(120.dp),
+        Icon(
+            painter = icon,
+            tint = MdtTheme.color.primary,
+            modifier = Modifier.size(64.dp),
+        )
+
+        if (title != null) {
+            Space(16.dp)
+
+            Text(
+                text = title,
+                style = MdtTheme.typo.xl.medium,
+                color = MdtTheme.color.onSurface,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth(),
             )
         }
 
-        if (title != null) {
-            CommonContentTitle(text = title)
-        }
-
         if (body != null) {
-            CommonContentDescription(text = body)
+            Space(16.dp)
+
+            Text(
+                text = body,
+                style = MdtTheme.typo.base.normal,
+                color = MdtTheme.color.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
 
-        additionalContent()
+        if (additionalContent != null) {
+            Space(24.dp)
 
-        Spacer(modifier = Modifier.height(40.dp))
+            additionalContent()
+        }
     }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    EmptyScreen(
-        body = MdtLocale.strings.placeholderLong,
-        image = painterResource(id = R.drawable.ic_placeholder),
-        modifier = Modifier.fillMaxSize(),
-    )
+    PreviewTheme {
+        EmptyScreen(
+            icon = MdtIcons.Info,
+            title = MdtLocale.strings.placeholder,
+            body = MdtLocale.strings.placeholderMedium,
+            modifier = Modifier.fillMaxSize(),
+        )
+    }
 }

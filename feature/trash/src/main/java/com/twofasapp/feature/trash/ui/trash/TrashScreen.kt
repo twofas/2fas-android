@@ -45,6 +45,7 @@ import com.twofasapp.core.design.ktx.toastShort
 import com.twofasapp.core.design.state.ScreenState
 import com.twofasapp.core.design.theme.RoundedTopShape
 import com.twofasapp.core.design.theme.ScreenPadding
+import com.twofasapp.feature.trash.ui.trash.component.TrashEmpty
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -148,7 +149,13 @@ private fun Content(
                         }
                     }
                 },
-                emptyIcon = MdtIcons.Delete,
+                emptyState = {
+                    TrashEmpty(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                    )
+                },
             )
 
             AnimatedVisibility(

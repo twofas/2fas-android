@@ -13,6 +13,8 @@ class Strings(c: Context) {
     val placeholderLong =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
+    val appName = c.getString(R.string.app__name)
+
     val commonOk = c.getString(R.string.commons__OK)
     val commonYes = c.getString(R.string.commons__yes)
     val commonNo = c.getString(R.string.commons__no)

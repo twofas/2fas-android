@@ -64,6 +64,7 @@ internal fun HomeAppBar(
     query: String,
     isInEditMode: Boolean,
     isSearchFocused: Boolean,
+    isListEmpty: Boolean = false,
     hasUnreadNotifications: Boolean,
     developerModeEnabled: Boolean = false,
     selectedCount: Int,
@@ -164,6 +165,7 @@ internal fun HomeAppBar(
                             .height(56.dp),
                         query = query,
                         focused = isSearchFocused,
+                        isListEmpty = isListEmpty,
                         hasUnreadNotifications = hasUnreadNotifications,
                         developerModeEnabled = developerModeEnabled,
                         onToggleEditMode = onEditModeChange,
@@ -194,6 +196,7 @@ private fun SearchBar(
     modifier: Modifier,
     query: String,
     focused: Boolean,
+    isListEmpty: Boolean,
     hasUnreadNotifications: Boolean,
     developerModeEnabled: Boolean,
     onToggleEditMode: () -> Unit,
@@ -220,7 +223,7 @@ private fun SearchBar(
         ) {
             AnimatedFadeVisibility(visible = searchActive.not()) {
                 Image(
-                    painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_2fas),
+                    painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_auth),
                     modifier = Modifier
                         .size(24.dp)
                         .then(
@@ -250,15 +253,16 @@ private fun SearchBar(
         TextField(
             value = query,
             onValueChange = { onSearchQueryChange(it) },
+            enabled = isListEmpty.not(),
             textStyle = MdtTheme.typo.base.normal,
             modifier = Modifier
                 .weight(1f)
                 .focusRequester(focusRequester),
             placeholder = {
                 Text(
-                    text = MdtLocale.strings.commonSearch,
+                    text = if (isListEmpty) MdtLocale.strings.appName else MdtLocale.strings.commonSearch,
                     style = MdtTheme.typo.base.normal,
-                    color = MdtTheme.color.onSurfaceVariant.copy(alpha = 0.7f),
+                    color = if (isListEmpty) MdtTheme.color.onSurface else MdtTheme.color.onSurfaceVariant.copy(alpha = 0.7f),
                 )
             },
             interactionSource = remember { MutableInteractionSource() }
@@ -333,6 +337,7 @@ private fun SearchBar(
                         DropdownMenuItem(
                             text = MdtLocale.strings.servicesManageList,
                             icon = MdtIcons.Edit,
+                            enabled = isListEmpty.not(),
                             onClick = {
                                 onToggleEditMode()
                                 showDropdown = false

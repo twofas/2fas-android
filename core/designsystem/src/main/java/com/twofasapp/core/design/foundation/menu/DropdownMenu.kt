@@ -53,20 +53,23 @@ fun DropdownMenuItem(
     text: String,
     onClick: () -> Unit,
     icon: Painter? = null,
+    enabled: Boolean = true,
     contentColor: Color = MdtTheme.color.onSurface,
 ) {
+    val color = if (enabled) contentColor else contentColor.copy(alpha = 0.38f)
+
     Row(
         Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(enabled = enabled) { onClick() }
             .padding(vertical = 12.dp)
             .padding(start = if (icon != null) 16.dp else 24.dp, end = 24.dp),
     ) {
         if (icon != null) {
-            Icon(painter = icon, contentDescription = null, tint = contentColor, modifier = Modifier.size(22.dp))
+            Icon(painter = icon, contentDescription = null, tint = color, modifier = Modifier.size(22.dp))
             Spacer(modifier = Modifier.width(16.dp))
         }
 
-        Text(text = text, color = contentColor)
+        Text(text = text, color = color)
     }
 }

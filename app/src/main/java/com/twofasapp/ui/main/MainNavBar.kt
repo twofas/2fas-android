@@ -41,7 +41,7 @@ internal fun MainNavBar(
             NavBarItem(
                 selected = currentDestination == Screen.Home,
                 onClick = { onTabSelected(Screen.Home) },
-                icon = if (currentDestination == Screen.Home) MdtIcons.HomeFilled else MdtIcons.Home,
+                icon = if (currentDestination == Screen.Home) MdtIcons.TokensFilled else MdtIcons.Tokens,
                 label = MdtLocale.strings.bottomBarTokens,
             )
 
