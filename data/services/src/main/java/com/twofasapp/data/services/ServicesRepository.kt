@@ -2,6 +2,7 @@ package com.twofasapp.data.services
 
 import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.domain.QueuedAddServiceModal
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.RecentlyDeleted
 import kotlinx.coroutines.flow.Flow
@@ -39,6 +40,8 @@ interface ServicesRepository {
     fun pushAddServiceAdvancedExpanded(expanded: Boolean)
     fun setManualGuideSelectedPrefill(prefill: String?)
     fun getManualGuideSelectedPrefill(): String?
+    fun setQueuedAddServiceModal(modal: QueuedAddServiceModal?)
+    fun getQueuedAddServiceModal(): QueuedAddServiceModal?
     suspend fun revealService(id: Long)
     suspend fun getRecentlyDeletedServices(): RecentlyDeleted
     suspend fun removeRecentlyDeleted(secret: String)

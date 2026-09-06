@@ -10,6 +10,7 @@ import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.storage.serializedPref
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.CloudSyncTrigger
+import com.twofasapp.data.services.domain.QueuedAddServiceModal
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.RecentlyDeleted
 import com.twofasapp.data.services.domain.RecentlyDeletedService
@@ -41,6 +42,7 @@ internal class ServicesRepositoryImpl(
 
     private val isTickerEnabled = MutableStateFlow(true)
     private var guideManualPrefill: String? = null
+    private var queuedAddServiceModal: QueuedAddServiceModal? = null
 
     private val revealTimestamps = MutableStateFlow<Map<Long, Long>>(emptyMap())
 
@@ -403,6 +405,14 @@ internal class ServicesRepositoryImpl(
 
     override fun getManualGuideSelectedPrefill(): String? {
         return guideManualPrefill
+    }
+
+    override fun setQueuedAddServiceModal(modal: QueuedAddServiceModal?) {
+        queuedAddServiceModal = modal
+    }
+
+    override fun getQueuedAddServiceModal(): QueuedAddServiceModal? {
+        return queuedAddServiceModal
     }
 
     override suspend fun getRecentlyDeletedServices(): RecentlyDeleted {

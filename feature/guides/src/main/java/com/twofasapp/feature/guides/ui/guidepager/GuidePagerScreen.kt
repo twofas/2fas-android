@@ -43,6 +43,7 @@ import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.QueuedAddServiceModal
 import com.twofasapp.feature.guides.ui.guideinit.PreviewGuide
 import com.twofasapp.feature.guides.ui.guides.Guide
 import com.twofasapp.feature.guides.ui.guides.GuideJson
@@ -62,11 +63,14 @@ internal fun GuidePagerScreen(
     servicesRepository: ServicesRepository = koinInject(),
     navigator: Navigator = koinInject(),
 ) {
-    // The "Add service" flow is a bottom-sheet Modal that is not yet migrated to
-    // Navigation3. For now these CTAs just return to the services list.
-    // TODO: open the AddService modal once modals are migrated to Navigation3.
-    val openAddScan: () -> Unit = { navigator.popTo(Screen.Home) }
-    val openAddManually: () -> Unit = { navigator.popTo(Screen.Home) }
+    val openAddScan: () -> Unit = {
+        servicesRepository.setQueuedAddServiceModal(QueuedAddServiceModal.Scan)
+        navigator.popTo(Screen.Home)
+    }
+    val openAddManually: () -> Unit = {
+        servicesRepository.setQueuedAddServiceModal(QueuedAddServiceModal.Manual)
+        navigator.popTo(Screen.Home)
+    }
 
     val context = LocalContext.current
     val scope = rememberCoroutineScope()

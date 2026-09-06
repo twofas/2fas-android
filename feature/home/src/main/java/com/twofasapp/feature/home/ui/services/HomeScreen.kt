@@ -60,6 +60,7 @@ import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.ktx.openSafely
 import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.domain.QueuedAddServiceModal
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
@@ -99,6 +100,14 @@ internal fun HomeScreen(
     var addedServiceInModal by remember { mutableStateOf<RecentlyAddedService?>(null) }
     var focusServiceId by remember { mutableStateOf<Long?>(null) }
 
+    LaunchedEffect(Unit) {
+        when (viewModel.consumeQueuedAddServiceModal()) {
+            QueuedAddServiceModal.Scan -> showAddServiceScanModal = true
+            QueuedAddServiceModal.Manual -> showAddServiceManualModal = true
+            null -> Unit
+        }
+    }
+
     Content(
         uiState = uiState,
         onEventConsumed = { viewModel.consumeEvent(it) },
@@ -118,7 +127,7 @@ internal fun HomeScreen(
         onSearchQueryChange = { viewModel.search(it) },
         onSearchFocusChange = { viewModel.searchFocused(it) },
         onOpenBackupClick = { navigator.open(Screen.Backup) },
-        onOpenBackupImport = { /* TODO: Migrate to Navigation3 */ },
+        onOpenBackupImport = { navigator.open(Screen.BackupImport(importFileUri = it)) },
         onOpenNotifications = { navigator.open(Screen.Notifications) },
         onOpenDeveloper = { navigator.open(Screen.Developer) },
         onOpenAddServiceModal = { showAddServiceScanModal = true },

@@ -14,6 +14,7 @@ import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.domain.QueuedAddServiceModal
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.otp.OtpLinkParser
 import com.twofasapp.data.session.CustomizationRepository
@@ -100,15 +101,23 @@ internal class HomeViewModel(
                     return@collect
                 }
 
-                val showCloudSyncNotice = result.appSettings.showBackupNotice && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
+                val showCloudSyncNotice = result.appSettings.showBackupNotice &&
+                        result.backupEnabled.not() &&
+                        result.searchQuery.isEmpty() &&
+                        result.searchFocused.not() &&
+                        result.isInEditMode.not()
 
                 val showAppReview = result.appReviewPrompted.not() &&
-                    result.searchQuery.isEmpty() &&
-                    result.searchFocused.not() &&
-                    result.isInEditMode.not() &&
-                    result.services.size >= AppReviewItemsThreshold
+                        result.services.size >= AppReviewItemsThreshold &&
+                        result.searchQuery.isEmpty() &&
+                        result.searchFocused.not() &&
+                        result.isInEditMode.not()
 
-                val showPassBanner = result.showPassBanner && result.services.isNotEmpty()
+                val showPassBanner = result.showPassBanner &&
+                        result.services.isNotEmpty() &&
+                        result.searchQuery.isEmpty() &&
+                        result.searchFocused.not() &&
+                        result.isInEditMode.not()
 
                 val filteredServices = result.services
                     .sortedBy {
@@ -246,6 +255,11 @@ internal class HomeViewModel(
         servicesRepository.pushRecentlyAddedService(recentlyAddedService)
     }
 
+    fun consumeQueuedAddServiceModal(): QueuedAddServiceModal? {
+        return servicesRepository.getQueuedAddServiceModal()
+            ?.also { servicesRepository.setQueuedAddServiceModal(null) }
+    }
+
     fun search(query: String) {
         searchQuery.update { query }
         uiState.update { it.copy(searchQuery = query) }
@@ -323,9 +337,9 @@ internal class HomeViewModel(
 
     private fun Service.isMatchingQuery(query: String): Boolean {
         return name.contains(query, true) ||
-            issuer?.contains(query, true) ?: false ||
-            info?.contains(query, true) ?: false ||
-            tags.contains(query.lowercase())
+                issuer?.contains(query, true) ?: false ||
+                info?.contains(query, true) ?: false ||
+                tags.contains(query.lowercase())
     }
 
     fun onDragStart() {
