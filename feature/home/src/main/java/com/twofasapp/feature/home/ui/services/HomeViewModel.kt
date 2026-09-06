@@ -142,7 +142,7 @@ internal class HomeViewModel(
                             }
 
                             when {
-//                                showAppReview -> add(HomeListItem.AppReview)
+                                showAppReview -> add(HomeListItem.AppReview)
                                 showPassBanner -> add(HomeListItem.PassBanner)
                             }
 

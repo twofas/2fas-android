@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,8 +24,9 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
-import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.theme.RoundedShape16
 import com.twofasapp.locale.MdtLocale
 
 @Composable
@@ -38,10 +38,10 @@ internal fun AppReviewItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .background(MdtTheme.color.surface)
-            .padding(all = 16.dp),
+            .padding(horizontal = 12.dp, vertical = 8.dp)
+            .clip(RoundedShape16)
+            .background(MdtTheme.color.surfaceContainer)
+            .padding(start = 16.dp, top = 24.dp, end = 16.dp, bottom = 12.dp),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -87,8 +87,9 @@ internal fun AppReviewItem(
             horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            TextButton(
+            Button(
                 text = MdtLocale.strings.homeAppReviewDismiss,
+                style = ButtonStyle.Text,
                 onClick = onDismissClick,
             )
 
