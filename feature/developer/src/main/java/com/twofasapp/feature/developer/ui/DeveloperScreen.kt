@@ -43,6 +43,7 @@ internal fun DeveloperScreen(
         uiState = uiState,
         onGenerateRandomServices = { count -> viewModel.generateRandomServices(count) },
         onGenerateSupportedServices = { count -> viewModel.generateSupportedServices(count) },
+        onGenerateAllTypes = { viewModel.generateAllTypes() },
         onTrashServices = { count -> viewModel.trashServices(count) },
         onEmptyTrash = { viewModel.emptyTrash() },
     )
@@ -53,6 +54,7 @@ private fun Content(
     uiState: DeveloperUiState,
     onGenerateRandomServices: (Int) -> Unit = {},
     onGenerateSupportedServices: (Int?) -> Unit = {},
+    onGenerateAllTypes: () -> Unit = {},
     onTrashServices: (Int?) -> Unit = {},
     onEmptyTrash: () -> Unit = {},
 ) {
@@ -95,6 +97,7 @@ private fun Content(
                     uiState = uiState,
                     onGenerateRandomServices = onGenerateRandomServices,
                     onGenerateSupportedServices = onGenerateSupportedServices,
+                    onGenerateAllTypes = onGenerateAllTypes,
                     onTrashServices = onTrashServices,
                     onEmptyTrash = onEmptyTrash,
                 )

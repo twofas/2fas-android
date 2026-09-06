@@ -724,6 +724,7 @@
     <string name="settings__enable_crashlytics_description">Send anonymous crash reports to help 2FAS identify and solve issues in the app (app restart required).</string>
     <string name="tokens__manage_list">Manage list</string>
     <string name="tokens__delete_selected_msg">Are you sure you want to delete %d selected services?</string>
+    <string name="tokens__delete_service_msg">Are you sure you want to delete this service?</string>
     <string name="settings__appearance">Appearance</string>
     <string name="settings__show_next_token_desc">Show the next Token when the current one is about to expire.</string>
     <string name="settings__list_style">List style</string>

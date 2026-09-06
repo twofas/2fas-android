@@ -5,7 +5,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -29,7 +28,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.feature.items.DsServiceSimple
+import com.twofasapp.core.design.feature.items.ServiceCardSimple
 import com.twofasapp.core.design.feature.items.ServiceImageType
 import com.twofasapp.core.design.feature.items.ServiceState
 import com.twofasapp.core.design.feature.items.asColor
@@ -170,7 +169,7 @@ private fun Content(
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(MdtTheme.color.surfaceContainer, RoundedTopShape)
-                        .padding(ScreenPadding)
+                        .padding(12.dp)
                         .padding(bottom = padding.calculateBottomPadding()),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
@@ -225,7 +224,7 @@ private fun TrashItem(
     modifier: Modifier = Modifier,
     onCheckedChange: () -> Unit = {},
 ) {
-    DsServiceSimple(
+    ServiceCardSimple(
         state = ServiceState(
             name = service.name,
             info = service.info,
@@ -239,9 +238,10 @@ private fun TrashItem(
             labelColor = service.labelColor.asColor(),
             revealed = true,
         ),
+        onClick = onCheckedChange,
+        containerColor = if (checked) MdtTheme.color.surfaceContainerHighest else MdtTheme.color.surfaceContainer,
         modifier = modifier
-            .clickable { onCheckedChange() }
-            .padding(start = 16.dp, end = 16.dp),
+            .padding(horizontal = 12.dp, vertical = 4.dp),
     ) {
         CheckIcon(checked = checked)
     }

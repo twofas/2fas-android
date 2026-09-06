@@ -55,9 +55,7 @@ fun TextButton(
 @Preview
 @Composable
 private fun Previews() {
-    PreviewColumn(
-        modifier = Modifier.fillMaxWidth(),
-    ) {
+    PreviewColumn {
         TextButton(
             text = "Preview",
             modifier = Modifier.fillMaxWidth(),

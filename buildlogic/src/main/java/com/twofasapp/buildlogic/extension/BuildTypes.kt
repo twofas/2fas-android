@@ -20,6 +20,7 @@ internal fun Project.applyBuildTypes(
                 signingConfig = signingConfigs.getByName("internal")
                 proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
                 matchingFallbacks += "release"
+                applicationIdSuffix = ".internal"
             }
             getByName("release") {
                 isMinifyEnabled = true

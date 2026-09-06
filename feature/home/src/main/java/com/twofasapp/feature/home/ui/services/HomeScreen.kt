@@ -45,7 +45,7 @@ import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.feature.items.DsService
+import com.twofasapp.core.design.feature.items.ServiceCard
 import com.twofasapp.core.design.feature.items.ServiceStyle
 import com.twofasapp.core.design.feature.items.ServicesGroup
 import com.twofasapp.core.design.feature.items.asState
@@ -73,8 +73,7 @@ import com.twofasapp.feature.home.ui.services.component.HomeFab
 import com.twofasapp.feature.home.ui.services.component.HomeSearchEmpty
 import com.twofasapp.feature.home.ui.services.component.PassBanner
 import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
-import com.twofasapp.feature.home.ui.services.component.SyncReminderItem
-import com.twofasapp.feature.home.ui.services.focus.FocusServiceModal
+import com.twofasapp.feature.home.ui.services.focus.ServiceModal
 import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.delay
@@ -86,6 +85,7 @@ import org.burnoutcrew.reorderable.rememberReorderableLazyListState
 import org.burnoutcrew.reorderable.reorderable
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 internal fun HomeScreen(
@@ -123,7 +123,6 @@ internal fun HomeScreen(
         onOpenDeveloper = { navigator.open(Screen.Developer) },
         onOpenAddServiceModal = { showAddServiceScanModal = true },
         onOpenFocusService = { focusServiceId = it },
-        onDismissSyncReminderClick = { viewModel.dismissSyncReminder() },
         onRateAppClick = { appReviewViewModel.rate(it) },
         onDismissAppReviewClick = { appReviewViewModel.dismiss() },
         onDismissPassBannerClick = { viewModel.dismissPassBanner() },
@@ -157,7 +156,7 @@ internal fun HomeScreen(
     }
 
     focusServiceId?.let { serviceId ->
-        FocusServiceModal(
+        ServiceModal(
             serviceId = serviceId,
             onDismissRequest = { focusServiceId = null },
             openService = { navigator.open(Screen.EditService(it)) },
@@ -191,7 +190,6 @@ private fun Content(
     onOpenDeveloper: () -> Unit = {},
     onOpenAddServiceModal: () -> Unit = {},
     onOpenFocusService: (Long) -> Unit = {},
-    onDismissSyncReminderClick: () -> Unit = {},
     onRateAppClick: (Activity) -> Unit = {},
     onDismissAppReviewClick: () -> Unit = {},
     onDismissPassBannerClick: () -> Unit = {},
@@ -213,7 +211,6 @@ private fun Content(
     val uriHandler = LocalUriHandler.current
 
     var isDragging by remember { mutableStateOf(false) }
-//    val data = remember { mutableStateOf(List(100) { "Item $it" }) }
     val reorderableData = remember { mutableStateOf(uiState.items) }
     val listState = rememberLazyListState()
     val reorderableState = rememberReorderableLazyListState(
@@ -234,18 +231,14 @@ private fun Content(
         onDragEnd = { _, _ ->
             onDragEnd(reorderableData.value)
             scope.launch {
-                delay(500)
+                delay(500.milliseconds)
                 isDragging = false
             }
         },
     )
 
-    val serviceContainerColor = if (uiState.totalGroups == 1) {
-        MdtTheme.color.background
-    } else {
-        MdtTheme.color.background
-    }
-    val serviceContainerColorBlink = MdtTheme.color.primary.copy(alpha = 0.2f)
+    val serviceContainerColor = MdtTheme.color.surfaceContainer
+    val serviceContainerColorBlink = MdtTheme.color.surfaceContainerHighest
     val serviceContainerColorBlinking = remember { Animatable(serviceContainerColor) }
 
     var recentlyAddedService by remember { mutableStateOf<Long?>(null) }
@@ -275,7 +268,7 @@ private fun Content(
                             listState.animateScrollToItem(serviceIndex)
                             recentlyAddedService = serviceId
 
-                            serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(0))
+                            serviceContainerColorBlinking.animateTo(serviceContainerColorBlink, tween(1000))
                             serviceContainerColorBlinking.animateTo(serviceContainerColor, tween(2000, easing = EaseOut))
 
                             recentlyAddedService = null
@@ -419,16 +412,6 @@ private fun Content(
                             }
                         }
 
-                        HomeListItem.SyncReminder -> {
-                            listItem(item) {
-                                SyncReminderItem(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    onOpenBackupClick = { onOpenBackupClick(true) },
-                                    onDismissClick = onDismissSyncReminderClick,
-                                )
-                            }
-                        }
-
                         HomeListItem.AppReview -> {
                             listItem(item) {
                                 AppReviewItem(
@@ -508,7 +491,7 @@ private fun Content(
                                 ) { _ ->
                                     val state = service.asState()
 
-                                    DsService(
+                                    ServiceCard(
                                         state = state,
                                         modifier = Modifier,
                                         style = when (uiState.servicesStyle) {
@@ -553,9 +536,9 @@ private fun Content(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .padding(16.dp),
-                isVisible = uiState.isLoading.not(),
+                isVisible = uiState.isLoading.not() && uiState.isInEditMode.not(),
                 isExtendedVisible = uiState.totalServices == 0,
-                isNormalVisible = reorderableState.listState.isScrollingUp() && uiState.isInEditMode.not(),
+                isNormalVisible = reorderableState.listState.isScrollingUp(),
                 onClick = {
                     onSearchFocusChange(false)
                     onOpenAddServiceModal()

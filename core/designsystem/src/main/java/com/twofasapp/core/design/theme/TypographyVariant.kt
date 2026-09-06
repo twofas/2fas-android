@@ -24,6 +24,13 @@ class TypographyVariant(
     defaultColor: Color,
     fontFamily: FontFamily = FontFamily.Default,
 ) {
+    val light = TextStyle(
+        fontFamily = fontFamily,
+        fontSize = fontSize,
+        lineHeight = lineHeight,
+        fontWeight = FontWeight.Light,
+        color = defaultColor,
+    )
 
     val normal = TextStyle(
         fontFamily = fontFamily,

@@ -41,7 +41,7 @@ import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.feature.items.asColor
-import com.twofasapp.core.design.feature.items.atoms.formatCode
+import com.twofasapp.core.design.feature.items.formatCode
 import com.twofasapp.core.design.ktx.assetAsBitmap
 import com.twofasapp.data.services.WidgetsRepository
 import com.twofasapp.data.services.domain.Widget

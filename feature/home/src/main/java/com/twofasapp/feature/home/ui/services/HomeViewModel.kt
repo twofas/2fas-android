@@ -66,7 +66,6 @@ internal class HomeViewModel(
                 servicesRepository.observeServicesTicker(),
                 isInEditMode,
                 settingsRepository.observeAppSettings(),
-                sessionRepository.observeShowBackupReminder(),
                 backupRepository.observeBackupEnabled(),
                 backupRepository.observeCloudSyncStatus(),
                 searchQuery,
@@ -83,23 +82,25 @@ internal class HomeViewModel(
                     services = array[1] as List<Service>,
                     isInEditMode = array[2] as Boolean,
                     appSettings = array[3] as AppSettings,
-                    showBackupReminder = array[4] as Boolean,
-                    backupEnabled = array[5] as Boolean,
-                    cloudSyncStatus = array[6] as CloudSyncStatus,
-                    searchQuery = array[7] as String,
-                    showPassBanner = array[8] as Boolean,
-                    appReviewPrompted = array[9] as Boolean,
-                    searchFocused = array[10] as Boolean,
-                    servicesSort = array[11] as ServicesSort,
-                    servicesStyle = array[12] as ServicesStyle,
-                    showNextCode = array[13] as Boolean,
-                    hideCodes = array[14] as Boolean,
+                    backupEnabled = array[4] as Boolean,
+                    cloudSyncStatus = array[5] as CloudSyncStatus,
+                    searchQuery = array[6] as String,
+                    showPassBanner = array[7] as Boolean,
+                    appReviewPrompted = array[8] as Boolean,
+                    searchFocused = array[9] as Boolean,
+                    servicesSort = array[10] as ServicesSort,
+                    servicesStyle = array[11] as ServicesStyle,
+                    showNextCode = array[12] as Boolean,
+                    hideCodes = array[13] as Boolean,
                 )
             }.collect { result ->
 
-                val showSyncReminder = result.appSettings.showBackupNotice && result.showBackupReminder && result.backupEnabled.not()
-                val showSyncNoticeBar =
-                    result.appSettings.showBackupNotice && showSyncReminder.not() && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
+                if (result.isInEditMode && result.services.isEmpty() && result.groups.none { it.id != null }) {
+                    toggleEditMode()
+                    return@collect
+                }
+
+                val showSyncNotice = result.appSettings.showBackupNotice && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
 
                 val showAppReview = result.appReviewPrompted.not() &&
                     result.searchQuery.isEmpty() &&
@@ -122,8 +123,7 @@ internal class HomeViewModel(
                     state.copy(
                         services = filteredServices,
                         groups = result.groups,
-                        showSyncNoticeBar = showSyncNoticeBar,
-                        showSyncReminder = showSyncReminder,
+                        showSyncNotice = showSyncNotice,
                         showAppReview = showAppReview,
                         showPassBanner = showPassBanner,
                         totalGroups = result.groups.size,
@@ -137,13 +137,12 @@ internal class HomeViewModel(
                         hideCodes = result.hideCodes,
                         items = buildList {
 
-                            if (showSyncNoticeBar) {
+                            if (showSyncNotice) {
                                 add(HomeListItem.SyncNoticeBar)
                             }
 
                             when {
-                                showSyncReminder -> add(HomeListItem.SyncReminder)
-                                showAppReview -> add(HomeListItem.AppReview)
+//                                showAppReview -> add(HomeListItem.AppReview)
                                 showPassBanner -> add(HomeListItem.PassBanner)
                             }
 
@@ -300,12 +299,6 @@ internal class HomeViewModel(
         uiState.update { it.copy(searchFocused = focused) }
     }
 
-    fun dismissSyncReminder() {
-        launchScoped {
-            sessionRepository.resetBackupReminder()
-        }
-    }
-
     fun dismissPassBanner() {
         launchScoped {
             sessionRepository.resetPassBannerDismiss()
@@ -406,7 +399,6 @@ internal class HomeViewModel(
         val services: List<Service>,
         val isInEditMode: Boolean,
         val appSettings: AppSettings,
-        val showBackupReminder: Boolean,
         val backupEnabled: Boolean,
         val cloudSyncStatus: CloudSyncStatus,
         val searchQuery: String,

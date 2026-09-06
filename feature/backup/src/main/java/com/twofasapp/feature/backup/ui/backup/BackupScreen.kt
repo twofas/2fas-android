@@ -36,6 +36,7 @@ import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.settings.OptionEntry
 import com.twofasapp.core.design.feature.settings.OptionHeader
 import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
+import com.twofasapp.core.design.feature.settings.OptionSwitch
 import com.twofasapp.core.design.foundation.checked.Switch
 import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.dialog.InfoDialog
@@ -64,6 +65,7 @@ internal fun BackupScreen(
         onTurnOnSync = { viewModel.turnOnSync() },
         onTurnOffSync = { viewModel.turnOffSync() },
         onEnterPassword = { viewModel.enterPassword(it) },
+        onShowBackupNoticeToggle = { viewModel.toggleShowBackupNotice() },
         onSettingsClick = { navigator.open(Screen.BackupSettings) },
         onExportClick = { navigator.open(Screen.BackupExport) },
         onImportClick = { navigator.open(Screen.BackupImport()) },
@@ -79,6 +81,7 @@ private fun ScreenContent(
     onTurnOnSync: () -> Unit = {},
     onTurnOffSync: () -> Unit = {},
     onEnterPassword: (String) -> Unit = {},
+    onShowBackupNoticeToggle: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
     onExportClick: () -> Unit = {},
     onImportClick: () -> Unit = {},
@@ -95,6 +98,7 @@ private fun ScreenContent(
     var errorDialogTitle by remember { mutableStateOf("") }
     var errorDialogMsg by remember { mutableStateOf("") }
     var showTurnOffConfirmationDialog by remember { mutableStateOf(false) }
+    var showConfirmDisableBackupNotice by remember { mutableStateOf(false) }
 
     val signInLauncher = rememberLauncherForActivityResult(StartActivityForResult()) { onSignInResult(it) }
 
@@ -210,6 +214,23 @@ private fun ScreenContent(
                 )
             }
 
+            if (uiState.syncChecked.not()) {
+                item {
+                    OptionSwitch(
+                        title = strings.settingsShowBackupNotice,
+                        icon = MdtIcons.Info,
+                        checked = uiState.showBackupNotice,
+                        onToggle = { checked ->
+                            if (checked.not()) {
+                                showConfirmDisableBackupNotice = true
+                            } else {
+                                onShowBackupNoticeToggle()
+                            }
+                        },
+                    )
+                }
+            }
+
             item { OptionHeader(text = strings.backupLocalHeader) }
 
             item {
@@ -239,6 +260,16 @@ private fun ScreenContent(
                 positive = strings.backupTurnOffCta,
                 negative = strings.commonCancel,
                 onPositive = onTurnOffSync,
+            )
+        }
+
+        if (showConfirmDisableBackupNotice) {
+            ConfirmDialog(
+                onDismissRequest = { showConfirmDisableBackupNotice = false },
+                title = strings.settingsShowBackupNotice,
+                body = strings.settingsShowBackupNoticeConfirmBody,
+                icon = MdtIcons.Info,
+                onPositive = { onShowBackupNoticeToggle() },
             )
         }
 

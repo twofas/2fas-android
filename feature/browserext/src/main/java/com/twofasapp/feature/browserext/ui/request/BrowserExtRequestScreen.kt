@@ -31,7 +31,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.feature.items.DsServiceSimple
+import com.twofasapp.core.design.feature.items.ServiceCardSimple
 import com.twofasapp.core.design.feature.items.asState
 import com.twofasapp.core.design.foundation.checked.Switch
 import com.twofasapp.core.design.foundation.other.Divider
@@ -213,12 +213,12 @@ private fun ServiceItem(
     onClick: (Service) -> Unit,
 ) {
     Column(Modifier.fillMaxWidth()) {
-        DsServiceSimple(
+        ServiceCardSimple(
             state = service.asState(),
+            onClick = { onClick(service) },
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { onClick(service) }
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 16.dp, vertical = 4.dp),
         )
         HorizontalDivider(color = MdtTheme.color.divider)
     }

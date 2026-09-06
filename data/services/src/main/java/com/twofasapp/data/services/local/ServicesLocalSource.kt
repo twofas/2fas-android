@@ -201,10 +201,6 @@ internal class ServicesLocalSource(
     }
 
     suspend fun revealService(id: Long) {
-        dao.update(
-            dao.select(id).copy(
-                revealTimestamp = System.currentTimeMillis(),
-            ),
-        )
+        dao.updateRevealTimestamp(id = id, timestamp = System.currentTimeMillis())
     }
 }

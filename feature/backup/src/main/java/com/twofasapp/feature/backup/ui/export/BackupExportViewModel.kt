@@ -36,8 +36,6 @@ internal class BackupExportViewModel(
                 )
             }
                 .onSuccess { content ->
-                    sessionRepository.resetBackupReminder()
-
                     publishEvent(
                         BackupExportUiEvent.ShowSharePicker(
                             appId = appBuild.id,
@@ -62,7 +60,6 @@ internal class BackupExportViewModel(
                     }
             }
                 .onSuccess {
-                    sessionRepository.resetBackupReminder()
                     publishEvent(BackupExportUiEvent.DownloadSuccess)
                 }
                 .onFailure { publishEvent(BackupExportUiEvent.DownloadError) }

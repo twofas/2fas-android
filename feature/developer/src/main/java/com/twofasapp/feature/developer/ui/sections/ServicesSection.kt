@@ -52,6 +52,7 @@ internal fun ServicesSection(
     uiState: DeveloperUiState,
     onGenerateRandomServices: (Int) -> Unit = {},
     onGenerateSupportedServices: (Int?) -> Unit = {},
+    onGenerateAllTypes: () -> Unit = {},
     onTrashServices: (Int?) -> Unit = {},
     onEmptyTrash: () -> Unit = {},
 ) {
@@ -154,6 +155,13 @@ internal fun ServicesSection(
                 )
             }
         }
+
+        OptionEntry(
+            title = "Generate all types",
+            subtitle = "TOTP, HOTP, Steam + digits, period and algorithm variants",
+            icon = MdtIcons.ListStyle,
+            onClick = { onGenerateAllTypes() },
+        )
 
         Box(
             contentAlignment = Alignment.TopEnd,

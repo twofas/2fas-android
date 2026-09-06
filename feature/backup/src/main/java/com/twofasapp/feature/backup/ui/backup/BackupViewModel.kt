@@ -11,6 +11,7 @@ import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.session.SessionRepository
+import com.twofasapp.data.session.SettingsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -19,6 +20,7 @@ import kotlinx.coroutines.flow.update
 
 internal class BackupViewModel(
     private val sessionRepository: SessionRepository,
+    private val settingsRepository: SettingsRepository,
     private val servicesRepository: ServicesRepository,
     private val backupRepository: BackupRepository,
     private val googleAuth: GoogleAuth,
@@ -32,6 +34,12 @@ internal class BackupViewModel(
         launchScoped {
             servicesRepository.observeServices().distinctUntilChangedBy { it.size }.collect { services ->
                 uiState.update { it.copy(exportEnabled = services.isNotEmpty()) }
+            }
+        }
+
+        launchScoped {
+            settingsRepository.observeShowBackupNotice().collect { showBackupNotice ->
+                uiState.update { it.copy(showBackupNotice = showBackupNotice) }
             }
         }
 
@@ -115,7 +123,6 @@ internal class BackupViewModel(
             googleAuth.signOut()
             backupRepository.setCloudSyncNotConfigured()
             backupRepository.publishCloudSyncStatus(CloudSyncStatus.Default)
-            sessionRepository.resetBackupReminder()
             uiState.update { state ->
                 state.copy(
                     syncChecked = false,
@@ -127,6 +134,12 @@ internal class BackupViewModel(
                     cloudSyncStatus = CloudSyncStatus.Default,
                 )
             }
+        }
+    }
+
+    fun toggleShowBackupNotice() {
+        launchScoped {
+            settingsRepository.setShowBackupNotice(uiState.value.showBackupNotice.not())
         }
     }
 

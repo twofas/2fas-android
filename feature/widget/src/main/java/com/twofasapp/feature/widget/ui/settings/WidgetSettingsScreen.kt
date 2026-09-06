@@ -1,7 +1,6 @@
 package com.twofasapp.feature.widget.ui.settings
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.glance.appwidget.updateAll
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.feature.items.DsServiceSimple
+import com.twofasapp.core.design.feature.items.ServiceCardSimple
 import com.twofasapp.core.design.feature.items.asState
 import com.twofasapp.core.design.foundation.button.TextButton
 import com.twofasapp.core.design.foundation.checked.Switch
@@ -131,12 +130,12 @@ private fun ScreenContent(
             }
 
             items(uiState.services, { it.id }, { "Service" }) { service ->
-                DsServiceSimple(
+                ServiceCardSimple(
                     state = service.asState().copy(revealed = true),
+                    onClick = { onToggleService(service.id) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { onToggleService(service.id) }
-                        .padding(start = 16.dp, end = 16.dp),
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
                 ) {
                     Switch(
                         checked = uiState.selected.contains(service.id),

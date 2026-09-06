@@ -13,7 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtIcons
@@ -28,14 +28,14 @@ fun CheckIcon(
     size: Dp = 24.dp,
 ) {
     Icon(
-        painter = if (checked) MdtIcons.CircleCheckFilled else MdtIcons.CircleUncheck,
+        painter = if (checked) MdtIcons.CircleCheck else MdtIcons.CircleUncheck,
         contentDescription = null,
         modifier = modifier.then(Modifier.size(size)),
         tint = if (checked) color else MdtTheme.color.surfaceContainerHighest,
     )
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Previews() {
     PreviewColumn {

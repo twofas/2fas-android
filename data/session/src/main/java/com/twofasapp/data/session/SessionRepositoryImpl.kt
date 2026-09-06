@@ -27,10 +27,6 @@ internal class SessionRepositoryImpl(
     private val timeDeltaPreference: TimeDeltaPreference,
 ) : SessionRepository {
 
-    override suspend fun showBackupReminder(): Boolean {
-        return true
-    }
-
     override fun showAppUpdate(): Boolean {
         return appBuild.versionCode.toLong() != appUpdateLastCheckVersionPreference.get()
     }
@@ -40,18 +36,6 @@ internal class SessionRepositoryImpl(
     }
 
     override suspend fun setRateAppDisplayed(isDisplayed: Boolean) {
-    }
-
-    override fun observeShowBackupReminder(): Flow<Boolean> {
-        return local.observeBackupReminderTimestamp().map { nextTimestamp ->
-            timeProvider.systemCurrentTime() > nextTimestamp
-        }
-    }
-
-    override fun resetBackupReminder() {
-        local.setBackupReminderTimestamp(
-            timeProvider.systemCurrentTime() + Duration.ofDays(21).toMillis(),
-        )
     }
 
     override suspend fun getAppInstallTimestamp(): Long {

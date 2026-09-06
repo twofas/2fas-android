@@ -28,5 +28,6 @@ internal object TypographySizes {
     val xl = SizeSpec(fontSize = 20.sp, lineHeight = 28.sp)
     val xl2 = SizeSpec(fontSize = 24.sp, lineHeight = 32.sp)
     val xl3 = SizeSpec(fontSize = 28.sp, lineHeight = 34.sp)
-    val xl4 = SizeSpec(fontSize = 36.sp, lineHeight = 40.sp)
+    val xl4 = SizeSpec(fontSize = 32.sp, lineHeight = 38.sp)
+    val xl5 = SizeSpec(fontSize = 36.sp, lineHeight = 40.sp)
 }

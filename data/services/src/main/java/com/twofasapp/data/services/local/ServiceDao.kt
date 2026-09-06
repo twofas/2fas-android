@@ -39,6 +39,9 @@ interface ServiceDao {
     @Query("DELETE FROM local_services WHERE secret == :secret")
     suspend fun deleteBySecret(secret: String)
 
+    @Query("UPDATE local_services SET revealTimestamp = :timestamp WHERE id = :id")
+    suspend fun updateRevealTimestamp(id: Long, timestamp: Long)
+
     @Update
     suspend fun update(entity: ServiceEntity)
 

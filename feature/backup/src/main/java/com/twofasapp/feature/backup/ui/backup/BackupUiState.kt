@@ -12,6 +12,7 @@ internal data class BackupUiState(
     val showError: Boolean = false,
     val error: CloudSyncError? = null,
     val exportEnabled: Boolean = false,
+    val showBackupNotice: Boolean = true,
     val cloudBackupStatus: CloudBackupStatus? = null,
     val cloudSyncStatus: CloudSyncStatus = CloudSyncStatus.Default,
     val events: List<BackupUiEvent> = emptyList(),

@@ -13,6 +13,7 @@ import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.parsers.SupportedServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -73,13 +74,44 @@ internal class DeveloperViewModel(
         }
     }
 
-    private fun createLink(issuer: String): OtpAuthLink {
+    fun generateAllTypes() {
+        launchScoped(Dispatchers.IO) {
+            servicesRepository.addServices(
+                services = buildList {
+                    add(ServiceParser.parseService(createLink(issuer = "TOTP Default")))
+                    listOf("Google", "Facebook", "Github", "Slack", "Amazon").forEachIndexed { index, issuer ->
+                        add(ServiceParser.parseService(createLink(issuer = issuer)).copy(name = "TOTP Default Icon ${index + 1}"))
+                    }
+                    add(ServiceParser.parseService(createLink(issuer = "HOTP", type = "HOTP", params = mapOf(OtpAuthLink.ParamCounter to "1"))))
+                    add(ServiceParser.parseService(createLink(issuer = "Steam", type = "STEAM")))
+
+                    listOf(7, 8).forEach { digits ->
+                        add(ServiceParser.parseService(createLink(issuer = "TOTP $digits digits", params = mapOf(OtpAuthLink.ParamDigits to digits.toString()))))
+                    }
+
+                    listOf(15, 60).forEach { period ->
+                        add(ServiceParser.parseService(createLink(issuer = "TOTP ${period}s period", params = mapOf(OtpAuthLink.ParamPeriod to period.toString()))))
+                    }
+
+                    listOf("SHA224", "SHA256", "SHA384", "SHA512").forEach { algorithm ->
+                        add(ServiceParser.parseService(createLink(issuer = "TOTP $algorithm", params = mapOf(OtpAuthLink.ParamAlgorithm to algorithm))))
+                    }
+                },
+            )
+        }
+    }
+
+    private fun createLink(
+        issuer: String,
+        type: String = "TOTP",
+        params: Map<String, String> = emptyMap(),
+    ): OtpAuthLink {
         return OtpAuthLink(
-            type = "TOTP",
+            type = type,
             label = "user@test.com",
             secret = randomSecret(),
             issuer = issuer,
-            params = emptyMap(),
+            params = params,
             link = null,
         )
     }

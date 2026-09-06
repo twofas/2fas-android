@@ -57,4 +57,8 @@ class FocusServiceViewModel(
     fun reveal() {
         launchScoped { servicesRepository.revealService(serviceId) }
     }
+
+    fun delete() {
+        launchScoped { servicesRepository.trashService(serviceId) }
+    }
 }

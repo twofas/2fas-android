@@ -10,5 +10,4 @@ internal data class CustomizationUiState(
     val showNextCode: Boolean = false,
     val hideCodes: Boolean = false,
     val autoFocusSearch: Boolean = false,
-    val showBackupNotice: Boolean = true,
 )

@@ -12,7 +12,6 @@ sealed class HomeListItem(
     object Empty : HomeListItem("Empty", "Empty")
     object EmptySearch : HomeListItem("EmptySearch", "EmptySearch")
     object SyncNoticeBar : HomeListItem("SyncNoticeBar", "SyncNoticeBar")
-    object SyncReminder : HomeListItem("SyncReminder", "SyncReminder")
     object AppReview : HomeListItem("AppReview", "AppReview")
     object PassBanner : HomeListItem("PassBanner", "PassBanner")
     data class ServiceItem(val service: Service) : HomeListItem("Service:${service.id}", "Service")

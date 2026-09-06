@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
@@ -41,6 +42,8 @@ internal class ServicesRepositoryImpl(
     private val isTickerEnabled = MutableStateFlow(true)
     private var guideManualPrefill: String? = null
 
+    private val revealTimestamps = MutableStateFlow<Map<Long, Long>>(emptyMap())
+
     private val recentlyDeleted by serializedPref(
         name = "recentlyDeleted",
         default = RecentlyDeleted(emptyList()),
@@ -52,8 +55,19 @@ internal class ServicesRepositoryImpl(
         return combine(
             local.observeServices(),
             local.observeOrder(),
-        ) { services, order ->
-            services.sortedBy { order.ids.indexOf(it.id) }
+            revealTimestamps,
+        ) { services, order, reveals ->
+            services
+                .sortedBy { order.ids.indexOf(it.id) }
+                .map { service ->
+                    val revealTimestamp = reveals[service.id] ?: return@map service
+
+                    if (revealTimestamp > (service.revealTimestamp ?: 0L)) {
+                        service.copy(revealTimestamp = revealTimestamp)
+                    } else {
+                        service
+                    }
+                }
         }
     }
 
@@ -376,6 +390,8 @@ internal class ServicesRepositoryImpl(
     }
 
     override suspend fun revealService(id: Long) {
+        revealTimestamps.update { it + (id to timeProvider.systemCurrentTime()) }
+
         withContext(dispatchers.io) {
             local.revealService(id)
         }

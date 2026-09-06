@@ -4,14 +4,12 @@ import androidx.lifecycle.ViewModel
 import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.session.CustomizationRepository
-import com.twofasapp.data.session.SettingsRepository
 import com.twofasapp.data.session.domain.ServicesStyle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class CustomizationViewModel(
     private val customizationRepository: CustomizationRepository,
-    private val settingsRepository: SettingsRepository,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(CustomizationUiState())
@@ -52,12 +50,6 @@ internal class CustomizationViewModel(
                 uiState.update { it.copy(autoFocusSearch = autoFocusSearch) }
             }
         }
-
-        launchScoped {
-            settingsRepository.observeShowBackupNotice().collect { showBackupNotice ->
-                uiState.update { it.copy(showBackupNotice = showBackupNotice) }
-            }
-        }
     }
 
     fun setSelectedTheme(selectedTheme: SelectedTheme) {
@@ -81,12 +73,6 @@ internal class CustomizationViewModel(
     fun toggleAutoFocusSearch() {
         launchScoped {
             customizationRepository.setAutoFocusSearch(uiState.value.autoFocusSearch.not())
-        }
-    }
-
-    fun toggleShowBackupNotice() {
-        launchScoped {
-            settingsRepository.setShowBackupNotice(uiState.value.showBackupNotice.not())
         }
     }
 

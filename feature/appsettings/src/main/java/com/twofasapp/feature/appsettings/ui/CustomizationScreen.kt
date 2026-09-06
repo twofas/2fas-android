@@ -12,9 +12,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,27 +28,21 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.feature.settings.OptionEntry
 import com.twofasapp.core.design.feature.settings.OptionHeader
 import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
 import com.twofasapp.core.design.feature.settings.OptionSwitch
-import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
-import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.theme.RoundedShape16
@@ -67,7 +63,6 @@ internal fun CustomizationScreen(
         onSelectedThemeChange = { viewModel.setSelectedTheme(it) },
         onServicesStyleChange = { viewModel.setServiceStyle(it) },
         onShowNextTokenToggle = { viewModel.toggleShowNextToken() },
-        onShowBackupNoticeToggle = { viewModel.toggleShowBackupNotice() },
         onAutoFocusSearchToggle = { viewModel.toggleAutoFocusSearch() },
         onHideCodesToggle = { viewModel.toggleHideTokens() },
         onDynamicColorsToggle = { viewModel.toggleDynamicColors() },
@@ -80,14 +75,11 @@ private fun Content(
     onSelectedThemeChange: (SelectedTheme) -> Unit = {},
     onServicesStyleChange: (ServicesStyle) -> Unit = {},
     onShowNextTokenToggle: () -> Unit = {},
-    onShowBackupNoticeToggle: () -> Unit = {},
     onAutoFocusSearchToggle: () -> Unit = {},
     onHideCodesToggle: () -> Unit = {},
     onDynamicColorsToggle: () -> Unit = {},
 ) {
     val strings = MdtLocale.strings
-    var showServicesStyleDialog by remember { mutableStateOf(false) }
-    var showConfirmDisableBackupNotice by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = { TopAppBar(title = strings.settingsAppearance) },
@@ -97,7 +89,8 @@ private fun Content(
                 .verticalScroll(rememberScrollState())
                 .fillMaxSize()
                 .background(MdtTheme.color.background)
-                .padding(padding),
+                .padding(padding)
+                .padding(bottom = 16.dp),
         ) {
             OptionHeader(
                 text = strings.settingsTheme,
@@ -109,8 +102,8 @@ private fun Content(
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 12.dp)
                     .clip(RoundedShape16)
-                    .background(MdtTheme.color.surfaceContainerLow)
-                    .padding(vertical = 24.dp),
+                    .background(MdtTheme.color.surfaceContainer)
+                    .padding(vertical = 16.dp, horizontal = 16.dp),
             ) {
                 SelectedTheme.entries.forEach { theme ->
                     ThemeOption(
@@ -131,15 +124,26 @@ private fun Content(
             )
 
             OptionHeader(
-                text = strings.settingsPreferences,
+                text = strings.settingsServicesStyle,
             )
 
-            OptionEntry(
-                title = strings.settingsServicesStyle,
-                subtitle = uiState.servicesStyle.toStringResource(),
-                icon = MdtIcons.ListStyle,
-                onClick = { showServicesStyleDialog = true },
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 12.dp)
+                    .clip(RoundedShape16)
+                    .background(MdtTheme.color.surfaceContainer)
+                    .padding(vertical = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(32.dp, Alignment.CenterHorizontally),
+            ) {
+                ServicesStyle.entries.forEach { style ->
+                    ServicesStyleOption(
+                        style = style,
+                        selected = uiState.servicesStyle == style,
+                        onClick = { onServicesStyleChange(style) },
+                    )
+                }
+            }
 
             OptionSwitch(
                 title = strings.settingsShowNextCode,
@@ -164,40 +168,7 @@ private fun Content(
                 checked = uiState.autoFocusSearch,
                 onToggle = { onAutoFocusSearchToggle() },
             )
-
-            OptionSwitch(
-                title = strings.settingsShowBackupNotice,
-                icon = MdtIcons.CloudOff,
-                checked = uiState.showBackupNotice,
-                onToggle = { checked ->
-                    if (checked.not()) {
-                        showConfirmDisableBackupNotice = true
-                    } else {
-                        onShowBackupNoticeToggle()
-                    }
-                },
-            )
         }
-    }
-
-    if (showServicesStyleDialog) {
-        ListRadioDialog(
-            onDismissRequest = { showServicesStyleDialog = false },
-            title = strings.settingsServicesStyle,
-            options = ServicesStyle.entries.map { it.toStringResource() },
-            selectedIndex = ServicesStyle.entries.indexOf(uiState.servicesStyle),
-            onOptionSelected = { index, _ -> onServicesStyleChange(ServicesStyle.entries[index]) },
-        )
-    }
-
-    if (showConfirmDisableBackupNotice) {
-        ConfirmDialog(
-            onDismissRequest = { showConfirmDisableBackupNotice = false },
-            title = strings.settingsShowBackupNotice,
-            body = strings.settingsShowBackupNoticeConfirmBody,
-            icon = MdtIcons.Info,
-            onPositive = { onShowBackupNoticeToggle() },
-        )
     }
 }
 
@@ -237,6 +208,42 @@ private fun ThemeOption(
 }
 
 @Composable
+private fun ServicesStyleOption(
+    style: ServicesStyle,
+    modifier: Modifier = Modifier,
+    selected: Boolean = false,
+    onClick: () -> Unit = {},
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Image(
+            painter = when (style) {
+                ServicesStyle.Default -> painterResource(R.drawable.img_liststyle_default)
+                ServicesStyle.Compact -> painterResource(R.drawable.img_liststyle_compact)
+            },
+            contentDescription = null,
+            modifier = Modifier
+                .height(135.dp)
+                .aspectRatio(452f / 741f, matchHeightConstraintsFirst = true)
+                .clip(RoundedCornerShape(14.dp))
+                .border(2.dp, if (selected) MdtTheme.color.primary else MdtTheme.color.transparent, RoundedCornerShape(14.dp))
+                .testTag("servicesStyleOption${style.name}")
+                .clickable { onClick() }
+                .padding(4.dp),
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = style.toStringResource(),
+            style = MdtTheme.typo.material.titleMedium,
+        )
+    }
+}
+
+@Composable
 private fun SelectedTheme.toStringResource(): String {
     return when (this) {
         SelectedTheme.Auto -> stringResource(id = LocaleR.string.settings__theme_option_auto)
@@ -253,7 +260,7 @@ private fun ServicesStyle.toStringResource(): String {
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Preview() {
     PreviewTheme {

@@ -9,15 +9,10 @@ import java.time.Instant
 internal class SessionLocalSource(private val preferences: PlainPreferences) {
 
     companion object {
-        private const val KeyBackupReminderTimestamp = "backupReminderTimestamp"
         private const val KeyAppInstallTimestamp = "appInstallTimestamp"
         private const val KeyNoCompanionAppFromTimestamp = "noCompanionAppFromTimestamp"
         private const val KeyPassBannerDismissTimestamp = "passBannerDismissTimestamp"
         private const val KeyAppReviewPromptedTimestamp = "appReviewPromptedTimestamp"
-    }
-
-    private val backupReminderTimestampFlow: MutableStateFlow<Long> by lazy {
-        MutableStateFlow(getBackupReminderTimestamp())
     }
 
     private val passBannerDismissTimestampFlow: MutableStateFlow<Long> by lazy {
@@ -26,19 +21,6 @@ internal class SessionLocalSource(private val preferences: PlainPreferences) {
 
     private val appReviewPromptedTimestampFlow: MutableStateFlow<Long> by lazy {
         MutableStateFlow(getAppReviewPromptedTimestamp())
-    }
-
-    fun observeBackupReminderTimestamp(): Flow<Long> {
-        return backupReminderTimestampFlow
-    }
-
-    fun getBackupReminderTimestamp(): Long {
-        return preferences.getLong(KeyBackupReminderTimestamp) ?: 0L
-    }
-
-    fun setBackupReminderTimestamp(millis: Long) {
-        backupReminderTimestampFlow.update { millis }
-        preferences.putLong(KeyBackupReminderTimestamp, millis)
     }
 
     fun getAppInstallTimestamp(): Long {
