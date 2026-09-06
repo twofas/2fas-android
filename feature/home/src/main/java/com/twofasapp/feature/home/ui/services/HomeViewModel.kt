@@ -100,7 +100,7 @@ internal class HomeViewModel(
                     return@collect
                 }
 
-                val showSyncNotice = result.appSettings.showBackupNotice && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
+                val showCloudSyncNotice = result.appSettings.showBackupNotice && (result.cloudSyncStatus is CloudSyncStatus.Error || result.backupEnabled.not())
 
                 val showAppReview = result.appReviewPrompted.not() &&
                     result.searchQuery.isEmpty() &&
@@ -123,7 +123,7 @@ internal class HomeViewModel(
                     state.copy(
                         services = filteredServices,
                         groups = result.groups,
-                        showSyncNotice = showSyncNotice,
+                        showCloudSyncNotice = showCloudSyncNotice,
                         showAppReview = showAppReview,
                         showPassBanner = showPassBanner,
                         totalGroups = result.groups.size,
@@ -136,14 +136,10 @@ internal class HomeViewModel(
                         showNextCode = result.showNextCode,
                         hideCodes = result.hideCodes,
                         items = buildList {
-
-                            if (showSyncNotice) {
-                                add(HomeListItem.SyncNoticeBar)
-                            }
-
                             when {
                                 showAppReview -> add(HomeListItem.AppReview)
                                 showPassBanner -> add(HomeListItem.PassBanner)
+                                showCloudSyncNotice -> add(HomeListItem.CloudSyncItem)
                             }
 
                             val groupedServices: Map<Group, List<Service>> = buildMap {

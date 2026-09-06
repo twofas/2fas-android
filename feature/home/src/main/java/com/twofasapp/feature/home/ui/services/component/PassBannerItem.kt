@@ -24,7 +24,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
@@ -35,7 +35,7 @@ import com.twofasapp.feature.home.R
 import com.twofasapp.locale.MdtLocale
 
 @Composable
-internal fun PassBanner(
+internal fun PassBannerItem(
     modifier: Modifier = Modifier,
     onGoToStoreClick: () -> Unit = {},
     onDismissClick: () -> Unit = {},
@@ -111,10 +111,10 @@ internal fun PassBanner(
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Preview() {
     PreviewTheme {
-        PassBanner(Modifier.fillMaxWidth())
+        PassBannerItem(Modifier.fillMaxWidth())
     }
 }

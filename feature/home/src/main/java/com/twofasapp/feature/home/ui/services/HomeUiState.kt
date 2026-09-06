@@ -17,7 +17,7 @@ data class HomeUiState(
     val selectedServiceIds: Set<Long> = emptySet(),
     val searchQuery: String = "",
     val searchFocused: Boolean = false,
-    val showSyncNotice: Boolean = false,
+    val showCloudSyncNotice: Boolean = false,
     val showAppReview: Boolean = false,
     val showPassBanner: Boolean = false,
     val hasUnreadNotifications: Boolean = false,

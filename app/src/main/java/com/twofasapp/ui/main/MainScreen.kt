@@ -14,6 +14,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.common.domain.SelectedTheme
+import com.twofasapp.common.environment.BuildVariant
 import com.twofasapp.core.design.AppTheme
 import com.twofasapp.core.design.LocalAppTheme
 import com.twofasapp.core.design.LocalDynamicColors
@@ -73,24 +74,24 @@ internal fun MainScreen(
         }
     }
 
-    // TODO: Remove
-    var askForPushPermission by remember { mutableStateOf(true) }
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        if (askForPushPermission) {
-            RequestPermission(
-                permission = Manifest.permission.POST_NOTIFICATIONS,
-                rationaleEnabled = false,
-                onGranted = {
-                    askForPushPermission = false
-                },
-                onDenied = {
-                    askForPushPermission = false
-                },
-                onDismissRequest = {
-                    askForPushPermission = false
-                },
-            )
+    if (uiState.buildVariant == BuildVariant.Debug) {
+        var askForPushPermission by remember { mutableStateOf(true) }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (askForPushPermission) {
+                RequestPermission(
+                    permission = Manifest.permission.POST_NOTIFICATIONS,
+                    rationaleEnabled = false,
+                    onGranted = {
+                        askForPushPermission = false
+                    },
+                    onDenied = {
+                        askForPushPermission = false
+                    },
+                    onDismissRequest = {
+                        askForPushPermission = false
+                    },
+                )
+            }
         }
     }
 }

@@ -67,12 +67,12 @@ import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualModal
 import com.twofasapp.feature.home.ui.services.add.scan.AddServiceScanModal
 import com.twofasapp.feature.home.ui.services.component.AppReviewItem
 import com.twofasapp.feature.home.ui.services.component.AppReviewViewModel
+import com.twofasapp.feature.home.ui.services.component.CloudSyncItem
 import com.twofasapp.feature.home.ui.services.component.HomeAppBar
 import com.twofasapp.feature.home.ui.services.component.HomeEmpty
 import com.twofasapp.feature.home.ui.services.component.HomeFab
 import com.twofasapp.feature.home.ui.services.component.HomeSearchEmpty
-import com.twofasapp.feature.home.ui.services.component.PassBanner
-import com.twofasapp.feature.home.ui.services.component.SyncNoticeBar
+import com.twofasapp.feature.home.ui.services.component.PassBannerItem
 import com.twofasapp.feature.home.ui.services.focus.ServiceModal
 import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.android.awaitFrame
@@ -401,12 +401,10 @@ private fun Content(
                 reorderableData.value.forEach { item ->
 
                     when (item) {
-                        HomeListItem.SyncNoticeBar -> {
+                        HomeListItem.CloudSyncItem -> {
                             listItem(item) {
-                                SyncNoticeBar(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(vertical = 8.dp),
+                                CloudSyncItem(
+                                    modifier = Modifier.fillMaxWidth(),
                                     onOpenBackupClick = { onOpenBackupClick(false) },
                                 )
                             }
@@ -424,9 +422,9 @@ private fun Content(
 
                         HomeListItem.PassBanner -> {
                             listItem(item) {
-                                PassBanner(
+                                PassBannerItem(
                                     modifier = Modifier
-                                        .padding(horizontal = 16.dp)
+                                        .padding(horizontal = 12.dp)
                                         .padding(bottom = 12.dp, top = 4.dp),
                                     onGoToStoreClick = {
                                         uriHandler.openSafely(MdtLocale.links.passPlayStore, activity)

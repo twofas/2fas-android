@@ -19,14 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
-import com.twofasapp.core.design.theme.RoundedShape16
+import com.twofasapp.core.design.theme.RoundedShape24
 import com.twofasapp.locale.MdtLocale
 
 @Composable
@@ -38,8 +38,9 @@ internal fun AppReviewItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 8.dp)
-            .clip(RoundedShape16)
+            .padding(horizontal = 12.dp)
+            .padding(bottom = 12.dp, top = 4.dp)
+            .clip(RoundedShape24)
             .background(MdtTheme.color.surfaceContainer)
             .padding(start = 16.dp, top = 24.dp, end = 16.dp, bottom = 12.dp),
     ) {
@@ -103,7 +104,7 @@ internal fun AppReviewItem(
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Preview() {
     PreviewTheme {

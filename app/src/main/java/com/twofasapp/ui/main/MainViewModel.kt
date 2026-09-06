@@ -1,6 +1,7 @@
 package com.twofasapp.ui.main
 
 import androidx.lifecycle.ViewModel
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
@@ -18,6 +19,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 
 internal class MainViewModel(
+    private val appBuild: AppBuild,
     private val sessionRepository: SessionRepository,
     private val startupRepository: StartupRepository,
     private val customizationRepository: CustomizationRepository,
@@ -32,6 +34,10 @@ internal class MainViewModel(
     init {
         launchScoped {
             sessionRepository.markAppInstalled()
+        }
+
+        launchScoped {
+            uiState.update { it.copy(buildVariant = appBuild.buildVariant) }
         }
 
         launchScoped {
