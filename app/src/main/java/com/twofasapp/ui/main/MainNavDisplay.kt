@@ -53,6 +53,10 @@ import com.twofasapp.feature.externalimport.navigation.ExternalImportSelectorRou
 import com.twofasapp.feature.guides.navigation.GuideInitRoute
 import com.twofasapp.feature.guides.navigation.GuidePagerRoute
 import com.twofasapp.feature.guides.navigation.GuidesRoute
+import com.twofasapp.feature.home.navigation.EditServiceChangeBrandRoute
+import com.twofasapp.feature.home.navigation.EditServiceChangeLabelRoute
+import com.twofasapp.feature.home.navigation.EditServiceDomainAssignmentRoute
+import com.twofasapp.feature.home.navigation.EditServiceRequestIconRoute
 import com.twofasapp.feature.home.navigation.EditServiceRoute
 import com.twofasapp.feature.home.navigation.HomeRoute
 import com.twofasapp.feature.home.navigation.NotificationsRoute
@@ -63,7 +67,6 @@ import com.twofasapp.feature.security.navigation.SecurityRoute
 import com.twofasapp.feature.security.navigation.SetupPinRoute
 import com.twofasapp.feature.security.ui.lock.LockActivity
 import com.twofasapp.feature.startup.navigation.StartupRoute
-import com.twofasapp.feature.trash.navigation.DisposeRoute
 import com.twofasapp.feature.trash.navigation.TrashRoute
 import org.koin.compose.koinInject
 
@@ -160,19 +163,22 @@ internal fun MainNavDisplay(
                         serviceId = key.serviceId,
                         openAuth = { onSuccess -> openAuth(onSuccess) },
                     )
-
-//                    EditServiceRoute(
-//                        serviceId = it.arguments?.getLong(NavArg.ServiceId.name) ?: 0L,
-//                        openAuth = { onSuccess ->
-//                            authSuccessCallback = onSuccess
-//
-//                            startAuthForResult.launch(context.intentFor<LockActivity>("canGoBack" to true))
-//                        },
-//                    )
                 }
 
-                entry<Screen.Dispose> { key ->
-                    DisposeRoute(serviceId = key.serviceId)
+                entry<Screen.EditServiceDomainAssignment> { key ->
+                    EditServiceDomainAssignmentRoute(serviceId = key.serviceId)
+                }
+
+                entry<Screen.EditServiceChangeBrand> { key ->
+                    EditServiceChangeBrandRoute(serviceId = key.serviceId)
+                }
+
+                entry<Screen.EditServiceChangeLabel> { key ->
+                    EditServiceChangeLabelRoute(serviceId = key.serviceId)
+                }
+
+                entry<Screen.EditServiceRequestIcon> {
+                    EditServiceRequestIconRoute()
                 }
 
                 entry<Screen.ExternalImportSelector> {

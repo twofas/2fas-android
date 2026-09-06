@@ -43,7 +43,7 @@ internal fun ColorBadgeDialog(
         contentScrollable = false,
     ) {
         LazyColumn {
-            items(Service.Tint.values().toList(), key = { it.name }) {
+            items(Service.Tint.entries, key = { it.name }) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()

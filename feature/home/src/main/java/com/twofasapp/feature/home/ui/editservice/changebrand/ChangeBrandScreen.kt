@@ -1,24 +1,22 @@
 package com.twofasapp.feature.home.ui.editservice.changebrand
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,28 +27,39 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
+import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.foundation.dialog.LegacyListDialog
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonHeight
+import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.dialog.BaseDialog
+import com.twofasapp.core.design.foundation.icon.Icon
+import com.twofasapp.core.design.foundation.image.AsyncImage
+import com.twofasapp.core.design.foundation.other.Space
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBarWithSearch
 import com.twofasapp.core.design.ktx.LocalBackDispatcher
+import com.twofasapp.core.design.theme.RoundedShape16
+import com.twofasapp.core.design.theme.RoundedShape24
 import com.twofasapp.feature.home.ui.editservice.BrandIcon
 import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
 import com.twofasapp.locale.R
+import com.twofasapp.parsers.ServiceIcons
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
@@ -89,7 +98,7 @@ private fun Content(
 ) {
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
-    var showBrandingDialog = remember { mutableStateOf(false) }
+    var showBrandingDialog by remember { mutableStateOf(false) }
     var finish by remember { mutableStateOf(false) }
     val uriHandler = LocalUriHandler.current
 
@@ -110,10 +119,15 @@ private fun Content(
             }
         },
     ) { padding ->
+        if (state.loading) {
+            return@Scaffold
+        }
+
         if (state.sections.isEmpty()) {
             Text(
                 text = stringResource(id = R.string.brand_empty_msg),
-                style = MaterialTheme.typography.bodyLarge.copy(color = MdtTheme.color.onSurfaceVariant),
+                style = MdtTheme.typo.base.normal,
+                color = MdtTheme.color.onSurfaceVariant,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -126,52 +140,31 @@ private fun Content(
         LazyColumn(
             state = listState,
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
+                .background(MdtTheme.color.background)
                 .imePadding()
                 .padding(padding),
         ) {
             // Icon order
-            item(key = "icon_order") { SectionHeader(header = stringResource(id = R.string.tokens__order_icon_title)) }
-
-            item(key = "icon_order_details") {
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(24.dp),
-                ) {
-                    Image(
-                        painter = painterResource(id = com.twofasapp.core.design.R.drawable.img_order_icon),
-                        contentDescription = null,
-                        Modifier.height(80.dp),
-                    )
-
-                    Column(modifier = Modifier.padding(start = 24.dp)) {
-                        Text(
-                            text = stringResource(id = R.string.tokens__order_icon_description),
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = MdtTheme.color.onSurface,
-                        )
-                        Spacer(modifier = Modifier.height(12.dp))
-                        Row(
-                            modifier = Modifier.clickable {
-                                showBrandingDialog.value = true
-                            },
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.tokens__order_icon_link),
-                                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.SemiBold),
-                                color = MdtTheme.color.primary,
-                                modifier = Modifier.align(CenterVertically),
-                            )
-                        }
-                    }
-                }
+            item(key = "icon_order") {
+                RequestIconItem(
+                    modifier = Modifier.fillMaxWidth(),
+                    onRequestClick = { showBrandingDialog = true },
+                )
             }
 
             state.sections.forEach { (header, brands) ->
 
                 // Header
-                item(key = header) { SectionHeader(header = header) }
+                item(key = header) {
+                    OptionHeader(
+                        text = header,
+                        contentPadding = OptionHeaderContentPaddingFirst,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(MdtTheme.color.surfaceContainer),
+                    )
+                }
 
                 // Icons
                 items(brands.windowed(4, 4, partialWindows = true)) { brandsRow ->
@@ -181,15 +174,14 @@ private fun Content(
                             .fillMaxWidth()
                             .padding(vertical = 8.dp),
                     ) {
-                        brandsRow.forEach {
+                        brandsRow.forEach { brand ->
                             Column(
                                 modifier = Modifier
-                                    .width(72.dp)
-                                    .height(104.dp)
+                                    .size(width = 72.dp, height = 104.dp)
                                     .align(CenterVertically),
                             ) {
-                                Image(
-                                    bitmap = com.twofasapp.feature.home.ui.editservice.serviceIconBitmap(iconCollectionId = it.iconCollectionId),
+                                AsyncImage(
+                                    model = "file:///android_asset/${ServiceIcons.getIcon(collectionId = brand.iconCollectionId, isDark = MdtTheme.isDark)}",
                                     contentDescription = null,
                                     contentScale = ContentScale.Inside,
                                     modifier = Modifier
@@ -197,20 +189,21 @@ private fun Content(
                                         .align(CenterHorizontally)
                                         .border(
                                             width = 2.dp,
-                                            color = if (it.iconCollectionId == service.iconCollectionId) MdtTheme.color.primary else MdtTheme.color.background,
+                                            color = if (brand.iconCollectionId == service.iconCollectionId) MdtTheme.color.primary else MdtTheme.color.transparent,
                                             shape = CircleShape,
                                         )
                                         .clip(CircleShape)
                                         .clickable {
-                                            onUpdateBrand(it)
+                                            onUpdateBrand(brand)
                                             finish = true
                                         }
                                         .padding(16.dp),
                                 )
 
                                 Text(
-                                    text = it.name,
-                                    style = MaterialTheme.typography.bodySmall.copy(color = MdtTheme.color.onSurface),
+                                    text = brand.name,
+                                    style = MdtTheme.typo.xs2.normal,
+                                    color = MdtTheme.color.onSurface,
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis,
                                     modifier = Modifier
@@ -228,24 +221,15 @@ private fun Content(
             }
         }
 
-        if (showBrandingDialog.value) {
-            LegacyListDialog(
-                onDismissRequest = { showBrandingDialog.value = false },
-                title = stringResource(id = R.string.tokens__order_menu_title),
-                options = listOf(
-                    stringResource(id = R.string.tokens__order_menu_option_user),
-                    stringResource(id = R.string.tokens__order_menu_option_company),
-                ),
-                onOptionSelected = { index ->
-                    when (index) {
-                        0 -> onRequestIconClick()
-                        1 -> uriHandler.openUri("https://2fas.com/your-branding/")
-                    }
-                },
+        if (showBrandingDialog) {
+            RequestIconDialog(
+                onDismissRequest = { showBrandingDialog = false },
+                onUserOptionClick = onRequestIconClick,
+                onCompanyOptionClick = { uriHandler.openUri("https://2fas.com/your-branding/") },
             )
         }
 
-        LaunchedEffect(Unit) {
+        LaunchedEffect(state.scrollTo) {
             if (state.scrollTo.not()) return@LaunchedEffect
 
             scope.launch {
@@ -275,25 +259,117 @@ private fun Content(
 }
 
 @Composable
-fun SectionHeader(header: String) {
+private fun RequestIconItem(
+    modifier: Modifier = Modifier,
+    onRequestClick: () -> Unit = {},
+) {
+    Column(
+        horizontalAlignment = CenterHorizontally,
+        modifier = modifier
+            .padding(horizontal = 12.dp)
+            .padding(top = 8.dp, bottom = 12.dp)
+            .clip(RoundedShape24)
+            .background(MdtTheme.color.surfaceContainer)
+            .padding(16.dp),
+    ) {
+        Box(
+            modifier = Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+                .background(MdtTheme.color.primary.copy(alpha = 0.12f)),
+            contentAlignment = Center,
+        ) {
+            Icon(
+                painter = MdtIcons.Panorama,
+                modifier = Modifier.size(24.dp),
+                tint = MdtTheme.color.primary,
+            )
+        }
+
+        Space(16.dp)
+
+        Text(
+            text = stringResource(id = R.string.tokens__order_icon_description),
+            color = MdtTheme.color.onSurface,
+            style = MdtTheme.typo.base.normal,
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center,
+        )
+
+        Space(16.dp)
+
+        Button(
+            text = stringResource(id = R.string.tokens__order_icon_link),
+            onClick = onRequestClick,
+            style = ButtonStyle.Filled,
+            size = ButtonHeight.Small,
+        )
+
+        Space(4.dp)
+    }
+}
+
+@Composable
+private fun RequestIconDialog(
+    onDismissRequest: () -> Unit,
+    onUserOptionClick: () -> Unit = {},
+    onCompanyOptionClick: () -> Unit = {},
+) {
+    BaseDialog(
+        onDismissRequest = onDismissRequest,
+        title = stringResource(id = R.string.tokens__order_menu_title),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            RequestIconOption(
+                title = stringResource(id = R.string.tokens__order_menu_option_user),
+                onClick = {
+                    onUserOptionClick()
+                    onDismissRequest()
+                },
+            )
+
+            RequestIconOption(
+                title = stringResource(id = R.string.tokens__order_menu_option_company),
+                onClick = {
+                    onCompanyOptionClick()
+                    onDismissRequest()
+                },
+            )
+        }
+    }
+}
+
+@Composable
+private fun RequestIconOption(
+    title: String,
+    onClick: () -> Unit = {},
+) {
     Text(
-        text = header,
-        style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+        text = title,
+        style = MdtTheme.typo.base.medium,
         color = MdtTheme.color.onSurface,
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = MdtTheme.color.divider)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .clip(RoundedShape16)
+            .background(MdtTheme.color.surfaceContainer)
+            .clickable { onClick() }
+            .padding(16.dp),
     )
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Preview() {
     PreviewTheme {
         Content(
             service = Service.Preview,
             state = ChangeBrandUiState(
+                loading = false,
                 sections = mapOf(
                     "A" to listOf(
                         BrandIcon(name = "Apple", iconCollectionId = ""),
@@ -301,6 +377,16 @@ private fun Preview() {
                     ),
                 ),
             ),
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewRequestIconDialog() {
+    PreviewTheme {
+        RequestIconDialog(
+            onDismissRequest = {},
         )
     }
 }

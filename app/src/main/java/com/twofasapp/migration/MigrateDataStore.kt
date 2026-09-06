@@ -49,7 +49,7 @@ class MigrateDataStore(
         dataStoreOwner.dataStore.edit { preferences ->
             entries.forEach { (key, value) ->
                 when (key) {
-                    "showOnboardWarning" -> preferences[booleanPreferencesKey("onboardingDisplayed")] = value as Boolean
+                    "showOnboardWarning" -> preferences[booleanPreferencesKey("onboardingDisplayed")] = (value as Boolean).not()
                     "showNextToken" -> preferences[booleanPreferencesKey("showNextToken")] = value as Boolean
                     "showBackupNotice" -> preferences[booleanPreferencesKey("showBackupNotice")] = value as Boolean
                     "autoFocusSearch" -> preferences[booleanPreferencesKey("autoFocusSearch")] = value as Boolean

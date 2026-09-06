@@ -38,10 +38,7 @@ fun ProvidesViewModelStoreOwner(
             }
 
             private fun clear() {
-                val isChangingConfigurations = activity.isChangingConfigurations
-                if (!isChangingConfigurations) {
-                    LocalViewModelStoreOwnersHolder.remove(ownerKey)
-                }
+                LocalViewModelStoreOwnersHolder.remove(ownerKey, clearStore = !activity.isChangingConfigurations)
             }
         }
     }

@@ -1,14 +1,18 @@
 package com.twofasapp.feature.home.ui.editservice
 
-import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,23 +22,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,63 +38,66 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.ServiceImageType
 import com.twofasapp.core.design.feature.items.asColor
+import com.twofasapp.core.design.feature.items.servicecard.ServiceCardImage
 import com.twofasapp.core.design.feature.settings.OptionEntry
 import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.dialog.BaseDialog
 import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.dialog.InfoDialog
+import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
+import com.twofasapp.core.design.foundation.layout.ActionsRow
 import com.twofasapp.core.design.foundation.lazy.listItem
-import com.twofasapp.core.design.foundation.outline.HorizontalLine
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.textfield.TextField
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.copyToClipboard
-import com.twofasapp.core.design.ktx.dpToSp
+import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.core.design.theme.RoundedShape12
+import com.twofasapp.core.design.theme.RoundedShape16
 import com.twofasapp.data.services.domain.Group
+import com.twofasapp.feature.home.ui.editservice.advancedsettings.AdvancedSettingsModal
 import com.twofasapp.feature.home.ui.editservice.badge.ColorBadgeDialog
 import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
-import kotlinx.coroutines.launch
+import com.twofasapp.parsers.ServiceIcons
 
 @Composable
 internal fun EditServiceScreen(
     onBackClick: () -> Unit,
-    onAdvanceClick: () -> Unit,
     onChangeBrandClick: () -> Unit,
     onChangeLabelClick: () -> Unit,
     onDomainAssignmentClick: () -> Unit,
-    onDeleteClick: () -> Unit,
     onSecurityClick: () -> Unit,
     onAuthenticateSecretClick: () -> Unit,
     onAuthenticateQrCodeClick: () -> Unit,
     viewModel: EditServiceViewModel,
 ) {
     val uiState = viewModel.uiState.collectAsState().value
-    val scope = rememberCoroutineScope()
-    val showUnsavedChangesDialog = remember { mutableStateOf(false) }
+    var showUnsavedChangesDialog by remember { mutableStateOf(false) }
 
     if (uiState.finish) {
         LaunchedEffect(Unit) {
-            scope.launch { onBackClick() }
+            onBackClick()
         }
     }
 
     BackHandler {
         if (uiState.hasChanges) {
-            showUnsavedChangesDialog.value = true
+            showUnsavedChangesDialog = true
         } else {
             onBackClick()
         }
@@ -106,11 +105,9 @@ internal fun EditServiceScreen(
 
     Content(
         uiState = uiState,
-        onAdvanceClick = onAdvanceClick,
         onChangeBrandClick = onChangeBrandClick,
         onChangeLabelClick = onChangeLabelClick,
         onDomainAssignmentClick = onDomainAssignmentClick,
-        onDeleteClick = onDeleteClick,
         onSecurityClick = onSecurityClick,
         onAuthenticateSecretClick = onAuthenticateSecretClick,
         onAuthenticateQrCodeClick = onAuthenticateQrCodeClick,
@@ -124,11 +121,11 @@ internal fun EditServiceScreen(
         onToggleQrVisibility = { viewModel.toggleQrVisibility() },
     )
 
-    if (showUnsavedChangesDialog.value) {
+    if (showUnsavedChangesDialog) {
         ConfirmDialog(
             title = stringResource(id = R.string.tokens__service_unsaved_changes_title),
             body = stringResource(id = R.string.tokens__service_unsaved_changes),
-            onDismissRequest = { showUnsavedChangesDialog.value = false },
+            onDismissRequest = { showUnsavedChangesDialog = false },
             onPositive = { onBackClick() },
         )
     }
@@ -137,11 +134,9 @@ internal fun EditServiceScreen(
 @Composable
 private fun Content(
     uiState: EditServiceUiState,
-    onAdvanceClick: () -> Unit = {},
     onChangeBrandClick: () -> Unit = {},
     onChangeLabelClick: () -> Unit = {},
     onDomainAssignmentClick: () -> Unit = {},
-    onDeleteClick: () -> Unit = {},
     onSecurityClick: () -> Unit = {},
     onAuthenticateSecretClick: () -> Unit = {},
     onAuthenticateQrCodeClick: () -> Unit = {},
@@ -155,16 +150,16 @@ private fun Content(
     onToggleQrVisibility: () -> Unit = {},
 ) {
     val service = uiState.service
-    val activity = (LocalContext.current as? Activity)
+    val activity = LocalContext.currentActivity
     val isSecretVisible = uiState.isSecretVisible
-    val showBadgeDialog = remember { mutableStateOf(false) }
-    val showSecretNoLockDialog = remember { mutableStateOf(false) }
-    val showQrNoLockDialog = remember { mutableStateOf(false) }
+    var showInfoModal by remember { mutableStateOf(false) }
+    var showBadgeDialog by remember { mutableStateOf(false) }
+    var showGroupDialog by remember { mutableStateOf(false) }
+    var showSecretNoLockDialog by remember { mutableStateOf(false) }
+    var showQrNoLockDialog by remember { mutableStateOf(false) }
 
     val isBrandSelected = service.imageType == Service.ImageType.IconCollection
     val isLabelSelected = isBrandSelected.not()
-
-    var expanded by remember { mutableStateOf(false) }
 
     if (uiState.service.id != 0L) {
         Scaffold(
@@ -172,19 +167,29 @@ private fun Content(
                 TopAppBar(
                     title = stringResource(id = R.string.tokens__customize_service_title),
                     actions = {
-                        TextButton(
-                            onClick = { onSaveClick() },
+                        Button(
+                            text = stringResource(id = R.string.commons__save),
+                            style = ButtonStyle.Text,
                             enabled = uiState.hasChanges && uiState.isInputNameValid && uiState.isInputInfoValid,
-                        ) {
-                            Text(text = stringResource(id = R.string.commons__save))
-                        }
+                            onClick = { onSaveClick() },
+                        )
                     },
                 )
             },
-        ) { innerPadding ->
-            LazyColumn(modifier = Modifier.padding(innerPadding)) {
+        ) { padding ->
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MdtTheme.color.background)
+                    .padding(top = padding.calculateTopPadding()),
+                contentPadding = PaddingValues(bottom = 16.dp),
+            ) {
+                // Service information section
                 listItem(EditServiceListItem.HeaderInfo) {
-                    OptionHeader(text = stringResource(R.string.tokens__service_information))
+                    OptionHeader(
+                        text = stringResource(R.string.tokens__service_information),
+                        contentPadding = OptionHeaderContentPaddingFirst,
+                    )
                 }
 
                 listItem(EditServiceListItem.InputName) {
@@ -195,17 +200,12 @@ private fun Content(
                         keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
                         onValueChange = { text ->
                             if (text.length <= 30) {
-                                if (text.isBlank()) {
-                                    onUpdateName(text, false)
-                                } else {
-                                    onUpdateName(text, true)
-                                }
+                                onUpdateName(text, text.isNotBlank())
                             }
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 72.dp, end = 16.dp)
-                            .padding(top = 8.dp, bottom = 4.dp),
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
                     )
                 }
 
@@ -222,7 +222,7 @@ private fun Content(
                         ),
                         visualTransformation = if (isSecretVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
-                            Row(
+                            ActionsRow(
                                 modifier = Modifier.padding(start = 4.dp, end = 8.dp),
                             ) {
                                 Icon(
@@ -236,7 +236,7 @@ private fun Content(
                                             when {
                                                 uiState.isAuthenticated -> onToggleQrVisibility()
                                                 uiState.hasLock -> onAuthenticateQrCodeClick()
-                                                uiState.hasLock.not() -> showQrNoLockDialog.value = true
+                                                else -> showQrNoLockDialog = true
                                             }
                                         }
                                         .padding(6.dp),
@@ -255,7 +255,7 @@ private fun Content(
                                             when {
                                                 service.id == 0L || uiState.isAuthenticated -> onToggleSecretVisibility()
                                                 uiState.hasLock -> onAuthenticateSecretClick()
-                                                uiState.hasLock.not() -> showSecretNoLockDialog.value = true
+                                                else -> showSecretNoLockDialog = true
                                             }
                                         }
                                         .padding(6.dp),
@@ -264,8 +264,7 @@ private fun Content(
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 72.dp, end = 16.dp)
-                            .padding(top = 8.dp, bottom = 4.dp),
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
                     )
                 }
 
@@ -278,29 +277,28 @@ private fun Content(
                         keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 72.dp, end = 16.dp)
-                            .padding(top = 8.dp, bottom = 4.dp),
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
                     )
                 }
 
-                listItem(EditServiceListItem.Advanced) {
-                    OptionEntry(title = stringResource(R.string.customization_advanced), onClick = { onAdvanceClick() })
-                }
-
+                // Personalization section
                 listItem(EditServiceListItem.HeaderPersonalization) {
-                    HorizontalLine()
                     OptionHeader(text = stringResource(R.string.customization_personalization))
                 }
 
                 listItem(EditServiceListItem.IconSelector) {
-                    IconSelector(service, isBrandSelected = isBrandSelected, isLabelSelected = isLabelSelected) {
-                        onUpdateIconType(it, service.labelText, service.labelColor)
-                    }
+                    IconSelector(
+                        service = service,
+                        isBrandSelected = isBrandSelected,
+                        isLabelSelected = isLabelSelected,
+                        onSelectionChanged = { onUpdateIconType(it, service.labelText, service.labelColor) },
+                    )
                 }
 
                 listItem(EditServiceListItem.ChangeBrand) {
                     OptionEntry(
                         title = stringResource(R.string.customization_change_brand),
+                        icon = MdtIcons.Panorama,
                         enabled = isBrandSelected,
                         onClick = { onChangeBrandClick() },
                     )
@@ -309,6 +307,7 @@ private fun Content(
                 listItem(EditServiceListItem.EditLabel) {
                     OptionEntry(
                         title = stringResource(R.string.customization_edit_label),
+                        icon = MdtIcons.Edit,
                         enabled = isLabelSelected,
                         onClick = { onChangeLabelClick() },
                     )
@@ -317,101 +316,81 @@ private fun Content(
                 listItem(EditServiceListItem.BadgeColor) {
                     OptionEntry(
                         title = stringResource(R.string.tokens__badge_color),
-                        icon = MdtIcons.Circle,
+                        icon = MdtIcons.CircleFilled,
                         iconTint = uiState.service.badgeColor.asColor(),
-                        onClick = { showBadgeDialog.value = true },
+                        onClick = { showBadgeDialog = true },
                     )
                 }
 
                 if (uiState.groups.isNotEmpty()) {
                     listItem(EditServiceListItem.Group) {
-                        ExposedDropdownMenuBox(
-                            expanded = expanded,
-                            onExpandedChange = { expanded = expanded.not() },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(end = 16.dp, start = 72.dp, bottom = 24.dp, top = 16.dp),
-
-                        ) {
-                            OutlinedTextField(
-                                value = uiState.groups.firstOrNull { it.id == service.groupId }?.name ?: MdtLocale.strings.servicesMyTokens,
-                                onValueChange = { },
-                                label = { Text(stringResource(id = R.string.tokens__group)) },
-                                readOnly = true,
-                                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                                colors = OutlinedTextFieldDefaults.colors(errorLabelColor = MdtTheme.color.error),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .menuAnchor(),
-                            )
-
-                            ExposedDropdownMenu(
-                                expanded = expanded,
-                                onDismissRequest = { expanded = false },
-                                modifier = Modifier.background(MdtTheme.color.surface),
-                            ) {
-                                DropdownMenuItem(
-                                    text = {
-                                        Text(text = MdtLocale.strings.servicesMyTokens, color = MdtTheme.color.onSurface)
-                                    },
-                                    onClick = {
-                                        onUpdateGroup(null)
-                                        expanded = false
-                                    },
-                                )
-
-                                uiState.groups.filter { it.name != null }.forEach { group ->
-                                    DropdownMenuItem(
-                                        text = {
-                                            Text(text = group.name.orEmpty(), color = MdtTheme.color.onSurface)
-                                        },
-                                        onClick = {
-                                            onUpdateGroup(group)
-                                            expanded = false
-                                        },
-                                    )
-                                }
-                            }
-                        }
+                        OptionEntry(
+                            title = stringResource(R.string.tokens__group),
+                            subtitle = uiState.groups.firstOrNull { it.id == service.groupId }?.name ?: MdtLocale.strings.servicesMyTokens,
+                            icon = MdtIcons.Group,
+                            onClick = { showGroupDialog = true },
+                        )
                     }
                 }
 
+                // Other section
                 listItem(EditServiceListItem.HeaderOther) {
-                    HorizontalLine()
                     OptionHeader(text = stringResource(R.string.tokens__add_manual_other))
                 }
+
                 listItem(EditServiceListItem.BrowserExtension) {
                     OptionEntry(
                         title = stringResource(R.string.browser__browser_extension),
+                        icon = MdtIcons.Extension,
                         enabled = service.assignedDomains.isNotEmpty(),
                         onClick = { onDomainAssignmentClick() },
                     )
                 }
 
-                listItem(EditServiceListItem.Delete) {
-                    HorizontalLine()
+                listItem(EditServiceListItem.Info) {
                     OptionEntry(
-                        title = stringResource(R.string.commons__delete),
-                        onClick = { onDeleteClick() },
-                        titleColor = MdtTheme.color.primary,
+                        title = stringResource(R.string.commons__info),
+                        icon = MdtIcons.Info,
+                        onClick = { showInfoModal = true },
                     )
                 }
             }
 
-            if (showBadgeDialog.value) {
+            if (showInfoModal) {
+                AdvancedSettingsModal(
+                    onDismissRequest = { showInfoModal = false },
+                    service = service,
+                )
+            }
+
+            if (showBadgeDialog) {
                 ColorBadgeDialog(
                     selected = service.badgeColor ?: Service.Tint.Default,
-                    onDismiss = { showBadgeDialog.value = false },
+                    onDismiss = { showBadgeDialog = false },
                     onSelected = {
-                        showBadgeDialog.value = false
+                        showBadgeDialog = false
                         onUpdateBadge(it)
                     },
                 )
             }
 
-            if (showSecretNoLockDialog.value) {
+            if (showGroupDialog) {
+                val groups = uiState.groups.filter { it.name != null }
+
+                ListRadioDialog(
+                    title = stringResource(id = R.string.tokens__group),
+                    options = listOf(MdtLocale.strings.servicesMyTokens) + groups.map { it.name.orEmpty() },
+                    selectedIndex = groups.indexOfFirst { it.id == service.groupId }.plus(1),
+                    onDismissRequest = { showGroupDialog = false },
+                    onOptionSelected = { index, _ ->
+                        onUpdateGroup(if (index == 0) null else groups[index - 1])
+                    },
+                )
+            }
+
+            if (showSecretNoLockDialog) {
                 InfoDialog(
-                    onDismissRequest = { showSecretNoLockDialog.value = false },
+                    onDismissRequest = { showSecretNoLockDialog = false },
                     title = stringResource(id = R.string.tokens__show_service_key),
                     body = stringResource(id = R.string.tokens__show_service_key_setup_lock),
                     positive = stringResource(id = R.string.commons__set),
@@ -420,9 +399,9 @@ private fun Content(
                 )
             }
 
-            if (showQrNoLockDialog.value) {
+            if (showQrNoLockDialog) {
                 InfoDialog(
-                    onDismissRequest = { showQrNoLockDialog.value = false },
+                    onDismissRequest = { showQrNoLockDialog = false },
                     title = stringResource(id = R.string.tokens__show_qr_code),
                     body = stringResource(id = R.string.tokens__show_service_qr_setup_lock),
                     positive = stringResource(id = R.string.commons__set),
@@ -437,7 +416,7 @@ private fun Content(
                     title = stringResource(id = R.string.tokens__show_qr_code),
                     positive = stringResource(id = R.string.commons__OK),
                     negative = stringResource(id = R.string.tokens__copy_uri),
-                    onNegativeClick = { activity?.copyToClipboard(service.toUri(), isSensitive = true) },
+                    onNegativeClick = { activity.copyToClipboard(service.toUri(), isSensitive = true) },
                 ) {
                     Box(
                         modifier = Modifier
@@ -452,7 +431,7 @@ private fun Content(
                             contentDescription = null,
                             modifier = Modifier
                                 .size(200.dp)
-                                .clip(RoundedCornerShape(12.dp)),
+                                .clip(RoundedShape12),
                         )
                     }
                 }
@@ -462,7 +441,7 @@ private fun Content(
 }
 
 @Composable
-fun IconSelector(
+private fun IconSelector(
     service: Service,
     isBrandSelected: Boolean,
     isLabelSelected: Boolean,
@@ -470,117 +449,89 @@ fun IconSelector(
 ) {
     Row(
         modifier = Modifier
-            .padding(start = 72.dp)
-            .padding(vertical = 16.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 12.dp)
+            .clip(RoundedShape16)
+            .background(MdtTheme.color.surfaceContainer)
+            .padding(vertical = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(32.dp, Alignment.CenterHorizontally),
     ) {
-        /**
-         * Brand
-         */
-        Box(
-            modifier = Modifier
-                .size(88.dp)
-                .run {
-                    if (isBrandSelected) {
-                        border(2.dp, MdtTheme.color.primary, RoundedCornerShape(8.dp))
-                    } else {
-                        border(1.dp, MdtTheme.color.divider, RoundedCornerShape(8.dp))
-                    }
+        IconTypeOption(
+            title = stringResource(R.string.tokens__brand_icon),
+            selected = isBrandSelected,
+            onClick = {
+                if (isLabelSelected) {
+                    onSelectionChanged(Service.ImageType.IconCollection)
                 }
-                .clip(RoundedCornerShape(8.dp))
-                .clickable {
-                    if (isLabelSelected) {
-                        onSelectionChanged(Service.ImageType.IconCollection)
-                    }
-                },
+            },
         ) {
-            Image(
-                bitmap = serviceIconBitmap(iconCollectionId = service.iconCollectionId),
-                contentDescription = null,
+            ServiceCardImage(
+                type = ServiceImageType.Icon,
+                iconLight = ServiceIcons.getIcon(collectionId = service.iconCollectionId, isDark = false),
+                iconDark = ServiceIcons.getIcon(collectionId = service.iconCollectionId, isDark = true),
+                labelText = null,
+                labelColor = service.labelColor.asColor(),
                 modifier = Modifier
                     .size(40.dp)
                     .align(Alignment.Center),
             )
-
-            if (isBrandSelected) {
-                Icon(
-                    painter = MdtIcons.Check,
-                    contentDescription = null,
-                    tint = MdtTheme.color.primary,
-                    modifier = Modifier
-                        .padding(6.dp)
-                        .size(16.dp)
-                        .align(Alignment.BottomEnd),
-                )
-            }
         }
 
-        Spacer(modifier = Modifier.width(40.dp))
-
-        /**
-         * Label
-         */
-        Box(
-            modifier = Modifier
-                .size(88.dp)
-                .run {
-                    if (isLabelSelected) {
-                        border(2.dp, MdtTheme.color.primary, RoundedCornerShape(8.dp))
-                    } else {
-                        border(1.dp, MdtTheme.color.divider, RoundedCornerShape(8.dp))
-                    }
+        IconTypeOption(
+            title = stringResource(R.string.tokens__label),
+            selected = isLabelSelected,
+            onClick = {
+                if (isBrandSelected) {
+                    onSelectionChanged(Service.ImageType.Label)
                 }
-                .clip(RoundedCornerShape(8.dp))
-                .clickable {
-                    if (isBrandSelected) {
-                        onSelectionChanged(Service.ImageType.Label)
-                    }
-                },
+            },
         ) {
-            Box(
+            ServiceCardImage(
+                type = ServiceImageType.Label,
+                iconLight = "",
+                iconDark = "",
+                labelText = service.labelText ?: service.name.take(2).uppercase(),
+                labelColor = service.labelColor.asColor(),
                 modifier = Modifier
                     .size(40.dp)
-                    .align(Alignment.Center)
-                    .background(shape = CircleShape, color = service.labelColor.asColor()),
-            )
-
-            Box(
-                modifier = Modifier
-                    .width(28.dp)
-                    .height(18.dp)
-                    .clip(RoundedShape12)
-                    .background(MdtTheme.color.background)
                     .align(Alignment.Center),
             )
-
-            Text(
-                text = service.labelText ?: service.name.take(2).uppercase(),
-                color = MaterialTheme.colorScheme.onSurface,
-                textAlign = TextAlign.Center,
-                style = MdtTheme.typo.sm.normal.copy(
-                    fontWeight = FontWeight.Bold,
-                    fontSize = dpToSp(dp = 14.dp),
-                    lineHeight = dpToSp(dp = 20.dp),
-                ),
-                modifier = Modifier.align(Alignment.Center),
-            )
-
-            if (isLabelSelected) {
-                Icon(
-                    painter = MdtIcons.Check,
-                    contentDescription = null,
-                    tint = MdtTheme.color.primary,
-                    modifier = Modifier
-                        .padding(6.dp)
-                        .size(16.dp)
-                        .align(Alignment.BottomEnd),
-                )
-            }
         }
     }
 }
 
-@Preview
+@Composable
+private fun IconTypeOption(
+    title: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    content: @Composable BoxScope.() -> Unit,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Box(
+            modifier = Modifier
+                .size(88.dp)
+                .clip(RoundedCornerShape(14.dp))
+                .border(2.dp, if (selected) MdtTheme.color.primary else MdtTheme.color.transparent, RoundedCornerShape(14.dp))
+                .clickable { onClick() }
+                .padding(4.dp),
+            content = content,
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = title,
+            style = MdtTheme.typo.material.titleMedium,
+        )
+    }
+}
+
+@PreviewLightDark
 @Composable
 private fun Preview() {
     PreviewTheme {

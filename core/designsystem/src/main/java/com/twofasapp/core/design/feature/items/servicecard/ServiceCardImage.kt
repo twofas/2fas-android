@@ -22,7 +22,7 @@ import com.twofasapp.core.design.foundation.image.AsyncImage
 import com.twofasapp.core.design.foundation.preview.PreviewRow
 
 @Composable
-internal fun ServiceCardImage(
+fun ServiceCardImage(
     modifier: Modifier = Modifier,
     type: ServiceImageType,
     iconLight: String,

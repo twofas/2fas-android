@@ -16,7 +16,3 @@ internal data class EditServiceUiState(
     val isInputNameValid: Boolean = true,
     val isInputInfoValid: Boolean = true,
 )
-
-internal sealed interface EditServiceUiEvent {
-    data object Finish : EditServiceUiEvent
-}

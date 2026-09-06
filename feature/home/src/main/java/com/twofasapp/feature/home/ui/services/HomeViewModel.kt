@@ -102,22 +102,22 @@ internal class HomeViewModel(
                 }
 
                 val showCloudSyncNotice = result.appSettings.showBackupNotice &&
-                        result.backupEnabled.not() &&
-                        result.searchQuery.isEmpty() &&
-                        result.searchFocused.not() &&
-                        result.isInEditMode.not()
+                    result.backupEnabled.not() &&
+                    result.searchQuery.isEmpty() &&
+                    result.searchFocused.not() &&
+                    result.isInEditMode.not()
 
                 val showAppReview = result.appReviewPrompted.not() &&
-                        result.services.size >= AppReviewItemsThreshold &&
-                        result.searchQuery.isEmpty() &&
-                        result.searchFocused.not() &&
-                        result.isInEditMode.not()
+                    result.services.size >= AppReviewItemsThreshold &&
+                    result.searchQuery.isEmpty() &&
+                    result.searchFocused.not() &&
+                    result.isInEditMode.not()
 
                 val showPassBanner = result.showPassBanner &&
-                        result.services.isNotEmpty() &&
-                        result.searchQuery.isEmpty() &&
-                        result.searchFocused.not() &&
-                        result.isInEditMode.not()
+                    result.services.isNotEmpty() &&
+                    result.searchQuery.isEmpty() &&
+                    result.searchFocused.not() &&
+                    result.isInEditMode.not()
 
                 val filteredServices = result.services
                     .sortedBy {
@@ -337,9 +337,9 @@ internal class HomeViewModel(
 
     private fun Service.isMatchingQuery(query: String): Boolean {
         return name.contains(query, true) ||
-                issuer?.contains(query, true) ?: false ||
-                info?.contains(query, true) ?: false ||
-                tags.contains(query.lowercase())
+            issuer?.contains(query, true) ?: false ||
+            info?.contains(query, true) ?: false ||
+            tags.contains(query.lowercase())
     }
 
     fun onDragStart() {

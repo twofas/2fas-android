@@ -8,7 +8,6 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.session.SecurityRepository
 import com.twofasapp.data.session.domain.LockMethod
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.update
@@ -21,7 +20,6 @@ internal class EditServiceViewModel(
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(EditServiceUiState())
-    val events = MutableSharedFlow<EditServiceUiEvent>()
 
     init {
         uiState.update {
@@ -113,14 +111,6 @@ internal class EditServiceViewModel(
 
     fun updateGroup(group: Group?) {
         updateService { it.copy(groupId = group?.id) }
-    }
-
-    fun delete() {
-        launchScoped {
-            servicesRepository.trashService(uiState.value.service.id)
-            events.emit(EditServiceUiEvent.Finish)
-            uiState.emit(uiState.value.copy(finish = true))
-        }
     }
 
     fun secretAuthenticated() {

@@ -21,6 +21,18 @@ sealed interface Screen : NavKey {
     data class EditService(val serviceId: Long) : Screen
 
     @Serializable
+    data class EditServiceDomainAssignment(val serviceId: Long) : Screen
+
+    @Serializable
+    data class EditServiceChangeBrand(val serviceId: Long) : Screen
+
+    @Serializable
+    data class EditServiceChangeLabel(val serviceId: Long) : Screen
+
+    @Serializable
+    data object EditServiceRequestIcon : Screen
+
+    @Serializable
     data class Dispose(val serviceId: Long) : Screen
 
     @Serializable

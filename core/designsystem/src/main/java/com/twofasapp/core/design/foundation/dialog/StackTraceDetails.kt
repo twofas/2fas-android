@@ -9,7 +9,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.ktx.copyToClipboard
 
 @Composable
@@ -27,8 +28,9 @@ fun StackTraceDetails(
         modifier = modifier,
         contentAlignment = Alignment.Center,
     ) {
-        TextButton(
+        Button(
             text = title,
+            style = ButtonStyle.Text,
             modifier = Modifier,
             onClick = { showDialog = true },
         )
