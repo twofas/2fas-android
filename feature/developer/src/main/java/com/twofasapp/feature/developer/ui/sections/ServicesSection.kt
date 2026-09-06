@@ -78,7 +78,7 @@ internal fun ServicesSection(
             StatCard(
                 label = "Services",
                 count = uiState.servicesCount,
-                icon = MdtIcons.Home,
+                icon = MdtIcons.Tokens,
                 tint = MdtTheme.color.primary,
             )
 
@@ -159,7 +159,7 @@ internal fun ServicesSection(
         OptionEntry(
             title = "Generate all types",
             subtitle = "TOTP, HOTP, Steam + digits, period and algorithm variants",
-            icon = MdtIcons.ListStyle,
+            icon = MdtIcons.Tokens,
             onClick = { onGenerateAllTypes() },
         )
 

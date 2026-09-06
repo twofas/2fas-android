@@ -6,7 +6,6 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -252,7 +251,7 @@ private fun AddServiceScanContent(
             onDismissRequest = onResetScanner,
             title = MdtLocale.strings.addScanErrorTitle,
             body = MdtLocale.strings.addScanErrorBody,
-            icon = MdtIcons.ErrorCircle,
+            icon = MdtIcons.Error,
             positive = MdtLocale.strings.addScanErrorPositiveCta,
         )
     }
@@ -262,7 +261,7 @@ private fun AddServiceScanContent(
             onDismissRequest = onResetScanner,
             title = MdtLocale.strings.addGalleryErrorTitle,
             body = MdtLocale.strings.addGalleryErrorBody,
-            icon = MdtIcons.ErrorCircle,
+            icon = MdtIcons.Error,
             positive = MdtLocale.strings.addGalleryErrorPositiveCta,
             onPositive = {
                 singlePhotoPickerLauncher.launch(

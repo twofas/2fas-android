@@ -332,7 +332,7 @@ private fun Content(
                                 .fillMaxWidth()
                                 .padding(end = 16.dp, start = 72.dp, bottom = 24.dp, top = 16.dp),
 
-                        ) {
+                            ) {
                             OutlinedTextField(
                                 value = uiState.groups.firstOrNull { it.id == service.groupId }?.name ?: MdtLocale.strings.servicesMyTokens,
                                 onValueChange = { },
@@ -504,7 +504,7 @@ fun IconSelector(
 
             if (isBrandSelected) {
                 Icon(
-                    painter = MdtIcons.CheckCircle,
+                    painter = MdtIcons.Check,
                     contentDescription = null,
                     tint = MdtTheme.color.primary,
                     modifier = Modifier
@@ -567,7 +567,7 @@ fun IconSelector(
 
             if (isLabelSelected) {
                 Icon(
-                    painter = MdtIcons.CheckCircle,
+                    painter = MdtIcons.Check,
                     contentDescription = null,
                     tint = MdtTheme.color.primary,
                     modifier = Modifier

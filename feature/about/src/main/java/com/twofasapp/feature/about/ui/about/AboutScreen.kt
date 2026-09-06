@@ -113,7 +113,7 @@ private fun ScreenContent(
             item {
                 OptionEntry(
                     title = MdtLocale.strings.aboutWriteReview,
-                    icon = MdtIcons.Write,
+                    icon = MdtIcons.WriteReview,
                     external = true,
                     onClick = { uriHandler.openSafely(MdtLocale.links.playStore) },
                 )
@@ -122,7 +122,7 @@ private fun ScreenContent(
             item {
                 OptionEntry(
                     title = MdtLocale.strings.aboutPrivacyPolicy,
-                    icon = MdtIcons.LockOpen,
+                    icon = MdtIcons.Lock,
                     external = true,
                     onClick = { uriHandler.openSafely(MdtLocale.links.privacyPolicy) },
                 )

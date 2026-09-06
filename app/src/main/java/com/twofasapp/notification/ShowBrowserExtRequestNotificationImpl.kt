@@ -87,7 +87,7 @@ class ShowBrowserExtRequestNotificationImpl(
                         ).build()
                     val allowAction =
                         NotificationCompat.Action.Builder(
-                            com.twofasapp.core.design.R.drawable.ic_done,
+                            com.twofasapp.core.design.R.drawable.ic_check,
                             context.getString(R.string.extension__approve),
                             allowIntent,
                         ).build()

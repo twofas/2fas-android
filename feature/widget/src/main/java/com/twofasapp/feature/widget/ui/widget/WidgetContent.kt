@@ -239,7 +239,7 @@ private fun ServiceItem(
 
                 Service.AuthType.HOTP -> {
                     Icon(
-                        resId = com.twofasapp.core.design.R.drawable.ic_increment_hotp,
+                        resId = com.twofasapp.core.design.R.drawable.ic_refresh,
                         modifier = GlanceModifier
                             .size(26.dp)
                             .clickable(

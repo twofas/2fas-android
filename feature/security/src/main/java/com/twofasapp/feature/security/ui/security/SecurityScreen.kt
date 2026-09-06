@@ -114,7 +114,7 @@ private fun Content(
             if (uiState.lockMethod != LockMethod.NoLock) {
                 OptionEntry(
                     title = stringResource(id = LocaleR.string.security__change_pin),
-                    icon = MdtIcons.Change,
+                    icon = MdtIcons.Refresh,
                     onClick = { onChangePin() },
                 )
             }
@@ -147,7 +147,7 @@ private fun Content(
                 OptionEntry(
                     title = stringResource(id = LocaleR.string.settings__block_for),
                     subtitle = stringResource(id = uiState.pinTimeout.label),
-                    icon = MdtIcons.Time,
+                    icon = MdtIcons.LockoutTime,
                     enabled = uiState.pinTrials != PinTrials.NoLimit,
                     onClick = { showTimeoutDialog = true },
                 )
@@ -199,7 +199,7 @@ private fun Content(
         ListRadioDialog(
             title = stringResource(id = LocaleR.string.settings__block_for),
             body = stringResource(id = LocaleR.string.settings__block_for_footer),
-            icon = MdtIcons.Time,
+            icon = MdtIcons.LockoutTime,
             options = PinTimeout.entries.map { stringResource(id = it.label) },
             selectedOption = stringResource(id = uiState.pinTimeout.label),
             onDismissRequest = { showTimeoutDialog = false },
