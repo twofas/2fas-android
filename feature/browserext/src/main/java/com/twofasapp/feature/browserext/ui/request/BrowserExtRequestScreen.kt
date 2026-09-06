@@ -1,30 +1,21 @@
 package com.twofasapp.feature.browserext.ui.request
 
 import android.content.Intent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -33,8 +24,10 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.ServiceCardSimple
 import com.twofasapp.core.design.feature.items.asState
-import com.twofasapp.core.design.foundation.checked.Switch
-import com.twofasapp.core.design.foundation.other.Divider
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPadding
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
+import com.twofasapp.core.design.feature.settings.OptionSwitch
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.topbar.TopAppBarWithSearch
 import com.twofasapp.core.design.ktx.LocalBackDispatcher
@@ -113,42 +106,31 @@ private fun ScreenContent(
                 .padding(padding)
                 .imePadding(),
         ) {
-            item {
+            item("Info") {
                 Text(
                     text = strings.browserRequestInfo.format(uiState.browserName, uiState.domain),
                     style = MdtTheme.typo.sm.normal,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp),
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
                 )
             }
 
-            item {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 12.dp)
-                        .clickable { onSaveMyChoiceToggle() }
-                        .padding(horizontal = 16.dp, vertical = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = strings.browserRequestSaveChoice,
-                        color = MdtTheme.color.onSurface,
-                        style = MdtTheme.typo.base.normal,
-                        modifier = Modifier.weight(1f),
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Switch(
-                        checked = uiState.saveMyChoice,
-                        onCheckedChange = { onSaveMyChoiceToggle() },
-                    )
-                }
+            item("Switch") {
+                OptionSwitch(
+                    title = strings.browserRequestSaveChoice,
+                    checked = uiState.saveMyChoice,
+                    onToggle = { onSaveMyChoiceToggle() },
+                    modifier = Modifier.fillMaxWidth(),
+                )
             }
 
             if (uiState.suggestedServices.isNotEmpty()) {
-                item {
-                    SectionItem(title = strings.browserRequestSuggested)
+                item("HeaderSuggested") {
+                    OptionHeader(
+                        text = strings.browserRequestSuggested,
+                        contentPadding = OptionHeaderContentPaddingFirst,
+                    )
                 }
 
                 items(items = uiState.suggestedServices, key = { it.id }) {
@@ -160,8 +142,11 @@ private fun ScreenContent(
             }
 
             if (uiState.otherServices.isNotEmpty()) {
-                item {
-                    SectionItem(title = if (uiState.suggestedServices.isEmpty()) strings.browserRequestAll else strings.browserRequestOther)
+                item("HeaderOther") {
+                    OptionHeader(
+                        text = if (uiState.suggestedServices.isEmpty()) strings.browserRequestAll else strings.browserRequestOther,
+                        contentPadding = if (uiState.suggestedServices.isEmpty()) OptionHeaderContentPaddingFirst else OptionHeaderContentPadding,
+                    )
                 }
 
                 items(items = uiState.otherServices, key = { it.id }) {
@@ -173,21 +158,16 @@ private fun ScreenContent(
             }
 
             if (uiState.suggestedServices.isEmpty() && uiState.otherServices.isEmpty()) {
-                item {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Divider()
-                        Spacer(modifier = Modifier.height(24.dp))
-                        Text(
-                            text = strings.browserRequestEmpty,
-                            color = MdtTheme.color.onSurfaceVariant,
-                            style = MdtTheme.typo.sm.medium,
-                            modifier = Modifier,
-                        )
-                    }
+                item("Empty") {
+                    Text(
+                        text = strings.browserRequestEmpty,
+                        color = MdtTheme.color.onSurfaceVariant,
+                        style = MdtTheme.typo.base.medium,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 16.dp),
+                        textAlign = TextAlign.Center,
+                    )
                 }
             }
         }
@@ -195,36 +175,20 @@ private fun ScreenContent(
 }
 
 @Composable
-private fun SectionItem(title: String) {
-    Text(
-        text = title.uppercase(),
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MdtTheme.color.surfaceVariant)
-            .padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 12.dp),
-        color = MdtTheme.color.onSurfaceVariant,
-        style = MdtTheme.typo.xs.normal,
-    )
-}
-
-@Composable
 private fun ServiceItem(
     service: Service,
     onClick: (Service) -> Unit,
 ) {
-    Column(Modifier.fillMaxWidth()) {
-        ServiceCardSimple(
-            state = service.asState(),
-            onClick = { onClick(service) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 4.dp),
-        )
-        HorizontalDivider(color = MdtTheme.color.divider)
-    }
+    ServiceCardSimple(
+        state = service.asState(),
+        onClick = { onClick(service) },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 12.dp, vertical = 4.dp),
+    )
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Preview() {
     PreviewTheme {
@@ -239,7 +203,7 @@ private fun Preview() {
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Empty() {
     PreviewTheme {

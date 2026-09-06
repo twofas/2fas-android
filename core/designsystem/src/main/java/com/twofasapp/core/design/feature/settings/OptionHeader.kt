@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 
-val MdtOptionHeaderContentPadding = PaddingValues(
+val OptionHeaderContentPadding = PaddingValues(
     start = 16.dp,
     top = 28.dp,
     end = 16.dp,
@@ -37,7 +37,7 @@ val OptionHeaderContentPaddingFirst = PaddingValues(
 fun OptionHeader(
     text: String,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = MdtOptionHeaderContentPadding,
+    contentPadding: PaddingValues = OptionHeaderContentPadding,
 ) {
     Text(
         text = text,
