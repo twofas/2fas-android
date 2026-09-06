@@ -35,7 +35,6 @@ import com.twofasapp.core.design.feature.items.asColor
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.IconButton
 import com.twofasapp.core.design.foundation.checked.CheckIcon
-import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.layout.ActionsRow
 import com.twofasapp.core.design.foundation.screen.LazyContent
 import com.twofasapp.core.design.foundation.text.TextIcon
@@ -44,6 +43,7 @@ import com.twofasapp.core.design.ktx.toastShort
 import com.twofasapp.core.design.state.ScreenState
 import com.twofasapp.core.design.theme.RoundedTopShape
 import com.twofasapp.core.design.theme.ScreenPadding
+import com.twofasapp.feature.trash.ui.trash.component.DisposeServicesDialog
 import com.twofasapp.feature.trash.ui.trash.component.TrashEmpty
 import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
@@ -204,15 +204,10 @@ private fun Content(
     }
 
     if (showDeleteDialog) {
-        // TODO: Replace with a Modal
-        ConfirmDialog(
+        DisposeServicesDialog(
             onDismissRequest = { showDeleteDialog = false },
-            title = "Confirm delete?",
-            body = "TODO",
-            icon = MdtIcons.Delete,
-            onPositive = {
-                onDeleteConfirmed()
-            },
+            services = uiState.trashedItems.filter { uiState.selected.contains(it.id) },
+            onConfirm = { onDeleteConfirmed() },
         )
     }
 }

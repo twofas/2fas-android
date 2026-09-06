@@ -9,7 +9,7 @@ import com.twofasapp.data.services.domain.CloudBackupUpdateResult
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.exceptions.DecryptWrongPassword
-import com.twofasapp.prefs.model.RemoteBackupKey
+import com.twofasapp.data.services.local.model.RemoteBackupKey
 import kotlinx.coroutines.flow.Flow
 
 interface BackupRepository {

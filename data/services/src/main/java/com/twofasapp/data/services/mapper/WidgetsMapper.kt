@@ -4,8 +4,8 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.domain.Widget
 import com.twofasapp.data.services.domain.WidgetService
 import com.twofasapp.data.services.domain.Widgets
-import com.twofasapp.prefs.model.WidgetEntity
-import com.twofasapp.prefs.model.WidgetSettingsEntity
+import com.twofasapp.data.services.local.model.WidgetEntity
+import com.twofasapp.data.services.local.model.WidgetSettingsEntity
 
 internal fun WidgetSettingsEntity.asDomain(services: List<Service>): Widgets {
     return Widgets(

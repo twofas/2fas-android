@@ -4,10 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.core.os.bundleOf
+import com.twofasapp.base.lifecycle.ScopedNavigator
 import com.twofasapp.data.session.SecurityRepository
 import com.twofasapp.data.session.domain.LockMethod
 import com.twofasapp.feature.security.ui.lock.LockActivity
-import com.twofasapp.prefs.ScopedNavigator
 
 class ActivityScopedNavigator(
     private val activity: Activity,

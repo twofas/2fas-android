@@ -12,7 +12,6 @@ android {
 dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:network"))
-    implementation(project(":core:storage"))
 
     implementation(libs.bundles.room)
     implementation(libs.kotlinCoroutines)

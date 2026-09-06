@@ -22,7 +22,6 @@ dependencies {
     implementation(project(":feature:permissions"))
 
     implementation(project(":parsers"))
-    implementation(project(":prefs"))
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)

@@ -1,0 +1,10 @@
+package com.twofasapp.data.services.local.model
+
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class WidgetSettingsEntity(
+    @SerialName("widgets")
+    val widgets: List<WidgetEntity> = emptyList(),
+)

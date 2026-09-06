@@ -11,7 +11,6 @@ android {
 
 dependencies {
     implementation(project(":core:common"))
-    implementation(project(":prefs"))
     implementation(libs.timber)
     implementation(libs.kotlinSerialization)
 }

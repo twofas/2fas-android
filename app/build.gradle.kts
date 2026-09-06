@@ -40,7 +40,6 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:android"))
     implementation(project(":core:designsystem"))
-    implementation(project(":core:storage"))
     implementation(project(":core:network"))
     implementation(project(":core:locale"))
     implementation(project(":core:cipher"))
@@ -68,9 +67,7 @@ dependencies {
     implementation(project(":feature:developer"))
 
     implementation(project(":base"))
-    implementation(project(":prefs"))
     implementation(project(":truetime"))
-    implementation(project(":secure-storage"))
     implementation(project(":parsers"))
 
     implementation(libs.bundles.appCompat)

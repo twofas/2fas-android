@@ -1,11 +1,13 @@
 package com.twofasapp.data.services
 
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.serializedPref
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.Widget
 import com.twofasapp.data.services.domain.Widgets
+import com.twofasapp.data.services.local.model.WidgetSettingsEntity
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.data.services.mapper.asEntity
-import com.twofasapp.prefs.usecase.WidgetSettingsPreference
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -16,15 +18,21 @@ import kotlinx.coroutines.flow.mapNotNull
 
 class WidgetsRepositoryImpl(
     private val servicesRepository: ServicesRepository,
-    private val preference: WidgetSettingsPreference,
     private val timeProvider: TimeProvider,
-) : WidgetsRepository {
+    dataStoreOwner: DataStoreOwner,
+) : WidgetsRepository, DataStoreOwner by dataStoreOwner {
+
+    private val widgetSettings by serializedPref(
+        name = "widgetSettings",
+        default = WidgetSettingsEntity(),
+        serializer = WidgetSettingsEntity.serializer(),
+    )
 
     private val refreshTicker = MutableStateFlow(0L)
 
     override fun observeWidgets(): Flow<Widgets> {
         return combine(
-            preference.flow(true),
+            widgetSettings.asFlow(),
             servicesRepository.observeServicesWithCode(),
             refreshTicker,
         ) { a, b, c -> Triple(a, b, c) }.map { (widgets, _, _) ->
@@ -39,7 +47,7 @@ class WidgetsRepositoryImpl(
     }
 
     override suspend fun getWidgets(): Widgets {
-        return preference.get()
+        return widgetSettings.get()
             .asDomain(servicesRepository.observeServicesWithCode().first())
     }
 
@@ -48,7 +56,7 @@ class WidgetsRepositoryImpl(
 
         refreshTicker.emit(now)
 
-        preference.put { entity ->
+        updateWidgetSettings { entity ->
             entity.copy(
                 widgets = entity.widgets.map { it.copy(lastInteractionTimestamp = now) },
             )
@@ -56,7 +64,7 @@ class WidgetsRepositoryImpl(
     }
 
     override suspend fun hideAll() {
-        preference.put { entity ->
+        updateWidgetSettings { entity ->
             entity.copy(
                 widgets = entity.widgets.map { widgetEntity ->
                     widgetEntity.copy(
@@ -70,7 +78,7 @@ class WidgetsRepositoryImpl(
     }
 
     override suspend fun deleteWidget(appWidgetIds: List<Int>) {
-        preference.put { entity ->
+        updateWidgetSettings { entity ->
             entity.copy(
                 widgets = entity.widgets.filterNot { appWidgetIds.contains(it.appWidgetId) },
             )
@@ -86,7 +94,7 @@ class WidgetsRepositoryImpl(
     }
 
     override suspend fun toggleService(appWidgetId: Int, serviceId: Long) {
-        preference.put { entity ->
+        updateWidgetSettings { entity ->
             entity.copy(
                 widgets = entity.widgets.map { widget ->
                     if (widget.appWidgetId == appWidgetId) {
@@ -112,12 +120,16 @@ class WidgetsRepositoryImpl(
     }
 
     override suspend fun saveWidget(widget: Widget) {
-        preference.put { entity ->
+        updateWidgetSettings { entity ->
             entity.copy(
                 widgets = entity.widgets
                     .filter { it.appWidgetId != widget.appWidgetId }
                     .plus(widget.asEntity()),
             )
         }
+    }
+
+    private suspend fun updateWidgetSettings(action: (WidgetSettingsEntity) -> WidgetSettingsEntity) {
+        widgetSettings.set(action(widgetSettings.get()))
     }
 }

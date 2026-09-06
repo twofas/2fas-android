@@ -20,15 +20,12 @@ dependencyResolutionManagement {
 }
 rootProject.name = "2fas-android"
 include(":truetime")
-include(":secure-storage")
 include(":app")
 include(":base")
-include(":prefs")
 include(":parsers")
 include(":feature:security")
 include(":feature:externalimport")
 include(":data:session")
-include(":core:storage")
 include(":core:common")
 include(":core:designsystem")
 include(":feature:startup")

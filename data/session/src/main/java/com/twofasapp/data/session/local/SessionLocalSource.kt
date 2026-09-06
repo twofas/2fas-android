@@ -1,73 +1,64 @@
 package com.twofasapp.data.session.local
 
-import com.twofasapp.storage.PlainPreferences
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.longPref
+import com.twofasapp.common.storage.longPrefNullable
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.update
 import java.time.Instant
 
-internal class SessionLocalSource(private val preferences: PlainPreferences) {
+internal class SessionLocalSource(
+    dataStoreOwner: DataStoreOwner,
+) : DataStoreOwner by dataStoreOwner {
 
-    companion object {
-        private const val KeyAppInstallTimestamp = "appInstallTimestamp"
-        private const val KeyNoCompanionAppFromTimestamp = "noCompanionAppFromTimestamp"
-        private const val KeyPassBannerDismissTimestamp = "passBannerDismissTimestamp"
-        private const val KeyAppReviewPromptedTimestamp = "appReviewPromptedTimestamp"
+    private val appInstallTimestamp by longPrefNullable(
+        name = "appInstallTimestamp",
+    )
+
+    private val noCompanionAppFromTimestamp by longPrefNullable(
+        name = "noCompanionAppFromTimestamp",
+    )
+
+    private val passBannerDismissTimestamp by longPref(
+        name = "passBannerDismissTimestamp",
+        default = 0L,
+    )
+
+    private val appReviewPromptedTimestamp by longPref(
+        name = "appReviewPromptedTimestamp",
+        default = 0L,
+    )
+
+    suspend fun getAppInstallTimestamp(): Long {
+        return appInstallTimestamp.get() ?: Instant.now().toEpochMilli()
     }
 
-    private val passBannerDismissTimestampFlow: MutableStateFlow<Long> by lazy {
-        MutableStateFlow(getPassBannerDismissTimestamp())
-    }
-
-    private val appReviewPromptedTimestampFlow: MutableStateFlow<Long> by lazy {
-        MutableStateFlow(getAppReviewPromptedTimestamp())
-    }
-
-    fun getAppInstallTimestamp(): Long {
-        return preferences.getLong(KeyAppInstallTimestamp) ?: Instant.now().toEpochMilli()
-    }
-
-    fun markAppInstalled() {
-        if (preferences.getLong(KeyAppInstallTimestamp) == null) {
-            preferences.putLong(KeyAppInstallTimestamp, Instant.now().toEpochMilli())
+    suspend fun markAppInstalled() {
+        if (appInstallTimestamp.get() == null) {
+            appInstallTimestamp.set(Instant.now().toEpochMilli())
         }
     }
 
-    fun getNoCompanionAppFromTimestamp(): Long? {
-        return preferences.getLong(KeyNoCompanionAppFromTimestamp)
+    suspend fun getNoCompanionAppFromTimestamp(): Long? {
+        return noCompanionAppFromTimestamp.get()
     }
 
-    fun setNoCompanionAppFromTimestamp(millis: Long?) {
-        if (millis == null) {
-            preferences.delete(KeyNoCompanionAppFromTimestamp)
-        } else {
-            preferences.putLong(KeyNoCompanionAppFromTimestamp, millis)
-        }
+    suspend fun setNoCompanionAppFromTimestamp(millis: Long?) {
+        noCompanionAppFromTimestamp.set(millis)
     }
 
     fun observePassBannerDismissTimestamp(): Flow<Long> {
-        return passBannerDismissTimestampFlow
+        return passBannerDismissTimestamp.asFlow()
     }
 
-    fun getPassBannerDismissTimestamp(): Long {
-        return preferences.getLong(KeyPassBannerDismissTimestamp) ?: 0L
-    }
-
-    fun setPassBannerDismissTimestamp(millis: Long) {
-        passBannerDismissTimestampFlow.update { millis }
-        preferences.putLong(KeyPassBannerDismissTimestamp, millis)
+    suspend fun setPassBannerDismissTimestamp(millis: Long) {
+        passBannerDismissTimestamp.set(millis)
     }
 
     fun observeAppReviewPromptedTimestamp(): Flow<Long> {
-        return appReviewPromptedTimestampFlow
+        return appReviewPromptedTimestamp.asFlow()
     }
 
-    fun getAppReviewPromptedTimestamp(): Long {
-        return preferences.getLong(KeyAppReviewPromptedTimestamp) ?: 0L
-    }
-
-    fun setAppReviewPromptedTimestamp(millis: Long) {
-        appReviewPromptedTimestampFlow.update { millis }
-        preferences.putLong(KeyAppReviewPromptedTimestamp, millis)
+    suspend fun setAppReviewPromptedTimestamp(millis: Long) {
+        appReviewPromptedTimestamp.set(millis)
     }
 }

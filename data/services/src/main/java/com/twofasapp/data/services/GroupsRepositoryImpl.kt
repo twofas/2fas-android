@@ -6,9 +6,9 @@ import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.local.BackupLocalSource
 import com.twofasapp.data.services.local.GroupsLocalSource
 import com.twofasapp.data.services.local.ServicesLocalSource
+import com.twofasapp.data.services.local.model.RemoteBackupStatusEntity
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
-import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map

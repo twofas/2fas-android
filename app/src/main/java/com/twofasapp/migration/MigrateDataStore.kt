@@ -14,7 +14,6 @@ import com.twofasapp.common.crypto.AndroidKeyStore
 import com.twofasapp.common.crypto.encrypt
 import com.twofasapp.common.ktx.encodeBase64
 import com.twofasapp.common.storage.DataStoreOwner
-import com.twofasapp.prefs.model.LockMethodEntity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.io.ByteArrayInputStream
@@ -63,10 +62,10 @@ class MigrateDataStore(
                     "servicesSort" -> preferences[stringPreferencesKey("servicesSort")] = value as String
                     "lockStatus" -> {
                         val lockMethod = when (value as String) {
-                            "NO_LOCK" -> LockMethodEntity.NoLock.name
-                            "PIN_LOCK", "PIN_SECURED" -> LockMethodEntity.Pin.name
-                            "FINGERPRINT_LOCK", "FINGERPRINT_WITH_PIN_SECURED" -> LockMethodEntity.Biometrics.name
-                            else -> LockMethodEntity.NoLock.name
+                            "NO_LOCK" -> "NoLock"
+                            "PIN_LOCK", "PIN_SECURED" -> "Pin"
+                            "FINGERPRINT_LOCK", "FINGERPRINT_WITH_PIN_SECURED" -> "Biometrics"
+                            else -> "NoLock"
                         }
 
                         preferences[stringPreferencesKey("lockMethod")] = encryptValue(lockMethod)
@@ -77,6 +76,20 @@ class MigrateDataStore(
 
                     "periodicNotificationCounter" -> preferences[intPreferencesKey("periodicNotificationCounter")] = value as Int
                     "periodicNotificationTimestamp" -> preferences[longPreferencesKey("periodicNotificationTimestamp")] = value as Long
+
+                    "timeDelta" -> preferences[longPreferencesKey("timeDelta")] = value as Long
+
+                    "appInstallTimestamp" -> preferences[longPreferencesKey("appInstallTimestamp")] = value as Long
+                    "noCompanionAppFromTimestamp" -> preferences[longPreferencesKey("noCompanionAppFromTimestamp")] = value as Long
+                    "passBannerDismissTimestamp" -> preferences[longPreferencesKey("passBannerDismissTimestamp")] = value as Long
+                    "appReviewPromptedTimestamp" -> preferences[longPreferencesKey("appReviewPromptedTimestamp")] = value as Long
+
+                    "appUpdateLastCheckVersion" -> preferences[longPreferencesKey("appUpdateLastCheckVersion")] = value as Long
+                    "currentAppVersionCode" -> preferences[longPreferencesKey("currentAppVersionCode")] = value as Long
+
+                    "servicesOrder" -> preferences[stringPreferencesKey("servicesOrder")] = value as String
+                    "groups" -> preferences[stringPreferencesKey("groups")] = value as String
+                    "widgetSettings" -> preferences[stringPreferencesKey("widgetSettings")] = value as String
 
                     else -> return@forEach
                 }

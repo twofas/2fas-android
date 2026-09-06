@@ -5,7 +5,6 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.AuthenticationStatus
-import com.twofasapp.prefs.ScopedNavigator
 
 class AuthLifecycle(
     private val authTracker: AuthTracker,

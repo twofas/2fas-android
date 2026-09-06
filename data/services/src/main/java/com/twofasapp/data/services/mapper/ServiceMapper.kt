@@ -5,11 +5,11 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.legacyEnumValueOrNull
 import com.twofasapp.data.services.domain.BackupService
 import com.twofasapp.data.services.domain.ServicesOrder
+import com.twofasapp.data.services.domain.Tint
 import com.twofasapp.data.services.local.model.ServiceEntity
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
-import com.twofasapp.prefs.model.Tint
 
 internal fun ServiceEntity.asDomain(): Service {
     val iconCollectionId = iconCollectionId ?: ServiceIcons.defaultCollectionId

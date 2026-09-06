@@ -145,6 +145,7 @@ private fun Content(
             onDismissRequest = { showDeleteDialog = false },
             title = MdtLocale.strings.commonDelete,
             body = MdtLocale.strings.servicesDelete,
+            icon = MdtIcons.Delete,
             onPositive = { onDeleteClick() },
         )
     }

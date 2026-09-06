@@ -8,11 +8,11 @@ import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.session.domain.InvalidPinStatus
 import com.twofasapp.data.session.domain.LockMethod
 import com.twofasapp.data.session.domain.PinOptions
+import com.twofasapp.data.session.local.model.InvalidPinStatusEntity
+import com.twofasapp.data.session.local.model.LockMethodEntity
+import com.twofasapp.data.session.local.model.PinOptionsEntity
 import com.twofasapp.data.session.mapper.asDomain
 import com.twofasapp.data.session.mapper.asEntity
-import com.twofasapp.prefs.model.InvalidPinStatusEntity
-import com.twofasapp.prefs.model.LockMethodEntity
-import com.twofasapp.prefs.model.PinOptionsEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
@@ -84,7 +84,10 @@ internal class SecurityRepositoryImpl(
     }
 
     override fun getLockMethod(): LockMethod {
-        return runBlocking { lockMethod.get().asDomain() } // TODO: Migrate to suspend
+        // Intentionally blocking: callers are the sync auth gate (AuthLifecycle/ScopedNavigator) which must
+        // resolve the lock state before any UI is shown. Do not make async - a late read could flash
+        // unlocked content or lock out a no-lock user.
+        return runBlocking { lockMethod.get().asDomain() }
     }
 
     override suspend fun editLockMethod(lockMethod: LockMethod) {

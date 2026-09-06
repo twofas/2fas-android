@@ -44,11 +44,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.anim.AnimatedFadeVisibility
 import com.twofasapp.core.design.foundation.button.IconButton
-import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
 import com.twofasapp.core.design.foundation.icon.Icon
 import com.twofasapp.core.design.foundation.image.Image
 import com.twofasapp.core.design.foundation.layout.ActionsRow
@@ -67,7 +67,7 @@ internal fun HomeAppBar(
     isListEmpty: Boolean = false,
     hasUnreadNotifications: Boolean,
     developerModeEnabled: Boolean = false,
-    selectedCount: Int,
+    selectedServices: List<Service> = emptyList(),
     onEditModeChange: () -> Unit = {},
     onSortClick: () -> Unit = {},
     onAddGroupClick: () -> Unit = {},
@@ -79,6 +79,7 @@ internal fun HomeAppBar(
     focusRequester: FocusRequester,
 ) {
     var showDeleteConfirmationPrompt by remember { mutableStateOf(false) }
+    val selectedCount = selectedServices.size
 
     AnimatedContent(
         modifier = Modifier
@@ -181,12 +182,10 @@ internal fun HomeAppBar(
     }
 
     if (showDeleteConfirmationPrompt) {
-        ConfirmDialog(
+        DeleteServicesDialog(
             onDismissRequest = { showDeleteConfirmationPrompt = false },
-            title = MdtLocale.strings.commonDelete,
-            body = MdtLocale.strings.servicesDeleteSelected.format(selectedCount),
-            icon = MdtIcons.Delete,
-            onPositive = { onDeleteSelectedConfirmed() },
+            services = selectedServices,
+            onConfirm = { onDeleteSelectedConfirmed() },
         )
     }
 }
@@ -361,7 +360,6 @@ private fun Preview() {
             isInEditMode = false,
             isSearchFocused = false,
             hasUnreadNotifications = true,
-            selectedCount = 0,
             onSearchQueryChange = {},
             onSearchFocusChange = {},
             focusRequester = focusRequester,
@@ -381,7 +379,11 @@ private fun PreviewEditMode() {
             isSearchFocused = false,
             hasUnreadNotifications = false,
             developerModeEnabled = true,
-            selectedCount = 3,
+            selectedServices = listOf(
+                Service.Preview.copy(id = 1L),
+                Service.Preview.copy(id = 2L),
+                Service.Preview.copy(id = 3L),
+            ),
             onSearchQueryChange = {},
             onSearchFocusChange = {},
             focusRequester = focusRequester,

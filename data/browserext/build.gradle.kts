@@ -11,7 +11,6 @@ android {
 
 dependencies {
     implementation(project(":core:common"))
-    implementation(project(":core:storage"))
     implementation(project(":core:network"))
 
     implementation(libs.bundles.room)

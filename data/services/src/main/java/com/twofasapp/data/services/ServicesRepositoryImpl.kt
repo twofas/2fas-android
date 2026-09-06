@@ -11,14 +11,14 @@ import com.twofasapp.common.storage.serializedPref
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.data.services.domain.RecentlyDeleted
+import com.twofasapp.data.services.domain.RecentlyDeletedService
 import com.twofasapp.data.services.local.BackupLocalSource
 import com.twofasapp.data.services.local.ServicesLocalSource
+import com.twofasapp.data.services.local.model.RemoteBackupStatusEntity
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
 import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
-import com.twofasapp.prefs.model.RecentlyDeleted
-import com.twofasapp.prefs.model.RecentlyDeletedService
-import com.twofasapp.prefs.model.RemoteBackupStatusEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -243,7 +243,7 @@ internal class ServicesRepositoryImpl(
         }
     }
 
-    override fun updateServicesOrder(ids: List<Long>) {
+    override suspend fun updateServicesOrder(ids: List<Long>) {
         local.saveServicesOrder(ids)
     }
 

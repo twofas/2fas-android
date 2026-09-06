@@ -10,7 +10,7 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.local.BackupLocalSource
-import com.twofasapp.prefs.model.RemoteBackupStatusEntity
+import com.twofasapp.data.services.local.model.RemoteBackupStatusEntity
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 

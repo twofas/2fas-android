@@ -4,6 +4,7 @@ import android.app.NotificationManager
 import android.content.Context
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.LockMethodProvider
+import com.twofasapp.base.lifecycle.ScopedNavigator
 import com.twofasapp.biometric.BiometricKeyProviderImpl
 import com.twofasapp.common.crypto.AndroidKeyStore
 import com.twofasapp.common.di.KoinModule
@@ -18,7 +19,6 @@ import com.twofasapp.logger.FlogSinkLogcat
 import com.twofasapp.navigator.ActivityScopedNavigator
 import com.twofasapp.navigator.LockMethodProviderImpl
 import com.twofasapp.notification.ShowBrowserExtRequestNotificationImpl
-import com.twofasapp.prefs.ScopedNavigator
 import com.twofasapp.time.TimeProviderImpl
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.koin.androidContext

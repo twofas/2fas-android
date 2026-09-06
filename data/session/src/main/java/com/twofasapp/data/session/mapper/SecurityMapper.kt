@@ -6,9 +6,9 @@ import com.twofasapp.data.session.domain.PinDigits
 import com.twofasapp.data.session.domain.PinOptions
 import com.twofasapp.data.session.domain.PinTimeout
 import com.twofasapp.data.session.domain.PinTrials
-import com.twofasapp.prefs.model.InvalidPinStatusEntity
-import com.twofasapp.prefs.model.LockMethodEntity
-import com.twofasapp.prefs.model.PinOptionsEntity
+import com.twofasapp.data.session.local.model.InvalidPinStatusEntity
+import com.twofasapp.data.session.local.model.LockMethodEntity
+import com.twofasapp.data.session.local.model.PinOptionsEntity
 
 internal fun PinOptions.asEntity() = PinOptionsEntity(
     digits = digits.value,

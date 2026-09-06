@@ -325,7 +325,7 @@ private fun Content(
                 isListEmpty = uiState.totalServices == 0 && uiState.totalGroups <= 1 && uiState.isLoading.not(),
                 hasUnreadNotifications = uiState.hasUnreadNotifications,
                 developerModeEnabled = uiState.developerModeEnabled,
-                selectedCount = uiState.selectedServiceIds.size,
+                selectedServices = uiState.services.filter { uiState.selectedServiceIds.contains(it.id) },
                 onEditModeChange = onEditModeChange,
                 onSortClick = { showSortDialog = true },
                 onAddGroupClick = { showAddGroupDialog = true },
@@ -619,19 +619,6 @@ private fun Content(
             },
         )
     }
-
-//    if (askForPermission) {
-//        RequestPermission(
-//            permission = Manifest.permission.CAMERA,
-//            onGranted = {
-//                askForPermission = false
-//                listener.openAddServiceModal()
-//            },
-//            onDismissRequest = { askForPermission = false },
-//            rationaleTitle = TwLocale.strings.permissionCameraTitle,
-//            rationaleText = TwLocale.strings.permissionCameraBody,
-//        )
-//    }
 }
 
 @Preview

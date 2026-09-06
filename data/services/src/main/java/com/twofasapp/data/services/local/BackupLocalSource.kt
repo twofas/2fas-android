@@ -2,9 +2,9 @@ package com.twofasapp.data.services.local
 
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.storage.serializedPref
-import com.twofasapp.prefs.model.RemoteBackup
-import com.twofasapp.prefs.model.RemoteBackupKey
-import com.twofasapp.prefs.model.RemoteBackupStatusEntity
+import com.twofasapp.data.services.domain.BackupContent
+import com.twofasapp.data.services.local.model.RemoteBackupKey
+import com.twofasapp.data.services.local.model.RemoteBackupStatusEntity
 import kotlinx.coroutines.flow.Flow
 
 class BackupLocalSource(
@@ -13,7 +13,7 @@ class BackupLocalSource(
 
     private val remoteBackupStatus by serializedPref(
         name = "remoteBackupStatus",
-        default = RemoteBackupStatusEntity(schemaVersion = RemoteBackup.CURRENT_SCHEMA),
+        default = RemoteBackupStatusEntity(schemaVersion = BackupContent.CurrentSchema),
         serializer = RemoteBackupStatusEntity.serializer(),
         encrypted = true,
     )
