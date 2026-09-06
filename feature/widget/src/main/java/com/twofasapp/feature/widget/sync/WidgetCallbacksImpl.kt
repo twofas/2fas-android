@@ -21,4 +21,10 @@ class WidgetCallbacksImpl(
             WidgetsUpdateWork.dispatch(context)
         }
     }
+
+    override suspend fun onThemeChanged() {
+        if (widgetsRepository.get().getWidgets().list.isNotEmpty()) {
+            WidgetsUpdateWork.dispatch(context)
+        }
+    }
 }

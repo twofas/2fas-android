@@ -2,6 +2,7 @@ package com.twofasapp.data.session
 
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.domain.SelectedTheme
+import com.twofasapp.common.domain.WidgetCallbacks
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.storage.booleanPref
 import com.twofasapp.common.storage.enumPref
@@ -19,6 +20,7 @@ import kotlinx.coroutines.withContext
 internal class CustomizationRepositoryImpl(
     dataStoreOwner: DataStoreOwner,
     private val dispatchers: Dispatchers,
+    private val widgetCallbacks: WidgetCallbacks,
 ) : CustomizationRepository, DataStoreOwner by dataStoreOwner {
 
     private val scope = CoroutineScope(dispatchers.io)
@@ -80,7 +82,10 @@ internal class CustomizationRepositoryImpl(
     }
 
     override suspend fun setSelectedTheme(selectedTheme: SelectedTheme) {
-        withContext(dispatchers.io) { this@CustomizationRepositoryImpl.selectedTheme.set(selectedTheme) }
+        withContext(dispatchers.io) {
+            this@CustomizationRepositoryImpl.selectedTheme.set(selectedTheme)
+            widgetCallbacks.onThemeChanged()
+        }
     }
 
     override suspend fun setServicesStyle(servicesStyle: ServicesStyle) {

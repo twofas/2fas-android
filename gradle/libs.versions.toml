@@ -136,6 +136,8 @@ commonmarkStrikethrough = { module = "org.commonmark:commonmark-ext-gfm-striketh
 commonmarkTables = { module = "org.commonmark:commonmark-ext-gfm-tables", version.ref = "commonmark" }
 composeUiUtil = { module = "androidx.compose.ui:ui-util" }
 glanceWidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
+glancePreview = { module = "androidx.glance:glance-preview", version.ref = "glance" }
+glanceWidgetPreview = { module = "androidx.glance:glance-appwidget-preview", version.ref = "glance" }
 googleApiClientGson = "com.github.cryptomator:google-http-java-client:1.44.2-dev.0001"
 playReviewKtx = "com.google.android.play:review-ktx:2.0.2"
 playUpdate = "com.google.android.play:app-update:2.1.0"
@@ -163,6 +165,8 @@ commonmark = [
 ]
 glance = [
     "glanceWidget",
+    "glancePreview",
+    "glanceWidgetPreview",
 ]
 playReview = [
     "playReviewKtx",

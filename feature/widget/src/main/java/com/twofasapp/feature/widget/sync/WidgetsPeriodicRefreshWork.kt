@@ -28,7 +28,7 @@ class WidgetsPeriodicRefreshWork(
             val request = OneTimeWorkRequestBuilder<WidgetsPeriodicRefreshWork>().build()
 
             WorkManager.getInstance(context)
-                .enqueueUniqueWork("WidgetsPeriodicRefreshWork", ExistingWorkPolicy.REPLACE, request)
+                .enqueueUniqueWork("WidgetsPeriodicRefreshWork", ExistingWorkPolicy.APPEND_OR_REPLACE, request)
         }
     }
 

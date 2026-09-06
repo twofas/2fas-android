@@ -15,18 +15,21 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.glance.appwidget.updateAll
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.common.domain.Service
+import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.ServiceCardSimple
 import com.twofasapp.core.design.feature.items.asState
-import com.twofasapp.core.design.foundation.button.TextButton
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.checked.Switch
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
+import com.twofasapp.core.design.foundation.screen.EmptyScreen
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.feature.widget.GlanceWidget
@@ -76,8 +79,9 @@ private fun ScreenContent(
             TopAppBar(
                 title = MdtLocale.strings.widgetSettingsTitle,
                 actions = {
-                    TextButton(
+                    Button(
                         text = MdtLocale.strings.commonSave,
+                        style = ButtonStyle.Text,
                         onClick = onSave,
                         enabled = uiState.loading.not() && uiState.services.isNotEmpty(),
                     )
@@ -104,18 +108,13 @@ private fun ScreenContent(
 
             if (uiState.services.isEmpty()) {
                 item("Empty", "Empty") {
-                    Box(
+                    EmptyScreen(
                         modifier = Modifier
                             .fillParentMaxSize()
                             .padding(horizontal = 16.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            text = MdtLocale.strings.widgetSettingsEmpty,
-                            style = MdtTheme.typo.base.normal,
-                            textAlign = TextAlign.Center,
-                        )
-                    }
+                        icon = MdtIcons.Tokens,
+                        title = MdtLocale.strings.widgetSettingsEmpty,
+                    )
                 }
 
                 return@LazyColumn
@@ -124,7 +123,7 @@ private fun ScreenContent(
             item("Info", "Info") {
                 Text(
                     text = MdtLocale.strings.widgetSelectMsg,
-                    style = MdtTheme.typo.base.normal.copy(fontWeight = FontWeight.Medium),
+                    style = MdtTheme.typo.base.medium,
                     modifier = Modifier.padding(16.dp),
                 )
             }
@@ -135,7 +134,7 @@ private fun ScreenContent(
                     onClick = { onToggleService(service.id) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 4.dp),
+                        .padding(horizontal = 12.dp, vertical = 4.dp),
                 ) {
                     Switch(
                         checked = uiState.selected.contains(service.id),
@@ -147,10 +146,36 @@ private fun ScreenContent(
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Preview() {
-    ScreenContent(WidgetSettingsUiState())
+    val services = listOf(
+        Service.Preview.copy(id = 1L, name = "Google", info = "john.doe@gmail.com", labelText = "GO", labelColor = Service.Tint.Red),
+        Service.Preview.copy(id = 2L, name = "GitHub", info = "johndoe", labelText = "GH", labelColor = Service.Tint.Purple),
+        Service.Preview.copy(id = 3L, name = "Amazon", info = "john.doe@gmail.com", labelText = "AM", labelColor = Service.Tint.Orange),
+    )
+
+    PreviewTheme {
+        ScreenContent(
+            uiState = WidgetSettingsUiState(
+                loading = false,
+                services = services,
+                selected = listOf(1L, 3L),
+            ),
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewEmpty() {
+    PreviewTheme {
+        ScreenContent(
+            uiState = WidgetSettingsUiState(
+                loading = false,
+            ),
+        )
+    }
 }
 
 /**

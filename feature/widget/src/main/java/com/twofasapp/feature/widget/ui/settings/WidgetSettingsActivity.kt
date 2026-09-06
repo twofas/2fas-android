@@ -14,26 +14,26 @@ import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.core.design.AppTheme
 import com.twofasapp.core.design.LocalAppTheme
 import com.twofasapp.core.design.LocalDynamicColors
-import com.twofasapp.core.design.window.ActivityHelper
+import com.twofasapp.core.design.ktx.applyAppTheme
+import com.twofasapp.core.design.ktx.enableThemedEdgeToEdge
 import com.twofasapp.data.session.CustomizationRepository
-import com.twofasapp.data.session.SettingsRepository
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
 class WidgetSettingsActivity : ComponentActivity(), AuthAware {
 
-    private val settingsRepository: SettingsRepository by inject()
     private val customizationRepository: CustomizationRepository by inject()
     private val authTracker: AuthTracker by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        ActivityHelper.onCreate(
-            activity = this,
-            selectedTheme = customizationRepository.getSelectedTheme(),
-            allowScreenshots = settingsRepository.getAppSettings().allowScreenshots,
-        )
+        val selectedTheme = customizationRepository.getSelectedTheme()
+        val dynamicColors = customizationRepository.getDynamicColors()
+        applyAppTheme(selectedTheme)
+        enableThemedEdgeToEdge(theme = selectedTheme)
+
         super.onCreate(savedInstanceState)
+
         val appWidgetId = intent?.extras?.getInt(
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID,
@@ -51,12 +51,12 @@ class WidgetSettingsActivity : ComponentActivity(), AuthAware {
 
         setContent {
             CompositionLocalProvider(
-                LocalAppTheme provides when (customizationRepository.getSelectedTheme()) {
+                LocalAppTheme provides when (selectedTheme) {
                     SelectedTheme.Auto -> AppTheme.Auto
                     SelectedTheme.Light -> AppTheme.Light
                     SelectedTheme.Dark -> AppTheme.Dark
                 },
-                LocalDynamicColors provides customizationRepository.getDynamicColors(),
+                LocalDynamicColors provides dynamicColors,
             ) {
                 AppTheme {
                     WidgetSettingsScreen(

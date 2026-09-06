@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="primary">#ED1C24</color>
-    <color name="background">#111216</color>
-    <color name="onSurface">#E4E4E4</color>
-    <color name="iconTint">#C2C2C2</color>
-    <color name="divider">#414249</color>
-</resources>
