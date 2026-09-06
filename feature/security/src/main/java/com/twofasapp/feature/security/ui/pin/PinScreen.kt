@@ -26,7 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
@@ -85,7 +85,7 @@ internal fun PinScreen(
         ) {
             if (showLogo) {
                 Image(
-                    painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_2fas),
+                    painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_auth),
                     contentDescription = null,
                     modifier = Modifier
                         .padding(16.dp)
@@ -169,7 +169,7 @@ internal fun rememberCurrentPinState(
 }
 
 @Composable
-@Preview(showSystemUi = true)
+@PreviewLightDark
 fun PreviewPinScreen() {
     PreviewTheme {
         PinScreen(

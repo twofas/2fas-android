@@ -78,7 +78,7 @@ private fun ScreenContent(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Image(
-                        painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_2fas),
+                        painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_auth),
                         contentDescription = null,
                         modifier = Modifier.size(50.dp),
                     )
