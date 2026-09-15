@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Thu, 20 Aug 2026 09:01:50 -0700
+ Exported at: Tue, 15 Sep 2026 11:59:52 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -75,7 +75,7 @@
     <string name="fingerprint__use_pin_title">Gebruik deze keer een pincode</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">U bent geweldig!</string>
-    <string name="introduction__page_1_content">Uw telefoon is zojuist een persoonlijke en beveiligde sleutel tot uw online services geworden dankzij de 2FAS-app - vertrouwd door meer dan 6 miljoen gebruikers wereldwijd.</string>
+    <string name="introduction__page_1_content">Uw telefoon is zojuist een persoonlijke en beveiligde sleutel tot uw online services geworden dankzij de 2FAS-app - vertrouwd door meer dan 10 miljoen gebruikers wereldwijd.</string>
     <string name="introduction__page_2_title">Simpel</string>
     <string name="introduction__page_2_content">Koppel 2FAS met uw online services. Activeer binnen enkele seconden tweefactorauthenticatie met uw QR-code.</string>
     <string name="introduction__page_3_title">Privé</string>
@@ -813,7 +813,7 @@
     <string name="commons__pair">Koppel</string>
     <string name="introduction__backup_icloud_title">Veilige synchronisatie en back-up</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS gebruikt iCloud voor een veilige back-up en synchronisatie van uw 2FA tokens. De **versleutelde** back-upgegevens worden opgeslagen in iCloud en zijn **alleen toegankelijk via de 2FAS-app**. Bovendien helpt deze functie bij het **herstellen en synchroniseren** van tokens op iOS-apparaten.\n\nDeze functie is standaard ingeschakeld en kan op elk moment worden uitgeschakeld in de back-upinstellingen van de app.</string>
+    <string name="introduction__backup_icloud_description">2FAS gebruikt iCloud voor een veilige back-up en synchronisatie van uw 2FA-tokens. De versleutelde back-upgegevens worden opgeslagen in iCloud en zijn alleen toegankelijk via de 2FAS-app. Bovendien helpt deze functie bij het herstellen en synchroniseren van tokens op iOS-apparaten.</string>
     <string name="introduction__backup_icloud_cta">Meer informatie over back-up</string>
     <string name="backup__enter_password_google_drive_msg1">Het lijkt erop dat u Google Drive back-upbestand is beveiligd met een wachtwoord. Typ het juiste wachtwoord in om verder te gaan. Als u uw Google Drive-back-upbestand wilt wissen,</string>
     <string name="backup__enter_password_google_drive_msg2">tik hier om te zien hoe</string>
@@ -987,11 +987,11 @@
     <string name="commons__go_to_trash">Ga naar Prullenbak</string>
     <string name="backup__moved_to_trash_title">Resultaat van iCloud-synchronisatie</string>
     <string name="backup__moved_to_trash_message">De laatste iCloud-synchronisatie heeft al je diensten naar de Prullenbak verplaatst. Je kunt ze op elk moment herstellen.</string>
-    <string name="commons__understood">Understood</string>
-    <string name="introduction__backup_icloud_description_note">It\'s enabled by default and can be disabled at any time in the app\'s backup settings.</string>
-    <string name="introduction__call_1">Just know you\'re</string>
-    <string name="introduction__call_2">Incredible!</string>
-    <string name="restore__reset__title">Restoring the app</string>
+    <string name="commons__understood">Begrepen</string>
+    <string name="introduction__backup_icloud_description_note">It is enabled by default and can be disabled at any time in the app\'s backup settings.</string>
+    <string name="introduction__call_1">Welcome to</string>
+    <string name="introduction__call_2">2FAS Auth</string>
+    <string name="restore__reset__title">De app herstellen</string>
     <string name="login__hello_header">Hello again!</string>
     <string name="login__hello_header_1">Hello there!</string>
     <string name="login__hello_header_2">Welcome back!</string>
@@ -1009,4 +1009,23 @@
     <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
     <string name="home__app_review_rate">Rate</string>
     <string name="home__app_review_dismiss">Not now</string>
+    <string name="settings__backup_and_transfer">Backup and Transfer</string>
+    <string name="settings__browser_extension_header">Browser Extension</string>
+    <string name="settings__more">More</string>
+    <string name="settings__removed_items">Removed Tokens</string>
+    <string name="settings__connected_extensions">Connected Extensions</string>
+    <string name="settings__security_description">Control your app security and privacy settings.</string>
+    <string name="settings__appearance_description">Tailor the app\'s appearance and features.</string>
+    <string name="settings__removed_items_description">Recover or permanently delete Tokens you\'ve removed from the app.</string>
+    <string name="settings__backup_description">Back up and sync your Tokens across devices.</string>
+    <string name="settings__import_tokens_description">Import Tokens from other apps.</string>
+    <string name="settings__connected_extensions_description">Manage connected browser extensions.</string>
+    <string name="settings__about_description">App info, version and licenses.</string>
+    <string name="settings__support_description">2FAS Support</string>
+    <string name="settings__donate_description">Support the development of 2FAS.</string>
+    <string name="shortcuts__backup_title">DON\'T DELETE ME without full backup</string>
+    <string name="shortcuts__support_title">Support</string>
+    <string name="shortcuts__pair_title">Pair service</string>
+    <string name="shortcuts__search_title">Search for service</string>
+    <string name="tokens__empty_screen_trashed_title">Looking for your services?</string>
 </resources>

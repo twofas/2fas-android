@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: de-DE, German (Germany)
  Exported by: rafakob
- Exported at: Thu, 20 Aug 2026 09:01:49 -0700
+ Exported at: Tue, 15 Sep 2026 11:59:52 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -75,7 +75,7 @@
     <string name="fingerprint__use_pin_title">Verwende dieses Mal die PIN</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">Du bist großartig!</string>
-    <string name="introduction__page_1_content">Dein Smartphone wurde gerade privater und sicherer Schlüssel zu deinen Online-Diensten, dank der 2FAS App - der über 6 Millionen Nutzer weltweit vertrauen.</string>
+    <string name="introduction__page_1_content">Dein Smartphone wurde gerade privater und sicherer Schlüssel zu deinen Online-Diensten, dank der 2FAS App - der über 10 Millionen Nutzer weltweit vertrauen.</string>
     <string name="introduction__page_2_title">Einfach</string>
     <string name="introduction__page_2_content">Kopple 2FAS mit deinen Online-Diensten. Aktiviere die Zwei-Faktor-Sicherheit in Sekundenschnelle mit deinem QR-Code.</string>
     <string name="introduction__page_3_title">Privat</string>
@@ -813,7 +813,7 @@
     <string name="commons__pair">Verbinden</string>
     <string name="introduction__backup_icloud_title">Sicherheit bei der Synchronisierung und Datensicherung</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS verwendet iCloud für ein sichere Sicherung und die Synchronisierung deiner 2FA Token. Die **verschlüsselten** Sicherungsdaten werden in iCloud gespeichert und sind **nur über die 2FAS App** zugänglich. Außerdem hilft diese Funktion bei der **Wiederherstellung und Synchronisierung** von Token zwischen iOS-Geräten.\n\nStandardmäßig ist dies aktiviert und kann in den Sicherungs-Einstellungen der App jederzeit deaktiviert werden.</string>
+    <string name="introduction__backup_icloud_description">2FAS verwendet iCloud für eine sichere Sicherung und die Synchronisierung deiner 2FA-Token. Die verschlüsselten Sicherungsdaten werden in iCloud gespeichert und sind nur über die 2FAS-App zugänglich. Außerdem hilft diese Funktion bei der Wiederherstellung und Synchronisierung von Token zwischen iOS-Geräten.</string>
     <string name="introduction__backup_icloud_cta">Lerne mehr über die Datensicherung</string>
     <string name="backup__enter_password_google_drive_msg1">Es scheint, als wäre deine Google Drive Sicherungsdatei passwortgeschützt. Gib das richtige Passwort ein, um fortzufahren. Wenn du deine Google Drive-Backup-Datei löschen möchtest, ...</string>
     <string name="backup__enter_password_google_drive_msg2">Tippe hier, um zu sehen, wie es funktioniert</string>
@@ -1000,13 +1000,32 @@
     <string name="tokens__empty_list_title">Ersten Dienst hinzufügen</string>
     <string name="guides__request_service">Anfrage</string>
     <string name="guides__step_number">Schritt %d</string>
-    <string name="about__generate_logs">Log generieren</string>
-    <string name="about__generate_logs_alert_title">Logs generieren?</string>
-    <string name="about__generate_logs_alert_message">Möchtest du Logs generieren? Es kann einige Zeit dauern.</string>
+    <string name="about__generate_logs">Protokolle generieren</string>
+    <string name="about__generate_logs_alert_title">Protokolle generieren?</string>
+    <string name="about__generate_logs_alert_message">Möchtest du Protokolle generieren? Es kann einige Zeit dauern.</string>
     <string name="about__generate_logs_alert_action">Generieren</string>
-    <string name="introduction__backup_header">Backup</string>
-    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
-    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
-    <string name="home__app_review_rate">Rate</string>
-    <string name="home__app_review_dismiss">Not now</string>
+    <string name="introduction__backup_header">Sicherung</string>
+    <string name="home__app_review_title">Magst du 2FAS Auth?</string>
+    <string name="home__app_review_msg">Wenn die App für dich nützlich war, nimm dir bitte einen Moment Zeit, um sie zu bewerten. Das hilft uns wirklich sehr!</string>
+    <string name="home__app_review_rate">Bewerten</string>
+    <string name="home__app_review_dismiss">Nicht jetzt</string>
+    <string name="settings__backup_and_transfer">Sicherung und Übertragung</string>
+    <string name="settings__browser_extension_header">Browsererweiterung</string>
+    <string name="settings__more">Mehr</string>
+    <string name="settings__removed_items">Entfernte Einträge</string>
+    <string name="settings__connected_extensions">Verbundene Erweiterungen</string>
+    <string name="settings__security_description">Steuere die Sicherheits- und Datenschutzeinstellungen deiner App.</string>
+    <string name="settings__appearance_description">Passe das Aussehen und die Funktionen der App an.</string>
+    <string name="settings__removed_items_description">Wiederherstellen oder dauerhaftes Löschen von Token, die du aus der App entfernt hast.</string>
+    <string name="settings__backup_description">Sichere und synchronisiere deine Token geräteübergreifend.</string>
+    <string name="settings__import_tokens_description">Importiere Token von anderen Apps.</string>
+    <string name="settings__connected_extensions_description">Verwalte verbundene Browsererweiterungen.</string>
+    <string name="settings__about_description">App-Info, Version und Lizenzen.</string>
+    <string name="settings__support_description">Erhalte Hilfe vom 2FAS Team.</string>
+    <string name="settings__donate_description">Unterstütze die Entwicklung von 2FAS Auth.</string>
+    <string name="shortcuts__backup_title">LÖSCH MICH NICHT ohne vollständige Sicherung</string>
+    <string name="shortcuts__support_title">Unterstützung erhalten</string>
+    <string name="shortcuts__pair_title">Dienst verbinden</string>
+    <string name="shortcuts__search_title">Nach Dienst suchen</string>
+    <string name="tokens__empty_screen_trashed_title">Looking for your services?</string>
 </resources>

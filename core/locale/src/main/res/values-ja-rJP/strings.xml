@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Thu, 20 Aug 2026 09:01:50 -0700
+ Exported at: Tue, 15 Sep 2026 11:59:52 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -807,7 +807,7 @@
     <string name="commons__pair">ペアリング</string>
     <string name="introduction__backup_icloud_title">セキュアな同期とバックアップ</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FASは、認証コードの安全なバックアップと同期にiCloudを使用します。 **暗号化された**バックアップデータはiCloudに保存され、**2FASアプリからのみ**アクセスできます。さらに、この機能はiOSデバイス間での認証コードの**リカバリと同期**にも役立ちます。\n\nこれはデフォルトで有効になっており、アプリのバックアップ設定でいつでも無効にできます。</string>
+    <string name="introduction__backup_icloud_description">2FASは、認証コードの安全なバックアップと同期にiCloudを使用します。 暗号化されたバックアップデータはiCloudに保存され、2FASアプリからのみアクセスできます。さらに、この機能はiOSデバイス間での認証コードのリカバリと同期にも役立ちます。</string>
     <string name="introduction__backup_icloud_cta">バックアップについて詳しくはこちら</string>
     <string name="backup__enter_password_google_drive_msg1">Googleドライブのバックアップファイルはパスワードで保護されているようです。続けるには正しいパスワードを入力してください。Googleドライブのバックアップファイルを削除したい場合、</string>
     <string name="backup__enter_password_google_drive_msg2">タップして確認</string>
@@ -994,13 +994,32 @@
     <string name="tokens__empty_list_title">最初のサービスを追加</string>
     <string name="guides__request_service">リクエスト</string>
     <string name="guides__step_number">ステップ %d</string>
-    <string name="about__generate_logs">Generate logs</string>
-    <string name="about__generate_logs_alert_title">Generate logs?</string>
-    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
-    <string name="about__generate_logs_alert_action">Generate</string>
-    <string name="introduction__backup_header">Backup</string>
-    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
-    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
-    <string name="home__app_review_rate">Rate</string>
-    <string name="home__app_review_dismiss">Not now</string>
+    <string name="about__generate_logs">ログを生成する</string>
+    <string name="about__generate_logs_alert_title">ログを生成しますか？</string>
+    <string name="about__generate_logs_alert_message">ログを生成しますか？ 少し時間が掛かります。</string>
+    <string name="about__generate_logs_alert_action">生成する</string>
+    <string name="introduction__backup_header">バックアップ</string>
+    <string name="home__app_review_title">2FAS Authを気に入っていただけましたか？</string>
+    <string name="home__app_review_msg">このアプリがお役に立ちましたら、ぜひ評価をお願いいたします。私たちの大きな励みになります！</string>
+    <string name="home__app_review_rate">評価する</string>
+    <string name="home__app_review_dismiss">後で</string>
+    <string name="settings__backup_and_transfer">バックアップと転送</string>
+    <string name="settings__browser_extension_header">ブラウザ拡張</string>
+    <string name="settings__more">もっと</string>
+    <string name="settings__removed_items">認証コードを削除する</string>
+    <string name="settings__connected_extensions">接続済みのエクステンション</string>
+    <string name="settings__security_description">アプリのセキュリティとプライバシー設定を管理します。</string>
+    <string name="settings__appearance_description">アプリの見た目と機能をカスタマイズする。</string>
+    <string name="settings__removed_items_description">アプリから削除した認証コードを復元、または完全に削除します。</string>
+    <string name="settings__backup_description">デバイス間で認証コードをバックアップおよび同期しましょう。</string>
+    <string name="settings__import_tokens_description">他のアプリからトークンをインポート</string>
+    <string name="settings__connected_extensions_description">接続済みのブラウザ拡張を管理</string>
+    <string name="settings__about_description">アプリ情報、バージョン、およびライセンス</string>
+    <string name="settings__support_description">2FASチームのサポートを受ける</string>
+    <string name="settings__donate_description">2FASの開発を支援する</string>
+    <string name="shortcuts__backup_title">完全バックアップせずに削除しないでください</string>
+    <string name="shortcuts__support_title">サポート</string>
+    <string name="shortcuts__pair_title">ペアリング済みサービス</string>
+    <string name="shortcuts__search_title">サービスを検索</string>
+    <string name="tokens__empty_screen_trashed_title">サービスをお探しですか？</string>
 </resources>

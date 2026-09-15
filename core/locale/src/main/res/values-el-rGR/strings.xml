@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Thu, 20 Aug 2026 09:01:50 -0700
+ Exported at: Tue, 15 Sep 2026 11:59:52 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -75,7 +75,7 @@
     <string name="fingerprint__use_pin_title">Χρησιμοποιήστε το PIN αυτή τη φορά</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">Είσαι απίθανος!</string>
-    <string name="introduction__page_1_content">Το τηλέφωνό σας μόλις έγινε ένα ιδιωτικό και ασφαλές κλειδί για τις online υπηρεσίες σας, χάρη στην εφαρμογή 2FAS - εμπιστευμένη από πάνω από 6 εκατομμύρια χρήστες παγκοσμίως.</string>
+    <string name="introduction__page_1_content">Το τηλέφωνό σας μόλις έγινε ένα ιδιωτικό και ασφαλές κλειδί για τις online υπηρεσίες σας, χάρη στην εφαρμογή 2FAS - εμπιστευμένη από πάνω από 10 εκατομμύρια χρήστες παγκοσμίως.</string>
     <string name="introduction__page_2_title">Απλό</string>
     <string name="introduction__page_2_content">Συνδέστε το 2FAS με τις online υπηρεσίες σας. Ενεργοποιήστε την διπλή ασφάλεια σε λίγα δευτερόλεπτα με τον QR κώδικά σας.</string>
     <string name="introduction__page_3_title">Ιδιωτικό</string>
@@ -813,7 +813,7 @@
     <string name="commons__pair">Σύζευξη</string>
     <string name="introduction__backup_icloud_title">Ασφαλής συγχρονισμός και δημιουργία αντιγράφων ασφαλείας</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">Το 2FAS χρησιμοποιεί το iCloud για ασφαλή δημιουργία αντιγράφων ασφαλείας και συγχρονισμό των κουπονιών σας 2FA. Τα **κρυπτογραφημένα** εφεδρικά δεδομένα αποθηκεύονται στο iCloud, προσβάσιμα **μόνο από την εφαρμογή 2FAS**. Επιπλέον, αυτή η λειτουργία βοηθά με το διακριτικό **ανάκτηση και συγχρονισμό** σε συσκευές iOS.\n\nΕίναι ενεργοποιημένο από προεπιλογή και μπορεί να απενεργοποιηθεί ανά πάσα στιγμή στις ρυθμίσεις δημιουργίας αντιγράφων ασφαλείας της εφαρμογής.</string>
+    <string name="introduction__backup_icloud_description">Το 2FAS χρησιμοποιεί το iCloud για ασφαλή δημιουργία αντιγράφων ασφαλείας και συγχρονισμό των κουπονιών σας 2FA. Τα κρυπτογραφημένα εφεδρικά δεδομένα αποθηκεύονται στο iCloud, προσβάσιμα μόνο από την εφαρμογή 2FAS. Επιπλέον, αυτή η λειτουργία βοηθά με το διακριτικό ανάκτηση και συγχρονισμό σε συσκευές iOS.</string>
     <string name="introduction__backup_icloud_cta">Μάθετε περισσότερα σχετικά με τη δημιουργία αντιγράφων ασφαλείας</string>
     <string name="backup__enter_password_google_drive_msg1">Φαίνεται ότι το αρχείο αντιγράφου ασφαλείας του Google Drive προστατεύεται με κωδικό πρόσβασης. Πληκτρολογήστε τον σωστό κωδικό πρόσβασης για να συνεχίσετε. Εάν θέλετε να εκκαθαρίσετε το αντίγραφο ασφαλείας του Google Drive,</string>
     <string name="backup__enter_password_google_drive_msg2">πατήστε εδώ για να δείτε πώς</string>
@@ -1004,9 +1004,28 @@
     <string name="about__generate_logs_alert_title">Να δημιουργηθούν αρχεία καταγραφής;</string>
     <string name="about__generate_logs_alert_message">Θέλετε να δημιουργήσετε αρχεία καταγραφής; Η διαδικασία ενδέχεται να διαρκέσει λίγο.</string>
     <string name="about__generate_logs_alert_action">Δημιουργία</string>
-    <string name="introduction__backup_header">Backup</string>
-    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
-    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
-    <string name="home__app_review_rate">Rate</string>
-    <string name="home__app_review_dismiss">Not now</string>
+    <string name="introduction__backup_header">Αντίγραφο ασφαλείας</string>
+    <string name="home__app_review_title">Σας αρέσει το 2FAS Auth;</string>
+    <string name="home__app_review_msg">Αν η εφαρμογή σάς φάνηκε χρήσιμη, αφιερώστε λίγο χρόνο για να την αξιολογήσετε. Μας βοηθάει πραγματικά πολύ!</string>
+    <string name="home__app_review_rate">Αξιολογήστε</string>
+    <string name="home__app_review_dismiss">Όχι τώρα</string>
+    <string name="settings__backup_and_transfer">Αντίγραφα ασφαλείας και μεταφορά</string>
+    <string name="settings__browser_extension_header">Επέκταση προγράμματος περιήγησης</string>
+    <string name="settings__more">Περισσότερα</string>
+    <string name="settings__removed_items">Αφαιρεμένα Tokens</string>
+    <string name="settings__connected_extensions">Συνδεδεμένες επεκτάσεις</string>
+    <string name="settings__security_description">Ελέγξτε τις ρυθμίσεις ασφάλειας και απορρήτου της εφαρμογής.</string>
+    <string name="settings__appearance_description">Προσαρμόστε την εμφάνιση και τις λειτουργίες της εφαρμογής.</string>
+    <string name="settings__removed_items_description">Ανακτήστε ή διαγράψτε οριστικά Tokens που έχετε αφαιρέσει από την εφαρμογή.</string>
+    <string name="settings__backup_description">Δημιουργήστε αντίγραφα ασφαλείας και συγχρονίστε τα Tokens σας σε όλες τις συσκευές.</string>
+    <string name="settings__import_tokens_description">Εισαγάγετε Tokens από άλλες εφαρμογές.</string>
+    <string name="settings__connected_extensions_description">Διαχειριστείτε τις συνδεδεμένες επεκτάσεις προγράμματος περιήγησης.</string>
+    <string name="settings__about_description">Πληροφορίες εφαρμογής, έκδοση και άδειες χρήσης.</string>
+    <string name="settings__support_description">Υποστήριξη 2FAS</string>
+    <string name="settings__donate_description">Υποστηρίξτε την ανάπτυξη του 2FAS.</string>
+    <string name="shortcuts__backup_title">ΜΗ ΜΕ ΔΙΑΓΡΑΨΕΙΣ χωρίς πλήρες αντίγραφο ασφαλείας</string>
+    <string name="shortcuts__support_title">Υποστήριξη</string>
+    <string name="shortcuts__pair_title">Σύζευξη υπηρεσίας</string>
+    <string name="shortcuts__search_title">Αναζήτηση υπηρεσίας</string>
+    <string name="tokens__empty_screen_trashed_title">Looking for your services?</string>
 </resources>

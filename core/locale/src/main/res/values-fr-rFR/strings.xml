@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Thu, 20 Aug 2026 09:01:49 -0700
+ Exported at: Tue, 15 Sep 2026 11:59:52 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -75,7 +75,7 @@
     <string name="fingerprint__use_pin_title">Utiliser le code PIN cette fois-ci</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">Vous êtes génial !</string>
-    <string name="introduction__page_1_content">Votre téléphone vient de devenir une clé privée et sécurisée pour vos services en ligne grâce à l\'application 2FAS, utilisée par plus de 6 millions d\'utilisateurs dans le monde.</string>
+    <string name="introduction__page_1_content">Votre téléphone vient de devenir une clé privée et sécurisée pour vos services en ligne grâce à l\'application 2FAS, utilisée par plus de 10 millions d\'utilisateurs dans le monde.</string>
     <string name="introduction__page_2_title">Simple</string>
     <string name="introduction__page_2_content">Associez 2FAS à vos services en ligne. Activez la vérification en deux étapes en quelques secondes grâce au QR code.</string>
     <string name="introduction__page_3_title">Privée</string>
@@ -813,7 +813,7 @@
     <string name="commons__pair">Appairer</string>
     <string name="introduction__backup_icloud_title">Sécuriser la synchronisation et la sauvegarde</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS utilise iCloud pour sécuriser la sauvegarde et synchroniser vos jetons 2FA. Les données de sauvegarde **chiffrées** sont enregistrées dans iCloud, accessibles **uniquement par l\'application 2FA**. De plus, cette fonction facilite l\'utilisation des jetons **de récupération et de synchronisation** entre les périphériques iOS.</string>
+    <string name="introduction__backup_icloud_description">2FAS utilise iCloud pour sécuriser la sauvegarde et synchroniser vos jetons 2FA. Les données de sauvegarde chiffrées sont enregistrées dans iCloud, accessibles uniquement par l\'application 2FA. De plus, cette fonction facilite l\'utilisation des jetons de récupération et de synchronisation entre les périphériques iOS.</string>
     <string name="introduction__backup_icloud_cta">En apprendre plus sur la sauvegarde</string>
     <string name="backup__enter_password_google_drive_msg1">On dirait que votre fichier de sauvegarde Google Drive est protégé par un mot de passe. Renseignez correctement le mot de passe pour poursuivre. Si vous souhaitez effacer votre fichier de sauvegarde Google Drive,</string>
     <string name="backup__enter_password_google_drive_msg2">appuyez ici pour voir la manoeuvre</string>
@@ -1009,4 +1009,23 @@
     <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
     <string name="home__app_review_rate">Rate</string>
     <string name="home__app_review_dismiss">Not now</string>
+    <string name="settings__backup_and_transfer">Backup and Transfer</string>
+    <string name="settings__browser_extension_header">Browser Extension</string>
+    <string name="settings__more">More</string>
+    <string name="settings__removed_items">Removed Tokens</string>
+    <string name="settings__connected_extensions">Connected Extensions</string>
+    <string name="settings__security_description">Control your app security and privacy settings.</string>
+    <string name="settings__appearance_description">Tailor the app\'s appearance and features.</string>
+    <string name="settings__removed_items_description">Recover or permanently delete Tokens you\'ve removed from the app.</string>
+    <string name="settings__backup_description">Back up and sync your Tokens across devices.</string>
+    <string name="settings__import_tokens_description">Import Tokens from other apps.</string>
+    <string name="settings__connected_extensions_description">Manage connected browser extensions.</string>
+    <string name="settings__about_description">App info, version and licenses.</string>
+    <string name="settings__support_description">2FAS Support</string>
+    <string name="settings__donate_description">Support the development of 2FAS.</string>
+    <string name="shortcuts__backup_title">DON\'T DELETE ME without full backup</string>
+    <string name="shortcuts__support_title">Support</string>
+    <string name="shortcuts__pair_title">Pair service</string>
+    <string name="shortcuts__search_title">Search for service</string>
+    <string name="tokens__empty_screen_trashed_title">Looking for your services?</string>
 </resources>
