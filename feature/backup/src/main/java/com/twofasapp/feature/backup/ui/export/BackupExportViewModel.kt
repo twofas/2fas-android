@@ -10,6 +10,7 @@ import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.session.SessionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
+import java.io.FileOutputStream
 
 internal class BackupExportViewModel(
     private val context: Application,
@@ -54,10 +55,18 @@ internal class BackupExportViewModel(
                     password = if (uiState.value.passwordChecked) uiState.value.password else null,
                 )
 
-                context.contentResolver.openOutputStream(fileUri)
-                    ?.use { outputStream ->
-                        outputStream.write(content.toByteArray(Charsets.UTF_8))
-                    }
+                val bytes = content.toByteArray(Charsets.UTF_8)
+
+                // Open with explicit truncation ("wt"). Some document providers (e.g. cloud storage)
+                // do not truncate on plain "w", leaving a tail of the previous, longer file.
+                // Fall back to "w" for providers that reject "wt" and truncate manually when possible.
+                val outputStream = runCatching { context.contentResolver.openOutputStream(fileUri, "wt") }.getOrNull()
+                    ?: context.contentResolver.openOutputStream(fileUri, "w")
+
+                outputStream?.use { stream ->
+                    stream.write(bytes)
+                    (stream as? FileOutputStream)?.channel?.truncate(bytes.size.toLong())
+                }
             }
                 .onSuccess {
                     publishEvent(BackupExportUiEvent.DownloadSuccess)
