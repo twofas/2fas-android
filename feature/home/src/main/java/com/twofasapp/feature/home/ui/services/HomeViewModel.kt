@@ -8,6 +8,7 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.environment.BuildVariant
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.GroupsRepository
@@ -40,6 +41,7 @@ internal class HomeViewModel(
     private val backupRepository: BackupRepository,
     private val deeplinkHandler: DeeplinkHandler,
     private val bottomBarState: BottomBarState,
+    private val timeProvider: TimeProvider,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(HomeUiState())
@@ -47,6 +49,7 @@ internal class HomeViewModel(
     private val isInEditMode = MutableStateFlow(false)
     private val searchQuery = MutableStateFlow("")
     private val searchFocused = MutableStateFlow(false)
+    private var lastPausedAt: Long? = null
 
     init {
         uiState.update {
@@ -300,6 +303,21 @@ internal class HomeViewModel(
         }
     }
 
+    fun onPause() {
+        lastPausedAt = timeProvider.systemElapsedTime()
+    }
+
+    fun onResume() {
+        val pausedAt = lastPausedAt ?: return
+        lastPausedAt = null
+
+        if (customizationRepository.getAutoFocusSearch().not()) return
+        if (uiState.value.searchFocused) return
+        if (timeProvider.systemElapsedTime() - pausedAt < AutoFocusSearchBackgroundThresholdMs) return
+
+        searchFocused(true)
+    }
+
     fun searchFocused(focused: Boolean) {
         if (uiState.value.searchFocused == focused) return
 
@@ -421,5 +439,6 @@ internal class HomeViewModel(
 
     private companion object {
         const val AppReviewItemsThreshold = 3
+        const val AutoFocusSearchBackgroundThresholdMs = 30_000L
     }
 }

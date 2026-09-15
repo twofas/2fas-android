@@ -40,6 +40,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
@@ -126,6 +127,8 @@ internal fun HomeScreen(
         onSortChange = { viewModel.updateSort(it) },
         onSearchQueryChange = { viewModel.search(it) },
         onSearchFocusChange = { viewModel.searchFocused(it) },
+        onResume = { viewModel.onResume() },
+        onPause = { viewModel.onPause() },
         onOpenBackupClick = { navigator.open(Screen.Backup) },
         onOpenBackupImport = { navigator.open(Screen.BackupImport(importFileUri = it)) },
         onOpenNotifications = { navigator.open(Screen.Notifications) },
@@ -193,6 +196,8 @@ private fun Content(
     onSortChange: (Int) -> Unit = {},
     onSearchQueryChange: (String) -> Unit,
     onSearchFocusChange: (Boolean) -> Unit,
+    onResume: () -> Unit = {},
+    onPause: () -> Unit = {},
     onOpenBackupClick: (Boolean) -> Unit = {},
     onOpenBackupImport: (String?) -> Unit = {},
     onOpenNotifications: () -> Unit = {},
@@ -292,15 +297,16 @@ private fun Content(
         onEventConsumed(it)
     }
 
-    LaunchedEffect(Unit) {
-        if (uiState.searchFocused) {
-            awaitFrame()
-            focusRequester.requestFocus()
-        }
+    LifecycleResumeEffect(Unit) {
+        onResume()
+        onPauseOrDispose { onPause() }
     }
 
     LaunchedEffect(uiState.searchFocused) {
-        if (uiState.searchFocused.not()) {
+        if (uiState.searchFocused) {
+            awaitFrame()
+            focusRequester.requestFocus()
+        } else {
             focusManager.clearFocus()
         }
     }
