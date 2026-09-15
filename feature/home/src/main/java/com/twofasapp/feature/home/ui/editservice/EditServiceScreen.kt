@@ -49,7 +49,7 @@ import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.ServiceImageType
 import com.twofasapp.core.design.feature.items.asColor
-import com.twofasapp.core.design.feature.items.servicecard.ServiceCardImage
+import com.twofasapp.core.design.feature.items.servicecard.base.ServiceCardImage
 import com.twofasapp.core.design.feature.settings.OptionEntry
 import com.twofasapp.core.design.feature.settings.OptionHeader
 import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst

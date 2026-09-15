@@ -18,8 +18,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.twofasapp.core.design.MdtTheme
-import com.twofasapp.core.design.feature.items.servicecard.ServiceCardContainer
-import com.twofasapp.core.design.feature.items.servicecard.ServiceCardImage
+import com.twofasapp.core.design.feature.items.servicecard.base.ServiceCardContainer
+import com.twofasapp.core.design.feature.items.servicecard.base.ServiceCardImage
 import com.twofasapp.core.design.foundation.checked.CheckIcon
 import com.twofasapp.core.design.foundation.preview.PreviewColumn
 
@@ -71,7 +71,7 @@ fun ServiceCardSimple(
                     Text(
                         text = state.info,
                         style = MdtTheme.typo.xs2.normal,
-                        color = MdtTheme.color.onSurfaceVariant.copy(alpha = 0.8f),
+                        color = MdtTheme.color.onSurfaceVariant,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )

@@ -1,4 +1,4 @@
-package com.twofasapp.core.design.feature.items.servicecard
+package com.twofasapp.core.design.feature.items.servicecard.base
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.TweenSpec
@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,6 +42,17 @@ import com.twofasapp.core.design.feature.items.formatCode
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.ktx.fixedFontSize
 
+/**
+ * Where the next code pill is rendered relative to the current code.
+ */
+internal enum class NextCodePlacement {
+    /** Pill sits to the right of the code, in the same row. */
+    End,
+
+    /** Pill sits underneath the code, both aligned to the end, shifting the code up when shown. */
+    Below,
+}
+
 @Composable
 internal fun ServiceCardCode(
     modifier: Modifier = Modifier,
@@ -52,6 +64,7 @@ internal fun ServiceCardCode(
     nextCodeTextStyle: TextStyle,
     nextCodeEmphasizedTextStyle: TextStyle,
     nextCodePadding: PaddingValues = PaddingValues(horizontal = 8.dp, vertical = 5.dp),
+    nextCodePlacement: NextCodePlacement = NextCodePlacement.End,
 ) {
     val expireColor by animateExpireColor(timer = state.timer)
     val nextCodeEmphasis by animateFloatAsState(
@@ -76,50 +89,88 @@ internal fun ServiceCardCode(
         with(density) { textMeasurer.measure(text = "0", style = fullCodeStyle, maxLines = 1).size.height.toDp() }
     }
 
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(codeRowHeight)
-            .graphicsLayer {
-                rotationX = flipRotation
-                cameraDistance = 12f * this.density
+    val flipModifier = Modifier.graphicsLayer {
+        rotationX = flipRotation
+        cameraDistance = 12f * this.density
+    }
+
+    val code: @Composable () -> Unit = {
+        Text(
+            text = state.code.formatCode(),
+            style = lerp(
+                start = fullCodeStyle,
+                stop = codeWithNextCodeTextStyle.fixedFontSize(),
+                fraction = nextCodeEmphasis,
+            ),
+            color = when (state.authType) {
+                ServiceAuthType.Totp, ServiceAuthType.Steam -> expireColor
+                ServiceAuthType.Hotp -> MdtTheme.color.onSurface
             },
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        if (showCodeFace) {
-            Text(
-                text = state.code.formatCode(),
-                style = lerp(
-                    start = fullCodeStyle,
-                    stop = codeWithNextCodeTextStyle.fixedFontSize(),
+            maxLines = 1,
+        )
+    }
+
+    val nextCode: @Composable () -> Unit = {
+        AnimatedVisibility(
+            visible = state.isNextCodeEnabled(showNextCode),
+        ) {
+            NextCodePill(
+                nextCode = state.nextCode,
+                textStyle = lerp(
+                    start = nextCodeTextStyle.fixedFontSize(),
+                    stop = nextCodeEmphasizedTextStyle.fixedFontSize(),
                     fraction = nextCodeEmphasis,
                 ),
-                color = when (state.authType) {
-                    ServiceAuthType.Totp, ServiceAuthType.Steam -> expireColor
-                    ServiceAuthType.Hotp -> MdtTheme.color.onSurface
-                },
-                maxLines = 1,
+                contentPadding = nextCodePadding,
             )
+        }
+    }
 
-            AnimatedVisibility(
-                visible = state.isNextCodeEnabled(showNextCode),
+    val hiddenDots: @Composable () -> Unit = {
+        HiddenDots(
+            formattedCode = state.code.formatCode(),
+            modifier = Modifier.graphicsLayer { rotationX = 180f },
+        )
+    }
+
+    when (nextCodePlacement) {
+        NextCodePlacement.End -> {
+            Row(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .height(codeRowHeight)
+                    .then(flipModifier),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                NextCodePill(
-                    nextCode = state.nextCode,
-                    textStyle = lerp(
-                        start = nextCodeTextStyle.fixedFontSize(),
-                        stop = nextCodeEmphasizedTextStyle.fixedFontSize(),
-                        fraction = nextCodeEmphasis,
-                    ),
-                    contentPadding = nextCodePadding,
-                )
+                if (showCodeFace) {
+                    code()
+                    nextCode()
+                } else {
+                    hiddenDots()
+                }
             }
-        } else {
-            HiddenDots(
-                formattedCode = state.code.formatCode(),
-                modifier = Modifier.graphicsLayer { rotationX = 180f },
-            )
+        }
+
+        NextCodePlacement.Below -> {
+            Column(
+                modifier = modifier
+                    .wrapContentWidth()
+                    .then(flipModifier),
+                horizontalAlignment = Alignment.End,
+                verticalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                Box(
+                    modifier = Modifier.height(codeRowHeight),
+                    contentAlignment = Alignment.CenterEnd,
+                ) {
+                    if (showCodeFace) code() else hiddenDots()
+                }
+
+                if (showCodeFace) {
+                    nextCode()
+                }
+            }
         }
     }
 }
@@ -198,6 +249,18 @@ private fun Preview() {
                     nextCodeEmphasizedTextStyle = (if (state.code.length > 6) MdtTheme.typo.sm else MdtTheme.typo.base).normal,
                 )
             }
+
+            ServiceCardCode(
+                state = ServicePreview.copy(timer = 3),
+                revealed = true,
+                showNextCode = true,
+                codeTextStyle = MdtTheme.typo.xl.light,
+                codeWithNextCodeTextStyle = MdtTheme.typo.lg.light,
+                nextCodeTextStyle = MdtTheme.typo.xs2.normal,
+                nextCodeEmphasizedTextStyle = MdtTheme.typo.xs.normal,
+                nextCodePadding = PaddingValues(horizontal = 6.dp, vertical = 2.dp),
+                nextCodePlacement = NextCodePlacement.Below,
+            )
         }
     }
 }

@@ -14,6 +14,7 @@ import com.twofasapp.common.crypto.AndroidKeyStore
 import com.twofasapp.common.crypto.encrypt
 import com.twofasapp.common.ktx.encodeBase64
 import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.data.session.domain.ServicesStyle
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.io.ByteArrayInputStream
@@ -58,7 +59,16 @@ class MigrateDataStore(
                     "hideCodes" -> preferences[booleanPreferencesKey("hideCodes")] = value as Boolean
                     "dynamicColors" -> preferences[booleanPreferencesKey("dynamicColors")] = value as Boolean
                     "selectedTheme" -> preferences[stringPreferencesKey("selectedTheme")] = value as String
-                    "servicesStyle" -> preferences[stringPreferencesKey("servicesStyle")] = value as String
+                    "servicesStyle" -> {
+                        // Legacy styles shifted by one: old "Default" is now "Large", old "Compact" is now "Default".
+                        val servicesStyle = when (value as String) {
+                            "Compact" -> ServicesStyle.Default
+                            else -> ServicesStyle.Large
+                        }
+
+                        preferences[stringPreferencesKey("servicesStyle")] = servicesStyle.name
+                    }
+
                     "servicesSort" -> preferences[stringPreferencesKey("servicesSort")] = value as String
                     "lockStatus" -> {
                         val lockMethod = when (value as String) {
@@ -93,6 +103,11 @@ class MigrateDataStore(
 
                     else -> return@forEach
                 }
+            }
+
+            if (entries.containsKey("servicesStyle").not()) {
+                // Existing users without an explicit choice had the legacy default look, which is now "Large".
+                preferences[stringPreferencesKey("servicesStyle")] = ServicesStyle.Large.name
             }
         }
     }

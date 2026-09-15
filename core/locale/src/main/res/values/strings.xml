@@ -727,6 +727,7 @@
     <string name="settings__list_style">List style</string>
     <string name="backup__reminder_msg">Google Drive not synced.</string>
     <string name="backup__reminder_cta">Go to backup settings</string>
+    <string name="settings__list_style_option_large">Large</string>
     <string name="settings__list_style_option_default">Default</string>
     <string name="settings__list_style_option_compact">Compact</string>
     <string name="externalimport_lastpass">LastPass</string>

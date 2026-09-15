@@ -508,6 +508,7 @@ private fun Content(
                                         state = state,
                                         modifier = Modifier,
                                         style = when (uiState.servicesStyle) {
+                                            ServicesStyle.Large -> ServiceStyle.Large
                                             ServicesStyle.Default -> ServiceStyle.Default
                                             ServicesStyle.Compact -> ServiceStyle.Compact
                                         },

@@ -1,4 +1,4 @@
-package com.twofasapp.core.design.feature.items.servicecard
+package com.twofasapp.core.design.feature.items.servicecard.base
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Box
@@ -29,6 +29,7 @@ internal fun ServiceTimerRing(
     progress: Float,
     modifier: Modifier = Modifier,
     size: Dp = 36.dp,
+    strokeWidth: Dp = 3.dp,
     textStyle: TextStyle = MdtTheme.typo.xs2.medium,
 ) {
     val color by animateExpireColor(timer = timer)
@@ -48,7 +49,7 @@ internal fun ServiceTimerRing(
                 .fillMaxSize()
                 .padding(2.dp)
                 .drawWithCache {
-                    val stroke = Stroke(width = 3.dp.toPx(), cap = StrokeCap.Round)
+                    val stroke = Stroke(width = strokeWidth.toPx(), cap = StrokeCap.Round)
 
                     onDrawBehind {
                         drawArc(

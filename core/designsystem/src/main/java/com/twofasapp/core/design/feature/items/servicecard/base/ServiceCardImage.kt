@@ -1,4 +1,4 @@
-package com.twofasapp.core.design.feature.items.servicecard
+package com.twofasapp.core.design.feature.items.servicecard.base
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

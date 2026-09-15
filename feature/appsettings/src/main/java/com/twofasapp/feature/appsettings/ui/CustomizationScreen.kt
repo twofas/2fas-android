@@ -133,8 +133,8 @@ private fun Content(
                     .padding(horizontal = 16.dp, vertical = 12.dp)
                     .clip(RoundedShape16)
                     .background(MdtTheme.color.surfaceContainer)
-                    .padding(vertical = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(32.dp, Alignment.CenterHorizontally),
+                    .padding(vertical = 16.dp, horizontal = 16.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
                 ServicesStyle.entries.forEach { style ->
                     ServicesStyleOption(
@@ -220,6 +220,7 @@ private fun ServicesStyleOption(
     ) {
         Image(
             painter = when (style) {
+                ServicesStyle.Large -> painterResource(R.drawable.img_liststyle_large)
                 ServicesStyle.Default -> painterResource(R.drawable.img_liststyle_default)
                 ServicesStyle.Compact -> painterResource(R.drawable.img_liststyle_compact)
             },
@@ -255,6 +256,7 @@ private fun SelectedTheme.toStringResource(): String {
 @Composable
 private fun ServicesStyle.toStringResource(): String {
     return when (this) {
+        ServicesStyle.Large -> stringResource(id = LocaleR.string.settings__list_style_option_large)
         ServicesStyle.Default -> stringResource(id = LocaleR.string.settings__list_style_option_default)
         ServicesStyle.Compact -> stringResource(id = LocaleR.string.settings__list_style_option_compact)
     }

@@ -41,7 +41,7 @@ import com.twofasapp.common.domain.Service
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.ServiceImageType
 import com.twofasapp.core.design.feature.items.asColor
-import com.twofasapp.core.design.feature.items.servicecard.ServiceCardImage
+import com.twofasapp.core.design.feature.items.servicecard.base.ServiceCardImage
 import com.twofasapp.core.design.foundation.button.Button
 import com.twofasapp.core.design.foundation.button.ButtonStyle
 import com.twofasapp.core.design.foundation.other.Space

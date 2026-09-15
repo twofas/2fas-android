@@ -17,6 +17,7 @@ import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.servicecard.ServiceCardCompact
 import com.twofasapp.core.design.feature.items.servicecard.ServiceCardDefault
+import com.twofasapp.core.design.feature.items.servicecard.ServiceCardLarge
 import com.twofasapp.core.design.foundation.checked.CheckIcon
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 
@@ -67,6 +68,20 @@ fun ServiceCard(
             }
         }
 
+        style == ServiceStyle.Large -> {
+            ServiceCardLarge(
+                state = state,
+                showNextCode = showNextCode,
+                hideCodes = hideCodes,
+                containerColor = containerColor,
+                onClick = onClick,
+                onLongClick = onLongClick,
+                onIncrementCounterClick = onIncrementCounterClick,
+                onRevealClick = onRevealClick,
+                modifier = cardModifier,
+            )
+        }
+
         style == ServiceStyle.Default -> {
             ServiceCardDefault(
                 state = state,
@@ -113,7 +128,7 @@ fun animateExpireColor(timer: Int): State<Color> {
 }
 
 enum class ServiceStyle {
-    Default, Compact
+    Large, Default, Compact
 }
 
 enum class ServiceAuthType {
@@ -162,6 +177,12 @@ internal fun PreviewCards(
             }
         }
     }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewLarge() {
+    PreviewCards(style = ServiceStyle.Large)
 }
 
 @PreviewLightDark

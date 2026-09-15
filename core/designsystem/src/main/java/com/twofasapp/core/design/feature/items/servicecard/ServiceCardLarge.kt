@@ -10,11 +10,10 @@ import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.PreviewCards
 import com.twofasapp.core.design.feature.items.ServiceState
 import com.twofasapp.core.design.feature.items.ServiceStyle
-import com.twofasapp.core.design.feature.items.servicecard.base.CodePlacement
 import com.twofasapp.core.design.feature.items.servicecard.base.ServiceCardBase
 
 @Composable
-internal fun ServiceCardCompact(
+internal fun ServiceCardLarge(
     state: ServiceState,
     showNextCode: Boolean,
     hideCodes: Boolean,
@@ -35,28 +34,27 @@ internal fun ServiceCardCompact(
         onIncrementCounterClick = onIncrementCounterClick,
         onRevealClick = onRevealClick,
         modifier = modifier,
-        codePlacement = CodePlacement.End,
-        minHeight = 64.dp,
-        imageSize = 28.dp,
-        nameTextStyle = MdtTheme.typo.xs.medium,
-        nameSpacing = 2.dp,
-        infoTextStyle = MdtTheme.typo.xs2.normal,
-        codeTextStyle = (if (state.code.length > 6) MdtTheme.typo.lg else MdtTheme.typo.xl).light,
-        codeSpacing = 4.dp,
-        codeWithNextCodeTextStyle = (if (state.code.length > 6) MdtTheme.typo.base else MdtTheme.typo.lg).light,
-        nextCodeTextStyle = MdtTheme.typo.xs2.normal,
-        nextCodeEmphasizedTextStyle = MdtTheme.typo.xs.normal,
-        nextCodePadding = PaddingValues(horizontal = 6.dp, vertical = 2.dp),
-        timerSize = 28.dp,
-        timerStrokeWidth = 2.dp,
-        timerTextStyle = MdtTheme.typo.xs4.medium,
-        actionButtonSize = 28.dp,
-        actionButtonIconSize = 14.dp,
+        minHeight = 120.dp,
+        imageSize = 36.dp,
+        nameTextStyle = MdtTheme.typo.sm.medium,
+        nameSpacing = 4.dp,
+        infoTextStyle = MdtTheme.typo.xs.normal,
+        codeTextStyle = (if (state.code.length > 6) MdtTheme.typo.xl4 else MdtTheme.typo.xl5).light,
+        codeSpacing = 10.dp,
+        codeWithNextCodeTextStyle = (if (state.code.length > 6) MdtTheme.typo.xl3 else MdtTheme.typo.xl4).light,
+        nextCodeTextStyle = MdtTheme.typo.xs.normal,
+        nextCodeEmphasizedTextStyle = (if (state.code.length > 6) MdtTheme.typo.sm else MdtTheme.typo.base).normal,
+        nextCodePadding = PaddingValues(horizontal = 8.dp, vertical = 5.dp),
+        timerSize = 36.dp,
+        timerStrokeWidth = 3.dp,
+        timerTextStyle = MdtTheme.typo.xs2.medium,
+        actionButtonSize = 40.dp,
+        actionButtonIconSize = 20.dp,
     )
 }
 
 @PreviewLightDark
 @Composable
 private fun Preview() {
-    PreviewCards(style = ServiceStyle.Compact)
+    PreviewCards(style = ServiceStyle.Large)
 }
