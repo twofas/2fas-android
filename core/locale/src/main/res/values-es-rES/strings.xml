@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Tue, 15 Sep 2026 11:59:52 -0700
+ Exported at: Tue, 15 Sep 2026 12:15:01 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1028,4 +1028,7 @@
     <string name="shortcuts__pair_title">Pair service</string>
     <string name="shortcuts__search_title">Search for service</string>
     <string name="tokens__empty_screen_trashed_title">Looking for your services?</string>
+    <string name="settings__trash_selected">%d selected</string>
+    <string name="tokens__delete_service_msg">Are you sure you want to delete this service?</string>
+    <string name="tokens__delete_selected_msg">Are you sure you want to delete %d selected services?</string>
 </resources>
