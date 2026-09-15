@@ -603,7 +603,8 @@ private fun Content(
             options = MdtLocale.strings.servicesSortByOptions,
             selectedIndex = when (uiState.servicesSort) {
                 ServicesSort.Alphabetical -> 0
-                ServicesSort.Manual -> 1
+                ServicesSort.AlphabeticalReversed -> 1
+                ServicesSort.Manual -> 2
             },
             onOptionSelected = { index, _ -> onSortChange(index) },
         )

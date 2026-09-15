@@ -63,7 +63,11 @@ class Strings(c: Context) {
     val servicesDeleteSelected = c.getString(R.string.tokens__delete_selected_msg)
     val servicesDelete = c.getString(R.string.tokens__delete_service_msg)
     val servicesSortBy = c.getString(R.string.tokens__sort_by)
-    val servicesSortByOptions = listOf(c.getString(R.string.tokens__sort_by_a_to_z), c.getString(R.string.tokens__sort_by_manual))
+    val servicesSortByOptions = listOf(
+        c.getString(R.string.tokens__sort_by_a_to_z),
+        c.getString(R.string.tokens__sort_by_z_to_a),
+        c.getString(R.string.tokens__sort_by_manual),
+    )
     val servicesCopyToken = c.getString(R.string.tokens__copied_clipboard)
     val servicesCopyNextToken = c.getString(R.string.tokens__next_copied_clipboard)
     val servicesQrFromGalleryTitle = c.getString(R.string.tokens__gallery_advice_title)

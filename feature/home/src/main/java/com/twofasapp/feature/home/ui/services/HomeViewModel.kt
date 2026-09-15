@@ -119,14 +119,11 @@ internal class HomeViewModel(
                     result.searchFocused.not() &&
                     result.isInEditMode.not()
 
-                val filteredServices = result.services
-                    .sortedBy {
-                        when (result.servicesSort) {
-                            ServicesSort.Alphabetical -> it.name.lowercase()
-                            ServicesSort.Manual -> null
-                        }
-                    }
-                    .filter { service -> service.isMatchingQuery(result.searchQuery) }
+                val filteredServices = when (result.servicesSort) {
+                    ServicesSort.Alphabetical -> result.services.sortedBy { it.name.lowercase() }
+                    ServicesSort.AlphabeticalReversed -> result.services.sortedByDescending { it.name.lowercase() }
+                    ServicesSort.Manual -> result.services
+                }.filter { service -> service.isMatchingQuery(result.searchQuery) }
 
                 uiState.update { state ->
                     state.copy(
@@ -296,6 +293,7 @@ internal class HomeViewModel(
             customizationRepository.setServicesSort(
                 when (index) {
                     0 -> ServicesSort.Alphabetical
+                    1 -> ServicesSort.AlphabeticalReversed
                     else -> ServicesSort.Manual
                 },
             )

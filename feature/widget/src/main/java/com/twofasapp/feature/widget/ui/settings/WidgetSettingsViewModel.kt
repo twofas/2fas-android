@@ -29,11 +29,10 @@ class WidgetSettingsViewModel(
                 uiState.update {
                     it.copy(
                         loading = false,
-                        services = services.sortedBy { service ->
-                            when (servicesSort) {
-                                ServicesSort.Alphabetical -> service.name.lowercase()
-                                ServicesSort.Manual -> null
-                            }
+                        services = when (servicesSort) {
+                            ServicesSort.Alphabetical -> services.sortedBy { service -> service.name.lowercase() }
+                            ServicesSort.AlphabeticalReversed -> services.sortedByDescending { service -> service.name.lowercase() }
+                            ServicesSort.Manual -> services
                         },
                     )
                 }
