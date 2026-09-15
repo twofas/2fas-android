@@ -87,7 +87,7 @@ fun ByteArray.encodeBase64(): String {
 }
 
 fun String.encodeBase64(): String {
-    return this.encodeBase64()
+    return this.encodeToByteArray().encodeBase64()
 }
 
 fun EncryptedBytes.encodeBase64(): String {

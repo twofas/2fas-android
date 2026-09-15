@@ -4,6 +4,7 @@ import android.net.Uri
 import com.twofasapp.GoogleAuthenticatorProto.MigrationPayload
 import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
+import com.twofasapp.common.ktx.decodeBase64
 import com.twofasapp.common.ktx.legacyDecodeBase64ToByteArray
 import com.twofasapp.data.services.otp.ServiceParser
 import org.apache.commons.codec.binary.Base32
@@ -31,7 +32,7 @@ class GoogleAuthenticatorImporter : ExternalImporter {
             }
 
             val dataEncoded = uri.getQueryParameter(DATA) ?: return ExternalImport.UnsupportedError("Missing $DATA parameter")
-            val data = dataEncoded.legacyDecodeBase64ToByteArray()
+            val data = dataEncoded.decodeBase64()
 
             val proto = MigrationPayload.parseFrom(data)
             val totalServices = proto.otpParametersCount
