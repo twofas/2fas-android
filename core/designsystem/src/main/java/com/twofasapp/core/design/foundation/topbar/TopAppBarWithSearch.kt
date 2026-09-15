@@ -4,9 +4,14 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
@@ -20,6 +25,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -28,22 +34,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.preview.PreviewText
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
 
 @Composable
 fun TopAppBarWithSearch(
     title: String,
     searchHint: String = "",
     modifier: Modifier = Modifier,
+    showSearch: MutableState<Boolean> = remember { mutableStateOf(false) },
     actions: @Composable RowScope.() -> Unit = {},
     onSearchValueChanged: (String) -> Unit = {},
     navigationClick: () -> Unit,
 ) {
-    val showSearch = remember { mutableStateOf(false) }
-
     TopAppBar(
         content = {
             if (showSearch.value) {
@@ -134,29 +142,36 @@ fun SearchBar(
                 errorLabelColor = MdtTheme.color.error,
             ),
             trailingIcon = {
-                AnimatedVisibility(
-                    visible = showClearButton.value,
-                    enter = fadeIn(),
-                    exit = fadeOut(),
+                Box(
+                    contentAlignment = Alignment.TopEnd,
                 ) {
-                    IconButton(onClick = {
-                        if (textValue.value.isNotEmpty()) {
-                            textValue.value = ""
-                            onValueChanged("")
-                        } else {
-                            showClearButton.value = false
-                            showSearch.value = false
-                            focusManager.clearFocus()
-                            keyboardController?.hide()
-                        }
+                    AnimatedVisibility(
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .width(IntrinsicSize.Min),
+                        visible = showClearButton.value,
+                        enter = fadeIn(),
+                        exit = fadeOut(),
+                    ) {
+                        IconButton(onClick = {
+                            if (textValue.value.isNotEmpty()) {
+                                textValue.value = ""
+                                onValueChanged("")
+                            } else {
+                                showClearButton.value = false
+                                showSearch.value = false
+                                focusManager.clearFocus()
+                                keyboardController?.hide()
+                            }
 
-                        onClearClick()
-                    }) {
-                        Icon(
-                            painter = MdtIcons.Close,
-                            tint = MdtTheme.color.onSurface,
-                            contentDescription = null,
-                        )
+                            onClearClick()
+                        }) {
+                            Icon(
+                                painter = MdtIcons.Close,
+                                tint = MdtTheme.color.onSurface,
+                                contentDescription = null,
+                            )
+                        }
                     }
                 }
             },
@@ -174,5 +189,35 @@ fun SearchBar(
     } else {
         textValue.value = ""
         onValueChanged("")
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        TopAppBarWithSearch(
+            title = PreviewText,
+            searchHint = "Search",
+            actions = {
+                IconButton(onClick = {}) {
+                    Icon(MdtIcons.Add, null, tint = MdtTheme.color.onSurface)
+                }
+            },
+            navigationClick = {},
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewSearchActive() {
+    PreviewTheme {
+        TopAppBarWithSearch(
+            title = PreviewText,
+            searchHint = "Search",
+            showSearch = remember { mutableStateOf(true) },
+            navigationClick = {},
+        )
     }
 }
