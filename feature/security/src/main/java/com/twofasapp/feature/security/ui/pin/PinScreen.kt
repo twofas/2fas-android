@@ -133,7 +133,7 @@ internal fun PinScreen(
         }
     }
 
-    if (showBiometricDialog && showBiometrics && biometricKeyProvider != null) {
+    if (showBiometricDialog && showBiometrics && isEnabled && state == PinScreenState.Default && biometricKeyProvider != null) {
         BiometricDialog(
             title = stringResource(id = R.string.biometric_dialog_auth_title),
             subtitle = stringResource(id = R.string.biometric_dialog_auth_subtitle),
