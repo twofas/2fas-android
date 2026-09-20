@@ -49,7 +49,7 @@ internal class HomeViewModel(
     private val isInEditMode = MutableStateFlow(false)
     private val searchQuery = MutableStateFlow("")
     private val searchFocused = MutableStateFlow(false)
-    private var lastPausedAt: Long? = null
+    private var movedToBackgroundAt: Long? = null
 
     init {
         uiState.update {
@@ -303,17 +303,17 @@ internal class HomeViewModel(
         }
     }
 
-    fun onPause() {
-        lastPausedAt = timeProvider.systemElapsedTime()
+    fun onAppBackground() {
+        movedToBackgroundAt = timeProvider.systemElapsedTime()
     }
 
-    fun onResume() {
-        val pausedAt = lastPausedAt ?: return
-        lastPausedAt = null
+    fun onAppForeground() {
+        val backgroundAt = movedToBackgroundAt ?: return
+        movedToBackgroundAt = null
 
         if (customizationRepository.getAutoFocusSearch().not()) return
         if (uiState.value.searchFocused) return
-        if (timeProvider.systemElapsedTime() - pausedAt < AutoFocusSearchBackgroundThresholdMs) return
+        if (timeProvider.systemElapsedTime() - backgroundAt < AutoFocusSearchBackgroundThresholdMs) return
 
         searchFocused(true)
     }
