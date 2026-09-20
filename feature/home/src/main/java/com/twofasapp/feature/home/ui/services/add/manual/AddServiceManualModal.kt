@@ -231,9 +231,12 @@ private fun Content(
                 .padding(horizontal = 16.dp),
             supportingText = uiState.serviceSecretError?.let { stringResource(it) },
             isError = uiState.serviceSecret != null && uiState.serviceSecretValid.not(),
+            // Keep the same keyboard class as the name field above. A Password keyboard type makes
+            // Gboard restart the IME (incognito mode) when focus moves between the two fields,
+            // which briefly hides the keyboard and makes the whole sheet jump down and up.
             keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Password,
                 capitalization = KeyboardCapitalization.None,
+                autoCorrectEnabled = false,
                 imeAction = ImeAction.Done,
             ),
             singleLine = true,

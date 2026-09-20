@@ -7,7 +7,6 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.pluto.Pluto
 import com.pluto.plugins.datastore.pref.PlutoDatastorePreferencesPlugin
-import com.pluto.plugins.rooms.db.PlutoRoomsDatabasePlugin
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.environment.BuildVariant
@@ -124,7 +123,6 @@ class App : Application() {
     private fun initPluto() {
         Pluto.Installer(this)
             .apply {
-                addPlugin(PlutoRoomsDatabasePlugin())
                 addPlugin(PlutoDatastorePreferencesPlugin())
             }
             .install()

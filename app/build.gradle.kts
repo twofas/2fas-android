@@ -1,10 +1,9 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidApplication)
     alias(libs.plugins.twofasCompose)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.kotlinParcelize)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinKsp)
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     alias(libs.plugins.twofasLint)
@@ -71,10 +70,8 @@ dependencies {
     implementation(project(":parsers"))
 
     implementation(libs.bundles.appCompat)
-    implementation(libs.bundles.compose)
     implementation(libs.bundles.barcodeScanner)
     implementation(libs.bundles.room)
-    implementation(libs.reLinker)
     ksp(libs.roomCompiler)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
@@ -82,18 +79,18 @@ dependencies {
     implementation(libs.bundles.playReview)
     implementation(libs.bundles.playUpdate)
     implementation(libs.bundles.glance)
+    implementation(libs.material)
     implementation(libs.biometric)
     implementation(libs.timber)
     implementation(libs.securityCrypto)
     implementation(libs.lottie)
     implementation(libs.kotlinCoroutines)
     implementation(libs.workManager)
-    implementation(libs.activityX)
     implementation(libs.coreSplash)
     implementation(platform(libs.firebaseBom))
     implementation(libs.firebaseCrashlytics)
     implementation(libs.firebaseMessaging)
-    implementation(libs.playServicesCorutines)
+    implementation(libs.playServicesCoroutines)
     implementation(libs.playFeatureDelivery)
     implementation(libs.googleApiClientGson)
     implementation(libs.googleApiClientAndroid) {
@@ -110,17 +107,14 @@ dependencies {
     }
 
     debugImplementation(libs.pluto)
-    debugImplementation(libs.plutoRoom)
     debugImplementation(libs.plutoDataStore)
     debugImplementation(libs.plutoLogger)
 
     internalImplementation(libs.plutoNoOp)
-    internalImplementation(libs.plutoRoomNoOp)
     internalImplementation(libs.plutoDataStoreNoOp)
     internalImplementation(libs.plutoLoggerNoOp)
 
     releaseImplementation(libs.plutoNoOp)
-    releaseImplementation(libs.plutoRoomNoOp)
     releaseImplementation(libs.plutoDataStoreNoOp)
     releaseImplementation(libs.plutoLoggerNoOp)
 }

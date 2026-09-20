@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     alias(libs.plugins.twofasLint)
@@ -16,5 +15,5 @@ dependencies {
     implementation(platform(libs.firebaseBom))
     implementation(libs.firebaseCrashlytics)
     implementation(libs.firebaseMessaging)
-    implementation(libs.playServicesCorutines)
+    implementation(libs.playServicesCoroutines)
 }

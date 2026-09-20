@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     `kotlin-dsl`
 }
@@ -21,8 +20,7 @@ dependencies {
 }
 
 gradlePlugin {
-    @Suppress("DSL_SCOPE_VIOLATION")
-plugins {
+    plugins {
         register("TwoFasComposePlugin") {
             id = "twofas.compose"
             implementationClass = "com.twofasapp.buildlogic.TwoFasComposePlugin"
