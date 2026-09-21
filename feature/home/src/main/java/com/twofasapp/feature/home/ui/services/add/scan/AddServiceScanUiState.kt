@@ -9,9 +9,6 @@ internal data class AddServiceScanUiState(
     val showServiceExistsDialog: Boolean = false,
     val showErrorDialog: Boolean = false,
     val showGalleryErrorDialog: Boolean = false,
-    val source: AddServiceScanViewModel.Source = AddServiceScanViewModel.Source.Scan,
+    val source: AddServiceScanViewModel.ScanSource = AddServiceScanViewModel.ScanSource.Scan,
+    val addedService: RecentlyAddedService? = null,
 )
-
-internal sealed interface AddServiceScanUiEvent {
-    data class AddedSuccessfully(val recentlyAddedService: RecentlyAddedService) : AddServiceScanUiEvent
-}

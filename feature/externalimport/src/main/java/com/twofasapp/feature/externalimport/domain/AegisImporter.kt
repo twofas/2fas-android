@@ -2,10 +2,10 @@ package com.twofasapp.feature.externalimport.domain
 
 import android.content.Context
 import android.net.Uri
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.otp.ServiceParser
-import com.twofasapp.common.domain.OtpAuthLink
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import java.io.BufferedReader
@@ -50,7 +50,6 @@ internal class AegisImporter(
 
     override fun read(content: String): ExternalImport {
         try {
-
             val fileUri = Uri.parse(content)
             val fileDescriptor = context.contentResolver.openAssetFileDescriptor(fileUri, "r")
             val size = fileDescriptor?.length ?: 0
@@ -71,13 +70,13 @@ internal class AegisImporter(
 
             model.db.entries
                 .asSequence()
-                .filter { it.type.equals("totp", true) || it.type.equals("hotp", true) || it.type.equals("steam", true)}
-                .filter { it.info.digits == 5 ||it.info.digits == 6 || it.info.digits == 7 || it.info.digits == 8 }
-                .filter { it.info.period == 10 || it.info.period == 30 || it.info.period == 60 || it.info.period == 90 || it.type.equals("hotp", true)}
+                .filter { it.type.equals("totp", true) || it.type.equals("hotp", true) || it.type.equals("steam", true) }
+                .filter { it.info.digits == 5 || it.info.digits == 6 || it.info.digits == 7 || it.info.digits == 8 }
+                .filter { it.info.period == 10 || it.info.period == 30 || it.info.period == 60 || it.info.period == 90 || it.type.equals("hotp", true) }
                 .filter {
                     it.info.algo.equals("SHA1", true) || it.info.algo.equals("SHA224", true) || it.info.algo.equals(
                         "SHA256",
-                        true
+                        true,
                     ) || it.info.algo.equals("SHA384", true) || it.info.algo.equals("SHA512", true)
                 }
                 .filter { servicesRepository.isSecretValid(it.info.secret) }
@@ -106,7 +105,7 @@ internal class AegisImporter(
                 issuer = entry.issuer,
                 link = null,
                 params = parseParams(entry),
-            )
+            ),
         )
     }
 

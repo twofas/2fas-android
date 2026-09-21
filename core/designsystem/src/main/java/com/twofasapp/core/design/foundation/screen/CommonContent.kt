@@ -1,0 +1,136 @@
+package com.twofasapp.core.design.foundation.screen
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.locale.MdtLocale
+
+@Composable
+fun CommonContent(
+    image: Painter? = null,
+    titleText: String? = null,
+    descriptionText: String? = null,
+    ctaPrimaryText: String? = null,
+    ctaPrimaryClick: () -> Unit = {},
+    ctaSecondaryText: String? = null,
+    ctaSecondaryClick: () -> Unit = {},
+    title: @Composable (() -> Unit)? = null,
+    description: @Composable (() -> Unit)? = null,
+    cta: @Composable (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            if (image != null) {
+                Image(painter = image, contentDescription = null, Modifier.height(120.dp))
+                Spacer(Modifier.height(24.dp))
+            }
+
+            if (titleText != null) {
+                CommonContentTitle(text = titleText)
+            }
+
+            title?.invoke()
+
+            Spacer(Modifier.height(16.dp))
+
+            if (descriptionText != null) {
+                CommonContentDescription(text = descriptionText)
+            }
+
+            description?.invoke()
+
+            Spacer(Modifier.height(64.dp))
+        }
+
+        if (ctaPrimaryText != null) {
+            Button(
+                text = ctaPrimaryText,
+                onClick = ctaPrimaryClick,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+
+        if (ctaSecondaryText != null) {
+            Spacer(modifier = Modifier.height(4.dp))
+            Button(
+                style = ButtonStyle.Text,
+                text = ctaSecondaryText,
+                onClick = ctaSecondaryClick,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+
+        cta?.invoke()
+    }
+}
+
+@Composable
+fun CommonContentTitle(text: String) {
+    Text(
+        text = text,
+        style = MdtTheme.typo.xl.normal,
+        color = MdtTheme.color.onSurface,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+    )
+}
+
+@Composable
+fun CommonContentDescription(text: String) {
+    Text(
+        text = text,
+        style = MdtTheme.typo.base.normal,
+        color = MdtTheme.color.onSurface,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+    )
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        CommonContent(
+            image = MdtIcons.Placeholder,
+            titleText = MdtLocale.strings.placeholder,
+            descriptionText = MdtLocale.strings.placeholderLong,
+            ctaPrimaryText = MdtLocale.strings.placeholder,
+            ctaSecondaryText = MdtLocale.strings.placeholder,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+        )
+    }
+}

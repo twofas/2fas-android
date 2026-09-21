@@ -11,7 +11,7 @@ sealed interface CloudSyncStatus {
     data class Synced(val trigger: CloudSyncTrigger) : CloudSyncStatus
 
     data class Error(val trigger: CloudSyncTrigger, val error: CloudSyncError) : CloudSyncStatus {
-        fun shouldShowError() = trigger != CloudSyncTrigger.RemovePassword
-                && trigger != CloudSyncTrigger.SetPassword
+        fun shouldShowError() = trigger != CloudSyncTrigger.RemovePassword &&
+            trigger != CloudSyncTrigger.SetPassword
     }
 }

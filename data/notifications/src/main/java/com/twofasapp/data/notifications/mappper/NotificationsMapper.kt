@@ -1,5 +1,6 @@
 package com.twofasapp.data.notifications.mappper
 
+import com.twofasapp.common.ktx.enumValueOrNull
 import com.twofasapp.data.notifications.domain.Notification
 import com.twofasapp.data.notifications.local.model.NotificationEntity
 import com.twofasapp.data.notifications.remote.model.NotificationJson
@@ -15,7 +16,7 @@ internal fun Notification.asEntity(periodicType: String? = null) = NotificationE
     platform = "android",
     isRead = isRead,
     periodicType = periodicType,
-    internalRoute = internalRoute,
+    internalRoute = internalRoute?.name,
 )
 
 internal fun NotificationEntity.asDomain() = Notification(
@@ -25,7 +26,13 @@ internal fun NotificationEntity.asDomain() = Notification(
     message = message,
     createdAt = publishTime,
     isRead = isRead,
-    internalRoute = internalRoute,
+    internalRoute = enumValueOrNull<Notification.InternalRoute>(internalRoute)
+        // Fallback after migration to an enum
+        ?: if (internalRoute?.contains("backup", ignoreCase = true) == true) {
+            Notification.InternalRoute.Backup
+        } else {
+            null
+        },
 )
 
 internal fun NotificationJson.asDomain() = Notification(

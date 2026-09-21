@@ -7,14 +7,13 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import com.twofasapp.android.navigation.Screen
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.notifications.domain.Notification
 import com.twofasapp.data.notifications.domain.PeriodicNotificationType
 import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.data.session.SessionRepository
+import com.twofasapp.data.session.StartupRepository
 import kotlinx.coroutines.flow.first
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -39,8 +38,7 @@ class OnAppStartWork(
         }
     }
 
-
-    private val sessionRepository: SessionRepository by inject()
+    private val startupRepository: StartupRepository by inject()
     private val notificationsRepository: NotificationsRepository by inject()
     private val backupRepository: BackupRepository by inject()
     private val servicesRepository: ServicesRepository by inject()
@@ -52,7 +50,7 @@ class OnAppStartWork(
     }
 
     private suspend fun checkPeriodicNotifications() {
-        if (sessionRepository.isOnboardingDisplayed().not()) {
+        if (startupRepository.isOnboardingDisplayed().not()) {
             Timber.d("This is first app launch -> do nothing")
             // This is first app launch -> do nothing
             return
@@ -97,7 +95,7 @@ class OnAppStartWork(
                         category = Notification.Category.Tips,
                         message = context.getString(com.twofasapp.locale.R.string.periodic_notification_tips),
                         link = "https://2fas.com/2fasauth-tutorial",
-                    )
+                    ),
                 )
             }
 
@@ -110,8 +108,8 @@ class OnAppStartWork(
                             category = Notification.Category.Updates,
                             message = context.getString(com.twofasapp.locale.R.string.periodic_notification_backup),
                             link = "",
-                            internalRoute = Screen.Backup.route,
-                        )
+                            internalRoute = Notification.InternalRoute.Backup,
+                        ),
                     )
                 }
             }
@@ -124,7 +122,7 @@ class OnAppStartWork(
                             category = Notification.Category.News,
                             message = context.getString(com.twofasapp.locale.R.string.periodic_notification_browser_extension),
                             link = "https://2fas.com/browser-extension/",
-                        )
+                        ),
                     )
                 }
             }
@@ -137,7 +135,7 @@ class OnAppStartWork(
                             category = Notification.Category.Features,
                             message = context.getString(com.twofasapp.locale.R.string.periodic_notification_donate),
                             link = "https://2fas.com/donate/",
-                        )
+                        ),
                     )
                 }
             }
@@ -148,7 +146,7 @@ class OnAppStartWork(
         category: Notification.Category,
         message: String,
         link: String,
-        internalRoute: String? = null,
+        internalRoute: Notification.InternalRoute? = null,
     ): Notification {
         return Notification(
             id = UUID.randomUUID().toString(),

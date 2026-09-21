@@ -1,7 +1,5 @@
 package com.twofasapp.data.services.domain
 
-import com.twofasapp.prefs.model.ServiceType
-import com.twofasapp.prefs.model.Tint
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -55,7 +53,7 @@ data class BackupService(
     @Serializable
     data class Order(
         @SerialName("position")
-        val position: Int
+        val position: Int,
     )
 
     @Serializable

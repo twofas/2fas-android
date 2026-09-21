@@ -1,7 +1,7 @@
 package com.twofasapp.feature.browserext.ui.request
 
-import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import com.twofasapp.common.domain.Service
+import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 
 internal data class BrowserExtRequestUiState(
     val browserName: String = "",
@@ -15,6 +15,6 @@ internal data class BrowserExtRequestUiState(
         extensionId = "",
         requestId = "",
         serviceId = 0L,
-        domain = null
-    )
+        domain = null,
+    ),
 )

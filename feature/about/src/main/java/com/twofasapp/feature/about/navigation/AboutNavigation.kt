@@ -5,12 +5,8 @@ import com.twofasapp.feature.about.ui.about.AboutScreen
 import com.twofasapp.feature.about.ui.licenses.AboutLicensesScreen
 
 @Composable
-fun AboutRoute(
-    openLicenses: () -> Unit,
-) {
-    AboutScreen(
-        openLicenses = openLicenses,
-    )
+fun AboutRoute() {
+    AboutScreen()
 }
 
 @Composable

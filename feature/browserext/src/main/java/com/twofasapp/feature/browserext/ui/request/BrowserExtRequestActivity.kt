@@ -8,12 +8,12 @@ import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
 import com.twofasapp.common.domain.SelectedTheme
-import com.twofasapp.data.session.SettingsRepository
-import com.twofasapp.designsystem.AppTheme
-import com.twofasapp.designsystem.LocalAppTheme
-import com.twofasapp.designsystem.LocalDynamicColors
-import com.twofasapp.designsystem.MainAppTheme
-import com.twofasapp.designsystem.activity.ActivityHelper
+import com.twofasapp.core.design.AppTheme
+import com.twofasapp.core.design.LocalAppTheme
+import com.twofasapp.core.design.LocalDynamicColors
+import com.twofasapp.core.design.ktx.applyAppTheme
+import com.twofasapp.core.design.ktx.enableThemedEdgeToEdge
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
@@ -21,15 +21,14 @@ import org.koin.core.parameter.parametersOf
 
 class BrowserExtRequestActivity : ComponentActivity(), AuthAware {
 
-    private val settingsRepository: SettingsRepository by inject()
+    private val customizationRepository: CustomizationRepository by inject()
     private val authTracker: AuthTracker by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        ActivityHelper.onCreate(
-            activity = this,
-            selectedTheme = settingsRepository.getAppSettings().selectedTheme,
-            allowScreenshots = settingsRepository.getAppSettings().allowScreenshots,
-        )
+        val selectedTheme = customizationRepository.getSelectedTheme()
+        val dynamicColors = customizationRepository.getDynamicColors()
+        applyAppTheme(selectedTheme)
+        enableThemedEdgeToEdge(theme = selectedTheme)
         super.onCreate(savedInstanceState)
 
         val payload = intent.getParcelableExtra<BrowserExtRequestPayload>(BrowserExtRequestPayload.Key)!!
@@ -40,20 +39,20 @@ class BrowserExtRequestActivity : ComponentActivity(), AuthAware {
             AuthLifecycle(
                 authTracker = get(),
                 navigator = get { parametersOf(this) },
-                authAware = this as? AuthAware
-            )
+                authAware = this as? AuthAware,
+            ),
         )
 
         setContent {
             CompositionLocalProvider(
-                LocalAppTheme provides when (settingsRepository.getAppSettings().selectedTheme) {
+                LocalAppTheme provides when (customizationRepository.getSelectedTheme()) {
                     SelectedTheme.Auto -> AppTheme.Auto
                     SelectedTheme.Light -> AppTheme.Light
                     SelectedTheme.Dark -> AppTheme.Dark
                 },
-                LocalDynamicColors provides settingsRepository.getAppSettings().dynamicColors,
+                LocalDynamicColors provides dynamicColors,
             ) {
-                MainAppTheme {
+                AppTheme {
                     BrowserExtRequestScreen(payload = payload)
                 }
             }

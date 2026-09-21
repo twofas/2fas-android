@@ -1,7 +1,6 @@
 package com.twofasapp.feature.widget.ui.settings
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,22 +15,25 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.glance.appwidget.updateAll
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwCircularProgressIndicator
-import com.twofasapp.designsystem.common.TwSwitch
-import com.twofasapp.designsystem.common.TwTextButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.service.DsServiceSimple
-import com.twofasapp.designsystem.service.asState
+import com.twofasapp.common.domain.Service
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.ServiceCardSimple
+import com.twofasapp.core.design.feature.items.asState
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.checked.Switch
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
+import com.twofasapp.core.design.foundation.screen.EmptyScreen
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.currentActivity
 import com.twofasapp.feature.widget.GlanceWidget
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -74,21 +76,22 @@ private fun ScreenContent(
 ) {
     Scaffold(
         topBar = {
-            TwTopAppBar(
-                titleText = TwLocale.strings.widgetSettingsTitle,
+            TopAppBar(
+                title = MdtLocale.strings.widgetSettingsTitle,
                 actions = {
-                    TwTextButton(
-                        text = TwLocale.strings.commonSave,
+                    Button(
+                        text = MdtLocale.strings.commonSave,
+                        style = ButtonStyle.Text,
                         onClick = onSave,
                         enabled = uiState.loading.not() && uiState.services.isNotEmpty(),
                     )
-                }
+                },
             )
-        }
+        },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
-                .padding(padding)
+                .padding(padding),
         ) {
             if (uiState.loading) {
                 item("Loader", "Loader") {
@@ -96,7 +99,7 @@ private fun ScreenContent(
                         modifier = Modifier.fillParentMaxSize(),
                         contentAlignment = Alignment.Center,
                     ) {
-                        TwCircularProgressIndicator()
+                        CircularProgressIndicator()
                     }
                 }
 
@@ -105,18 +108,13 @@ private fun ScreenContent(
 
             if (uiState.services.isEmpty()) {
                 item("Empty", "Empty") {
-                    Box(
+                    EmptyScreen(
                         modifier = Modifier
                             .fillParentMaxSize()
                             .padding(horizontal = 16.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            text = TwLocale.strings.widgetSettingsEmpty,
-                            style = TwTheme.typo.body1,
-                            textAlign = TextAlign.Center,
-                        )
-                    }
+                        icon = MdtIcons.Tokens,
+                        title = MdtLocale.strings.widgetSettingsEmpty,
+                    )
                 }
 
                 return@LazyColumn
@@ -124,23 +122,23 @@ private fun ScreenContent(
 
             item("Info", "Info") {
                 Text(
-                    text = TwLocale.strings.widgetSelectMsg,
-                    style = TwTheme.typo.body1.copy(fontWeight = FontWeight.Medium),
-                    modifier = Modifier.padding(16.dp)
+                    text = MdtLocale.strings.widgetSelectMsg,
+                    style = MdtTheme.typo.base.medium,
+                    modifier = Modifier.padding(16.dp),
                 )
             }
 
             items(uiState.services, { it.id }, { "Service" }) { service ->
-                DsServiceSimple(
+                ServiceCardSimple(
                     state = service.asState().copy(revealed = true),
+                    onClick = { onToggleService(service.id) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { onToggleService(service.id) }
-                        .padding(start = 16.dp, end = 16.dp),
+                        .padding(horizontal = 12.dp, vertical = 4.dp),
                 ) {
-                    TwSwitch(
+                    Switch(
                         checked = uiState.selected.contains(service.id),
-                        onCheckedChange = { onToggleService(service.id) }
+                        onCheckedChange = { onToggleService(service.id) },
                     )
                 }
             }
@@ -148,10 +146,36 @@ private fun ScreenContent(
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Preview() {
-    ScreenContent(WidgetSettingsUiState())
+    val services = listOf(
+        Service.Preview.copy(id = 1L, name = "Google", info = "john.doe@gmail.com", labelText = "GO", labelColor = Service.Tint.Red),
+        Service.Preview.copy(id = 2L, name = "GitHub", info = "johndoe", labelText = "GH", labelColor = Service.Tint.Purple),
+        Service.Preview.copy(id = 3L, name = "Amazon", info = "john.doe@gmail.com", labelText = "AM", labelColor = Service.Tint.Orange),
+    )
+
+    PreviewTheme {
+        ScreenContent(
+            uiState = WidgetSettingsUiState(
+                loading = false,
+                services = services,
+                selected = listOf(1L, 3L),
+            ),
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PreviewEmpty() {
+    PreviewTheme {
+        ScreenContent(
+            uiState = WidgetSettingsUiState(
+                loading = false,
+            ),
+        )
+    }
 }
 
 /**

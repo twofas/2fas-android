@@ -10,7 +10,7 @@ internal fun TokenRequestJson.asDomain(): TokenRequest {
     return TokenRequest(
         domain = domain,
         requestId = token_request_id,
-        extensionId = extension_id
+        extensionId = extension_id,
     )
 }
 

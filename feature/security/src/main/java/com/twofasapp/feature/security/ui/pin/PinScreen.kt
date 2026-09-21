@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -27,10 +26,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwCircularProgressIndicator
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.feature.security.ui.biometric.BiometricDialog
 import com.twofasapp.locale.R
@@ -57,40 +57,39 @@ internal fun PinScreen(
     onBiometricsInvalidated: () -> Unit = {},
     biometricKeyProvider: BiometricKeyProvider? = null,
 ) {
-
     var showBiometricDialog by remember { mutableStateOf(true) }
 
     if (state == PinScreenState.Loading) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(TwTheme.color.background)
-                .safeContentPadding()
+                .background(MdtTheme.color.background)
+                .safeContentPadding(),
         ) {
-            TwCircularProgressIndicator(Modifier.align(Alignment.Center))
+            CircularProgressIndicator(Modifier.align(Alignment.Center))
         }
     }
 
     AnimatedVisibility(
         visible = state != PinScreenState.Loading,
         enter = fadeIn(),
-        exit = fadeOut()
+        exit = fadeOut(),
     ) {
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .background(TwTheme.color.background)
+                .background(MdtTheme.color.background)
                 .safeContentPadding(),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             if (showLogo) {
                 Image(
-                    painter = painterResource(id = com.twofasapp.designsystem.R.drawable.logo_2fas),
+                    painter = painterResource(id = com.twofasapp.core.design.R.drawable.logo_auth),
                     contentDescription = null,
                     modifier = Modifier
                         .padding(16.dp)
-                        .size(48.dp)
+                        .size(48.dp),
                 )
             }
 
@@ -100,25 +99,26 @@ internal fun PinScreen(
                     .padding(16.dp)
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyLarge,
-                color = if (errorMessage.isNotBlank()) TwTheme.color.primary else TwTheme.color.onSurfacePrimary
+                style = MdtTheme.typo.material.bodyLarge,
+                color = if (errorMessage.isNotBlank()) MdtTheme.color.primary else MdtTheme.color.onSurface,
             )
 
             PinInput(
+                modifier = Modifier.padding(vertical = 32.dp),
                 digits = digits,
                 enteredDigits = currentPinState.pin.value.length,
-                isVerifying = state == PinScreenState.Verifying,
-                onBackClick = {
-                    if (currentPinState.pin.value.isNotEmpty()) {
-                        currentPinState.pin.value = currentPinState.pin.value.dropLast(1)
-                    }
-                }
+                loading = state == PinScreenState.Verifying,
             )
 
             PinKeyboard(
                 showBiometrics = showBiometrics,
-                isEnabled = state != PinScreenState.Verifying && isEnabled,
+                enabled = state != PinScreenState.Verifying && isEnabled,
                 onBiometricsClick = { showBiometricDialog = true },
+                onBackspaceClick = {
+                    if (currentPinState.pin.value.isNotEmpty()) {
+                        currentPinState.pin.value = currentPinState.pin.value.dropLast(1)
+                    }
+                },
                 onKeyClick = {
                     if (currentPinState.pin.value.length < digits) {
                         val isFullyEntered = currentPinState.pin.value.length == digits - 1
@@ -128,12 +128,12 @@ internal fun PinScreen(
                             onPinEntered.invoke(currentPinState.pin.value)
                         }
                     }
-                }
+                },
             )
         }
     }
 
-    if (showBiometricDialog && showBiometrics && biometricKeyProvider != null) {
+    if (showBiometricDialog && showBiometrics && isEnabled && state == PinScreenState.Default && biometricKeyProvider != null) {
         BiometricDialog(
             title = stringResource(id = R.string.biometric_dialog_auth_title),
             subtitle = stringResource(id = R.string.biometric_dialog_auth_subtitle),
@@ -147,7 +147,7 @@ internal fun PinScreen(
             },
             onBiometricInvalidated = { onBiometricsInvalidated() },
             requireKeyValidation = true,
-            biometricKeyProvider = biometricKeyProvider
+            biometricKeyProvider = biometricKeyProvider,
         )
     }
 }
@@ -169,10 +169,12 @@ internal fun rememberCurrentPinState(
 }
 
 @Composable
-@Preview(showSystemUi = true)
+@PreviewLightDark
 fun PreviewPinScreen() {
-    PinScreen(
-        message = "Please enter your PIN",
-        state = PinScreenState.Default,
-    )
+    PreviewTheme {
+        PinScreen(
+            message = "Please enter your PIN",
+            state = PinScreenState.Default,
+        )
+    }
 }

@@ -6,46 +6,70 @@ import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.domain.WidgetCallbacks
 import com.twofasapp.common.ktx.tickerFlow
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.serializedPref
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.CloudSyncTrigger
+import com.twofasapp.data.services.domain.QueuedAddServiceModal
 import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.data.services.domain.RecentlyDeleted
+import com.twofasapp.data.services.domain.RecentlyDeletedService
+import com.twofasapp.data.services.local.BackupLocalSource
 import com.twofasapp.data.services.local.ServicesLocalSource
+import com.twofasapp.data.services.local.model.RemoteBackupStatusEntity
 import com.twofasapp.data.services.otp.ServiceCodeGenerator
 import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.data.services.remote.CloudSyncWorkDispatcher
-import com.twofasapp.prefs.model.RecentlyDeleted
-import com.twofasapp.prefs.model.RecentlyDeletedService
-import com.twofasapp.prefs.model.RemoteBackupStatusEntity
-import com.twofasapp.prefs.usecase.RecentlyDeletedPreference
-import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 internal class ServicesRepositoryImpl(
+    dataStoreOwner: DataStoreOwner,
     private val dispatchers: Dispatchers,
     private val timeProvider: TimeProvider,
     private val codeGenerator: ServiceCodeGenerator,
     private val local: ServicesLocalSource,
     private val widgetCallbacks: WidgetCallbacks,
     private val cloudSyncWorkDispatcher: CloudSyncWorkDispatcher,
-    private val recentlyDeletedPreference: RecentlyDeletedPreference,
-    private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
-) : ServicesRepository {
+    private val backupLocalSource: BackupLocalSource,
+) : ServicesRepository, DataStoreOwner by dataStoreOwner {
 
     private val isTickerEnabled = MutableStateFlow(true)
     private var guideManualPrefill: String? = null
+    private var queuedAddServiceModal: QueuedAddServiceModal? = null
+
+    private val revealTimestamps = MutableStateFlow<Map<Long, Long>>(emptyMap())
+
+    private val recentlyDeleted by serializedPref(
+        name = "recentlyDeleted",
+        default = RecentlyDeleted(emptyList()),
+        serializer = RecentlyDeleted.serializer(),
+        encrypted = true,
+    )
 
     override fun observeServices(): Flow<List<Service>> {
         return combine(
             local.observeServices(),
             local.observeOrder(),
-        ) { services, order ->
-            services.sortedBy { order.ids.indexOf(it.id) }
+            revealTimestamps,
+        ) { services, order, reveals ->
+            services
+                .sortedBy { order.ids.indexOf(it.id) }
+                .map { service ->
+                    val revealTimestamp = reveals[service.id] ?: return@map service
+
+                    if (revealTimestamp > (service.revealTimestamp ?: 0L)) {
+                        service.copy(revealTimestamp = revealTimestamp)
+                    } else {
+                        service
+                    }
+                }
         }
     }
 
@@ -101,7 +125,19 @@ internal class ServicesRepositoryImpl(
         withContext(dispatchers.io) {
             local.deleteService(id)
 
-            if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
+            if (backupLocalSource.getRemoteBackupStatus().state == RemoteBackupStatusEntity.State.ACTIVE) {
+                cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
+            }
+        }
+    }
+
+    override suspend fun deleteServices(ids: List<Long>) {
+        withContext(dispatchers.io) {
+            if (ids.isEmpty()) return@withContext
+
+            local.deleteServices(ids)
+
+            if (backupLocalSource.getRemoteBackupStatus().state == RemoteBackupStatusEntity.State.ACTIVE) {
                 cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
             }
         }
@@ -113,7 +149,7 @@ internal class ServicesRepositoryImpl(
                 service.copy(
                     backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                     updatedAt = timeProvider.systemCurrentTime(),
-                )
+                ),
             )
 
             widgetCallbacks.onServiceChanged()
@@ -139,32 +175,44 @@ internal class ServicesRepositoryImpl(
     }
 
     override suspend fun trashService(id: Long, triggerSync: Boolean) {
+        trashServices(ids = listOf(id), triggerSync = triggerSync)
+    }
+
+    override suspend fun trashServices(ids: List<Long>, triggerSync: Boolean) {
         // See TrashService.kt
         withContext(dispatchers.io) {
-            val localService = local.getService(id)
+            if (ids.isEmpty()) return@withContext
 
-            local.updateService(
-                localService.copy(
-                    backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
-                    updatedAt = timeProvider.systemCurrentTime(),
-                    isDeleted = true,
-                )
+            val now = timeProvider.systemCurrentTime()
+            val idsSet = ids.toSet()
+            val localServices = local.getServicesIncludingDeleted().filter { it.id in idsSet }
+
+            local.updateServices(
+                localServices.map { localService ->
+                    localService.copy(
+                        backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                        updatedAt = now,
+                        isDeleted = true,
+                    )
+                },
             )
 
-            local.deleteServiceFromOrder(id)
-            widgetCallbacks.onServiceDeleted(id)
+            local.deleteServicesFromOrder(localServices.map { it.id })
+            localServices.forEach { widgetCallbacks.onServiceDeleted(it.id) }
 
-            if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
-                val recentlyDeleted = recentlyDeletedPreference.get()
-                recentlyDeletedPreference.put(
-                    recentlyDeleted.copy(
-                        services = recentlyDeleted.services.plus(
-                            RecentlyDeletedService(
-                                secret = localService.secret,
-                                deletedAt = timeProvider.systemCurrentTime()
-                            )
-                        )
-                    )
+            if (backupLocalSource.getRemoteBackupStatus().state == RemoteBackupStatusEntity.State.ACTIVE) {
+                val recentlyDeletedServices = recentlyDeleted.get()
+                recentlyDeleted.set(
+                    recentlyDeletedServices.copy(
+                        services = recentlyDeletedServices.services.plus(
+                            localServices.map { localService ->
+                                RecentlyDeletedService(
+                                    secret = localService.secret,
+                                    deletedAt = now,
+                                )
+                            },
+                        ),
+                    ),
                 )
 
                 if (triggerSync) {
@@ -185,19 +233,19 @@ internal class ServicesRepositoryImpl(
                     backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
                     updatedAt = timeProvider.systemCurrentTime(),
                     isDeleted = false,
-                )
+                ),
             )
 
             local.addServiceToOrder(id)
             widgetCallbacks.onServiceChanged()
 
-            if (remoteBackupStatusPreference.get().state == RemoteBackupStatusEntity.State.ACTIVE) {
+            if (backupLocalSource.getRemoteBackupStatus().state == RemoteBackupStatusEntity.State.ACTIVE) {
                 cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
             }
         }
     }
 
-    override fun updateServicesOrder(ids: List<Long>) {
+    override suspend fun updateServicesOrder(ids: List<Long>) {
         local.saveServicesOrder(ids)
     }
 
@@ -263,7 +311,7 @@ internal class ServicesRepositoryImpl(
                 secret = link.secret,
                 digits = digits,
                 period = period,
-                algorithm = algorithm
+                algorithm = algorithm,
             )
         } catch (e: Exception) {
             Timber.e(e)
@@ -307,11 +355,32 @@ internal class ServicesRepositoryImpl(
     }
 
     override suspend fun addServices(services: List<Service>) {
-        services.forEach { service ->
-            addService(service, false)
-        }
+        withContext(dispatchers.io) {
+            if (services.isEmpty()) return@withContext
 
-        cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
+            val newServices = services.distinctBy { it.secret.lowercase() }
+
+            // Delete duplicates, if any
+            val newSecrets = newServices.map { it.secret.lowercase() }.toSet()
+            val duplicates = local.getServices().filter { it.secret.lowercase() in newSecrets }
+
+            if (duplicates.isNotEmpty()) {
+                local.deleteServices(duplicates.map { it.id })
+                local.deleteServicesFromOrder(duplicates.map { it.id })
+            }
+
+            // Insert
+            val ids = local.insertServices(newServices)
+            local.addServicesToOrder(ids)
+
+            cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
+        }
+    }
+
+    override suspend fun addServicesFromLinks(links: List<OtpAuthLink>) {
+        withContext(dispatchers.io) {
+            addServices(links.map { ServiceParser.parseService(it) })
+        }
     }
 
     override fun observeAddServiceAdvancedExpanded(): Flow<Boolean> {
@@ -323,6 +392,8 @@ internal class ServicesRepositoryImpl(
     }
 
     override suspend fun revealService(id: Long) {
+        revealTimestamps.update { it + (id to timeProvider.systemCurrentTime()) }
+
         withContext(dispatchers.io) {
             local.revealService(id)
         }
@@ -336,8 +407,16 @@ internal class ServicesRepositoryImpl(
         return guideManualPrefill
     }
 
+    override fun setQueuedAddServiceModal(modal: QueuedAddServiceModal?) {
+        queuedAddServiceModal = modal
+    }
+
+    override fun getQueuedAddServiceModal(): QueuedAddServiceModal? {
+        return queuedAddServiceModal
+    }
+
     override suspend fun getRecentlyDeletedServices(): RecentlyDeleted {
-        return recentlyDeletedPreference.get()
+        return recentlyDeleted.get()
     }
 
     override suspend fun removeRecentlyDeleted(secret: String) {
@@ -345,7 +424,7 @@ internal class ServicesRepositoryImpl(
             val index = it.services.indexOfFirst { service -> service.secret == secret }
 
             if (index > -1) {
-                recentlyDeletedPreference.put(it.copy(services = it.services.filter { service -> service.secret != secret }))
+                recentlyDeleted.set(it.copy(services = it.services.filter { service -> service.secret != secret }))
             }
         }
     }
@@ -364,7 +443,7 @@ internal class ServicesRepositoryImpl(
                 matched.copy(
                     assignedDomains = matched.assignedDomains.minus(domain.lowercase()),
                     updatedAt = timeProvider.systemCurrentTime(),
-                )
+                ),
             )
         }
 
@@ -372,7 +451,7 @@ internal class ServicesRepositoryImpl(
             service.copy(
                 assignedDomains = service.assignedDomains.plus(domain.lowercase()),
                 updatedAt = timeProvider.systemCurrentTime(),
-            )
+            ),
         )
     }
 }

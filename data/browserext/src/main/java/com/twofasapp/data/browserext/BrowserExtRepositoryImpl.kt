@@ -2,8 +2,8 @@ package com.twofasapp.data.browserext
 
 import com.google.firebase.messaging.FirebaseMessaging
 import com.twofasapp.common.coroutines.Dispatchers
-import com.twofasapp.common.ktx.decodeBase64ToByteArray
-import com.twofasapp.common.ktx.encodeBase64ToString
+import com.twofasapp.common.ktx.legacyDecodeBase64ToByteArray
+import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.data.browserext.domain.PairedBrowser
 import com.twofasapp.data.browserext.domain.TokenRequest
@@ -55,7 +55,7 @@ internal class BrowserExtRepositoryImpl(
                 name = deviceName,
                 fcm_token = fcmToken,
                 platform = PLATFORM,
-            )
+            ),
         )
 
         localSource.saveMobileDevice(mobileDevice)
@@ -69,7 +69,7 @@ internal class BrowserExtRepositoryImpl(
                 extension_id = extensionId,
                 device_name = deviceName,
                 device_public_key = devicePublicKey,
-            )
+            ),
         )
         localSource.savePairedBrowser(browser)
         return browser
@@ -112,7 +112,7 @@ internal class BrowserExtRepositoryImpl(
 
             if (deviceId.isNullOrBlank().not()) {
                 localSource.updateTokenRequests(
-                    remoteSource.fetchTokenRequests(deviceId!!).map { it.asDomain() }
+                    remoteSource.fetchTokenRequests(deviceId).map { it.asDomain() },
                 )
             }
         }
@@ -150,7 +150,7 @@ internal class BrowserExtRepositoryImpl(
                 extension_id = extensionId,
                 token_request_id = requestId,
                 token = codeEncrypted,
-            )
+            ),
         )
     }
 
@@ -162,7 +162,7 @@ internal class BrowserExtRepositoryImpl(
         code: String,
         extensionPublicKey: String,
     ): String {
-        val publicKeySpec = X509EncodedKeySpec(extensionPublicKey.decodeBase64ToByteArray())
+        val publicKeySpec = X509EncodedKeySpec(extensionPublicKey.legacyDecodeBase64ToByteArray())
         val publicKey = KeyFactory.getInstance("RSA").generatePublic(publicKeySpec)
 
         val cipher: Cipher = Cipher.getInstance("RSA/ECB/OAEPPadding")
@@ -171,12 +171,12 @@ internal class BrowserExtRepositoryImpl(
                 init(
                     Cipher.ENCRYPT_MODE,
                     publicKey,
-                    OAEPParameterSpec("SHA-512", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT)
+                    OAEPParameterSpec("SHA-512", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT),
                 )
                 // To use SHA-512 for both digests
                 // init(Cipher.ENCRYPT_MODE, publicKey, OAEPParameterSpec("SHA-510", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT))
             }
         val bytes = cipher.doFinal(code.toByteArray())
-        return bytes.encodeBase64ToString()
+        return bytes.legacyEncodeBase64ToString()
     }
 }

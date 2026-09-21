@@ -19,51 +19,58 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwCircularProgressIndicator
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.StackTraceDetails
-import com.twofasapp.designsystem.ktx.toastShort
-import com.twofasapp.designsystem.screen.CommonContent
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.dialog.StackTraceDetails
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
+import com.twofasapp.core.design.foundation.screen.CommonContent
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.toastShort
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.image
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun ExternalImportResultScreen(
-    viewModel: ExternalImportResultViewModel = koinViewModel(),
-    openSettings: () -> Unit,
-    openImport: () -> Unit,
+    importType: ImportType,
+    importFileUri: String?,
+    importFileContent: String?,
+    viewModel: ExternalImportResultViewModel = koinViewModel { parametersOf(importType, importFileUri, importFileContent) },
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
 
     LaunchedEffect(uiState.finishSuccess) {
         if (uiState.finishSuccess) {
             context.toastShort(strings.externalImportSuccessToast)
-            openSettings()
+            navigator.popTo(Screen.ExternalImportSelector, inclusive = true)
         }
     }
 
-    ScreenContent(
+    Content(
         uiState = uiState,
         onImport = { viewModel.importServices() },
-        onTryAgain = openImport,
+        onTryAgain = { navigator.popTo(Screen.ExternalImport(importType = importType.name)) },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: ExternalImportResultUiState,
     onImport: () -> Unit = {},
     onTryAgain: () -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
 
     Scaffold(
-        topBar = { TwTopAppBar(strings.externalImportResultTitle) }
+        topBar = { TopAppBar(strings.externalImportResultTitle) },
     ) { padding ->
 
         AnimatedVisibility(
@@ -75,7 +82,7 @@ private fun ScreenContent(
                 .padding(padding),
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
-                TwCircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         }
 
@@ -108,7 +115,7 @@ private fun Result(
     onImport: () -> Unit,
     onTryAgain: () -> Unit,
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
 
     val title = when (importType) {
         ImportType.GoogleAuthenticator -> strings.externalImportResultGoogleAuthenticatorTitle
@@ -147,16 +154,16 @@ private fun Result(
                         } else {
                             strings.externalImportResultTokensCount.format(
                                 readResult.countServicesToImport,
-                                readResult.countTotalServices
+                                readResult.countTotalServices,
                             )
                         },
-                        style = TwTheme.typo.h3,
-                        modifier = Modifier.padding(vertical = 16.dp)
+                        style = MdtTheme.typo.xl2.normal,
+                        modifier = Modifier.padding(vertical = 16.dp),
                     )
 
                     Text(
                         text = strings.externalImportResultTokensMsg,
-                        style = TwTheme.typo.body1,
+                        style = MdtTheme.typo.base.normal,
                     )
                 }
             }
@@ -197,21 +204,25 @@ private fun Result(
 @Preview
 @Composable
 private fun PreviewSuccess() {
-    ScreenContent(
-        uiState = ExternalImportResultUiState(
-            loading = false,
-            readResult = ReadResult.Success(services = emptyList(), countServicesToImport = 5, countTotalServices = 10)
+    PreviewTheme {
+        Content(
+            uiState = ExternalImportResultUiState(
+                loading = false,
+                readResult = ReadResult.Success(services = emptyList(), countServicesToImport = 5, countTotalServices = 10),
+            ),
         )
-    )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewFailure() {
-    ScreenContent(
-        uiState = ExternalImportResultUiState(
-            loading = false,
-            readResult = ReadResult.Failure("")
+    PreviewTheme {
+        Content(
+            uiState = ExternalImportResultUiState(
+                loading = false,
+                readResult = ReadResult.Failure(""),
+            ),
         )
-    )
+    }
 }

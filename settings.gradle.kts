@@ -7,6 +7,9 @@ pluginManagement {
         maven { url = uri("https://jitpack.io") }
     }
 }
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -17,20 +20,18 @@ dependencyResolutionManagement {
 }
 rootProject.name = "2fas-android"
 include(":truetime")
-include(":secure-storage")
 include(":app")
 include(":base")
-include(":prefs")
 include(":parsers")
 include(":feature:security")
 include(":feature:externalimport")
 include(":data:session")
-include(":core:storage")
 include(":core:common")
 include(":core:designsystem")
 include(":feature:startup")
 include(":core:locale")
 include(":feature:home")
+include(":feature:guides")
 include(":data:notifications")
 include(":core:network")
 include(":data:services")
@@ -46,4 +47,6 @@ include(":feature:backup")
 include(":core:cipher")
 include(":data:cloud")
 include(":feature:widget")
+include(":feature:permissions")
 include(":data:push")
+include(":feature:developer")

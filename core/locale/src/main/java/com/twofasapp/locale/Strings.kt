@@ -13,6 +13,8 @@ class Strings(c: Context) {
     val placeholderLong =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
+    val appName = c.getString(R.string.app__name)
+
     val commonOk = c.getString(R.string.commons__OK)
     val commonYes = c.getString(R.string.commons__yes)
     val commonNo = c.getString(R.string.commons__no)
@@ -36,7 +38,6 @@ class Strings(c: Context) {
 
     val bottomBarTokens = c.getString(R.string.commons__tokens)
     val bottomBarSettings = c.getString(R.string.settings__settings)
-    val bottomBarNotifications = c.getString(R.string.commons__notifications)
 
     val startupTermsLabel = c.getString(R.string.introduction__tos)
     val startupStepOneHeader = c.getString(R.string.introduction__page_1_title)
@@ -47,6 +48,7 @@ class Strings(c: Context) {
     val startupStepThreeBody = c.getString(R.string.introduction__page_3_content)
     val startupStepFourHeader = c.getString(R.string.introduction__page_4_title)
     val startupStepFourBody = c.getString(R.string.introduction__page_4_content_android)
+    val startupBackupHeader = c.getString(R.string.introduction__backup_header)
     val startupBackupBody = c.getString(R.string.introduction__backup_description)
     val startupBackupSuccessMsg = c.getString(R.string.introduction__backup_success)
     val startupBackupCloseCta = c.getString(R.string.introduction__backup_take_risk_cta)
@@ -58,8 +60,14 @@ class Strings(c: Context) {
     val servicesEmptySearchBody = c.getString(R.string.tokens__try_different_search_term)
     val servicesMyTokens = c.getString(R.string.tokens__my_tokens)
     val servicesManageList = c.getString(R.string.tokens__manage_list)
+    val servicesDeleteSelected = c.getString(R.string.tokens__delete_selected_msg)
+    val servicesDelete = c.getString(R.string.tokens__delete_service_msg)
     val servicesSortBy = c.getString(R.string.tokens__sort_by)
-    val servicesSortByOptions = listOf(c.getString(R.string.tokens__sort_by_a_to_z), c.getString(R.string.tokens__sort_by_manual))
+    val servicesSortByOptions = listOf(
+        c.getString(R.string.tokens__sort_by_a_to_z),
+        c.getString(R.string.tokens__sort_by_z_to_a),
+        c.getString(R.string.tokens__sort_by_manual),
+    )
     val servicesCopyToken = c.getString(R.string.tokens__copied_clipboard)
     val servicesCopyNextToken = c.getString(R.string.tokens__next_copied_clipboard)
     val servicesQrFromGalleryTitle = c.getString(R.string.tokens__gallery_advice_title)
@@ -116,7 +124,8 @@ class Strings(c: Context) {
     val trashTitle = c.getString(R.string.settings__trash)
     val trashEmpty = c.getString(R.string.settings__trash_is_empty)
     val trashRestoreCta = c.getString(R.string.settings__restore)
-    val trashDisposeCta = c.getString(R.string.tokens__remove_forever)
+    val trashDisposeCta = c.getString(R.string.commons__delete)
+    val trashSelectedItems = c.getString(R.string.settings__trash_selected)
 
     val notificationsTitle = c.getString(R.string.commons__notifications)
     val notificationsEmpty = c.getString(R.string.notifications__no_notifications)
@@ -150,6 +159,21 @@ class Strings(c: Context) {
     val settingsSupport = c.getString(R.string.settings__support)
     val settingsAbout = c.getString(R.string.settings__about)
     val settingsDonate = c.getString(R.string.settings__donate_twofas)
+    val settingsPreferences = c.getString(R.string.settings__preferences)
+    val settingsBackupAndTransfer = c.getString(R.string.settings__backup_and_transfer)
+    val settingsBrowserExtHeader = c.getString(R.string.settings__browser_extension_header)
+    val settingsMore = c.getString(R.string.settings__more)
+    val settingsRemovedItems = c.getString(R.string.settings__removed_items)
+    val settingsConnectedExtensions = c.getString(R.string.settings__connected_extensions)
+    val settingsSecurityDesc = c.getString(R.string.settings__security_description)
+    val settingsAppearanceDesc = c.getString(R.string.settings__appearance_description)
+    val settingsRemovedItemsDesc = c.getString(R.string.settings__removed_items_description)
+    val settingsBackupDesc = c.getString(R.string.settings__backup_description)
+    val settingsImportTokensDesc = c.getString(R.string.settings__import_tokens_description)
+    val settingsConnectedExtensionsDesc = c.getString(R.string.settings__connected_extensions_description)
+    val settingsAboutDesc = c.getString(R.string.settings__about_description)
+    val settingsSupportDesc = c.getString(R.string.settings__support_description)
+    val settingsDonateDesc = c.getString(R.string.settings__donate_description)
 
     val browserExtTitle = c.getString(R.string.browser__browser_extension)
     val browserExtHeader = c.getString(R.string.browser__info_title)
@@ -213,6 +237,11 @@ class Strings(c: Context) {
     val backupReminderBody = c.getString(R.string.backup_notice_msg)
     val backupReminderDismiss = c.getString(R.string.backup_notice_later)
     val backupReminderCta = c.getString(R.string.backup_notice_cta)
+
+    val homeAppReviewTitle = c.getString(R.string.home__app_review_title)
+    val homeAppReviewMsg = c.getString(R.string.home__app_review_msg)
+    val homeAppReviewRate = c.getString(R.string.home__app_review_rate)
+    val homeAppReviewDismiss = c.getString(R.string.home__app_review_dismiss)
 
     val disposeBody1 = c.getString(R.string.tokens__do_you_really_want_to_remove_all_devices)
     val disposeBody2 = c.getString(R.string.tokens__caution)
@@ -360,5 +389,4 @@ class Strings(c: Context) {
     val passBannerMsg = c.getString(R.string.pass_promo_banner_msg)
     val passBannerPositiveCta = c.getString(R.string.pass_promo_banner_positive_cta)
     val passBannerNegativeCta = c.getString(R.string.pass_promo_banner_negative_cta)
-
 }

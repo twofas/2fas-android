@@ -1,14 +1,18 @@
 package com.twofasapp.feature.home.ui.editservice
 
-import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,23 +22,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,119 +38,179 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwOutlinedTextField
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.BaseDialog
-import com.twofasapp.designsystem.dialog.ConfirmDialog
-import com.twofasapp.designsystem.dialog.InfoDialog
-import com.twofasapp.designsystem.ktx.copyToClipboard
-import com.twofasapp.designsystem.ktx.dpToSp
-import com.twofasapp.designsystem.lazy.listItem
-import com.twofasapp.designsystem.service.asColor
-import com.twofasapp.designsystem.settings.SettingsDivider
-import com.twofasapp.designsystem.settings.SettingsHeader
-import com.twofasapp.designsystem.settings.SettingsLink
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.ServiceImageType
+import com.twofasapp.core.design.feature.items.asColor
+import com.twofasapp.core.design.feature.items.servicecard.base.ServiceCardImage
+import com.twofasapp.core.design.feature.settings.OptionEntry
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.dialog.BaseDialog
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.dialog.InfoDialog
+import com.twofasapp.core.design.foundation.dialog.ListRadioDialog
+import com.twofasapp.core.design.foundation.layout.ActionsRow
+import com.twofasapp.core.design.foundation.lazy.listItem
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.textfield.TextField
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.copyToClipboard
+import com.twofasapp.core.design.ktx.currentActivity
+import com.twofasapp.core.design.theme.RoundedShape12
+import com.twofasapp.core.design.theme.RoundedShape16
+import com.twofasapp.data.services.domain.Group
+import com.twofasapp.feature.home.ui.editservice.advancedsettings.AdvancedSettingsModal
 import com.twofasapp.feature.home.ui.editservice.badge.ColorBadgeDialog
+import com.twofasapp.locale.MdtLocale
 import com.twofasapp.locale.R
-import com.twofasapp.locale.TwLocale
-import kotlinx.coroutines.launch
+import com.twofasapp.parsers.ServiceIcons
 
 @Composable
 internal fun EditServiceScreen(
     onBackClick: () -> Unit,
-    onAdvanceClick: () -> Unit,
     onChangeBrandClick: () -> Unit,
     onChangeLabelClick: () -> Unit,
     onDomainAssignmentClick: () -> Unit,
-    onDeleteClick: () -> Unit,
     onSecurityClick: () -> Unit,
     onAuthenticateSecretClick: () -> Unit,
     onAuthenticateQrCodeClick: () -> Unit,
     viewModel: EditServiceViewModel,
 ) {
     val uiState = viewModel.uiState.collectAsState().value
-    val service = uiState.service
-    val activity = (LocalContext.current as? Activity)
-    val scope = rememberCoroutineScope()
-    val isSecretVisible = uiState.isSecretVisible
-    val showBadgeDialog = remember { mutableStateOf(false) }
-    val showSecretNoLockDialog = remember { mutableStateOf(false) }
-    val showQrNoLockDialog = remember { mutableStateOf(false) }
-    val showUnsavedChangesDialog = remember { mutableStateOf(false) }
-
-    val isBrandSelected = service.imageType == Service.ImageType.IconCollection
-    val isLabelSelected = isBrandSelected.not()
-
-    var expanded by remember { mutableStateOf(false) }
+    var showUnsavedChangesDialog by remember { mutableStateOf(false) }
 
     if (uiState.finish) {
         LaunchedEffect(Unit) {
-            scope.launch { onBackClick() }
+            onBackClick()
         }
     }
 
     BackHandler {
         if (uiState.hasChanges) {
-            showUnsavedChangesDialog.value = true
+            showUnsavedChangesDialog = true
         } else {
             onBackClick()
         }
     }
 
-    if (uiState.service.id != 0L) {
-        Scaffold(topBar = {
-            TwTopAppBar(
-                titleText = activity!!.getString(R.string.tokens__customize_service_title),
-                actions = {
-                    TextButton(
-                        onClick = { viewModel.saveService() },
-                        enabled = uiState.hasChanges && uiState.isInputNameValid && uiState.isInputInfoValid,
-                    ) {
-                        Text(text = stringResource(id = R.string.commons__save))
-                    }
+    Content(
+        uiState = uiState,
+        onChangeBrandClick = onChangeBrandClick,
+        onChangeLabelClick = onChangeLabelClick,
+        onDomainAssignmentClick = onDomainAssignmentClick,
+        onSecurityClick = onSecurityClick,
+        onAuthenticateSecretClick = onAuthenticateSecretClick,
+        onAuthenticateQrCodeClick = onAuthenticateQrCodeClick,
+        onSaveClick = { viewModel.saveService() },
+        onUpdateName = { text, isValid -> viewModel.updateName(text, isValid) },
+        onUpdateInfo = { text, isValid -> viewModel.updateInfo(text, isValid) },
+        onUpdateIconType = { imageType, labelText, labelColor -> viewModel.updateIconType(imageType, labelText, labelColor) },
+        onUpdateGroup = { group -> viewModel.updateGroup(group) },
+        onUpdateBadge = { tint -> viewModel.updateBadge(tint) },
+        onToggleSecretVisibility = { viewModel.toggleSecretVisibility() },
+        onToggleQrVisibility = { viewModel.toggleQrVisibility() },
+    )
 
-                }
-            )
-        }
-        ) { innerPadding ->
-            LazyColumn(modifier = Modifier.padding(innerPadding)) {
+    if (showUnsavedChangesDialog) {
+        ConfirmDialog(
+            title = stringResource(id = R.string.tokens__service_unsaved_changes_title),
+            body = stringResource(id = R.string.tokens__service_unsaved_changes),
+            onDismissRequest = { showUnsavedChangesDialog = false },
+            onPositive = { onBackClick() },
+        )
+    }
+}
+
+@Composable
+private fun Content(
+    uiState: EditServiceUiState,
+    onChangeBrandClick: () -> Unit = {},
+    onChangeLabelClick: () -> Unit = {},
+    onDomainAssignmentClick: () -> Unit = {},
+    onSecurityClick: () -> Unit = {},
+    onAuthenticateSecretClick: () -> Unit = {},
+    onAuthenticateQrCodeClick: () -> Unit = {},
+    onSaveClick: () -> Unit = {},
+    onUpdateName: (String, Boolean) -> Unit = { _, _ -> },
+    onUpdateInfo: (String, Boolean) -> Unit = { _, _ -> },
+    onUpdateIconType: (Service.ImageType, String?, Service.Tint?) -> Unit = { _, _, _ -> },
+    onUpdateGroup: (Group?) -> Unit = {},
+    onUpdateBadge: (Service.Tint) -> Unit = {},
+    onToggleSecretVisibility: () -> Unit = {},
+    onToggleQrVisibility: () -> Unit = {},
+) {
+    val service = uiState.service
+    val activity = LocalContext.currentActivity
+    val isSecretVisible = uiState.isSecretVisible
+    var showInfoModal by remember { mutableStateOf(false) }
+    var showBadgeDialog by remember { mutableStateOf(false) }
+    var showGroupDialog by remember { mutableStateOf(false) }
+    var showSecretNoLockDialog by remember { mutableStateOf(false) }
+    var showQrNoLockDialog by remember { mutableStateOf(false) }
+
+    val isBrandSelected = service.imageType == Service.ImageType.IconCollection
+    val isLabelSelected = isBrandSelected.not()
+
+    if (uiState.service.id != 0L) {
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = stringResource(id = R.string.tokens__customize_service_title),
+                    actions = {
+                        Button(
+                            text = stringResource(id = R.string.commons__save),
+                            style = ButtonStyle.Text,
+                            enabled = uiState.hasChanges && uiState.isInputNameValid && uiState.isInputInfoValid,
+                            onClick = { onSaveClick() },
+                        )
+                    },
+                )
+            },
+        ) { padding ->
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MdtTheme.color.background)
+                    .padding(top = padding.calculateTopPadding()),
+                contentPadding = PaddingValues(bottom = 16.dp),
+            ) {
+                // Service information section
                 listItem(EditServiceListItem.HeaderInfo) {
-                    SettingsHeader(title = stringResource(R.string.tokens__service_information))
+                    OptionHeader(
+                        text = stringResource(R.string.tokens__service_information),
+                        contentPadding = OptionHeaderContentPaddingFirst,
+                    )
                 }
 
                 listItem(EditServiceListItem.InputName) {
-                    TwOutlinedTextField(
+                    TextField(
                         value = service.name,
                         labelText = stringResource(R.string.tokens__service_name),
-                        maxLength = 30,
                         singleLine = true,
                         keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
                         onValueChange = { text ->
-                            if (text.isBlank()) {
-                                viewModel.updateName(text, false)
-                            } else {
-                                viewModel.updateName(text, true)
+                            if (text.length <= 30) {
+                                onUpdateName(text, text.isNotBlank())
                             }
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 72.dp, end = 16.dp)
-                            .padding(top = 8.dp, bottom = 4.dp)
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
                     )
                 }
 
                 listItem(EditServiceListItem.InputSecret) {
-                    TwOutlinedTextField(
+                    TextField(
                         value = service.secret,
                         labelText = stringResource(R.string.tokens__service_key),
                         readOnly = true,
@@ -166,196 +222,175 @@ internal fun EditServiceScreen(
                         ),
                         visualTransformation = if (isSecretVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
-                            Row(
-                                modifier = Modifier.padding(start = 4.dp, end = 8.dp)
+                            ActionsRow(
+                                modifier = Modifier.padding(start = 4.dp, end = 8.dp),
                             ) {
-
                                 Icon(
-                                    painter = TwIcons.Qr,
+                                    painter = MdtIcons.Qr,
                                     contentDescription = null,
-                                    tint = TwTheme.color.iconTint,
+                                    tint = MdtTheme.color.iconTint,
                                     modifier = Modifier
                                         .size(36.dp)
                                         .clip(CircleShape)
                                         .clickable {
                                             when {
-                                                uiState.isAuthenticated -> viewModel.toggleQrVisibility()
+                                                uiState.isAuthenticated -> onToggleQrVisibility()
                                                 uiState.hasLock -> onAuthenticateQrCodeClick()
-                                                uiState.hasLock.not() -> showQrNoLockDialog.value = true
+                                                else -> showQrNoLockDialog = true
                                             }
                                         }
-                                        .padding(6.dp)
+                                        .padding(6.dp),
                                 )
 
                                 Spacer(Modifier.width(4.dp))
 
                                 Icon(
-                                    painter = if (isSecretVisible) TwIcons.EyeSlash else TwIcons.Eye,
+                                    painter = if (isSecretVisible) MdtIcons.VisibilityOff else MdtIcons.Visibility,
                                     contentDescription = null,
-                                    tint = TwTheme.color.iconTint,
+                                    tint = MdtTheme.color.iconTint,
                                     modifier = Modifier
                                         .size(36.dp)
                                         .clip(CircleShape)
                                         .clickable {
                                             when {
-                                                service.id == 0L || uiState.isAuthenticated -> viewModel.toggleSecretVisibility()
+                                                service.id == 0L || uiState.isAuthenticated -> onToggleSecretVisibility()
                                                 uiState.hasLock -> onAuthenticateSecretClick()
-                                                uiState.hasLock.not() -> showSecretNoLockDialog.value = true
+                                                else -> showSecretNoLockDialog = true
                                             }
                                         }
-                                        .padding(6.dp)
+                                        .padding(6.dp),
                                 )
                             }
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 72.dp, end = 16.dp)
-                            .padding(top = 8.dp, bottom = 4.dp)
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
                     )
                 }
 
-
                 listItem(EditServiceListItem.InputInfo) {
-                    TwOutlinedTextField(
+                    TextField(
                         value = service.info.orEmpty(),
                         labelText = stringResource(R.string.tokens__additional_info),
-                        maxLength = 50,
                         singleLine = true,
-                        onValueChange = { text -> viewModel.updateInfo(text, true) },
+                        onValueChange = { text -> if (text.length <= 50) onUpdateInfo(text, true) },
                         keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 72.dp, end = 16.dp)
-                            .padding(top = 8.dp, bottom = 4.dp)
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
                     )
                 }
 
-                listItem(EditServiceListItem.Advanced) {
-                    SettingsLink(title = stringResource(R.string.customization_advanced), onClick = { onAdvanceClick() })
-                }
-
+                // Personalization section
                 listItem(EditServiceListItem.HeaderPersonalization) {
-                    SettingsDivider()
-                    SettingsHeader(title = stringResource(R.string.customization_personalization))
+                    OptionHeader(text = stringResource(R.string.customization_personalization))
                 }
-
 
                 listItem(EditServiceListItem.IconSelector) {
-                    IconSelector(service, isBrandSelected = isBrandSelected, isLabelSelected = isLabelSelected) {
-                        viewModel.updateIconType(it, service.labelText, service.labelColor)
-                    }
+                    IconSelector(
+                        service = service,
+                        isBrandSelected = isBrandSelected,
+                        isLabelSelected = isLabelSelected,
+                        onSelectionChanged = { onUpdateIconType(it, service.labelText, service.labelColor) },
+                    )
                 }
 
                 listItem(EditServiceListItem.ChangeBrand) {
-                    SettingsLink(
+                    OptionEntry(
                         title = stringResource(R.string.customization_change_brand),
+                        icon = MdtIcons.Panorama,
                         enabled = isBrandSelected,
                         onClick = { onChangeBrandClick() },
                     )
                 }
 
                 listItem(EditServiceListItem.EditLabel) {
-                    SettingsLink(
+                    OptionEntry(
                         title = stringResource(R.string.customization_edit_label),
+                        icon = MdtIcons.Edit,
                         enabled = isLabelSelected,
                         onClick = { onChangeLabelClick() },
                     )
                 }
 
                 listItem(EditServiceListItem.BadgeColor) {
-                    SettingsLink(title = stringResource(R.string.tokens__badge_color),
-                        icon = TwIcons.Circle,
+                    OptionEntry(
+                        title = stringResource(R.string.tokens__badge_color),
+                        icon = MdtIcons.CircleFilled,
                         iconTint = uiState.service.badgeColor.asColor(),
-                        onClick = { showBadgeDialog.value = true })
+                        onClick = { showBadgeDialog = true },
+                    )
                 }
 
                 if (uiState.groups.isNotEmpty()) {
                     listItem(EditServiceListItem.Group) {
-                        ExposedDropdownMenuBox(
-                            expanded = expanded,
-                            onExpandedChange = { expanded = expanded.not() },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(end = 16.dp, start = 72.dp, bottom = 24.dp, top = 16.dp),
-
-                            ) {
-                            OutlinedTextField(
-                                value = uiState.groups.firstOrNull { it.id == service.groupId }?.name ?: TwLocale.strings.servicesMyTokens,
-                                onValueChange = { },
-                                label = { Text(stringResource(id = R.string.tokens__group)) },
-                                readOnly = true,
-                                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                                colors = OutlinedTextFieldDefaults.colors(errorLabelColor = TwTheme.color.error),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .menuAnchor()
-                            )
-
-                            ExposedDropdownMenu(
-                                expanded = expanded,
-                                onDismissRequest = { expanded = false },
-                                modifier = Modifier.background(TwTheme.color.surface),
-                            ) {
-                                DropdownMenuItem(
-                                    text = {
-                                        Text(text = TwLocale.strings.servicesMyTokens, color = TwTheme.color.onSurfacePrimary)
-                                    },
-                                    onClick = {
-                                        viewModel.updateGroup(null)
-                                        expanded = false
-                                    }
-                                )
-
-                                uiState.groups.filter { it.name != null }.forEach { group ->
-                                    DropdownMenuItem(
-                                        text = {
-                                            Text(text = group.name.orEmpty(), color = TwTheme.color.onSurfacePrimary)
-                                        },
-                                        onClick = {
-                                            viewModel.updateGroup(group)
-                                            expanded = false
-                                        }
-                                    )
-                                }
-                            }
-                        }
+                        OptionEntry(
+                            title = stringResource(R.string.tokens__group),
+                            subtitle = uiState.groups.firstOrNull { it.id == service.groupId }?.name ?: MdtLocale.strings.servicesMyTokens,
+                            icon = MdtIcons.Group,
+                            onClick = { showGroupDialog = true },
+                        )
                     }
                 }
 
+                // Other section
                 listItem(EditServiceListItem.HeaderOther) {
-                    SettingsDivider()
-                    SettingsHeader(title = stringResource(R.string.tokens__add_manual_other))
-                }
-                listItem(EditServiceListItem.BrowserExtension) {
-                    SettingsLink(title = stringResource(R.string.browser__browser_extension),
-                        enabled = service.assignedDomains.isNotEmpty(),
-                        onClick = { onDomainAssignmentClick() })
+                    OptionHeader(text = stringResource(R.string.tokens__add_manual_other))
                 }
 
-                listItem(EditServiceListItem.Delete) {
-                    SettingsDivider()
-                    SettingsLink(
-                        title = stringResource(R.string.commons__delete),
-                        onClick = { onDeleteClick() },
-                        textColor = TwTheme.color.primary
+                listItem(EditServiceListItem.BrowserExtension) {
+                    OptionEntry(
+                        title = stringResource(R.string.browser__browser_extension),
+                        icon = MdtIcons.Extension,
+                        enabled = service.assignedDomains.isNotEmpty(),
+                        onClick = { onDomainAssignmentClick() },
+                    )
+                }
+
+                listItem(EditServiceListItem.Info) {
+                    OptionEntry(
+                        title = stringResource(R.string.commons__info),
+                        icon = MdtIcons.Info,
+                        onClick = { showInfoModal = true },
                     )
                 }
             }
 
-            if (showBadgeDialog.value) {
+            if (showInfoModal) {
+                AdvancedSettingsModal(
+                    onDismissRequest = { showInfoModal = false },
+                    service = service,
+                )
+            }
+
+            if (showBadgeDialog) {
                 ColorBadgeDialog(
                     selected = service.badgeColor ?: Service.Tint.Default,
-                    onDismiss = { showBadgeDialog.value = false },
+                    onDismiss = { showBadgeDialog = false },
                     onSelected = {
-                        showBadgeDialog.value = false
-                        viewModel.updateBadge(it)
+                        showBadgeDialog = false
+                        onUpdateBadge(it)
                     },
                 )
             }
 
-            if (showSecretNoLockDialog.value) {
+            if (showGroupDialog) {
+                val groups = uiState.groups.filter { it.name != null }
+
+                ListRadioDialog(
+                    title = stringResource(id = R.string.tokens__group),
+                    options = listOf(MdtLocale.strings.servicesMyTokens) + groups.map { it.name.orEmpty() },
+                    selectedIndex = groups.indexOfFirst { it.id == service.groupId }.plus(1),
+                    onDismissRequest = { showGroupDialog = false },
+                    onOptionSelected = { index, _ ->
+                        onUpdateGroup(if (index == 0) null else groups[index - 1])
+                    },
+                )
+            }
+
+            if (showSecretNoLockDialog) {
                 InfoDialog(
-                    onDismissRequest = { showSecretNoLockDialog.value = false },
+                    onDismissRequest = { showSecretNoLockDialog = false },
                     title = stringResource(id = R.string.tokens__show_service_key),
                     body = stringResource(id = R.string.tokens__show_service_key_setup_lock),
                     positive = stringResource(id = R.string.commons__set),
@@ -364,9 +399,9 @@ internal fun EditServiceScreen(
                 )
             }
 
-            if (showQrNoLockDialog.value) {
+            if (showQrNoLockDialog) {
                 InfoDialog(
-                    onDismissRequest = { showQrNoLockDialog.value = false },
+                    onDismissRequest = { showQrNoLockDialog = false },
                     title = stringResource(id = R.string.tokens__show_qr_code),
                     body = stringResource(id = R.string.tokens__show_service_qr_setup_lock),
                     positive = stringResource(id = R.string.commons__set),
@@ -375,20 +410,13 @@ internal fun EditServiceScreen(
                 )
             }
 
-            if (showUnsavedChangesDialog.value) {
-                ConfirmDialog(title = stringResource(id = R.string.tokens__service_unsaved_changes_title),
-                    body = stringResource(id = R.string.tokens__service_unsaved_changes),
-                    onDismissRequest = { showUnsavedChangesDialog.value = false },
-                    onPositive = { onBackClick() })
-            }
-
             if (uiState.isQrVisible) {
                 BaseDialog(
-                    onDismissRequest = { viewModel.toggleQrVisibility() },
+                    onDismissRequest = { onToggleQrVisibility() },
                     title = stringResource(id = R.string.tokens__show_qr_code),
                     positive = stringResource(id = R.string.commons__OK),
                     negative = stringResource(id = R.string.tokens__copy_uri),
-                    onNegativeClick = { activity?.copyToClipboard(service.toUri(), isSensitive = true) }
+                    onNegativeClick = { activity.copyToClipboard(service.toUri(), isSensitive = true) },
                 ) {
                     Box(
                         modifier = Modifier
@@ -403,7 +431,7 @@ internal fun EditServiceScreen(
                             contentDescription = null,
                             modifier = Modifier
                                 .size(200.dp)
-                                .clip(RoundedCornerShape(12.dp)),
+                                .clip(RoundedShape12),
                         )
                     }
                 }
@@ -413,115 +441,102 @@ internal fun EditServiceScreen(
 }
 
 @Composable
-fun IconSelector(
-    service: Service, isBrandSelected: Boolean, isLabelSelected: Boolean, onSelectionChanged: (Service.ImageType) -> Unit
+private fun IconSelector(
+    service: Service,
+    isBrandSelected: Boolean,
+    isLabelSelected: Boolean,
+    onSelectionChanged: (Service.ImageType) -> Unit,
 ) {
     Row(
         modifier = Modifier
-            .padding(start = 72.dp)
-            .padding(vertical = 16.dp)
             .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 12.dp)
+            .clip(RoundedShape16)
+            .background(MdtTheme.color.surfaceContainer)
+            .padding(vertical = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(32.dp, Alignment.CenterHorizontally),
     ) {
-
-        /**
-         * Brand
-         */
-        Box(modifier = Modifier
-            .size(88.dp)
-            .run {
-                if (isBrandSelected) {
-                    border(2.dp, TwTheme.color.primary, RoundedCornerShape(8.dp))
-                } else {
-                    border(1.dp, TwTheme.color.divider, RoundedCornerShape(8.dp))
-                }
-            }
-            .clip(RoundedCornerShape(8.dp))
-            .clickable {
+        IconTypeOption(
+            title = stringResource(R.string.tokens__brand_icon),
+            selected = isBrandSelected,
+            onClick = {
                 if (isLabelSelected) {
                     onSelectionChanged(Service.ImageType.IconCollection)
                 }
-            }) {
-            Image(
-                bitmap = serviceIconBitmap(iconCollectionId = service.iconCollectionId),
-                contentDescription = null,
+            },
+        ) {
+            ServiceCardImage(
+                type = ServiceImageType.Icon,
+                iconLight = ServiceIcons.getIcon(collectionId = service.iconCollectionId, isDark = false),
+                iconDark = ServiceIcons.getIcon(collectionId = service.iconCollectionId, isDark = true),
+                labelText = null,
+                labelColor = service.labelColor.asColor(),
                 modifier = Modifier
                     .size(40.dp)
-                    .align(Alignment.Center)
+                    .align(Alignment.Center),
             )
-
-            if (isBrandSelected) {
-                Icon(
-                    painter = TwIcons.CheckCircle,
-                    contentDescription = null,
-                    tint = TwTheme.color.primary,
-                    modifier = Modifier
-                        .padding(6.dp)
-                        .size(16.dp)
-                        .align(Alignment.BottomEnd)
-                )
-            }
         }
 
-        Spacer(modifier = Modifier.width(40.dp))
-
-        /**
-         * Label
-         */
-        Box(modifier = Modifier
-            .size(88.dp)
-            .run {
-                if (isLabelSelected) {
-                    border(2.dp, TwTheme.color.primary, RoundedCornerShape(8.dp))
-                } else {
-                    border(1.dp, TwTheme.color.divider, RoundedCornerShape(8.dp))
-                }
-            }
-            .clip(RoundedCornerShape(8.dp))
-            .clickable {
+        IconTypeOption(
+            title = stringResource(R.string.tokens__label),
+            selected = isLabelSelected,
+            onClick = {
                 if (isBrandSelected) {
                     onSelectionChanged(Service.ImageType.Label)
                 }
-            }) {
-
-            Box(
+            },
+        ) {
+            ServiceCardImage(
+                type = ServiceImageType.Label,
+                iconLight = "",
+                iconDark = "",
+                labelText = service.labelText ?: service.name.take(2).uppercase(),
+                labelColor = service.labelColor.asColor(),
                 modifier = Modifier
                     .size(40.dp)
-                    .align(Alignment.Center)
-                    .background(shape = CircleShape, color = service.labelColor.asColor())
-            )
-
-            Box(
-                modifier = Modifier
-                    .width(28.dp)
-                    .height(18.dp)
-                    .clip(TwTheme.shape.roundedDefault)
-                    .background(TwTheme.color.background)
                     .align(Alignment.Center),
             )
-
-            Text(
-                text = service.labelText ?: service.name.take(2).uppercase(),
-                color = MaterialTheme.colorScheme.onSurface,
-                textAlign = TextAlign.Center,
-                style = TwTheme.typo.body3.copy(
-                    fontWeight = FontWeight.Bold,
-                    fontSize = dpToSp(dp = 14.dp),
-                    lineHeight = dpToSp(dp = 20.dp)
-                ),
-                modifier = Modifier.align(Alignment.Center)
-            )
-
-            if (isLabelSelected) {
-                Icon(
-                    painter = TwIcons.CheckCircle,
-                    contentDescription = null,
-                    tint = TwTheme.color.primary,
-                    modifier = Modifier
-                        .padding(6.dp)
-                        .size(16.dp)
-                        .align(Alignment.BottomEnd)
-                )
-            }
         }
+    }
+}
+
+@Composable
+private fun IconTypeOption(
+    title: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    content: @Composable BoxScope.() -> Unit,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Box(
+            modifier = Modifier
+                .size(88.dp)
+                .clip(RoundedCornerShape(14.dp))
+                .border(2.dp, if (selected) MdtTheme.color.primary else MdtTheme.color.transparent, RoundedCornerShape(14.dp))
+                .clickable { onClick() }
+                .padding(4.dp),
+            content = content,
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = title,
+            style = MdtTheme.typo.material.titleMedium,
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        Content(
+            uiState = EditServiceUiState(service = Service.Preview.copy(id = 1L)),
+        )
     }
 }

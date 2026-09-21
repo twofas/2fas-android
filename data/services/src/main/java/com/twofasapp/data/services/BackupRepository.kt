@@ -9,6 +9,7 @@ import com.twofasapp.data.services.domain.CloudBackupUpdateResult
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.exceptions.DecryptWrongPassword
+import com.twofasapp.data.services.local.model.RemoteBackupKey
 import kotlinx.coroutines.flow.Flow
 
 interface BackupRepository {
@@ -110,6 +111,11 @@ interface BackupRepository {
     fun observeCloudBackupStatus(): Flow<CloudBackupStatus>
 
     /**
+     * Observe whether cloud backup is enabled (active)
+     */
+    fun observeBackupEnabled(): Flow<Boolean>
+
+    /**
      * Observe cloud sync status
      */
     fun observeCloudSyncStatus(): Flow<CloudSyncStatus>
@@ -126,4 +132,7 @@ interface BackupRepository {
     fun setPasswordForCloudSync(password: String?)
 
     fun observePasswordForCloudSync(): Flow<String?>
+
+    suspend fun getRemoteBackupKey(): RemoteBackupKey
+    suspend fun deleteRemoteBackupKey()
 }

@@ -5,17 +5,17 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.data.session.domain.LockMethod
+import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.feature.security.ui.pin.PinScreen
+import com.twofasapp.feature.security.ui.pin.notifyInvalidPin
 import com.twofasapp.feature.security.ui.pin.rememberCurrentPinState
-import com.twofasapp.feature.security.ui.pin.vibrateInvalidPin
 import com.twofasapp.locale.R
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
@@ -35,7 +35,7 @@ internal fun LockScreen(
         when (it) {
             LockUiEvent.ClearCurrentPin -> currentPinState.reset()
             LockUiEvent.Finish -> onSuccess.invoke()
-            LockUiEvent.NotifyInvalidPin -> vibrateInvalidPin(LocalContext.current)
+            LockUiEvent.NotifyInvalidPin -> notifyInvalidPin(LocalHapticFeedback.current)
         }
 
         viewModel.consumeEvent(it)
@@ -57,7 +57,7 @@ internal fun LockScreen(
         errorMessage = when {
             uiState.invalidPinStatus.shouldBlock -> stringResource(
                 id = R.string.security__too_many_attempts_try_again_after,
-                uiState.invalidPinStatus.timeLeftMin.toString()
+                uiState.invalidPinStatus.timeLeftMin.toString(),
             )
 
             uiState.errorMessage != null -> stringResource(id = uiState.errorMessage)

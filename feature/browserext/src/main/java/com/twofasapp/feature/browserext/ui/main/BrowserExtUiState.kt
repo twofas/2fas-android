@@ -6,6 +6,7 @@ import com.twofasapp.data.browserext.domain.PairedBrowser
 internal data class BrowserExtUiState(
     val loading: Boolean = true,
     val pairedBrowsers: List<PairedBrowser> = emptyList(),
+    val deletingBrowserIds: Set<String> = emptySet(),
     val mobileDevice: MobileDevice = MobileDevice.Empty,
     val events: List<BrowserExtUiEvent> = emptyList(),
 )

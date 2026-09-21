@@ -1,7 +1,7 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     alias(libs.plugins.twofasCompose)
+    alias(libs.plugins.twofasLint)
 }
 
 android {
@@ -15,8 +15,6 @@ dependencies {
     implementation(project(":core:android"))
     implementation(project(":core:designsystem"))
     implementation(project(":data:session"))
-
-    implementation(project(":prefs"))
 
     implementation(libs.bundles.appCompat)
     implementation(libs.bundles.compose)

@@ -20,41 +20,51 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.ktx.notificationManager
-import com.twofasapp.designsystem.screen.CommonContent
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.screen.CommonContent
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.notificationManager
 import com.twofasapp.feature.browserext.R
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun BrowserExtPairingScreen(
-    viewModel: BrowserExtPairingViewModel = koinViewModel(),
-    openMain: () -> Unit,
-    openPermission: () -> Unit,
-    openScan: () -> Unit,
+    extensionId: String,
+    viewModel: BrowserExtPairingViewModel = koinViewModel { parametersOf(extensionId) },
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    Content(
         uiState = uiState,
-        onContinue = openMain,
-        onContinueAskForPermission = openPermission,
-        onScanAgain = openScan,
+        onContinue = { navigator.popTo(Screen.BrowserExt) },
+        onContinueAskForPermission = {
+            navigator.popTo(Screen.BrowserExt)
+            navigator.open(Screen.BrowserExtPermission)
+        },
+        onScanAgain = {
+            navigator.popTo(Screen.BrowserExt)
+            navigator.open(Screen.BrowserExtScan)
+        },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: BrowserExtPairingUiState,
     onContinue: () -> Unit = {},
     onContinueAskForPermission: () -> Unit = {},
     onScanAgain: () -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
 
     Scaffold(
-        topBar = { TwTopAppBar(if (uiState.pairing) strings.browserPairingTitle else strings.browserPairingResultTitle) }
+        topBar = { TopAppBar(if (uiState.pairing) strings.browserPairingTitle else strings.browserPairingResultTitle) },
     ) { padding ->
 
         AnimatedVisibility(
@@ -68,7 +78,7 @@ private fun ScreenContent(
             Pairing(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp)
+                    .padding(16.dp),
             )
         }
 
@@ -98,7 +108,7 @@ private fun Pairing(modifier: Modifier) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.browserext_progress))
     val progress by animateLottieCompositionAsState(composition, iterations = LottieConstants.IterateForever)
 
-    LottieAnimation(composition, progress, modifier = modifier)
+    LottieAnimation(composition, { progress }, modifier = modifier)
 }
 
 @Composable
@@ -116,35 +126,35 @@ private fun Result(
         false
     }
 
-
     val image = when (pairingResult) {
-        PairingResult.Success -> com.twofasapp.designsystem.R.drawable.illustration_be_pairing_success
-        PairingResult.Failure -> com.twofasapp.designsystem.R.drawable.illustration_be_pairing_error
-        PairingResult.AlreadyPaired -> com.twofasapp.designsystem.R.drawable.illustration_be_pairing_success
+        PairingResult.Success -> com.twofasapp.core.design.R.drawable.illustration_be_pairing_success
+        PairingResult.Failure -> com.twofasapp.core.design.R.drawable.illustration_be_pairing_error
+        PairingResult.AlreadyPaired -> com.twofasapp.core.design.R.drawable.illustration_be_pairing_success
     }
 
     val title = when (pairingResult) {
-        PairingResult.Success -> TwLocale.strings.browserPairingSuccessTitle
-        PairingResult.Failure -> TwLocale.strings.browserPairingFailureTitle
-        PairingResult.AlreadyPaired -> TwLocale.strings.browserPairingAlreadyPairedTitle
+        PairingResult.Success -> MdtLocale.strings.browserPairingSuccessTitle
+        PairingResult.Failure -> MdtLocale.strings.browserPairingFailureTitle
+        PairingResult.AlreadyPaired -> MdtLocale.strings.browserPairingAlreadyPairedTitle
     }
 
     val description = when (pairingResult) {
-        PairingResult.Success -> TwLocale.strings.browserPairingSuccessMsg
-        PairingResult.Failure -> TwLocale.strings.browserPairingFailureMsg
-        PairingResult.AlreadyPaired -> TwLocale.strings.browserPairingAlreadyPairedMsg
+        PairingResult.Success -> MdtLocale.strings.browserPairingSuccessMsg
+        PairingResult.Failure -> MdtLocale.strings.browserPairingFailureMsg
+        PairingResult.AlreadyPaired -> MdtLocale.strings.browserPairingAlreadyPairedMsg
     }
 
     val cta = when (pairingResult) {
-        PairingResult.Success -> TwLocale.strings.browserPairingSuccessCta
-        PairingResult.Failure -> TwLocale.strings.browserPairingFailureCta
-        PairingResult.AlreadyPaired -> TwLocale.strings.browserPairingSuccessCta
+        PairingResult.Success -> MdtLocale.strings.browserPairingSuccessCta
+        PairingResult.Failure -> MdtLocale.strings.browserPairingFailureCta
+        PairingResult.AlreadyPaired -> MdtLocale.strings.browserPairingSuccessCta
     }
 
     val ctaAction = when (pairingResult) {
         PairingResult.Failure -> onScanAgain
         PairingResult.Success,
-        PairingResult.AlreadyPaired -> {
+        PairingResult.AlreadyPaired,
+        -> {
             if (shouldAskForNotificationPermission) {
                 onContinueAskForPermission
             } else {
@@ -166,42 +176,50 @@ private fun Result(
 @Preview
 @Composable
 private fun PreviewParing() {
-    ScreenContent(
-        uiState = BrowserExtPairingUiState(
-            pairing = true,
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtPairingUiState(
+                pairing = true,
+            ),
         )
-    )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewSuccess() {
-    ScreenContent(
-        uiState = BrowserExtPairingUiState(
-            pairing = false,
-            pairingResult = PairingResult.Success
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtPairingUiState(
+                pairing = false,
+                pairingResult = PairingResult.Success,
+            ),
         )
-    )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewFailure() {
-    ScreenContent(
-        uiState = BrowserExtPairingUiState(
-            pairing = false,
-            pairingResult = PairingResult.Failure
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtPairingUiState(
+                pairing = false,
+                pairingResult = PairingResult.Failure,
+            ),
         )
-    )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewAlreadyPaired() {
-    ScreenContent(
-        uiState = BrowserExtPairingUiState(
-            pairing = false,
-            pairingResult = PairingResult.AlreadyPaired
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtPairingUiState(
+                pairing = false,
+                pairingResult = PairingResult.AlreadyPaired,
+            ),
         )
-    )
+    }
 }

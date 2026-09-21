@@ -29,30 +29,34 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.settings.OptionEntry
+import com.twofasapp.core.design.feature.settings.OptionHeader
+import com.twofasapp.core.design.feature.settings.OptionHeaderContentPaddingFirst
+import com.twofasapp.core.design.feature.settings.OptionSwitch
+import com.twofasapp.core.design.foundation.checked.Switch
+import com.twofasapp.core.design.foundation.dialog.ConfirmDialog
+import com.twofasapp.core.design.foundation.dialog.InfoDialog
+import com.twofasapp.core.design.foundation.dialog.PasswordDialog
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.currentActivity
+import com.twofasapp.core.design.ktx.openSafely
+import com.twofasapp.core.design.ktx.strings
+import com.twofasapp.core.design.ktx.toastLong
+import com.twofasapp.core.design.theme.RoundedShape12
 import com.twofasapp.data.services.domain.CloudSyncError
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwSwitch
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.InfoDialog
-import com.twofasapp.designsystem.dialog.PasswordDialog
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.ktx.openSafely
-import com.twofasapp.designsystem.ktx.strings
-import com.twofasapp.designsystem.ktx.toastLong
-import com.twofasapp.designsystem.settings.SettingsDivider
-import com.twofasapp.designsystem.settings.SettingsHeader
-import com.twofasapp.designsystem.settings.SettingsLink
 import com.twofasapp.locale.R
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun BackupScreen(
     viewModel: BackupViewModel = koinViewModel(),
-    openSettings: () -> Unit,
-    openExport: () -> Unit,
-    openImport: () -> Unit,
-    goBack: () -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -61,12 +65,13 @@ internal fun BackupScreen(
         onTurnOnSync = { viewModel.turnOnSync() },
         onTurnOffSync = { viewModel.turnOffSync() },
         onEnterPassword = { viewModel.enterPassword(it) },
-        onSettingsClick = openSettings,
-        onExportClick = openExport,
-        onImportClick = openImport,
+        onShowBackupNoticeToggle = { viewModel.toggleShowBackupNotice() },
+        onSettingsClick = { navigator.open(Screen.BackupSettings) },
+        onExportClick = { navigator.open(Screen.BackupExport) },
+        onImportClick = { navigator.open(Screen.BackupImport()) },
         onEventConsumed = { viewModel.consumeEvent(it) },
         onSignInResult = { viewModel.handleSignInResult(it) },
-        goBack = goBack,
+        goBack = { navigator.back() },
     )
 }
 
@@ -76,6 +81,7 @@ private fun ScreenContent(
     onTurnOnSync: () -> Unit = {},
     onTurnOffSync: () -> Unit = {},
     onEnterPassword: (String) -> Unit = {},
+    onShowBackupNoticeToggle: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
     onExportClick: () -> Unit = {},
     onImportClick: () -> Unit = {},
@@ -92,6 +98,7 @@ private fun ScreenContent(
     var errorDialogTitle by remember { mutableStateOf("") }
     var errorDialogMsg by remember { mutableStateOf("") }
     var showTurnOffConfirmationDialog by remember { mutableStateOf(false) }
+    var showConfirmDisableBackupNotice by remember { mutableStateOf(false) }
 
     val signInLauncher = rememberLauncherForActivityResult(StartActivityForResult()) { onSignInResult(it) }
 
@@ -134,22 +141,26 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = strings.backupTitle) }
+        topBar = { TopAppBar(title = strings.backupTitle) },
     ) { padding ->
         LazyColumn(
             modifier = Modifier.padding(padding),
         ) {
-            item { SettingsHeader(title = strings.backupDriveHeader) }
+            item {
+                OptionHeader(
+                    text = strings.backupDriveHeader,
+                    contentPadding = OptionHeaderContentPaddingFirst,
+                )
+            }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = strings.backupSync,
-                    icon = if (uiState.syncChecked) TwIcons.Cloud else TwIcons.CloudOff,
+                    icon = if (uiState.syncChecked) MdtIcons.Cloud else MdtIcons.CloudOff,
                     subtitle = if (uiState.showSyncMsg) strings.backupSyncDescription else null,
-                    alignCenterIcon = false,
                     enabled = uiState.syncEnabled,
-                    endContent = {
-                        TwSwitch(
+                    content = {
+                        Switch(
                             checked = uiState.syncChecked,
                             onCheckedChange = null,
                         )
@@ -171,26 +182,24 @@ private fun ScreenContent(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 68.dp, end = 16.dp, bottom = 16.dp, top = 8.dp)
-                            .border(1.dp, TwTheme.color.primary, TwTheme.shape.roundedDefault)
+                            .padding(start = 56.dp, end = 16.dp, bottom = 16.dp, top = 8.dp)
+                            .border(1.dp, MdtTheme.color.primary, RoundedShape12)
                             .padding(16.dp),
 
-                        ) {
-
+                    ) {
                         Text(
                             text = stringResource(id = formatErrorMsg(uiState.error ?: CloudSyncError.Unknown)),
-                            style = TwTheme.typo.body3,
-                            color = TwTheme.color.primary,
+                            style = MdtTheme.typo.sm.normal,
+                            color = MdtTheme.color.primary,
                         )
-
 
                         if (formatShouldShowErrorCode(uiState.error ?: CloudSyncError.Unknown)) {
                             Spacer(modifier = Modifier.height(16.dp))
 
                             Text(
                                 text = "Error code: ${uiState.error?.code}",
-                                style = TwTheme.typo.caption,
-                                color = TwTheme.color.primary,
+                                style = MdtTheme.typo.xs.normal,
+                                color = MdtTheme.color.primary,
                             )
                         }
                     }
@@ -198,29 +207,44 @@ private fun ScreenContent(
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = strings.backupSyncSettings,
-                    icon = TwIcons.Settings,
+                    icon = MdtIcons.Settings,
                     onClick = onSettingsClick,
                 )
             }
 
-            item { SettingsDivider() }
+            if (uiState.syncChecked.not()) {
+                item {
+                    OptionSwitch(
+                        title = strings.settingsShowBackupNotice,
+                        icon = MdtIcons.Info,
+                        checked = uiState.showBackupNotice,
+                        onToggle = { checked ->
+                            if (checked.not()) {
+                                showConfirmDisableBackupNotice = true
+                            } else {
+                                onShowBackupNoticeToggle()
+                            }
+                        },
+                    )
+                }
+            }
 
-            item { SettingsHeader(title = strings.backupLocalHeader) }
+            item { OptionHeader(text = strings.backupLocalHeader) }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = strings.backupImportFile,
-                    icon = TwIcons.Import,
+                    icon = MdtIcons.Import,
                     onClick = onImportClick,
                 )
             }
 
             item {
-                SettingsLink(
+                OptionEntry(
                     title = strings.backupExportFile,
-                    icon = TwIcons.Export,
+                    icon = MdtIcons.Export,
                     enabled = uiState.exportEnabled,
                     onClick = onExportClick,
                 )
@@ -228,9 +252,24 @@ private fun ScreenContent(
         }
 
         if (showTurnOffConfirmationDialog) {
-            TurnOffConfirmationDialog(
+            ConfirmDialog(
                 onDismissRequest = { showTurnOffConfirmationDialog = false },
-                onConfirm = onTurnOffSync,
+                title = strings.backupTurnOffTitle,
+                body = strings.backupTurnOffMsg1,
+                icon = MdtIcons.Warning,
+                positive = strings.backupTurnOffCta,
+                negative = strings.commonCancel,
+                onPositive = onTurnOffSync,
+            )
+        }
+
+        if (showConfirmDisableBackupNotice) {
+            ConfirmDialog(
+                onDismissRequest = { showConfirmDisableBackupNotice = false },
+                title = strings.settingsShowBackupNotice,
+                body = strings.settingsShowBackupNoticeConfirmBody,
+                icon = MdtIcons.Info,
+                onPositive = { onShowBackupNoticeToggle() },
             )
         }
 
@@ -238,7 +277,7 @@ private fun ScreenContent(
             InfoDialog(
                 onDismissRequest = { showErrorDialog = false },
                 title = errorDialogTitle,
-                body = errorDialogMsg
+                body = errorDialogMsg,
             )
         }
 
@@ -248,9 +287,9 @@ private fun ScreenContent(
 
                 pushStringAnnotation(
                     tag = "link",
-                    annotation = "https://2fas.com/support/2fas-mobile-app/how-to-wipe-remove-a-google-drive-backup-file/"
+                    annotation = "https://2fas.com/support/2fas-mobile-app/how-to-wipe-remove-a-google-drive-backup-file/",
                 )
-                withStyle(style = SpanStyle(TwTheme.color.primary)) {
+                withStyle(style = SpanStyle(MdtTheme.color.primary)) {
                     append(strings.backupEnterCloudPasswordMsg2)
                 }
                 pop()
@@ -275,7 +314,7 @@ private fun ScreenContent(
                 positive = strings.commonContinue,
                 onPositive = { onEnterPassword(it) },
                 onNegative = { onTurnOffSync() },
-                properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false)
+                properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false),
             )
         }
     }
@@ -288,13 +327,15 @@ private fun formatErrorMsg(type: CloudSyncError): Int =
         CloudSyncError.SyncFailure,
         CloudSyncError.HttpApiFailure,
         CloudSyncError.FileNotFound,
-        CloudSyncError.Unknown -> R.string.backup_error_unknown
+        CloudSyncError.Unknown,
+        -> R.string.backup_error_unknown
 
         CloudSyncError.NetworkUnavailable -> R.string.backup_error_network
 
         CloudSyncError.GoogleUserPermissionDenied,
         CloudSyncError.CredentialsNotFound,
-        CloudSyncError.GoogleAuthFailure -> R.string.backup_error_auth
+        CloudSyncError.GoogleAuthFailure,
+        -> R.string.backup_error_auth
 
         CloudSyncError.EncryptUnknownFailure -> R.string.backup_error_encrypt_unknown
         CloudSyncError.DecryptNoPassword -> R.string.backup_error_no_password
@@ -305,7 +346,8 @@ private fun formatErrorMsg(type: CloudSyncError): Int =
 private fun formatShouldShowErrorCode(type: CloudSyncError) =
     when (type) {
         CloudSyncError.DecryptWrongPassword,
-        CloudSyncError.DecryptNoPassword -> false
+        CloudSyncError.DecryptNoPassword,
+        -> false
 
         else -> true
     }
@@ -313,7 +355,23 @@ private fun formatShouldShowErrorCode(type: CloudSyncError) =
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BackupUiState()
-    )
+    PreviewTheme {
+        ScreenContent(
+            uiState = BackupUiState(),
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewError() {
+    PreviewTheme {
+        ScreenContent(
+            uiState = BackupUiState(
+                syncChecked = true,
+                showError = true,
+                error = CloudSyncError.Unknown,
+            ),
+        )
+    }
 }

@@ -33,7 +33,7 @@ interface PairedBrowserDao {
         insertOrUpdate(
             *entities.mapNotNull { newEntity ->
                 newEntity.copy(extensionPublicKey = local.firstOrNull { newEntity.id == it.id }?.extensionPublicKey ?: return@mapNotNull null)
-            }.toTypedArray()
+            }.toTypedArray(),
         )
     }
 

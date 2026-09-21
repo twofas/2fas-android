@@ -1,17 +1,12 @@
 package com.twofasapp.feature.security.ui.changepin
 
 import com.twofasapp.data.session.domain.PinDigits
-import com.twofasapp.feature.security.ui.pin.PinScreenState
 
 internal data class ChangePinUiState(
     val digits: PinDigits = PinDigits.Code4,
+    val enteredPin: String = "",
     val errorMessage: Int? = null,
-    val pinScreenState: PinScreenState = PinScreenState.Default,
-    val events: List<ChangePinUiEvent> = emptyList(),
+    val verifying: Boolean = false,
+    val invalidPinCount: Int = 0,
+    val currentPinVerified: Boolean = false,
 )
-
-internal sealed interface ChangePinUiEvent {
-    data object ClearCurrentPin : ChangePinUiEvent
-    data object NotifyInvalidPin : ChangePinUiEvent
-    data object NavigateToSetup : ChangePinUiEvent
-}

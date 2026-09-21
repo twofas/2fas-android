@@ -23,7 +23,7 @@ interface BrowserExtRepository {
         deviceId: String,
         extensionId: String,
         requestId: String,
-        codeUnencrypted: String
+        codeUnencrypted: String,
     )
 
     suspend fun denyLoginRequest(

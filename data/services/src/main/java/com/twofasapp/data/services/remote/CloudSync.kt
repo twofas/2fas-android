@@ -1,5 +1,6 @@
 package com.twofasapp.data.services.remote
 
+import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.time.TimeProvider
@@ -13,12 +14,10 @@ import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.local.BackupLocalSource
 import com.twofasapp.data.services.mapper.asDomain
-import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.parsers.LegacyTypeToId
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.prefs.usecase.RemoteBackupKeyPreference
-import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
 import timber.log.Timber
 import java.util.Locale
 
@@ -28,8 +27,7 @@ class CloudSync(
     private val servicesRepository: ServicesRepository,
     private val groupsRepository: GroupsRepository,
     private val backupRepository: BackupRepository,
-    private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
-    private val remoteBackupKeyPreference: RemoteBackupKeyPreference,
+    private val backupLocalSource: BackupLocalSource,
 ) {
     private sealed interface RemoteStatus {
         data class Success(
@@ -41,12 +39,11 @@ class CloudSync(
         ) : RemoteStatus
 
         data class Error(
-            val error: CloudSyncError
+            val error: CloudSyncError,
         ) : RemoteStatus
     }
 
     suspend fun execute(trigger: CloudSyncTrigger, password: String?): CloudSyncResult {
-
         backupRepository.publishCloudSyncStatus(CloudSyncStatus.Syncing)
 
         Timber.d(trigger.name)
@@ -66,17 +63,18 @@ class CloudSync(
             CloudSyncTrigger.AppBackground,
             CloudSyncTrigger.AppStart,
             CloudSyncTrigger.SetPassword,
-            CloudSyncTrigger.RemovePassword -> {
+            CloudSyncTrigger.RemovePassword,
+            -> {
                 sync(now, false, password, trigger)
             }
         }
 
         return when (syncBackupStatus) {
             is RemoteStatus.Success -> {
-                remoteBackupStatusPreference.put {
+                backupLocalSource.updateRemoteBackupStatus {
                     it.copy(
                         lastSyncMillis = syncBackupStatus.lastSyncTime,
-                        schemaVersion = BackupContent.CurrentSchema
+                        schemaVersion = BackupContent.CurrentSchema,
                     )
                 }
 
@@ -88,7 +86,8 @@ class CloudSync(
             is RemoteStatus.Error -> {
                 when (syncBackupStatus.error) {
                     CloudSyncError.DecryptNoPassword,
-                    CloudSyncError.DecryptWrongPassword -> remoteBackupKeyPreference.delete()
+                    CloudSyncError.DecryptWrongPassword,
+                    -> backupRepository.deleteRemoteBackupKey()
 
                     else -> Unit
                 }
@@ -96,8 +95,8 @@ class CloudSync(
                 backupRepository.publishCloudSyncStatus(
                     CloudSyncStatus.Error(
                         error = syncBackupStatus.error,
-                        trigger = trigger
-                    )
+                        trigger = trigger,
+                    ),
                 )
 
                 CloudSyncResult.Failure(trigger = trigger)
@@ -109,7 +108,7 @@ class CloudSync(
         now: Long,
         isFirstConnect: Boolean,
         password: String?,
-        trigger: CloudSyncTrigger
+        trigger: CloudSyncTrigger,
     ): RemoteStatus {
         // Prepare lists of services and groups
         val localServices = servicesRepository.getServices().toMutableList()
@@ -137,7 +136,7 @@ class CloudSync(
         }
 
         // Prepare database revisions (in our case it's timestamp)
-        val backupStatus = remoteBackupStatusPreference.get()
+        val backupStatus = backupLocalSource.getRemoteBackupStatus()
 
         val localRevision = backupStatus.lastSyncMillis
         val remoteRevision = remoteStatus.lastSyncTime
@@ -155,7 +154,7 @@ class CloudSync(
                 matchingLocalGroup,
                 remoteGroup,
                 localRevision,
-                remoteRevision
+                remoteRevision,
             )
             localGroups.remove(matchingLocalGroup)
         }
@@ -169,7 +168,7 @@ class CloudSync(
                 matchingLocal,
                 remote,
                 localRevision,
-                remoteRevision
+                remoteRevision,
             )
             localServices.remove(matchingLocal)
         }
@@ -178,10 +177,10 @@ class CloudSync(
         localServices.forEach {
             // Remove local service if service is missing from remote and was SYNCED before
             if (
-                isFirstConnect.not()
-                && localAppVersionCode == remoteAppVersionCode
-                && localSchemaVersion == remoteSchemaVersion
-                && it.backupSyncStatus == BackupSyncStatus.SYNCED
+                isFirstConnect.not() &&
+                localAppVersionCode == remoteAppVersionCode &&
+                localSchemaVersion == remoteSchemaVersion &&
+                it.backupSyncStatus == BackupSyncStatus.SYNCED
             ) {
                 servicesRepository.trashService(id = it.id, triggerSync = false)
             }
@@ -191,10 +190,10 @@ class CloudSync(
         localGroups.forEach {
             // Remove local group if group is missing from remote and was SYNCED before
             if (
-                isFirstConnect.not()
-                && localAppVersionCode == remoteAppVersionCode
-                && localSchemaVersion == remoteSchemaVersion
-                && it.backupSyncStatus == BackupSyncStatus.SYNCED
+                isFirstConnect.not() &&
+                localAppVersionCode == remoteAppVersionCode &&
+                localSchemaVersion == remoteSchemaVersion &&
+                it.backupSyncStatus == BackupSyncStatus.SYNCED
             ) {
                 it.id?.let { id -> groupsRepository.deleteGroup(id) }
             }
@@ -211,11 +210,11 @@ class CloudSync(
         now: Long,
         isFirstConnect: Boolean,
         password: String?,
-        trigger: CloudSyncTrigger
+        trigger: CloudSyncTrigger,
     ): RemoteStatus {
         try {
             val updatedLocalServices = servicesRepository.getServices()
-            val remoteKey = remoteBackupKeyPreference.get()
+            val remoteKey = backupRepository.getRemoteBackupKey()
 
             val updateResult = backupRepository.updateCloudBackup(
                 firstConnect = isFirstConnect,
@@ -253,12 +252,12 @@ class CloudSync(
                                 if (isFirstConnect) {
                                     it.copy(
                                         backupSyncStatus = BackupSyncStatus.SYNCED,
-                                        updatedAt = now
+                                        updatedAt = now,
                                     )
                                 } else {
                                     it.copy(backupSyncStatus = BackupSyncStatus.SYNCED)
                                 }
-                            }
+                            },
                     )
 
                     // Mark groups as SYNCED
@@ -269,13 +268,13 @@ class CloudSync(
                         groups = emptyList(),
                         lastSyncTime = now,
                         schemaVersion = BackupContent.CurrentSchema,
-                        appVersionCode = 0
+                        appVersionCode = 0,
                     )
                 }
 
                 is CloudBackupUpdateResult.Failure -> {
                     return RemoteStatus.Error(
-                        error = updateResult.error
+                        error = updateResult.error,
                     )
                 }
             }
@@ -288,7 +287,7 @@ class CloudSync(
         local: Service?,
         remote: Service,
         localRevision: Long,
-        remoteRevision: Long
+        remoteRevision: Long,
     ) {
         // Service exists on remote, but not on local
         if (local == null) {
@@ -321,7 +320,7 @@ class CloudSync(
                 remote.copy(
                     id = local.id,
                     assignedDomains = local.assignedDomains,
-                )
+                ),
             )
         }
     }
@@ -330,11 +329,10 @@ class CloudSync(
         local: Group?,
         remote: Group,
         localRevision: Long,
-        remoteRevision: Long
+        remoteRevision: Long,
     ) {
         // Group exists on remote, but not on local
         if (local == null) {
-
             // Check if database revisions are the same on local and on remote
             if (localRevision != remoteRevision) {
                 // Revisions are different - add remote group
@@ -363,7 +361,7 @@ class CloudSync(
                             val serviceTypeIdFromLegacy = backupService.type?.name?.let { type ->
                                 LegacyTypeToId.serviceIds.getOrDefault(
                                     type,
-                                    null
+                                    null,
                                 )
                             }
                             var iconCollectionIdFromLegacy =
@@ -388,7 +386,7 @@ class CloudSync(
 
                             backupService.asDomain(
                                 serviceTypeIdFromLegacy = serviceTypeIdFromLegacy,
-                                iconCollectionIdFromLegacy = iconCollectionIdFromLegacy
+                                iconCollectionIdFromLegacy = iconCollectionIdFromLegacy,
                             )
                         },
                     groups = result.backupContent.groups.map { it.asDomain() },
@@ -396,12 +394,11 @@ class CloudSync(
                     schemaVersion = result.backupContent.schemaVersion,
                     appVersionCode = result.backupContent.appVersionCode,
                 )
-
             }
 
             is CloudBackupGetResult.Failure -> {
                 RemoteStatus.Error(
-                    error = result.error
+                    error = result.error,
                 )
             }
         }

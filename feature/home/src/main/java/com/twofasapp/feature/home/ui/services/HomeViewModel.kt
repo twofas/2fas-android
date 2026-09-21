@@ -1,0 +1,444 @@
+package com.twofasapp.feature.home.ui.services
+
+import android.annotation.SuppressLint
+import androidx.lifecycle.ViewModel
+import com.twofasapp.android.navigation.BottomBarState
+import com.twofasapp.android.navigation.DeeplinkHandler
+import com.twofasapp.common.domain.Service
+import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.environment.BuildVariant
+import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.time.TimeProvider
+import com.twofasapp.data.notifications.NotificationsRepository
+import com.twofasapp.data.services.BackupRepository
+import com.twofasapp.data.services.GroupsRepository
+import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.CloudSyncStatus
+import com.twofasapp.data.services.domain.Group
+import com.twofasapp.data.services.domain.QueuedAddServiceModal
+import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.data.services.otp.OtpLinkParser
+import com.twofasapp.data.session.CustomizationRepository
+import com.twofasapp.data.session.SessionRepository
+import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.data.session.domain.AppSettings
+import com.twofasapp.data.session.domain.ServicesSort
+import com.twofasapp.data.session.domain.ServicesStyle
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.update
+
+@Suppress("UNCHECKED_CAST")
+internal class HomeViewModel(
+    appBuild: AppBuild,
+    private val servicesRepository: ServicesRepository,
+    private val groupsRepository: GroupsRepository,
+    private val settingsRepository: SettingsRepository,
+    private val customizationRepository: CustomizationRepository,
+    private val sessionRepository: SessionRepository,
+    private val notificationsRepository: NotificationsRepository,
+    private val backupRepository: BackupRepository,
+    private val deeplinkHandler: DeeplinkHandler,
+    private val bottomBarState: BottomBarState,
+    private val timeProvider: TimeProvider,
+) : ViewModel() {
+
+    val uiState = MutableStateFlow(HomeUiState())
+
+    private val isInEditMode = MutableStateFlow(false)
+    private val searchQuery = MutableStateFlow("")
+    private val searchFocused = MutableStateFlow(false)
+    private var movedToBackgroundAt: Long? = null
+
+    init {
+        uiState.update {
+            it.copy(
+                developerModeEnabled = when (appBuild.buildVariant) {
+                    BuildVariant.Release -> false
+                    BuildVariant.Internal -> true
+                    BuildVariant.Debug -> true
+                },
+            )
+        }
+
+        searchFocused(customizationRepository.getAutoFocusSearch())
+
+        launchScoped {
+            combine(
+                groupsRepository.observeGroups(),
+                servicesRepository.observeServicesTicker(),
+                isInEditMode,
+                settingsRepository.observeAppSettings(),
+                backupRepository.observeBackupEnabled(),
+                backupRepository.observeCloudSyncStatus(),
+                searchQuery,
+                sessionRepository.observeShowPassBanner(),
+                sessionRepository.observeAppReviewPrompted(),
+                searchFocused,
+                customizationRepository.observeServicesSort(),
+                customizationRepository.observeServicesStyle(),
+                customizationRepository.observeShowNextCode(),
+                customizationRepository.observeHideCodes(),
+            ) { array ->
+                CombinedResult(
+                    groups = array[0] as List<Group>,
+                    services = array[1] as List<Service>,
+                    isInEditMode = array[2] as Boolean,
+                    appSettings = array[3] as AppSettings,
+                    backupEnabled = array[4] as Boolean,
+                    cloudSyncStatus = array[5] as CloudSyncStatus,
+                    searchQuery = array[6] as String,
+                    showPassBanner = array[7] as Boolean,
+                    appReviewPrompted = array[8] as Boolean,
+                    searchFocused = array[9] as Boolean,
+                    servicesSort = array[10] as ServicesSort,
+                    servicesStyle = array[11] as ServicesStyle,
+                    showNextCode = array[12] as Boolean,
+                    hideCodes = array[13] as Boolean,
+                )
+            }.collect { result ->
+
+                if (result.isInEditMode && result.services.isEmpty() && result.groups.none { it.id != null }) {
+                    toggleEditMode()
+                    return@collect
+                }
+
+                val showCloudSyncNotice = result.appSettings.showBackupNotice &&
+                    result.backupEnabled.not() &&
+                    result.searchQuery.isEmpty() &&
+                    result.searchFocused.not() &&
+                    result.isInEditMode.not()
+
+                val showAppReview = result.appReviewPrompted.not() &&
+                    result.services.size >= AppReviewItemsThreshold &&
+                    result.searchQuery.isEmpty() &&
+                    result.searchFocused.not() &&
+                    result.isInEditMode.not()
+
+                val showPassBanner = result.showPassBanner &&
+                    result.services.isNotEmpty() &&
+                    result.searchQuery.isEmpty() &&
+                    result.searchFocused.not() &&
+                    result.isInEditMode.not()
+
+                val filteredServices = when (result.servicesSort) {
+                    ServicesSort.Alphabetical -> result.services.sortedBy { it.name.lowercase() }
+                    ServicesSort.AlphabeticalReversed -> result.services.sortedByDescending { it.name.lowercase() }
+                    ServicesSort.Manual -> result.services
+                }.filter { service -> service.isMatchingQuery(result.searchQuery) }
+
+                uiState.update { state ->
+                    state.copy(
+                        services = filteredServices,
+                        groups = result.groups,
+                        showCloudSyncNotice = showCloudSyncNotice,
+                        showAppReview = showAppReview,
+                        showPassBanner = showPassBanner,
+                        totalGroups = result.groups.size,
+                        totalServices = result.services.size,
+                        isLoading = false,
+                        isInEditMode = result.isInEditMode,
+                        appSettings = result.appSettings,
+                        servicesSort = result.servicesSort,
+                        servicesStyle = result.servicesStyle,
+                        showNextCode = result.showNextCode,
+                        hideCodes = result.hideCodes,
+                        items = buildList {
+                            when {
+                                showAppReview -> add(HomeListItem.AppReview)
+                                showPassBanner -> add(HomeListItem.PassBanner)
+                                showCloudSyncNotice -> add(HomeListItem.CloudSyncItem)
+                            }
+
+                            val groupedServices: Map<Group, List<Service>> = buildMap {
+                                result.groups.forEach { group ->
+                                    put(
+                                        key = group,
+                                        value = filteredServices
+                                            .filter { it.groupId == group.id },
+                                    )
+                                }
+                            }
+
+                            groupedServices.forEach { (group, services) ->
+
+                                if (groupedServices.size > 1) {
+                                    add(
+                                        HomeListItem.GroupItem(
+                                            group = group.copy(
+                                                isExpanded = if (result.searchQuery.isNotEmpty()) true else group.isExpanded,
+                                            ),
+                                        ),
+                                    )
+                                }
+
+                                if (group.isExpanded || result.isInEditMode || groupedServices.size == 1 || result.searchQuery.isNotEmpty()) {
+                                    services.forEach { service ->
+                                        add(HomeListItem.ServiceItem(service))
+                                    }
+                                }
+                            }
+                        },
+                    )
+                }
+            }
+        }
+
+        launchScoped {
+            servicesRepository.observeRecentlyAddedService().collect { recentlyAdded ->
+                if (recentlyAdded.source == RecentlyAddedService.Source.QrGallery) {
+                    publishEvent(HomeUiEvent.ShowQrFromGalleryDialog)
+                }
+
+                publishEvent(HomeUiEvent.ServiceAdded(recentlyAdded.serviceId))
+            }
+        }
+
+        launchScoped {
+            notificationsRepository.hasUnreadNotifications().collect { hasUnread ->
+                uiState.update { it.copy(hasUnreadNotifications = hasUnread) }
+            }
+        }
+
+        launchScoped {
+            deeplinkHandler.observeQueuedDeeplink().collect {
+                handleIncomingData(it)
+                deeplinkHandler.setQueuedDeeplink(null)
+            }
+        }
+    }
+
+    fun toggleEditMode() {
+        isInEditMode.value = isInEditMode.value.not()
+        bottomBarState.setVisible(isInEditMode.value.not())
+
+        if (isInEditMode.value.not()) {
+            uiState.update { it.copy(selectedServiceIds = emptySet()) }
+        }
+    }
+
+    override fun onCleared() {
+        bottomBarState.setVisible(true)
+        super.onCleared()
+    }
+
+    fun toggleServiceSelection(id: Long) {
+        uiState.update { state ->
+            state.copy(
+                selectedServiceIds = if (state.selectedServiceIds.contains(id)) {
+                    state.selectedServiceIds.minus(id)
+                } else {
+                    state.selectedServiceIds.plus(id)
+                },
+            )
+        }
+    }
+
+    fun deleteSelectedServices() {
+        val ids = uiState.value.selectedServiceIds
+
+        if (isInEditMode.value) {
+            toggleEditMode()
+        }
+
+        launchScoped {
+            ids.forEach { servicesRepository.trashService(it) }
+        }
+    }
+
+    fun consumeEvent(event: HomeUiEvent) {
+        uiState.update { it.copy(events = it.events.minus(event)) }
+    }
+
+    fun notifyServiceAdded(recentlyAddedService: RecentlyAddedService) {
+        servicesRepository.pushRecentlyAddedService(recentlyAddedService)
+    }
+
+    fun consumeQueuedAddServiceModal(): QueuedAddServiceModal? {
+        return servicesRepository.getQueuedAddServiceModal()
+            ?.also { servicesRepository.setQueuedAddServiceModal(null) }
+    }
+
+    fun search(query: String) {
+        searchQuery.update { query }
+        uiState.update { it.copy(searchQuery = query) }
+    }
+
+    fun toggleGroup(id: String?) {
+        if (uiState.value.searchQuery.isNotEmpty()) return
+
+        launchScoped { groupsRepository.toggleGroup(id) }
+    }
+
+    fun addGroup(name: String) {
+        launchScoped { groupsRepository.addGroup(name) }
+    }
+
+    fun deleteGroup(id: String) {
+        launchScoped { groupsRepository.deleteGroup(id) }
+    }
+
+    fun editGroup(id: String, name: String) {
+        launchScoped { groupsRepository.editGroup(id, name) }
+    }
+
+    fun moveUpGroup(id: String) {
+        launchScoped { groupsRepository.moveUpGroup(id) }
+    }
+
+    fun moveDownGroup(id: String) {
+        launchScoped { groupsRepository.moveDownGroup(id) }
+    }
+
+    fun updateSort(index: Int) {
+        launchScoped {
+            customizationRepository.setServicesSort(
+                when (index) {
+                    0 -> ServicesSort.Alphabetical
+                    1 -> ServicesSort.AlphabeticalReversed
+                    else -> ServicesSort.Manual
+                },
+            )
+        }
+    }
+
+    fun onAppBackground() {
+        movedToBackgroundAt = timeProvider.systemElapsedTime()
+    }
+
+    fun onAppForeground() {
+        val backgroundAt = movedToBackgroundAt ?: return
+        movedToBackgroundAt = null
+
+        if (customizationRepository.getAutoFocusSearch().not()) return
+        if (uiState.value.searchFocused) return
+        if (timeProvider.systemElapsedTime() - backgroundAt < AutoFocusSearchBackgroundThresholdMs) return
+
+        searchFocused(true)
+    }
+
+    fun searchFocused(focused: Boolean) {
+        if (uiState.value.searchFocused == focused) return
+
+        searchFocused.update { focused }
+        uiState.update { it.copy(searchFocused = focused) }
+    }
+
+    fun dismissPassBanner() {
+        launchScoped {
+            sessionRepository.resetPassBannerDismiss()
+        }
+    }
+
+    fun disablePassBanner() {
+        launchScoped {
+            sessionRepository.disablePassBanner()
+        }
+    }
+
+    fun incrementHotpCounter(service: Service) {
+        launchScoped {
+            servicesRepository.incrementHotpCounter(service)
+
+            if (uiState.value.hideCodes) {
+                servicesRepository.revealService(id = service.id)
+            }
+        }
+    }
+
+    private fun publishEvent(event: HomeUiEvent) {
+        uiState.update { it.copy(events = it.events.plus(event)) }
+    }
+
+    private fun Service.isMatchingQuery(query: String): Boolean {
+        return name.contains(query, true) ||
+            issuer?.contains(query, true) ?: false ||
+            info?.contains(query, true) ?: false ||
+            tags.contains(query.lowercase())
+    }
+
+    fun onDragStart() {
+        servicesRepository.setTickerEnabled(false)
+    }
+
+    fun onDragEnd(data: List<HomeListItem>) {
+        launchScoped(Dispatchers.IO) {
+            var groupId: String? = null
+
+            data.forEach { item ->
+                if (item is HomeListItem.GroupItem) {
+                    groupId = item.group.id
+                }
+
+                if (item is HomeListItem.ServiceItem && item.service.groupId != groupId) {
+                    servicesRepository.setServiceGroup(item.service.id, groupId)
+                }
+            }
+
+            servicesRepository.updateServicesOrder(
+                ids = data.filterIsInstance<HomeListItem.ServiceItem>().map { it.service.id },
+            )
+
+            servicesRepository.setTickerEnabled(true)
+        }
+    }
+
+    fun reveal(service: Service) {
+        launchScoped {
+            servicesRepository.revealService(
+                id = service.id,
+            )
+        }
+    }
+
+    @SuppressLint("CheckResult")
+    fun handleIncomingData(incomingData: String?) {
+        if (incomingData == null) return
+        launchScoped {
+            if (incomingData.startsWith("content://") && incomingData.endsWith(".2fas")) {
+                // Import backup
+                publishEvent(HomeUiEvent.OpenImport(incomingData))
+            }
+
+            if (incomingData.startsWith("otpauth")) {
+                val otpLink = OtpLinkParser.parse(incomingData)
+                otpLink?.let {
+                    if (servicesRepository.isServiceValid(otpLink).not()) {
+                        return@launchScoped
+                    }
+
+                    val id = servicesRepository.addService(otpLink)
+                    servicesRepository.pushRecentlyAddedService(
+                        RecentlyAddedService(
+                            serviceId = id,
+                            source = RecentlyAddedService.Source.Manually,
+                        ),
+                    )
+                }
+            }
+        }
+    }
+
+    data class CombinedResult(
+        val groups: List<Group>,
+        val services: List<Service>,
+        val isInEditMode: Boolean,
+        val appSettings: AppSettings,
+        val backupEnabled: Boolean,
+        val cloudSyncStatus: CloudSyncStatus,
+        val searchQuery: String,
+        val showPassBanner: Boolean,
+        val appReviewPrompted: Boolean,
+        val searchFocused: Boolean,
+        val servicesSort: ServicesSort,
+        val servicesStyle: ServicesStyle,
+        val showNextCode: Boolean,
+        val hideCodes: Boolean,
+    )
+
+    private companion object {
+        const val AppReviewItemsThreshold = 3
+        const val AutoFocusSearchBackgroundThresholdMs = 30_000L
+    }
+}

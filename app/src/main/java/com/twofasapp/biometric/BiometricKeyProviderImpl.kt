@@ -22,13 +22,13 @@ internal class BiometricKeyProviderImpl : BiometricKeyProvider {
             if (keyStore.containsAlias(KeyAlias)) {
                 return keyStore.getKey(KeyAlias, null) as SecretKey
             }
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
         val keyGenerator = KeyGenerator.getInstance(
-            KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore"
+            KeyProperties.KEY_ALGORITHM_AES,
+            "AndroidKeyStore",
         )
 
         val keyGenParameterSpec = KeyGenParameterSpec.Builder(KeyAlias, KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT)

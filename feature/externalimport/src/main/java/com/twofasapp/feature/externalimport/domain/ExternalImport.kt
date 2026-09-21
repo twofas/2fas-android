@@ -9,14 +9,14 @@ sealed class ExternalImport {
     ) : ExternalImport()
 
     data class ParsingError(
-        val reason: Exception
+        val reason: Exception,
     ) : ExternalImport()
 
     data class UnsupportedError(
-        val reason: String
+        val reason: String,
     ) : ExternalImport()
 
     data class FileReadError(
-        val reason: String
+        val reason: String,
     ) : ExternalImport()
 }

@@ -1,0 +1,235 @@
+package com.twofasapp.feature.guides.ui.guidepager
+
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.QueuedAddServiceModal
+import com.twofasapp.feature.guides.ui.guideinit.PreviewGuide
+import com.twofasapp.feature.guides.ui.guides.Guide
+import com.twofasapp.feature.guides.ui.guides.GuideJson
+import com.twofasapp.feature.guides.ui.guides.getGuideJson
+import com.twofasapp.feature.guides.ui.guides.json
+import com.twofasapp.locale.MdtLocale
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
+import org.koin.compose.koinInject
+
+@Composable
+internal fun GuidePagerScreen(
+    guide: Guide,
+    guideVariantIndex: Int,
+    json: Json = koinInject(),
+    servicesRepository: ServicesRepository = koinInject(),
+    navigator: Navigator = koinInject(),
+) {
+    val openAddScan: () -> Unit = {
+        servicesRepository.setQueuedAddServiceModal(QueuedAddServiceModal.Scan)
+        navigator.popTo(Screen.Home)
+    }
+    val openAddManually: () -> Unit = {
+        servicesRepository.setQueuedAddServiceModal(QueuedAddServiceModal.Manual)
+        navigator.popTo(Screen.Home)
+    }
+
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var guideJson by remember { mutableStateOf<GuideJson?>(null) }
+
+    LaunchedEffect(Unit) {
+        scope.launch(Dispatchers.IO) {
+            json.decodeFromString<GuideJson>(context.getGuideJson(guide.json)).also { guideJson = it }
+        }
+    }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = when (guide) {
+                    Guide.Universal -> MdtLocale.strings.guideUniversalTitle
+                    else -> MdtLocale.strings.guideTitle.format(guideJson?.serviceName ?: "")
+                },
+            )
+        },
+    ) { padding ->
+
+        guideJson?.let { guideJson ->
+            Content(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding),
+                steps = guideJson.flow.menu.items[guideVariantIndex].steps,
+                openAddScan = openAddScan,
+                openAddManually = {
+                    servicesRepository.setManualGuideSelectedPrefill(it)
+                    openAddManually()
+                },
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun Content(
+    modifier: Modifier = Modifier,
+    steps: List<GuideJson.Step>,
+    openAddScan: () -> Unit = {},
+    openAddManually: (String?) -> Unit = {},
+) {
+    val scope = rememberCoroutineScope()
+    val stepsCount = steps.size
+    val pagerState = rememberPagerState(pageCount = { stepsCount })
+    val isLastStep by remember { derivedStateOf { pagerState.currentPage == stepsCount - 1 } }
+
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth(),
+        ) { page ->
+
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Spacer(modifier = Modifier.fillMaxHeight(fraction = 0.1f))
+
+                Image(
+                    painter = painterResource(
+                        id = when (steps[page].image) {
+                            "web_url" -> com.twofasapp.core.design.R.drawable.illustration_web_url
+                            "web_account_1" -> com.twofasapp.core.design.R.drawable.illustration_web_account_1
+                            "web_menu" -> com.twofasapp.core.design.R.drawable.illustration_web_menu
+                            "2fas_type" -> com.twofasapp.core.design.R.drawable.illustration_2fas_type
+                            "phone_qr" -> com.twofasapp.core.design.R.drawable.illustration_phone_qr
+                            "gears" -> com.twofasapp.core.design.R.drawable.illustration_gears
+                            "web_phone" -> com.twofasapp.core.design.R.drawable.illustration_web_phone
+                            "retype" -> com.twofasapp.core.design.R.drawable.illustration_retype
+                            "web_button" -> com.twofasapp.core.design.R.drawable.illustration_web_button
+                            "push_notification" -> com.twofasapp.core.design.R.drawable.illustration_push_notification
+                            "account" -> com.twofasapp.core.design.R.drawable.illustration_account
+                            "app_button" -> com.twofasapp.core.design.R.drawable.illustration_app_button
+                            "secret_key" -> com.twofasapp.core.design.R.drawable.illustration_secret_key
+                            else -> com.twofasapp.core.design.R.drawable.ic_placeholder
+                        },
+                    ),
+                    contentDescription = null,
+                    modifier = Modifier.height(140.dp),
+                )
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                Text(
+                    text = parseMarkdown(
+                        markdown = steps[page].content,
+                        typography = MaterialTheme.typography,
+                    ),
+                    color = MdtTheme.color.onSurface,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                )
+            }
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+        ) {
+            repeat(stepsCount) { index ->
+                Box(
+                    modifier = Modifier
+                        .padding(4.dp)
+                        .clip(CircleShape)
+                        .background(
+                            if (pagerState.currentPage == index) {
+                                MdtTheme.color.primary
+                            } else {
+                                MdtTheme.color.surfaceContainerHighest
+                            },
+                        )
+                        .size(8.dp),
+                )
+            }
+        }
+
+        Button(
+            text = if (isLastStep) {
+                steps[pagerState.currentPage].cta?.name.orEmpty()
+            } else {
+                MdtLocale.strings.commonNext
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            onClick = {
+                if (isLastStep) {
+                    when (steps[pagerState.currentPage].cta?.action) {
+                        "open_scanner" -> openAddScan()
+                        "open_manually" -> openAddManually(steps[pagerState.currentPage].cta?.data)
+                        else -> Unit
+                    }
+                } else {
+                    scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
+                }
+            },
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        Content(
+            modifier = Modifier.fillMaxSize(),
+            steps = PreviewGuide.flow.menu.items.first().steps,
+        )
+    }
+}

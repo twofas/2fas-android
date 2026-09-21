@@ -16,6 +16,5 @@ internal object PushLogger {
     fun logToken(token: String) {
         Timber.i("onNewToken")
         Timber.i(token)
-
     }
 }

@@ -1,0 +1,113 @@
+package com.twofasapp.feature.home.ui.services.component
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.dp
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.theme.RoundedShape24
+import com.twofasapp.locale.MdtLocale
+
+@Composable
+internal fun AppReviewItem(
+    modifier: Modifier = Modifier,
+    onRateClick: () -> Unit = {},
+    onDismissClick: () -> Unit = {},
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 12.dp)
+            .padding(bottom = 12.dp, top = 4.dp)
+            .clip(RoundedShape24)
+            .background(MdtTheme.color.surfaceContainer)
+            .padding(start = 16.dp, top = 24.dp, end = 16.dp, bottom = 12.dp),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(MdtTheme.color.primary.copy(alpha = 0.12f)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painter = MdtIcons.StarShine,
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp),
+                    tint = MdtTheme.color.primary,
+                )
+            }
+
+            Spacer(Modifier.width(16.dp))
+
+            Column {
+                Text(
+                    text = MdtLocale.strings.homeAppReviewTitle,
+                    style = MdtTheme.typo.base.normal.copy(fontWeight = FontWeight.Medium),
+                    color = MdtTheme.color.onSurface,
+                )
+
+                Spacer(Modifier.height(6.dp))
+
+                Text(
+                    text = MdtLocale.strings.homeAppReviewMsg,
+                    style = MdtTheme.typo.sm.normal,
+                    color = MdtTheme.color.onSurfaceVariant,
+                )
+            }
+        }
+
+        Spacer(Modifier.height(16.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Button(
+                text = MdtLocale.strings.homeAppReviewDismiss,
+                style = ButtonStyle.Text,
+                onClick = onDismissClick,
+            )
+
+            Button(
+                text = MdtLocale.strings.homeAppReviewRate,
+                height = 36.dp,
+                leadingIcon = MdtIcons.Star,
+                onClick = onRateClick,
+            )
+        }
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun Preview() {
+    PreviewTheme {
+        AppReviewItem(Modifier.fillMaxWidth())
+    }
+}

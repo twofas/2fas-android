@@ -1,9 +1,10 @@
 package com.twofasapp.data.services
 
-import com.twofasapp.common.domain.Service
-import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.common.domain.OtpAuthLink
-import com.twofasapp.prefs.model.RecentlyDeleted
+import com.twofasapp.common.domain.Service
+import com.twofasapp.data.services.domain.QueuedAddServiceModal
+import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.data.services.domain.RecentlyDeleted
 import kotlinx.coroutines.flow.Flow
 
 interface ServicesRepository {
@@ -17,12 +18,14 @@ interface ServicesRepository {
     suspend fun getServicesIncludingDeleted(): List<Service>
     suspend fun getService(id: Long): Service
     suspend fun deleteService(id: Long)
+    suspend fun deleteServices(ids: List<Long>)
     suspend fun updateService(service: Service)
     suspend fun updateServicesFromCloud(services: List<Service>)
     suspend fun setServiceGroup(id: Long, groupId: String?)
     suspend fun trashService(id: Long, triggerSync: Boolean = true)
+    suspend fun trashServices(ids: List<Long>, triggerSync: Boolean = true)
     suspend fun restoreService(id: Long)
-    fun updateServicesOrder(ids: List<Long>)
+    suspend fun updateServicesOrder(ids: List<Long>)
     suspend fun incrementHotpCounter(service: Service)
     fun pushRecentlyAddedService(recentlyAddedService: RecentlyAddedService)
     suspend fun isServiceExists(secret: String): Boolean
@@ -32,10 +35,13 @@ interface ServicesRepository {
     suspend fun addService(link: OtpAuthLink): Long
     suspend fun addService(service: Service, triggerSync: Boolean = true): Long
     suspend fun addServices(services: List<Service>)
+    suspend fun addServicesFromLinks(links: List<OtpAuthLink>)
     fun observeAddServiceAdvancedExpanded(): Flow<Boolean>
     fun pushAddServiceAdvancedExpanded(expanded: Boolean)
     fun setManualGuideSelectedPrefill(prefill: String?)
     fun getManualGuideSelectedPrefill(): String?
+    fun setQueuedAddServiceModal(modal: QueuedAddServiceModal?)
+    fun getQueuedAddServiceModal(): QueuedAddServiceModal?
     suspend fun revealService(id: Long)
     suspend fun getRecentlyDeletedServices(): RecentlyDeleted
     suspend fun removeRecentlyDeleted(secret: String)

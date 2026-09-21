@@ -1,24 +1,32 @@
 package com.twofasapp.ui.main
 
 import androidx.lifecycle.ViewModel
+import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.notifications.NotificationsRepository
+import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.ServicesRepository
+import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.RecentlyAddedService
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.data.session.SessionRepository
-import com.twofasapp.data.session.SettingsRepository
+import com.twofasapp.data.session.StartupRepository
 import com.twofasapp.feature.browserext.notification.DomainMatcher
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 
 internal class MainViewModel(
+    private val appBuild: AppBuild,
     private val sessionRepository: SessionRepository,
-    private val settingsRepository: SettingsRepository,
+    private val startupRepository: StartupRepository,
+    private val customizationRepository: CustomizationRepository,
     private val notificationsRepository: NotificationsRepository,
     private val browserExtRepository: BrowserExtRepository,
     private val servicesRepository: ServicesRepository,
+    private val backupRepository: BackupRepository,
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<MainUiState> = MutableStateFlow(MainUiState())
@@ -29,7 +37,11 @@ internal class MainViewModel(
         }
 
         launchScoped {
-            val destination = when (sessionRepository.isOnboardingDisplayed()) {
+            uiState.update { it.copy(buildVariant = appBuild.buildVariant) }
+        }
+
+        launchScoped {
+            val destination = when (startupRepository.isOnboardingDisplayed()) {
                 true -> MainUiState.StartDestination.Home
                 false -> MainUiState.StartDestination.Onboarding
             }
@@ -38,16 +50,18 @@ internal class MainViewModel(
         }
 
         launchScoped {
-            settingsRepository.observeAppSettings()
-                .collect { appSettings ->
+            combine(
+                customizationRepository.observeSelectedTheme(),
+                customizationRepository.observeDynamicColors(),
+            ) { selectedTheme, dynamicColors -> selectedTheme to dynamicColors }
+                .collect { (selectedTheme, dynamicColors) ->
                     uiState.update {
                         it.copy(
-                            selectedTheme = appSettings.selectedTheme,
-                            dynamicColors = appSettings.dynamicColors,
+                            selectedTheme = selectedTheme,
+                            dynamicColors = dynamicColors,
                         )
                     }
                 }
-
         }
 
         launchScoped {
@@ -77,7 +91,7 @@ internal class MainViewModel(
                                 matchedServices = matchedServices,
                             )
                         }
-                            .distinctBy { it.request.requestId }
+                            .distinctBy { it.request.requestId },
                     )
                 }
             }
@@ -86,6 +100,16 @@ internal class MainViewModel(
         launchScoped {
             servicesRepository.observeAddServiceAdvancedExpanded().collect { expanded ->
                 uiState.update { it.copy(addServiceAdvancedExpanded = expanded) }
+            }
+        }
+
+        launchScoped {
+            backupRepository.observeCloudSyncStatus().collect { cloudSyncStatus ->
+                uiState.update {
+                    it.copy(
+                        showBackupError = cloudSyncStatus is CloudSyncStatus.Error && cloudSyncStatus.shouldShowError(),
+                    )
+                }
             }
         }
     }
@@ -101,7 +125,6 @@ internal class MainViewModel(
     fun toggleAdvanceExpanded() {
         launchScoped { servicesRepository.pushAddServiceAdvancedExpanded(uiState.value.addServiceAdvancedExpanded.not()) }
     }
-
 
     fun consumeEvent(event: MainUiEvent) {
         uiState.update { it.copy(events = it.events.minus(event)) }

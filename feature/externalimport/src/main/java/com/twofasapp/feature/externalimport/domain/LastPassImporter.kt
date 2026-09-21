@@ -37,7 +37,6 @@ internal class LastPassImporter(
 
     override fun read(content: String): ExternalImport {
         try {
-
             val fileUri = Uri.parse(content)
             val fileDescriptor = context.contentResolver.openAssetFileDescriptor(fileUri, "r")
             val size = fileDescriptor?.length ?: 0
@@ -59,7 +58,8 @@ internal class LastPassImporter(
             model.accounts.filter { it.digits == 5 || it.digits == 6 || it.digits == 7 || it.digits == 8 }
                 .filter { it.timeStep == 10 || it.timeStep == 30 || it.timeStep == 60 || it.timeStep == 90 }.filter {
                     it.algorithm.equals("SHA1", true) || it.algorithm.equals("SHA224", true) || it.algorithm.equals(
-                        "SHA256", true
+                        "SHA256",
+                        true,
                     ) || it.algorithm.equals("SHA384", true) || it.algorithm.equals("SHA512", true)
                 }.filter { servicesRepository.isSecretValid(it.secret) }.forEach { entry ->
                     servicesToImport.add(parseService(entry))

@@ -1,12 +1,9 @@
 package com.twofasapp.base
 
-import com.twofasapp.prefs.model.CheckLockStatus
-import com.twofasapp.prefs.model.LockMethodEntity
 import java.time.Instant
-import javax.inject.Provider
 
 class AuthTracker(
-    private val checkLockStatus: Provider<CheckLockStatus>
+    private val lockMethodProvider: LockMethodProvider,
 ) {
 
     companion object {
@@ -37,7 +34,6 @@ class AuthTracker(
         reset()
     }
 
-
     fun onChangingLockStatus() {
         isAuthenticated = true
     }
@@ -66,12 +62,15 @@ class AuthTracker(
             isNoLock() -> {
                 AuthenticationStatus.Valid
             }
+
             isSessionStillAuthenticated() -> {
                 AuthenticationStatus.Valid
             }
+
             isValidityTimeElapsed() -> {
                 AuthenticationStatus.Expired
             }
+
             else -> {
                 AuthenticationStatus.Valid
             }
@@ -80,7 +79,7 @@ class AuthTracker(
 
     private fun isSessionStillAuthenticated() = isAuthenticated
 
-    private fun isNoLock() = checkLockStatus.get().execute() == LockMethodEntity.NO_LOCK
+    private fun isNoLock() = lockMethodProvider.isNoLock()
 
     private fun isValidityTimeElapsed() = lastForegroundTime.minusMillis(VALIDITY_TIME_MS).isAfter(lastBackgroundTime)
 

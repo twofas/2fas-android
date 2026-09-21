@@ -50,7 +50,7 @@ internal class AuthenticatorProImporter(
                                 OtpAuthLink.ParamDigits to "5",
                                 OtpAuthLink.ParamPeriod to "30",
                                 OtpAuthLink.ParamAlgorithm to "SHA1",
-                            )
+                            ),
                         )
                     } else {
                         OtpLinkParser.parse(link)

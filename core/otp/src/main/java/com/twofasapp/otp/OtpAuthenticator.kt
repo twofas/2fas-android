@@ -115,7 +115,6 @@ class OtpAuthenticator {
                 truncatedHash = truncatedHash and 0x7FFFFFFF
                 truncatedHash.toInt()
             }
-
         } catch (e: NoSuchAlgorithmException) {
             throw OtpException("The operation cannot be performed now.", e)
         } catch (e: InvalidKeyException) {

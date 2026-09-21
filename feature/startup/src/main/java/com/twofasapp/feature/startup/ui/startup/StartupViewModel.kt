@@ -1,13 +1,25 @@
 package com.twofasapp.feature.startup.ui.startup
 
 import androidx.lifecycle.ViewModel
-import com.twofasapp.data.session.SessionRepository
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
+import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.data.session.StartupRepository
 
 class StartupViewModel(
-    private val sessionRepository: SessionRepository
+    private val startupRepository: StartupRepository,
+    private val navigator: Navigator,
 ) : ViewModel() {
 
-    suspend fun finishOnboarding() {
-        sessionRepository.setOnboardingDisplayed(true)
+    fun finishOnboarding(openBackup: Boolean) {
+        launchScoped {
+            startupRepository.setOnboardingDisplayed(true)
+
+            navigator.resetTo(Screen.Home)
+
+            if (openBackup) {
+                navigator.open(Screen.Backup)
+            }
+        }
     }
 }

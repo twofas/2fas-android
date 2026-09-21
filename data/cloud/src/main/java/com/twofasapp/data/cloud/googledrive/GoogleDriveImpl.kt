@@ -34,7 +34,7 @@ internal class GoogleDriveImpl(
             "2fas-backup-v4.json",
             "2fas-backup-v3.json",
             "2fas-backup-v2.json",
-            "2fas-backup.json"
+            "2fas-backup.json",
         )
     }
 
@@ -68,7 +68,6 @@ internal class GoogleDriveImpl(
                     Timber.d("GetFile <- Success")
                     GoogleDriveFileResult.Failure(error = GoogleDriveError.FileNotFound)
                 }
-
             } catch (e: Exception) {
                 Timber.d("GetFile <- Error: $e")
                 e.printStackTrace()
@@ -91,7 +90,7 @@ internal class GoogleDriveImpl(
                     drive.files().update(
                         backupFileId,
                         File().setName(backupVersions.first()),
-                        ByteArrayContent.fromString("text/plain", backupContent)
+                        ByteArrayContent.fromString("text/plain", backupContent),
                     ).execute()
                     Timber.d("UpdateFile <- $backupContent")
                     Timber.d("UpdateFile <- Success")
@@ -110,12 +109,11 @@ internal class GoogleDriveImpl(
 
                     GoogleDriveResult.Success
                 }
-
             } catch (e: Exception) {
                 Timber.d("UpdateFile <- Error: $e")
                 GoogleDriveResult.Failure(
                     error = mapExceptionToErrorType(e),
-                    throwable = e
+                    throwable = e,
                 )
             }
         }
@@ -176,7 +174,7 @@ internal class GoogleDriveImpl(
         return Drive.Builder(
             NetHttpTransport.Builder().build(),
             GsonFactory(),
-            googleAccountCredential
+            googleAccountCredential,
         )
             .setApplicationName("2FAS")
             .build()

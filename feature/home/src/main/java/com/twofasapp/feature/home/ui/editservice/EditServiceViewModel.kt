@@ -1,36 +1,29 @@
 package com.twofasapp.feature.home.ui.editservice
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
-import com.twofasapp.prefs.model.LockMethodEntity
-import com.twofasapp.prefs.usecase.LockMethodPreference
-import kotlinx.coroutines.flow.MutableSharedFlow
+import com.twofasapp.data.session.SecurityRepository
+import com.twofasapp.data.session.domain.LockMethod
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.update
 
 internal class EditServiceViewModel(
-    savedStateHandle: SavedStateHandle,
-    private val lockMethodPreference: LockMethodPreference,
+    private val serviceId: Long,
     private val groupsRepository: GroupsRepository,
     private val servicesRepository: ServicesRepository,
+    private val securityRepository: SecurityRepository,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(EditServiceUiState())
-    val events = MutableSharedFlow<EditServiceUiEvent>()
-
-    private val serviceId: Long = savedStateHandle.getOrThrow(NavArg.ServiceId.name)
 
     init {
         uiState.update {
-            it.copy(hasLock = lockMethodPreference.get() != LockMethodEntity.NO_LOCK)
+            it.copy(hasLock = securityRepository.getLockMethod() != LockMethod.NoLock)
         }
 
         launchScoped {
@@ -45,9 +38,9 @@ internal class EditServiceViewModel(
         }
 
         launchScoped {
-            lockMethodPreference.flow(false).collect { lockStatus ->
+            securityRepository.observeLockMethod().collect { lockStatus ->
                 uiState.update {
-                    it.copy(hasLock = lockStatus != LockMethodEntity.NO_LOCK)
+                    it.copy(hasLock = lockStatus != LockMethod.NoLock)
                 }
             }
         }
@@ -118,14 +111,6 @@ internal class EditServiceViewModel(
 
     fun updateGroup(group: Group?) {
         updateService { it.copy(groupId = group?.id) }
-    }
-
-    fun delete() {
-        launchScoped {
-            servicesRepository.trashService(uiState.value.service.id)
-            events.emit(EditServiceUiEvent.Finish)
-            uiState.emit(uiState.value.copy(finish = true))
-        }
     }
 
     fun secretAuthenticated() {

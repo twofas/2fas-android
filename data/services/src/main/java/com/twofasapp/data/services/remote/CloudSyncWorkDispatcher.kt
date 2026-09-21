@@ -9,13 +9,14 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.twofasapp.data.services.domain.CloudSyncTrigger
-import com.twofasapp.prefs.model.RemoteBackupStatusEntity
-import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
+import com.twofasapp.data.services.local.BackupLocalSource
+import com.twofasapp.data.services.local.model.RemoteBackupStatusEntity
+import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 
 class CloudSyncWorkDispatcher(
     private val context: Context,
-    private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
+    private val backupLocalSource: BackupLocalSource,
 ) {
 
     fun tryDispatch(trigger: CloudSyncTrigger, password: String? = null) {
@@ -28,12 +29,12 @@ class CloudSyncWorkDispatcher(
                 Data.Builder().apply {
                     putString(CloudSyncWork.ArgTrigger, trigger.name)
                     password?.let { putString(CloudSyncWork.ArgPassword, it) }
-                }.build()
+                }.build(),
             )
             .setConstraints(constraints)
             .build()
 
-        if (remoteBackupStatusPreference.get().state != RemoteBackupStatusEntity.State.ACTIVE) {
+        if (runBlocking { backupLocalSource.getRemoteBackupStatus() }.state != RemoteBackupStatusEntity.State.ACTIVE) {
             return
         }
 

@@ -24,7 +24,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -32,17 +31,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwButton
-import com.twofasapp.designsystem.common.TwSwitch
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.ExportPasswordRegex
-import com.twofasapp.designsystem.dialog.PasswordDialog
-import com.twofasapp.designsystem.ktx.strings
-import com.twofasapp.designsystem.ktx.toastShort
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.checked.Switch
+import com.twofasapp.core.design.foundation.dialog.ExportPasswordRegex
+import com.twofasapp.core.design.foundation.dialog.PasswordDialog
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.strings
+import com.twofasapp.core.design.ktx.toastShort
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 import java.io.File
 import java.io.FileOutputStream
 import java.time.LocalDateTime
@@ -51,7 +53,7 @@ import java.time.format.DateTimeFormatter
 @Composable
 internal fun BackupExportScreen(
     viewModel: BackupExportViewModel = koinViewModel(),
-    goBack: () -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("*/*")) { uri ->
@@ -65,7 +67,7 @@ internal fun BackupExportScreen(
         onShareClick = { viewModel.shareBackup() },
         onDownloadClick = { launcher.launch(generateFilename()) },
         onEventConsumed = { viewModel.consumeEvent(it) },
-        onGoBack = goBack,
+        onGoBack = { navigator.back() },
     )
 }
 
@@ -79,7 +81,6 @@ private fun ScreenContent(
     onEventConsumed: (BackupExportUiEvent) -> Unit = {},
     onGoBack: () -> Unit = {},
 ) {
-
     val context = LocalContext.current
     val strings = LocalContext.strings
     var showPasswordDialog by remember { mutableStateOf(false) }
@@ -107,12 +108,12 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(titleText = TwLocale.strings.backupExportFile) }
+        topBar = { TopAppBar(title = MdtLocale.strings.backupExportFile) },
     ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
+                .padding(padding),
         ) {
             Column(
                 modifier = Modifier
@@ -123,29 +124,29 @@ private fun ScreenContent(
                 verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterVertically),
             ) {
                 Image(
-                    painter = painterResource(id = com.twofasapp.designsystem.R.drawable.illustration_2fas_export),
+                    painter = painterResource(id = com.twofasapp.core.design.R.drawable.illustration_2fas_export),
                     contentDescription = null,
-                    modifier = Modifier.height(124.dp)
+                    modifier = Modifier.height(124.dp),
                 )
 
                 Text(
-                    text = TwLocale.strings.backupExportHeader,
+                    text = MdtLocale.strings.backupExportHeader,
                     textAlign = TextAlign.Center,
-                    color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.title,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.xl.normal,
                 )
 
                 Text(
-                    text = TwLocale.strings.backupExportMsg,
+                    text = MdtLocale.strings.backupExportMsg,
                     textAlign = TextAlign.Center,
-                    color = TwTheme.color.onSurfacePrimary,
-                    style = TwTheme.typo.body3,
+                    color = MdtTheme.color.onSurface,
+                    style = MdtTheme.typo.sm.normal,
                 )
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    TwSwitch(
+                    Switch(
                         checked = uiState.passwordChecked,
                         onCheckedChange = { onPasswordCheckedChange() },
                     )
@@ -153,9 +154,9 @@ private fun ScreenContent(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = TwLocale.strings.backupExportPassMsg,
-                        color = TwTheme.color.onSurfacePrimary,
-                        style = TwTheme.typo.body3,
+                        text = MdtLocale.strings.backupExportPassMsg,
+                        color = MdtTheme.color.onSurface,
+                        style = MdtTheme.typo.sm.normal,
                     )
                 }
             }
@@ -164,12 +165,11 @@ private fun ScreenContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                TwButton(
-                    text = TwLocale.strings.backupExportShareCta,
-                    leadingIcon = TwIcons.Share,
-                    leadingIconTint = Color.White,
+                Button(
+                    text = MdtLocale.strings.backupExportShareCta,
+                    leadingIcon = MdtIcons.Share,
                     modifier = Modifier.weight(1f),
                     onClick = {
                         exportMethod = ExportMethod.Share
@@ -181,10 +181,9 @@ private fun ScreenContent(
                         }
                     },
                 )
-                TwButton(
-                    text = TwLocale.strings.backupExportCta,
-                    leadingIcon = TwIcons.Download,
-                    leadingIconTint = Color.White,
+                Button(
+                    text = MdtLocale.strings.backupExportCta,
+                    leadingIcon = MdtIcons.Download,
                     modifier = Modifier.weight(1f),
                     onClick = {
                         exportMethod = ExportMethod.Download
@@ -201,8 +200,8 @@ private fun ScreenContent(
             if (showPasswordDialog) {
                 PasswordDialog(
                     onDismissRequest = { showPasswordDialog = false },
-                    title = TwLocale.strings.backupSetPassword,
-                    body = TwLocale.strings.backupSetPasswordDescription,
+                    title = MdtLocale.strings.backupSetPassword,
+                    body = MdtLocale.strings.backupSetPasswordDescription,
                     validation = { text -> ExportPasswordRegex.matches(text) },
                     onPositive = {
                         onPasswordConfirm(it)
@@ -246,7 +245,7 @@ private fun Context.showSharePicker(
         Intent.createChooser(
             shareIntent,
             "2FAS Backup File",
-        )
+        ),
     )
 }
 
@@ -260,7 +259,9 @@ private enum class ExportMethod {
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BackupExportUiState(),
-    )
+    PreviewTheme {
+        ScreenContent(
+            uiState = BackupExportUiState(),
+        )
+    }
 }

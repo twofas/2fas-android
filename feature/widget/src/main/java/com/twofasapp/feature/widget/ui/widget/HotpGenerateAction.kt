@@ -15,7 +15,7 @@ internal class HotpGenerateAction : ActionCallback {
 
         fun params(serviceId: Long): ActionParameters {
             return actionParametersOf(
-                paramServiceId to serviceId
+                paramServiceId to serviceId,
             )
         }
     }
@@ -23,7 +23,7 @@ internal class HotpGenerateAction : ActionCallback {
     override suspend fun onAction(
         context: Context,
         glanceId: GlanceId,
-        parameters: ActionParameters
+        parameters: ActionParameters,
     ) {
         with(GlanceWidget()) {
             generateHotpCode(
