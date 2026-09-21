@@ -1,12 +1,34 @@
 package com.twofasapp.time
 
 import android.os.SystemClock
+import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.longPref
 import com.twofasapp.common.time.TimeProvider
-import com.twofasapp.prefs.usecase.TimeDeltaPreference
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.runBlocking
 
 class TimeProviderImpl(
-    private val timeDeltaPreference: TimeDeltaPreference,
-) : TimeProvider {
+    dataStoreOwner: DataStoreOwner,
+    dispatchers: Dispatchers,
+) : TimeProvider, DataStoreOwner by dataStoreOwner {
+
+    private val scope = CoroutineScope(dispatchers.io)
+
+    private val timeDelta by longPref(
+        name = "timeDelta",
+        default = 0L,
+    )
+
+    private val timeDeltaCached: StateFlow<Long> =
+        timeDelta.asFlow().stateIn(
+            scope = scope,
+            started = SharingStarted.Eagerly,
+            initialValue = runBlocking { timeDelta.get() },
+        )
 
     override fun systemCurrentTime(): Long {
         return System.currentTimeMillis()
@@ -17,10 +39,6 @@ class TimeProviderImpl(
     }
 
     override fun realCurrentTime(): Long {
-        return systemCurrentTime() + realTimeDelta()
-    }
-
-    override fun realTimeDelta(): Long {
-        return timeDeltaPreference.get()
+        return systemCurrentTime() + timeDeltaCached.value
     }
 }

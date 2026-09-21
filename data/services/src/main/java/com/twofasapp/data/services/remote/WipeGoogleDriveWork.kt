@@ -10,7 +10,7 @@ import org.koin.core.component.inject
 
 class WipeGoogleDriveWork(
     appContext: Context,
-    workerParams: WorkerParameters
+    workerParams: WorkerParameters,
 ) : CoroutineWorker(appContext, workerParams), KoinComponent {
 
     private val googleDrive: GoogleDrive by inject()

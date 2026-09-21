@@ -56,8 +56,8 @@ internal class LockViewModel(
                     securityRepository.editInvalidPinStatus(
                         copy(
                             attempts = attempts + 1,
-                            lastAttemptSinceBootMs = timeProvider.systemElapsedTime()
-                        )
+                            lastAttemptSinceBootMs = timeProvider.systemElapsedTime(),
+                        ),
                     )
                 }
 
@@ -71,7 +71,6 @@ internal class LockViewModel(
                 publishEvent(LockUiEvent.ClearCurrentPin)
             }
         }
-
     }
 
     fun biometricsVerified() {

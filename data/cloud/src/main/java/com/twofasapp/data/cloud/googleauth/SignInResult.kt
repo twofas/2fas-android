@@ -2,15 +2,15 @@ package com.twofasapp.data.cloud.googleauth
 
 sealed class SignInResult {
     data class Success(
-        val email: String = ""
+        val email: String = "",
     ) : SignInResult()
 
     data class Canceled(
-        val reason: CancelReason = CancelReason.Canceled
+        val reason: CancelReason = CancelReason.Canceled,
     ) : SignInResult()
 
     data class Failure(
-        val reason: Throwable
+        val reason: Throwable,
     ) : SignInResult()
 
     enum class CancelReason {

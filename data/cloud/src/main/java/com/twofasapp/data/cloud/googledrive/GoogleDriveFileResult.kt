@@ -2,7 +2,7 @@ package com.twofasapp.data.cloud.googledrive
 
 sealed interface GoogleDriveFileResult {
     data class Success(
-        val fileContent: String
+        val fileContent: String,
     ) : GoogleDriveFileResult
 
     data class Failure(

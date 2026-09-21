@@ -21,7 +21,7 @@ class ServiceCodeGenerator(
             secret = secret,
             digits = 6,
             period = 30,
-            algorithm = Service.Algorithm.SHA1
+            algorithm = Service.Algorithm.SHA1,
         )
     }
 
@@ -46,7 +46,7 @@ class ServiceCodeGenerator(
                         Service.Algorithm.SHA512 -> OtpData.Algorithm.SHA512
                     },
                     calculateModule = true,
-                )
+                ),
             )
             true
         } catch (e: Exception) {
@@ -73,7 +73,8 @@ class ServiceCodeGenerator(
 
         when (service.authType) {
             Service.AuthType.STEAM,
-            Service.AuthType.TOTP -> {
+            Service.AuthType.TOTP,
+            -> {
                 currentCounter = timeProvider.realCurrentTime() / period.toMillis()
                 nextCounter = (timeProvider.realCurrentTime() + period.toMillis()) / period.toMillis()
             }
@@ -83,7 +84,6 @@ class ServiceCodeGenerator(
                 nextCounter = (service.hotpCounter ?: 1) + 1L
             }
         }
-
 
         val otpData = OtpData(
             counter = currentCounter,
@@ -120,7 +120,7 @@ class ServiceCodeGenerator(
                 next = nextCode,
                 timer = timer.toInt(),
                 progress = progress,
-            )
+            ),
         )
     }
 

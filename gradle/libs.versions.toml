@@ -1,67 +1,73 @@
 [versions]
-accompanist = "0.36.0"
-agp = "8.13.0"
-cameraX = "1.5.1"
-coil = "2.7.0"
-commonmark = "0.27.0"
-compose = "1.9.4"
-composeActivity = "1.11.0"
-core = "1.17.0"
-firebase = "34.5.0"
-glance = "1.1.1"
-junit = "4.13.2"
-koinAndroid = "4.1.1"
-kotlin = "2.2.21"
-kotlinCoroutines = "1.10.2"
-kotlinKsp = "2.3.2"
-ktor = "3.3.2"
-lifecycle = "2.9.4"
-material3 = "1.4.0"
-room = "2.8.3"
+aboutLibraries = "15.2.0"
+agp = "9.4.1"
+cameraX = "1.6.2"
+coil = "3.6.3"
+commonmark = "0.30.0"
+composeActivity = "1.13.0"
+composeBom = "2026.09.00"
+composeNavigation = "2.10.1"
+core = "1.19.0"
+firebase = "34.19.0"
+glance = "1.2.0"
+koin = "4.2.2"
+kotlin = "2.4.20"
+kotlinCoroutines = "1.11.0"
+kotlinKsp = "2.3.11"
+ktlint = "5.4.2"
+ktor = "3.6.0"
+lifecycle = "2.11.0"
+navigation3 = "1.1.7"
+pluto = "3.0.1"
+room = "2.8.5"
 
 [libraries]
-accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
-accompanistPagerIndicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
-accompanistPermissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
-accompanistSystemUi = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
-activityX = { module = "androidx.activity:activity-ktx", version.ref = "composeActivity" }
-apacheCommonsCodec = "commons-codec:commons-codec:1.20.0"
-appcompat = "androidx.appcompat:appcompat:1.7.1"
+aboutLibrariesCompose = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutLibraries" }
+aboutLibrariesCore = { module = "com.mikepenz:aboutlibraries-core", version.ref = "aboutLibraries" }
+apacheCommonsCodec = "commons-codec:commons-codec:1.22.1"
+appcompat = "androidx.appcompat:appcompat:1.8.0"
 barcodeScanning = "com.google.mlkit:barcode-scanning:17.3.0"
-biometric = "androidx.biometric:biometric-ktx:1.2.0-alpha05"
+biometric = "androidx.biometric:biometric:1.4.0-alpha07"
 camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraX" }
 camera2Lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraX" }
 camera2View = { module = "androidx.camera:camera-view", version.ref = "cameraX" }
-coil = { module = "io.coil-kt:coil", version.ref = "coil" }
-coilCompose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+coil = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coilCacheControl = { module = "io.coil-kt.coil3:coil-network-cache-control", version.ref = "coil" }
+coilNetwork = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+coilSvg = { module = "io.coil-kt.coil3:coil-svg", version.ref = "coil" }
 commonmarkCore = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
 commonmarkLink = { module = "org.commonmark:commonmark-ext-autolink", version.ref = "commonmark" }
 commonmarkStrikethrough = { module = "org.commonmark:commonmark-ext-gfm-strikethrough", version.ref = "commonmark" }
 commonmarkTables = { module = "org.commonmark:commonmark-ext-gfm-tables", version.ref = "commonmark" }
 composeActivity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
-composeMaterial2 = { module = "androidx.compose.material:material", version.ref = "compose" }
-composeNavigation = "androidx.navigation:navigation-compose:2.7.7"
-composeUi = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-composeUiUtil = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
+composeAnimation = { module = "androidx.compose.animation:animation" }
+composeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+composeFoundation = { module = "androidx.compose.foundation:foundation" }
+composeMaterial3 = { module = "androidx.compose.material3:material3" }
+composeMaterial3Adaptive = "androidx.compose.material3.adaptive:adaptive:1.3.0"
+composeMaterial3AdaptiveNavigationSuite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite" }
+composeNavigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
+composeUi = { module = "androidx.compose.ui:ui" }
+composeUiTooling = { module = "androidx.compose.ui:ui-tooling" }
+composeUiUtil = { module = "androidx.compose.ui:ui-util" }
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
 coreSplash = "androidx.core:core-splashscreen:1.2.0"
-dataStore = "androidx.datastore:datastore-preferences:1.1.7"
+dataStore = "androidx.datastore:datastore-preferences:1.2.1"
 desugar = "com.android.tools:desugar_jdk_libs:2.1.5"
 firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
 firebaseCrashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebaseMessaging = { module = "com.google.firebase:firebase-messaging" }
+glancePreview = { module = "androidx.glance:glance-preview", version.ref = "glance" }
 glanceWidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
-googleApiClientAndroid = "com.google.api-client:google-api-client-android:2.8.1"
-#googleApiClientGson = "com.github.rafakob.google-http-java-client:google-http-client-gson:1.43.0"
+glanceWidgetPreview = { module = "androidx.glance:glance-appwidget-preview", version.ref = "glance" }
+googleApiClientAndroid = "com.google.api-client:google-api-client-android:2.9.0"
 googleApiClientGson = "com.github.cryptomator:google-http-java-client:1.44.2-dev.0001"
-googleAuth = "com.google.android.gms:play-services-auth:21.4.0"
-googleDrive = "com.google.apis:google-api-services-drive:v3-rev20240809-2.0.0"
+googleAuth = "com.google.android.gms:play-services-auth:21.6.0"
+googleDrive = "com.google.apis:google-api-services-drive:v3-rev20250717-2.0.0"
 javaxInject = "javax.inject:javax.inject:1"
-junit = { module = "junit:junit", version.ref = "junit" }
-koinCompose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroid" }
+koinCompose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 kotlinCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
-kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
+kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0"
 ktorAuth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 ktorContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktorCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
@@ -75,34 +81,35 @@ lifecycleLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", vers
 lifecycleProcess = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
 lifecycleSavedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
 lottie = "com.airbnb.android:lottie-compose:6.7.1"
-material2 = "com.google.android.material:material:1.13.0"
-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
-material3Window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
-material3Adaptive = "androidx.compose.material3.adaptive:adaptive:1.2.0"
-playReview = "com.google.android.play:review:2.0.2"
+material = "com.google.android.material:material:1.14.0"
+navigation3Runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "navigation3" }
+navigation3Ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
+navigation3ViewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycle" }
+playFeatureDelivery = "com.google.android.play:feature-delivery-ktx:2.1.0"
 playReviewKtx = "com.google.android.play:review-ktx:2.0.2"
-playServicesCorutines = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2"
+playServicesCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinCoroutines" }
 playUpdate = "com.google.android.play:app-update:2.1.0"
 playUpdateKtx = "com.google.android.play:app-update-ktx:2.1.0"
-playFeatureDelivery = "com.google.android.play:feature-delivery-ktx:2.1.0"
-protobuf = "com.google.protobuf:protobuf-kotlin-lite:4.33.0"
-reLinker = "com.getkeepsafe.relinker:relinker:1.4.5"
+pluto = { module = "com.androidpluto:pluto", version.ref = "pluto" }
+plutoDataStore = { module = "com.androidpluto.plugins:datastore-pref", version.ref = "pluto" }
+plutoDataStoreNoOp = { module = "com.androidpluto.plugins:datastore-pref-no-op", version.ref = "pluto" }
+plutoLogger = { module = "com.androidpluto.plugins:logger", version.ref = "pluto" }
+plutoLoggerNoOp = { module = "com.androidpluto.plugins:logger-no-op", version.ref = "pluto" }
+plutoNoOp = { module = "com.androidpluto:pluto-no-op", version.ref = "pluto" }
+protobuf = "com.google.protobuf:protobuf-kotlin-lite:4.36.2"
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 securityCrypto = "androidx.security:security-crypto:1.1.0"
-sqlCipher = "net.zetetic:sqlcipher-android:4.11.0"
+sqlCipher = "net.zetetic:sqlcipher-android:4.19.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
-webkit = "androidx.webkit:webkit:1.14.0"
-workManager = "androidx.work:work-runtime-ktx:2.11.0"
-zxing = "com.google.zxing:core:3.5.3"
+workManager = "androidx.work:work-runtime-ktx:2.11.2"
+zxing = "com.google.zxing:core:3.5.4"
 
 [bundles]
-accompanist = [
-    "accompanistNavigation",
-    "accompanistPagerIndicators",
-    "accompanistPermissions",
-    "accompanistSystemUi",
+aboutLibraries = [
+    "aboutLibrariesCompose",
+    "aboutLibrariesCore",
 ]
 appCompat = [
     "appcompat",
@@ -116,7 +123,9 @@ barcodeScanner = [
 ]
 coil = [
     "coil",
-    "coilCompose",
+    "coilCacheControl",
+    "coilNetwork",
+    "coilSvg",
 ]
 commonmark = [
     "commonmarkCore",
@@ -126,18 +135,19 @@ commonmark = [
 ]
 compose = [
     "composeActivity",
-    "composeMaterial2",
+    "composeAnimation",
+    "composeFoundation",
+    "composeMaterial3",
+    "composeMaterial3Adaptive",
     "composeNavigation",
     "composeUi",
     "composeUiTooling",
     "composeUiUtil",
-    "material2",
-    "material3",
-    "material3Window",
-    "material3Adaptive",
 ]
 glance = [
+    "glancePreview",
     "glanceWidget",
+    "glanceWidgetPreview",
 ]
 koin = [
     "koinCompose",
@@ -150,8 +160,13 @@ ktor = [
     "ktorLogging",
     "ktorOkhttp",
 ]
+navigation3 = [
+    "composeMaterial3AdaptiveNavigationSuite",
+    "navigation3Runtime",
+    "navigation3Ui",
+    "navigation3ViewModel",
+]
 playReview = [
-    "playReview",
     "playReviewKtx",
 ]
 playUpdate = [
@@ -173,17 +188,17 @@ viewModel = [
 ]
 
 [plugins]
+aboutLibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutLibraries" }
 agpApplication = { id = "com.android.application", version.ref = "agp" }
 agpLibrary = { id = "com.android.library", version.ref = "agp" }
-gradleVersions = "com.github.ben-manes.versions:0.50.0"
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+gradleVersions = "com.github.ben-manes.versions:0.64.0"
+kotlinComposeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinKsp = { id = "com.google.devtools.ksp", version.ref = "kotlinKsp" }
 kotlinParcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kotlinComposeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlinKsp" }
-protobuf = "com.google.protobuf:0.9.5"
+protobuf = "com.google.protobuf:0.10.0"
 twofasAndroidApplication = "twofas.androidApplication:unspecified"
 twofasAndroidLibrary = "twofas.androidLibrary:unspecified"
 twofasCompose = "twofas.compose:unspecified"
-versionCatalogUpdate = "nl.littlerobots.version-catalog-update:0.8.3"
+twofasLint = "twofas.lint:1"
+versionCatalogUpdate = "nl.littlerobots.version-catalog-update:0.8.5"

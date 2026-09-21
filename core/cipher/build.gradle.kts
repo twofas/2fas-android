@@ -1,7 +1,7 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.twofasLint)
 }
 
 android {

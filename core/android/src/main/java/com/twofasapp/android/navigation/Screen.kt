@@ -1,48 +1,113 @@
 package com.twofasapp.android.navigation
 
-import androidx.navigation.NamedNavArgument
+import androidx.navigation3.runtime.NavKey
+import kotlinx.serialization.Serializable
 
-sealed class Screen(val route: String) {
+sealed interface Screen : NavKey {
 
-    fun routeWithArgs(vararg args: Pair<NamedNavArgument, Any?>): String {
-        return route.replaceArgsInRoute(*args)
-    }
+    @Serializable
+    data object Startup : Screen
 
-    data object Startup : Screen("startup")
-    data object Services : Screen("services")
-    data object Settings : Screen("settings")
-    data object EditService : Screen("services/{${NavArg.ServiceId.name}}")
+    @Serializable
+    data object Developer : Screen
 
-    data object AppSettings : Screen("appsettings")
-    data object About : Screen("about")
-    data object AboutLicenses : Screen("about/licenses")
-    data object Notifications : Screen("notifications")
-    data object Trash : Screen("trash")
-    data object Dispose : Screen("dispose/{${NavArg.ServiceId.name}}")
+    @Serializable
+    data object Home : Screen
 
-    data object BrowserExt : Screen("browserext")
-    data object BrowserExtPermission : Screen("browserext/permission")
-    data object BrowserExtScan : Screen("browserext/scan")
-    data object BrowserExtPairing : Screen("browserext/pairing?extensionId={${NavArg.ExtensionId.name}}")
-    data object BrowserExtDetails : Screen("browserext/details?extensionId={${NavArg.ExtensionId.name}}")
+    @Serializable
+    data object Notifications : Screen
 
-    data object ExternalImportSelector : Screen("externalimport/selector")
-    data object ExternalImport : Screen("externalimport?importType={${NavArg.ImportType.name}}")
-    data object ExternalImportScan : Screen("externalimport/scan?importType={${NavArg.ImportType.name}}")
-    data object ExternalImportResult :
-        Screen("externalimport/result?importType={${NavArg.ImportType.name}}&importFileUri={${NavArg.ImportFileUri.name}}&importFileContent={${NavArg.ImportFileContent.name}}")
+    @Serializable
+    data class EditService(val serviceId: Long) : Screen
 
-    data object Backup : Screen("backup?turnOnBackup={${NavArg.TurnOnBackup.name}}")
-    data object BackupSettings : Screen("backup/settings")
-    data object BackupExport : Screen("backup/export")
-    data object BackupImport : Screen("backup/import?{${NavArg.ImportFileUri.name}}")
+    @Serializable
+    data class EditServiceDomainAssignment(val serviceId: Long) : Screen
 
-    data object Security : Screen("security")
-    data object SetupPin : Screen("pin/setup")
-    data object DisablePin : Screen("pin/disable")
-    data object ChangePin : Screen("pin/change")
+    @Serializable
+    data class EditServiceChangeBrand(val serviceId: Long) : Screen
 
-    data object Guides : Screen("guides")
-    data object GuideInit : Screen("guides/init?guide={${NavArg.Guide.name}}")
-    data object GuidePager : Screen("guides/pager?guide={${NavArg.Guide.name}}&variant={${NavArg.GuideVariantIndex.name}}")
+    @Serializable
+    data class EditServiceChangeLabel(val serviceId: Long) : Screen
+
+    @Serializable
+    data object EditServiceRequestIcon : Screen
+
+    @Serializable
+    data class Dispose(val serviceId: Long) : Screen
+
+    @Serializable
+    data object Guides : Screen
+
+    @Serializable
+    data class GuideInit(val guide: String) : Screen
+
+    @Serializable
+    data class GuidePager(val guide: String, val guideVariantIndex: Int) : Screen
+
+    @Serializable
+    data object Settings : Screen
+
+    @Serializable
+    data object Customization : Screen
+
+    @Serializable
+    data object BrowserExt : Screen
+
+    @Serializable
+    data object BrowserExtPermission : Screen
+
+    @Serializable
+    data object BrowserExtScan : Screen
+
+    @Serializable
+    data class BrowserExtPairing(val extensionId: String) : Screen
+
+    @Serializable
+    data object ExternalImportSelector : Screen
+
+    @Serializable
+    data class ExternalImport(val importType: String) : Screen
+
+    @Serializable
+    data class ExternalImportScan(val importType: String) : Screen
+
+    @Serializable
+    data class ExternalImportResult(
+        val importType: String,
+        val importFileUri: String? = null,
+        val importFileContent: String? = null,
+    ) : Screen
+
+    @Serializable
+    data object Security : Screen
+
+    @Serializable
+    data object SetupPin : Screen
+
+    @Serializable
+    data object DisablePin : Screen
+
+    @Serializable
+    data object ChangePin : Screen
+
+    @Serializable
+    data object Trash : Screen
+
+    @Serializable
+    data object Backup : Screen
+
+    @Serializable
+    data object BackupSettings : Screen
+
+    @Serializable
+    data object BackupExport : Screen
+
+    @Serializable
+    data class BackupImport(val importFileUri: String? = null) : Screen
+
+    @Serializable
+    data object About : Screen
+
+    @Serializable
+    data object AboutLicenses : Screen
 }

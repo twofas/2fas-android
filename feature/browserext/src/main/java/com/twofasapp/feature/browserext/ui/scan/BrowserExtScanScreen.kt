@@ -1,5 +1,6 @@
 package com.twofasapp.feature.browserext.ui.scan
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,42 +14,55 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.designsystem.common.TwTextButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.dialog.InfoDialog
-import com.twofasapp.designsystem.dialog.InputDialog
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.ButtonStyle
+import com.twofasapp.core.design.foundation.dialog.InfoDialog
+import com.twofasapp.core.design.foundation.dialog.InputDialog
+import com.twofasapp.core.design.foundation.dialog.InputValidation
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.theme.RoundedShape24
 import com.twofasapp.feature.qrscan.QrScan
 import com.twofasapp.feature.qrscan.QrScanFinder
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 internal fun BrowserExtScanScreen(
     viewModel: BrowserExtScanViewModel = koinViewModel(),
-    openProgress: (String) -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    Content(
         uiState = uiState,
         onScanned = { viewModel.scanned(it) },
         onEventConsumed = { viewModel.consumeEvent(it) },
-        onSuccess = { openProgress(it) },
+        onSuccess = { extensionId ->
+            navigator.popTo(Screen.BrowserExt)
+            navigator.open(Screen.BrowserExtPairing(extensionId = extensionId))
+        },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: BrowserExtScanUiState,
     onScanned: (String) -> Unit = {},
     onEventConsumed: (BrowserExtScanUiEvent) -> Unit = {},
     onSuccess: (String) -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
     var showManualDialog by remember { mutableStateOf(false) }
     var showUnsupportedFormatError by remember { mutableStateOf(false) }
     var showUnknownError by remember { mutableStateOf(false) }
@@ -68,16 +82,17 @@ private fun ScreenContent(
 
     Scaffold(
         topBar = {
-            TwTopAppBar(
-                titleText = strings.scanQr,
+            TopAppBar(
+                title = strings.scanQr,
                 actions = {
-                    TwTextButton(
+                    Button(
+                        style = ButtonStyle.Text,
                         text = strings.browserPairManuallyCta,
                         onClick = { showManualDialog = true },
                     )
-                }
+                },
             )
-        }
+        },
     ) { padding ->
         Box(
             modifier = Modifier
@@ -86,7 +101,11 @@ private fun ScreenContent(
             contentAlignment = Alignment.Center,
         ) {
             QrScan(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .clip(RoundedShape24)
+                    .background(Color.Black),
                 onScanned = {
                     if (qrScanEnabled) {
                         qrScanEnabled = false
@@ -94,6 +113,7 @@ private fun ScreenContent(
                     }
                 },
             )
+
             QrScanFinder()
         }
     }
@@ -101,16 +121,15 @@ private fun ScreenContent(
     if (showManualDialog) {
         InputDialog(
             onDismissRequest = { showManualDialog = false },
+            label = strings.browserPairManuallyHint,
             positive = strings.commonOk,
             negative = strings.commonCancel,
-            hint = strings.browserPairManuallyHint,
+            validate = { if (it.isNotBlank()) InputValidation.Valid else InputValidation.Invalid(null) },
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.None,
                 keyboardType = KeyboardType.Text,
             ),
-            positiveEnabled = { it.isNotBlank() },
-            onPositiveClick = { onSuccess(it.trim().lowercase()) },
-            minLength = 1,
+            onPositive = { onSuccess(it.trim().lowercase()) },
         )
     }
 
@@ -121,7 +140,7 @@ private fun ScreenContent(
                 qrScanEnabled = true
             },
             title = strings.commonError,
-            body = strings.browserErrorScanFormatMsg
+            body = strings.browserErrorScanFormatMsg,
         )
     }
 
@@ -132,7 +151,7 @@ private fun ScreenContent(
                 qrScanEnabled = true
             },
             title = strings.commonError,
-            body = strings.browserErrorScanMsg
+            body = strings.browserErrorScanMsg,
         )
     }
 }
@@ -140,7 +159,9 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(
-        uiState = BrowserExtScanUiState()
-    )
+    PreviewTheme {
+        Content(
+            uiState = BrowserExtScanUiState(),
+        )
+    }
 }

@@ -16,7 +16,7 @@ internal class ToggleServiceAction : ActionCallback {
         fun params(appWidgetId: Int, serviceId: Long): ActionParameters {
             return actionParametersOf(
                 paramAppWidgetId to appWidgetId,
-                paramServiceId to serviceId
+                paramServiceId to serviceId,
             )
         }
     }
@@ -24,7 +24,7 @@ internal class ToggleServiceAction : ActionCallback {
     override suspend fun onAction(
         context: Context,
         glanceId: GlanceId,
-        parameters: ActionParameters
+        parameters: ActionParameters,
     ) {
         with(GlanceWidget()) {
             toggleService(

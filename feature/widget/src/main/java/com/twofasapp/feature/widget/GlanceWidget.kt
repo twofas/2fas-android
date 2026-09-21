@@ -7,6 +7,7 @@ import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.provideContent
 import com.twofasapp.data.services.WidgetsRepository
+import com.twofasapp.data.session.CustomizationRepository
 import com.twofasapp.feature.widget.sync.WidgetsDeleteWork
 import com.twofasapp.feature.widget.sync.WidgetsPeriodicRefreshWork
 import com.twofasapp.feature.widget.sync.WidgetsUpdateWork
@@ -17,6 +18,7 @@ import org.koin.core.component.inject
 class GlanceWidget : GlanceAppWidget(), KoinComponent {
 
     private val widgetsRepository: WidgetsRepository by inject()
+    private val customizationRepository: CustomizationRepository by inject()
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val appWidgetId = GlanceAppWidgetManager(context).getAppWidgetId(id)
@@ -26,6 +28,7 @@ class GlanceWidget : GlanceAppWidget(), KoinComponent {
                 WidgetContent(
                     appWidgetId = appWidgetId,
                     widgetsRepository = widgetsRepository,
+                    customizationRepository = customizationRepository,
                 )
             }
         }

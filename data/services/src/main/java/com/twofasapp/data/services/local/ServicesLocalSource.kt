@@ -2,13 +2,14 @@ package com.twofasapp.data.services.local
 
 import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.domain.Service
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.serializedPref
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.domain.ServicesOrder
 import com.twofasapp.data.services.local.model.ServicesOrderEntity
 import com.twofasapp.data.services.mapper.asDomain
 import com.twofasapp.data.services.mapper.asEntity
-import com.twofasapp.storage.PlainPreferences
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
@@ -16,19 +17,19 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import timber.log.Timber
 
 internal class ServicesLocalSource(
-    private val json: Json,
-    private val preferences: PlainPreferences,
+    dataStoreOwner: DataStoreOwner,
     private val dao: ServiceDao,
     private val timeProvider: TimeProvider,
-) {
-    companion object {
-        private const val KeyOrder = "servicesOrder"
-    }
+) : DataStoreOwner by dataStoreOwner {
+
+    private val order by serializedPref(
+        name = "servicesOrder",
+        default = ServicesOrderEntity(),
+        serializer = ServicesOrderEntity.serializer(),
+    )
 
     private val recentlyAddedServiceFlow: MutableSharedFlow<RecentlyAddedService> = MutableSharedFlow(
         replay = 0,
@@ -74,6 +75,10 @@ internal class ServicesLocalSource(
         return dao.insert(service.asEntity())
     }
 
+    suspend fun insertServices(services: List<Service>): List<Long> {
+        return dao.insert(services.map { it.asEntity() })
+    }
+
     suspend fun getService(id: Long): Service {
         return dao.select(id).asDomain()
     }
@@ -92,43 +97,45 @@ internal class ServicesLocalSource(
         dao.update(service.asEntity())
     }
 
-    private fun getOrder(): ServicesOrderEntity {
-        return preferences.getString(KeyOrder)?.let {
-            json.decodeFromString(it)
-        } ?: ServicesOrderEntity()
+    suspend fun updateServices(services: List<Service>) {
+        dao.update(services.map { it.asEntity() })
     }
 
-    private fun saveOrder(entity: ServicesOrderEntity) {
-        preferences.putString(KeyOrder, json.encodeToString(entity))
+    suspend fun deleteServices(ids: List<Long>) {
+        log("Delete services $ids")
+        dao.delete(ids)
+    }
+
+    private suspend fun updateOrder(action: (ServicesOrderEntity) -> ServicesOrderEntity) {
+        order.set(action(order.get()))
     }
 
     fun observeOrder(): Flow<ServicesOrder> {
-        return preferences.observe(KeyOrder, "").map { value ->
-            (value?.let {
-                try {
-                    json.decodeFromString(value)
-                } catch (e: Exception) {
-                    ServicesOrderEntity()
-                }
-            } ?: ServicesOrderEntity()).asDomain()
+        return order.asFlow().map { it.asDomain() }
+    }
+
+    suspend fun deleteServiceFromOrder(id: Long) {
+        updateOrder { local ->
+            local.copy(ids = local.ids.minus(id))
         }
     }
 
-    fun deleteServiceFromOrder(id: Long) {
-        val local = getOrder()
-        val newOrder = local.copy(
-            ids = local.ids.minus(id)
-        )
-
-        saveOrder(newOrder)
+    suspend fun deleteServicesFromOrder(ids: List<Long>) {
+        updateOrder { local ->
+            local.copy(ids = local.ids.minus(ids.toSet()))
+        }
     }
 
-    fun addServiceToOrder(id: Long) {
-        val local = getOrder()
-        val newOrder = local.copy(
-            ids = local.ids.plus(id)
-        )
-        saveOrder(newOrder)
+    suspend fun addServiceToOrder(id: Long) {
+        updateOrder { local ->
+            local.copy(ids = local.ids.plus(id))
+        }
+    }
+
+    suspend fun addServicesToOrder(ids: List<Long>) {
+        updateOrder { local ->
+            local.copy(ids = local.ids.plus(ids))
+        }
     }
 
     fun pushRecentlyAddedService(recentlyAddedService: RecentlyAddedService) {
@@ -144,7 +151,7 @@ internal class ServicesLocalSource(
                 hotpCounterTimestamp = timestamp,
                 backupSyncStatus = BackupSyncStatus.NOT_SYNCED.name,
                 updatedAt = timeProvider.systemCurrentTime(),
-            )
+            ),
         )
     }
 
@@ -154,13 +161,14 @@ internal class ServicesLocalSource(
                 groupId = groupId,
                 backupSyncStatus = BackupSyncStatus.NOT_SYNCED.name,
                 updatedAt = timeProvider.systemCurrentTime(),
-            )
+            ),
         )
     }
 
-    fun saveServicesOrder(ids: List<Long>) {
-        val local = getOrder()
-        saveOrder(local.copy(ids = ids))
+    suspend fun saveServicesOrder(ids: List<Long>) {
+        updateOrder { local ->
+            local.copy(ids = ids)
+        }
     }
 
     suspend fun cleanUpGroups(groupIds: List<String>) {
@@ -176,10 +184,6 @@ internal class ServicesLocalSource(
     }
 
     suspend fun revealService(id: Long) {
-        dao.update(
-            dao.select(id).copy(
-                revealTimestamp = System.currentTimeMillis(),
-            )
-        )
+        dao.updateRevealTimestamp(id = id, timestamp = System.currentTimeMillis())
     }
 }

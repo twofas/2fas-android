@@ -6,9 +6,9 @@ import com.twofasapp.data.session.domain.PinDigits
 import com.twofasapp.data.session.domain.PinOptions
 import com.twofasapp.data.session.domain.PinTimeout
 import com.twofasapp.data.session.domain.PinTrials
-import com.twofasapp.prefs.model.InvalidPinStatusEntity
-import com.twofasapp.prefs.model.LockMethodEntity
-import com.twofasapp.prefs.model.PinOptionsEntity
+import com.twofasapp.data.session.local.model.InvalidPinStatusEntity
+import com.twofasapp.data.session.local.model.LockMethodEntity
+import com.twofasapp.data.session.local.model.PinOptionsEntity
 
 internal fun PinOptions.asEntity() = PinOptionsEntity(
     digits = digits.value,
@@ -23,17 +23,15 @@ internal fun PinOptionsEntity.asDomain() = PinOptions(
 )
 
 internal fun LockMethod.asEntity(): LockMethodEntity = when (this) {
-    LockMethod.NoLock -> LockMethodEntity.NO_LOCK
-    LockMethod.Pin -> LockMethodEntity.PIN_SECURED
-    LockMethod.Biometrics -> LockMethodEntity.FINGERPRINT_WITH_PIN_SECURED
+    LockMethod.NoLock -> LockMethodEntity.NoLock
+    LockMethod.Pin -> LockMethodEntity.Pin
+    LockMethod.Biometrics -> LockMethodEntity.Biometrics
 }
 
 internal fun LockMethodEntity.asDomain(): LockMethod = when (this) {
-    LockMethodEntity.NO_LOCK -> LockMethod.NoLock
-    LockMethodEntity.PIN_LOCK -> LockMethod.Pin
-    LockMethodEntity.FINGERPRINT_LOCK -> LockMethod.Biometrics
-    LockMethodEntity.PIN_SECURED -> LockMethod.Pin
-    LockMethodEntity.FINGERPRINT_WITH_PIN_SECURED -> LockMethod.Biometrics
+    LockMethodEntity.NoLock -> LockMethod.NoLock
+    LockMethodEntity.Pin -> LockMethod.Pin
+    LockMethodEntity.Biometrics -> LockMethod.Biometrics
 }
 
 internal fun InvalidPinStatus.asEntity() = InvalidPinStatusEntity(

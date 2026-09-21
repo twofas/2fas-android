@@ -9,8 +9,6 @@ import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.locale.R
 import com.twofasapp.parsers.ServiceIcons
 import com.twofasapp.parsers.SupportedServices
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import java.util.regex.Pattern
@@ -20,11 +18,6 @@ internal class AddServiceManualViewModel(
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<AddServiceManualUiState> = MutableStateFlow(AddServiceManualUiState())
-    val uiEvents: MutableSharedFlow<AddServiceManualUiEvent> = MutableSharedFlow(
-        replay = 0,
-        extraBufferCapacity = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST,
-    )
 
     data class BrandIcon(
         val name: String,
@@ -37,7 +30,7 @@ internal class AddServiceManualViewModel(
             BrandIcon(
                 name = it.name,
                 iconCollectionId = it.id,
-                tags = SupportedServices.list.firstOrNull { service -> service.iconCollection.id == it.id }?.tags ?: emptyList()
+                tags = SupportedServices.list.firstOrNull { service -> service.iconCollection.id == it.id }?.tags ?: emptyList(),
             )
         }
             .sortedBy { it.name.uppercase() }
@@ -102,14 +95,14 @@ internal class AddServiceManualViewModel(
             it.copy(
                 serviceName = text,
                 serviceNameError = errorRes,
-                serviceNameValid = isValid
+                serviceNameValid = isValid,
             )
         }
 
         val brand = brands.firstOrNull {
             if (text.isNotEmpty()) {
                 it.name.equals(text.trim(), ignoreCase = true) ||
-                        it.tags.map { tag -> tag.lowercase() }.contains(text.lowercase())
+                    it.tags.map { tag -> tag.lowercase() }.contains(text.lowercase())
             } else {
                 false
             }
@@ -118,8 +111,8 @@ internal class AddServiceManualViewModel(
         uiState.update {
             it.copy(
                 brand = brand,
-                iconLight = brand?.iconCollectionId?.let { ServiceIcons.getIcon(it, isDark = false) },
-                iconDark = brand?.iconCollectionId?.let { ServiceIcons.getIcon(it, isDark = true) },
+                iconLight = brand?.iconCollectionId?.let { id -> ServiceIcons.getIcon(id, isDark = false) },
+                iconDark = brand?.iconCollectionId?.let { id -> ServiceIcons.getIcon(id, isDark = true) },
             )
         }
     }
@@ -129,7 +122,7 @@ internal class AddServiceManualViewModel(
             text.trim().length < 4 -> Pair(false, R.string.tokens__service_key_to_short)
             Pattern.compile("[^a-z0-9 =-]", Pattern.CASE_INSENSITIVE).matcher(text).find() -> Pair(
                 false,
-                R.string.tokens__service_key_invalid_characters
+                R.string.tokens__service_key_invalid_characters,
             )
 
             servicesRepository.isSecretValid(text).not() -> Pair(false, R.string.tokens__service_key_invalid_format)
@@ -141,7 +134,7 @@ internal class AddServiceManualViewModel(
             it.copy(
                 serviceSecret = text,
                 serviceSecretError = errorRes,
-                serviceSecretValid = isValid
+                serviceSecretValid = isValid,
             )
         }
     }
@@ -210,11 +203,13 @@ internal class AddServiceManualViewModel(
                     updatedAt = System.currentTimeMillis(),
                     source = Service.Source.Manual,
                     assignedDomains = listOf(),
-                    backupSyncStatus = BackupSyncStatus.NOT_SYNCED
-                )
+                    backupSyncStatus = BackupSyncStatus.NOT_SYNCED,
+                ),
             )
 
-            uiEvents.emit(AddServiceManualUiEvent.AddedSuccessfully(RecentlyAddedService(id, RecentlyAddedService.Source.Manually)))
+            uiState.update {
+                it.copy(addedService = RecentlyAddedService(id, RecentlyAddedService.Source.Manually))
+            }
         }
     }
 
@@ -222,12 +217,12 @@ internal class AddServiceManualViewModel(
         launchScoped { servicesRepository.pushAddServiceAdvancedExpanded(uiState.value.advancedExpanded.not()) }
     }
 
+    fun dismissServiceExistsDialog() {
+        uiState.update { it.copy(showServiceExistsDialog = false) }
+    }
+
     override fun onCleared() {
         servicesRepository.pushAddServiceAdvancedExpanded(false)
         super.onCleared()
-    }
-
-    fun dismissServiceExistsDialog() {
-        uiState.update { it.copy(showServiceExistsDialog = false) }
     }
 }

@@ -1,15 +1,11 @@
 package com.twofasapp.feature.externalimport.ui.result
 
-import android.net.Uri
-import androidx.lifecycle.SavedStateHandle
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
-import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.getOrNull
-import com.twofasapp.android.navigation.getOrThrow
-import com.twofasapp.common.ktx.decodeBase64
+import com.twofasapp.common.ktx.decodeBase64ToString
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
 import com.twofasapp.data.services.ServicesRepository
-import com.twofasapp.designsystem.dialog.formatErrorDetails
 import com.twofasapp.feature.externalimport.domain.AegisImporter
 import com.twofasapp.feature.externalimport.domain.AndOtpImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
@@ -23,7 +19,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class ExternalImportResultViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val importType: ImportType,
+    private val importFileUri: String?,
+    private val importFileContent: String?,
     private val servicesRepository: ServicesRepository,
     private val readQrFromImage: ReadQrFromImage,
     private val googleAuthenticatorImporter: GoogleAuthenticatorImporter,
@@ -33,10 +31,6 @@ internal class ExternalImportResultViewModel(
     private val authenticatorProImporter: AuthenticatorProImporter,
     private val andOtpImporter: AndOtpImporter,
 ) : ViewModel() {
-
-    private val importType: ImportType = enumValueOf(savedStateHandle.getOrThrow(NavArg.ImportType.name))
-    private val importFileUri = savedStateHandle.getOrNull<String>(NavArg.ImportFileUri.name)
-    private val importFileContent = savedStateHandle.getOrNull<String>(NavArg.ImportFileContent.name)
 
     val uiState = MutableStateFlow(ExternalImportResultUiState())
 
@@ -51,9 +45,9 @@ internal class ExternalImportResultViewModel(
             val result = when (importType) {
                 ImportType.GoogleAuthenticator -> {
                     if (importFileContent != null) {
-                        googleAuthenticatorImporter.read(importFileContent.decodeBase64())
+                        googleAuthenticatorImporter.read(importFileContent.decodeBase64ToString())
                     } else if (importFileUri != null) {
-                        val readQrResult = readQrFromImage.invoke(Uri.parse(importFileUri))
+                        val readQrResult = readQrFromImage.invoke(importFileUri.toUri())
 
                         if (readQrResult.isSuccess) {
                             googleAuthenticatorImporter.read(readQrResult.getOrNull().orEmpty())
@@ -65,11 +59,11 @@ internal class ExternalImportResultViewModel(
                     }
                 }
 
-                ImportType.Aegis -> aegisImporter.read(importFileUri.orEmpty().decodeBase64())
-                ImportType.Raivo -> raivoImporter.read(importFileUri.orEmpty().decodeBase64())
-                ImportType.LastPass -> lastPassImporter.read(importFileUri.orEmpty().decodeBase64())
-                ImportType.AuthenticatorPro -> authenticatorProImporter.read(importFileUri.orEmpty().decodeBase64())
-                ImportType.AndOtp -> andOtpImporter.read(importFileUri.orEmpty().decodeBase64())
+                ImportType.Aegis -> aegisImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.Raivo -> raivoImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.LastPass -> lastPassImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.AuthenticatorPro -> authenticatorProImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.AndOtp -> andOtpImporter.read(importFileUri.orEmpty().decodeBase64ToString())
             }
 
             uiState.update { state ->
@@ -79,13 +73,13 @@ internal class ExternalImportResultViewModel(
                         is ExternalImport.Success -> ReadResult.Success(
                             services = result.servicesToImport,
                             countServicesToImport = result.servicesToImport.size,
-                            countTotalServices = result.totalServicesCount
+                            countTotalServices = result.totalServicesCount,
                         )
 
                         is ExternalImport.ParsingError -> ReadResult.Failure(reason = result.reason.formatErrorDetails())
                         is ExternalImport.UnsupportedError -> ReadResult.Failure(reason = result.reason)
                         is ExternalImport.FileReadError -> ReadResult.Failure(reason = result.reason)
-                    }
+                    },
                 )
             }
         }

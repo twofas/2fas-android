@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:08 -0700
+ Exported at: Mon, 21 Sep 2026 10:21:34 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -75,11 +75,11 @@
     <string name="fingerprint__use_pin_title">Bu sefer PIN kullan</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">Harikasınız!</string>
-    <string name="introduction__page_1_content">Dünya çapında 6 milyondan fazla kullanıcının güvendiği 2FAS uygulaması sayesinde telefonunuz, çevrim içi hizmetleriniz için özel ve güvenli bir anahtar haline geldi.</string>
+    <string name="introduction__page_1_content">Dünya çapında 10 milyondan fazla kullanıcının güvendiği 2FAS uygulaması sayesinde telefonunuz, çevrim içi hizmetleriniz için özel ve güvenli bir anahtar haline geldi.</string>
     <string name="introduction__page_2_title">Basit</string>
     <string name="introduction__page_2_content">2FAS\'ı çevrim içi hizmetlerinizle eşleştirin. İki adımlı güvenliği QR kodunuzla saniyeler içinde etkinleştirin.</string>
     <string name="introduction__page_3_title">Gizli</string>
-    <string name="introduction__page_3_content">2FAS gizliliğinize saygı duyar ve gizliliğinizi korur. Bu uygulama asla kişisel verilerinizi toplamaz, işlemez veya kullanmaz.</string>
+    <string name="introduction__page_3_content">2FAS gizliliğinize saygı duyar ve onu korur. Bu uygulama asla kişisel verilerinizi toplamaz, işlemez veya kullanmaz.</string>
     <string name="introduction__page_4_title">Güvenli</string>
     <string name="introduction__page_4_content_ios">Jetonlarınız depolama alanı üzerinde çevrim dışı olarak saklanır, bu nedenle hizmetlerinizi yedeklemeyi unutmayın! Yetkisiz erişime ve cihaz hasarına karşı korunmak için iCloud eşitlemesi ve PIN parolası kullanın.</string>
     <!-- introduction__start_using -->
@@ -94,7 +94,7 @@
     <!-- introduction__not_sure -->
     <string name="introduction__what_to_do">Ne yapacağınızdan emin değil misiniz?</string>
     <!-- introduction__ga_import_description -->
-    <string name="introduction__google_authenticator_import_process">\"Hesapları Aktar\" seçeneğini kullanarak Google Authenticator\'daki hesaplarınızı QR koduna dışa aktarın. Ardından başka bir cihaz kullanarak dışa aktarılmış QR kodunun fotoğrafını çekin, bu cihaza fotoğrafı gönderin (veya mümkünse QR kodunun ekran görüntüsünü alın) ve aşağıdaki \"QR kodu seç\" seçeneğini kullanın. Eğer kodları başka bir cihazdan içe aktarıyorsanız \"QR kodu tara\" düğmesini kullanın.</string>
+    <string name="introduction__google_authenticator_import_process">\"Hesapları Aktar\" seçeneğini kullanarak Google Authenticator\'daki hesaplarınızı QR koduna dışa aktarın. Ardından başka bir cihaz kullanarak dışa aktarılmış QR kodunun fotoğrafını çekin, bu cihaza fotoğrafı gönderin (veya mümkünse QR kodunun ekran görüntüsünü alın) ve aşağıdaki \"QR kodu seç\" düğmesini kullanın. Eğer kodları başka bir cihazdan içe aktarıyorsanız \"QR kodu tara\" düğmesini kullanın.</string>
     <!-- introduction__choose_qr -->
     <string name="introduction__choose_qr_code">QR kodu seç</string>
     <!-- introduction__scan_qr -->
@@ -286,7 +286,7 @@
     <string name="voiceover__reveal_hidden_secret_key_button_title">Bu alan, gösterilmeyen bir gizli anahtar içerir. Onu ortaya çıkarmak için göster düğmesini kullanın. Bu yalnızca kilit ekranı için uygulama PIN\'ini ayarladıysanız çalışacaktır</string>
     <string name="voiceover__service_name">Hizmet adı: %s</string>
     <string name="voiceover__additional_info">Ek bilgi: %s</string>
-    <string name="voiceover__token_tap_to_copy">Jeton %s. Kopyalamak için basın</string>
+    <string name="voiceover__token_tap_to_copy">Jeton %s. Kopyalamak için dokunun</string>
     <string name="voiceover__edit">%s öğesini düzenle</string>
     <string name="voiceover__service_label_with_name_and_color">Adı %1$s ve rengi %2$s olan servis etiketi</string>
     <string name="voiceover__service_icon">%s hizmet simgesi</string>
@@ -358,7 +358,7 @@
     <string name="backup__to_short_error">Girdi çok kısa (en az 3 karakter)</string>
     <string name="backup__passwords_dont_match">Parolalar eşleşmiyor</string>
     <string name="backup__save_and_export">Kaydet ve dışa aktar</string>
-    <string name="backup__set_password_title">Yedek dosyanızın korunmasını artırmak için lütfen bir parola ayarlayın</string>
+    <string name="backup__set_password_title">Yedek dosyanızın güvenliğini artırmak için lütfen parolayı ayarlayın</string>
     <string name="backup__enter_password_title">İçe aktarma işlemine devam etmek için bu yedek dosyası için bir parola girin</string>
     <string name="backup__backup_file_password_title">Bu yedek dosyası için bir parola ayarla</string>
     <string name="backup__incorrect_password">Yanlış parola</string>
@@ -487,7 +487,7 @@
     <string name="gdrive_internet_title">İnternet bağlantısı gerekiyor</string>
     <string name="gdrive_internet_msg">Google ile eşitlemek için internet bağlantısını etkinleştirmeniz gerekir.</string>
     <string name="gdrive_wipe_internet_msg">Google Drive\'a erişimi iptal etmek için internet bağlantısını etkinleştirmeniz gerekir.</string>
-    <string name="backup_explanation_msg">Yedek dosyanızı Google Drive\'ınızdaki gizli klasörde otomatikman depolayın ve eşitleyin. Bu klasöre sadece 2FAS uygulaması erişebilir.</string>
+    <string name="backup_explanation_msg">Yedek dosyanızı Google Drive\'ınızdaki gizli klasörde kendiliğinden depolayın ve eşitleyin. Bu klasöre sadece 2FAS uygulaması erişebilir.</string>
     <string name="backup_error_unknown">Yedek eşitlenirken bir sorun oluştu. Lütfen uygulamayı birkaç dakika sonra yeniden başlatın ve tekrar deneyin.</string>
     <string name="backup_error_encrypt_unknown">Yedek şifrelenirken bir sorun oluştu. Lütfen parolanızı yeniden ayarlayın.</string>
     <string name="backup_error_decrypt_unknown">Yedeğin şifresi çözülürken bir hata oluştu. Lütfen parolanızı yeniden ayarlayın.</string>
@@ -640,7 +640,7 @@
     <string name="settings__send_logs_sent_description">Bize ulaştığınız için teşekkür ederiz. Gönderdiklerinizi en kısa zamanda inceleyeceğiz.</string>
     <string name="commons__send">Gönder</string>
     <string name="settings__send_logs_title">Günlükler gönderiliyor</string>
-    <string name="settings__send_logs_description_link">Destek ekibi tarafından sağlanan kod otomatikman dolduruldu. Günlükler gönderilsin mi?</string>
+    <string name="settings__send_logs_description_link">Destek ekibi tarafından sağlanan kod kendiliğinden dolduruldu. Günlükler gönderilsin mi?</string>
     <string name="settings__send_logs_description_edit">Lütfen destek ekibimiz tarafından sağlanan kodu girin veya buraya yapıştırın</string>
     <string name="settings__send_logs">Günlükleri gönder</string>
     <string name="settings__recommendation">2FAS\'ın bu harika iki adımlı kimlik doğrulama uygulamasına göz atın: https://2fas.com</string>
@@ -743,7 +743,7 @@
     <string name="tokens__add_title">Hizmeti 2FAS ile eşleştir</string>
     <string name="tokens__add_description">QR kodunu yakalamak için kameranızı ekrana doğrultun.</string>
     <string name="tokens__add_other_methods">Diğer yöntemler</string>
-    <string name="tokens__add_enter_manual">Gizli anahtar gir</string>
+    <string name="tokens__add_enter_manual">Gizli anahtarı elle gir</string>
     <string name="tokens__add_from_gallery">QR kodu içeren görseli yükle</string>
     <string name="tokens__add_success_title">Neredeyse tamam!</string>
     <string name="tokens__add_success_description">Hizmeti eşleştirmeyi tamamlamak için bu jetonu yeniden girmeniz gerekiyor.</string>
@@ -754,14 +754,14 @@
     <string name="tokens__add_manual_other">Diğer ayarlar</string>
     <string name="tokens__add_manual_other_optional">(isteğe bağlı)</string>
     <string name="tokens__add_manual_done_cta">Hizmet ekle</string>
-    <string name="tokens__add_manual_help_cta">Ne yapacağınızı bilmiyor musunuz? Yardım için basın</string>
+    <string name="tokens__add_manual_help_cta">Ne yapacağınızı bilmiyor musunuz? Yardım için dokunun</string>
     <string name="tokens__add_manual_advanced">Gelişmiş jeton ayarları</string>
     <string name="tokens__add_manual_additional_info">Ek bilgi</string>
     <string name="tokens__add_manual_advanced_description">Varsayılan jeton ayarlarının değiştirilmesi önerilmez. Bunu yalnızca 2AD sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
     <string name="settings__option_screenshots_description">Uygulamada ekran görüntülerine 5 dakika için izin ver.</string>
     <string name="settings__option_screenshots">Ekran görüntülerine izin ver</string>
     <string name="settings__option_screenshots_confirm_title">Uygulamada ekran görüntülerine izin verilsin mi?</string>
-    <string name="settings__option_screenshots_confirm_description">Emin misiniz? Bu seçeneğin etkinleştirilmesi, uygulamanın her yerinde ekran görüntüsü ve kaydı almanıza izin verir; ancak bu, tüm harici ekran kaydı denemelerine aralık bırakır.\nGüvenlik sebepleri nedeniyle bu seçenek 5 dakika sonra otomatikman devre dışı bırakılacak.</string>
+    <string name="settings__option_screenshots_confirm_description">Emin misiniz? Bu seçeneğin etkinleştirilmesi, uygulamanın her yerinde ekran kaydı almanıza izin verir; ancak bu, tüm harici ekran kaydı denemelerine aralık bırakır.\nGüvenlik sebeplerinden ötürü bu seçenek 5 dakika sonra kendiliğinden devre dışı bırakılacak.</string>
     <string name="social__social_media">Sosyal medya bağlantıları</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -813,10 +813,10 @@
     <string name="commons__pair">Eşleştir</string>
     <string name="introduction__backup_icloud_title">Güvenli eşitleme ve yedekleme</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS, 2AD jetonlarınızın güvenli bir şekilde eşitlenmesi ve yedeklenmesi için iCloud\'u kullanır. **Şifrelenmiş** yedek verisi iCloud\'da saklanır ve bu veriye **sadece 2FAS uygulaması** erişebilir. Ek olarak, bu özellik iOS cihazları arasında jetonların **kurtarılmasına ve eşitlenmesine** yardımcı olur.\n\nBu özellik varsayılan olarak etkindir ve uygulamanın yedekleme ayarlarından her an devre dışı bırakılabilir.</string>
+    <string name="introduction__backup_icloud_description">2FAS, 2AD jetonlarınızın güvenli bir şekilde eşitlenmesi ve yedeklenmesi için iCloud\'u kullanır. Şifrelenmiş yedek verisi iCloud\'da saklanır ve bu veriye sadece 2FAS uygulaması erişebilir. Ek olarak, bu özellik iOS cihazları arasında jetonların kurtarılmasına ve eşitlenmesine yardımcı olur.</string>
     <string name="introduction__backup_icloud_cta">Yedekleme hakkında daha fazla bilgi edinin</string>
     <string name="backup__enter_password_google_drive_msg1">Google Drive yedek dosyanız parola korumalı gibi görünüyor. Devam etmek için doğru parolayı girin. Eğer Google Drive yedek dosyanızı silmek isterseniz,</string>
-    <string name="backup__enter_password_google_drive_msg2">nasıl olduğunu görmek için buraya basın</string>
+    <string name="backup__enter_password_google_drive_msg2">nasıl olduğunu görmek için buraya dokunun</string>
     <string name="settings__preferences">Tercihler</string>
     <string name="settings__it_matters">Teşekkürler</string>
     <string name="settings__manage_tokens">Jetonları yönet</string>
@@ -860,7 +860,7 @@
     <string name="tokens__show_service_qr_setup_lock">Hizmetiniz korumalı. QR kodunu görmek için lütfen bir PIN veya parmak izi kilidi ekleyin.</string>
     <string name="tokens__copy_uri">URI\'yı kopyala</string>
     <string name="backup__cloud_encrypted_user">iCloud özel bir parola ile şifreli. Parolayı girin ve eşitlemeyi etkinleştirin.</string>
-    <string name="backup__cloud_encrypted_system">iCloud bir Sistem anahtarı ile şifreli. iCloud Anahtar Zincirini etkileştirdiğinizden emin olun.</string>
+    <string name="backup__cloud_encrypted_system">iCloud bir sistem anahtarı ile şifreli. iCloud Anahtar Zinciri\'ni etkileştirdiğinizden emin olun.</string>
     <string name="backup__synced">Eşitlenmiş</string>
     <string name="backup__checking">Denetleniyor...</string>
     <string name="backup__sync_disabled">Eşitleme devre dışı.</string>
@@ -869,9 +869,9 @@
     <string name="backup__watch_pairing_description">iCloud yedeklemenizle bir Apple Watch\'ı eşleştirmek istiyor musunuz? Cihazınızın adını girin:</string>
     <string name="backup__watch_pairing_default_name">Apple Watch</string>
     <string name="backup__watch_pairing_action">Cihaz eşleştir</string>
-    <string name="backup__watch_pairing_error">Şu anda Watch ile eşleştirilemiyor. Bulut yedeklemesinin etkinleştirilmiş ve bir parola ile eşitlenmiş olduğundan emin olun.</string>
+    <string name="backup__watch_pairing_error">Şu anda Watch ile eşleştirilemiyor. iCloud yedeklemesinin etkinleştirilmiş ve bir parola ile eşitlenmiş olduğundan emin olun.</string>
     <string name="backup__cloud_error_title">Bulut yedekleme hatası</string>
-    <string name="backup__cloud_error_missing_system_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü sistem anahtarı yok. iCloud Anahtar Zincirinin etkinleştirilmiş olduğunu ve doğru çalıştığını denetleyin.</string>
+    <string name="backup__cloud_error_missing_system_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü sistem anahtarı yok. iCloud Anahtar Zinciri\'nin etkinleştirilmiş olduğunu ve doğru çalıştığını denetleyin.</string>
     <string name="backup__cloud_error_mismatch_key_content">Bulut yedeklemesinin şifresi çözülemiyor çünkü Sistem Anahtarı kullanılarak şifrelenmiş ve şu anda özel bir parola kullanıyorsunuz. Geçiş yapmak ister misiniz?</string>
     <string name="backup__cloud_error_new_version_content">Bulut yedeklemesi ile eşitlenemiyor çünkü uygulamanın daha güncel bir sürümüne taşınmıştı. Bulut yedeklemesini kullanmaya devam etmek için uygulamayı güncelleyin.</string>
     <string name="backup__enter_cloud_backup_password_title">Bulut yedeklemesi parolası girin</string>
@@ -898,7 +898,7 @@
     <string name="backup__manage_paired_watches_empty_list">Liste boş. + düğmesini kullanarak Watch\'ı eşleştirin</string>
     <string name="backup__manage_paired_watches_syncing">Bulut yedeklemesi eşitleniyor...</string>
     <string name="backup__watch_pair_title">Apple Watch\'ınızı eşleştirin</string>
-    <string name="backup__watch_pair_description">iPhone/iPad\'inizde 2FAS Yedeklemesi ayarına gidin ve \"Eşleşmiş Apple Watch\'ları yönet\" seçeneğini bulun. Bu seçenek, eğer yedekleme eşitlenmişse görünür olacak. QR kodunu oradan okutun.</string>
+    <string name="backup__watch_pair_description">iPhone veya iPad\'inizde 2FAS yedeklemesi ayarına gidin ve \"Eşleşmiş Apple Watch\'ları yönet\" seçeneğini bulun. Bu seçenek, eğer yedekleme eşitlenmişse görünecek. QR kodunu oradan okutun.</string>
     <string name="backup__watch_pair_qr_error">QR Kodu üretilirken hata oluştu</string>
     <string name="backup__cloud_switch_system_key">Sistem Anahtarına geç</string>
     <string name="backup__cloud_turn_backup_off">Bulut yedeklemesini devre dışı bırak</string>
@@ -968,9 +968,76 @@
     <string name="backup__password_set_description">Ek olarak yedeğinizin içeriğini korumak için parolanızı girin. Eğer parolanızı unutursanız, yedeğinizi silmeniz ve baştan başlamanız gerekecek.</string>
     <string name="backup__password_rules_description">Sadece harfler, rakamlar, boşluklar ve özel karakterlere (!@#$%^&amp;*()-_) izin verilir.</string>
     <string name="pass_promo_banner_title">Sizin için yeni bir şey geliştirdik!</string>
-    <string name="pass_promo_banner_msg">2FAS Auth ile birlikte çalışacak şekilde tasarlanmış, Authenticator’ınızı olduğu gibi bırakan, güvenli ve “local-first” bir parola yöneticisi – 2FAS Pass.</string>
+    <string name="pass_promo_banner_msg">Güvenli, yerel öncelikli bir **parola yöneticisi - 2FAS Pass**; 2FAS Auth ile birlikte çalışmak üzere tasarlanmıştır, doğrulayıcınızı olduğu gibi bırakır.</string>
     <string name="pass_promo_banner_positive_cta">Mağazaya git</string>
     <string name="pass_promo_banner_negative_cta">Bir daha gösterme</string>
     <string name="appearance_dynamic_colors">Dinamik renkler</string>
     <string name="appearance_dynamic_colors_description">Duvar kâğıdınıza göre uygulama renklerini dinamik olarak değiştirin.</string>
+    <string name="backup__section_note">NOT: iCloud eşitlemesi şifreleme anahtarlarını iCloud Anahtar Zinciri\'nde saklar. Eğer iCloud Anahtar Zinciri devre dışıysa lütfen anahtarlarınızı yedeklemeyi yönet bölümünden elle dışa aktarın. Bunu yapmadan verilerinizi geri yüklemeniz veya diğer aygıtlarınıza eşitlemeniz mümkün olmayacaktır.</string>
+    <string name="backup__keys_import_warning">Anahtarları içe aktarmak mevcut şifreleme anahtarlarınızın üzerine yazacak. Devam etmek istiyor musunuz?</string>
+    <string name="backup__key_import_system_key">Sistem anahtarı</string>
+    <string name="backup__keys_import_error">Anahtarlar içe aktarılamadı.</string>
+    <string name="watch__intro_step1">Saat uygulamanızı eşleştirmek için bu talimatları izleyin.</string>
+    <string name="watch__intro_step2">iPhone’unuzdaki 2FAS Auth uygulamasında “2FAS yedeklemesi” ayarlarına gidin.</string>
+    <string name="watch__intro_step3">iOS sistem ayarlarında iCloud yedeklemesinin eşitlenmiş ve iCloud Anahtar Zincirini\'nin etkin olduğundan emin olun.</string>
+    <string name="watch__intro_step4">“Eşleşmiş Apple Watch\'ları yönet” seçeneğini seçin.</string>
+    <string name="watch__intro_step5">“+” düğmesine dokunun ve sonraki sayfada QR kodunu tarayın.</string>
+    <string name="watch__intro_step6">Artık bu pencereyi kapatabilirsiniz. Eşitleme biraz zaman alabilir.</string>
+    <string name="tokens__empty_screen_in_trash">Çöp kutunuzda **%d** hizmet var.</string>
+    <string name="commons__go_to_trash">Çöp kutusuna Git</string>
+    <string name="backup__moved_to_trash_title">iCloud eşitleme sonucu</string>
+    <string name="backup__moved_to_trash_message">Son iCloud eşitlemesi tüm hizmetlerinizi çöp kutusuna taşıdı. Onları istediğiniz zaman geri yükleyebilirsiniz.</string>
+    <string name="commons__understood">Anlaşıldı</string>
+    <string name="introduction__backup_icloud_description_note">Varsayılan olarak etkindir ve uygulamanın yedekleme ayarlarında her an devre dışı bırakılabilir.</string>
+    <string name="introduction__call_1">Hoş geldiniz -\u0020</string>
+    <string name="introduction__call_2">2FAS Auth</string>
+    <string name="restore__reset__title">Uygulama geri yükleniyor</string>
+    <string name="login__hello_header">Tekrar merhaba!</string>
+    <string name="login__hello_header_1">Merhaba!</string>
+    <string name="login__hello_header_2">Tekrar hoş geldin!</string>
+    <string name="login__hello_header_3">Seni tekrar gördüğümüze sevindik!</string>
+    <string name="login__hello_header_4">Merhaba!</string>
+    <string name="tokens__empty_list_title">İlk hizmeti ekleyin</string>
+    <string name="guides__request_service">İstek</string>
+    <string name="guides__step_number">Adım %d</string>
+    <string name="about__generate_logs">Günlükleri oluştur</string>
+    <string name="about__generate_logs_alert_title">Günlükler oluşturulsun mu?</string>
+    <string name="about__generate_logs_alert_message">Günlükleri oluşturmak istiyor musunuz? Bu biraz zaman alabilir.</string>
+    <string name="about__generate_logs_alert_action">Üret</string>
+    <string name="introduction__backup_header">Yedekleme</string>
+    <string name="home__app_review_title">2FAS Auth\'tan keyif alıyor musunuz?</string>
+    <string name="home__app_review_msg">Eğer uygulama işinize yaradıysa değerlendirmek için birkaç saniyenizi ayırın. Bize çok yardımı dokunur!</string>
+    <string name="home__app_review_rate">Değerlendir</string>
+    <string name="home__app_review_dismiss">Şimdi değil</string>
+    <string name="settings__backup_and_transfer">Yedekleme ve aktarma</string>
+    <string name="settings__browser_extension_header">Tarayıcı uzantısı</string>
+    <string name="settings__more">Daha fazla</string>
+    <string name="settings__removed_items">Kaldırılan jetonlar</string>
+    <string name="settings__connected_extensions">Bağlanmış uzantılar</string>
+    <string name="settings__security_description">Uygulamanızın güvenlik ve gizlilik ayarlarını denetleyin.</string>
+    <string name="settings__appearance_description">Uygulamanın görünümünü ve özelliklerini değiştirin.</string>
+    <string name="settings__removed_items_description">Uygulamadan silmiş olduğunuz jetonları kurtarın veya kalıcı olarak silin.</string>
+    <string name="settings__backup_description">Jetonlarınızı aygıtlar arasında yedekleyin ve eşitleyin.</string>
+    <string name="settings__import_tokens_description">Jetonları diğer uygulamalardan içe aktarın.</string>
+    <string name="settings__connected_extensions_description">Bağlanmış tarayıcı uzantılarını yönetin.</string>
+    <string name="settings__about_description">Uygulama bilgisi, sürümü ve lisanslar.</string>
+    <string name="settings__support_description">2FAS desteği</string>
+    <string name="settings__donate_description">2FAS\'ın geliştirmesini destekleyin.</string>
+    <string name="shortcuts__backup_title">Tam yedekleme olmadan BENİ SİLME</string>
+    <string name="shortcuts__support_title">Destek</string>
+    <string name="shortcuts__pair_title">Hizmet eşleştir</string>
+    <string name="shortcuts__search_title">Hizmeti bul</string>
+    <string name="tokens__empty_screen_trashed_title">Hizmetleri mi arıyorsunuz?</string>
+    <string name="settings__trash_selected">%d seçildi</string>
+    <string name="tokens__delete_service_msg">Bu hizmeti silmek istediğinizden emin misiniz?</string>
+    <string name="tokens__delete_selected_msg">Seçilen %d hizmeti silmek istediğinizden emin misiniz?</string>
+    <string name="settings__list_style_option_large">Büyük</string>
+    <string name="commons__select">Seç</string>
+    <string name="commons__clear">Temizle</string>
+    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="externalimport_proton">Proton Authenticator</string>
+    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
 </resources>

@@ -24,7 +24,7 @@ class WidgetsDeleteWork(
                 .setInputData(
                     Data.Builder().apply {
                         putIntArray("ids", appWidgetIds.toIntArray())
-                    }.build()
+                    }.build(),
                 )
                 .build()
 

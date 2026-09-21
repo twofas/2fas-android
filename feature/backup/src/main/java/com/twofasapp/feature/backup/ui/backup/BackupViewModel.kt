@@ -1,10 +1,7 @@
 package com.twofasapp.feature.backup.ui.backup
 
 import androidx.activity.result.ActivityResult
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.twofasapp.android.navigation.NavArg
-import com.twofasapp.android.navigation.getOrThrow
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.data.cloud.googleauth.GoogleAuth
 import com.twofasapp.data.cloud.googleauth.SignInResult
@@ -14,6 +11,7 @@ import com.twofasapp.data.services.domain.CloudSyncError
 import com.twofasapp.data.services.domain.CloudSyncStatus
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.session.SessionRepository
+import com.twofasapp.data.session.SettingsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -21,14 +19,14 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 
 internal class BackupViewModel(
-    savedStateHandle: SavedStateHandle,
     private val sessionRepository: SessionRepository,
+    private val settingsRepository: SettingsRepository,
     private val servicesRepository: ServicesRepository,
     private val backupRepository: BackupRepository,
     private val googleAuth: GoogleAuth,
 ) : ViewModel() {
 
-    private val autoTurnOnBackup: Boolean = savedStateHandle.getOrThrow(NavArg.TurnOnBackup.name)
+    private val autoTurnOnBackup: Boolean = false
 
     val uiState: MutableStateFlow<BackupUiState> = MutableStateFlow(BackupUiState())
 
@@ -36,6 +34,12 @@ internal class BackupViewModel(
         launchScoped {
             servicesRepository.observeServices().distinctUntilChangedBy { it.size }.collect { services ->
                 uiState.update { it.copy(exportEnabled = services.isNotEmpty()) }
+            }
+        }
+
+        launchScoped {
+            settingsRepository.observeShowBackupNotice().collect { showBackupNotice ->
+                uiState.update { it.copy(showBackupNotice = showBackupNotice) }
             }
         }
 
@@ -55,7 +59,8 @@ internal class BackupViewModel(
 
                 when (cloudSyncStatus) {
                     is CloudSyncStatus.Default,
-                    is CloudSyncStatus.Synced -> {
+                    is CloudSyncStatus.Synced,
+                    -> {
                         uiState.update {
                             it.copy(
                                 syncChecked = cloudBackupStatus.active,
@@ -83,7 +88,7 @@ internal class BackupViewModel(
 
                     is CloudSyncStatus.Error -> {
                         val isPasswordError = cloudSyncStatus.error == CloudSyncError.DecryptWrongPassword ||
-                                cloudSyncStatus.error == CloudSyncError.DecryptNoPassword
+                            cloudSyncStatus.error == CloudSyncError.DecryptNoPassword
 
                         uiState.update {
                             it.copy(
@@ -118,7 +123,6 @@ internal class BackupViewModel(
             googleAuth.signOut()
             backupRepository.setCloudSyncNotConfigured()
             backupRepository.publishCloudSyncStatus(CloudSyncStatus.Default)
-            sessionRepository.resetBackupReminder()
             uiState.update { state ->
                 state.copy(
                     syncChecked = false,
@@ -127,9 +131,15 @@ internal class BackupViewModel(
                     showError = false,
                     error = null,
                     cloudBackupStatus = null,
-                    cloudSyncStatus = CloudSyncStatus.Default
+                    cloudSyncStatus = CloudSyncStatus.Default,
                 )
             }
+        }
+    }
+
+    fun toggleShowBackupNotice() {
+        launchScoped {
+            settingsRepository.setShowBackupNotice(uiState.value.showBackupNotice.not())
         }
     }
 

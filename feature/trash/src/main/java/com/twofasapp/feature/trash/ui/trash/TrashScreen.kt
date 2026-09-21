@@ -1,118 +1,243 @@
 package com.twofasapp.feature.trash.ui.trash
 
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.times
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.common.domain.Service
-import com.twofasapp.designsystem.TwIcons
-import com.twofasapp.designsystem.TwTheme
-import com.twofasapp.designsystem.common.TwDropdownMenu
-import com.twofasapp.designsystem.common.TwDropdownMenuItem
-import com.twofasapp.designsystem.common.TwEmptyScreen
-import com.twofasapp.designsystem.common.TwIconButton
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.service.DsServiceSimple
-import com.twofasapp.designsystem.service.ServiceImageType
-import com.twofasapp.designsystem.service.ServiceState
-import com.twofasapp.designsystem.service.asColor
-import com.twofasapp.feature.trash.R
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.core.design.MdtIcons
+import com.twofasapp.core.design.MdtTheme
+import com.twofasapp.core.design.feature.items.ServiceCardSimple
+import com.twofasapp.core.design.feature.items.ServiceImageType
+import com.twofasapp.core.design.feature.items.ServiceState
+import com.twofasapp.core.design.feature.items.asColor
+import com.twofasapp.core.design.foundation.button.Button
+import com.twofasapp.core.design.foundation.button.IconButton
+import com.twofasapp.core.design.foundation.checked.CheckIcon
+import com.twofasapp.core.design.foundation.layout.ActionsRow
+import com.twofasapp.core.design.foundation.screen.LazyContent
+import com.twofasapp.core.design.foundation.text.TextIcon
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.toastShort
+import com.twofasapp.core.design.state.ScreenState
+import com.twofasapp.core.design.theme.RoundedTopShape
+import com.twofasapp.core.design.theme.ScreenPadding
+import com.twofasapp.feature.trash.ui.trash.component.DisposeServicesDialog
+import com.twofasapp.feature.trash.ui.trash.component.TrashEmpty
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun TrashScreen(
     viewModel: TrashViewModel = koinViewModel(),
-    openDispose: (Long) -> Unit
 ) {
-    val services by viewModel.services.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val screenState by viewModel.screenState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
-    ScreenContent(
-        services = services,
-        onRestoreClick = { viewModel.restoreService(it) },
-        onDisposeClick = { openDispose(it) },
+    Content(
+        uiState = uiState,
+        screenState = screenState,
+        onItemToggled = { viewModel.toggle(it) },
+        onSelectAll = { viewModel.selectAll() },
+        onClearSelections = { viewModel.clearSelections() },
+        onRestoreClick = {
+            viewModel.restore {
+                context.toastShort(it)
+            }
+        },
+        onDeleteConfirmed = {
+            viewModel.delete {
+                context.toastShort(it)
+            }
+        },
     )
 }
 
 @Composable
-private fun ScreenContent(
-    services: List<Service>,
-    onRestoreClick: (Long) -> Unit,
-    onDisposeClick: (Long) -> Unit,
+private fun Content(
+    uiState: TrashUiState,
+    screenState: ScreenState,
+    onItemToggled: (Service) -> Unit = {},
+    onSelectAll: () -> Unit = {},
+    onClearSelections: () -> Unit = {},
+    onRestoreClick: () -> Unit = {},
+    onDeleteConfirmed: () -> Unit = {},
 ) {
+    val strings = MdtLocale.strings
+    val onBackDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
+    var showDeleteDialog by remember { mutableStateOf(false) }
 
-    Scaffold(topBar = { TwTopAppBar(TwLocale.strings.trashTitle) }) { padding ->
-
-        LazyColumn(Modifier.padding(padding)) {
-
-            if (services.isEmpty()) {
-                item {
-                    TwEmptyScreen(
-                        body = TwLocale.strings.trashEmpty,
-                        image = painterResource(id = R.drawable.img_trash),
-                        modifier = Modifier.fillParentMaxSize(),
-                    )
-                }
-
-                return@LazyColumn
-            }
-
-            items(services, key = { it.id }) {
-                DsServiceSimple(
-                    state = ServiceState(
-                        name = it.name,
-                        info = it.info,
-                        imageType = when (it.imageType) {
-                            Service.ImageType.IconCollection -> ServiceImageType.Icon
-                            Service.ImageType.Label -> ServiceImageType.Label
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = if (uiState.hasSelections) {
+                    strings.trashSelectedItems.format(uiState.selected.size)
+                } else {
+                    strings.trashTitle
+                },
+                navigationIcon = {
+                    IconButton(
+                        icon = if (uiState.hasSelections) MdtIcons.Close else MdtIcons.ArrowBack,
+                        modifier = Modifier.testTag("trashNavigationButton"),
+                        onClick = {
+                            if (uiState.hasSelections) {
+                                onClearSelections()
+                            } else {
+                                onBackDispatcher?.onBackPressed()
+                            }
                         },
-                        iconLight = it.iconLight,
-                        iconDark = it.iconDark,
-                        labelText = it.labelText,
-                        labelColor = it.labelColor.asColor(),
-                        revealed = true,
-                    ),
+                    )
+                },
+                actions = {
+                    if (uiState.trashedItems.isNotEmpty()) {
+                        ActionsRow {
+                            IconButton(
+                                icon = MdtIcons.CheckAll,
+                                modifier = Modifier.testTag("trashSelectAllButton"),
+                                onClick = onSelectAll,
+                            )
+                        }
+                    }
+                },
+            )
+        },
+    ) { padding ->
+        Box(
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            LazyContent(
+                screenState = screenState,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding)
+                    .background(MdtTheme.color.background),
+                contentPadding = PaddingValues(bottom = if (uiState.selected.isEmpty()) 0.dp else 2 * ScreenPadding + 40.dp),
+                itemsWhenSuccess = {
+                    uiState.trashedItems.forEach { item ->
+                        item(key = item.id, contentType = "Item") {
+                            TrashItem(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .animateItem(fadeInSpec = null, fadeOutSpec = null),
+                                service = item,
+                                checked = uiState.selected.contains(item.id),
+                                onCheckedChange = { onItemToggled(item) },
+                            )
+                        }
+                    }
+                },
+                emptyState = {
+                    TrashEmpty(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                    )
+                },
+            )
+
+            AnimatedVisibility(
+                visible = uiState.hasSelections && screenState.loading.not(),
+                enter = slideInVertically(initialOffsetY = { it / 2 }),
+                exit = slideOutVertically(targetOffsetY = { it }),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter),
+            ) {
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp, end = 0.dp)
+                        .background(MdtTheme.color.surfaceContainer, RoundedTopShape)
+                        .padding(12.dp)
+                        .padding(bottom = padding.calculateBottomPadding()),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    var dropdownVisible by rememberSaveable { mutableStateOf(false) }
+                    Button(
+                        modifier = Modifier.weight(1f),
+                        height = 40.dp,
+                        onClick = onRestoreClick,
+                        content = {
+                            TextIcon(
+                                text = strings.trashRestoreCta,
+                                leadingIcon = MdtIcons.Refresh,
+                                leadingIconTint = MdtTheme.color.onPrimary,
+                            )
+                        },
+                    )
 
-                    TwDropdownMenu(
-                        expanded = dropdownVisible,
-                        onDismissRequest = { dropdownVisible = false },
-                        anchor = { TwIconButton(painter = TwIcons.More, onClick = { dropdownVisible = true }) }
-                    ) {
-                        TwDropdownMenuItem(
-                            text = TwLocale.strings.trashRestoreCta,
-                            icon = TwIcons.Refresh,
-                            onClick = {
-                                dropdownVisible = false
-                                onRestoreClick(it.id)
-                            }
-                        )
-                        TwDropdownMenuItem(
-                            text = TwLocale.strings.trashDisposeCta,
-                            icon = TwIcons.Delete,
-                            contentColor = TwTheme.color.accentRed,
-                            onClick = {
-                                dropdownVisible = false
-                                onDisposeClick(it.id)
-                            }
-                        )
-                    }
+                    Button(
+                        modifier = Modifier.weight(1f),
+                        height = 40.dp,
+                        onClick = { showDeleteDialog = true },
+                        content = {
+                            TextIcon(
+                                text = strings.trashDisposeCta,
+                                leadingIcon = MdtIcons.Delete,
+                                leadingIconTint = MdtTheme.color.onPrimary,
+                            )
+                        },
+                    )
                 }
             }
         }
+    }
+
+    if (showDeleteDialog) {
+        DisposeServicesDialog(
+            onDismissRequest = { showDeleteDialog = false },
+            services = uiState.trashedItems.filter { uiState.selected.contains(it.id) },
+            onConfirm = { onDeleteConfirmed() },
+        )
+    }
+}
+
+@Composable
+private fun TrashItem(
+    service: Service,
+    checked: Boolean,
+    modifier: Modifier = Modifier,
+    onCheckedChange: () -> Unit = {},
+) {
+    ServiceCardSimple(
+        state = ServiceState(
+            name = service.name,
+            info = service.info,
+            imageType = when (service.imageType) {
+                Service.ImageType.IconCollection -> ServiceImageType.Icon
+                Service.ImageType.Label -> ServiceImageType.Label
+            },
+            iconLight = service.iconLight,
+            iconDark = service.iconDark,
+            labelText = service.labelText,
+            labelColor = service.labelColor.asColor(),
+            revealed = true,
+        ),
+        onClick = onCheckedChange,
+        containerColor = if (checked) MdtTheme.color.surfaceContainerHighest else MdtTheme.color.surfaceContainer,
+        modifier = modifier
+            .padding(horizontal = 12.dp, vertical = 4.dp),
+    ) {
+        CheckIcon(checked = checked)
     }
 }

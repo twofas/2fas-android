@@ -25,7 +25,7 @@ internal class NotificationsRepositoryImpl(
 
     override suspend fun fetchNotifications(
         appInstallTimeMillis: Long,
-        noCompanionAppFromTimeMillis: Long?
+        noCompanionAppFromTimeMillis: Long?,
     ) {
         withContext(dispatchers.io) {
             val remoteData = remote.fetchNotifications(

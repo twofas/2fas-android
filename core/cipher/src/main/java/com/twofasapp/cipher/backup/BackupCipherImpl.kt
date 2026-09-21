@@ -3,8 +3,8 @@ package com.twofasapp.cipher.backup
 import com.twofasapp.cipher.backup.internal.BackupKeyGenerator
 import com.twofasapp.cipher.backup.internal.BackupSaltGenerator
 import com.twofasapp.cipher.internal.CipherAes
-import com.twofasapp.common.ktx.decodeBase64ToByteArray
-import com.twofasapp.common.ktx.encodeBase64ToString
+import com.twofasapp.common.ktx.legacyDecodeBase64ToByteArray
+import com.twofasapp.common.ktx.legacyEncodeBase64ToString
 import javax.crypto.spec.SecretKeySpec
 
 internal class BackupCipherImpl(
@@ -20,9 +20,8 @@ internal class BackupCipherImpl(
         keyEncoded: String?,
         saltEncoded: String?,
     ): BackupEncrypted {
-
         // Use existing salt or generate new one
-        val salt = saltEncoded?.decodeBase64ToByteArray() ?: saltGenerator.generate()
+        val salt = saltEncoded?.legacyDecodeBase64ToByteArray() ?: saltGenerator.generate()
 
         // Use existing key or generate new one based on provided password
         val key = when {
@@ -38,8 +37,8 @@ internal class BackupCipherImpl(
         return BackupEncrypted(
             reference = DataEncrypted(referenceEncrypted.data, salt, referenceEncrypted.iv),
             services = DataEncrypted(servicesEncrypted.data, salt, servicesEncrypted.iv),
-            keyEncoded = key.encoded.encodeBase64ToString(),
-            saltEncoded = salt.encodeBase64ToString(),
+            keyEncoded = key.encoded.legacyEncodeBase64ToString(),
+            saltEncoded = salt.legacyEncodeBase64ToString(),
         )
     }
 
@@ -47,7 +46,7 @@ internal class BackupCipherImpl(
         reference: DataEncrypted,
         services: DataEncrypted,
         password: String?,
-        keyEncoded: String?
+        keyEncoded: String?,
     ): BackupDecrypted {
         return BackupDecrypted(
             reference = decrypt(reference, password, keyEncoded).data,
@@ -58,13 +57,12 @@ internal class BackupCipherImpl(
     override fun decrypt(
         dataEncrypted: DataEncrypted,
         password: String?,
-        keyEncoded: String?
+        keyEncoded: String?,
     ): DataDecrypted {
-
         // Extract splitted data
-        val data = dataEncrypted.dataEncoded.decodeBase64ToByteArray()
-        val salt = dataEncrypted.saltEncoded.decodeBase64ToByteArray()
-        val iv = dataEncrypted.ivEncoded.decodeBase64ToByteArray()
+        val data = dataEncrypted.dataEncoded.legacyDecodeBase64ToByteArray()
+        val salt = dataEncrypted.saltEncoded.legacyDecodeBase64ToByteArray()
+        val iv = dataEncrypted.ivEncoded.legacyDecodeBase64ToByteArray()
 
         // Use existing key or generate new one based on provided password
         val key = when {
@@ -75,12 +73,12 @@ internal class BackupCipherImpl(
 
         return DataDecrypted(
             data = cipher.decrypt(key, iv, data).data.decodeToString(),
-            saltEncoded = salt.encodeBase64ToString(),
-            keyEncoded = key.encoded.encodeBase64ToString()
+            saltEncoded = salt.legacyEncodeBase64ToString(),
+            keyEncoded = key.encoded.legacyEncodeBase64ToString(),
         )
     }
 
     private fun createSecretKey(keyEncoded: String): SecretKeySpec {
-        return SecretKeySpec(keyEncoded.decodeBase64ToByteArray(), "AES")
+        return SecretKeySpec(keyEncoded.legacyDecodeBase64ToByteArray(), "AES")
     }
 }

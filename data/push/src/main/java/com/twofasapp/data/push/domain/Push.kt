@@ -1,7 +1,7 @@
 package com.twofasapp.data.push.domain
 
 sealed class Push(
-    internal val handler: Handler
+    internal val handler: Handler,
 ) {
     enum class Handler { InAppOnly, NotificationOnly, InAppOrNotification }
 

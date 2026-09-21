@@ -3,9 +3,9 @@
     <color name="colorPrimary">#ed1c24</color>
     <color name="colorPrimaryDark">#0d000000</color>
     <color name="colorAccent">#ED1C24</color>
-    <color name="surface">#F9F9F9</color>
-    <color name="surfaceVariant">#EEEEEE</color>
-    <color name="onSurface">#000000</color>
-    <color name="windowBackground">#FFF</color>
-    <color name="statusbar">#FFF</color>
+    <color name="surface">#FAFAFA</color>
+    <color name="surfaceVariant">#E2E2E2</color>
+    <color name="onSurface">#1B1B1B</color>
+    <color name="windowBackground">#F4F4F4</color>
+    <color name="statusbar">#F4F4F4</color>
 </resources>

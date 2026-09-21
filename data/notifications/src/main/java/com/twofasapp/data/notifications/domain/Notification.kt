@@ -4,7 +4,7 @@ data class Notification(
     val id: String,
     val category: Category,
     val link: String,
-    val internalRoute: String?,
+    val internalRoute: InternalRoute?,
     val message: String,
     val createdAt: Long,
     val isRead: Boolean,
@@ -15,5 +15,9 @@ data class Notification(
         Features("features"),
         Youtube("youtube"),
         Tips("tips"),
+    }
+
+    enum class InternalRoute {
+        Backup,
     }
 }

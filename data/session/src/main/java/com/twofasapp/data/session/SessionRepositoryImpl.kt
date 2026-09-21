@@ -6,12 +6,10 @@ import android.os.Build
 import com.instacart.library.truetime.TrueTime
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.longPref
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.session.local.SessionLocalSource
-import com.twofasapp.prefs.model.RemoteBackupStatusEntity
-import com.twofasapp.prefs.usecase.AppUpdateLastCheckVersionPreference
-import com.twofasapp.prefs.usecase.RemoteBackupStatusPreference
-import com.twofasapp.prefs.usecase.TimeDeltaPreference
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -25,55 +23,28 @@ internal class SessionRepositoryImpl(
     private val appBuild: AppBuild,
     private val local: SessionLocalSource,
     private val timeProvider: TimeProvider,
-    private val remoteBackupStatusPreference: RemoteBackupStatusPreference,
-    private val appUpdateLastCheckVersionPreference: AppUpdateLastCheckVersionPreference,
-    private val timeDeltaPreference: TimeDeltaPreference,
-) : SessionRepository {
+    dataStoreOwner: DataStoreOwner,
+) : SessionRepository, DataStoreOwner by dataStoreOwner {
 
-    override suspend fun isOnboardingDisplayed(): Boolean {
-        return withContext(dispatchers.io) {
-            local.isOnboardingDisplayed()
-        }
+    private val appUpdateLastCheckVersion by longPref(
+        name = "appUpdateLastCheckVersion",
+        default = 0L,
+    )
+
+    private val timeDelta by longPref(
+        name = "timeDelta",
+        default = 0L,
+    )
+
+    override suspend fun showAppUpdate(): Boolean {
+        return appBuild.versionCode.toLong() != appUpdateLastCheckVersion.get()
     }
 
-    override suspend fun showBackupReminder(): Boolean {
-        return true
-    }
-
-    override fun showAppUpdate(): Boolean {
-        return appBuild.versionCode.toLong() != appUpdateLastCheckVersionPreference.get()
-    }
-
-    override fun setAppUpdateDisplayed() {
-        appUpdateLastCheckVersionPreference.put(appBuild.versionCode.toLong())
-    }
-
-    override suspend fun setOnboardingDisplayed(isDisplayed: Boolean) {
-        withContext(dispatchers.io) {
-            local.setOnboardingDisplayed(isDisplayed)
-        }
+    override suspend fun setAppUpdateDisplayed() {
+        appUpdateLastCheckVersion.set(appBuild.versionCode.toLong())
     }
 
     override suspend fun setRateAppDisplayed(isDisplayed: Boolean) {
-
-    }
-
-    override fun observeBackupEnabled(): Flow<Boolean> {
-        return remoteBackupStatusPreference.flow(true).map {
-            it.state == RemoteBackupStatusEntity.State.ACTIVE
-        }
-    }
-
-    override fun observeShowBackupReminder(): Flow<Boolean> {
-        return local.observeBackupReminderTimestamp().map { nextTimestamp ->
-            timeProvider.systemCurrentTime() > nextTimestamp
-        }
-    }
-
-    override fun resetBackupReminder() {
-        local.setBackupReminderTimestamp(
-            timeProvider.systemCurrentTime() + Duration.ofDays(21).toMillis()
-        )
     }
 
     override suspend fun getAppInstallTimestamp(): Long {
@@ -130,20 +101,30 @@ internal class SessionRepositoryImpl(
         }
     }
 
-    override fun resetPassBannerDismiss() {
+    override suspend fun resetPassBannerDismiss() {
         local.setPassBannerDismissTimestamp(timeProvider.systemCurrentTime())
     }
 
-    override fun disablePassBanner() {
+    override suspend fun disablePassBanner() {
         local.setPassBannerDismissTimestamp(timeProvider.systemCurrentTime() + Duration.ofDays(365 * 100).toMillis())
     }
 
-    private fun recalculate(): Boolean {
+    override fun observeAppReviewPrompted(): Flow<Boolean> {
+        return local.observeAppReviewPromptedTimestamp().map { it > 0L }
+    }
+
+    override suspend fun markAppReviewPrompted() {
+        withContext(dispatchers.io) {
+            local.setAppReviewPromptedTimestamp(timeProvider.systemCurrentTime())
+        }
+    }
+
+    private suspend fun recalculate(): Boolean {
         Timber.d("TrueTime: sync...")
         return if (TrueTime.isInitialized()) {
             Timber.d("TrueTime: synced - ${TrueTime.now()}")
             val newDelta = TrueTime.now().time - System.currentTimeMillis()
-            timeDeltaPreference.put(newDelta)
+            timeDelta.set(newDelta)
 
             true
         } else {

@@ -1,0 +1,17 @@
+[*.{kt,kts}]
+ktlint_code_style = intellij_idea
+insert_final_newline = false
+ktlint_standard_filename = disabled
+ktlint_standard_function-naming = disabled
+ktlint_standard_no-empty-file = disabled
+ktlint_standard_property-naming = disabled
+ktlint_standard_enum-entry-name-case = disabled
+ktlint_standard_no-wildcard-imports = disabled
+ktlint_standard_function-expression-body = disabled
+ktlint_standard_class-signature = disabled
+ktlint_standard_enum-wrapping = disabled
+ktlint_standard_statement-wrapping = disabled
+ktlint_standard_value-parameter-comment = disabled
+ktlint_standard_function-signature = disabled
+ktlint_standard_blank-line-between-when-conditions = disabled
+ktlint_standard_kdoc = disabled

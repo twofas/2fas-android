@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:07 -0700
+ Exported at: Mon, 21 Sep 2026 10:21:34 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -75,7 +75,7 @@
     <string name="fingerprint__use_pin_title">Usa il PIN questa volta</string>
     <!-- MARK: - Introduction -->
     <string name="introduction__page_1_title">Sei incredibile!</string>
-    <string name="introduction__page_1_content">Il tuo telefono è appena diventato una chiave privata e protetta per i tuoi servizi online grazie all\'app 2FAS - scelta da oltre 6 milioni di utenti in tutto il mondo.</string>
+    <string name="introduction__page_1_content">Il tuo telefono è appena diventato una chiave privata e protetta per i tuoi servizi online grazie all\'app 2FAS - scelta da oltre 10 milioni di utenti in tutto il mondo.</string>
     <string name="introduction__page_2_title">Semplice</string>
     <string name="introduction__page_2_content">Associa 2FAS ai tuoi servizi online. Attiva la sicurezza a due fattori in pochi secondi con il tuo codice QR.</string>
     <string name="introduction__page_3_title">Privato</string>
@@ -566,7 +566,7 @@
     <string name="tokens__show_service_key_setup_lock">La tua chiave segreta è protetta. Aggiungi un PIN o un blocco biometrico per vederla.</string>
     <string name="tokens__tokens_list_is_empty">La lista dei servizi è vuota</string>
     <string name="tokens__use_plus_button_to_add_tokens">Usa il pulsante \"+\" per aggiungere un nuovo servizio</string>
-    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Senza questo token non sarai in grado di accedere al tuo account %1$s finché avrai abilitata l\'autenticazione a due fattori per %2$s.\n\nNon sarai in grado di ripristinare questo token dal cestino 2FAS.</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Senza questo token non sarai in grado di accedere al tuo account %1$s finché avrai abilitata l\'autenticazione a due fattori per %2$s.\n\nNon sarà possibile recuperare questo token dal cestino.</string>
     <string name="import_ga_success">Servizi importati con successo!</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
     <string name="backup_error_network">È necessaria una connessione Internet attiva per sincronizzare il backup. Attiva la connessione a internet e riprova.</string>
@@ -813,7 +813,7 @@
     <string name="commons__pair">Accoppia</string>
     <string name="introduction__backup_icloud_title">Sincronizzazione e backup sicuri</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS utilizza iCloud per il backup e la sincronizzazione sicura dei tuoi token 2FA. Il backup **criptato** è salvato su iCloud e accessibile **solo dall\'app 2FAS**.\nIn più, questa funzione aiuta il **recupero e la sincronizzazione** dei token tra i dispositivi iOS.\n\nÈ abilitata di default e può essere disattivata in ogni momento nelle impostazioni di backup dell\'app.</string>
+    <string name="introduction__backup_icloud_description">2FAS utilizza iCloud per il backup e la sincronizzazione sicura dei tuoi token 2FA. Il backup criptato è salvato su iCloud e accessibile solo dall\'app 2FAS.\nIn più, questa funzione aiuta il recupero e la sincronizzazione dei token tra i dispositivi iOS.</string>
     <string name="introduction__backup_icloud_cta">Scopri di più sul backup</string>
     <string name="backup__enter_password_google_drive_msg1">Sembra che il tuo backup di Google Drive sia protetto da password. Inserisci la password corretta per procedere. Se vuoi eliminare il tuo backup di Google Drive,</string>
     <string name="backup__enter_password_google_drive_msg2">clicca qui per sapere come</string>
@@ -973,4 +973,71 @@
     <string name="pass_promo_banner_negative_cta">Non mostrare più</string>
     <string name="appearance_dynamic_colors">Colori dinamici</string>
     <string name="appearance_dynamic_colors_description">Cambia dinamicamente i colori dell’app in base allo sfondo.</string>
+    <string name="backup__section_note">NB: la sincronizzazione iCloud memorizza le chiavi di crittografia nel Portachiavi iCloud. Se il Portachiavi iCloud è disabilitato, esporta manualmente le chiavi dalla sezione Gestisci backup. In caso contrario, non sarà possibile ripristinare i dati o sincronizzarli con altri dispositivi.</string>
+    <string name="backup__keys_import_warning">L\'importazione delle chiavi sovrascriverà le chiavi di crittografia attualmente in uso. Vuoi continuare?</string>
+    <string name="backup__key_import_system_key">Chiave di sistema</string>
+    <string name="backup__keys_import_error">Impossibile importare le chiavi.</string>
+    <string name="watch__intro_step1">Segui queste istruzioni per associare l\'app al tuo orologio.</string>
+    <string name="watch__intro_step2">Accedi alle impostazioni \"Backup 2FAS\" nell\'app 2FAS Auth sul tuo iPhone.</string>
+    <string name="watch__intro_step3">Assicurati che il backup di iCloud sia sincronizzato e che il Portachiavi iCloud sia abilitato nelle impostazioni di sistema di iOS.</string>
+    <string name="watch__intro_step4">Seleziona \"Gestione degli Apple Watch abbinati\".</string>
+    <string name="watch__intro_step5">Tocca \"+\" e scansiona il codice QR dalla pagina successiva.</string>
+    <string name="watch__intro_step6">Ora puoi chiudere questa finestra. La sincronizzazione potrebbe richiedere del tempo.</string>
+    <string name="tokens__empty_screen_in_trash">Hai **%d** servizi nel cestino.</string>
+    <string name="commons__go_to_trash">Vai al cestino</string>
+    <string name="backup__moved_to_trash_title">Risultato della sincronizzazione iCloud</string>
+    <string name="backup__moved_to_trash_message">L\'ultima sincronizzazione di iCloud ha spostato tutti i tuoi servizi nel cestino. Puoi ripristinarli in qualsiasi momento.</string>
+    <string name="commons__understood">Capito</string>
+    <string name="introduction__backup_icloud_description_note">È abilitato per impostazione predefinita e può essere disabilitato in qualsiasi momento nelle impostazioni di backup dell\'app.</string>
+    <string name="introduction__call_1">Benvenuto su</string>
+    <string name="introduction__call_2">2FAS Auth</string>
+    <string name="restore__reset__title">Ripristino dell\'app</string>
+    <string name="login__hello_header">Ciao di nuovo!</string>
+    <string name="login__hello_header_1">Ciao!</string>
+    <string name="login__hello_header_2">Bentornato!</string>
+    <string name="login__hello_header_3">Che bello rivederti!</string>
+    <string name="login__hello_header_4">Ciao!</string>
+    <string name="tokens__empty_list_title">Aggiungi il primo servizio</string>
+    <string name="guides__request_service">Richiesta</string>
+    <string name="guides__step_number">Passaggio %d</string>
+    <string name="about__generate_logs">Genera log</string>
+    <string name="about__generate_logs_alert_title">Generare i log?</string>
+    <string name="about__generate_logs_alert_message">Vuoi generare i log?</string>
+    <string name="about__generate_logs_alert_action">Genera</string>
+    <string name="introduction__backup_header">Backup</string>
+    <string name="home__app_review_title">Ti piace 2FAS Auth?</string>
+    <string name="home__app_review_msg">Se l\'app ti è stata utile, dedica un momento a valutarla. Il tuo supporto per noi è davvero importante!</string>
+    <string name="home__app_review_rate">Valuta</string>
+    <string name="home__app_review_dismiss">Non ora</string>
+    <string name="settings__backup_and_transfer">Backup e trasferimento</string>
+    <string name="settings__browser_extension_header">Estensione del browser</string>
+    <string name="settings__more">Altro</string>
+    <string name="settings__removed_items">Token rimossi</string>
+    <string name="settings__connected_extensions">Estensioni collegate</string>
+    <string name="settings__security_description">Gestisci le impostazioni di sicurezza e privacy dell\'app.</string>
+    <string name="settings__appearance_description">Personalizza l\'aspetto e le funzionalità dell\'app.</string>
+    <string name="settings__removed_items_description">Recupera o elimina definitivamente i token rimossi dall\'app.</string>
+    <string name="settings__backup_description">Esegui il backup e sincronizza i tuoi token tra i dispositivi.</string>
+    <string name="settings__import_tokens_description">Importa i token da altre app.</string>
+    <string name="settings__connected_extensions_description">Gestisci le estensioni del browser collegate.</string>
+    <string name="settings__about_description">Informazioni sull\'app, versione e licenze.</string>
+    <string name="settings__support_description">Supporto 2FAS</string>
+    <string name="settings__donate_description">Sostieni lo sviluppo di 2FAS.</string>
+    <string name="shortcuts__backup_title">NON ELIMINARMI senza un backup completo</string>
+    <string name="shortcuts__support_title">Supporto</string>
+    <string name="shortcuts__pair_title">Collega servizio</string>
+    <string name="shortcuts__search_title">Cerca servizio</string>
+    <string name="tokens__empty_screen_trashed_title">Cerchi i tuoi servizi?</string>
+    <string name="settings__trash_selected">%d selezionati</string>
+    <string name="tokens__delete_service_msg">Vuoi davvero eliminare questo servizio?</string>
+    <string name="tokens__delete_selected_msg">Vuoi davvero eliminare i %d servizi selezionati?</string>
+    <string name="settings__list_style_option_large">Grande</string>
+    <string name="commons__select">Seleziona</string>
+    <string name="commons__clear">Cancella</string>
+    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="externalimport_proton">Proton Authenticator</string>
+    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
 </resources>

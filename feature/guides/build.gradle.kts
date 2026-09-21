@@ -1,0 +1,25 @@
+plugins {
+    alias(libs.plugins.twofasAndroidLibrary)
+    alias(libs.plugins.twofasCompose)
+    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.twofasLint)
+}
+
+android {
+    namespace = "com.twofasapp.feature.guides"
+}
+
+dependencies {
+    implementation(project(":core:common"))
+    implementation(project(":core:android"))
+    implementation(project(":core:locale"))
+    implementation(project(":core:designsystem"))
+
+    implementation(project(":data:services"))
+
+    implementation(project(":parsers"))
+
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.commonmark)
+    implementation(libs.kotlinSerialization)
+}

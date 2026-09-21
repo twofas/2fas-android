@@ -1,85 +1,102 @@
 package com.twofasapp.feature.home.navigation
 
-import android.app.Activity
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
-import com.twofasapp.android.navigation.NavArg
+import androidx.compose.runtime.Composable
+import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
-import com.twofasapp.feature.home.ui.bottombar.BottomBarListener
-import com.twofasapp.feature.home.ui.editservice.EditServiceScreenRoute
+import com.twofasapp.android.viewmodel.ProvidesViewModelStoreOwner
+import com.twofasapp.feature.home.ui.editservice.EditServiceScreen
+import com.twofasapp.feature.home.ui.editservice.EditServiceViewModel
+import com.twofasapp.feature.home.ui.editservice.changebrand.ChangeBrandScreen
+import com.twofasapp.feature.home.ui.editservice.changelabel.ChangeLabelScreen
+import com.twofasapp.feature.home.ui.editservice.domainassignment.DomainAssignmentScreen
+import com.twofasapp.feature.home.ui.editservice.requesticon.RequestIconScreen
 import com.twofasapp.feature.home.ui.notifications.NotificationsScreen
-import com.twofasapp.feature.home.ui.services.ServicesRoute
-import com.twofasapp.feature.home.ui.settings.SettingsRoute
+import com.twofasapp.feature.home.ui.services.HomeScreen
+import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
-fun NavGraphBuilder.homeNavigation(
-    navController: NavController,
-    listener: HomeNavigationListener,
-    openEditServiceAuth: (successCallback: () -> Unit) -> Unit,
+// Edit-service screens share one EditServiceViewModel (unsaved edits live in it),
+// so they all resolve it from the same store owner keyed by serviceId.
+private fun editServiceOwnerKey(serviceId: Long) = "editservice_$serviceId"
+
+@Composable
+fun HomeRoute() {
+    HomeScreen()
+}
+
+@Composable
+fun NotificationsRoute() {
+    NotificationsScreen()
+}
+
+@Composable
+fun EditServiceRoute(
+    serviceId: Long,
+    openAuth: (successCallback: () -> Unit) -> Unit,
+    navigator: Navigator = koinInject(),
 ) {
-    val bottomBarListener = object : BottomBarListener {
-        override fun openHome() {
-            navController.popBackStack(
-                route = Screen.Services.route,
-                inclusive = false,
-                saveState = true
-            )
-        }
+    ProvidesViewModelStoreOwner(ownerKey = editServiceOwnerKey(serviceId)) {
+        val viewModel: EditServiceViewModel = koinViewModel { parametersOf(serviceId) }
 
-        override fun openSettings() {
-            navController.navigate(Screen.Settings.route) {
-                popUpTo(Screen.Services.route) { inclusive = false }
-            }
-        }
-    }
-
-    composable(Screen.Services.route) {
-        ServicesRoute(
-            listener = listener,
-            bottomBarListener = bottomBarListener,
-        )
-    }
-
-    composable(Screen.Settings.route) {
-        SettingsRoute(listener, bottomBarListener)
-    }
-
-    composable(Screen.Notifications.route) {
-        NotificationsScreen(
-            openInternalRoute = { route ->
-                when (route) {
-                    Screen.Backup.route -> {
-                        navController.navigate(Screen.Backup.routeWithArgs(NavArg.TurnOnBackup to true))
-                    }
-
-                    else -> {
-                        navController.navigate(route)
-                    }
+        EditServiceScreen(
+            onBackClick = { navigator.back() },
+            onChangeBrandClick = { navigator.open(Screen.EditServiceChangeBrand(serviceId)) },
+            onChangeLabelClick = { navigator.open(Screen.EditServiceChangeLabel(serviceId)) },
+            onDomainAssignmentClick = { navigator.open(Screen.EditServiceDomainAssignment(serviceId)) },
+            onSecurityClick = { navigator.open(Screen.Security) },
+            onAuthenticateSecretClick = {
+                openAuth {
+                    viewModel.secretAuthenticated()
                 }
-            }
-        )
-    }
-
-    composable(Screen.EditService.route, listOf(NavArg.ServiceId)) {
-        EditServiceScreenRoute(
-            navController = navController,
-            openSecurity = { navController.navigate(Screen.Security.route) },
-            openAuth = openEditServiceAuth,
+            },
+            onAuthenticateQrCodeClick = {
+                openAuth {
+                    viewModel.qrAuthenticated()
+                }
+            },
+            viewModel = viewModel,
         )
     }
 }
 
-interface HomeNavigationListener {
-    fun openService(activity: Activity, serviceId: Long)
-    fun openExternalImport()
-    fun openBrowserExt()
-    fun openSecurity(activity: Activity)
-    fun openBackup(turnOnBackup: Boolean)
-    fun openAppSettings()
-    fun openTrash()
-    fun openNotifications()
-    fun openAbout()
-    fun openAddServiceModal()
-    fun openFocusServiceModal(id: Long)
-    fun openBackupImport(filePath: String?)
+@Composable
+fun EditServiceDomainAssignmentRoute(
+    serviceId: Long,
+) {
+    ProvidesViewModelStoreOwner(ownerKey = editServiceOwnerKey(serviceId)) {
+        DomainAssignmentScreen(
+            viewModel = koinViewModel { parametersOf(serviceId) },
+        )
+    }
+}
+
+@Composable
+fun EditServiceChangeBrandRoute(
+    serviceId: Long,
+    navigator: Navigator = koinInject(),
+) {
+    ProvidesViewModelStoreOwner(ownerKey = editServiceOwnerKey(serviceId)) {
+        ChangeBrandScreen(
+            close = { navigator.back() },
+            onRequestIconClick = { navigator.open(Screen.EditServiceRequestIcon) },
+            viewModel = koinViewModel { parametersOf(serviceId) },
+        )
+    }
+}
+
+@Composable
+fun EditServiceChangeLabelRoute(
+    serviceId: Long,
+) {
+    ProvidesViewModelStoreOwner(ownerKey = editServiceOwnerKey(serviceId)) {
+        ChangeLabelScreen(
+            viewModel = koinViewModel { parametersOf(serviceId) },
+        )
+    }
+}
+
+@Composable
+fun EditServiceRequestIconRoute() {
+    RequestIconScreen()
 }

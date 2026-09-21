@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Mon, 09 Mar 2026 14:54:07 -0700
+ Exported at: Mon, 21 Sep 2026 10:21:34 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -819,7 +819,7 @@
     <string name="commons__pair">Пара</string>
     <string name="introduction__backup_icloud_title">Безпечна синхронізація та резервне копіювання</string>
     <!-- "**...**" means thar part between those asterisks will be in bold. -->
-    <string name="introduction__backup_icloud_description">2FAS використовує iCloud для безпечного резервного копіювання та синхронізації ваших 2FA токенів. *Зашифровані* дані резервної копії зберігаються в iCloud, доступні *тільки за допомогою додатку 2FAS*. Крім того, ця функція допомагає *відновлювати та синхронізувати* токени на пристроях iOS.\\n\\nЇЇ увімкнено за умовчанням і можна будь-коли вимкнути в налаштуваннях резервного копіювання додатку.</string>
+    <string name="introduction__backup_icloud_description">2FAS використовує iCloud для безпечного резервного копіювання та синхронізації ваших 2FA токенів. Зашифровані дані резервної копії зберігаються в iCloud, доступні тільки за допомогою додатку 2FAS. Крім того, ця функція допомагає відновлювати та синхронізувати токени на пристроях iOS.</string>
     <string name="introduction__backup_icloud_cta">Дізнайтеся більше про резервне копіювання</string>
     <string name="backup__enter_password_google_drive_msg1">Схоже, ваш файл резервної копії Google Drive захищено паролем. Щоб продовжити, введіть правильний пароль. Якщо ви хочете стерти файл резервної копії Google Диска,</string>
     <string name="backup__enter_password_google_drive_msg2">натисніть тут, щоб побачити як</string>
@@ -979,4 +979,71 @@
     <string name="pass_promo_banner_negative_cta">Більше не показувати</string>
     <string name="appearance_dynamic_colors">Динамічні кольори</string>
     <string name="appearance_dynamic_colors_description">Динамічно змінюйте кольори застосунку на основі ваших шпалер.</string>
+    <string name="backup__section_note">ПРИМІТКА: iCloud Sync зберігає ключі шифрування в iCloud Keychain. Якщо iCloud Keychain вимкнено, будь ласка, експортуйте ключі вручну з розділу Керування резервною копією. Без цього відновлення даних або синхронізація з іншими пристроями буде неможливим.</string>
+    <string name="backup__keys_import_warning">Імпорт ключів перезапише ваші поточні ключі шифрування. Продовжити?</string>
+    <string name="backup__key_import_system_key">Системний ключ</string>
+    <string name="backup__keys_import_error">Не вдалося імпортувати ключі.</string>
+    <string name="watch__intro_step1">Дотримуйтесь цих інструкцій, щоб спарити застосунок годинника.</string>
+    <string name="watch__intro_step2">Перейдіть до налаштувань «Резервне копіювання 2FAS.» у застосунку 2FAS Auth на вашому iPhone.</string>
+    <string name="watch__intro_step3">Переконайтеся, що резервне копіювання iCloud синхронізовано та iCloud Keychain увімкнено в системних налаштуваннях iOS.</string>
+    <string name="watch__intro_step4">Виберіть «Керувати спареними Apple Watch».</string>
+    <string name="watch__intro_step5">Натисніть «+» і відскануйте QR-код на наступній сторінці.</string>
+    <string name="watch__intro_step6">Тепер ви можете закрити це вікно. Синхронізація може зайняти деякий час.</string>
+    <string name="tokens__empty_screen_in_trash">У вашому Кошику **%d** сервісів.</string>
+    <string name="commons__go_to_trash">Перейти до Кошика</string>
+    <string name="backup__moved_to_trash_title">Результат синхронізації iCloud</string>
+    <string name="backup__moved_to_trash_message">Остання синхронізація iCloud перемістила всі ваші сервіси до Кошика. Ви можете відновити їх у будь-який час.</string>
+    <string name="commons__understood">Зрозуміло</string>
+    <string name="introduction__backup_icloud_description_note">Цю функцію ввімкнено за замовчуванням, і її можна будь-коли вимкнути в налаштуваннях резервного копіювання програми.</string>
+    <string name="introduction__call_1">Ласкаво просимо до</string>
+    <string name="introduction__call_2">2FAS Auth</string>
+    <string name="restore__reset__title">Відновлення програми</string>
+    <string name="login__hello_header">Знову привіт!</string>
+    <string name="login__hello_header_1">Привіт!</string>
+    <string name="login__hello_header_2">Ласкаво просимо назад!</string>
+    <string name="login__hello_header_3">Радий знову тебе бачити!</string>
+    <string name="login__hello_header_4">Привіт!</string>
+    <string name="tokens__empty_list_title">Додати перший сервіс</string>
+    <string name="guides__request_service">Запит</string>
+    <string name="guides__step_number">Крок %d</string>
+    <string name="about__generate_logs">Створити журнали</string>
+    <string name="about__generate_logs_alert_title">Створити журнали?</string>
+    <string name="about__generate_logs_alert_message">Бажаєте створити журнали?</string>
+    <string name="about__generate_logs_alert_action">Створити</string>
+    <string name="introduction__backup_header">Резервна копія</string>
+    <string name="home__app_review_title">Подобається 2FAS Auth?</string>
+    <string name="home__app_review_msg">Якщо програма була корисною для вас, приділіть хвилину, щоб оцінити її. Це дуже допомагає нам!</string>
+    <string name="home__app_review_rate">Оцінити</string>
+    <string name="home__app_review_dismiss">Не зараз</string>
+    <string name="settings__backup_and_transfer">Резервне копіювання та перенесення</string>
+    <string name="settings__browser_extension_header">Розширення браузера</string>
+    <string name="settings__more">Більше</string>
+    <string name="settings__removed_items">Видалені токени</string>
+    <string name="settings__connected_extensions">Підключені розширення</string>
+    <string name="settings__security_description">Керуйте налаштуваннями безпеки та конфіденційності програми.</string>
+    <string name="settings__appearance_description">Налаштовуйте вигляд і функції програми.</string>
+    <string name="settings__removed_items_description">Відновлюйте або назавжди видаляйте токени, які ви видалили з програми.</string>
+    <string name="settings__backup_description">Створюйте резервні копії токенів і синхронізуйте їх між пристроями.</string>
+    <string name="settings__import_tokens_description">Імпортувати токени з інших програм.</string>
+    <string name="settings__connected_extensions_description">Керування підключеними розширеннями браузера.</string>
+    <string name="settings__about_description">Інформація про програму, версія та ліцензії.</string>
+    <string name="settings__support_description">Підтримка 2FAS</string>
+    <string name="settings__donate_description">Підтримати розвиток 2FAS.</string>
+    <string name="shortcuts__backup_title">НЕ ВИДАЛЯЙТЕ МЕНЕ без повної резервної копії</string>
+    <string name="shortcuts__support_title">Підтримка</string>
+    <string name="shortcuts__pair_title">З’єднати сервіс</string>
+    <string name="shortcuts__search_title">Пошук сервісу</string>
+    <string name="tokens__empty_screen_trashed_title">Шукаєте свої сервіси?</string>
+    <string name="settings__trash_selected">Вибрано: %d</string>
+    <string name="tokens__delete_service_msg">Ви впевнені, що хочете видалити цей сервіс?</string>
+    <string name="tokens__delete_selected_msg">Ви впевнені, що хочете видалити вибрані сервіси (%d)?</string>
+    <string name="settings__list_style_option_large">Великий</string>
+    <string name="commons__select">Вибрати</string>
+    <string name="commons__clear">Очистити</string>
+    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="externalimport_proton">Proton Authenticator</string>
+    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
 </resources>

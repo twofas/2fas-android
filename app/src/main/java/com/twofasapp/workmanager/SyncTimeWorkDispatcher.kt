@@ -1,5 +1,5 @@
 package com.twofasapp.workmanager
 
-interface SyncTimeWorkDispatcher{
+interface SyncTimeWorkDispatcher {
     fun dispatch()
 }

@@ -1,15 +1,9 @@
-<vector android:height="24dp" android:tint="#000000"
-    android:viewportHeight="24" android:viewportWidth="24"
-    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="@android:color/white" android:pathData="M3,11h8V3H3V11zM5,5h4v4H5V5z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M3,21h8v-8H3V21zM5,15h4v4H5V15z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M13,3v8h8V3H13zM19,9h-4V5h4V9z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M19,19h2v2h-2z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M13,13h2v2h-2z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M15,15h2v2h-2z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M13,17h2v2h-2z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M15,19h2v2h-2z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M17,17h2v2h-2z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M17,13h2v2h-2z"/>
-    <path android:fillColor="@android:color/white" android:pathData="M19,15h2v2h-2z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+  <path
+      android:pathData="M120,400v-240q0,-17 11.5,-28.5T160,120h240q17,0 28.5,11.5T440,160v240q0,17 -11.5,28.5T400,440L160,440q-17,0 -28.5,-11.5T120,400ZM200,360h160v-160L200,200v160ZM120,800v-240q0,-17 11.5,-28.5T160,520h240q17,0 28.5,11.5T440,560v240q0,17 -11.5,28.5T400,840L160,840q-17,0 -28.5,-11.5T120,800ZM200,760h160v-160L200,600v160ZM520,400v-240q0,-17 11.5,-28.5T560,120h240q17,0 28.5,11.5T840,160v240q0,17 -11.5,28.5T800,440L560,440q-17,0 -28.5,-11.5T520,400ZM600,360h160v-160L600,200v160ZM760,840v-80h80v80h-80ZM520,600v-80h80v80h-80ZM600,680v-80h80v80h-80ZM520,760v-80h80v80h-80ZM600,840v-80h80v80h-80ZM680,760v-80h80v80h-80ZM680,600v-80h80v80h-80ZM760,680v-80h80v80h-80Z"
+      android:fillColor="#e3e3e3"/>
 </vector>

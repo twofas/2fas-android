@@ -8,8 +8,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
-import com.twofasapp.designsystem.ktx.currentActivity
-import com.twofasapp.designsystem.ktx.toastLong
+import com.twofasapp.core.design.ktx.currentActivity
+import com.twofasapp.core.design.ktx.toastLong
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
@@ -73,7 +73,7 @@ fun BiometricDialog(
             authenticate(
                 biometricPrompt = biometricPrompt,
                 promptInfo = promptInfo,
-                secretKey = biometricKeyProvider.getSecretKey()
+                secretKey = biometricKeyProvider.getSecretKey(),
             )
         } catch (e: KeyPermanentlyInvalidatedException) {
             if (requireKeyValidation) {
@@ -84,7 +84,7 @@ fun BiometricDialog(
                 authenticate(
                     biometricPrompt = biometricPrompt,
                     promptInfo = promptInfo,
-                    secretKey = biometricKeyProvider.getSecretKey()
+                    secretKey = biometricKeyProvider.getSecretKey(),
                 )
             }
         } catch (e: Exception) {

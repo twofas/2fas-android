@@ -20,6 +20,5 @@ class CipherModule : KoinModule {
         singleOf(::BackupKeyGeneratorPbkdf) { bind<BackupKeyGenerator>() }
         singleOf(::BackupSaltGeneratorRandom) { bind<BackupSaltGenerator>() }
         singleOf(::BackupCipherImpl) { bind<BackupCipher>() }
-
     }
 }

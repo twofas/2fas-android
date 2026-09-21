@@ -17,46 +17,52 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.twofasapp.common.ktx.encodeBase64ToString
-import com.twofasapp.designsystem.common.RequestPermission
-import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.designsystem.screen.CommonContent
+import com.twofasapp.android.navigation.Navigator
+import com.twofasapp.android.navigation.Screen
+import com.twofasapp.common.ktx.encodeBase64
+import com.twofasapp.core.design.foundation.preview.PreviewTheme
+import com.twofasapp.core.design.foundation.screen.CommonContent
+import com.twofasapp.core.design.foundation.topbar.TopAppBar
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.image
-import com.twofasapp.locale.TwLocale
+import com.twofasapp.feature.permissions.RequestPermission
+import com.twofasapp.locale.MdtLocale
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun ExternalImportScreen(
-    viewModel: ExternalImportViewModel = koinViewModel(),
-    openScanner: () -> Unit,
-    openResult: (String) -> Unit,
+    importType: ImportType,
+    viewModel: ExternalImportViewModel = koinViewModel { parametersOf(importType) },
+    navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    Content(
         uiState = uiState,
-        onScanClick = openScanner,
-        onFilePicked = openResult,
+        onScanClick = { navigator.open(Screen.ExternalImportScan(importType = importType.name)) },
+        onFilePicked = { encodedFileUri ->
+            navigator.open(Screen.ExternalImportResult(importType = importType.name, importFileUri = encodedFileUri))
+        },
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun Content(
     uiState: ExternalImportUiState,
     onScanClick: () -> Unit = {},
     onFilePicked: (String) -> Unit = {},
 ) {
-    val strings = TwLocale.strings
+    val strings = MdtLocale.strings
     var askForCameraPermission by remember { mutableStateOf(false) }
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        uri?.let { onFilePicked(it.toString().encodeBase64ToString()) }
+        uri?.let { onFilePicked(it.toString().encodeBase64()) }
     }
     val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
-        onResult = { uri -> uri?.let { onFilePicked(it.toString()) } }
+        onResult = { uri -> uri?.let { onFilePicked(it.toString()) } },
     )
-
 
     val title = when (uiState.importType) {
         ImportType.GoogleAuthenticator -> strings.externalImportGoogleAuthenticator
@@ -91,7 +97,7 @@ private fun ScreenContent(
     }
 
     Scaffold(
-        topBar = { TwTopAppBar(title) }
+        topBar = { TopAppBar(title) },
     ) { padding ->
         CommonContent(
             modifier = Modifier
@@ -116,13 +122,13 @@ private fun ScreenContent(
                 when (uiState.importType) {
                     ImportType.GoogleAuthenticator -> {
                         galleryLauncher.launch(
-                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly),
                         )
                     }
 
                     else -> Unit
                 }
-            }
+            },
         )
     }
 
@@ -143,11 +149,15 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun PreviewGa() {
-    ScreenContent(uiState = ExternalImportUiState())
+    PreviewTheme {
+        Content(uiState = ExternalImportUiState())
+    }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    ScreenContent(uiState = ExternalImportUiState(importType = ImportType.AuthenticatorPro))
+    PreviewTheme {
+        Content(uiState = ExternalImportUiState(importType = ImportType.AuthenticatorPro))
+    }
 }

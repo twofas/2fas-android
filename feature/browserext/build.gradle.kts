@@ -1,9 +1,9 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.twofasAndroidLibrary)
     alias(libs.plugins.twofasCompose)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.kotlinParcelize)
+    alias(libs.plugins.twofasLint)
 }
 
 android {
@@ -12,7 +12,6 @@ android {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":prefs"))
     implementation(project(":core:common"))
     implementation(project(":core:android"))
     implementation(project(":core:locale"))
@@ -23,10 +22,10 @@ dependencies {
     implementation(project(":data:services"))
 
     implementation(project(":feature:qrscan"))
+    implementation(project(":feature:permissions"))
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)
-    implementation(libs.bundles.accompanist)
     implementation(libs.kotlinSerialization)
     implementation(libs.lottie)
     implementation(libs.workManager)

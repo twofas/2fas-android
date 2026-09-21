@@ -28,7 +28,7 @@ internal fun Project.applySigningConfigs(
                 keyAlias = localConfig.getProperty("releaseUpload.keyAlias")
                 keyPassword = localConfig.getProperty("releaseUpload.keyPassword")
             }
-            create("releaseLocal") {
+            create("internal") {
                 storeFile = file("../config/release_signing.jks")
                 storePassword = localConfig.getProperty("release.storePassword")
                 keyAlias = localConfig.getProperty("release.keyAlias")

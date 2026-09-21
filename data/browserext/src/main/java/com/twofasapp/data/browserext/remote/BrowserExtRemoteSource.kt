@@ -55,7 +55,7 @@ internal class BrowserExtRemoteSource(
                 id = browserResponse.id,
                 name = browserResponse.name,
                 pairedAt = Instant.parse(browserResponse.paired_at),
-                extensionPublicKey = pairResponse.extension_public_key
+                extensionPublicKey = pairResponse.extension_public_key,
             )
         } catch (e: Exception) {
             throw when {
@@ -72,11 +72,11 @@ internal class BrowserExtRemoteSource(
     }
 
     suspend fun deletePairedBrowser(deviceId: String, extensionId: String) {
-        return client.delete("/mobile/devices/$deviceId/browser_extensions/${extensionId}").body()
+        return client.delete("/mobile/devices/$deviceId/browser_extensions/$extensionId").body()
     }
 
     suspend fun getBrowser(deviceId: String, extensionId: String): BrowserJson {
-        return client.get("/mobile/devices/$deviceId/browser_extensions/${extensionId}").body()
+        return client.get("/mobile/devices/$deviceId/browser_extensions/$extensionId").body()
     }
 
     suspend fun getBrowsers(deviceId: String): List<BrowserJson> {
@@ -96,5 +96,4 @@ internal class BrowserExtRemoteSource(
         return client.get("/mobile/devices/$deviceId/browser_extensions/2fa_requests").body<List<TokenRequestJson>>()
             .filter { it.status.equals("pending", true) }
     }
-
 }

@@ -32,7 +32,6 @@ internal class RaivoImporter(
 
     override fun read(content: String): ExternalImport {
         try {
-
             val fileUri = Uri.parse(content)
             val fileDescriptor = context.contentResolver.openAssetFileDescriptor(fileUri, "r")
             val size = fileDescriptor?.length ?: 0
@@ -58,7 +57,7 @@ internal class RaivoImporter(
                 .filter {
                     it.algorithm.equals("SHA1", true) || it.algorithm.equals("SHA224", true) || it.algorithm.equals(
                         "SHA256",
-                        true
+                        true,
                     ) || it.algorithm.equals("SHA384", true) || it.algorithm.equals("SHA512", true)
                 }
                 .forEach { entry ->

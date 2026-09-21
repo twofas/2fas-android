@@ -1,10 +1,10 @@
 package com.twofasapp.migration
 
+import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.otp.ServiceParser
 import com.twofasapp.parsers.ServiceIcons
-import com.twofasapp.common.domain.OtpAuthLink
 
 class MigrateUnknownServices(
     private val servicesRepository: ServicesRepository,
@@ -12,9 +12,9 @@ class MigrateUnknownServices(
 
     suspend fun invoke() {
         val servicesToMigrate = servicesRepository.getServices().filter { service ->
-            service.serviceTypeId.isNullOrEmpty()
-                    && service.iconCollectionId == ServiceIcons.defaultCollectionId
-                    && service.imageType == Service.ImageType.IconCollection
+            service.serviceTypeId.isNullOrEmpty() &&
+                service.iconCollectionId == ServiceIcons.defaultCollectionId &&
+                service.imageType == Service.ImageType.IconCollection
         }
 
         val servicesMigrated = servicesToMigrate.map { migrateService(it) }

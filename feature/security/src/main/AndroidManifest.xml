@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.twofasapp.feature.security">
 
-    <uses-permission android:name="android.permission.VIBRATE" />
-
     <application>
         <activity
             android:name=".ui.lock.LockActivity"

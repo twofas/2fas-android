@@ -23,5 +23,4 @@ class NotificationChannelProvider(private val notificationManager: NotificationM
 
         return channelId
     }
-
 }

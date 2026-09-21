@@ -5,7 +5,7 @@ import androidx.glance.GlanceId
 import androidx.glance.action.ActionParameters
 import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.action.ActionCallback
-import com.twofasapp.designsystem.ktx.copyToClipboard
+import com.twofasapp.core.design.ktx.copyToClipboard
 
 internal class CopyToClipboardAction : ActionCallback {
     companion object {
@@ -19,7 +19,7 @@ internal class CopyToClipboardAction : ActionCallback {
     override suspend fun onAction(
         context: Context,
         glanceId: GlanceId,
-        parameters: ActionParameters
+        parameters: ActionParameters,
     ) {
         context.copyToClipboard(
             text = parameters[paramCode].orEmpty(),
