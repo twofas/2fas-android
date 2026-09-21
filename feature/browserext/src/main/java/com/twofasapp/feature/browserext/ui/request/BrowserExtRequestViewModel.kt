@@ -28,6 +28,8 @@ internal class BrowserExtRequestViewModel(
                         if (query.isNotEmpty()) {
                             it.name.contains(query.trim(), ignoreCase = true) ||
                                     it.tags.map { tag -> tag.lowercase() }.contains(query.lowercase())
+                                    it.issuer?.contains(query.trim(), ignoreCase = true) ?: false ||
+                                    it.info?.contains(query.trim(), ignoreCase = true) ?: false ||
                         } else {
                             true
                         }
