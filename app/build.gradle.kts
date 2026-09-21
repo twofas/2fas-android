@@ -14,8 +14,8 @@ android {
 
     defaultConfig {
         applicationId = "com.twofasapp"
-        versionName = "5.6.0"
-        versionCode = 5000035
+        versionName = "6.0.0"
+        versionCode = 5000036
     }
 
     ksp {
