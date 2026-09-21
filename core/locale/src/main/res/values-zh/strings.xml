@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hans, Simplified Chinese
  Exported by: rafakob
- Exported at: Tue, 15 Sep 2026 12:15:02 -0700
+ Exported at: Mon, 21 Sep 2026 10:21:35 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -982,47 +982,56 @@
     <string name="backup__moved_to_trash_title">iCloud 同步结果</string>
     <string name="backup__moved_to_trash_message">上一次 iCloud 同步已将你的所有服务移至废纸篓。你可以随时恢复它们。</string>
     <string name="commons__understood">明白了</string>
-    <string name="introduction__backup_icloud_description_note">It is enabled by default and can be disabled at any time in the app\'s backup settings.</string>
-    <string name="introduction__call_1">Welcome to</string>
+    <string name="introduction__backup_icloud_description_note">默认启用，可随时在应用的备份设置中禁用。</string>
+    <string name="introduction__call_1">欢迎使用</string>
     <string name="introduction__call_2">2FAS Auth</string>
     <string name="restore__reset__title">恢复应用程序</string>
-    <string name="login__hello_header">Hello again!</string>
-    <string name="login__hello_header_1">Hello there!</string>
-    <string name="login__hello_header_2">Welcome back!</string>
-    <string name="login__hello_header_3">Good to see you again!</string>
-    <string name="login__hello_header_4">Hi!</string>
-    <string name="tokens__empty_list_title">Add first service</string>
-    <string name="guides__request_service">Request</string>
-    <string name="guides__step_number">Step %d</string>
-    <string name="about__generate_logs">Generate logs</string>
-    <string name="about__generate_logs_alert_title">Generate logs?</string>
-    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
-    <string name="about__generate_logs_alert_action">Generate</string>
-    <string name="introduction__backup_header">Backup</string>
-    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
-    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
-    <string name="home__app_review_rate">Rate</string>
-    <string name="home__app_review_dismiss">Not now</string>
-    <string name="settings__backup_and_transfer">Backup and Transfer</string>
-    <string name="settings__browser_extension_header">Browser Extension</string>
-    <string name="settings__more">More</string>
-    <string name="settings__removed_items">Removed Tokens</string>
-    <string name="settings__connected_extensions">Connected Extensions</string>
-    <string name="settings__security_description">Control your app security and privacy settings.</string>
-    <string name="settings__appearance_description">Tailor the app\'s appearance and features.</string>
-    <string name="settings__removed_items_description">Recover or permanently delete Tokens you\'ve removed from the app.</string>
-    <string name="settings__backup_description">Back up and sync your Tokens across devices.</string>
-    <string name="settings__import_tokens_description">Import Tokens from other apps.</string>
-    <string name="settings__connected_extensions_description">Manage connected browser extensions.</string>
-    <string name="settings__about_description">App info, version and licenses.</string>
-    <string name="settings__support_description">2FAS Support</string>
-    <string name="settings__donate_description">Support the development of 2FAS.</string>
-    <string name="shortcuts__backup_title">DON\'T DELETE ME without full backup</string>
-    <string name="shortcuts__support_title">Support</string>
-    <string name="shortcuts__pair_title">Pair service</string>
-    <string name="shortcuts__search_title">Search for service</string>
-    <string name="tokens__empty_screen_trashed_title">Looking for your services?</string>
-    <string name="settings__trash_selected">%d selected</string>
-    <string name="tokens__delete_service_msg">Are you sure you want to delete this service?</string>
-    <string name="tokens__delete_selected_msg">Are you sure you want to delete %d selected services?</string>
+    <string name="login__hello_header">欢迎回来！</string>
+    <string name="login__hello_header_1">你好！</string>
+    <string name="login__hello_header_2">欢迎回来！</string>
+    <string name="login__hello_header_3">很高兴再次见到你！</string>
+    <string name="login__hello_header_4">你好！</string>
+    <string name="tokens__empty_list_title">添加第一个服务</string>
+    <string name="guides__request_service">请求</string>
+    <string name="guides__step_number">步骤 %d</string>
+    <string name="about__generate_logs">生成日志</string>
+    <string name="about__generate_logs_alert_title">生成日志？</string>
+    <string name="about__generate_logs_alert_message">要生成日志吗？</string>
+    <string name="about__generate_logs_alert_action">生成</string>
+    <string name="introduction__backup_header">备份</string>
+    <string name="home__app_review_title">喜欢 2FAS Auth 吗？</string>
+    <string name="home__app_review_msg">如果这款应用对你有所帮助，请花一点时间为它评分。这对我们帮助很大！</string>
+    <string name="home__app_review_rate">评分</string>
+    <string name="home__app_review_dismiss">暂时不要</string>
+    <string name="settings__backup_and_transfer">备份和传输</string>
+    <string name="settings__browser_extension_header">浏览器扩展</string>
+    <string name="settings__more">更多</string>
+    <string name="settings__removed_items">已删除的令牌</string>
+    <string name="settings__connected_extensions">已连接的扩展</string>
+    <string name="settings__security_description">管理应用的安全和隐私设置。</string>
+    <string name="settings__appearance_description">自定义应用的外观和功能。</string>
+    <string name="settings__removed_items_description">恢复从应用中删除的令牌，或将其永久删除。</string>
+    <string name="settings__backup_description">备份令牌，并在设备之间同步。</string>
+    <string name="settings__import_tokens_description">从其他应用导入令牌。</string>
+    <string name="settings__connected_extensions_description">管理已连接的浏览器扩展。</string>
+    <string name="settings__about_description">应用信息、版本和许可证。</string>
+    <string name="settings__support_description">2FAS 支持</string>
+    <string name="settings__donate_description">支持 2FAS 的开发。</string>
+    <string name="shortcuts__backup_title">没有完整备份前请勿删除我</string>
+    <string name="shortcuts__support_title">支持</string>
+    <string name="shortcuts__pair_title">配对服务</string>
+    <string name="shortcuts__search_title">搜索服务</string>
+    <string name="tokens__empty_screen_trashed_title">在寻找你的服务吗？</string>
+    <string name="settings__trash_selected">已选择 %d 个</string>
+    <string name="tokens__delete_service_msg">确定要删除此服务吗？</string>
+    <string name="tokens__delete_selected_msg">确定要删除选中的 %d 个服务吗？</string>
+    <string name="settings__list_style_option_large">大</string>
+    <string name="commons__select">选择</string>
+    <string name="commons__clear">清除</string>
+    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="externalimport_proton">Proton Authenticator</string>
+    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
 </resources>

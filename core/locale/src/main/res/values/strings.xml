@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Tue, 15 Sep 2026 12:15:01 -0700
+ Exported at: Mon, 21 Sep 2026 10:21:34 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -727,7 +727,6 @@
     <string name="settings__list_style">List style</string>
     <string name="backup__reminder_msg">Google Drive not synced.</string>
     <string name="backup__reminder_cta">Go to backup settings</string>
-    <string name="settings__list_style_option_large">Large</string>
     <string name="settings__list_style_option_default">Default</string>
     <string name="settings__list_style_option_compact">Compact</string>
     <string name="externalimport_lastpass">LastPass</string>
@@ -1032,4 +1031,13 @@
     <string name="settings__trash_selected">%d selected</string>
     <string name="tokens__delete_service_msg">Are you sure you want to delete this service?</string>
     <string name="tokens__delete_selected_msg">Are you sure you want to delete %d selected services?</string>
+    <string name="settings__list_style_option_large">Large</string>
+    <string name="commons__select">Select</string>
+    <string name="commons__clear">Clear</string>
+    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="externalimport_proton">Proton Authenticator</string>
+    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
 </resources>

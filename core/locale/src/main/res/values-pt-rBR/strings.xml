@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Tue, 15 Sep 2026 12:15:01 -0700
+ Exported at: Mon, 21 Sep 2026 10:21:34 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -990,7 +990,7 @@
     <string name="commons__understood">Entendido</string>
     <string name="introduction__backup_icloud_description_note">Está ativado por padrão e pode ser desativado a qualquer momento nas configurações de backup do aplicativo.</string>
     <string name="introduction__call_1">Saiba apenas que você é</string>
-    <string name="introduction__call_2">Incrível!\n</string>
+    <string name="introduction__call_2">2FAS Auth</string>
     <string name="restore__reset__title">Restaurando o aplicativo</string>
     <string name="login__hello_header">Olá novamente!</string>
     <string name="login__hello_header_1">Olá!</string>
@@ -998,37 +998,46 @@
     <string name="login__hello_header_3">Que bom te ver de novo!</string>
     <string name="login__hello_header_4">Olá</string>
     <string name="tokens__empty_list_title">Add service first.\u0020</string>
-    <string name="guides__request_service">Request</string>
-    <string name="guides__step_number">Step %d</string>
-    <string name="about__generate_logs">Generate logs</string>
-    <string name="about__generate_logs_alert_title">Generate logs?</string>
-    <string name="about__generate_logs_alert_message">Do you want to generate logs? It can take some time.</string>
-    <string name="about__generate_logs_alert_action">Generate</string>
+    <string name="guides__request_service">Solicitação</string>
+    <string name="guides__step_number">Etapa %d</string>
+    <string name="about__generate_logs">Gerar logs</string>
+    <string name="about__generate_logs_alert_title">Gerar logs?</string>
+    <string name="about__generate_logs_alert_message">Deseja gerar os logs?</string>
+    <string name="about__generate_logs_alert_action">Gerar</string>
     <string name="introduction__backup_header">Backup</string>
-    <string name="home__app_review_title">Enjoying 2FAS Auth?</string>
-    <string name="home__app_review_msg">If the app has been useful to you, please take a moment to rate it. It really helps us out!</string>
-    <string name="home__app_review_rate">Rate</string>
-    <string name="home__app_review_dismiss">Not now</string>
-    <string name="settings__backup_and_transfer">Backup and Transfer</string>
-    <string name="settings__browser_extension_header">Browser Extension</string>
-    <string name="settings__more">More</string>
-    <string name="settings__removed_items">Removed Tokens</string>
-    <string name="settings__connected_extensions">Connected Extensions</string>
-    <string name="settings__security_description">Control your app security and privacy settings.</string>
-    <string name="settings__appearance_description">Tailor the app\'s appearance and features.</string>
-    <string name="settings__removed_items_description">Recover or permanently delete Tokens you\'ve removed from the app.</string>
-    <string name="settings__backup_description">Back up and sync your Tokens across devices.</string>
-    <string name="settings__import_tokens_description">Import Tokens from other apps.</string>
-    <string name="settings__connected_extensions_description">Manage connected browser extensions.</string>
-    <string name="settings__about_description">App info, version and licenses.</string>
-    <string name="settings__support_description">2FAS Support</string>
-    <string name="settings__donate_description">Support the development of 2FAS.</string>
-    <string name="shortcuts__backup_title">DON\'T DELETE ME without full backup</string>
-    <string name="shortcuts__support_title">Support</string>
-    <string name="shortcuts__pair_title">Pair service</string>
-    <string name="shortcuts__search_title">Search for service</string>
-    <string name="tokens__empty_screen_trashed_title">Looking for your services?</string>
-    <string name="settings__trash_selected">%d selected</string>
-    <string name="tokens__delete_service_msg">Are you sure you want to delete this service?</string>
-    <string name="tokens__delete_selected_msg">Are you sure you want to delete %d selected services?</string>
+    <string name="home__app_review_title">Está gostando do 2FAS Auth?</string>
+    <string name="home__app_review_msg">Se o aplicativo foi útil para você, reserve um momento para avaliá-lo. Isso nos ajuda muito!</string>
+    <string name="home__app_review_rate">Avaliar</string>
+    <string name="home__app_review_dismiss">Agora não</string>
+    <string name="settings__backup_and_transfer">Backup e transferência</string>
+    <string name="settings__browser_extension_header">Extensão do navegador</string>
+    <string name="settings__more">Mais</string>
+    <string name="settings__removed_items">Tokens removidos</string>
+    <string name="settings__connected_extensions">Extensões conectadas</string>
+    <string name="settings__security_description">Gerencie as configurações de segurança e privacidade do aplicativo.</string>
+    <string name="settings__appearance_description">Personalize a aparência e os recursos do aplicativo.</string>
+    <string name="settings__removed_items_description">Recupere ou exclua permanentemente os tokens removidos do aplicativo.</string>
+    <string name="settings__backup_description">Faça backup e sincronize seus tokens entre dispositivos.</string>
+    <string name="settings__import_tokens_description">Importar tokens de outros aplicativos.</string>
+    <string name="settings__connected_extensions_description">Gerencie as extensões de navegador conectadas.</string>
+    <string name="settings__about_description">Informações do aplicativo, versão e licenças.</string>
+    <string name="settings__support_description">Suporte do 2FAS</string>
+    <string name="settings__donate_description">Apoie o desenvolvimento do 2FAS.</string>
+    <string name="shortcuts__backup_title">NÃO ME EXCLUA sem um backup completo</string>
+    <string name="shortcuts__support_title">Suporte</string>
+    <string name="shortcuts__pair_title">Vincular serviço</string>
+    <string name="shortcuts__search_title">Pesquisar serviço</string>
+    <string name="tokens__empty_screen_trashed_title">Procurando seus serviços?</string>
+    <string name="settings__trash_selected">%d selecionados</string>
+    <string name="tokens__delete_service_msg">Tem certeza de que deseja excluir este serviço?</string>
+    <string name="tokens__delete_selected_msg">Tem certeza de que deseja excluir os %d serviços selecionados?</string>
+    <string name="settings__list_style_option_large">Grande</string>
+    <string name="commons__select">Selecionar</string>
+    <string name="commons__clear">\u0020Limpar</string>
+    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="externalimport_proton">Proton Authenticator</string>
+    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
 </resources>

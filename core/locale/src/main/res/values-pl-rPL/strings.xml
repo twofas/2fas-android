@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Tue, 15 Sep 2026 12:15:01 -0700
+ Exported at: Mon, 21 Sep 2026 10:21:34 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1027,14 +1027,23 @@
     <string name="settings__import_tokens_description">Importuj tokeny z innych aplikacji</string>
     <string name="settings__connected_extensions_description">Zarządzaj połączonymi rozszerzeniami przeglądarki.</string>
     <string name="settings__about_description">Wersja, licencje i informacje o aplikacji.</string>
-    <string name="settings__support_description">Wsparcie 2FAS</string>
+    <string name="settings__support_description">Wsparcie techniczne 2FAS</string>
     <string name="settings__donate_description">Wesprzyj rozwój 2FAS</string>
     <string name="shortcuts__backup_title">Nie usuwaj bez kopii zapasowej</string>
     <string name="shortcuts__support_title">Wsparcie</string>
     <string name="shortcuts__pair_title">Sparuj serwis</string>
     <string name="shortcuts__search_title">Szukaj serwisu</string>
     <string name="tokens__empty_screen_trashed_title">Szukasz swoich serwisów?</string>
-    <string name="settings__trash_selected">%d selected</string>
-    <string name="tokens__delete_service_msg">Are you sure you want to delete this service?</string>
-    <string name="tokens__delete_selected_msg">Are you sure you want to delete %d selected services?</string>
+    <string name="settings__trash_selected">%d wybranych</string>
+    <string name="tokens__delete_service_msg">Na pewno chcesz usunąć ten serwis?</string>
+    <string name="tokens__delete_selected_msg">Na pewno chcesz usunąć %d wybranych serwisów?</string>
+    <string name="settings__list_style_option_large">Duży</string>
+    <string name="commons__select">Wybierz</string>
+    <string name="commons__clear">Wyczyść</string>
+    <string name="tokens__service_autodetected_title">Możliwy rodzaj serwisu: %s</string>
+    <string name="externalimport_proton">Proton Authenticator</string>
+    <string name="externalimport__info_proton_title">Importuj tokeny z Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Wyeksportuj swoje konta z Proton Authenticator do pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po udanym imporcie.</string>
+    <string name="externalimport__proton_success_msg">Ten plik JSON umożliwia import tokenów z Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Import tokenów 2FA z aplikacji Proton Authenticator</string>
 </resources>
