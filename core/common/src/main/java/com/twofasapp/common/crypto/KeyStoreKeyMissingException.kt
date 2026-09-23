@@ -8,4 +8,5 @@
 
 package com.twofasapp.common.crypto
 
-interface AndroidKeyStore
+class KeyStoreKeyMissingException(alias: String) :
+    IllegalStateException("Key \"$alias\" is missing from the system keystore")

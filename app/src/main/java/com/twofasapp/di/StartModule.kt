@@ -24,6 +24,6 @@ class StartModule : KoinModule {
         singleOf(::SyncTimeWorkDispatcherImpl) { bind<SyncTimeWorkDispatcher>() }
 
         singleOf(::MigrateUnknownServices)
-        single { MigrateDataStore(androidContext(), get(), get()) }
+        single { MigrateDataStore(androidContext(), get()) }
     }
 }

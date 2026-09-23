@@ -10,10 +10,9 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import com.twofasapp.common.crypto.AndroidKeyStore
-import com.twofasapp.common.crypto.encrypt
-import com.twofasapp.common.ktx.encodeBase64
 import com.twofasapp.common.storage.DataStoreOwner
+import com.twofasapp.common.storage.KeyType
+import com.twofasapp.common.storage.PrefNullable
 import com.twofasapp.data.session.domain.ServicesStyle
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -27,7 +26,6 @@ import javax.crypto.CipherInputStream
 class MigrateDataStore(
     private val context: Context,
     private val dataStoreOwner: DataStoreOwner,
-    private val androidKeyStore: AndroidKeyStore,
 ) {
     suspend fun invoke() {
         if (isMigrated()) return
@@ -70,19 +68,6 @@ class MigrateDataStore(
                     }
 
                     "servicesSort" -> preferences[stringPreferencesKey("servicesSort")] = value as String
-                    "lockStatus" -> {
-                        val lockMethod = when (value as String) {
-                            "NO_LOCK" -> "NoLock"
-                            "PIN_LOCK", "PIN_SECURED" -> "Pin"
-                            "FINGERPRINT_LOCK", "FINGERPRINT_WITH_PIN_SECURED" -> "Biometrics"
-                            else -> "NoLock"
-                        }
-
-                        preferences[stringPreferencesKey("lockMethod")] = encryptValue(lockMethod)
-                    }
-
-                    "mobileDevice" -> preferences[stringPreferencesKey("mobileDevice")] = encryptValue(value as String)
-                    "remoteBackupStatus" -> preferences[stringPreferencesKey("remoteBackupStatus")] = encryptValue(value as String)
 
                     "periodicNotificationCounter" -> preferences[intPreferencesKey("periodicNotificationCounter")] = value as Int
                     "periodicNotificationTimestamp" -> preferences[longPreferencesKey("periodicNotificationTimestamp")] = value as Long
@@ -110,6 +95,21 @@ class MigrateDataStore(
                 preferences[stringPreferencesKey("servicesStyle")] = ServicesStyle.Large.name
             }
         }
+
+        // Encrypted values go through BasePref, which runs its own transaction, so they are written after the edit.
+        (entries["lockStatus"] as? String)?.let { lockStatus ->
+            val lockMethod = when (lockStatus) {
+                "NO_LOCK" -> "NoLock"
+                "PIN_LOCK", "PIN_SECURED" -> "Pin"
+                "FINGERPRINT_LOCK", "FINGERPRINT_WITH_PIN_SECURED" -> "Biometrics"
+                else -> "NoLock"
+            }
+
+            writeEncrypted("lockMethod", lockMethod)
+        }
+
+        (entries["mobileDevice"] as? String)?.let { writeEncrypted("mobileDevice", it) }
+        (entries["remoteBackupStatus"] as? String)?.let { writeEncrypted("remoteBackupStatus", it) }
     }
 
     private suspend fun migrateEncrypted() {
@@ -145,9 +145,7 @@ class MigrateDataStore(
     private suspend fun migrateEncryptedKey(source: SharedPreferences, key: String) {
         val value = source.getString(key, null) ?: return
 
-        dataStoreOwner.dataStore.edit { preferences ->
-            preferences[stringPreferencesKey(key)] = encryptValue(value)
-        }
+        writeEncrypted(key, value)
     }
 
     private suspend fun migrateSecureStorage() {
@@ -166,16 +164,16 @@ class MigrateDataStore(
 
         val value = decryptSecureStorageValue(storedValue)
 
-        dataStoreOwner.dataStore.edit { preferences ->
-            preferences[stringPreferencesKey(key)] = encryptValue(value)
-        }
+        writeEncrypted(key, value)
     }
 
-    private fun encryptValue(value: String): String {
-        return encrypt(
-            key = androidKeyStore.dataStoreKey,
-            data = value.toByteArray(),
-        ).encodeBase64()
+    private suspend fun writeEncrypted(key: String, value: String) {
+        PrefNullable<String>(
+            owner = dataStoreOwner,
+            keyName = key,
+            keyType = KeyType.String,
+            encrypted = true,
+        ).set(value)
     }
 
     private fun decryptSecureStorageValue(encryptedMessage: String): String {

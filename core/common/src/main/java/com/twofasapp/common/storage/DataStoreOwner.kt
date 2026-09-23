@@ -10,11 +10,9 @@ package com.twofasapp.common.storage
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.twofasapp.common.crypto.AndroidKeyStore
 import kotlinx.serialization.json.Json
 
 interface DataStoreOwner {
     val dataStore: DataStore<Preferences>
-    val androidKeyStore: AndroidKeyStore
     val json: Json
 }

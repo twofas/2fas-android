@@ -23,6 +23,7 @@ import com.twofasapp.common.ktx.decodeBase64
 import com.twofasapp.common.ktx.decodeString
 import com.twofasapp.common.ktx.encodeBase64
 import com.twofasapp.common.logger.Flog
+import com.twofasapp.common.storage.internal.DataStoreKeyStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -55,7 +56,7 @@ abstract class BasePref<PrefType, ValueType>(
                     ?.decodeBase64()
                     ?.let {
                         decrypt(
-                            key = owner.androidKeyStore.dataStoreKey,
+                            key = DataStoreKeyStore.key,
                             data = EncryptedBytes(it),
                         ).decodeString()
                     }
@@ -91,9 +92,17 @@ abstract class BasePref<PrefType, ValueType>(
             }
 
             if (encrypted) {
+                val key = if (preferences[DataStoreKeyCreated] == true) {
+                    DataStoreKeyStore.key
+                } else {
+                    DataStoreKeyStore.getOrCreateKey().also {
+                        preferences[DataStoreKeyCreated] = true
+                    }
+                }
+
                 preferences[stringPreferencesKey(keyName)] =
                     encrypt(
-                        key = owner.androidKeyStore.dataStoreKey,
+                        key = key,
                         data = value.toString().toByteArray(),
                     ).encodeBase64().also {
                         Flog.tag(Tag).d("[SET] $keyName = $value (encrypted = $it)")
@@ -126,5 +135,9 @@ abstract class BasePref<PrefType, ValueType>(
             KeyType.Boolean -> booleanPreferencesKey(keyName)
             KeyType.String -> stringPreferencesKey(keyName)
         }
+    }
+
+    private companion object {
+        val DataStoreKeyCreated = booleanPreferencesKey("dataStoreKeyCreated")
     }
 }
