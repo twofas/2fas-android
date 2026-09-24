@@ -82,6 +82,7 @@ class StartActivity : AppCompatActivity(), AuthAware {
         startActivity(
             Intent(this, MainActivity::class.java).apply {
                 data = intent.data
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             },
         )
 
