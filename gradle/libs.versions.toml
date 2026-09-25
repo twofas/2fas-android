@@ -85,7 +85,6 @@ material = "com.google.android.material:material:1.14.0"
 navigation3Runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "navigation3" }
 navigation3Ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
 navigation3ViewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycle" }
-playFeatureDelivery = "com.google.android.play:feature-delivery-ktx:2.1.0"
 playReviewKtx = "com.google.android.play:review-ktx:2.0.2"
 playServicesCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinCoroutines" }
 playUpdate = "com.google.android.play:app-update:2.1.0"
