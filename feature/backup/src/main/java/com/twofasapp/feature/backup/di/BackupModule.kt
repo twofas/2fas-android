@@ -18,7 +18,6 @@ class BackupModule : KoinModule {
             BackupImportViewModel(
                 importFileUri = importFileUri,
                 backupRepository = get(),
-                sessionRepository = get(),
             )
         }
     }

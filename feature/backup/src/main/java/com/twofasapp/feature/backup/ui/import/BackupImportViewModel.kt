@@ -1,8 +1,8 @@
 package com.twofasapp.feature.backup.ui.import
 
 import android.net.Uri
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
-import com.twofasapp.common.ktx.decodeBase64ToString
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
 import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
@@ -10,14 +10,12 @@ import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.domain.BackupContent
 import com.twofasapp.data.services.exceptions.DecryptWrongPassword
 import com.twofasapp.data.services.exceptions.FileTooBigException
-import com.twofasapp.data.session.SessionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 internal class BackupImportViewModel(
-    private val importFileUri: String?,
+    importFileUri: String?,
     private val backupRepository: BackupRepository,
-    private val sessionRepository: SessionRepository,
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<BackupImportUiState> = MutableStateFlow(BackupImportUiState())
@@ -26,7 +24,7 @@ internal class BackupImportViewModel(
         if (importFileUri == null) {
             publishEvent(BackupImportUiEvent.ShowFilePicker)
         } else {
-            fileOpened(Uri.parse(importFileUri.decodeBase64ToString()))
+            fileOpened(importFileUri.toUri())
         }
     }
 
