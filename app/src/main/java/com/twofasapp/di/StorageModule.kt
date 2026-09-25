@@ -1,11 +1,12 @@
 package com.twofasapp.di
 
 import android.content.Context
+import android.os.Build
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
-import com.google.android.play.core.splitinstall.SplitInstallHelper
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.pluto.plugins.datastore.pref.PlutoDatastoreWatcher
 import com.twofasapp.common.di.KoinModule
 import com.twofasapp.common.storage.DataStoreOwner
@@ -28,6 +29,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
+import java.io.File
 
 class StorageModule : KoinModule {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "2fas-auth-datastore")
@@ -47,10 +49,10 @@ class StorageModule : KoinModule {
             val context = androidContext()
 
             try {
-                SplitInstallHelper.loadLibrary(context, "sqlcipher")
-            } catch (e: Exception) {
                 System.loadLibrary("sqlcipher")
-                e.printStackTrace()
+            } catch (e: UnsatisfiedLinkError) {
+                reportMissingNativeLibrary(context)
+                throw e
             }
 
             val builder = Room.databaseBuilder(
@@ -79,5 +81,27 @@ class StorageModule : KoinModule {
         single { get<AppDatabase>().serviceDao() }
         single { get<AppDatabase>().pairedBrowserDao() }
         single { get<AppDatabase>().notificationDao() }
+    }
+
+    private fun reportMissingNativeLibrary(context: Context) {
+        try {
+            val installer = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                context.packageManager.getInstallSourceInfo(context.packageName).installingPackageName
+            } else {
+                @Suppress("DEPRECATION")
+                context.packageManager.getInstallerPackageName(context.packageName)
+            }
+            val splits = context.applicationInfo.splitNames?.joinToString().orEmpty()
+            val nativeLibs = File(context.applicationInfo.nativeLibraryDir).list()?.joinToString().orEmpty()
+
+            with(FirebaseCrashlytics.getInstance()) {
+                setCustomKey("installer", installer ?: "unknown")
+                setCustomKey("splits", splits.ifEmpty { "none" })
+                setCustomKey("native_libs", nativeLibs.ifEmpty { "none" })
+                setCustomKey("supported_abis", Build.SUPPORTED_ABIS.joinToString())
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }
