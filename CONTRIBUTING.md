@@ -48,13 +48,28 @@ The app is partially modularized by feature layers. The older parts of the app a
 
 
 ### Project setup
-1. Create your own debug signing key in `config/debug_signing.jks`
+1. Create your own debug signing key in `config/debug_signing.jks` (example below)
 2. Create `config/config.properties` file with your debug key alias and password:
 ```
 debug.storePassword=
 debug.keyAlias=
 debug.keyPassword=
 ```
-3. Comment out `id("com.google.gms.google-services")` plugin in `app/build.gradle.kts`. This is needed to disable Firebase services (we do not share `google-services.json` in the repository).
+3. Comment out (`//`) `id("com.google.gms.google-services")` and `id("com.google.firebase.crashlytics")` plugins in `app/build.gradle.kts`. Also comment out `FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(sendCrashLogsPreference.get())` in `app/src/main/java/com/twofasapp/App.kt`. This is needed to disable Firebase services (we do not share `google-services.json` in the repository) and to prevent the app from crashing on startup due to uninitialized Firebase.
+
+We've tested the build process on Java 17.
+
+#### Example signing key generation
+
+You can use the commands below to generate a sample signing keystore and create `config.properties`.
+
+```bash
+keytool -genkey -v -keystore config/debug_signing.jks -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "C=US, O=Android, CN=Android Debug"
+cat >config/config.properties <<EOF
+debug.storePassword=android
+debug.keyAlias=androiddebugkey
+debug.keyPassword=android
+EOF
+```
 
 By sharing ideas and code with the 2FAS community, either through GitHub or Discord, you agree that these contributions become the property of the 2FAS community and may be implemented into the 2FAS open source code.
