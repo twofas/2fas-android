@@ -36,7 +36,6 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.Executor
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 @Composable
@@ -101,8 +100,9 @@ fun QrScan(
                 }
 
                 coroutineScope.launch {
-                    val cameraProvider = context.getCameraProvider()
                     try {
+                        // Fails when the camera is disabled by device policy or unavailable.
+                        val cameraProvider = context.getCameraProvider()
                         cameraProvider.unbindAll()
                         cameraProvider.bindToLifecycle(
                             lifecycleOwner,
@@ -149,7 +149,7 @@ suspend fun Context.getCameraProvider(): ProcessCameraProvider = suspendCoroutin
     ProcessCameraProvider.getInstance(this).also { future ->
         future.addListener(
             {
-                continuation.resume(future.get())
+                continuation.resumeWith(runCatching { future.get() })
             },
             executor,
         )
