@@ -140,9 +140,13 @@ class BackupRepositoryImpl(
             }
 
             // Deserialize content from file
-            context.contentResolver.openInputStream(fileUri)!!.use {
-                val contentSerialized = it.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
-                json.decodeFromString<BackupContent>(contentSerialized)
+            try {
+                context.contentResolver.openInputStream(fileUri)!!.use {
+                    val contentSerialized = it.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
+                    json.decodeFromString<BackupContent>(contentSerialized)
+                }
+            } catch (_: OutOfMemoryError) {
+                throw FileTooBigException()
             }
         }
     }
