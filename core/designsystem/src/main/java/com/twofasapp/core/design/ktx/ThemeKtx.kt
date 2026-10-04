@@ -15,14 +15,19 @@ import com.twofasapp.common.domain.SelectedTheme
 
 fun Context.applyAppTheme(theme: SelectedTheme) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-        getSystemService(UiModeManager::class.java)
-            .setApplicationNightMode(
-                when (theme) {
-                    SelectedTheme.Light -> UiModeManager.MODE_NIGHT_NO
-                    SelectedTheme.Dark -> UiModeManager.MODE_NIGHT_YES
-                    SelectedTheme.Auto -> UiModeManager.MODE_NIGHT_AUTO
-                },
-            )
+        val uiModeManager = getSystemService(UiModeManager::class.java)
+        val nightMode = when (theme) {
+            SelectedTheme.Light -> UiModeManager.MODE_NIGHT_NO
+            SelectedTheme.Dark -> UiModeManager.MODE_NIGHT_YES
+            SelectedTheme.Auto -> UiModeManager.MODE_NIGHT_AUTO
+        }
+
+        try {
+            uiModeManager.setApplicationNightMode(nightMode)
+        } catch (_: IllegalStateException) {
+            // System server fails with "Can't change activity type once set" when one of our activities (e.g. the
+            // widget settings opened from the launcher) lives in the home task. The theme is applied on next launch.
+        }
     } else {
         AppCompatDelegate.setDefaultNightMode(
             when (theme) {
