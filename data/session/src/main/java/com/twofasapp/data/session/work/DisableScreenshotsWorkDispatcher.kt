@@ -13,7 +13,7 @@ class DisableScreenshotsWorkDispatcher(
 
     fun dispatch() {
         val request = OneTimeWorkRequestBuilder<DisableScreenshotsWork>()
-            .setInitialDelay(5, TimeUnit.MINUTES)
+            .setInitialDelay(30, TimeUnit.MINUTES)
             .build()
 
         WorkManager.getInstance(context)
