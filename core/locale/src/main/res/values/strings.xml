@@ -208,6 +208,7 @@
     <string name="tokens__all_tokens_moved_to_group_title">All tokens will be moved to the group: \"My tokens\"</string>
     <string name="tokens__add_group">Add group</string>
     <string name="tokens__group_name">Group name:</string>
+    <string name="tokens__group_use_default_name">Use default</string>
     <string name="tokens__select_from_gallery">Select from Gallery</string>
     <string name="tokens__camera_is_unavailable">Camera is unavailable</string>
     <!-- tokens__check_if_app_has_proper_permissions -->

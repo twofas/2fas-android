@@ -91,6 +91,12 @@ internal class GroupsLocalSource(
         }
     }
 
+    suspend fun editDefaultGroupName(name: String?) {
+        updateGroups { local ->
+            local.copy(defaultGroupName = name)
+        }
+    }
+
     suspend fun editGroup(newGroup: Group) {
         updateGroups { local ->
             local.copy(

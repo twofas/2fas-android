@@ -375,11 +375,12 @@ private fun Content(
             }
 
             if (showGroupDialog) {
-                val groups = uiState.groups.filter { it.name != null }
+                val defaultGroupName = uiState.groups.firstOrNull { it.id == null }?.name
+                val groups = uiState.groups.filter { it.id != null }
 
                 ListRadioDialog(
                     title = stringResource(id = R.string.tokens__group),
-                    options = listOf(MdtLocale.strings.servicesMyTokens) + groups.map { it.name.orEmpty() },
+                    options = listOf(defaultGroupName ?: MdtLocale.strings.servicesMyTokens) + groups.map { it.name.orEmpty() },
                     selectedIndex = groups.indexOfFirst { it.id == service.groupId }.plus(1),
                     onDismissRequest = { showGroupDialog = false },
                     onOptionSelected = { index, _ ->

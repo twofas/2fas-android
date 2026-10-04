@@ -84,17 +84,19 @@ fun ServicesGroup(
             modifier = Modifier.weight(1f),
         )
 
-        if (editMode && id != null) {
+        if (editMode) {
             ActionsRow {
-                IconButton(
-                    icon = MdtIcons.ArrowUpward,
-                    onClick = onMoveUpClick,
-                )
+                if (id != null) {
+                    IconButton(
+                        icon = MdtIcons.ArrowUpward,
+                        onClick = onMoveUpClick,
+                    )
 
-                IconButton(
-                    icon = MdtIcons.ArrowDownward,
-                    onClick = onMoveDownClick,
-                )
+                    IconButton(
+                        icon = MdtIcons.ArrowDownward,
+                        onClick = onMoveDownClick,
+                    )
+                }
 
                 DropdownMenu(
                     expanded = dropdownVisible,
@@ -115,18 +117,20 @@ fun ServicesGroup(
                         },
                     )
 
-                    DropdownMenuItem(
-                        text = MdtLocale.strings.commonDelete,
-                        icon = MdtIcons.Delete,
-                        contentColor = MdtTheme.color.accentRed,
-                        onClick = {
-                            dropdownVisible = false
-                            onDeleteClick()
-                        },
-                    )
+                    if (id != null) {
+                        DropdownMenuItem(
+                            text = MdtLocale.strings.commonDelete,
+                            icon = MdtIcons.Delete,
+                            contentColor = MdtTheme.color.accentRed,
+                            onClick = {
+                                dropdownVisible = false
+                                onDeleteClick()
+                            },
+                        )
+                    }
                 }
             }
-        } else if (editMode.not() && count > 0) {
+        } else if (count > 0) {
             ActionsRow {
                 IconButton(
                     icon = if (expanded) {
@@ -149,6 +153,7 @@ private fun Preview() {
             ServicesGroup(id = "", name = "Expanded", count = 999, expanded = true)
             ServicesGroup(id = "", name = "Collapsed", count = 999, expanded = false)
             ServicesGroup(id = "", name = "Edit", count = 999, editMode = true)
+            ServicesGroup(id = null, name = "Edit default", count = 999, editMode = true)
         }
     }
 }

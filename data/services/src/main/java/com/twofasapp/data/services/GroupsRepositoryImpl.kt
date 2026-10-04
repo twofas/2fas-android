@@ -29,7 +29,7 @@ internal class GroupsRepositoryImpl(
                     // Default group
                     Group(
                         id = null,
-                        name = null,
+                        name = groups.defaultGroupName,
                         isExpanded = groups.isDefaultGroupExpanded,
                     ),
                 )
@@ -76,6 +76,12 @@ internal class GroupsRepositoryImpl(
     override suspend fun editGroup(group: Group) {
         withContext(dispatchers.io) {
             local.editGroup(group)
+        }
+    }
+
+    override suspend fun editDefaultGroupName(name: String?) {
+        withContext(dispatchers.io) {
+            local.editDefaultGroupName(name)
         }
     }
 

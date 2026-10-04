@@ -79,6 +79,7 @@ class Strings(c: Context) {
     val groupsEdit = c.getString(R.string.commons__edit)
     val groupsDelete = c.getString(R.string.groups_delete_msg)
     val groupsName = c.getString(R.string.tokens__group_name)
+    val groupsUseDefaultName = c.getString(R.string.tokens__group_use_default_name)
     val addManually = c.getString(R.string.tokens__fab_addmanually)
     val scanQr = c.getString(R.string.commons__scan_qr_code)
     val editService = c.getString(R.string.commons__edit)

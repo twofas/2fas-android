@@ -191,7 +191,7 @@ private fun Content(
     onAddGroup: (String) -> Unit = {},
     onMoveUpGroup: (String) -> Unit = {},
     onMoveDownGroup: (String) -> Unit = {},
-    onEditGroup: (String, String) -> Unit = { _, _ -> },
+    onEditGroup: (String?, String?) -> Unit = { _, _ -> },
     onDeleteGroup: (String) -> Unit = {},
     onDragStart: () -> Unit = { },
     onDragEnd: (List<HomeListItem>) -> Unit = { },
@@ -583,15 +583,17 @@ private fun Content(
             onDismissRequest = { showEditGroupDialog = false },
             title = MdtLocale.strings.groupsEdit,
             label = MdtLocale.strings.groupsName,
-            prefill = clickedGroup?.name.orEmpty(),
+            prefill = clickedGroup?.let { it.name ?: MdtLocale.strings.servicesMyTokens }.orEmpty(),
             positive = MdtLocale.strings.commonSave,
             negative = MdtLocale.strings.commonCancel,
+            neutral = if (clickedGroup?.id == null && clickedGroup?.name != null) MdtLocale.strings.groupsUseDefaultName else null,
             validate = { if (it.trim().length in 1..32) InputValidation.Valid else InputValidation.Invalid(null) },
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Sentences,
                 keyboardType = KeyboardType.Text,
             ),
-            onPositive = { onEditGroup(clickedGroup?.id.orEmpty(), it.trim()) },
+            onPositive = { onEditGroup(clickedGroup?.id, it.trim()) },
+            onNeutral = { onEditGroup(null, null) },
         )
     }
 
