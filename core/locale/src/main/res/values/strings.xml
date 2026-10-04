@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Mon, 21 Sep 2026 10:21:34 -0700
+ Exported at: Sun, 04 Oct 2026 10:10:42 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -208,7 +208,6 @@
     <string name="tokens__all_tokens_moved_to_group_title">All tokens will be moved to the group: \"My tokens\"</string>
     <string name="tokens__add_group">Add group</string>
     <string name="tokens__group_name">Group name:</string>
-    <string name="tokens__group_use_default_name">Use default</string>
     <string name="tokens__select_from_gallery">Select from Gallery</string>
     <string name="tokens__camera_is_unavailable">Camera is unavailable</string>
     <!-- tokens__check_if_app_has_proper_permissions -->
@@ -280,7 +279,7 @@
     <string name="voiceover__show_service_key">Show Secret Key</string>
     <string name="voiceover__copy_service_key">Copy Secret Key</string>
     <!-- voiceover__seconds_left -->
-    <string name="voiceover__seconds_left_counter_title">Counter with seconds left to Token change</string>
+    <string name="voiceover__seconds_left_counter_title">Token time left</string>
     <string name="voiceover__delete_button">Delete button</string>
     <string name="voiceover__service_deleted">Service deleted</string>
     <!-- voiceover__hidden_secret_key_use_show button -->
@@ -807,15 +806,6 @@
     <string name="externalimport__andotp_success_msg">This JSON file allows you to import Tokens from andOTP.</string>
     <string name="externalimport__info_andotp_title">Import Tokens from andOTP</string>
     <string name="externalimport__andotp_msg">Export your accounts from andOTP to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__bitwarden">Bitwarden</string>
-    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden</string>
-    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
-    <string name="externalimport__bitwarden_msg">Export your data from Bitwarden or Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose JSON or CSV file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
-    <string name="externalimport__proton_authenticator">Proton Authenticator</string>
-    <string name="externalimport__proton_authenticator_title">Importing 2FA Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_authenticator_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_authenticator_msg">Export your accounts from Proton Authenticator to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
     <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA Tokens will be stored safely.</string>
     <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
     <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>
@@ -1050,4 +1040,12 @@
     <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
     <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
     <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
+    <string name="tokens__group_use_default_name">Use default</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">Export your accounts from Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
+    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden app</string>
+    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
+    <string name="externalimport__info_bitwarden_title">Import Tokens from Bitwarden</string>
+    <string name="browser__request_source_description_ios">requested a 2FA Token for %s. Select the service to authorize and save it with this domain.</string>
 </resources>

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Mon, 21 Sep 2026 10:21:34 -0700
+ Exported at: Sun, 04 Oct 2026 10:10:42 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1034,10 +1034,18 @@
     <string name="settings__list_style_option_large">Μεγάλο</string>
     <string name="commons__select">Επιλογή</string>
     <string name="commons__clear">Εκκαθάριση</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">Πιθανός τύπος υπηρεσίας: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
+    <string name="externalimport__info_proton_title">Εισαγωγή Token από το Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Εξαγάγετε τους λογαριασμούς σας από το Proton Authenticator σε ένα αρχείο JSON και ανεβάστε το χρησιμοποιώντας το κουμπί «Επιλογή αρχείου JSON». Θυμηθείτε να διαγράψετε το αρχείο μετά την επιτυχή εισαγωγή.</string>
+    <string name="externalimport__proton_success_msg">Αυτό το αρχείο JSON σάς επιτρέπει να εισαγάγετε διακριτικά ελέγχου ταυτότητας δύο παραγόντων (2FA) από το Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Εισαγωγή διακριτικών ελέγχου ταυτότητας δύο παραγόντων (2FA) από την εφαρμογή Proton Authenticator</string>
+    <string name="tokens__group_use_default_name">Χρήση προεπιλογής</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">Export your accounts from Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
+    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden app</string>
+    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
+    <string name="externalimport__info_bitwarden_title">Import Tokens from Bitwarden</string>
+    <string name="browser__request_source_description_ios">requested a 2FA Token for %s. Select the service to authorize and save it with this domain.</string>
 </resources>
