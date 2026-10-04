@@ -23,6 +23,7 @@ import com.twofasapp.common.ktx.encodeBase64
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.screen.CommonContent
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.rememberFilePicker
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.image
 import com.twofasapp.feature.permissions.RequestPermission
@@ -56,7 +57,7 @@ private fun Content(
 ) {
     val strings = MdtLocale.strings
     var askForCameraPermission by remember { mutableStateOf(false) }
-    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+    val showFilePicker = rememberFilePicker { uri ->
         uri?.let { onFilePicked(it.toString().encodeBase64()) }
     }
     val galleryLauncher = rememberLauncherForActivityResult(
@@ -117,13 +118,13 @@ private fun Content(
             ctaPrimaryClick = {
                 when (uiState.importType) {
                     ImportType.GoogleAuthenticator -> askForCameraPermission = true
-                    ImportType.Aegis -> launcher.launch(arrayOf("application/json"))
-                    ImportType.Raivo -> launcher.launch(arrayOf("application/json"))
-                    ImportType.LastPass -> launcher.launch(arrayOf("application/json"))
-                    ImportType.AuthenticatorPro -> launcher.launch(arrayOf("text/*"))
-                    ImportType.AndOtp -> launcher.launch(arrayOf("application/json"))
-                    ImportType.Bitwarden -> launcher.launch(arrayOf("application/json", "text/*"))
-                    ImportType.ProtonAuthenticator -> launcher.launch(arrayOf("application/json", "text/*"))
+                    ImportType.Aegis -> showFilePicker(arrayOf("application/json"))
+                    ImportType.Raivo -> showFilePicker(arrayOf("application/json"))
+                    ImportType.LastPass -> showFilePicker(arrayOf("application/json"))
+                    ImportType.AuthenticatorPro -> showFilePicker(arrayOf("text/*"))
+                    ImportType.AndOtp -> showFilePicker(arrayOf("application/json"))
+                    ImportType.Bitwarden -> showFilePicker(arrayOf("application/json", "text/*"))
+                    ImportType.ProtonAuthenticator -> showFilePicker(arrayOf("application/json", "text/*"))
                 }
             },
             ctaSecondaryClick = {
