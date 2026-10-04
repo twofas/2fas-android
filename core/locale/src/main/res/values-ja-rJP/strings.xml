@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Sun, 04 Oct 2026 10:10:42 -0700
+ Exported at: Sun, 04 Oct 2026 11:06:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -659,7 +659,7 @@
         <item quantity="other">%d日前</item>
     </plurals>
     <plurals name="past_duration_weeks">
-        <item quantity="other">%週間前</item>
+        <item quantity="other">%d週間前</item>
     </plurals>
     <plurals name="past_duration_months">
         <item quantity="other">%dか月前</item>
