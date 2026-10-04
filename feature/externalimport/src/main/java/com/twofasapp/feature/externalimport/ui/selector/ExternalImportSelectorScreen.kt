@@ -113,6 +113,14 @@ private fun Content(
                     onClick = { onImportTypeSelected(ImportType.Bitwarden) },
                 )
             }
+
+            item {
+                OptionEntry(
+                    title = MdtLocale.strings.externalImportProtonAuthenticator,
+                    image = painterResource(id = R.drawable.logo_proton_authenticator),
+                    onClick = { onImportTypeSelected(ImportType.ProtonAuthenticator) },
+                )
+            }
         }
     }
 }
