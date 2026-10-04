@@ -50,15 +50,26 @@ abstract class BasePref<PrefType, ValueType>(
 
     @Suppress("UNCHECKED_CAST")
     protected fun asFlowInternal(): Flow<PrefType?> {
-        return owner.dataStore.data.map { preferences ->
-            if (encrypted) {
-                preferences[stringPreferencesKey(keyName)]
+        if (encrypted.not()) {
+            return owner.dataStore.data
+                .map { preferences -> preferences[keyType.asPreferencesKey()] as? PrefType }
+                .flowOn(Dispatchers.IO)
+                .distinctUntilChanged()
+        }
+
+        return owner.dataStore.data
+            .map { preferences -> preferences[stringPreferencesKey(keyName)] }
+            .distinctUntilChanged()
+            .map { encryptedValue ->
+                encryptedValue
                     ?.decodeBase64()
                     ?.let {
-                        decrypt(
-                            key = DataStoreKeyStore.key,
-                            data = EncryptedBytes(it),
-                        ).decodeString()
+                        DataStoreKeyStore.withRetry {
+                            decrypt(
+                                key = DataStoreKeyStore.key,
+                                data = EncryptedBytes(it),
+                            ).decodeString()
+                        }
                     }
                     ?.let {
                         when (keyType) {
@@ -70,10 +81,7 @@ abstract class BasePref<PrefType, ValueType>(
                             KeyType.String -> it
                         } as? PrefType
                     }
-            } else {
-                preferences[keyType.asPreferencesKey()] as? PrefType
             }
-        }
             .flowOn(Dispatchers.IO)
             .distinctUntilChanged()
     }
@@ -101,10 +109,12 @@ abstract class BasePref<PrefType, ValueType>(
                 }
 
                 preferences[stringPreferencesKey(keyName)] =
-                    encrypt(
-                        key = key,
-                        data = value.toString().toByteArray(),
-                    ).encodeBase64().also {
+                    DataStoreKeyStore.withRetry {
+                        encrypt(
+                            key = key,
+                            data = value.toString().toByteArray(),
+                        )
+                    }.encodeBase64().also {
                         Flog.tag(Tag).d("[SET] $keyName = $value (encrypted = $it)")
                     }
             } else {
