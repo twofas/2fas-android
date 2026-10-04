@@ -71,6 +71,7 @@ private fun Content(
         ImportType.LastPass -> strings.externalImportLastPass
         ImportType.AuthenticatorPro -> strings.externalImportAuthenticatorPro
         ImportType.AndOtp -> strings.externalImportAndOtp
+        ImportType.Bitwarden -> strings.externalImportBitwarden
     }
 
     val description = when (uiState.importType) {
@@ -80,6 +81,7 @@ private fun Content(
         ImportType.LastPass -> strings.externalImportLastPassMsg
         ImportType.AuthenticatorPro -> strings.externalImportAuthenticatorProMsg
         ImportType.AndOtp -> strings.externalImportAndOtpMsg
+        ImportType.Bitwarden -> strings.externalImportBitwardenMsg
     }
 
     val ctaPrimary = when (uiState.importType) {
@@ -89,6 +91,7 @@ private fun Content(
         ImportType.LastPass -> strings.externalImportChooseJsonCta
         ImportType.AuthenticatorPro -> strings.externalImportChooseTxtCta
         ImportType.AndOtp -> strings.externalImportChooseJsonCta
+        ImportType.Bitwarden -> strings.externalImportChooseJsonOrCsvCta
     }
 
     val ctaSecondary = when (uiState.importType) {
@@ -116,6 +119,7 @@ private fun Content(
                     ImportType.LastPass -> launcher.launch(arrayOf("application/json"))
                     ImportType.AuthenticatorPro -> launcher.launch(arrayOf("text/*"))
                     ImportType.AndOtp -> launcher.launch(arrayOf("application/json"))
+                    ImportType.Bitwarden -> launcher.launch(arrayOf("application/json", "text/*"))
                 }
             },
             ctaSecondaryClick = {

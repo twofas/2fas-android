@@ -105,6 +105,14 @@ private fun Content(
                     onClick = { onImportTypeSelected(ImportType.AndOtp) },
                 )
             }
+
+            item {
+                OptionEntry(
+                    title = MdtLocale.strings.externalImportBitwarden,
+                    image = painterResource(id = R.drawable.logo_bitwarden),
+                    onClick = { onImportTypeSelected(ImportType.Bitwarden) },
+                )
+            }
         }
     }
 }

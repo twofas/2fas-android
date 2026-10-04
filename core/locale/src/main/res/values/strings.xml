@@ -807,6 +807,11 @@
     <string name="externalimport__andotp_success_msg">This JSON file allows you to import Tokens from andOTP.</string>
     <string name="externalimport__info_andotp_title">Import Tokens from andOTP</string>
     <string name="externalimport__andotp_msg">Export your accounts from andOTP to an unencrypted JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden</string>
+    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
+    <string name="externalimport__bitwarden_msg">Export your data from Bitwarden or Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose JSON or CSV file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
     <string name="introduction__backup_description">In the next step, you\'ll be asked to choose your Google Drive account, where the 2FA Tokens will be stored safely.</string>
     <string name="introduction__backup_take_risk_cta">I\'ll take the risk, no backup</string>
     <string name="introduction__backup_success">Google Drive sync turned on successfully!</string>

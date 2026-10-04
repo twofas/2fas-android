@@ -9,6 +9,7 @@ enum class ImportType {
     LastPass,
     AuthenticatorPro,
     AndOtp,
+    Bitwarden,
 }
 
 val ImportType.image: Int
@@ -19,4 +20,5 @@ val ImportType.image: Int
         ImportType.LastPass -> R.drawable.ic_import_lastpass
         ImportType.AuthenticatorPro -> R.drawable.ic_import_authenticatorpro
         ImportType.AndOtp -> R.drawable.ic_import_andotp
+        ImportType.Bitwarden -> R.drawable.ic_import_bitwarden
     }
