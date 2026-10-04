@@ -222,9 +222,10 @@ private fun Context.showSharePicker(
     content: String,
 ) {
     val filename = generateFilename()
-    val backupDir = File(getExternalFilesDir(null), "backup")
+    val backupDir = File(cacheDir, "backup")
 
-    backupDir.mkdir()
+    backupDir.deleteRecursively()
+    backupDir.mkdirs()
 
     val file = File(backupDir, filename)
     val outputStream = FileOutputStream(file)
