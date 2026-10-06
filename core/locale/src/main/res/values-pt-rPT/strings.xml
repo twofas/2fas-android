@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Mon, 21 Sep 2026 10:21:34 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -275,7 +275,7 @@
     <string name="tokens__order_menu_option_user">Pedir um ícone enquanto utilizador</string>
     <string name="tokens__order_menu_option_company">Envia um ícone enquanto empresa</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
-    <string name="tokens__sign_in_not_possible_title">Não vais conseguir entrar na tua conta %s sem este token enquanto tiveres ativado a autenticação de dois fatores para essa conta.</string>
+    <string name="tokens__sign_in_not_possible_title">Não vais conseguir entrar na tua conta %1$s sem este token enquanto tiveres ativado a autenticação de dois fatores para %2$s.</string>
     <string name="voiceover__show_service_key">Mostrar a Chave Secreta</string>
     <string name="voiceover__copy_service_key">Copiar a Chave Secreta</string>
     <!-- voiceover__seconds_left -->
@@ -566,7 +566,7 @@
     <string name="tokens__show_service_key_setup_lock">A tua Chave Secreta está protegida. Por favor, adiciona um PIN ou um bloqueio por impressão digital para a ver.</string>
     <string name="tokens__tokens_list_is_empty">A lista de serviços está vazia</string>
     <string name="tokens__use_plus_button_to_add_tokens">Usa o butão \"+\" para adicionar um novo serviço</string>
-    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Não irás poder entrar na tua conta %s sem este token enquanto tiveres a autenticação de dois fatores ativada para essa conta.\n\nNão irás poder restaurar este token do lixo da 2FAS.</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Não irás poder entrar na tua conta %1$s sem este token enquanto tiveres a autenticação de dois fatores ativada para %2$s.\n\nNão irás poder restaurar este token do lixo da 2FAS.</string>
     <string name="import_ga_success">Os serviços foram importados com sucesso!</string>
     <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
     <string name="backup_error_network">Precisas de uma conexão de Internet para sincronizar a tua cópia de segurança. Por favor, liga-te à Internet e tenta novamente.</string>
@@ -758,10 +758,10 @@
     <string name="tokens__add_manual_advanced">Definições avançadas do token</string>
     <string name="tokens__add_manual_additional_info">Informação adicional</string>
     <string name="tokens__add_manual_advanced_description">Mudar as definições padrão de tokens não é recomendado. Fá-lo apenas quando o fornecedor do 2FA pedi-lo e quando tiveres instruções claras.</string>
-    <string name="settings__option_screenshots_description">Permitir capturas de ecrã dentro da aplicação por 5 minutos.</string>
+    <string name="settings__option_screenshots_description">Permitir capturas de ecrã dentro da aplicação por 30 minutos.</string>
     <string name="settings__option_screenshots">Permitir capturas de ecrã</string>
     <string name="settings__option_screenshots_confirm_title">Permitir capturas de ecrã dentro da aplicação?</string>
-    <string name="settings__option_screenshots_confirm_description">Tens a certeza? Esta opção irá permitir capturas e gravações de ecrã dentro da aplicação. Contudo, isto irá também permitir tentativas externas de capturar ecrãs dentro da aplicação.\nPor razões de segurança, esta opção irá ser automaticamente desligada depois de 5 minutos.</string>
+    <string name="settings__option_screenshots_confirm_description">Tens a certeza? Esta opção irá permitir capturas e gravações de ecrã dentro da aplicação. Contudo, isto irá também permitir tentativas externas de capturar ecrãs dentro da aplicação.\nPor razões de segurança, esta opção irá ser automaticamente desligada depois de 30 minutos.</string>
     <string name="social__social_media">Redes sociais</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1034,10 +1034,18 @@
     <string name="settings__list_style_option_large">Grande</string>
     <string name="commons__select">Selecionar</string>
     <string name="commons__clear">Limpar</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">Possível tipo de serviço: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
+    <string name="externalimport__info_proton_title">Importa tokens do Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Exporta as tuas contas da aplicação Proton Authenticator para um ficheiro JSON e usa o botão \"Escolhe o ficheiro JSON\" para importá-lo. Lembra-te de remover o ficheiro após importares com sucesso.</string>
+    <string name="externalimport__proton_success_msg">Este ficheiro JSON permite importar tokens da aplicação Proton Authenticator.</string>
+    <string name="externalimport__proton_title">A importar tokens 2FA da aplicação Proton Authenticator</string>
+    <string name="tokens__group_use_default_name">Usar padrão</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">Exporta as tuas contas da aplicação Bitwarden Authenticator para um ficheiro JSON ou CSV não encriptado e usa o botão \"Escolhe o ficheiro JSON ou CSV\" para importá-lo. Lembra-te de remover o ficheiro após importares com sucesso.</string>
+    <string name="externalimport__bitwarden_success_msg">Este ficheiro permite importar tokens da aplicação Bitwarden.</string>
+    <string name="externalimport__bitwarden_title">A importar tokens 2FA da aplicação Bitwarden</string>
+    <string name="externalimport__choose_json_csv_cta">Escolhe o ficheiro JSON ou CSV</string>
+    <string name="externalimport__info_bitwarden_title">Importa tokens do Bitwarden</string>
+    <string name="browser__request_source_description_ios">pediu um token 2FA para %s. Seleciona um serviço para autorizar e guardar com este domínio.</string>
 </resources>

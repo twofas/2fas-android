@@ -105,6 +105,22 @@ private fun Content(
                     onClick = { onImportTypeSelected(ImportType.AndOtp) },
                 )
             }
+
+            item {
+                OptionEntry(
+                    title = MdtLocale.strings.externalImportBitwarden,
+                    image = painterResource(id = R.drawable.logo_bitwarden),
+                    onClick = { onImportTypeSelected(ImportType.Bitwarden) },
+                )
+            }
+
+            item {
+                OptionEntry(
+                    title = MdtLocale.strings.externalImportProtonAuthenticator,
+                    image = painterResource(id = R.drawable.logo_proton_authenticator),
+                    onClick = { onImportTypeSelected(ImportType.ProtonAuthenticator) },
+                )
+            }
         }
     }
 }

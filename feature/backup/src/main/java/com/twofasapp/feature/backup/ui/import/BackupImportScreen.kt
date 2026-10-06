@@ -1,7 +1,5 @@
 package com.twofasapp.feature.backup.ui.import
 
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -37,6 +35,7 @@ import com.twofasapp.core.design.foundation.dialog.StackTraceDetails
 import com.twofasapp.core.design.foundation.preview.PreviewTheme
 import com.twofasapp.core.design.foundation.progress.CircularProgressIndicator
 import com.twofasapp.core.design.foundation.topbar.TopAppBar
+import com.twofasapp.core.design.ktx.rememberFilePicker
 import com.twofasapp.core.design.ktx.strings
 import com.twofasapp.core.design.ktx.toastShort
 import org.koin.androidx.compose.koinViewModel
@@ -50,14 +49,13 @@ internal fun BackupImportScreen(
     navigator: Navigator = koinInject(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        // Or fallback to ACTION_GET_CONTENT
+    val showFilePicker = rememberFilePicker { uri ->
         uri?.let { viewModel.fileOpened(it) } ?: navigator.back()
     }
 
     ScreenContent(
         uiState = uiState,
-        onShowFilePicker = { launcher.launch(arrayOf("*/*")) },
+        onShowFilePicker = { showFilePicker(arrayOf("*/*")) },
         onPasswordConfirm = { viewModel.import(it) },
         onImportClick = { viewModel.import() },
         onEventConsumed = { viewModel.consumeEvent(it) },

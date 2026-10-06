@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hans, Simplified Chinese
  Exported by: rafakob
- Exported at: Mon, 21 Sep 2026 10:21:35 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:58 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -752,10 +752,10 @@
     <string name="tokens__add_manual_advanced">高级令牌设置</string>
     <string name="tokens__add_manual_additional_info">其他信息</string>
     <string name="tokens__add_manual_advanced_description">不建议更改默认令牌设置。只有在您的 2FA 提供商有要求且您有明确指示的情况下才可进行更改。</string>
-    <string name="settings__option_screenshots_description">允许应用截图5分钟。</string>
+    <string name="settings__option_screenshots_description">允许应用截图30分钟。</string>
     <string name="settings__option_screenshots">允许截图</string>
     <string name="settings__option_screenshots_confirm_title">允许应用截图？</string>
-    <string name="settings__option_screenshots_confirm_description">你确定吗？此选项允许您截图和录制应用内的任何屏幕。不过，这也会允许任何外部尝试捕捉应用中的屏幕。\n出于安全考虑，此选项将在 5 分钟后自动关闭。</string>
+    <string name="settings__option_screenshots_confirm_description">你确定吗？此选项允许您截图和录制应用内的任何屏幕。不过，这也会允许任何外部尝试捕捉应用中的屏幕。\n出于安全考虑，此选项将在 30 分钟后自动关闭。</string>
     <string name="social__social_media">社交媒体链接</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1028,10 +1028,18 @@
     <string name="settings__list_style_option_large">大</string>
     <string name="commons__select">选择</string>
     <string name="commons__clear">清除</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">可能的服务类型：%s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
+    <string name="externalimport__info_proton_title">从 Proton Authenticator 导入令牌</string>
+    <string name="externalimport__proton_msg">将您的帐户从 Proton Authenticator 导出到 JSON 文件并使用“选择 JSON 文件”按钮上传。请记住在成功导入后删除该文件。</string>
+    <string name="externalimport__proton_success_msg">此 JSON 文件允许从 Proton Authenticator 导入令牌。</string>
+    <string name="externalimport__proton_title">从 Proton Authenticator 应用导入 2FA 令牌</string>
+    <string name="tokens__group_use_default_name">使用默认</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">将您的帐户从 Bitwarden Authenticator 导出到未加密的 JSON 或 CSV 文件并使用“选择 JSON 或 CSV 文件”按钮上传。请记住在成功导入后删除该文件。</string>
+    <string name="externalimport__bitwarden_success_msg">此文件允许从 Bitwarden 导入令牌。</string>
+    <string name="externalimport__bitwarden_title">从 Bitwarden 应用导入 2FA 令牌</string>
+    <string name="externalimport__choose_json_csv_cta">选择 JSON 或 CSV 文件</string>
+    <string name="externalimport__info_bitwarden_title">从 Bitwarden 导入令牌</string>
+    <string name="browser__request_source_description_ios">为 %s 申请了一个2FA令牌。选择要授权并保存到此域名的服务。</string>
 </resources>

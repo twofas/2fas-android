@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: es-ES, Spanish (Spain)
  Exported by: rafakob
- Exported at: Mon, 21 Sep 2026 10:21:34 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -284,15 +284,15 @@
     <string name="voiceover__service_deleted">Servicio borrado</string>
     <!-- voiceover__hidden_secret_key_use_show button -->
     <string name="voiceover__reveal_hidden_secret_key_button_title">Este campo contiene una clave secreta oculta. Para mostrar, utiliza el botón Mostrar. Sólo funcionará si has configurado el código PIN de la aplicación para la pantalla de bloqueo.</string>
-    <string name="voiceover__service_name">Nombre del servicio: % s</string>
-    <string name="voiceover__additional_info">Información adicional: % s</string>
+    <string name="voiceover__service_name">Nombre del servicio: %s</string>
+    <string name="voiceover__additional_info">Información adicional: %s</string>
     <string name="voiceover__token_tap_to_copy">Código %s. Toca para copiar</string>
     <string name="voiceover__edit">Editar %s</string>
     <string name="voiceover__service_label_with_name_and_color">Etiqueta de servicio con nombre %1$s y color %2$s</string>
     <string name="voiceover__service_icon">Icono de servicio %s</string>
     <string name="voiceover__selected">Elegido</string>
     <string name="voiceover__not_selected">No está elegido</string>
-    <string name="voiceover__badge_color">Color de la insignia: % s</string>
+    <string name="voiceover__badge_color">Color de la insignia: %s</string>
     <string name="voiceover__dismissing">Descartando</string>
     <string name="voiceover__secret_hint">Solo números del 2 al 9, letras. Al menos 4 caracteres</string>
     <string name="voiceover__add_service">Agregar servicio</string>
@@ -758,10 +758,10 @@
     <string name="tokens__add_manual_advanced">Ajustes avanzados de tokens</string>
     <string name="tokens__add_manual_additional_info">Información adicional</string>
     <string name="tokens__add_manual_advanced_description">No es recomendable cambiar los ajustes por defecto de token. Hazlo solo cuando tu proveedor 2FA lo requiera y cuando tengas instrucciones claras.</string>
-    <string name="settings__option_screenshots_description">Permitir capturas de pantalla por 5 minutos.</string>
+    <string name="settings__option_screenshots_description">Permitir capturas de pantalla por 30 minutos.</string>
     <string name="settings__option_screenshots">Permitir capturas de pantalla</string>
     <string name="settings__option_screenshots_confirm_title">¿Permitir capturas de pantalla de la aplicación?</string>
-    <string name="settings__option_screenshots_confirm_description">¿Estás seguro? Esta opción te permite tomar capturas y grabaciones de cualquier pantalla de la aplicación. Sin embargo, esto también podría permitir cualquier intento externo de capturar la pantalla de la aplicación.\nPor razones de seguridad, esta opción será deshabilitada automáticamente después de 5 minutos.</string>
+    <string name="settings__option_screenshots_confirm_description">¿Estás seguro? Esta opción te permite tomar capturas y grabaciones de cualquier pantalla de la aplicación. Sin embargo, esto también podría permitir cualquier intento externo de capturar la pantalla de la aplicación.\nPor razones de seguridad, esta opción será deshabilitada automáticamente después de 30 minutos.</string>
     <string name="social__social_media">Medios sociales</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1034,10 +1034,18 @@
     <string name="settings__list_style_option_large">Grande</string>
     <string name="commons__select">Seleccionar</string>
     <string name="commons__clear">Borrar</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">Posible tipo de servicio: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
+    <string name="externalimport__info_proton_title">Importar tokens desde Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Exporta tus cuentas desde Proton Authenticator a un archivo JSON y súbelo utilizando el botón \"Elige un archivo JSON\". Recuerda eliminar el archivo después de que se haya importado correctamente.</string>
+    <string name="externalimport__proton_success_msg">Este archivo JSON permite importar tus tokens desde Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importando tokens 2FA desde la aplicación Proton Authenticator</string>
+    <string name="tokens__group_use_default_name">Usar por defecto</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">Exporta tus cuentas desde Bitwarden Authenticator a un archivo JSON o CSV sin encriptar y súbelo utilizando el botón \"Elige un archivo JSON o CSV\". Recuerda eliminar el archivo después de que se haya importado correctamente.</string>
+    <string name="externalimport__bitwarden_success_msg">Este archivo permite importar tus tokens desde Bitwarden.</string>
+    <string name="externalimport__bitwarden_title">Importando tokens 2FA desde la aplicación Bitwarden</string>
+    <string name="externalimport__choose_json_csv_cta">Elige un archivo JSON o CSV</string>
+    <string name="externalimport__info_bitwarden_title">Importar tokens desde Bitwarden</string>
+    <string name="browser__request_source_description_ios">ha pedido un token de segundo paso (2FA) para %s. Elige el servicio que deseas autorizar y guárdalo con este dominio.</string>
 </resources>

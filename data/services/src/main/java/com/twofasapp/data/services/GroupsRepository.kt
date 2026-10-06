@@ -11,6 +11,7 @@ interface GroupsRepository {
     suspend fun deleteGroup(id: String)
     suspend fun editGroup(id: String, name: String)
     suspend fun editGroup(group: Group)
+    suspend fun editDefaultGroupName(name: String?)
     suspend fun moveUpGroup(id: String)
     suspend fun moveDownGroup(id: String)
     suspend fun toggleGroup(id: String?)

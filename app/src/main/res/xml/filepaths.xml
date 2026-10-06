@@ -3,4 +3,7 @@
     <external-files-path
         name="files"
         path="/" />
+    <cache-path
+        name="backup"
+        path="backup/" />
 </paths>

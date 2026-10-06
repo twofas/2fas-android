@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Mon, 21 Sep 2026 10:21:34 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -758,10 +758,10 @@
     <string name="tokens__add_manual_advanced">Paramètres avancés du jeton</string>
     <string name="tokens__add_manual_additional_info">Informations additionnelles</string>
     <string name="tokens__add_manual_advanced_description">Il n\'est pas recommandé de modifier les paramètres par défaut des jetons. Ne le faites que si votre fournisseur 2FA l\'exige et si vous disposez d\'instructions claires.</string>
-    <string name="settings__option_screenshots_description">Autoriser les captures d\'écran de l\'application pendant 5 minutes.</string>
+    <string name="settings__option_screenshots_description">Autoriser les captures d\'écran de l\'application pendant 30 minutes.</string>
     <string name="settings__option_screenshots">Autoriser les captures d\'écran</string>
     <string name="settings__option_screenshots_confirm_title">Autoriser les captures d\'écran dans l\'application ?</string>
-    <string name="settings__option_screenshots_confirm_description">Êtes-vous sûr(e) ? Cette option vous permet de faire des captures d\'écran et d\'enregistrer n\'importe quel écran dans l\'application. Cependant, cette option autorise également toute tentative externe de capture d\'écran dans l\'application.\nPour des raisons de sécurité, cette option sera automatiquement désactivée au bout de 5 minutes.</string>
+    <string name="settings__option_screenshots_confirm_description">Êtes-vous sûr(e) ? Cette option vous permet de faire des captures d\'écran et d\'enregistrer n\'importe quel écran dans l\'application. Cependant, cette option autorise également toute tentative externe de capture d\'écran dans l\'application.\nPour des raisons de sécurité, cette option sera automatiquement désactivée au bout de 30 minutes.</string>
     <string name="social__social_media">Réseaux sociaux</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1034,10 +1034,18 @@
     <string name="settings__list_style_option_large">Grand</string>
     <string name="commons__select">Sélectionner</string>
     <string name="commons__clear">Effacer</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">Type de service possible : %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
+    <string name="externalimport__info_proton_title">Importer les clés 2FA depuis Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Exportez vos comptes de Proton Authenticator vers un fichier JSON et importez-le en utilisant le bouton « Choisir un fichier JSON ». N\'oubliez pas de supprimer le fichier après avoir réussi l\'importation.</string>
+    <string name="externalimport__proton_success_msg">Ce fichier JSON permet d\'importer des clés depuis Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importation des clés 2FA depuis l\'application Proton Authenticator</string>
+    <string name="tokens__group_use_default_name">Utiliser par défaut</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">Exportez vos comptes de Bitwarden Authenticator vers un fichier JSON ou CSV non chiffré et importez-le en utilisant le bouton « Choisir un fichier JSON ou CSV ». N\'oubliez pas de supprimer le fichier après avoir réussi l\'importation.</string>
+    <string name="externalimport__bitwarden_success_msg">Ce fichier permet d\'importer des clés depuis Bitwarden.</string>
+    <string name="externalimport__bitwarden_title">Importation des clés 2FA depuis l\'application Bitwarden</string>
+    <string name="externalimport__choose_json_csv_cta">Choisir un fichier JSON ou CSV</string>
+    <string name="externalimport__info_bitwarden_title">Importer les clés 2FA depuis Bitwarden</string>
+    <string name="browser__request_source_description_ios">a demandé une clé 2FA pour %s. Sélectionnez le service à autoriser et à enregistrer avec ce domaine.</string>
 </resources>

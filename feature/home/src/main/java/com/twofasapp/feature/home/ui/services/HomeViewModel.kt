@@ -279,8 +279,14 @@ internal class HomeViewModel(
         launchScoped { groupsRepository.deleteGroup(id) }
     }
 
-    fun editGroup(id: String, name: String) {
-        launchScoped { groupsRepository.editGroup(id, name) }
+    fun editGroup(id: String?, name: String?) {
+        launchScoped {
+            if (id == null) {
+                groupsRepository.editDefaultGroupName(name)
+            } else if (name != null) {
+                groupsRepository.editGroup(id, name)
+            }
+        }
     }
 
     fun moveUpGroup(id: String) {

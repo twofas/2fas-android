@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Mon, 21 Sep 2026 10:21:34 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -758,10 +758,10 @@
     <string name="tokens__add_manual_advanced">Impostazioni token avanzate</string>
     <string name="tokens__add_manual_additional_info">Info aggiuntive</string>
     <string name="tokens__add_manual_advanced_description">Cambiare le impostazioni predefinite non è consigliato. Fallo solo quando il tuo fornitore per la 2FA lo richiede e quando hai istruzioni chiare</string>
-    <string name="settings__option_screenshots_description">Consenti gli screenshot dell\'app per 5 minuti.</string>
+    <string name="settings__option_screenshots_description">Consenti gli screenshot dell\'app per 30 minuti.</string>
     <string name="settings__option_screenshots">Consenti gli screenshot</string>
     <string name="settings__option_screenshots_confirm_title">Consentire gli screenshot dell\'app?</string>
-    <string name="settings__option_screenshots_confirm_description">Sei sicuro? Questa opzione consente di effettuare screenshot e registrare qualsiasi schermata all\'interno dell\'applicazione. Tuttavia, consentirà anche qualsiasi tentativo esterno di catturare schermate nell\'app.\nPer motivi di sicurezza, questa opzione si disattiva automaticamente dopo 5 minuti.</string>
+    <string name="settings__option_screenshots_confirm_description">Sei sicuro? Questa opzione consente di effettuare screenshot e registrare qualsiasi schermata all\'interno dell\'applicazione. Tuttavia, consentirà anche qualsiasi tentativo esterno di catturare schermate nell\'app.\nPer motivi di sicurezza, questa opzione si disattiva automaticamente dopo 30 minuti.</string>
     <string name="social__social_media">Social media</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1034,10 +1034,18 @@
     <string name="settings__list_style_option_large">Grande</string>
     <string name="commons__select">Seleziona</string>
     <string name="commons__clear">Cancella</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">Possibile tipo di servizio: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
+    <string name="externalimport__info_proton_title">Importa token da Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Esporta i tuoi account da Proton Authenticator in un file JSON e caricalo utilizzando il pulsante \"Scegli il file JSON\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
+    <string name="externalimport__proton_success_msg">Questo file JSON permette di importare i token da Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importazione di token 2FA dall\'app Proton Authenticator</string>
+    <string name="tokens__group_use_default_name">Usa predefinito</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">Esporta i tuoi account da Bitwarden Authenticator in un file JSON o CSV non crittografato e caricalo utilizzando il pulsante \"Scegli il file JSON o CSV\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
+    <string name="externalimport__bitwarden_success_msg">Questo file permette di importare i token da Bitwarden.</string>
+    <string name="externalimport__bitwarden_title">Importazione di token 2FA dall\'app Bitwarden</string>
+    <string name="externalimport__choose_json_csv_cta">Scegli il file JSON o CSV</string>
+    <string name="externalimport__info_bitwarden_title">Importa token da Bitwarden</string>
+    <string name="browser__request_source_description_ios">ha richiesto un token 2FA per %s. Seleziona il servizio da autorizzare e salva con questo dominio.</string>
 </resources>

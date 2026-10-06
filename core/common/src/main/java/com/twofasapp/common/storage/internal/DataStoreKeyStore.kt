@@ -7,6 +7,7 @@ import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.storage.Tag
 import java.security.Key
 import java.security.KeyStore
+import javax.crypto.AEADBadTagException
 import javax.crypto.KeyGenerator
 
 internal object DataStoreKeyStore {
@@ -33,6 +34,15 @@ internal object DataStoreKeyStore {
         }
     }
 
+    fun <T> withRetry(operation: () -> T): T {
+        return retrying(
+            attempts = 3,
+            delayMs = 200,
+            retryIf = { it !is KeyStoreKeyMissingException && it !is AEADBadTagException },
+            block = operation,
+        )
+    }
+
     private fun getExistingKey(): Key {
         return keyStore.getKey(keyAlias, null) ?: throw KeyStoreKeyMissingException(keyAlias)
     }
@@ -52,19 +62,18 @@ internal object DataStoreKeyStore {
         }
     }
 
-    /**
-     * The system keystore fails transiently when its daemon is restarting or the secure hardware is briefly
-     * unreachable. Those failures usually clear within milliseconds, so [block] is run up to [attempts] times,
-     * [delayMs] apart, before the failure is propagated. Every exception is retried: the set of types Android
-     * uses to report a keystore hiccup differs per OS version (KeyStoreException, ProviderException, even
-     * NullPointerException on Android 9), and a needless retry only costs a few seconds before the same
-     * failure surfaces.
-     */
-    private fun <T> retrying(attempts: Int, delayMs: Long, block: () -> T): T {
+    private fun <T> retrying(
+        attempts: Int,
+        delayMs: Long,
+        retryIf: (Exception) -> Boolean = { true },
+        block: () -> T,
+    ): T {
         repeat(attempts - 1) { attempt ->
             try {
                 return block()
             } catch (e: Exception) {
+                if (retryIf(e).not()) throw e
+
                 // A missing key is expected on a fresh install, not a failure worth logging.
                 if (e !is KeyStoreKeyMissingException) {
                     Flog.tag(Tag).w("Keystore attempt ${attempt + 1}/$attempts failed: $e")

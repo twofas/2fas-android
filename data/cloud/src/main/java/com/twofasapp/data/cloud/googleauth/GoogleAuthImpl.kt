@@ -38,12 +38,23 @@ internal class GoogleAuthImpl(
     override suspend fun handleSignInResult(result: ActivityResult): SignInResult {
         return withContext(dispatchers.io) {
             suspendCancellableCoroutine { continuation ->
+                // The extras hold GMS parcelables; without the app class loader unparceling them can fail with
+                // ClassNotFoundException (com.google.android.gms.common.api.Status).
+                result.data?.setExtrasClassLoader(GoogleSignIn::class.java.classLoader)
 
                 if (result.resultCode != Activity.RESULT_OK) {
                     continuation.resumeIfActive(SignInResult.Canceled(reason = getCancelReason(result.data)))
+                    return@suspendCancellableCoroutine
                 }
 
-                GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                val task = try {
+                    GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                } catch (e: Exception) {
+                    continuation.resumeIfActive(SignInResult.Failure(reason = e))
+                    return@suspendCancellableCoroutine
+                }
+
+                task
                     .addOnSuccessListener {
                         if (it.grantedScopes.contains(scope)) {
                             continuation.resumeIfActive(SignInResult.Success(email = it.email.orEmpty()))

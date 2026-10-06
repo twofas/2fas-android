@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Mon, 21 Sep 2026 10:21:34 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -764,10 +764,10 @@
     <string name="tokens__add_manual_advanced">Розширені налаштування токена</string>
     <string name="tokens__add_manual_additional_info">Додаткова інформація</string>
     <string name="tokens__add_manual_advanced_description">Не рекомендується змінювати параметри токенів за замовчуванням. Робіть це лише тоді, коли цього вимагає ваш 2FA-провайдер та якщо маєте чіткі інструкції.</string>
-    <string name="settings__option_screenshots_description">Дозволити скріншоти додатку на 5 хвилин.</string>
+    <string name="settings__option_screenshots_description">Дозволити скріншоти додатку на 30 хвилин.</string>
     <string name="settings__option_screenshots">Дозволити скріншоти</string>
     <string name="settings__option_screenshots_confirm_title">Дозволити скріншоти додатку?</string>
-    <string name="settings__option_screenshots_confirm_description">Ви впевнені? Ця опція дозволяє робити скріншоти та записувати будь-який екран додатку. Однак це також дозволить будь-які зовнішні спроби запису екранів у додатку.\nЗ міркувань безпеки ця опція автоматично вимкнеться через 5 хвилин.</string>
+    <string name="settings__option_screenshots_confirm_description">Ви впевнені? Ця опція дозволяє робити скріншоти та записувати будь-який екран додатку. Однак це також дозволить будь-які зовнішні спроби запису екранів у додатку.\nЗ міркувань безпеки ця опція автоматично вимкнеться через 30 хвилин.</string>
     <string name="social__social_media">Соціальні медіа</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1040,10 +1040,18 @@
     <string name="settings__list_style_option_large">Великий</string>
     <string name="commons__select">Вибрати</string>
     <string name="commons__clear">Очистити</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">Можливий тип сервісу: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
+    <string name="externalimport__info_proton_title">Імпортувати токени з Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Експортуйте свої облікові записи з Proton Authenticator у файл JSON і завантажте його за допомогою кнопки «Обрати JSON файл». Не забудьте видалити файл після успішного імпорту.</string>
+    <string name="externalimport__proton_success_msg">Цей JSON файл дозволяє імпортувати токени з Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Імпортувати 2FA токени із додатку Proton Authenticator</string>
+    <string name="tokens__group_use_default_name">Використати за замовчуванням</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">Експортуйте свої облікові записи з Bitwarden Authenticator у незашифрований файл JSON або CSV і завантажте його за допомогою кнопки «Обрати JSON або CSV файл». Не забудьте видалити файл після успішного імпорту.</string>
+    <string name="externalimport__bitwarden_success_msg">Цей файл дозволяє імпортувати токени з Bitwarden.</string>
+    <string name="externalimport__bitwarden_title">Імпортувати 2FA токени із додатку Bitwarden</string>
+    <string name="externalimport__choose_json_csv_cta">Обрати JSON або CSV файл</string>
+    <string name="externalimport__info_bitwarden_title">Імпортувати токени з Bitwarden</string>
+    <string name="browser__request_source_description_ios">надіслав запит на токен для %s. Оберіть сервіс для авторизації та збережіть із цим доменом.</string>
 </resources>

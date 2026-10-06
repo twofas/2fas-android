@@ -9,10 +9,12 @@ import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.externalimport.domain.AegisImporter
 import com.twofasapp.feature.externalimport.domain.AndOtpImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
+import com.twofasapp.feature.externalimport.domain.BitwardenImporter
 import com.twofasapp.feature.externalimport.domain.ExternalImport
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.LastPassImporter
+import com.twofasapp.feature.externalimport.domain.ProtonAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.RaivoImporter
 import com.twofasapp.feature.qrscan.ReadQrFromImage
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,6 +32,8 @@ internal class ExternalImportResultViewModel(
     private val lastPassImporter: LastPassImporter,
     private val authenticatorProImporter: AuthenticatorProImporter,
     private val andOtpImporter: AndOtpImporter,
+    private val bitwardenImporter: BitwardenImporter,
+    private val protonAuthenticatorImporter: ProtonAuthenticatorImporter,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(ExternalImportResultUiState())
@@ -64,6 +68,8 @@ internal class ExternalImportResultViewModel(
                 ImportType.LastPass -> lastPassImporter.read(importFileUri.orEmpty().decodeBase64ToString())
                 ImportType.AuthenticatorPro -> authenticatorProImporter.read(importFileUri.orEmpty().decodeBase64ToString())
                 ImportType.AndOtp -> andOtpImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.Bitwarden -> bitwardenImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.ProtonAuthenticator -> protonAuthenticatorImporter.read(importFileUri.orEmpty().decodeBase64ToString())
             }
 
             uiState.update { state ->
