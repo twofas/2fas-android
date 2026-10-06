@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Sun, 04 Oct 2026 11:06:57 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -691,7 +691,7 @@
     <string name="backup__sync_status_progress">Synchronizowanie...</string>
     <string name="import_backup_msg1_encrypted">Zamierzasz zaimportować zaszyfrowany plik kopii zapasowej.</string>
     <string name="externalimport__choose_json_cta">Wybierz plik JSON</string>
-    <string name="externalimport__aegis_msg">Wyeksportuj swoje konta z Aegis do niezaszyfrowanego pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po udanym imporcie.</string>
+    <string name="externalimport__aegis_msg">Wyeksportuj swoje konta z Aegis do niezaszyfrowanego pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
     <string name="externalimport__raivo_msg">Użyj opcji \"Eksportuj OTP do archiwum ZIP\" w Ustawieniach Raivo, zapisz plik ZIP, rozpakuj go i zaimportuj plik JSON za pomocą przycisku \"Wybierz plik JSON\".</string>
     <string name="externalimport__no_tokens_msg">Nie ma serwisów, które mogłyby zostać zimportowane.</string>
     <string name="commons__try_again">Spróbuj ponownie</string>
@@ -736,7 +736,7 @@
     <string name="settings__list_style_option_default">Domyślny</string>
     <string name="settings__list_style_option_compact">Kompaktowy</string>
     <string name="externalimport_lastpass">LastPass</string>
-    <string name="externalimport__lastpass_msg">Wyeksportuj swoje konta z LastPass do niezaszyfrowanego pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po udanym imporcie.</string>
+    <string name="externalimport__lastpass_msg">Wyeksportuj swoje konta z LastPass do niezaszyfrowanego pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
     <string name="settings__about_crash_optout_title">Raporty o awariach</string>
     <string name="externalimport__lastpass_title">Import tokenów 2FA z aplikacji LastPass</string>
     <string name="externalimport__lastpass_success_msg">Ten plik JSON umożliwia import tokenów z LastPass.</string>
@@ -764,10 +764,10 @@
     <string name="tokens__add_manual_advanced">Zaawansowane ustawienia tokenu</string>
     <string name="tokens__add_manual_additional_info">Opis</string>
     <string name="tokens__add_manual_advanced_description">Zmiana domyślnych ustawień tokena nie jest zalecana. Zrób to tylko, jeśli masz jasne instrukcje dotyczące danego serwisu.</string>
-    <string name="settings__option_screenshots_description">Pozwól na wykonywanie zrzutów ekranu i nagrywanie ekranu aplikacji przez 5 minut.</string>
+    <string name="settings__option_screenshots_description">Pozwól na wykonywanie zrzutów ekranu i nagrywanie ekranu aplikacji przez 30 minut.</string>
     <string name="settings__option_screenshots">Pozwól na zrzuty ekranu</string>
     <string name="settings__option_screenshots_confirm_title">Pozwolić na zrzuty ekranu w aplikacji?</string>
-    <string name="settings__option_screenshots_confirm_description">Jesteś pewien? Ta opcja umożliwia robienie zrzutów ekranu i nagrywanie wszystkiego w aplikacji. Jednocześnie umożliwia ona próby przechwycenia ekranu przez zewnętrzne aplikacje. Aby zapewnić bezpieczeństwo, opcja ta wyłącza się automatycznie po 5 minutach.</string>
+    <string name="settings__option_screenshots_confirm_description">Jesteś pewien? Ta opcja umożliwia robienie zrzutów ekranu i nagrywanie wszystkiego w aplikacji. Jednocześnie umożliwia ona próby przechwycenia ekranu przez zewnętrzne aplikacje. Aby zapewnić bezpieczeństwo, opcja ta wyłącza się automatycznie po 30 minutach.</string>
     <string name="social__social_media">Linki do mediów społecznościowych</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -783,7 +783,7 @@
     <string name="externalimport__info_authenticatorpro_title">Importuj tokeny z Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_success_msg">Ten plik tekstowy pozawala na importowanie tokenów z Authenticator Pro.</string>
     <string name="externalimport__authenticatorpro_title">Importowanie tokenów 2FA z aplikacji Authenticator Pro</string>
-    <string name="externalimport__authenticatorpro_msg">Wyeksportuj swoje konta z Authenticator Pro do niezaszyfrowanego pliku tekstowego i wczytaj go za pomocą przycisku \"Wybierz plik tekstowy\". Pamiętaj, aby usunąć plik po udanym imporcie.</string>
+    <string name="externalimport__authenticatorpro_msg">Wyeksportuj swoje konta z Authenticator Pro do niezaszyfrowanego pliku tekstowego i wczytaj go za pomocą przycisku \"Wybierz plik tekstowy\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
     <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Wybierz plik tekstowy</string>
     <string name="fingerprint__biometric_invalidated">Logowanie biometryczne zostało wyłączone z powodu zmian w systemowych ustawieniach bezpieczeństwa i prywatności.</string>
@@ -811,7 +811,7 @@
     <string name="externalimport__andotp_title">Import tokenów 2FA z aplikacji andOTP</string>
     <string name="externalimport__andotp_success_msg">Ten plik JSON umożliwia import tokenów z andOTP.</string>
     <string name="externalimport__info_andotp_title">Importuj tokeny z andOTP</string>
-    <string name="externalimport__andotp_msg">Wyeksportuj swoje konta z andOTP do niezaszyfrowanego pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po udanym imporcie.</string>
+    <string name="externalimport__andotp_msg">Wyeksportuj swoje konta z andOTP do niezaszyfrowanego pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
     <string name="introduction__backup_description">W następnym kroku zostaniesz poproszony o wybranie konta Google Drive, na którym tokeny 2FA będą bezpiecznie przechowywane.</string>
     <string name="introduction__backup_take_risk_cta">Zaryzykuję, bez kopii zapasowej</string>
     <string name="introduction__backup_success">Synchronizacja z Dyskiem Google została pomyślnie włączona!</string>
@@ -1043,15 +1043,15 @@
     <string name="tokens__service_autodetected_title">Możliwy rodzaj serwisu: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
     <string name="externalimport__info_proton_title">Importuj tokeny z Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Wyeksportuj swoje konta z Proton Authenticator do pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po udanym imporcie.</string>
+    <string name="externalimport__proton_msg">Wyeksportuj swoje konta z Proton Authenticator do pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
     <string name="externalimport__proton_success_msg">Ten plik JSON umożliwia import tokenów z Proton Authenticator.</string>
     <string name="externalimport__proton_title">Import tokenów 2FA z aplikacji Proton Authenticator</string>
-    <string name="tokens__group_use_default_name">Use default</string>
+    <string name="tokens__group_use_default_name">Użyj domyślnej</string>
     <string name="externalimport_bitwarden">Bitwarden</string>
-    <string name="externalimport__bitwarden_msg">Export your accounts from Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
-    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden app</string>
-    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
-    <string name="externalimport__info_bitwarden_title">Import Tokens from Bitwarden</string>
-    <string name="browser__request_source_description_ios">requested a 2FA Token for %s. Select the service to authorize and save it with this domain.</string>
+    <string name="externalimport__bitwarden_msg">Wyeksportuj swoje konta z Bitwarden Authenticator do pliku CSV lub JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
+    <string name="externalimport__bitwarden_success_msg">Ten plik umożliwia import tokenów z Bitwardena.</string>
+    <string name="externalimport__bitwarden_title">Import tokenów 2FA z aplikacji Bitwarden Auth</string>
+    <string name="externalimport__choose_json_csv_cta">Wybierz plik JSON lub CSV</string>
+    <string name="externalimport__info_bitwarden_title">Importuj tokeny z Bitwardena</string>
+    <string name="browser__request_source_description_ios">zażądał tokena 2FA dla %s. Wybierz serwis do weryfikacji i zapisz w tej domenie.</string>
 </resources>

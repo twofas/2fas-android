@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hant, Traditional Chinese
  Exported by: rafakob
- Exported at: Sun, 04 Oct 2026 11:06:58 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:58 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -752,10 +752,10 @@
     <string name="tokens__add_manual_advanced">進階權杖設定</string>
     <string name="tokens__add_manual_additional_info">其他資訊</string>
     <string name="tokens__add_manual_advanced_description">不建議變更預設權杖設定。只有在您的 2FA 提供者要求且您有明確指示的情況下，才可以進行變更。</string>
-    <string name="settings__option_screenshots_description">允許應用程式螢幕截圖 5 分鐘。</string>
+    <string name="settings__option_screenshots_description">允許應用程式螢幕截圖 30 分鐘。</string>
     <string name="settings__option_screenshots">允許螢幕截圖</string>
     <string name="settings__option_screenshots_confirm_title">允許應用程式螢幕截圖？</string>
-    <string name="settings__option_screenshots_confirm_description">你確定嗎？此選項可讓您截圖和錄製應用程式內的任何螢幕畫面。不過，這也會允許任何外部嘗試捕捉應用程式中的螢幕畫面。\n基於安全考慮，此選項將在 5 分鐘後自動關閉。</string>
+    <string name="settings__option_screenshots_confirm_description">你確定嗎？此選項可讓您截圖和錄製應用程式內的任何螢幕畫面。不過，這也會允許任何外部嘗試捕捉應用程式中的螢幕畫面。\n基於安全考慮，此選項將在 30 分鐘後自動關閉。</string>
     <string name="social__social_media">社群媒體連結</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1028,18 +1028,18 @@
     <string name="settings__list_style_option_large">大</string>
     <string name="commons__select">選取</string>
     <string name="commons__clear">清除</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">可能的服務類型：%s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
-    <string name="tokens__group_use_default_name">Use default</string>
+    <string name="externalimport__info_proton_title">從 Proton Authenticator 匯入權杖</string>
+    <string name="externalimport__proton_msg">將您的帳戶從 Proton Authenticator 匯出到 JSON 檔案並使用「選擇 JSON 檔案」按鈕上傳。匯入成功後，請記得刪除該檔案。</string>
+    <string name="externalimport__proton_success_msg">此 JSON 檔案可從 Proton Authenticator 匯入權杖。</string>
+    <string name="externalimport__proton_title">從 Proton Authenticator 應用程式匯入 2FA 權杖</string>
+    <string name="tokens__group_use_default_name">使用預設</string>
     <string name="externalimport_bitwarden">Bitwarden</string>
-    <string name="externalimport__bitwarden_msg">Export your accounts from Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
-    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden app</string>
-    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
-    <string name="externalimport__info_bitwarden_title">Import Tokens from Bitwarden</string>
-    <string name="browser__request_source_description_ios">requested a 2FA Token for %s. Select the service to authorize and save it with this domain.</string>
+    <string name="externalimport__bitwarden_msg">將您的帳戶從 Bitwarden Authenticator 匯出到未加密的 JSON 或 CSV 檔案並使用「選擇 JSON 或 CSV 檔案」按鈕上傳。匯入成功後，請記得刪除該檔案。</string>
+    <string name="externalimport__bitwarden_success_msg">此檔案可從 Bitwarden 匯入權杖。</string>
+    <string name="externalimport__bitwarden_title">從 Bitwarden 應用程式匯入 2FA 權杖</string>
+    <string name="externalimport__choose_json_csv_cta">選擇 JSON 或 CSV 檔案</string>
+    <string name="externalimport__info_bitwarden_title">從 Bitwarden 匯入權杖</string>
+    <string name="browser__request_source_description_ios">為 %s 申請了一個 2FA 權杖。請選擇要授權並儲存到此網域的服務。</string>
 </resources>

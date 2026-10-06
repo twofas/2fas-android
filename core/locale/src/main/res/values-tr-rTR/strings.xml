@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Sun, 04 Oct 2026 11:06:57 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -758,10 +758,10 @@
     <string name="tokens__add_manual_advanced">Gelişmiş jeton ayarları</string>
     <string name="tokens__add_manual_additional_info">Ek bilgi</string>
     <string name="tokens__add_manual_advanced_description">Varsayılan jeton ayarlarının değiştirilmesi önerilmez. Bunu yalnızca 2AD sağlayıcınız gerek duyduğunda ve açık talimatlara sahip olduğunuzda yapın.</string>
-    <string name="settings__option_screenshots_description">Uygulamada ekran görüntülerine 5 dakika için izin ver.</string>
+    <string name="settings__option_screenshots_description">Uygulamada ekran görüntülerine 30 dakika için izin ver.</string>
     <string name="settings__option_screenshots">Ekran görüntülerine izin ver</string>
     <string name="settings__option_screenshots_confirm_title">Uygulamada ekran görüntülerine izin verilsin mi?</string>
-    <string name="settings__option_screenshots_confirm_description">Emin misiniz? Bu seçeneğin etkinleştirilmesi, uygulamanın her yerinde ekran kaydı almanıza izin verir; ancak bu, tüm harici ekran kaydı denemelerine aralık bırakır.\nGüvenlik sebeplerinden ötürü bu seçenek 5 dakika sonra kendiliğinden devre dışı bırakılacak.</string>
+    <string name="settings__option_screenshots_confirm_description">Emin misiniz? Bu seçeneğin etkinleştirilmesi, uygulamanın her yerinde ekran kaydı almanıza izin verir; ancak bu, tüm harici ekran kaydı denemelerine aralık bırakır.\nGüvenlik sebeplerinden ötürü bu seçenek 30 dakika sonra kendiliğinden devre dışı bırakılacak.</string>
     <string name="social__social_media">Sosyal medya bağlantıları</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1034,18 +1034,18 @@
     <string name="settings__list_style_option_large">Büyük</string>
     <string name="commons__select">Seç</string>
     <string name="commons__clear">Temizle</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">Olası hizmet türü: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
-    <string name="tokens__group_use_default_name">Use default</string>
+    <string name="externalimport__info_proton_title">Jetonları Proton Authenticator\'dan içe aktar</string>
+    <string name="externalimport__proton_msg">Hesaplarınızı Proton Authenticator\'dan bir JSON dosyasına aktarın ve \"JSON dosyası seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içe aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
+    <string name="externalimport__proton_success_msg">Bu JSON dosyası, jetonların Proton Authenticator\'dan içe aktarılmasına izin verir.</string>
+    <string name="externalimport__proton_title">2AD jetonları Proton Authenticator\'dan içe aktarılıyor</string>
+    <string name="tokens__group_use_default_name">Varsayılanı kullan</string>
     <string name="externalimport_bitwarden">Bitwarden</string>
-    <string name="externalimport__bitwarden_msg">Export your accounts from Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
-    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden app</string>
-    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
-    <string name="externalimport__info_bitwarden_title">Import Tokens from Bitwarden</string>
-    <string name="browser__request_source_description_ios">requested a 2FA Token for %s. Select the service to authorize and save it with this domain.</string>
+    <string name="externalimport__bitwarden_msg">Hesaplarınızı Bitwarden Authenticator\'dan şifrelenmemiş bir JSON veya CSV dosyasına aktarın ve \"JSON veya CSV dosyası seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içe aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
+    <string name="externalimport__bitwarden_success_msg">Bu dosya, jetonların Bitwarden\'dan içe aktarılmasına izin verir.</string>
+    <string name="externalimport__bitwarden_title">2AD jetonları Bitwarden\'dan içe aktarılıyor</string>
+    <string name="externalimport__choose_json_csv_cta">JSON veya CSV dosyası seç</string>
+    <string name="externalimport__info_bitwarden_title">Jetonları Bitwarden\'dan içe aktar</string>
+    <string name="browser__request_source_description_ios">%s için 2AD jetonu talep etti. Onaylamak ve bu alan adıyla kaydetmek için hizmeti seçin.</string>
 </resources>

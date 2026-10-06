@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Sun, 04 Oct 2026 11:06:57 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -758,10 +758,10 @@
     <string name="tokens__add_manual_advanced">Geavanceerde token-instellingen</string>
     <string name="tokens__add_manual_additional_info">Aanvullende informatie</string>
     <string name="tokens__add_manual_advanced_description">Het wijzigen van de standaardtokeninstellingen wordt niet aanbevolen. Doe dit alleen wanneer uw 2FA-provider dit vereist en wanneer u duidelijke instructies heeft.</string>
-    <string name="settings__option_screenshots_description">Sta screenshots van de app toe gedurende 5 minuten.</string>
+    <string name="settings__option_screenshots_description">Sta screenshots van de app toe gedurende 30 minuten.</string>
     <string name="settings__option_screenshots">Schermafbeeldingen toestaan</string>
     <string name="settings__option_screenshots_confirm_title">Schermafbeeldingen van de app toestaan?</string>
-    <string name="settings__option_screenshots_confirm_description">Weet u het zeker? Met deze optie kunt u een schermafbeelding maken en elk scherm in de app vastleggen. Hierdoor kunnen echter ook vreemden van buitenaf uw schermen vastleggen. Daarom wordt vanwege veiligheidsredenen deze optie na 5 minuten weer uitgeschakeld.</string>
+    <string name="settings__option_screenshots_confirm_description">Weet u het zeker? Met deze optie kunt u een schermafbeelding maken en elk scherm in de app vastleggen. Hierdoor kunnen echter ook vreemden van buitenaf uw schermen vastleggen. Daarom wordt vanwege veiligheidsredenen deze optie na 30 minuten weer uitgeschakeld.</string>
     <string name="social__social_media">Social media-links</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1034,18 +1034,18 @@
     <string name="settings__list_style_option_large">Groot</string>
     <string name="commons__select">Selecteren</string>
     <string name="commons__clear">Wissen</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">Mogelijk servicetype: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
-    <string name="tokens__group_use_default_name">Use default</string>
+    <string name="externalimport__info_proton_title">Importeer tokens vanuit Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Exporteer uw accounts van Proton Authenticator naar een JSON-bestand en upload het door de knop \"Kies JSON-bestand\" te gebruiken. Vergeet niet om na een succesvolle importatie het bestand te verwijderen.</string>
+    <string name="externalimport__proton_success_msg">Dit JSON-bestand maakt het mogelijk om Proton Authenticator tokens te importeren.</string>
+    <string name="externalimport__proton_title">2FA-tokens importeren uit de Proton Authenticator app</string>
+    <string name="tokens__group_use_default_name">Standaard gebruiken</string>
     <string name="externalimport_bitwarden">Bitwarden</string>
-    <string name="externalimport__bitwarden_msg">Export your accounts from Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
-    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden app</string>
-    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
-    <string name="externalimport__info_bitwarden_title">Import Tokens from Bitwarden</string>
-    <string name="browser__request_source_description_ios">requested a 2FA Token for %s. Select the service to authorize and save it with this domain.</string>
+    <string name="externalimport__bitwarden_msg">Exporteer uw accounts van Bitwarden Authenticator naar een niet-versleuteld JSON- of CSV-bestand en upload het door de knop \"Kies JSON- of CSV-bestand\" te gebruiken. Vergeet niet om na een succesvolle importatie het bestand te verwijderen.</string>
+    <string name="externalimport__bitwarden_success_msg">Dit bestand maakt het mogelijk om Bitwarden tokens te importeren.</string>
+    <string name="externalimport__bitwarden_title">2FA-tokens importeren uit de Bitwarden app</string>
+    <string name="externalimport__choose_json_csv_cta">Kies JSON- of CSV-bestand</string>
+    <string name="externalimport__info_bitwarden_title">Importeer tokens vanuit Bitwarden</string>
+    <string name="browser__request_source_description_ios">heeft een 2FA-token aangevraagd voor %s. Selecteer de service die u wilt autoriseren en sla deze op met dit domein.</string>
 </resources>

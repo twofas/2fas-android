@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Sun, 04 Oct 2026 11:06:57 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -758,7 +758,7 @@
     <string name="tokens__add_manual_advanced">Advanced Token settings</string>
     <string name="tokens__add_manual_additional_info">Additional info</string>
     <string name="tokens__add_manual_advanced_description">Changing default Token settings is not recommended. Do so only when your 2FA provider requires it and when you have clear instructions.</string>
-    <string name="settings__option_screenshots_description">Allow screenshots of the app for 5 minutes.</string>
+    <string name="settings__option_screenshots_description">Allow screenshots of the app for 30 minutes.</string>
     <string name="settings__option_screenshots">Allow screenshots</string>
     <string name="settings__option_screenshots_confirm_title">Allow screenshots of the app?</string>
     <string name="settings__option_screenshots_confirm_description">Are you sure? This option allows you to take screenshots and record any screen within the app. However, this will also allow any external attempts to capture screens in the app.\nFor safety reasons, this option will be automatically turned off after 30 minutes.</string>

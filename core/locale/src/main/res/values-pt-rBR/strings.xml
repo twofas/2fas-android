@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pt-BR, Brazilian Portuguese
  Exported by: rafakob
- Exported at: Sun, 04 Oct 2026 11:06:57 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -275,7 +275,7 @@
     <string name="tokens__order_menu_option_user">Solicitar um ícone como usuário</string>
     <string name="tokens__order_menu_option_company">Submeter ícone como empresa</string>
     <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
-    <string name="tokens__sign_in_not_possible_title">Você não vai conseguir entrar na sua conta %s sem este código enquanto tiver ativado a autenticação de dois fatores para essa conta.</string>
+    <string name="tokens__sign_in_not_possible_title">Você não vai conseguir entrar na sua conta %1$s sem este código enquanto tiver ativado a autenticação de dois fatores para %2$s.</string>
     <string name="voiceover__show_service_key">Mostrar Chave Secreta</string>
     <string name="voiceover__copy_service_key">Copiar Chave Secreta</string>
     <!-- voiceover__seconds_left -->
@@ -758,10 +758,10 @@
     <string name="tokens__add_manual_advanced">Configurações avançadas do código</string>
     <string name="tokens__add_manual_additional_info">Informações adicionais</string>
     <string name="tokens__add_manual_advanced_description">Alterar a configuração padrão dos códigos não é recomendado. Faça isso somente quando seu provedor 2FA exigir e quando houverem instruções claras.</string>
-    <string name="settings__option_screenshots_description">Permita capturas de tela do aplicativo por 5 minutos.</string>
+    <string name="settings__option_screenshots_description">Permita capturas de tela do aplicativo por 30 minutos.</string>
     <string name="settings__option_screenshots">Permitir capturas de tela</string>
     <string name="settings__option_screenshots_confirm_title">Permitir capturas de tela desse aplicativo?</string>
-    <string name="settings__option_screenshots_confirm_description">Tem certeza? Esta opção permite capturar e gravar qualquer tela dentro do aplicativo. No entanto, isso também permitirá que terceiros capturem telas no aplicativo.\nPor motivos de segurança, essa opção será desabilitada automaticamente após 5 minutos.</string>
+    <string name="settings__option_screenshots_confirm_description">Tem certeza? Esta opção permite capturar e gravar qualquer tela dentro do aplicativo. No entanto, isso também permitirá que terceiros capturem telas no aplicativo.\nPor motivos de segurança, essa opção será desabilitada automaticamente após 30 minutos.</string>
     <string name="social__social_media">Midias Sociais\u0020</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -1034,18 +1034,18 @@
     <string name="settings__list_style_option_large">Grande</string>
     <string name="commons__select">Selecionar</string>
     <string name="commons__clear">\u0020Limpar</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">Possível tipo de serviço: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
-    <string name="tokens__group_use_default_name">Use default</string>
+    <string name="externalimport__info_proton_title">Importar códigos do Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Exporte suas contas do Proton Authenticator para um arquivo JSON e carregue-o utilizando o botão \"Escolher arquivo JSON\". Lembre-se de remover o arquivo após uma importação bem-sucedida.</string>
+    <string name="externalimport__proton_success_msg">Este arquivo JSON permite importar códigos do aplicativo Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Importar códigos 2FA do aplicativo Proton Authenticator</string>
+    <string name="tokens__group_use_default_name">Usar padrão</string>
     <string name="externalimport_bitwarden">Bitwarden</string>
-    <string name="externalimport__bitwarden_msg">Export your accounts from Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
-    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden app</string>
-    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
-    <string name="externalimport__info_bitwarden_title">Import Tokens from Bitwarden</string>
-    <string name="browser__request_source_description_ios">requested a 2FA Token for %s. Select the service to authorize and save it with this domain.</string>
+    <string name="externalimport__bitwarden_msg">Exporte suas contas do Bitwarden Authenticator para um arquivo JSON ou CSV não criptografado e carregue-o utilizando o botão \"Escolher arquivo JSON ou CSV\". Lembre-se de remover o arquivo após uma importação bem-sucedida.</string>
+    <string name="externalimport__bitwarden_success_msg">Este arquivo permite importar códigos do aplicativo Bitwarden.</string>
+    <string name="externalimport__bitwarden_title">Importar códigos 2FA do aplicativo Bitwarden</string>
+    <string name="externalimport__choose_json_csv_cta">Escolher arquivo JSON ou CSV</string>
+    <string name="externalimport__info_bitwarden_title">Importar códigos do Bitwarden</string>
+    <string name="browser__request_source_description_ios">pediu um código 2FA para %s. Selecione um serviço para autorizar e salvar com este domínio.</string>
 </resources>

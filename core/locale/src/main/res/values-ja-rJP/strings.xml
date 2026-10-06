@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Sun, 04 Oct 2026 11:06:57 -0700
+ Exported at: Tue, 06 Oct 2026 12:17:57 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -705,7 +705,7 @@
     <string name="backup__import_error_file_size">インポートしようとしているファイルが大きすぎます。サイズの制限は10MBです。</string>
     <string name="backup__import_error_file_invalid">インポートしようとしたファイルは不正か壊れています。他のファイルを選択してください。</string>
     <string name="appearance__toggle_active_search">すぐに検索</string>
-    <string name="appearance__active_search_description">起動時に検索を始めます。</string>
+    <string name="appearance__active_search_description">起動時に検索を始めます</string>
     <string name="widgets__expires_in">有効期限:\u0020</string>
     <string name="widgets__settings">ウィジェットの設定</string>
     <string name="errors__input_integer_number">入力は整数でなければなりません</string>
@@ -717,7 +717,7 @@
     <string name="settings__enable_crashlytics_description">2FASがアプリの問題を特定、解決するのを手伝うため、匿名のクラッシュレポートを送信する(アプリの再起動が必要です)。</string>
     <string name="tokens__manage_list">リストを管理</string>
     <string name="settings__appearance">外観</string>
-    <string name="settings__show_next_token_desc">認証コードの期限切れ前に、次のコードを表示します。</string>
+    <string name="settings__show_next_token_desc">認証コードの期限切れ前に、次のコードを表示します</string>
     <string name="settings__list_style">表示スタイル</string>
     <string name="backup__reminder_msg">Googleドライブは同期していません。</string>
     <string name="backup__reminder_cta">バックアップの設定へ</string>
@@ -752,10 +752,10 @@
     <string name="tokens__add_manual_advanced">高度な認証コード設定</string>
     <string name="tokens__add_manual_additional_info">追加情報</string>
     <string name="tokens__add_manual_advanced_description">デフォルトの認証コード設定の変更は推奨されません。2要素認証プロバイダーが必要とし、明確な指示がある場合にのみ変更してください。</string>
-    <string name="settings__option_screenshots_description">アプリのスクリーンショットを5分間許可します。</string>
+    <string name="settings__option_screenshots_description">アプリのスクリーンショットを30分間許可します</string>
     <string name="settings__option_screenshots">スクリーンショットを許可</string>
     <string name="settings__option_screenshots_confirm_title">このアプリのスクリーンショットを許可しますか？</string>
-    <string name="settings__option_screenshots_confirm_description">本当によろしいですか？この設定を行うと、アプリ画面をスクリーンショットして記録できるようになります。ただし、これにより、他からの画面のキャプチャも許可されます。\n安全上の理由から、この設定は5分後に自動的にオフになります。</string>
+    <string name="settings__option_screenshots_confirm_description">本当によろしいですか？この設定を行うと、アプリ画面をスクリーンショットして記録できるようになります。ただし、これにより、他からの画面のキャプチャも許可されます。\n安全上の理由から、この設定は30分後に自動的にオフになります。</string>
     <string name="social__social_media">ソーシャルメディアリンク</string>
     <string name="social__discord">Discord</string>
     <string name="social__youtube">YouTube</string>
@@ -765,7 +765,7 @@
     <string name="social__reddit">Reddit</string>
     <string name="social__facebook">Facebook</string>
     <string name="settings__hide_tokens_title">認証コードを隠す</string>
-    <string name="settings__hide_tokens_description">タップすると認証コードが表示されます。</string>
+    <string name="settings__hide_tokens_description">タップすると認証コードが表示されます</string>
     <string name="browser__pair_manually_cta">手動でペアリング</string>
     <string name="browser__pair_manually_hint">ペアリングコード</string>
     <string name="externalimport__info_authenticatorpro_title">Authenticator Proから認証コードをインポートする</string>
@@ -966,7 +966,7 @@
     <string name="pass_promo_banner_positive_cta">ストアへ</string>
     <string name="pass_promo_banner_negative_cta">今後表示しない</string>
     <string name="appearance_dynamic_colors">ダイナミックカラー</string>
-    <string name="appearance_dynamic_colors_description">壁紙に基づいてアプリの色を動的に変更します。</string>
+    <string name="appearance_dynamic_colors_description">壁紙に基づいてアプリの色を動的に変更します</string>
     <string name="backup__section_note">注: iCloud同期は、暗号化キーをiCloudキーチェーンに保存します。 iCloudキーチェーンが無効になっている場合、「バックアップを管理」セクションからキーを手動でエクスポートしないと、データの復元や他のデバイスへの同期ができなくなります。</string>
     <string name="backup__keys_import_warning">キーをインポートすると、現在の暗号化キーが上書きされます。続行しますか？</string>
     <string name="backup__key_import_system_key">システムキー</string>
@@ -1008,11 +1008,11 @@
     <string name="settings__more">もっと</string>
     <string name="settings__removed_items">認証コードを削除する</string>
     <string name="settings__connected_extensions">接続済みのエクステンション</string>
-    <string name="settings__security_description">アプリのセキュリティとプライバシー設定を管理します。</string>
-    <string name="settings__appearance_description">アプリの見た目と機能をカスタマイズする。</string>
-    <string name="settings__removed_items_description">アプリから削除した認証コードを復元、または完全に削除します。</string>
-    <string name="settings__backup_description">デバイス間で認証コードをバックアップおよび同期しましょう。</string>
-    <string name="settings__import_tokens_description">他のアプリからトークンをインポート</string>
+    <string name="settings__security_description">アプリのセキュリティとプライバシー設定を管理します</string>
+    <string name="settings__appearance_description">アプリの見た目と機能をカスタマイズします</string>
+    <string name="settings__removed_items_description">アプリから削除した認証コードを復元、または完全に削除します</string>
+    <string name="settings__backup_description">デバイス間で認証コードをバックアップおよび同期します</string>
+    <string name="settings__import_tokens_description">他のアプリから認証コードをインポート</string>
     <string name="settings__connected_extensions_description">接続済みのブラウザ拡張を管理</string>
     <string name="settings__about_description">アプリ情報、バージョン、およびライセンス</string>
     <string name="settings__support_description">2FASチームのサポートを受ける</string>
@@ -1028,18 +1028,18 @@
     <string name="settings__list_style_option_large">大</string>
     <string name="commons__select">選択</string>
     <string name="commons__clear">クリア</string>
-    <string name="tokens__service_autodetected_title">Possible service type: %s</string>
+    <string name="tokens__service_autodetected_title">利用可能なサービスの種類: %s</string>
     <string name="externalimport_proton">Proton Authenticator</string>
-    <string name="externalimport__info_proton_title">Import Tokens from Proton Authenticator</string>
-    <string name="externalimport__proton_msg">Export your accounts from Proton Authenticator to a JSON file and upload it using the \"Choose JSON file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__proton_success_msg">This JSON file allows you to import Tokens from Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Importing 2FA Tokens from Proton Authenticator app</string>
-    <string name="tokens__group_use_default_name">Use default</string>
+    <string name="externalimport__info_proton_title">Proton Authenticatorから認証コードをインポートする</string>
+    <string name="externalimport__proton_msg">Proton Authenticatorからアカウント情報をJSONファイルにエクスポートし、「JSONファイルを選択」ボタンを使用してアップロードしてください。インポートが完了したら、必ずファイルを削除してください。</string>
+    <string name="externalimport__proton_success_msg">このJSONファイルを使うと、Proton Authenticatorから認証キーをインポートできます。</string>
+    <string name="externalimport__proton_title">Proton Authenticatorアプリから認証コードをインポートする</string>
+    <string name="tokens__group_use_default_name">デフォルトを使う</string>
     <string name="externalimport_bitwarden">Bitwarden</string>
-    <string name="externalimport__bitwarden_msg">Export your accounts from Bitwarden Authenticator to an unencrypted JSON or CSV file and upload it using the \"Choose file\" button. Remember to remove the file after a successful import.</string>
-    <string name="externalimport__bitwarden_success_msg">This file allows you to import Tokens from Bitwarden.</string>
-    <string name="externalimport__bitwarden_title">Importing 2FA Tokens from Bitwarden app</string>
-    <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
-    <string name="externalimport__info_bitwarden_title">Import Tokens from Bitwarden</string>
-    <string name="browser__request_source_description_ios">requested a 2FA Token for %s. Select the service to authorize and save it with this domain.</string>
+    <string name="externalimport__bitwarden_msg">Bitwarden パスワードマネージャーから、アカウント情報を暗号化されていないJSONまたはCSVファイルにエクスポートし、「ファイルを選択」ボタンを使用してアップロードしてください。インポートが完了したら、必ずファイルを削除してください。</string>
+    <string name="externalimport__bitwarden_success_msg">このファイルを使うと、Bitwardenから認証コードをインポートできます。</string>
+    <string name="externalimport__bitwarden_title">Bitwardenから認証キーをインポートする</string>
+    <string name="externalimport__choose_json_csv_cta">JSONかCSVファイルを選択する</string>
+    <string name="externalimport__info_bitwarden_title">Bitwardenから認証キーをインポートする</string>
+    <string name="browser__request_source_description_ios">%s の 2FA認証コードが要求されました。認証するサービスを選択し、このドメインとともに保存してください。</string>
 </resources>
