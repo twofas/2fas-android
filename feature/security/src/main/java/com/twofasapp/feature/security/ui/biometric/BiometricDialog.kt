@@ -40,6 +40,7 @@ fun BiometricDialog(
         .setTitle(title)
         .setSubtitle(subtitle)
         .setNegativeButtonText(negative)
+        .setConfirmationRequired(false)
         .build()
 
     val callback = object : BiometricPrompt.AuthenticationCallback() {
