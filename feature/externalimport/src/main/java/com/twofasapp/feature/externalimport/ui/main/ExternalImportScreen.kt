@@ -95,6 +95,7 @@ private fun Content(
         ImportType.ProtonAuthenticator -> strings.externalImportProtonAuthenticator
         ImportType.OnePassword -> strings.externalImportOnePassword
         ImportType.Ente -> strings.externalImportEnte
+        ImportType.OtpAuthFile -> strings.externalImportOtpAuthFile
     }
 
     val description = when (uiState.importType) {
@@ -108,6 +109,7 @@ private fun Content(
         ImportType.ProtonAuthenticator -> strings.externalImportProtonAuthenticatorMsg
         ImportType.OnePassword -> strings.externalImportOnePasswordMsg
         ImportType.Ente -> strings.externalImportEnteMsg
+        ImportType.OtpAuthFile -> strings.externalImportOtpAuthFileMsg
     }
 
     val ctaPrimary = when (uiState.importType) {
@@ -121,6 +123,7 @@ private fun Content(
         ImportType.ProtonAuthenticator -> strings.externalImportChooseJsonCta
         ImportType.OnePassword -> strings.externalImportChooseCsvCta
         ImportType.Ente -> strings.externalImportChooseTxtCta
+        ImportType.OtpAuthFile -> strings.externalImportChooseTxtCta
     }
 
     val ctaSecondary = when (uiState.importType) {
@@ -152,6 +155,7 @@ private fun Content(
                     ImportType.ProtonAuthenticator -> showFilePicker(arrayOf("application/json", "text/*"))
                     ImportType.OnePassword -> showFilePicker(arrayOf("text/*"))
                     ImportType.Ente -> showFilePicker(arrayOf("text/*"))
+                    ImportType.OtpAuthFile -> showFilePicker(arrayOf("text/*"))
                 }
             },
             ctaSecondaryClick = {

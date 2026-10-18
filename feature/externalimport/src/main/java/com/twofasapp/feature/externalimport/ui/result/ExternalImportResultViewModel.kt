@@ -17,6 +17,7 @@ import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.LastPassImporter
 import com.twofasapp.feature.externalimport.domain.OnePasswordImporter
+import com.twofasapp.feature.externalimport.domain.OtpAuthFileImporter
 import com.twofasapp.feature.externalimport.domain.ProtonAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.RaivoImporter
 import com.twofasapp.feature.qrscan.ReadQrFromImage
@@ -39,6 +40,7 @@ internal class ExternalImportResultViewModel(
     private val protonAuthenticatorImporter: ProtonAuthenticatorImporter,
     private val onePasswordImporter: OnePasswordImporter,
     private val enteImporter: EnteImporter,
+    private val otpAuthFileImporter: OtpAuthFileImporter,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(ExternalImportResultUiState())
@@ -77,6 +79,7 @@ internal class ExternalImportResultViewModel(
                 ImportType.ProtonAuthenticator -> protonAuthenticatorImporter.read(importFileUri.orEmpty().decodeBase64ToString())
                 ImportType.OnePassword -> onePasswordImporter.read(importFileUri.orEmpty().decodeBase64ToString())
                 ImportType.Ente -> enteImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.OtpAuthFile -> otpAuthFileImporter.read(importFileUri.orEmpty().decodeBase64ToString())
             }
 
             when (result) {

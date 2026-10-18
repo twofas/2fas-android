@@ -129,6 +129,7 @@ private fun Result(
         ImportType.ProtonAuthenticator -> strings.externalImportResultProtonAuthenticatorTitle
         ImportType.OnePassword -> strings.externalImportResultOnePasswordTitle
         ImportType.Ente -> strings.externalImportResultEnteTitle
+        ImportType.OtpAuthFile -> strings.externalImportResultOtpAuthFileTitle
     }
 
     val description = when (readResult) {
@@ -144,6 +145,7 @@ private fun Result(
                 ImportType.ProtonAuthenticator -> strings.externalImportResultSuccessProtonAuthenticatorMsg
                 ImportType.OnePassword -> strings.externalImportResultSuccessOnePasswordMsg
                 ImportType.Ente -> strings.externalImportResultSuccessEnteMsg
+                ImportType.OtpAuthFile -> strings.externalImportOtpAuthFileMsg
             }
         }
 

@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
+import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.R
 import com.twofasapp.core.design.feature.settings.OptionEntry
 import com.twofasapp.core.design.feature.settings.OptionHeader
@@ -135,6 +136,14 @@ private fun Content(
                     title = MdtLocale.strings.externalImportRaivo,
                     image = painterResource(id = R.drawable.logo_raivo),
                     onClick = { onImportTypeSelected(ImportType.Raivo) },
+                )
+            }
+
+            item {
+                OptionEntry(
+                    title = MdtLocale.strings.externalImportOtpAuthFile,
+                    icon = MdtIcons.Document,
+                    onClick = { onImportTypeSelected(ImportType.OtpAuthFile) },
                 )
             }
         }
