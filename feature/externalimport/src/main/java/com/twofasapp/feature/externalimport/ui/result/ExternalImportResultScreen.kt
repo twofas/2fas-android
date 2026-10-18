@@ -50,6 +50,7 @@ internal fun ExternalImportResultScreen(
     LaunchedEffect(uiState.finishSuccess) {
         if (uiState.finishSuccess) {
             context.toastShort(strings.externalImportSuccessToast)
+            navigator.popTo(Screen.ExternalImport(importType = importType.name), inclusive = true)
             navigator.popTo(Screen.ExternalImportSelector, inclusive = true)
         }
     }

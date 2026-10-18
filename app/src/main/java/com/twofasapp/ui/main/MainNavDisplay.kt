@@ -201,7 +201,11 @@ internal fun MainNavDisplay(
                 }
 
                 entry<Screen.ExternalImportScan> { key ->
-                    ExternalImportScanRoute(importType = enumValueOf<ImportType>(key.importType))
+                    ExternalImportScanRoute(
+                        importType = enumValueOf<ImportType>(key.importType),
+                        initialContent = key.initialContent,
+                        fromGallery = key.fromGallery,
+                    )
                 }
 
                 entry<Screen.ExternalImportResult> { key ->

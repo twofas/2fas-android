@@ -25,19 +25,16 @@ class GoogleAuthenticatorImporter : ExternalImporter {
 
     override fun read(content: String): ExternalImport {
         try {
-            val uri = Uri.parse(content)
-
-            if (uri.host.equals(HOST, true).not()) {
-                return ExternalImport.UnsupportedError("Unsupported host: ${uri.host}")
+            val payloads = content.lines().filter { it.isNotBlank() }.map { line ->
+                when (val decoded = decodePayload(line)) {
+                    is DecodedPayload.Success -> decoded.payload
+                    is DecodedPayload.Unsupported -> return ExternalImport.UnsupportedError(decoded.reason)
+                }
             }
 
-            val dataEncoded = uri.getQueryParameter(DATA) ?: return ExternalImport.UnsupportedError("Missing $DATA parameter")
-            val data = dataEncoded.decodeBase64()
-
-            val proto = MigrationPayload.parseFrom(data)
-            val totalServices = proto.otpParametersCount
+            val otpParameters = payloads.flatMap { it.otpParametersList }
             val servicesToImport = mutableListOf<Service?>()
-            proto.otpParametersList.forEach {
+            otpParameters.forEach {
                 if (isTypeSupported(it)) {
                     servicesToImport.add(parseService(it))
                 }
@@ -45,12 +42,41 @@ class GoogleAuthenticatorImporter : ExternalImporter {
 
             return ExternalImport.Success(
                 servicesToImport = servicesToImport.filterNotNull(),
-                totalServicesCount = totalServices,
+                totalServicesCount = otpParameters.size,
             )
         } catch (e: Exception) {
             e.printStackTrace()
             return ExternalImport.ParsingError(e)
         }
+    }
+
+    fun readBatch(content: String): GoogleAuthenticatorBatch? {
+        return try {
+            when (val decoded = decodePayload(content)) {
+                is DecodedPayload.Success -> GoogleAuthenticatorBatch(
+                    size = decoded.payload.batchSize,
+                    index = decoded.payload.batchIndex,
+                    id = decoded.payload.batchId,
+                    servicesCount = decoded.payload.otpParametersCount,
+                )
+
+                is DecodedPayload.Unsupported -> null
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    private fun decodePayload(content: String): DecodedPayload {
+        val uri = Uri.parse(content.trim())
+
+        if (uri.host.equals(HOST, true).not()) {
+            return DecodedPayload.Unsupported("Unsupported host: ${uri.host}")
+        }
+
+        val dataEncoded = uri.getQueryParameter(DATA) ?: return DecodedPayload.Unsupported("Missing $DATA parameter")
+
+        return DecodedPayload.Success(MigrationPayload.parseFrom(dataEncoded.decodeBase64()))
     }
 
     private fun parseService(otpParameters: MigrationPayload.OtpParameters): Service {
@@ -113,5 +139,10 @@ class GoogleAuthenticatorImporter : ExternalImporter {
         }
 
         return params
+    }
+
+    private sealed interface DecodedPayload {
+        data class Success(val payload: MigrationPayload) : DecodedPayload
+        data class Unsupported(val reason: String) : DecodedPayload
     }
 }

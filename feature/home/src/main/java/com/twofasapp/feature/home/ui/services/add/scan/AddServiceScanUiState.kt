@@ -11,4 +11,11 @@ internal data class AddServiceScanUiState(
     val showGalleryErrorDialog: Boolean = false,
     val source: AddServiceScanViewModel.ScanSource = AddServiceScanViewModel.ScanSource.Scan,
     val addedService: RecentlyAddedService? = null,
+    val googleAuthenticatorImport: GoogleAuthenticatorImport? = null,
+)
+
+data class GoogleAuthenticatorImport(
+    val content: String,
+    val isBatch: Boolean,
+    val fromGallery: Boolean,
 )

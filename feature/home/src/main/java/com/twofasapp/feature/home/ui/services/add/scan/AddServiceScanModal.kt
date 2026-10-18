@@ -58,6 +58,7 @@ fun AddServiceScanModal(
     openManual: () -> Unit = {},
     openGuides: () -> Unit = {},
     onAddedSuccessfully: (RecentlyAddedService) -> Unit = {},
+    openGoogleAuthenticatorImport: (GoogleAuthenticatorImport) -> Unit = {},
 ) {
     Modal(
         onDismissRequest = onDismissRequest,
@@ -68,6 +69,12 @@ fun AddServiceScanModal(
 
             LaunchedEffect(uiState.addedService) {
                 uiState.addedService?.let(onAddedSuccessfully)
+            }
+
+            LaunchedEffect(uiState.googleAuthenticatorImport) {
+                uiState.googleAuthenticatorImport?.let { import ->
+                    dismiss { openGoogleAuthenticatorImport(import) }
+                }
             }
 
             AnimatedContent(

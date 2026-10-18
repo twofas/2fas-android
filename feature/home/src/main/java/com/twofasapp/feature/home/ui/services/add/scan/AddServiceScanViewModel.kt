@@ -10,6 +10,7 @@ import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.otp.OtpLinkParser
+import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.feature.qrscan.ReadQrFromImage
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,6 +22,7 @@ import kotlin.time.Duration.Companion.milliseconds
 internal class AddServiceScanViewModel(
     private val servicesRepository: ServicesRepository,
     private val readQrFromImage: ReadQrFromImage,
+    private val googleAuthenticatorImporter: GoogleAuthenticatorImporter,
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<AddServiceScanUiState> = MutableStateFlow(AddServiceScanUiState())
@@ -57,6 +59,22 @@ internal class AddServiceScanViewModel(
     private fun handleScanned(text: String, source: ScanSource) {
         launchScoped {
             uiState.update { it.copy(source = source) }
+
+            // Google Authenticator export codes are handled by the external import flow
+            if (googleAuthenticatorImporter.isSchemaSupported(text)) {
+                val batch = googleAuthenticatorImporter.readBatch(text)
+                Flog.persist(tag = "AddService", message = "$source: Google Authenticator export detected (batch=${batch?.size})")
+                uiState.update {
+                    it.copy(
+                        googleAuthenticatorImport = GoogleAuthenticatorImport(
+                            content = text,
+                            isBatch = batch?.isMultiCode == true,
+                            fromGallery = source == ScanSource.Gallery,
+                        ),
+                    )
+                }
+                return@launchScoped
+            }
 
             val link = OtpLinkParser.parse(text)
 

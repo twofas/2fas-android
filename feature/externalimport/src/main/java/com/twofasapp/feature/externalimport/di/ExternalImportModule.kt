@@ -15,7 +15,6 @@ import com.twofasapp.feature.externalimport.ui.result.ExternalImportResultViewMo
 import com.twofasapp.feature.externalimport.ui.scan.ExternalImportScanViewModel
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.viewModel
-import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class ExternalImportModule : KoinModule {
@@ -38,8 +37,21 @@ class ExternalImportModule : KoinModule {
                 protonAuthenticatorImporter = get(),
             )
         }
-        viewModelOf(::ExternalImportScanViewModel)
-        viewModel { (importType: ImportType) -> ExternalImportViewModel(importType = importType) }
+        viewModel { (initialContent: String?, fromGallery: Boolean) ->
+            ExternalImportScanViewModel(
+                initialContent = initialContent,
+                fromGallery = fromGallery,
+                readQrFromImage = get(),
+                googleAuthenticatorImporter = get(),
+            )
+        }
+        viewModel { (importType: ImportType) ->
+            ExternalImportViewModel(
+                importType = importType,
+                readQrFromImage = get(),
+                googleAuthenticatorImporter = get(),
+            )
+        }
 
         factoryOf(::GoogleAuthenticatorImporter)
         factoryOf(::AegisImporter)

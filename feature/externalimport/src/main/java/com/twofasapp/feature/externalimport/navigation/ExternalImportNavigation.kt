@@ -22,8 +22,14 @@ fun ExternalImportRoute(
 @Composable
 fun ExternalImportScanRoute(
     importType: ImportType,
+    initialContent: String?,
+    fromGallery: Boolean,
 ) {
-    ExternalImportScanScreen(importType = importType)
+    ExternalImportScanScreen(
+        importType = importType,
+        initialContent = initialContent,
+        fromGallery = fromGallery,
+    )
 }
 
 @Composable
