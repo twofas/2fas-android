@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hant, Traditional Chinese
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:58 -0700
+ Exported at: Sun, 18 Oct 2026 03:29:46 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1042,4 +1042,26 @@
     <string name="externalimport__choose_json_csv_cta">選擇 JSON 或 CSV 檔案</string>
     <string name="externalimport__info_bitwarden_title">從 Bitwarden 匯入權杖</string>
     <string name="browser__request_source_description_ios">為 %s 申請了一個 2FA 權杖。請選擇要授權並儲存到此網域的服務。</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">將您的帳戶從 Ente Auth 匯出到純文字檔案，然後使用「選擇文字檔案」按鈕上傳。匯入成功後，請記得刪除該檔案。</string>
+    <string name="externalimport__ente_success_msg">此文字檔案可從 Ente Auth 匯入權杖。</string>
+    <string name="externalimport__ente_title">從 Ente Auth 應用程式匯入 2FA 權杖</string>
+    <string name="externalimport__onepassword_msg">將您的帳戶從 1Password 匯出到 CSV 檔案，然後使用「選擇 CSV 檔案」按鈕上傳。匯入成功後，請記得刪除該檔案。</string>
+    <string name="externalimport__onepassword_success_msg">此 CSV 檔案可從 1Password 匯入權杖。</string>
+    <string name="externalimport__onepassword_title">從 1Password 應用程式匯入 2FA 權杖</string>
+    <string name="externalimport__choose_csv_cta">選擇 CSV 檔案</string>
+    <string name="externalimport__info_ente_title">從 Ente Auth 匯入權杖</string>
+    <string name="externalimport__info_onepassword_title">從 1Password 匯入權杖</string>
+    <string name="tokens__google_import_already_scanned_message">You have already scanned this QR code.</string>
+    <string name="tokens__google_import_already_scanned_title">Already scanned</string>
+    <string name="tokens__google_import_different_batch_message">This QR code comes from a different Google Authenticator export. Scan all codes from a single export.</string>
+    <string name="tokens__google_import_different_batch_title">Different export</string>
+    <string name="tokens__google_import_multi_subtitle">This is part of a multiple QR code export</string>
+    <string name="tokens__google_import_only_scanned">Import only scanned codes</string>
+    <string name="tokens__google_import_scanned_count">Scanned %1$d of %2$d QR codes</string>
+    <string name="tokens__google_import_title">Google Authenticator import</string>
+    <string name="logs_title">Logs</string>
+    <string name="logs_empty">No logs available</string>
+    <string name="logs_share_title">Share logs</string>
 </resources>

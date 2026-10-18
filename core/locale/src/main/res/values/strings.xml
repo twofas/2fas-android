@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Sun, 18 Oct 2026 03:29:45 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -523,9 +523,6 @@
     <string name="biometric_dialog_auth_title">Authenticate</string>
     <string name="biometric_dialog_auth_subtitle">Use your biometric credential</string>
     <string name="about_licenses">Open source licenses</string>
-    <string name="logs_title">Logs</string>
-    <string name="logs_empty">No logs available</string>
-    <string name="logs_share_title">Share logs</string>
     <string name="externalimport_description">Choose an app from the list and follow the instructions.</string>
     <string name="externalimport_select_app">Select app</string>
     <string name="externalimport_google_authenticator">Google Authenticator</string>
@@ -1051,4 +1048,26 @@
     <string name="externalimport__choose_json_csv_cta">Choose JSON or CSV file</string>
     <string name="externalimport__info_bitwarden_title">Import Tokens from Bitwarden</string>
     <string name="browser__request_source_description_ios">requested a 2FA Token for %s. Select the service to authorize and save it with this domain.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Export your accounts from Ente Auth to a plain text file and upload it using the \"Choose text file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__ente_success_msg">This text file allows you to import Tokens from Ente Auth.</string>
+    <string name="externalimport__ente_title">Importing 2FA Tokens from Ente Auth app</string>
+    <string name="externalimport__onepassword_msg">Export your accounts from 1Password to a CSV file and upload it using the \"Choose CSV file\" button. Remember to remove the file after a successful import.</string>
+    <string name="externalimport__onepassword_success_msg">This CSV file allows you to import Tokens from 1Password.</string>
+    <string name="externalimport__onepassword_title">Importing 2FA Tokens from 1Password app</string>
+    <string name="externalimport__choose_csv_cta">Choose CSV file</string>
+    <string name="externalimport__info_ente_title">Import Tokens from Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Import Tokens from 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">You have already scanned this QR code.</string>
+    <string name="tokens__google_import_already_scanned_title">Already scanned</string>
+    <string name="tokens__google_import_different_batch_message">This QR code comes from a different Google Authenticator export. Scan all codes from a single export.</string>
+    <string name="tokens__google_import_different_batch_title">Different export</string>
+    <string name="tokens__google_import_multi_subtitle">This is part of a multiple QR code export</string>
+    <string name="tokens__google_import_only_scanned">Import only scanned codes</string>
+    <string name="tokens__google_import_scanned_count">Scanned %1$d of %2$d QR codes</string>
+    <string name="tokens__google_import_title">Google Authenticator import</string>
+    <string name="logs_title">Logs</string>
+    <string name="logs_empty">No logs available</string>
+    <string name="logs_share_title">Share logs</string>
 </resources>

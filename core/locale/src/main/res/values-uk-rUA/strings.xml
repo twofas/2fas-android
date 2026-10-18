@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Sun, 18 Oct 2026 03:29:45 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1054,4 +1054,26 @@
     <string name="externalimport__choose_json_csv_cta">Обрати JSON або CSV файл</string>
     <string name="externalimport__info_bitwarden_title">Імпортувати токени з Bitwarden</string>
     <string name="browser__request_source_description_ios">надіслав запит на токен для %s. Оберіть сервіс для авторизації та збережіть із цим доменом.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Експортуйте ваші акаунти з Ente Auth у звичайний текстовий файл і завантажте його, використовуючи кнопку \"Оберіть текстовий файл\". Не забудьте видалити файл після успішного імпорту.</string>
+    <string name="externalimport__ente_success_msg">Цей текстовий файл дозволяє імпорт токенів з Ente Auth.</string>
+    <string name="externalimport__ente_title">Імпорт 2ФА токенів з додатку Ente Auth</string>
+    <string name="externalimport__onepassword_msg">Експортуйте ваші акаунти з 1Password у CSV файл і завантажте його, використовуючи кнопку \"Обрати CSV файл\". Не забудьте видалити файл після успішного імпорту.</string>
+    <string name="externalimport__onepassword_success_msg">Цей CSV файл дозволяє імпорт токенів з 1Password.</string>
+    <string name="externalimport__onepassword_title">Імпорт 2ФА токенів з додатку 1Password</string>
+    <string name="externalimport__choose_csv_cta">Обрати CSV файл</string>
+    <string name="externalimport__info_ente_title">Імпорт токенів з Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Імпорт токенів з 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">You have already scanned this QR code.</string>
+    <string name="tokens__google_import_already_scanned_title">Already scanned</string>
+    <string name="tokens__google_import_different_batch_message">This QR code comes from a different Google Authenticator export. Scan all codes from a single export.</string>
+    <string name="tokens__google_import_different_batch_title">Different export</string>
+    <string name="tokens__google_import_multi_subtitle">This is part of a multiple QR code export</string>
+    <string name="tokens__google_import_only_scanned">Import only scanned codes</string>
+    <string name="tokens__google_import_scanned_count">Scanned %1$d of %2$d QR codes</string>
+    <string name="tokens__google_import_title">Google Authenticator import</string>
+    <string name="logs_title">Logs</string>
+    <string name="logs_empty">No logs available</string>
+    <string name="logs_share_title">Share logs</string>
 </resources>

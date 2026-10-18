@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Sun, 18 Oct 2026 03:29:45 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1048,4 +1048,26 @@
     <string name="externalimport__choose_json_csv_cta">Kies JSON- of CSV-bestand</string>
     <string name="externalimport__info_bitwarden_title">Importeer tokens vanuit Bitwarden</string>
     <string name="browser__request_source_description_ios">heeft een 2FA-token aangevraagd voor %s. Selecteer de service die u wilt autoriseren en sla deze op met dit domein.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Exporteer uw accounts van Ente Auth naar een tekstbestand en upload deze met de \"Tekstbestand kiezen\" knop. Vergeet niet om het bestand te verwijderen na een succesvolle import.</string>
+    <string name="externalimport__ente_success_msg">Met dit tekstbestand kunt u tokens vanuit Ente Auth importeren.</string>
+    <string name="externalimport__ente_title">Importeer 2FA tokens vanuit de Ente Auth app</string>
+    <string name="externalimport__onepassword_msg">Exporteer uw accounts van 1Password naar een CSV-bestand en upload deze met de \"Kies CSV-bestand\" knop. Vergeet niet om het bestand te verwijderen na een succesvolle import.</string>
+    <string name="externalimport__onepassword_success_msg">Met dit CSV-bestand kunt u tokens vanuit 1Password importeren.</string>
+    <string name="externalimport__onepassword_title">Importeer 2FA tokens vanuit de 1Password app</string>
+    <string name="externalimport__choose_csv_cta">Kies CSV-bestand</string>
+    <string name="externalimport__info_ente_title">Importeer tokens vanuit Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Importeer tokens vanuit 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">You have already scanned this QR code.</string>
+    <string name="tokens__google_import_already_scanned_title">Already scanned</string>
+    <string name="tokens__google_import_different_batch_message">This QR code comes from a different Google Authenticator export. Scan all codes from a single export.</string>
+    <string name="tokens__google_import_different_batch_title">Different export</string>
+    <string name="tokens__google_import_multi_subtitle">This is part of a multiple QR code export</string>
+    <string name="tokens__google_import_only_scanned">Import only scanned codes</string>
+    <string name="tokens__google_import_scanned_count">Scanned %1$d of %2$d QR codes</string>
+    <string name="tokens__google_import_title">Google Authenticator import</string>
+    <string name="logs_title">Logs</string>
+    <string name="logs_empty">No logs available</string>
+    <string name="logs_share_title">Share logs</string>
 </resources>
