@@ -110,4 +110,7 @@ sealed interface Screen : NavKey {
 
     @Serializable
     data object AboutLicenses : Screen
+
+    @Serializable
+    data object AboutLogs : Screen
 }

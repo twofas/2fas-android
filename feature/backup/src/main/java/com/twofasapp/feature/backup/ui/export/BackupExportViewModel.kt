@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.session.SessionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,6 +38,7 @@ internal class BackupExportViewModel(
                 )
             }
                 .onSuccess { content ->
+                    Flog.persist(tag = "Backup", message = "Export share: success encrypted=${uiState.value.passwordChecked}")
                     publishEvent(
                         BackupExportUiEvent.ShowSharePicker(
                             appId = appBuild.id,
@@ -44,7 +46,11 @@ internal class BackupExportViewModel(
                         ),
                     )
                 }
-                .onFailure { publishEvent(BackupExportUiEvent.ShareError) }
+                .onFailure { e ->
+                    Flog.persist(tag = "Backup", message = "Export share: failed")
+                    Flog.persist(tag = "Backup", throwable = e)
+                    publishEvent(BackupExportUiEvent.ShareError)
+                }
         }
     }
 
@@ -69,9 +75,14 @@ internal class BackupExportViewModel(
                 }
             }
                 .onSuccess {
+                    Flog.persist(tag = "Backup", message = "Export download: success encrypted=${uiState.value.passwordChecked}")
                     publishEvent(BackupExportUiEvent.DownloadSuccess)
                 }
-                .onFailure { publishEvent(BackupExportUiEvent.DownloadError) }
+                .onFailure { e ->
+                    Flog.persist(tag = "Backup", message = "Export download: failed")
+                    Flog.persist(tag = "Backup", throwable = e)
+                    publishEvent(BackupExportUiEvent.DownloadError)
+                }
         }
     }
 

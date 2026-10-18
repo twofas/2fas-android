@@ -5,6 +5,7 @@ import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
 import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.domain.BackupContent
@@ -42,6 +43,11 @@ internal class BackupImportViewModel(
         launchScoped {
             runSafely { backupRepository.readBackupContent(fileUri) }
                 .onSuccess { backupContent ->
+                    Flog.persist(
+                        tag = "Backup",
+                        message = "Import read: success encrypted=${backupContent.isEncrypted} schema=${backupContent.schemaVersion}",
+                    )
+
                     if (backupContent.isEncrypted) {
                         uiState.update {
                             it.copy(
@@ -59,6 +65,9 @@ internal class BackupImportViewModel(
                     }
                 }
                 .onFailure { e ->
+                    // Exception details are not persisted as they may contain backup content
+                    Flog.persist(tag = "Backup", message = "Import read: failed (${e::class.simpleName})")
+
                     when (e) {
                         is FileTooBigException -> uiState.update { it.copy(screenState = ScreenState.ErrorInvalidFileSize) }
                         else -> uiState.update { it.copy(screenState = ScreenState.ErrorInvalidFile(reason = e.formatErrorDetails())) }
@@ -91,6 +100,8 @@ internal class BackupImportViewModel(
                 }
                     .onSuccess { decrypted -> startImport(decrypted) }
                     .onFailure { exception ->
+                        Flog.persist(tag = "Backup", message = "Import decrypt: failed (${exception::class.simpleName})")
+
                         when (exception) {
                             is DecryptWrongPassword -> publishEvent(BackupImportUiEvent.WrongPassword)
                             else -> publishEvent(BackupImportUiEvent.DecryptError)
@@ -108,6 +119,7 @@ internal class BackupImportViewModel(
                 .onSuccess { publishEvent(BackupImportUiEvent.ImportSuccess) }
                 .onFailure { e ->
                     e.printStackTrace()
+                    Flog.persist(tag = "Backup", message = "Import: failed (${e::class.simpleName}) schema=${backupContent.schemaVersion}")
                     uiState.update { it.copy(importing = false) }
 
                     if (BackupContent.CurrentSchema < backupContent.schemaVersion) {

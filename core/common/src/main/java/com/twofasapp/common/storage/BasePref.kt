@@ -64,11 +64,13 @@ abstract class BasePref<PrefType, ValueType>(
                 encryptedValue
                     ?.decodeBase64()
                     ?.let {
-                        DataStoreKeyStore.withRetry {
-                            decrypt(
-                                key = DataStoreKeyStore.key,
-                                data = EncryptedBytes(it),
-                            ).decodeString()
+                        persistFailure("Decrypt") {
+                            DataStoreKeyStore.withRetry {
+                                decrypt(
+                                    key = DataStoreKeyStore.key,
+                                    data = EncryptedBytes(it),
+                                ).decodeString()
+                            }
                         }
                     }
                     ?.let {
@@ -100,20 +102,24 @@ abstract class BasePref<PrefType, ValueType>(
             }
 
             if (encrypted) {
-                val key = if (preferences[DataStoreKeyCreated] == true) {
-                    DataStoreKeyStore.key
-                } else {
-                    DataStoreKeyStore.getOrCreateKey().also {
-                        preferences[DataStoreKeyCreated] = true
+                val key = persistFailure("Get key") {
+                    if (preferences[DataStoreKeyCreated] == true) {
+                        DataStoreKeyStore.key
+                    } else {
+                        DataStoreKeyStore.getOrCreateKey().also {
+                            preferences[DataStoreKeyCreated] = true
+                        }
                     }
                 }
 
                 preferences[stringPreferencesKey(keyName)] =
-                    DataStoreKeyStore.withRetry {
-                        encrypt(
-                            key = key,
-                            data = value.toString().toByteArray(),
-                        )
+                    persistFailure("Encrypt") {
+                        DataStoreKeyStore.withRetry {
+                            encrypt(
+                                key = key,
+                                data = value.toString().toByteArray(),
+                            )
+                        }
                     }.encodeBase64().also {
                         Flog.tag(Tag).d("[SET] $keyName = $value (encrypted = $it)")
                     }
@@ -129,6 +135,19 @@ abstract class BasePref<PrefType, ValueType>(
                     KeyType.String -> preferences[stringPreferencesKey(keyName)] = value as String
                 }
             }
+        }
+    }
+
+    /**
+     * Persists keystore/crypto failures for debugging. Only the preference name and exception type
+     * are logged - never the value.
+     */
+    private inline fun <T> persistFailure(operation: String, block: () -> T): T {
+        return try {
+            block()
+        } catch (e: Exception) {
+            Flog.persist(tag = "KeyStore", message = "$operation failed: pref=$keyName (${e::class.simpleName})")
+            throw e
         }
     }
 

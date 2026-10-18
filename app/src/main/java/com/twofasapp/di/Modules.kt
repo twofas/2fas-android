@@ -4,6 +4,7 @@ import com.twofasapp.cipher.di.CipherModule
 import com.twofasapp.common.di.CommonModule
 import com.twofasapp.data.browserext.di.DataBrowserExtModule
 import com.twofasapp.data.cloud.di.CloudModule
+import com.twofasapp.data.logs.di.DataLogsModule
 import com.twofasapp.data.notifications.di.DataNotificationsModule
 import com.twofasapp.data.push.di.DataPushModule
 import com.twofasapp.data.services.di.DataServicesModule
@@ -40,6 +41,7 @@ object Modules {
         DataServicesModule(),
         DataBrowserExtModule(),
         DataPushModule(),
+        DataLogsModule(),
     )
 
     private val feature = listOf(

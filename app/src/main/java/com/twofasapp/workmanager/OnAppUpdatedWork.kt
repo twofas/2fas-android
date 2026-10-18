@@ -5,6 +5,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.storage.longPref
 import com.twofasapp.migration.MigrateUnknownServices
@@ -40,16 +41,20 @@ class OnAppUpdatedWork(
                 }
 
                 Timber.d("Start migration: ${appBuild.versionCode.toLong()} -> ${prefs.currentAppVersionCode.get()}")
+                Flog.persist(tag = "AppUpdate", message = "Migration started: ${prefs.currentAppVersionCode.get()} -> ${appBuild.versionCode}")
 
                 Timber.d("Migrate: Unknown services")
                 migrateUnknownServices.invoke()
 
                 Timber.d("Migration done!")
+                Flog.persist(tag = "AppUpdate", message = "Migration done")
                 prefs.currentAppVersionCode.set(appBuild.versionCode.toLong())
 
                 Result.success()
             } catch (e: Exception) {
                 Timber.e(e)
+                Flog.persist(tag = "AppUpdate", message = "Migration failed")
+                Flog.persist(tag = "AppUpdate", throwable = e)
 
                 Result.failure()
             }

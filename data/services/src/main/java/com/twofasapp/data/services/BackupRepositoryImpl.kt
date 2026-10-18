@@ -6,6 +6,7 @@ import com.twofasapp.cipher.backup.BackupCipher
 import com.twofasapp.cipher.backup.DataEncrypted
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.cloud.googledrive.GoogleDrive
@@ -68,6 +69,8 @@ class BackupRepositoryImpl(
     }
 
     override fun dispatchWipeData() {
+        Flog.persist(tag = "Backup", message = "Wipe cloud data dispatched")
+
         GlobalScope.launch {
             local.setRemoteBackupStatus(RemoteBackupStatusEntity(schemaVersion = BackupContent.CurrentSchema))
             local.deleteRemoteBackupStatus()
@@ -226,10 +229,17 @@ class BackupRepositoryImpl(
             }
 
             servicesRepository.addServices(servicesToImport)
+
+            Flog.persist(
+                tag = "Backup",
+                message = "Imported: services=${servicesToImport.size}/${backupContent.services.size}" +
+                    " groups=${backupContent.groups.size} schema=${backupContent.schemaVersion}",
+            )
         }
     }
 
     override suspend fun setCloudSyncActive(email: String) {
+        Flog.persist(tag = "Backup", message = "Cloud sync turned on")
         local.setRemoteBackupStatus(
             RemoteBackupStatusEntity(
                 syncProvider = RemoteBackupStatusEntity.SyncProvider.GOOGLE_DRIVE,
@@ -241,6 +251,7 @@ class BackupRepositoryImpl(
     }
 
     override suspend fun setCloudSyncNotConfigured() {
+        Flog.persist(tag = "Backup", message = "Cloud sync turned off")
         local.updateRemoteBackupStatus {
             it.copy(state = RemoteBackupStatusEntity.State.NOT_CONFIGURED, reference = null)
         }
@@ -279,7 +290,10 @@ class BackupRepositoryImpl(
                                 // Handle decrypt error
                                 when (e) {
                                     is DecryptWrongPassword -> CloudBackupGetResult.Failure(CloudSyncError.DecryptWrongPassword)
-                                    else -> CloudBackupGetResult.Failure(CloudSyncError.DecryptUnknownFailure)
+                                    else -> {
+                                        Flog.persist(tag = "Backup", message = "Decrypt cloud backup failed (${e::class.simpleName})")
+                                        CloudBackupGetResult.Failure(CloudSyncError.DecryptUnknownFailure)
+                                    }
                                 }
                             }
                         }
@@ -289,6 +303,8 @@ class BackupRepositoryImpl(
                     }
                 } catch (e: Exception) {
                     // Handle other errors (most likely serialization ones)
+                    // Exception details are not persisted as they may contain backup content
+                    Flog.persist(tag = "Backup", message = "Get cloud backup failed (${e::class.simpleName})")
                     CloudBackupGetResult.Failure(CloudSyncError.JsonParsingFailure)
                 }
             }
@@ -362,6 +378,8 @@ class BackupRepositoryImpl(
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
+                Flog.persist(tag = "Backup", message = "Update cloud backup failed")
+                Flog.persist(tag = "Backup", throwable = e)
                 CloudBackupUpdateResult.Failure(error = CloudSyncError.EncryptUnknownFailure)
             }
         }
@@ -388,9 +406,13 @@ class BackupRepositoryImpl(
                 local.deleteRemoteBackupKey()
             }
 
+            Flog.persist(tag = "Backup", message = "Check cloud backup password: correct=$isCorrect")
+
             return isCorrect
         } catch (e: Exception) {
             e.printStackTrace()
+            Flog.persist(tag = "Backup", message = "Check cloud backup password failed")
+            Flog.persist(tag = "Backup", throwable = e)
             false
         }
     }

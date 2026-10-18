@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":data:browserext"))
     implementation(project(":data:cloud"))
     implementation(project(":data:push"))
+    implementation(project(":data:logs"))
 
     implementation(project(":feature:startup"))
     implementation(project(":feature:home"))

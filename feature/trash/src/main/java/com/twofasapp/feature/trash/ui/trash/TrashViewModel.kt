@@ -3,6 +3,7 @@ package com.twofasapp.feature.trash.ui.trash
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.core.design.state.ScreenState
 import com.twofasapp.core.design.state.empty
 import com.twofasapp.core.design.state.loading
@@ -40,6 +41,7 @@ internal class TrashViewModel(
             val ids = uiState.value.selected
             screenState.loading()
             clearSelections()
+            Flog.persist(tag = "Trash", message = "Restore: ids=$ids")
             ids.forEach { servicesRepository.restoreService(it) }
         }.invokeOnCompletion { onComplete("Items restored!") }
     }
@@ -49,7 +51,8 @@ internal class TrashViewModel(
             val ids = uiState.value.selected
             screenState.loading()
             clearSelections()
-            ids.forEach { servicesRepository.deleteService(it) }
+            Flog.persist(tag = "Trash", message = "Delete permanently: ids=$ids")
+            servicesRepository.deleteServices(ids.toList())
         }.invokeOnCompletion { onComplete("Items deleted!") }
     }
 

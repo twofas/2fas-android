@@ -3,6 +3,7 @@ package com.twofasapp.data.session
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.domain.SelectedTheme
 import com.twofasapp.common.domain.WidgetCallbacks
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.storage.booleanPref
 import com.twofasapp.common.storage.enumPref
@@ -78,6 +79,7 @@ internal class CustomizationRepositoryImpl(
     }
 
     override suspend fun setShowNextCode(showNextCode: Boolean) {
+        Flog.persist(tag = "Settings", message = "Show next code: $showNextCode")
         withContext(dispatchers.io) { this@CustomizationRepositoryImpl.showNextCode.set(showNextCode) }
     }
 
@@ -101,6 +103,7 @@ internal class CustomizationRepositoryImpl(
     }
 
     override suspend fun setHideCodes(hideCodes: Boolean) {
+        Flog.persist(tag = "Settings", message = "Hide codes: $hideCodes")
         withContext(dispatchers.io) { this@CustomizationRepositoryImpl.hideCodes.set(hideCodes) }
     }
 

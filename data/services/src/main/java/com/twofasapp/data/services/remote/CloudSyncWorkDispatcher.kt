@@ -8,6 +8,7 @@ import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.local.BackupLocalSource
 import com.twofasapp.data.services.local.model.RemoteBackupStatusEntity
@@ -37,6 +38,8 @@ class CloudSyncWorkDispatcher(
         if (runBlocking { backupLocalSource.getRemoteBackupStatus() }.state != RemoteBackupStatusEntity.State.ACTIVE) {
             return
         }
+
+        Flog.persist(tag = "CloudSync", message = "Dispatch: trigger=$trigger")
 
         val enqueuedWork = findEnqueuedWork()
 

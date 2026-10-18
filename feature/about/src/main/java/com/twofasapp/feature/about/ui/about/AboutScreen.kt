@@ -52,6 +52,7 @@ internal fun AboutScreen(
     ScreenContent(
         uiState = uiState,
         onLicensesClick = { navigator.open(Screen.AboutLicenses) },
+        onLogsClick = { navigator.open(Screen.AboutLogs) },
         onSendCrashLogsToggle = { viewModel.toggleSendCrashLogs() },
     )
 }
@@ -60,6 +61,7 @@ internal fun AboutScreen(
 private fun ScreenContent(
     uiState: AboutUiState,
     onLicensesClick: () -> Unit,
+    onLogsClick: () -> Unit,
     onSendCrashLogsToggle: () -> Unit,
 ) {
     val activity = LocalContext.currentActivity
@@ -229,6 +231,14 @@ private fun ScreenContent(
             item { OptionHeader(text = MdtLocale.strings.aboutSendCrashes) }
 
             item {
+                OptionEntry(
+                    title = MdtLocale.strings.aboutSendLogs,
+                    icon = MdtIcons.Document,
+                    onClick = { onLogsClick() },
+                )
+            }
+
+            item {
                 OptionSwitch(
                     title = MdtLocale.strings.settingsSendCrashes,
                     subtitle = MdtLocale.strings.settingsSendCrashesBody,
@@ -250,6 +260,7 @@ private fun Preview() {
                 version = "1.0.0",
             ),
             onLicensesClick = {},
+            onLogsClick = {},
             onSendCrashLogsToggle = {},
         )
     }

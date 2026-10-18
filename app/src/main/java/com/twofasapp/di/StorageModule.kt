@@ -81,6 +81,7 @@ class StorageModule : KoinModule {
         single { get<AppDatabase>().serviceDao() }
         single { get<AppDatabase>().pairedBrowserDao() }
         single { get<AppDatabase>().notificationDao() }
+        single { get<AppDatabase>().logsDao() }
     }
 
     private fun reportMissingNativeLibrary(context: Context) {

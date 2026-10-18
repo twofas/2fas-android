@@ -10,6 +10,7 @@ import com.twofasapp.android.navigation.DeeplinkHandler
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.lifecycle.AuthAware
 import com.twofasapp.base.lifecycle.AuthLifecycle
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.core.design.AppTheme
 import com.twofasapp.core.design.ktx.applyAppTheme
 import com.twofasapp.core.design.ktx.enableThemedEdgeToEdge
@@ -76,6 +77,7 @@ class StartActivity : AppCompatActivity(), AuthAware {
 
     override fun onAuthenticated() {
         intent?.data?.let {
+            Flog.persist(tag = "Deeplink", message = "Incoming: action=${intent.action} scheme=${it.scheme}")
             deeplinkHandler.setQueuedDeeplink(incomingData = it.toString())
         }
 

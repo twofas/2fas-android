@@ -15,3 +15,15 @@ data class OtpAuthLink(
         const val ParamCounter = "counter"
     }
 }
+
+/**
+ * Non-sensitive link parameters for logs. Secret, label, issuer and the raw link are never included.
+ */
+fun OtpAuthLink.logParams(): String {
+    return buildString {
+        append("type=${type.take(16)}")
+        listOf(OtpAuthLink.ParamDigits, OtpAuthLink.ParamPeriod, OtpAuthLink.ParamAlgorithm).forEach { key ->
+            params[key]?.let { append(" $key=${it.take(16)}") }
+        }
+    }
+}

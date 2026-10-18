@@ -140,6 +140,10 @@ class Strings(c: Context) {
     val notificationsTitle = c.getString(R.string.commons__notifications)
     val notificationsEmpty = c.getString(R.string.notifications__no_notifications)
 
+    val logsTitle = c.getString(R.string.logs_title)
+    val logsEmpty = c.getString(R.string.logs_empty)
+    val logsShareTitle = c.getString(R.string.logs_share_title)
+
     val aboutTitle = c.getString(R.string.settings__about)
     val aboutGeneral = c.getString(R.string.settings__general)
     val aboutShare = c.getString(R.string.settings__share_app)
@@ -148,6 +152,7 @@ class Strings(c: Context) {
     val aboutPrivacyPolicy = c.getString(R.string.settings__privacy_policy)
     val aboutTerms = c.getString(R.string.settings__terms_of_service)
     val aboutLicenses = c.getString(R.string.about_licenses)
+    val aboutSendLogs = c.getString(R.string.settings__send_logs)
     val aboutTellFriend = c.getString(R.string.settings__tell_a_friend)
     val aboutTellFriendShareText = c.getString(R.string.settings__recommendation)
     val aboutSocialMedia = c.getString(R.string.social__social_media)

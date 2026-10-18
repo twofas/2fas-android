@@ -5,6 +5,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.instacart.library.truetime.TrueTime
 import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.session.SessionRepository
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
@@ -37,11 +38,13 @@ class SyncTimeWork(
                         .initialize()
 
                     Timber.d("TrueTime: ${TrueTime.now()}")
+                    Flog.persist(tag = "Time", message = "NTP sync success: server=$ntpServer")
                     sessionRepository.recalculateTimeDelta()
                     Result.success()
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
+                Flog.persist(tag = "Time", message = "NTP sync failed: ${e::class.simpleName}: ${e.message}")
                 Result.success()
             }
         }

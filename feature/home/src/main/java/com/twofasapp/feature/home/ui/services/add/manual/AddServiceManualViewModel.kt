@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.locale.R
@@ -162,6 +163,7 @@ internal class AddServiceManualViewModel(
     fun tryInsertService() {
         launchScoped {
             if (servicesRepository.isServiceExists(uiState.value.serviceSecret.orEmpty())) {
+                Flog.persist(tag = "AddService", message = "Manual: service already exists")
                 uiState.update { it.copy(showServiceExistsDialog = true) }
                 return@launchScoped
             }

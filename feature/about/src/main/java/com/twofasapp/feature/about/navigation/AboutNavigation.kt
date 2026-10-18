@@ -3,6 +3,7 @@ package com.twofasapp.feature.about.navigation
 import androidx.compose.runtime.Composable
 import com.twofasapp.feature.about.ui.about.AboutScreen
 import com.twofasapp.feature.about.ui.licenses.AboutLicensesScreen
+import com.twofasapp.feature.about.ui.logs.LogsScreen
 
 @Composable
 fun AboutRoute() {
@@ -12,4 +13,9 @@ fun AboutRoute() {
 @Composable
 fun AboutLicensesRoute() {
     AboutLicensesScreen()
+}
+
+@Composable
+fun AboutLogsRoute() {
+    LogsScreen()
 }

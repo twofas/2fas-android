@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.twofasapp.common.ktx.runSafely
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.push.domain.Push
 import com.twofasapp.data.push.notification.NotificationChannelProvider
@@ -40,6 +41,12 @@ class ShowBrowserExtRequestNotificationImpl(
         val isOneDomainMatched = matchedServices.size == 1
         val notificationId = push.requestId.hashCode()
         val serviceId = if (matchedServices.size == 1) matchedServices.first().id else null
+
+        Flog.persist(
+            tag = "BrowserExt",
+            message = "Request notification: matched=${matchedServices.size}" +
+                " notificationsEnabled=${notificationManager.areNotificationsEnabled()}",
+        )
 
         val notification = NotificationCompat.Builder(context, notificationChannelProvider.getBrowserExtensionChannelId())
             .setContentTitle(context.getString(R.string.browser__2fa_token_request_title))

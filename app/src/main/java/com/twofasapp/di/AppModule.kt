@@ -16,6 +16,7 @@ import com.twofasapp.environment.AppBuildImpl
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import com.twofasapp.locale.Strings
 import com.twofasapp.logger.FlogSinkLogcat
+import com.twofasapp.logger.FlogSinkPersist
 import com.twofasapp.navigator.ActivityScopedNavigator
 import com.twofasapp.navigator.LockMethodProviderImpl
 import com.twofasapp.notification.ShowBrowserExtRequestNotificationImpl
@@ -45,6 +46,7 @@ class AppModule : KoinModule {
         singleOf(::LockMethodProviderImpl) { bind<LockMethodProvider>() }
         singleOf(::AuthTracker)
         singleOf(::FlogSinkLogcat)
+        singleOf(::FlogSinkPersist)
 
         factory { androidContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
 

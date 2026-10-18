@@ -4,6 +4,7 @@ import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.ktx.decodeBase64ToString
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.externalimport.domain.AegisImporter
@@ -72,6 +73,22 @@ internal class ExternalImportResultViewModel(
                 ImportType.ProtonAuthenticator -> protonAuthenticatorImporter.read(importFileUri.orEmpty().decodeBase64ToString())
             }
 
+            when (result) {
+                is ExternalImport.Success -> Flog.persist(
+                    tag = "ExternalImport",
+                    message = "Read $importType: success services=${result.servicesToImport.size}/${result.totalServicesCount}",
+                )
+
+                // Exception details are not persisted as they may contain imported content
+                is ExternalImport.ParsingError -> Flog.persist(
+                    tag = "ExternalImport",
+                    message = "Read $importType: parsing error (${result.reason::class.simpleName})",
+                )
+
+                is ExternalImport.UnsupportedError -> Flog.persist(tag = "ExternalImport", message = "Read $importType: unsupported (${result.reason})")
+                is ExternalImport.FileReadError -> Flog.persist(tag = "ExternalImport", message = "Read $importType: file read error (${result.reason})")
+            }
+
             uiState.update { state ->
                 state.copy(
                     loading = false,
@@ -97,6 +114,7 @@ internal class ExternalImportResultViewModel(
 
             (uiState.value.readResult as? ReadResult.Success)?.let { result ->
                 servicesRepository.addServices(result.services)
+                Flog.persist(tag = "ExternalImport", message = "Import $importType: services=${result.services.size}")
                 uiState.update { it.copy(finishSuccess = true) }
             }
         }

@@ -2,6 +2,7 @@ package com.twofasapp.feature.security.ui.lock
 
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.session.SecurityRepository
 import com.twofasapp.data.session.domain.InvalidPinStatus
@@ -46,6 +47,7 @@ internal class LockViewModel(
             uiState.update { it.copy(pinScreenState = PinScreenState.Verifying) }
 
             if (pin == securityRepository.getPin()) {
+                Flog.persist(tag = "Lock", message = "Unlock with pin: success")
                 securityRepository.editInvalidPinStatus(InvalidPinStatus.Default)
                 publishEvent(LockUiEvent.Finish)
             } else {
@@ -53,6 +55,7 @@ internal class LockViewModel(
 
                 // Increment attempt
                 with(securityRepository.observeInvalidPinStatus().first()) {
+                    Flog.persist(tag = "Lock", message = "Unlock with pin: invalid (attempts=${attempts + 1})")
                     securityRepository.editInvalidPinStatus(
                         copy(
                             attempts = attempts + 1,
@@ -75,6 +78,7 @@ internal class LockViewModel(
 
     fun biometricsVerified() {
         launchScoped {
+            Flog.persist(tag = "Lock", message = "Unlock with biometrics: success")
             securityRepository.editInvalidPinStatus(InvalidPinStatus.Default)
             publishEvent(LockUiEvent.Finish)
         }
@@ -88,6 +92,7 @@ internal class LockViewModel(
 
     fun disableBiometric() {
         launchScoped {
+            Flog.persist(tag = "Lock", message = "Biometrics invalidated, falling back to pin")
             securityRepository.editLockMethod(LockMethod.Pin)
             uiState.emit(uiState.value.copy(errorMessage = R.string.fingerprint__biometric_invalidated))
         }

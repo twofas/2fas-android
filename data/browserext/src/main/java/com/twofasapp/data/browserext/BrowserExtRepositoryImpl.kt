@@ -4,6 +4,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.legacyDecodeBase64ToByteArray
 import com.twofasapp.common.ktx.legacyEncodeBase64ToString
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.browserext.domain.MobileDevice
 import com.twofasapp.data.browserext.domain.PairedBrowser
 import com.twofasapp.data.browserext.domain.TokenRequest
@@ -13,6 +14,7 @@ import com.twofasapp.data.browserext.remote.BrowserExtRemoteSource
 import com.twofasapp.data.browserext.remote.model.ApproveLoginRequestBody
 import com.twofasapp.data.browserext.remote.model.PairBrowserBody
 import com.twofasapp.data.browserext.remote.model.RegisterDeviceBody
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
@@ -48,7 +50,7 @@ internal class BrowserExtRepositoryImpl(
         localSource.saveMobileDevice(mobileDevice)
     }
 
-    override suspend fun registerMobileDevice(deviceName: String, devicePublicKey: String, fcmToken: String): MobileDevice {
+    override suspend fun registerMobileDevice(deviceName: String, devicePublicKey: String, fcmToken: String): MobileDevice = persistResult("Register device") {
         val mobileDevice = remoteSource.registerMobileDevice(
             devicePublicKey = devicePublicKey,
             body = RegisterDeviceBody(
@@ -59,10 +61,15 @@ internal class BrowserExtRepositoryImpl(
         )
 
         localSource.saveMobileDevice(mobileDevice)
-        return mobileDevice
+        mobileDevice
     }
 
-    override suspend fun pairBrowser(deviceId: String, extensionId: String, deviceName: String, devicePublicKey: String): PairedBrowser {
+    override suspend fun pairBrowser(
+        deviceId: String,
+        extensionId: String,
+        deviceName: String,
+        devicePublicKey: String,
+    ): PairedBrowser = persistResult("Pair extensionId=$extensionId") {
         val browser = remoteSource.pairBrowser(
             deviceId = deviceId,
             body = PairBrowserBody(
@@ -72,7 +79,7 @@ internal class BrowserExtRepositoryImpl(
             ),
         )
         localSource.savePairedBrowser(browser)
-        return browser
+        browser
     }
 
     override suspend fun getPairedBrowser(id: String): PairedBrowser {
@@ -122,6 +129,8 @@ internal class BrowserExtRepositoryImpl(
         return try {
             FirebaseMessaging.getInstance().token.await().orEmpty()
         } catch (e: Exception) {
+            Flog.persist(tag = "BrowserExt", message = "FCM token fetch failed")
+            Flog.persist(tag = "BrowserExt", throwable = e)
             ""
         }
     }
@@ -132,19 +141,24 @@ internal class BrowserExtRepositoryImpl(
         }
     }
 
-    override suspend fun deletePairedBrowser(deviceId: String, extensionId: String) {
+    override suspend fun deletePairedBrowser(deviceId: String, extensionId: String) = persistResult("Unpair extensionId=$extensionId") {
         remoteSource.deletePairedBrowser(deviceId, extensionId)
         fetchPairedBrowsers()
     }
 
-    override suspend fun acceptLoginRequest(deviceId: String, extensionId: String, requestId: String, codeUnencrypted: String) {
+    override suspend fun acceptLoginRequest(
+        deviceId: String,
+        extensionId: String,
+        requestId: String,
+        codeUnencrypted: String,
+    ) = persistResult("Accept request extensionId=$extensionId") {
         val extension = getPairedBrowser(extensionId)
         val codeEncrypted = encryptCode(
             code = codeUnencrypted,
             extensionPublicKey = extension.extensionPublicKey,
         )
 
-        return remoteSource.acceptLoginRequest(
+        remoteSource.acceptLoginRequest(
             deviceId = deviceId,
             body = ApproveLoginRequestBody(
                 extension_id = extensionId,
@@ -154,8 +168,20 @@ internal class BrowserExtRepositoryImpl(
         )
     }
 
-    override suspend fun denyLoginRequest(extensionId: String, requestId: String) {
-        return remoteSource.denyLoginRequest(extensionId, requestId)
+    override suspend fun denyLoginRequest(extensionId: String, requestId: String) = persistResult("Deny request extensionId=$extensionId") {
+        remoteSource.denyLoginRequest(extensionId, requestId)
+    }
+
+    private suspend fun <T> persistResult(action: String, block: suspend () -> T): T {
+        return try {
+            block().also { Flog.persist(tag = "BrowserExt", message = "$action: success") }
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            Flog.persist(tag = "BrowserExt", message = "$action: failed")
+            Flog.persist(tag = "BrowserExt", throwable = e)
+            throw e
+        }
     }
 
     private suspend fun encryptCode(

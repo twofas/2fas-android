@@ -523,6 +523,9 @@
     <string name="biometric_dialog_auth_title">Authenticate</string>
     <string name="biometric_dialog_auth_subtitle">Use your biometric credential</string>
     <string name="about_licenses">Open source licenses</string>
+    <string name="logs_title">Logs</string>
+    <string name="logs_empty">No logs available</string>
+    <string name="logs_share_title">Share logs</string>
     <string name="externalimport_description">Choose an app from the list and follow the instructions.</string>
     <string name="externalimport_select_app">Select app</string>
     <string name="externalimport_google_authenticator">Google Authenticator</string>

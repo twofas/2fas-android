@@ -5,6 +5,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.twofasapp.base.AuthTracker
 import com.twofasapp.base.AuthenticationStatus
+import com.twofasapp.common.logger.Flog
 
 class AuthLifecycle(
     private val authTracker: AuthTracker,
@@ -16,7 +17,10 @@ class AuthLifecycle(
     fun onResume() {
         when (authTracker.shouldAuthenticate()) {
             AuthenticationStatus.Valid -> authAware?.onAuthenticated()
-            AuthenticationStatus.Expired -> navigator?.openAuthenticate()
+            AuthenticationStatus.Expired -> {
+                Flog.persist(tag = "Auth", message = "Session expired, opening lock screen")
+                navigator?.openAuthenticate()
+            }
         }
     }
 }
