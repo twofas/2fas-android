@@ -128,6 +128,7 @@ private fun Result(
         ImportType.Bitwarden -> strings.externalImportResultBitwardenTitle
         ImportType.ProtonAuthenticator -> strings.externalImportResultProtonAuthenticatorTitle
         ImportType.OnePassword -> strings.externalImportResultOnePasswordTitle
+        ImportType.Ente -> strings.externalImportResultEnteTitle
     }
 
     val description = when (readResult) {
@@ -142,6 +143,7 @@ private fun Result(
                 ImportType.Bitwarden -> strings.externalImportResultSuccessBitwardenMsg
                 ImportType.ProtonAuthenticator -> strings.externalImportResultSuccessProtonAuthenticatorMsg
                 ImportType.OnePassword -> strings.externalImportResultSuccessOnePasswordMsg
+                ImportType.Ente -> strings.externalImportResultSuccessEnteMsg
             }
         }
 

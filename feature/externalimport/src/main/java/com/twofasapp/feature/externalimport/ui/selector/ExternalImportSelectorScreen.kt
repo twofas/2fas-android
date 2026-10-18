@@ -108,6 +108,14 @@ private fun Content(
 
             item {
                 OptionEntry(
+                    title = MdtLocale.strings.externalImportEnte,
+                    image = painterResource(id = R.drawable.logo_ente),
+                    onClick = { onImportTypeSelected(ImportType.Ente) },
+                )
+            }
+
+            item {
+                OptionEntry(
                     title = MdtLocale.strings.externalImportAuthenticatorPro,
                     image = painterResource(id = R.drawable.logo_authenticatorpro),
                     onClick = { onImportTypeSelected(ImportType.AuthenticatorPro) },

@@ -11,6 +11,7 @@ import com.twofasapp.feature.externalimport.domain.AegisImporter
 import com.twofasapp.feature.externalimport.domain.AndOtpImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
 import com.twofasapp.feature.externalimport.domain.BitwardenImporter
+import com.twofasapp.feature.externalimport.domain.EnteImporter
 import com.twofasapp.feature.externalimport.domain.ExternalImport
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.ImportType
@@ -37,6 +38,7 @@ internal class ExternalImportResultViewModel(
     private val bitwardenImporter: BitwardenImporter,
     private val protonAuthenticatorImporter: ProtonAuthenticatorImporter,
     private val onePasswordImporter: OnePasswordImporter,
+    private val enteImporter: EnteImporter,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(ExternalImportResultUiState())
@@ -74,6 +76,7 @@ internal class ExternalImportResultViewModel(
                 ImportType.Bitwarden -> bitwardenImporter.read(importFileUri.orEmpty().decodeBase64ToString())
                 ImportType.ProtonAuthenticator -> protonAuthenticatorImporter.read(importFileUri.orEmpty().decodeBase64ToString())
                 ImportType.OnePassword -> onePasswordImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.Ente -> enteImporter.read(importFileUri.orEmpty().decodeBase64ToString())
             }
 
             when (result) {
