@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android strings
+ Project: 2FAS App
+ Locale: sk-SK, Slovak (Slovakia)
+ Exported by: rafakob
+ Exported at: Sun, 18 Oct 2026 05:44:19 -0700
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- InfoPlist.strings
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
+    <string name="NSCameraUsageDescription">Slúži na skenovanie QR kódov</string>
+    <string name="NSFaceIDUsageDescription">Aplikáciu môžete odomknúť pomocou funkcie Face ID</string>
+    <!-- MARK: - App -->
+    <string name="app__name">2FAS Authenticator</string>
+    <string name="commons__2fas">2FA Authenticator (2FAS App)</string>
+    <string name="commons__OK">OK</string>
+    <string name="commons__add">Add</string>
+    <!-- MARK: - Commons -->
+    <string name="commons__cancel">Zrušiť</string>
+    <string name="commons__notifications">Notifikácie</string>
+    <!-- A number replaces %d, for example, 4 of 5. -->
+    <string name="commons__page_of_page_title">%1$d z %2$d</string>
+    <!-- notifications__service_already_removed_from_backup -->
+    <string name="notifications__service_already_removed_title">Služba už bola odstránená zo zálohy</string>
+    <!-- notifications__service_already_modified_in_backup -->
+    <string name="notifications__service_already_modified_title">Služba už bola upravená v zálohe</string>
+    <!-- backup__user_is_over_quota_on_icloud -->
+    <string name="backup__user_over_quota_icloud">Používateľ prekročil kvótu v iCloude</string>
+    <!-- backup__icloud_is_not_available -->
+    <string name="backup__icloud_not_available">iCloud nie je k dispozícii</string>
+    <!-- backup__icloud_has_been_disabled_by_user -->
+    <string name="backup__icloud_disabled_title">iCloud bol deaktivovaný používateľom</string>
+    <!-- backup__turned_off_description_bold_part -->
+    <string name="backup__2fas_backup">2FAS Záloha</string>
+    <string name="commons__close">Zatvoriť</string>
+    <string name="commons__continue">Pokračovať</string>
+    <string name="commons__copy">Kopírovať</string>
+    <string name="commons__delete">Odstrániť</string>
+    <string name="commons__dismiss">Zrušiť</string>
+    <string name="commons__done">Hotovo</string>
+    <string name="commons__edit">Upraviť</string>
+    <string name="commons__enter_code_manually">Zadajte kód ručne</string>
+    <string name="commons__error">Chyba</string>
+    <string name="commons__info">Informácie</string>
+    <string name="commons__next">Ďalej</string>
+    <string name="commons__notice">Oznámenie</string>
+    <string name="commons__off">Vyp</string>
+    <string name="commons__on">Zap</string>
+    <!-- commons__point_your_camera_at_code_on_website -->
+    <string name="commons__camera_title">Nasmerujte fotoaparát na obrazovku, aby ste nasnímali QR kód</string>
+    <string name="commons__rename">Pomenovať</string>
+    <string name="commons__retry">Zopakovať</string>
+    <string name="commons__save">Uložiť</string>
+    <string name="commons__scan_qr_code">Skenovať QR kód</string>
+    <string name="commons__service">Služba</string>
+    <string name="commons__set">Nastaviť</string>
+    <string name="commons__skip">Preskočiť</string>
+    <string name="commons__tokens">Tokeny</string>
+    <string name="commons__warning">Upozornenie</string>
+    <string name="commons__no_results">Žiadne výsledky</string>
+    <string name="commons__customize">Prispôsobiť</string>
+    <string name="commons__approve">Schváliť</string>
+    <string name="commons__deny">Zamietnuť</string>
+    <!-- max. %d chars = Maximum number of characters
+         commons__provided_text_too_long -->
+    <string name="commons__text_long_title">Zadaný text je príliš dlhý (max. %d znakov)</string>
+    <string name="commons__got_it">Rozumiem!</string>
+    <string name="fingerprint__verifying">Overovanie…</string>
+    <!-- fingerprint__setup_content -->
+    <string name="fingerprint__confirm_title">Potvrďte odtlačkom prsta, ak chcete pokračovať.</string>
+    <!-- fingerprint__use_pin -->
+    <string name="fingerprint__use_pin_title">Tentokrát použiť PIN</string>
+    <!-- MARK: - Introduction -->
+    <string name="introduction__page_1_title">Ste úžasný!</string>
+    <string name="introduction__page_1_content">Váš telefón sa práve stal súkromným a zabezpečeným kľúčom k vašim online službám vďaka aplikácii 2FAS, ktorej dôveruje viac ako 10 miliónov používateľov po celom svete.</string>
+    <string name="introduction__page_2_title">Jednoduché</string>
+    <string name="introduction__page_2_content">Prepojte 2FAS aplikáciu so svojimi online službami. Pomocou QR kódu aktivujte dvojfaktorovú autentizáciu za pár sekúnd.</string>
+    <string name="introduction__page_3_title">Súkromné</string>
+    <string name="introduction__page_3_content">2FAS rešpektuje a chráni vaše súkromie. Táto aplikácia nikdy nebude zhromažďovať, spracúvať ani využívať žiadne vaše osobné údaje.</string>
+    <string name="introduction__page_4_title">Bezpečné</string>
+    <string name="introduction__page_4_content_ios">Vaše tokeny sú uložené offline v pamäti zariadenia, preto nezabudnite zálohovať svoje služby! Na ochranu pred neoprávneným prístupom a poškodením zariadenia použite synchronizáciu cez iCloud a PIN kód.</string>
+    <!-- introduction__start_using -->
+    <string name="introduction__title">Začať používať 2FAS</string>
+    <string name="introduction__tos">Podmienky používania</string>
+    <string name="introduction__description_title">Prepojte svoj účet online služby s 2FAS alebo načítajte svoje tokeny</string>
+    <string name="introduction__pair_new_service">Spárovať novú službu</string>
+    <!-- introduction__import_2fas -->
+    <string name="introduction__import_2fas_title">Importovať záložný súbor 2FAS</string>
+    <!-- introduction__import_ga -->
+    <string name="introduction__import_google_authenticator">Import z Google Authenticator</string>
+    <!-- introduction__not_sure -->
+    <string name="introduction__what_to_do">Neviete, čo robiť?</string>
+    <!-- introduction__ga_import_description -->
+    <string name="introduction__google_authenticator_import_process">Exportujte svoje účty z aplikácie Google Authenticator do QR kódu pomocou možnosti „Preniesť účty“. Následne na inom zariadení odfoťte exportovaný QR kód, pošlite ho na svoje zariadenie (alebo ak je to možné, urobte snímku obrazovky) a použite nižšie uvedenú možnosť „Vybrať QR kód“. Ak importujete kódy z iného zariadenia, použite namiesto toho tlačidlo „Skenovať QR kód“.</string>
+    <!-- introduction__choose_qr -->
+    <string name="introduction__choose_qr_code">Vybrať QR kód</string>
+    <!-- introduction__scan_qr -->
+    <string name="introduction__scan_qr_code">Skenovať QR kód</string>
+    <!-- Original: Adding code -->
+    <string name="notifications__adding_code">Pridanie nového kódu</string>
+    <!-- notifications__private_key_copied -->
+    <string name="notifications__service_key_copied">Tajný kľúč bol skopírovaný</string>
+    <!-- voiceover__token_is_already_on_the_list -->
+    <string name="notifications__token_already_added">Tento token sa už nachádza v zozname</string>
+    <string name="notifications__counter_copied">Počítadlo skopírované</string>
+    <string name="notifications__token_copied">Token skopírovaný</string>
+    <string name="notifications__next_token_copied">Ďalší token skopírovaný</string>
+    <!-- notifications__would_you_like_to_add_this_code -->
+    <string name="notifications__add_code_question_title">Chceli by ste pridať tento kód: %s?</string>
+    <!-- MARK: - Permissions -->
+    <string name="permissions__open_settings">Otvoriť nastavenia</string>
+    <string name="security__incorrect_PIN">Nesprávny PIN</string>
+    <string name="security__change_pin">Zmeniť PIN</string>
+    <string name="security__confirm_you_are_device_owner">Potvrďte, prosím, že ste majiteľom zariadenia</string>
+    <!-- security__confirm_your_new_pin -->
+    <string name="security__confirm_new_pin">Potvrďte, prosím, svoj nový PIN</string>
+    <string name="security__create_pin">Vytvoriť PIN</string>
+    <string name="security__enter_current_pin">Zadajte, prosím, svoj aktuálny PIN kód</string>
+    <!-- security__enter_your_new_pin -->
+    <string name="security__enter_new_pin">Zadajte, prosím, nový PIN</string>
+    <!-- security__enter_your_pin -->
+    <string name="security__enter_pin">Zadajte, prosím, svoj PIN</string>
+    <!-- MARK: - Security -->
+    <string name="security__too_many_attempts_try_again_after_formatter">Príliš veľa pokusov. Skúste to prosím znova %s</string>
+    <string name="security__too_many_attempts_try_again_after">Príliš veľa pokusov. Skúste to prosím znova o %s minút.</string>
+    <!-- security__too_many_attempts_try_again_later -->
+    <string name="security__too_many_attempts_error">Príliš veľa pokusov. Skúste to prosím neskôr.</string>
+    <!-- security__too_many_attempts_try_again_after_one_minute -->
+    <string name="security__too_many_attempts_error_2">Príliš veľa pokusov. Skúste to prosím o minútu neskôr.</string>
+    <string name="settings__backup_and_synchronization">Zálohovanie a synchronizácia</string>
+    <string name="settings__choose_topic">Vyberte tému</string>
+    <string name="settings__configure_mail_service_try_again">Nakonfigovať emailovú službu a skúsiť to znova</string>
+    <string name="settings__general">Všeobecné</string>
+    <string name="settings__mail_services_not_available">Poštové služby nie sú k dispozícii</string>
+    <string name="settings__problem">Problém</string>
+    <string name="settings__security">Bezpečnosť</string>
+    <string name="settings__select_pin_length">Vyberte dĺžku PIN kódu</string>
+    <string name="settings__settings">Nastavenia</string>
+    <!-- czy to dalej będzie w aplikacji? -->
+    <string name="settings__suggestion">Návrh</string>
+    <string name="settings__advanced">Pokročilé</string>
+    <string name="settings__widgets">Widgety</string>
+    <string name="settings__display_selected_services">Zobraziť vybrané služby vo widgetoch.</string>
+    <!-- settings__after_you_enable_widgets -->
+    <string name="settings__widgets_title">Po aktivácii widgetov bude možné pristupovať ku všetkým vašim tokenom bez zadávania PIN kódu.\n\nNaozaj chcete aktivovať widgety?</string>
+    <string name="settings__show_next_token">Zobraziť ďalší token</string>
+    <string name="settings__see_incoming_tokens">V zozname si pozrite prichádzajúce tokeny.</string>
+    <string name="settings__trash">Kôš</string>
+    <string name="settings__restore">Obnoviť</string>
+    <string name="settings__trash_is_empty">Kôš je prázdny</string>
+    <string name="settings__share_app">Zdieľať aplikáciu</string>
+    <!-- tokens__remove_from_list -->
+    <string name="tokens__delete_token">Naozaj chcete odstrániť token pre:</string>
+    <string name="tokens__move_to_trash">Presunúť do koša</string>
+    <string name="tokens__additional_info">Ďalšie informácie</string>
+    <string name="tokens__choose_method">Vyberte metódu</string>
+    <string name="tokens__duplicated_private_key">Duplikovaný tajný kľúč</string>
+    <!-- tokens__incorrect_private_key -->
+    <string name="tokens__incorrect_service_key">Nesprávny tajný kľúč (len čísla 2 až 7 a písmená), maximálna dĺžka 512 znakov</string>
+    <string name="tokens__try_again">Dobre, skúsme to ešte raz</string>
+    <!-- Original: To capture the QR code
+         tokens__point_right_2fa_code -->
+    <string name="tokens__scan_qr_code_title">Nasmerujte fotoaparát na obrazovku a naskenujte QR kód</string>
+    <!-- tokens__private_key -->
+    <string name="tokens__service_key">Tajný kľúč</string>
+    <string name="tokens__qr_code_leads_to_app_store">Tento QR kód vás presmeruje do App Store</string>
+    <!-- tokens__remove_it_forever -->
+    <string name="tokens__remove_forever">Odstrániť token\u0020</string>
+    <!-- tokens__search_by_service_name_or_login -->
+    <string name="tokens__search_service_title">Vyhľadať</string>
+    <!-- tokens__search_sorry_service_not_found -->
+    <string name="tokens__service_not_found_search">Prepáčte, služba sa nenašla</string>
+    <!-- Original: Take another try with a different search term
+         tokens__search_take_another_try_different_search_term -->
+    <string name="tokens__try_different_search_term">Skúste to ešte raz s iným vyhľadávacím výrazom</string>
+    <string name="tokens__service_key_to_short">Tajný kľúč je príliš krátky. Minimálne 4 znaky</string>
+    <string name="tokens__service_name">Názov služby</string>
+    <!-- tokens__this_private_key_exists_used_in -->
+    <string name="tokens__service_key_already_used_title">Tajný kľúč zo naskenovaného kódu sa už používa v %s. Pravdepodobne ho skenujete znova.</string>
+    <string name="tokens__this_qr_code_is_inavlid">Tento QR kód je nesprávny alebo nie je podporovaný. Skúste to znova.</string>
+    <string name="tokens__type_service_name">Zadajte názov služby</string>
+    <string name="tokens__enter_service_name">Zadajte názov služby</string>
+    <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
+    <string name="tokens__service_name_unknown_title">Bohužiaľ, túto službu nepoznáme. Ako by ste ju chceli nazvať?</string>
+    <!-- tokens__you_wont_be_able_to_restore -->
+    <string name="tokens__token_not_possible_to_restore">Tento token už nebude možné obnoviť.</string>
+    <string name="tokens__badge_color">Farba odznaku</string>
+    <string name="tokens__change_brand_icon">Zmeniť ikonu značky</string>
+    <string name="tokens__change_label">Zmeniť popis</string>
+    <string name="tokens__service_information">Informácie o službách</string>
+    <string name="tokens__personalization">Personalizácia</string>
+    <string name="tokens__brand_icon">Ikona značky</string>
+    <string name="tokens__label">Štítok</string>
+    <!-- tokens__remove_the_service -->
+    <string name="tokens__remove_service_from_app">Odstrániť túto službu z 2FAS aplikácie</string>
+    <!-- tokens__label_one_or_two -->
+    <string name="tokens__label_characters_title">Popis (1 alebo 2 znaky):</string>
+    <string name="tokens__pick_background_color">Vyberte farbu pozadia:</string>
+    <string name="tokens__num_added">%s pridané</string>
+    <string name="tokens__next_token">Ďalší token: %s</string>
+    <string name="tokens__next_token_title">Hodnota nasledujúceho tokenu</string>
+    <string name="tokens__my_tokens">Moje tokeny</string>
+    <string name="tokens__removing_group">Odstránenie skupiny</string>
+    <!-- tokens__all_tokens_will_be_moved -->
+    <string name="tokens__all_tokens_moved_to_group_title">Všetky tokeny budú presunuté do skupiny: „Moje tokeny“</string>
+    <string name="tokens__add_group">Pridať skupinu</string>
+    <string name="tokens__group_name">Názov skupiny:</string>
+    <string name="tokens__select_from_gallery">Vybrať z galérie</string>
+    <string name="tokens__camera_is_unavailable">Kamera nie je k dispozícii</string>
+    <!-- tokens__check_if_app_has_proper_permissions -->
+    <string name="tokens__check_app_permissions">Skontrolujte, či má aplikácia v systémových nastaveniach potrebné oprávnenia</string>
+    <string name="tokens__no_qr_codes_found">Nenašli sa žiadne QR kódy</string>
+    <!-- tokens__no_correct_qr_code_had_been_found
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
+    <string name="tokens__no_correct_qr_code_found_title">Na obrázku nie je správny QR kód. Skúste prosím iný obrázok.</string>
+    <string name="tokens__select_service">Vyberte službu</string>
+    <string name="tokens__adding_service_question_title">Ktorú službu chcete pridať?</string>
+    <string name="tokens__retype_this_token">Zadajte tento token znovu</string>
+    <!-- tokens__unlock_and_retype_this_token -->
+    <string name="tokens__unlock_and_retype_token_title">Odomknite tento token a zadajte ho znovu</string>
+    <string name="tokens__group">Skupina</string>
+    <string name="tokens__select_group">Vyberte skupinu</string>
+    <string name="tokens__google_auth_import">Import 2FA tokenov z aplikácie Google Authenticator</string>
+    <string name="tokens__google_auth_import_subtitle">Tento QR kód vám umožňuje importovať tokeny z aplikácie Google Authenticator</string>
+    <!-- A number replaces %d  -->
+    <string name="tokens__google_auth_out_of_title">%1$d z %2$d</string>
+    <string name="tokens__google_auth_import_subtitle_end">Import tokenov</string>
+    <string name="tokens__sort_by">Zoradiť</string>
+    <!-- tokens__sort_by_az -->
+    <string name="tokens__sort_by_a_to_z">A - Z</string>
+    <!-- tokens__sort_by_za -->
+    <string name="tokens__sort_by_z_to_a">Z - A</string>
+    <string name="tokens__sort_by_manual">Ručne</string>
+    <string name="tokens__advanced">Advanced</string>
+    <!-- tokens__advanced_alert_title -->
+    <string name="tokens__advanced_alert">Upozornenie</string>
+    <!-- tokens__advanced_alert_description -->
+    <string name="tokens__advanced_alert_description_title">Zmena pokročilých nastavení sa neodporúča. Urobte tak len vtedy, ak to vyžaduje váš poskytovateľ 2FA a ak máte k dispozícii jasné pokyny.</string>
+    <string name="tokens__token_settings">Nastavenia tokenov</string>
+    <string name="tokens__otp_authentication">OTP overovanie</string>
+    <string name="tokens__algorithm">Algoritmus</string>
+    <string name="tokens__refresh_time">Čas obnovenia</string>
+    <string name="tokens__number_of_digits">Number of digits</string>
+    <string name="tokens__counter">Počítadlo</string>
+    <string name="tokens__initial_counter">Počiatočné počítadlo</string>
+    <!-- A number replaces %d -->
+    <string name="tokens__second">%d sekúnd</string>
+    <string name="tokens__hotp">HOTP</string>
+    <string name="tokens__totp">TOTP</string>
+    <string name="tokens__advanced_settings_footer_title">Zmena pokročilých nastavení sa neodporúča. Urobte tak len vtedy, ak to vyžaduje váš poskytovateľ 2FA a ak máte k dispozícii jasné pokyny.</string>
+    <string name="tokens__gallery_advice_title">Osvedčené postupy</string>
+    <!-- ADD A SPACE AT THE END -->
+    <string name="tokens__gallery_advice_content_first">Služba bola úspešne pridaná. Dôrazne odporúčame, aby ste\u0020</string>
+    <!-- ADD A SPACE AFTER COMA -->
+    <string name="tokens__gallery_advice_content_middle_bold">odstráňte snímku s QR kódom zo svojej galérie.</string>
+    <string name="tokens__gallery_advice_content_last">\nAk sa niekto zmocní tejto snímky obrazovky s QR kódom, bude môcť získať vaše kódy dvojfaktorovej autentifikácie pre túto službu.</string>
+    <string name="tokens__request_icon_page_title">Požiadať o ikonu</string>
+    <string name="tokens__request_icon_social_title">Dajte nám vedieť na Discorde</string>
+    <string name="tokens__request_icon_social_link">Prihláste sa na náš Discord server</string>
+    <string name="tokens__request_icon_social_description">a umožniť používateľom hlasovať za požadované ikony.</string>
+    <string name="tokens__request_icon_middle">alebo</string>
+    <string name="tokens__request_icon_provider_title">Informujte poskytovateľa služieb</string>
+    <string name="tokens__request_icon_provider_description">Môžete využiť sociálne siete alebo email a zdieľať s nimi tento text:</string>
+    <string name="tokens__request_icon_provider_message">Hey! I’m using the 2FAS app to log in to your service with 2FA. However, your icon is missing! You can submit your icon here: https://2fas.com/yb\n\nZdravím! Používam aplikáciu 2FAS na prihlasovanie do vašej služby pomocou 2FA. Chýba mi však vaša ikona! Ikonu môžete odoslať tu: https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_footnote">Nezabudnite označiť oficiálny účet spoločnosti!</string>
+    <string name="tokens__order_icon_description">Nemôžete nájsť ikonu značky v 2FAS?</string>
+    <string name="tokens__order_icon_link">Požiadať o ikonu značky</string>
+    <string name="tokens__order_icon_title">Požiadať o ikonu značky</string>
+    <string name="tokens__order_menu_title">Vyberte metódu požiadavky</string>
+    <string name="tokens__order_menu_option_user">Požiadať o ikonu ako používateľ</string>
+    <string name="tokens__order_menu_option_company">Odoslať ikonu ako firma</string>
+    <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
+    <string name="tokens__sign_in_not_possible_title">Bez tohto tokenu sa nebudete môcť prihlásiť do svojho účtu %1$s, pokiaľ máte pre %2$s zapnuté dvojfaktorové overovanie.</string>
+    <string name="voiceover__show_service_key">Zobraziť tajný kľúč</string>
+    <string name="voiceover__copy_service_key">Skopírovať tajný kľúč</string>
+    <!-- voiceover__seconds_left -->
+    <string name="voiceover__seconds_left_counter_title">Počet sekúnd, ktoré zostávajú do zmeny tokenu</string>
+    <string name="voiceover__delete_button">Tlačidlo Odstrániť</string>
+    <string name="voiceover__service_deleted">Služba bola odstránená</string>
+    <!-- voiceover__hidden_secret_key_use_show button -->
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Toto pole obsahuje skrytý tajný kľúč. Ak ho chcete zobraziť, použite tlačidlo „Zobraziť“. Táto funkcia bude fungovať len v prípade, že ste pre uzamknutú obrazovku nastavili PIN kód aplikácie.</string>
+    <string name="voiceover__service_name">Názov služby: %s</string>
+    <string name="voiceover__additional_info">Ďalšie informácie: %s</string>
+    <string name="voiceover__token_tap_to_copy">Token %s. Ťuknutím skopírujete</string>
+    <string name="voiceover__edit">Upraviť %s</string>
+    <string name="voiceover__service_label_with_name_and_color">Štítok služby s názvom %1$s a farbou %2$s</string>
+    <string name="voiceover__service_icon">%s ikona služby</string>
+    <string name="voiceover__selected">Vybrané</string>
+    <string name="voiceover__not_selected">Nie je vybrané</string>
+    <string name="voiceover__badge_color">Farba odznaku: %s</string>
+    <string name="voiceover__dismissing">Zamietanie</string>
+    <string name="voiceover__secret_hint">Iba čísla od 2 do 9 a písmená. Minimálne 4 znaky</string>
+    <string name="voiceover__add_service">Pridať službu</string>
+    <string name="voiceover__add_group">Pridať skupinu</string>
+    <!-- voiceover__use_add_service_button -->
+    <string name="voiceover__use_add_service_button_title">Na pridanie novej služby použite tlačidlo „Pridať službu“</string>
+    <string name="voiceover__no_search_results">Žiadne výsledky vyhľadávania</string>
+    <!-- voiceover__sort_by -->
+    <string name="voiceover__sort_by_title">Pomocou funkcie „Zoradiť“ nastavte poradie služieb</string>
+    <string name="voiceover__spinner">Načítava sa obsah</string>
+    <string name="backup__incorrect_secret">Zálohovanie tokenov sa nepodarilo, pretože tajný kľúč „%s“ obsahuje neplatné znaky. Odstráňte ho zo zoznamu a skúste to znova.</string>
+    <string name="backup__import">Import</string>
+    <string name="backup__export">Export</string>
+    <string name="backup__backup_disabled_title">2FAS záloha bude deaktivovaná s cieľom zabezpečiť jej integritu</string>
+    <string name="backup__error_while_exporting_file">Chyba pri exportovaní súboru</string>
+    <string name="backup__import_completed_successfuly">Import sa úspešne dokončil</string>
+    <!-- camera__video_device_in_use_by_another_app -->
+    <string name="camera__camera_used_by_other_app_title">Iná aplikácia využíva fotoaparát. Ak nepomôže zatvorenie ostatných aplikácií, reštartujte zariadenie.</string>
+    <!-- camera__video_device_unavailable_due_to_system_overload  -->
+    <string name="camera__camera_unavailable_title">Kamera nie je k dispozícii kvôli preťaženiu systému. Skúste zariadenie reštartovať.</string>
+    <string name="camera__cant_initialize_camera_general">Kameru sa nepodarilo inicializovať. Skúste zariadenie reštartovať.</string>
+    <string name="camera__cant_initialize_camera_split_view">V režime Split View sa nedá inicializovať kamera. Otvorte aplikáciu na celú obrazovku a skúste to znova.</string>
+    <string name="restore__how_to_restore">Ako obnoviť aplikáciu 2FAS?</string>
+    <string name="restore__application_restoration">Obnovenie aplikácie</string>
+    <!-- restore_if_you_forgotten -->
+    <string name="restore__reset_Pin_title">Ak ste zabudli PIN alebo chcete obnoviť nastavenia aplikácie 2FAS, musíte ju preinštalovať.</string>
+    <!-- restore_please_remember -->
+    <string name="restore__backup_advice">Ak nemáte zálohu a aplikáciu obnovíte, stratíte prístup ku všetkým svojim 2FA kódom a ku všetkým zabezpečeným účtom.</string>
+    <!-- restore_if_you_have_backup -->
+    <string name="restore__backup_title">Ak máte zálohu, nezúfajte, všetky svoje kódy budete môcť obnoviť.</string>
+    <string name="backup__cloud_backup">Cloud záloha</string>
+    <string name="backup__icloud_sync">iCloud Syncynchronizácia</string>
+    <string name="backup__section_description">ODPORÚČANÉ: iCloud Sync zabezpečuje ochranu vašich tokenov v službe Apple iCloud v prípade straty alebo poškodenia vášho zariadenia. Nechajte ju zapnutú.</string>
+    <string name="backup__file_backup">Zálohovanie súborov</string>
+    <!-- backup__use_file_backup_for -->
+    <string name="backup__file_backup_offline_title">Na offline zálohovanie vašich tokenov použite funkciu „Zálohovanie súborov“.</string>
+    <string name="backup__backup_removal">Odstránenie zálohy</string>
+    <string name="backup__delete_2fas_backup">Odstrániť 2FAS zálohu</string>
+    <string name="backup__warning_introduction">Upozornenie! Ak odstránite 2FAS zálohu, vymažete tým aj všetky tokeny z ostatných zariadení synchronizovaných s týmto účtom. Ak si chcete zachovať tokeny na ostatných zariadeniach, pred odstránením sa uistite, že ste 2FAS zálohu deaktivovali.</string>
+    <!-- backup__i_want_to_delete -->
+    <string name="backup__delete_title">Chcem vymazať zálohu</string>
+    <string name="backup__export_to_backup_file">Export zálohy do súboru</string>
+    <!-- backup__you_can_import_exported_file -->
+    <string name="backup__import_file_title">Pomocou aplikácie 2FAS môžete importovať exportované súbory z iných zariadení</string>
+    <string name="backup__export_to_file">Exportovať do súboru</string>
+    <string name="backup__verify_pin">Overiť PIN</string>
+    <string name="backup__save_file">Uložiť súbor</string>
+    <string name="backup__import_backup_file">Načítať záložný súbor</string>
+    <!-- backup__youre_goint_to_import_backup -->
+    <string name="backup__import_other_devices">Chystáte sa importovať záložný súbor, ktorý obsahuje</string>
+    <string name="backup__import_file">Importovať súbor</string>
+    <string name="backup__choose_antother_file">Vyberte iný súbor</string>
+    <string name="backup__no_new_services">Nie je čo importovať</string>
+    <string name="backup__file_error">Chyba súboru!</string>
+    <!-- backup__services_form_file_will_be_merged -->
+    <string name="backup__services_merge_title">Služby zo súboru budú zlúčené so službami vo vašej aplikácii</string>
+    <string name="backup__no_new_services_error">Buď je tento súbor prázdny, alebo sú všetky služby v ňom už v aplikácii k dispozícii</string>
+    <string name="backup__update_required_to_import_title">Na import obsahu tohto súboru budete potrebovať novú verziu aplikácie. Najnovšiu verziu nájdete v App Store.</string>
+    <string name="backup__cant_read_file_error">Tento súbor sa nedá prečítať. Môže byť poškodený alebo pri pokuse o prístup k nemu došlo k chybe. Vyberte prosím iný súbor.</string>
+    <string name="backup__password">Heslo</string>
+    <string name="backup__repeat_password">Zopakujte heslo</string>
+    <string name="backup__incorrect_character_error">Nesprávny znak. Používajte iba písmená A–Z, a–z, číslice a špeciálne znaky: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__to_short_error">Zadaná fráza je príliš krátka (min. 3 znaky)</string>
+    <string name="backup__passwords_dont_match">Heslá sa nezhodujú</string>
+    <string name="backup__save_and_export">Uložiť a exportovať</string>
+    <string name="backup__set_password_title">Ak chcete zvýšiť ochranu vášho záložného súboru, nastavte, prosím, heslo</string>
+    <string name="backup__enter_password_title">Zadajte heslo pre tento záložný súbor, aby ste mohli pokračovať v importe</string>
+    <string name="backup__backup_file_password_title">Nastavte heslo pre tento záložný súbor</string>
+    <string name="backup__incorrect_password">Nesprávne heslo</string>
+    <!-- %d - number -->
+    <string name="backup__new_services">%d nových služieb</string>
+    <!-- %d - number -->
+    <string name="backup__services_imported_count">%d importovaných služieb.</string>
+    <!-- backup__user_has_icloud_problem -->
+    <string name="backup__icloud_problem">V službe iCloud sa vyskytol problém. Skontrolujte nastavenia systému.</string>
+    <!-- backup__encrypted_unsupported -->
+    <string name="backup__encrypted_files_not_supported">Tento súbor je zašifrovaný. Podporujeme iba nezašifrované súbory.</string>
+    <string name="tokens__copy_token">Kopírovať</string>
+    <!-- tokens__i_want_to_delete_this_servie -->
+    <string name="tokens__i_want_to_delete_this_token">Áno, chcem túto službu odstrániť</string>
+    <string name="color__neutral">Neutrálna</string>
+    <string name="color__light_blue">Svetlo modrá</string>
+    <string name="color__indigo">Indigo</string>
+    <string name="color__purple">Fialová</string>
+    <string name="color__turquoise">Tyrkysová</string>
+    <string name="color__green">Zelená</string>
+    <string name="color__red">Červená</string>
+    <string name="color__orange">Oranžová</string>
+    <string name="color__yellow">Žltá</string>
+    <string name="settings__knowledge">Poznatky</string>
+    <string name="settings__support_and_share">Podporiť a zdieľať</string>
+    <string name="settings__tell_a_friend">Povedz to kamarátovi</string>
+    <string name="settings__write_a_review">Napísať recenziu</string>
+    <string name="settings__about">O aplikácii</string>
+    <string name="settings__privacy_policy">Zásady ochrany osobných údajov</string>
+    <string name="settings__terms_of_service">Podmienky používania</string>
+    <string name="settings__version">Verzia aplikácie %s</string>
+    <string name="settings__no_limit">Bez obmedzenia</string>
+    <string name="settings__pin_code">PIN kód</string>
+    <string name="settings__app_security">Bezpečnosť aplikácie</string>
+    <string name="settings__app_blocking">Nastavenia uzamknutia</string>
+    <string name="settings__face_id">Face ID</string>
+    <string name="settings__touch_id">Touch ID</string>
+    <!-- settings__how_many_attempts_header -->
+    <string name="settings__too_many_attempts_header">Počet neúspešných pokusov:</string>
+    <string name="settings__how_many_attempts_footer">Zvoľte maximálny počet neúspešných pokusov o zadanie prístupového kódu, po ktorých sa aplikácia na stanovenú dobu zablokuje.</string>
+    <string name="settings__block_for">Doba uzamknutia</string>
+    <string name="settings__3_minutes">3 minúty</string>
+    <string name="settings__5_minutes">5 minút</string>
+    <string name="settings__10_minutes">10 minút</string>
+    <string name="settings__limit_of_trials">Maximálny počet neúspešných pokusov</string>
+    <string name="settings__pin_4_digits">4-miestny kód</string>
+    <string name="settings__pin_6_digits">6-miestny kód</string>
+    <string name="settings__biometric_authentication">Biometrická autentifikácia</string>
+    <string name="settings__donations">Dary</string>
+    <string name="settings__donate_twofas">Prispieť organizácii 2FAS</string>
+    <string name="new_version__new_version_title">Nová verzia</string>
+    <string name="new_version__new_version_message_ios">V obchode App Store je k dispozícii nová verzia 2FAS. Aktualizujte ju teraz!</string>
+    <string name="new_version__update_action">Aktualizovať teraz</string>
+    <!-- new_version__skip_action -->
+    <string name="new_version__skip_title">Preskočiť túto verziu</string>
+    <!-- new_version__later_action -->
+    <string name="new_version__update_later">Aktualizovať neskôr</string>
+    <string name="browser__browser_extension">Rozšírenie prehliadača</string>
+    <string name="browser__info_title">Rozšírenie prehliadača 2FAS Auth</string>
+    <string name="browser__info_description_first">Nainštalujte si do svojho počítača rozšírenie prehliadača 2FAS Auth.</string>
+    <string name="browser__info_description_second">Spárujte ho s 2FAS aplikáciou.</string>
+    <string name="browser__more_info">Viac informácií:</string>
+    <string name="browser__more_info_link_title">2fas.com/be</string>
+    <string name="browser__pair_with_web_browser">Spárovať s webovým prehliadačom</string>
+    <string name="browser__more_info_link">https://www.2fas.com/be</string>
+    <string name="browser__pairing_successful_title">Párovanie úspešné!</string>
+    <string name="browser__pairing_successful_description">2FAS vám bude posielať push notifikácie vždy, keď sa prihlásite do svojich online služieb prostredníctvom tohto webového prehliadača. Už nebudete musieť pri každom použití znova zadávať svoje tokeny.</string>
+    <string name="browser__pairing_failed_title">Párovanie zlyhalo</string>
+    <string name="browser__pairing_failed_description">Tento QR kód nebol rozpoznaný a 2FAS nemohla toto zariadenie spárovať s rozšírením prehliadača. Skúste to prosím znova.</string>
+    <!-- browser__pairing_already_paired_title -->
+    <string name="browser__already_paired_title">Už je spárované!</string>
+    <!-- browser__pairing_already_paired_description -->
+    <string name="browser__already_paired_description">Toto rozšírenie prehliadača je už spárované s týmto zariadením.</string>
+    <string name="browser__contact_support">Kontaktujte podporu</string>
+    <string name="browser__pairing_with_browser">Párovanie s prehliadačom</string>
+    <!-- browser__paired_devices -->
+    <string name="browser__paired_devices_browser_title">Spárované zariadenia (webové prehliadače)</string>
+    <string name="browser__add_new">Pridať nové</string>
+    <!-- browser__this_device -->
+    <string name="browser__this_device_name">Prezývka zariadenia</string>
+    <string name="browser__device_name">Prezývka zariadenia</string>
+    <string name="browser__name">Názov</string>
+    <string name="browser__this_device_footer">Táto prezývka vám pomôže rozlíšiť toto zariadenie od ostatných zariadení spárovaných s rozšírením prehliadača 2FAS Auth.</string>
+    <string name="browser__browser_extension_settings">Nastavenia rozšírení prehliadača</string>
+    <string name="browser__unkown_name">&lt;NEZNÁME_MENO&gt;</string>
+    <string name="browser__request_source_description">%1$s požiadal o 2FA token pre %2$s. Vyberte službu, ktorú chcete autorizovať a uložiť s touto doménou.</string>
+    <string name="browser__request">Požiadavka prehliadača</string>
+    <!-- browser__code_success -->
+    <string name="browser__code_success_title">Token bol úspešne odoslaný!</string>
+    <string name="browser__code_failure">Pri odosielaní kódu došlo k chybe. %s</string>
+    <string name="browser__deleting_paired_device_title">Odstránenie spárovaného zariadenia</string>
+    <string name="browser__deleting_paired_device_content">Naozaj chcete odstrániť spárované zariadenie?</string>
+    <string name="browser__pairing_date">Dátum spárovania</string>
+    <string name="browser__forget_this_browser">Zabudnúť tento webový prehliadač</string>
+    <!-- browser__service_is_paired_list_description -->
+    <string name="browser__paired_domains_list_title">Zoznam spárovaných domén.</string>
+    <string name="browser__deleting_extension_pairing_title">Odstrániť doménu?</string>
+    <string name="browser__deleting_extension_pairing_content">Keď sa nabudúce prihlásite na stránku %s pomocou rozšírenia prehliadača, budete vyzvaní, aby ste túto doménu opäť spárovali.</string>
+    <string name="browser__push_notifications_title">Push notifikácie</string>
+    <string name="browser__push_notifications_content">Aby mohla aplikácia využívať funkcie ako napríklad rozšírenie prehliadača, potrebuje prístup k push notifikáciám. Toto nastavenie môžete kedykoľvek zmeniť v systémových nastaveniach.</string>
+    <string name="browser__request_expired">Požiadavka vypršala</string>
+    <string name="browser__2fa_token_request_title">Žiadosť o 2FA token</string>
+    <!-- ADD A SPACE AT THE END! -->
+    <string name="browser__2fa_token_request_content">Chcete zdieľať 2FA token pre\u0020</string>
+    <string name="notifications__no_notifications">Žiadne notifikácie</string>
+    <string name="CFBundleSpokenName">2 F A S</string>
+    <string name="commons__2fas_toolbar">2FAS</string>
+    <string name="backup__google_drive_not_available">Služba Google Drive nie je k dispozícii</string>
+    <string name="backup__google_drive_disabled_title">Google Drive bol deaktivovaný používateľom</string>
+    <string name="backup__update_required_to_import_title_2">Na import obsahu tohto súboru budete potrebovať novú verziu aplikácie. Najnovšiu verziu nájdete v obchode Google Store.</string>
+    <string name="tokens__qr_code_leads_to_google_store">Tento QR kód vás presmeruje do obchodu Google Store</string>
+    <string name="introduction__page_4_content_android">Vaše tokeny sú uložené offline v pamäti zariadenia, preto nezabudnite zálohovať vaše služby! Na ochranu pred neoprávneným prístupom a poškodením zariadenia použite synchronizáciu s Google Drive a PIN kód.</string>
+    <string name="new_version__new_version_message_android">V obchode Google Store je k dispozícii nová verzia aplikácie 2FAS. Aktualizujte ju hneď teraz!</string>
+    <string name="security_error_no_match">PIN sa nezhoduje! Skúste to prosím znova.</string>
+    <string name="settings_developer_options">Možnosti pre vývojárov</string>
+    <string name="settings__external_import">Importovať tokeny</string>
+    <string name="settings__browser_extension_result_toolbar_title">Výsledok párovania</string>
+    <string name="tokens__caution">UPOZORNENIE</string>
+    <string name="tokens__qr_point_and_scan_again">Nasmerujte fotoaparát na správny QR kód a naskenujte znova.</string>
+    <string name="tokens__service_unsaved_changes">Chcete zrušiť svoje zmeny?</string>
+    <string name="tokens__service_unsaved_changes_title">Neuložené zmeny</string>
+    <string name="tokens__service_key_invalid_format">Tajný kľúč má neplatný formát</string>
+    <string name="intent_error_no_gallery_app">Systémová chyba! Neexistuje žiadna aplikácia „Systémová galéria“.</string>
+    <string name="gdrive_permission_title">Oprávnenia pre Google Drive</string>
+    <string name="gdrive_permission_msg">Potrebujeme povolenie pre službu Google Drive, aby sme mohli ukladať záložné súbory do dát aplikácie.</string>
+    <string name="gdrive_internet_title">Je potrebné pripojenie k internetu</string>
+    <string name="gdrive_internet_msg">Na synchronizáciu so službou Google je potrebné aktivovať pripojenie k internetu.</string>
+    <string name="gdrive_wipe_internet_msg">Ak chcete zrušiť prístup k službe Google Drive, musíte zapnúť pripojenie k internetu.</string>
+    <string name="backup_explanation_msg">Záložný súbor sa automaticky uloží a synchronizuje do skrytej zložky na vašom Google Drive. K tejto zložke má prístup iba 2FAS aplikácia.</string>
+    <string name="backup_error_unknown">Počas synchronizácie zálohy došlo k chybe. Po niekoľkých minútach prosím reštartujte aplikáciu a skúste to znova.</string>
+    <string name="backup_error_encrypt_unknown">Počas šifrovania zálohy došlo k chybe. Zadajte, prosím, heslo znovu.</string>
+    <string name="backup_error_decrypt_unknown">Počas dešifrovania zálohy došlo k chybe. Zadajte, prosím, heslo znovu.</string>
+    <string name="backup__google_drive_problem_title">V službe iCloud sa vyskytol problém. Skontrolujte nastavenia systému.</string>
+    <string name="backup_error_auth">Vyskytol sa problém s oprávneniami vášho Google Drive účtu. Skúste synchronizáciu vypnúť a znova zapnúť.</string>
+    <string name="backup_error_no_password">Vaša záloha je chránená heslom. Zapnite ju a zadajte heslo.</string>
+    <string name="backup_error_wrong_password">Vaša záloha je chránená heslom, ale zadané heslo je nesprávne. Zapnite zariadenie a zadajte heslo.</string>
+    <string name="customization_service_assignment">Pridelenie služby</string>
+    <string name="customization_personalization">Personalizácia</string>
+    <string name="customization_change_brand">Zmena značky</string>
+    <string name="customization_advanced">Pokročilé</string>
+    <string name="customization_request_icon">Požiadať o ikonu</string>
+    <string name="customization_edit_label">Upraviť štítok</string>
+    <string name="groups_delete_msg">Naozaj chcete túto skupinu odstrániť?</string>
+    <string name="export_backup_title">Váš záložný súbor je pripravený na export</string>
+    <string name="export_backup_msg">Exportujte tento súbor, aby ste mali svoje 2FAS tokeny bezpečne zálohované. Neskôr ho môžete importovať do tohto alebo iného zariadenia pomocou 2FAS aplikácie.</string>
+    <string name="export_backup_pass">Exportovať súbor bez hesla\n(neodporúča sa)</string>
+    <string name="import_backup_msg2">Súbor sa synchronizuje so zoznamom služieb v aplikácii.</string>
+    <string name="backup_notice_later">Možno neskôr</string>
+    <string name="backup_notice_cta">Zapnúť</string>
+    <string name="widgets_empty_msg">Neboli pridané žiadne služby</string>
+    <string name="backup__section_description_google">ODPORÚČANÉ: Funkcia synchronizácie s Google Drive zabezpečuje ochranu vašich tokenov v službe Google Drive v prípade straty alebo poškodenia vášho zariadenia. Nechajte ju zapnutú.</string>
+    <string name="backup_turn_off_title">Vypnúť synchronizáciu s Google Drive?</string>
+    <string name="backup_turn_off_msg1">2FA tokeny zostanú na tomto zariadení a na vašom Google Drive, nebudú sa však synchronizovať. Zároveň budete odhlásení zo svojho účtu Google.</string>
+    <string name="backup_turn_off_msg2">Nezabudnite, že v prípade straty alebo poškodenia tohto zariadenia alebo odstránenia aplikácie sa vám možno nepodarí obnoviť vaše tokeny a stratíte prístup k online účtom zabezpečeným dvojfaktorovou autentifikáciou (2FA).</string>
+    <string name="backup_settings_password_set_subtitle">Zabezpečte záložný súbor na Google Drive pomocou vlastného hesla.</string>
+    <string name="backup_settings_password_remove_title">Odstrániť heslo</string>
+    <string name="backup_settings_password_remove_subtitle">Odstráňte heslo zo záložného súboru na Google Drive.</string>
+    <string name="backup_settings_account_title">Google účet\u0020</string>
+    <string name="backup_settings_sync_title">Posledná synchronizácia</string>
+    <string name="browser_extension_result_success_description">2FAS vám pošle PUSH notifikácie vždy, keď sa prihlásite do svojich online služieb prostredníctvom tohto webového prehliadača. Už nebudete musieť pri každom použití znova zadávať vaše tokeny.</string>
+    <string name="browser_extension_browser_dialog">Názov prehliadača</string>
+    <string name="biometric_dialog_auth_title">Prihlásiť sa</string>
+    <string name="biometric_dialog_auth_subtitle">Použite svoje biometrické overovacie údaje</string>
+    <string name="about_licenses">Open source licencie</string>
+    <string name="externalimport_description">Vyberte aplikáciu zo zoznamu a postupujte podľa pokynov.</string>
+    <string name="externalimport_select_app">Vyberte aplikáciu</string>
+    <string name="externalimport_google_authenticator">Google Authenticator</string>
+    <string name="externalimport_aegis">Aegis</string>
+    <string name="externalimport_raivo">Raivo OTP</string>
+    <string name="android__app_name">2FAS Auth</string>
+    <string name="commons__yes">Áno</string>
+    <string name="commons__no">Nie</string>
+    <string name="commons__search">Vyhľadať</string>
+    <string name="errors__no_app">Žiadna aplikácia, ktorá by podporovala tento odkaz</string>
+    <string name="permissions__camera_permission">Oprávnenie pre fotoaparát</string>
+    <string name="permissions__camera_permission_description">Na skenovanie QR kódov je potrebné povolenie pre fotoaparát. Ak chcete túto funkciu používať, prejdite do časti Informácie o aplikácii a povolenia a aktivujte možnosť Fotoaparát.</string>
+    <string name="security__disable_pin">Deaktivovať PIN</string>
+    <string name="security__enter_your_new_pin">Zadajte, prosím, svoj nový PIN %s</string>
+    <string name="security__pin_error_incorrect">Nesprávny PIN! Skúste to prosím znova</string>
+    <string name="settings__biometrics">Biometria</string>
+    <string name="settings__support">Podpora 2FAS</string>
+    <string name="settings__developer">Možnosti pre vývojárov</string>
+    <string name="settings__option_fingerprint">Biometrický zámok</string>
+    <string name="settings__option_theme">Téma</string>
+    <string name="settings__theme_option_auto">Automaticá</string>
+    <string name="settings__theme_option_auto_system">Automatická - nastavené systémom</string>
+    <string name="settings__theme_option_dark">Tmavá</string>
+    <string name="settings__theme_option_light">Svetlá</string>
+    <string name="tokens__copied_clipboard">Token bol skopírovaný do schránky!</string>
+    <string name="tokens__next_copied_clipboard">Ďalší token bol skopírovaný do schránky!</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Chcete túto 2FA službu natrvalo odstrániť?</string>
+    <string name="tokens__fab_addmanually">Pridať ručne</string>
+    <string name="tokens__qr_does_not_work">Tento QR kód nefunguje!</string>
+    <!-- Could not read QR code from the image! -->
+    <string name="tokens__qr_read_image_failed">Nepodarilo sa prečítať QR kód z obrázku!</string>
+    <string name="tokens__qr_read_image_try_again">Skúste vybrať iný obrázok.</string>
+    <string name="tokens__remove_it_forever">Odstrániť</string>
+    <!-- Service could not be added, Service Key is invalid. Try again. -->
+    <string name="tokens__service_add_error">Službu sa nepodarilo pridať, pretože tajný kľúč je neplatný. Skúste to znova.</string>
+    <!-- A service with this Service Key already exists. Do you want to override it? -->
+    <string name="tokens__service_already_exists">Služba s týmto tajným kľúčom už existuje. Chcete ho prepísať?</string>
+    <string name="tokens__service_key_invalid_characters">Kľúč obsahuje neplatné znaky</string>
+    <string name="tokens__show_service_key">Zobraziť tajný kľúč</string>
+    <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
+    <string name="tokens__show_service_key_setup_lock">Váš tajný kľúč je chránený. Ak ho chcete zobraziť, nastavte si PIN alebo biometrické odomknutie.</string>
+    <string name="tokens__tokens_list_is_empty">Zoznam služieb je prázdny</string>
+    <string name="tokens__use_plus_button_to_add_tokens">Na pridanie novej služby použite tlačidlo „+“</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Bez tohto tokenu sa nebudete môcť prihlásiť do svojho účtu %1$s, pokiaľ máte pre %2$s zapnuté dvojfaktorové overovanie.\n\nTento token nebude možné obnoviť z koša služby 2FAS.</string>
+    <string name="import_ga_success">Služby boli úspešne importované!</string>
+    <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
+    <string name="backup_error_network">Na synchronizáciu zálohy potrebujete aktívne pripojenie k internetu. Zapnite sieťové pripojenie a skúste to znovu.</string>
+    <string name="update_app_title">Aktualizovať aplikáciu</string>
+    <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
+    <string name="update_app_msg">Aktualizujte prosím na najnovšiu verziu 2FAS, aby ste mohli využívať všetky funkcie a zachovať vysokú úroveň bezpečnosti.</string>
+    <string name="delete_service_title">Odstraňujete</string>
+    <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
+    <string name="delete_service_msg">zo zoznamu služieb 2FAS.\n\nNezabudnite, že pokiaľ máte zapnuté dvojfaktorové overovanie, bez tohto tokenu sa do účtu %s neprihlásite.</string>
+    <string name="delete_service_cta">Odstrániť</string>
+    <string name="export_backup_cta">Export</string>
+    <string name="export_backup_share_cta">Zdieľať</string>
+    <string name="import_backup_title">Načítať zálohu zo súboru</string>
+    <string name="import_backup_msg1">Záložný sa chystáte importovať pomocou</string>
+    <string name="import_backup_cta">Import</string>
+    <string name="widgets_warning_msg">Tokeny zobrazené vo widgete nie sú chránené vaším PIN kódom.\n\nNaozaj chcete zobraziť svoje tokeny vo widgete?</string>
+    <string name="widgets_warning_title">UPOZORNENIE!</string>
+    <string name="widgets_warning_cta">Áno, som si istý</string>
+    <string name="backup_notice_title">2FAS záloha</string>
+    <string name="backup_notice_msg">Aktivujte 2FAS zálohu. V prípade resetovania alebo straty telefónu budete môcť obnoviť všetky svoje tokeny.</string>
+    <string name="brand_empty_msg">Prepáčte, značka sa nenašla</string>
+    <!-- Select which services will be visible on widget: -->
+    <string name="widgets_select_msg">Vyberte, ktoré služby sa budú zobrazovať vo widgete:</string>
+    <string name="backup_turn_off_cta">Vypnúť synchronizáciu</string>
+    <string name="backup_turn_off_cancel">Zrušiť</string>
+    <string name="backup_settings_password_set_title">Nastaviť heslo</string>
+    <string name="backup_settings_delete_title">Odstrániť záložný súbor z Google Drive</string>
+    <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
+    <string name="backup_settings_delete_subtitle">Ak tento súbor odstránite z Google Drive, synchronizácia na všetkých synchronizovaných zariadeniach sa deaktivuje a tokeny zostanú iba na tomto a ostatných zariadeniach prostredníctrom lokálneho úložiska.</string>
+    <string name="browser__result_error_browser_paired">Vaša 2FAS aplikácia je už spárovaná s týmto prehliadačom.</string>
+    <!-- Scan QR code again -->
+    <string name="browser__result_error_cta">Znovu naskenujte QR kód</string>
+    <string name="browser__scan_error_dialog_title">Chyba</string>
+    <!-- Scanned QR code has unsupported format. Please try again. -->
+    <string name="browser__scan_error_dialog_msg_invalid_code">Naskenovaný QR kód má nepodporovaný formát. Skúste to prosím znova.</string>
+    <string name="browser__scan_error_dialog_msg_unknown">Pri skenovaní QR kódu došlo k neznámej chybe. Skúste to prosím znova.</string>
+    <string name="biometric_dialog_auth_cancel">Tentoraz použiť PIN</string>
+    <string name="biometric_dialog_setup_title">Zapnúť overovanie</string>
+    <string name="biometric_dialog_setup_cancel">Zrušiť</string>
+    <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
+    <string name="settings__option_fingerprint_description">Ak chcete aktivovať biometrické odomknutie, musíte najprv aktivovať a nastaviť PIN kód.</string>
+    <string name="settings__block_for_footer">Vyberte čas, po ktorom bude aplikácia uzamknutá.</string>
+    <string name="error__out_of_disk_space">Zdá sa, že vám práve voľný priestor na disku, alebo takáto udalosť v minulosti poškodila databázu</string>
+    <string name="error__cloud_backup_newer_version">Zálohovanie do cloudu bolo migrované do novej verzie. Aktualizujte aplikáciu.</string>
+    <string name="error__cloud_backup_encrypted_not_supported">Cloudová záloha je šifrovaná. Aktualizujte aplikáciu, aby podporovala túto funkciu.</string>
+    <string name="extension__continue_to_app">Prejsť do aplikácie</string>
+    <string name="extension__cancel">Zrušiť</string>
+    <string name="extension__authorize">Autorizovať</string>
+    <string name="extension__dismiss">Zrušiť</string>
+    <string name="extension__request_sent">Požiadavka odoslaná</string>
+    <string name="extension__send_question_title">Odoslať token?</string>
+    <string name="extension__send_question_content">%1$s požiadal o 2FAS token pre %2$s</string>
+    <string name="extension__error_while_sending">Chyba pri odosielaní tokenu</string>
+    <string name="extension__not_paired_title">Táto webová stránka nie je spárovaná</string>
+    <string name="extension__not_paired_content">Otvorte aplikáciu a vyberte službu pre túto doménu</string>
+    <string name="extension__error_open_the_app">Otvorte aplikáciu a skontrolujte, či je rozšírenie prehliadača správne spárované</string>
+    <string name="extension__error_no_internet">Vyskytol sa problém s pripojením</string>
+    <string name="extension__try_again">Skúste to prosím znova</string>
+    <string name="extension__error">Chyba</string>
+    <string name="extension__error_no_services">Aby rozšírenie prehliadača fungovalo, pridajte prosím služby do aplikácie 2FAS</string>
+    <string name="extension__approve">Schváliť</string>
+    <string name="extension__deny">Odmietnuť</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">Aktivujte overovanie pomocou PIN kódu a Face ID, aby ste zabránili neoprávnenému prístupu k vašim tokenom na tomto zariadení.</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Aktivujte overovanie pomocou PIN kódu a Touch ID, aby ste zabránili neoprávnenému prístupu k vašim tokenom na tomto zariadení.</string>
+    <string name="settings__send_logs_error_not_exists">Uvedený kód je nesprávny. Skontrolujte ho, prosím, ešte raz.</string>
+    <string name="settings__send_logs_error_expired">Platnosť poskytnutého kódu vypršala. Ak chcete získať nový kód, kontaktujte tím podpory.</string>
+    <string name="settings__send_logs_error_no_internet">Nefunguje internet. Skontrolujte pripojenie a skúste to znova.</string>
+    <string name="settings__send_logs_error_server">Zdá sa, že máme problém so serverom. Ak problém pretrváva, kontaktujte prosím náš tím technickej podpory.</string>
+    <string name="settings__send_logs_error_title">Operácia zlyhala</string>
+    <string name="settings__send_logs_sent_title">Záznamy odoslané</string>
+    <string name="settings__send_logs_sent_description">Ďakujeme za kontakt. Čo najskôr ich vyhodnotíme.</string>
+    <string name="commons__send">Odoslať</string>
+    <string name="settings__send_logs_title">Odosielanie záznamov</string>
+    <string name="settings__send_logs_description_link">Kód poskytnutý tímom podpory bol automaticky vyplnený. Chcete odoslať záznamy?</string>
+    <string name="settings__send_logs_description_edit">Zadajte alebo vložte kód, ktorý vám poskytol náš tím podpory</string>
+    <string name="settings__send_logs">Odoslať záznamy</string>
+    <string name="settings__recommendation">Pozrite si túto skvelú aplikáciu na dvojfaktorovú autentizáciu od spoločnosti 2FAS: https://2fas.com</string>
+    <string name="settings__acknowledgements">Poďakovanie</string>
+    <string name="introduction__import_external_app">Import z externej aplikácie</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="one">pred chvíľou</item>
+        <item quantity="few">pred chvíľou</item>
+        <item quantity="other">pred chvíľou</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="one">pred %d minútou</item>
+        <item quantity="few">pred %d minútami</item>
+        <item quantity="other">pred %d minútami</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="one">pred %d hodinou</item>
+        <item quantity="few">pred %d hodinami</item>
+        <item quantity="other">pred %d hodinami</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="one">pred %d dňom</item>
+        <item quantity="few">pred %d dňami</item>
+        <item quantity="other">pred %d dňami</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="one">pred %d týždňom</item>
+        <item quantity="few">pred %d týždňami</item>
+        <item quantity="other">pred %d týždňami</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="one">pred %d mesiacom</item>
+        <item quantity="few">pred %d mesiacmi</item>
+        <item quantity="other">pred %d mesiacmi</item>
+    </plurals>
+    <string name="commons__unknown_error">Došlo k neznámej chybe! Skúste to znova!</string>
+    <string name="backup__export_result_success">Súbor bol úspešne uložený!</string>
+    <string name="backup__share_result_failure">Súbor sa nepodarilo zdieľať!</string>
+    <string name="backup__enter_password_dialog_title">Zadajte heslo</string>
+    <string name="backup__remove_password_msg">Zadajte záložné heslo, aby ste mohli pokračovať v odstraňovaní.</string>
+    <string name="backup__revoke_google_access_msg">Zadajte záložné heslo, aby ste mohli pokračovať v zrušení prístupu k službám Google.</string>
+    <string name="backup__synchronization_settings">Nastavenia synchronizácie</string>
+    <string name="backup__local_file_title">Miestny súbor</string>
+    <string name="backup__drive_title">Synchronizácia s Google Drive</string>
+    <string name="backup__delete_file_title">Chcete odstrániť svoj záložný súbor z Google Drive?</string>
+    <string name="backup__delete_file_msg">Služba Google Sync bude deaktivovaná. Vaše tokeny zostanú uložené lokálne, ale aplikácia 2FAS bude odhlásená z vášho Google účtu na tomto, aj na ostatných synchronizovaných zariadeniach.</string>
+    <string name="backup__sync_status_waiting">Čakám na synchronizáciu…</string>
+    <string name="backup__sync_status_progress">Synchronizácia…</string>
+    <string name="import_backup_msg1_encrypted">Chystáte sa importovať šifrovaný záložný súbor.</string>
+    <string name="externalimport__choose_json_cta">Vybrať JSON súbor</string>
+    <string name="externalimport__aegis_msg">Exportujte svoje účty z Aegisu do nezašifrovaného JSON súboru a nahrajte ho pomocou tlačidla „Vybrať JSON súbor“. Nezabudnite súbor po úspešnom importe odstrániť.</string>
+    <string name="externalimport__raivo_msg">V nastaveniach aplikácie Raivo použite možnosť „Exportovať OTP do ZIP archívu“, uložte ZIP súbor, rozbaľte ho a importujte JSON súbor pomocou tlačidla „Vybrať JSON súbor“.</string>
+    <string name="externalimport__no_tokens_msg">Neexistujú však žiadne služby, ktoré by bolo možné importovať.</string>
+    <string name="commons__try_again">Skúste to znova</string>
+    <string name="commons__proceed">Pokračovať</string>
+    <string name="externalimport__ga_title">Import 2FA tokenov z aplikácie Google Authenticator</string>
+    <string name="externalimport__aegis_title">Import 2FA tokenov z aplikácie Aegis</string>
+    <string name="externalimport__raivo_title">Import 2FA tokenov z aplikácie Raivo</string>
+    <string name="externalimport__ga_success_msg">Tento QR kód umožňuje importovať tokeny z aplikácie Google Authenticator.</string>
+    <string name="externalimport__aegis_success_msg">Tento JSON súbor vám umožňuje importovať tokeny z Aegisu.</string>
+    <string name="externalimport__raivo_success_msg">Tento JSON súbor umožňuje importovať tokeny z Raiva.</string>
+    <string name="externalimport__read_error">Nepodarilo sa načítať žiadne tokeny. Skúste vybrať iný súbor.</string>
+    <string name="settings__gd_sync_info">Upozornenie na synchronizáciu s Google Drive</string>
+    <string name="settings__gd_sync_disable_confirm">Ste si istí? Bez synchronizácie s Google Drive nebudete môcť obnoviť svoje tokeny, ak telefón stratíte alebo ho resetujete!</string>
+    <string name="extension__code_sent_msg">Kód bol úspešne odoslaný</string>
+    <string name="extension__code_sent_error_msg">Pri odosielaní kódu došlo k chybe</string>
+    <string name="tokens__add_service_title">Pridať novú službu</string>
+    <string name="tokens__customize_service_title">Prispôsobenie služby</string>
+    <string name="extension__services_suggested_header">Odporúčané</string>
+    <string name="extension__services_all_header">Všetky služby</string>
+    <string name="extension__services_other_header">Ďalšie služby</string>
+    <string name="settings__ssl_error_title">SSL chyba</string>
+    <string name="settings__ssl_error_description">Došlo k SSL chybe a nie je možné nadviazať zabezpečené pripojenie k serveru. Uistite sa, že máte nainštalovanú najnovšiu verziu aplikácie, alebo skúste zmeniť sieť.</string>
+    <string name="backup__import_error_file_size">Súbor, ktorý sa snažíte importovať, je príliš veľký. Maximálna veľkosť je 10 MB.</string>
+    <string name="backup__import_error_file_invalid">Súbor, ktorý sa snažíte importovať, je neplatný alebo poškodený. Vyberte prosím iný súbor.</string>
+    <string name="appearance__toggle_active_search">Aktívne vyhľadávanie</string>
+    <string name="appearance__active_search_description">Aktívne vyhľadávanie pri spustení.</string>
+    <string name="widgets__expires_in">Platnosť vyprší za:</string>
+    <string name="widgets__settings">Nastavenia widgetu</string>
+    <string name="errors__input_integer_number">Vstup musí byť celé číslo</string>
+    <string name="errors__input_number">Vstup musí byť číslo</string>
+    <string name="errors__input_empty">Vstup nesmie byť prázdny</string>
+    <string name="errors__input_too_long">Vstup je príliš dlhý. Limit: %d</string>
+    <string name="commons__best_match">Najlepšia zhoda</string>
+    <string name="settings__enable_crashlytics">Odosielať anonymné hlásenia o zlyhaní</string>
+    <string name="settings__enable_crashlytics_description">Odosielať anonymné hlásenia o zlyhaní, ktoré pomôžu aplikácii 2FAS identifikovať a riešiť problémy (vyžaduje sa reštart aplikácie).</string>
+    <string name="tokens__manage_list">Spravovať zoznam</string>
+    <string name="settings__appearance">Vzhľad</string>
+    <string name="settings__show_next_token_desc">Zobraziť ďalší token, keď sa platnosť aktuálneho tokenu chýli ku koncu.</string>
+    <string name="settings__list_style">Štýl zoznamu</string>
+    <string name="backup__reminder_msg">Google Drive nie je synchronizovaný.</string>
+    <string name="backup__reminder_cta">Prejsť do nastavení zálohovania</string>
+    <string name="settings__list_style_option_default">Predvolený</string>
+    <string name="settings__list_style_option_compact">Kompaktný</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Exportujte svoje účty z LastPass do nezašifrovaného JSON súboru a nahrajte ho pomocou tlačidla „Vybrať JSON súbor“. Nezabudnite súbor po úspešnom importe odstrániť.</string>
+    <string name="settings__about_crash_optout_title">Správy o nehodách</string>
+    <string name="externalimport__lastpass_title">Import 2FA tokenov z aplikácie LastPass</string>
+    <string name="externalimport__lastpass_success_msg">Tento JSON súbor vám umožňuje importovať tokeny z LastPass.</string>
+    <string name="externalimport__info_lastpass_title">Importovať tokeny z LastPass</string>
+    <string name="externalimport__info_aegis_title">Importovať tokeny z Aegis</string>
+    <string name="externalimport__info_raivo_title">Importovať tokeny z Raivo OTP</string>
+    <string name="externalimport__info_google_authenticator_title">Importovať tokeny z Google Authenticator</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">s</string>
+    <string name="tokens__add_title">Spárovať službu s 2FAS</string>
+    <string name="tokens__add_description">Nasmerujte fotoaparát na obrazovku a naskenujte QR kód.</string>
+    <string name="tokens__add_other_methods">Iné spôsoby</string>
+    <string name="tokens__add_enter_manual">Zadať tajný kľúč ručne</string>
+    <string name="tokens__add_from_gallery">Nahrať snímku obrazovky s QR kódom</string>
+    <string name="tokens__add_success_title">Takmer hotovo!</string>
+    <string name="tokens__add_success_description">Na dokončenie spárovania služby je potrebné tento token zadať znova.</string>
+    <string name="tokens__add_manual_title">Spárujte túto službu s 2FAS</string>
+    <string name="tokens__add_manual_description">Zadajte názov služby a tajný kľúč</string>
+    <string name="tokens__add_manual_service_name">Názov služby</string>
+    <string name="tokens__add_manual_service_key">Tajný kľúč</string>
+    <string name="tokens__add_manual_other">Ďalšie nastavenia</string>
+    <string name="tokens__add_manual_other_optional">(voliteľné)</string>
+    <string name="tokens__add_manual_done_cta">Pridať službu</string>
+    <string name="tokens__add_manual_help_cta">Neviete, čo robiť? Ťuknite sem pre pomoc</string>
+    <string name="tokens__add_manual_advanced">Pokročilé nastavenia tokenov</string>
+    <string name="tokens__add_manual_additional_info">Ďalšie informácie</string>
+    <string name="tokens__add_manual_advanced_description">Zmena predvolených nastavení tokenu sa neodporúča. Urobte tak len vtedy, ak to vyžaduje váš 2FA poskytovateľ a ak máte k dispozícii jasné pokyny.</string>
+    <string name="settings__option_screenshots_description">Povoliť vytváranie snímok obrazovky v aplikácii na 30 minút.</string>
+    <string name="settings__option_screenshots">Povoliť snímky obrazovky</string>
+    <string name="settings__option_screenshots_confirm_title">Povoliť vytváranie snímok obrazovky?</string>
+    <string name="settings__option_screenshots_confirm_description">Ste si istí? Táto možnosť vám umožňuje vytvárať snímky obrazovky a nahrávať akúkoľvek časť obrazovky v rámci aplikácie. Umožní to však aj akékoľvek externé pokusy o zachytenie obrazovky v aplikácii.\nZ bezpečnostných dôvodov sa táto možnosť po 30 minútach automaticky vypne.</string>
+    <string name="social__social_media">Odkazy na sociálne siete</string>
+    <string name="social__discord">Discord</string>
+    <string name="social__youtube">YouTube</string>
+    <string name="social__twitter">X (predtým Twitter)</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">LinkedIn</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">Facebook</string>
+    <string name="settings__hide_tokens_title">Skryť tokeny</string>
+    <string name="settings__hide_tokens_description">Tokeny sa odhalia po klepnutí.</string>
+    <string name="browser__pair_manually_cta">Ručné spárovanie</string>
+    <string name="browser__pair_manually_hint">Párovací kód</string>
+    <string name="externalimport__info_authenticatorpro_title">Importovať tokeny z aplikácie Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_success_msg">Tento textový súbor vám umožňuje importovať tokeny z aplikácie Authenticator Pro.</string>
+    <string name="externalimport__authenticatorpro_title">Import 2FA tokenov z aplikácie Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_msg">Exportujte svoje účty z aplikácie Authenticator Pro do nezašifrovaného textového súboru a nahrajte ho pomocou tlačidla „Vybrať textový súbor“. Nezabudnite súbor po úspešnom importe odstrániť.</string>
+    <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
+    <string name="externalimport__choose_txt_cta">Vybrať textový súbor</string>
+    <string name="fingerprint__biometric_invalidated">Biometrické prihlásenie je deaktivované z dôvodu zmien v nastaveniach systému týkajúcich sa odtlačkov prstov</string>
+    <string name="tokens__last_pass_import">Import 2FA tokenov z aplikácie LastPass</string>
+    <string name="tokens__last_pass_import_subtitle">Tento QR kód vám umožňuje importovať tokeny z LastPass</string>
+    <string name="tokens__add_with_guide">Veď ma</string>
+    <string name="guides__select_title">Prehliadať služby</string>
+    <string name="guides__select_description">Vyberte službu, ktorú chcete spárovať s aplikáciou 2FAS</string>
+    <string name="guides__select_provide_guide">Chcete pre svoju službu poskytovať návody na dvojfaktorovú autentizáciu (2FA)?</string>
+    <string name="guides__select_provide_guide_cta">Použiť teraz</string>
+    <string name="color__pink">Ružová</string>
+    <string name="color__brown">Hnedá</string>
+    <string name="tokens__other_methods_header">Iné spôsoby?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Fotoaparát nie je k dispozícii. Skontrolujte oprávnenia aplikácií v systémových nastaveniach.</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Nastavenia systému</string>
+    <string name="commons__text_short_title">Zadaný text je príliš krátky (min. %d znakov)</string>
+    <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
+    <string name="tokens__add_manual_advanced_description_highlight">sa neodporúča</string>
+    <string name="guides__guide_init_title">2FAS sprievodca</string>
+    <string name="guides__guide_title">2FAS pre %s</string>
+    <string name="guides__guide_universal_title">Univerzálny 2FA sprievodca</string>
+    <string name="browser__save_choice">Uložiť môj výber</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">Import 2FA tokenov z aplikácie andOTP</string>
+    <string name="externalimport__andotp_success_msg">Tento JSON súbor vám umožňuje importovať tokeny z andOTP.</string>
+    <string name="externalimport__info_andotp_title">Importovať tokeny z andOTP</string>
+    <string name="externalimport__andotp_msg">Exportujte svoje účty z aplikácie andOTP do nezašifrovaného JSON súboru a nahrajte ho pomocou tlačidla „Vybrať JSON súbor“. Nezabudnite súbor po úspešnom importe odstrániť.</string>
+    <string name="introduction__backup_description">V ďalšom kroku budete vyzvaní, aby ste si vybrali svoj účet Google Drive, kde budú 2FA tokeny bezpečne uložené.</string>
+    <string name="introduction__backup_take_risk_cta">Podstúpim to riziko, bez zálohy.</string>
+    <string name="introduction__backup_success">Synchronizácia s Google Drive bola úspešne zapnutá!</string>
+    <string name="backup__import_invalid_version">Záložný súbor, ktorý sa snažíte importovať, nie je v tejto verzii aplikácie podporovaný. Aplikácia podporuje iba verzie formátu zálohy až do %d, zatiaľ čo súbor, ktorý importujete, má verziu %d.</string>
+    <string name="commons__pair">Párovať</string>
+    <string name="introduction__backup_icloud_title">Bezpečná synchronizácia a zálohovanie</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">Aplikácia 2FAS využíva službu iCloud na bezpečné zálohovanie a synchronizáciu vašich 2FA tokenov. Šifrované záložné údaje sú uložené v iCloude a prístupné sú iba prostredníctvom aplikácie 2FAS. Okrem toho táto funkcia pomáha pri obnove tokenov a ich synchronizácii medzi zariadeniami s iOS.</string>
+    <string name="introduction__backup_icloud_cta">Získajte viac informácií o zálohovaní</string>
+    <string name="backup__enter_password_google_drive_msg1">Vyzerá to, že váš záložný súbor na Google Drive je chránený heslom. Zadajte správne heslo, aby ste mohli pokračovať. Ak chcete vymazať svoj záložný súbor z Google Drive,</string>
+    <string name="backup__enter_password_google_drive_msg2">kliknite sem a zistite, ako na to</string>
+    <string name="settings__preferences">Preferences</string>
+    <string name="settings__it_matters">Je to dôležité</string>
+    <string name="settings__manage_tokens">Správa tokenov</string>
+    <string name="settings__info_footer">Vaša podpora nám umožňuje vyvíjať nové funkcie a vylepšenia. Ďakujeme!</string>
+    <string name="settings__trash_option">Obnoviť z koša</string>
+    <string name="periodic_notification_tips">Tešíme sa, že ste s nami v 2FAS! 🌟 Venujte chvíľku času a objavte v aplikácii užitočné tipy a triky 🛠️, vďaka ktorým zvýšite bezpečnosť 🔒.</string>
+    <string name="periodic_notification_backup">Aktivujte funkciu 2FAS záloha a synchronizácia, aby ste sa nikdy nedostali do situácie, keď sa nemôžete prihlásiť, a to ani v prípade straty telefónu – pokoj na duši jedným ťuknutím! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Zrýchlite svoje prihlásenia pomocou rozšírenia prehliadača 2FAS! 🚀 Stiahnite si ho hneď teraz a užite si rýchlejšie a pohodlnejšie overovanie. 🌐✨</string>
+    <string name="periodic_notification_donate">Sme vďační za vašu podporu aplikácie 2FAS! 🌟 Ak vám naša aplikácia pomáha, zvážte prosím príspevok, ktorý nám pomôže zabezpečiť váš digitálny svet. Každá suma pomôže! 🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Zástupný symbol</string>
+    <string name="widget__size_not_supported">Táto veľkosť zatiaľ nie je podporovaná</string>
+    <string name="widget__settings_description">Vyberte, ktoré služby chcete zobraziť vo widgete. Ak nie sú k dispozícii žiadne služby, skontrolujte, či ste v časti Nastavenia aplikácie povolili widgety.</string>
+    <string name="widget__service_icon">Ikona služby</string>
+    <string name="widget__not_enabled">Funkcia widgetov nie je povolená v sekcii Nastavenia 2FAS</string>
+    <string name="widget__not_enabled_no_services">Funkcia widgetov nie je povolená v sekcii Nastavenia 2FAS a v aplikácii nie sú k dispozícii žiadne služby, ktoré by bolo možné vybrať</string>
+    <string name="widget__no_services">V aplikácii nie sú k dispozícii žiadne služby, ktoré by bolo možné vybrať</string>
+    <string name="widget__select_service_intent_description">Vyberte službu, ktorú chcete zobraziť vo svojom 2FAS widgete</string>
+    <string name="widget__my_secured_account">Môj zabezpečený účet</string>
+    <string name="widget__token">Token</string>
+    <string name="watch__intro">Aplikácia 2FAS pre watchOS je doplnkom k mobilnej aplikácii 2FAS Auth. \n\nZobrazuje tokeny zálohované prostredníctvom synchronizácie s iCloudom.</string>
+    <string name="tokens__hotp_not_supported">Služby HOTP zatiaľ nie sú podporované</string>
+    <string name="tokens__favorite_services">Obľúbené služby</string>
+    <string name="security__enter_new_pin_short">Zadajte nový PIN</string>
+    <string name="security__repeat_new_pin_short">Zopakujte nový PIN</string>
+    <string name="commons__success">Úspech</string>
+    <string name="security__enter_pin_short">Zadajte PIN</string>
+    <string name="settings__sort_tokens">Zoradiť tokeny</string>
+    <string name="appleWatch__installation_info_title">Inštalácia 2FAS Auth na Apple Watch</string>
+    <string name="appleWatch__installation_first_step">Nainštalovať 2FAS Auth prostredníctvom aplikácie Watch</string>
+    <string name="appleWatch__installation_first_step_link">Otvoriť aplikáciu Watch</string>
+    <string name="appleWatch__installation_second_step">Uistite sa, že je zapnutá iCloud synchronizácia</string>
+    <string name="appleWatch__installation_second_step_link">Prejsť do nastavenia „2FAS záloha“</string>
+    <string name="settings__apple_watch">Apple Watch</string>
+    <string name="widget__no_selected_services">Podržte a vyberte službu na aktiváciu widgetu...</string>
+    <string name="widget__reveal_tokens_long_message">Zobrazí vaše 2FAS tokeny na 60 sekúnd</string>
+    <string name="widget__reveal_tokens_short_message">Odhaliť na 60 sekúnd</string>
+    <string name="settings__show_error_details">Zobraziť podrobnosti o chybe</string>
+    <string name="tokens__show_qr_code">QR kód služby</string>
+    <string name="tokens__show_service_qr_setup_lock">Vaša služba je chránená. Ak chcete zobraziť QR kód, nastavte si prosím PIN alebo odomknutie pomocou odtlačku prsta.</string>
+    <string name="tokens__copy_uri">Kopírovať URI</string>
+    <string name="backup__cloud_encrypted_user">iCloud je šifrovaný pomocou vlastného hesla. Zadajte heslo a aktivujte synchronizáciu.</string>
+    <string name="backup__cloud_encrypted_system">iCloud is encrypted with a System Key. Ensure that you have enabled the iCloud Keychain.</string>
+    <string name="backup__synced">Synchronizované</string>
+    <string name="backup__checking">Kontrolujem...</string>
+    <string name="backup__sync_disabled">Synchronizácia je vypnutá.</string>
+    <string name="backup__sync_not_available">Synchronizácia nie je k dispozícii: %s</string>
+    <string name="backup__watch_pairing_title">Párovanie s Apple Watch</string>
+    <string name="backup__watch_pairing_description">Chcete spárovať hodinky Apple Watch so zálohou v iCloude? Zadajte názov svojho zariadenia:</string>
+    <string name="backup__watch_pairing_default_name">Apple Watch</string>
+    <string name="backup__watch_pairing_action">Párovať zariadenie</string>
+    <string name="backup__watch_pairing_error">V súčasnosti nie je možné zariadenie spárovať s hodinkami. Uistite sa, že je zapnutá záloha v iCloude a že sa synchronizuje pomocou hesla.</string>
+    <string name="backup__cloud_error_title">Chyba pri zálohovaní do cloudu</string>
+    <string name="backup__cloud_error_missing_system_key_content">Zálohu z iCloudu nie je možné dešifrovať, pretože nebol nájdený systémový kľúč. Uistite sa, že je synchronizácia iCloud Keychain zapnutá a funguje správne. Ak máte kópiu systémového kľúča, ktorý bol použitý na vytvorenie zálohy, môžete ju ručne importovať v časti „Pokročilé“. Zálohu môžete tiež odstrániť a začať od začiatku.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Zálohu v cloude nie je možné dešifrovať, pretože je zašifrovaná pomocou systémového kľúča a vy používate vlastné heslo. Chcete to zmeniť?</string>
+    <string name="backup__cloud_error_new_version_content">Synchronizácia s cloudovou zálohou nie je možná, pretože bola presunutá do novejšej verzie aplikácie. Aktualizujte aplikáciu, ak chcete naďalej používať cloudovú zálohu.</string>
+    <string name="backup__enter_cloud_backup_password_title">Zadajte heslo pre zálohovanie v cloude</string>
+    <string name="backup__enter_password_description">Záloha v iCloude je zašifrovaná vaším heslom. Zadajte ho, aby ste povolili synchronizáciu.</string>
+    <string name="backup__enter_password_failure">Chyba! %s</string>
+    <string name="backup__enter_password_wrong_password">Nesprávne heslo! Skúste to prosím znova. Skontrolujte tiež, či je zapnutá funkcia iCloud Keychain, alebo ručne naimportujte potrebné kľúče zo zariadenia, na ktorom bola táto záloha vytvorená.</string>
+    <string name="backup__migration_title">Prebieha aktualizácia</string>
+    <string name="backup__migration_subtitle">Prosím, počkajte...</string>
+    <string name="backup__migration_description">Aktualizujeme aplikáciu, aby sme vám priniesli nové skvelé bezpečnostné funkcie.</string>
+    <string name="commons__success_ex">Úspech!</string>
+    <string name="backup__encryption_type">Typ šifrovania</string>
+    <string name="backup__encryption_select">Vyberte typ šifrovania</string>
+    <string name="backup__encryption_enter_password">Zadajte heslo</string>
+    <string name="backup__encryption_change_password">Zmeniť heslo</string>
+    <string name="backup__encryption_password_description">Toto heslo slúži na šifrovanie vašich údajov. Ak ho stratíte, nebudete môcť obnoviť údaje zo zálohy v iCloude.</string>
+    <string name="backup__encryption_change_title">Zmeniť typ šifrovania</string>
+    <string name="backup__encryption_method_footer">Vybrať systémové alebo vlastné heslo</string>
+    <string name="backup__manage_paired_watches_title">Spravovať spárované hodinky Apple Watch</string>
+    <string name="backup__manage_paired_watches_footer">Pridajte, odstráňte alebo premenujte synchronizované hodinky Apple Watch.</string>
+    <string name="backup__manage_paired_watches_rename_title">Premenovať hodinky</string>
+    <string name="backup__manage_paired_watches_rename_description">Zadajte názov nového zariadenia</string>
+    <string name="backup__manage_paired_watches_rename_action">Premenovať</string>
+    <string name="backup__manage_paired_watches_title_short">Hodinky Apple Watch</string>
+    <string name="backup__manage_paired_watches_empty_list">Zoznam je prázdny. Spárujte hodinky pomocou tlačidla +</string>
+    <string name="backup__manage_paired_watches_syncing">Zálohovanie do cloudu sa synchronizuje...</string>
+    <string name="backup__watch_pair_title">Spárujte svoje Apple Watch</string>
+    <string name="backup__watch_pair_description">V aplikácii 2FAS Auth na vašom iPhone/iPade prejdite do nastavenia „2FAS záloha“ a vyberte položku „Spravovať spárované hodinky Apple Watch“. Táto možnosť bude viditeľná, ak je záloha synchronizovaná. Odtiaľ naskenujte QR kód.</string>
+    <string name="backup__watch_pair_qr_error">Chyba pri generovaní QR kódu</string>
+    <string name="backup__cloud_switch_system_key">Prepnúť na systémový kľúč</string>
+    <string name="backup__cloud_turn_backup_off">Vypnúť zálohovanie do cloudu</string>
+    <string name="commons__apply">Aplikovať</string>
+    <string name="backup__state">Stav:</string>
+    <string name="backup__check_password">Kontrola hesla</string>
+    <string name="backup__missing_system_key">Chýbajúci systémový kľúč</string>
+    <string name="backup__system_key">Systémový kľúč</string>
+    <string name="backup__custom_password">Vlastné heslo</string>
+    <string name="commons__options_title">Možnosti</string>
+    <string name="tokens__copy_secret">Skopírovať tajný kľúč</string>
+    <string name="tokens__copy_link">Skopírovať odkaz na overenie jednorazovým heslom (OTP)</string>
+    <string name="notifications__link_copied">Odkaz bol skopírovaný</string>
+    <string name="tokens__qr_code_show">Zobraziť QR kód služby</string>
+    <string name="tokens__qr_code_share">Zdieľať QR kód služby</string>
+    <string name="settings_open_twofass_appstore">Inštalovať 2FAS Pass</string>
+    <string name="settings_open_twofass">Otvoriť 2FAS Pass</string>
+    <string name="settings_manage_passwords_title">Správa hesiel</string>
+    <string name="quick_setup_drive_sync_title">Synchronizácia trezora</string>
+    <string name="quick_setup_drive_sync_description">Zabezpečte synchronizáciu svojich údajov prostredníctvom služby Google Drive pre prípad, že by sa toto zariadenie stratilo alebo poškodilo.</string>
+    <string name="commons__file_creation_error">Vytvorenie súboru zlyhalo</string>
+    <string name="settings__export_pin_needed">Vaše tajné kľúče sú chránené. Ak ich chcete exportovať, nastavte si prosím PIN alebo biometrické odomknutie.</string>
+    <string name="settings__export_title_tokens">Exportovať tokeny</string>
+    <string name="settings__export_title_qr_codes">Exportovať QR kódy</string>
+    <string name="settings__export_title_options">Možnosti exportu</string>
+    <string name="settings__export_options_save_file">Uložiť súbor OTPAuth</string>
+    <string name="settings__export_options_export_qr_codes">Exportovať QR kódy</string>
+    <string name="settings__export_options_footer">Vyberte si, akým spôsobom chcete svoje tokeny exportovať.</string>
+    <string name="settings__import_otpauth_title">Odkazy na OTPAuth</string>
+    <string name="settings__import_from_file">Importovať zo súboru</string>
+    <string name="settings__import_from_text_file">Importovať tokeny z textového súboru</string>
+    <string name="settings__import_from_text_file_description">Textový súbor by mal obsahovať zoznam odkazov začínajúcich na „otpauth://“.</string>
+    <string name="settings__import_contents_file">Import tokenov z textového súboru</string>
+    <string name="widget__open_app">Otvoriť 2FAS Auth</string>
+    <string name="widget__open_app_description">Rýchly prístup k 2FAS Auth</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Posunúť nahor</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">Presunúť nadol</string>
+    <string name="settings__transfer">Prenos tokenov</string>
+    <string name="transfer__import_section_title">Import z iných aplikácií</string>
+    <string name="transfer__export_section_title">Export do OTPAuth</string>
+    <string name="transfer__export_otp_file">Exportovať tokeny do súboru</string>
+    <string name="transfer__export_otp_qr">Exportovať tokeny ako QR kódy</string>
+    <string name="exportwarning__title_file">Exportovať tokeny do súboru</string>
+    <string name="exportwarning__cta_file">Exportovať do súboru</string>
+    <string name="exportwarning__description_file">Chystáte sa exportovať všetky svoje 2FA tokeny vrátane ich tajných kľúčov, do nezašifrovaného súboru. Ktokoľvek, kto bude mať prístup k tomuto súboru, ho môže využiť na prevzatie kontroly nad vašimi účtami. Uložte si ho na bezpečnom mieste.</string>
+    <string name="exportwarning__toggle">Chápem toto riziko</string>
+    <string name="transfer__import_otpauth_file">Všeobecný súbor OTPAuth</string>
+    <string name="exportwarning__description_qr">Chystáte sa exportovať všetky svoje 2FA tokeny do nezašifrovaného ZIP súboru, ktorý obsahuje QR kódy. Tieto QR kódy môžu byť použité na prevzatie kontroly nad vašimi účtami. Uložte si ich na bezpečnom mieste.</string>
+    <string name="exportwarning__title_qr">Exportovať tokeny ako QR kódy</string>
+    <string name="exportwarning__cta_qr">Exportovať ako QR kódy</string>
+    <string name="commons__icloud_backup_password">Heslo pre zálohu v iCloud</string>
+    <string name="backup__manage_title">Správa záloh</string>
+    <string name="backup__password_length_error">Heslo musí mať dĺžku %1$d-%2$d znakov.</string>
+    <string name="backup__password_characters_error">Heslo môže obsahovať iba písmená, čísla, medzery a symboly.</string>
+    <string name="backup__password_match_error">Heslá sa nezhodujú.</string>
+    <string name="backup__encryption_title">Šifrovanie</string>
+    <string name="backup__removing_password">Odstránenie hesla</string>
+    <string name="backup__veryfing_password">Overenie hesla</string>
+    <string name="backup__verify_password_description">Záloha v iCloude je zašifrovaná vaším heslom. Zadajte ho, aby sa uplatnili zmeny.</string>
+    <string name="backup__password_set">Heslo bolo úspešne nastavené</string>
+    <string name="backup__setting_password">Nastavenie hesla</string>
+    <string name="backup__changing_password">Zmena hesla</string>
+    <string name="backup__set_password">Nastavte si heslo</string>
+    <string name="backup__change_password">Zmeňte si heslo</string>
+    <string name="backup__password_set_description">Zadajte heslo, aby ste obsah zálohy dodatočne chránili. Ak toto heslo zabudnete, budete musieť zálohu odstrániť a začať od začiatku.</string>
+    <string name="backup__password_rules_description">Povolené sú iba písmená, číslice, medzery a špeciálne znaky (!@#$%^&amp;*()-_).</string>
+    <string name="pass_promo_banner_title">Pripravili sme pre vás niečo nové!</string>
+    <string name="pass_promo_banner_msg">Bezpečný **správca hesiel 2FAS Pass** uprednostňujúci lokálne ukladanie dát, navrhnutý tak, aby fungoval popri aplikácii 2FAS Auth a zachoval váš autentifikátor v pôvodnom stave.</string>
+    <string name="pass_promo_banner_positive_cta">Prejsť do obchodu</string>
+    <string name="pass_promo_banner_negative_cta">Viac nezobrazovať</string>
+    <string name="appearance_dynamic_colors">Dynamické farby</string>
+    <string name="appearance_dynamic_colors_description">Dynamicky zmeniť farby aplikácie podľa zvolenej tapety.</string>
+    <string name="backup__section_note">POZNÁMKA: Funkcia iCloud Sync ukladá šifrovacie kľúče do služby iCloud Keychain. Ak je služba iCloud Keychain deaktivovaná, exportujte si kľúče ručne v sekcii „Správa záloh“. Ak tak neurobíte, nebude možné obnoviť vaše údaje ani synchronizovať s inými zariadeniami.</string>
+    <string name="backup__keys_import_warning">Importom kľúčov sa prepíšu vaše súčasné šifrovacie kľúče. Chcete pokračovať?</string>
+    <string name="backup__key_import_system_key">Systémový kľúč</string>
+    <string name="backup__keys_import_error">Import kľúčov sa nepodaril.</string>
+    <string name="watch__intro_step1">Postupujte podľa týchto pokynov na spárovanie aplikácie v hodinkách.</string>
+    <string name="watch__intro_step2">V aplikácii 2FAS Auth na vašom iPhone prejdite do nastavenia „2FAS Záloha“.</string>
+    <string name="watch__intro_step3">Uistite sa, že je záloha iCloud synchronizovaná a že je v nastaveniach systému iOS zapnutý iCloud Keychain.</string>
+    <string name="watch__intro_step4">Vyberte možnosť „Spravovať spárované hodinky Apple Watch“.</string>
+    <string name="watch__intro_step5">Kliknite na „+“ a naskenujte QR kód z nasledujúcej stránky.</string>
+    <string name="watch__intro_step6">Toto okno môžete teraz zavrieť. Synchronizácia môže chvíľu trvať.</string>
+    <string name="tokens__empty_screen_in_trash">V koši máte **%d** služieb.</string>
+    <string name="commons__go_to_trash">Prejsť do koša</string>
+    <string name="backup__moved_to_trash_title">Výsledok synchronizácie cez iCloud</string>
+    <string name="backup__moved_to_trash_message">Pri poslednej synchronizácii s iCloudom boli všetky vaše služby presunuté do koša. Môžete ich kedykoľvek obnoviť.</string>
+    <string name="commons__understood">Rozumiem</string>
+    <string name="introduction__backup_icloud_description_note">Táto funkcia je štandardne zapnutá a kedykoľvek ju možno vypnúť v nastaveniach zálohovania aplikácie.</string>
+    <string name="introduction__call_1">Vitajte v</string>
+    <string name="introduction__call_2">2FAS Auth</string>
+    <string name="restore__reset__title">Obnovenie aplikácie</string>
+    <string name="login__hello_header">Dobrý deň ešte raz!</string>
+    <string name="login__hello_header_1">Dobrý deň!</string>
+    <string name="login__hello_header_2">Vitaj späť!</string>
+    <string name="login__hello_header_3">Rád ťa opäť vidím!</string>
+    <string name="login__hello_header_4">Ahoj!</string>
+    <string name="tokens__empty_list_title">Pridať prvú službu</string>
+    <string name="guides__request_service">Žiadosť</string>
+    <string name="guides__step_number">Krok %d</string>
+    <string name="about__generate_logs">Generovať záznamy</string>
+    <string name="about__generate_logs_alert_title">Generovať záznamy?</string>
+    <string name="about__generate_logs_alert_message">Chcete vygenerovať záznamy? Môže to chvíľu trvať.</string>
+    <string name="about__generate_logs_alert_action">Generovať</string>
+    <string name="introduction__backup_header">Zálohovanie</string>
+    <string name="home__app_review_title">Páči sa vám 2FAS Auth?</string>
+    <string name="home__app_review_msg">Ak sa vám aplikácia osvedčila, venujte prosím chvíľku času a ohodnoťte ju. Veľmi nám to pomôže!</string>
+    <string name="home__app_review_rate">Ohodnotiť</string>
+    <string name="home__app_review_dismiss">Teraz nie</string>
+    <string name="settings__backup_and_transfer">Zálohovanie a prenos</string>
+    <string name="settings__browser_extension_header">Rozšírenie prehliadača</string>
+    <string name="settings__more">Viac</string>
+    <string name="settings__removed_items">Odstránené tokeny</string>
+    <string name="settings__connected_extensions">Prepojené rozšírenia</string>
+    <string name="settings__security_description">Spravujte nastavenia bezpečnosti a ochrany súkromia.</string>
+    <string name="settings__appearance_description">Prispôsobte vzhľad a funkcie aplikácie.</string>
+    <string name="settings__removed_items_description">Obnovte alebo natrvalo odstráňte tokeny, ktoré ste z aplikácie odstránili.</string>
+    <string name="settings__backup_description">Zálohujte a synchronizujte svoje tokeny medzi zariadeniami.</string>
+    <string name="settings__import_tokens_description">Importovať tokeny z iných aplikácií.</string>
+    <string name="settings__connected_extensions_description">Spravujte pripojené rozšírenia prehliadača.</string>
+    <string name="settings__about_description">Informácie o aplikácii, verzia a licencie.</string>
+    <string name="settings__support_description">Podpora 2FAS</string>
+    <string name="settings__donate_description">Podporte vývoj 2FAS.</string>
+    <string name="shortcuts__backup_title">NEODSTRÁŇTE MA bez úplnej zálohy</string>
+    <string name="shortcuts__support_title">Podpora</string>
+    <string name="shortcuts__pair_title">Párovať službu</string>
+    <string name="shortcuts__search_title">Vyhľadávanie služby</string>
+    <string name="tokens__empty_screen_trashed_title">Hľadáte vaše služby?</string>
+    <string name="settings__trash_selected">%d vybraných</string>
+    <string name="tokens__delete_service_msg">Naozaj chcete túto službu odstrániť?</string>
+    <string name="tokens__delete_selected_msg">Naozaj chcete odstrániť %d vybraných služieb?</string>
+    <string name="settings__list_style_option_large">Veľký</string>
+    <string name="commons__select">Vybrať</string>
+    <string name="commons__clear">Vyčistiť</string>
+    <string name="tokens__service_autodetected_title">Možný typ služby: %s</string>
+    <string name="externalimport_proton">Proton Authenticator</string>
+    <string name="externalimport__info_proton_title">Importovať tokeny z Proton Authenticator</string>
+    <string name="externalimport__proton_msg">Exportujte svoje účty z aplikácie Proton Authenticator do súboru JSON a nahrajte ho pomocou tlačidla „Vybrať JSON súbor“. Nezabudnite súbor po úspešnom importe odstrániť.</string>
+    <string name="externalimport__proton_success_msg">Tento JSON súbor vám umožňuje importovať tokeny z aplikácie Proton Authenticator.</string>
+    <string name="externalimport__proton_title">Import 2FA tokenov z aplikácie Proton Authenticator</string>
+    <string name="tokens__group_use_default_name">Použiť predvolené</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">Exportujte svoje účty z aplikácie Bitwarden Authenticator do nezašifrovaného súboru vo formáte JSON alebo CSV a nahrajte ho pomocou tlačidla „Vybrať súbor“. Nezabudnite súbor po úspešnom importe odstrániť.</string>
+    <string name="externalimport__bitwarden_success_msg">Tento súbor vám umožňuje importovať tokeny z Bitwardenu.</string>
+    <string name="externalimport__bitwarden_title">Import tokenov 2FA z Bitwardenu</string>
+    <string name="externalimport__choose_json_csv_cta">Vybrať JSON alebo CSV súbor</string>
+    <string name="externalimport__info_bitwarden_title">Importovať tokeny z Bitwardenu</string>
+    <string name="browser__request_source_description_ios">požiadal o 2FA token pre %s. Vyberte službu, ktorú chcete autorizovať, a uložte ju pod touto doménou.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Exportujte svoje účty z aplikácie Ente Auth do súboru v podobe čistého textu a nahrajte ho pomocou tlačidla „Vybrať textový súbor“. Nezabudnite súbor po úspešnom importe odstrániť.</string>
+    <string name="externalimport__ente_success_msg">Tento textový súbor vám umožňuje importovať tokeny zo služby Ente Auth.</string>
+    <string name="externalimport__ente_title">Import 2FA tokenov z Ente Auth</string>
+    <string name="externalimport__onepassword_msg">Exportujte svoje účty z aplikácie 1Password do CSV súboru a nahrajte ho pomocou tlačidla „Vybrať CSV súbor“. Nezabudnite súbor po úspešnom importe odstrániť.</string>
+    <string name="externalimport__onepassword_success_msg">Tento CSV súbor vám umožňuje importovať tokeny z aplikácie 1Password.</string>
+    <string name="externalimport__onepassword_title">Import 2FA tokenov z 1Password</string>
+    <string name="externalimport__choose_csv_cta">Vybrať CSV súbor</string>
+    <string name="externalimport__info_ente_title">Importovať tokeny z Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Importovať tokeny z 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">You have already scanned this QR code.</string>
+    <string name="tokens__google_import_already_scanned_title">Already scanned</string>
+    <string name="tokens__google_import_different_batch_message">This QR code comes from a different Google Authenticator export. Scan all codes from a single export.</string>
+    <string name="tokens__google_import_different_batch_title">Different export</string>
+    <string name="tokens__google_import_multi_subtitle">This is part of a multiple QR code export</string>
+    <string name="tokens__google_import_only_scanned">Import only scanned codes</string>
+    <string name="tokens__google_import_scanned_count">Scanned %1$d of %2$d QR codes</string>
+    <string name="tokens__google_import_title">Google Authenticator import</string>
+    <string name="logs_title">Logs</string>
+    <string name="logs_empty">No logs available</string>
+    <string name="logs_share_title">Share logs</string>
+    <string name="externalimport__ga_batch_title">Multiple QR codes detected</string>
+    <string name="externalimport__ga_batch_msg">Your Google Authenticator export consists of %1$d QR codes. Scan all of them to import all your Tokens.</string>
+    <string name="externalimport__ga_batch_qr_code">QR code %1$d of %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Scanned · %1$d Tokens</string>
+    <string name="externalimport__ga_batch_not_scanned">Not scanned yet</string>
+    <string name="externalimport__ga_batch_progress">%1$d of %2$d scanned</string>
+    <string name="externalimport__ga_batch_scan_cta">Scan next QR code</string>
+    <string name="externalimport__ga_batch_pick_cta">Pick next QR code</string>
+    <string name="externalimport__ga_batch_read_error">Could not find a QR code in this image</string>
+    <string name="externalimport__ga_batch_import_cta">Import Tokens</string>
+    <string name="externalimport__ga_batch_already_scanned">This QR code has already been scanned</string>
+    <string name="externalimport__ga_batch_different_export">This QR code belongs to a different export</string>
+    <string name="tokens__copy_token_long">Copy token</string>
+</resources>

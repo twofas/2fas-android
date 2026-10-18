@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Sun, 18 Oct 2026 03:29:45 -0700
+ Exported at: Sun, 18 Oct 2026 05:44:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1082,4 +1082,5 @@
     <string name="externalimport__ga_batch_import_cta">Import Tokens</string>
     <string name="externalimport__ga_batch_already_scanned">This QR code has already been scanned</string>
     <string name="externalimport__ga_batch_different_export">This QR code belongs to a different export</string>
+    <string name="tokens__copy_token_long">Copy token</string>
 </resources>

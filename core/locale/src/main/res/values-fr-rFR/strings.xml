@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Sun, 18 Oct 2026 03:29:45 -0700
+ Exported at: Sun, 18 Oct 2026 05:44:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1070,4 +1070,17 @@
     <string name="logs_title">Logs</string>
     <string name="logs_empty">No logs available</string>
     <string name="logs_share_title">Share logs</string>
+    <string name="externalimport__ga_batch_title">Multiple QR codes detected</string>
+    <string name="externalimport__ga_batch_msg">Your Google Authenticator export consists of %1$d QR codes. Scan all of them to import all your Tokens.</string>
+    <string name="externalimport__ga_batch_qr_code">QR code %1$d of %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Scanned · %1$d Tokens</string>
+    <string name="externalimport__ga_batch_not_scanned">Not scanned yet</string>
+    <string name="externalimport__ga_batch_progress">%1$d of %2$d scanned</string>
+    <string name="externalimport__ga_batch_scan_cta">Scan next QR code</string>
+    <string name="externalimport__ga_batch_pick_cta">Pick next QR code</string>
+    <string name="externalimport__ga_batch_read_error">Could not find a QR code in this image</string>
+    <string name="externalimport__ga_batch_import_cta">Import Tokens</string>
+    <string name="externalimport__ga_batch_already_scanned">This QR code has already been scanned</string>
+    <string name="externalimport__ga_batch_different_export">This QR code belongs to a different export</string>
+    <string name="tokens__copy_token_long">Copy token</string>
 </resources>
