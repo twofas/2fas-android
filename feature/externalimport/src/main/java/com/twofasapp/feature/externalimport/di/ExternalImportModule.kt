@@ -8,6 +8,7 @@ import com.twofasapp.feature.externalimport.domain.BitwardenImporter
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.LastPassImporter
+import com.twofasapp.feature.externalimport.domain.OnePasswordImporter
 import com.twofasapp.feature.externalimport.domain.ProtonAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.RaivoImporter
 import com.twofasapp.feature.externalimport.ui.main.ExternalImportViewModel
@@ -35,6 +36,7 @@ class ExternalImportModule : KoinModule {
                 andOtpImporter = get(),
                 bitwardenImporter = get(),
                 protonAuthenticatorImporter = get(),
+                onePasswordImporter = get(),
             )
         }
         viewModel { (initialContent: String?, fromGallery: Boolean) ->
@@ -61,5 +63,6 @@ class ExternalImportModule : KoinModule {
         factoryOf(::AndOtpImporter)
         factoryOf(::BitwardenImporter)
         factoryOf(::ProtonAuthenticatorImporter)
+        factoryOf(::OnePasswordImporter)
     }
 }

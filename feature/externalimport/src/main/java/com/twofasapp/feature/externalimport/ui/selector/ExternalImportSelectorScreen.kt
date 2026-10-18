@@ -76,6 +76,14 @@ private fun Content(
 
             item {
                 OptionEntry(
+                    title = MdtLocale.strings.externalImportOnePassword,
+                    image = painterResource(id = R.drawable.logo_onepassword),
+                    onClick = { onImportTypeSelected(ImportType.OnePassword) },
+                )
+            }
+
+            item {
+                OptionEntry(
                     title = MdtLocale.strings.externalImportAegis,
                     image = painterResource(id = R.drawable.logo_aegis),
                     onClick = { onImportTypeSelected(ImportType.Aegis) },
