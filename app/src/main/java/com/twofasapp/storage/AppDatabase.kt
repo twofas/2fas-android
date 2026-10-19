@@ -11,6 +11,8 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.twofasapp.data.browserext.local.PairedBrowserDao
 import com.twofasapp.data.browserext.local.model.PairedBrowserEntity
+import com.twofasapp.data.logs.local.dao.LogsDao
+import com.twofasapp.data.logs.local.model.LogEntryEntity
 import com.twofasapp.data.notifications.local.NotificationsDao
 import com.twofasapp.data.notifications.local.model.NotificationEntity
 import com.twofasapp.data.services.local.ServiceDao
@@ -25,6 +27,7 @@ import java.text.Normalizer
         ServiceEntity::class,
         PairedBrowserEntity::class,
         NotificationEntity::class,
+        LogEntryEntity::class,
     ],
     version = AppDatabase.DB_VERSION,
     exportSchema = true,
@@ -32,17 +35,19 @@ import java.text.Normalizer
         AutoMigration(from = 7, to = 8),
         AutoMigration(from = 8, to = 9),
         AutoMigration(from = 12, to = 13),
+        AutoMigration(from = 13, to = 14),
     ],
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
-        const val DB_VERSION = 13
+        const val DB_VERSION = 14
     }
 
     abstract fun serviceDao(): ServiceDao
     abstract fun pairedBrowserDao(): PairedBrowserDao
     abstract fun notificationDao(): NotificationsDao
+    abstract fun logsDao(): LogsDao
 }
 
 val MIGRATION_1_2 = object : Migration(1, 2) {

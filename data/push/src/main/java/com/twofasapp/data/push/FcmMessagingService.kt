@@ -3,6 +3,7 @@ package com.twofasapp.data.push
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.push.domain.Push
 import com.twofasapp.data.push.internal.PushFactory
 import com.twofasapp.data.push.internal.PushLogger
@@ -22,7 +23,10 @@ class FcmMessagingService : FirebaseMessagingService() {
             PushLogger.logMessage(remoteMessage)
         }
 
-        val push = PushFactory.createPush(remoteMessage) ?: return
+        val push = PushFactory.createPush(remoteMessage)
+        Flog.persist(tag = "Push", message = "Received: type=${remoteMessage.data["type"]} parsed=${push?.let { it::class.simpleName }}")
+
+        if (push == null) return
 
         when (push.handler) {
             Push.Handler.InAppOnly -> Unit // Unsupported for now, we don't have in-app push yet
@@ -38,6 +42,7 @@ class FcmMessagingService : FirebaseMessagingService() {
     }
 
     override fun onNewToken(token: String) {
+        Flog.persist(tag = "Push", message = "New FCM token")
         if (appBuild.debuggable) {
             PushLogger.logToken(token)
         }

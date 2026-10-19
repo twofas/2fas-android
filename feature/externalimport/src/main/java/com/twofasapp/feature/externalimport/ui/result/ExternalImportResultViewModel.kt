@@ -4,16 +4,20 @@ import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.ktx.decodeBase64ToString
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.core.design.foundation.dialog.formatErrorDetails
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.externalimport.domain.AegisImporter
 import com.twofasapp.feature.externalimport.domain.AndOtpImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
 import com.twofasapp.feature.externalimport.domain.BitwardenImporter
+import com.twofasapp.feature.externalimport.domain.EnteImporter
 import com.twofasapp.feature.externalimport.domain.ExternalImport
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.LastPassImporter
+import com.twofasapp.feature.externalimport.domain.OnePasswordImporter
+import com.twofasapp.feature.externalimport.domain.OtpAuthFileImporter
 import com.twofasapp.feature.externalimport.domain.ProtonAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.RaivoImporter
 import com.twofasapp.feature.qrscan.ReadQrFromImage
@@ -34,6 +38,9 @@ internal class ExternalImportResultViewModel(
     private val andOtpImporter: AndOtpImporter,
     private val bitwardenImporter: BitwardenImporter,
     private val protonAuthenticatorImporter: ProtonAuthenticatorImporter,
+    private val onePasswordImporter: OnePasswordImporter,
+    private val enteImporter: EnteImporter,
+    private val otpAuthFileImporter: OtpAuthFileImporter,
 ) : ViewModel() {
 
     val uiState = MutableStateFlow(ExternalImportResultUiState())
@@ -70,6 +77,25 @@ internal class ExternalImportResultViewModel(
                 ImportType.AndOtp -> andOtpImporter.read(importFileUri.orEmpty().decodeBase64ToString())
                 ImportType.Bitwarden -> bitwardenImporter.read(importFileUri.orEmpty().decodeBase64ToString())
                 ImportType.ProtonAuthenticator -> protonAuthenticatorImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.OnePassword -> onePasswordImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.Ente -> enteImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+                ImportType.OtpAuthFile -> otpAuthFileImporter.read(importFileUri.orEmpty().decodeBase64ToString())
+            }
+
+            when (result) {
+                is ExternalImport.Success -> Flog.persist(
+                    tag = "ExternalImport",
+                    message = "Read $importType: success services=${result.servicesToImport.size}/${result.totalServicesCount}",
+                )
+
+                // Exception details are not persisted as they may contain imported content
+                is ExternalImport.ParsingError -> Flog.persist(
+                    tag = "ExternalImport",
+                    message = "Read $importType: parsing error (${result.reason::class.simpleName})",
+                )
+
+                is ExternalImport.UnsupportedError -> Flog.persist(tag = "ExternalImport", message = "Read $importType: unsupported (${result.reason})")
+                is ExternalImport.FileReadError -> Flog.persist(tag = "ExternalImport", message = "Read $importType: file read error (${result.reason})")
             }
 
             uiState.update { state ->
@@ -97,6 +123,7 @@ internal class ExternalImportResultViewModel(
 
             (uiState.value.readResult as? ReadResult.Success)?.let { result ->
                 servicesRepository.addServices(result.services)
+                Flog.persist(tag = "ExternalImport", message = "Import $importType: services=${result.services.size}")
                 uiState.update { it.copy(finishSuccess = true) }
             }
         }

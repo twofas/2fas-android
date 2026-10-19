@@ -31,6 +31,7 @@ internal object DataStoreKeyStore {
             retrying(attempts = 3, delayMs = 100) { getExistingKey() }
         } catch (_: KeyStoreKeyMissingException) {
             retrying(attempts = 5, delayMs = 500) { createKey() }
+                .also { Flog.persist(tag = "KeyStore", message = "DataStore key created") }
         }
     }
 

@@ -3,6 +3,7 @@ package com.twofasapp.biometric
 import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.feature.security.biometric.BiometricKeyProvider
 import java.security.KeyStore
 import javax.crypto.KeyGenerator
@@ -24,7 +25,10 @@ internal class BiometricKeyProviderImpl : BiometricKeyProvider {
             }
         } catch (e: Exception) {
             e.printStackTrace()
+            Flog.persist(tag = "Biometric", message = "Get key failed (${e::class.simpleName})")
         }
+
+        Flog.persist(tag = "Biometric", message = "Creating new key")
 
         val keyGenerator = KeyGenerator.getInstance(
             KeyProperties.KEY_ALGORITHM_AES,
@@ -48,6 +52,7 @@ internal class BiometricKeyProviderImpl : BiometricKeyProvider {
     }
 
     override fun deleteSecretKey() {
+        Flog.persist(tag = "Biometric", message = "Delete key")
         val keyStore = KeyStore.getInstance("AndroidKeyStore")
         keyStore.load(null)
         keyStore.deleteEntry(KeyAlias)

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pl-PL, Polish (Poland)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -224,7 +224,7 @@
     <string name="tokens__unlock_and_retype_token_title">Odblokuj i wpisz ten token ponownie</string>
     <string name="tokens__group">Grupa</string>
     <string name="tokens__select_group">Wybierz grupę</string>
-    <string name="tokens__google_auth_import">Import tokenów 2FA z aplikacji Google Authenticator</string>
+    <string name="tokens__google_auth_import">Import tokenów 2FA z Google Authenticator</string>
     <string name="tokens__google_auth_import_subtitle">Ten kod QR umożliwia import tokenów z Google Authenticatora</string>
     <!-- A number replaces %d  -->
     <string name="tokens__google_auth_out_of_title">%1$d z %2$d</string>
@@ -696,9 +696,9 @@
     <string name="externalimport__no_tokens_msg">Nie ma serwisów, które mogłyby zostać zimportowane.</string>
     <string name="commons__try_again">Spróbuj ponownie</string>
     <string name="commons__proceed">Kontynuuj</string>
-    <string name="externalimport__ga_title">Import tokenów 2FA z aplikacji Google Authenticator</string>
-    <string name="externalimport__aegis_title">Import tokenów 2FA z aplikacji Aegis</string>
-    <string name="externalimport__raivo_title">Import tokenów 2FA z aplikacji Raivo</string>
+    <string name="externalimport__ga_title">Import tokenów 2FA z Google Authenticator</string>
+    <string name="externalimport__aegis_title">Import tokenów 2FA z Aegis Authenticator</string>
+    <string name="externalimport__raivo_title">Import tokenów 2FA z Raivo OTP</string>
     <string name="externalimport__ga_success_msg">Ten kod QR umożliwia import tokenów z Google Authenticatora.</string>
     <string name="externalimport__aegis_success_msg">Ten plik JSON umożliwia import tokenów z Aegis.</string>
     <string name="externalimport__raivo_success_msg">Ten plik JSON umożliwia import tokenów z Raivo.</string>
@@ -738,7 +738,7 @@
     <string name="externalimport_lastpass">LastPass</string>
     <string name="externalimport__lastpass_msg">Wyeksportuj swoje konta z LastPass do niezaszyfrowanego pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
     <string name="settings__about_crash_optout_title">Raporty o awariach</string>
-    <string name="externalimport__lastpass_title">Import tokenów 2FA z aplikacji LastPass</string>
+    <string name="externalimport__lastpass_title">Import tokenów 2FA z LastPass</string>
     <string name="externalimport__lastpass_success_msg">Ten plik JSON umożliwia import tokenów z LastPass.</string>
     <string name="externalimport__info_lastpass_title">Importuj tokeny z LastPass</string>
     <string name="externalimport__info_aegis_title">Importuj tokeny z Aegis</string>
@@ -752,7 +752,7 @@
     <string name="tokens__add_enter_manual">Podaj tajny klucz</string>
     <string name="tokens__add_from_gallery">Wczytaj obraz z kodem QR</string>
     <string name="tokens__add_success_title">Prawie gotowe!</string>
-    <string name="tokens__add_success_description">Aby zakończyć parowanie serwisu, musisz ponownie wpisać ten token.</string>
+    <string name="tokens__add_success_description">Wprowadź ten token na stronie serwisu, aby zakończyć parowanie.</string>
     <string name="tokens__add_manual_title">Sparuj serwis z 2FAS</string>
     <string name="tokens__add_manual_description">Wpisz nazwę serwisu i tajny klucz</string>
     <string name="tokens__add_manual_service_name">Nazwa serwisu</string>
@@ -782,12 +782,12 @@
     <string name="browser__pair_manually_hint">Parowanie kodu</string>
     <string name="externalimport__info_authenticatorpro_title">Importuj tokeny z Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_success_msg">Ten plik tekstowy pozawala na importowanie tokenów z Authenticator Pro.</string>
-    <string name="externalimport__authenticatorpro_title">Importowanie tokenów 2FA z aplikacji Authenticator Pro</string>
+    <string name="externalimport__authenticatorpro_title">Importowanie tokenów 2FA z Authenticator Pro</string>
     <string name="externalimport__authenticatorpro_msg">Wyeksportuj swoje konta z Authenticator Pro do niezaszyfrowanego pliku tekstowego i wczytaj go za pomocą przycisku \"Wybierz plik tekstowy\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
     <string name="externalimport__authenticatorpro">Stratum (Authenticator Pro)</string>
     <string name="externalimport__choose_txt_cta">Wybierz plik tekstowy</string>
     <string name="fingerprint__biometric_invalidated">Logowanie biometryczne zostało wyłączone z powodu zmian w systemowych ustawieniach bezpieczeństwa i prywatności.</string>
-    <string name="tokens__last_pass_import">Import tokenów 2FA z aplikacji LastPass</string>
+    <string name="tokens__last_pass_import">Import tokenów 2FA z LastPass</string>
     <string name="tokens__last_pass_import_subtitle">Ten kod QR umożliwia import tokenów z LastPass</string>
     <string name="tokens__add_with_guide">Przewodnik</string>
     <string name="guides__select_title">Przeglądaj serwisy</string>
@@ -808,7 +808,7 @@
     <string name="guides__guide_universal_title">Uniwersalny przewodnik 2FAS</string>
     <string name="browser__save_choice">Zapisz mój wybór</string>
     <string name="externalimport_andotp">andOTP</string>
-    <string name="externalimport__andotp_title">Import tokenów 2FA z aplikacji andOTP</string>
+    <string name="externalimport__andotp_title">Import tokenów 2FA z andOTP</string>
     <string name="externalimport__andotp_success_msg">Ten plik JSON umożliwia import tokenów z andOTP.</string>
     <string name="externalimport__info_andotp_title">Importuj tokeny z andOTP</string>
     <string name="externalimport__andotp_msg">Wyeksportuj swoje konta z andOTP do niezaszyfrowanego pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
@@ -1045,13 +1045,48 @@
     <string name="externalimport__info_proton_title">Importuj tokeny z Proton Authenticator</string>
     <string name="externalimport__proton_msg">Wyeksportuj swoje konta z Proton Authenticator do pliku JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
     <string name="externalimport__proton_success_msg">Ten plik JSON umożliwia import tokenów z Proton Authenticator.</string>
-    <string name="externalimport__proton_title">Import tokenów 2FA z aplikacji Proton Authenticator</string>
+    <string name="externalimport__proton_title">Import tokenów 2FA z Proton Authenticator</string>
     <string name="tokens__group_use_default_name">Użyj domyślnej</string>
     <string name="externalimport_bitwarden">Bitwarden</string>
     <string name="externalimport__bitwarden_msg">Wyeksportuj swoje konta z Bitwarden Authenticator do pliku CSV lub JSON i wczytaj go za pomocą przycisku \"Wybierz plik JSON\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
     <string name="externalimport__bitwarden_success_msg">Ten plik umożliwia import tokenów z Bitwardena.</string>
-    <string name="externalimport__bitwarden_title">Import tokenów 2FA z aplikacji Bitwarden Auth</string>
+    <string name="externalimport__bitwarden_title">Import tokenów 2FA z Bitwarden Auth</string>
     <string name="externalimport__choose_json_csv_cta">Wybierz plik JSON lub CSV</string>
     <string name="externalimport__info_bitwarden_title">Importuj tokeny z Bitwardena</string>
     <string name="browser__request_source_description_ios">zażądał tokena 2FA dla %s. Wybierz serwis do weryfikacji i zapisz w tej domenie.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Wyeksportuj swoje konta z Ente Auth do pliku tekstowego i wczytaj go za pomocą przycisku \"Wybierz plik tekstowy\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
+    <string name="externalimport__ente_success_msg">Ten plik umożliwia import tokenów z Ente Auth.</string>
+    <string name="externalimport__ente_title">Import tokenów 2FA z Ente Auth</string>
+    <string name="externalimport__onepassword_msg">Wyeksportuj swoje konta z 1Password do pliku CSV i wczytaj go za pomocą przycisku \"Wybierz plik CSV\". Pamiętaj, aby usunąć plik po pomyślnym imporcie.</string>
+    <string name="externalimport__onepassword_success_msg">Ten plik JSON umożliwia import tokenów z 1Password.</string>
+    <string name="externalimport__onepassword_title">Import tokenów 2FA z 1Password</string>
+    <string name="externalimport__choose_csv_cta">Wybierz plik CSV</string>
+    <string name="externalimport__info_ente_title">Importuj tokeny z Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Importuj tokeny z 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">Już zeskanowałeś ten kod QR</string>
+    <string name="tokens__google_import_already_scanned_title">Już zeskanowano</string>
+    <string name="tokens__google_import_different_batch_message">Ten kod QR pochodzi z innego eksportu z aplikacji Google Authenticator. Zeskanuj wszystkie kody z jednego eksportu.</string>
+    <string name="tokens__google_import_different_batch_title">Inny eksport</string>
+    <string name="tokens__google_import_multi_subtitle">Jest to część eksportu zawierającego wiele kodów QR</string>
+    <string name="tokens__google_import_only_scanned">Importuj tylko zeskanowane kody</string>
+    <string name="tokens__google_import_scanned_count">Zeskanowano %1$d z %2$d kodów QR</string>
+    <string name="tokens__google_import_title">Import z Google Auth</string>
+    <string name="logs_title">Logi</string>
+    <string name="logs_empty">Brak dostępnych logów</string>
+    <string name="logs_share_title">Wyślij logi</string>
+    <string name="externalimport__ga_batch_title">Wykryto wiele kodów QR</string>
+    <string name="externalimport__ga_batch_msg">Twój eksport z Google Auth zawiera %1$d kodów QR. Zeskanuj je wszystkie aby zaimportować tokeny.</string>
+    <string name="externalimport__ga_batch_qr_code">Kod QR %1$d z %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Zeskanowano · %1$d tokenów</string>
+    <string name="externalimport__ga_batch_not_scanned">Jeszcze nie zeskanowano</string>
+    <string name="externalimport__ga_batch_progress">Zeskanowano %1$d z %2$d</string>
+    <string name="externalimport__ga_batch_scan_cta">Zeskanuj następny kod QR</string>
+    <string name="externalimport__ga_batch_pick_cta">Wybierz następny kod QR</string>
+    <string name="externalimport__ga_batch_read_error">Nie znaleziono kodu QR</string>
+    <string name="externalimport__ga_batch_import_cta">Importuj tokeny</string>
+    <string name="externalimport__ga_batch_already_scanned">Ten kod QR został już zeskanowany</string>
+    <string name="externalimport__ga_batch_different_export">Ten kod QR należy do innego eksportu</string>
+    <string name="tokens__copy_token_long">Kopiuj token</string>
 </resources>

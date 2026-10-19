@@ -69,7 +69,11 @@ sealed interface Screen : NavKey {
     data class ExternalImport(val importType: String) : Screen
 
     @Serializable
-    data class ExternalImportScan(val importType: String) : Screen
+    data class ExternalImportScan(
+        val importType: String,
+        val initialContent: String? = null,
+        val fromGallery: Boolean = false,
+    ) : Screen
 
     @Serializable
     data class ExternalImportResult(
@@ -110,4 +114,7 @@ sealed interface Screen : NavKey {
 
     @Serializable
     data object AboutLicenses : Screen
+
+    @Serializable
+    data object AboutLogs : Screen
 }

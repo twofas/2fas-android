@@ -6,4 +6,7 @@
     <cache-path
         name="backup"
         path="backup/" />
+    <cache-path
+        name="logs"
+        path="logs/" />
 </paths>

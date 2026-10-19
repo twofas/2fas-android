@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: fr-FR, French (France)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1048,4 +1048,39 @@
     <string name="externalimport__choose_json_csv_cta">Choisir un fichier JSON ou CSV</string>
     <string name="externalimport__info_bitwarden_title">Importer les clés 2FA depuis Bitwarden</string>
     <string name="browser__request_source_description_ios">a demandé une clé 2FA pour %s. Sélectionnez le service à autoriser et à enregistrer avec ce domaine.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Exportez vos comptes depuis Ente Auth vers un fichier texte brut et importez-le via le bouton « Choisir un fichier texte ». N\'oubliez pas de supprimer ce fichier une fois importé avec succès.</string>
+    <string name="externalimport__ente_success_msg">Ce fichier texte vous permet d\'importer les clés depuis Ente Auth.</string>
+    <string name="externalimport__ente_title">Importer les clés 2FA depuis l\'application Ente Auth</string>
+    <string name="externalimport__onepassword_msg">Exportez vos comptes depuis 1Password vers un fichier CSV et importez-le via le bouton « Choisir un fichier CSV ». N\'oubliez pas de supprimer ce fichier une fois importé avec succès.</string>
+    <string name="externalimport__onepassword_success_msg">Ce fichier CSV vous permet d\'importer les clés depuis 1Password.</string>
+    <string name="externalimport__onepassword_title">Importer les clés 2FA depuis l\'application 1Password</string>
+    <string name="externalimport__choose_csv_cta">Choisir un fichier CSV</string>
+    <string name="externalimport__info_ente_title">Importer les clés depuis Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Importer les clés depuis 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">Vous avez déjà scanné ce code QR.</string>
+    <string name="tokens__google_import_already_scanned_title">Déjà scanné</string>
+    <string name="tokens__google_import_different_batch_message">Ce code QR provient d\'une autre exportation Google Authenticator. Scannez tous les codes d\'une même exportation.</string>
+    <string name="tokens__google_import_different_batch_title">Exportation différente</string>
+    <string name="tokens__google_import_multi_subtitle">Ceci fait partie d\'une exportation comprenant plusieurs codes QR</string>
+    <string name="tokens__google_import_only_scanned">Importer uniquement les codes scannés</string>
+    <string name="tokens__google_import_scanned_count">%1$d codes QR scannés sur %2$d</string>
+    <string name="tokens__google_import_title">Importation depuis Google Authenticator</string>
+    <string name="logs_title">Journaux</string>
+    <string name="logs_empty">Aucun journal disponible</string>
+    <string name="logs_share_title">Partager les journaux</string>
+    <string name="externalimport__ga_batch_title">Plusieurs codes QR détectés</string>
+    <string name="externalimport__ga_batch_msg">Votre exportation Google Authenticator comprend %1$d codes QR. Scannez-les tous pour importer toutes vos clés 2FA.</string>
+    <string name="externalimport__ga_batch_qr_code">Code QR %1$d sur %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Scanné · %1$d clés 2FA</string>
+    <string name="externalimport__ga_batch_not_scanned">Pas encore scanné</string>
+    <string name="externalimport__ga_batch_progress">%1$d sur %2$d scannés</string>
+    <string name="externalimport__ga_batch_scan_cta">Scanner le code QR suivant</string>
+    <string name="externalimport__ga_batch_pick_cta">Choisir le code QR suivant</string>
+    <string name="externalimport__ga_batch_read_error">Aucun code QR trouvé dans cette image</string>
+    <string name="externalimport__ga_batch_import_cta">Importer les clés 2FA</string>
+    <string name="externalimport__ga_batch_already_scanned">Ce code QR a déjà été scanné</string>
+    <string name="externalimport__ga_batch_different_export">Ce code QR appartient à une autre exportation</string>
+    <string name="tokens__copy_token_long">Copier le code</string>
 </resources>

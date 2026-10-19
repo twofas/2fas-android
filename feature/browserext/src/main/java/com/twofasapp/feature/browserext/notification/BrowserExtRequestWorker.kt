@@ -6,6 +6,7 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.services.ServicesRepository
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +34,8 @@ class BrowserExtRequestWorker(
 
             launch {
                 try {
+                    Flog.persist(tag = "BrowserExt", message = "Request worker: action=${payload.action} serviceId=${payload.serviceId}")
+
                     when (payload.action) {
                         BrowserExtRequestPayload.Action.Approve -> {
                             val service = servicesRepository.observeServicesWithCode().first()
@@ -58,6 +61,8 @@ class BrowserExtRequestWorker(
 
                     browserExtRepository.deleteTokenRequest(payload.requestId)
                 } catch (e: Exception) {
+                    Flog.persist(tag = "BrowserExt", message = "Request worker failed: action=${payload.action}")
+                    Flog.persist(tag = "BrowserExt", throwable = e)
                     showToast(context.getString(com.twofasapp.locale.R.string.extension__code_sent_error_msg))
                 }
             }

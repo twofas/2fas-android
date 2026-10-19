@@ -1,6 +1,7 @@
 package com.twofasapp.data.services
 
 import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.services.domain.CloudSyncTrigger
 import com.twofasapp.data.services.domain.Group
 import com.twofasapp.data.services.local.BackupLocalSource
@@ -48,6 +49,8 @@ internal class GroupsRepositoryImpl(
             localServices.cleanUpGroups(local.getGroups().ids)
         }
 
+        Flog.persist(tag = "Groups", message = "Add")
+
         if (backupLocalSource.getRemoteBackupStatus().state == RemoteBackupStatusEntity.State.ACTIVE) {
             cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.GroupsChanged)
         }
@@ -65,6 +68,8 @@ internal class GroupsRepositoryImpl(
             local.deleteGroup(id)
             localServices.cleanUpGroups(local.getGroups().ids)
         }
+
+        Flog.persist(tag = "Groups", message = "Delete: id=$id")
     }
 
     override suspend fun editGroup(id: String, name: String) {

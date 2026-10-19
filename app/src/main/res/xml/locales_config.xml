@@ -17,4 +17,6 @@
     <locale android:name="el" />
     <locale android:name="ja" />
     <locale android:name="sv" />
+    <locale android:name="lt" />
+    <locale android:name="sk" />
 </locale-config>

@@ -5,9 +5,12 @@ import com.twofasapp.feature.externalimport.domain.AegisImporter
 import com.twofasapp.feature.externalimport.domain.AndOtpImporter
 import com.twofasapp.feature.externalimport.domain.AuthenticatorProImporter
 import com.twofasapp.feature.externalimport.domain.BitwardenImporter
+import com.twofasapp.feature.externalimport.domain.EnteImporter
 import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.externalimport.domain.LastPassImporter
+import com.twofasapp.feature.externalimport.domain.OnePasswordImporter
+import com.twofasapp.feature.externalimport.domain.OtpAuthFileImporter
 import com.twofasapp.feature.externalimport.domain.ProtonAuthenticatorImporter
 import com.twofasapp.feature.externalimport.domain.RaivoImporter
 import com.twofasapp.feature.externalimport.ui.main.ExternalImportViewModel
@@ -15,7 +18,6 @@ import com.twofasapp.feature.externalimport.ui.result.ExternalImportResultViewMo
 import com.twofasapp.feature.externalimport.ui.scan.ExternalImportScanViewModel
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.viewModel
-import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class ExternalImportModule : KoinModule {
@@ -36,10 +38,26 @@ class ExternalImportModule : KoinModule {
                 andOtpImporter = get(),
                 bitwardenImporter = get(),
                 protonAuthenticatorImporter = get(),
+                onePasswordImporter = get(),
+                enteImporter = get(),
+                otpAuthFileImporter = get(),
             )
         }
-        viewModelOf(::ExternalImportScanViewModel)
-        viewModel { (importType: ImportType) -> ExternalImportViewModel(importType = importType) }
+        viewModel { (initialContent: String?, fromGallery: Boolean) ->
+            ExternalImportScanViewModel(
+                initialContent = initialContent,
+                fromGallery = fromGallery,
+                readQrFromImage = get(),
+                googleAuthenticatorImporter = get(),
+            )
+        }
+        viewModel { (importType: ImportType) ->
+            ExternalImportViewModel(
+                importType = importType,
+                readQrFromImage = get(),
+                googleAuthenticatorImporter = get(),
+            )
+        }
 
         factoryOf(::GoogleAuthenticatorImporter)
         factoryOf(::AegisImporter)
@@ -49,5 +67,8 @@ class ExternalImportModule : KoinModule {
         factoryOf(::AndOtpImporter)
         factoryOf(::BitwardenImporter)
         factoryOf(::ProtonAuthenticatorImporter)
+        factoryOf(::OnePasswordImporter)
+        factoryOf(::EnteImporter)
+        factoryOf(::OtpAuthFileImporter)
     }
 }

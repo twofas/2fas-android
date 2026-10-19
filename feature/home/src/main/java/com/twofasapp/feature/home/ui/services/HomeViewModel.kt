@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.twofasapp.android.navigation.BottomBarState
 import com.twofasapp.android.navigation.DeeplinkHandler
 import com.twofasapp.common.domain.Service
+import com.twofasapp.common.domain.logParams
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.environment.BuildVariant
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.notifications.NotificationsRepository
 import com.twofasapp.data.services.BackupRepository
@@ -243,7 +245,7 @@ internal class HomeViewModel(
         }
 
         launchScoped {
-            ids.forEach { servicesRepository.trashService(it) }
+            servicesRepository.trashServices(ids.toList())
         }
     }
 
@@ -404,15 +406,24 @@ internal class HomeViewModel(
         launchScoped {
             if (incomingData.startsWith("content://") && incomingData.endsWith(".2fas")) {
                 // Import backup
+                Flog.persist(tag = "Deeplink", message = "Open backup file")
                 publishEvent(HomeUiEvent.OpenImport(incomingData))
             }
 
             if (incomingData.startsWith("otpauth")) {
                 val otpLink = OtpLinkParser.parse(incomingData)
+
+                if (otpLink == null) {
+                    Flog.persist(tag = "Deeplink", message = "Otpauth link: invalid")
+                }
+
                 otpLink?.let {
                     if (servicesRepository.isServiceValid(otpLink).not()) {
+                        Flog.persist(tag = "Deeplink", message = "Otpauth link: unsupported params ${otpLink.logParams()}")
                         return@launchScoped
                     }
+
+                    Flog.persist(tag = "Deeplink", message = "Otpauth link: adding")
 
                     val id = servicesRepository.addService(otpLink)
                     servicesRepository.pushRecentlyAddedService(

@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1054,4 +1054,39 @@
     <string name="externalimport__choose_json_csv_cta">Обрати JSON або CSV файл</string>
     <string name="externalimport__info_bitwarden_title">Імпортувати токени з Bitwarden</string>
     <string name="browser__request_source_description_ios">надіслав запит на токен для %s. Оберіть сервіс для авторизації та збережіть із цим доменом.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Експортуйте ваші акаунти з Ente Auth у звичайний текстовий файл і завантажте його, використовуючи кнопку \"Оберіть текстовий файл\". Не забудьте видалити файл після успішного імпорту.</string>
+    <string name="externalimport__ente_success_msg">Цей текстовий файл дозволяє імпорт токенів з Ente Auth.</string>
+    <string name="externalimport__ente_title">Імпорт 2ФА токенів з додатку Ente Auth</string>
+    <string name="externalimport__onepassword_msg">Експортуйте ваші акаунти з 1Password у CSV файл і завантажте його, використовуючи кнопку \"Обрати CSV файл\". Не забудьте видалити файл після успішного імпорту.</string>
+    <string name="externalimport__onepassword_success_msg">Цей CSV файл дозволяє імпорт токенів з 1Password.</string>
+    <string name="externalimport__onepassword_title">Імпорт 2ФА токенів з додатку 1Password</string>
+    <string name="externalimport__choose_csv_cta">Обрати CSV файл</string>
+    <string name="externalimport__info_ente_title">Імпорт токенів з Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Імпорт токенів з 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">Ви вже відсканували цей QR-код.</string>
+    <string name="tokens__google_import_already_scanned_title">Вже відскановано</string>
+    <string name="tokens__google_import_different_batch_message">Цей QR-код належить до іншого експорту з Google Authenticator. Відскануйте всі коди з одного експорту.</string>
+    <string name="tokens__google_import_different_batch_title">Інший експорт</string>
+    <string name="tokens__google_import_multi_subtitle">Це частина експорту з кількох QR-кодів</string>
+    <string name="tokens__google_import_only_scanned">Імпортувати лише відскановані коди</string>
+    <string name="tokens__google_import_scanned_count">Відскановано %1$d з %2$d QR-кодів</string>
+    <string name="tokens__google_import_title">Імпорт із Google Authenticator</string>
+    <string name="logs_title">Логи</string>
+    <string name="logs_empty">Немає доступних логів</string>
+    <string name="logs_share_title">Поширити логи</string>
+    <string name="externalimport__ga_batch_title">Виявлено кілька QR-кодів</string>
+    <string name="externalimport__ga_batch_msg">Ваш експорт із Google Authenticator складається з %1$d QR-кодів. Відскануйте їх усі, щоб імпортувати всі ваші токени.</string>
+    <string name="externalimport__ga_batch_qr_code">QR-код %1$d з %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Відскановано · токенів: %1$d</string>
+    <string name="externalimport__ga_batch_not_scanned">Ще не відскановано</string>
+    <string name="externalimport__ga_batch_progress">Відскановано %1$d з %2$d</string>
+    <string name="externalimport__ga_batch_scan_cta">Сканувати наступний QR-код</string>
+    <string name="externalimport__ga_batch_pick_cta">Обрати наступний QR-код</string>
+    <string name="externalimport__ga_batch_read_error">Не вдалося знайти QR-код на цьому зображенні</string>
+    <string name="externalimport__ga_batch_import_cta">Імпортувати токени</string>
+    <string name="externalimport__ga_batch_already_scanned">Цей QR-код уже відскановано</string>
+    <string name="externalimport__ga_batch_different_export">Цей QR-код належить до іншого експорту</string>
+    <string name="tokens__copy_token_long">Копіювати токен</string>
 </resources>

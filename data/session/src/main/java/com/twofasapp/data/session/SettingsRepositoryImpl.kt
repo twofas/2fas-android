@@ -3,6 +3,7 @@ package com.twofasapp.data.session
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
 import com.twofasapp.common.environment.BuildVariant
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.storage.booleanPref
 import com.twofasapp.data.session.domain.AppSettings
@@ -63,10 +64,12 @@ internal class SettingsRepositoryImpl(
     }
 
     override suspend fun setSendCrashLogs(sendCrashLogs: Boolean) {
+        Flog.persist(tag = "Settings", message = "Crash reports: $sendCrashLogs")
         withContext(dispatchers.io) { this@SettingsRepositoryImpl.sendCrashLogs.set(sendCrashLogs) }
     }
 
     override suspend fun setAllowScreenshots(allow: Boolean) {
+        Flog.persist(tag = "Settings", message = "Screenshots: $allow")
         withContext(dispatchers.io) { this@SettingsRepositoryImpl.allowScreenshots.set(allow) }
     }
 

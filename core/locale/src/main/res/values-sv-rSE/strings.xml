@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: sv-SE, Swedish (Sweden)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1048,4 +1048,39 @@
     <string name="externalimport__choose_json_csv_cta">Välj JSON- eller CSV-fil</string>
     <string name="externalimport__info_bitwarden_title">Importera koder från Bitwarden</string>
     <string name="browser__request_source_description_ios">har begärt en 2FA-kod för %s. Välj vilket konto som ska delas och kopplas till den här domänen.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Exportera dina konton från Ente Auth till en vanlig textfil och tryck sedan på ”Välj textfil”. Kom ihåg att radera filen efter att importen är klar.</string>
+    <string name="externalimport__ente_success_msg">Den här textfilen låter dig importera koder från Ente Auth.</string>
+    <string name="externalimport__ente_title">Importerar koder från Ente Auth</string>
+    <string name="externalimport__onepassword_msg">Exportera dina konton från 1Password till en CSV-fil och tryck sedan på ”Välj CSV-fil”. Kom ihåg att radera filen efter att importen är klar.</string>
+    <string name="externalimport__onepassword_success_msg">Den här CSV-filen låter dig importera koder från 1Password.</string>
+    <string name="externalimport__onepassword_title">Importerar koder från 1Password</string>
+    <string name="externalimport__choose_csv_cta">Välj CSV-fil</string>
+    <string name="externalimport__info_ente_title">Importera koder från Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Importera koder från 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">Du har redan skannat den här QR-koden.</string>
+    <string name="tokens__google_import_already_scanned_title">Redan skannad</string>
+    <string name="tokens__google_import_different_batch_message">Den här QR-koden kommer från en annan export från Google Authenticator. Skanna alla koder från samma export.</string>
+    <string name="tokens__google_import_different_batch_title">Annan export</string>
+    <string name="tokens__google_import_multi_subtitle">Detta är en del av en export med flera QR-koder</string>
+    <string name="tokens__google_import_only_scanned">Importera endast skannade koder</string>
+    <string name="tokens__google_import_scanned_count">%1$d av %2$d QR-koder skannade</string>
+    <string name="tokens__google_import_title">Import från Google Authenticator</string>
+    <string name="logs_title">Loggfiler</string>
+    <string name="logs_empty">Inga loggfiler tillgängliga</string>
+    <string name="logs_share_title">Dela loggfiler</string>
+    <string name="externalimport__ga_batch_title">Flera QR-koder hittades</string>
+    <string name="externalimport__ga_batch_msg">Din export från Google Authenticator består av %1$d QR-koder. Skanna alla för att importera alla dina koder.</string>
+    <string name="externalimport__ga_batch_qr_code">QR-kod %1$d av %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Skannad · %1$d koder</string>
+    <string name="externalimport__ga_batch_not_scanned">Inte skannad än</string>
+    <string name="externalimport__ga_batch_progress">%1$d av %2$d skannade</string>
+    <string name="externalimport__ga_batch_scan_cta">Skanna nästa QR-kod</string>
+    <string name="externalimport__ga_batch_pick_cta">Välj nästa QR-kod</string>
+    <string name="externalimport__ga_batch_read_error">Kunde inte hitta någon QR-kod i den här bilden</string>
+    <string name="externalimport__ga_batch_import_cta">Importera koder</string>
+    <string name="externalimport__ga_batch_already_scanned">Den här QR-koden har redan skannats</string>
+    <string name="externalimport__ga_batch_different_export">Den här QR-koden tillhör en annan export</string>
+    <string name="tokens__copy_token_long">Kopiera kod</string>
 </resources>

@@ -47,6 +47,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.common.domain.Service
+import com.twofasapp.common.ktx.encodeBase64
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.core.design.feature.items.ServiceCard
 import com.twofasapp.core.design.feature.items.ServiceStyle
@@ -67,6 +68,7 @@ import com.twofasapp.data.services.domain.QueuedAddServiceModal
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.session.domain.ServicesSort
 import com.twofasapp.data.session.domain.ServicesStyle
+import com.twofasapp.feature.externalimport.domain.ImportType
 import com.twofasapp.feature.home.ui.services.add.manual.AddServiceManualModal
 import com.twofasapp.feature.home.ui.services.add.scan.AddServiceScanModal
 import com.twofasapp.feature.home.ui.services.component.AppReviewItem
@@ -155,6 +157,19 @@ internal fun HomeScreen(
             openManual = { showAddServiceManualModal = true },
             openGuides = { navigator.open(Screen.Guides) },
             onAddedSuccessfully = { addedServiceInModal = it },
+            openGoogleAuthenticatorImport = { import ->
+                val importType = ImportType.GoogleAuthenticator.name
+                val content = import.content.encodeBase64()
+
+                navigator.open(Screen.ExternalImport(importType = importType))
+                navigator.open(
+                    if (import.isBatch) {
+                        Screen.ExternalImportScan(importType = importType, initialContent = content, fromGallery = import.fromGallery)
+                    } else {
+                        Screen.ExternalImportResult(importType = importType, importFileContent = content)
+                    },
+                )
+            },
         )
     }
 

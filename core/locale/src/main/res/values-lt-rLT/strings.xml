@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android strings
+ Project: 2FAS App
+ Locale: lt-LT, Lithuanian (Lithuania)
+ Exported by: rafakob
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- InfoPlist.strings
+         TwoFAS
+         Created by Zbigniew Cisiński on 14/03/2020.
+         Copyright © 2020 The Code. All rights reserved. -->
+    <string name="NSCameraUsageDescription">Naudojama QR kodams nuskaityti</string>
+    <string name="NSFaceIDUsageDescription">Programą galite atrakinti naudodami „Face ID“</string>
+    <!-- MARK: - App -->
+    <string name="app__name">„2FAS“ autentiškumo patvirtinimo programa</string>
+    <string name="commons__2fas">2FA autentiškumo patvirtinimo programa (2FAS programa)</string>
+    <string name="commons__OK">Gerai</string>
+    <string name="commons__add">Pridėti</string>
+    <!-- MARK: - Commons -->
+    <string name="commons__cancel">Atsisakyti</string>
+    <string name="commons__notifications">Pranešimai</string>
+    <!-- A number replaces %d, for example, 4 of 5. -->
+    <string name="commons__page_of_page_title">%1$d iš %2$d</string>
+    <!-- notifications__service_already_removed_from_backup -->
+    <string name="notifications__service_already_removed_title">Paslauga jau pašalinta iš atsarginės kopijos</string>
+    <!-- notifications__service_already_modified_in_backup -->
+    <string name="notifications__service_already_modified_title">Paslauga jau pakeista „Backup“</string>
+    <!-- backup__user_is_over_quota_on_icloud -->
+    <string name="backup__user_over_quota_icloud">Naudotojas viršijo „iCloud“ kvotą</string>
+    <!-- backup__icloud_is_not_available -->
+    <string name="backup__icloud_not_available">„iCloud“ neveikia</string>
+    <!-- backup__icloud_has_been_disabled_by_user -->
+    <string name="backup__icloud_disabled_title">Naudotojas išjungė „iCloud“</string>
+    <!-- backup__turned_off_description_bold_part -->
+    <string name="backup__2fas_backup">„2FAS“ atsarginė kopija</string>
+    <string name="commons__close">Uždaryti</string>
+    <string name="commons__continue">Tęsti</string>
+    <string name="commons__copy">Kopijuoti</string>
+    <string name="commons__delete">Pašalinti</string>
+    <string name="commons__dismiss">Atmesti</string>
+    <string name="commons__done">Baigta</string>
+    <string name="commons__edit">Redaguoti</string>
+    <string name="commons__enter_code_manually">Įveskite kodą rankiniu būdu</string>
+    <string name="commons__error">Klaida</string>
+    <string name="commons__info">Informacija</string>
+    <string name="commons__next">Toliau</string>
+    <string name="commons__notice">Pranešimas</string>
+    <string name="commons__off">Išjungta</string>
+    <string name="commons__on">Įjungta</string>
+    <!-- commons__point_your_camera_at_code_on_website -->
+    <string name="commons__camera_title">Nukreipkite fotoaparatą į ekraną, kad nuskaitytumėte QR kodą</string>
+    <string name="commons__rename">Pervardyti</string>
+    <string name="commons__retry">Bandyk dar kartą</string>
+    <string name="commons__save">Išsaugoti</string>
+    <string name="commons__scan_qr_code">Nuskaitykite QR kodą</string>
+    <string name="commons__service">Paslaugos</string>
+    <string name="commons__set">Nustatyti</string>
+    <string name="commons__skip">Praleisti</string>
+    <string name="commons__tokens">Raktai</string>
+    <string name="commons__warning">Įspėjimas</string>
+    <string name="commons__no_results">Nėra rezultatų</string>
+    <string name="commons__customize">Pritaikyti</string>
+    <string name="commons__approve">Patvirtinti</string>
+    <string name="commons__deny">Neleisti</string>
+    <!-- max. %d chars = Maximum number of characters
+         commons__provided_text_too_long -->
+    <string name="commons__text_long_title">Pateiktas tekstas yra per ilgas (maks. %d simbolių)</string>
+    <string name="commons__got_it">Supratau!</string>
+    <string name="fingerprint__verifying">Tikrinama…</string>
+    <!-- fingerprint__setup_content -->
+    <string name="fingerprint__confirm_title">Patvirtinkite piršto atspaudą, kad galėtumėte tęsti.</string>
+    <!-- fingerprint__use_pin -->
+    <string name="fingerprint__use_pin_title">Šį kartą naudokite PIN kodą</string>
+    <!-- MARK: - Introduction -->
+    <string name="introduction__page_1_title">Tu esi nuostabus!</string>
+    <string name="introduction__page_1_content">Dėka programėlės „2FAS“, kuria pasitiki daugiau nei 10 milijonų vartotojų visame pasaulyje, jūsų telefonas ką tik tapo privačiu ir saugiu raktu į jūsų internetines paslaugas.</string>
+    <string name="introduction__page_2_title">Paprasta</string>
+    <string name="introduction__page_2_content">Susiekite „2FAS“ su savo internetinėmis paslaugomis. Per kelias sekundes įjunkite dviejų veiksnių saugumą naudodami QR kodą.</string>
+    <string name="introduction__page_3_title">Privatus</string>
+    <string name="introduction__page_3_content">„2FAS“ gerbia ir saugo jūsų privatumą. Ši programa niekada nerenka, neapdoroja ir nenaudoja jokių jūsų asmens duomenų.</string>
+    <string name="introduction__page_4_title">Saugus</string>
+    <string name="introduction__page_4_content_ios">Jūsų raktai saugomi neprisijungus prie interneto įrenginio atmintyje, todėl nepamirškite padaryti savo paslaugų atsarginės kopijos! Naudokite „iCloud Sync“ ir PIN kodą, kad apsisaugotumėte nuo neteisėtos prieigos ir įrenginio sugadinimo.</string>
+    <!-- introduction__start_using -->
+    <string name="introduction__title">Pradėkite naudoti „2FAS“</string>
+    <string name="introduction__tos">Naudojimosi sąlygos</string>
+    <string name="introduction__description_title">Susiekite savo internetinės paslaugos paskyrą su 2FAS arba importuokite savo raktus</string>
+    <string name="introduction__pair_new_service">Susieti naują paslaugą</string>
+    <!-- introduction__import_2fas -->
+    <string name="introduction__import_2fas_title">Importuoti 2FAS atsarginės kopijos failą</string>
+    <!-- introduction__import_ga -->
+    <string name="introduction__import_google_authenticator">Importuoti iš „Google Authenticator“</string>
+    <!-- introduction__not_sure -->
+    <string name="introduction__what_to_do">Nežinote, ką daryti?</string>
+    <!-- introduction__ga_import_description -->
+    <string name="introduction__google_authenticator_import_process">Eksportuokite savo paskyras iš „Google Authenticator“ į QR kodą naudodami parinktį „Perkelti paskyras“. Tada kitu įrenginiu nufotografuokite eksportuotą QR kodą, nusiųskite jį į savo įrenginį (arba, jei įmanoma, padarykite ekrano kopiją) ir naudokite žemiau esančią parinktį „Pasirinkti QR kodą“. Jei importuojate kodus iš kito įrenginio, vietoj to naudokite mygtuką „Nuskaityti QR kodą“.</string>
+    <!-- introduction__choose_qr -->
+    <string name="introduction__choose_qr_code">Pasirinkite QR kodą</string>
+    <!-- introduction__scan_qr -->
+    <string name="introduction__scan_qr_code">Nuskaitykite QR kodą</string>
+    <!-- Original: Adding code -->
+    <string name="notifications__adding_code">Naujo kodo pridėjimas</string>
+    <!-- notifications__private_key_copied -->
+    <string name="notifications__service_key_copied">Slaptas raktas nukopijuotas</string>
+    <!-- voiceover__token_is_already_on_the_list -->
+    <string name="notifications__token_already_added">Šis raktas jau yra sąraše</string>
+    <string name="notifications__counter_copied">Skaitiklis nukopijuotas</string>
+    <string name="notifications__token_copied">Raktas nukopijuotas</string>
+    <string name="notifications__next_token_copied">Kitas raktas nukopijuotas</string>
+    <!-- notifications__would_you_like_to_add_this_code -->
+    <string name="notifications__add_code_question_title">Ar norėtumėte įterpti šį kodą: %s?</string>
+    <!-- MARK: - Permissions -->
+    <string name="permissions__open_settings">Atidaryti nustatymus</string>
+    <string name="security__incorrect_PIN">Neteisingas PIN kodas</string>
+    <string name="security__change_pin">Keisti PIN</string>
+    <string name="security__confirm_you_are_device_owner">Prašome patvirtinti, kad esate šio įrenginio savininkas</string>
+    <!-- security__confirm_your_new_pin -->
+    <string name="security__confirm_new_pin">Prašome patvirtinti naują PIN kodą</string>
+    <string name="security__create_pin">Sukurti PIN kodą</string>
+    <string name="security__enter_current_pin">Įveskite savo dabartinį PIN kodą</string>
+    <!-- security__enter_your_new_pin -->
+    <string name="security__enter_new_pin">Įveskite naują PIN kodą</string>
+    <!-- security__enter_your_pin -->
+    <string name="security__enter_pin">Įveskite savo PIN kodą</string>
+    <!-- MARK: - Security -->
+    <string name="security__too_many_attempts_try_again_after_formatter">Per daug bandymų. Prašome bandyti dar kartą %s</string>
+    <string name="security__too_many_attempts_try_again_after">Per daug bandymų. Prašome pabandyti dar kartą po %s minučių.</string>
+    <!-- security__too_many_attempts_try_again_later -->
+    <string name="security__too_many_attempts_error">Per daug bandymų. Prašome pabandyti vėliau.</string>
+    <!-- security__too_many_attempts_try_again_after_one_minute -->
+    <string name="security__too_many_attempts_error_2">Per daug bandymų. Prašome pabandyti po vienos minutės</string>
+    <string name="settings__backup_and_synchronization">Atsarginė kopija ir sinchronizavimas</string>
+    <string name="settings__choose_topic">Pasirinkite temą</string>
+    <string name="settings__configure_mail_service_try_again">Nustatykite pašto tarnybą ir bandykite dar kartą</string>
+    <string name="settings__general">Bendra</string>
+    <string name="settings__mail_services_not_available">Pašto paslaugos neprieinamos</string>
+    <string name="settings__problem">Problema</string>
+    <string name="settings__security">Saugumas</string>
+    <string name="settings__select_pin_length">Pasirinkite PIN ilgį</string>
+    <string name="settings__settings">Nustatymai</string>
+    <!-- czy to dalej będzie w aplikacji? -->
+    <string name="settings__suggestion">Pasiūlymai</string>
+    <string name="settings__advanced">Išplėstiniai</string>
+    <string name="settings__widgets">Valdikliai</string>
+    <string name="settings__display_selected_services">Rodyti pasirinktas paslaugas valdiklyje</string>
+    <!-- settings__after_you_enable_widgets -->
+    <string name="settings__widgets_title">Įgalinus valdiklį visi jūsų raktai bus matomi be PIN kodo.\n\nAr tikrai norite įgalinti valdiklį?</string>
+    <string name="settings__show_next_token">Rodyti sekantį raktą</string>
+    <string name="settings__see_incoming_tokens">Pamatyti gaunamus raktus sąraše.</string>
+    <string name="settings__trash">Šiukšliadėžė</string>
+    <string name="settings__restore">Atstatyti</string>
+    <string name="settings__trash_is_empty">Šiukšliadėžė tuščia</string>
+    <string name="settings__share_app">Pasidalinkite šia programa</string>
+    <!-- tokens__remove_from_list -->
+    <string name="tokens__delete_token">Ar tikrai norite ištrinti raktą, skirtą:</string>
+    <string name="tokens__move_to_trash">Perkelti į šiukšlinę</string>
+    <string name="tokens__additional_info">Papildoma informacija</string>
+    <string name="tokens__choose_method">Pasirinkite metodą</string>
+    <string name="tokens__duplicated_private_key">Pakartotinis slaptasis raktas</string>
+    <!-- tokens__incorrect_private_key -->
+    <string name="tokens__incorrect_service_key">Neteisingas slaptasis raktas (tik skaičiai nuo 2 iki 7 ir raidės), ilgis ne daugiau kaip 512 simbolių</string>
+    <string name="tokens__try_again">Gerai, pabandykime dar kartą</string>
+    <!-- Original: To capture the QR code
+         tokens__point_right_2fa_code -->
+    <string name="tokens__scan_qr_code_title">Nukreipkite fotoaparatą į ekraną, kad nuskaitytumėte QR kodą</string>
+    <!-- tokens__private_key -->
+    <string name="tokens__service_key">Slaptas raktas</string>
+    <string name="tokens__qr_code_leads_to_app_store">Šis QR kodas nukreips jus į „App Store“</string>
+    <!-- tokens__remove_it_forever -->
+    <string name="tokens__remove_forever">Ištrinti raktą\u0020</string>
+    <!-- tokens__search_by_service_name_or_login -->
+    <string name="tokens__search_service_title">Paieška</string>
+    <!-- tokens__search_sorry_service_not_found -->
+    <string name="tokens__service_not_found_search">Atsiprašome, paslauga nerasta</string>
+    <!-- Original: Take another try with a different search term
+         tokens__search_take_another_try_different_search_term -->
+    <string name="tokens__try_different_search_term">Pabandykite dar kartą, naudodami kitą paieškos frazę</string>
+    <string name="tokens__service_key_to_short">Slaptas raktas per trumpas. Turi būti ne mažiau kaip 4 simboliai</string>
+    <string name="tokens__service_name">Paslaugos pavadinimas</string>
+    <!-- tokens__this_private_key_exists_used_in -->
+    <string name="tokens__service_key_already_used_title">Iš nuskaityto kodo gautas slaptasis raktas jau naudojamas %s. Matyt, jį nuskaitote dar kartą</string>
+    <string name="tokens__this_qr_code_is_inavlid">Šis QR kodas yra neteisingas arba nepalaikomas. Bandykite dar kartą.</string>
+    <string name="tokens__type_service_name">Įveskite paslaugos pavadinimą</string>
+    <string name="tokens__enter_service_name">Įveskite paslaugos pavadinimą</string>
+    <!-- tokens__unfortunately_we_dont_know_that_service_name_it -->
+    <string name="tokens__service_name_unknown_title">Deja, mes nežinome tos paslaugos. Kaip norėtumėte ją pavadinti?</string>
+    <!-- tokens__you_wont_be_able_to_restore -->
+    <string name="tokens__token_not_possible_to_restore">Šio rakto jau nebegalėsite atkurti.</string>
+    <string name="tokens__badge_color">Ženklo spalva</string>
+    <string name="tokens__change_brand_icon">Pakeisti prekės ženklo piktogramą</string>
+    <string name="tokens__change_label">Pakeisti etiketę</string>
+    <string name="tokens__service_information">Informacija apie paslaugas</string>
+    <string name="tokens__personalization">Individualizavimas</string>
+    <string name="tokens__brand_icon">Prekės ženklo simbolis</string>
+    <string name="tokens__label">Etiketė</string>
+    <!-- tokens__remove_the_service -->
+    <string name="tokens__remove_service_from_app">Pašalinti šią paslaugą iš „2FAS“ programėlės</string>
+    <!-- tokens__label_one_or_two -->
+    <string name="tokens__label_characters_title">Etiketė (1 arba 2 simboliai):</string>
+    <string name="tokens__pick_background_color">Pasirinkite fono spalvą:</string>
+    <string name="tokens__num_added">%s pridėta</string>
+    <string name="tokens__next_token">Kitas raktas: %s</string>
+    <string name="tokens__next_token_title">Kito rakto vertė</string>
+    <string name="tokens__my_tokens">Mano raktai</string>
+    <string name="tokens__removing_group">Grupės pašalinimas</string>
+    <!-- tokens__all_tokens_will_be_moved -->
+    <string name="tokens__all_tokens_moved_to_group_title">Visi raktai bus perkelti į grupę „Mano raktai“</string>
+    <string name="tokens__add_group">Pridėti grupę</string>
+    <string name="tokens__group_name">Grupės pavadinimas:</string>
+    <string name="tokens__select_from_gallery">Pasirinkite iš galerijos</string>
+    <string name="tokens__camera_is_unavailable">Kamera neveikia</string>
+    <!-- tokens__check_if_app_has_proper_permissions -->
+    <string name="tokens__check_app_permissions">Patikrinkite, ar programėlė turi reikiamus leidimus sistemos nustatymuose</string>
+    <string name="tokens__no_qr_codes_found">QR kodų nerasta</string>
+    <!-- tokens__no_correct_qr_code_had_been_found
+         
+         No correct QR codes had been found in the selected image. Please try a different image. -->
+    <string name="tokens__no_correct_qr_code_found_title">Pasirinktame paveikslėlyje nėra tinkamo QR kodo. Prašome pabandyti su kitu paveikslėliu.</string>
+    <string name="tokens__select_service">Pasirinkite paslaugą</string>
+    <string name="tokens__adding_service_question_title">Kokią paslaugą norite pridėti?</string>
+    <string name="tokens__retype_this_token">Įveskite šį raktą dar kartą</string>
+    <!-- tokens__unlock_and_retype_this_token -->
+    <string name="tokens__unlock_and_retype_token_title">Atrakinkite ir vėl įveskite šį raktą</string>
+    <string name="tokens__group">Grupė</string>
+    <string name="tokens__select_group">Pasirinkite grupę</string>
+    <string name="tokens__google_auth_import">2FA raktų importavimas iš „Google Authenticator“ programėlės</string>
+    <string name="tokens__google_auth_import_subtitle">Naudodami šį QR kodą galite importuoti raktus iš „Google Authenticator“</string>
+    <!-- A number replaces %d  -->
+    <string name="tokens__google_auth_out_of_title">%1$d iš %2$d</string>
+    <string name="tokens__google_auth_import_subtitle_end">Raktų importavimas</string>
+    <string name="tokens__sort_by">Rūšiuoti</string>
+    <!-- tokens__sort_by_az -->
+    <string name="tokens__sort_by_a_to_z">A–Z</string>
+    <!-- tokens__sort_by_za -->
+    <string name="tokens__sort_by_z_to_a">Z – A</string>
+    <string name="tokens__sort_by_manual">Rankinis</string>
+    <string name="tokens__advanced">Išplėstiniai</string>
+    <!-- tokens__advanced_alert_title -->
+    <string name="tokens__advanced_alert">Įspėjimas</string>
+    <!-- tokens__advanced_alert_description -->
+    <string name="tokens__advanced_alert_description_title">Nerekomenduojama keisti išplėstinius nustatymus. Tai darykite tik tuomet, kai to reikalauja jūsų dviejų veiksnių autentifikavimo (2FA) paslaugos teikėjas ir kai turite aiškias instrukcijas.</string>
+    <string name="tokens__token_settings">Raktų nustatymai</string>
+    <string name="tokens__otp_authentication">OTP autentifikavimas</string>
+    <string name="tokens__algorithm">Algoritmas</string>
+    <string name="tokens__refresh_time">Atnaujinimo laikas</string>
+    <string name="tokens__number_of_digits">Skaitmenų skaičius</string>
+    <string name="tokens__counter">Skaitiklis</string>
+    <string name="tokens__initial_counter">Pradinis skaitiklis</string>
+    <!-- A number replaces %d -->
+    <string name="tokens__second">%d s.</string>
+    <string name="tokens__hotp">HOTP</string>
+    <string name="tokens__totp">TOTP</string>
+    <string name="tokens__advanced_settings_footer_title">Nerekomenduojama keisti išplėstinius nustatymus. Tai darykite tik tuomet, kai to reikalauja jūsų dviejų veiksnių autentifikavimo (2FA) paslaugos teikėjas ir kai turite aiškias instrukcijas.</string>
+    <string name="tokens__gallery_advice_title">Geriausia praktika</string>
+    <!-- ADD A SPACE AT THE END -->
+    <string name="tokens__gallery_advice_content_first">Paslauga sėkmingai pridėta. Labai rekomenduojame, kad jūs\u0020</string>
+    <!-- ADD A SPACE AFTER COMA -->
+    <string name="tokens__gallery_advice_content_middle_bold">ištrinkite QR kodo ekrano kopiją iš savo galerijos.</string>
+    <string name="tokens__gallery_advice_content_last">\nJei kas nors pasisavins šįą QR kodo ekrano kopiją, jis galės gauti jūsų dviejų veiksnių autentifikavimo (2FA) kodus, skirtus šiai paslaugai.</string>
+    <string name="tokens__request_icon_page_title">Užsisakykite piktogramą</string>
+    <string name="tokens__request_icon_social_title">Praneškite mums „Discord“</string>
+    <string name="tokens__request_icon_social_link">Prisijunkite prie mūsų „Discord“ serverio</string>
+    <string name="tokens__request_icon_social_description">ir leiskite naudotojams balsuoti už pageidaujamas piktogramas.</string>
+    <string name="tokens__request_icon_middle">arba</string>
+    <string name="tokens__request_icon_provider_title">Praneškite paslaugos teikėjui</string>
+    <string name="tokens__request_icon_provider_description">Galite pasinaudoti socialiniais tinklais arba elektroniniu paštu ir pasidalinti šiuo tekstu su jais:</string>
+    <string name="tokens__request_icon_provider_message">Sveiki! Naudoju „2FAS“ programėlę, kad prisijungčiau prie jūsų paslaugos naudojant dviejų veiksnių autentifikavimą (2FA). Tačiau trūksta jūsų piktogramos! Piktogramą galite pateikti čia: https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_message_link">https://2fas.com/yb</string>
+    <string name="tokens__request_icon_provider_footnote">Nepamirškite pažymėti įmonės oficialios paskyros!</string>
+    <string name="tokens__order_icon_description">Nerandate prekės ženklo piktogramos „2FAS“ programėlėje?</string>
+    <string name="tokens__order_icon_link">Užsisakykite prekės ženklo piktogramą</string>
+    <string name="tokens__order_icon_title">Užsisakykite prekės ženklo piktogramą</string>
+    <string name="tokens__order_menu_title">Pasirinkite užklausos metodą</string>
+    <string name="tokens__order_menu_option_user">Prašyti piktogramos kaip vartotojas</string>
+    <string name="tokens__order_menu_option_company">Pateikti piktogramą kaip įmonė</string>
+    <!-- tokens__you_will_not_be_able_to_sign_in_to_your -->
+    <string name="tokens__sign_in_not_possible_title">Be šio rakto negalėsite prisijungti prie savo %1$s paskyros, jei %2$s paskyroje yra įjungtas dviejų veiksnių autentifikavimas.</string>
+    <string name="voiceover__show_service_key">Rodyti slaptą raktą</string>
+    <string name="voiceover__copy_service_key">Kopijuoti slaptąjį raktą</string>
+    <!-- voiceover__seconds_left -->
+    <string name="voiceover__seconds_left_counter_title">Lentelė, rodanti, kiek sekundžių liko iki žetonų keitimo</string>
+    <string name="voiceover__delete_button">Mygtukas „Ištrinti“</string>
+    <string name="voiceover__service_deleted">Paslauga pašalinta</string>
+    <!-- voiceover__hidden_secret_key_use_show button -->
+    <string name="voiceover__reveal_hidden_secret_key_button_title">Šiame laukelyje yra slaptas raktas. Norėdami jį pamatyti paspauskite mygtuką „Rodyti“. Veiks tik tuo atveju jei užrakinimo ekranui nustatėte PIN</string>
+    <string name="voiceover__service_name">Paslaugos pavadinimas: %s</string>
+    <string name="voiceover__additional_info">Papildoma informacija: %s</string>
+    <string name="voiceover__token_tap_to_copy">Raktas %s. Bakstelėkite, kad nukopijuotumėte</string>
+    <string name="voiceover__edit">Redaguoti %s</string>
+    <string name="voiceover__service_label_with_name_and_color">Paslaugos etiketė su pavadinimu %1$s ir spalva %2$s</string>
+    <string name="voiceover__service_icon">%s paslaugos piktograma</string>
+    <string name="voiceover__selected">Pasirinkta</string>
+    <string name="voiceover__not_selected">Nepasirinkta</string>
+    <string name="voiceover__badge_color">Ženklo spalva: %s</string>
+    <string name="voiceover__dismissing">Atleidžiama</string>
+    <string name="voiceover__secret_hint">Tik skaičiai nuo 2 iki 9 ir raidės. Bent 4 simboliai</string>
+    <string name="voiceover__add_service">Pridėti paslaugą</string>
+    <string name="voiceover__add_group">Pridėti grupę</string>
+    <!-- voiceover__use_add_service_button -->
+    <string name="voiceover__use_add_service_button_title">Norėdami pridėti naują paslaugą, spustelėkite mygtuką „Pridėti paslaugą“</string>
+    <string name="voiceover__no_search_results">Nėra paieškos rezultatų</string>
+    <!-- voiceover__sort_by -->
+    <string name="voiceover__sort_by_title">Naudokite funkciją „Rūšiuoti“, kad nustatytumėte paslaugų rūšiavimą</string>
+    <string name="voiceover__spinner">Įkeliamas turinys</string>
+    <string name="backup__incorrect_secret">Nepavyko sukurti raktų atsarginės kopijos, nes slaptame rakte „%s“ yra neteisingų simbolių. Pašalinkite jį iš sąrašo ir pabandykite dar kartą</string>
+    <string name="backup__import">Importuoti</string>
+    <string name="backup__export">Eksportuoti</string>
+    <string name="backup__backup_disabled_title">„2FAS Backup“ bus išjungta, siekiant užtikrinti jos vientisumą</string>
+    <string name="backup__error_while_exporting_file">Klaida eksportuojant failą</string>
+    <string name="backup__import_completed_successfuly">Importavimas sėkmingai užbaigtas</string>
+    <!-- camera__video_device_in_use_by_another_app -->
+    <string name="camera__camera_used_by_other_app_title">Kita programa naudoja kamerą. Jei kitų programų uždarymas nepadeda, tada iš naujo paleiskite įrenginį</string>
+    <!-- camera__video_device_unavailable_due_to_system_overload  -->
+    <string name="camera__camera_unavailable_title">Kamera neveikia dėl sistemos perkrovos. Pabandykite iš naujo paleisti įrenginį</string>
+    <string name="camera__cant_initialize_camera_general">Nepavyksta įjungti kameros. Pabandykite iš naujo paleisti įrenginį</string>
+    <string name="camera__cant_initialize_camera_split_view">Nepavyksta įjungti kameros „Split View“ režimu. Atidarykite programą visame ekrane ir pabandykite dar kartą</string>
+    <string name="restore__how_to_restore">Kaip atkurti programėlę „2FAS“?</string>
+    <string name="restore__application_restoration">Programos atkūrimas</string>
+    <!-- restore_if_you_forgotten -->
+    <string name="restore__reset_Pin_title">Jei pamiršote PIN kodą arba norite iš naujo nustatyti „2FAS“ programėlę, turėsite ją įdiegti iš naujo.</string>
+    <!-- restore_please_remember -->
+    <string name="restore__backup_advice">Jei neturite atsarginės kopijos ir iš naujo nustatysite programėlę, prarasite prieigą prie visų savo 2FA kodų ir visų apsaugotų paskyrų.</string>
+    <!-- restore_if_you_have_backup -->
+    <string name="restore__backup_title">Jei turite atsarginę kopiją, nesijaudinkite – galėsite atkurti visus savo kodus.</string>
+    <string name="backup__cloud_backup">Atsarginės kopijos saugojimas debesyje</string>
+    <string name="backup__icloud_sync">„iCloud“ sinchronizavimas</string>
+    <string name="backup__section_description">REKOMENDUOJAMA: „iCloud Sync“ užtikrina jūsų raktų saugumą „Apple iCloud“ paslaugoje, jei prarastumėte ar sugadintumėte savo įrenginį. Palikite šią funkciją įjungtą.</string>
+    <string name="backup__file_backup">Failo atsarginės kopijos</string>
+    <!-- backup__use_file_backup_for -->
+    <string name="backup__file_backup_offline_title">Naudokite funkciją „Failų atsarginė kopija“, kad sukurtumėte savo raktų atsarginę kopiją, kurią galima naudoti neprisijungus prie interneto.</string>
+    <string name="backup__backup_removal">Atsarginės kopijos pašalinimas</string>
+    <string name="backup__delete_2fas_backup">Ištrinti 2FAS atsarginę kopiją</string>
+    <string name="backup__warning_introduction">Įspėjimas! Jei ištrinsite „2FAS Backup“, taip pat bus ištrinti visi raktai iš kitų įrenginių, sinchronizuotų su šia paskyra. Norėdami išsaugoti raktus kituose įrenginiuose, prieš ištrindami įsitikinkite, kad išjungėte „2FAS Backup“.</string>
+    <!-- backup__i_want_to_delete -->
+    <string name="backup__delete_title">Noriu ištrinti atsarginę kopiją</string>
+    <string name="backup__export_to_backup_file">Eksportuoti atsarginę kopiją į failą</string>
+    <!-- backup__you_can_import_exported_file -->
+    <string name="backup__import_file_title">Naudodami programėlę „2FAS“ galite importuoti eksportuotus failus į kitus įrenginius</string>
+    <string name="backup__export_to_file">Eksportuoti į failą</string>
+    <string name="backup__verify_pin">Patikrinkite PIN kodą</string>
+    <string name="backup__save_file">Išsaugoti failą</string>
+    <string name="backup__import_backup_file">Įkelti atsarginės kopijos failą</string>
+    <!-- backup__youre_goint_to_import_backup -->
+    <string name="backup__import_other_devices">Jūs ketinate importuoti atsarginės kopijos failą, kuriame yra</string>
+    <string name="backup__import_file">Importuoti failą</string>
+    <string name="backup__choose_antother_file">Pasirinkite kitą failą</string>
+    <string name="backup__no_new_services">Nėra ką importuoti</string>
+    <string name="backup__file_error">Failo klaida!</string>
+    <!-- backup__services_form_file_will_be_merged -->
+    <string name="backup__services_merge_title">Failo paslaugos bus sujungtos su jūsų programoje esančiomis paslaugomis</string>
+    <string name="backup__no_new_services_error">Šis failas yra tuščias arba visos jame esančios paslaugos jau yra prieinamos programoje</string>
+    <string name="backup__update_required_to_import_title">Norint importuoti šio failo turinį reikės naujos programėlės versijos. Naujausią versiją galite rasti „App Store“</string>
+    <string name="backup__cant_read_file_error">Negaliu atidaryti šio failo. Jis gali būti sugadintas arba bandant jį atidaryti įvyko klaida. Prašome pasirinkti kitą failą</string>
+    <string name="backup__password">Slaptažodis</string>
+    <string name="backup__repeat_password">Pakartokite slaptažodį</string>
+    <string name="backup__incorrect_character_error">Netinkamas simbolis. Naudokite tik raides A–Z, a–z, skaitmenis ir specialiuosius simbolius: -_/!#$%&amp;+*~@?=^.,\'(){}[]:;&lt;&gt;|</string>
+    <string name="backup__to_short_error">Įvestas žodžių junginys yra per trumpas (mažiausiai 3 simboliai)</string>
+    <string name="backup__passwords_dont_match">Slaptažodžiai nesutampa</string>
+    <string name="backup__save_and_export">Išsaugoti ir eksportuoti</string>
+    <string name="backup__set_password_title">Norėdami užtikrinti didesnę atsarginės kopijos failo apsaugą, nustatykite slaptažodį</string>
+    <string name="backup__enter_password_title">Įveskite šio atsarginės kopijos failo slaptažodį, kad būtų galima tęsti importavimo procesą</string>
+    <string name="backup__backup_file_password_title">Nustatykite šios atsarginės kopijos failo slaptažodį</string>
+    <string name="backup__incorrect_password">Neteisingas slaptažodis</string>
+    <!-- %d - number -->
+    <string name="backup__new_services">%d naujų paslaugų</string>
+    <!-- %d - number -->
+    <string name="backup__services_imported_count">Importuota %d paslaugų.</string>
+    <!-- backup__user_has_icloud_problem -->
+    <string name="backup__icloud_problem">Kilo problema su „iCloud“. Patikrinkite sistemos nustatymus</string>
+    <!-- backup__encrypted_unsupported -->
+    <string name="backup__encrypted_files_not_supported">Šis failas yra užšifruotas. Mes palaikome tik neužšifruotus failus</string>
+    <string name="tokens__copy_token">Kopijuoti</string>
+    <!-- tokens__i_want_to_delete_this_servie -->
+    <string name="tokens__i_want_to_delete_this_token">Taip, noriu ištrinti šią paslaugą</string>
+    <string name="color__neutral">Neutralus</string>
+    <string name="color__light_blue">Šviesiai mėlyna</string>
+    <string name="color__indigo">Indigo</string>
+    <string name="color__purple">Violetinis</string>
+    <string name="color__turquoise">Turkisas</string>
+    <string name="color__green">Žalia</string>
+    <string name="color__red">Raudona</string>
+    <string name="color__orange">Oranžinė</string>
+    <string name="color__yellow">Geltona</string>
+    <string name="settings__knowledge">Žinynas</string>
+    <string name="settings__support_and_share">Palaikyti ir pasidalinti</string>
+    <string name="settings__tell_a_friend">Papasakokite draugui</string>
+    <string name="settings__write_a_review">Parašykite apžvalgą</string>
+    <string name="settings__about">Apie</string>
+    <string name="settings__privacy_policy">Privatumo politika</string>
+    <string name="settings__terms_of_service">Paslaugų teikimo sąlygos</string>
+    <string name="settings__version">Programos versija %s</string>
+    <string name="settings__no_limit">Jokių apribojimų</string>
+    <string name="settings__pin_code">PIN kodas</string>
+    <string name="settings__app_security">Programos saugumas</string>
+    <string name="settings__app_blocking">Užrakinimo nustatymai</string>
+    <string name="settings__face_id">Veido atpažinimas</string>
+    <string name="settings__touch_id">Touch ID</string>
+    <!-- settings__how_many_attempts_header -->
+    <string name="settings__too_many_attempts_header">Neteisingų bandymų skaičius:</string>
+    <string name="settings__how_many_attempts_footer">Pasireinkite maksimalų neteisingų bandymų įvesti kodą po kurio programa bus užrakinta nurodytam laikui.</string>
+    <string name="settings__block_for">Užrakinimo laikas</string>
+    <string name="settings__3_minutes">3 minutės</string>
+    <string name="settings__5_minutes">5 minutės</string>
+    <string name="settings__10_minutes">10 minučių</string>
+    <string name="settings__limit_of_trials">Maks. nepavykusių bandymų</string>
+    <string name="settings__pin_4_digits">4 skaičių kodas</string>
+    <string name="settings__pin_6_digits">6 skaičių kodas</string>
+    <string name="settings__biometric_authentication">Biometrinis prisijungimas</string>
+    <string name="settings__donations">Parėmimai</string>
+    <string name="settings__donate_twofas">Paremkite 2FAS</string>
+    <string name="new_version__new_version_title">Nauja versija</string>
+    <string name="new_version__new_version_message_ios">„App Store“ parduotuvėje pasirodė nauja „2FAS“ versija. Atnaujinkite dabar!</string>
+    <string name="new_version__update_action">Atnaujinkite dabar</string>
+    <!-- new_version__skip_action -->
+    <string name="new_version__skip_title">Praleisti šią versiją</string>
+    <!-- new_version__later_action -->
+    <string name="new_version__update_later">Atnaujinsiu vėliau</string>
+    <string name="browser__browser_extension">Naršyklės plėtinys</string>
+    <string name="browser__info_title">„2FAS Auth“ naršyklės plėtinys</string>
+    <string name="browser__info_description_first">Įdiekite „2FAS Auth“ naršyklės plėtinį į savo stacionarųjį kompiuterį.</string>
+    <string name="browser__info_description_second">Susiekite ją su savo „2FAS“ programėle.</string>
+    <string name="browser__more_info">Daugiau informacijos:</string>
+    <string name="browser__more_info_link_title">2fas.com/be</string>
+    <string name="browser__pair_with_web_browser">Susieti su interneto naršykle</string>
+    <string name="browser__more_info_link">https://www.2fas.com/be</string>
+    <string name="browser__pairing_successful_title">Susiejimas pavyko!</string>
+    <string name="browser__pairing_successful_description">„2FAS“ siųs jums „Push“ pranešimą kiekvieną kartą, kai prisijungsite prie savo internetinių paslaugų naudodami šią interneto naršyklę. Jums nebereikės kiekvieną kartą iš naujo įvesti savo kodų.</string>
+    <string name="browser__pairing_failed_title">Susiejimas nepavyko</string>
+    <string name="browser__pairing_failed_description">Šis QR kodas nebuvo atpažintas, todėl „2FAS“ negalėjo susieti šio įrenginio su naršyklės plėtiniu. Prašome bandyti dar kartą.</string>
+    <!-- browser__pairing_already_paired_title -->
+    <string name="browser__already_paired_title">Jau susietas!</string>
+    <!-- browser__pairing_already_paired_description -->
+    <string name="browser__already_paired_description">Šis naršyklės plėtinys jau susietas su šiuo įrenginiu.</string>
+    <string name="browser__contact_support">Susisiekite su pagalbos tarnyba</string>
+    <string name="browser__pairing_with_browser">Susiejama su naršykle</string>
+    <!-- browser__paired_devices -->
+    <string name="browser__paired_devices_browser_title">Susieti įrenginiai (interneto naršyklės)</string>
+    <string name="browser__add_new">Pridėti naują</string>
+    <!-- browser__this_device -->
+    <string name="browser__this_device_name">Įrenginio pavadinimas</string>
+    <string name="browser__device_name">Įrenginio pavadinimas</string>
+    <string name="browser__name">Pavadinimas</string>
+    <string name="browser__this_device_footer">Šis pavadinimas padės jums atpažinti šį įrenginį tarp kitų įrenginių, susietų su „2FAS Auth“ naršyklės plėtiniu</string>
+    <string name="browser__browser_extension_settings">Naršyklės plėtinių nustatymai</string>
+    <string name="browser__unkown_name">&lt;NEŽINOMAS_PAVADINIMAS&gt;</string>
+    <string name="browser__request_source_description">%1$s paprašė 2FA rakto, skirto %2$s. Pasirinkite paslaugą, kurią norite autorizuoti, ir išsaugokite ją su šiuo domenu.</string>
+    <string name="browser__request">Naršyklės užklausa</string>
+    <!-- browser__code_success -->
+    <string name="browser__code_success_title">Raktas išsiųstas sėkmingai!</string>
+    <string name="browser__code_failure">Kilo klaida siunčiant kodą. %s</string>
+    <string name="browser__deleting_paired_device_title">Susieto įrenginio šalinimas</string>
+    <string name="browser__deleting_paired_device_content">Ar tikrai norite ištrinti susietą įrenginį?</string>
+    <string name="browser__pairing_date">Susiejimo data</string>
+    <string name="browser__forget_this_browser">Pamiršk šią interneto naršyklę</string>
+    <!-- browser__service_is_paired_list_description -->
+    <string name="browser__paired_domains_list_title">Suporuotų domenų sąrašas.</string>
+    <string name="browser__deleting_extension_pairing_title">Pašalinti domeną?</string>
+    <string name="browser__deleting_extension_pairing_content">Kai kitą kartą naudodami naršyklės plėtinį prisijungsite prie %s, jūsų bus paprašyta vėl susieti šį domeną.</string>
+    <string name="browser__push_notifications_title">„Push“ pranešimai</string>
+    <string name="browser__push_notifications_content">Norint naudotis tokiomis funkcijomis kaip naršyklės plėtinys, programai reikia prieigos prie „Push“ pranešimų. Šį nustatymą galite bet kada pakeisti sistemos nustatymuose.</string>
+    <string name="browser__request_expired">Prašymo galiojimo laikas pasibaigęs</string>
+    <string name="browser__2fa_token_request_title">2FA rakto užklausa</string>
+    <!-- ADD A SPACE AT THE END! -->
+    <string name="browser__2fa_token_request_content">Ar norite pasidalinti dviejų veiksnių autentifikavimo (2FA) raktu, skirtu</string>
+    <string name="notifications__no_notifications">Pranešimų nėra</string>
+    <string name="CFBundleSpokenName">2 F A S</string>
+    <string name="commons__2fas_toolbar">2FAS</string>
+    <string name="backup__google_drive_not_available">„Google Drive“ neveikia</string>
+    <string name="backup__google_drive_disabled_title">Naudotojas išjungė „Google Drive“</string>
+    <string name="backup__update_required_to_import_title_2">Norėdami importuoti šio failo turinį, jums reikės naujos programėlės versijos. Naujausią versiją rasite „Google Store“</string>
+    <string name="tokens__qr_code_leads_to_google_store">Šis QR kodas nukreips jus į „Google Store“</string>
+    <string name="introduction__page_4_content_android">Jūsų raktai saugomi neprisijungus prie interneto įrenginio atmintyje, todėl nepamirškite padaryti savo paslaugų atsarginę kopiją! Naudokite „Google Drive Sync“ ir PIN kodą, kad apsisaugotumėte nuo neteisėtos prieigos ir įrenginio sugadinimo.</string>
+    <string name="new_version__new_version_message_android">„Google Store“ parduotuvėje pasirodė nauja „2FAS“ versija. Atnaujinkite dabar!</string>
+    <string name="security_error_no_match">PIN nesutampa! Bandykite dar kartą.</string>
+    <string name="settings_developer_options">Kūrėjo parinktys</string>
+    <string name="settings__external_import">Importuoti raktus</string>
+    <string name="settings__browser_extension_result_toolbar_title">Poravimo rezultatas</string>
+    <string name="tokens__caution">ATSARGIAI</string>
+    <string name="tokens__qr_point_and_scan_again">Nukreipkite kamerą į tinkamą QR kodą ir skenuokite dar kartą.</string>
+    <string name="tokens__service_unsaved_changes">Ar norite nepaisyti visų padarytų pakeitimų?</string>
+    <string name="tokens__service_unsaved_changes_title">Neišsaugoti pakeitimai</string>
+    <string name="tokens__service_key_invalid_format">Slapto rakto formatas netinkamas</string>
+    <string name="intent_error_no_gallery_app">Sistemos klaida! Nėra sistemos galerijos programos.</string>
+    <string name="gdrive_permission_title">„Google drive“ Leidimas</string>
+    <string name="gdrive_permission_msg">Norint išsaugoti atsarginės kopijos duomenis mums reikia „Google drive“ leidimo.</string>
+    <string name="gdrive_internet_title">Reikalingas interneto ryšys.</string>
+    <string name="gdrive_internet_msg">Norėdami sinchronizuoti su „google“ turite įjungti interneto ryšį.</string>
+    <string name="gdrive_wipe_internet_msg">Norėdami atšaukti „google drive“ prieigą turite įjungti interneto ryšį.</string>
+    <string name="backup_explanation_msg">Automatiškai saugoti ir sinchronizuoti atsarginės kopijos failą paslėptame „Google drive“ aplanke. Šis aplankas pasiekiamas tik per 2FAS programą.</string>
+    <string name="backup_error_unknown">Atsarginės kopijos sinchronizavimo metu įvyko klaida. Po kelių minučių pabandykite iš naujo paleisti programą ir bandykite dar kartą.</string>
+    <string name="backup_error_encrypt_unknown">Atsarginės kopijos šifravimo metu įvyko klaida. Nustatykite savo slaptažodį dar kartą.</string>
+    <string name="backup_error_decrypt_unknown">Atsarginės kopijos iššifravimo metu įvyko klaida. Nustatykite savo slaptažodį dar kartą.</string>
+    <string name="backup__google_drive_problem_title">Kilo problema su „iCloud“. Patikrinkite sistemos nustatymus</string>
+    <string name="backup_error_auth">Su jūsų „Google drive“ paskyros leidimu kilo bėdų. Pabandykite išjungti ir vėl įjungti sinchronizavimą.</string>
+    <string name="backup_error_no_password">Jūsų atsarginė kopija apsaugota slaptažodžiu. Įjunkite ir įveskite slaptažodį.</string>
+    <string name="backup_error_wrong_password">Jūsų atsarginė kopija apsaugota slaptažodžiu, bet nurodytas slaptažodis netinkamas. Įjunkite ir įveskite slaptažodį.</string>
+    <string name="customization_service_assignment">Tarnybos paskyrimas</string>
+    <string name="customization_personalization">Personalizavimas</string>
+    <string name="customization_change_brand">Keiskite išvaizdą</string>
+    <string name="customization_advanced">Papildoma</string>
+    <string name="customization_request_icon">Prašyti piktogramos</string>
+    <string name="customization_edit_label">Keiskite pavadinimą</string>
+    <string name="groups_delete_msg">Ar tikrai norite pašalinti šią grupę?</string>
+    <string name="export_backup_title">Jūsų atsarginės kopijos failas paruoštas eksportavimui</string>
+    <string name="export_backup_msg">Eksportuokite šį failą ir jūsų 2FAS raktai bus saugiai išsaugoti. Vėliau galėsite į šį ar kitą įrenginį naudodami 2FAS programą.</string>
+    <string name="export_backup_pass">Eksportuoti failą be slaptažodžio\n(nerekomenduojama)</string>
+    <string name="import_backup_msg2">Failas bus sichronizuotas su programų tarnybų sąrašu.</string>
+    <string name="backup_notice_later">Gal vėliau</string>
+    <string name="backup_notice_cta">Įjungti</string>
+    <string name="widgets_empty_msg">Nepridėta tarnybų</string>
+    <string name="backup__section_description_google">REKOMENDUOJAMA: google drive sinchronizacija saugo jūsų raktus nuo atvejų jog pamesite arba sugadinsite įrenginį. Palikite įjungtą.</string>
+    <string name="backup_turn_off_title">Išjungti google drive sinchronizaciją?</string>
+    <string name="backup_turn_off_msg1">2FA raktai liks šiame įrenginyje ir jūsų „Google drive“, bet nebus sinchronizuojami. Taipogi jūs būsite atjungti nuo jūsų google paskyros.</string>
+    <string name="backup_turn_off_msg2">Nepamirškite, jei prarasi arba sugadinsite šį įrenginį arba pašalinsite programą nebegalėsite atstatyti raktų. Galite prarasti prieigą prie savo paskyrų apsaugotų 2FA.</string>
+    <string name="backup_settings_password_set_subtitle">Apsaugokite google drive atsarginę kopiją su pasirinktu slaptažodžiu.</string>
+    <string name="backup_settings_password_remove_title">Pašalinti slaptažodį</string>
+    <string name="backup_settings_password_remove_subtitle">Pašalinti Google drice atsarginės kopijos slaptažodį.</string>
+    <string name="backup_settings_account_title">Google paskyra</string>
+    <string name="backup_settings_sync_title">Paskutinė sinchronizacija</string>
+    <string name="browser_extension_result_success_description">2FAS siųs jums PUSH pranešimus kai tik prisijungsite prie tarnybos naudodami šią naršyklę. Jums nereikės kiekvieną kartą rašyti raktų.</string>
+    <string name="browser_extension_browser_dialog">Naršyklės pavadinimas</string>
+    <string name="biometric_dialog_auth_title">Autentifikuoti</string>
+    <string name="biometric_dialog_auth_subtitle">Naudoti biometrinius duomenis</string>
+    <string name="about_licenses">Atviro kodo licencijos</string>
+    <string name="externalimport_description">Pasirinkite programą iš sąrašo ir sekite instrukcijas.</string>
+    <string name="externalimport_select_app">Pasirinkite programą</string>
+    <string name="externalimport_google_authenticator">Google Authenticator</string>
+    <string name="externalimport_aegis">Aegis</string>
+    <string name="externalimport_raivo">Raivo OTP</string>
+    <string name="android__app_name">2FAS autentifikacija</string>
+    <string name="commons__yes">Taip</string>
+    <string name="commons__no">Ne</string>
+    <string name="commons__search">Ieškoti</string>
+    <string name="errors__no_app">Šios nuorodos nepalaiko jokio programa</string>
+    <string name="permissions__camera_permission">Kameros leidimas</string>
+    <string name="permissions__camera_permission_description">Norint skenuoti QR kodus reikia leidimo naudoti kamerą. Jei norite naudoti šią funkciją eikite į „Programos informacija“ „Leidimai“ ir leiskite naudoti kamerą.</string>
+    <string name="security__disable_pin">Išjungti PIN</string>
+    <string name="security__enter_your_new_pin">Prašome įvesti savo naują %s PIN</string>
+    <string name="security__pin_error_incorrect">PIN neteisingas! Bandykite dar kartą</string>
+    <string name="settings__biometrics">Biometriniai duomenys</string>
+    <string name="settings__support">2FAS palaikymas</string>
+    <string name="settings__developer">Kūrėjo parinktys</string>
+    <string name="settings__option_fingerprint">Biometrinis užraktas</string>
+    <string name="settings__option_theme">Tema</string>
+    <string name="settings__theme_option_auto">Automatinė</string>
+    <string name="settings__theme_option_auto_system">Auto - sistemos nustatymai</string>
+    <string name="settings__theme_option_dark">Tamsi</string>
+    <string name="settings__theme_option_light">Šviesi</string>
+    <string name="tokens__copied_clipboard">Raktas nukopijuotas į iškarpinę!</string>
+    <string name="tokens__next_copied_clipboard">Sekantis raktas nukopijuotas į iškarpinę!</string>
+    <string name="tokens__do_you_really_want_to_remove_all_devices">Ar tikrai norite visam laikui pašalinti šią 2FA tarnybą?</string>
+    <string name="tokens__fab_addmanually">Pridėti rankiniu būdu</string>
+    <string name="tokens__qr_does_not_work">Šis QR kodas neveikia!</string>
+    <!-- Could not read QR code from the image! -->
+    <string name="tokens__qr_read_image_failed">Iš šio paveikslėlio perskaityti QR kodo nepavyko!</string>
+    <string name="tokens__qr_read_image_try_again">Pabadykite pasirinkti kitą paveikslėlį.</string>
+    <string name="tokens__remove_it_forever">Pašalinti</string>
+    <!-- Service could not be added, Service Key is invalid. Try again. -->
+    <string name="tokens__service_add_error">Tarnybos pridėti nepavyko, nes slaptas raktas netinkamas. Bandykite dar kartą.</string>
+    <!-- A service with this Service Key already exists. Do you want to override it? -->
+    <string name="tokens__service_already_exists">Tarnyba su šiuo slaptu raktu jau egzistuoja. Ar norite perrašyti?</string>
+    <string name="tokens__service_key_invalid_characters">Rakte yra netinkamų simbolių</string>
+    <string name="tokens__show_service_key">Rodyti slaptą raktą</string>
+    <!-- Your Service Key is protected. Please add PIN or Fingerprint lock in order to see it. -->
+    <string name="tokens__show_service_key_setup_lock">Jūsų slaptas raktas apsaugotas. Norėdami jį pamatyti pridėkite PIN arba biometrinį prisijungimą.</string>
+    <string name="tokens__tokens_list_is_empty">Tarnybų sąrašas tuščias</string>
+    <string name="tokens__use_plus_button_to_add_tokens">Norėdami pridėti naują tarnybą naudokite mygtuką „+“</string>
+    <string name="tokens__you_will_not_be_able_to_sign_in_to_your">Jūs negalėsite prisijungti prie savo %1$s paskyros be šio rakto kol bus įjungta 2 faktorių autentifikacija %2$s.\n\nNegalėsite atstatyti šio rakto iš 2FAS šiukšliadėžės.</string>
+    <string name="import_ga_success">Tarnybos sėkmingai importuotos!</string>
+    <!-- You need active Internet connection in order to sync your backup. Please turn on your network connection and try again. -->
+    <string name="backup_error_network">Norint sinchronizuoti atsarginę kopiją jums reikalingas interneto ryšys. Įjunkite interneto ryšį ir bandykite dar kartą.</string>
+    <string name="update_app_title">Atnaujinti programą</string>
+    <!-- Please update to the newest 2FAS version, to get all features and maintain high security level. -->
+    <string name="update_app_msg">Norint užtikrinti saugumą ir visas galimybes, prašome atnaujinti į naujausią 2FAS versiją.</string>
+    <string name="delete_service_title">Jūs šalinate</string>
+    <!-- from your 2FAS service list.\n\nRemember, as long as you have second factor authentication turned on, you will not log in to %s account without this token. -->
+    <string name="delete_service_msg">iš jūsų 2FAS tarnybų sąrašo.\n\nPrisiminkite, kol turėsite įjungtą antro faktoriaus autentifikaciją, jūs jungsitės prie paskyros %s be šio rakto.</string>
+    <string name="delete_service_cta">Pašalinti</string>
+    <string name="export_backup_cta">Eksportuoti</string>
+    <string name="export_backup_share_cta">Dalintis</string>
+    <string name="import_backup_title">Importuoti atsarginės kopijos failą iš</string>
+    <string name="import_backup_msg1">Jūs ruošiatės importuoti atsarginės kopijos failą su</string>
+    <string name="import_backup_cta">Importuoti</string>
+    <string name="widgets_warning_msg">Raktai matomi valdiklyje nėra apsaugoti jūsų PIN kodu.</string>
+    <string name="widgets_warning_title">ĮSPĖJIMAS!</string>
+    <string name="widgets_warning_cta">Taip, aš tikras</string>
+    <string name="backup_notice_title">2FAS atsarginė kopija</string>
+    <string name="backup_notice_msg">Įjunkite 2FAS atsarginę kopiją. Jei prarasite arba sugadinsite įrenginį galėsite atstatyti visus savo raktus.</string>
+    <string name="brand_empty_msg">Dėja, nerasta</string>
+    <!-- Select which services will be visible on widget: -->
+    <string name="widgets_select_msg">Pasirinkite kurios tarnybos bus matomos valdiklyje:</string>
+    <string name="backup_turn_off_cta">Išjungti sinchronizavimą</string>
+    <string name="backup_turn_off_cancel">Atsisakyti</string>
+    <string name="backup_settings_password_set_title">Nustatyti slaptažodį</string>
+    <string name="backup_settings_delete_title">Pašalinti atsarginę kopiją iš „Google drive“</string>
+    <!-- If you delete this file from your Google Drive, synchronization on all synchronized devices will be disabled and tokens will remain only on this and other devices via local storage. -->
+    <string name="backup_settings_delete_subtitle">Jei pašalinsite šį failą iš „Google Drive“, visuose įrenginiuose bus išjungta sinchronizacija, raktai bus prieinami tik šiame įrenginyje ir kituose įrenginiuose per vietinę saugyklą.</string>
+    <string name="browser__result_error_browser_paired">Jūsų 2FAS programa jau suporuota su šia naršykle.</string>
+    <!-- Scan QR code again -->
+    <string name="browser__result_error_cta">Skenuoti QR kodą dar kartą</string>
+    <string name="browser__scan_error_dialog_title">Klaida</string>
+    <!-- Scanned QR code has unsupported format. Please try again. -->
+    <string name="browser__scan_error_dialog_msg_invalid_code">Nuskenuotas QR kodas yra nepalaikomo formato. Bandykite dar kartą.</string>
+    <string name="browser__scan_error_dialog_msg_unknown">Skenuojant QR kodą įvyko nežinoma klaida. Bandykite dar kartą.</string>
+    <string name="biometric_dialog_auth_cancel">Šį kartą naudoti PIN</string>
+    <string name="biometric_dialog_setup_title">Įgalinti autentifikaciją</string>
+    <string name="biometric_dialog_setup_cancel">Atsisakyti</string>
+    <!-- To enable Biometric Lock you need to enable and set a PIN Code. -->
+    <string name="settings__option_fingerprint_description">Norėdami įjungti biometrinį užraktą turite nustatyti PIN kodą.</string>
+    <string name="settings__block_for_footer">Pasirinkite kuriam laikui programa bus užrakinta.</string>
+    <string name="error__out_of_disk_space">Atrodo, kad arba baigėsi vieta diske, arba toks įvykis praeityje sugadino duomenų bazę</string>
+    <string name="error__cloud_backup_newer_version">Atsarginė kopija debesyje buvo perkelta į naują versiją. Atnaujinkite programėlę</string>
+    <string name="error__cloud_backup_encrypted_not_supported">Atsarginė kopija debesyje yra šifruota. Atnaujinkite programėlę, kad galėtumėte naudotis šia funkcija</string>
+    <string name="extension__continue_to_app">Eiti į programą</string>
+    <string name="extension__cancel">Atsisakyti</string>
+    <string name="extension__authorize">Leisti</string>
+    <string name="extension__dismiss">Atmesti</string>
+    <string name="extension__request_sent">Užklausa išsiųsta</string>
+    <string name="extension__send_question_title">Siųsti raktą?</string>
+    <string name="extension__send_question_content">%1$s paprašė 2FAS rakto skirto %2$s</string>
+    <string name="extension__error_while_sending">Klaida siunčiant raktą</string>
+    <string name="extension__not_paired_title">Ši svetainė nėra susieta</string>
+    <string name="extension__not_paired_content">Atidarykite programėlę ir pasirinkite paslaugą šiam domenui</string>
+    <string name="extension__error_open_the_app">Atidarykite programėlę ir patikrinkite, ar naršyklės plėtinys yra tinkamai susietas</string>
+    <string name="extension__error_no_internet">Kilo ryšio problema</string>
+    <string name="extension__try_again">Prašome bandyti dar kartą</string>
+    <string name="extension__error">Klaida</string>
+    <string name="extension__error_no_services">Kad naršyklės plėtinys veiktų, prašome pridėti paslaugas į „2FAS“ programėlę</string>
+    <string name="extension__approve">Leisti</string>
+    <string name="extension__deny">Drausti</string>
+    <string name="settings__turn_pin_code_to_enable_faceid">Įjunkite PIN kodą arba „Veido atpažinimą“ ir apsaugokite savo įrenginį nuo neteisėto priėjimo prie jūsų raktų.</string>
+    <string name="settings__turn_pin_code_to_enable_touchid">Įjunkite PIN kodą arba „Touch id“ ir apsaugokite savo įrenginį nuo neteisėto priėjimo prie jūsų raktų.</string>
+    <string name="settings__send_logs_error_not_exists">Pateiktas kodas yra neteisingas. Prašome jį dar kartą patikrinti.</string>
+    <string name="settings__send_logs_error_expired">Pateikto kodo galiojimo laikas baigėsi. Norėdami gauti naują kodą, kreipkitės į pagalbos komandą</string>
+    <string name="settings__send_logs_error_no_internet">Nėra interneto ryšio. Patikrinkite ryšį ir pabandykite dar kartą</string>
+    <string name="settings__send_logs_error_server">Atrodo, kad mūsų serveryje kilo problema. Jei problema neišsispręs, prašome susisiekti su mūsų pagalbos komanda</string>
+    <string name="settings__send_logs_error_title">Operacija nepavyko</string>
+    <string name="settings__send_logs_sent_title">Žurnalai išsiųsti\u0020</string>
+    <string name="settings__send_logs_sent_description">Ačiū, kad susisiekėte. Juos išnagrinėsime kuo greičiau.</string>
+    <string name="commons__send">Siųsti</string>
+    <string name="settings__send_logs_title">Siunčiami žurnalai</string>
+    <string name="settings__send_logs_description_link">Pagalbos komandos pateiktas kodas buvo įrašytas automatiškai. Siųsti žurnalus?</string>
+    <string name="settings__send_logs_description_edit">Įveskite arba įklijuokite mūsų pagalbos komandos pateiktą kodą</string>
+    <string name="settings__send_logs">Siųsti žurnalus</string>
+    <string name="settings__recommendation">Išbandykite šią nuostabią 2 faktorių autentifikavimo programą, kurią sukūrė 2FAS: https://2fas.com</string>
+    <string name="settings__acknowledgements">Padėkos</string>
+    <string name="introduction__import_external_app">Importuoti iš išorinės programėlės</string>
+    <plurals name="past_duration_seconds">
+        <item quantity="one">prieš akimirką</item>
+        <item quantity="few">prieš kelias akimirkas</item>
+        <item quantity="other">prieš kelias akimirkas</item>
+    </plurals>
+    <plurals name="past_duration_minutes">
+        <item quantity="one">%d minutė prieš</item>
+        <item quantity="few">%d minutės prieš</item>
+        <item quantity="other">%d minučių prieš</item>
+    </plurals>
+    <plurals name="past_duration_hours">
+        <item quantity="one">%d valandą prieš</item>
+        <item quantity="few">%d valandas prieš</item>
+        <item quantity="other">%d valandų prieš</item>
+    </plurals>
+    <plurals name="past_duration_days">
+        <item quantity="one">%d dieną prieš</item>
+        <item quantity="few">%d dienas prieš</item>
+        <item quantity="other">%d dienų prieš</item>
+    </plurals>
+    <plurals name="past_duration_weeks">
+        <item quantity="one">%d savaitę prieš</item>
+        <item quantity="few">%d savaites atgal</item>
+        <item quantity="other">%d savaičių atgal</item>
+    </plurals>
+    <plurals name="past_duration_months">
+        <item quantity="one">%d mėnesio senumo</item>
+        <item quantity="few">%d mėnesius prieš</item>
+        <item quantity="other">%d mėnesių prieš</item>
+    </plurals>
+    <string name="commons__unknown_error">Įvyko nežinoma klaida! Bandykite dar kartą!</string>
+    <string name="backup__export_result_success">Failas sėkmingai išsaugotas!</string>
+    <string name="backup__share_result_failure">Nepavyko pasidalinti failu!</string>
+    <string name="backup__enter_password_dialog_title">Įveskite slaptažodį</string>
+    <string name="backup__remove_password_msg">Įveskite atsarginį slaptažodį, kad galėtumėte tęsti pašalinimą.</string>
+    <string name="backup__revoke_google_access_msg">Įveskite atsarginį slaptažodį, kad galėtumėte atšaukti prieigą prie „Google“.</string>
+    <string name="backup__synchronization_settings">Sinchronizavimo nustatymai</string>
+    <string name="backup__local_file_title">Vietinis failas</string>
+    <string name="backup__drive_title">„Google Drive“ sinchronizavimas</string>
+    <string name="backup__delete_file_title">Ar norite ištrinti atsarginę kopiją iš „Google Drive“?</string>
+    <string name="backup__delete_file_msg">„Google Sync“ funkcija bus išjungta. Jūsų raktai liks išsaugoti įrenginyje, tačiau „2FAS“ programėlė bus atsijungusi nuo jūsų „Google“ paskyros šiame ir kituose sinchronizuotuose įrenginiuose.</string>
+    <string name="backup__sync_status_waiting">Laukiama sinchronizacijos…</string>
+    <string name="backup__sync_status_progress">Sinchronizuojama…</string>
+    <string name="import_backup_msg1_encrypted">Jūs ketinate importuoti užšifruotą atsarginės kopijos failą.</string>
+    <string name="externalimport__choose_json_cta">Pasirinkite JSON failą</string>
+    <string name="externalimport__aegis_msg">Eksportuokite savo paskyras iš „Aegis“ į nešifruotą JSON failą ir įkelkite jį naudodami mygtuką „Pasirinkti JSON failą“. Nepamirškite pašalinti failą po sėkmingo importavimo.</string>
+    <string name="externalimport__raivo_msg">Naudokite Raivo nustatymuose esančią parinktį „Eksportuoti OTP į ZIP archyvą“, išsaugokite ZIP failą, išpakuokite jį ir importuokite JSON failą naudodami mygtuką „Pasirinkti JSON failą“.</string>
+    <string name="externalimport__no_tokens_msg">Tačiau nėra jokių paslaugų, kurias būtų galima importuoti.</string>
+    <string name="commons__try_again">Pabandykite dar kartą</string>
+    <string name="commons__proceed">Tęsti</string>
+    <string name="externalimport__ga_title">2FA raktų importavimas iš „Google Authenticator“ programėlės</string>
+    <string name="externalimport__aegis_title">2FA raktų importavimas iš „Aegis“ programėlės</string>
+    <string name="externalimport__raivo_title">2FA raktų importavimas iš „Raivo“ programėlės</string>
+    <string name="externalimport__ga_success_msg">Šis QR kodas leidžia importuoti raktus iš „Google Authenticator“.</string>
+    <string name="externalimport__aegis_success_msg">Šis JSON failas leidžia importuoti raktus iš „Aegis“.</string>
+    <string name="externalimport__raivo_success_msg">Šis JSON failas leidžia importuoti raktus iš „Raivo“.</string>
+    <string name="externalimport__read_error">Nepavyko nuskaityti jokių raktus. Pabandykite pasirinkti kitą failą.</string>
+    <string name="settings__gd_sync_info">„Google drive“ sinchronizacijos priminimas</string>
+    <string name="settings__gd_sync_disable_confirm">Ar esate tikri? be „Google drive“ sinchronizavimo negalėsite atstatyti raktų pametus arba sugadinus telefoną!</string>
+    <string name="extension__code_sent_msg">Kodas išsiųstas sėkmingai</string>
+    <string name="extension__code_sent_error_msg">Siunčiant kodą įvyko klaida</string>
+    <string name="tokens__add_service_title">Pridėti naują paslaugą</string>
+    <string name="tokens__customize_service_title">Pritaikyti paslaugą</string>
+    <string name="extension__services_suggested_header">Rekomenduojama</string>
+    <string name="extension__services_all_header">Visos paslaugos</string>
+    <string name="extension__services_other_header">Kitos paslaugos</string>
+    <string name="settings__ssl_error_title">SSL klaida</string>
+    <string name="settings__ssl_error_description">Įvyko SSL klaida, todėl neįmanoma užmegzti saugaus ryšio su serveriu. Įsitikinkite, kad turite naujausią programėlės versiją, arba pabandykite pakeisti tinklą.</string>
+    <string name="backup__import_error_file_size">Failas, kurį bandote importuoti, yra per didelis. Dydžio riba 10 MB.</string>
+    <string name="backup__import_error_file_invalid">Failas, kurį bandote importuoti, yra netinkamas arba sugadintas. Prašome pasirinkti kitą failą.</string>
+    <string name="appearance__toggle_active_search">Aktyvi paieška</string>
+    <string name="appearance__active_search_description">Aktyvi paieška paleidžiant sistemą.</string>
+    <string name="widgets__expires_in">Galioja iki:</string>
+    <string name="widgets__settings">Valdiklio nustatymai</string>
+    <string name="errors__input_integer_number">Įvestis turi būti sveikasis skaičius</string>
+    <string name="errors__input_number">Įvestis turi būti skaičius</string>
+    <string name="errors__input_empty">Įvestis negali būti tuščia</string>
+    <string name="errors__input_too_long">Įvestis per ilga. Limitas: %d</string>
+    <string name="commons__best_match">Geriausias atitikimas</string>
+    <string name="settings__enable_crashlytics">Siųsti anonimiškas pranešimus apie gedimus</string>
+    <string name="settings__enable_crashlytics_description">Siųskite anonimiškas pranešimus apie programos gedimus, kad padėtumėte „2FAS“ nustatyti ir išspręsti programos problemas (reikės iš naujo paleisti programą).</string>
+    <string name="tokens__manage_list">Tvarkyti sąrašą</string>
+    <string name="settings__appearance">Išvaizda</string>
+    <string name="settings__show_next_token_desc">Rodyti kitą raktą, kai dabartinio galiojimo laikas artėja prie pabaigos.</string>
+    <string name="settings__list_style">Sąrašo stilius</string>
+    <string name="backup__reminder_msg">„Google Drive“ nesinchronizuotas.</string>
+    <string name="backup__reminder_cta">Eiti į atsarginių kopijų nustatymus</string>
+    <string name="settings__list_style_option_default">Numatytasis</string>
+    <string name="settings__list_style_option_compact">Kompaktiškas</string>
+    <string name="externalimport_lastpass">LastPass</string>
+    <string name="externalimport__lastpass_msg">Eksportuokite savo paskyras iš „LastPass“ į nešifruotą JSON failą ir įkelkite jį naudodami mygtuką „Pasirinkti JSON failą“. Nepamirškite ištrinti failą po sėkmingo importavimo.</string>
+    <string name="settings__about_crash_optout_title">Užstrigimų ataskaitos</string>
+    <string name="externalimport__lastpass_title">2FA raktų importavimas iš „LastPass“ programėlės</string>
+    <string name="externalimport__lastpass_success_msg">Šis JSON failas leidžia importuoti raktus iš „LastPass“.</string>
+    <string name="externalimport__info_lastpass_title">Importuoti raktus iš „LastPass“</string>
+    <string name="externalimport__info_aegis_title">Importuoti raktus iš „Aegis“</string>
+    <string name="externalimport__info_raivo_title">Importuoti raktus iš „Raivo OTP“</string>
+    <string name="externalimport__info_google_authenticator_title">Importuoti raktus iš „Google Authenticator“</string>
+    <!-- Counter eg.: "25s" -->
+    <string name="time_unit_seconds_short">s</string>
+    <string name="tokens__add_title">Susiekite šią paslaugą su 2FAS</string>
+    <string name="tokens__add_description">Nukreipkite fotoaparatą į ekraną, kad nuskaitytumėte QR kodą.</string>
+    <string name="tokens__add_other_methods">Kiti metodai</string>
+    <string name="tokens__add_enter_manual">Įveskite slaptąjį raktą rankiniu būdu</string>
+    <string name="tokens__add_from_gallery">Įkelkite ekrano kopiją su QR kodu</string>
+    <string name="tokens__add_success_title">Beveik baigta!</string>
+    <string name="tokens__add_success_description">Norėdami užbaigti paslaugos susiejimą, turite iš naujo įvesti šį raktą.</string>
+    <string name="tokens__add_manual_title">Susiekite šią paslaugą su 2FAS</string>
+    <string name="tokens__add_manual_description">Įveskite paslaugos pavadinimą ir slaptąjį raktą</string>
+    <string name="tokens__add_manual_service_name">Paslaugos pavadinimas</string>
+    <string name="tokens__add_manual_service_key">Slaptas raktas</string>
+    <string name="tokens__add_manual_other">Kiti nustatymai</string>
+    <string name="tokens__add_manual_other_optional">(neprivaloma)</string>
+    <string name="tokens__add_manual_done_cta">Pridėti paslaugą</string>
+    <string name="tokens__add_manual_help_cta">Nežinote, ką daryti? Bakstelėkite, jei reikia pagalbos</string>
+    <string name="tokens__add_manual_advanced">Išplėstiniai raktų nustatymai</string>
+    <string name="tokens__add_manual_additional_info">Papildoma informacija</string>
+    <string name="tokens__add_manual_advanced_description">Nerekomenduojama keisti numatytųjų raktų nustatymų. Tai darykite tik tuomet, kai to reikalauja jūsų dviejų veiksnių autentifikavimo (2FA) paslaugos teikėjas ir kai turite aiškias instrukcijas.</string>
+    <string name="settings__option_screenshots_description">Leiskite daryti programos ekrano kopijas 30 minutes.</string>
+    <string name="settings__option_screenshots">Leisti daryti ekrano kopijas</string>
+    <string name="settings__option_screenshots_confirm_title">Leisti daryti programos ekrano kopijas?</string>
+    <string name="settings__option_screenshots_confirm_description">Ar esate tikri? Ši parinktis leidžia daryti ekrano kopijas ir įrašyti bet kurį ekraną programėlėje. Tačiau tai taip pat leis bet kokius išorinius bandymus užfiksuoti ekrano vaizdą programėlėje.\nSaugumo sumetimais ši parinktis bus automatiškai išjungta po 30 minučių.</string>
+    <string name="social__social_media">Nuorodos į socialinius tinklus</string>
+    <string name="social__discord">„Discord“</string>
+    <string name="social__youtube">„YouTube“</string>
+    <string name="social__twitter">X (buvęs „Twitter“)</string>
+    <string name="social__github">GitHub</string>
+    <string name="social__linkedin">„LinkedIn“</string>
+    <string name="social__reddit">Reddit</string>
+    <string name="social__facebook">„Facebook“</string>
+    <string name="settings__hide_tokens_title">Slėpti raktus</string>
+    <string name="settings__hide_tokens_description">Paspaudus bus parodyti visi raktai</string>
+    <string name="browser__pair_manually_cta">Susieti rankiniu būdu</string>
+    <string name="browser__pair_manually_hint">Poravimo kodas</string>
+    <string name="externalimport__info_authenticatorpro_title">Importuoti raktus iš „Authenticator Pro“</string>
+    <string name="externalimport__authenticatorpro_success_msg">Šis tekstinis failas leidžia importuoti raktus iš „Authenticator Pro“.</string>
+    <string name="externalimport__authenticatorpro_title">2FA raktų importavimas iš programėlės „Authenticator Pro“</string>
+    <string name="externalimport__authenticatorpro_msg">Eksportuokite savo paskyras iš „Authenticator Pro“ į nešifruotą tekstinį failą ir įkelkite jį naudodami mygtuką „Pasirinkti tekstinį failą“. Nepamirškite pašalinti failą po sėkmingo importavimo.</string>
+    <string name="externalimport__authenticatorpro">„Stratum“ („Authenticator Pro“)</string>
+    <string name="externalimport__choose_txt_cta">Pasirinkite tekstinį failą</string>
+    <string name="fingerprint__biometric_invalidated">Biometrinis prisijungimas išjungtas dėl sistemos pirštų atspaudų nustatymų pakeitimų</string>
+    <string name="tokens__last_pass_import">2FA raktų importavimas iš „LastPass“ programėlės</string>
+    <string name="tokens__last_pass_import_subtitle">Naudodami šį QR kodą galite importuoti „LastPass“ raktus</string>
+    <string name="tokens__add_with_guide">Parodykite kaip</string>
+    <string name="guides__select_title">Peržiūrėti paslaugas</string>
+    <string name="guides__select_description">Pasirinkite paslaugą, kurią norite susieti su „2FAS“ programa</string>
+    <string name="guides__select_provide_guide">Ar norite pateikti dviejų veiksnių autentifikavimo (2FA) vadovus, skirtus jūsų paslaugai?</string>
+    <string name="guides__select_provide_guide_cta">Pritaikyti dabar</string>
+    <string name="color__pink">Rožinis</string>
+    <string name="color__brown">Rudas</string>
+    <string name="tokens__other_methods_header">Ar yra kitų metodų?</string>
+    <string name="tokens__camera_is_unavailable_app_permission">Kamera neveikia. Patikrinkite programų prieigos teises sistemos nustatymuose</string>
+    <!-- This key contains part of the tokens__camera_is_unavailable_app_permission key, which will be underlined in the app to look like a link to System Settings -->
+    <string name="tokens__camera_is_unavailable_app_permission_underline">Sistemos nustatymai</string>
+    <string name="commons__text_short_title">Pateiktas tekstas yra per trumpas (min. %d simbolių)</string>
+    <!-- This key should contain a part of the tokens__add_manual_advanced_description which is written in bold in the app -->
+    <string name="tokens__add_manual_advanced_description_highlight">nerekomenduojama</string>
+    <string name="guides__guide_init_title">„2FAS“ vadovas</string>
+    <string name="guides__guide_title">2FAS skirta %s</string>
+    <string name="guides__guide_universal_title">Universalus dviejų veiksnių autentifikavimo vadovas</string>
+    <string name="browser__save_choice">Išsaugoti mano pasirinkimą</string>
+    <string name="externalimport_andotp">andOTP</string>
+    <string name="externalimport__andotp_title">2FA raktų importavimas iš „andOTP“ programėlės</string>
+    <string name="externalimport__andotp_success_msg">Šis JSON failas leidžia importuoti raktus iš „andOTP“.</string>
+    <string name="externalimport__info_andotp_title">Importuoti raktus iš „andOTP“</string>
+    <string name="externalimport__andotp_msg">Eksportuokite savo paskyras iš „andOTP“ į nešifruotą JSON failą ir įkelkite jį naudodami mygtuką „Pasirinkti JSON failą“. Nepamirškite pašalinti failą po sėkmingo importavimo.</string>
+    <string name="introduction__backup_description">Kitu žingsniu jūsų bus paprašyta pasirinkti „Google Drive“ paskyrą, kurioje 2FA raktai bus saugiai saugomi.</string>
+    <string name="introduction__backup_take_risk_cta">Aš surizikuosiu, be atsarginės kopijos</string>
+    <string name="introduction__backup_success">„Google Drive“ sinchronizavimas sėkmingai įjungtas!</string>
+    <string name="backup__import_invalid_version">Šioje programos versijoje nepalaikomas atsarginės kopijos failas, kurį bandote importuoti. Programa palaiko tik atsarginių kopijų formato versijas iki %d, o failas, kurį bandote importuoti, yra %d versijos.</string>
+    <string name="commons__pair">Susieti</string>
+    <string name="introduction__backup_icloud_title">Saugus sinchronizavimas ir atsarginių kopijų kūrimas</string>
+    <!-- "**...**" means thar part between those asterisks will be in bold. -->
+    <string name="introduction__backup_icloud_description">„2FAS“ naudoja „iCloud“ saugiam jūsų 2FA raktų atsarginių kopijų kūrimui ir sinchronizavimui. Šifruoti atsarginių kopijų duomenys saugomi „iCloud“ ir prieinami tik per „2FAS“ programėlę. Be to, ši funkcija padeda atkurti raktus ir sinchronizuoti juos tarp „iOS“ įrenginių.</string>
+    <string name="introduction__backup_icloud_cta">Sužinokite daugiau apie atsargines kopijas</string>
+    <string name="backup__enter_password_google_drive_msg1">Atrodo, kad jūsų „Google Drive“ atsarginės kopijos failas yra apsaugotas slaptažodžiu. Įveskite teisingą slaptažodį, kad galėtumėte tęsti. Jei norite ištrinti savo „Google Drive“ atsarginės kopijos failą,</string>
+    <string name="backup__enter_password_google_drive_msg2">paspauskite čia, kad sužinotumėte, kaip</string>
+    <string name="settings__preferences">Nustatymai</string>
+    <string name="settings__it_matters">Tai svarbu</string>
+    <string name="settings__manage_tokens">Raktų tvarkymas</string>
+    <string name="settings__info_footer">Jūsų parama leidžia mums kurti naujas funkcijas ir tobulinti esamas. Ačiū!</string>
+    <string name="settings__trash_option">Ištraukti iš šiukšliadėžės</string>
+    <string name="periodic_notification_tips">Džiaugiamės, kad esate su mumis „2FAS“! 🌟 Skirkite akimirką ir susipažinkite su naudingais patarimais ir gudrybėmis 🛠️ programėlėje, kad užtikrintumėte didesnį saugumą 🔒.</string>
+    <string name="periodic_notification_backup">Įjunkite „2FAS Backup &amp; Sync“, kad niekada neliktumėte užrakinti, net jei pamestumėte telefoną – ramybė vienu paspaudimu! 🔐📱</string>
+    <string name="periodic_notification_browser_extension">Pagreitinkite prisijungimą naudodami „2FAS“ naršyklės plėtinį! 🚀 Atsisiųskite dabar ir mėgaukitės greitesniu bei patogesniu prisijungimu. 🌐✨</string>
+    <string name="periodic_notification_donate">Esame dėkingi už jūsų paramą „2FAS“! 🌟 Jei mūsų programa jums pasirodė naudinga, apsvarstykite galimybę paaukoti, kad padėtumėte mums užtikrinti jūsų skaitmeninio pasaulio saugumą. Kiekvienas indėlis yra svarbus! 🙏💙</string>
+    <!-- DO NOT TRANSLATE! -->
+    <string name="tokens__steam">STEAM</string>
+    <string name="widget__placeholder">Laikinasis žymeklis</string>
+    <string name="widget__size_not_supported">Šis dydis dar nepalaikomas</string>
+    <string name="widget__settings_description">Pasirinkite, kurias paslaugas norite rodyti valdiklyje. Jei paslaugų nėra, įsitikinkite, kad programėlės nustatymų skyriuje įjungėte valdiklius</string>
+    <string name="widget__service_icon">Paslaugos piktograma</string>
+    <string name="widget__not_enabled">2FAS nustatymų skyriuje valdiklio funkcija nėra įjungta</string>
+    <string name="widget__not_enabled_no_services">„2FAS“ nustatymų skyriuje valdiklio funkcija nėra įjungta, o programėlėje nėra paslaugų, kurias būtų galima pasirinkti</string>
+    <string name="widget__no_services">Programėlėje nėra paslaugų, kurias būtų galima pasirinkti</string>
+    <string name="widget__select_service_intent_description">Pasirinkite paslaugą, kurią norite rodyti savo „2FAS“ valdiklyje</string>
+    <string name="widget__my_secured_account">Mano apsaugota paskyra</string>
+    <string name="widget__token">Raktas</string>
+    <string name="watch__intro">„2FAS“ „watchOS“ programa yra „2FAS Auth“ mobiliojo įrenginio programėlės papildymas. \n\nJoje bus rodomi raktai, kurių atsarginės kopijos buvo sukurtos naudojant „iCloud“ sinchronizavimą.</string>
+    <string name="tokens__hotp_not_supported">HOTP paslaugos kol kas nepalaikomos</string>
+    <string name="tokens__favorite_services">Mėgstamos paslaugos</string>
+    <string name="security__enter_new_pin_short">Įveskite naują PIN kodą</string>
+    <string name="security__repeat_new_pin_short">Pakartokite naują PIN kodą</string>
+    <string name="commons__success">Pavyko</string>
+    <string name="security__enter_pin_short">Įveskite PIN kodą</string>
+    <string name="settings__sort_tokens">Rūšiuoti raktus</string>
+    <string name="appleWatch__installation_info_title">„2FAS Auth“ įdiegimas „Apple Watch“ įrenginyje</string>
+    <string name="appleWatch__installation_first_step">Įdiekite „2FAS Auth“ per „Watch“ programėlę</string>
+    <string name="appleWatch__installation_first_step_link">Atidaryti programėlę „Watch“</string>
+    <string name="appleWatch__installation_second_step">Įsitikinkite, kad „iCloud“ sinchronizavimas yra įjungtas</string>
+    <string name="appleWatch__installation_second_step_link">Eiti į „2FAS“ atsarginių kopijų nustatymus</string>
+    <string name="settings__apple_watch">„Apple Watch“</string>
+    <string name="widget__no_selected_services">Paspauskite ir pasirinkite paslaugą, kad aktyvuotumėte valdiklį...</string>
+    <string name="widget__reveal_tokens_long_message">60 sekundžių bus rodomi jūsų 2FAS raktai</string>
+    <string name="widget__reveal_tokens_short_message">Neslėpti 60 sekundžių</string>
+    <string name="settings__show_error_details">Rodyti klaidos informaciją</string>
+    <string name="tokens__show_qr_code">Paslaugos QR kodas</string>
+    <string name="tokens__show_service_qr_setup_lock">Jūsų paslauga yra apsaugota. Norėdami pamatyti QR kodą, nustatykite PIN kodą arba piršto antspaudo užraktą.</string>
+    <string name="tokens__copy_uri">Kopijuoti URI</string>
+    <string name="backup__cloud_encrypted_user">„iCloud“ yra užšifruota naudojant pasirinktą slaptažodį. Įveskite slaptažodį ir įjunkite sinchronizavimą.</string>
+    <string name="backup__cloud_encrypted_system">„iCloud“ yra šifruojamas naudojant sistemos raktą. Įsitikinkite, kad įjungėte „iCloud“ raktų grandinę.</string>
+    <string name="backup__synced">Sinchronizuota</string>
+    <string name="backup__checking">Tikrinama...</string>
+    <string name="backup__sync_disabled">Sinchronizavimas išjungtas.</string>
+    <string name="backup__sync_not_available">Sinchronizavimas neįmanomas: %s</string>
+    <string name="backup__watch_pairing_title">Susiejama su „Apple Watch“</string>
+    <string name="backup__watch_pairing_description">Ar norite susieti „Apple Watch“ su savo „iCloud“ atsargine kopija? Įveskite savo įrenginio pavadinimą:</string>
+    <string name="backup__watch_pairing_default_name">„Apple Watch“</string>
+    <string name="backup__watch_pairing_action">Susieti įrenginį</string>
+    <string name="backup__watch_pairing_error">Šiuo metu negalima susieti su „Watch“. Įsitikinkite, kad „iCloud“ atsarginė kopija yra įjungta ir sinchronizuojama naudojant slaptažodį.</string>
+    <string name="backup__cloud_error_title">Klaida kuriant atsarginę kopiją debesyje</string>
+    <string name="backup__cloud_error_missing_system_key_content">Negalima iššifruoti „iCloud“ atsarginės kopijos, nes nerastas sistemos raktas. Įsitikinkite, kad „iCloud“ raktų grandinės sinchronizavimas yra įjungtas ir veikia tinkamai. Jei turite sistemos rakto, kuris buvo naudojamas kuriant atsarginę kopiją, kopiją, galite ją importuoti rankiniu būdu skyriuje „Išplėstiniai nustatymai“. Taip pat galite ištrinti atsarginę kopiją ir pradėti iš naujo.</string>
+    <string name="backup__cloud_error_mismatch_key_content">Negalima iššifruoti atsarginės kopijos debesyje, nes ji užšifruota naudojant sistemos raktą, o jūs naudojate pasirinktą slaptažodį. Ar norite pakeisti?</string>
+    <string name="backup__cloud_error_new_version_content">Negalima sinchronizuoti su „Cloud backup“, nes programa buvo perkelta į naujesnę versiją. Atnaujinkite programą, kad galėtumėte toliau naudotis „Cloud backup“.</string>
+    <string name="backup__enter_cloud_backup_password_title">Įveskite debesų atsarginės kopijos slaptažodį</string>
+    <string name="backup__enter_password_description">„iCloud“ atsarginė kopija yra užšifruota jūsų slaptažodžiu. Įveskite jį, kad įjungtumėte sinchronizavimą.</string>
+    <string name="backup__enter_password_failure">Nepavyko! %s</string>
+    <string name="backup__enter_password_wrong_password">Neteisingas slaptažodis! Bandykite dar kartą. Taip pat patikrinkite, ar įjungta „iCloud Keychain“ funkcija, arba reikiamus raktus importuokite rankiniu būdu iš įrenginio, kuriame buvo sukurta ši atsarginė kopija.</string>
+    <string name="backup__migration_title">Vyksta atnaujinimas</string>
+    <string name="backup__migration_subtitle">Prašome palaukti...</string>
+    <string name="backup__migration_description">Atnaujiname programėlę, kad galėtume jums pasiūlyti naujas puikias saugumo funkcijas.</string>
+    <string name="commons__success_ex">Pavyko!</string>
+    <string name="backup__encryption_type">Šifravimo tipas</string>
+    <string name="backup__encryption_select">Pasirinkite šifravimo tipą</string>
+    <string name="backup__encryption_enter_password">Įveskite slaptažodį</string>
+    <string name="backup__encryption_change_password">Pakeisti slaptažodį</string>
+    <string name="backup__encryption_password_description">Šis slaptažodis naudojamas jūsų duomenims šifruoti. Jei jį prarasite, negalėsite atkurti duomenų iš „iCloud“ atsarginės kopijos.</string>
+    <string name="backup__encryption_change_title">Pakeisti šifravimo tipą</string>
+    <string name="backup__encryption_method_footer">Pasirinkite sistemos arba pasirinktinį slaptažodį</string>
+    <string name="backup__manage_paired_watches_title">Tvarkykite susietus „Apple Watch“</string>
+    <string name="backup__manage_paired_watches_footer">Pridėkite, pašalinkite arba pervadinkite sinchronizuotus „Apple Watch“ laikrodžius.</string>
+    <string name="backup__manage_paired_watches_rename_title">Pervadinti laikrodį</string>
+    <string name="backup__manage_paired_watches_rename_description">Įveskite naujo įrenginio pavadinimą</string>
+    <string name="backup__manage_paired_watches_rename_action">Pervadinti</string>
+    <string name="backup__manage_paired_watches_title_short">„Apple Watch“ laikrodžiai</string>
+    <string name="backup__manage_paired_watches_empty_list">Sąrašas tuščias. Pridėkite laikrodį naudodami mygtuką „+“</string>
+    <string name="backup__manage_paired_watches_syncing">Atliekamas debesų atsarginės kopijos sinchronizavimas...</string>
+    <string name="backup__watch_pair_title">Susiekite savo „Apple Watch“</string>
+    <string name="backup__watch_pair_description">Savo „iPhone“ ar „iPad“ įrenginyje atidarykite „2FAS Auth“ programą, pereikite į „2FAS Backup“ nustatymus ir pasirinkite „Manage Paired Apple Watches“ (Valdyti susietus „Apple Watch“ laikrodžius). Ši parinktis bus matoma, jei atsarginė kopija yra sinchronizuota. Ten nuskaitykite QR kodą.</string>
+    <string name="backup__watch_pair_qr_error">Klaida kuriant QR kodą</string>
+    <string name="backup__cloud_switch_system_key">Perjungti į sistemos klavišą</string>
+    <string name="backup__cloud_turn_backup_off">Išjungti atsarginę kopiją debesyje</string>
+    <string name="commons__apply">Pritaikyti</string>
+    <string name="backup__state">Būsena:</string>
+    <string name="backup__check_password">Patikrinti slaptažodį</string>
+    <string name="backup__missing_system_key">Trūksta sistemos rakto</string>
+    <string name="backup__system_key">Sistemos raktas</string>
+    <string name="backup__custom_password">Pasirinktinis slaptažodis</string>
+    <string name="commons__options_title">Parinktys</string>
+    <string name="tokens__copy_secret">Kopijuoti slaptąjį raktą</string>
+    <string name="tokens__copy_link">Kopijuoti OTP autentifikavimo nuorodą</string>
+    <string name="notifications__link_copied">Nuoroda nukopijuota</string>
+    <string name="tokens__qr_code_show">Rodyti paslaugą QR kodą</string>
+    <string name="tokens__qr_code_share">Pasidalinti paslauga QR kodu</string>
+    <string name="settings_open_twofass_appstore">Įdiekite „2FAS Pass“</string>
+    <string name="settings_open_twofass">Atidaryti „2FAS Pass“</string>
+    <string name="settings_manage_passwords_title">Slaptažodžių tvarkymas</string>
+    <string name="quick_setup_drive_sync_title">„Vault Sync“</string>
+    <string name="quick_setup_drive_sync_description">Saugiai sinchronizuokite savo duomenis naudodami „Google Drive“, kad šis įrenginys būtų apsaugotas praradimo ar sugadinimo atveju.</string>
+    <string name="commons__file_creation_error">Sukurti failo nepavyko</string>
+    <string name="settings__export_pin_needed">Jūsų slapti raktai yra apsaugoti. Norėdami juos eksportuoti, nustatykite PIN kodą arba biometrinę apsaugą.</string>
+    <string name="settings__export_title_tokens">Eksportuoti raktus</string>
+    <string name="settings__export_title_qr_codes">Eksportuoti QR kodus</string>
+    <string name="settings__export_title_options">Eksporto parinktys</string>
+    <string name="settings__export_options_save_file">Išsaugoti OTPAuth failą</string>
+    <string name="settings__export_options_export_qr_codes">Eksportuoti QR kodus</string>
+    <string name="settings__export_options_footer">Pasirinkite, kaip norite eksportuoti savo raktus.</string>
+    <string name="settings__import_otpauth_title">OTPAuth nuorodos</string>
+    <string name="settings__import_from_file">Importuoti iš failo</string>
+    <string name="settings__import_from_text_file">Importuoti raktus iš teksto failo</string>
+    <string name="settings__import_from_text_file_description">Tekstiniame faile turėtų būti pateiktas nuorodų sąrašas, prasidedantis žodžiais „otpauth://“.</string>
+    <string name="settings__import_contents_file">Raktų importavimas iš tekstinio failo</string>
+    <string name="widget__open_app">Prisijungti prie 2FAS</string>
+    <string name="widget__open_app_description">Greita prieiga prie „2FAS Auth“</string>
+    <!-- Used on a tokens list in context menu to move service up on that list -->
+    <string name="tokens__move_up">Perkelti aukštyn</string>
+    <!-- Used on a tokens list in context menu to move service down on that list -->
+    <string name="tokens__move_down">Perkelti žemyn</string>
+    <string name="settings__transfer">Perkelti raktus</string>
+    <string name="transfer__import_section_title">Importavimas iš kitų programų</string>
+    <string name="transfer__export_section_title">Eksportuoti į OTPAuth</string>
+    <string name="transfer__export_otp_file">Eksportuoti raktus į failą</string>
+    <string name="transfer__export_otp_qr">Eksportuoti raktus kaip QR kodus</string>
+    <string name="exportwarning__title_file">Eksportuoti raktus į failą</string>
+    <string name="exportwarning__cta_file">Eksportuoti į failą</string>
+    <string name="exportwarning__description_file">Jūs ketinate eksportuoti visus savo 2FA raktus, įskaitant jų slaptuosius raktus, į nešifruotą failą. Betkas, turintis prieigą prie šio failo, gali juo pasinaudoti, kad perimtų jūsų paskyrų kontrolę. Prašome saugoti jį saugioje vietoje.</string>
+    <string name="exportwarning__toggle">Suprantu šią riziką</string>
+    <string name="transfer__import_otpauth_file">Bendrasis „OTPAuth“ failas</string>
+    <string name="exportwarning__description_qr">Jūs ketinate eksportuoti visus savo 2FA raktus į nešifruotą ZIP failą, kuriame bus QR kodai. Šie QR kodai gali būti panaudoti siekiant perimti jūsų paskyrų kontrolę. Prašome juos saugoti.</string>
+    <string name="exportwarning__title_qr">Eksportuoti žetonus kaip QR kodus</string>
+    <string name="exportwarning__cta_qr">Eksportuoti kaip QR kodus</string>
+    <string name="commons__icloud_backup_password">„iCloud“ atsarginės kopijos slaptažodis</string>
+    <string name="backup__manage_title">Atsarginių kopijų tvarkymas</string>
+    <string name="backup__password_length_error">Slaptažodis turi būti %1$d-%2$d simbolių ilgio.</string>
+    <string name="backup__password_characters_error">Slaptažodis gali būti sudarytas tik iš raidžių, skaičių, tarpų ir simbolių.</string>
+    <string name="backup__password_match_error">Slaptažodžiai nesutampa.</string>
+    <string name="backup__encryption_title">Šifravimas</string>
+    <string name="backup__removing_password">Slaptažodžio pašalinimas</string>
+    <string name="backup__veryfing_password">Slaptažodžio patvirtinimas</string>
+    <string name="backup__verify_password_description">Icloud atsarginė kopija užšifruota su jūsų slaptažodžiu. Pritaikykite pakeitimus.</string>
+    <string name="backup__password_set">Slaptažodis sėkmingai nustatytas</string>
+    <string name="backup__setting_password">Slaptažodžio nustatymas</string>
+    <string name="backup__changing_password">Slaptažodžio keitimas</string>
+    <string name="backup__set_password">Nustatykite slaptažodį</string>
+    <string name="backup__change_password">Pakeiskite slaptažodį</string>
+    <string name="backup__password_set_description">Įveskite slaptažodį, kad papildomai apsaugotumėte atsarginės kopijos turinį. Jei pamiršite šį slaptažodį, turėsite pašalinti atsarginę kopiją ir pradėti iš naujo.</string>
+    <string name="backup__password_rules_description">Leidžiama naudoti tik raides, skaitmenis, tarpus ir specialiuosius simbolius (!@#$%^&amp;*()-_).</string>
+    <string name="pass_promo_banner_title">Mes sukūrėme jums kažką naujo!</string>
+    <string name="pass_promo_banner_msg">Saugi, prioritetą teikianti duomenų saugojimui tik įrenginyje\u0020\u0020**slaptažodžių tvarkyklė – „2FAS Pass“**, sukurta veikti kartu su „2FAS Auth“, paliekant jūsų autentiškumo patvirtinimo programėlę tokią, kokia ji yra.</string>
+    <string name="pass_promo_banner_positive_cta">Eiti į parduotuvę</string>
+    <string name="pass_promo_banner_negative_cta">Daugiau nerodyti</string>
+    <string name="appearance_dynamic_colors">Dinaminės spalvos</string>
+    <string name="appearance_dynamic_colors_description">Keiskite programėlės spalvas pagal jūsų ekrano foną.</string>
+    <string name="backup__section_note">PASTABA: „iCloud Sync“ saugo šifravimo raktus „iCloud Keychain“. Jei „iCloud Keychain“ yra išjungta, prašome rankiniu būdu eksportuoti raktus iš skyriaus „Atsarginių kopijų tvarkymas“. Jei to nepadarysite, atkurti duomenis ar sinchronizuoti su kitais įrenginiais nebus įmanoma.</string>
+    <string name="backup__keys_import_warning">Importavus raktus, jūsų esami šifravimo raktai bus perrašyti. Ar norite tęsti?</string>
+    <string name="backup__key_import_system_key">Sistemos raktas</string>
+    <string name="backup__keys_import_error">Raktų įkelti nepavyko.</string>
+    <string name="watch__intro_step1">Laikykitės šių nurodymų, kad susietumėte savo laikrodžio programėlę.</string>
+    <string name="watch__intro_step2">Savo „iPhone“ telefone atidarykite programėlę „2FAS Auth“ ir pereikite į „2FAS Backup“ nustatymus.</string>
+    <string name="watch__intro_step3">Įsitikinkite, kad „iCloud“ atsarginė kopija yra sinchronizuota, o „iCloud“ raktų grandinė yra įjungta „iOS“ sistemos nustatymuose.</string>
+    <string name="watch__intro_step4">Pasirinkite „Tvarkyti suporuotus apple laikrodžius“.</string>
+    <string name="watch__intro_step5">Paspauskite „+“ ir nuskenuokite QR kodą iš sekančio puslapio.</string>
+    <string name="watch__intro_step6">Galite užverti šį langą. Sinchronizacija užims laiko.</string>
+    <string name="tokens__empty_screen_in_trash">Šiukšliadėžėje turite\u0020\u0020**%d** tarnybas.</string>
+    <string name="commons__go_to_trash">Eiti į šiukšliadėžę</string>
+    <string name="backup__moved_to_trash_title">iCloud sinchronizavimo rezultatas</string>
+    <string name="backup__moved_to_trash_message">Paskutinė iCloud sinchronizacija perkėlė visus jūsų raktus į šiukšliadėžę. Betkada galite atstatyti.</string>
+    <string name="commons__understood">Supratau</string>
+    <string name="introduction__backup_icloud_description_note">Tai įjungta pagal nutylėjimą, betkada galite išjungti atsarginės kopijos nustatymuose.</string>
+    <string name="introduction__call_1">Sveiki atvykę į\u0020</string>
+    <string name="introduction__call_2">2FAS autentifikacija</string>
+    <string name="restore__reset__title">Atstatoma programa</string>
+    <string name="login__hello_header">Sveiki sugrįžę!</string>
+    <string name="login__hello_header_1">Sveiki!</string>
+    <string name="login__hello_header_2">Sveiki sugrįžę!</string>
+    <string name="login__hello_header_3">Malonu jus vėl matyti!</string>
+    <string name="login__hello_header_4">Labas!ąĄĄĄĄĄĄ!!!!!</string>
+    <string name="tokens__empty_list_title">Pridėti pirmą tarnybą</string>
+    <string name="guides__request_service">Užklausa</string>
+    <string name="guides__step_number">Žingsnis %d</string>
+    <string name="about__generate_logs">Kurti žurnalus</string>
+    <string name="about__generate_logs_alert_title">Kurti žurnalus?</string>
+    <string name="about__generate_logs_alert_message">Ar norite kurti veiklos žurnalus? Tai gali šiek tiek užtrukti.</string>
+    <string name="about__generate_logs_alert_action">Kurti</string>
+    <string name="introduction__backup_header">Atsarginė kopija</string>
+    <string name="home__app_review_title">Patinka 2FAS programa?</string>
+    <string name="home__app_review_msg">Jei programa buvo jum naudinga, paaukokite minutę ir įvertinkite ją. Mums tai labai padės!</string>
+    <string name="home__app_review_rate">Įvertinkite</string>
+    <string name="home__app_review_dismiss">Nedabar</string>
+    <string name="settings__backup_and_transfer">Išsaugoti atsarginę kopiją ir perkelti</string>
+    <string name="settings__browser_extension_header">Naršyklės papildinys</string>
+    <string name="settings__more">Daugiau</string>
+    <string name="settings__removed_items">Pašalinti raktai</string>
+    <string name="settings__connected_extensions">Prijungti papildiniai</string>
+    <string name="settings__security_description">Valdykite savo programos saugumo ir privatumo nustatymus.</string>
+    <string name="settings__appearance_description">Derinkite programos išvaizdą ir galimybes.</string>
+    <string name="settings__removed_items_description">Atstatykite arba ištrinkite pašalintus raktus.</string>
+    <string name="settings__backup_description">Išsaugokite atsarginę kopiją ir sinchronizuokite raktus tarp įrenginių.</string>
+    <string name="settings__import_tokens_description">Įkelkite raktus iš kitų programų.</string>
+    <string name="settings__connected_extensions_description">Tvakykite prijungtus naršyklės papildinius.</string>
+    <string name="settings__about_description">Programos informacija, versija ir licencijos.</string>
+    <string name="settings__support_description">2FAS palaikymas</string>
+    <string name="settings__donate_description">Paremkite 2FAS kūrimą.</string>
+    <string name="shortcuts__backup_title">NEIŠTRINKITE nepadarę pilnos atsarginės kopijos</string>
+    <string name="shortcuts__support_title">Palaikymas</string>
+    <string name="shortcuts__pair_title">Suporuoti tarnybą</string>
+    <string name="shortcuts__search_title">Ieškoti tarnybų</string>
+    <string name="tokens__empty_screen_trashed_title">Ieškote savo tarnybų?</string>
+    <string name="settings__trash_selected">%d pasirinkta</string>
+    <string name="tokens__delete_service_msg">Ar tikrai norite pašalinti šią tarnybą?</string>
+    <string name="tokens__delete_selected_msg">Ar tikrai norite pašalinti %d pasirinktas tarnybas?</string>
+    <string name="settings__list_style_option_large">Didelis</string>
+    <string name="commons__select">Pasirinkti</string>
+    <string name="commons__clear">Išvalyti</string>
+    <string name="tokens__service_autodetected_title">Prieinami tarnybos tipai: %s</string>
+    <string name="externalimport_proton">Proto autentifikacijos programa</string>
+    <string name="externalimport__info_proton_title">Įkelti raktus iš Proton autentifikacijos programos</string>
+    <string name="externalimport__proton_msg">Eksportuokite savo paskyras iš Proton autentifikacijos programos į JSON failą, tada įkelkite failą paspaudę mygtuką „Pasirinkit JSON failą“. Po sėkmingo įkėlimo pašalinkite failą.</string>
+    <string name="externalimport__proton_success_msg">Ši JSON failas leidžia jums importuoti raktus ir Proton autentifikacijos programos.</string>
+    <string name="externalimport__proton_title">Importuoti 2FA raktus iš Proton autentifikacijos programos</string>
+    <string name="tokens__group_use_default_name">Naudoti numatytąjį</string>
+    <string name="externalimport_bitwarden">Bitwarden</string>
+    <string name="externalimport__bitwarden_msg">Eksportuokite savo paskyras iš „Bitwarden“ programos į nešifruotą JSON arba CSV failą ir įkelkite naudodami mygtuką „Pasirinkti failą“. Po sėkmingo įkėlimo nepamirškite pašalinti failo.</string>
+    <string name="externalimport__bitwarden_success_msg">Šis failas leidžia importuoti raktus iš „Bitwarden“</string>
+    <string name="externalimport__bitwarden_title">Imporuojami 2FA raktai iš „Bitwarden“ programos</string>
+    <string name="externalimport__choose_json_csv_cta">Pasirinkite JSON arba CSV failą</string>
+    <string name="externalimport__info_bitwarden_title">Importuoti raktus iš „Bitwarden“</string>
+    <string name="browser__request_source_description_ios">prašoma 2fa raktas skirtas %s, Pasirinkite paslaugą ir išsaugokite šį domeną.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Eksportuokite savo paskyras iš „Ente Auth“ į tekstinį failą ir įkelkite tą failą naudodami „Pasirinkti tekstinį failą“ mygtuką. Po sėkmingo importavimo nepamirškite pašalinti to failo.</string>
+    <string name="externalimport__ente_success_msg">Šis tekstinis failas leis importuoti raktus iš „Ente Auth“.</string>
+    <string name="externalimport__ente_title">Importuojami raktai iš „Ente Auth“</string>
+    <string name="externalimport__onepassword_msg">Eksportuokite savo paskyras iš „1Password“ į CSV failą ir įkelkite tą failą naudodami „Pasirinkti CSV failą“ mygtuką. Po sėkmingo importavimo nepamirškite pašalinti to failo.</string>
+    <string name="externalimport__onepassword_success_msg">Šis CSV failas leis importuoti raktus iš „1Password“.</string>
+    <string name="externalimport__onepassword_title">Importuojami raktai iš prgramos „1Password“</string>
+    <string name="externalimport__choose_csv_cta">Pasirinkite CSV failą</string>
+    <string name="externalimport__info_ente_title">Importuoti raktus iš „Enter Auth“</string>
+    <string name="externalimport__info_onepassword_title">Importuoti raktus iš „1Password“</string>
+    <string name="tokens__google_import_already_scanned_message">Jūs jau nuskaitėte šį QR kodą.</string>
+    <string name="tokens__google_import_already_scanned_title">Jau nuskaityta</string>
+    <string name="tokens__google_import_different_batch_message">Šis QR kodas yra iš kito „Google Authenticator“ eksporto. Nuskaitykite visus kodus iš to paties eksporto.</string>
+    <string name="tokens__google_import_different_batch_title">Kitas eksportas</string>
+    <string name="tokens__google_import_multi_subtitle">Tai yra eksporto, sudaryto iš kelių QR kodų, dalis</string>
+    <string name="tokens__google_import_only_scanned">Importuoti tik nuskaitytus kodus</string>
+    <string name="tokens__google_import_scanned_count">Nuskaityta %1$d iš %2$d QR kodų</string>
+    <string name="tokens__google_import_title">„Google Authenticator“ importavimas</string>
+    <string name="logs_title">Žurnalai</string>
+    <string name="logs_empty">Žurnalų nėra</string>
+    <string name="logs_share_title">Dalintis žurnalais</string>
+    <string name="externalimport__ga_batch_title">Aptikti keli QR kodai</string>
+    <string name="externalimport__ga_batch_msg">Jūsų „Google Authenticator“ eksportą sudaro QR kodų: %1$d. Nuskaitykite juos visus, kad importuotumėte visus savo raktus.</string>
+    <string name="externalimport__ga_batch_qr_code">QR kodas %1$d iš %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Nuskaityta · raktų: %1$d</string>
+    <string name="externalimport__ga_batch_not_scanned">Dar nenuskaityta</string>
+    <string name="externalimport__ga_batch_progress">Nuskaityta %1$d iš %2$d</string>
+    <string name="externalimport__ga_batch_scan_cta">Nuskaityti kitą QR kodą</string>
+    <string name="externalimport__ga_batch_pick_cta">Pasirinkti kitą QR kodą</string>
+    <string name="externalimport__ga_batch_read_error">Šiame paveikslėlyje nepavyko rasti QR kodo</string>
+    <string name="externalimport__ga_batch_import_cta">Importuoti raktus</string>
+    <string name="externalimport__ga_batch_already_scanned">Šis QR kodas jau nuskaitytas</string>
+    <string name="externalimport__ga_batch_different_export">Šis QR kodas priklauso kitam eksportui</string>
+    <string name="tokens__copy_token_long">Kopijuoti raktą</string>
+</resources>

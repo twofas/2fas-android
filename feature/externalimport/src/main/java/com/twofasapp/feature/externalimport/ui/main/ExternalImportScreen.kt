@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,12 +41,29 @@ internal fun ExternalImportScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
+    LaunchedEffect(uiState.pickedImage) {
+        uiState.pickedImage?.let { pickedImage ->
+            viewModel.consumePickedImage()
+            navigator.open(
+                when (pickedImage) {
+                    is PickedImage.Single -> Screen.ExternalImportResult(importType = importType.name, importFileUri = pickedImage.uri)
+                    is PickedImage.Batch -> Screen.ExternalImportScan(
+                        importType = importType.name,
+                        initialContent = pickedImage.content.encodeBase64(),
+                        fromGallery = true,
+                    )
+                },
+            )
+        }
+    }
+
     Content(
         uiState = uiState,
         onScanClick = { navigator.open(Screen.ExternalImportScan(importType = importType.name)) },
         onFilePicked = { encodedFileUri ->
             navigator.open(Screen.ExternalImportResult(importType = importType.name, importFileUri = encodedFileUri))
         },
+        onImagePicked = viewModel::onImagePicked,
     )
 }
 
@@ -54,6 +72,7 @@ private fun Content(
     uiState: ExternalImportUiState,
     onScanClick: () -> Unit = {},
     onFilePicked: (String) -> Unit = {},
+    onImagePicked: (String) -> Unit = {},
 ) {
     val strings = MdtLocale.strings
     var askForCameraPermission by remember { mutableStateOf(false) }
@@ -62,7 +81,7 @@ private fun Content(
     }
     val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
-        onResult = { uri -> uri?.let { onFilePicked(it.toString()) } },
+        onResult = { uri -> uri?.let { onImagePicked(it.toString()) } },
     )
 
     val title = when (uiState.importType) {
@@ -74,6 +93,9 @@ private fun Content(
         ImportType.AndOtp -> strings.externalImportAndOtp
         ImportType.Bitwarden -> strings.externalImportBitwarden
         ImportType.ProtonAuthenticator -> strings.externalImportProtonAuthenticator
+        ImportType.OnePassword -> strings.externalImportOnePassword
+        ImportType.Ente -> strings.externalImportEnte
+        ImportType.OtpAuthFile -> strings.externalImportOtpAuthFile
     }
 
     val description = when (uiState.importType) {
@@ -85,6 +107,9 @@ private fun Content(
         ImportType.AndOtp -> strings.externalImportAndOtpMsg
         ImportType.Bitwarden -> strings.externalImportBitwardenMsg
         ImportType.ProtonAuthenticator -> strings.externalImportProtonAuthenticatorMsg
+        ImportType.OnePassword -> strings.externalImportOnePasswordMsg
+        ImportType.Ente -> strings.externalImportEnteMsg
+        ImportType.OtpAuthFile -> strings.externalImportOtpAuthFileMsg
     }
 
     val ctaPrimary = when (uiState.importType) {
@@ -96,6 +121,9 @@ private fun Content(
         ImportType.AndOtp -> strings.externalImportChooseJsonCta
         ImportType.Bitwarden -> strings.externalImportChooseJsonOrCsvCta
         ImportType.ProtonAuthenticator -> strings.externalImportChooseJsonCta
+        ImportType.OnePassword -> strings.externalImportChooseCsvCta
+        ImportType.Ente -> strings.externalImportChooseTxtCta
+        ImportType.OtpAuthFile -> strings.externalImportChooseTxtCta
     }
 
     val ctaSecondary = when (uiState.importType) {
@@ -125,6 +153,9 @@ private fun Content(
                     ImportType.AndOtp -> showFilePicker(arrayOf("application/json"))
                     ImportType.Bitwarden -> showFilePicker(arrayOf("application/json", "text/*"))
                     ImportType.ProtonAuthenticator -> showFilePicker(arrayOf("application/json", "text/*"))
+                    ImportType.OnePassword -> showFilePicker(arrayOf("text/*"))
+                    ImportType.Ente -> showFilePicker(arrayOf("text/*"))
+                    ImportType.OtpAuthFile -> showFilePicker(arrayOf("text/*"))
                 }
             },
             ctaSecondaryClick = {

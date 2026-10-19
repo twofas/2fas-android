@@ -3,11 +3,14 @@ package com.twofasapp.feature.home.ui.services.add.scan
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.domain.OtpAuthLink
+import com.twofasapp.common.domain.logParams
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.data.services.otp.OtpLinkParser
+import com.twofasapp.feature.externalimport.domain.GoogleAuthenticatorImporter
 import com.twofasapp.feature.qrscan.ReadQrFromImage
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +22,7 @@ import kotlin.time.Duration.Companion.milliseconds
 internal class AddServiceScanViewModel(
     private val servicesRepository: ServicesRepository,
     private val readQrFromImage: ReadQrFromImage,
+    private val googleAuthenticatorImporter: GoogleAuthenticatorImporter,
 ) : ViewModel() {
 
     val uiState: MutableStateFlow<AddServiceScanUiState> = MutableStateFlow(AddServiceScanUiState())
@@ -45,7 +49,10 @@ internal class AddServiceScanViewModel(
                     uiState.update { it.copy(scanned = text) }
                     handleScanned(text, ScanSource.Gallery)
                 }
-                .onFailure { uiState.update { it.copy(showGalleryErrorDialog = true) } }
+                .onFailure { e ->
+                    Flog.persist(tag = "AddService", message = "Gallery QR read failed (${e::class.simpleName})")
+                    uiState.update { it.copy(showGalleryErrorDialog = true) }
+                }
         }
     }
 
@@ -53,19 +60,39 @@ internal class AddServiceScanViewModel(
         launchScoped {
             uiState.update { it.copy(source = source) }
 
+            // Google Authenticator export codes are handled by the external import flow
+            if (googleAuthenticatorImporter.isSchemaSupported(text)) {
+                val batch = googleAuthenticatorImporter.readBatch(text)
+                Flog.persist(tag = "AddService", message = "$source: Google Authenticator export detected (batch=${batch?.size})")
+                uiState.update {
+                    it.copy(
+                        googleAuthenticatorImport = GoogleAuthenticatorImport(
+                            content = text,
+                            isBatch = batch?.isMultiCode == true,
+                            fromGallery = source == ScanSource.Gallery,
+                        ),
+                    )
+                }
+                return@launchScoped
+            }
+
             val link = OtpLinkParser.parse(text)
 
             if (link == null) {
+                // Only the scheme is logged - QR content may contain secrets
+                Flog.persist(tag = "AddService", message = "$source: invalid QR (scheme=${text.qrScheme()})")
                 uiState.update { it.copy(showInvalidQrDialog = true) }
                 return@launchScoped
             }
 
             if (servicesRepository.isServiceValid(link).not()) {
+                Flog.persist(tag = "AddService", message = "$source: unsupported params ${link.logParams()}")
                 uiState.update { it.copy(showInvalidQrDialog = true) }
                 return@launchScoped
             }
 
             if (servicesRepository.isServiceExists(link.secret)) {
+                Flog.persist(tag = "AddService", message = "$source: service already exists")
                 uiState.update { it.copy(showServiceExistsDialog = true) }
                 return@launchScoped
             }
@@ -94,7 +121,10 @@ internal class AddServiceScanViewModel(
                         )
                     }
                 }
-                .onFailure { uiState.update { it.copy(showErrorDialog = true) } }
+                .onFailure { e ->
+                    Flog.persist(tag = "AddService", message = "$source: save failed (${e::class.simpleName})")
+                    uiState.update { it.copy(showErrorDialog = true) }
+                }
         }
     }
 
@@ -113,4 +143,8 @@ internal class AddServiceScanViewModel(
             uiState.update { it.copy(enabled = true) }
         }
     }
+}
+
+private fun String.qrScheme(): String {
+    return substringBefore(':', missingDelimiterValue = "").take(32).ifEmpty { "none" }
 }

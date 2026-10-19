@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: ja-JP, Japanese (Japan)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1042,4 +1042,39 @@
     <string name="externalimport__choose_json_csv_cta">JSONかCSVファイルを選択する</string>
     <string name="externalimport__info_bitwarden_title">Bitwardenから認証キーをインポートする</string>
     <string name="browser__request_source_description_ios">%s の 2FA認証コードが要求されました。認証するサービスを選択し、このドメインとともに保存してください。</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Ente Authからアカウント情報をプレーンテキストファイルにエクスポートし、「テキストファイルを選択する」ボタンでアップロードしてください。インポートが完了したら、忘れずにファイルを削除してください。</string>
+    <string name="externalimport__ente_success_msg">このテキストファイルで、Ente Authから認証コードをインポートできます</string>
+    <string name="externalimport__ente_title">Ente Authから2FA認証コードをインポートする</string>
+    <string name="externalimport__onepassword_msg">1Passwordからアカウント情報をCSVファイルにエクスポートし、「CSVファイルを選択する」ボタンでアップロードしてください。インポートが完了したら、忘れずにファイルを削除してください。</string>
+    <string name="externalimport__onepassword_success_msg">このCSVファイルで、1Passwordから認証コードをインポートできます</string>
+    <string name="externalimport__onepassword_title">1Passwordから2FA認証コードをインポートする</string>
+    <string name="externalimport__choose_csv_cta">CSVファイルを選択する</string>
+    <string name="externalimport__info_ente_title">Ente Authから認証コードをインポートする</string>
+    <string name="externalimport__info_onepassword_title">1Passwordから認証コードをインポートする</string>
+    <string name="tokens__google_import_already_scanned_message">このQRコードはすでにスキャン済みです。</string>
+    <string name="tokens__google_import_already_scanned_title">スキャン済み</string>
+    <string name="tokens__google_import_different_batch_message">このQRコードは別のGoogle Authenticatorエクスポートのものです。1回のエクスポートに含まれるすべてのコードをスキャンしてください。</string>
+    <string name="tokens__google_import_different_batch_title">別のエクスポート</string>
+    <string name="tokens__google_import_multi_subtitle">これは複数のQRコードによるエクスポートの一部です</string>
+    <string name="tokens__google_import_only_scanned">スキャン済みのコードのみインポート</string>
+    <string name="tokens__google_import_scanned_count">%1$d / %2$d 個のQRコードをスキャン済み</string>
+    <string name="tokens__google_import_title">Google Authenticatorからのインポート</string>
+    <string name="logs_title">ログ</string>
+    <string name="logs_empty">ログはありません</string>
+    <string name="logs_share_title">ログを共有</string>
+    <string name="externalimport__ga_batch_title">複数のQRコードが検出されました</string>
+    <string name="externalimport__ga_batch_msg">Google Authenticatorのエクスポートは%1$d個のQRコードで構成されています。すべての認証コードをインポートするには、すべてのQRコードをスキャンしてください。</string>
+    <string name="externalimport__ga_batch_qr_code">QRコード %1$d / %2$d</string>
+    <string name="externalimport__ga_batch_scanned">スキャン済み · 認証コード%1$d件</string>
+    <string name="externalimport__ga_batch_not_scanned">未スキャン</string>
+    <string name="externalimport__ga_batch_progress">%1$d / %2$d スキャン済み</string>
+    <string name="externalimport__ga_batch_scan_cta">次のQRコードをスキャン</string>
+    <string name="externalimport__ga_batch_pick_cta">次のQRコードを選択</string>
+    <string name="externalimport__ga_batch_read_error">この画像にQRコードが見つかりませんでした</string>
+    <string name="externalimport__ga_batch_import_cta">認証コードをインポート</string>
+    <string name="externalimport__ga_batch_already_scanned">このQRコードはすでにスキャンされています</string>
+    <string name="externalimport__ga_batch_different_export">このQRコードは別のエクスポートのものです</string>
+    <string name="tokens__copy_token_long">認証コードをコピー</string>
 </resources>

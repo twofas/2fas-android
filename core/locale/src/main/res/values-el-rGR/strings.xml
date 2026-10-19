@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: el-GR, Greek (Greece)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1048,4 +1048,39 @@
     <string name="externalimport__choose_json_csv_cta">Επιλέξτε αρχείο JSON ή CSV</string>
     <string name="externalimport__info_bitwarden_title">Εισάγετε τα tokens από το Bitwarden</string>
     <string name="browser__request_source_description_ios">ζήτησε ένα token 2FA για το %s. Επιλέξτε την υπηρεσία για εξουσιοδότηση και αποθήκευση με αυτόν τον τομέα.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Εξάγετε τους λογαριασμούς σας από το Ente Auth σε ένα αρχείο απλού κειμένου και ανεβάστε το χρησιμοποιώντας το κουμπί \'Επιλέξτε αρχείο κειμένου\'. Μην ξεχάσετε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="externalimport__ente_success_msg">Αυτό το αρχείο κειμένου επιτρέπει την εισαγωγή token από το Ente Auth.</string>
+    <string name="externalimport__ente_title">Εισαγωγή token 2FA από την εφαρμογή Ente Auth</string>
+    <string name="externalimport__onepassword_msg">Εξάγετε τους λογαριασμούς σας από το 1Password σε ένα αρχείο CSV και ανεβάστε το χρησιμοποιώντας το κουμπί \'Επιλέξτε αρχείο CSV\'. Μην ξεχάσετε να διαγράψετε το αρχείο μετά από μια επιτυχημένη εισαγωγή.</string>
+    <string name="externalimport__onepassword_success_msg">Αυτό το αρχείο CSV επιτρέπει την εισαγωγή token από το 1Password.</string>
+    <string name="externalimport__onepassword_title">Εισαγωγή token 2FA από την εφαρμογή 1Password</string>
+    <string name="externalimport__choose_csv_cta">Επιλέξτε αρχείο CSV</string>
+    <string name="externalimport__info_ente_title">Εισαγωγή token από το Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Εισαγωγή token από το 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">Έχετε ήδη σαρώσει αυτόν τον κωδικό QR.</string>
+    <string name="tokens__google_import_already_scanned_title">Έχει ήδη σαρωθεί</string>
+    <string name="tokens__google_import_different_batch_message">Αυτός ο κωδικός QR προέρχεται από διαφορετική εξαγωγή του Google Authenticator. Σαρώστε όλους τους κωδικούς από την ίδια εξαγωγή.</string>
+    <string name="tokens__google_import_different_batch_title">Διαφορετική εξαγωγή</string>
+    <string name="tokens__google_import_multi_subtitle">Αυτό αποτελεί μέρος μιας εξαγωγής με πολλαπλούς κωδικούς QR</string>
+    <string name="tokens__google_import_only_scanned">Εισαγωγή μόνο των σαρωμένων κωδικών</string>
+    <string name="tokens__google_import_scanned_count">Σαρώθηκαν %1$d από %2$d κωδικούς QR</string>
+    <string name="tokens__google_import_title">Εισαγωγή από το Google Authenticator</string>
+    <string name="logs_title">Αρχεία καταγραφής</string>
+    <string name="logs_empty">Δεν υπάρχουν διαθέσιμα αρχεία καταγραφής</string>
+    <string name="logs_share_title">Κοινοποίηση αρχείων καταγραφής</string>
+    <string name="externalimport__ga_batch_title">Εντοπίστηκαν πολλαπλοί κωδικοί QR</string>
+    <string name="externalimport__ga_batch_msg">Η εξαγωγή από το Google Authenticator αποτελείται από %1$d\u0020\u0020κωδικούς QR. Σαρώστε τους όλους για να εισαγάγετε όλα τα διακριτικά σας.</string>
+    <string name="externalimport__ga_batch_qr_code">Κωδικός QR %1$d από %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Σαρώθηκαν · %1$d\u0020\u0020διακριτικά</string>
+    <string name="externalimport__ga_batch_not_scanned">Δεν έχει σαρωθεί ακόμα</string>
+    <string name="externalimport__ga_batch_progress">Σαρώθηκαν %1$d από %2$d</string>
+    <string name="externalimport__ga_batch_scan_cta">Σάρωση επόμενου κωδικού QR</string>
+    <string name="externalimport__ga_batch_pick_cta">Επιλογή επόμενου κωδικού QR</string>
+    <string name="externalimport__ga_batch_read_error">Δεν ήταν δυνατός ο εντοπισμός κωδικού QR σε αυτήν την εικόνα</string>
+    <string name="externalimport__ga_batch_import_cta">Εισαγωγή διακριτικών</string>
+    <string name="externalimport__ga_batch_already_scanned">Αυτός ο κωδικός QR έχει ήδη σαρωθεί</string>
+    <string name="externalimport__ga_batch_different_export">Αυτός ο κωδικός QR ανήκει σε διαφορετική εξαγωγή</string>
+    <string name="tokens__copy_token_long">Αντιγραφή Token</string>
 </resources>

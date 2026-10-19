@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.twofasapp.base.AuthTracker
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.core.design.AppTheme
 import com.twofasapp.core.design.ktx.applyAppTheme
 import com.twofasapp.core.design.ktx.makeWindowSecure
@@ -58,6 +59,7 @@ class LockActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         val canGoBack = intent.getBooleanExtra("canGoBack", false)
+        Flog.persist(tag = "Lock", message = "Back pressed: canGoBack=$canGoBack")
 
         if (canGoBack) {
             finish()

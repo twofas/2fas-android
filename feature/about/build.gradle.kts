@@ -15,6 +15,7 @@ dependencies {
     implementation(project(":core:locale"))
     implementation(project(":core:designsystem"))
     implementation(project(":data:session"))
+    implementation(project(":data:logs"))
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.viewModel)

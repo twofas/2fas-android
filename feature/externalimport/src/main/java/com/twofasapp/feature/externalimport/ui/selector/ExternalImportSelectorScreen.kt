@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.android.navigation.Navigator
 import com.twofasapp.android.navigation.Screen
+import com.twofasapp.core.design.MdtIcons
 import com.twofasapp.core.design.R
 import com.twofasapp.core.design.feature.settings.OptionEntry
 import com.twofasapp.core.design.feature.settings.OptionHeader
@@ -68,6 +69,22 @@ private fun Content(
 
             item {
                 OptionEntry(
+                    title = MdtLocale.strings.externalImportLastPass,
+                    image = painterResource(id = R.drawable.logo_lastpass),
+                    onClick = { onImportTypeSelected(ImportType.LastPass) },
+                )
+            }
+
+            item {
+                OptionEntry(
+                    title = MdtLocale.strings.externalImportOnePassword,
+                    image = painterResource(id = R.drawable.logo_onepassword),
+                    onClick = { onImportTypeSelected(ImportType.OnePassword) },
+                )
+            }
+
+            item {
+                OptionEntry(
                     title = MdtLocale.strings.externalImportAegis,
                     image = painterResource(id = R.drawable.logo_aegis),
                     onClick = { onImportTypeSelected(ImportType.Aegis) },
@@ -76,17 +93,25 @@ private fun Content(
 
             item {
                 OptionEntry(
-                    title = MdtLocale.strings.externalImportRaivo,
-                    image = painterResource(id = R.drawable.logo_raivo),
-                    onClick = { onImportTypeSelected(ImportType.Raivo) },
+                    title = MdtLocale.strings.externalImportProtonAuthenticator,
+                    image = painterResource(id = R.drawable.logo_proton_authenticator),
+                    onClick = { onImportTypeSelected(ImportType.ProtonAuthenticator) },
                 )
             }
 
             item {
                 OptionEntry(
-                    title = MdtLocale.strings.externalImportLastPass,
-                    image = painterResource(id = R.drawable.logo_lastpass),
-                    onClick = { onImportTypeSelected(ImportType.LastPass) },
+                    title = MdtLocale.strings.externalImportBitwarden,
+                    image = painterResource(id = R.drawable.logo_bitwarden),
+                    onClick = { onImportTypeSelected(ImportType.Bitwarden) },
+                )
+            }
+
+            item {
+                OptionEntry(
+                    title = MdtLocale.strings.externalImportEnte,
+                    image = painterResource(id = R.drawable.logo_ente),
+                    onClick = { onImportTypeSelected(ImportType.Ente) },
                 )
             }
 
@@ -108,17 +133,17 @@ private fun Content(
 
             item {
                 OptionEntry(
-                    title = MdtLocale.strings.externalImportBitwarden,
-                    image = painterResource(id = R.drawable.logo_bitwarden),
-                    onClick = { onImportTypeSelected(ImportType.Bitwarden) },
+                    title = MdtLocale.strings.externalImportRaivo,
+                    image = painterResource(id = R.drawable.logo_raivo),
+                    onClick = { onImportTypeSelected(ImportType.Raivo) },
                 )
             }
 
             item {
                 OptionEntry(
-                    title = MdtLocale.strings.externalImportProtonAuthenticator,
-                    image = painterResource(id = R.drawable.logo_proton_authenticator),
-                    onClick = { onImportTypeSelected(ImportType.ProtonAuthenticator) },
+                    title = MdtLocale.strings.externalImportOtpAuthFile,
+                    icon = MdtIcons.Document,
+                    onClick = { onImportTypeSelected(ImportType.OtpAuthFile) },
                 )
             }
         }

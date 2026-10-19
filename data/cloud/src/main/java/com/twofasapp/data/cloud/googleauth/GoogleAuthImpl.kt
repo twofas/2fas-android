@@ -10,6 +10,7 @@ import com.google.android.gms.common.api.Scope
 import com.google.api.services.drive.DriveScopes
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.ktx.resumeIfActive
+import com.twofasapp.common.logger.Flog
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 
@@ -65,6 +66,15 @@ internal class GoogleAuthImpl(
                     .addOnCanceledListener { continuation.resumeIfActive(SignInResult.Canceled(reason = getCancelReason(result.data))) }
                     .addOnFailureListener { continuation.resumeIfActive(SignInResult.Failure(reason = it)) }
             }
+        }.also { signInResult ->
+            when (signInResult) {
+                is SignInResult.Success -> Flog.persist(tag = "GoogleAuth", message = "Sign in success")
+                is SignInResult.Canceled -> Flog.persist(tag = "GoogleAuth", message = "Sign in canceled: ${signInResult.reason}")
+                is SignInResult.Failure -> {
+                    Flog.persist(tag = "GoogleAuth", message = "Sign in failed")
+                    Flog.persist(tag = "GoogleAuth", throwable = signInResult.reason)
+                }
+            }
         }
     }
 
@@ -86,6 +96,7 @@ internal class GoogleAuthImpl(
     }
 
     override suspend fun revokeAccess() {
+        Flog.persist(tag = "GoogleAuth", message = "Revoke access")
         return withContext(dispatchers.io) {
             suspendCancellableCoroutine { continuation ->
                 GoogleSignIn.getClient(

@@ -3,6 +3,7 @@ package com.twofasapp.feature.home.ui.editservice
 import androidx.lifecycle.ViewModel
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.services.GroupsRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.data.services.domain.Group
@@ -142,6 +143,7 @@ internal class EditServiceViewModel(
     fun saveService() {
         launchScoped {
             servicesRepository.updateService(uiState.value.service)
+            Flog.persist(tag = "Services", message = "Edit: id=${uiState.value.service.id}")
             uiState.update { it.copy(finish = true) }
         }
     }

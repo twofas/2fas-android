@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: it-IT, Italian (Italy)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1048,4 +1048,39 @@
     <string name="externalimport__choose_json_csv_cta">Scegli il file JSON o CSV</string>
     <string name="externalimport__info_bitwarden_title">Importa token da Bitwarden</string>
     <string name="browser__request_source_description_ios">ha richiesto un token 2FA per %s. Seleziona il servizio da autorizzare e salva con questo dominio.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Esporta i tuoi account da Ente Auth in un file di testo semplice e caricalo utilizzando il pulsante \"Scegli il file di testo\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
+    <string name="externalimport__ente_success_msg">Questo file di testo permette di importare i token da Ente Auth.</string>
+    <string name="externalimport__ente_title">Importa i token 2FA dall\'app Ente Auth</string>
+    <string name="externalimport__onepassword_msg">Esporta i tuoi account da 1Password in un file CSV e caricalo utilizzando il pulsante \"Scegli il file CSV\". Ricordati di rimuovere il file dopo un\'importazione riuscita.</string>
+    <string name="externalimport__onepassword_success_msg">Questo file CSV permette di importare i token da 1Password.</string>
+    <string name="externalimport__onepassword_title">Importa i token 2FA dall\'app 1Password</string>
+    <string name="externalimport__choose_csv_cta">Scegli il file CSV</string>
+    <string name="externalimport__info_ente_title">Importa token da Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Importa token da 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">Hai già scansionato questo codice QR.</string>
+    <string name="tokens__google_import_already_scanned_title">Già scansionato</string>
+    <string name="tokens__google_import_different_batch_message">Questo codice QR proviene da un\'altra esportazione di Google Authenticator. Scansiona tutti i codici da un\'unica esportazione.</string>
+    <string name="tokens__google_import_different_batch_title">Esportazione diversa</string>
+    <string name="tokens__google_import_multi_subtitle">Fa parte di un\'esportazione con più codici QR</string>
+    <string name="tokens__google_import_only_scanned">Importa solo i codici scansionati</string>
+    <string name="tokens__google_import_scanned_count">Scansionati %1$d di %2$d codici QR</string>
+    <string name="tokens__google_import_title">Importazione da Google Authenticator</string>
+    <string name="logs_title">Registri</string>
+    <string name="logs_empty">Nessun registro disponibile</string>
+    <string name="logs_share_title">Condividi registri</string>
+    <string name="externalimport__ga_batch_title">Rilevati più codici QR</string>
+    <string name="externalimport__ga_batch_msg">La tua esportazione di Google Authenticator è composta da %1$d codici QR. Scansionali tutti per importare tutti i tuoi token.</string>
+    <string name="externalimport__ga_batch_qr_code">Codice QR %1$d di %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Scansionato · %1$d token</string>
+    <string name="externalimport__ga_batch_not_scanned">Non ancora scansionato</string>
+    <string name="externalimport__ga_batch_progress">%1$d di %2$d scansionati</string>
+    <string name="externalimport__ga_batch_scan_cta">Scansiona il prossimo codice QR</string>
+    <string name="externalimport__ga_batch_pick_cta">Scegli il prossimo codice QR</string>
+    <string name="externalimport__ga_batch_read_error">Impossibile trovare un codice QR in questa immagine</string>
+    <string name="externalimport__ga_batch_import_cta">Importa token</string>
+    <string name="externalimport__ga_batch_already_scanned">Questo codice QR è già stato scansionato</string>
+    <string name="externalimport__ga_batch_different_export">Questo codice QR appartiene a un\'altra esportazione</string>
+    <string name="tokens__copy_token_long">Copia il token</string>
 </resources>

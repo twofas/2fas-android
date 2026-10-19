@@ -17,9 +17,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -31,9 +33,11 @@ import androidx.navigation3.ui.NavDisplay
 import com.twofasapp.android.navigation.BottomBarState
 import com.twofasapp.android.navigation.Screen
 import com.twofasapp.android.navigation.intentFor
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.core.design.MdtTheme
 import com.twofasapp.data.services.domain.RecentlyAddedService
 import com.twofasapp.feature.about.navigation.AboutLicensesRoute
+import com.twofasapp.feature.about.navigation.AboutLogsRoute
 import com.twofasapp.feature.about.navigation.AboutRoute
 import com.twofasapp.feature.appsettings.navigation.CustomizationRoute
 import com.twofasapp.feature.backup.navigation.BackupExportRoute
@@ -68,6 +72,7 @@ import com.twofasapp.feature.security.navigation.SetupPinRoute
 import com.twofasapp.feature.security.ui.lock.LockActivity
 import com.twofasapp.feature.startup.navigation.StartupRoute
 import com.twofasapp.feature.trash.navigation.TrashRoute
+import kotlinx.coroutines.flow.distinctUntilChanged
 import org.koin.compose.koinInject
 
 @Composable
@@ -82,6 +87,12 @@ internal fun MainNavDisplay(
     val backStack = remember(startDestination) {
         navigator.setStartRoot(startDestination)
         navigator.backStack
+    }
+
+    LaunchedEffect(backStack) {
+        snapshotFlow { backStack.lastOrNull() }
+            .distinctUntilChanged()
+            .collect { screen -> screen?.let { Flog.persist(tag = "Navigate", message = it.logName()) } }
     }
 
     val authSuccessCallback = remember { mutableStateOf<() -> Unit>({}) }
@@ -190,7 +201,11 @@ internal fun MainNavDisplay(
                 }
 
                 entry<Screen.ExternalImportScan> { key ->
-                    ExternalImportScanRoute(importType = enumValueOf<ImportType>(key.importType))
+                    ExternalImportScanRoute(
+                        importType = enumValueOf<ImportType>(key.importType),
+                        initialContent = key.initialContent,
+                        fromGallery = key.fromGallery,
+                    )
                 }
 
                 entry<Screen.ExternalImportResult> { key ->
@@ -275,6 +290,10 @@ internal fun MainNavDisplay(
                 entry<Screen.AboutLicenses> {
                     AboutLicensesRoute()
                 }
+
+                entry<Screen.AboutLogs> {
+                    AboutLogsRoute()
+                }
             },
         )
 
@@ -290,4 +309,27 @@ internal fun MainNavDisplay(
             )
         }
     }
+}
+
+/**
+ * Screen name for persisted logs. Arguments are added explicitly to avoid leaking sensitive data
+ * (e.g. imported file content) into logs.
+ */
+private fun Screen.logName(): String {
+    val args = when (this) {
+        is Screen.EditService -> "serviceId=$serviceId"
+        is Screen.EditServiceDomainAssignment -> "serviceId=$serviceId"
+        is Screen.EditServiceChangeBrand -> "serviceId=$serviceId"
+        is Screen.EditServiceChangeLabel -> "serviceId=$serviceId"
+        is Screen.Dispose -> "serviceId=$serviceId"
+        is Screen.GuideInit -> "guide=$guide"
+        is Screen.GuidePager -> "guide=$guide"
+        is Screen.ExternalImport -> "importType=$importType"
+        is Screen.ExternalImportScan -> "importType=$importType"
+        is Screen.ExternalImportResult -> "importType=$importType"
+        is Screen.BackupImport -> "fromFile=${importFileUri != null}"
+        else -> null
+    }
+
+    return this::class.simpleName.orEmpty() + args?.let { "($it)" }.orEmpty()
 }

@@ -11,6 +11,9 @@ enum class ImportType {
     AndOtp,
     Bitwarden,
     ProtonAuthenticator,
+    OnePassword,
+    Ente,
+    OtpAuthFile,
 }
 
 val ImportType.image: Int
@@ -23,4 +26,7 @@ val ImportType.image: Int
         ImportType.AndOtp -> R.drawable.ic_import_andotp
         ImportType.Bitwarden -> R.drawable.ic_import_bitwarden
         ImportType.ProtonAuthenticator -> R.drawable.ic_import_proton
+        ImportType.OnePassword -> R.drawable.ic_import_onepassword
+        ImportType.Ente -> R.drawable.ic_import_ente
+        ImportType.OtpAuthFile -> R.drawable.ic_import_otpauth
     }

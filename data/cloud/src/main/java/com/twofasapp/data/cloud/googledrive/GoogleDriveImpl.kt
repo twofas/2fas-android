@@ -14,6 +14,7 @@ import com.google.api.services.drive.Drive
 import com.google.api.services.drive.DriveScopes
 import com.google.api.services.drive.model.File
 import com.twofasapp.common.coroutines.Dispatchers
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.cloud.googleauth.AccountCredentials
 import com.twofasapp.data.cloud.googleauth.GoogleAuth
 import kotlinx.coroutines.withContext
@@ -45,6 +46,7 @@ internal class GoogleDriveImpl(
 
                 val credentials = googleAuth.accountCredentials()
                     ?: return@withContext GoogleDriveFileResult.Failure(error = GoogleDriveError.CredentialsNotFound)
+                        .also { persistCredentialsNotFound("GetFile") }
 
                 val drive = getDrive(credentials)
                 val backupFile = getFiles(drive)
@@ -71,6 +73,7 @@ internal class GoogleDriveImpl(
             } catch (e: Exception) {
                 Timber.d("GetFile <- Error: $e")
                 e.printStackTrace()
+                persistError("GetFile", e)
                 GoogleDriveFileResult.Failure(error = mapExceptionToErrorType(e))
             }
         }
@@ -82,6 +85,7 @@ internal class GoogleDriveImpl(
                 Timber.d("UpdateFile -> Starting...")
                 val credentials = googleAuth.accountCredentials()
                     ?: return@withContext GoogleDriveResult.Failure(error = GoogleDriveError.CredentialsNotFound)
+                        .also { persistCredentialsNotFound("UpdateFile") }
 
                 val drive = getDrive(credentials)
                 val backupFileId = getFiles(drive)?.firstOrNull { it.name == backupVersions.first() }?.id
@@ -111,6 +115,7 @@ internal class GoogleDriveImpl(
                 }
             } catch (e: Exception) {
                 Timber.d("UpdateFile <- Error: $e")
+                persistError("UpdateFile", e)
                 GoogleDriveResult.Failure(
                     error = mapExceptionToErrorType(e),
                     throwable = e,
@@ -126,6 +131,7 @@ internal class GoogleDriveImpl(
 
                 val credentials = googleAuth.accountCredentials()
                     ?: return@withContext GoogleDriveResult.Failure(error = GoogleDriveError.CredentialsNotFound)
+                        .also { persistCredentialsNotFound("DeleteFile") }
 
                 val drive = getDrive(credentials)
 
@@ -137,13 +143,24 @@ internal class GoogleDriveImpl(
                 }
 
                 Timber.d("DeleteFile <- Success")
+                Flog.persist(tag = "GoogleDrive", message = "DeleteFile success")
 
                 GoogleDriveResult.Success
             } catch (e: Exception) {
                 Timber.d("DeleteFile <- Error: $e")
+                persistError("DeleteFile", e)
                 GoogleDriveResult.Failure(error = mapExceptionToErrorType(e))
             }
         }
+    }
+
+    private fun persistCredentialsNotFound(operation: String) {
+        Flog.persist(tag = "GoogleDrive", message = "$operation failed: ${GoogleDriveError.CredentialsNotFound}")
+    }
+
+    private fun persistError(operation: String, e: Exception) {
+        Flog.persist(tag = "GoogleDrive", message = "$operation failed: ${mapExceptionToErrorType(e)}")
+        Flog.persist(tag = "GoogleDrive", throwable = e)
     }
 
     private fun mapExceptionToErrorType(e: Exception): GoogleDriveError {

@@ -6,6 +6,7 @@ import android.os.Build
 import com.instacart.library.truetime.TrueTime
 import com.twofasapp.common.coroutines.Dispatchers
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.storage.longPref
 import com.twofasapp.common.time.TimeProvider
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.time.Duration
+import kotlin.math.abs
 
 internal class SessionRepositoryImpl(
     private val context: Context,
@@ -61,6 +63,10 @@ internal class SessionRepositoryImpl(
         while (recalculate().not() && retries > 0) {
             delay(2000)
             retries--
+        }
+
+        if (retries == 0) {
+            Flog.persist(tag = "Time", message = "Time delta not updated: NTP time unavailable")
         }
     }
 
@@ -119,12 +125,21 @@ internal class SessionRepositoryImpl(
         }
     }
 
+    private var lastLoggedTimeDelta: Long? = null
+
     private suspend fun recalculate(): Boolean {
         Timber.d("TrueTime: sync...")
         return if (TrueTime.isInitialized()) {
             Timber.d("TrueTime: synced - ${TrueTime.now()}")
             val newDelta = TrueTime.now().time - System.currentTimeMillis()
             timeDelta.set(newDelta)
+
+            // Log only meaningful changes - this runs on every resume
+            val lastLogged = lastLoggedTimeDelta
+            if (lastLogged == null || abs(newDelta - lastLogged) > 1_000L) {
+                lastLoggedTimeDelta = newDelta
+                Flog.persist(tag = "Time", message = "Time delta: ${newDelta}ms")
+            }
 
             true
         } else {

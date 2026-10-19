@@ -14,8 +14,8 @@ android {
 
     defaultConfig {
         applicationId = "com.twofasapp"
-        versionName = "6.0.5"
-        versionCode = 5000040
+        versionName = "6.1.0"
+        versionCode = 5000041
     }
 
     ksp {
@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":data:browserext"))
     implementation(project(":data:cloud"))
     implementation(project(":data:push"))
+    implementation(project(":data:logs"))
 
     implementation(project(":feature:startup"))
     implementation(project(":feature:home"))

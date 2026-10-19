@@ -19,6 +19,7 @@ dependencies {
     implementation(project(":data:session"))
 
     implementation(project(":feature:qrscan"))
+    implementation(project(":feature:externalimport"))
     implementation(project(":feature:permissions"))
 
     implementation(project(":parsers"))

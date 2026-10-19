@@ -6,6 +6,7 @@ import com.twofasapp.common.domain.OtpAuthLink
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.domain.WidgetCallbacks
 import com.twofasapp.common.ktx.tickerFlow
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.storage.serializedPref
 import com.twofasapp.common.time.TimeProvider
@@ -124,6 +125,7 @@ internal class ServicesRepositoryImpl(
     override suspend fun deleteService(id: Long) {
         withContext(dispatchers.io) {
             local.deleteService(id)
+            Flog.persist(tag = "Services", message = "Delete: id=$id")
 
             if (backupLocalSource.getRemoteBackupStatus().state == RemoteBackupStatusEntity.State.ACTIVE) {
                 cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
@@ -136,6 +138,7 @@ internal class ServicesRepositoryImpl(
             if (ids.isEmpty()) return@withContext
 
             local.deleteServices(ids)
+            Flog.persist(tag = "Services", message = "Delete: ids=$ids")
 
             if (backupLocalSource.getRemoteBackupStatus().state == RemoteBackupStatusEntity.State.ACTIVE) {
                 cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
@@ -200,6 +203,11 @@ internal class ServicesRepositoryImpl(
             local.deleteServicesFromOrder(localServices.map { it.id })
             localServices.forEach { widgetCallbacks.onServiceDeleted(it.id) }
 
+            // Changes made by cloud sync (triggerSync = false) are logged as a summary in CloudSync
+            if (triggerSync) {
+                Flog.persist(tag = "Services", message = "Trash: ids=${localServices.map { it.id }}")
+            }
+
             if (backupLocalSource.getRemoteBackupStatus().state == RemoteBackupStatusEntity.State.ACTIVE) {
                 val recentlyDeletedServices = recentlyDeleted.get()
                 recentlyDeleted.set(
@@ -239,6 +247,8 @@ internal class ServicesRepositoryImpl(
             local.addServiceToOrder(id)
             widgetCallbacks.onServiceChanged()
 
+            Flog.persist(tag = "Services", message = "Restore: id=$id")
+
             if (backupLocalSource.getRemoteBackupStatus().state == RemoteBackupStatusEntity.State.ACTIVE) {
                 cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
             }
@@ -256,6 +266,8 @@ internal class ServicesRepositoryImpl(
                 counter = (service.hotpCounter ?: 1) + 1,
                 timestamp = timeProvider.systemCurrentTime(),
             )
+
+            Flog.persist(tag = "Services", message = "HOTP counter incremented: id=${service.id} counter=${(service.hotpCounter ?: 1) + 1}")
         }
     }
 
@@ -346,6 +358,15 @@ internal class ServicesRepositoryImpl(
             val id = local.insertService(service)
             local.addServiceToOrder(id)
 
+            // Changes made by cloud sync (triggerSync = false) are logged as a summary in CloudSync
+            if (triggerSync) {
+                Flog.persist(
+                    tag = "Services",
+                    message = "Add: id=$id source=${service.source} authType=${service.authType}" +
+                        existingService?.let { " replacedId=${it.id}" }.orEmpty(),
+                )
+            }
+
             if (triggerSync) {
                 cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
             }
@@ -372,6 +393,8 @@ internal class ServicesRepositoryImpl(
             // Insert
             val ids = local.insertServices(newServices)
             local.addServicesToOrder(ids)
+
+            Flog.persist(tag = "Services", message = "Add: count=${ids.size} replacedDuplicates=${duplicates.size}")
 
             cloudSyncWorkDispatcher.tryDispatch(CloudSyncTrigger.ServicesChanged)
         }

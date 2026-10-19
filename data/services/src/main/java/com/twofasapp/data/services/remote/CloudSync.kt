@@ -3,6 +3,7 @@ package com.twofasapp.data.services.remote
 import com.twofasapp.common.domain.BackupSyncStatus
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.environment.AppBuild
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.time.TimeProvider
 import com.twofasapp.data.services.BackupRepository
 import com.twofasapp.data.services.GroupsRepository
@@ -47,6 +48,7 @@ class CloudSync(
         backupRepository.publishCloudSyncStatus(CloudSyncStatus.Syncing)
 
         Timber.d(trigger.name)
+        Flog.persist(tag = "CloudSync", message = "Started: trigger=$trigger")
 
         val now = timeProvider.systemCurrentTime()
         val syncBackupStatus = when (trigger) {
@@ -79,11 +81,14 @@ class CloudSync(
                 }
 
                 backupRepository.publishCloudSyncStatus(CloudSyncStatus.Synced(trigger))
+                Flog.persist(tag = "CloudSync", message = "Synced: trigger=$trigger")
 
                 CloudSyncResult.Success
             }
 
             is RemoteStatus.Error -> {
+                Flog.persist(tag = "CloudSync", message = "Failed: trigger=$trigger error=${syncBackupStatus.error}")
+
                 when (syncBackupStatus.error) {
                     CloudSyncError.DecryptNoPassword,
                     CloudSyncError.DecryptWrongPassword,
@@ -128,6 +133,7 @@ class CloudSync(
             is RemoteStatus.Error -> {
                 if (remoteStatus.error == CloudSyncError.FileNotFound) {
                     // Backup does not exists - just push all from local
+                    Flog.persist(tag = "CloudSync", message = "Remote backup not found, uploading local")
                     return updateRemote(now, isFirstConnect, password, trigger)
                 } else {
                     return remoteStatus
@@ -147,6 +153,16 @@ class CloudSync(
         val localAppVersionCode = appBuild.versionCode
         val remoteAppVersionCode = remoteStatus.appVersionCode
 
+        Flog.persist(
+            tag = "CloudSync",
+            message = "Remote: services=${remoteServices.size} groups=${remoteGroups.size}" +
+                " revision=$remoteRevision schema=$remoteSchemaVersion app=$remoteAppVersionCode" +
+                " | Local: services=${localServices.size} groups=${localGroups.size}" +
+                " revision=$localRevision schema=$localSchemaVersion app=$localAppVersionCode",
+        )
+
+        val mergeSummary = MergeSummary()
+
         // Sync matching groups
         remoteGroups.forEach { remoteGroup ->
             val matchingLocalGroup = localGroups.find { it.id == remoteGroup.id }
@@ -155,6 +171,7 @@ class CloudSync(
                 remoteGroup,
                 localRevision,
                 remoteRevision,
+                mergeSummary,
             )
             localGroups.remove(matchingLocalGroup)
         }
@@ -169,6 +186,7 @@ class CloudSync(
                 remote,
                 localRevision,
                 remoteRevision,
+                mergeSummary,
             )
             localServices.remove(matchingLocal)
         }
@@ -183,6 +201,7 @@ class CloudSync(
                 it.backupSyncStatus == BackupSyncStatus.SYNCED
             ) {
                 servicesRepository.trashService(id = it.id, triggerSync = false)
+                mergeSummary.servicesTrashed.add(it.id)
             }
         }
 
@@ -195,13 +214,18 @@ class CloudSync(
                 localSchemaVersion == remoteSchemaVersion &&
                 it.backupSyncStatus == BackupSyncStatus.SYNCED
             ) {
-                it.id?.let { id -> groupsRepository.deleteGroup(id) }
+                it.id?.let { id ->
+                    groupsRepository.deleteGroup(id)
+                    mergeSummary.groupsDeleted.add(id)
+                }
             }
         }
 
         if (groupsRepository.getGroups().all { it.updatedAt < localRevision }) {
             groupsRepository.sortById(remoteGroups.map { it.id!! })
         }
+
+        Flog.persist(tag = "CloudSync", message = mergeSummary.format())
 
         return updateRemote(now, isFirstConnect, password, trigger)
     }
@@ -279,6 +303,8 @@ class CloudSync(
                 }
             }
         } catch (e: Exception) {
+            Flog.persist(tag = "CloudSync", message = "Update remote failed")
+            Flog.persist(tag = "CloudSync", throwable = e)
             return RemoteStatus.Error(CloudSyncError.SyncFailure)
         }
     }
@@ -288,13 +314,14 @@ class CloudSync(
         remote: Service,
         localRevision: Long,
         remoteRevision: Long,
+        mergeSummary: MergeSummary,
     ) {
         // Service exists on remote, but not on local
         if (local == null) {
             // Service was not recently deleted, add it to the list
             val recentlyDeletedServices = servicesRepository.getRecentlyDeletedServices()
             if (recentlyDeletedServices.services.firstOrNull { it.secret == remote.secret } == null) {
-                servicesRepository.addService(service = remote.copy(), triggerSync = false)
+                mergeSummary.servicesAdded.add(servicesRepository.addService(service = remote.copy(), triggerSync = false))
                 return
             }
 
@@ -302,7 +329,7 @@ class CloudSync(
             // Check if database revisions are the same on local and on remote
             if (localRevision != remoteRevision) {
                 // Revisions are different, for safety reasons restore the service from remote
-                servicesRepository.addService(service = remote.copy(), triggerSync = false)
+                mergeSummary.servicesRestored.add(servicesRepository.addService(service = remote.copy(), triggerSync = false))
                 servicesRepository.removeRecentlyDeleted(remote.secret)
                 return
             }
@@ -322,6 +349,7 @@ class CloudSync(
                     assignedDomains = local.assignedDomains,
                 ),
             )
+            mergeSummary.servicesUpdated.add(local.id)
         }
     }
 
@@ -330,6 +358,7 @@ class CloudSync(
         remote: Group,
         localRevision: Long,
         remoteRevision: Long,
+        mergeSummary: MergeSummary,
     ) {
         // Group exists on remote, but not on local
         if (local == null) {
@@ -337,6 +366,7 @@ class CloudSync(
             if (localRevision != remoteRevision) {
                 // Revisions are different - add remote group
                 groupsRepository.addGroup(remote)
+                mergeSummary.groupsAdded++
             }
 
             // Group was locally deleted or
@@ -348,6 +378,7 @@ class CloudSync(
         // Check their edit time and update if needed -> override with remote
         if (local.isContentEqualTo(remote).not() && remote.updatedAt > local.updatedAt) {
             groupsRepository.editGroup(remote)
+            mergeSummary.groupsUpdated++
         }
     }
 
@@ -402,5 +433,43 @@ class CloudSync(
                 )
             }
         }
+    }
+}
+
+/**
+ * Collects local changes made while merging the remote backup, so they are persisted as a single log entry.
+ */
+private class MergeSummary {
+    val servicesAdded = mutableListOf<Long>()
+    val servicesRestored = mutableListOf<Long>()
+    val servicesUpdated = mutableListOf<Long>()
+    val servicesTrashed = mutableListOf<Long>()
+    val groupsDeleted = mutableListOf<String>()
+    var groupsAdded = 0
+    var groupsUpdated = 0
+
+    fun format(): String {
+        val parts = listOfNotNull(
+            servicesAdded.formatIds("added"),
+            servicesRestored.formatIds("restored"),
+            servicesUpdated.formatIds("updated"),
+            servicesTrashed.formatIds("trashed"),
+            "groupsAdded=$groupsAdded".takeIf { groupsAdded > 0 },
+            "groupsUpdated=$groupsUpdated".takeIf { groupsUpdated > 0 },
+            "groupsDeleted=${groupsDeleted.size}".takeIf { groupsDeleted.isNotEmpty() },
+        )
+
+        return if (parts.isEmpty()) "Merged: no local changes" else "Merged: ${parts.joinToString(" ")}"
+    }
+
+    private fun List<Long>.formatIds(label: String): String? {
+        if (isEmpty()) return null
+
+        val ids = take(MaxIds).joinToString(",") + if (size > MaxIds) ",+${size - MaxIds} more" else ""
+        return "$label=$size[$ids]"
+    }
+
+    private companion object {
+        const val MaxIds = 50
     }
 }

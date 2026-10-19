@@ -1,5 +1,6 @@
 package com.twofasapp.data.session
 
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.common.storage.DataStoreOwner
 import com.twofasapp.common.storage.enumPref
 import com.twofasapp.common.storage.serializedPref
@@ -55,6 +56,7 @@ internal class SecurityRepositoryImpl(
     }
 
     override suspend fun editPinOptions(pinOptions: PinOptions) {
+        Flog.persist(tag = "Security", message = "Pin options: digits=${pinOptions.digits} trials=${pinOptions.trials} timeout=${pinOptions.timeout}")
         this.pinOptions.set(pinOptions.asEntity())
     }
 
@@ -91,6 +93,7 @@ internal class SecurityRepositoryImpl(
     }
 
     override suspend fun editLockMethod(lockMethod: LockMethod) {
+        Flog.persist(tag = "Security", message = "Lock method: $lockMethod")
         this.lockMethod.set(lockMethod.asEntity())
     }
 

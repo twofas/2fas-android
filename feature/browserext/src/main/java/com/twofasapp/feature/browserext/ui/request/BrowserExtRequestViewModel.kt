@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.twofasapp.common.domain.Service
 import com.twofasapp.common.ktx.launchScoped
 import com.twofasapp.common.ktx.runSafely
+import com.twofasapp.common.logger.Flog
 import com.twofasapp.data.browserext.BrowserExtRepository
 import com.twofasapp.data.services.ServicesRepository
 import com.twofasapp.feature.browserext.notification.BrowserExtRequestPayload
@@ -20,6 +21,10 @@ internal class BrowserExtRequestViewModel(
     private val searchQuery = MutableStateFlow("")
 
     fun init(payload: BrowserExtRequestPayload) {
+        launchScoped {
+            Flog.persist(tag = "BrowserExt", message = "Request screen: action=${payload.action} serviceId=${payload.serviceId}")
+        }
+
         launchScoped {
             searchQuery.collect { query ->
                 val domain = payload.domain
@@ -60,6 +65,7 @@ internal class BrowserExtRequestViewModel(
 
     fun assignDomain(service: Service) {
         launchScoped {
+            Flog.persist(tag = "BrowserExt", message = "Request: selected serviceId=${service.id} saveChoice=${uiState.value.saveMyChoice}")
             if (uiState.value.saveMyChoice) {
                 servicesRepository.assignDomainToService(service, uiState.value.domain)
             }

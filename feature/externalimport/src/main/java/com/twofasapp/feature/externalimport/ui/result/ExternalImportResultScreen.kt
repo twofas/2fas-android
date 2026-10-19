@@ -50,6 +50,7 @@ internal fun ExternalImportResultScreen(
     LaunchedEffect(uiState.finishSuccess) {
         if (uiState.finishSuccess) {
             context.toastShort(strings.externalImportSuccessToast)
+            navigator.popTo(Screen.ExternalImport(importType = importType.name), inclusive = true)
             navigator.popTo(Screen.ExternalImportSelector, inclusive = true)
         }
     }
@@ -126,6 +127,9 @@ private fun Result(
         ImportType.AndOtp -> strings.externalImportResultAndOtpTitle
         ImportType.Bitwarden -> strings.externalImportResultBitwardenTitle
         ImportType.ProtonAuthenticator -> strings.externalImportResultProtonAuthenticatorTitle
+        ImportType.OnePassword -> strings.externalImportResultOnePasswordTitle
+        ImportType.Ente -> strings.externalImportResultEnteTitle
+        ImportType.OtpAuthFile -> strings.externalImportResultOtpAuthFileTitle
     }
 
     val description = when (readResult) {
@@ -139,6 +143,9 @@ private fun Result(
                 ImportType.AndOtp -> strings.externalImportResultSuccessAndOtpMsg
                 ImportType.Bitwarden -> strings.externalImportResultSuccessBitwardenMsg
                 ImportType.ProtonAuthenticator -> strings.externalImportResultSuccessProtonAuthenticatorMsg
+                ImportType.OnePassword -> strings.externalImportResultSuccessOnePasswordMsg
+                ImportType.Ente -> strings.externalImportResultSuccessEnteMsg
+                ImportType.OtpAuthFile -> strings.externalImportOtpAuthFileMsg
             }
         }
 

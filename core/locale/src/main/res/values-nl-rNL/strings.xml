@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: nl-NL, Dutch (Netherlands)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1048,4 +1048,39 @@
     <string name="externalimport__choose_json_csv_cta">Kies JSON- of CSV-bestand</string>
     <string name="externalimport__info_bitwarden_title">Importeer tokens vanuit Bitwarden</string>
     <string name="browser__request_source_description_ios">heeft een 2FA-token aangevraagd voor %s. Selecteer de service die u wilt autoriseren en sla deze op met dit domein.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Exporteer uw accounts van Ente Auth naar een tekstbestand en upload deze met de \"Tekstbestand kiezen\" knop. Vergeet niet om het bestand te verwijderen na een succesvolle import.</string>
+    <string name="externalimport__ente_success_msg">Met dit tekstbestand kunt u tokens vanuit Ente Auth importeren.</string>
+    <string name="externalimport__ente_title">Importeer 2FA tokens vanuit de Ente Auth app</string>
+    <string name="externalimport__onepassword_msg">Exporteer uw accounts van 1Password naar een CSV-bestand en upload deze met de \"Kies CSV-bestand\" knop. Vergeet niet om het bestand te verwijderen na een succesvolle import.</string>
+    <string name="externalimport__onepassword_success_msg">Met dit CSV-bestand kunt u tokens vanuit 1Password importeren.</string>
+    <string name="externalimport__onepassword_title">Importeer 2FA tokens vanuit de 1Password app</string>
+    <string name="externalimport__choose_csv_cta">Kies CSV-bestand</string>
+    <string name="externalimport__info_ente_title">Importeer tokens vanuit Ente Auth</string>
+    <string name="externalimport__info_onepassword_title">Importeer tokens vanuit 1Password</string>
+    <string name="tokens__google_import_already_scanned_message">Je hebt deze QR-code al gescand.</string>
+    <string name="tokens__google_import_already_scanned_title">Al gescand</string>
+    <string name="tokens__google_import_different_batch_message">Deze QR-code komt uit een andere Google Authenticator-export. Scan alle codes uit één export.</string>
+    <string name="tokens__google_import_different_batch_title">Andere export</string>
+    <string name="tokens__google_import_multi_subtitle">Dit maakt deel uit van een export met meerdere QR-codes</string>
+    <string name="tokens__google_import_only_scanned">Alleen gescande codes importeren</string>
+    <string name="tokens__google_import_scanned_count">%1$d van %2$d QR-codes gescand</string>
+    <string name="tokens__google_import_title">Google Authenticator-import</string>
+    <string name="logs_title">Logboeken</string>
+    <string name="logs_empty">Geen logboeken beschikbaar</string>
+    <string name="logs_share_title">Logboeken delen</string>
+    <string name="externalimport__ga_batch_title">Meerdere QR-codes gedetecteerd</string>
+    <string name="externalimport__ga_batch_msg">Je Google Authenticator-export bestaat uit %1$d QR-codes. Scan ze allemaal om al je tokens te importeren.</string>
+    <string name="externalimport__ga_batch_qr_code">QR-code %1$d van %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Gescand · %1$d tokens</string>
+    <string name="externalimport__ga_batch_not_scanned">Nog niet gescand</string>
+    <string name="externalimport__ga_batch_progress">%1$d van %2$d gescand</string>
+    <string name="externalimport__ga_batch_scan_cta">Volgende QR-code scannen</string>
+    <string name="externalimport__ga_batch_pick_cta">Volgende QR-code kiezen</string>
+    <string name="externalimport__ga_batch_read_error">Geen QR-code gevonden in deze afbeelding</string>
+    <string name="externalimport__ga_batch_import_cta">Tokens importeren</string>
+    <string name="externalimport__ga_batch_already_scanned">Deze QR-code is al gescand</string>
+    <string name="externalimport__ga_batch_different_export">Deze QR-code hoort bij een andere export</string>
+    <string name="tokens__copy_token_long">Token kopiëren</string>
 </resources>

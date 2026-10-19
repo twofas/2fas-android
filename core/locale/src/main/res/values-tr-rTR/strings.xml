@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Tue, 06 Oct 2026 12:17:57 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1048,4 +1048,39 @@
     <string name="externalimport__choose_json_csv_cta">JSON veya CSV dosyası seç</string>
     <string name="externalimport__info_bitwarden_title">Jetonları Bitwarden\'dan içe aktar</string>
     <string name="browser__request_source_description_ios">%s için 2AD jetonu talep etti. Onaylamak ve bu alan adıyla kaydetmek için hizmeti seçin.</string>
+    <string name="externalimport_ente">Ente Auth</string>
+    <string name="externalimport_onepassword">1Password</string>
+    <string name="externalimport__ente_msg">Hesaplarınızı Ente Auth\'tan düz bir metin belgesine aktarın ve \"Metin belgesi seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içe aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
+    <string name="externalimport__ente_success_msg">Bu metin belgesi, jetonların Ente Auth\'tan içe aktarılmasına izin verir.</string>
+    <string name="externalimport__ente_title">2AD jetonları Ente Auth\'tan içe aktarılıyor</string>
+    <string name="externalimport__onepassword_msg">Hesaplarınızı 1Password\'den bir CSV dosyasına aktarın ve \"CSV dosyası seç\" düğmesini kullanarak buraya yükleyin. Başarılı bir içe aktarma işleminden sonra dosyayı silmeyi unutmayın.</string>
+    <string name="externalimport__onepassword_success_msg">Bu CSV dosyası, jetonların 1Password\'den içe aktarılmasına izin verir.</string>
+    <string name="externalimport__onepassword_title">2AD jetonları 1Password\'den içe aktarılıyor</string>
+    <string name="externalimport__choose_csv_cta">CSV dosyası seç</string>
+    <string name="externalimport__info_ente_title">Jetonları Ente Auth\'tan içe aktar</string>
+    <string name="externalimport__info_onepassword_title">Jetonları 1Password\'den içe aktar</string>
+    <string name="tokens__google_import_already_scanned_message">Bu QR kodunu zaten taradınız.</string>
+    <string name="tokens__google_import_already_scanned_title">Zaten tarandı</string>
+    <string name="tokens__google_import_different_batch_message">Bu QR kodu farklı bir Google Authenticator dışa aktarımına ait. Tüm kodları tek bir dışa aktarımdan tarayın.</string>
+    <string name="tokens__google_import_different_batch_title">Farklı dışa aktarım</string>
+    <string name="tokens__google_import_multi_subtitle">Bu, birden fazla QR kodu içeren bir dışa aktarımın parçasıdır</string>
+    <string name="tokens__google_import_only_scanned">Yalnızca taranan kodları içe aktar</string>
+    <string name="tokens__google_import_scanned_count">%1$d / %2$d QR kodu tarandı</string>
+    <string name="tokens__google_import_title">Google Authenticator içe aktarımı</string>
+    <string name="logs_title">Günlükler</string>
+    <string name="logs_empty">Kullanılabilir günlük yok</string>
+    <string name="logs_share_title">Günlükleri paylaş</string>
+    <string name="externalimport__ga_batch_title">Birden fazla QR kodu algılandı</string>
+    <string name="externalimport__ga_batch_msg">Google Authenticator dışa aktarımınız %1$d QR kodundan oluşuyor. Tüm jetonlarınızı içe aktarmak için hepsini tarayın.</string>
+    <string name="externalimport__ga_batch_qr_code">QR kodu %1$d / %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Tarandı · %1$d jeton</string>
+    <string name="externalimport__ga_batch_not_scanned">Henüz taranmadı</string>
+    <string name="externalimport__ga_batch_progress">%1$d / %2$d tarandı</string>
+    <string name="externalimport__ga_batch_scan_cta">Sonraki QR kodunu tara</string>
+    <string name="externalimport__ga_batch_pick_cta">Sonraki QR kodunu seç</string>
+    <string name="externalimport__ga_batch_read_error">Bu resimde QR kodu bulunamadı</string>
+    <string name="externalimport__ga_batch_import_cta">Jetonları içe aktar</string>
+    <string name="externalimport__ga_batch_already_scanned">Bu QR kodu zaten tarandı</string>
+    <string name="externalimport__ga_batch_different_export">Bu QR kodu farklı bir dışa aktarıma ait</string>
+    <string name="tokens__copy_token_long">Jetonu kopyala</string>
 </resources>
