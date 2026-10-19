@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: zh-Hant, Traditional Chinese
  Exported by: rafakob
- Exported at: Sun, 18 Oct 2026 05:44:54 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:20 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1053,28 +1053,28 @@
     <string name="externalimport__choose_csv_cta">選擇 CSV 檔案</string>
     <string name="externalimport__info_ente_title">從 Ente Auth 匯入權杖</string>
     <string name="externalimport__info_onepassword_title">從 1Password 匯入權杖</string>
-    <string name="tokens__google_import_already_scanned_message">You have already scanned this QR code.</string>
-    <string name="tokens__google_import_already_scanned_title">Already scanned</string>
-    <string name="tokens__google_import_different_batch_message">This QR code comes from a different Google Authenticator export. Scan all codes from a single export.</string>
-    <string name="tokens__google_import_different_batch_title">Different export</string>
-    <string name="tokens__google_import_multi_subtitle">This is part of a multiple QR code export</string>
-    <string name="tokens__google_import_only_scanned">Import only scanned codes</string>
-    <string name="tokens__google_import_scanned_count">Scanned %1$d of %2$d QR codes</string>
-    <string name="tokens__google_import_title">Google Authenticator import</string>
-    <string name="logs_title">Logs</string>
-    <string name="logs_empty">No logs available</string>
-    <string name="logs_share_title">Share logs</string>
-    <string name="externalimport__ga_batch_title">Multiple QR codes detected</string>
-    <string name="externalimport__ga_batch_msg">Your Google Authenticator export consists of %1$d QR codes. Scan all of them to import all your Tokens.</string>
-    <string name="externalimport__ga_batch_qr_code">QR code %1$d of %2$d</string>
-    <string name="externalimport__ga_batch_scanned">Scanned · %1$d Tokens</string>
-    <string name="externalimport__ga_batch_not_scanned">Not scanned yet</string>
-    <string name="externalimport__ga_batch_progress">%1$d of %2$d scanned</string>
-    <string name="externalimport__ga_batch_scan_cta">Scan next QR code</string>
-    <string name="externalimport__ga_batch_pick_cta">Pick next QR code</string>
-    <string name="externalimport__ga_batch_read_error">Could not find a QR code in this image</string>
-    <string name="externalimport__ga_batch_import_cta">Import Tokens</string>
-    <string name="externalimport__ga_batch_already_scanned">This QR code has already been scanned</string>
-    <string name="externalimport__ga_batch_different_export">This QR code belongs to a different export</string>
-    <string name="tokens__copy_token_long">Copy token</string>
+    <string name="tokens__google_import_already_scanned_message">您已掃描過此 QR 碼。</string>
+    <string name="tokens__google_import_already_scanned_title">已掃描</string>
+    <string name="tokens__google_import_different_batch_message">此 QR 碼來自另一個 Google Authenticator 匯出。請掃描同一次匯出中的所有 QR 碼。</string>
+    <string name="tokens__google_import_different_batch_title">不同的匯出</string>
+    <string name="tokens__google_import_multi_subtitle">這是多個 QR 碼匯出的一部分</string>
+    <string name="tokens__google_import_only_scanned">僅匯入已掃描的 QR 碼</string>
+    <string name="tokens__google_import_scanned_count">已掃描 %1$d / %2$d 個 QR 碼</string>
+    <string name="tokens__google_import_title">Google Authenticator 匯入</string>
+    <string name="logs_title">日誌</string>
+    <string name="logs_empty">沒有可用的日誌</string>
+    <string name="logs_share_title">分享日誌</string>
+    <string name="externalimport__ga_batch_title">偵測到多個 QR 碼</string>
+    <string name="externalimport__ga_batch_msg">您的 Google Authenticator 匯出包含 %1$d 個 QR 碼。請全部掃描以匯入所有權杖。</string>
+    <string name="externalimport__ga_batch_qr_code">QR 碼 %1$d / %2$d</string>
+    <string name="externalimport__ga_batch_scanned">已掃描 · %1$d 個權杖</string>
+    <string name="externalimport__ga_batch_not_scanned">尚未掃描</string>
+    <string name="externalimport__ga_batch_progress">已掃描 %1$d / %2$d</string>
+    <string name="externalimport__ga_batch_scan_cta">掃描下一個 QR 碼</string>
+    <string name="externalimport__ga_batch_pick_cta">選擇下一個 QR 碼</string>
+    <string name="externalimport__ga_batch_read_error">在此圖片中找不到 QR 碼</string>
+    <string name="externalimport__ga_batch_import_cta">匯入權杖</string>
+    <string name="externalimport__ga_batch_already_scanned">此 QR 碼已被掃描</string>
+    <string name="externalimport__ga_batch_different_export">此 QR 碼屬於另一個匯出</string>
+    <string name="tokens__copy_token_long">複製權杖</string>
 </resources>

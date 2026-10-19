@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: en, English
  Exported by: rafakob
- Exported at: Sun, 18 Oct 2026 05:44:19 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -746,7 +746,7 @@
     <string name="tokens__add_enter_manual">Enter the Secret Key manually</string>
     <string name="tokens__add_from_gallery">Upload screenshot with the QR code</string>
     <string name="tokens__add_success_title">Almost done!</string>
-    <string name="tokens__add_success_description">To finish pairing the service, you need to retype this Token.</string>
+    <string name="tokens__add_success_description">Enter this Token on the service’s website to finish pairing.</string>
     <string name="tokens__add_manual_title">Pair the service with 2FAS</string>
     <string name="tokens__add_manual_description">Type in the service name and Secret Key</string>
     <string name="tokens__add_manual_service_name">Service name</string>
@@ -1082,5 +1082,5 @@
     <string name="externalimport__ga_batch_import_cta">Import Tokens</string>
     <string name="externalimport__ga_batch_already_scanned">This QR code has already been scanned</string>
     <string name="externalimport__ga_batch_different_export">This QR code belongs to a different export</string>
-    <string name="tokens__copy_token_long">Copy token</string>
+    <string name="tokens__copy_token_long">Copy Token</string>
 </resources>

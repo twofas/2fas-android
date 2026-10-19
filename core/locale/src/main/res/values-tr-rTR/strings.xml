@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: tr-TR, Turkish (Turkey)
  Exported by: rafakob
- Exported at: Sun, 18 Oct 2026 05:44:19 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1059,28 +1059,28 @@
     <string name="externalimport__choose_csv_cta">CSV dosyası seç</string>
     <string name="externalimport__info_ente_title">Jetonları Ente Auth\'tan içe aktar</string>
     <string name="externalimport__info_onepassword_title">Jetonları 1Password\'den içe aktar</string>
-    <string name="tokens__google_import_already_scanned_message">You have already scanned this QR code.</string>
-    <string name="tokens__google_import_already_scanned_title">Already scanned</string>
-    <string name="tokens__google_import_different_batch_message">This QR code comes from a different Google Authenticator export. Scan all codes from a single export.</string>
-    <string name="tokens__google_import_different_batch_title">Different export</string>
-    <string name="tokens__google_import_multi_subtitle">This is part of a multiple QR code export</string>
-    <string name="tokens__google_import_only_scanned">Import only scanned codes</string>
-    <string name="tokens__google_import_scanned_count">Scanned %1$d of %2$d QR codes</string>
-    <string name="tokens__google_import_title">Google Authenticator import</string>
-    <string name="logs_title">Logs</string>
-    <string name="logs_empty">No logs available</string>
-    <string name="logs_share_title">Share logs</string>
-    <string name="externalimport__ga_batch_title">Multiple QR codes detected</string>
-    <string name="externalimport__ga_batch_msg">Your Google Authenticator export consists of %1$d QR codes. Scan all of them to import all your Tokens.</string>
-    <string name="externalimport__ga_batch_qr_code">QR code %1$d of %2$d</string>
-    <string name="externalimport__ga_batch_scanned">Scanned · %1$d Tokens</string>
-    <string name="externalimport__ga_batch_not_scanned">Not scanned yet</string>
-    <string name="externalimport__ga_batch_progress">%1$d of %2$d scanned</string>
-    <string name="externalimport__ga_batch_scan_cta">Scan next QR code</string>
-    <string name="externalimport__ga_batch_pick_cta">Pick next QR code</string>
-    <string name="externalimport__ga_batch_read_error">Could not find a QR code in this image</string>
-    <string name="externalimport__ga_batch_import_cta">Import Tokens</string>
-    <string name="externalimport__ga_batch_already_scanned">This QR code has already been scanned</string>
-    <string name="externalimport__ga_batch_different_export">This QR code belongs to a different export</string>
-    <string name="tokens__copy_token_long">Copy token</string>
+    <string name="tokens__google_import_already_scanned_message">Bu QR kodunu zaten taradınız.</string>
+    <string name="tokens__google_import_already_scanned_title">Zaten tarandı</string>
+    <string name="tokens__google_import_different_batch_message">Bu QR kodu farklı bir Google Authenticator dışa aktarımına ait. Tüm kodları tek bir dışa aktarımdan tarayın.</string>
+    <string name="tokens__google_import_different_batch_title">Farklı dışa aktarım</string>
+    <string name="tokens__google_import_multi_subtitle">Bu, birden fazla QR kodu içeren bir dışa aktarımın parçasıdır</string>
+    <string name="tokens__google_import_only_scanned">Yalnızca taranan kodları içe aktar</string>
+    <string name="tokens__google_import_scanned_count">%1$d / %2$d QR kodu tarandı</string>
+    <string name="tokens__google_import_title">Google Authenticator içe aktarımı</string>
+    <string name="logs_title">Günlükler</string>
+    <string name="logs_empty">Kullanılabilir günlük yok</string>
+    <string name="logs_share_title">Günlükleri paylaş</string>
+    <string name="externalimport__ga_batch_title">Birden fazla QR kodu algılandı</string>
+    <string name="externalimport__ga_batch_msg">Google Authenticator dışa aktarımınız %1$d QR kodundan oluşuyor. Tüm jetonlarınızı içe aktarmak için hepsini tarayın.</string>
+    <string name="externalimport__ga_batch_qr_code">QR kodu %1$d / %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Tarandı · %1$d jeton</string>
+    <string name="externalimport__ga_batch_not_scanned">Henüz taranmadı</string>
+    <string name="externalimport__ga_batch_progress">%1$d / %2$d tarandı</string>
+    <string name="externalimport__ga_batch_scan_cta">Sonraki QR kodunu tara</string>
+    <string name="externalimport__ga_batch_pick_cta">Sonraki QR kodunu seç</string>
+    <string name="externalimport__ga_batch_read_error">Bu resimde QR kodu bulunamadı</string>
+    <string name="externalimport__ga_batch_import_cta">Jetonları içe aktar</string>
+    <string name="externalimport__ga_batch_already_scanned">Bu QR kodu zaten tarandı</string>
+    <string name="externalimport__ga_batch_different_export">Bu QR kodu farklı bir dışa aktarıma ait</string>
+    <string name="tokens__copy_token_long">Jetonu kopyala</string>
 </resources>

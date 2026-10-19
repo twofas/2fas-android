@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: pt-PT, Portuguese (Portugal)
  Exported by: rafakob
- Exported at: Sun, 18 Oct 2026 05:44:19 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1059,28 +1059,28 @@
     <string name="externalimport__choose_csv_cta">Escolhe o ficheiro CSV</string>
     <string name="externalimport__info_ente_title">Importa tokens do Ente Auth</string>
     <string name="externalimport__info_onepassword_title">Importa tokens do 1Password</string>
-    <string name="tokens__google_import_already_scanned_message">You have already scanned this QR code.</string>
-    <string name="tokens__google_import_already_scanned_title">Already scanned</string>
-    <string name="tokens__google_import_different_batch_message">This QR code comes from a different Google Authenticator export. Scan all codes from a single export.</string>
-    <string name="tokens__google_import_different_batch_title">Different export</string>
-    <string name="tokens__google_import_multi_subtitle">This is part of a multiple QR code export</string>
-    <string name="tokens__google_import_only_scanned">Import only scanned codes</string>
-    <string name="tokens__google_import_scanned_count">Scanned %1$d of %2$d QR codes</string>
-    <string name="tokens__google_import_title">Google Authenticator import</string>
-    <string name="logs_title">Logs</string>
-    <string name="logs_empty">No logs available</string>
-    <string name="logs_share_title">Share logs</string>
-    <string name="externalimport__ga_batch_title">Multiple QR codes detected</string>
-    <string name="externalimport__ga_batch_msg">Your Google Authenticator export consists of %1$d QR codes. Scan all of them to import all your Tokens.</string>
-    <string name="externalimport__ga_batch_qr_code">QR code %1$d of %2$d</string>
-    <string name="externalimport__ga_batch_scanned">Scanned · %1$d Tokens</string>
-    <string name="externalimport__ga_batch_not_scanned">Not scanned yet</string>
-    <string name="externalimport__ga_batch_progress">%1$d of %2$d scanned</string>
-    <string name="externalimport__ga_batch_scan_cta">Scan next QR code</string>
-    <string name="externalimport__ga_batch_pick_cta">Pick next QR code</string>
-    <string name="externalimport__ga_batch_read_error">Could not find a QR code in this image</string>
-    <string name="externalimport__ga_batch_import_cta">Import Tokens</string>
-    <string name="externalimport__ga_batch_already_scanned">This QR code has already been scanned</string>
-    <string name="externalimport__ga_batch_different_export">This QR code belongs to a different export</string>
-    <string name="tokens__copy_token_long">Copy token</string>
+    <string name="tokens__google_import_already_scanned_message">Já digitalizaste este código QR.</string>
+    <string name="tokens__google_import_already_scanned_title">Já digitalizado</string>
+    <string name="tokens__google_import_different_batch_message">Este código QR pertence a uma exportação diferente do Google Authenticator. Digitaliza todos os códigos de uma única exportação.</string>
+    <string name="tokens__google_import_different_batch_title">Exportação diferente</string>
+    <string name="tokens__google_import_multi_subtitle">Isto faz parte de uma exportação com vários códigos QR</string>
+    <string name="tokens__google_import_only_scanned">Importar apenas os códigos digitalizados</string>
+    <string name="tokens__google_import_scanned_count">%1$d de %2$d códigos QR digitalizados</string>
+    <string name="tokens__google_import_title">Importação do Google Authenticator</string>
+    <string name="logs_title">Registros</string>
+    <string name="logs_empty">Nenhum registro disponível</string>
+    <string name="logs_share_title">Partilhar registros</string>
+    <string name="externalimport__ga_batch_title">Vários códigos QR detetados</string>
+    <string name="externalimport__ga_batch_msg">A tua exportação do Google Authenticator é composta por %1$d códigos QR. Digitaliza-os todos para importares todos os teus tokens.</string>
+    <string name="externalimport__ga_batch_qr_code">Código QR %1$d de %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Digitalizado · %1$d tokens</string>
+    <string name="externalimport__ga_batch_not_scanned">Ainda não digitalizado</string>
+    <string name="externalimport__ga_batch_progress">%1$d de %2$d digitalizados</string>
+    <string name="externalimport__ga_batch_scan_cta">Digitalizar o próximo código QR</string>
+    <string name="externalimport__ga_batch_pick_cta">Escolher o próximo código QR</string>
+    <string name="externalimport__ga_batch_read_error">Não foi possível encontrar um código QR nesta imagem</string>
+    <string name="externalimport__ga_batch_import_cta">Importar tokens</string>
+    <string name="externalimport__ga_batch_already_scanned">Este código QR já foi digitalizado</string>
+    <string name="externalimport__ga_batch_different_export">Este código QR pertence a uma exportação diferente</string>
+    <string name="tokens__copy_token_long">Copiar token</string>
 </resources>

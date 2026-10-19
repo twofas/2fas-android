@@ -4,7 +4,7 @@
  Project: 2FAS App
  Locale: lt-LT, Lithuanian (Lithuania)
  Exported by: rafakob
- Exported at: Sun, 18 Oct 2026 05:44:19 -0700
+ Exported at: Mon, 19 Oct 2026 11:12:19 -0700
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- InfoPlist.strings
@@ -1065,28 +1065,28 @@
     <string name="externalimport__choose_csv_cta">Pasirinkite CSV failą</string>
     <string name="externalimport__info_ente_title">Importuoti raktus iš „Enter Auth“</string>
     <string name="externalimport__info_onepassword_title">Importuoti raktus iš „1Password“</string>
-    <string name="tokens__google_import_already_scanned_message">You have already scanned this QR code.</string>
-    <string name="tokens__google_import_already_scanned_title">Already scanned</string>
-    <string name="tokens__google_import_different_batch_message">This QR code comes from a different Google Authenticator export. Scan all codes from a single export.</string>
-    <string name="tokens__google_import_different_batch_title">Different export</string>
-    <string name="tokens__google_import_multi_subtitle">This is part of a multiple QR code export</string>
-    <string name="tokens__google_import_only_scanned">Import only scanned codes</string>
-    <string name="tokens__google_import_scanned_count">Scanned %1$d of %2$d QR codes</string>
-    <string name="tokens__google_import_title">Google Authenticator import</string>
-    <string name="logs_title">Logs</string>
-    <string name="logs_empty">No logs available</string>
-    <string name="logs_share_title">Share logs</string>
-    <string name="externalimport__ga_batch_title">Multiple QR codes detected</string>
-    <string name="externalimport__ga_batch_msg">Your Google Authenticator export consists of %1$d QR codes. Scan all of them to import all your Tokens.</string>
-    <string name="externalimport__ga_batch_qr_code">QR code %1$d of %2$d</string>
-    <string name="externalimport__ga_batch_scanned">Scanned · %1$d Tokens</string>
-    <string name="externalimport__ga_batch_not_scanned">Not scanned yet</string>
-    <string name="externalimport__ga_batch_progress">%1$d of %2$d scanned</string>
-    <string name="externalimport__ga_batch_scan_cta">Scan next QR code</string>
-    <string name="externalimport__ga_batch_pick_cta">Pick next QR code</string>
-    <string name="externalimport__ga_batch_read_error">Could not find a QR code in this image</string>
-    <string name="externalimport__ga_batch_import_cta">Import Tokens</string>
-    <string name="externalimport__ga_batch_already_scanned">This QR code has already been scanned</string>
-    <string name="externalimport__ga_batch_different_export">This QR code belongs to a different export</string>
-    <string name="tokens__copy_token_long">Copy token</string>
+    <string name="tokens__google_import_already_scanned_message">Jūs jau nuskaitėte šį QR kodą.</string>
+    <string name="tokens__google_import_already_scanned_title">Jau nuskaityta</string>
+    <string name="tokens__google_import_different_batch_message">Šis QR kodas yra iš kito „Google Authenticator“ eksporto. Nuskaitykite visus kodus iš to paties eksporto.</string>
+    <string name="tokens__google_import_different_batch_title">Kitas eksportas</string>
+    <string name="tokens__google_import_multi_subtitle">Tai yra eksporto, sudaryto iš kelių QR kodų, dalis</string>
+    <string name="tokens__google_import_only_scanned">Importuoti tik nuskaitytus kodus</string>
+    <string name="tokens__google_import_scanned_count">Nuskaityta %1$d iš %2$d QR kodų</string>
+    <string name="tokens__google_import_title">„Google Authenticator“ importavimas</string>
+    <string name="logs_title">Žurnalai</string>
+    <string name="logs_empty">Žurnalų nėra</string>
+    <string name="logs_share_title">Dalintis žurnalais</string>
+    <string name="externalimport__ga_batch_title">Aptikti keli QR kodai</string>
+    <string name="externalimport__ga_batch_msg">Jūsų „Google Authenticator“ eksportą sudaro QR kodų: %1$d. Nuskaitykite juos visus, kad importuotumėte visus savo raktus.</string>
+    <string name="externalimport__ga_batch_qr_code">QR kodas %1$d iš %2$d</string>
+    <string name="externalimport__ga_batch_scanned">Nuskaityta · raktų: %1$d</string>
+    <string name="externalimport__ga_batch_not_scanned">Dar nenuskaityta</string>
+    <string name="externalimport__ga_batch_progress">Nuskaityta %1$d iš %2$d</string>
+    <string name="externalimport__ga_batch_scan_cta">Nuskaityti kitą QR kodą</string>
+    <string name="externalimport__ga_batch_pick_cta">Pasirinkti kitą QR kodą</string>
+    <string name="externalimport__ga_batch_read_error">Šiame paveikslėlyje nepavyko rasti QR kodo</string>
+    <string name="externalimport__ga_batch_import_cta">Importuoti raktus</string>
+    <string name="externalimport__ga_batch_already_scanned">Šis QR kodas jau nuskaitytas</string>
+    <string name="externalimport__ga_batch_different_export">Šis QR kodas priklauso kitam eksportui</string>
+    <string name="tokens__copy_token_long">Kopijuoti raktą</string>
 </resources>
