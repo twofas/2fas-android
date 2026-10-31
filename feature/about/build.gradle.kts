@@ -9,6 +9,12 @@ android {
     namespace = "com.twofasapp.feature.about"
 }
 
+aboutLibraries {
+    export {
+        outputFile = rootProject.layout.projectDirectory.file("config/aboutlibraries.json")
+    }
+}
+
 dependencies {
     implementation(project(":core:android"))
     implementation(project(":core:common"))
